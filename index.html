@@ -70,19 +70,38 @@ h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp
 .steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
 .steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
 </style>
 </head>
 <body>
-<header class="top"><div class="top-in"><a class="brand" href="./"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>写真をPDFにする</span></a><nav><a href="#how">使い方</a><a href="#guide">解説</a></nav></div></header>
+<header class="top"><div class="top-in"><a class="brand" href="./"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>写真をPDFにする</span></a><div class="lang" role="group" aria-label="言語 / Language"><button type="button" data-l="ja">日本語</button><button type="button" data-l="en">English</button></div><nav><a href="#how">使い方</a><a href="#guide">解説</a></nav></div></header>
 <main>
 <h1>写真を<span>PDF</span>にする</h1>
-<p class="lead">撮った写真や書類を、順番どおりに1つのPDFへ。写真はこの端末の中だけで処理され、外には送信されません。</p>
+<p class="lead">撮った写真や書類を、順番どおりに1つのPDFへ。</p>
+<p class="safe"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><b>写真は外に送信されません。</b>すべて、この端末の中だけで処理します。</span></p>
 
 <ol class="steps"><li><b>1</b>写真を選ぶ</li><li><b>2</b>順番を整える</li><li><b>3</b>PDFにする</li></ol>
 <label class="pick" id="drop"><input type="file" id="file" accept="image/*" multiple><span id="pt">写真を選ぶ</span><small>複数枚をまとめて選べます（JPEG・PNG・WebP）</small></label>
 
 <section id="stack">
 <h2>ページの順番</h2>
+<p class="hint">「前へ」「後ろへ」で入れ替えできます。パソコンでは、写真をドラッグして並べ替えることもできます。</p>
 <ul id="grid"></ul>
 </section>
 
@@ -107,10 +126,11 @@ h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp
 </section>
 
 <section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
 <div class="stamp">完成</div>
 <p id="info"></p>
 <a id="dl" href="#">PDFを保存する</a>
-<p id="msg"></p>
+<p id="msg" aria-live="polite"></p>
 </section>
 
 <section class="guide">
@@ -157,6 +177,57 @@ let items=[],url=null,dlNs=null;
 const val=n=>document.querySelector('input[name="'+n+'"]:checked').value;
 const fmt=b=>b>=1048576?(b/1048576).toFixed(2)+" MB":Math.round(b/1024)+" KB";
 const Q={l:{edge:1200,q:.6},m:{edge:1800,q:.75},h:{edge:2600,q:.88}};
+const JT=document.title;let lang="ja";
+const S={
+ja:{prev:"前へ",next:"後ろへ",rot:"回転",del:"削除",
+prevL:n=>n+"ページ目を前へ",nextL:n=>n+"ページ目を後ろへ",rotL:n=>n+"ページ目を右に90度回転",delL:n=>n+"ページ目を削除",
+alt:(n,t)=>n+"ページ目："+t,add:n=>"写真を追加する（"+n+"枚）",pick:"写真を選ぶ",
+conv:"変換中",adj:k=>"サイズを調整中・"+k+"回め",prog:(l,i,n)=>l+"（"+i+"/"+n+"枚め）",
+errLoad:t=>"読み込めない写真があります："+t,
+errBig:z=>"いちばん小さい画質でも"+z+"になり、上限に収まりませんでした。写真の枚数を減らして、もう一度お試しください。",
+errGen:"変換できませんでした。写真の枚数を減らして、もう一度お試しください。",errSave:"保存できませんでした。もう一度お試しください。",
+working:"作っています…",make:"PDFにする",info:(n,z)=>n+"ページ・"+z,okT:m=>"上限の"+m+"MBに収まりました。",
+check:"保存したら、順番と読みやすさを確認してから使ってください。"},
+en:{prev:"Earlier",next:"Later",rot:"Rotate",del:"Delete",
+prevL:n=>"Move page "+n+" earlier",nextL:n=>"Move page "+n+" later",rotL:n=>"Rotate page "+n+" 90 degrees clockwise",delL:n=>"Delete page "+n,
+alt:(n,t)=>"Page "+n+": "+t,add:n=>"Add more photos ("+n+")",pick:"Choose photos",
+conv:"Converting",adj:k=>"Adjusting size (try "+k+")",prog:(l,i,n)=>l+" ("+i+"/"+n+")",
+errLoad:t=>"Could not read this photo: "+t,
+errBig:z=>"Even at the lowest quality the file is "+z+", which is over the limit. Remove some photos and try again.",
+errGen:"Could not convert. Please try fewer photos.",errSave:"Could not save. Please try again.",
+working:"Working…",make:"Make PDF",info:(n,z)=>n+(n===1?" page":" pages")+" · "+z,okT:m=>"Fits within "+m+" MB. ",
+check:"After saving, check the page order and readability before using it."}};
+const s=(k,...a)=>{const v=S[lang][k];return typeof v==="function"?v(...a):v};
+const EN={"写真をPDFにする":"Photos to PDF","写真を":"Photos to ","にする":"",
+"撮った写真や書類を、順番どおりに1つのPDFへ。":"Turn photos and documents into one PDF, in the order you want.",
+"写真は外に送信されません。":"Your photos are never uploaded. ","すべて、この端末の中だけで処理します。":"Everything is processed on this device only.",
+"写真を選ぶ":"Choose photos","順番を整える":"Arrange the order","PDFにする":"Make PDF",
+"複数枚をまとめて選べます（JPEG・PNG・WebP）":"Select several at once (JPEG, PNG, WebP)",
+"ページの順番":"Page order","「前へ」「後ろへ」で入れ替えできます。パソコンでは、写真をドラッグして並べ替えることもできます。":"Use “Earlier” and “Later” to reorder. On a computer, you can also drag photos.",
+"ページの大きさ":"Page size","写真と同じ大きさ":"Same as photo","余白":"Margin","なし":"None","少し":"Small",
+"画質":"Quality","軽め":"Small file","ふつう":"Normal","きれい":"High","サイズを指定":"Set a size limit","上限のサイズ":"Size limit",
+"完成":"Done","PDFを保存する":"Save PDF","運営者情報・お問い合わせ":"About / Contact (Japanese)","プライバシーポリシー":"Privacy Policy (Japanese)"};
+function setLang(l){
+  lang=l;
+  const skip="#pt,#go,#grid,#info,#msg,script,style,.guide,.lang,svg";
+  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const ns=[];
+  while(w.nextNode())ns.push(w.currentNode);
+  for(const n of ns){
+    if(n.parentElement&&n.parentElement.closest(skip))continue;
+    if(n.__ja===undefined){const t=n.textContent.trim();if(!t||!(t in EN))continue;n.__ja=n.textContent}
+    const ja=n.__ja,t=ja.trim();n.textContent=l==="en"?ja.replace(t,EN[t]):ja;
+  }
+  document.querySelectorAll(".guide").forEach(e=>e.style.display=l==="en"?"none":"");
+  const nv=document.querySelector(".top nav");if(nv)nv.style.display=l==="en"?"none":"";
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.l===l)));
+  document.documentElement.lang=l;
+  document.title=l==="en"?"Photos to PDF | Combine photos into one PDF (free)":JT;
+  if(!$("go").disabled||!items.length)$("go").textContent=s("make");
+  draw();
+  try{localStorage.setItem("lang",l)}catch(e){}
+}
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+
 
 function add(files){
   for(const f of files){if(f.type.startsWith("image/"))items.push({file:f,url:URL.createObjectURL(f),rot:0,th:null})}
@@ -170,19 +241,24 @@ function draw(){
   const g=$("grid");g.textContent="";
   items.forEach((it,i)=>{
     const li=document.createElement("li");
+    li.draggable=true;
+    li.ondragstart=e=>{e.dataTransfer.setData("text/plain",String(i));e.dataTransfer.effectAllowed="move";li.style.opacity=".5"};
+    li.ondragend=()=>{li.style.opacity=""};
+    li.ondragover=e=>e.preventDefault();
+    li.ondrop=e=>{e.preventDefault();e.stopPropagation();const from=parseInt(e.dataTransfer.getData("text/plain"),10);if(isNaN(from)||from===i)return;const [x]=items.splice(from,1);items.splice(i,0,x);draw()};
     const sh=document.createElement("div");sh.className="sheet";
-    const im=document.createElement("img");im.src=it.th||it.url;im.alt=(i+1)+"ページ目："+it.file.name;
+    const im=document.createElement("img");im.draggable=false;im.src=it.th||it.url;im.alt=s("alt",i+1,it.file.name);
     const no=document.createElement("span");no.className="no";no.textContent=i+1;
     sh.append(im,no);
     const ops=document.createElement("div");ops.className="ops";
-    ops.append(op("前へ",(i+1)+"ページ目を前へ",()=>mv(i,-1),i===0),op("後ろへ",(i+1)+"ページ目を後ろへ",()=>mv(i,1),i===items.length-1),op("回転",(i+1)+"ページ目を右に90度回転",()=>rotate(i)),op("削除",(i+1)+"ページ目を削除",()=>rm(i),false,"del"));
+    ops.append(op(s("prev"),s("prevL",i+1),()=>mv(i,-1),i===0),op(s("next"),s("nextL",i+1),()=>mv(i,1),i===items.length-1),op(s("rot"),s("rotL",i+1),()=>rotate(i)),op(s("del"),s("delL",i+1),()=>rm(i),false,"del"));
     li.append(sh,ops);g.appendChild(li);
   });
   const n=items.length;
   $("stack").style.display=n?"block":"none";
   $("set").style.display=n?"block":"none";
   $("go").disabled=!n;
-  $("pt").textContent=n?"写真を追加する（"+n+"枚）":"写真を選ぶ";
+  $("pt").textContent=n?s("add",n):s("pick");
 }
 function mv(i,d){const j=i+d;[items[i],items[j]]=[items[j],items[i]];draw()}
 function rm(i){URL.revokeObjectURL(items[i].url);if(items[i].th)URL.revokeObjectURL(items[i].th);items.splice(i,1);draw()}
@@ -214,7 +290,7 @@ function wireDl(a,blob,name){
   a.onclick=async e=>{
     if(!dlNs)return;e.preventDefault();
     try{await dlNs.save({filename:name,data:blob})}
-    catch(err){if(!err||err.code!=="declined"){$("msg").className="bad";$("msg").textContent="保存できませんでした。もう一度お試しください。"}}
+    catch(err){if(!err||err.code!=="declined"){$("msg").className="bad";$("msg").textContent=s("errSave")}}
   };
 }
 
@@ -223,9 +299,9 @@ const STEPS=[{edge:2600,q:.88},{edge:2200,q:.82},{edge:1800,q:.75},{edge:1500,q:
 async function build(edge,q,mode,m,label){
   const doc=await PDFLib.PDFDocument.create();
   for(let i=0;i<items.length;i++){
-    $("msg").textContent=label+"（"+(i+1)+"/"+items.length+"枚め）";
+    $("msg").textContent=s("prog",label,i+1,items.length);$("barf").style.width=(i/items.length*100)+"%";
     let img;
-    try{img=await load(items[i].url)}catch(e){throw new Error("読み込めない写真があります："+items[i].file.name)}
+    try{img=await load(items[i].url)}catch(e){throw new Error(s("errLoad",items[i].file.name))}
     const sc=Math.min(1,edge/Math.max(img.naturalWidth,img.naturalHeight));
     const w=Math.max(1,Math.round(img.naturalWidth*sc)),h=Math.max(1,Math.round(img.naturalHeight*sc));
     const rt=items[i].rot,odd=rt%180!==0,cw=odd?h:w,ch=odd?w:h;
@@ -239,6 +315,7 @@ async function build(edge,q,mode,m,label){
     else{pw=595.28;ph=841.89;if(cw>ch){pw=841.89;ph=595.28}const s=Math.min((pw-2*m)/cw,(ph-2*m)/ch);dw=cw*s;dh=ch*s}
     doc.addPage([pw,ph]).drawImage(emb,{x:(pw-dw)/2,y:(ph-dh)/2,width:dw,height:dh});
   }
+  $("barf").style.width="100%";
   return doc.save();
 }
 
@@ -246,8 +323,8 @@ document.querySelectorAll('input[name="q"]').forEach(r=>r.onchange=()=>{$("tgrow
 
 $("go").onclick=async()=>{
   const go=$("go"),msg=$("msg"),dl=$("dl"),out=$("out"),st=out.querySelector(".stamp");
-  go.disabled=true;go.textContent="作っています…";
-  out.style.display="block";dl.style.display="none";$("info").textContent="";msg.className="";msg.textContent="";st.style.display="none";
+  go.disabled=true;go.textContent=s("working");
+  out.style.display="block";dl.style.display="none";$("info").textContent="";msg.className="";msg.textContent="";st.style.display="none";$("bar").style.display="block";$("barf").style.width="0";
   if(url){URL.revokeObjectURL(url);url=null}
   const qv=val("q"),mode=val("pg"),m=mode==="a4"?+val("mg"):0;
   try{
@@ -255,31 +332,32 @@ $("go").onclick=async()=>{
     if(qv==="t"){
       const limit=parseFloat(val("tg"))*1048576;
       let tries=0;
-      const run=k=>{tries++;return build(STEPS[k].edge,STEPS[k].q,mode,m,"サイズを調整中・"+tries+"回め")};
+      const run=k=>{tries++;return build(STEPS[k].edge,STEPS[k].q,mode,m,s("adj",tries))};
       const b0=await run(0);
       if(b0.length<=limit){bytes=b0}
       else{
         let hi=STEPS.length-1;
         const bl=await run(hi);
-        if(bl.length>limit)throw new Error("いちばん小さい画質でも"+fmt(bl.length)+"になり、上限に収まりませんでした。写真の枚数を減らして、もう一度お試しください。");
+        if(bl.length>limit)throw new Error(s("errBig",fmt(bl.length)));
         let best=bl,lo=1;hi=hi-1;
         while(lo<=hi){const mid=(lo+hi)>>1;const b=await run(mid);if(b.length<=limit){best=b;hi=mid-1}else lo=mid+1}
         bytes=best;
       }
     }else{
-      const {edge,q}=Q[qv];bytes=await build(edge,q,mode,m,"変換中");
+      const {edge,q}=Q[qv];bytes=await build(edge,q,mode,m,s("conv"));
     }
     const blob=new Blob([bytes],{type:"application/pdf"});
     url=URL.createObjectURL(blob);
     dl.href=url;dl.download="photos.pdf";dl.style.display="inline-block";wireDl(dl,blob,"photos.pdf");
     st.style.display="inline-flex";
-    $("info").textContent=items.length+"ページ・"+fmt(bytes.length);
-    msg.textContent=(qv==="t"?"上限の"+val("tg")+"MBに収まりました。":"")+"保存したら、順番と読みやすさを確認してから使ってください。";
+    $("info").textContent=s("info",items.length,fmt(bytes.length));
+    msg.textContent=(qv==="t"?s("okT",val("tg")):"")+s("check");
   }catch(e){
     console.error(e);msg.className="bad";
-    msg.textContent=e.message||"変換できませんでした。写真の枚数を減らして、もう一度お試しください。";
-  }finally{go.disabled=!items.length;go.textContent="PDFにする"}
+    msg.textContent=e.message||s("errGen");
+  }finally{$("bar").style.display="none";go.disabled=!items.length;go.textContent=s("make")}
 };
+(function(){let l="ja";try{const q=new URLSearchParams(location.search).get("lang");if(q==="en"||q==="ja")l=q;else if(localStorage.getItem("lang")==="en")l="en"}catch(e){}setLang(l)})();
 </script>
 </body>
 </html>
