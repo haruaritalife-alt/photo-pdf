@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>写真をPDFにする｜複数枚を順番どおり1つに（無料）</title>
+<meta name="description" content="スマホで撮った写真や書類を、1つのPDFにまとめる無料ツール。順番の入れ替え、A4サイズ、画質の調整ができます。写真は端末の外に送信されません。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap">
+<style>
+:root{--desk:#dce5e2;--paper:#fdfdfb;--ink:#1c2b30;--sub:#55676d;--line:#bccac6;--stamp:#c8382a;--btn-ink:#fdfdfb;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#101c1c;--paper:#1a292b;--ink:#e6efec;--sub:#9db0ad;--line:#2f4143;--stamp:#ff7567;--btn-ink:#101c1c}}
+:root[data-theme="dark"]{--desk:#101c1c;--paper:#1a292b;--ink:#e6efec;--sub:#9db0ad;--line:#2f4143;--stamp:#ff7567;--btn-ink:#101c1c}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--ink);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:flex;gap:2px;margin-top:8px;justify-content:space-between}
+.ops button{all:unset;cursor:pointer;font-size:.82rem;padding:6px 4px;text-decoration:underline;text-underline-offset:3px;color:var(--ink)}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 7.5em;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:6px;padding:4px 0;cursor:pointer;font-size:.95rem}
+.row input{accent-color:var(--ink);width:1.1em;height:1.1em}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:#fff;border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;border-radius:6px;padding:14px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--stamp)}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+</style>
+</head>
+<body>
+<main>
+<h1>写真をPDFにする</h1>
+<p class="lead">撮った写真や書類を、順番どおりに1つのPDFへ。写真はこの端末の中だけで処理され、外には送信されません。</p>
+
+<label class="pick" id="drop"><input type="file" id="file" accept="image/*" multiple><span id="pt">写真を選ぶ</span><small>複数枚をまとめて選べます（JPEG・PNG・WebP）</small></label>
+
+<section id="stack">
+<h2>ページの順番</h2>
+<ul id="grid"></ul>
+</section>
+
+<section class="set" id="set" style="display:none">
+<div class="row"><span>ページの大きさ</span>
+<label><input type="radio" name="pg" value="a4" checked>A4</label>
+<label><input type="radio" name="pg" value="fit">写真と同じ大きさ</label></div>
+<div class="row"><span>余白</span>
+<label><input type="radio" name="mg" value="0">なし</label>
+<label><input type="radio" name="mg" value="20" checked>少し</label></div>
+<div class="row"><span>画質</span>
+<label><input type="radio" name="q" value="l">軽め</label>
+<label><input type="radio" name="q" value="m" checked>ふつう</label>
+<label><input type="radio" name="q" value="h">きれい</label></div>
+<button id="go" disabled>PDFにする</button>
+</section>
+
+<section id="out">
+<div class="stamp">完成</div>
+<p id="info"></p>
+<a id="dl" href="#">PDFを保存する</a>
+<p id="msg"></p>
+</section>
+
+<section class="guide">
+<h2>こんなときに</h2>
+<ul>
+<li>スマホで撮った書類（申請書、証明書、領収書）を、1つのPDFにして出したいとき</li>
+<li>手書きのノートや図を撮って、課題として提出するとき</li>
+<li>紙の資料を、メールで送れる1ファイルにまとめたいとき</li>
+</ul>
+<h2>使い方</h2>
+<ol>
+<li>「写真を選ぶ」から、まとめたい写真を選びます。</li>
+<li>「前へ」「後ろへ」で順番を整えます。いらない写真は「削除」で外します。</li>
+<li>ページの大きさと画質を選び、「PDFにする」を押して保存します。</li>
+</ol>
+<h2>よくある質問</h2>
+<details><summary>写真はどこかに送られますか？</summary><p>いいえ。変換はお使いの端末のブラウザの中だけで行われます。</p></details>
+<details><summary>PDFが重くなったときは？</summary><p>画質を「軽め」にして、作り直してください。それでも大きいときは、写真の枚数を減らしてください。</p></details>
+<details><summary>写真の向きは直りますか？</summary><p>スマホで撮った写真の向きは、自動で直ります。直らないときは、元の写真を回転してから選び直してください。</p></details>
+<details><summary>iPhoneのHEIC画像は使えますか？</summary><p>端末によっては選べません。その場合は、JPEGで書き出すか、スクリーンショットにしてから選んでください。</p></details>
+<details><summary>PDFの文字は選択できますか？</summary><p>できません。写真をそのままPDFにするので、文字のデータは含まれません。</p></details>
+</section>
+</main>
+<footer><a href="about.html">運営者情報・お問い合わせ</a><a href="privacy.html">プライバシーポリシー</a></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+let items=[],url=null,dlNs=null;
+(async()=>{try{dlNs=window.claude?await window.claude.use("downloads"):null}catch(e){dlNs=null}})();
+const val=n=>document.querySelector('input[name="'+n+'"]:checked').value;
+const fmt=b=>b>=1048576?(b/1048576).toFixed(2)+" MB":Math.round(b/1024)+" KB";
+const Q={l:{edge:1200,q:.6},m:{edge:1800,q:.75},h:{edge:2600,q:.88}};
+
+function add(files){
+  for(const f of files){if(f.type.startsWith("image/"))items.push({file:f,url:URL.createObjectURL(f)})}
+  draw();
+}
+function op(t,label,fn,dis,cls){
+  const b=document.createElement("button");b.textContent=t;b.setAttribute("aria-label",label);
+  if(cls)b.className=cls;b.disabled=!!dis;b.onclick=fn;return b;
+}
+function draw(){
+  const g=$("grid");g.textContent="";
+  items.forEach((it,i)=>{
+    const li=document.createElement("li");
+    const sh=document.createElement("div");sh.className="sheet";
+    const im=document.createElement("img");im.src=it.url;im.alt=(i+1)+"ページ目："+it.file.name;
+    const no=document.createElement("span");no.className="no";no.textContent=i+1;
+    sh.append(im,no);
+    const ops=document.createElement("div");ops.className="ops";
+    ops.append(op("前へ",(i+1)+"ページ目を前へ",()=>mv(i,-1),i===0),op("後ろへ",(i+1)+"ページ目を後ろへ",()=>mv(i,1),i===items.length-1),op("削除",(i+1)+"ページ目を削除",()=>rm(i),false,"del"));
+    li.append(sh,ops);g.appendChild(li);
+  });
+  const n=items.length;
+  $("stack").style.display=n?"block":"none";
+  $("set").style.display=n?"block":"none";
+  $("go").disabled=!n;
+  $("pt").textContent=n?"写真を追加する（"+n+"枚）":"写真を選ぶ";
+}
+function mv(i,d){const j=i+d;[items[i],items[j]]=[items[j],items[i]];draw()}
+function rm(i){URL.revokeObjectURL(items[i].url);items.splice(i,1);draw()}
+
+$("file").onchange=e=>{add(e.target.files);e.target.value=""};
+const dz=$("drop");
+dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+dz.ondragleave=()=>dz.classList.remove("on");
+dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");add(e.dataTransfer.files)};
+
+function load(u){return new Promise((res,rej)=>{const im=new Image();im.onload=()=>res(im);im.onerror=rej;im.src=u})}
+
+function wireDl(a,blob,name){
+  a.onclick=async e=>{
+    if(!dlNs)return;e.preventDefault();
+    try{await dlNs.save({filename:name,data:blob})}
+    catch(err){if(!err||err.code!=="declined"){$("msg").className="bad";$("msg").textContent="保存できませんでした。もう一度お試しください。"}}
+  };
+}
+
+$("go").onclick=async()=>{
+  const go=$("go"),msg=$("msg"),dl=$("dl"),out=$("out");
+  go.disabled=true;go.textContent="作っています…";
+  out.style.display="block";dl.style.display="none";$("info").textContent="";msg.className="";msg.textContent="";
+  out.querySelector(".stamp").style.display="none";
+  if(url){URL.revokeObjectURL(url);url=null}
+  const {edge,q}=Q[val("q")],mode=val("pg"),m=mode==="a4"?+val("mg"):0;
+  try{
+    const doc=await PDFLib.PDFDocument.create();
+    for(let i=0;i<items.length;i++){
+      msg.textContent=(i+1)+"/"+items.length+"枚めを変換中";
+      let img;
+      try{img=await load(items[i].url)}catch(e){throw new Error("読み込めない写真があります："+items[i].file.name)}
+      const sc=Math.min(1,edge/Math.max(img.naturalWidth,img.naturalHeight));
+      const w=Math.max(1,Math.round(img.naturalWidth*sc)),h=Math.max(1,Math.round(img.naturalHeight*sc));
+      const c=document.createElement("canvas");c.width=w;c.height=h;
+      const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h);ctx.drawImage(img,0,0,w,h);
+      const blob=await new Promise(r=>c.toBlob(r,"image/jpeg",q));
+      const emb=await doc.embedJpg(await blob.arrayBuffer());
+      c.width=c.height=0;
+      let pw,ph,dw,dh;
+      if(mode==="fit"){pw=dw=w*72/150;ph=dh=h*72/150}
+      else{pw=595.28;ph=841.89;if(w>h){pw=841.89;ph=595.28}const s=Math.min((pw-2*m)/w,(ph-2*m)/h);dw=w*s;dh=h*s}
+      doc.addPage([pw,ph]).drawImage(emb,{x:(pw-dw)/2,y:(ph-dh)/2,width:dw,height:dh});
+    }
+    const bytes=await doc.save();
+    const blob=new Blob([bytes],{type:"application/pdf"});
+    url=URL.createObjectURL(blob);
+    dl.href=url;dl.download="photos.pdf";dl.style.display="inline-block";wireDl(dl,blob,"photos.pdf");
+    const st=out.querySelector(".stamp");st.style.display="inline-flex";
+    $("info").textContent=items.length+"ページ・"+fmt(bytes.length);
+    msg.textContent="保存したら、順番と読みやすさを確認してから使ってください。";
+  }catch(e){
+    console.error(e);msg.className="bad";
+    msg.textContent=e.message||"変換できませんでした。写真の枚数を減らして、もう一度お試しください。";
+  }finally{go.disabled=!items.length;go.textContent="PDFにする"}
+};
+</script>
+</body>
+</html>
