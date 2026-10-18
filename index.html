@@ -28,7 +28,7 @@ input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
 .sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
 .sheet img{max-width:100%;max-height:100%;display:block}
 .no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
-.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}.ops .del{grid-column:1/-1}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
 .ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
 .ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
 .ops button.del{color:var(--stamp);border-color:var(--stamp)}
@@ -117,13 +117,13 @@ h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp
 <h2 id="how">使い方</h2>
 <ol>
 <li>「写真を選ぶ」から、まとめたい写真を選びます。</li>
-<li>「前へ」「後ろへ」で順番を整えます。いらない写真は「削除」で外します。</li>
+<li>「前へ」「後ろへ」で順番を整えます。向きが違う写真は「回転」で直し、いらない写真は「削除」で外します。</li>
 <li>ページの大きさと画質を選び、「PDFにする」を押して保存します。</li>
 </ol>
 <h2>よくある質問</h2>
 <details><summary>写真はどこかに送られますか？</summary><p>いいえ。変換はお使いの端末のブラウザの中だけで行われます。</p></details>
 <details><summary>PDFが重くなったときは？</summary><p>画質を「軽め」にして、作り直してください。それでも大きいときは、写真の枚数を減らしてください。</p></details>
-<details><summary>写真の向きは直りますか？</summary><p>スマホで撮った写真の向きは、自動で直ります。直らないときは、元の写真を回転してから選び直してください。</p></details>
+<details><summary>写真の向きは直りますか？</summary><p>スマホで撮った写真の向きは、自動で直ります。それでも横になっているときは、写真の下の「回転」ボタンを押すと、90度ずつ右に回ります。</p></details>
 <details><summary>iPhoneのHEIC画像は使えますか？</summary><p>端末によっては選べません。その場合は、JPEGで書き出すか、スクリーンショットにしてから選んでください。</p></details>
 <details><summary>PDFの文字は選択できますか？</summary><p>できません。写真をそのままPDFにするので、文字のデータは含まれません。</p></details>
 </section>
@@ -148,7 +148,7 @@ const fmt=b=>b>=1048576?(b/1048576).toFixed(2)+" MB":Math.round(b/1024)+" KB";
 const Q={l:{edge:1200,q:.6},m:{edge:1800,q:.75},h:{edge:2600,q:.88}};
 
 function add(files){
-  for(const f of files){if(f.type.startsWith("image/"))items.push({file:f,url:URL.createObjectURL(f)})}
+  for(const f of files){if(f.type.startsWith("image/"))items.push({file:f,url:URL.createObjectURL(f),rot:0,th:null})}
   draw();
 }
 function op(t,label,fn,dis,cls){
@@ -160,11 +160,11 @@ function draw(){
   items.forEach((it,i)=>{
     const li=document.createElement("li");
     const sh=document.createElement("div");sh.className="sheet";
-    const im=document.createElement("img");im.src=it.url;im.alt=(i+1)+"ページ目："+it.file.name;
+    const im=document.createElement("img");im.src=it.th||it.url;im.alt=(i+1)+"ページ目："+it.file.name;
     const no=document.createElement("span");no.className="no";no.textContent=i+1;
     sh.append(im,no);
     const ops=document.createElement("div");ops.className="ops";
-    ops.append(op("前へ",(i+1)+"ページ目を前へ",()=>mv(i,-1),i===0),op("後ろへ",(i+1)+"ページ目を後ろへ",()=>mv(i,1),i===items.length-1),op("削除",(i+1)+"ページ目を削除",()=>rm(i),false,"del"));
+    ops.append(op("前へ",(i+1)+"ページ目を前へ",()=>mv(i,-1),i===0),op("後ろへ",(i+1)+"ページ目を後ろへ",()=>mv(i,1),i===items.length-1),op("回転",(i+1)+"ページ目を右に90度回転",()=>rotate(i)),op("削除",(i+1)+"ページ目を削除",()=>rm(i),false,"del"));
     li.append(sh,ops);g.appendChild(li);
   });
   const n=items.length;
@@ -174,7 +174,22 @@ function draw(){
   $("pt").textContent=n?"写真を追加する（"+n+"枚）":"写真を選ぶ";
 }
 function mv(i,d){const j=i+d;[items[i],items[j]]=[items[j],items[i]];draw()}
-function rm(i){URL.revokeObjectURL(items[i].url);items.splice(i,1);draw()}
+function rm(i){URL.revokeObjectURL(items[i].url);if(items[i].th)URL.revokeObjectURL(items[i].th);items.splice(i,1);draw()}
+async function makeThumb(it){
+  if(it.th){URL.revokeObjectURL(it.th);it.th=null}
+  if(!it.rot)return;
+  try{
+    const img=await load(it.url);
+    const sc=Math.min(1,360/Math.max(img.naturalWidth,img.naturalHeight));
+    const w=Math.max(1,Math.round(img.naturalWidth*sc)),h=Math.max(1,Math.round(img.naturalHeight*sc));
+    const odd=it.rot%180!==0,cw=odd?h:w,ch=odd?w:h;
+    const c=document.createElement("canvas");c.width=cw;c.height=ch;
+    const x=c.getContext("2d");x.translate(cw/2,ch/2);x.rotate(it.rot*Math.PI/180);x.drawImage(img,-w/2,-h/2,w,h);
+    const b=await new Promise(r=>c.toBlob(r,"image/jpeg",.8));
+    it.th=URL.createObjectURL(b);
+  }catch(e){}
+}
+async function rotate(i){const it=items[i];it.rot=(it.rot+90)%360;await makeThumb(it);draw()}
 
 $("file").onchange=e=>{add(e.target.files);e.target.value=""};
 const dz=$("drop");
@@ -207,14 +222,15 @@ $("go").onclick=async()=>{
       try{img=await load(items[i].url)}catch(e){throw new Error("読み込めない写真があります："+items[i].file.name)}
       const sc=Math.min(1,edge/Math.max(img.naturalWidth,img.naturalHeight));
       const w=Math.max(1,Math.round(img.naturalWidth*sc)),h=Math.max(1,Math.round(img.naturalHeight*sc));
-      const c=document.createElement("canvas");c.width=w;c.height=h;
-      const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h);ctx.drawImage(img,0,0,w,h);
+      const rt=items[i].rot,odd=rt%180!==0,cw=odd?h:w,ch=odd?w:h;
+      const c=document.createElement("canvas");c.width=cw;c.height=ch;
+      const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,cw,ch);ctx.translate(cw/2,ch/2);ctx.rotate(rt*Math.PI/180);ctx.drawImage(img,-w/2,-h/2,w,h);
       const blob=await new Promise(r=>c.toBlob(r,"image/jpeg",q));
       const emb=await doc.embedJpg(await blob.arrayBuffer());
       c.width=c.height=0;
       let pw,ph,dw,dh;
-      if(mode==="fit"){pw=dw=w*72/150;ph=dh=h*72/150}
-      else{pw=595.28;ph=841.89;if(w>h){pw=841.89;ph=595.28}const s=Math.min((pw-2*m)/w,(ph-2*m)/h);dw=w*s;dh=h*s}
+      if(mode==="fit"){pw=dw=cw*72/150;ph=dh=ch*72/150}
+      else{pw=595.28;ph=841.89;if(cw>ch){pw=841.89;ph=595.28}const s=Math.min((pw-2*m)/cw,(ph-2*m)/ch);dw=cw*s;dh=ch*s}
       doc.addPage([pw,ph]).drawImage(emb,{x:(pw-dw)/2,y:(ph-dh)/2,width:dw,height:dh});
     }
     const bytes=await doc.save();
