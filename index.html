@@ -96,7 +96,13 @@ h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp
 <div class="row"><span>画質</span>
 <label><input type="radio" name="q" value="l">軽め</label>
 <label><input type="radio" name="q" value="m" checked>ふつう</label>
-<label><input type="radio" name="q" value="h">きれい</label></div>
+<label><input type="radio" name="q" value="h">きれい</label>
+<label><input type="radio" name="q" value="t">サイズを指定</label></div>
+<div class="row" id="tgrow" style="display:none"><span>上限のサイズ</span>
+<label><input type="radio" name="tg" value="1">1MB</label>
+<label><input type="radio" name="tg" value="2">2MB</label>
+<label><input type="radio" name="tg" value="5" checked>5MB</label>
+<label><input type="radio" name="tg" value="10">10MB</label></div>
 <button id="go" disabled>PDFにする</button>
 </section>
 
@@ -118,11 +124,12 @@ h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp
 <ol>
 <li>「写真を選ぶ」から、まとめたい写真を選びます。</li>
 <li>「前へ」「後ろへ」で順番を整えます。向きが違う写真は「回転」で直し、いらない写真は「削除」で外します。</li>
-<li>ページの大きさと画質を選び、「PDFにする」を押して保存します。</li>
+<li>ページの大きさと画質を選びます。提出先の容量の上限があるときは、「サイズを指定」が便利です。</li>
+<li>「PDFにする」を押して、保存します。</li>
 </ol>
 <h2>よくある質問</h2>
 <details><summary>写真はどこかに送られますか？</summary><p>いいえ。変換はお使いの端末のブラウザの中だけで行われます。</p></details>
-<details><summary>PDFが重くなったときは？</summary><p>画質を「軽め」にして、作り直してください。それでも大きいときは、写真の枚数を減らしてください。</p></details>
+<details><summary>PDFが重くなったときは？</summary><p>画質の欄で「サイズを指定」を選び、提出先の上限（1・2・5・10MB）を選ぶと、その大きさに収まるよう、自動で調整します。それでも収まらないときは、写真の枚数を減らしてください。</p></details>
 <details><summary>写真の向きは直りますか？</summary><p>スマホで撮った写真の向きは、自動で直ります。それでも横になっているときは、写真の下の「回転」ボタンを押すと、90度ずつ右に回ります。</p></details>
 <details><summary>iPhoneのHEIC画像は使えますか？</summary><p>端末によっては選べません。その場合は、JPEGで書き出すか、スクリーンショットにしてから選んでください。</p></details>
 <details><summary>PDFの文字は選択できますか？</summary><p>できません。写真をそのままPDFにするので、文字のデータは含まれません。</p></details>
@@ -211,39 +218,63 @@ function wireDl(a,blob,name){
   };
 }
 
+const STEPS=[{edge:2600,q:.88},{edge:2200,q:.82},{edge:1800,q:.75},{edge:1500,q:.68},{edge:1200,q:.6},{edge:1000,q:.52},{edge:800,q:.45},{edge:650,q:.4}];
+
+async function build(edge,q,mode,m,label){
+  const doc=await PDFLib.PDFDocument.create();
+  for(let i=0;i<items.length;i++){
+    $("msg").textContent=label+"（"+(i+1)+"/"+items.length+"枚め）";
+    let img;
+    try{img=await load(items[i].url)}catch(e){throw new Error("読み込めない写真があります："+items[i].file.name)}
+    const sc=Math.min(1,edge/Math.max(img.naturalWidth,img.naturalHeight));
+    const w=Math.max(1,Math.round(img.naturalWidth*sc)),h=Math.max(1,Math.round(img.naturalHeight*sc));
+    const rt=items[i].rot,odd=rt%180!==0,cw=odd?h:w,ch=odd?w:h;
+    const c=document.createElement("canvas");c.width=cw;c.height=ch;
+    const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,cw,ch);ctx.translate(cw/2,ch/2);ctx.rotate(rt*Math.PI/180);ctx.drawImage(img,-w/2,-h/2,w,h);
+    const blob=await new Promise(r=>c.toBlob(r,"image/jpeg",q));
+    const emb=await doc.embedJpg(await blob.arrayBuffer());
+    c.width=c.height=0;
+    let pw,ph,dw,dh;
+    if(mode==="fit"){pw=dw=cw*72/150;ph=dh=ch*72/150}
+    else{pw=595.28;ph=841.89;if(cw>ch){pw=841.89;ph=595.28}const s=Math.min((pw-2*m)/cw,(ph-2*m)/ch);dw=cw*s;dh=ch*s}
+    doc.addPage([pw,ph]).drawImage(emb,{x:(pw-dw)/2,y:(ph-dh)/2,width:dw,height:dh});
+  }
+  return doc.save();
+}
+
+document.querySelectorAll('input[name="q"]').forEach(r=>r.onchange=()=>{$("tgrow").style.display=val("q")==="t"?"flex":"none"});
+
 $("go").onclick=async()=>{
-  const go=$("go"),msg=$("msg"),dl=$("dl"),out=$("out");
+  const go=$("go"),msg=$("msg"),dl=$("dl"),out=$("out"),st=out.querySelector(".stamp");
   go.disabled=true;go.textContent="作っています…";
-  out.style.display="block";dl.style.display="none";$("info").textContent="";msg.className="";msg.textContent="";
-  out.querySelector(".stamp").style.display="none";
+  out.style.display="block";dl.style.display="none";$("info").textContent="";msg.className="";msg.textContent="";st.style.display="none";
   if(url){URL.revokeObjectURL(url);url=null}
-  const {edge,q}=Q[val("q")],mode=val("pg"),m=mode==="a4"?+val("mg"):0;
+  const qv=val("q"),mode=val("pg"),m=mode==="a4"?+val("mg"):0;
   try{
-    const doc=await PDFLib.PDFDocument.create();
-    for(let i=0;i<items.length;i++){
-      msg.textContent=(i+1)+"/"+items.length+"枚めを変換中";
-      let img;
-      try{img=await load(items[i].url)}catch(e){throw new Error("読み込めない写真があります："+items[i].file.name)}
-      const sc=Math.min(1,edge/Math.max(img.naturalWidth,img.naturalHeight));
-      const w=Math.max(1,Math.round(img.naturalWidth*sc)),h=Math.max(1,Math.round(img.naturalHeight*sc));
-      const rt=items[i].rot,odd=rt%180!==0,cw=odd?h:w,ch=odd?w:h;
-      const c=document.createElement("canvas");c.width=cw;c.height=ch;
-      const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,cw,ch);ctx.translate(cw/2,ch/2);ctx.rotate(rt*Math.PI/180);ctx.drawImage(img,-w/2,-h/2,w,h);
-      const blob=await new Promise(r=>c.toBlob(r,"image/jpeg",q));
-      const emb=await doc.embedJpg(await blob.arrayBuffer());
-      c.width=c.height=0;
-      let pw,ph,dw,dh;
-      if(mode==="fit"){pw=dw=cw*72/150;ph=dh=ch*72/150}
-      else{pw=595.28;ph=841.89;if(cw>ch){pw=841.89;ph=595.28}const s=Math.min((pw-2*m)/cw,(ph-2*m)/ch);dw=cw*s;dh=ch*s}
-      doc.addPage([pw,ph]).drawImage(emb,{x:(pw-dw)/2,y:(ph-dh)/2,width:dw,height:dh});
+    let bytes;
+    if(qv==="t"){
+      const limit=parseFloat(val("tg"))*1048576;
+      let tries=0;
+      const run=k=>{tries++;return build(STEPS[k].edge,STEPS[k].q,mode,m,"サイズを調整中・"+tries+"回め")};
+      const b0=await run(0);
+      if(b0.length<=limit){bytes=b0}
+      else{
+        let hi=STEPS.length-1;
+        const bl=await run(hi);
+        if(bl.length>limit)throw new Error("いちばん小さい画質でも"+fmt(bl.length)+"になり、上限に収まりませんでした。写真の枚数を減らして、もう一度お試しください。");
+        let best=bl,lo=1;hi=hi-1;
+        while(lo<=hi){const mid=(lo+hi)>>1;const b=await run(mid);if(b.length<=limit){best=b;hi=mid-1}else lo=mid+1}
+        bytes=best;
+      }
+    }else{
+      const {edge,q}=Q[qv];bytes=await build(edge,q,mode,m,"変換中");
     }
-    const bytes=await doc.save();
     const blob=new Blob([bytes],{type:"application/pdf"});
     url=URL.createObjectURL(blob);
     dl.href=url;dl.download="photos.pdf";dl.style.display="inline-block";wireDl(dl,blob,"photos.pdf");
-    const st=out.querySelector(".stamp");st.style.display="inline-flex";
+    st.style.display="inline-flex";
     $("info").textContent=items.length+"ページ・"+fmt(bytes.length);
-    msg.textContent="保存したら、順番と読みやすさを確認してから使ってください。";
+    msg.textContent=(qv==="t"?"上限の"+val("tg")+"MBに収まりました。":"")+"保存したら、順番と読みやすさを確認してから使ってください。";
   }catch(e){
     console.error(e);msg.className="bad";
     msg.textContent=e.message||"変換できませんでした。写真の枚数を減らして、もう一度お試しください。";
