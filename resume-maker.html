@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>履歴書をPDFで作成（無料・登録不要・写真つき）｜PDFのミカタ</title>
+<meta name="description" content="氏名・学歴・職歴・志望動機などを入れて、履歴書をPDFで作れる無料ツール。証明写真も入れられます。入力内容と写真は端末の外に送信されません。">
+<meta name="title-en" content="Create a Resume PDF (Japanese style, free, no sign-up)｜PDF Mikata">
+<meta name="desc-en" content="Free tool to make a Japanese-style resume (rirekisho) PDF from your details, education, work history and motivation, with an optional ID photo. Nothing leaves your device.">
+<link rel="canonical" href="https://pdfmikata.com/resume-maker.html">
+<script src="/site.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap">
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" crossorigin="anonymous"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "ツール", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "履歴書をPDFで作成", "item": "https://pdfmikata.com/resume-maker.html"}]}</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PDFのミカタ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="履歴書をPDFで作成（無料・登録不要・写真つき）｜PDFのミカタ">
+<meta property="og:description" content="氏名・学歴・職歴・志望動機などを入れて、履歴書をPDFで作れる無料ツール。証明写真も入れられます。入力内容と写真は端末の外に送信されません。">
+<meta property="og:url" content="https://pdfmikata.com/resume-maker.html">
+<meta property="og:image" content="https://pdfmikata.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="履歴書をPDFで作成（無料・登録不要・写真つき）｜PDFのミカタ">
+<meta name="twitter:description" content="氏名・学歴・職歴・志望動機などを入れて、履歴書をPDFで作れる無料ツール。証明写真も入れられます。入力内容と写真は端末の外に送信されません。">
+<meta name="twitter:image" content="https://pdfmikata.com/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#16393c">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "履歴書をPDFで作成", "alternateName": "Create a Resume PDF (Japanese Rirekisho)", "url": "https://pdfmikata.com/resume-maker.html", "description": "氏名・学歴・職歴・志望動機などを入れて、履歴書をPDFで作れる無料ツール。証明写真も入れられます。入力内容と写真は端末の外に送信されません。", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": ["ja", "en"], "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>PDFのミカタ</span></a><div class="lang" role="group" aria-label="言語を切り替え / Switch language"><svg class="gl" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><button type="button" data-l="ja" title="日本語で表示">日本語</button><button type="button" data-l="en" title="Show in English">English</button></div></div></header>
+<nav class="sub" aria-label="サイト内ナビゲーション / Site navigation"><div class="sub-in"><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a><a href="/#cat-convert"><span lang="ja">変換</span><span lang="en">Convert</span></a><a href="/#cat-edit"><span lang="ja">編集</span><span lang="en">Edit</span></a><a href="/#cat-optimize"><span lang="ja">最適化</span><span lang="en">Optimize</span></a><a href="/#cat-create" aria-current="page"><span lang="ja">作成</span><span lang="en">Create</span></a><a href="/#guide"><span lang="ja">解説</span><span lang="en">Guides</span></a></div></nav>
+<nav class="crumb" aria-label="パンくず / Breadcrumb"><ol><li><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a></li><li><a href="/#tools"><span lang="ja">ツール</span><span lang="en">Tools</span></a></li><li><span aria-current="page"><span lang="ja">履歴書をPDFで作成</span><span lang="en">Create a Resume PDF (Japanese Rirekisho)</span></span></li></ol></nav>
+<main>
+<h1><span lang="ja">履歴書をPDFで作る</span><span lang="en">Create a Resume PDF</span></h1>
+<p class="lead"><span lang="ja">入力して、PDFで保存。メール提出にも印刷にも。</span><span lang="en">Fill in, save as PDF. Ready to email or print.</span></p>
+<p class="safe"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><span lang="ja"><b>入力した内容と写真は、外に送信されません。</b>すべて、この端末の中だけで処理します。</span><span lang="en"><b>What you type and your photo are never uploaded.</b> Everything is processed on this device.</span></span></p>
+<style>
+.fld{margin:14px 0}.fld>.l{display:block;font-weight:700;font-size:.92rem;margin-bottom:6px}
+.fld input[type=text],.fld input[type=date],.fld select,.fld textarea{width:100%;min-height:46px;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;font-size:1rem;background:var(--paper);color:var(--ink)}
+.fld textarea{padding:10px 12px;min-height:130px;line-height:1.6;resize:vertical}
+.fld small{display:block;color:var(--sub);margin-top:4px;font-size:.82rem}
+.fld .chk{display:flex;align-items:center;gap:10px;min-height:46px;cursor:pointer;font-size:.98rem}
+.fld .chk input{width:22px;height:22px;flex:none;margin:0;accent-color:var(--stamp)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.two{grid-template-columns:1fr}}
+.rr{display:grid;grid-template-columns:68px 52px 1fr 46px;gap:6px;margin-bottom:8px}
+.rr input{min-width:0;padding:0 8px!important;text-align:left}
+.rr button{all:unset;box-sizing:border-box;cursor:pointer;min-height:46px;display:grid;place-items:center;border:1px solid var(--stamp);color:var(--stamp);border-radius:6px;font-weight:700}
+.rr button:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.addr{margin-top:2px}
+.hd{font-size:1.1rem;margin:30px 0 4px;padding-left:10px;border-left:6px solid var(--stamp)}
+.ph{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.ph img{width:90px;height:120px;object-fit:cover;border:1px solid var(--line);background:#fff}
+.warn{border-left-color:#b3472b}
+</style>
+<p class="note2 warn"><span lang="ja">経歴や資格は、<b>事実のとおりに</b>書いてください。事実と異なる内容を書くと、後でトラブルになることがあります。</span><span lang="en">Write your history and qualifications <b>exactly as they are</b>. Untrue entries can cause trouble later.</span></p>
+<section class="set" id="set" style="margin-top:14px">
+<h2 class="hd"><span lang="ja">基本の情報</span><span lang="en">Basic details</span></h2>
+<div class="two"><div class="fld"><label class="l" for="name"><span lang="ja">氏名</span><span lang="en">Name</span></label><input type="text" id="name" autocomplete="off"></div>
+<div class="fld"><label class="l" for="kana"><span lang="ja">ふりがな</span><span lang="en">Furigana</span></label><input type="text" id="kana" autocomplete="off"></div></div>
+<div class="two"><div class="fld"><label class="l" for="bd"><span lang="ja">生年月日</span><span lang="en">Date of birth</span></label><input type="date" id="bd"></div>
+<div class="fld"><label class="l" for="sex"><span lang="ja">性別（任意）</span><span lang="en">Gender (optional)</span></label><select id="sex"><option value="">記載しない / Leave out</option><option value="男">男</option><option value="女">女</option></select></div></div>
+<div class="fld"><label class="l" for="zip"><span lang="ja">郵便番号</span><span lang="en">Postal code</span></label><input type="text" id="zip" inputmode="numeric" autocomplete="off" placeholder="100-0001"></div>
+<div class="fld"><label class="l" for="adr"><span lang="ja">現住所</span><span lang="en">Address</span></label><input type="text" id="adr" autocomplete="off"></div>
+<div class="fld"><label class="l" for="akana"><span lang="ja">住所のふりがな（任意）</span><span lang="en">Address furigana (optional)</span></label><input type="text" id="akana" autocomplete="off"></div>
+<div class="two"><div class="fld"><label class="l" for="tel"><span lang="ja">電話番号</span><span lang="en">Phone</span></label><input type="text" id="tel" inputmode="tel" autocomplete="off"></div>
+<div class="fld"><label class="l" for="mail"><span lang="ja">メールアドレス</span><span lang="en">Email</span></label><input type="text" id="mail" inputmode="email" autocomplete="off"></div></div>
+<div class="fld"><label class="l" for="dt"><span lang="ja">提出日（日付）</span><span lang="en">Date</span></label><input type="date" id="dt"></div>
+<div class="fld"><span class="l"><span lang="ja">証明写真（任意）</span><span lang="en">ID photo (optional)</span></span>
+<div class="ph"><img id="pimg" alt="" hidden><label class="btn2" id="pick" style="padding:0 16px"><input type="file" id="photo" accept="image/*" hidden><span id="pt"><span lang="ja">写真を選ぶ</span><span lang="en">Choose a photo</span></span></label><button type="button" class="btn2" id="prm" hidden><span lang="ja">写真を外す</span><span lang="en">Remove</span></button></div>
+<small><span lang="ja">縦4：横3の写真が、そのまま入ります。そうでない場合は、中央が切り抜かれます。先に<a href="/image-crop.html">画像の切り抜き</a>で整えると確実です。</span><span lang="en">A 4:3 (tall) photo fits as is. Otherwise the center is cropped. For best results, trim it first with <a href="/image-crop.html">Crop &amp; Rotate Image</a>.</span></small></div>
+<h2 class="hd"><span lang="ja">学歴・職歴</span><span lang="en">Education and work</span></h2>
+<div class="fld"><span class="l"><span lang="ja">学歴（年・月・内容）</span><span lang="en">Education (year, month, details)</span></span><div id="gaku" class="rws"></div><button type="button" class="btn2 addr" data-t="gaku"><span lang="ja">＋ 行を追加</span><span lang="en">+ Add a row</span></button><small><span lang="ja">例：2019 ／ 4 ／ ○○高等学校 入学。学校名は、略さず書きます。</span><span lang="en">e.g. 2019 / 4 / Entered ○○ High School. Write school names in full.</span></small></div>
+<div class="fld"><span class="l"><span lang="ja">職歴（アルバイトは、必要なときだけ）</span><span lang="en">Work history (part-time only if needed)</span></span><div id="shoku" class="rws"></div><button type="button" class="btn2 addr" data-t="shoku"><span lang="ja">＋ 行を追加</span><span lang="en">+ Add a row</span></button><small><span lang="ja">ない場合は、空欄のままで「なし」と入ります。</span><span lang="en">If none, leave blank and 「なし」 is written.</span></small></div>
+<h2 class="hd"><span lang="ja">免許・資格</span><span lang="en">Licenses and qualifications</span></h2>
+<div class="fld"><span class="l"><span lang="ja">免許・資格（年・月・内容）</span><span lang="en">Licenses (year, month, details)</span></span><div id="lic" class="rws"></div><button type="button" class="btn2 addr" data-t="lic"><span lang="ja">＋ 行を追加</span><span lang="en">+ Add a row</span></button><small><span lang="ja">最大6行です。</span><span lang="en">Up to 6 rows.</span></small></div>
+<h2 class="hd"><span lang="ja">文章の欄</span><span lang="en">Text boxes</span></h2>
+<div class="fld"><label class="l" for="motive"><span lang="ja">志望動機</span><span lang="en">Motivation</span></label><textarea id="motive"></textarea><small><span lang="ja">枠に入る分量は、約12行です。</span><span lang="en">The box holds about 12 lines.</span></small></div>
+<div class="fld"><label class="l" for="pr"><span lang="ja">自己PR</span><span lang="en">Self-introduction</span></label><textarea id="pr"></textarea><small><span lang="ja">枠に入る分量は、約12行です。</span><span lang="en">The box holds about 12 lines.</span></small></div>
+<div class="fld"><label class="l" for="wish"><span lang="ja">本人希望記入欄</span><span lang="en">Requests</span></label><textarea id="wish" style="min-height:90px">貴社の規定に従います。</textarea></div>
+<div class="fld"><label class="chk"><input type="checkbox" id="rem"><span lang="ja">入力内容を、この端末に下書き保存する</span><span lang="en">Save my entries on this device as a draft</span></label><small><span lang="ja">保存されるのは、この端末のブラウザの中だけです（写真は保存しません）。<b>共用のパソコンでは、チェックしないでください。</b></span><span lang="en">Saved only in this browser on this device (the photo is not saved). <b>Do not check this on a shared computer.</b></span></small></div>
+<button id="go" type="button"></button>
+</section>
+
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="ja">完成</span><span lang="en">Done</span></div>
+<p id="info"></p>
+<a id="dl" href="#"></a>
+<div id="extra"></div>
+<p id="msg" aria-live="polite"></p>
+<div class="support" id="support" hidden><p><span lang="ja">PDFのミカタが役に立ったら、応援してもらえるとうれしいです。</span><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a id="supl" href="#" target="_blank" rel="noopener"><span lang="ja">応援する（300円）</span><span lang="en">Send a tip (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" target="_blank" rel="noopener noreferrer nofollow"><span lang="ja">ほしい物リストで応援</span><span lang="en">Send a gift (Amazon wishlist)</span></a></div>
+</section>
+<section class="guide" id="how">
+<div lang="ja"><h2>使い方</h2>
+<ol>
+<li>氏名、生年月日、住所、連絡先を入れます。証明写真は、あれば選びます。</li>
+<li>学歴・職歴・免許資格を、年・月・内容の順に入れます。足りないときは、「＋ 行を追加」を押します。</li>
+<li>志望動機、自己PRを入れます。</li>
+<li>「履歴書を作る」を押し、プレビューを確認して、PDFを保存します。</li>
+</ol>
+<h2>注意</h2>
+<ul>
+<li>A4・2ページのPDFが作られます。文字は画像として入っています。</li>
+<li>経歴や資格は、<b>事実のとおりに</b>書いてください。</li>
+<li>下書き保存は、この端末のブラウザの中だけに残ります。共用のパソコンでは、使わないでください。</li>
+</ul>
+<h2>よくある質問</h2>
+<details><summary>入力した内容や写真は外部に送信されますか？</summary><p>いいえ。処理はすべて、お使いの端末のブラウザの中で行われます。</p></details>
+<details><summary>枠に文字が入りきらないときは？</summary><p>エラーが出るので、文章を短くしてください。</p></details>
+<details><summary>写真のサイズは？</summary><p>縦40mm×横30mmの比率（縦4：横3）で入ります。</p></details></div>
+<div lang="en"><h2>How to use</h2>
+<ol>
+<li>Enter your name, date of birth, address and contact details. Choose an ID photo if you have one.</li>
+<li>Enter education, work history and qualifications as year, month, details. Tap "+ Add a row" if you need more.</li>
+<li>Enter your motivation and self-introduction.</li>
+<li>Tap "Create resume", check the preview, and save the PDF.</li>
+</ol>
+<h2>Notes</h2>
+<ul>
+<li>The result is a 2-page A4 PDF. The text is stored as an image.</li>
+<li>Write your history and qualifications <b>exactly as they are</b>.</li>
+<li>The draft is saved only in this browser on this device. Do not use it on a shared computer.</li>
+</ul>
+<h2>FAQ</h2>
+<details><summary>Are my entries or photo uploaded anywhere?</summary><p>No. Everything is processed inside the browser on your device.</p></details>
+<details><summary>What if text does not fit in a box?</summary><p>An error appears. Please shorten the text.</p></details>
+<details><summary>What photo size is used?</summary><p>The 40 mm tall by 30 mm wide ratio (4:3, tall).</p></details></div>
+</section>
+<div class="support endtip"><p><span lang="ja">PDFのミカタが役に立ったら、応援してもらえるとうれしいです。</span><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" target="_blank" rel="noopener"><span lang="ja">応援する（300円）</span><span lang="en">Send a tip (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" target="_blank" rel="noopener noreferrer nofollow"><span lang="ja">ほしい物リストで応援</span><span lang="en">Send a gift (Amazon wishlist)</span></a></div>
+<section class="more rel"><h2><span lang="ja">このツールの解説</span><span lang="en">Guides for this tool</span></h2><a href="/resume-maker-howto.html"><span lang="ja">履歴書をPDFで作る方法（スマホでもOK・無料）</span><span lang="en">How to Make a Resume PDF for Free (Works on a Phone)</span></a><a href="/resume-education-history-rules.html"><span lang="ja">履歴書の学歴・職歴の書き方：略さない・年は統一・「以上」で締める</span><span lang="en">How to Write Education and Work History on a Japanese Resume</span></a><a href="/resume-photo.html"><span lang="ja">履歴書の証明写真：サイズ・撮り方・スマホで撮った写真の入れ方</span><span lang="en">Resume ID Photos: Size, How to Take One, and Using a Phone Photo</span></a><a href="/resume-motivation-selfpr.html"><span lang="ja">志望動機と自己PRの書き方：結論から書く3ステップ</span><span lang="en">Writing the Motivation and Self-Introduction: A 3-Step Approach</span></a><a href="/resume-email-submit.html"><span lang="ja">履歴書のPDFをメールで提出するときのマナーと注意点</span><span lang="en">Etiquette for Emailing a Resume PDF</span></a><a href="/resume-handwritten-vs-pc.html"><span lang="ja">履歴書は手書きとパソコン（PDF）、どちらがいい？</span><span lang="en">Handwritten or Typed Resume: Which Is Better?</span></a><a href="/resume-privacy-safety.html"><span lang="ja">履歴書の個人情報を守る：ネットで作るときの注意点</span><span lang="en">Protecting Personal Data When Making a Resume Online</span></a></section>
+<section class="more"><h2><span lang="ja">ほかのツール</span><span lang="en">More tools</span></h2><a href="/photo-to-pdf.html"><span lang="ja">写真をPDFに変換</span><span lang="en">Photos to PDF</span><small><span lang="ja">複数の写真を、順番どおりに1つのPDFへ。回転、並べ替え、サイズ指定ができます。</span><span lang="en">Combine several photos into one PDF in the order you choose. You can rotate, reorder and set a size limit.</span></small></a><a href="/merge-pdf.html"><span lang="ja">PDFを結合</span><span lang="en">Merge PDFs</span><small><span lang="ja">複数のPDFを、順番を決めて1つのPDFにまとめます。</span><span lang="en">Combine several PDF files into one, in the order you choose.</span></small></a><a href="/split-pdf.html"><span lang="ja">PDFのページを抜き出し・削除</span><span lang="en">Extract or Delete PDF Pages</span><small><span lang="ja">PDFから、必要なページだけを残す、または不要なページを消します。</span><span lang="en">Keep only the pages you need, or remove the pages you don't.</span></small></a><a href="/compress-pdf.html"><span lang="ja">PDFを圧縮</span><span lang="en">Compress PDF</span><small><span lang="ja">PDFを、指定したサイズ以下に小さくします。提出先の容量制限に合わせたいときに。</span><span lang="en">Shrink a PDF to fit under a size you choose, for upload limits.</span></small></a><a href="/pdf-to-image.html"><span lang="ja">PDFを画像に変換</span><span lang="en">PDF to Images</span><small><span lang="ja">PDFの各ページを、JPEGまたはPNGの画像として保存します。</span><span lang="en">Save each page of a PDF as a JPEG or PNG image.</span></small></a><a href="/image-convert.html"><span lang="ja">画像の形式を変換（JPG・PNG・WebP）</span><span lang="en">Convert Image Format (JPG, PNG, WebP)</span><small><span lang="ja">画像をJPG・PNG・WebPに、まとめて変換します。</span><span lang="en">Convert images to JPG, PNG or WebP, several at once.</span></small></a><a href="/pdf-rotate.html"><span lang="ja">PDFのページを回転・並べ替え</span><span lang="en">Rotate & Reorder PDF Pages</span><small><span lang="ja">向きが違うページを直す、ページの順番を入れ替える、いらないページを消す。</span><span lang="en">Fix sideways pages, change the page order, or remove pages.</span></small></a><a href="/pdf-page-numbers.html"><span lang="ja">PDFにページ番号を追加</span><span lang="en">Add Page Numbers to PDF</span><small><span lang="ja">PDFの各ページに、ページ番号を入れます。位置や形式を選べます。</span><span lang="en">Add page numbers to a PDF, choosing position and style.</span></small></a><a href="/image-compress.html"><span lang="ja">画像を圧縮・サイズ変更</span><span lang="en">Compress & Resize Images</span><small><span lang="ja">画像のファイルサイズを小さくします。大きさの変更もできます。</span><span lang="en">Make image files smaller, and resize them if you like.</span></small></a><a href="/heic-to-jpg.html"><span lang="ja">HEIC画像をJPGに変換</span><span lang="en">Convert HEIC to JPG</span><small><span lang="ja">iPhoneで撮ったHEIC画像を、JPGやPNGに変換します。</span><span lang="en">Convert HEIC photos from iPhone to JPG or PNG.</span></small></a><a href="/pdf-split.html"><span lang="ja">PDFを分割</span><span lang="en">Split PDF</span><small><span lang="ja">PDFを、1ページずつ、Nページごと、または範囲を決めて、複数のPDFに分けます。</span><span lang="en">Split a PDF into several files: one page each, every N pages, or by ranges.</span></small></a><a href="/image-crop.html"><span lang="ja">画像の切り抜き・回転</span><span lang="en">Crop & Rotate Image</span><small><span lang="ja">画像を、好きな範囲や比率で切り抜きます。回転もできます。</span><span lang="en">Crop an image to any area or ratio, and rotate it.</span></small></a><a href="/pdf-to-text.html"><span lang="ja">PDFから文字を抜き出す</span><span lang="en">Extract Text from PDF</span><small><span lang="ja">PDFの文字を取り出して、コピーまたは保存できます。</span><span lang="en">Pull the text out of a PDF to copy or save.</span></small></a><a href="/receipt-maker.html"><span lang="ja">領収書をPDFで作成</span><span lang="en">Create a Receipt PDF</span><small><span lang="ja">宛名・金額・但し書きを入れて、領収書をPDFで作ります。消費税の内訳やインボイス登録番号も入れられます。</span><span lang="en">Fill in the payer, amount and description to make a receipt PDF. Tax breakdown and invoice registration number are optional.</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" target="_blank" rel="noopener noreferrer"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const t=(a,b)=>EN()?b:a;
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=t("保存できませんでした。もう一度お試しください。","Could not save. Please try again.")}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return t("パスワード付きのPDFは扱えません。パスワードを外してからお試しください。","Password-protected PDFs are not supported. Remove the password and try again.");
+  return t("PDFを読み込めませんでした。壊れているか、対応していない形式の可能性があります。","Could not read the PDF. It may be damaged or in an unsupported format.");
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  const out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+const PW=1654,PH=2339,L=110,R=PW-110;
+const FF='"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Noto Sans CJK JP","Yu Gothic","Meiryo",sans-serif';
+const TXT=["name","kana","bd","sex","zip","adr","akana","tel","mail","dt","motive","pr","wish"];
+const LIMIT={gaku:16,shoku:16,lic:6};
+let photoImg=null;
+function today(){const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function addRow(id,y,m,tx){
+  const box=$(id);const r=document.createElement("div");r.className="rr";
+  const mk=(ph,mode,v,lab)=>{const i=document.createElement("input");i.type="text";i.autocomplete="off";if(mode)i.inputMode=mode;i.placeholder=ph;i.value=v||"";i.setAttribute("aria-label",lab);return i};
+  r.appendChild(mk(t("年","Year"),"numeric",y,t("年","Year")));
+  r.appendChild(mk(t("月","Mo"),"numeric",m,t("月","Month")));
+  r.appendChild(mk(box.children.length===0?t("例：○○高等学校 入学","e.g. entered ○○ High School"):"","",tx,t("内容","Details")));
+  const d=document.createElement("button");d.type="button";d.textContent="×";d.setAttribute("aria-label",t("この行を消す","Delete this row"));d.onclick=()=>r.remove();r.appendChild(d);
+  box.appendChild(r);
+}
+function getRows(id){return [...$(id).children].map(r=>{const v=[...r.querySelectorAll("input")].map(i=>i.value.trim());return {y:v[0].replace(/[^0-9０-９]/g,""),m:v[1].replace(/[^0-9０-９]/g,""),t:v[2]}}).filter(r=>r.t)}
+function rawRows(id){return [...$(id).children].map(r=>[...r.querySelectorAll("input")].map(i=>i.value))}
+document.querySelectorAll(".addr").forEach(b=>b.onclick=()=>addRow(b.dataset.t,"","",""));
+$("go").textContent=t("履歴書を作る","Create resume");
+$("dt").value=today();
+let restored=false;
+try{
+  const s=JSON.parse(localStorage.getItem("pm_resume")||"null");
+  if(s){TXT.forEach(k=>{if(s.f&&s.f[k]!=null)$(k).value=s.f[k]});["gaku","shoku","lic"].forEach(id=>{(s.r&&s.r[id]||[]).forEach(a=>addRow(id,a[0],a[1],a[2]))});$("rem").checked=true;restored=true}
+}catch(e){}
+[["gaku",3],["shoku",1],["lic",2]].forEach(([id,n])=>{if(!$(id).children.length)for(let i=0;i<n;i++)addRow(id,"","","")});
+const FIX=s=>s.replace(/[０-９]/g,d=>String.fromCharCode(d.charCodeAt(0)-65248));
+$("photo").onchange=e=>{
+  const f=e.target.files[0];e.target.value="";if(!f)return;
+  const u=URL.createObjectURL(f),im=new Image();
+  im.onload=()=>{photoImg=im;$("pimg").src=u;$("pimg").hidden=false;$("prm").hidden=false;$("pt").textContent=t("別の写真を選ぶ","Choose another")};
+  im.onerror=()=>{$("msg").className="bad";$("out").style.display="block";$("out").querySelector(".stamp").style.display="none";$("bar").style.display="none";$("dl").style.display="none";$("msg").textContent=t("この写真は読み込めませんでした。iPhoneのHEIC写真は、先にJPGに変換してください。","Could not read this photo. Please convert an iPhone HEIC photo to JPG first.")};
+  im.src=u;
+};
+$("prm").onclick=()=>{photoImg=null;$("pimg").hidden=true;$("prm").hidden=true;$("pt").textContent=t("写真を選ぶ","Choose a photo")};
+function fit(x,text,maxW,size,min,weight){
+  let s=size;x.font=(weight||400)+" "+s+"px "+FF;
+  while(x.measureText(text).width>maxW&&s>min){s-=2;x.font=(weight||400)+" "+s+"px "+FF}
+  return x.measureText(text).width<=maxW;
+}
+function wrap(x,text,maxW){
+  const out=[];
+  for(const para of text.split(/\r?\n/)){
+    let cur="";
+    for(const ch of para){if(x.measureText(cur+ch).width>maxW&&cur){out.push(cur);cur=ch}else cur+=ch}
+    out.push(cur);
+  }
+  return out;
+}
+function mkc(){const c=document.createElement("canvas");c.width=PW;c.height=PH;const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,PW,PH);x.fillStyle="#111";x.strokeStyle="#111";x.lineWidth=2.5;x.textBaseline="alphabetic";x.textAlign="left";return [c,x]}
+function cell(x,x0,y0,w,h,label,text,size,min){
+  x.lineWidth=2.5;x.strokeRect(x0,y0,w,h);
+  x.font="400 22px "+FF;x.textAlign="left";x.fillText(label,x0+10,y0+28);
+  if(text){fit(x,text,w-28,size,min||24,400);x.fillText(text,x0+14,y0+h-Math.max(12,Math.round(h*.18)))}
+}
+function ageText(bd,dt){
+  if(!bd)return "";const b=bd.split("-").map(Number),d=dt.split("-").map(Number);
+  let a=d[0]-b[0];if(d[1]<b[1]||(d[1]===b[1]&&d[2]<b[2]))a--;
+  return b[0]+"年"+b[1]+"月"+b[2]+"日生（満"+a+"歳）";
+}
+function table(x,y0,head,lines,nRows,errName){
+  const rh=80,c1=L+150,c2=L+250;
+  x.lineWidth=2.5;x.strokeRect(L,y0,R-L,60+rh*nRows);
+  x.beginPath();x.moveTo(c1,y0);x.lineTo(c1,y0+60+rh*nRows);x.moveTo(c2,y0);x.lineTo(c2,y0+60+rh*nRows);x.stroke();
+  x.font="400 28px "+FF;x.textAlign="center";
+  x.fillText("年",(L+c1)/2,y0+40);x.fillText("月",(c1+c2)/2,y0+40);x.fillText(head,(c2+R)/2,y0+40);
+  x.beginPath();x.moveTo(L,y0+60);x.lineTo(R,y0+60);x.stroke();
+  for(let i=0;i<nRows;i++){
+    const y=y0+60+rh*i;
+    if(i>0){x.beginPath();x.moveTo(L,y);x.lineTo(R,y);x.stroke()}
+    const ln=lines[i];if(!ln)continue;
+    const by=y+rh-26;
+    if(ln.y){x.font="400 34px "+FF;x.textAlign="center";x.fillText(ln.y,(L+c1)/2,by)}
+    if(ln.m){x.font="400 34px "+FF;x.textAlign="center";x.fillText(ln.m,(c1+c2)/2,by)}
+    const maxW=R-c2-36;
+    const ok=fit(x,ln.t,maxW,36,22,ln.b?700:400);
+    if(!ok){const e=new Error(errName+t("の「","  ")+ln.t.slice(0,12)+t("…」が長すぎます。短くするか、行を分けてください。","…\" is too long. Shorten it or split it into rows."));e.user=true;throw e}
+    if(ln.c==="center"){x.textAlign="center";x.fillText(ln.t,(c2+R)/2,by)}
+    else if(ln.c==="right"){x.textAlign="right";x.fillText(ln.t,R-24,by)}
+    else{x.textAlign="left";x.fillText(ln.t,c2+18,by)}
+  }
+  x.textAlign="left";
+}
+function textBox(x,y0,h,label,text,errName){
+  x.lineWidth=2.5;x.strokeRect(L,y0,R-L,h);
+  x.font="400 24px "+FF;x.textAlign="left";x.fillText(label,L+14,y0+34);
+  x.font="400 32px "+FF;const lh=46,cap=Math.floor((h-86)/lh);
+  const ls=wrap(x,text||"",R-L-40);
+  if(ls.length>cap){const e=new Error(errName+t("が枠に入りきりません（約"+cap+"行まで）。短くしてください。"," does not fit in the box (about "+cap+" lines). Please shorten it."));e.user=true;throw e}
+  ls.forEach((l,i)=>x.fillText(l,L+20,y0+80+i*lh));
+}
+function build(o){
+  // page 1
+  let [c1,x]=mkc();
+  x.font="700 64px "+FF;x.fillText("履 歴 書",L,190);
+  x.font="400 30px "+FF;x.textAlign="right";x.fillText(o.date+"現在",R,185);x.textAlign="left";
+  const WL=R-L-236-30;
+  cell(x,L,230,WL,75,"ふりがな",o.kana,28);
+  cell(x,L,305,WL,115,"氏　名",o.name,62,30);
+  cell(x,L,420,WL,125,"生年月日",ageText(o.bd,o.dtv)+(o.sex?"　　性別："+o.sex:""),36);
+  const px=R-236,py=230;
+  x.lineWidth=2.5;x.strokeRect(px,py,236,315);
+  if(photoImg){
+    const iw=photoImg.naturalWidth,ih=photoImg.naturalHeight,tr=236/315;let sw=iw,sh=ih;
+    if(iw/ih>tr)sw=ih*tr;else sh=iw/tr;
+    x.save();x.beginPath();x.rect(px+1,py+1,234,313);x.clip();
+    x.drawImage(photoImg,(iw-sw)/2,(ih-sh)/2,sw,sh,px,py,236,315);x.restore();
+  }else{
+    x.font="400 22px "+FF;x.textAlign="center";
+    ["写真を貼る位置","縦 40mm","横 30mm"].forEach((s,i)=>x.fillText(s,px+118,py+140+i*34));x.textAlign="left";
+  }
+  cell(x,L,560,R-L,75,"ふりがな",o.akana,26);
+  cell(x,L,635,R-L,120,"現住所",(o.zip?"〒"+o.zip+"　":"")+o.adr,40,24);
+  cell(x,L,755,(R-L)/2,80,"電話",o.tel,34);
+  cell(x,L+(R-L)/2,755,(R-L)/2,80,"メール",o.mail,30,20);
+  const lines=[{t:"学　歴",c:"center",b:1}].concat(o.gaku.map(r=>({y:r.y,m:r.m,t:r.t})),[{t:"職　歴",c:"center",b:1}],o.shoku.length?o.shoku.map(r=>({y:r.y,m:r.m,t:r.t})):[{t:"なし"}],[{t:"以上",c:"right"}]);
+  if(lines.length>16){const e=new Error(t("学歴・職歴の行が多すぎます（見出しと「以上」を入れて、16行まで）。行を減らしてください。","Too many education/work rows (16 lines including headings and the closing line). Please reduce them."));e.user=true;throw e}
+  table(x,870,"学歴・職歴",lines,16,t("学歴・職歴","Education/Work"));
+  // page 2
+  let c2;[c2,x]=mkc();
+  const lic=o.lic.map(r=>({y:r.y,m:r.m,t:r.t}));
+  if(lic.length>6){const e=new Error(t("免許・資格は、6行までです。","Licenses can have up to 6 rows."));e.user=true;throw e}
+  table(x,130,"免許・資格",lic.length?lic:[{t:"なし"}],6,t("免許・資格","Licenses"));
+  textBox(x,720,640,"志望動機",o.motive,t("志望動機","Motivation"));
+  textBox(x,1390,640,"自己PR",o.pr,t("自己PR","Self-introduction"));
+  textBox(x,2060,220,"本人希望記入欄",o.wish,t("本人希望記入欄","Requests"));
+  return [c1,c2];
+}
+$("go").onclick=async()=>{
+  const go=$("go");go.disabled=true;beginRun();
+  try{
+    const bad=m=>{const e=new Error(m);e.user=true;throw e};
+    const f={};TXT.forEach(k=>f[k]=$(k).value.trim());
+    if(!f.name)bad(t("氏名を入れてください。","Please enter your name."));
+    const dtv=f.dt||today(),dp=dtv.split("-").map(Number);
+    const o=Object.assign({},f,{dtv,date:dp[0]+"年"+dp[1]+"月"+dp[2]+"日",gaku:getRows("gaku"),shoku:getRows("shoku"),lic:getRows("lic")});
+    ["gaku","shoku","lic"].forEach(id=>o[id].forEach(r=>{r.y=FIX(r.y);r.m=FIX(r.m)}));
+    try{
+      if($("rem").checked){const r={};["gaku","shoku","lic"].forEach(id=>r[id]=rawRows(id));localStorage.setItem("pm_resume",JSON.stringify({f,r}))}
+      else localStorage.removeItem("pm_resume");
+    }catch(e){}
+    if(document.fonts&&document.fonts.load){try{await document.fonts.load("700 40px "+FF,"履歴書")}catch(e){}}
+    $("barf").style.width="30%";
+    const cs=build(o);
+    const pdf=await PDFLib.PDFDocument.create();
+    pdf.setTitle("履歴書");pdf.setCreator("PDFのミカタ");
+    const ex=$("extra");ex.textContent="";
+    let k=0;
+    for(const c of cs){
+      const jb=await new Promise(r=>c.toBlob(r,"image/jpeg",.92));
+      if(!jb)throw new Error(t("画像を作れませんでした。","Could not create the image."));
+      const jp=await pdf.embedJpg(new Uint8Array(await jb.arrayBuffer()));
+      const pg=pdf.addPage([595.28,841.89]);pg.drawImage(jp,{x:0,y:0,width:595.28,height:841.89});
+      const im=document.createElement("img");im.src=URL.createObjectURL(jb);im.alt=t("履歴書 "+(++k)+"ページ目のプレビュー","Resume preview, page "+k);
+      im.style.cssText="width:46%;max-width:240px;border:1px solid var(--line);background:#fff;margin:10px 4px 0";ex.appendChild(im);
+      $("barf").style.width=(30+k*30)+"%";
+    }
+    const blob=new Blob([await pdf.save()],{type:"application/pdf"});
+    const name="resume_"+dtv.replace(/-/g,"")+".pdf";
+    const dl=$("dl");dl.href="#";dl.textContent=t("PDFを保存する","Save PDF");dl.style.display="inline-block";wire(dl,blob,name,"application/pdf");
+    $("barf").style.width="100%";
+    $("info").textContent=name+t("（2ページ / ","  (2 pages / ")+fmt(blob.size)+"）";
+    $("msg").textContent=t("提出する前に、誤字や年月の間違いがないか、もう一度確認してください。","Before submitting, check once more for typos and wrong dates.");
+    finishOk();
+  }catch(e){console.error(e);$("msg").className="bad";$("msg").textContent=e.user?e.message:t("作成できませんでした。もう一度お試しください。","Could not create the resume. Please try again.")}
+  finally{endRun();go.disabled=false}
+};
+
+</script>
+</body>
+</html>
