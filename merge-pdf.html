@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PDFを結合（登録不要・端末内で処理）｜PDFのミカタ</title>
+<meta name="description" content="複数のPDFを、順番を決めて1つにまとめる無料ツール。登録不要で、ファイルは端末の外に送信されません。">
+<meta name="title-en" content="Merge PDFs (no sign-up, on your device)｜PDF Mikata">
+<meta name="desc-en" content="Free tool to merge several PDFs into one in the order you choose. No sign-up, and files never leave your device.">
+<link rel="canonical" href="https://pdfmikata.com/merge-pdf.html">
+<script src="/site.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap">
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>PDFのミカタ</span></a><div class="lang" role="group" aria-label="言語 / Language"><button type="button" data-l="ja">日本語</button><button type="button" data-l="en">English</button></div><nav><a href="#how"><span lang="ja">使い方</span><span lang="en">How to use</span></a><a href="/#tools"><span lang="ja">ほかのツール</span><span lang="en">More tools</span></a></nav></div></header>
+<main>
+<h1><span lang="ja">PDFを結合する</span><span lang="en">Merge PDFs</span></h1>
+<p class="lead"><span lang="ja">複数のPDFを、順番どおりに1つへ。</span><span lang="en">Combine several PDFs into one, in order.</span></p>
+<p class="safe"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><span lang="ja"><b>PDFは外に送信されません。</b>すべて、この端末の中だけで処理します。</span><span lang="en"><b>Your PDFs are never uploaded.</b> Everything is processed on this device.</span></span></p>
+<ol class="steps"><li><b>1</b><span lang="ja">PDFを選ぶ</span><span lang="en">Choose PDFs</span></li><li><b>2</b><span lang="ja">順番を整える</span><span lang="en">Set the order</span></li><li><b>3</b><span lang="ja">結合する</span><span lang="en">Merge</span></li></ol>
+<label class="pick" id="drop"><input type="file" id="file" accept="application/pdf,.pdf" multiple><span id="pt"><span lang="ja">PDFを選ぶ</span><span lang="en">Choose PDFs</span></span><small><span lang="ja">複数のPDFをまとめて選べます</span><span lang="en">You can select several PDFs at once</span></small></label>
+<section id="stack">
+<h2><span lang="ja">結合する順番</span><span lang="en">Merge order</span></h2>
+<p class="hint"><span lang="ja">「↑」「↓」で入れ替えできます。いらないPDFは「削除」で外せます。</span><span lang="en">Use ↑ and ↓ to reorder. Remove a file you don't need with Delete.</span></p>
+<ul id="flist" class="flist"></ul>
+</section>
+<section class="set" id="set" style="display:none"><button id="go" disabled></button></section>
+
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="ja">完成</span><span lang="en">Done</span></div>
+<p id="info"></p>
+<a id="dl" href="#"></a>
+<div id="extra"></div>
+<p id="msg" aria-live="polite"></p>
+<div class="support" id="support" hidden><p><span lang="ja">PDFのミカタが役に立ったら、応援してもらえるとうれしいです。</span><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a id="supl" href="#" target="_blank" rel="noopener"><span lang="ja">応援する（300円）</span><span lang="en">Send a tip (¥300)</span></a></div>
+</section>
+<section class="guide" id="how">
+<div lang="ja"><h2>使い方</h2>
+<ol>
+<li>「PDFを選ぶ」で、まとめたいPDFを複数選びます。</li>
+<li>「↑」「↓」で、結合したい順番に並べ替えます。</li>
+<li>「結合する」を押し、「PDFを保存する」で保存します。</li>
+</ol>
+<h2>こんなときに</h2>
+<ul>
+<li>申請書と添付書類を、1つのPDFにまとめて提出したいとき</li>
+<li>別々に作った資料を、1つのファイルにして送りたいとき</li>
+</ul>
+<h2>よくある質問</h2>
+<details><summary>PDFは外部に送信されますか？</summary><p>いいえ。処理はすべて、お使いの端末のブラウザの中で行われます。</p></details>
+<details><summary>パスワード付きのPDFは結合できますか？</summary><p>できません。パスワードを外してから、お試しください。</p></details>
+<details><summary>しおり（目次）やリンクは残りますか？</summary><p>ページの見た目と文字は保たれますが、元のPDFのしおりなどは、残らないことがあります。</p></details></div>
+<div lang="en"><h2>How to use</h2>
+<ol>
+<li>Tap "Choose PDFs" and select the PDFs you want to combine.</li>
+<li>Use ↑ and ↓ to put them in the order you want.</li>
+<li>Tap "Merge", then "Save PDF".</li>
+</ol>
+<h2>When it helps</h2>
+<ul>
+<li>You want to submit an application and its attachments as a single PDF</li>
+<li>You want to send separately made documents as one file</li>
+</ul>
+<h2>FAQ</h2>
+<details><summary>Are my PDFs uploaded anywhere?</summary><p>No. Everything is processed inside the browser on your device.</p></details>
+<details><summary>Can I merge password-protected PDFs?</summary><p>No. Please remove the password first.</p></details>
+<details><summary>Are bookmarks and links kept?</summary><p>Page appearance and text are kept, but bookmarks and similar features of the original PDFs may not be preserved.</p></details></div>
+</section>
+<div class="support endtip"><p><span lang="ja">PDFのミカタが役に立ったら、応援してもらえるとうれしいです。</span><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" target="_blank" rel="noopener"><span lang="ja">応援する（300円）</span><span lang="en">Send a tip (¥300)</span></a></div>
+<section class="more"><h2><span lang="ja">ほかのツール</span><span lang="en">More tools</span></h2><a href="/photo-to-pdf.html"><span lang="ja">写真をPDFに変換</span><span lang="en">Photos to PDF</span><small><span lang="ja">複数の写真を、順番どおりに1つのPDFへ。回転、並べ替え、サイズ指定ができます。</span><span lang="en">Combine several photos into one PDF in the order you choose. You can rotate, reorder and set a size limit.</span></small></a><a href="/split-pdf.html"><span lang="ja">PDFのページを抜き出し・削除</span><span lang="en">Extract or Delete PDF Pages</span><small><span lang="ja">PDFから、必要なページだけを残す、または不要なページを消します。</span><span lang="en">Keep only the pages you need, or remove the pages you don't.</span></small></a><a href="/compress-pdf.html"><span lang="ja">PDFを圧縮</span><span lang="en">Compress PDF</span><small><span lang="ja">PDFを、指定したサイズ以下に小さくします。提出先の容量制限に合わせたいときに。</span><span lang="en">Shrink a PDF to fit under a size you choose, for upload limits.</span></small></a><a href="/pdf-to-image.html"><span lang="ja">PDFを画像に変換</span><span lang="en">PDF to Images</span><small><span lang="ja">PDFの各ページを、JPEGまたはPNGの画像として保存します。</span><span lang="en">Save each page of a PDF as a JPEG or PNG image.</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const t=(a,b)=>EN()?b:a;
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=t("保存できませんでした。もう一度お試しください。","Could not save. Please try again.")}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return t("パスワード付きのPDFは扱えません。パスワードを外してからお試しください。","Password-protected PDFs are not supported. Remove the password and try again.");
+  return t("PDFを読み込めませんでした。壊れているか、対応していない形式の可能性があります。","Could not read the PDF. It may be damaged or in an unsupported format.");
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  const out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+const items=[];
+async function add(files){
+  for(const f of files){
+    if(!isPdf(f))continue;
+    let pages=null,bad=false;
+    try{const d=await PDFLib.PDFDocument.load(await f.arrayBuffer());pages=d.getPageCount()}catch(e){bad=true}
+    items.push({file:f,pages,bad});
+  }
+  draw();
+}
+function mkb(txt,label,fn,dis,cls){const b=document.createElement("button");b.type="button";b.textContent=txt;b.setAttribute("aria-label",label);if(cls)b.className=cls;b.disabled=!!dis;b.onclick=fn;return b}
+function draw(){
+  const ul=$("flist");ul.textContent="";
+  items.forEach((it,i)=>{
+    const li=document.createElement("li");li.className="fi";
+    const no=document.createElement("span");no.className="no2";no.textContent=i+1;
+    const nm=document.createElement("div");nm.className="nm";
+    const b=document.createElement("b");b.textContent=it.file.name;
+    const sm=document.createElement("small");
+    sm.textContent=it.bad?t("読み込めません（パスワード付き・破損など）","Can't read (password-protected or damaged)"):(it.pages+t("ページ","p")+" / "+fmt(it.file.size));
+    nm.append(b,sm);
+    li.append(no,nm,
+      mkb("↑",t((i+1)+"番目を前へ","Move "+(i+1)+" earlier"),()=>{[items[i-1],items[i]]=[items[i],items[i-1]];draw()},i===0),
+      mkb("↓",t((i+1)+"番目を後ろへ","Move "+(i+1)+" later"),()=>{[items[i+1],items[i]]=[items[i],items[i+1]];draw()},i===items.length-1),
+      mkb(t("削除","Delete"),t((i+1)+"番目を削除","Delete "+(i+1)),()=>{items.splice(i,1);draw()},false,"del"));
+    ul.appendChild(li);
+  });
+  const ok=items.filter(x=>!x.bad);
+  $("stack").style.display=items.length?"block":"none";
+  $("set").style.display=items.length?"block":"none";
+  $("go").disabled=ok.length<2;
+  $("go").textContent=ok.length<2&&items.length?t("2つ以上のPDFを選んでください","Select at least two PDFs"):t("結合する","Merge");
+  $("pt").textContent=items.length?t("PDFを追加する（"+items.length+"件選択中）","Add more PDFs ("+items.length+" selected)"):t("PDFを選ぶ","Choose PDFs");
+}
+$("file").onchange=e=>{add([...e.target.files]);e.target.value=""};
+bindDrop("drop",add);
+$("go").onclick=async()=>{
+  const go=$("go");go.disabled=true;beginRun();
+  const ok=items.filter(x=>!x.bad);
+  try{
+    const out=await PDFLib.PDFDocument.create();
+    for(let i=0;i<ok.length;i++){
+      $("msg").textContent=t("結合中… "+(i+1)+"/"+ok.length,"Merging… "+(i+1)+"/"+ok.length);
+      $("barf").style.width=(i/ok.length*100)+"%";
+      const src=await PDFLib.PDFDocument.load(await ok[i].file.arrayBuffer());
+      const pgs=await out.copyPages(src,src.getPageIndices());
+      pgs.forEach(p=>out.addPage(p));
+    }
+    $("barf").style.width="100%";
+    const bytes=await out.save();
+    const blob=new Blob([bytes],{type:"application/pdf"});
+    const dl=$("dl");dl.href="#";dl.textContent=t("PDFを保存する","Save PDF");dl.style.display="inline-block";
+    wire(dl,blob,"merged.pdf","application/pdf");
+    $("info").textContent=t(ok.length+"個のPDFを結合しました（"+out.getPageCount()+"ページ・"+fmt(bytes.length)+"）",ok.length+" PDFs merged ("+out.getPageCount()+" pages, "+fmt(bytes.length)+")");
+    $("msg").textContent=t("保存したあと、ページの順番を確認してください。","After saving, check the page order.");
+    finishOk();
+  }catch(e){console.error(e);$("msg").className="bad";$("msg").textContent=errText(e)}
+  finally{endRun();draw()}
+};
+draw();
+
+</script>
+</body>
+</html>
