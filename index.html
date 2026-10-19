@@ -87,6 +87,11 @@ footer a{padding:10px 0}
 .lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
 .lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
 @media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
 </style>
 </head>
 <body>
@@ -131,6 +136,7 @@ footer a{padding:10px 0}
 <p id="info"></p>
 <a id="dl" href="#">PDFを保存する</a>
 <p id="msg" aria-live="polite"></p>
+<div class="support" id="support" hidden><p>PDFのミカタが役に立ったら、応援してもらえるとうれしいです。</p><a id="supl" href="#" target="_blank" rel="noopener">応援する（金額は自由）</a></div>
 </section>
 
 <section class="guide">
@@ -177,6 +183,7 @@ let items=[],url=null,dlNs=null;
 const val=n=>document.querySelector('input[name="'+n+'"]:checked').value;
 const fmt=b=>b>=1048576?(b/1048576).toFixed(2)+" MB":Math.round(b/1024)+" KB";
 const Q={l:{edge:1200,q:.6},m:{edge:1800,q:.75},h:{edge:2600,q:.88}};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
 const JT=document.title;let lang="ja";
 const S={
 ja:{prev:"前へ",next:"後ろへ",rot:"回転",del:"削除",
@@ -206,7 +213,7 @@ const EN={"PDFのミカタ":"PDF Mikata","写真を":"Photos to ","にする":""
 "ページの順番":"Page order","「前へ」「後ろへ」で入れ替えできます。パソコンでは、写真をドラッグして並べ替えることもできます。":"Use “Earlier” and “Later” to reorder. On a computer, you can also drag photos.",
 "ページの大きさ":"Page size","写真と同じ大きさ":"Same as photo","余白":"Margin","なし":"None","少し":"Small",
 "画質":"Quality","軽め":"Small file","ふつう":"Normal","きれい":"High","サイズを指定":"Set a size limit","上限のサイズ":"Size limit",
-"完成":"Done","PDFを保存する":"Save PDF","運営者情報・お問い合わせ":"About / Contact (Japanese)","プライバシーポリシー":"Privacy Policy (Japanese)"};
+"完成":"Done","PDFのミカタが役に立ったら、応援してもらえるとうれしいです。":"If PDF Mikata was useful, a small tip would mean a lot.","応援する（金額は自由）":"Send a tip (any amount)","PDFを保存する":"Save PDF","運営者情報・お問い合わせ":"About / Contact (Japanese)","プライバシーポリシー":"Privacy Policy (Japanese)"};
 function setLang(l){
   lang=l;
   const skip="#pt,#go,#grid,#info,#msg,script,style,.guide,.lang,svg";
@@ -324,7 +331,7 @@ document.querySelectorAll('input[name="q"]').forEach(r=>r.onchange=()=>{$("tgrow
 $("go").onclick=async()=>{
   const go=$("go"),msg=$("msg"),dl=$("dl"),out=$("out"),st=out.querySelector(".stamp");
   go.disabled=true;go.textContent=s("working");
-  out.style.display="block";dl.style.display="none";$("info").textContent="";msg.className="";msg.textContent="";st.style.display="none";$("bar").style.display="block";$("barf").style.width="0";
+  out.style.display="block";dl.style.display="none";$("info").textContent="";msg.className="";msg.textContent="";st.style.display="none";$("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
   if(url){URL.revokeObjectURL(url);url=null}
   const qv=val("q"),mode=val("pg"),m=mode==="a4"?+val("mg"):0;
   try{
@@ -350,6 +357,7 @@ $("go").onclick=async()=>{
     url=URL.createObjectURL(blob);
     dl.href=url;dl.download="photos.pdf";dl.style.display="inline-block";wireDl(dl,blob,"photos.pdf");
     st.style.display="inline-flex";
+    if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
     $("info").textContent=s("info",items.length,fmt(bytes.length));
     msg.textContent=(qv==="t"?s("okT",val("tg")):"")+s("check");
   }catch(e){
