@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>QRコードを作成（URL・Wi-Fi・無料・PNG/SVG/PDF）｜PDFのミカタ</title>
+<meta name="description" content="URLや文字、Wi-Fiの情報から、QRコードを作れる無料ツール。PNG・SVG・PDFで保存できます。入力した内容は端末の外に送信されません。">
+<meta name="title-en" content="Create a QR Code (URL, Wi-Fi, free, PNG/SVG/PDF)｜PDF Mikata">
+<meta name="desc-en" content="Free tool to make a QR code from a URL, text or Wi-Fi details and save it as PNG, SVG or PDF. What you type never leaves your device.">
+<link rel="canonical" href="https://pdfmikata.com/qr-code-maker.html">
+<script src="/site.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap">
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+</style>
+<script>/* QR Code Generator for JavaScript, Copyright (c) 2009 Kazuhiko Arase, MIT License. QR Code is a registered trademark of DENSO WAVE INCORPORATED. */
+var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],f={},c=function(t,r){o=function(t){for(var r=new Array(t),e=0;e<t;e+=1){r[e]=new Array(t);for(var n=0;n<t;n+=1)r[e][n]=null}return r}(i=4*e+17),l(0,0),l(i-7,0),l(0,i-7),s(),h(),d(t,r),e>=7&&v(t),null==a&&(a=p(e,n,u)),w(a,r)},l=function(t,r){for(var e=-1;e<=7;e+=1)if(!(t+e<=-1||i<=t+e))for(var n=-1;n<=7;n+=1)r+n<=-1||i<=r+n||(o[t+e][r+n]=0<=e&&e<=6&&(0==n||6==n)||0<=n&&n<=6&&(0==e||6==e)||2<=e&&e<=4&&2<=n&&n<=4)},h=function(){for(var t=8;t<i-8;t+=1)null==o[t][6]&&(o[t][6]=t%2==0);for(var r=8;r<i-8;r+=1)null==o[6][r]&&(o[6][r]=r%2==0)},s=function(){for(var t=B.getPatternPosition(e),r=0;r<t.length;r+=1)for(var n=0;n<t.length;n+=1){var i=t[r],a=t[n];if(null==o[i][a])for(var u=-2;u<=2;u+=1)for(var f=-2;f<=2;f+=1)o[i+u][a+f]=-2==u||2==u||-2==f||2==f||0==u&&0==f}},v=function(t){for(var r=B.getBCHTypeNumber(e),n=0;n<18;n+=1){var a=!t&&1==(r>>n&1);o[Math.floor(n/3)][n%3+i-8-3]=a}for(n=0;n<18;n+=1){a=!t&&1==(r>>n&1);o[n%3+i-8-3][Math.floor(n/3)]=a}},d=function(t,r){for(var e=n<<3|r,a=B.getBCHTypeInfo(e),u=0;u<15;u+=1){var f=!t&&1==(a>>u&1);u<6?o[u][8]=f:u<8?o[u+1][8]=f:o[i-15+u][8]=f}for(u=0;u<15;u+=1){f=!t&&1==(a>>u&1);u<8?o[8][i-u-1]=f:u<9?o[8][15-u-1+1]=f:o[8][15-u-1]=f}o[i-8][8]=!t},w=function(t,r){for(var e=-1,n=i-1,a=7,u=0,f=B.getMaskFunction(r),c=i-1;c>0;c-=2)for(6==c&&(c-=1);;){for(var g=0;g<2;g+=1)if(null==o[n][c-g]){var l=!1;u<t.length&&(l=1==(t[u]>>>a&1)),f(n,c-g)&&(l=!l),o[n][c-g]=l,-1==(a-=1)&&(u+=1,a=7)}if((n+=e)<0||i<=n){n-=e,e=-e;break}}},p=function(t,r,e){for(var n=A.getRSBlocks(t,r),o=b(),i=0;i<e.length;i+=1){var a=e[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var u=0;for(i=0;i<n.length;i+=1)u+=n[i].dataCount;if(o.getLengthInBits()>8*u)throw"code length overflow. ("+o.getLengthInBits()+">"+8*u+")";for(o.getLengthInBits()+4<=8*u&&o.put(0,4);o.getLengthInBits()%8!=0;)o.putBit(!1);for(;!(o.getLengthInBits()>=8*u||(o.put(236,8),o.getLengthInBits()>=8*u));)o.put(17,8);return function(t,r){for(var e=0,n=0,o=0,i=new Array(r.length),a=new Array(r.length),u=0;u<r.length;u+=1){var f=r[u].dataCount,c=r[u].totalCount-f;n=Math.max(n,f),o=Math.max(o,c),i[u]=new Array(f);for(var g=0;g<i[u].length;g+=1)i[u][g]=255&t.getBuffer()[g+e];e+=f;var l=B.getErrorCorrectPolynomial(c),h=k(i[u],l.getLength()-1).mod(l);for(a[u]=new Array(l.getLength()-1),g=0;g<a[u].length;g+=1){var s=g+h.getLength()-a[u].length;a[u][g]=s>=0?h.getAt(s):0}}var v=0;for(g=0;g<r.length;g+=1)v+=r[g].totalCount;var d=new Array(v),w=0;for(g=0;g<n;g+=1)for(u=0;u<r.length;u+=1)g<i[u].length&&(d[w]=i[u][g],w+=1);for(g=0;g<o;g+=1)for(u=0;u<r.length;u+=1)g<a[u].length&&(d[w]=a[u][g],w+=1);return d}(o,n)};f.addData=function(t,r){var e=null;switch(r=r||"Byte"){case"Numeric":e=M(t);break;case"Alphanumeric":e=x(t);break;case"Byte":e=m(t);break;case"Kanji":e=L(t);break;default:throw"mode:"+r}u.push(e),a=null},f.isDark=function(t,r){if(t<0||i<=t||r<0||i<=r)throw t+","+r;return o[t][r]},f.getModuleCount=function(){return i},f.make=function(){if(e<1){for(var t=1;t<40;t++){for(var r=A.getRSBlocks(t,n),o=b(),i=0;i<u.length;i++){var a=u[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var g=0;for(i=0;i<r.length;i++)g+=r[i].dataCount;if(o.getLengthInBits()<=8*g)break}e=t}c(!1,function(){for(var t=0,r=0,e=0;e<8;e+=1){c(!0,e);var n=B.getLostPoint(f);(0==e||t>n)&&(t=n,r=e)}return r}())},f.createTableTag=function(t,r){t=t||2;var e="";e+='<table style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: "+(r=void 0===r?4*t:r)+"px;",e+='">',e+="<tbody>";for(var n=0;n<f.getModuleCount();n+=1){e+="<tr>";for(var o=0;o<f.getModuleCount();o+=1)e+='<td style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: 0px;",e+=" width: "+t+"px;",e+=" height: "+t+"px;",e+=" background-color: ",e+=f.isDark(n,o)?"#000000":"#ffffff",e+=";",e+='"/>';e+="</tr>"}return e+="</tbody>",e+="</table>"},f.createSvgTag=function(t,r,e,n){var o={};"object"==typeof arguments[0]&&(t=(o=arguments[0]).cellSize,r=o.margin,e=o.alt,n=o.title),t=t||2,r=void 0===r?4*t:r,(e="string"==typeof e?{text:e}:e||{}).text=e.text||null,e.id=e.text?e.id||"qrcode-description":null,(n="string"==typeof n?{text:n}:n||{}).text=n.text||null,n.id=n.text?n.id||"qrcode-title":null;var i,a,u,c,g=f.getModuleCount()*t+2*r,l="";for(c="l"+t+",0 0,"+t+" -"+t+",0 0,-"+t+"z ",l+='<svg version="1.1" xmlns="http://www.w3.org/2000/svg"',l+=o.scalable?"":' width="'+g+'px" height="'+g+'px"',l+=' viewBox="0 0 '+g+" "+g+'" ',l+=' preserveAspectRatio="xMinYMin meet"',l+=n.text||e.text?' role="img" aria-labelledby="'+y([n.id,e.id].join(" ").trim())+'"':"",l+=">",l+=n.text?'<title id="'+y(n.id)+'">'+y(n.text)+"</title>":"",l+=e.text?'<description id="'+y(e.id)+'">'+y(e.text)+"</description>":"",l+='<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>',l+='<path d="',a=0;a<f.getModuleCount();a+=1)for(u=a*t+r,i=0;i<f.getModuleCount();i+=1)f.isDark(a,i)&&(l+="M"+(i*t+r)+","+u+c);return l+='" stroke="transparent" fill="black"/>',l+="</svg>"},f.createDataURL=function(t,r){t=t||2,r=void 0===r?4*t:r;var e=f.getModuleCount()*t+2*r,n=r,o=e-r;return I(e,e,function(r,e){if(n<=r&&r<o&&n<=e&&e<o){var i=Math.floor((r-n)/t),a=Math.floor((e-n)/t);return f.isDark(a,i)?0:1}return 1})},f.createImgTag=function(t,r,e){t=t||2,r=void 0===r?4*t:r;var n=f.getModuleCount()*t+2*r,o="";return o+="<img",o+=' src="',o+=f.createDataURL(t,r),o+='"',o+=' width="',o+=n,o+='"',o+=' height="',o+=n,o+='"',e&&(o+=' alt="',o+=y(e),o+='"'),o+="/>"};var y=function(t){for(var r="",e=0;e<t.length;e+=1){var n=t.charAt(e);switch(n){case"<":r+="&lt;";break;case">":r+="&gt;";break;case"&":r+="&amp;";break;case'"':r+="&quot;";break;default:r+=n}}return r};return f.createASCII=function(t,r){if((t=t||1)<2)return function(t){t=void 0===t?2:t;var r,e,n,o,i,a=1*f.getModuleCount()+2*t,u=t,c=a-t,g={"██":"█","█ ":"▀"," █":"▄","  ":" "},l={"██":"▀","█ ":"▀"," █":" ","  ":" "},h="";for(r=0;r<a;r+=2){for(n=Math.floor((r-u)/1),o=Math.floor((r+1-u)/1),e=0;e<a;e+=1)i="█",u<=e&&e<c&&u<=r&&r<c&&f.isDark(n,Math.floor((e-u)/1))&&(i=" "),u<=e&&e<c&&u<=r+1&&r+1<c&&f.isDark(o,Math.floor((e-u)/1))?i+=" ":i+="█",h+=t<1&&r+1>=c?l[i]:g[i];h+="\n"}return a%2&&t>0?h.substring(0,h.length-a-1)+Array(a+1).join("▀"):h.substring(0,h.length-1)}(r);t-=1,r=void 0===r?2*t:r;var e,n,o,i,a=f.getModuleCount()*t+2*r,u=r,c=a-r,g=Array(t+1).join("██"),l=Array(t+1).join("  "),h="",s="";for(e=0;e<a;e+=1){for(o=Math.floor((e-u)/t),s="",n=0;n<a;n+=1)i=1,u<=n&&n<c&&u<=e&&e<c&&f.isDark(o,Math.floor((n-u)/t))&&(i=0),s+=i?g:l;for(o=0;o<t;o+=1)h+=s+"\n"}return h.substring(0,h.length-1)},f.renderTo2dContext=function(t,r){r=r||2;for(var e=f.getModuleCount(),n=0;n<e;n++)for(var o=0;o<e;o++)t.fillStyle=f.isDark(n,o)?"black":"white",t.fillRect(n*r,o*r,r,r)},f};t.stringToBytes=(t.stringToBytesFuncs={default:function(t){for(var r=[],e=0;e<t.length;e+=1){var n=t.charCodeAt(e);r.push(255&n)}return r}}).default,t.createStringToBytes=function(t,r){var e=function(){for(var e=S(t),n=function(){var t=e.read();if(-1==t)throw"eof";return t},o=0,i={};;){var a=e.read();if(-1==a)break;var u=n(),f=n()<<8|n();i[String.fromCharCode(a<<8|u)]=f,o+=1}if(o!=r)throw o+" != "+r;return i}(),n="?".charCodeAt(0);return function(t){for(var r=[],o=0;o<t.length;o+=1){var i=t.charCodeAt(o);if(i<128)r.push(i);else{var a=e[t.charAt(o)];"number"==typeof a?(255&a)==a?r.push(a):(r.push(a>>>8),r.push(255&a)):r.push(n)}}return r}};var r,e,n,o,i,a=1,u=2,f=4,c=8,g={L:1,M:0,Q:3,H:2},l=0,h=1,s=2,v=3,d=4,w=5,p=6,y=7,B=(r=[[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50],[6,30,54],[6,32,58],[6,34,62],[6,26,46,66],[6,26,48,70],[6,26,50,74],[6,30,54,78],[6,30,56,82],[6,30,58,86],[6,34,62,90],[6,28,50,72,94],[6,26,50,74,98],[6,30,54,78,102],[6,28,54,80,106],[6,32,58,84,110],[6,30,58,86,114],[6,34,62,90,118],[6,26,50,74,98,122],[6,30,54,78,102,126],[6,26,52,78,104,130],[6,30,56,82,108,134],[6,34,60,86,112,138],[6,30,58,86,114,142],[6,34,62,90,118,146],[6,30,54,78,102,126,150],[6,24,50,76,102,128,154],[6,28,54,80,106,132,158],[6,32,58,84,110,136,162],[6,26,54,82,110,138,166],[6,30,58,86,114,142,170]],e=1335,n=7973,i=function(t){for(var r=0;0!=t;)r+=1,t>>>=1;return r},(o={}).getBCHTypeInfo=function(t){for(var r=t<<10;i(r)-i(e)>=0;)r^=e<<i(r)-i(e);return 21522^(t<<10|r)},o.getBCHTypeNumber=function(t){for(var r=t<<12;i(r)-i(n)>=0;)r^=n<<i(r)-i(n);return t<<12|r},o.getPatternPosition=function(t){return r[t-1]},o.getMaskFunction=function(t){switch(t){case l:return function(t,r){return(t+r)%2==0};case h:return function(t,r){return t%2==0};case s:return function(t,r){return r%3==0};case v:return function(t,r){return(t+r)%3==0};case d:return function(t,r){return(Math.floor(t/2)+Math.floor(r/3))%2==0};case w:return function(t,r){return t*r%2+t*r%3==0};case p:return function(t,r){return(t*r%2+t*r%3)%2==0};case y:return function(t,r){return(t*r%3+(t+r)%2)%2==0};default:throw"bad maskPattern:"+t}},o.getErrorCorrectPolynomial=function(t){for(var r=k([1],0),e=0;e<t;e+=1)r=r.multiply(k([1,C.gexp(e)],0));return r},o.getLengthInBits=function(t,r){if(1<=r&&r<10)switch(t){case a:return 10;case u:return 9;case f:case c:return 8;default:throw"mode:"+t}else if(r<27)switch(t){case a:return 12;case u:return 11;case f:return 16;case c:return 10;default:throw"mode:"+t}else{if(!(r<41))throw"type:"+r;switch(t){case a:return 14;case u:return 13;case f:return 16;case c:return 12;default:throw"mode:"+t}}},o.getLostPoint=function(t){for(var r=t.getModuleCount(),e=0,n=0;n<r;n+=1)for(var o=0;o<r;o+=1){for(var i=0,a=t.isDark(n,o),u=-1;u<=1;u+=1)if(!(n+u<0||r<=n+u))for(var f=-1;f<=1;f+=1)o+f<0||r<=o+f||0==u&&0==f||a==t.isDark(n+u,o+f)&&(i+=1);i>5&&(e+=3+i-5)}for(n=0;n<r-1;n+=1)for(o=0;o<r-1;o+=1){var c=0;t.isDark(n,o)&&(c+=1),t.isDark(n+1,o)&&(c+=1),t.isDark(n,o+1)&&(c+=1),t.isDark(n+1,o+1)&&(c+=1),0!=c&&4!=c||(e+=3)}for(n=0;n<r;n+=1)for(o=0;o<r-6;o+=1)t.isDark(n,o)&&!t.isDark(n,o+1)&&t.isDark(n,o+2)&&t.isDark(n,o+3)&&t.isDark(n,o+4)&&!t.isDark(n,o+5)&&t.isDark(n,o+6)&&(e+=40);for(o=0;o<r;o+=1)for(n=0;n<r-6;n+=1)t.isDark(n,o)&&!t.isDark(n+1,o)&&t.isDark(n+2,o)&&t.isDark(n+3,o)&&t.isDark(n+4,o)&&!t.isDark(n+5,o)&&t.isDark(n+6,o)&&(e+=40);var g=0;for(o=0;o<r;o+=1)for(n=0;n<r;n+=1)t.isDark(n,o)&&(g+=1);return e+=Math.abs(100*g/r/r-50)/5*10},o),C=function(){for(var t=new Array(256),r=new Array(256),e=0;e<8;e+=1)t[e]=1<<e;for(e=8;e<256;e+=1)t[e]=t[e-4]^t[e-5]^t[e-6]^t[e-8];for(e=0;e<255;e+=1)r[t[e]]=e;var n={glog:function(t){if(t<1)throw"glog("+t+")";return r[t]},gexp:function(r){for(;r<0;)r+=255;for(;r>=256;)r-=255;return t[r]}};return n}();function k(t,r){if(void 0===t.length)throw t.length+"/"+r;var e=function(){for(var e=0;e<t.length&&0==t[e];)e+=1;for(var n=new Array(t.length-e+r),o=0;o<t.length-e;o+=1)n[o]=t[o+e];return n}(),n={getAt:function(t){return e[t]},getLength:function(){return e.length},multiply:function(t){for(var r=new Array(n.getLength()+t.getLength()-1),e=0;e<n.getLength();e+=1)for(var o=0;o<t.getLength();o+=1)r[e+o]^=C.gexp(C.glog(n.getAt(e))+C.glog(t.getAt(o)));return k(r,0)},mod:function(t){if(n.getLength()-t.getLength()<0)return n;for(var r=C.glog(n.getAt(0))-C.glog(t.getAt(0)),e=new Array(n.getLength()),o=0;o<n.getLength();o+=1)e[o]=n.getAt(o);for(o=0;o<t.getLength();o+=1)e[o]^=C.gexp(C.glog(t.getAt(o))+r);return k(e,0).mod(t)}};return n}var A=function(){var t=[[1,26,19],[1,26,16],[1,26,13],[1,26,9],[1,44,34],[1,44,28],[1,44,22],[1,44,16],[1,70,55],[1,70,44],[2,35,17],[2,35,13],[1,100,80],[2,50,32],[2,50,24],[4,25,9],[1,134,108],[2,67,43],[2,33,15,2,34,16],[2,33,11,2,34,12],[2,86,68],[4,43,27],[4,43,19],[4,43,15],[2,98,78],[4,49,31],[2,32,14,4,33,15],[4,39,13,1,40,14],[2,121,97],[2,60,38,2,61,39],[4,40,18,2,41,19],[4,40,14,2,41,15],[2,146,116],[3,58,36,2,59,37],[4,36,16,4,37,17],[4,36,12,4,37,13],[2,86,68,2,87,69],[4,69,43,1,70,44],[6,43,19,2,44,20],[6,43,15,2,44,16],[4,101,81],[1,80,50,4,81,51],[4,50,22,4,51,23],[3,36,12,8,37,13],[2,116,92,2,117,93],[6,58,36,2,59,37],[4,46,20,6,47,21],[7,42,14,4,43,15],[4,133,107],[8,59,37,1,60,38],[8,44,20,4,45,21],[12,33,11,4,34,12],[3,145,115,1,146,116],[4,64,40,5,65,41],[11,36,16,5,37,17],[11,36,12,5,37,13],[5,109,87,1,110,88],[5,65,41,5,66,42],[5,54,24,7,55,25],[11,36,12,7,37,13],[5,122,98,1,123,99],[7,73,45,3,74,46],[15,43,19,2,44,20],[3,45,15,13,46,16],[1,135,107,5,136,108],[10,74,46,1,75,47],[1,50,22,15,51,23],[2,42,14,17,43,15],[5,150,120,1,151,121],[9,69,43,4,70,44],[17,50,22,1,51,23],[2,42,14,19,43,15],[3,141,113,4,142,114],[3,70,44,11,71,45],[17,47,21,4,48,22],[9,39,13,16,40,14],[3,135,107,5,136,108],[3,67,41,13,68,42],[15,54,24,5,55,25],[15,43,15,10,44,16],[4,144,116,4,145,117],[17,68,42],[17,50,22,6,51,23],[19,46,16,6,47,17],[2,139,111,7,140,112],[17,74,46],[7,54,24,16,55,25],[34,37,13],[4,151,121,5,152,122],[4,75,47,14,76,48],[11,54,24,14,55,25],[16,45,15,14,46,16],[6,147,117,4,148,118],[6,73,45,14,74,46],[11,54,24,16,55,25],[30,46,16,2,47,17],[8,132,106,4,133,107],[8,75,47,13,76,48],[7,54,24,22,55,25],[22,45,15,13,46,16],[10,142,114,2,143,115],[19,74,46,4,75,47],[28,50,22,6,51,23],[33,46,16,4,47,17],[8,152,122,4,153,123],[22,73,45,3,74,46],[8,53,23,26,54,24],[12,45,15,28,46,16],[3,147,117,10,148,118],[3,73,45,23,74,46],[4,54,24,31,55,25],[11,45,15,31,46,16],[7,146,116,7,147,117],[21,73,45,7,74,46],[1,53,23,37,54,24],[19,45,15,26,46,16],[5,145,115,10,146,116],[19,75,47,10,76,48],[15,54,24,25,55,25],[23,45,15,25,46,16],[13,145,115,3,146,116],[2,74,46,29,75,47],[42,54,24,1,55,25],[23,45,15,28,46,16],[17,145,115],[10,74,46,23,75,47],[10,54,24,35,55,25],[19,45,15,35,46,16],[17,145,115,1,146,116],[14,74,46,21,75,47],[29,54,24,19,55,25],[11,45,15,46,46,16],[13,145,115,6,146,116],[14,74,46,23,75,47],[44,54,24,7,55,25],[59,46,16,1,47,17],[12,151,121,7,152,122],[12,75,47,26,76,48],[39,54,24,14,55,25],[22,45,15,41,46,16],[6,151,121,14,152,122],[6,75,47,34,76,48],[46,54,24,10,55,25],[2,45,15,64,46,16],[17,152,122,4,153,123],[29,74,46,14,75,47],[49,54,24,10,55,25],[24,45,15,46,46,16],[4,152,122,18,153,123],[13,74,46,32,75,47],[48,54,24,14,55,25],[42,45,15,32,46,16],[20,147,117,4,148,118],[40,75,47,7,76,48],[43,54,24,22,55,25],[10,45,15,67,46,16],[19,148,118,6,149,119],[18,75,47,31,76,48],[34,54,24,34,55,25],[20,45,15,61,46,16]],r=function(t,r){var e={};return e.totalCount=t,e.dataCount=r,e},e={};return e.getRSBlocks=function(e,n){var o=function(r,e){switch(e){case g.L:return t[4*(r-1)+0];case g.M:return t[4*(r-1)+1];case g.Q:return t[4*(r-1)+2];case g.H:return t[4*(r-1)+3];default:return}}(e,n);if(void 0===o)throw"bad rs block @ typeNumber:"+e+"/errorCorrectionLevel:"+n;for(var i=o.length/3,a=[],u=0;u<i;u+=1)for(var f=o[3*u+0],c=o[3*u+1],l=o[3*u+2],h=0;h<f;h+=1)a.push(r(c,l));return a},e}(),b=function(){var t=[],r=0,e={getBuffer:function(){return t},getAt:function(r){var e=Math.floor(r/8);return 1==(t[e]>>>7-r%8&1)},put:function(t,r){for(var n=0;n<r;n+=1)e.putBit(1==(t>>>r-n-1&1))},getLengthInBits:function(){return r},putBit:function(e){var n=Math.floor(r/8);t.length<=n&&t.push(0),e&&(t[n]|=128>>>r%8),r+=1}};return e},M=function(t){var r=a,e=t,n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=e,n=0;n+2<r.length;)t.put(o(r.substring(n,n+3)),10),n+=3;n<r.length&&(r.length-n==1?t.put(o(r.substring(n,n+1)),4):r.length-n==2&&t.put(o(r.substring(n,n+2)),7))}},o=function(t){for(var r=0,e=0;e<t.length;e+=1)r=10*r+i(t.charAt(e));return r},i=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);throw"illegal char :"+t};return n},x=function(t){var r=u,e=t,n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=e,n=0;n+1<r.length;)t.put(45*o(r.charAt(n))+o(r.charAt(n+1)),11),n+=2;n<r.length&&t.put(o(r.charAt(n)),6)}},o=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);if("A"<=t&&t<="Z")return t.charCodeAt(0)-"A".charCodeAt(0)+10;switch(t){case" ":return 36;case"$":return 37;case"%":return 38;case"*":return 39;case"+":return 40;case"-":return 41;case".":return 42;case"/":return 43;case":":return 44;default:throw"illegal char :"+t}};return n},m=function(r){var e=f,n=t.stringToBytes(r),o={getMode:function(){return e},getLength:function(t){return n.length},write:function(t){for(var r=0;r<n.length;r+=1)t.put(n[r],8)}};return o},L=function(r){var e=c,n=t.stringToBytesFuncs.SJIS;if(!n)throw"sjis not supported.";!function(){var t=n("友");if(2!=t.length||38726!=(t[0]<<8|t[1]))throw"sjis not supported."}();var o=n(r),i={getMode:function(){return e},getLength:function(t){return~~(o.length/2)},write:function(t){for(var r=o,e=0;e+1<r.length;){var n=(255&r[e])<<8|255&r[e+1];if(33088<=n&&n<=40956)n-=33088;else{if(!(57408<=n&&n<=60351))throw"illegal char at "+(e+1)+"/"+n;n-=49472}n=192*(n>>>8&255)+(255&n),t.put(n,13),e+=2}if(e<r.length)throw"illegal char at "+(e+1)}};return i},D=function(){var t=[],r={writeByte:function(r){t.push(255&r)},writeShort:function(t){r.writeByte(t),r.writeByte(t>>>8)},writeBytes:function(t,e,n){e=e||0,n=n||t.length;for(var o=0;o<n;o+=1)r.writeByte(t[o+e])},writeString:function(t){for(var e=0;e<t.length;e+=1)r.writeByte(t.charCodeAt(e))},toByteArray:function(){return t},toString:function(){var r="";r+="[";for(var e=0;e<t.length;e+=1)e>0&&(r+=","),r+=t[e];return r+="]"}};return r},S=function(t){var r=t,e=0,n=0,o=0,i={read:function(){for(;o<8;){if(e>=r.length){if(0==o)return-1;throw"unexpected end of file./"+o}var t=r.charAt(e);if(e+=1,"="==t)return o=0,-1;t.match(/^\s$/)||(n=n<<6|a(t.charCodeAt(0)),o+=6)}var i=n>>>o-8&255;return o-=8,i}},a=function(t){if(65<=t&&t<=90)return t-65;if(97<=t&&t<=122)return t-97+26;if(48<=t&&t<=57)return t-48+52;if(43==t)return 62;if(47==t)return 63;throw"c:"+t};return i},I=function(t,r,e){for(var n=function(t,r){var e=t,n=r,o=new Array(t*r),i={setPixel:function(t,r,n){o[r*e+t]=n},write:function(t){t.writeString("GIF87a"),t.writeShort(e),t.writeShort(n),t.writeByte(128),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(255),t.writeByte(255),t.writeByte(255),t.writeString(","),t.writeShort(0),t.writeShort(0),t.writeShort(e),t.writeShort(n),t.writeByte(0);var r=a(2);t.writeByte(2);for(var o=0;r.length-o>255;)t.writeByte(255),t.writeBytes(r,o,255),o+=255;t.writeByte(r.length-o),t.writeBytes(r,o,r.length-o),t.writeByte(0),t.writeString(";")}},a=function(t){for(var r=1<<t,e=1+(1<<t),n=t+1,i=u(),a=0;a<r;a+=1)i.add(String.fromCharCode(a));i.add(String.fromCharCode(r)),i.add(String.fromCharCode(e));var f,c,g,l=D(),h=(f=l,c=0,g=0,{write:function(t,r){if(t>>>r!=0)throw"length over";for(;c+r>=8;)f.writeByte(255&(t<<c|g)),r-=8-c,t>>>=8-c,g=0,c=0;g|=t<<c,c+=r},flush:function(){c>0&&f.writeByte(g)}});h.write(r,n);var s=0,v=String.fromCharCode(o[s]);for(s+=1;s<o.length;){var d=String.fromCharCode(o[s]);s+=1,i.contains(v+d)?v+=d:(h.write(i.indexOf(v),n),i.size()<4095&&(i.size()==1<<n&&(n+=1),i.add(v+d)),v=d)}return h.write(i.indexOf(v),n),h.write(e,n),h.flush(),l.toByteArray()},u=function(){var t={},r=0,e={add:function(n){if(e.contains(n))throw"dup key:"+n;t[n]=r,r+=1},size:function(){return r},indexOf:function(r){return t[r]},contains:function(r){return void 0!==t[r]}};return e};return i}(t,r),o=0;o<r;o+=1)for(var i=0;i<t;i+=1)n.setPixel(i,o,e(i,o));var a=D();n.write(a);for(var u=function(){var t=0,r=0,e=0,n="",o={},i=function(t){n+=String.fromCharCode(a(63&t))},a=function(t){if(t<0);else{if(t<26)return 65+t;if(t<52)return t-26+97;if(t<62)return t-52+48;if(62==t)return 43;if(63==t)return 47}throw"n:"+t};return o.writeByte=function(n){for(t=t<<8|255&n,r+=8,e+=1;r>=6;)i(t>>>r-6),r-=6},o.flush=function(){if(r>0&&(i(t<<6-r),t=0,r=0),e%3!=0)for(var o=3-e%3,a=0;a<o;a+=1)n+="="},o.toString=function(){return n},o}(),f=a.toByteArray(),c=0;c<f.length;c+=1)u.writeByte(f[c]);return u.flush(),"data:image/gif;base64,"+u};return t}();qrcode.stringToBytesFuncs["UTF-8"]=function(t){return function(t){for(var r=[],e=0;e<t.length;e++){var n=t.charCodeAt(e);n<128?r.push(n):n<2048?r.push(192|n>>6,128|63&n):n<55296||n>=57344?r.push(224|n>>12,128|n>>6&63,128|63&n):(e++,n=65536+((1023&n)<<10|1023&t.charCodeAt(e)),r.push(240|n>>18,128|n>>12&63,128|n>>6&63,128|63&n))}return r}(t)},function(t){"function"==typeof define&&define.amd?define([],t):"object"==typeof exports&&(module.exports=t())}(function(){return qrcode});
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" crossorigin="anonymous"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "ツール", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "QRコードを作成（URL・Wi-Fi）", "item": "https://pdfmikata.com/qr-code-maker.html"}]}</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PDFのミカタ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="QRコードを作成（URL・Wi-Fi・無料・PNG/SVG/PDF）｜PDFのミカタ">
+<meta property="og:description" content="URLや文字、Wi-Fiの情報から、QRコードを作れる無料ツール。PNG・SVG・PDFで保存できます。入力した内容は端末の外に送信されません。">
+<meta property="og:url" content="https://pdfmikata.com/qr-code-maker.html">
+<meta property="og:image" content="https://pdfmikata.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="QRコードを作成（URL・Wi-Fi・無料・PNG/SVG/PDF）｜PDFのミカタ">
+<meta name="twitter:description" content="URLや文字、Wi-Fiの情報から、QRコードを作れる無料ツール。PNG・SVG・PDFで保存できます。入力した内容は端末の外に送信されません。">
+<meta name="twitter:image" content="https://pdfmikata.com/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#16393c">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "QRコードを作成（URL・Wi-Fi）", "alternateName": "Create a QR Code (URL, Wi-Fi)", "url": "https://pdfmikata.com/qr-code-maker.html", "description": "URLや文字、Wi-Fiの情報から、QRコードを作れる無料ツール。PNG・SVG・PDFで保存できます。入力した内容は端末の外に送信されません。", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": ["ja", "en"], "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>PDFのミカタ</span></a><div class="lang" role="group" aria-label="言語を切り替え / Switch language"><svg class="gl" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><button type="button" data-l="ja" title="日本語で表示">日本語</button><button type="button" data-l="en" title="Show in English">English</button></div></div></header>
+<nav class="sub" aria-label="サイト内ナビゲーション / Site navigation"><div class="sub-in"><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a><a href="/#cat-convert"><span lang="ja">変換</span><span lang="en">Convert</span></a><a href="/#cat-edit"><span lang="ja">編集</span><span lang="en">Edit</span></a><a href="/#cat-optimize"><span lang="ja">最適化</span><span lang="en">Optimize</span></a><a href="/#cat-create" aria-current="page"><span lang="ja">作成</span><span lang="en">Create</span></a><a href="/#guide"><span lang="ja">解説</span><span lang="en">Guides</span></a></div></nav>
+<nav class="crumb" aria-label="パンくず / Breadcrumb"><ol><li><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a></li><li><a href="/#tools"><span lang="ja">ツール</span><span lang="en">Tools</span></a></li><li><span aria-current="page"><span lang="ja">QRコードを作成（URL・Wi-Fi）</span><span lang="en">Create a QR Code (URL, Wi-Fi)</span></span></li></ol></nav>
+<main>
+<h1><span lang="ja">QRコードを作る</span><span lang="en">Create a QR Code</span></h1>
+<p class="lead"><span lang="ja">URLやWi-Fiを入れて、QRコードに。PNG・SVG・PDFで保存。</span><span lang="en">Turn a URL or Wi-Fi details into a QR code. Save as PNG, SVG or PDF.</span></p>
+<p class="safe"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><span lang="ja"><b>入力した内容は、外に送信されません。</b>QRコードは、この端末の中だけで作ります。</span><span lang="en"><b>What you type is never uploaded.</b> The QR code is made on this device.</span></span></p>
+<style>
+.fld{margin:14px 0}.fld>.l{display:block;font-weight:700;font-size:.92rem;margin-bottom:6px}
+.fld input[type=text],.fld select,.fld textarea{width:100%;min-height:46px;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;font-size:1rem;background:var(--paper);color:var(--ink)}
+.fld textarea{padding:10px 12px;min-height:96px;line-height:1.6;resize:vertical}
+.fld small{display:block;color:var(--sub);margin-top:4px;font-size:.82rem}
+.fld .chk{display:flex;align-items:center;gap:10px;min-height:46px;cursor:pointer;font-size:.98rem}
+.fld .chk input{width:22px;height:22px;flex:none;margin:0;accent-color:var(--stamp)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.two{grid-template-columns:1fr}}
+.hd{font-size:1.1rem;margin:30px 0 4px;padding-left:10px;border-left:6px solid var(--stamp)}
+</style>
+<section class="set" id="set" style="margin-top:14px">
+<div class="row"><span><span lang="ja">何を入れますか</span><span lang="en">What to encode</span></span>
+<label><input type="radio" name="kind" value="text" checked><span lang="ja">URL・文字</span><span lang="en">URL / text</span></label>
+<label><input type="radio" name="kind" value="wifi"><span lang="ja">Wi-Fi</span><span lang="en">Wi-Fi</span></label></div>
+<div id="kt">
+<div class="fld"><label class="l" for="txt"><span lang="ja">URLまたは文字</span><span lang="en">URL or text</span></label><textarea id="txt" placeholder="https://pdfmikata.com" autocomplete="off" spellcheck="false"></textarea>
+<small><span lang="ja">「example.com」のように、https:// がないURLは、自動で付けます。</span><span lang="en">If a URL has no https://, such as "example.com", it is added automatically.</span></small></div>
+</div>
+<div id="kw" hidden>
+<div class="fld"><label class="l" for="ssid"><span lang="ja">Wi-Fiの名前（SSID）</span><span lang="en">Wi-Fi name (SSID)</span></label><input type="text" id="ssid" autocomplete="off"></div>
+<div class="fld"><label class="l" for="pw"><span lang="ja">パスワード</span><span lang="en">Password</span></label><input type="text" id="pw" autocomplete="off"></div>
+<div class="two"><div class="fld"><label class="l" for="sec"><span lang="ja">暗号化の種類</span><span lang="en">Security</span></label><select id="sec"><option value="WPA">WPA / WPA2 / WPA3</option><option value="WEP">WEP</option><option value="nopass">なし / None</option></select></div>
+<div class="fld"><span class="l"><span lang="ja">ステルス（非公開）</span><span lang="en">Hidden network</span></span><label class="chk"><input type="checkbox" id="hid"><span lang="ja">非公開のWi-Fi</span><span lang="en">Hidden Wi-Fi</span></label></div></div>
+</div>
+<h2 class="hd"><span lang="ja">見た目・設定</span><span lang="en">Look and settings</span></h2>
+<div class="two"><div class="fld"><label class="l" for="clr"><span lang="ja">色</span><span lang="en">Color</span></label><select id="clr"><option value="#000000">黒 / Black</option><option value="#1d3557">紺 / Navy</option><option value="#1f6f6b">ティール / Teal</option><option value="#7a1f1f">えんじ / Maroon</option></select></div>
+<div class="fld"><label class="l" for="sz"><span lang="ja">画像の大きさ</span><span lang="en">Image size</span></label><select id="sz"><option value="600">小（600px）</option><option value="1000" selected>中（1000px）</option><option value="2000">大（2000px）</option></select></div></div>
+<div class="fld"><label class="l" for="ec"><span lang="ja">読み取りの強さ（誤り訂正）</span><span lang="en">Error correction</span></label><select id="ec"><option value="L">弱（L）：模様が細かくならない</option><option value="M" selected>ふつう（M）：おすすめ</option><option value="Q">強（Q）</option><option value="H">いちばん強（H）：汚れに強いが、細かい</option></select></div>
+<div class="fld"><label class="l" for="cap"><span lang="ja">QRの下に入れる文字（任意）</span><span lang="en">Caption under the QR (optional)</span></label><input type="text" id="cap" autocomplete="off" placeholder="例：公式サイトはこちら"><small><span lang="ja">PNGとPDFに入ります。SVGには入りません。</span><span lang="en">Included in PNG and PDF, not in SVG.</span></small></div>
+<button id="go" type="button"></button>
+</section>
+
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="ja">完成</span><span lang="en">Done</span></div>
+<p id="info"></p>
+<a id="dl" href="#"></a>
+<div id="extra"></div>
+<p id="msg" aria-live="polite"></p>
+<div class="support" id="support" hidden><p><span lang="ja">PDFのミカタが役に立ったら、応援してもらえるとうれしいです。</span><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a id="supl" href="#" target="_blank" rel="noopener"><span lang="ja">応援する（300円）</span><span lang="en">Send a tip (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" target="_blank" rel="noopener noreferrer nofollow"><span lang="ja">ほしい物リストで応援</span><span lang="en">Send a gift (Amazon wishlist)</span></a></div>
+</section>
+<section class="guide" id="how">
+<div lang="ja"><h2>使い方</h2>
+<ol>
+<li>「URL・文字」か「Wi-Fi」を選びます。</li>
+<li>URLや文字を入れます。Wi-Fiの場合は、名前（SSID）とパスワードを入れます。</li>
+<li>色、画像の大きさ、読み取りの強さを選びます。迷ったら、そのままで大丈夫です。</li>
+<li>「QRコードを作る」を押し、PNG・SVG・PDFのどれかで保存します。</li>
+<li>使う前に、スマホのカメラで読み取って、確認します。</li>
+</ol>
+<h2>注意</h2>
+<ul>
+<li>URLの打ち間違いに、気をつけてください。作る前に、そのURLを開いて確認しましょう。</li>
+<li>文字が多いと、模様が細かくなって、読み取りにくくなります。</li>
+<li>印刷するときは、周りの白い余白を、切り取らないでください。</li>
+</ul>
+<h2>よくある質問</h2>
+<details><summary>入力した内容は外部に送信されますか？</summary><p>いいえ。QRコードは、お使いの端末のブラウザの中だけで作ります。</p></details>
+<details><summary>有効期限はありますか？</summary><p>ありません。ここで作るQRコードは、入力した内容そのものを模様にしたものです。ただし、リンク先のページがなくなると、開けなくなります。</p></details>
+<details><summary>色を変えても読み取れますか？</summary><p>背景が白で、模様が濃い色なら、読み取れます。薄い色にすると、読み取りにくくなります。</p></details></div>
+<div lang="en"><h2>How to use</h2>
+<ol>
+<li>Choose "URL / text" or "Wi-Fi".</li>
+<li>Enter the URL or text. For Wi-Fi, enter the name (SSID) and password.</li>
+<li>Choose color, image size and error correction. If unsure, leave the defaults.</li>
+<li>Tap "Create QR code" and save as PNG, SVG or PDF.</li>
+<li>Before using it, scan it with a phone camera to check.</li>
+</ol>
+<h2>Notes</h2>
+<ul>
+<li>Watch for typos in the URL. Open the URL first to check it.</li>
+<li>Long text makes the pattern dense and harder to scan.</li>
+<li>When printing, do not trim the white margin around it.</li>
+</ul>
+<h2>FAQ</h2>
+<details><summary>Is what I type uploaded anywhere?</summary><p>No. The QR code is made only inside the browser on your device.</p></details>
+<details><summary>Does it expire?</summary><p>No. The QR code you make here is simply a pattern of what you typed. But if the linked page disappears, it will no longer open.</p></details>
+<details><summary>Can I change the color and still scan it?</summary><p>Yes, if the background is white and the pattern is dark. A light color makes it hard to scan.</p></details></div>
+</section>
+<div class="support endtip"><p><span lang="ja">PDFのミカタが役に立ったら、応援してもらえるとうれしいです。</span><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" target="_blank" rel="noopener"><span lang="ja">応援する（300円）</span><span lang="en">Send a tip (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" target="_blank" rel="noopener noreferrer nofollow"><span lang="ja">ほしい物リストで応援</span><span lang="en">Send a gift (Amazon wishlist)</span></a></div>
+<section class="more rel"><h2><span lang="ja">このツールの解説</span><span lang="en">Guides for this tool</span></h2><a href="/qr-code-maker-howto.html"><span lang="ja">QRコードを無料で作る方法（URL・スマホでもOK）</span><span lang="en">How to Make a QR Code for Free (URL, Works on a Phone)</span></a><a href="/qr-wifi-share.html"><span lang="ja">Wi-FiのQRコードの作り方：パスワードを打たずに接続してもらう</span><span lang="en">Making a Wi-Fi QR Code So Guests Can Connect Without Typing</span></a><a href="/qr-print-size-tips.html"><span lang="ja">QRコードを印刷するときのサイズ・余白・色のコツ</span><span lang="en">Tips on Size, Margin and Color When Printing a QR Code</span></a><a href="/qr-flyer-namecard.html"><span lang="ja">QRコードをチラシ・名刺・ポスターに入れる方法</span><span lang="en">How to Put a QR Code on a Flyer, Business Card or Poster</span></a><a href="/qr-not-scanning.html"><span lang="ja">QRコードが読み取れないときの原因と対処法</span><span lang="en">Why a QR Code Won't Scan and What to Do</span></a><a href="/qr-safety-phishing.html"><span lang="ja">QRコードを安全に使うために：偽のQRコードと、作る側の注意</span><span lang="en">Using QR Codes Safely: Fake Codes and Cautions for Creators</span></a><a href="/qr-png-svg-pdf.html"><span lang="ja">QRコードはPNG・SVG・PDFのどれで保存する？使い分けのコツ</span><span lang="en">PNG, SVG or PDF: Which Format Should You Save a QR Code In?</span></a></section>
+<section class="more"><h2><span lang="ja">ほかのツール</span><span lang="en">More tools</span></h2><a href="/photo-to-pdf.html"><span lang="ja">写真をPDFに変換</span><span lang="en">Photos to PDF</span><small><span lang="ja">複数の写真を、順番どおりに1つのPDFへ。回転、並べ替え、サイズ指定ができます。</span><span lang="en">Combine several photos into one PDF in the order you choose. You can rotate, reorder and set a size limit.</span></small></a><a href="/merge-pdf.html"><span lang="ja">PDFを結合</span><span lang="en">Merge PDFs</span><small><span lang="ja">複数のPDFを、順番を決めて1つのPDFにまとめます。</span><span lang="en">Combine several PDF files into one, in the order you choose.</span></small></a><a href="/split-pdf.html"><span lang="ja">PDFのページを抜き出し・削除</span><span lang="en">Extract or Delete PDF Pages</span><small><span lang="ja">PDFから、必要なページだけを残す、または不要なページを消します。</span><span lang="en">Keep only the pages you need, or remove the pages you don't.</span></small></a><a href="/compress-pdf.html"><span lang="ja">PDFを圧縮</span><span lang="en">Compress PDF</span><small><span lang="ja">PDFを、指定したサイズ以下に小さくします。提出先の容量制限に合わせたいときに。</span><span lang="en">Shrink a PDF to fit under a size you choose, for upload limits.</span></small></a><a href="/pdf-to-image.html"><span lang="ja">PDFを画像に変換</span><span lang="en">PDF to Images</span><small><span lang="ja">PDFの各ページを、JPEGまたはPNGの画像として保存します。</span><span lang="en">Save each page of a PDF as a JPEG or PNG image.</span></small></a><a href="/image-convert.html"><span lang="ja">画像の形式を変換（JPG・PNG・WebP）</span><span lang="en">Convert Image Format (JPG, PNG, WebP)</span><small><span lang="ja">画像をJPG・PNG・WebPに、まとめて変換します。</span><span lang="en">Convert images to JPG, PNG or WebP, several at once.</span></small></a><a href="/pdf-rotate.html"><span lang="ja">PDFのページを回転・並べ替え</span><span lang="en">Rotate & Reorder PDF Pages</span><small><span lang="ja">向きが違うページを直す、ページの順番を入れ替える、いらないページを消す。</span><span lang="en">Fix sideways pages, change the page order, or remove pages.</span></small></a><a href="/pdf-page-numbers.html"><span lang="ja">PDFにページ番号を追加</span><span lang="en">Add Page Numbers to PDF</span><small><span lang="ja">PDFの各ページに、ページ番号を入れます。位置や形式を選べます。</span><span lang="en">Add page numbers to a PDF, choosing position and style.</span></small></a><a href="/image-compress.html"><span lang="ja">画像を圧縮・サイズ変更</span><span lang="en">Compress & Resize Images</span><small><span lang="ja">画像のファイルサイズを小さくします。大きさの変更もできます。</span><span lang="en">Make image files smaller, and resize them if you like.</span></small></a><a href="/heic-to-jpg.html"><span lang="ja">HEIC画像をJPGに変換</span><span lang="en">Convert HEIC to JPG</span><small><span lang="ja">iPhoneで撮ったHEIC画像を、JPGやPNGに変換します。</span><span lang="en">Convert HEIC photos from iPhone to JPG or PNG.</span></small></a><a href="/pdf-split.html"><span lang="ja">PDFを分割</span><span lang="en">Split PDF</span><small><span lang="ja">PDFを、1ページずつ、Nページごと、または範囲を決めて、複数のPDFに分けます。</span><span lang="en">Split a PDF into several files: one page each, every N pages, or by ranges.</span></small></a><a href="/image-crop.html"><span lang="ja">画像の切り抜き・回転</span><span lang="en">Crop & Rotate Image</span><small><span lang="ja">画像を、好きな範囲や比率で切り抜きます。回転もできます。</span><span lang="en">Crop an image to any area or ratio, and rotate it.</span></small></a><a href="/pdf-to-text.html"><span lang="ja">PDFから文字を抜き出す</span><span lang="en">Extract Text from PDF</span><small><span lang="ja">PDFの文字を取り出して、コピーまたは保存できます。</span><span lang="en">Pull the text out of a PDF to copy or save.</span></small></a><a href="/receipt-maker.html"><span lang="ja">領収書をPDFで作成</span><span lang="en">Create a Receipt PDF</span><small><span lang="ja">宛名・金額・但し書きを入れて、領収書をPDFで作ります。消費税の内訳やインボイス登録番号も入れられます。</span><span lang="en">Fill in the payer, amount and description to make a receipt PDF. Tax breakdown and invoice registration number are optional.</span></small></a><a href="/resume-maker.html"><span lang="ja">履歴書をPDFで作成</span><span lang="en">Create a Resume PDF (Japanese Rirekisho)</span><small><span lang="ja">氏名・学歴・職歴・志望動機などを入れて、履歴書をPDFで作ります。証明写真も入れられます。</span><span lang="en">Fill in your details, education, work history and motivation to make a Japanese-style resume (rirekisho) PDF, with an optional ID photo.</span></small></a><a href="/timetable-maker.html"><span lang="ja">時間割・週間スケジュール表を作成</span><span lang="en">Create a Timetable / Weekly Schedule</span><small><span lang="ja">授業やバイト、予定を入れて、時間割や週間スケジュール表をPDF・画像で作ります。色分けもできます。</span><span lang="en">Enter classes, jobs and plans to make a timetable or weekly schedule as a PDF or image, with color coding.</span></small></a><a href="/namecard-maker.html"><span lang="ja">名刺・ネームカードを作成</span><span lang="en">Create Business Cards / Name Cards</span><small><span lang="ja">名前や所属を入れて、名刺やネームカードをA4に並べたPDFで作ります。名簿から名札をまとめて作ることもできます。</span><span lang="en">Enter your name and details to make business or name cards laid out on A4 as a PDF. You can also make name tags in bulk from a list.</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" target="_blank" rel="noopener noreferrer"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const t=(a,b)=>EN()?b:a;
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=t("保存できませんでした。もう一度お試しください。","Could not save. Please try again.")}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return t("パスワード付きのPDFは扱えません。パスワードを外してからお試しください。","Password-protected PDFs are not supported. Remove the password and try again.");
+  return t("PDFを読み込めませんでした。壊れているか、対応していない形式の可能性があります。","Could not read the PDF. It may be damaged or in an unsupported format.");
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  const out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+$("go").textContent=t("QRコードを作る","Create QR code");
+function onKind(){const w=val("kind")==="wifi";$("kt").hidden=w;$("kw").hidden=!w}
+document.querySelectorAll('input[name=kind]').forEach(r=>r.onchange=onKind);
+qrcode.stringToBytes=qrcode.stringToBytesFuncs["UTF-8"];
+const esc=s=>s.replace(/([\x5c;,:"])/g,"\x5c$1");
+function payload(){
+  const bad=m=>{const e=new Error(m);e.user=true;throw e};
+  if(val("kind")==="wifi"){
+    const ssid=$("ssid").value;
+    if(!ssid.trim())bad(t("Wi-Fiの名前（SSID）を入れてください。","Please enter the Wi-Fi name (SSID)."));
+    const sec=$("sec").value;
+    return "WIFI:T:"+(sec==="nopass"?"nopass":sec)+";S:"+esc(ssid)+";"+(sec==="nopass"?"":"P:"+esc($("pw").value)+";")+($("hid").checked?"H:true;":"")+";";
+  }
+  let v=$("txt").value.trim();
+  if(!v)bad(t("URLまたは文字を入れてください。","Please enter a URL or text."));
+  let added=false;
+  if(!/\s/.test(v)&&!/^[a-z][a-z0-9+.-]*:/i.test(v)&&/^[^\s\/]+\.[a-z]{2,}(\/|\?|#|:|$)/i.test(v)){v="https://"+v;added=true}
+  return {v,added};
+}
+function makeQr(data,ec){
+  const q=qrcode(0,ec);q.addData(data,"Byte");q.make();return q;
+}
+function toCanvas(q,size,fg,cap){
+  const n=q.getModuleCount(),tot=n+8,cell=Math.max(2,Math.floor(size/tot)),qs=cell*tot;
+  const capH=cap?Math.round(qs*0.16):0;
+  const c=document.createElement("canvas");c.width=qs;c.height=qs+capH;const x=c.getContext("2d");
+  x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.fillStyle=fg;
+  for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(q.isDark(r,k))x.fillRect((k+4)*cell,(r+4)*cell,cell,cell);
+  if(cap){
+    const ff='"Hiragino Sans","Noto Sans JP","Noto Sans CJK JP","Yu Gothic","Meiryo",sans-serif';
+    let s=Math.round(qs*0.06);x.font="700 "+s+"px "+ff;
+    while(x.measureText(cap).width>qs*0.9&&s>10){s-=2;x.font="700 "+s+"px "+ff}
+    x.fillStyle="#111";x.textAlign="center";x.textBaseline="middle";x.fillText(cap,qs/2,qs+capH*0.42);
+  }
+  return c;
+}
+function toSvg(q,fg){
+  const n=q.getModuleCount(),tot=n+8;let d="";
+  for(let r=0;r<n;r++){let k=0;while(k<n){if(q.isDark(r,k)){let e=k;while(e<n&&q.isDark(r,e))e++;d+="M"+(k+4)+" "+(r+4)+"h"+(e-k)+"v1h-"+(e-k)+"z";k=e}else k++}}
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+tot+' '+tot+'" width="'+tot*10+'" height="'+tot*10+'" shape-rendering="crispEdges"><rect width="'+tot+'" height="'+tot+'" fill="#fff"/><path fill="'+fg+'" d="'+d+'"/></svg>';
+}
+$("go").onclick=async()=>{
+  const go=$("go");go.disabled=true;beginRun();
+  try{
+    const p=payload();const data=typeof p==="string"?p:p.v;
+    const ec=$("ec").value,fg=$("clr").value,size=+$("sz").value,cap=$("cap").value.trim();
+    let q;
+    try{q=makeQr(data,ec)}catch(e){const er=new Error(t("文字が多すぎて、QRコードにできません。短くするか、読み取りの強さを下げてください。","Too much text for a QR code. Shorten it or lower the error correction."));er.user=true;throw er}
+    $("barf").style.width="40%";
+    const c=toCanvas(q,size,fg,cap);
+    const pb=await new Promise(r=>c.toBlob(r,"image/png"));
+    if(!pb)throw new Error(t("画像を作れませんでした。","Could not create the image."));
+    const sb=new Blob([toSvg(q,fg)],{type:"image/svg+xml"});
+    $("barf").style.width="70%";
+    const pdf=await PDFLib.PDFDocument.create();pdf.setTitle("QRコード");pdf.setCreator("PDFのミカタ");
+    const im=await pdf.embedPng(new Uint8Array(await pb.arrayBuffer()));
+    const pg=pdf.addPage([595.28,841.89]);const w=340,h=w*c.height/c.width;
+    pg.drawImage(im,{x:(595.28-w)/2,y:(841.89-h)/2,width:w,height:h});
+    const blob=new Blob([await pdf.save()],{type:"application/pdf"});
+    const ex=$("extra");ex.textContent="";
+    const pv=document.createElement("img");pv.src=URL.createObjectURL(pb);pv.alt=t("QRコードのプレビュー","QR code preview");
+    pv.style.cssText="width:260px;max-width:70%;image-rendering:pixelated;border:1px solid var(--line);background:#fff;margin-top:10px";ex.appendChild(pv);
+    const row=document.createElement("div");row.className="btnrow";row.style.justifyContent="center";
+    const b1=document.createElement("button");b1.type="button";b1.className="btn2";b1.textContent=t("PNG画像で保存","Save PNG");b1.onclick=async()=>{try{await save(pb,"qrcode.png","image/png")}catch(e){}};
+    const b2=document.createElement("button");b2.type="button";b2.className="btn2";b2.textContent=t("SVGで保存（拡大しても綺麗）","Save SVG (scales cleanly)");b2.onclick=async()=>{try{await save(sb,"qrcode.svg","image/svg+xml")}catch(e){}};
+    row.appendChild(b1);row.appendChild(b2);ex.appendChild(row);
+    const dl=$("dl");dl.href="#";dl.textContent=t("PDFを保存する","Save PDF");dl.style.display="inline-block";wire(dl,blob,"qrcode.pdf","application/pdf");
+    $("barf").style.width="100%";
+    $("info").textContent=data.length>60?data.slice(0,60)+"…":data;
+    $("msg").textContent=(p.added?t("https:// を付けました。","Added https://. "):"")+t("使う前に、スマホのカメラで読み取って、正しく開くか確認してください。","Before using it, scan it with a phone camera and check that it opens correctly.")+(data.length>300?t(" 文字が多いので、模様が細かくなっています。","  The text is long, so the pattern is dense."):"");
+    finishOk();
+  }catch(e){console.error(e);$("msg").className="bad";$("msg").textContent=e.user?e.message:t("作成できませんでした。もう一度お試しください。","Could not create the QR code. Please try again.")}
+  finally{endRun();go.disabled=false}
+};
+
+</script>
+</body>
+</html>
