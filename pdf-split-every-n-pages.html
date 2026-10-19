@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PDFをNページごとに分割する方法（例：2ページずつ）｜PDFのミカタ</title>
+<meta name="title-en" content="How to Split a PDF Every N Pages (e.g. Two at a Time)｜PDF Mikata">
+<meta name="desc-en" content="How to split a PDF into chunks of a fixed number of pages, such as 2 or 5, and when to use it.">
+<script src="/site.js"></script>
+<link rel="canonical" href="https://pdfmikata.com/pdf-split-every-n-pages.html">
+<meta name="description" content="PDFを、2ページずつ・5ページずつなど、一定のページ数ごとに分ける手順と、使いどころを解説します。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap">
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.9}
+main{max-width:680px;margin:0 auto;padding:30px 18px 24px}
+.back{display:inline-block;margin-bottom:16px;font-size:.9rem;color:var(--sub)}
+h1{font-size:1.7rem;line-height:1.4;margin:0 0 14px}
+h2{font-size:1.2rem;margin:34px 0 8px;border-top:2px solid var(--ink);padding-top:12px}
+h3{font-size:1.02rem;margin:20px 0 4px}
+p{margin:0 0 12px}li{margin-bottom:4px}
+a{color:var(--ink)}
+.note{background:var(--paper);border:1px solid var(--line);padding:12px 14px;font-size:.92rem;margin:16px 0}
+.cta{display:block;text-align:center;background:var(--stamp);color:var(--btn-ink);text-decoration:none;font-weight:700;border-radius:6px;padding:16px;margin:26px 0}
+.cta:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+
+:root{--head:#16393c;padding-top:0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--head:#0a2427}}
+:root[data-theme="dark"]{--head:#0a2427}
+.top{background:var(--head);border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h2{border-top:0;padding:0 0 0 10px;border-left:6px solid var(--stamp)}
+h3::before{content:"";display:inline-block;width:10px;height:10px;background:var(--stamp);margin-right:8px;border-radius:2px}
+main ol{list-style:none;counter-reset:s;padding:0}
+main ol li{counter-increment:s;position:relative;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 12px 12px 52px;margin-bottom:8px}
+main ol li::before{content:counter(s);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);font-weight:700;display:grid;place-items:center;font-size:.85rem}
+.points{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:12px 16px;margin:0 0 22px}
+.points b{display:block;margin-bottom:4px}.points ul{margin:0;padding-left:1.2em}
+.note{border-left:6px solid var(--stamp)}
+.check{list-style:none;padding:0}.check li{position:relative;padding-left:2em}
+.check li::before{content:"";position:absolute;left:0;top:.5em;width:1.05em;height:1.05em;border:2px solid var(--ink);border-radius:3px}
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:.92rem;margin:10px 0}
+th,td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}
+th{background:var(--head);color:#fcfefd}
+.bars{background:var(--paper);border:1px solid var(--line);padding:14px;margin:16px 0}
+.bars div{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:.9rem}
+.bars span{flex:0 0 3.6em}.bars i{display:block;height:16px;background:var(--stamp);border-radius:3px}
+.tip{margin:26px 0 0;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);font-size:.92rem}.tip p{margin:0 0 8px}.tip a{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink)}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none;margin-left:auto}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "解説", "item": "https://pdfmikata.com/guides.html"}, {"@type": "ListItem", "position": 3, "name": "PDFをNページごとに分割する方法（例：2ページずつ）", "item": "https://pdfmikata.com/pdf-split-every-n-pages.html"}]}</script>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>PDFのミカタ</span></a><div class="lang" role="group" aria-label="言語を切り替え / Switch language"><svg class="gl" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><button type="button" data-l="ja" title="日本語で表示">日本語</button><button type="button" data-l="en" title="Show in English">English</button></div></div></header>
+<nav class="sub" aria-label="サイト内ナビゲーション / Site navigation"><div class="sub-in"><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a><a href="/#cat-convert"><span lang="ja">変換</span><span lang="en">Convert</span></a><a href="/#cat-edit"><span lang="ja">編集</span><span lang="en">Edit</span></a><a href="/#cat-optimize"><span lang="ja">最適化</span><span lang="en">Optimize</span></a><a href="/#guide" aria-current="page"><span lang="ja">解説</span><span lang="en">Guides</span></a></div></nav>
+<nav class="crumb" aria-label="パンくず / Breadcrumb"><ol><li><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a></li><li><a href="/guides.html"><span lang="ja">解説</span><span lang="en">Guides</span></a></li><li><span aria-current="page"><span lang="ja">PDFをNページごとに分割する方法（例：2ページずつ）</span><span lang="en">How to Split a PDF Every N Pages (e.g. Two at a Time)</span></span></li></ol></nav>
+<main>
+<div lang="ja">
+<h1>PDFをNページごとに分割する方法（例：2ページずつ）</h1>
+<div class="points"><b>この記事のポイント</b><ul><li>Nには、1以上の数字を入れる</li><li>最後のファイルは、ページが余ることがある</li><li>両面スキャンや、同じ形式の書類の分割に便利</li></ul></div>
+<h2>手順</h2>
+<ol>
+<li>「PDFを分割」で、PDFを選びます。</li>
+<li>分け方で「Nページごと」を選び、Nに数字を入れます。</li>
+<li>「分割する」を押します。</li>
+</ol>
+<h2>例</h2>
+<p>10ページのPDFで、N=3 とすると、4つのPDFができます。</p>
+<ul>
+<li>1〜3ページ、4〜6ページ、7〜9ページ、10ページ</li>
+</ul>
+<p>最後のファイルは、ページが余った分だけになります。</p>
+<h2>使いどころ</h2>
+<ul>
+<li>両面スキャンで、1枚（2ページ）ごとに分けたい</li>
+<li>1通が3ページの書類を、まとめてスキャンして、通ごとに分けたい</li>
+<li>メールの容量制限のために、ページ数で、均等に分けたい</li>
+</ul>
+<h2>注意</h2>
+<p>書類ごとにページ数が違うときは、「範囲を指定」のほうが、正確に分けられます。</p>
+<a class="cta" href="/pdf-split.html">PDFを分割を使う（無料）</a>
+<div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" target="_blank" rel="noopener">応援する（300円）</a></div>
+<h2>同じツールの、ほかの解説</h2>
+<ul><li><a href="/pdf-split-howto.html">PDFを分割する方法（1ページずつ・範囲指定）</a></li><li><a href="/pdf-split-ranges-syntax.html">PDF分割の「範囲指定」の書き方（例：1-3, 4-5, 6-）</a></li><li><a href="/pdf-split-one-page-each.html">PDFを1ページずつのファイルに分ける方法</a></li><li><a href="/pdf-split-by-document.html">1つにスキャンした複数の書類を、書類ごとに分ける方法</a></li><li><a href="/pdf-split-email-size.html">容量の大きいPDFを、メールで送るために分割する方法</a></li><li><a href="/pdf-split-then-merge.html">PDFを分割して、必要な部分だけ組み直す方法</a></li></ul>
+<p><a href="/guides.html">解説の一覧を見る</a></p>
+</div>
+<div lang="en">
+<h1>How to Split a PDF Every N Pages (e.g. Two at a Time)</h1>
+<div class="points"><b>Key points</b><ul><li>Enter a number of 1 or more for N</li><li>The last file may have fewer pages</li><li>Handy for double-sided scans and same-format documents</li></ul></div>
+<h2>Steps</h2>
+<ol>
+<li>In "Split PDF", choose the PDF.</li>
+<li>Choose "Every N pages" and enter a number for N.</li>
+<li>Tap "Split".</li>
+</ol>
+<h2>Example</h2>
+<p>For a 10-page PDF with N=3, you get four PDFs.</p>
+<ul>
+<li>Pages 1–3, 4–6, 7–9, and 10</li>
+</ul>
+<p>The last file holds whatever pages remain.</p>
+<h2>When to use it</h2>
+<ul>
+<li>A double-sided scan you want split per sheet (two pages)</li>
+<li>Documents of three pages each, scanned together and separated per document</li>
+<li>Splitting evenly by page count because of an email size limit</li>
+</ul>
+<h2>Note</h2>
+<p>If documents have different page counts, "By ranges" splits more precisely.</p>
+<a class="cta" href="/pdf-split.html">Use "Split PDF" (free)</a>
+<div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" target="_blank" rel="noopener">Send a tip (¥300)</a></div>
+<h2>More guides for this tool</h2>
+<ul><li><a href="/pdf-split-howto.html">How to Split a PDF (One Page Each or by Ranges)</a></li><li><a href="/pdf-split-ranges-syntax.html">How to Write Ranges for Splitting a PDF (e.g. 1-3, 4-5, 6-)</a></li><li><a href="/pdf-split-one-page-each.html">How to Split a PDF into One File per Page</a></li><li><a href="/pdf-split-by-document.html">Separating Several Documents Scanned into One PDF</a></li><li><a href="/pdf-split-email-size.html">Splitting a Large PDF So It Can Be Sent by Email</a></li><li><a href="/pdf-split-then-merge.html">Splitting a PDF and Reassembling Only the Parts You Need</a></li></ul>
+<p><a href="/guides.html">See all guides</a></p>
+</div>
+</main>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a></footer>
+</body>
+</html>
