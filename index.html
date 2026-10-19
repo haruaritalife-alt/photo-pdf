@@ -76,6 +76,36 @@ html:not([data-lang="en"]) body [lang="en"]{display:none!important}
 .sub [lang="en"],.crumb [lang="en"]{display:none}
 html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
 html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+
+.tools{display:grid;gap:10px;grid-template-columns:repeat(2,1fr);margin:0 0 6px}
+a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0;padding:12px;border-width:1px;border-color:var(--line);box-shadow:0 3px 0 var(--line)}
+a.tool .ic{flex:none;width:44px;height:44px;border-radius:12px;background:var(--ink);color:var(--btn-ink);display:grid;place-items:center}
+a.tool .ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+a.tool .tx{min-width:0}
+a.tool .tx b{display:block;font-size:1rem;line-height:1.4}
+a.tool .tx span.d{display:block;color:var(--sub);font-size:.82rem;line-height:1.5;margin-top:2px;margin-bottom:0}
+a.tool .tx span.d [lang]{display:inline}
+html[lang="en"] a.tool .tx span.d [lang="ja"],html[data-lang="en"] a.tool .tx span.d [lang="ja"]{display:none}
+html:not([lang="en"]):not([data-lang="en"]) a.tool .tx span.d [lang="en"]{display:none}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+ a.tool{transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+ a.tool:hover,a.tool:focus-visible{transform:translateY(-3px);border-color:var(--stamp);box-shadow:0 7px 0 var(--line)}
+ ul.g a{transition:transform .15s ease,border-color .15s ease}
+ ul.g a:hover{transform:translateY(-2px);border-color:var(--stamp)}
+}
+a.tool:hover{border-color:var(--stamp)}
+@media (max-width:599px){
+ main{padding-top:22px}
+ h1{font-size:1.55rem}
+ .lead,main>p{font-size:.92rem}
+ .safe{padding:8px 12px;font-size:.85rem;margin:12px 0 16px}
+ h2{margin-top:24px}
+ ul.g a{padding:10px 12px;margin-bottom:6px}
+ ul.g a>span{display:none}
+ ul.g b{font-size:.95rem}
+}
+@media (min-width:600px){.tools{grid-template-columns:repeat(3,1fr)}ul.g{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}ul.g a{margin-bottom:0;height:100%}a.tool{padding:16px;gap:10px}}
+@media (min-width:900px){main{max-width:960px}.top-in,.sub-in,footer{max-width:960px}}
 </style>
 </head>
 <body>
@@ -87,7 +117,7 @@ html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang
 <div class="safe"><p style="margin:0"><span lang="ja">ファイルは、お使いの端末の中だけで処理します。写真や書類が、外部のサーバーに送られることはありません。</span><span lang="en">Your files are processed only inside your device. Your photos and documents are never sent to an outside server.</span></p></div>
 
 <h2 id="tools"><span lang="ja">ツール</span><span lang="en">Tools</span></h2>
-<a class="tool" href="/photo-to-pdf.html"><b><span lang="ja">写真をPDFに変換</span><span lang="en">Photos to PDF</span></b><span><span lang="ja">複数の写真を、順番どおりに1つのPDFへ。回転、並べ替え、サイズ指定ができます。</span><span lang="en">Combine several photos into one PDF in the order you choose. You can rotate, reorder and set a size limit.</span></span></a><a class="tool" href="/merge-pdf.html"><b><span lang="ja">PDFを結合</span><span lang="en">Merge PDFs</span></b><span><span lang="ja">複数のPDFを、順番を決めて1つのPDFにまとめます。</span><span lang="en">Combine several PDF files into one, in the order you choose.</span></span></a><a class="tool" href="/split-pdf.html"><b><span lang="ja">PDFのページを抜き出し・削除</span><span lang="en">Extract or Delete PDF Pages</span></b><span><span lang="ja">PDFから、必要なページだけを残す、または不要なページを消します。</span><span lang="en">Keep only the pages you need, or remove the pages you don't.</span></span></a><a class="tool" href="/compress-pdf.html"><b><span lang="ja">PDFを圧縮</span><span lang="en">Compress PDF</span></b><span><span lang="ja">PDFを、指定したサイズ以下に小さくします。提出先の容量制限に合わせたいときに。</span><span lang="en">Shrink a PDF to fit under a size you choose, for upload limits.</span></span></a><a class="tool" href="/pdf-to-image.html"><b><span lang="ja">PDFを画像に変換</span><span lang="en">PDF to Images</span></b><span><span lang="ja">PDFの各ページを、JPEGまたはPNGの画像として保存します。</span><span lang="en">Save each page of a PDF as a JPEG or PNG image.</span></span></a>
+<div class="tools"><a class="tool" href="/photo-to-pdf.html"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-5 4 4 3-3 4 4"/></svg></span><div class="tx"><b><span lang="ja">写真をPDFに変換</span><span lang="en">Photos to PDF</span></b><span class="d"><span lang="ja">写真を並べて、1つのPDFに。</span><span lang="en">Turn photos into one PDF.</span></span></div></a><a class="tool" href="/merge-pdf.html"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="10" height="13" rx="1.5"/><rect x="11" y="8" width="10" height="13" rx="1.5"/></svg></span><div class="tx"><b><span lang="ja">PDFを結合</span><span lang="en">Merge PDFs</span></b><span class="d"><span lang="ja">複数のPDFを、1つに。</span><span lang="en">Combine PDFs into one.</span></span></div></a><a class="tool" href="/split-pdf.html"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M9.5 13l5 5M14.5 13l-5 5"/></svg></span><div class="tx"><b><span lang="ja">PDFのページを抜き出し・削除</span><span lang="en">Extract or Delete PDF Pages</span></b><span class="d"><span lang="ja">必要なページだけ残す・消す。</span><span lang="en">Keep or remove pages.</span></span></div></a><a class="tool" href="/compress-pdf.html"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l6 6M10 5v5H5M20 4l-6 6M14 5v5h5M4 20l6-6M10 19v-5H5M20 20l-6-6M14 19v-5h5"/></svg></span><div class="tx"><b><span lang="ja">PDFを圧縮</span><span lang="en">Compress PDF</span></b><span class="d"><span lang="ja">容量の上限に合わせて小さく。</span><span lang="en">Shrink to fit a size limit.</span></span></div></a><a class="tool" href="/pdf-to-image.html"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h8l3 3v6"/><path d="M5 3v18h7"/><rect x="13" y="14" width="8" height="7" rx="1"/><path d="M14 20l2-2 2 1.5 2-2"/></svg></span><div class="tx"><b><span lang="ja">PDFを画像に変換</span><span lang="en">PDF to Images</span></b><span class="d"><span lang="ja">各ページをJPEG・PNGに。</span><span lang="en">Pages to JPEG or PNG.</span></span></div></a></div>
 <p class="roadmap"><span lang="ja">今後も、PDFまわりのツールを、少しずつ増やしていく予定です。</span><span lang="en">We plan to add more PDF tools little by little.</span></p>
 
 <h2 id="guide"><span lang="ja">くわしい解説</span><span lang="en">Guides</span></h2>
