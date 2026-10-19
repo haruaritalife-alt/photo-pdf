@@ -295,11 +295,24 @@ dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");add(e.dataTransfer.fi
 
 function load(u){return new Promise((res,rej)=>{const im=new Image();im.onload=()=>res(im);im.onerror=rej;im.src=u})}
 
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
 function wireDl(a,blob,name){
   a.onclick=async e=>{
-    if(!dlNs)return;e.preventDefault();
-    try{await dlNs.save({filename:name,data:blob})}
-    catch(err){if(!err||err.code!=="declined"){$("msg").className="bad";$("msg").textContent=s("errSave")}}
+    e.preventDefault();
+    if(dlNs){
+      try{await dlNs.save({filename:name,data:blob})}
+      catch(err){if(!err||err.code!=="declined"){$("msg").className="bad";$("msg").textContent=s("errSave")}}
+      return;
+    }
+    if(IOS){
+      try{
+        const f=new File([blob],name,{type:"application/pdf"});
+        if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+      }catch(err){if(err&&err.name==="AbortError")return}
+    }
+    const t=document.createElement("a");const u=URL.createObjectURL(blob);
+    t.href=u;t.download=name;t.style.display="none";document.body.appendChild(t);t.click();
+    setTimeout(()=>{URL.revokeObjectURL(u);t.remove()},5000);
   };
 }
 
