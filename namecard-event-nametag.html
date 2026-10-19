@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>イベントの名札・席札を、名簿からまとめて作る方法｜PDFのミカタ</title>
+<meta name="title-en" content="How to Make Event Name Tags in Bulk from a List｜PDF Mikata">
+<meta name="desc-en" content="How to make name tags for events, camps and club meetings in bulk from a list of names.">
+<script src="/site.js"></script>
+<link rel="canonical" href="https://pdfmikata.com/namecard-event-nametag.html">
+<meta name="description" content="イベントや合宿、サークルの集まりで使う名札を、名簿からまとめて作る方法を解説します。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap">
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.9}
+main{max-width:680px;margin:0 auto;padding:30px 18px 24px}
+.back{display:inline-block;margin-bottom:16px;font-size:.9rem;color:var(--sub)}
+h1{font-size:1.7rem;line-height:1.4;margin:0 0 14px}
+h2{font-size:1.2rem;margin:34px 0 8px;border-top:2px solid var(--ink);padding-top:12px}
+h3{font-size:1.02rem;margin:20px 0 4px}
+p{margin:0 0 12px}li{margin-bottom:4px}
+a{color:var(--ink)}
+.note{background:var(--paper);border:1px solid var(--line);padding:12px 14px;font-size:.92rem;margin:16px 0}
+.cta{display:block;text-align:center;background:var(--stamp);color:var(--btn-ink);text-decoration:none;font-weight:700;border-radius:6px;padding:16px;margin:26px 0}
+.cta:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+
+:root{--head:#16393c;padding-top:0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--head:#0a2427}}
+:root[data-theme="dark"]{--head:#0a2427}
+.top{background:var(--head);border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h2{border-top:0;padding:0 0 0 10px;border-left:6px solid var(--stamp)}
+h3::before{content:"";display:inline-block;width:10px;height:10px;background:var(--stamp);margin-right:8px;border-radius:2px}
+main ol{list-style:none;counter-reset:s;padding:0}
+main ol li{counter-increment:s;position:relative;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 12px 12px 52px;margin-bottom:8px}
+main ol li::before{content:counter(s);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);font-weight:700;display:grid;place-items:center;font-size:.85rem}
+.points{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:12px 16px;margin:0 0 22px}
+.points b{display:block;margin-bottom:4px}.points ul{margin:0;padding-left:1.2em}
+.note{border-left:6px solid var(--stamp)}
+.check{list-style:none;padding:0}.check li{position:relative;padding-left:2em}
+.check li::before{content:"";position:absolute;left:0;top:.5em;width:1.05em;height:1.05em;border:2px solid var(--ink);border-radius:3px}
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:.92rem;margin:10px 0}
+th,td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}
+th{background:var(--head);color:#fcfefd}
+.bars{background:var(--paper);border:1px solid var(--line);padding:14px;margin:16px 0}
+.bars div{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:.9rem}
+.bars span{flex:0 0 3.6em}.bars i{display:block;height:16px;background:var(--stamp);border-radius:3px}
+.tip{margin:26px 0 0;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);font-size:.92rem}.tip p{margin:0 0 8px}.tip a{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink)}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none;margin-left:auto}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+.meta{font-size:.85rem;color:var(--sub);margin:-4px 0 14px}.meta a{color:var(--sub)}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "解説", "item": "https://pdfmikata.com/guides.html"}, {"@type": "ListItem", "position": 3, "name": "イベントの名札・席札を、名簿からまとめて作る方法", "item": "https://pdfmikata.com/namecard-event-nametag.html"}]}</script>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PDFのミカタ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="イベントの名札・席札を、名簿からまとめて作る方法｜PDFのミカタ">
+<meta property="og:description" content="イベントや合宿、サークルの集まりで使う名札を、名簿からまとめて作る方法を解説します。">
+<meta property="og:url" content="https://pdfmikata.com/namecard-event-nametag.html">
+<meta property="og:image" content="https://pdfmikata.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="イベントの名札・席札を、名簿からまとめて作る方法｜PDFのミカタ">
+<meta name="twitter:description" content="イベントや合宿、サークルの集まりで使う名札を、名簿からまとめて作る方法を解説します。">
+<meta name="twitter:image" content="https://pdfmikata.com/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#16393c">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "イベントの名札・席札を、名簿からまとめて作る方法", "description": "イベントや合宿、サークルの集まりで使う名札を、名簿からまとめて作る方法を解説します。", "url": "https://pdfmikata.com/namecard-event-nametag.html", "mainEntityOfPage": "https://pdfmikata.com/namecard-event-nametag.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>PDFのミカタ</span></a><div class="lang" role="group" aria-label="言語を切り替え / Switch language"><svg class="gl" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><button type="button" data-l="ja" title="日本語で表示">日本語</button><button type="button" data-l="en" title="Show in English">English</button></div></div></header>
+<nav class="sub" aria-label="サイト内ナビゲーション / Site navigation"><div class="sub-in"><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a><a href="/#cat-convert"><span lang="ja">変換</span><span lang="en">Convert</span></a><a href="/#cat-edit"><span lang="ja">編集</span><span lang="en">Edit</span></a><a href="/#cat-optimize"><span lang="ja">最適化</span><span lang="en">Optimize</span></a><a href="/#cat-create"><span lang="ja">作成</span><span lang="en">Create</span></a><a href="/#guide" aria-current="page"><span lang="ja">解説</span><span lang="en">Guides</span></a></div></nav>
+<nav class="crumb" aria-label="パンくず / Breadcrumb"><ol><li><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a></li><li><a href="/guides.html"><span lang="ja">解説</span><span lang="en">Guides</span></a></li><li><span aria-current="page"><span lang="ja">イベントの名札・席札を、名簿からまとめて作る方法</span><span lang="en">How to Make Event Name Tags in Bulk from a List</span></span></li></ol></nav>
+<main>
+<div lang="ja">
+<h1>イベントの名札・席札を、名簿からまとめて作る方法</h1>
+<p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
+<div class="points"><b>この記事のポイント</b><ul><li>「名簿から作る」を選ぶ</li><li>1行に1人、「氏名,肩書き」の形で入れる</li><li>A4で印刷して、名札ホルダーに入れる</li></ul></div>
+<p>参加者が多いイベントでは、名札があると、お互いの名前を覚えやすくなります。</p>
+<h2>作る手順</h2>
+<ol>
+<li><a href="/namecard-maker.html">名刺・ネームカードを作成</a>を開きます。</li>
+<li>サイズは、「名札（100×70mm）」がおすすめです。文字が大きく入ります。</li>
+<li>「名簿から作る」を選びます。</li>
+<li>上に入れる文字に、イベント名や、サークル名を入れます。</li>
+<li>名簿の欄に、1行に1人ずつ、「氏名,肩書き」の形で入れます。</li>
+</ol>
+<p>> 山田 太郎,代表</p>
+<p>> 佐藤 花子,会計</p>
+<p>> 鈴木 一郎</p>
+<ol>
+<li>色、書体、飾りを選んで、「カードを作る」を押します。</li>
+</ol>
+<h2>枚数について</h2>
+<ul>
+<li>1ページに、名札サイズで8枚並びます。</li>
+<li>名簿は、60人までです。60人なら、8ページになります。</li>
+<li>最後のページは、余った枠が空白になります。</li>
+</ul>
+<h2>名前の書き方</h2>
+<ul>
+<li>同じ苗字の人がいるときは、下の名前も入れます。</li>
+<li>読みにくい名前には、「ふりがな」を使います（「同じカード」モードで、1枚ずつ作る場合）。</li>
+</ul>
+<h2>印刷と準備</h2>
+<ul>
+<li><b>名札ホルダー</b>に入れる場合は、ホルダーの大きさに合うかを、先に確認します。</li>
+<li>厚めの紙を使うと、折れにくくなります。</li>
+</ul>
+<h2>席札にも使える</h2>
+<p>折って、机に立てる席札にしたい場合は、中央そろえで作り、印刷したあとに、半分に折ります。</p>
+<h2>個人情報</h2>
+<p>名簿に載せるのは、<b>名札に出していい情報だけ</b>にします。名札は、人の目に触れるので、メールアドレスなどは、入れないほうが安全です。</p>
+<a class="cta" href="/namecard-maker.html">名刺・ネームカードを作成を使う（無料）</a>
+<h2>あわせて使えるツール</h2><ul><li><a href="/compress-pdf.html">PDFを圧縮</a>：PDFを、指定したサイズ以下に小さくします。提出先の容量制限に合わせたいときに。</li><li><a href="/image-crop.html">画像の切り抜き・回転</a>：画像を、好きな範囲や比率で切り抜きます。回転もできます。</li><li><a href="/merge-pdf.html">PDFを結合</a>：複数のPDFを、順番を決めて1つのPDFにまとめます。</li></ul>
+<div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" target="_blank" rel="noopener">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" target="_blank" rel="noopener noreferrer nofollow">ほしい物リストで応援</a></div>
+<h2>同じツールの、ほかの解説</h2>
+<ul><li><a href="/namecard-maker-howto.html">名刺・ネームカードを無料で作って印刷する方法（スマホでもOK）</a></li><li><a href="/namecard-size-print.html">名刺のサイズと、自宅・コンビニで印刷して切るコツ</a></li><li><a href="/namecard-student-circle.html">学生・サークルの名刺に書く内容と、載せすぎない注意点</a></li><li><a href="/namecard-design-tips.html">見やすい名刺デザインのコツ：文字の大きさ・色・余白</a></li><li><a href="/namecard-exchange-manners.html">名刺交換の基本マナー：学生でも知っておきたい6つのポイント</a></li><li><a href="/namecard-privacy-safety.html">名刺・名札の個人情報を守る：載せる情報と配る範囲</a></li></ul>
+<p><a href="/guides.html">解説の一覧を見る</a></p>
+</div>
+<div lang="en">
+<h1>How to Make Event Name Tags in Bulk from a List</h1>
+<p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
+<div class="points"><b>Key points</b><ul><li>Choose "From a list"</li><li>Enter one person per line as "name,title"</li><li>Print on A4 and put them in tag holders</li></ul></div>
+<p>At events with many participants, name tags help people remember each other's names.</p>
+<h2>Steps</h2>
+<ol>
+<li>Open <a href="/namecard-maker.html">Create Business Cards / Name Cards</a>.</li>
+<li>Choose the "Name tag (100×70 mm)" size. The text is larger.</li>
+<li>Choose "From a list".</li>
+<li>Enter the event or club name in the top text.</li>
+<li>In the list, enter one person per line as "name,title".</li>
+</ol>
+<p>> Taro Yamada,President</p>
+<p>> Hanako Sato,Treasurer</p>
+<p>> Ichiro Suzuki</p>
+<ol>
+<li>Choose color, typeface and accent, then tap "Create cards".</li>
+</ol>
+<h2>About the count</h2>
+<ul>
+<li>8 name tags fit on a page.</li>
+<li>The list can have up to 60 people, which is 8 pages.</li>
+<li>On the last page, leftover slots stay blank.</li>
+</ul>
+<h2>Writing names</h2>
+<ul>
+<li>If two people share a family name, include the given name too.</li>
+<li>For hard-to-read names, use the reading field (in "Same card" mode, one card at a time).</li>
+</ul>
+<h2>Printing and preparing</h2>
+<ul>
+<li>If you use <b>tag holders</b>, check that the size fits first.</li>
+<li>Thicker paper resists bending.</li>
+</ul>
+<h2>Also usable as place cards</h2>
+<p>To make a folded card that stands on a table, make it centered, print it and fold it in half.</p>
+<h2>Personal information</h2>
+<p>Put in the list <b>only what is fine to show on a tag</b>. Tags are seen by others, so it is safer not to include things like email addresses.</p>
+<a class="cta" href="/namecard-maker.html">Use "Create Business Cards / Name Cards" (free)</a>
+<h2>Tools that go well with this</h2><ul><li><a href="/compress-pdf.html">Compress PDF</a>: Shrink a PDF to fit under a size you choose, for upload limits.</li><li><a href="/image-crop.html">Crop & Rotate Image</a>: Crop an image to any area or ratio, and rotate it.</li><li><a href="/merge-pdf.html">Merge PDFs</a>: Combine several PDF files into one, in the order you choose.</li></ul>
+<div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" target="_blank" rel="noopener">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" target="_blank" rel="noopener noreferrer nofollow">Send a gift (Amazon wishlist)</a></div>
+<h2>More guides for this tool</h2>
+<ul><li><a href="/namecard-maker-howto.html">How to Make and Print Business Cards for Free (Works on a Phone)</a></li><li><a href="/namecard-size-print.html">Business Card Size and Tips for Printing and Cutting at Home or a Store</a></li><li><a href="/namecard-student-circle.html">What Students and Clubs Should Put on a Card, and What Not to Overshare</a></li><li><a href="/namecard-design-tips.html">Tips for a Readable Business Card: Text Size, Color and Space</a></li><li><a href="/namecard-exchange-manners.html">Basic Business Card Etiquette: Six Points Students Should Know</a></li><li><a href="/namecard-privacy-safety.html">Protecting Personal Data on Cards and Tags: What to Include and Who Gets Them</a></li></ul>
+<p><a href="/guides.html">See all guides</a></p>
+</div>
+</main>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" target="_blank" rel="noopener noreferrer"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a></footer>
+</body>
+</html>
