@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>領収書をPDFで作成（無料・登録不要）｜PDFのミカタ</title>
+<meta name="description" content="宛名・金額・但し書きを入れるだけで、領収書をPDFで作れる無料ツール。消費税の内訳やインボイス登録番号も入れられます。入力内容は端末の外に送信されません。">
+<meta name="title-en" content="Create a Receipt PDF (free, no sign-up)｜PDF Mikata">
+<meta name="desc-en" content="Free tool to make a receipt PDF by entering the payer, amount and description. Tax breakdown and invoice number optional. What you type never leaves your device.">
+<link rel="canonical" href="https://pdfmikata.com/receipt-maker.html">
+<script src="/site.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap">
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" crossorigin="anonymous"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "ツール", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "領収書をPDFで作成", "item": "https://pdfmikata.com/receipt-maker.html"}]}</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PDFのミカタ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="領収書をPDFで作成（無料・登録不要）｜PDFのミカタ">
+<meta property="og:description" content="宛名・金額・但し書きを入れるだけで、領収書をPDFで作れる無料ツール。消費税の内訳やインボイス登録番号も入れられます。入力内容は端末の外に送信されません。">
+<meta property="og:url" content="https://pdfmikata.com/receipt-maker.html">
+<meta property="og:image" content="https://pdfmikata.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="領収書をPDFで作成（無料・登録不要）｜PDFのミカタ">
+<meta name="twitter:description" content="宛名・金額・但し書きを入れるだけで、領収書をPDFで作れる無料ツール。消費税の内訳やインボイス登録番号も入れられます。入力内容は端末の外に送信されません。">
+<meta name="twitter:image" content="https://pdfmikata.com/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#16393c">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "領収書をPDFで作成", "alternateName": "Create a Receipt PDF", "url": "https://pdfmikata.com/receipt-maker.html", "description": "宛名・金額・但し書きを入れるだけで、領収書をPDFで作れる無料ツール。消費税の内訳やインボイス登録番号も入れられます。入力内容は端末の外に送信されません。", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": ["ja", "en"], "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>PDFのミカタ</span></a><div class="lang" role="group" aria-label="言語を切り替え / Switch language"><svg class="gl" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><button type="button" data-l="ja" title="日本語で表示">日本語</button><button type="button" data-l="en" title="Show in English">English</button></div></div></header>
+<nav class="sub" aria-label="サイト内ナビゲーション / Site navigation"><div class="sub-in"><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a><a href="/#cat-convert" aria-current="page"><span lang="ja">変換</span><span lang="en">Convert</span></a><a href="/#cat-edit"><span lang="ja">編集</span><span lang="en">Edit</span></a><a href="/#cat-optimize"><span lang="ja">最適化</span><span lang="en">Optimize</span></a><a href="/#guide"><span lang="ja">解説</span><span lang="en">Guides</span></a></div></nav>
+<nav class="crumb" aria-label="パンくず / Breadcrumb"><ol><li><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a></li><li><a href="/#tools"><span lang="ja">ツール</span><span lang="en">Tools</span></a></li><li><span aria-current="page"><span lang="ja">領収書をPDFで作成</span><span lang="en">Create a Receipt PDF</span></span></li></ol></nav>
+<main>
+<h1><span lang="ja">領収書をPDFで作る</span><span lang="en">Create a Receipt PDF</span></h1>
+<p class="lead"><span lang="ja">入力して、PDFで保存。メールにも印刷にも。</span><span lang="en">Fill in, save as PDF. Ready to email or print.</span></p>
+<p class="safe"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><span lang="ja"><b>入力した内容は外に送信されません。</b>すべて、この端末の中だけで処理します。</span><span lang="en"><b>What you type is never uploaded.</b> Everything is processed on this device.</span></span></p>
+<style>
+.fld{margin:14px 0}.fld>.l{display:block;font-weight:700;font-size:.92rem;margin-bottom:6px}
+.fld input[type=text],.fld input[type=date],.fld select{width:100%;min-height:46px;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;font-size:1rem;background:var(--paper);color:var(--ink)}
+.fld .two{display:flex;gap:8px}.fld .two input{flex:1;min-width:0}.fld .two select{flex:none;width:96px}
+.fld small{display:block;color:var(--sub);margin-top:4px;font-size:.82rem}
+.fld .chk{display:flex;align-items:center;gap:10px;min-height:46px;cursor:pointer;font-size:.98rem}
+.fld .chk input{width:22px;height:22px;flex:none;margin:0;accent-color:var(--stamp)}
+.opt{border:1px solid var(--line);border-radius:6px;padding:4px 14px 10px;margin:18px 0;background:var(--paper)}
+.opt summary{cursor:pointer;min-height:46px;display:flex;align-items:center;font-weight:700}
+.warn{border-left-color:#b3472b}
+</style>
+<p class="note2 warn"><span lang="ja"><b>実際に受け取ったお金についてだけ</b>、発行してください。事実と異なる領収書を作ったり、使ったりすると、法律に違反することがあります。</span><span lang="en"><b>Issue a receipt only for money you actually received.</b> Making or using a receipt that does not match the facts can be against the law.</span></p>
+<section class="set" id="set" style="margin-top:14px">
+<div class="fld"><label class="l" for="to"><span lang="ja">宛名（支払った人・会社）</span><span lang="en">Payer (person or company)</span></label>
+<div class="two"><input type="text" id="to" autocomplete="off" placeholder="例：山田 太郎"><select id="hon" aria-label="敬称"><option value="様">様</option><option value="御中">御中</option><option value="">なし</option></select></div>
+<small><span lang="ja">空欄のときは「上様」と入ります。</span><span lang="en">If left blank, it will say 上様 ("To whom it may concern").</span></small></div>
+<div class="fld"><label class="l" for="amt"><span lang="ja">金額（税込・円）</span><span lang="en">Amount (tax included, yen)</span></label><input type="text" id="amt" inputmode="numeric" autocomplete="off" placeholder="12000"></div>
+<div class="row"><span><span lang="ja">消費税の内訳</span><span lang="en">Consumption tax line</span></span>
+<label><input type="radio" name="tax" value="10" checked><span lang="ja">10%</span><span lang="en">10%</span></label>
+<label><input type="radio" name="tax" value="8"><span lang="ja">8%（軽減税率）</span><span lang="en">8% (reduced)</span></label>
+<label><input type="radio" name="tax" value="0"><span lang="ja">入れない</span><span lang="en">None</span></label></div>
+<div class="fld"><label class="l" for="memo"><span lang="ja">但し書き</span><span lang="en">Description</span></label><input type="text" id="memo" value="お品代として" autocomplete="off"><small><span lang="ja">例：お品代として／会費として／撮影料として</span><span lang="en">e.g. goods / membership fee / photography fee</span></small></div>
+<div class="fld"><label class="l" for="dt"><span lang="ja">発行日</span><span lang="en">Date</span></label><input type="date" id="dt"></div>
+<div class="fld"><label class="l" for="me"><span lang="ja">発行者（あなたの名前・屋号・団体名）</span><span lang="en">Issuer (your name, business or group)</span></label><input type="text" id="me" autocomplete="off"></div>
+<details class="opt"><summary><span lang="ja">住所・電話・登録番号など（任意）</span><span lang="en">Address, phone, registration number (optional)</span></summary>
+<div class="fld"><label class="l" for="adr"><span lang="ja">住所</span><span lang="en">Address</span></label><input type="text" id="adr" autocomplete="off"></div>
+<div class="fld"><label class="l" for="tel"><span lang="ja">電話番号</span><span lang="en">Phone</span></label><input type="text" id="tel" inputmode="tel" autocomplete="off"></div>
+<div class="fld"><label class="l" for="inv"><span lang="ja">インボイス登録番号</span><span lang="en">Invoice registration number</span></label><input type="text" id="inv" autocomplete="off" placeholder="T1234567890123"><small><span lang="ja">登録している人だけ入れます。</span><span lang="en">Enter it only if you are registered.</span></small></div>
+<div class="fld"><label class="l" for="no"><span lang="ja">領収書番号</span><span lang="en">Receipt number</span></label><input type="text" id="no" autocomplete="off" placeholder="No.001"></div>
+<div class="fld"><label class="chk"><input type="checkbox" id="seal"><span lang="ja">印を押す丸い枠を入れる</span><span lang="en">Add a round box for a seal</span></label></div>
+</details>
+<div class="fld"><label class="chk"><input type="checkbox" id="rem"><span lang="ja">発行者・住所などを、この端末に覚えておく</span><span lang="en">Remember the issuer details on this device</span></label><small><span lang="ja">覚えた内容は、この端末のブラウザの中だけに残ります。共用のパソコンでは、チェックを外してください。</span><span lang="en">Saved only in this browser on this device. Leave unchecked on a shared computer.</span></small></div>
+<button id="go" type="button"></button>
+</section>
+
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="ja">完成</span><span lang="en">Done</span></div>
+<p id="info"></p>
+<a id="dl" href="#"></a>
+<div id="extra"></div>
+<p id="msg" aria-live="polite"></p>
+<div class="support" id="support" hidden><p><span lang="ja">PDFのミカタが役に立ったら、応援してもらえるとうれしいです。</span><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a id="supl" href="#" target="_blank" rel="noopener"><span lang="ja">応援する（300円）</span><span lang="en">Send a tip (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" target="_blank" rel="noopener noreferrer nofollow"><span lang="ja">ほしい物リストで応援</span><span lang="en">Send a gift (Amazon wishlist)</span></a></div>
+</section>
+<section class="guide" id="how">
+<div lang="ja"><h2>使い方</h2>
+<ol>
+<li>宛名（支払った人や会社）と、金額（税込）を入れます。</li>
+<li>消費税の内訳、但し書き、発行日を確認します。</li>
+<li>発行者（あなたの名前や団体名）を入れます。住所や登録番号は、必要なときだけ入れます。</li>
+<li>「領収書を作る」を押し、PDFを保存します。メールで送ったり、印刷したりできます。</li>
+</ol>
+<h2>注意</h2>
+<ul>
+<li><b>実際に受け取ったお金についてだけ</b>、発行してください。事実と異なる領収書は、法律に違反することがあります。</li>
+<li>作られるのはA4サイズのPDFです。文字は画像として入っています。</li>
+<li>収入印紙や、インボイスの扱いは、条件によって変わります。迷うときは、税務署や税理士に確認してください。</li>
+</ul>
+<h2>よくある質問</h2>
+<details><summary>入力した内容は外部に送信されますか？</summary><p>いいえ。処理はすべて、お使いの端末のブラウザの中で行われます。「覚えておく」を選んだときも、この端末の中だけに残ります。</p></details>
+<details><summary>宛名を空欄にするとどうなりますか？</summary><p>「上様」と入ります。</p></details>
+<details><summary>PDFの中の文字をコピーできますか？</summary><p>できません。文字は画像として入っています。</p></details></div>
+<div lang="en"><h2>How to use</h2>
+<ol>
+<li>Enter the payer (person or company) and the amount, tax included.</li>
+<li>Check the tax line, the description and the date.</li>
+<li>Enter the issuer (your name or group). Add an address or registration number only if needed.</li>
+<li>Tap "Create receipt" and save the PDF. You can email or print it.</li>
+</ol>
+<h2>Notes</h2>
+<ul>
+<li><b>Issue a receipt only for money you actually received.</b> A receipt that does not match the facts can be against the law.</li>
+<li>The result is an A4 PDF. The text is stored as an image.</li>
+<li>Revenue stamps and invoice rules depend on the situation. If unsure, ask your tax office or a tax accountant.</li>
+</ul>
+<h2>FAQ</h2>
+<details><summary>Is what I type uploaded anywhere?</summary><p>No. Everything is processed inside the browser on your device. Even with "Remember", it stays only on this device.</p></details>
+<details><summary>What if I leave the payer blank?</summary><p>It will say 上様 ("To whom it may concern").</p></details>
+<details><summary>Can I copy text from the PDF?</summary><p>No. The text is stored as an image.</p></details></div>
+</section>
+<div class="support endtip"><p><span lang="ja">PDFのミカタが役に立ったら、応援してもらえるとうれしいです。</span><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" target="_blank" rel="noopener"><span lang="ja">応援する（300円）</span><span lang="en">Send a tip (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" target="_blank" rel="noopener noreferrer nofollow"><span lang="ja">ほしい物リストで応援</span><span lang="en">Send a gift (Amazon wishlist)</span></a></div>
+<section class="more rel"><h2><span lang="ja">このツールの解説</span><span lang="en">Guides for this tool</span></h2><a href="/receipt-maker-howto.html"><span lang="ja">領収書をPDFで作る方法（スマホでもOK）</span><span lang="en">How to Make a Receipt PDF (Works on a Phone)</span></a><a href="/receipt-required-items.html"><span lang="ja">領収書に書く項目は？これだけは入れたい6つ</span><span lang="en">What to Put on a Receipt: Six Essential Items</span></a><a href="/receipt-invoice-number.html"><span lang="ja">領収書にインボイス登録番号は必要？書き方と注意点</span><span lang="en">Do Receipts Need an Invoice Registration Number?</span></a><a href="/receipt-stamp-tax.html"><span lang="ja">電子の領収書は収入印紙がいらないって本当？</span><span lang="en">Is a Revenue Stamp Unnecessary for Electronic Receipts?</span></a><a href="/receipt-email-send.html"><span lang="ja">電子領収書をメールで送るときのマナーと注意点</span><span lang="en">Etiquette and Tips for Emailing an Electronic Receipt</span></a><a href="/receipt-wrong-or-lost.html"><span lang="ja">領収書の宛名や金額を間違えた・なくしたときの対処法</span><span lang="en">What to Do When a Receipt Has a Mistake or Is Lost</span></a><a href="/receipt-vs-invoice.html"><span lang="ja">領収書・レシート・請求書・領収証明書の違い</span><span lang="en">Receipt, Till Receipt, Invoice and Proof of Payment: What's the Difference?</span></a></section>
+<section class="more"><h2><span lang="ja">ほかのツール</span><span lang="en">More tools</span></h2><a href="/photo-to-pdf.html"><span lang="ja">写真をPDFに変換</span><span lang="en">Photos to PDF</span><small><span lang="ja">複数の写真を、順番どおりに1つのPDFへ。回転、並べ替え、サイズ指定ができます。</span><span lang="en">Combine several photos into one PDF in the order you choose. You can rotate, reorder and set a size limit.</span></small></a><a href="/merge-pdf.html"><span lang="ja">PDFを結合</span><span lang="en">Merge PDFs</span><small><span lang="ja">複数のPDFを、順番を決めて1つのPDFにまとめます。</span><span lang="en">Combine several PDF files into one, in the order you choose.</span></small></a><a href="/split-pdf.html"><span lang="ja">PDFのページを抜き出し・削除</span><span lang="en">Extract or Delete PDF Pages</span><small><span lang="ja">PDFから、必要なページだけを残す、または不要なページを消します。</span><span lang="en">Keep only the pages you need, or remove the pages you don't.</span></small></a><a href="/compress-pdf.html"><span lang="ja">PDFを圧縮</span><span lang="en">Compress PDF</span><small><span lang="ja">PDFを、指定したサイズ以下に小さくします。提出先の容量制限に合わせたいときに。</span><span lang="en">Shrink a PDF to fit under a size you choose, for upload limits.</span></small></a><a href="/pdf-to-image.html"><span lang="ja">PDFを画像に変換</span><span lang="en">PDF to Images</span><small><span lang="ja">PDFの各ページを、JPEGまたはPNGの画像として保存します。</span><span lang="en">Save each page of a PDF as a JPEG or PNG image.</span></small></a><a href="/image-convert.html"><span lang="ja">画像の形式を変換（JPG・PNG・WebP）</span><span lang="en">Convert Image Format (JPG, PNG, WebP)</span><small><span lang="ja">画像をJPG・PNG・WebPに、まとめて変換します。</span><span lang="en">Convert images to JPG, PNG or WebP, several at once.</span></small></a><a href="/pdf-rotate.html"><span lang="ja">PDFのページを回転・並べ替え</span><span lang="en">Rotate & Reorder PDF Pages</span><small><span lang="ja">向きが違うページを直す、ページの順番を入れ替える、いらないページを消す。</span><span lang="en">Fix sideways pages, change the page order, or remove pages.</span></small></a><a href="/pdf-page-numbers.html"><span lang="ja">PDFにページ番号を追加</span><span lang="en">Add Page Numbers to PDF</span><small><span lang="ja">PDFの各ページに、ページ番号を入れます。位置や形式を選べます。</span><span lang="en">Add page numbers to a PDF, choosing position and style.</span></small></a><a href="/image-compress.html"><span lang="ja">画像を圧縮・サイズ変更</span><span lang="en">Compress & Resize Images</span><small><span lang="ja">画像のファイルサイズを小さくします。大きさの変更もできます。</span><span lang="en">Make image files smaller, and resize them if you like.</span></small></a><a href="/heic-to-jpg.html"><span lang="ja">HEIC画像をJPGに変換</span><span lang="en">Convert HEIC to JPG</span><small><span lang="ja">iPhoneで撮ったHEIC画像を、JPGやPNGに変換します。</span><span lang="en">Convert HEIC photos from iPhone to JPG or PNG.</span></small></a><a href="/pdf-split.html"><span lang="ja">PDFを分割</span><span lang="en">Split PDF</span><small><span lang="ja">PDFを、1ページずつ、Nページごと、または範囲を決めて、複数のPDFに分けます。</span><span lang="en">Split a PDF into several files: one page each, every N pages, or by ranges.</span></small></a><a href="/image-crop.html"><span lang="ja">画像の切り抜き・回転</span><span lang="en">Crop & Rotate Image</span><small><span lang="ja">画像を、好きな範囲や比率で切り抜きます。回転もできます。</span><span lang="en">Crop an image to any area or ratio, and rotate it.</span></small></a><a href="/pdf-to-text.html"><span lang="ja">PDFから文字を抜き出す</span><span lang="en">Extract Text from PDF</span><small><span lang="ja">PDFの文字を取り出して、コピーまたは保存できます。</span><span lang="en">Pull the text out of a PDF to copy or save.</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" target="_blank" rel="noopener noreferrer"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const t=(a,b)=>EN()?b:a;
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=t("保存できませんでした。もう一度お試しください。","Could not save. Please try again.")}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return t("パスワード付きのPDFは扱えません。パスワードを外してからお試しください。","Password-protected PDFs are not supported. Remove the password and try again.");
+  return t("PDFを読み込めませんでした。壊れているか、対応していない形式の可能性があります。","Could not read the PDF. It may be damaged or in an unsupported format.");
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  const out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+const PW=1654,PH=2339;
+const FF='"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Noto Sans CJK JP","Yu Gothic","Meiryo",sans-serif';
+const KEYS=["me","adr","tel","inv"];
+function today(){const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+$("dt").value=today();
+$("go").textContent=t("領収書を作る","Create receipt");
+try{
+  const s=JSON.parse(localStorage.getItem("pm_receipt")||"null");
+  if(s){KEYS.forEach(k=>{if(s[k])$(k).value=s[k]});$("rem").checked=true;if(s.inv||s.adr||s.tel)$("me").closest("div").parentNode.querySelector("details").open=true}
+}catch(e){}
+function wrap(ctx,text,maxW){
+  const out=[];let cur="";
+  for(const ch of text){
+    if(ctx.measureText(cur+ch).width>maxW&&cur){out.push(cur);cur=ch}else cur+=ch;
+  }
+  if(cur)out.push(cur);return out;
+}
+function draw(o){
+  const c=document.createElement("canvas");c.width=PW;c.height=PH;
+  const x=c.getContext("2d");
+  x.fillStyle="#fff";x.fillRect(0,0,PW,PH);x.fillStyle="#111";x.strokeStyle="#111";x.textBaseline="alphabetic";
+  const L=170,R=PW-170,W=R-L;
+  // title
+  x.font="700 110px "+FF;x.textAlign="center";
+  x.fillText("領 収 書",PW/2,300);
+  x.lineWidth=4;x.beginPath();x.moveTo(PW/2-300,330);x.lineTo(PW/2+300,330);x.stroke();
+  // number / date
+  x.font="400 36px "+FF;x.textAlign="right";
+  let y=420;
+  if(o.no){x.fillText(o.no,R,y);y+=54}
+  x.fillText(o.date,R,y);
+  // payer
+  x.textAlign="left";
+  const hon=o.hon;
+  x.font="700 58px "+FF;
+  let name=o.to||"上",suffix=o.to?hon:"様";
+  const nm=wrap(x,name,W-260)[0]||name;
+  const nameW=Math.min(x.measureText(name).width,W-260);
+  const lines=wrap(x,name,W-260);
+  let py=620;
+  lines.forEach((ln,i)=>{x.fillText(ln,L,py+i*76)});
+  const lastW=x.measureText(lines[lines.length-1]).width;
+  x.font="400 48px "+FF;
+  if(suffix)x.fillText(suffix,L+lastW+20,py+(lines.length-1)*76);
+  const uy=py+(lines.length-1)*76+22;
+  x.lineWidth=3;x.beginPath();x.moveTo(L,uy);x.lineTo(L+W*0.66,uy);x.stroke();
+  // amount box
+  const by=uy+120,bh=190;
+  x.lineWidth=5;x.strokeRect(L,by,W,bh);
+  x.font="400 40px "+FF;x.textAlign="left";x.fillText("金額",L+36,by+bh/2+14);
+  x.font="700 100px "+FF;x.textAlign="right";
+  x.fillText("¥"+o.amt.toLocaleString("en-US")+" -",R-40,by+bh/2+36);
+  // memo
+  let my=by+bh+110;
+  x.textAlign="left";x.font="400 44px "+FF;
+  const memo=(o.memo||"お品代として");
+  const ml=wrap(x,memo,W-20);
+  ml.forEach((ln,i)=>x.fillText(ln,L,my+i*64));
+  my+=(ml.length-1)*64;
+  x.lineWidth=2;x.beginPath();x.moveTo(L,my+18);x.lineTo(R,my+18);x.stroke();
+  my+=100;
+  x.font="400 40px "+FF;x.fillText("上記、正に領収いたしました。",L,my);
+  // tax
+  if(o.rate>0){
+    my+=90;
+    x.font="400 38px "+FF;
+    x.fillText("内訳："+"税抜金額 ¥"+(o.amt-o.tax).toLocaleString("en-US")+"　消費税等（"+o.rate+"%） ¥"+o.tax.toLocaleString("en-US"),L,my);
+  }
+  // issuer
+  let iy=my+190;
+  const ix=L+W*0.45;
+  x.font="700 52px "+FF;
+  const il=wrap(x,o.me,R-ix-(o.seal?170:0));
+  il.forEach((ln,i)=>x.fillText(ln,ix,iy+i*70));
+  let ey=iy+(il.length-1)*70+20;
+  x.font="400 34px "+FF;
+  const extra=[];
+  if(o.adr)extra.push(...wrap(x,o.adr,R-ix));
+  if(o.tel)extra.push("TEL "+o.tel);
+  if(o.inv)extra.push("登録番号 "+o.inv);
+  extra.forEach((ln,i)=>x.fillText(ln,ix,ey+54*(i+1)));
+  if(o.seal){x.lineWidth=3;x.beginPath();x.arc(R-70,iy-10,70,0,Math.PI*2);x.stroke();x.font="400 28px "+FF;x.textAlign="center";x.fillText("印",R-70,iy+0);x.textAlign="left"}
+  return c;
+}
+$("go").onclick=async()=>{
+  const go=$("go");go.disabled=true;beginRun();
+  try{
+    const bad=m=>{const e=new Error(m);e.user=true;throw e};
+    const raw=$("amt").value.replace(/[，,円¥￥\s]/g,"").replace(/[０-９]/g,d=>String.fromCharCode(d.charCodeAt(0)-65248));
+    if(!/^\d+$/.test(raw))bad(t("金額は、数字だけで入れてください。","Please enter the amount using digits only."));
+    const amt=parseInt(raw,10);
+    if(amt<1||amt>999999999999)bad(t("金額は、1円以上、9,999億円未満で入れてください。","The amount must be at least 1 yen and under 999,999,999,999."));
+    const me=$("me").value.trim();
+    if(!me)bad(t("発行者（あなたの名前や団体名）を入れてください。","Please enter the issuer (your name or group)."));
+    const rate=parseInt(val("tax")||"0",10);
+    const tax=rate===10?Math.floor(amt*10/110):rate===8?Math.floor(amt*8/108):0;
+    const dv=$("dt").value||today();const dp=dv.split("-");
+    const date=parseInt(dp[0],10)+"年"+parseInt(dp[1],10)+"月"+parseInt(dp[2],10)+"日";
+    const o={to:$("to").value.trim(),hon:$("hon").value,amt,rate,tax,memo:$("memo").value.trim(),date,me,adr:$("adr").value.trim(),tel:$("tel").value.trim(),inv:$("inv").value.trim(),no:$("no").value.trim(),seal:$("seal").checked};
+    try{
+      if($("rem").checked)localStorage.setItem("pm_receipt",JSON.stringify({me:o.me,adr:o.adr,tel:o.tel,inv:o.inv}));
+      else localStorage.removeItem("pm_receipt");
+    }catch(e){}
+    if(document.fonts&&document.fonts.load){try{await document.fonts.load("700 40px "+FF,"領収書")}catch(e){}}
+    $("barf").style.width="40%";
+    const c=draw(o);
+    const jb=await new Promise(r=>c.toBlob(r,"image/jpeg",.93));
+    if(!jb)throw new Error(t("画像を作れませんでした。","Could not create the image."));
+    $("barf").style.width="70%";
+    const pdf=await PDFLib.PDFDocument.create();
+    pdf.setTitle("領収書");pdf.setCreator("PDFのミカタ");
+    const jp=await pdf.embedJpg(new Uint8Array(await jb.arrayBuffer()));
+    const pg=pdf.addPage([595.28,841.89]);pg.drawImage(jp,{x:0,y:0,width:595.28,height:841.89});
+    const bytes=await pdf.save();
+    const blob=new Blob([bytes],{type:"application/pdf"});
+    const name="receipt_"+dv.replace(/-/g,"")+".pdf";
+    const ex=$("extra");ex.textContent="";
+    const im=document.createElement("img");im.src=URL.createObjectURL(jb);im.alt=t("領収書のプレビュー","Receipt preview");
+    im.style.cssText="max-width:100%;width:320px;border:1px solid var(--line);background:#fff;margin-top:10px";ex.appendChild(im);
+    const dl=$("dl");dl.href="#";dl.textContent=t("PDFを保存する","Save PDF");dl.style.display="inline-block";wire(dl,blob,name,"application/pdf");
+    $("barf").style.width="100%";
+    $("info").textContent=name+"（"+fmt(blob.size)+"）";
+    $("msg").textContent=t("宛名・金額・日付を、保存の前にもう一度確認してください。","Please check the name, amount and date once more before saving.");
+    finishOk();
+  }catch(e){console.error(e);$("msg").className="bad";$("msg").textContent=e.user?e.message:t("作成できませんでした。もう一度お試しください。","Could not create the receipt. Please try again.")}
+  finally{endRun();go.disabled=false}
+};
+
+</script>
+</body>
+</html>
