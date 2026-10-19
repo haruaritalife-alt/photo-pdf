@@ -3,384 +3,54 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>PDFのミカタ｜写真をPDFに変換（登録不要・端末内で処理）</title>
-<meta name="description" content="スマホで撮った写真や書類を、1つのPDFにまとめる無料ツール。順番の入れ替え、A4サイズ、画質の調整ができます。写真は端末の外に送信されません。">
+<title>PDFのミカタ｜登録不要・完全ローカルのPDF変換・編集</title>
+<meta name="description" content="登録不要・ファイルを端末の外に送らないPDFツール。まずは写真を1つのPDFにまとめるツールから公開しています。">
+<link rel="canonical" href="https://pdfmikata.com/">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap">
 <style>
-:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
-box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
-:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
-main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
-h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
-.lead{margin:0 0 26px;color:var(--sub)}
-h2{font-size:1.1rem;margin:0 0 8px}
-.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
-.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
-.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
-#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
-input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
-#stack{display:none;margin-top:28px}
-#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
-.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
-.sheet img{max-width:100%;max-height:100%;display:block}
-.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
-.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
-.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
-.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
-.ops button.del{color:var(--stamp);border-color:var(--stamp)}
-.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
-.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
-.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
-.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
-.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
-.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
-#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
-#go:disabled{opacity:.35;cursor:not-allowed}
-#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
-.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
-@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
-@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
-#info{margin:12px 0;font-weight:700}
-#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
-#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
-#msg{margin:12px 0 0;font-size:.92rem}
-.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
-.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
-.guide ol,.guide ul{padding-left:1.3em;margin:0}
-details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
-summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
-details p{margin:6px 0 0;color:var(--sub)}
-footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
-footer a{color:var(--sub)}
-a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
-.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
-.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+main{max-width:680px;margin:0 auto;padding:30px 18px 24px}
+.top{background:var(--head);border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:12px}
 .brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
 .logo{width:30px;height:30px;flex:none}
-.top nav{display:flex;gap:2px}
-.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
-.top nav a:hover{background:rgba(255,255,255,.12)}
-.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1{font-size:1.7rem;line-height:1.4;margin:0 0 12px}
 h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
-.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
-.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
-.lead{margin-bottom:12px}
-.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
-.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
-.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
-#pt::before{content:"＋";margin-right:.4em}
-.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
-.sheet{cursor:grab}
-.row label{padding:12px 4px}
-footer a{padding:10px 0}
-.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
-.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
-@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
-.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
-.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
-.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
-.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
-@media (max-width:540px){.top nav{display:none}}
-.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
-.support[hidden]{display:none}
-.support p{margin:0}
-.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
-.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
-.endtip{margin:36px 0 0}
+h2{font-size:1.2rem;margin:36px 0 10px;border-left:6px solid var(--stamp);padding-left:10px}
+p{margin:0 0 12px}
+a{color:var(--ink);text-underline-offset:3px}
+a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:18px 0 22px;font-size:.92rem;line-height:1.6}
+.tool{display:block;text-decoration:none;background:var(--paper);border:2px solid var(--ink);border-radius:8px;padding:18px;box-shadow:0 4px 0 rgba(0,0,0,.25);margin:0 0 8px}
+.tool b{display:block;font-size:1.25rem}
+.tool span{display:block;color:var(--sub);font-size:.92rem;margin-top:4px}
+.tool em{display:inline-block;margin-top:10px;background:var(--stamp);color:var(--btn-ink);font-style:normal;font-weight:700;border-radius:6px;padding:10px 16px}
+.roadmap{font-size:.92rem;color:var(--sub)}
+ul.g{list-style:none;margin:0;padding:0}
+ul.g a{display:block;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px}
+ul.g b{display:block;font-size:1rem}
+ul.g span{display:block;color:var(--sub);font-size:.85rem;margin-top:2px}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub);padding:10px 0}
 </style>
 </head>
 <body>
-<header class="top"><div class="top-in"><a class="brand" href="./"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>PDFのミカタ</span></a><div class="lang" role="group" aria-label="言語 / Language"><button type="button" data-l="ja">日本語</button><button type="button" data-l="en">English</button></div><nav><a href="#how">使い方</a><a href="#guide">解説</a></nav></div></header>
+<header class="top"><div class="top-in"><a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>PDFのミカタ</span></a></div></header>
 <main>
-<h1>写真を<span>PDF</span>にする</h1>
-<p class="lead">撮った写真や書類を、順番どおりに1つのPDFへ。</p>
-<p class="safe"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><b>写真は外に送信されません。</b>すべて、この端末の中だけで処理します。</span></p>
+<h1><span>登録不要</span>・完全ローカルの<br>PDFツール</h1>
+<p>PDFのミカタは、提出書類や資料づくりで困ったときに使える、無料のPDFツールです。</p>
+<div class="safe"><p style="margin:0">ファイルは、お使いの端末の中だけで処理します。写真や書類が、外部のサーバーに送られることはありません。</p></div>
 
-<ol class="steps"><li><b>1</b>写真を選ぶ</li><li><b>2</b>順番を整える</li><li><b>3</b>PDFにする</li></ol>
-<label class="pick" id="drop"><input type="file" id="file" accept="image/*" multiple><span id="pt">写真を選ぶ</span><small>複数枚をまとめて選べます（JPEG・PNG・WebP）</small></label>
+<h2>ツール</h2>
+<a class="tool" href="/photo-to-pdf.html"><b>写真をPDFに変換</b><span>複数の写真を、順番どおりに1つのPDFへ。回転、並べ替え、サイズ指定ができます。</span><em>使ってみる（無料）</em></a>
+<p class="roadmap">今後も、PDFまわりのツールを、少しずつ増やしていく予定です。</p>
 
-<section id="stack">
-<h2>ページの順番</h2>
-<p class="hint">「前へ」「後ろへ」で入れ替えできます。パソコンでは、写真をドラッグして並べ替えることもできます。</p>
-<ul id="grid"></ul>
-</section>
-
-<section class="set" id="set" style="display:none">
-<div class="row"><span>ページの大きさ</span>
-<label><input type="radio" name="pg" value="a4" checked>A4</label>
-<label><input type="radio" name="pg" value="fit">写真と同じ大きさ</label></div>
-<div class="row"><span>余白</span>
-<label><input type="radio" name="mg" value="0">なし</label>
-<label><input type="radio" name="mg" value="20" checked>少し</label></div>
-<div class="row"><span>画質</span>
-<label><input type="radio" name="q" value="l">軽め</label>
-<label><input type="radio" name="q" value="m" checked>ふつう</label>
-<label><input type="radio" name="q" value="h">きれい</label>
-<label><input type="radio" name="q" value="t">サイズを指定</label></div>
-<div class="row" id="tgrow" style="display:none"><span>上限のサイズ</span>
-<label><input type="radio" name="tg" value="1">1MB</label>
-<label><input type="radio" name="tg" value="2">2MB</label>
-<label><input type="radio" name="tg" value="5" checked>5MB</label>
-<label><input type="radio" name="tg" value="10">10MB</label></div>
-<button id="go" disabled>PDFにする</button>
-</section>
-
-<section id="out">
-<div class="bar" id="bar"><i id="barf"></i></div>
-<div class="stamp">完成</div>
-<p id="info"></p>
-<a id="dl" href="#">PDFを保存する</a>
-<p id="msg" aria-live="polite"></p>
-<div class="support" id="support" hidden><p>PDFのミカタが役に立ったら、応援してもらえるとうれしいです。</p><a id="supl" href="#" target="_blank" rel="noopener">応援する（300円）</a></div>
-</section>
-
-<section class="guide">
-<h2>こんなときに</h2>
-<ul>
-<li>スマホで撮った書類（申請書、証明書、領収書）を、1つのPDFにして出したいとき</li>
-<li>手書きのノートや図を撮って、課題として提出するとき</li>
-<li>紙の資料を、メールで送れる1ファイルにまとめたいとき</li>
-</ul>
-<h2 id="how">使い方</h2>
-<ol>
-<li>「写真を選ぶ」から、まとめたい写真を選びます。</li>
-<li>「前へ」「後ろへ」で順番を整えます。向きが違う写真は「回転」で直し、いらない写真は「削除」で外します。</li>
-<li>ページの大きさと画質を選びます。提出先の容量の上限があるときは、「サイズを指定」が便利です。</li>
-<li>「PDFにする」を押して、保存します。</li>
-</ol>
-<h2>よくある質問</h2>
-<details><summary>写真はどこかに送られますか？</summary><p>いいえ。変換はお使いの端末のブラウザの中だけで行われます。</p></details>
-<details><summary>PDFが重くなったときは？</summary><p>画質の欄で「サイズを指定」を選び、提出先の上限（1・2・5・10MB）を選ぶと、その大きさに収まるよう、自動で調整します。それでも収まらないときは、写真の枚数を減らしてください。</p></details>
-<details><summary>写真の向きは直りますか？</summary><p>スマホで撮った写真の向きは、自動で直ります。それでも横になっているときは、写真の下の「回転」ボタンを押すと、90度ずつ右に回ります。</p></details>
-<details><summary>iPhoneのHEIC画像は使えますか？</summary><p>端末によっては選べません。その場合は、JPEGで書き出すか、スクリーンショットにしてから選んでください。</p></details>
-<details><summary>PDFの文字は選択できますか？</summary><p>できません。写真をそのままPDFにするので、文字のデータは含まれません。</p></details>
-</section>
-<section class="guide">
 <h2 id="guide">くわしい解説</h2>
-<ul>
-<li><a href="howto-iphone.html">iPhoneで撮った写真をPDFにまとめる方法</a></li>
-<li><a href="scan-tips.html">スマホで書類をきれいに撮ってPDFにするコツ</a></li>
-<li><a href="howto-pc-android.html">複数の画像を1つのPDFにまとめる方法（Windows・Mac・Android）</a></li>
-<li><a href="pdf-too-heavy.html">写真から作ったPDFが重いときの対処法</a></li>
-<li><a href="submit-tips.html">書類をPDFで提出する前のチェックリスト</a></li>
-<li><a href="receipt-pdf.html">領収書やレシートをスマホでPDFにして保存する方法</a></li>
-<li><a href="jpeg-vs-pdf.html">JPEGとPDFの違いと、どちらで提出すべきか</a></li>
-</ul>
-</section>
-<div class="support endtip"><p>PDFのミカタが役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" target="_blank" rel="noopener">応援する（300円）</a></div>
+<ul class="g"><li><a href="/howto-iphone.html"><b>iPhoneで撮った写真をPDFにまとめる方法</b><span>iPhoneで撮った複数の写真を、1つのPDFにまとめる3つの方法。ツール、ファイルアプリ、メモアプリのスキャンを比べて解説します。</span></a></li><li><a href="/howto-pc-android.html"><b>複数の画像を1つのPDFにまとめる方法（Windows・Mac・Android）</b><span>複数の画像を1つのPDFにまとめる方法を、Windows、Mac、Androidごとに解説。ツールを使う方法もあわせて紹介します。</span></a></li><li><a href="/scan-tips.html"><b>スマホで書類をきれいに撮ってPDFにするコツ</b><span>スマホで書類を撮ってPDFにするときの、読みやすく仕上げるコツ。明るさ、角度、影、順番、ファイル名の整え方を解説します。</span></a></li><li><a href="/pdf-too-heavy.html"><b>写真から作ったPDFが重いときの対処法</b><span>写真から作ったPDFのファイルサイズが大きくて、送れない・出せないときの対処法。画質の設定や枚数の整理など、すぐできる方法を紹介します。</span></a></li><li><a href="/submit-tips.html"><b>書類をPDFで提出する前のチェックリスト</b><span>スマホで撮った書類をPDFにして提出する前に確認したい項目をまとめました。提出先の指定、ページ順、向き、読みやすさ、個人情報の写り込みなどを解説します。</span></a></li><li><a href="/receipt-pdf.html"><b>領収書やレシートをスマホでPDFにして保存する方法</b><span>領収書やレシートを、スマホで撮ってPDFにして保存する方法。撮り方のコツ、まとめ方、ファイル名の付け方、保存するときの注意点を解説します。</span></a></li><li><a href="/jpeg-vs-pdf.html"><b>JPEGとPDFの違いと、どちらで提出すべきか</b><span>JPEGとPDFの違いをわかりやすく解説。ファイルの特徴、向いている場面、提出するときの選び方、変換の方法を紹介します。</span></a></li></ul>
 </main>
-<footer><a href="about.html">運営者情報・お問い合わせ</a><a href="privacy.html">プライバシーポリシー</a></footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-<script>
-const $=id=>document.getElementById(id);
-let items=[],url=null,dlNs=null;
-(async()=>{try{dlNs=window.claude?await window.claude.use("downloads"):null}catch(e){dlNs=null}})();
-const val=n=>document.querySelector('input[name="'+n+'"]:checked').value;
-const fmt=b=>b>=1048576?(b/1048576).toFixed(2)+" MB":Math.round(b/1024)+" KB";
-const Q={l:{edge:1200,q:.6},m:{edge:1800,q:.75},h:{edge:2600,q:.88}};
-const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
-const JT=document.title;let lang="ja";
-const S={
-ja:{prev:"前へ",next:"後ろへ",rot:"回転",del:"削除",
-prevL:n=>n+"ページ目を前へ",nextL:n=>n+"ページ目を後ろへ",rotL:n=>n+"ページ目を右に90度回転",delL:n=>n+"ページ目を削除",
-alt:(n,t)=>n+"ページ目："+t,add:n=>"写真を追加する（"+n+"枚）",pick:"写真を選ぶ",
-conv:"変換中",adj:k=>"サイズを調整中・"+k+"回め",prog:(l,i,n)=>l+"（"+i+"/"+n+"枚め）",
-errLoad:t=>"読み込めない写真があります："+t,
-errBig:z=>"いちばん小さい画質でも"+z+"になり、上限に収まりませんでした。写真の枚数を減らして、もう一度お試しください。",
-errGen:"変換できませんでした。写真の枚数を減らして、もう一度お試しください。",errSave:"保存できませんでした。もう一度お試しください。",
-working:"作っています…",make:"PDFにする",info:(n,z)=>n+"ページ・"+z,okT:m=>"上限の"+m+"MBに収まりました。",
-check:"保存したら、順番と読みやすさを確認してから使ってください。"},
-en:{prev:"Earlier",next:"Later",rot:"Rotate",del:"Delete",
-prevL:n=>"Move page "+n+" earlier",nextL:n=>"Move page "+n+" later",rotL:n=>"Rotate page "+n+" 90 degrees clockwise",delL:n=>"Delete page "+n,
-alt:(n,t)=>"Page "+n+": "+t,add:n=>"Add more photos ("+n+")",pick:"Choose photos",
-conv:"Converting",adj:k=>"Adjusting size (try "+k+")",prog:(l,i,n)=>l+" ("+i+"/"+n+")",
-errLoad:t=>"Could not read this photo: "+t,
-errBig:z=>"Even at the lowest quality the file is "+z+", which is over the limit. Remove some photos and try again.",
-errGen:"Could not convert. Please try fewer photos.",errSave:"Could not save. Please try again.",
-working:"Working…",make:"Make PDF",info:(n,z)=>n+(n===1?" page":" pages")+" · "+z,okT:m=>"Fits within "+m+" MB. ",
-check:"After saving, check the page order and readability before using it."}};
-const s=(k,...a)=>{const v=S[lang][k];return typeof v==="function"?v(...a):v};
-const EN={"PDFのミカタ":"PDF Mikata","写真を":"Photos to ","にする":"",
-"撮った写真や書類を、順番どおりに1つのPDFへ。":"Turn photos and documents into one PDF, in the order you want.",
-"写真は外に送信されません。":"Your photos are never uploaded. ","すべて、この端末の中だけで処理します。":"Everything is processed on this device only.",
-"写真を選ぶ":"Choose photos","順番を整える":"Arrange the order","PDFにする":"Make PDF",
-"複数枚をまとめて選べます（JPEG・PNG・WebP）":"Select several at once (JPEG, PNG, WebP)",
-"ページの順番":"Page order","「前へ」「後ろへ」で入れ替えできます。パソコンでは、写真をドラッグして並べ替えることもできます。":"Use “Earlier” and “Later” to reorder. On a computer, you can also drag photos.",
-"ページの大きさ":"Page size","写真と同じ大きさ":"Same as photo","余白":"Margin","なし":"None","少し":"Small",
-"画質":"Quality","軽め":"Small file","ふつう":"Normal","きれい":"High","サイズを指定":"Set a size limit","上限のサイズ":"Size limit",
-"完成":"Done","PDFのミカタが役に立ったら、応援してもらえるとうれしいです。":"If PDF Mikata was useful, a small tip would mean a lot.","応援する（300円）":"Send a tip (¥300)","PDFを保存する":"Save PDF","運営者情報・お問い合わせ":"About / Contact (Japanese)","プライバシーポリシー":"Privacy Policy (Japanese)"};
-function setLang(l){
-  lang=l;
-  const skip="#pt,#go,#grid,#info,#msg,script,style,.guide,.lang,svg";
-  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const ns=[];
-  while(w.nextNode())ns.push(w.currentNode);
-  for(const n of ns){
-    if(n.parentElement&&n.parentElement.closest(skip))continue;
-    if(n.__ja===undefined){const t=n.textContent.trim();if(!t||!(t in EN))continue;n.__ja=n.textContent}
-    const ja=n.__ja,t=ja.trim();n.textContent=l==="en"?ja.replace(t,EN[t]):ja;
-  }
-  document.querySelectorAll(".guide").forEach(e=>e.style.display=l==="en"?"none":"");
-  const nv=document.querySelector(".top nav");if(nv)nv.style.display=l==="en"?"none":"";
-  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.l===l)));
-  document.documentElement.lang=l;
-  document.title=l==="en"?"PDF Mikata | Combine photos into one PDF (free)":JT;
-  if(!$("go").disabled||!items.length)$("go").textContent=s("make");
-  draw();
-  try{localStorage.setItem("lang",l)}catch(e){}
-}
-document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
-
-
-function add(files){
-  for(const f of files){if(f.type.startsWith("image/"))items.push({file:f,url:URL.createObjectURL(f),rot:0,th:null})}
-  draw();
-}
-function op(t,label,fn,dis,cls){
-  const b=document.createElement("button");b.textContent=t;b.setAttribute("aria-label",label);
-  if(cls)b.className=cls;b.disabled=!!dis;b.onclick=fn;return b;
-}
-function draw(){
-  const g=$("grid");g.textContent="";
-  items.forEach((it,i)=>{
-    const li=document.createElement("li");
-    li.draggable=true;
-    li.ondragstart=e=>{e.dataTransfer.setData("text/plain",String(i));e.dataTransfer.effectAllowed="move";li.style.opacity=".5"};
-    li.ondragend=()=>{li.style.opacity=""};
-    li.ondragover=e=>e.preventDefault();
-    li.ondrop=e=>{e.preventDefault();e.stopPropagation();const from=parseInt(e.dataTransfer.getData("text/plain"),10);if(isNaN(from)||from===i)return;const [x]=items.splice(from,1);items.splice(i,0,x);draw()};
-    const sh=document.createElement("div");sh.className="sheet";
-    const im=document.createElement("img");im.draggable=false;im.src=it.th||it.url;im.alt=s("alt",i+1,it.file.name);
-    const no=document.createElement("span");no.className="no";no.textContent=i+1;
-    sh.append(im,no);
-    const ops=document.createElement("div");ops.className="ops";
-    ops.append(op(s("prev"),s("prevL",i+1),()=>mv(i,-1),i===0),op(s("next"),s("nextL",i+1),()=>mv(i,1),i===items.length-1),op(s("rot"),s("rotL",i+1),()=>rotate(i)),op(s("del"),s("delL",i+1),()=>rm(i),false,"del"));
-    li.append(sh,ops);g.appendChild(li);
-  });
-  const n=items.length;
-  $("stack").style.display=n?"block":"none";
-  $("set").style.display=n?"block":"none";
-  $("go").disabled=!n;
-  $("pt").textContent=n?s("add",n):s("pick");
-}
-function mv(i,d){const j=i+d;[items[i],items[j]]=[items[j],items[i]];draw()}
-function rm(i){URL.revokeObjectURL(items[i].url);if(items[i].th)URL.revokeObjectURL(items[i].th);items.splice(i,1);draw()}
-async function makeThumb(it){
-  if(it.th){URL.revokeObjectURL(it.th);it.th=null}
-  if(!it.rot)return;
-  try{
-    const img=await load(it.url);
-    const sc=Math.min(1,360/Math.max(img.naturalWidth,img.naturalHeight));
-    const w=Math.max(1,Math.round(img.naturalWidth*sc)),h=Math.max(1,Math.round(img.naturalHeight*sc));
-    const odd=it.rot%180!==0,cw=odd?h:w,ch=odd?w:h;
-    const c=document.createElement("canvas");c.width=cw;c.height=ch;
-    const x=c.getContext("2d");x.translate(cw/2,ch/2);x.rotate(it.rot*Math.PI/180);x.drawImage(img,-w/2,-h/2,w,h);
-    const b=await new Promise(r=>c.toBlob(r,"image/jpeg",.8));
-    it.th=URL.createObjectURL(b);
-  }catch(e){}
-}
-async function rotate(i){const it=items[i];it.rot=(it.rot+90)%360;await makeThumb(it);draw()}
-
-$("file").onchange=e=>{add(e.target.files);e.target.value=""};
-const dz=$("drop");
-dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
-dz.ondragleave=()=>dz.classList.remove("on");
-dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");add(e.dataTransfer.files)};
-
-function load(u){return new Promise((res,rej)=>{const im=new Image();im.onload=()=>res(im);im.onerror=rej;im.src=u})}
-
-const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
-function wireDl(a,blob,name){
-  a.onclick=async e=>{
-    e.preventDefault();
-    if(dlNs){
-      try{await dlNs.save({filename:name,data:blob})}
-      catch(err){if(!err||err.code!=="declined"){$("msg").className="bad";$("msg").textContent=s("errSave")}}
-      return;
-    }
-    if(IOS){
-      try{
-        const f=new File([blob],name,{type:"application/pdf"});
-        if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
-      }catch(err){if(err&&err.name==="AbortError")return}
-    }
-    const t=document.createElement("a");const u=URL.createObjectURL(blob);
-    t.href=u;t.download=name;t.style.display="none";document.body.appendChild(t);t.click();
-    setTimeout(()=>{URL.revokeObjectURL(u);t.remove()},5000);
-  };
-}
-
-const STEPS=[{edge:2600,q:.88},{edge:2200,q:.82},{edge:1800,q:.75},{edge:1500,q:.68},{edge:1200,q:.6},{edge:1000,q:.52},{edge:800,q:.45},{edge:650,q:.4}];
-
-async function build(edge,q,mode,m,label){
-  const doc=await PDFLib.PDFDocument.create();
-  for(let i=0;i<items.length;i++){
-    $("msg").textContent=s("prog",label,i+1,items.length);$("barf").style.width=(i/items.length*100)+"%";
-    let img;
-    try{img=await load(items[i].url)}catch(e){throw new Error(s("errLoad",items[i].file.name))}
-    const sc=Math.min(1,edge/Math.max(img.naturalWidth,img.naturalHeight));
-    const w=Math.max(1,Math.round(img.naturalWidth*sc)),h=Math.max(1,Math.round(img.naturalHeight*sc));
-    const rt=items[i].rot,odd=rt%180!==0,cw=odd?h:w,ch=odd?w:h;
-    const c=document.createElement("canvas");c.width=cw;c.height=ch;
-    const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,cw,ch);ctx.translate(cw/2,ch/2);ctx.rotate(rt*Math.PI/180);ctx.drawImage(img,-w/2,-h/2,w,h);
-    const blob=await new Promise(r=>c.toBlob(r,"image/jpeg",q));
-    const emb=await doc.embedJpg(await blob.arrayBuffer());
-    c.width=c.height=0;
-    let pw,ph,dw,dh;
-    if(mode==="fit"){pw=dw=cw*72/150;ph=dh=ch*72/150}
-    else{pw=595.28;ph=841.89;if(cw>ch){pw=841.89;ph=595.28}const s=Math.min((pw-2*m)/cw,(ph-2*m)/ch);dw=cw*s;dh=ch*s}
-    doc.addPage([pw,ph]).drawImage(emb,{x:(pw-dw)/2,y:(ph-dh)/2,width:dw,height:dh});
-  }
-  $("barf").style.width="100%";
-  return doc.save();
-}
-
-document.querySelectorAll('input[name="q"]').forEach(r=>r.onchange=()=>{$("tgrow").style.display=val("q")==="t"?"flex":"none"});
-
-$("go").onclick=async()=>{
-  const go=$("go"),msg=$("msg"),dl=$("dl"),out=$("out"),st=out.querySelector(".stamp");
-  go.disabled=true;go.textContent=s("working");
-  out.style.display="block";dl.style.display="none";$("info").textContent="";msg.className="";msg.textContent="";st.style.display="none";$("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
-  if(url){URL.revokeObjectURL(url);url=null}
-  const qv=val("q"),mode=val("pg"),m=mode==="a4"?+val("mg"):0;
-  try{
-    let bytes;
-    if(qv==="t"){
-      const limit=parseFloat(val("tg"))*1048576;
-      let tries=0;
-      const run=k=>{tries++;return build(STEPS[k].edge,STEPS[k].q,mode,m,s("adj",tries))};
-      const b0=await run(0);
-      if(b0.length<=limit){bytes=b0}
-      else{
-        let hi=STEPS.length-1;
-        const bl=await run(hi);
-        if(bl.length>limit)throw new Error(s("errBig",fmt(bl.length)));
-        let best=bl,lo=1;hi=hi-1;
-        while(lo<=hi){const mid=(lo+hi)>>1;const b=await run(mid);if(b.length<=limit){best=b;hi=mid-1}else lo=mid+1}
-        bytes=best;
-      }
-    }else{
-      const {edge,q}=Q[qv];bytes=await build(edge,q,mode,m,s("conv"));
-    }
-    const blob=new Blob([bytes],{type:"application/pdf"});
-    url=URL.createObjectURL(blob);
-    dl.href=url;dl.download="photos.pdf";dl.style.display="inline-block";wireDl(dl,blob,"photos.pdf");
-    st.style.display="inline-flex";
-    if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
-    $("info").textContent=s("info",items.length,fmt(bytes.length));
-    msg.textContent=(qv==="t"?s("okT",val("tg")):"")+s("check");
-  }catch(e){
-    console.error(e);msg.className="bad";
-    msg.textContent=e.message||s("errGen");
-  }finally{$("bar").style.display="none";go.disabled=!items.length;go.textContent=s("make")}
-};
-(function(){let l="ja";try{const q=new URLSearchParams(location.search).get("lang");if(q==="en"||q==="ja")l=q;else if(localStorage.getItem("lang")==="en")l="en"}catch(e){}setLang(l)})();
-</script>
+<footer><a href="/about.html">運営者情報・お問い合わせ</a><a href="/privacy.html">プライバシーポリシー</a></footer>
 </body>
 </html>
