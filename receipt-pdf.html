@@ -64,10 +64,29 @@ html:not([data-lang="en"]) body [lang="en"]{display:none!important}
 .lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
 .lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
 @media (max-width:540px){.top nav{display:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "解説", "item": "https://pdfmikata.com/#guide"}, {"@type": "ListItem", "position": 3, "name": "領収書やレシートをスマホでPDFにして保存する方法", "item": "https://pdfmikata.com/receipt-pdf.html"}]}</script>
 </head>
 <body>
-<header class="top"><div class="top-in"><a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>PDFのミカタ</span></a><div class="lang" role="group" aria-label="言語 / Language"><button type="button" data-l="ja">日本語</button><button type="button" data-l="en">English</button></div><nav><a href="/photo-to-pdf.html"><span lang="ja">ツールを使う</span><span lang="en">Use the tool</span></a><a href="/#guide"><span lang="ja">解説一覧</span><span lang="en">All guides</span></a></nav></div></header>
+<header class="top"><div class="top-in"><a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>PDFのミカタ</span></a><div class="lang" role="group" aria-label="言語 / Language"><button type="button" data-l="ja">日本語</button><button type="button" data-l="en">English</button></div></div></header>
+<nav class="sub" aria-label="サイト内ナビゲーション / Site navigation"><div class="sub-in"><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a><a href="/photo-to-pdf.html"><span lang="ja">写真→PDF</span><span lang="en">Photos→PDF</span></a><a href="/merge-pdf.html"><span lang="ja">結合</span><span lang="en">Merge</span></a><a href="/split-pdf.html"><span lang="ja">抜き出し・削除</span><span lang="en">Extract/Delete</span></a><a href="/compress-pdf.html"><span lang="ja">圧縮</span><span lang="en">Compress</span></a><a href="/pdf-to-image.html"><span lang="ja">PDF→画像</span><span lang="en">PDF→Image</span></a><a href="/#guide" aria-current="page"><span lang="ja">解説</span><span lang="en">Guides</span></a></div></nav>
+<nav class="crumb" aria-label="パンくず / Breadcrumb"><ol><li><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a></li><li><a href="/#guide"><span lang="ja">解説</span><span lang="en">Guides</span></a></li><li><span aria-current="page"><span lang="ja">領収書やレシートをスマホでPDFにして保存する方法</span><span lang="en">How to Save Receipts as PDFs with Your Phone</span></span></li></ol></nav>
 <main>
 <div lang="ja">
 <h1>領収書やレシートをスマホでPDFにして保存する方法</h1>
