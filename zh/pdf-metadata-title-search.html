@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html data-lang="zh" lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>设置 PDF 标题的好处：在浏览器里的显示和保存时的名称｜PDF Mikata</title>
+
+
+<script src="/site.js"></script>
+<link href="https://pdfmikata.com/zh/pdf-metadata-title-search.html" rel="canonical"/>
+<meta content="为什么设置 PDF 标题能让浏览器标签页和保存的名称更清楚，以及如何设置。" name="description"/>
+
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.9}
+main{max-width:680px;margin:0 auto;padding:30px 18px 24px}
+.back{display:inline-block;margin-bottom:16px;font-size:.9rem;color:var(--sub)}
+h1{font-size:1.7rem;line-height:1.4;margin:0 0 14px}
+h2{font-size:1.2rem;margin:34px 0 8px;border-top:2px solid var(--ink);padding-top:12px}
+h3{font-size:1.02rem;margin:20px 0 4px}
+p{margin:0 0 12px}li{margin-bottom:4px}
+a{color:var(--ink)}
+.note{background:var(--paper);border:1px solid var(--line);padding:12px 14px;font-size:.92rem;margin:16px 0}
+.cta{display:block;text-align:center;background:var(--stamp);color:var(--btn-ink);text-decoration:none;font-weight:700;border-radius:6px;padding:16px;margin:26px 0}
+.cta:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+
+:root{--head:#16393c;padding-top:0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--head:#0a2427}}
+:root[data-theme="dark"]{--head:#0a2427}
+.top{background:var(--head);border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h2{border-top:0;padding:0 0 0 10px;border-left:6px solid var(--stamp)}
+h3::before{content:"";display:inline-block;width:10px;height:10px;background:var(--stamp);margin-right:8px;border-radius:2px}
+main ol{list-style:none;counter-reset:s;padding:0}
+main ol li{counter-increment:s;position:relative;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 12px 12px 52px;margin-bottom:8px}
+main ol li::before{content:counter(s);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);font-weight:700;display:grid;place-items:center;font-size:.85rem}
+.points{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:12px 16px;margin:0 0 22px}
+.points b{display:block;margin-bottom:4px}.points ul{margin:0;padding-left:1.2em}
+.note{border-left:6px solid var(--stamp)}
+.check{list-style:none;padding:0}.check li{position:relative;padding-left:2em}
+.check li::before{content:"";position:absolute;left:0;top:.5em;width:1.05em;height:1.05em;border:2px solid var(--ink);border-radius:3px}
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:.92rem;margin:10px 0}
+th,td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}
+th{background:var(--head);color:#fcfefd}
+.bars{background:var(--paper);border:1px solid var(--line);padding:14px;margin:16px 0}
+.bars div{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:.9rem}
+.bars span{flex:0 0 3.6em}.bars i{display:block;height:16px;background:var(--stamp);border-radius:3px}
+.tip{margin:26px 0 0;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);font-size:.92rem}.tip p{margin:0 0 8px}.tip a{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink)}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none;margin-left:auto}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+.meta{font-size:.85rem;color:var(--sub);margin:-4px 0 14px}.meta a{color:var(--sub)}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "教程", "item": "https://pdfmikata.com/guides.html"}, {"@type": "ListItem", "position": 3, "name": "设置 PDF 标题的好处：在浏览器里的显示和保存时的名称", "item": "https://pdfmikata.com/pdf-metadata-title-search.html"}]}</script>
+<meta content="article" property="og:type"/>
+<meta content="PDF Mikata" property="og:site_name"/>
+<meta content="zh_CN" property="og:locale"/>
+
+<meta content="设置 PDF 标题的好处：在浏览器里的显示和保存时的名称｜PDF Mikata" property="og:title"/>
+<meta content="为什么设置 PDF 标题能让浏览器标签页和保存的名称更清楚，以及如何设置。" property="og:description"/>
+<meta content="https://pdfmikata.com/zh/pdf-metadata-title-search.html" property="og:url"/>
+<meta content="https://pdfmikata.com/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="设置 PDF 标题的好处：在浏览器里的显示和保存时的名称｜PDF Mikata" name="twitter:title"/>
+<meta content="为什么设置 PDF 标题能让浏览器标签页和保存的名称更清楚，以及如何设置。" name="twitter:description"/>
+<meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="#16393c" name="theme-color"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "设置 PDF 标题的好处：在浏览器里的显示和保存时的名称", "description": "为什么设置 PDF 标题能让浏览器标签页和保存的名称更清楚，以及如何设置。", "url": "https://pdfmikata.com/zh/pdf-metadata-title-search.html", "mainEntityOfPage": "https://pdfmikata.com/zh/pdf-metadata-title-search.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<style>
+main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
+
+.lang{display:flex;align-items:center;border:0;overflow:visible}
+.lang .gl{width:18px;height:18px;margin:0 6px 0 10px;color:#fcfefd;flex:none}
+.lang select{appearance:none;-webkit-appearance:none;min-height:44px;border:1px solid rgba(255,255,255,.5);border-radius:6px;background:transparent;color:#fcfefd;font:inherit;font-weight:700;font-size:.85rem;padding:0 28px 0 12px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23fcfefd' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.lang select option{color:#16393c;background:#fcfefd}
+.lang select:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+@media (max-width:420px){.lang .gl{display:none}}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Noto Sans CJK SC",sans-serif}</style><link href="https://pdfmikata.com/pdf-metadata-title-search.html" hreflang="ja" rel="alternate"/>
+<link href="https://pdfmikata.com/en/pdf-metadata-title-search.html" hreflang="en" rel="alternate"/>
+<link href="https://pdfmikata.com/zh/pdf-metadata-title-search.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://pdfmikata.com/es/pdf-metadata-title-search.html" hreflang="es" rel="alternate"/>
+<link href="https://pdfmikata.com/pdf-metadata-title-search.html" hreflang="x-default" rel="alternate"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2376251801221434" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="/zh/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma" id="langsel"><option value="/pdf-metadata-title-search.html">日本語</option><option value="/en/pdf-metadata-title-search.html">English</option><option selected="" value="/zh/pdf-metadata-title-search.html">简体中文</option><option value="/es/pdf-metadata-title-search.html">Español</option></select></div></div></header>
+<nav aria-label="站内导航" class="sub"><div class="sub-in"><a href="/zh/"><span lang="zh-Hans">首页</span></a><a href="/zh/#cat-convert"><span lang="zh-Hans">转换</span></a><a href="/zh/#cat-edit"><span lang="zh-Hans">编辑</span></a><a href="/zh/#cat-optimize"><span lang="zh-Hans">优化</span></a><a href="/zh/#cat-create"><span lang="zh-Hans">制作</span></a><a aria-current="page" href="/zh/#guide"><span lang="zh-Hans">教程</span></a></div></nav>
+<nav aria-label="路径导航" class="crumb"><ol><li><a href="/zh/"><span lang="zh-Hans">首页</span></a></li><li><a href="/zh/guides.html"><span lang="zh-Hans">教程</span></a></li><li><span aria-current="page"><span lang="zh-Hans">设置 PDF 标题的好处：在浏览器里的显示和保存时的名称</span></span></li></ol></nav>
+<main>
+
+<div lang="zh-Hans">
+<h1>设置 PDF 标题的好处：在浏览器里的显示和保存时的名称</h1>
+<p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
+<div class="points"><b>要点</b><ul><li>确认当前的标题</li><li>改成清楚的标题</li><li>在浏览器里打开确认</li></ul></div>
+<p>你可以在 PDF 里设置<b>标题</b>。在浏览器里打开 PDF 时，标题可能会显示为<b>标签页的名称</b>。</p>
+<h2>为什么要设置标题</h2>
+<ul>
+<li>浏览器标签页显示的是<b>与内容相符的名称，而不是文件名</b>。</li>
+<li>屏幕阅读器更容易朗读<b>文件的标题</b>。</li>
+<li>在列表里更容易<b>找到你要的文件</b>。</li>
+</ul>
+<h2>不好的标题示例</h2>
+<ul>
+<li>软件自动加上的名称，比如“Microsoft Word - Document1”。</li>
+<li>照搬下来的<b>旧资料的标题</b>。</li>
+</ul>
+<h2>步骤</h2>
+<ol>
+<li>在<a href="/zh/pdf-metadata.html">查看并删除 PDF 属性</a>中选择 PDF。</li>
+<li>看一看“标题”一栏。</li>
+<li>选择“<b>改为上面的内容</b>”，输入一个能说明内容的简短名称。</li>
+</ol>
+<ul>
+<li>例如：“简历（2026 年 10 月）”</li>
+</ul>
+<ol>
+<li>如果你不需要作者等信息，就把这些栏<b>留空</b>。留空的栏会被删除。</li>
+<li>点击“生成 PDF”并保存。</li>
+</ol>
+<h2>确认</h2>
+<p>在浏览器里打开保存好的 PDF，确认<b>标签页的名称</b>是你设置的标题。不同浏览器的显示方式不同。</p>
+<a class="cta" href="/zh/pdf-metadata.html">使用“查看并删除 PDF 属性（作者、标题）”（免费）</a>
+<h2>搭配使用的工具</h2><ul><li><a href="/zh/pdf-redact.html">把 PDF 的一部分涂黑</a>：用拖动的方式框住 PDF 里想隐藏的部分，把它涂黑。涂黑的页面会变成图片，下面的文字也不会留下。</li><li><a href="/zh/compress-pdf.html">压缩 PDF</a>：把 PDF 压缩到你指定的大小以下，应对上传大小限制。</li><li><a href="/zh/split-pdf.html">提取或删除 PDF 页面</a>：只保留需要的页面，或删除不需要的页面。</li></ul>
+<div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>
+<h2>此工具的更多教程</h2>
+<ul><li><a href="/zh/pdf-metadata-howto.html">如何查看并删除 PDF 里的作者和标题（免费，手机也能用）</a></li><li><a href="/zh/pdf-metadata-word-author.html">为什么用 Word 或 PowerPoint 做的 PDF 里会有你的名字</a></li><li><a href="/zh/pdf-metadata-before-submit.html">提交或公开 PDF 之前：属性检查清单</a></li><li><a href="/zh/pdf-metadata-comments.html">PDF 批注和标记里残留的名字：如何删除，要注意什么</a></li><li><a href="/zh/pdf-metadata-what-is-stored.html">PDF 里保存了哪些信息？属性项目一览</a></li><li><a href="/zh/pdf-metadata-file-name.html">如何给 PDF 文件命名：提交和共享时的小技巧</a></li></ul>
+<p><a href="/zh/guides.html">查看全部教程</a></p>
+</div>
+</main>
+<footer><a href="/about.html"><span lang="zh-Hans">关于 / 联系（日文）</span></a><a href="/zh/privacy.html"><span lang="zh-Hans">隐私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hans">在 X 上查看更新</span></a></footer>
+</body>
+</html>
