@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PDFを1枚にまとめる（2in1・4in1・印刷の紙を節約）｜PDFのミカタ</title>
+<meta name="description" content="PDFの複数ページを、A4の1枚に並べる無料ツール。2・4・6・8・9ページまとめに対応。登録不要で、ファイルは端末の外に送信されません。">
+<meta name="title-en" content="Combine PDF Pages onto One Sheet (2-up, 4-up, save paper)｜PDF Mikata">
+<meta name="desc-en" content="Free tool to arrange several PDF pages on one A4 sheet (2, 4, 6, 8 or 9 up). No sign-up, and files never leave your device.">
+<link rel="canonical" href="https://pdfmikata.com/pdf-nup.html">
+<script src="/site.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap">
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" crossorigin="anonymous"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "ツール", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "PDFを1枚にまとめる（2in1・4in1）", "item": "https://pdfmikata.com/pdf-nup.html"}]}</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PDFのミカタ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="PDFを1枚にまとめる（2in1・4in1・印刷の紙を節約）｜PDFのミカタ">
+<meta property="og:description" content="PDFの複数ページを、A4の1枚に並べる無料ツール。2・4・6・8・9ページまとめに対応。登録不要で、ファイルは端末の外に送信されません。">
+<meta property="og:url" content="https://pdfmikata.com/pdf-nup.html">
+<meta property="og:image" content="https://pdfmikata.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PDFを1枚にまとめる（2in1・4in1・印刷の紙を節約）｜PDFのミカタ">
+<meta name="twitter:description" content="PDFの複数ページを、A4の1枚に並べる無料ツール。2・4・6・8・9ページまとめに対応。登録不要で、ファイルは端末の外に送信されません。">
+<meta name="twitter:image" content="https://pdfmikata.com/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#16393c">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "PDFを1枚にまとめる（2in1・4in1）", "alternateName": "Combine PDF Pages onto One Sheet (2-up, 4-up)", "url": "https://pdfmikata.com/pdf-nup.html", "description": "PDFの複数ページを、A4の1枚に並べる無料ツール。2・4・6・8・9ページまとめに対応。登録不要で、ファイルは端末の外に送信されません。", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": ["ja", "en"], "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>PDFのミカタ</span></a><div class="lang" role="group" aria-label="言語を切り替え / Switch language"><svg class="gl" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><button type="button" data-l="ja" title="日本語で表示">日本語</button><button type="button" data-l="en" title="Show in English">English</button></div></div></header>
+<nav class="sub" aria-label="サイト内ナビゲーション / Site navigation"><div class="sub-in"><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a><a href="/#cat-convert"><span lang="ja">変換</span><span lang="en">Convert</span></a><a href="/#cat-edit" aria-current="page"><span lang="ja">編集</span><span lang="en">Edit</span></a><a href="/#cat-optimize"><span lang="ja">最適化</span><span lang="en">Optimize</span></a><a href="/#cat-create"><span lang="ja">作成</span><span lang="en">Create</span></a><a href="/#guide"><span lang="ja">解説</span><span lang="en">Guides</span></a></div></nav>
+<nav class="crumb" aria-label="パンくず / Breadcrumb"><ol><li><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a></li><li><a href="/#tools"><span lang="ja">ツール</span><span lang="en">Tools</span></a></li><li><span aria-current="page"><span lang="ja">PDFを1枚にまとめる（2in1・4in1）</span><span lang="en">Combine PDF Pages onto One Sheet (2-up, 4-up)</span></span></li></ol></nav>
+<main>
+<h1><span lang="ja">PDFを1枚にまとめる</span><span lang="en">Combine PDF Pages onto One Sheet</span></h1>
+<p class="lead"><span lang="ja">2ページ・4ページ…を、A4の1枚に。印刷の紙を減らせます。</span><span lang="en">Put 2, 4 or more pages on one A4 sheet and save paper.</span></p>
+<p class="safe"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><span lang="ja"><b>PDFは外に送信されません。</b>すべて、この端末の中だけで処理します。</span><span lang="en"><b>Your PDF is never uploaded.</b> Everything is processed on this device.</span></span></p>
+<ol class="steps"><li><b>1</b><span lang="ja">PDFを選ぶ</span><span lang="en">Choose a PDF</span></li><li><b>2</b><span lang="ja">まとめ方を選ぶ</span><span lang="en">Choose a layout</span></li><li><b>3</b><span lang="ja">PDFを保存</span><span lang="en">Save the PDF</span></li></ol>
+<label class="pick" id="drop"><input type="file" id="file" accept="application/pdf,.pdf"><span id="pt"><span lang="ja">PDFを選ぶ</span><span lang="en">Choose a PDF</span></span><small><span lang="ja">1つのPDFを選びます</span><span lang="en">Select one PDF</span></small></label>
+<p class="note2" id="finfo" style="display:none"></p>
+<section class="set" id="set" style="display:none">
+<div class="row"><span><span lang="ja">1枚にまとめるページ数</span><span lang="en">Pages per sheet</span></span>
+<label><input type="radio" name="n" value="2"><span lang="ja">2ページ（横長の紙）</span><span lang="en">2 (landscape sheet)</span></label>
+<label><input type="radio" name="n" value="4" checked><span lang="ja">4ページ</span><span lang="en">4</span></label>
+<label><input type="radio" name="n" value="6"><span lang="ja">6ページ（横長の紙）</span><span lang="en">6 (landscape sheet)</span></label>
+<label><input type="radio" name="n" value="8"><span lang="ja">8ページ（横長の紙）</span><span lang="en">8 (landscape sheet)</span></label>
+<label><input type="radio" name="n" value="9"><span lang="ja">9ページ</span><span lang="en">9</span></label></div>
+<div class="row"><span><span lang="ja">並べる順番</span><span lang="en">Order</span></span>
+<label><input type="radio" name="ord" value="row" checked><span lang="ja">横に並べる（左→右、上→下）</span><span lang="en">Across, then down</span></label>
+<label><input type="radio" name="ord" value="col"><span lang="ja">縦に並べる（上→下、左→右）</span><span lang="en">Down, then across</span></label></div>
+<div class="row"><span><span lang="ja">まわりの余白</span><span lang="en">Margin</span></span>
+<label><input type="radio" name="mg" value="0"><span lang="ja">なし</span><span lang="en">None</span></label>
+<label><input type="radio" name="mg" value="10"><span lang="ja">小</span><span lang="en">Small</span></label>
+<label><input type="radio" name="mg" value="28" checked><span lang="ja">ふつう</span><span lang="en">Normal</span></label></div>
+<div class="row"><span><span lang="ja">各ページの枠線</span><span lang="en">Page borders</span></span>
+<label><input type="radio" name="bd" value="y" checked><span lang="ja">入れる</span><span lang="en">Draw</span></label>
+<label><input type="radio" name="bd" value="n"><span lang="ja">入れない</span><span lang="en">None</span></label></div>
+<p class="note2" id="hint"><span lang="ja">用紙は、A4です。文字の多い資料は、4ページ以上にすると、小さくて読みにくくなります。</span><span lang="en">The sheet is A4. For text-heavy documents, 4 or more pages per sheet can be hard to read.</span></p>
+<button id="go" disabled></button>
+</section>
+
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="ja">完成</span><span lang="en">Done</span></div>
+<p id="info"></p>
+<a id="dl" href="#"></a>
+<div id="extra"></div>
+<p id="msg" aria-live="polite"></p>
+<div class="support" id="support" hidden><p><span lang="ja">PDFのミカタが役に立ったら、応援してもらえるとうれしいです。</span><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a id="supl" href="#" target="_blank" rel="noopener"><span lang="ja">応援する（300円）</span><span lang="en">Send a tip (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" target="_blank" rel="noopener noreferrer nofollow"><span lang="ja">ほしい物リストで応援</span><span lang="en">Send a gift (Amazon wishlist)</span></a></div>
+</section>
+<section class="guide" id="how">
+<div lang="ja"><h2>使い方</h2>
+<ol>
+<li>「PDFを選ぶ」で、PDFを1つ選びます。</li>
+<li>1枚にまとめるページ数（2・4・6・8・9）を選びます。</li>
+<li>並べる順番、余白、枠線を、必要なら選びます。</li>
+<li>「1枚にまとめる」を押し、できたPDFを保存して、印刷します。</li>
+</ol>
+<h2>注意</h2>
+<ul>
+<li>用紙は、A4です。2・6・8ページまとめは、横長の紙になります。</li>
+<li>小さく縮小されるので、文字の多い資料は、4ページ以上だと読みにくくなります。</li>
+<li>印刷するときは、A4・実際のサイズ（100%）で出してください。</li>
+<li>パスワード付きのPDFは、扱えません。</li>
+</ul>
+<h2>よくある質問</h2>
+<details><summary>PDFは外部に送信されますか？</summary><p>いいえ。処理はすべて、お使いの端末のブラウザの中で行われます。</p></details>
+<details><summary>ページの大きさが、バラバラでも使えますか？</summary><p>使えます。それぞれのページを、枠に合わせて縮小して並べます。</p></details>
+<details><summary>回転しているページは、どうなりますか？</summary><p>見た目のとおりの向きで並びます。</p></details></div>
+<div lang="en"><h2>How to use</h2>
+<ol>
+<li>Tap "Choose a PDF" and select one PDF.</li>
+<li>Choose how many pages go on one sheet (2, 4, 6, 8 or 9).</li>
+<li>Choose the order, margin and borders if needed.</li>
+<li>Tap "Combine onto sheets", save the new PDF and print it.</li>
+</ol>
+<h2>Notes</h2>
+<ul>
+<li>The sheet is A4. 2-, 6- and 8-up use a landscape sheet.</li>
+<li>Pages are shrunk, so text-heavy documents become hard to read at 4 or more per sheet.</li>
+<li>When printing, use A4 at actual size (100%).</li>
+<li>Password-protected PDFs are not supported.</li>
+</ul>
+<h2>FAQ</h2>
+<details><summary>Is my PDF uploaded anywhere?</summary><p>No. Everything is processed inside the browser on your device.</p></details>
+<details><summary>Does it work if pages have different sizes?</summary><p>Yes. Each page is scaled down to fit its slot.</p></details>
+<details><summary>What about rotated pages?</summary><p>They are placed in the orientation you see.</p></details></div>
+</section>
+<div class="support endtip"><p><span lang="ja">PDFのミカタが役に立ったら、応援してもらえるとうれしいです。</span><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" target="_blank" rel="noopener"><span lang="ja">応援する（300円）</span><span lang="en">Send a tip (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" target="_blank" rel="noopener noreferrer nofollow"><span lang="ja">ほしい物リストで応援</span><span lang="en">Send a gift (Amazon wishlist)</span></a></div>
+<section class="more rel"><h2><span lang="ja">このツールの解説</span><span lang="en">Guides for this tool</span></h2><a href="/pdf-nup-howto.html"><span lang="ja">PDFを1枚に2ページ・4ページまとめて印刷する方法（スマホでもOK）</span><span lang="en">How to Print 2 or 4 PDF Pages per Sheet (Works on a Phone)</span></a><a href="/pdf-nup-lecture-slides.html"><span lang="ja">授業のスライド資料を4in1・6in1で印刷して、紙を節約するコツ</span><span lang="en">Printing Lecture Slides 4-up or 6-up to Save Paper</span></a><a href="/pdf-nup-which-layout.html"><span lang="ja">2in1・4in1・6in1・9in1、どれがいい？文字の大きさの目安</span><span lang="en">2-up, 4-up, 6-up or 9-up: Which Is Best? A Guide to Text Size</span></a><a href="/pdf-nup-double-sided.html"><span lang="ja">まとめて印刷＋両面印刷で、紙を減らす方法</span><span lang="en">Saving Paper by Combining Pages and Printing Double-Sided</span></a><a href="/pdf-nup-convenience-store.html"><span lang="ja">まとめたPDFをコンビニで印刷するコツ</span><span lang="en">Tips for Printing a Combined PDF at a Convenience Store</span></a><a href="/pdf-nup-borders-margins.html"><span lang="ja">まとめるときの余白と枠線：見やすくするコツ</span><span lang="en">Margins and Borders When Combining Pages: Tips for Readability</span></a><a href="/pdf-nup-troubleshooting.html"><span lang="ja">まとめたPDFがうまくいかないときの対処法（向き・順番・小さすぎ）</span><span lang="en">Fixing Problems with a Combined PDF: Orientation, Order and Tiny Text</span></a></section>
+<section class="more"><h2><span lang="ja">ほかのツール</span><span lang="en">More tools</span></h2><a href="/photo-to-pdf.html"><span lang="ja">写真をPDFに変換</span><span lang="en">Photos to PDF</span><small><span lang="ja">複数の写真を、順番どおりに1つのPDFへ。回転、並べ替え、サイズ指定ができます。</span><span lang="en">Combine several photos into one PDF in the order you choose. You can rotate, reorder and set a size limit.</span></small></a><a href="/merge-pdf.html"><span lang="ja">PDFを結合</span><span lang="en">Merge PDFs</span><small><span lang="ja">複数のPDFを、順番を決めて1つのPDFにまとめます。</span><span lang="en">Combine several PDF files into one, in the order you choose.</span></small></a><a href="/split-pdf.html"><span lang="ja">PDFのページを抜き出し・削除</span><span lang="en">Extract or Delete PDF Pages</span><small><span lang="ja">PDFから、必要なページだけを残す、または不要なページを消します。</span><span lang="en">Keep only the pages you need, or remove the pages you don't.</span></small></a><a href="/compress-pdf.html"><span lang="ja">PDFを圧縮</span><span lang="en">Compress PDF</span><small><span lang="ja">PDFを、指定したサイズ以下に小さくします。提出先の容量制限に合わせたいときに。</span><span lang="en">Shrink a PDF to fit under a size you choose, for upload limits.</span></small></a><a href="/pdf-to-image.html"><span lang="ja">PDFを画像に変換</span><span lang="en">PDF to Images</span><small><span lang="ja">PDFの各ページを、JPEGまたはPNGの画像として保存します。</span><span lang="en">Save each page of a PDF as a JPEG or PNG image.</span></small></a><a href="/image-convert.html"><span lang="ja">画像の形式を変換（JPG・PNG・WebP）</span><span lang="en">Convert Image Format (JPG, PNG, WebP)</span><small><span lang="ja">画像をJPG・PNG・WebPに、まとめて変換します。</span><span lang="en">Convert images to JPG, PNG or WebP, several at once.</span></small></a><a href="/pdf-rotate.html"><span lang="ja">PDFのページを回転・並べ替え</span><span lang="en">Rotate & Reorder PDF Pages</span><small><span lang="ja">向きが違うページを直す、ページの順番を入れ替える、いらないページを消す。</span><span lang="en">Fix sideways pages, change the page order, or remove pages.</span></small></a><a href="/pdf-page-numbers.html"><span lang="ja">PDFにページ番号を追加</span><span lang="en">Add Page Numbers to PDF</span><small><span lang="ja">PDFの各ページに、ページ番号を入れます。位置や形式を選べます。</span><span lang="en">Add page numbers to a PDF, choosing position and style.</span></small></a><a href="/image-compress.html"><span lang="ja">画像を圧縮・サイズ変更</span><span lang="en">Compress & Resize Images</span><small><span lang="ja">画像のファイルサイズを小さくします。大きさの変更もできます。</span><span lang="en">Make image files smaller, and resize them if you like.</span></small></a><a href="/heic-to-jpg.html"><span lang="ja">HEIC画像をJPGに変換</span><span lang="en">Convert HEIC to JPG</span><small><span lang="ja">iPhoneで撮ったHEIC画像を、JPGやPNGに変換します。</span><span lang="en">Convert HEIC photos from iPhone to JPG or PNG.</span></small></a><a href="/pdf-split.html"><span lang="ja">PDFを分割</span><span lang="en">Split PDF</span><small><span lang="ja">PDFを、1ページずつ、Nページごと、または範囲を決めて、複数のPDFに分けます。</span><span lang="en">Split a PDF into several files: one page each, every N pages, or by ranges.</span></small></a><a href="/image-crop.html"><span lang="ja">画像の切り抜き・回転</span><span lang="en">Crop & Rotate Image</span><small><span lang="ja">画像を、好きな範囲や比率で切り抜きます。回転もできます。</span><span lang="en">Crop an image to any area or ratio, and rotate it.</span></small></a><a href="/pdf-to-text.html"><span lang="ja">PDFから文字を抜き出す</span><span lang="en">Extract Text from PDF</span><small><span lang="ja">PDFの文字を取り出して、コピーまたは保存できます。</span><span lang="en">Pull the text out of a PDF to copy or save.</span></small></a><a href="/receipt-maker.html"><span lang="ja">領収書をPDFで作成</span><span lang="en">Create a Receipt PDF</span><small><span lang="ja">宛名・金額・但し書きを入れて、領収書をPDFで作ります。消費税の内訳やインボイス登録番号も入れられます。</span><span lang="en">Fill in the payer, amount and description to make a receipt PDF. Tax breakdown and invoice registration number are optional.</span></small></a><a href="/resume-maker.html"><span lang="ja">履歴書をPDFで作成</span><span lang="en">Create a Resume PDF (Japanese Rirekisho)</span><small><span lang="ja">氏名・学歴・職歴・志望動機などを入れて、履歴書をPDFで作ります。証明写真も入れられます。</span><span lang="en">Fill in your details, education, work history and motivation to make a Japanese-style resume (rirekisho) PDF, with an optional ID photo.</span></small></a><a href="/timetable-maker.html"><span lang="ja">時間割・週間スケジュール表を作成</span><span lang="en">Create a Timetable / Weekly Schedule</span><small><span lang="ja">授業やバイト、予定を入れて、時間割や週間スケジュール表をPDF・画像で作ります。色分けもできます。</span><span lang="en">Enter classes, jobs and plans to make a timetable or weekly schedule as a PDF or image, with color coding.</span></small></a><a href="/namecard-maker.html"><span lang="ja">名刺・ネームカードを作成</span><span lang="en">Create Business Cards / Name Cards</span><small><span lang="ja">名前や所属を入れて、名刺やネームカードをA4に並べたPDFで作ります。名簿から名札をまとめて作ることもできます。</span><span lang="en">Enter your name and details to make business or name cards laid out on A4 as a PDF. You can also make name tags in bulk from a list.</span></small></a><a href="/qr-code-maker.html"><span lang="ja">QRコードを作成（URL・Wi-Fi）</span><span lang="en">Create a QR Code (URL, Wi-Fi)</span><small><span lang="ja">URLや文字、Wi-Fiの情報から、QRコードを作ります。PNG・SVG・PDFで保存できます。</span><span lang="en">Make a QR code from a URL, text or Wi-Fi details and save it as PNG, SVG or PDF.</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" target="_blank" rel="noopener noreferrer"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const t=(a,b)=>EN()?b:a;
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=t("保存できませんでした。もう一度お試しください。","Could not save. Please try again.")}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return t("パスワード付きのPDFは扱えません。パスワードを外してからお試しください。","Password-protected PDFs are not supported. Remove the password and try again.");
+  return t("PDFを読み込めませんでした。壊れているか、対応していない形式の可能性があります。","Could not read the PDF. It may be damaged or in an unsupported format.");
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  const out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+let file=null,count=0;
+const LAY={2:{c:2,r:1,land:1},4:{c:2,r:2,land:0},6:{c:3,r:2,land:1},8:{c:4,r:2,land:1},9:{c:3,r:3,land:0}};
+async function load(list){
+  const f=list[0];if(!f||!isPdf(f))return;
+  try{
+    const d=await PDFLib.PDFDocument.load(await f.arrayBuffer());
+    file=f;count=d.getPageCount();
+    $("finfo").style.display="block";$("finfo").textContent=f.name+"（"+count+t("ページ","p")+" / "+fmt(f.size)+"）";
+    $("set").style.display="block";$("go").disabled=false;$("go").textContent=t("1枚にまとめる","Combine onto sheets");
+    $("pt").textContent=t("別のPDFを選ぶ","Choose another PDF");$("out").style.display="none";
+  }catch(e){console.error(e);file=null;$("set").style.display="none";$("finfo").style.display="none";const o=$("out");o.style.display="block";o.querySelector(".stamp").style.display="none";$("bar").style.display="none";$("info").textContent="";$("dl").style.display="none";$("support").hidden=true;$("msg").className="bad";$("msg").textContent=errText(e)}
+}
+$("file").onchange=e=>{load([...e.target.files]);e.target.value=""};
+bindDrop("drop",load);
+$("go").onclick=async()=>{
+  const go=$("go");go.disabled=true;beginRun();
+  try{
+    const n=+val("n"),L=LAY[n],colMajor=val("ord")==="col",M=+val("mg"),gap=M/2,border=val("bd")==="y";
+    const W=L.land?841.89:595.28,H=L.land?595.28:841.89;
+    const src=await PDFLib.PDFDocument.load(await file.arrayBuffer());
+    const total=src.getPageCount();
+    const out=await PDFLib.PDFDocument.create();
+    const emb=await out.embedPdf(src,[...Array(total).keys()]);
+    const rots=src.getPages().map(p=>((p.getRotation().angle||0)%360+360)%360);
+    const cw=(W-2*M-(L.c-1)*gap)/L.c,ch=(H-2*M-(L.r-1)*gap)/L.r;
+    const per=L.c*L.r,sheets=Math.ceil(total/per);
+    for(let s=0;s<sheets;s++){
+      $("barf").style.width=(s/sheets*100)+"%";
+      const pg=out.addPage([W,H]);
+      for(let k=0;k<per;k++){
+        const idx=s*per+k;if(idx>=total)break;
+        const col=colMajor?Math.floor(k/L.r):k%L.c,row=colMajor?k%L.r:Math.floor(k/L.c);
+        const e=emb[idx],rot=rots[idx],w=e.width,h=e.height;
+        const vw=(rot===90||rot===270)?h:w,vh=(rot===90||rot===270)?w:h;
+        const sc=Math.min(cw/vw,ch/vh);
+        const ox=M+col*(cw+gap)+(cw-vw*sc)/2,oy=H-M-(row+1)*ch-row*gap+(ch-vh*sc)/2;
+        let x=ox,y=oy,a=0;
+        if(rot===90){y=oy+w*sc;a=-90}
+        else if(rot===180){x=ox+w*sc;y=oy+h*sc;a=-180}
+        else if(rot===270){x=ox+h*sc;a=-270}
+        pg.drawPage(e,{x,y,xScale:sc,yScale:sc,rotate:PDFLib.degrees(a)});
+        if(border)pg.drawRectangle({x:ox,y:oy,width:vw*sc,height:vh*sc,borderColor:PDFLib.rgb(.55,.55,.55),borderWidth:.6});
+      }
+    }
+    $("barf").style.width="100%";
+    const bytes=await out.save();const blob=new Blob([bytes],{type:"application/pdf"});
+    const name=baseName(file)+"_"+n+"in1.pdf";
+    const dl=$("dl");dl.href="#";dl.textContent=t("PDFを保存する","Save PDF");dl.style.display="inline-block";wire(dl,blob,name,"application/pdf");
+    $("info").textContent=t(total+"ページを、"+sheets+"枚にまとめました（"+fmt(bytes.length)+"）",total+" pages onto "+sheets+" sheet(s) ("+fmt(bytes.length)+")");
+    $("msg").textContent=t("印刷するときは、A4・「実際のサイズ（100%）」で出してください。","When printing, use A4 at actual size (100%).");
+    finishOk();
+  }catch(e){console.error(e);$("msg").className="bad";$("msg").textContent=errText(e)}
+  finally{endRun();go.disabled=!file}
+};
+
+</script>
+</body>
+</html>
