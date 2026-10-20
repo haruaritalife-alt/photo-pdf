@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html data-lang="es" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Quitar líneas duplicadas y ordenar listas (gratis)｜PDF Mikata</title>
+<meta content="Herramienta gratuita para quitar líneas duplicadas de un texto y ordenarlas de la A a la Z o por longitud. Tu texto nunca sale de tu dispositivo." name="description"/>
+
+
+<link href="https://pdfmikata.com/es/line-sort-dedupe.html" rel="canonical"/>
+<script src="/site.js"></script>
+
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+.next{margin:20px 0 6px}
+.next h3{margin:0 0 10px;font-size:1.05rem}
+.ncards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(min-width:720px){.ncards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.ncards a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper,#fff);box-shadow:0 3px 0 var(--line);text-decoration:none;color:var(--ink)}
+.ncards a.tool:hover{border-color:var(--stamp)}
+.ncards .ic{flex:none;width:40px;height:40px;border-radius:11px;background:var(--ink);color:var(--btn-ink);display:grid;place-items:center}
+.ncards .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ncards .tx b{display:block;font-size:.95rem;line-height:1.4}
+.ncards .tx .d{display:block;color:var(--sub);font-size:.8rem;line-height:1.5;margin-top:2px}
+.next .allt{display:block;margin:14px 0 0;padding:13px 16px;border:2px solid var(--ink);border-radius:12px;text-align:center;font-weight:700;text-decoration:none;color:var(--ink);background:var(--paper,#fff)}
+.next .allt:hover{background:var(--ink);color:var(--btn-ink)}
+.safe{margin:14px 0 0;font-size:.85rem;color:var(--sub);line-height:1.6}
+#bar::after{content:"処理中…この端末の中だけで処理しています";display:block;margin-top:6px;font-size:.8rem;color:var(--sub)}
+html[data-lang="en"] #bar::after{content:"Working… processed only on this device"}
+html[data-lang="zh"] #bar::after{content:"处理中…仅在此设备上处理"}
+html[data-lang="es"] #bar::after{content:"Procesando… solo en este dispositivo"}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "Herramientas", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "Quitar líneas duplicadas y ordenar una lista", "item": "https://pdfmikata.com/line-sort-dedupe.html"}]}</script>
+<meta content="website" property="og:type"/>
+<meta content="PDF Mikata" property="og:site_name"/>
+<meta content="es_ES" property="og:locale"/>
+
+<meta content="Quitar líneas duplicadas y ordenar listas (gratis)｜PDF Mikata" property="og:title"/>
+<meta content="Herramienta gratuita para quitar líneas duplicadas de un texto y ordenarlas de la A a la Z o por longitud. Tu texto nunca sale de tu dispositivo." property="og:description"/>
+<meta content="https://pdfmikata.com/es/line-sort-dedupe.html" property="og:url"/>
+<meta content="https://pdfmikata.com/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Quitar líneas duplicadas y ordenar listas (gratis)｜PDF Mikata" name="twitter:title"/>
+<meta content="Herramienta gratuita para quitar líneas duplicadas de un texto y ordenarlas de la A a la Z o por longitud. Tu texto nunca sale de tu dispositivo." name="twitter:description"/>
+<meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="#16393c" name="theme-color"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Quitar líneas duplicadas y ordenar una lista", "alternateName": "Remove Duplicate Lines and Sort a List", "url": "https://pdfmikata.com/es/line-sort-dedupe.html", "description": "Herramienta gratuita para quitar líneas duplicadas de un texto y ordenarlas de la A a la Z o por longitud. Tu texto nunca sale de tu dispositivo.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "es", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
+<style>
+main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
+
+.lang{display:flex;align-items:center;border:0;overflow:visible}
+.lang .gl{width:18px;height:18px;margin:0 6px 0 10px;color:#fcfefd;flex:none}
+.lang select{appearance:none;-webkit-appearance:none;min-height:44px;border:1px solid rgba(255,255,255,.5);border-radius:6px;background:transparent;color:#fcfefd;font:inherit;font-weight:700;font-size:.85rem;padding:0 28px 0 12px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23fcfefd' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.lang select option{color:#16393c;background:#fcfefd}
+.lang select:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+@media (max-width:420px){.lang .gl{display:none}}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}</style><link href="https://pdfmikata.com/line-sort-dedupe.html" hreflang="ja" rel="alternate"/>
+<link href="https://pdfmikata.com/en/line-sort-dedupe.html" hreflang="en" rel="alternate"/>
+<link href="https://pdfmikata.com/zh/line-sort-dedupe.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://pdfmikata.com/es/line-sort-dedupe.html" hreflang="es" rel="alternate"/>
+<link href="https://pdfmikata.com/line-sort-dedupe.html" hreflang="x-default" rel="alternate"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2376251801221434" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="/es/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma" id="langsel"><option value="/line-sort-dedupe.html">日本語</option><option value="/en/line-sort-dedupe.html">English</option><option value="/zh/line-sort-dedupe.html">简体中文</option><option selected="" value="/es/line-sort-dedupe.html">Español</option></select></div></div></header>
+<nav aria-label="Navegación del sitio" class="sub"><div class="sub-in"><a href="/es/"><span lang="es">Inicio</span></a><a href="/es/#cat-convert"><span lang="es">Convertir</span></a><a aria-current="page" href="/es/#cat-edit"><span lang="es">Editar</span></a><a href="/es/#cat-optimize"><span lang="es">Optimizar</span></a><a href="/es/#cat-create"><span lang="es">Crear</span></a><a href="/es/#guide"><span lang="es">Guías</span></a></div></nav>
+<nav aria-label="Ruta de navegación" class="crumb"><ol><li><a href="/es/"><span lang="es">Inicio</span></a></li><li><a href="/es/#tools"><span lang="es">Herramientas</span></a></li><li><span aria-current="page"><span lang="es">Quitar líneas duplicadas y ordenar una lista</span></span></li></ol></nav>
+<main>
+<h1><span lang="es">Quitar líneas duplicadas y ordenar una lista</span></h1>
+<p class="lead"><span lang="es">Para ordenar una lista de nombres o cualquier lista.</span></p>
+<p class="safe"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="9" rx="2" width="14" x="5" y="11"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><span><span lang="es"><b>Tu texto nunca se envía a ninguna parte.</b> Todo se procesa en este dispositivo.</span></span></p><ol class="steps"><li><b>1</b><span lang="es">Pega las líneas</span></li><li><b>2</b><span lang="es">Elige las opciones</span></li><li><b>3</b><span lang="es">Copia el resultado</span></li></ol>
+<label for="tx" style="font-weight:700"><span lang="es">Antes (un elemento por línea)</span></label>
+<textarea id="tx" style="width:100%;min-height:150px;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:10px 12px;font:inherit;font-size:1rem;line-height:1.6;resize:vertical;display:block"></textarea>
+<div class="row"><label><input checked="" id="dd" type="checkbox"/><span lang="es">Quitar líneas duplicadas</span></label></div>
+<div class="row"><label><input id="ic" type="checkbox"/><span lang="es">Ignorar mayúsculas y minúsculas al buscar duplicados</span></label></div>
+<div class="row"><label><input checked="" id="tr" type="checkbox"/><span lang="es">Quitar los espacios alrededor de cada línea</span></label></div>
+<div class="row"><label><input checked="" id="bl" type="checkbox"/><span lang="es">Quitar líneas en blanco</span></label></div>
+<div class="row"><span><span lang="es">Orden</span></span><label><input checked="" name="so" type="radio" value="none"/><span lang="es">No ordenar</span></label><label><input name="so" type="radio" value="asc"/><span lang="es">De la A a la Z</span></label><label><input name="so" type="radio" value="desc"/><span lang="es">De la Z a la A</span></label><label><input name="so" type="radio" value="len"/><span lang="es">De más corto a más largo</span></label></div>
+<label for="ot" style="font-weight:700;display:block;margin-top:10px"><span lang="es">Después</span></label>
+<textarea id="ot" readonly="" style="width:100%;min-height:150px;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:10px 12px;font:inherit;font-size:1rem;line-height:1.6;resize:vertical;display:block;background:#f7f7f7"></textarea>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0">
+<div style="border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:#fff"><div style="font-size:.85rem;color:var(--muted,#555)"><span lang="es">Líneas antes</span></div><div id="c1" style="font-size:1.35rem;font-weight:700;overflow-wrap:anywhere">-</div></div>
+<div style="border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:#fff"><div style="font-size:.85rem;color:var(--muted,#555)"><span lang="es">Líneas después</span></div><div id="c2" style="font-size:1.35rem;font-weight:700;overflow-wrap:anywhere">-</div></div>
+<div style="border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:#fff"><div style="font-size:.85rem;color:var(--muted,#555)"><span lang="es">Líneas quitadas</span></div><div id="c3" style="font-size:1.35rem;font-weight:700;overflow-wrap:anywhere">-</div></div>
+</div>
+<div class="btnrow"><button class="btn2" id="cp" type="button"></button><button class="btn2" id="clr" type="button"></button></div>
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="es">Listo</span></div>
+<p id="info"></p>
+<a href="#" id="dl"></a>
+<div id="extra"></div>
+<p aria-live="polite" id="msg"></p>
+<p class="safe"><span lang="es">🔒 Tus archivos nunca se envían a un servidor externo. Todo se procesa de forma segura dentro de este navegador.</span></p>
+<div class="support" hidden="" id="support"><p><span lang="es">Si PDF Mikata te ha sido útil, una pequeña propina significaría mucho para nosotros.</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="es">Dar una propina (300 ¥)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="es">Enviar un regalo (lista de deseos de Amazon)</span></a></div>
+</section>
+<div class="next" id="next"><h3><span lang="es">Herramientas que se usan juntas</span></h3><div class="ncards"><a class="tool" href="/es/line-break-remover.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M7 9h10M7 13h10M7 17h6"></path></svg></span><div class="tx"><b><span lang="es">Quitar y ordenar los saltos de línea de un texto</span></b><span class="d"><span lang="es">Ordena los saltos de línea del texto copiado.</span></span></div></a><a class="tool" href="/es/char-counter.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M7 9h10M7 13h6"></path></svg></span><div class="tx"><b><span lang="es">Contador de caracteres (para solicitudes e informes)</span></b><span class="d"><span lang="es">Cuenta caracteres, líneas y hojas de manuscrito.</span></span></div></a><a class="tool" href="/es/zenkaku-hankaku.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M7 15l3-6 3 6M15 9v6"></path></svg></span><div class="tx"><b><span lang="es">Convertir entre ancho completo, medio ancho, hiragana y katakana</span></b><span class="d"><span lang="es">Convierte el ancho del texto y el tipo de kana.</span></span></div></a><a class="tool" href="/es/merge-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="13" rx="1.5" width="10" x="3" y="3"></rect><rect height="13" rx="1.5" width="10" x="11" y="8"></rect></svg></span><div class="tx"><b><span lang="es">Unir PDF</span></b><span class="d"><span lang="es">Une PDF en uno solo.</span></span></div></a></div><a class="allt" href="/es/"><span lang="es">Ver todas las herramientas (volver al inicio)</span></a></div>
+<section class="guide" id="how">
+
+<div lang="es"><h2>Cómo se usa</h2>
+<ol>
+<li>Pega el texto en «Antes», un elemento por línea.</li>
+<li>Elige si quitar duplicados, quitar líneas en blanco u ordenar.</li>
+<li>Copia el resultado de «Después» con «Copiar resultado».</li>
+</ol>
+<h2>Cómo funciona</h2>
+<ul>
+<li>Quita las líneas repetidas para ordenar una lista.</li>
+<li>Ordena de la A a la Z, de la Z a la A o de más corto a más largo.</li>
+</ul>
+<h2>Notas</h2>
+<ul>
+<li>Los duplicados son líneas exactamente iguales. Activa ignorar mayúsculas si hace falta.</li>
+<li>Tu texto ni se guarda ni se envía.</li>
+</ul>
+<h2>Preguntas frecuentes</h2>
+<details><summary>¿Se envía a algún sitio lo que introduzco?</summary><p>No. Todo se procesa dentro del navegador de tu dispositivo.</p></details>
+<details><summary>¿Cómo funciona la ordenación?</summary><p>«De la A a la Z» ordena por orden alfabético; el japonés, por orden de lectura.</p></details>
+</div>
+</section>
+<div class="support endtip"><p><span lang="es">Si PDF Mikata te ha sido útil, una pequeña propina significaría mucho para nosotros.</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank"><span lang="es">Dar una propina (300 ¥)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="es">Enviar un regalo (lista de deseos de Amazon)</span></a></div>
+<section class="more rel"><h2><span lang="es">Guías de esta herramienta</span></h2><a href="/es/line-sort-dedupe-howto.html"><span lang="es">Cómo quitar líneas duplicadas (gratis, también en el móvil)</span></a><a href="/es/line-sort-dedupe-sort.html"><span lang="es">Cómo ordenar una lista de la A a la Z</span></a><a href="/es/line-sort-dedupe-blank.html"><span lang="es">Cómo quitar las líneas en blanco</span></a><a href="/es/line-sort-dedupe-mailing-list.html"><span lang="es">Cómo quitar direcciones de correo duplicadas</span></a><a href="/es/line-sort-dedupe-spaces.html"><span lang="es">Cómo quitar los espacios alrededor de las líneas</span></a><a href="/es/line-sort-dedupe-count.html"><span lang="es">Cómo ver cuántas líneas se quitaron</span></a><a href="/es/line-sort-dedupe-safe.html"><span lang="es">Cómo se queda tu texto en tu dispositivo</span></a></section>
+<section class="more"><h2><span lang="es">Más herramientas</span></h2><a href="/es/photo-to-pdf.html"><span lang="es">Fotos a PDF</span><small><span lang="es">Une varias fotos en un solo PDF en el orden que elijas. Puedes girarlas, reordenarlas y fijar un límite de tamaño.</span></small></a><a href="/es/merge-pdf.html"><span lang="es">Unir PDF</span><small><span lang="es">Une varios archivos PDF en uno, en el orden que elijas.</span></small></a><a href="/es/split-pdf.html"><span lang="es">Extraer o eliminar páginas de un PDF</span><small><span lang="es">Conserva solo las páginas que necesitas o elimina las que no.</span></small></a><a href="/es/compress-pdf.html"><span lang="es">Comprimir PDF</span><small><span lang="es">Reduce un PDF por debajo del tamaño que elijas, para los límites de subida.</span></small></a><a href="/es/pdf-to-image.html"><span lang="es">PDF a imágenes</span><small><span lang="es">Guarda cada página de un PDF como imagen JPEG o PNG.</span></small></a><a href="/es/image-convert.html"><span lang="es">Convertir formato de imagen (JPG, PNG, WebP)</span><small><span lang="es">Convierte varias imágenes a JPG, PNG o WebP a la vez.</span></small></a><a href="/es/pdf-rotate.html"><span lang="es">Girar y reordenar páginas de un PDF</span><small><span lang="es">Corrige páginas giradas, cambia el orden de las páginas o elimina páginas.</span></small></a><a href="/es/pdf-page-numbers.html"><span lang="es">Añadir números de página a un PDF</span><small><span lang="es">Añade números de página a un PDF eligiendo la posición y el estilo.</span></small></a><a href="/es/image-compress.html"><span lang="es">Comprimir y redimensionar imágenes</span><small><span lang="es">Reduce el tamaño de los archivos de imagen y, si quieres, cámbiales las dimensiones.</span></small></a><a href="/es/heic-to-jpg.html"><span lang="es">Convertir HEIC a JPG</span><small><span lang="es">Convierte fotos HEIC del iPhone a JPG o PNG.</span></small></a><a href="/es/pdf-split.html"><span lang="es">Dividir PDF</span><small><span lang="es">Divide un PDF en varios archivos: una página cada uno, cada N páginas o por rangos.</span></small></a><a href="/es/image-crop.html"><span lang="es">Recortar y girar imagen</span><small><span lang="es">Recorta una imagen con cualquier área o proporción y gírala.</span></small></a><a href="/es/pdf-to-text.html"><span lang="es">Extraer texto de un PDF</span><small><span lang="es">Extrae el texto de un PDF para copiarlo o guardarlo.</span></small></a><a href="/es/receipt-maker.html"><span lang="es">Crear un recibo en PDF</span><small><span lang="es">Rellena el pagador, el importe y el concepto para crear un recibo en PDF. El desglose de impuestos y el número de registro de factura son opcionales.</span></small></a><a href="/es/resume-maker.html"><span lang="es">Crear un currículum en PDF (rirekisho japonés)</span><small><span lang="es">Rellena tus datos, formación, experiencia laboral y motivación para crear un currículum de estilo japonés (rirekisho) en PDF, con foto de carné opcional.</span></small></a><a href="/es/timetable-maker.html"><span lang="es">Crear un horario / agenda semanal</span><small><span lang="es">Introduce clases, trabajos y planes para crear un horario o agenda semanal en PDF o imagen, con códigos de color.</span></small></a><a href="/es/namecard-maker.html"><span lang="es">Crear tarjetas de visita</span><small><span lang="es">Introduce tu nombre y tus datos para crear tarjetas de visita o identificadores en una hoja A4 en PDF. También puedes crear identificadores en lote a partir de una lista.</span></small></a><a href="/es/qr-code-maker.html"><span lang="es">Crear un código QR (URL, Wi-Fi)</span><small><span lang="es">Crea un código QR a partir de una URL, un texto o los datos de una red Wi-Fi y guárdalo como PNG, SVG o PDF.</span></small></a><a href="/es/pdf-nup.html"><span lang="es">Combinar páginas PDF en una hoja (2 o 4 por hoja)</span><small><span lang="es">Coloca varias páginas de un PDF en una hoja A4 (2, 4, 6, 8 o 9 por hoja) para ahorrar papel al imprimir.</span></small></a><a href="/es/pdf-grayscale.html"><span lang="es">Convertir un PDF a escala de grises (blanco y negro)</span><small><span lang="es">Convierte un PDF en color a escala de grises o a blanco y negro puro, listo para imprimir, copiar o enviar por fax en monocromo. Elige la resolución.</span></small></a><a href="/es/pdf-watermark.html"><span lang="es">Añadir una marca de agua de texto a un PDF</span><small><span lang="es">Añade texto como «Para entrega», «Copia» o «Confidencial» de forma tenue en cada página del PDF. Elige posición, color y opacidad.</span></small></a><a href="/es/pdf-crop.html"><span lang="es">Recortar márgenes de PDF</span><small><span lang="es">Recorta los márgenes de un PDF automáticamente o fijando cada borde. Se lee mejor en el móvil y se imprime con más limpieza.</span></small></a><a href="/es/pdf-redact.html"><span lang="es">Tachar partes de un PDF</span><small><span lang="es">Arrastra sobre las partes de un PDF que quieras ocultar y táchalas en negro. Las páginas tachadas se convierten en imágenes, así que el texto de debajo desaparece.</span></small></a><a href="/es/pdf-metadata.html"><span lang="es">Ver y eliminar las propiedades de un PDF (autor, título)</span><small><span lang="es">Consulta el autor, el título, el programa y las fechas guardados en un PDF y luego elimínalos o edítalos.</span></small></a><a href="/es/pdf-fill.html"><span lang="es">Rellenar un PDF: añadir texto, fecha, firma y marcas</span><small><span lang="es">Añade texto, una fecha, marcas de verificación, círculos, una firma manuscrita o una imagen (como un sello) en cualquier lugar de un PDF.</span></small></a><a href="/es/pdf-resize.html"><span lang="es">Ajustar las páginas de un PDF a A4 u otro tamaño de papel</span><small><span lang="es">Haz que las páginas de un PDF de tamaños distintos tengan todas el mismo tamaño, como A4, A3, B5 o Letter. El texto y los gráficos siguen nítidos.</span></small></a><a href="/es/pdf-delete-pages.html"><span lang="es">Eliminar páginas de un PDF</span><small><span lang="es">Elige y elimina las páginas que no necesites de un PDF.</span></small></a><a href="/es/pdf-extract-pages.html"><span lang="es">Extraer páginas de un PDF</span><small><span lang="es">Elige las páginas que necesitas y guárdalas como un PDF nuevo.</span></small></a><a href="/es/pdf-reverse.html"><span lang="es">Invertir el orden de las páginas de un PDF</span><small><span lang="es">Invierte el orden de las páginas de un PDF.</span></small></a><a href="/es/pdf-insert-blank.html"><span lang="es">Insertar páginas en blanco en un PDF</span><small><span lang="es">Inserta páginas en blanco en cualquier lugar de un PDF.</span></small></a><a href="/es/pdf-split-halves.html"><span lang="es">Dividir las páginas dobles de un PDF en páginas sueltas</span><small><span lang="es">Divide las páginas dobles de un PDF en páginas sueltas.</span></small></a><a href="/es/pdf-header-footer.html"><span lang="es">Añadir encabezado y pie de página a un PDF</span><small><span lang="es">Añade un título, una fecha o números de página en la parte superior e inferior de un PDF.</span></small></a><a href="/es/pdf-booklet.html"><span lang="es">Ordenar un PDF como cuadernillo para imprimir</span><small><span lang="es">Reordena un PDF para que al imprimirlo y doblarlo salga un cuadernillo.</span></small></a><a href="/es/pdf-blank-remove.html"><span lang="es">Buscar y eliminar páginas en blanco de un PDF</span><small><span lang="es">Encuentra automáticamente las páginas en blanco de un PDF y elimínalas.</span></small></a><a href="/es/pdf-long-image.html"><span lang="es">Convertir un PDF en una sola imagen larga</span><small><span lang="es">Une todas las páginas de un PDF en una sola imagen alta.</span></small></a><a href="/es/pdf-duplex-merge.html"><span lang="es">Unir los escaneos de anverso y reverso en un solo PDF</span><small><span lang="es">Intercala un PDF de anversos y otro de reversos en un solo PDF.</span></small></a><a href="/es/image-resize.html"><span lang="es">Cambiar el tamaño de imágenes en píxeles</span><small><span lang="es">Cambia el tamaño de las imágenes por ancho, alto o porcentaje.</span></small></a><a href="/es/image-rotate.html"><span lang="es">Girar y voltear imágenes</span><small><span lang="es">Gira imágenes y voltéalas horizontal o verticalmente.</span></small></a><a href="/es/image-watermark.html"><span lang="es">Añadir marca de agua de texto a imágenes</span><small><span lang="es">Superpone en las imágenes un texto de marca de agua como «Copia».</span></small></a><a href="/es/image-mosaic.html"><span lang="es">Aplicar mosaico o desenfoque a parte de una imagen</span><small><span lang="es">Oculta partes de una imagen con mosaico, desenfoque o un recuadro negro.</span></small></a><a href="/es/image-exif-remove.html"><span lang="es">Eliminar datos de ubicación y de toma de las fotos</span><small><span lang="es">Elimina el GPS, la fecha y los datos de la cámara de las fotos y guarda una copia limpia.</span></small></a><a href="/es/image-filter.html"><span lang="es">Aplicar blanco y negro, sepia y otros efectos a imágenes</span><small><span lang="es">Convierte imágenes a blanco y negro o sepia, o cambia el brillo.</span></small></a><a href="/es/favicon-maker.html"><span lang="es">Crear un favicon (icono del sitio)</span><small><span lang="es">Crea un juego completo de favicons a partir de una imagen.</span></small></a><a href="/es/image-stitch.html"><span lang="es">Unir varias imágenes en una sola</span><small><span lang="es">Apila o une varias imágenes en una sola.</span></small></a><a href="/es/id-photo.html"><span lang="es">Recortar al tamaño de foto de carné y ordenar para imprimir</span><small><span lang="es">Recorta una foto al tamaño de foto de carné y ordénala en una hoja de tamaño L.</span></small></a><a href="/es/image-color-picker.html"><span lang="es">Obtener códigos de color de una imagen</span><small><span lang="es">Lee los códigos de color de una imagen y encuentra los colores principales.</span></small></a><a href="/es/char-counter.html"><span lang="es">Contador de caracteres (para solicitudes e informes)</span><small><span lang="es">Cuenta los caracteres, las líneas y las hojas de manuscrito de tu texto.</span></small></a><a href="/es/wareki-converter.html"><span lang="es">Convertir entre años occidentales y eras japonesas</span><small><span lang="es">Convierte entre años occidentales y eras japonesas.</span></small></a><a href="/es/zenkaku-hankaku.html"><span lang="es">Convertir entre ancho completo, medio ancho, hiragana y katakana</span><small><span lang="es">Convierte entre ancho completo y medio ancho, y entre hiragana y katakana.</span></small></a><a href="/es/line-break-remover.html"><span lang="es">Quitar y ordenar los saltos de línea de un texto</span><small><span lang="es">Ordena los saltos de línea del texto copiado de PDF y otras fuentes.</span></small></a><a href="/es/tax-calculator.html"><span lang="es">Calcular el impuesto al consumo (con y sin impuesto)</span><small><span lang="es">Calcula al instante los precios con y sin impuesto.</span></small></a><a href="/es/date-calculator.html"><span lang="es">Calcular la edad, los días entre fechas y sumar o restar días</span><small><span lang="es">Calcula la edad y los días entre fechas.</span></small></a><a href="/es/pdf-unlock.html"><span lang="es">Quitar la contraseña de un PDF</span><small><span lang="es">Quita la contraseña y las restricciones de un PDF cuya contraseña conoces.</span></small></a><a href="/es/pdf-protect.html"><span lang="es">Añadir una contraseña a un PDF</span><small><span lang="es">Añade una contraseña necesaria para abrir un PDF.</span></small></a><a href="/es/ocr-text.html"><span lang="es">Leer el texto de imágenes y PDF (OCR)</span><small><span lang="es">Convierte el texto de imágenes y PDF escaneados en texto.</span></small></a><a href="/es/pdf-compare.html"><span lang="es">Comparar dos PDF (buscar diferencias)</span><small><span lang="es">Muestra con colores las diferencias de texto entre dos PDF.</span></small></a><a href="/es/password-generator.html"><span lang="es">Generar una contraseña aleatoria segura</span><small><span lang="es">Genera al instante contraseñas aleatorias seguras.</span></small></a><a href="/es/percent-calculator.html"><span lang="es">Calcular porcentajes, descuentos y variaciones porcentuales</span><small><span lang="es">Calcula al instante porcentajes, descuentos y variaciones porcentuales.</span></small></a><a href="/es/unit-converter.html"><span lang="es">Conversor de unidades (longitud, peso, área, temperatura y más)</span><small><span lang="es">Convierte al instante longitud, peso, área, temperatura y más.</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="es">Acerca de / Contacto (en japonés)</span></a><a href="/es/privacy.html"><span lang="es">Política de privacidad</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="es">Novedades en X</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const TR={"Copied": "Copiado", "Copy result": "Copiar resultado", "Could not save. Please try again.": "No se pudo guardar. Inténtalo de nuevo.", "Clear": "Borrar", "Password-protected PDFs are not supported. Remove the password and try again.": "No se admiten PDF protegidos con contraseña. Quita la contraseña e inténtalo de nuevo.", "Could not read the PDF. It may be damaged or in an unsupported format.": "No se pudo leer el PDF. Puede estar dañado o en un formato no admitido."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=T("Could not save. Please try again.",[])}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return T("Password-protected PDFs are not supported. Remove the password and try again.",[]);
+  return T("Could not read the PDF. It may be damaged or in an unsupported format.",[]);
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+async function copyText(btn,text){try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(_){}document.body.removeChild(ta)}
+  const o=btn.textContent;btn.textContent=T("Copied",[]);setTimeout(()=>{btn.textContent=o},1500)}
+
+$("cp").textContent=T("Copy result",[]);$("clr").textContent=T("Clear",[]);
+function upd(){
+  let a=$("tx").value.split(/\r?\n/);const n0=$("tx").value?a.length:0;
+  if($("tr").checked)a=a.map(s=>s.trim());
+  if($("bl").checked)a=a.filter(s=>s!=="");
+  if($("dd").checked){const seen=new Set();a=a.filter(s=>{const k=$("ic").checked?s.toLowerCase():s;if(seen.has(k))return false;seen.add(k);return true})}
+  const so=document.querySelector('input[name="so"]:checked').value;
+  if(so==="asc")a.sort((x,y)=>x.localeCompare(y,"ja"));else if(so==="desc")a.sort((x,y)=>y.localeCompare(x,"ja"));else if(so==="len")a.sort((x,y)=>[...x].length-[...y].length);
+  $("ot").value=a.join("\n");$("c1").textContent=n0;$("c2").textContent=$("tx").value?a.length:0;$("c3").textContent=Math.max(0,n0-($("tx").value?a.length:0));
+}
+document.querySelectorAll("input,textarea").forEach(x=>{x.addEventListener("input",upd);x.addEventListener("change",upd)});
+$("cp").onclick=()=>copyText($("cp"),$("ot").value);$("clr").onclick=()=>{$("tx").value="";upd();$("tx").focus()};upd();
+
+</script>
+</body>
+</html>
