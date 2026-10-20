@@ -162,6 +162,11 @@ html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang
 html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
 @media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+.next{margin:16px 0 4px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper,#fff)}
+.next h3{margin:0 0 8px;font-size:.95rem}
+.next .nl{display:flex;flex-wrap:wrap;gap:8px}
+.next .nl a{display:inline-block;padding:9px 14px;border:2px solid var(--ink);border-radius:999px;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--ink);background:var(--paper,#fff)}
+.next .nl a:hover{border-color:var(--stamp)}
 a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
 </style>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
@@ -265,6 +270,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 <a href="#" id="dl"></a>
 <div id="extra"></div>
 <p aria-live="polite" id="msg"></p>
+<div class="next" hidden="" id="next"><h3><span lang="en">Next, try these</span></h3><div class="nl" id="nl"><a href="/en/photo-to-pdf.html"><span lang="en">Photos to PDF</span></a><a href="/en/image-convert.html"><span lang="en">Convert Image Format (JPG, PNG, WebP)</span></a><a href="/en/compress-pdf.html"><span lang="en">Compress PDF</span></a></div></div>
 <div class="support" hidden="" id="support"><p><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="en">Send a tip (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="en">Send a gift (Amazon wishlist)</span></a></div>
 </section>
 <section class="guide" id="how">
@@ -296,7 +302,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Could not create the sheet. Please try again.": "Could not create the sheet. Please try again.", "Create sheet": "Create sheet", "{0} period time": "{0} period time", "Timetable preview": "Timetable preview", "Could not create the image.": "Could not create the image.", "{0}": "{0}", "Please set the end time after the start time.": "Please set the end time after the start time.", "Save as image (PNG)": "Save as image (PNG)", "Please choose at least one day.": "Please choose at least one day.", "Could not save. Please try again.": "Could not save. Please try again.", "{0} {1}": "{0} {1}", "e.g. 9:00-10:30": "e.g. 9:00-10:30", "\"{0}…\" does not fit in its cell. Shorten it, or use fewer rows or columns.": "\"{0}…\" does not fit in its cell. Shorten it, or use fewer rows or columns.", "When printing, use A4 at actual size (100%) for the best result.": "When printing, use A4 at actual size (100%) for the best result.", "Save PDF": "Save PDF", "Too many rows. Narrow the time range or use 60-minute rows.": "Too many rows. Narrow the time range or use 60-minute rows.", "Password-protected PDFs are not supported. Remove the password and try again.": "Password-protected PDFs are not supported. Remove the password and try again.", "Could not read the PDF. It may be damaged or in an unsupported format.": "Could not read the PDF. It may be damaged or in an unsupported format."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Save as image (PNG)": "Save as image (PNG)", "Could not read the PDF. It may be damaged or in an unsupported format.": "Could not read the PDF. It may be damaged or in an unsupported format.", "\"{0}…\" does not fit in its cell. Shorten it, or use fewer rows or columns.": "\"{0}…\" does not fit in its cell. Shorten it, or use fewer rows or columns.", "Please choose at least one day.": "Please choose at least one day.", "When printing, use A4 at actual size (100%) for the best result.": "When printing, use A4 at actual size (100%) for the best result.", "{0} period time": "{0} period time", "Too many rows. Narrow the time range or use 60-minute rows.": "Too many rows. Narrow the time range or use 60-minute rows.", "Password-protected PDFs are not supported. Remove the password and try again.": "Password-protected PDFs are not supported. Remove the password and try again.", "Create sheet": "Create sheet", "{0}": "{0}", "Timetable preview": "Timetable preview", "Please set the end time after the start time.": "Please set the end time after the start time.", "Save PDF": "Save PDF", "e.g. 9:00-10:30": "e.g. 9:00-10:30", "Could not save. Please try again.": "Could not save. Please try again.", "Could not create the sheet. Please try again.": "Could not create the sheet. Please try again.", "Could not create the image.": "Could not create the image.", "{0} {1}": "{0} {1}"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
@@ -512,6 +518,11 @@ $("go").onclick=async()=>{
   finally{endRun();go.disabled=false}
 };
 
+</script>
+<script>
+(function(){if(typeof finishOk!=="function")return;var fo=finishOk;
+finishOk=function(){fo();try{var n=document.getElementById("next");if(n)n.hidden=false}catch(e){}};
+})();
 </script>
 </body>
 </html>

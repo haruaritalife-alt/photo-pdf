@@ -162,6 +162,11 @@ html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang
 html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
 @media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+.next{margin:16px 0 4px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper,#fff)}
+.next h3{margin:0 0 8px;font-size:.95rem}
+.next .nl{display:flex;flex-wrap:wrap;gap:8px}
+.next .nl a{display:inline-block;padding:9px 14px;border:2px solid var(--ink);border-radius:999px;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--ink);background:var(--paper,#fff)}
+.next .nl a:hover{border-color:var(--stamp)}
 a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
 </style>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
@@ -259,6 +264,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 <a href="#" id="dl"></a>
 <div id="extra"></div>
 <p aria-live="polite" id="msg"></p>
+<div class="next" hidden="" id="next"><h3><span lang="es">Prueba también estos</span></h3><div class="nl" id="nl"><a href="/es/compress-pdf.html"><span lang="es">Comprimir PDF</span></a><a href="/es/image-crop.html"><span lang="es">Recortar y girar imagen</span></a><a href="/es/merge-pdf.html"><span lang="es">Unir PDF</span></a></div></div>
 <div class="support" hidden="" id="support"><p><span lang="es">Si PDF Mikata te ha sido útil, una pequeña propina significaría mucho para nosotros.</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="es">Dar una propina (300 ¥)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="es">Enviar un regalo (lista de deseos de Amazon)</span></a></div>
 </section>
 <section class="guide" id="how">
@@ -291,7 +297,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Could not create the cards. Please try again.": "No se pudieron crear las tarjetas. Inténtalo de nuevo.", "Create cards": "Crear tarjetas", "Could not create the image.": "No se pudo crear la imagen.", "When printing, use A4 at actual size (100%). Scaling will change the card size.": "Al imprimir, usa A4 a tamaño real (100 %). Escalar cambiará el tamaño de la tarjeta.", "Please enter at least one name in the list.": "Introduce al menos un nombre en la lista.", "Could not save. Please try again.": "No se pudo guardar. Inténtalo de nuevo.", "The list can have up to 60 people.": "La lista puede tener hasta 60 personas.", "  page(s) / ": "   página(s) /  ", "Please enter a name.": "Introduce un nombre.", "Save PDF": "Guardar PDF", "Page 1 preview": "Vista previa de la página 1", "Save one card as an image": "Guardar una tarjeta como imagen", "Password-protected PDFs are not supported. Remove the password and try again.": "No se admiten PDF protegidos con contraseña. Quita la contraseña e inténtalo de nuevo.", "Could not read the PDF. It may be damaged or in an unsupported format.": "No se pudo leer el PDF. Puede estar dañado o en un formato no admitido."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"When printing, use A4 at actual size (100%). Scaling will change the card size.": "Al imprimir, usa A4 a tamaño real (100 %). Escalar cambiará el tamaño de la tarjeta.", "  page(s) / ": "   página(s) /  ", "Could not read the PDF. It may be damaged or in an unsupported format.": "No se pudo leer el PDF. Puede estar dañado o en un formato no admitido.", "Page 1 preview": "Vista previa de la página 1", "Save one card as an image": "Guardar una tarjeta como imagen", "Could not create the cards. Please try again.": "No se pudieron crear las tarjetas. Inténtalo de nuevo.", "The list can have up to 60 people.": "La lista puede tener hasta 60 personas.", "Password-protected PDFs are not supported. Remove the password and try again.": "No se admiten PDF protegidos con contraseña. Quita la contraseña e inténtalo de nuevo.", "Create cards": "Crear tarjetas", "Save PDF": "Guardar PDF", "Could not save. Please try again.": "No se pudo guardar. Inténtalo de nuevo.", "Could not create the image.": "No se pudo crear la imagen.", "Please enter at least one name in the list.": "Introduce al menos un nombre en la lista.", "Please enter a name.": "Introduce un nombre."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
@@ -466,6 +472,11 @@ $("go").onclick=async()=>{
   finally{endRun();go.disabled=false}
 };
 
+</script>
+<script>
+(function(){if(typeof finishOk!=="function")return;var fo=finishOk;
+finishOk=function(){fo();try{var n=document.getElementById("next");if(n)n.hidden=false}catch(e){}};
+})();
 </script>
 </body>
 </html>

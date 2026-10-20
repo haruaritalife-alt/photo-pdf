@@ -162,6 +162,11 @@ html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang
 html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
 @media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+.next{margin:16px 0 4px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper,#fff)}
+.next h3{margin:0 0 8px;font-size:.95rem}
+.next .nl{display:flex;flex-wrap:wrap;gap:8px}
+.next .nl a{display:inline-block;padding:9px 14px;border:2px solid var(--ink);border-radius:999px;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--ink);background:var(--paper,#fff)}
+.next .nl a:hover{border-color:var(--stamp)}
 a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
 </style>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script><script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -224,6 +229,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 <a href="#" id="dl"></a>
 <div id="extra"></div>
 <p aria-live="polite" id="msg"></p>
+<div class="next" hidden="" id="next"><h3><span lang="en">Next, try these</span></h3><div class="nl" id="nl"><a href="/en/pdf-delete-pages.html"><span lang="en">Delete Pages from a PDF</span></a><a href="/en/pdf-split.html"><span lang="en">Split PDF</span></a><a href="/en/merge-pdf.html"><span lang="en">Merge PDFs</span></a></div></div>
 <div class="support" hidden="" id="support"><p><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="en">Send a tip (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="en">Send a gift (Amazon wishlist)</span></a></div>
 </section>
 <section class="guide" id="how">
@@ -260,7 +266,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"p": "p", "Preview": "Preview", "Invalid page range: {0}": "Invalid page range: {0}", "Page numbers must be between 1 and {0}.": "Page numbers must be between 1 and {0}.", "Page {0}": "Page {0}", "You cannot delete every page. Keep at least one page.": "You cannot delete every page. Keep at least one page.", "Create a PDF from the selected pages": "Create a PDF from the selected pages", "Nothing selected yet.": "Nothing selected yet.", "Could not save. Please try again.": "Could not save. Please try again.", "Extracted {0} of {1} page(s)": "Extracted {0} of {1} page(s)", "Choose another PDF": "Choose another PDF", "Save PDF": "Save PDF", "Tap the pages you want to keep (a red ✓ appears).": "Tap the pages you want to keep (a red ✓ appears).", "Selected: {0} of {1}": "Selected: {0} of {1}", "Password-protected PDFs are not supported. Remove the password and try again.": "Password-protected PDFs are not supported. Remove the password and try again.", "Could not read the PDF. It may be damaged or in an unsupported format.": "Could not read the PDF. It may be damaged or in an unsupported format."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Nothing selected yet.": "Nothing selected yet.", "Choose another PDF": "Choose another PDF", "Could not read the PDF. It may be damaged or in an unsupported format.": "Could not read the PDF. It may be damaged or in an unsupported format.", "Page numbers must be between 1 and {0}.": "Page numbers must be between 1 and {0}.", "Invalid page range: {0}": "Invalid page range: {0}", "p": "p", "Password-protected PDFs are not supported. Remove the password and try again.": "Password-protected PDFs are not supported. Remove the password and try again.", "Save PDF": "Save PDF", "Create a PDF from the selected pages": "Create a PDF from the selected pages", "Selected: {0} of {1}": "Selected: {0} of {1}", "Extracted {0} of {1} page(s)": "Extracted {0} of {1} page(s)", "Could not save. Please try again.": "Could not save. Please try again.", "Preview": "Preview", "You cannot delete every page. Keep at least one page.": "You cannot delete every page. Keep at least one page.", "Tap the pages you want to keep (a red ✓ appears).": "Tap the pages you want to keep (a red ✓ appears).", "Page {0}": "Page {0}"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
@@ -384,6 +390,11 @@ $("go").onclick=async()=>{
   finally{endRun();setBtn()}
 };
 
+</script>
+<script>
+(function(){if(typeof finishOk!=="function")return;var fo=finishOk;
+finishOk=function(){fo();try{var n=document.getElementById("next");if(n)n.hidden=false}catch(e){}};
+})();
 </script>
 </body>
 </html>
