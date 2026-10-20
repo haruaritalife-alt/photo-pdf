@@ -188,6 +188,9 @@ a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;bor
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Añadir una marca de agua de texto a un PDF", "alternateName": "Add a Text Watermark to PDF", "url": "https://pdfmikata.com/es/pdf-watermark.html", "description": "Herramienta gratuita para añadir texto como «Para entrega» o «Confidencial» como marca de agua en cada página de un PDF. Elige posición, color y opacidad. Sin registro, y los archivos nunca salen de tu dispositivo.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "es", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
 <style>
 main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
 
@@ -223,6 +226,12 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .chips button{all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;padding:0 14px;display:inline-grid;place-items:center;border:1px solid var(--stamp);color:var(--stamp);border-radius:22px;font-weight:700;font-size:.92rem;background:var(--paper)}
 .chips button:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed}
 </style>
 <div class="fld"><label class="l" for="wt"><span lang="es">Texto de la marca de agua</span></label><input autocomplete="off" id="wt" maxlength="30" type="text" value="PARA ENTREGA"/>
 <div class="chips" id="chips"></div>
@@ -293,7 +302,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Page 1 preview": "Vista previa de la página 1", "Choose another PDF": "Elegir otro PDF", "Password-protected PDFs are not supported. Remove the password and try again.": "No se admiten PDF protegidos con contraseña. Quita la contraseña e inténtalo de nuevo.", "Could not read the PDF. It may be damaged or in an unsupported format.": "No se pudo leer el PDF. Puede estar dañado o en un formato no admitido.", "Save PDF": "Guardar PDF", "Watermarked {0} page(s) ({1})": "Marca de agua añadida a {0} página(s) ({1})", "p": "pág.", "Add watermark": "Añadir marca de agua", "Could not save. Please try again.": "No se pudo guardar. Inténtalo de nuevo.", "After saving, check that the text is still readable. Keep your original PDF separately.": "Tras guardarlo, comprueba que el texto siga siendo legible. Conserva tu PDF original por separado.", "Please enter the watermark text.": "Introduce el texto de la marca de agua."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Add watermark": "Añadir marca de agua", "Please enter the watermark text.": "Introduce el texto de la marca de agua.", "Could not read the PDF. It may be damaged or in an unsupported format.": "No se pudo leer el PDF. Puede estar dañado o en un formato no admitido.", "p": "pág.", "Password-protected PDFs are not supported. Remove the password and try again.": "No se admiten PDF protegidos con contraseña. Quita la contraseña e inténtalo de nuevo.", "Choose another PDF": "Elegir otro PDF", "Save PDF": "Guardar PDF", "After saving, check that the text is still readable. Keep your original PDF separately.": "Tras guardarlo, comprueba que el texto siga siendo legible. Conserva tu PDF original por separado.", "Could not save. Please try again.": "No se pudo guardar. Inténtalo de nuevo.", "Page 1 preview": "Vista previa de la página 1", "Watermarked {0} page(s) ({1})": "Marca de agua añadida a {0} página(s) ({1})"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
