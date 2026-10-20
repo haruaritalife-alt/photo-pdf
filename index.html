@@ -120,8 +120,10 @@ a.tool:hover{border-color:var(--stamp)}
 .tsearch .tqx{position:absolute;right:6px;top:6px;width:36px;height:36px;border:0;background:transparent;font-size:1.3rem;line-height:1;color:var(--sub);cursor:pointer;display:none}
 .tsearch.has .tqx{display:block}
 #tq0{display:none;margin:8px 0;color:var(--sub)}
-.cats{grid-template-columns:1fr!important;gap:18px}
-.cats .cat .tools{display:grid;grid-auto-flow:column;grid-auto-columns:min(74vw,250px);grid-template-columns:none;grid-template-rows:repeat(var(--r,1),auto);gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:thin;padding:6px 2px 12px;margin:0;-webkit-overflow-scrolling:touch}
+.cats{grid-template-columns:minmax(0,1fr)!important;gap:18px;width:100%;max-width:100%;min-width:0}
+.cats .cat{min-width:0;max-width:100%}
+main{min-width:0;overflow-x:clip}
+.cats .cat .tools{width:100%;max-width:100%;box-sizing:border-box;display:grid;grid-auto-flow:column;grid-auto-columns:min(74vw,250px);grid-template-columns:none;grid-template-rows:repeat(var(--r,1),auto);gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:thin;padding:6px 2px 12px;margin:0;-webkit-overflow-scrolling:touch}
 .cats .cat .tools a.tool{scroll-snap-align:start;min-width:0;height:100%;box-sizing:border-box}
 a.tool[hidden],.cat[hidden]{display:none!important}
 .cat h3 .n{font-weight:400;font-size:.8rem;color:var(--sub)}
