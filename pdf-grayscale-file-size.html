@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>白黒にしたらPDFが大きくなった？容量を減らす方法｜PDFのミカタ</title>
+<meta name="title-en" content="PDF Got Bigger After Converting to B&amp;W? How to Reduce the Size｜PDF Mikata">
+<meta name="desc-en" content="Why a PDF can get larger after monochrome conversion, and how to shrink it.">
+<script src="/site.js"></script>
+<link rel="canonical" href="https://pdfmikata.com/pdf-grayscale-file-size.html">
+<meta name="description" content="PDFを白黒にしたあと、ファイルが大きくなる理由と、小さくする方法を解説します。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap">
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.9}
+main{max-width:680px;margin:0 auto;padding:30px 18px 24px}
+.back{display:inline-block;margin-bottom:16px;font-size:.9rem;color:var(--sub)}
+h1{font-size:1.7rem;line-height:1.4;margin:0 0 14px}
+h2{font-size:1.2rem;margin:34px 0 8px;border-top:2px solid var(--ink);padding-top:12px}
+h3{font-size:1.02rem;margin:20px 0 4px}
+p{margin:0 0 12px}li{margin-bottom:4px}
+a{color:var(--ink)}
+.note{background:var(--paper);border:1px solid var(--line);padding:12px 14px;font-size:.92rem;margin:16px 0}
+.cta{display:block;text-align:center;background:var(--stamp);color:var(--btn-ink);text-decoration:none;font-weight:700;border-radius:6px;padding:16px;margin:26px 0}
+.cta:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+
+:root{--head:#16393c;padding-top:0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--head:#0a2427}}
+:root[data-theme="dark"]{--head:#0a2427}
+.top{background:var(--head);border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h2{border-top:0;padding:0 0 0 10px;border-left:6px solid var(--stamp)}
+h3::before{content:"";display:inline-block;width:10px;height:10px;background:var(--stamp);margin-right:8px;border-radius:2px}
+main ol{list-style:none;counter-reset:s;padding:0}
+main ol li{counter-increment:s;position:relative;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 12px 12px 52px;margin-bottom:8px}
+main ol li::before{content:counter(s);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);font-weight:700;display:grid;place-items:center;font-size:.85rem}
+.points{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:12px 16px;margin:0 0 22px}
+.points b{display:block;margin-bottom:4px}.points ul{margin:0;padding-left:1.2em}
+.note{border-left:6px solid var(--stamp)}
+.check{list-style:none;padding:0}.check li{position:relative;padding-left:2em}
+.check li::before{content:"";position:absolute;left:0;top:.5em;width:1.05em;height:1.05em;border:2px solid var(--ink);border-radius:3px}
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:.92rem;margin:10px 0}
+th,td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}
+th{background:var(--head);color:#fcfefd}
+.bars{background:var(--paper);border:1px solid var(--line);padding:14px;margin:16px 0}
+.bars div{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:.9rem}
+.bars span{flex:0 0 3.6em}.bars i{display:block;height:16px;background:var(--stamp);border-radius:3px}
+.tip{margin:26px 0 0;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);font-size:.92rem}.tip p{margin:0 0 8px}.tip a{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink)}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none;margin-left:auto}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+.meta{font-size:.85rem;color:var(--sub);margin:-4px 0 14px}.meta a{color:var(--sub)}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "解説", "item": "https://pdfmikata.com/guides.html"}, {"@type": "ListItem", "position": 3, "name": "白黒にしたらPDFが大きくなった？容量を減らす方法", "item": "https://pdfmikata.com/pdf-grayscale-file-size.html"}]}</script>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PDFのミカタ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="白黒にしたらPDFが大きくなった？容量を減らす方法｜PDFのミカタ">
+<meta property="og:description" content="PDFを白黒にしたあと、ファイルが大きくなる理由と、小さくする方法を解説します。">
+<meta property="og:url" content="https://pdfmikata.com/pdf-grayscale-file-size.html">
+<meta property="og:image" content="https://pdfmikata.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="白黒にしたらPDFが大きくなった？容量を減らす方法｜PDFのミカタ">
+<meta name="twitter:description" content="PDFを白黒にしたあと、ファイルが大きくなる理由と、小さくする方法を解説します。">
+<meta name="twitter:image" content="https://pdfmikata.com/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#16393c">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "白黒にしたらPDFが大きくなった？容量を減らす方法", "description": "PDFを白黒にしたあと、ファイルが大きくなる理由と、小さくする方法を解説します。", "url": "https://pdfmikata.com/pdf-grayscale-file-size.html", "mainEntityOfPage": "https://pdfmikata.com/pdf-grayscale-file-size.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>PDFのミカタ</span></a><div class="lang" role="group" aria-label="言語を切り替え / Switch language"><svg class="gl" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><button type="button" data-l="ja" title="日本語で表示">日本語</button><button type="button" data-l="en" title="Show in English">English</button></div></div></header>
+<nav class="sub" aria-label="サイト内ナビゲーション / Site navigation"><div class="sub-in"><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a><a href="/#cat-convert"><span lang="ja">変換</span><span lang="en">Convert</span></a><a href="/#cat-edit"><span lang="ja">編集</span><span lang="en">Edit</span></a><a href="/#cat-optimize"><span lang="ja">最適化</span><span lang="en">Optimize</span></a><a href="/#cat-create"><span lang="ja">作成</span><span lang="en">Create</span></a><a href="/#guide" aria-current="page"><span lang="ja">解説</span><span lang="en">Guides</span></a></div></nav>
+<nav class="crumb" aria-label="パンくず / Breadcrumb"><ol><li><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a></li><li><a href="/guides.html"><span lang="ja">解説</span><span lang="en">Guides</span></a></li><li><span aria-current="page"><span lang="ja">白黒にしたらPDFが大きくなった？容量を減らす方法</span><span lang="en">PDF Got Bigger After Converting to B&W? How to Reduce the Size</span></span></li></ol></nav>
+<main>
+<div lang="ja">
+<h1>白黒にしたらPDFが大きくなった？容量を減らす方法</h1>
+<p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
+<div class="points"><b>この記事のポイント</b><ul><li>ページが画像になるため大きくなることがある</li><li>解像度を下げる</li><li>仕上げに「PDFを圧縮」</li></ul></div>
+<p><a href="/pdf-grayscale.html">PDFをグレースケール（白黒）にする</a>は、各ページを画像にして白黒にします。そのため、<b>元が文字中心のPDFだと、ファイルが大きくなる</b>ことがあります。</p>
+<h2>大きくなる理由</h2>
+<ul>
+<li>文字中心のPDFは、文字を<b>データ</b>として持っているので、もともと軽いです。</li>
+<li>白黒にすると、ページ全体が<b>画像</b>になるので、重くなります。</li>
+<li>逆に、<b>スキャンや写真が中心のPDF</b>は、小さくなることもあります。</li>
+</ul>
+<h2>小さくする方法</h2>
+<ol>
+<li><b>解像度を下げる</b>：「軽い（100dpi）」を試します。文字が読めるか、プレビューで確認します。</li>
+<li><b>白黒2値</b>にする：文字だけの書類なら、グレースケールより、小さくなりやすいです。</li>
+<li><b>仕上げに圧縮</b>：白黒にしたPDFを、<a href="/compress-pdf.html">PDFを圧縮</a>で、さらに軽くします。</li>
+<li><b>不要なページを除く</b>：必要なページだけにします。</li>
+</ol>
+<h2>容量の目安</h2>
+<ul>
+<li>メール添付の上限は、サービスによって違います。大きいときは、分けて送ることもできます。</li>
+</ul>
+<h2>注意</h2>
+<p>解像度を下げすぎると、小さい文字が読めなくなります。<b>読める範囲で</b>、下げてください。</p>
+<a class="cta" href="/pdf-grayscale.html">PDFをグレースケール（白黒）にするを使う（無料）</a>
+<h2>あわせて使えるツール</h2><ul><li><a href="/compress-pdf.html">PDFを圧縮</a>：PDFを、指定したサイズ以下に小さくします。提出先の容量制限に合わせたいときに。</li><li><a href="/pdf-nup.html">PDFを1枚にまとめる（2in1・4in1）</a>：PDFの複数ページを、A4の1枚に並べます。2・4・6・8・9ページまとめで、印刷の紙を減らせます。</li><li><a href="/pdf-to-image.html">PDFを画像に変換</a>：PDFの各ページを、JPEGまたはPNGの画像として保存します。</li></ul>
+<div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" target="_blank" rel="noopener">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" target="_blank" rel="noopener noreferrer nofollow">ほしい物リストで応援</a></div>
+<h2>同じツールの、ほかの解説</h2>
+<ul><li><a href="/pdf-grayscale-howto.html">PDFを白黒（グレースケール）にする方法：無料・スマホでもOK</a></li><li><a href="/pdf-grayscale-gray-or-bw.html">グレースケールと白黒2値、どちらを選ぶ？違いと使い分け</a></li><li><a href="/pdf-grayscale-print-cost.html">白黒印刷でカラー資料を見やすくするコツ：コンビニ印刷・学校印刷</a></li><li><a href="/pdf-grayscale-fax-copy.html">FAX・コピー前にPDFを白黒にする：文字がつぶれないコツ</a></li><li><a href="/pdf-grayscale-scanned-docs.html">スキャンした書類を白黒にする：見やすさと容量のバランス</a></li><li><a href="/pdf-grayscale-troubleshooting.html">白黒にしたPDFで困ったとき：薄い・つぶれる・文字が選べない</a></li></ul>
+<p><a href="/guides.html">解説の一覧を見る</a></p>
+</div>
+<div lang="en">
+<h1>PDF Got Bigger After Converting to B&W? How to Reduce the Size</h1>
+<p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
+<div class="points"><b>Key points</b><ul><li>Pages become images, which can enlarge the file</li><li>Lower the resolution</li><li>Finish with Compress PDF</li></ul></div>
+<p><a href="/pdf-grayscale.html">Convert a PDF to Grayscale</a> turns each page into an image and makes it monochrome. So <b>a text-based PDF can get larger</b>.</p>
+<h2>Why it gets bigger</h2>
+<ul>
+<li>A text-based PDF stores text as <b>data</b>, which is light.</li>
+<li>After conversion the whole page is an <b>image</b>, which is heavier.</li>
+<li>Conversely, a <b>PDF that is mostly scans or photos</b> may get smaller.</li>
+</ul>
+<h2>How to make it smaller</h2>
+<ol>
+<li><b>Lower the resolution</b>: try "Small (100 dpi)". Check readability in the preview.</li>
+<li>Use <b>pure black & white</b>: for text-only documents it is usually smaller than grayscale.</li>
+<li><b>Compress afterward</b>: shrink the result further with <a href="/compress-pdf.html">Compress PDF</a>.</li>
+<li><b>Remove unneeded pages</b>: keep only what is needed.</li>
+</ol>
+<h2>Size guidance</h2>
+<ul>
+<li>Email attachment limits vary by service. If too large, you can send in parts.</li>
+</ul>
+<h2>Caution</h2>
+<p>Lowering the resolution too far makes small text unreadable. Lower it <b>only as far as it stays readable</b>.</p>
+<a class="cta" href="/pdf-grayscale.html">Use "Convert a PDF to Grayscale (Black & White)" (free)</a>
+<h2>Tools that go well with this</h2><ul><li><a href="/compress-pdf.html">Compress PDF</a>: Shrink a PDF to fit under a size you choose, for upload limits.</li><li><a href="/pdf-nup.html">Combine PDF Pages onto One Sheet (2-up, 4-up)</a>: Arrange several PDF pages on one A4 sheet (2, 4, 6, 8 or 9 up) to save paper when printing.</li><li><a href="/pdf-to-image.html">PDF to Images</a>: Save each page of a PDF as a JPEG or PNG image.</li></ul>
+<div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" target="_blank" rel="noopener">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" target="_blank" rel="noopener noreferrer nofollow">Send a gift (Amazon wishlist)</a></div>
+<h2>More guides for this tool</h2>
+<ul><li><a href="/pdf-grayscale-howto.html">How to Convert a PDF to Grayscale for Free (Works on Phones)</a></li><li><a href="/pdf-grayscale-gray-or-bw.html">Grayscale or Pure Black & White: Differences and When to Use Each</a></li><li><a href="/pdf-grayscale-print-cost.html">Making Color Documents Readable in Black & White Printing</a></li><li><a href="/pdf-grayscale-fax-copy.html">Making a PDF Black & White Before Fax or Copying</a></li><li><a href="/pdf-grayscale-scanned-docs.html">Making Scanned Documents Black & White: Readability vs. Size</a></li><li><a href="/pdf-grayscale-troubleshooting.html">Troubleshooting Monochrome PDFs: Faint, Broken Text, Cannot Select Text</a></li></ul>
+<p><a href="/guides.html">See all guides</a></p>
+</div>
+</main>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" target="_blank" rel="noopener noreferrer"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a></footer>
+</body>
+</html>
