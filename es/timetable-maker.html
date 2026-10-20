@@ -188,6 +188,9 @@ a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;bor
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Crear un horario / agenda semanal", "alternateName": "Create a Timetable / Weekly Schedule", "url": "https://pdfmikata.com/es/timetable-maker.html", "description": "Herramienta gratuita para crear un horario o un plan semanal como PDF o imagen a partir de tus clases, trabajos y planes, con código de colores. Nada sale de tu dispositivo.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "es", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
 <style>
 main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
 
@@ -235,6 +238,12 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 .gw.many textarea{min-height:44px}
 .gw textarea:focus{outline:2px solid var(--stamp);outline-offset:-2px}
 .gw.wide table{min-width:560px}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed}
 </style>
 <section class="set" id="set" style="margin-top:14px">
 <div class="two"><div class="fld"><label class="l" for="ttl"><span lang="es">Título</span></label><input autocomplete="off" id="ttl" type="text" value="時間割"/></div>
@@ -302,7 +311,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Please set the end time after the start time.": "Fija la hora de fin después de la hora de inicio.", "Password-protected PDFs are not supported. Remove the password and try again.": "No se admiten PDF protegidos con contraseña. Quita la contraseña e inténtalo de nuevo.", "Could not read the PDF. It may be damaged or in an unsupported format.": "No se pudo leer el PDF. Puede estar dañado o en un formato no admitido.", "Save PDF": "Guardar PDF", "e.g. 9:00-10:30": "p. ej., 9:00-10:30", "{0}": "{0}", "Could not create the sheet. Please try again.": "No se pudo crear la hoja. Inténtalo de nuevo.", "Timetable preview": "Vista previa del horario", "\"{0}…\" does not fit in its cell. Shorten it, or use fewer rows or columns.": "«{0}…» no cabe en su celda. Acórtalo o usa menos filas o columnas.", "Please choose at least one day.": "Elige al menos un día.", "{0} {1}": "{0} {1}", "Too many rows. Narrow the time range or use 60-minute rows.": "Demasiadas filas. Reduce el intervalo de horas o usa filas de 60 minutos.", "Create sheet": "Crear hoja", "Could not create the image.": "No se pudo crear la imagen.", "Could not save. Please try again.": "No se pudo guardar. Inténtalo de nuevo.", "{0} period time": "Hora de la clase {0}", "When printing, use A4 at actual size (100%) for the best result.": "Al imprimir, usa A4 a tamaño real (100 %) para obtener el mejor resultado.", "Save as image (PNG)": "Guardar como imagen (PNG)"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"{0} period time": "Hora de la clase {0}", "Could not read the PDF. It may be damaged or in an unsupported format.": "No se pudo leer el PDF. Puede estar dañado o en un formato no admitido.", "Save as image (PNG)": "Guardar como imagen (PNG)", "e.g. 9:00-10:30": "p. ej., 9:00-10:30", "Could not create the image.": "No se pudo crear la imagen.", "Password-protected PDFs are not supported. Remove the password and try again.": "No se admiten PDF protegidos con contraseña. Quita la contraseña e inténtalo de nuevo.", "Please choose at least one day.": "Elige al menos un día.", "Please set the end time after the start time.": "Fija la hora de fin después de la hora de inicio.", "Could not create the sheet. Please try again.": "No se pudo crear la hoja. Inténtalo de nuevo.", "{0} {1}": "{0} {1}", "Save PDF": "Guardar PDF", "Timetable preview": "Vista previa del horario", "{0}": "{0}", "Too many rows. Narrow the time range or use 60-minute rows.": "Demasiadas filas. Reduce el intervalo de horas o usa filas de 60 minutos.", "When printing, use A4 at actual size (100%) for the best result.": "Al imprimir, usa A4 a tamaño real (100 %) para obtener el mejor resultado.", "Create sheet": "Crear hoja", "Could not save. Please try again.": "No se pudo guardar. Inténtalo de nuevo.", "\"{0}…\" does not fit in its cell. Shorten it, or use fewer rows or columns.": "«{0}…» no cabe en su celda. Acórtalo o usa menos filas o columnas."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";

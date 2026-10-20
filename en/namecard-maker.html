@@ -188,6 +188,9 @@ a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;bor
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Create Business Cards / Name Cards", "alternateName": "Create Business Cards / Name Cards", "url": "https://pdfmikata.com/en/namecard-maker.html", "description": "Free tool to make business cards or name cards laid out on A4 as a PDF, and name tags in bulk from a list. Nothing leaves your device.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "en", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
 <style>
 main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
 
@@ -223,6 +226,12 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 @media (max-width:420px){.two{grid-template-columns:1fr}}
 .hd{font-size:1.1rem;margin:30px 0 4px;padding-left:10px;border-left:6px solid var(--stamp)}
 .warn{border-left-color:#b3472b}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed}
 </style>
 <p class="note2 warn"><span lang="en">Enter <b>only your own details</b>. Do not make cards that pose as another person or organization.</span></p>
 <section class="set" id="set" style="margin-top:14px">
@@ -297,7 +306,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Page 1 preview": "Page 1 preview", "Create cards": "Create cards", "Password-protected PDFs are not supported. Remove the password and try again.": "Password-protected PDFs are not supported. Remove the password and try again.", "Could not read the PDF. It may be damaged or in an unsupported format.": "Could not read the PDF. It may be damaged or in an unsupported format.", "Save PDF": "Save PDF", "When printing, use A4 at actual size (100%). Scaling will change the card size.": "When printing, use A4 at actual size (100%). Scaling will change the card size.", "Could not create the image.": "Could not create the image.", "  page(s) / ": "    page(s) /  ", "Could not create the cards. Please try again.": "Could not create the cards. Please try again.", "Save one card as an image": "Save one card as an image", "Could not save. Please try again.": "Could not save. Please try again.", "The list can have up to 60 people.": "The list can have up to 60 people.", "Please enter a name.": "Please enter a name.", "Please enter at least one name in the list.": "Please enter at least one name in the list."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Create cards": "Create cards", "Could not read the PDF. It may be damaged or in an unsupported format.": "Could not read the PDF. It may be damaged or in an unsupported format.", "Please enter at least one name in the list.": "Please enter at least one name in the list.", "When printing, use A4 at actual size (100%). Scaling will change the card size.": "When printing, use A4 at actual size (100%). Scaling will change the card size.", "Could not create the image.": "Could not create the image.", "Password-protected PDFs are not supported. Remove the password and try again.": "Password-protected PDFs are not supported. Remove the password and try again.", "  page(s) / ": "    page(s) /  ", "Save PDF": "Save PDF", "The list can have up to 60 people.": "The list can have up to 60 people.", "Save one card as an image": "Save one card as an image", "Could not save. Please try again.": "Could not save. Please try again.", "Could not create the cards. Please try again.": "Could not create the cards. Please try again.", "Page 1 preview": "Page 1 preview", "Please enter a name.": "Please enter a name."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";

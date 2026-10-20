@@ -168,6 +168,12 @@ html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang
 .next .nl a{display:inline-block;padding:9px 14px;border:2px solid var(--ink);border-radius:999px;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--ink);background:var(--paper,#fff)}
 .next .nl a:hover{border-color:var(--stamp)}
 a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed}
 </style>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "工具", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "删除照片中的位置和拍摄信息", "item": "https://pdfmikata.com/image-exif-remove.html"}]}</script>
@@ -188,6 +194,9 @@ a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;bor
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "删除照片中的位置和拍摄信息", "alternateName": "Remove Location and Shooting Data from Photos", "url": "https://pdfmikata.com/zh/image-exif-remove.html", "description": "免费工具，可查看照片中隐藏的位置（GPS）、日期和相机信息，并另存为干净的副本。发布到网上之前用一下。手机也能用，图片不会离开你的设备。", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "zh-Hans", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
 <style>
 main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
 
@@ -264,7 +273,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Camera: ": "相机：", "Removed shooting data from {0} image(s)": "已删除 {0} 张图片的拍摄信息", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。", "Save image": "保存图片", "Save ZIP": "保存 ZIP", "Location (GPS): none": "位置（GPS）：无", "Choose other images": "选择其他图片", "Selected {0} images": "已选择 {0} 张图片", "Preview": "预览", "Location (GPS): present": "位置（GPS）：有", "It looks the same, but contains no location data.": "看起来一样，但里面不再有位置信息。", "No shooting data found.": "没有找到拍摄信息。", "Could not save. Please try again.": "无法保存，请重试。", "HEIC files must be converted to JPG first with the HEIC to JPG tool.": "HEIC 文件需要先用“HEIC 转 JPG”工具转换成 JPG。", "Remove the data and save": "删除信息并保存", "Taken: ": "拍摄时间：", "Could not process the image. The format may not be supported.": "无法处理这张图片。可能不支持该格式。"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Remove the data and save": "删除信息并保存", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Selected {0} images": "已选择 {0} 张图片", "Location (GPS): none": "位置（GPS）：无", "HEIC files must be converted to JPG first with the HEIC to JPG tool.": "HEIC 文件需要先用“HEIC 转 JPG”工具转换成 JPG。", "Camera: ": "相机：", "Taken: ": "拍摄时间：", "Location (GPS): present": "位置（GPS）：有", "Preview": "预览", "Removed shooting data from {0} image(s)": "已删除 {0} 张图片的拍摄信息", "Save image": "保存图片", "It looks the same, but contains no location data.": "看起来一样，但里面不再有位置信息。", "No shooting data found.": "没有找到拍摄信息。", "Could not save. Please try again.": "无法保存，请重试。", "Choose other images": "选择其他图片", "Could not process the image. The format may not be supported.": "无法处理这张图片。可能不支持该格式。", "Save ZIP": "保存 ZIP"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";

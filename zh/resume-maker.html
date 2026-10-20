@@ -188,6 +188,9 @@ a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;bor
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "制作简历 PDF（日式履历书）", "alternateName": "Create a Resume PDF (Japanese Rirekisho)", "url": "https://pdfmikata.com/zh/resume-maker.html", "description": "免费工具，根据你的信息、学历、工作经历和志愿动机制作日式履历书（rirekisho）PDF，也可以加上证件照。任何内容都不会离开你的设备。", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "zh-Hans", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
 <style>
 main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
 
@@ -230,6 +233,12 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 .ph{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .ph img{width:90px;height:120px;object-fit:cover;border:1px solid var(--line);background:#fff}
 .warn{border-left-color:#b3472b}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed}
 </style>
 <p class="note2 warn"><span lang="zh-Hans">如实填写你的经历和资格，<b>不要有任何出入</b>。不实的内容以后可能引起麻烦。</span></p>
 <section class="set" id="set" style="margin-top:14px">
@@ -298,7 +307,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Month": "月", "Before submitting, check once more for typos and wrong dates.": "提交之前，再检查一遍有没有错字和错误的日期。", "Mo": "月", "Licenses": "证书", "Create resume": "生成简历", "Details": "内容", "Choose another": "选择别的", "Requests": "希望事项", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Self-introduction": "自我介绍", "Save PDF": "保存 PDF", "Could not create the image.": "无法生成图片。", "Could not create the resume. Please try again.": "无法生成简历。请重试。", "Education/Work": "学历/工作", "Could not read this photo. Please convert an iPhone HEIC photo to JPG first.": "无法读取这张照片。请先把 iPhone 的 HEIC 照片转换为 JPG。", "Could not save. Please try again.": "无法保存，请重试。", "Motivation": "志愿动机", "…\" is too long. Shorten it or split it into rows.": "…”太长了。请缩短，或分成多行。", "Licenses can have up to 6 rows.": "证书最多可以有 6 行。", "  ": "  ", "Year": "年", "Resume preview, page {0}": "简历预览，第 {0} 页", "  (2 pages / ": "  （2 页 / ", "Choose a photo": "选择照片", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。", "Delete this row": "删除这一行", "Please enter your name.": "请输入姓名。", " does not fit in the box (about {0} lines). Please shorten it.": "放不进框里（大约 {0} 行）。请缩短。", "e.g. entered ○○ High School": "例如：入学 ○○ 高中", "Too many education/work rows (16 lines including headings and the closing line). Please reduce them.": "学历/工作的行数太多（包括标题和结尾行共 16 行）。请减少行数。"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Year": "年", "Could not create the resume. Please try again.": "无法生成简历。请重试。", "Licenses can have up to 6 rows.": "证书最多可以有 6 行。", "Self-introduction": "自我介绍", "e.g. entered ○○ High School": "例如：入学 ○○ 高中", "Choose another": "选择别的", "Resume preview, page {0}": "简历预览，第 {0} 页", "Delete this row": "删除这一行", "  ": "  ", "Save PDF": "保存 PDF", "Before submitting, check once more for typos and wrong dates.": "提交之前，再检查一遍有没有错字和错误的日期。", "Requests": "希望事项", "Motivation": "志愿动机", "…\" is too long. Shorten it or split it into rows.": "…”太长了。请缩短，或分成多行。", "Create resume": "生成简历", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。", "Details": "内容", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Licenses": "证书", "Could not create the image.": "无法生成图片。", "Too many education/work rows (16 lines including headings and the closing line). Please reduce them.": "学历/工作的行数太多（包括标题和结尾行共 16 行）。请减少行数。", "Month": "月", " does not fit in the box (about {0} lines). Please shorten it.": "放不进框里（大约 {0} 行）。请缩短。", "Please enter your name.": "请输入姓名。", "Mo": "月", "  (2 pages / ": "  （2 页 / ", "Education/Work": "学历/工作", "Choose a photo": "选择照片", "Could not save. Please try again.": "无法保存，请重试。", "Could not read this photo. Please convert an iPhone HEIC photo to JPG first.": "无法读取这张照片。请先把 iPhone 的 HEIC 照片转换为 JPG。"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";

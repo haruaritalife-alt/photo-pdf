@@ -190,6 +190,9 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Crear un código QR (URL, Wi-Fi)", "alternateName": "Create a QR Code (URL, Wi-Fi)", "url": "https://pdfmikata.com/es/qr-code-maker.html", "description": "Herramienta gratuita para crear un código QR a partir de una URL, un texto o los datos de una red Wi-Fi y guardarlo como PNG, SVG o PDF. Lo que escribes nunca sale de tu dispositivo.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "es", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
 <style>
 main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
 
@@ -224,6 +227,12 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media (max-width:420px){.two{grid-template-columns:1fr}}
 .hd{font-size:1.1rem;margin:30px 0 4px;padding-left:10px;border-left:6px solid var(--stamp)}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed}
 </style>
 <section class="set" id="set" style="margin-top:14px">
 <div class="row"><span><span lang="es">Qué codificar</span></span>
@@ -286,7 +295,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Before using it, scan it with a phone camera and check that it opens correctly.": "Antes de usarlo, escanéalo con la cámara del móvil y comprueba que se abre correctamente.", "Password-protected PDFs are not supported. Remove the password and try again.": "No se admiten PDF protegidos con contraseña. Quita la contraseña e inténtalo de nuevo.", "Could not read the PDF. It may be damaged or in an unsupported format.": "No se pudo leer el PDF. Puede estar dañado o en un formato no admitido.", "Create QR code": "Crear código QR", "Please enter a URL or text.": "Introduce una URL o un texto.", "Save PDF": "Guardar PDF", "Please enter the Wi-Fi name (SSID).": "Introduce el nombre de la red Wi-Fi (SSID).", "Could not create the image.": "No se pudo crear la imagen.", "  The text is long, so the pattern is dense.": "    El texto es largo, así que el patrón es denso.", "Could not create the QR code. Please try again.": "No se pudo crear el código QR. Inténtalo de nuevo.", "Added https://. ": "Se añadió https://.  ", "Could not save. Please try again.": "No se pudo guardar. Inténtalo de nuevo.", "Save PNG": "Guardar PNG", "QR code preview": "Vista previa del código QR", "Save SVG (scales cleanly)": "Guardar SVG (se escala sin perder calidad)", "Too much text for a QR code. Shorten it or lower the error correction.": "Demasiado texto para un código QR. Acórtalo o baja la corrección de errores."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Please enter a URL or text.": "Introduce una URL o un texto.", "QR code preview": "Vista previa del código QR", "Could not read the PDF. It may be damaged or in an unsupported format.": "No se pudo leer el PDF. Puede estar dañado o en un formato no admitido.", "Before using it, scan it with a phone camera and check that it opens correctly.": "Antes de usarlo, escanéalo con la cámara del móvil y comprueba que se abre correctamente.", "Create QR code": "Crear código QR", "Could not create the image.": "No se pudo crear la imagen.", "Password-protected PDFs are not supported. Remove the password and try again.": "No se admiten PDF protegidos con contraseña. Quita la contraseña e inténtalo de nuevo.", "Added https://. ": "Se añadió https://.  ", "Too much text for a QR code. Shorten it or lower the error correction.": "Demasiado texto para un código QR. Acórtalo o baja la corrección de errores.", "Save SVG (scales cleanly)": "Guardar SVG (se escala sin perder calidad)", "Please enter the Wi-Fi name (SSID).": "Introduce el nombre de la red Wi-Fi (SSID).", "Save PNG": "Guardar PNG", "Save PDF": "Guardar PDF", "Could not save. Please try again.": "No se pudo guardar. Inténtalo de nuevo.", "Could not create the QR code. Please try again.": "No se pudo crear el código QR. Inténtalo de nuevo.", "  The text is long, so the pattern is dense.": "    El texto es largo, así que el patrón es denso."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";

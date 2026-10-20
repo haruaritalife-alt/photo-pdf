@@ -168,6 +168,12 @@ html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang
 .next .nl a{display:inline-block;padding:9px 14px;border:2px solid var(--ink);border-radius:999px;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--ink);background:var(--paper,#fff)}
 .next .nl a:hover{border-color:var(--stamp)}
 a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed}
 </style>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script><script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "工具", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "压缩 PDF", "item": "https://pdfmikata.com/compress-pdf.html"}]}</script>
@@ -188,6 +194,9 @@ a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;bor
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "压缩 PDF", "alternateName": "Compress PDF", "url": "https://pdfmikata.com/zh/compress-pdf.html", "description": "免费工具，把 PDF 压缩到你指定的大小以下，例如 1、2、5 或 10 MB。无需注册，文件不会离开你的设备。", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "zh-Hans", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
 <style>
 main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
 
@@ -267,7 +276,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Choose another PDF": "选择其他 PDF", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。", "Compressing…": "正在压缩…", "Adjusting (try {0})": "正在调整（第 {0} 次尝试）", "Save PDF": "保存 PDF", "The original file is smaller, so you should keep using the original.": "原文件更小，所以建议继续使用原文件。", "p": "页", "Compressing": "压缩中", "After saving, check that small text is still readable.": "保存后，请检查小字是否仍然清晰可读。", "It fits under your limit ({0} MB). ": "已控制在你的上限（{0} MB）以内。", "Even the smallest setting gives {0}, which doesn't fit. Reduce the pages or raise the limit.": "即使用最小设置，文件仍有 {0}，放不进上限。请减少页数或提高上限。", "Could not save. Please try again.": "无法保存，请重试。", "Compress": "压缩"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。", "The original file is smaller, so you should keep using the original.": "原文件更小，所以建议继续使用原文件。", "p": "页", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Choose another PDF": "选择其他 PDF", "Adjusting (try {0})": "正在调整（第 {0} 次尝试）", "It fits under your limit ({0} MB). ": "已控制在你的上限（{0} MB）以内。", "Save PDF": "保存 PDF", "Compressing…": "正在压缩…", "Could not save. Please try again.": "无法保存，请重试。", "Even the smallest setting gives {0}, which doesn't fit. Reduce the pages or raise the limit.": "即使用最小设置，文件仍有 {0}，放不进上限。请减少页数或提高上限。", "Compress": "压缩", "Compressing": "压缩中", "After saving, check that small text is still readable.": "保存后，请检查小字是否仍然清晰可读。"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
