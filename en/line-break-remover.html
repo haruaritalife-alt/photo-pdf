@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Remove and Tidy Line Breaks in Text (free, no sign-up)｜PDF Mikata</title>
+<meta content="Free tool that removes mid-sentence line breaks from text copied from PDFs and other sources. Can keep paragraphs. Your text never leaves your device." name="description"/>
+
+
+<link href="https://pdfmikata.com/en/line-break-remover.html" rel="canonical"/>
+<script src="/site.js"></script>
+
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "Remove and Tidy Line Breaks in Text", "item": "https://pdfmikata.com/line-break-remover.html"}]}</script>
+<meta content="website" property="og:type"/>
+<meta content="PDF Mikata" property="og:site_name"/>
+<meta content="en_US" property="og:locale"/>
+
+<meta content="Remove and Tidy Line Breaks in Text (free, no sign-up)｜PDF Mikata" property="og:title"/>
+<meta content="Free tool that removes mid-sentence line breaks from text copied from PDFs and other sources. Can keep paragraphs. Your text never leaves your device." property="og:description"/>
+<meta content="https://pdfmikata.com/en/line-break-remover.html" property="og:url"/>
+<meta content="https://pdfmikata.com/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Remove and Tidy Line Breaks in Text (free, no sign-up)｜PDF Mikata" name="twitter:title"/>
+<meta content="Free tool that removes mid-sentence line breaks from text copied from PDFs and other sources. Can keep paragraphs. Your text never leaves your device." name="twitter:description"/>
+<meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="#16393c" name="theme-color"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Remove and Tidy Line Breaks in Text", "alternateName": "Remove and Tidy Line Breaks in Text", "url": "https://pdfmikata.com/en/line-break-remover.html", "description": "Free tool that removes mid-sentence line breaks from text copied from PDFs and other sources. Can keep paragraphs. Your text never leaves your device.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "en", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<style>
+main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
+
+.lang{display:flex;align-items:center;border:0;overflow:visible}
+.lang .gl{width:18px;height:18px;margin:0 6px 0 10px;color:#fcfefd;flex:none}
+.lang select{appearance:none;-webkit-appearance:none;min-height:44px;border:1px solid rgba(255,255,255,.5);border-radius:6px;background:transparent;color:#fcfefd;font:inherit;font-weight:700;font-size:.85rem;padding:0 28px 0 12px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23fcfefd' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.lang select option{color:#16393c;background:#fcfefd}
+.lang select:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+@media (max-width:420px){.lang .gl{display:none}}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}</style><link href="https://pdfmikata.com/line-break-remover.html" hreflang="ja" rel="alternate"/>
+<link href="https://pdfmikata.com/en/line-break-remover.html" hreflang="en" rel="alternate"/>
+<link href="https://pdfmikata.com/zh/line-break-remover.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://pdfmikata.com/es/line-break-remover.html" hreflang="es" rel="alternate"/>
+<link href="https://pdfmikata.com/line-break-remover.html" hreflang="x-default" rel="alternate"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2376251801221434" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="/en/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma" id="langsel"><option value="/line-break-remover.html">日本語</option><option selected="" value="/en/line-break-remover.html">English</option><option value="/zh/line-break-remover.html">简体中文</option><option value="/es/line-break-remover.html">Español</option></select></div></div></header>
+<nav aria-label="Site navigation" class="sub"><div class="sub-in"><a href="/en/"><span lang="en">Home</span></a><a href="/en/#cat-convert"><span lang="en">Convert</span></a><a aria-current="page" href="/en/#cat-edit"><span lang="en">Edit</span></a><a href="/en/#cat-optimize"><span lang="en">Optimize</span></a><a href="/en/#cat-create"><span lang="en">Create</span></a><a href="/en/#guide"><span lang="en">Guides</span></a></div></nav>
+<nav aria-label="Breadcrumb" class="crumb"><ol><li><a href="/en/"><span lang="en">Home</span></a></li><li><a href="/en/#tools"><span lang="en">Tools</span></a></li><li><span aria-current="page"><span lang="en">Remove and Tidy Line Breaks in Text</span></span></li></ol></nav>
+<main>
+<h1><span lang="en">Remove and Tidy Line Breaks in Text</span></h1>
+<p class="lead"><span lang="en">Tidy text copied from a PDF.</span></p>
+<p class="safe"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="9" rx="2" width="14" x="5" y="11"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><span><span lang="en"><b>Your text is never sent anywhere.</b> Everything is processed on this device.</span></span></p><ol class="steps"><li><b>1</b><span lang="en">Paste the text</span></li><li><b>2</b><span lang="en">Choose how to tidy it</span></li><li><b>3</b><span lang="en">Copy the result</span></li></ol>
+<div class="row"><span><span lang="en">How to tidy</span></span><label><input name="md" type="radio" value="all"/><span lang="en">Remove all line breaks</span></label><label><input checked="" name="md" type="radio" value="para"/><span lang="en">Keep paragraphs (blank lines)</span></label><label><input name="md" type="radio" value="sent"/><span lang="en">Break after sentence ends (。！？)</span></label></div>
+<div class="row"><label><input checked="" id="sp" type="checkbox"/><span lang="en">Remove extra spaces</span></label></div>
+<div class="row"><label><input checked="" id="en" type="checkbox"/><span lang="en">For English, put a space between lines</span></label></div>
+<label for="tx" style="font-weight:700"><span lang="en">Before</span></label>
+<textarea id="tx" style="width:100%;min-height:170px;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:10px 12px;font:inherit;font-size:1rem;line-height:1.6;resize:vertical;display:block"></textarea>
+<label for="ot" style="font-weight:700;display:block;margin-top:10px"><span lang="en">After</span></label>
+<textarea id="ot" readonly="" style="width:100%;min-height:170px;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:10px 12px;font:inherit;font-size:1rem;line-height:1.6;resize:vertical;display:block;background:#f7f7f7"></textarea>
+<p id="ct" style="font-weight:700"></p>
+<div class="btnrow" style="margin-top:6px"><button class="btn2" id="cp" type="button"></button><button class="btn2" id="clr" type="button"></button></div>
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="en">Done</span></div>
+<p id="info"></p>
+<a href="#" id="dl"></a>
+<div id="extra"></div>
+<p aria-live="polite" id="msg"></p>
+<div class="support" hidden="" id="support"><p><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="en">Send a tip (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="en">Send a gift (Amazon wishlist)</span></a></div>
+</section>
+<section class="guide" id="how">
+
+<div lang="en"><h2>How to use</h2>
+<ol>
+<li>Paste text into "Before".</li>
+<li>Choose "How to tidy".</li>
+<li>Copy the result shown in "After" with "Copy result".</li>
+</ol>
+<h2>How it works</h2>
+<ul>
+<li>Line breaks are removed and lines are joined.</li>
+<li>With "Keep paragraphs", paragraphs separated by blank lines stay as they are.</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>Text copied from a PDF often breaks mid-sentence; tidying it makes it easier to read.</li>
+<li>Removing line breaks changes the character count.</li>
+</ul>
+<h2>FAQ</h2>
+<details><summary>Is my text sent anywhere?</summary><p>No. Everything is processed inside the browser on your device.</p></details>
+<details><summary>Can I tidy text copied from a PDF?</summary><p>Yes. Choose "Keep paragraphs" to remove only the mid-sentence breaks.</p></details>
+</div>
+</section>
+<div class="support endtip"><p><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank"><span lang="en">Send a tip (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="en">Send a gift (Amazon wishlist)</span></a></div>
+<section class="more rel"><h2><span lang="en">Guides for this tool</span></h2><a href="/en/line-break-remover-howto.html"><span lang="en">How to Remove Line Breaks from Text (Free, Phone OK)</span></a><a href="/en/line-break-remover-pdf.html"><span lang="en">How to Fix Line Breaks in Text Copied from a PDF</span></a><a href="/en/line-break-remover-paragraph.html"><span lang="en">How to Keep Paragraphs and Remove Only the Line Breaks</span></a><a href="/en/line-break-remover-sentence.html"><span lang="en">How to Put Each Sentence on Its Own Line</span></a><a href="/en/line-break-remover-english.html"><span lang="en">Notes on Removing Line Breaks from English Text</span></a><a href="/en/line-break-remover-spaces.html"><span lang="en">How to Remove Extra Spaces Too</span></a><a href="/en/line-break-remover-trouble.html"><span lang="en">What to Do If Line Breaks Remain</span></a></section>
+<section class="more"><h2><span lang="en">More tools</span></h2><a href="/en/photo-to-pdf.html"><span lang="en">Photos to PDF</span><small><span lang="en">Combine several photos into one PDF in the order you choose. You can rotate, reorder and set a size limit.</span></small></a><a href="/en/merge-pdf.html"><span lang="en">Merge PDFs</span><small><span lang="en">Combine several PDF files into one, in the order you choose.</span></small></a><a href="/en/split-pdf.html"><span lang="en">Extract or Delete PDF Pages</span><small><span lang="en">Keep only the pages you need, or remove the pages you don't.</span></small></a><a href="/en/compress-pdf.html"><span lang="en">Compress PDF</span><small><span lang="en">Shrink a PDF to fit under a size you choose, for upload limits.</span></small></a><a href="/en/pdf-to-image.html"><span lang="en">PDF to Images</span><small><span lang="en">Save each page of a PDF as a JPEG or PNG image.</span></small></a><a href="/en/image-convert.html"><span lang="en">Convert Image Format (JPG, PNG, WebP)</span><small><span lang="en">Convert images to JPG, PNG or WebP, several at once.</span></small></a><a href="/en/pdf-rotate.html"><span lang="en">Rotate &amp; Reorder PDF Pages</span><small><span lang="en">Fix sideways pages, change the page order, or remove pages.</span></small></a><a href="/en/pdf-page-numbers.html"><span lang="en">Add Page Numbers to PDF</span><small><span lang="en">Add page numbers to a PDF, choosing position and style.</span></small></a><a href="/en/image-compress.html"><span lang="en">Compress &amp; Resize Images</span><small><span lang="en">Make image files smaller, and resize them if you like.</span></small></a><a href="/en/heic-to-jpg.html"><span lang="en">Convert HEIC to JPG</span><small><span lang="en">Convert HEIC photos from iPhone to JPG or PNG.</span></small></a><a href="/en/pdf-split.html"><span lang="en">Split PDF</span><small><span lang="en">Split a PDF into several files: one page each, every N pages, or by ranges.</span></small></a><a href="/en/image-crop.html"><span lang="en">Crop &amp; Rotate Image</span><small><span lang="en">Crop an image to any area or ratio, and rotate it.</span></small></a><a href="/en/pdf-to-text.html"><span lang="en">Extract Text from PDF</span><small><span lang="en">Pull the text out of a PDF to copy or save.</span></small></a><a href="/en/receipt-maker.html"><span lang="en">Create a Receipt PDF</span><small><span lang="en">Fill in the payer, amount and description to make a receipt PDF. Tax breakdown and invoice registration number are optional.</span></small></a><a href="/en/resume-maker.html"><span lang="en">Create a Resume PDF (Japanese Rirekisho)</span><small><span lang="en">Fill in your details, education, work history and motivation to make a Japanese-style resume (rirekisho) PDF, with an optional ID photo.</span></small></a><a href="/en/timetable-maker.html"><span lang="en">Create a Timetable / Weekly Schedule</span><small><span lang="en">Enter classes, jobs and plans to make a timetable or weekly schedule as a PDF or image, with color coding.</span></small></a><a href="/en/namecard-maker.html"><span lang="en">Create Business Cards / Name Cards</span><small><span lang="en">Enter your name and details to make business or name cards laid out on A4 as a PDF. You can also make name tags in bulk from a list.</span></small></a><a href="/en/qr-code-maker.html"><span lang="en">Create a QR Code (URL, Wi-Fi)</span><small><span lang="en">Make a QR code from a URL, text or Wi-Fi details and save it as PNG, SVG or PDF.</span></small></a><a href="/en/pdf-nup.html"><span lang="en">Combine PDF Pages onto One Sheet (2-up, 4-up)</span><small><span lang="en">Arrange several PDF pages on one A4 sheet (2, 4, 6, 8 or 9 up) to save paper when printing.</span></small></a><a href="/en/pdf-grayscale.html"><span lang="en">Convert a PDF to Grayscale (Black &amp; White)</span><small><span lang="en">Turn a color PDF into grayscale or pure black and white, ready for monochrome printing, copying or fax. Choose the resolution.</span></small></a><a href="/en/pdf-watermark.html"><span lang="en">Add a Text Watermark to PDF</span><small><span lang="en">Add text such as "For submission", "Copy" or "Confidential" lightly across every PDF page. Choose position, color and opacity.</span></small></a><a href="/en/pdf-crop.html"><span lang="en">Crop PDF Margins</span><small><span lang="en">Trim PDF margins automatically or by setting each edge. Easier to read on a phone, cleaner to print.</span></small></a><a href="/en/pdf-redact.html"><span lang="en">Black Out (Redact) Parts of a PDF</span><small><span lang="en">Drag over the parts of a PDF you want to hide and black them out. Redacted pages become images, so the text underneath is gone.</span></small></a><a href="/en/pdf-metadata.html"><span lang="en">View and Remove PDF Properties (Author, Title)</span><small><span lang="en">See the author, title, software and dates stored in a PDF, then remove or edit them.</span></small></a><a href="/en/pdf-fill.html"><span lang="en">Fill In a PDF: Add Text, Date, Signature and Marks</span><small><span lang="en">Add text, a date, check marks, circles, a handwritten signature or an image (such as a seal) anywhere on a PDF.</span></small></a><a href="/en/pdf-resize.html"><span lang="en">Resize PDF Pages to A4 or Another Paper Size</span><small><span lang="en">Make PDF pages of mixed sizes all the same size, such as A4, A3, B5 or Letter. Text and graphics stay sharp.</span></small></a><a href="/en/pdf-delete-pages.html"><span lang="en">Delete Pages from a PDF</span><small><span lang="en">Choose and delete unwanted pages from a PDF.</span></small></a><a href="/en/pdf-extract-pages.html"><span lang="en">Extract Pages from a PDF</span><small><span lang="en">Pick the pages you need and save them as a new PDF.</span></small></a><a href="/en/pdf-reverse.html"><span lang="en">Reverse the Page Order of a PDF</span><small><span lang="en">Reverse the page order of a PDF.</span></small></a><a href="/en/pdf-insert-blank.html"><span lang="en">Insert Blank Pages into a PDF</span><small><span lang="en">Insert blank pages anywhere in a PDF.</span></small></a><a href="/en/pdf-split-halves.html"><span lang="en">Split PDF Spreads into Single Pages</span><small><span lang="en">Split spreads in a PDF into single pages.</span></small></a><a href="/en/pdf-header-footer.html"><span lang="en">Add a Header and Footer to a PDF</span><small><span lang="en">Add a title, date or page numbers to the top and bottom of a PDF.</span></small></a><a href="/en/pdf-booklet.html"><span lang="en">Arrange a PDF as a Booklet for Printing</span><small><span lang="en">Reorder a PDF so it prints and folds into a booklet.</span></small></a><a href="/en/pdf-blank-remove.html"><span lang="en">Find and Remove Blank Pages in a PDF</span><small><span lang="en">Find blank pages in a PDF automatically and delete them.</span></small></a><a href="/en/pdf-long-image.html"><span lang="en">Turn a PDF into One Long Image</span><small><span lang="en">Join all pages of a PDF into one tall image.</span></small></a><a href="/en/pdf-duplex-merge.html"><span lang="en">Merge Front and Back Scans into One PDF</span><small><span lang="en">Interleave a fronts PDF and a backs PDF into one PDF.</span></small></a><a href="/en/image-resize.html"><span lang="en">Resize Images by Pixel Size</span><small><span lang="en">Resize images by width, height or percentage.</span></small></a><a href="/en/image-rotate.html"><span lang="en">Rotate and Flip Images</span><small><span lang="en">Rotate images and flip them horizontally or vertically.</span></small></a><a href="/en/image-watermark.html"><span lang="en">Add a Text Watermark to Images</span><small><span lang="en">Overlay watermark text such as "Copy" on images.</span></small></a><a href="/en/image-mosaic.html"><span lang="en">Mosaic or Blur Part of an Image</span><small><span lang="en">Hide parts of an image with mosaic, blur or a black box.</span></small></a><a href="/en/image-exif-remove.html"><span lang="en">Remove Location and Shooting Data from Photos</span><small><span lang="en">Remove GPS, date and camera data from photos and save a clean copy.</span></small></a><a href="/en/image-filter.html"><span lang="en">Apply Black-and-White, Sepia and Other Looks</span><small><span lang="en">Turn images black and white or sepia, or change brightness.</span></small></a><a href="/en/favicon-maker.html"><span lang="en">Make a Favicon (Site Icon)</span><small><span lang="en">Make a complete favicon set from one image.</span></small></a><a href="/en/image-stitch.html"><span lang="en">Join Several Images into One</span><small><span lang="en">Stack or join several images into one image.</span></small></a><a href="/en/id-photo.html"><span lang="en">Crop to ID Photo Size and Tile for Printing</span><small><span lang="en">Crop a photo to ID photo size and tile it on an L-size sheet.</span></small></a><a href="/en/image-color-picker.html"><span lang="en">Pick Color Codes from an Image</span><small><span lang="en">Read color codes from an image and find the main colors.</span></small></a><a href="/en/char-counter.html"><span lang="en">Character Counter (for Applications and Reports)</span><small><span lang="en">Count characters, lines and manuscript sheets of your text.</span></small></a><a href="/en/wareki-converter.html"><span lang="en">Convert Between Western Years and Japanese Eras</span><small><span lang="en">Convert between AD years and Japanese eras.</span></small></a><a href="/en/zenkaku-hankaku.html"><span lang="en">Convert Full-Width, Half-Width, Hiragana and Katakana</span><small><span lang="en">Convert full-width/half-width and hiragana/katakana.</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="en">About / Contact (Japanese)</span></a><a href="/en/privacy.html"><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="en">Updates on X</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const TR={"Clear": "Clear", "Characters: {0} → {1}": "Characters: {0} → {1}", "Copy result": "Copy result", "Copied": "Copied", "Password-protected PDFs are not supported. Remove the password and try again.": "Password-protected PDFs are not supported. Remove the password and try again.", "Could not read the PDF. It may be damaged or in an unsupported format.": "Could not read the PDF. It may be damaged or in an unsupported format.", "Could not save. Please try again.": "Could not save. Please try again."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=T("Could not save. Please try again.",[])}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return T("Password-protected PDFs are not supported. Remove the password and try again.",[]);
+  return T("Could not read the PDF. It may be damaged or in an unsupported format.",[]);
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+async function copyText(btn,text,ja,en){try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(_){}document.body.removeChild(ta)}
+  const o=btn.textContent;btn.textContent=T("Copied",[]);setTimeout(()=>{btn.textContent=o},1500)}
+
+function tidy(s){
+  s=s.replace(/\r\n?/g,"\n");const md=document.querySelector('input[name="md"]:checked').value,sp=$("sp").checked,en=$("en").checked;
+  const join=(lines)=>{let o="";for(let i=0;i<lines.length;i++){let l=lines[i].trim();if(!l)continue;
+    if(o&&en&&/[A-Za-z0-9,.;:!?)"'’]$/.test(o)&&/^[A-Za-z0-9("'‘]/.test(l))o+=" ";o+=l}return o};
+  let r;
+  if(md==="para"){r=s.split(/\n{2,}/).map(p=>join(p.split("\n"))).filter(Boolean).join("\n\n")}
+  else{r=join(s.split("\n"));if(md==="sent")r=r.replace(/([。！？!?])(?!["」』）)]|$)/g,"$1\n")}
+  if(sp)r=r.replace(/[ \t　]{2,}/g," ");
+  return r}
+function upd(){const o=tidy($("tx").value);$("ot").value=o;const n=[...$("tx").value].length,m=[...o].length;$("ct").textContent=$("tx").value?T("Characters: {0} → {1}",[n,m]):""}
+$("cp").textContent=T("Copy result",[]);$("clr").textContent=T("Clear",[]);
+$("cp").onclick=()=>copyText($("cp"),$("ot").value);
+$("clr").onclick=()=>{$("tx").value="";upd();$("tx").focus()};
+$("tx").addEventListener("input",upd);document.querySelectorAll('input[name="md"],#sp,#en').forEach(x=>x.addEventListener("change",upd));upd();
+
+</script>
+</body>
+</html>
