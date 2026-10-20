@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PDFの透かしでできること・できないこと｜PDFのミカタ</title>
+<meta name="title-en" content="What a PDF Watermark Can and Cannot Do｜PDF Mikata">
+<meta name="desc-en" content="What a watermark cannot prevent, what it is good for, and how to think when you need stronger protection.">
+<script src="/site.js"></script>
+<link rel="canonical" href="https://pdfmikata.com/pdf-watermark-limits.html">
+<meta name="description" content="透かしを入れても防げないこと、入れる意味があること、より強い対策が必要なときの考え方を整理します。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap">
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.9}
+main{max-width:680px;margin:0 auto;padding:30px 18px 24px}
+.back{display:inline-block;margin-bottom:16px;font-size:.9rem;color:var(--sub)}
+h1{font-size:1.7rem;line-height:1.4;margin:0 0 14px}
+h2{font-size:1.2rem;margin:34px 0 8px;border-top:2px solid var(--ink);padding-top:12px}
+h3{font-size:1.02rem;margin:20px 0 4px}
+p{margin:0 0 12px}li{margin-bottom:4px}
+a{color:var(--ink)}
+.note{background:var(--paper);border:1px solid var(--line);padding:12px 14px;font-size:.92rem;margin:16px 0}
+.cta{display:block;text-align:center;background:var(--stamp);color:var(--btn-ink);text-decoration:none;font-weight:700;border-radius:6px;padding:16px;margin:26px 0}
+.cta:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+
+:root{--head:#16393c;padding-top:0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--head:#0a2427}}
+:root[data-theme="dark"]{--head:#0a2427}
+.top{background:var(--head);border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h2{border-top:0;padding:0 0 0 10px;border-left:6px solid var(--stamp)}
+h3::before{content:"";display:inline-block;width:10px;height:10px;background:var(--stamp);margin-right:8px;border-radius:2px}
+main ol{list-style:none;counter-reset:s;padding:0}
+main ol li{counter-increment:s;position:relative;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 12px 12px 52px;margin-bottom:8px}
+main ol li::before{content:counter(s);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);font-weight:700;display:grid;place-items:center;font-size:.85rem}
+.points{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:12px 16px;margin:0 0 22px}
+.points b{display:block;margin-bottom:4px}.points ul{margin:0;padding-left:1.2em}
+.note{border-left:6px solid var(--stamp)}
+.check{list-style:none;padding:0}.check li{position:relative;padding-left:2em}
+.check li::before{content:"";position:absolute;left:0;top:.5em;width:1.05em;height:1.05em;border:2px solid var(--ink);border-radius:3px}
+table{width:100%;border-collapse:collapse;background:var(--paper);font-size:.92rem;margin:10px 0}
+th,td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}
+th{background:var(--head);color:#fcfefd}
+.bars{background:var(--paper);border:1px solid var(--line);padding:14px;margin:16px 0}
+.bars div{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:.9rem}
+.bars span{flex:0 0 3.6em}.bars i{display:block;height:16px;background:var(--stamp);border-radius:3px}
+.tip{margin:26px 0 0;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);font-size:.92rem}.tip p{margin:0 0 8px}.tip a{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink)}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none;margin-left:auto}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+.meta{font-size:.85rem;color:var(--sub);margin:-4px 0 14px}.meta a{color:var(--sub)}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "解説", "item": "https://pdfmikata.com/guides.html"}, {"@type": "ListItem", "position": 3, "name": "PDFの透かしでできること・できないこと", "item": "https://pdfmikata.com/pdf-watermark-limits.html"}]}</script>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PDFのミカタ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="PDFの透かしでできること・できないこと｜PDFのミカタ">
+<meta property="og:description" content="透かしを入れても防げないこと、入れる意味があること、より強い対策が必要なときの考え方を整理します。">
+<meta property="og:url" content="https://pdfmikata.com/pdf-watermark-limits.html">
+<meta property="og:image" content="https://pdfmikata.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PDFの透かしでできること・できないこと｜PDFのミカタ">
+<meta name="twitter:description" content="透かしを入れても防げないこと、入れる意味があること、より強い対策が必要なときの考え方を整理します。">
+<meta name="twitter:image" content="https://pdfmikata.com/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#16393c">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "PDFの透かしでできること・できないこと", "description": "透かしを入れても防げないこと、入れる意味があること、より強い対策が必要なときの考え方を整理します。", "url": "https://pdfmikata.com/pdf-watermark-limits.html", "mainEntityOfPage": "https://pdfmikata.com/pdf-watermark-limits.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="3" width="20" height="26" rx="2" transform="rotate(-8 16 16)" fill="#fcfefd" opacity=".5"/><rect x="6" y="3" width="20" height="26" rx="2" fill="#fcfefd"/><path d="M18 3h8v8z" fill="#1f7f7b"/><rect x="10" y="16" width="12" height="2" fill="#16393c"/><rect x="10" y="21" width="9" height="2" fill="#16393c"/></svg><span>PDFのミカタ</span></a><div class="lang" role="group" aria-label="言語を切り替え / Switch language"><svg class="gl" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><button type="button" data-l="ja" title="日本語で表示">日本語</button><button type="button" data-l="en" title="Show in English">English</button></div></div></header>
+<nav class="sub" aria-label="サイト内ナビゲーション / Site navigation"><div class="sub-in"><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a><a href="/#cat-convert"><span lang="ja">変換</span><span lang="en">Convert</span></a><a href="/#cat-edit"><span lang="ja">編集</span><span lang="en">Edit</span></a><a href="/#cat-optimize"><span lang="ja">最適化</span><span lang="en">Optimize</span></a><a href="/#cat-create"><span lang="ja">作成</span><span lang="en">Create</span></a><a href="/#guide" aria-current="page"><span lang="ja">解説</span><span lang="en">Guides</span></a></div></nav>
+<nav class="crumb" aria-label="パンくず / Breadcrumb"><ol><li><a href="/"><span lang="ja">ホーム</span><span lang="en">Home</span></a></li><li><a href="/guides.html"><span lang="ja">解説</span><span lang="en">Guides</span></a></li><li><span aria-current="page"><span lang="ja">PDFの透かしでできること・できないこと</span><span lang="en">What a PDF Watermark Can and Cannot Do</span></span></li></ol></nav>
+<main>
+<div lang="ja">
+<h1>PDFの透かしでできること・できないこと</h1>
+<p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
+<div class="points"><b>この記事のポイント</b><ul><li>透かしは「抑止」であって、「防止」ではない</li><li>消される・切り取られることがある</li><li>本当の機密は、渡し方を見直す</li></ul></div>
+<p>透かしは、便利ですが、万能ではありません。できることと、できないことを、知っておきましょう。</p>
+<h2>透かしの効果</h2>
+<ul>
+<li><b>コピーであることを示す。</b></li>
+<li><b>用途や、渡した相手を示す。</b></li>
+<li><b>無断で使いにくい、という心理的な抑止になる。</b></li>
+</ul>
+<h2>透かしでできないこと</h2>
+<ul>
+<li><b>消されるのを、完全には防げません。</b> PDFを編集するソフトや、画像の加工で、取り除かれることがあります。</li>
+<li><b>切り取られることがあります。</b> 1つだけ入れた透かしは、画像をトリミングされると、なくなります。</li>
+<li><b>内容を読めなくする効果はありません。</b> 読ませたくない情報は、そもそも渡さないことが大事です。</li>
+</ul>
+<h2>少しでも強くするには</h2>
+<ul>
+<li><a href="/pdf-watermark.html">PDFに透かし文字を入れる</a>で、<b>「全面にくり返す」</b>にします。</li>
+<li>透かしの文字を、<b>提出先・日付入り</b>にします。</li>
+<li>色は、グレーや赤にして、<b>紙の色と近くならない</b>ようにします。</li>
+</ul>
+<h2>本当に守りたいときは</h2>
+<ul>
+<li>見せなくていい部分は、<b>最初から含めない</b>（黒く塗る、写さない）。</li>
+<li>渡す相手を、限定する。</li>
+<li>共有の方法（期限つきのリンク、パスワード）を、見直す。</li>
+<li>このツールは、パスワードの設定はできません。</li>
+</ul>
+<h2>透かしのデメリット</h2>
+<ul>
+<li>文字や図に重なって、読みにくくなることがあります。</li>
+<li>濃すぎると、見た目が悪くなります。プレビューで、確認してください。</li>
+</ul>
+<h2>元のファイル</h2>
+<p>透かしを入れる前の<b>元のPDFは、別に保存</b>しておきます。透かし入りのPDFから、透かしを外すことは、このツールではできません。</p>
+<a class="cta" href="/pdf-watermark.html">PDFに透かし文字を入れるを使う（無料）</a>
+<h2>あわせて使えるツール</h2><ul><li><a href="/pdf-page-numbers.html">PDFにページ番号を追加</a>：PDFの各ページに、ページ番号を入れます。位置や形式を選べます。</li><li><a href="/compress-pdf.html">PDFを圧縮</a>：PDFを、指定したサイズ以下に小さくします。提出先の容量制限に合わせたいときに。</li><li><a href="/merge-pdf.html">PDFを結合</a>：複数のPDFを、順番を決めて1つのPDFにまとめます。</li></ul>
+<div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" target="_blank" rel="noopener">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" target="_blank" rel="noopener noreferrer nofollow">ほしい物リストで応援</a></div>
+<h2>同じツールの、ほかの解説</h2>
+<ul><li><a href="/pdf-watermark-howto.html">PDFに「提出用」「コピー」の透かし文字を入れる方法（無料・スマホでもOK）</a></li><li><a href="/pdf-watermark-text-ideas.html">透かし文字の例と使い分け：提出用・コピー・社外秘・見本・DRAFT</a></li><li><a href="/pdf-watermark-id-copy.html">身分証・契約書のコピーに透かしを入れる：悪用を防ぐ工夫</a></li><li><a href="/pdf-watermark-readability.html">透かしの濃さ・大きさ・色の決め方：読みやすさとのバランス</a></li><li><a href="/pdf-watermark-draft-review.html">下書き・確認用の資料に「DRAFT」を入れる：版を間違えないコツ</a></li><li><a href="/pdf-watermark-email-submit.html">透かし入りPDFを提出・送付するときのチェックリスト</a></li></ul>
+<p><a href="/guides.html">解説の一覧を見る</a></p>
+</div>
+<div lang="en">
+<h1>What a PDF Watermark Can and Cannot Do</h1>
+<p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
+<div class="points"><b>Key points</b><ul><li>A watermark deters; it does not prevent</li><li>It can be removed or cropped out</li><li>For truly sensitive material, rethink how you share it</li></ul></div>
+<p>A watermark is handy but not all-powerful. Know what it can and cannot do.</p>
+<h2>What a watermark does</h2>
+<ul>
+<li><b>Shows that it is a copy.</b></li>
+<li><b>Shows the purpose or who it was given to.</b></li>
+<li><b>Acts as a psychological deterrent to unauthorized use.</b></li>
+</ul>
+<h2>What it cannot do</h2>
+<ul>
+<li><b>It cannot fully prevent removal.</b> PDF editors or image editing can strip it out.</li>
+<li><b>It can be cropped out.</b> A single mark disappears if the image is trimmed.</li>
+<li><b>It does not make the content unreadable.</b> For information you do not want read, the key is not to hand it over at all.</li>
+</ul>
+<h2>To make it a bit stronger</h2>
+<ul>
+<li>Choose <b>"Repeat across the page"</b> in <a href="/pdf-watermark.html">Add a Text Watermark to PDF</a>.</li>
+<li>Put the <b>recipient and date</b> in the text.</li>
+<li>Use gray or red so it is <b>not close to the paper color</b>.</li>
+</ul>
+<h2>When you really need protection</h2>
+<ul>
+<li><b>Leave out</b> what need not be shown (black it out, do not photograph it).</li>
+<li>Limit who receives it.</li>
+<li>Review how you share (expiring links, passwords).</li>
+<li>This tool cannot set a password.</li>
+</ul>
+<h2>Downsides of watermarks</h2>
+<ul>
+<li>They can overlap text and figures and hurt readability.</li>
+<li>Too strong looks poor. Check the preview.</li>
+</ul>
+<h2>The original file</h2>
+<p>Keep the <b>original PDF separately</b> before watermarking. This tool cannot remove a watermark from a watermarked PDF.</p>
+<a class="cta" href="/pdf-watermark.html">Use "Add a Text Watermark to PDF" (free)</a>
+<h2>Tools that go well with this</h2><ul><li><a href="/pdf-page-numbers.html">Add Page Numbers to PDF</a>: Add page numbers to a PDF, choosing position and style.</li><li><a href="/compress-pdf.html">Compress PDF</a>: Shrink a PDF to fit under a size you choose, for upload limits.</li><li><a href="/merge-pdf.html">Merge PDFs</a>: Combine several PDF files into one, in the order you choose.</li></ul>
+<div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" target="_blank" rel="noopener">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" target="_blank" rel="noopener noreferrer nofollow">Send a gift (Amazon wishlist)</a></div>
+<h2>More guides for this tool</h2>
+<ul><li><a href="/pdf-watermark-howto.html">How to Add a Watermark Like "For Submission" or "Copy" to a PDF</a></li><li><a href="/pdf-watermark-text-ideas.html">Watermark Text Ideas: For Submission, Copy, Confidential, Sample, Draft</a></li><li><a href="/pdf-watermark-id-copy.html">Watermarking Copies of ID and Contracts to Reduce Misuse</a></li><li><a href="/pdf-watermark-readability.html">Choosing Opacity, Size and Color: Balancing Visibility and Readability</a></li><li><a href="/pdf-watermark-draft-review.html">Marking Drafts and Review Copies with DRAFT to Avoid Version Mix-ups</a></li><li><a href="/pdf-watermark-email-submit.html">Checklist for Submitting or Sending a Watermarked PDF</a></li></ul>
+<p><a href="/guides.html">See all guides</a></p>
+</div>
+</main>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" target="_blank" rel="noopener noreferrer"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a></footer>
+</body>
+</html>
