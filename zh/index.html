@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html data-lang="zh" lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>PDF Mikata | 无需注册、在你的设备上运行的 PDF 工具</title>
+
+
+<script src="/site.js"></script>
+<meta content="无需注册、文件不会离开你设备的 PDF 工具。我们从把照片合成一个 PDF 的工具开始。" name="description"/>
+<link href="https://pdfmikata.com/zh/" rel="canonical"/>
+
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:30px 18px 24px}
+.top{background:var(--head);border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+h1{font-size:1.7rem;line-height:1.4;margin:0 0 12px}
+h1 .hl{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+h2{font-size:1.2rem;margin:36px 0 10px;border-left:6px solid var(--stamp);padding-left:10px}
+p{margin:0 0 12px}
+a{color:var(--ink);text-underline-offset:3px}
+a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:18px 0 22px;font-size:.92rem;line-height:1.6}
+.tool{display:block;text-decoration:none;background:var(--paper);border:2px solid var(--ink);border-radius:8px;padding:18px;box-shadow:0 4px 0 rgba(0,0,0,.25);margin:0 0 8px}
+.tool>b{display:block;font-size:1.25rem}
+.tool>span{display:block;color:var(--sub);font-size:.92rem;margin-top:4px}
+.tool em{display:inline-block;margin-top:10px;background:var(--stamp);color:var(--btn-ink);font-style:normal;font-weight:700;border-radius:6px;padding:10px 16px}
+.roadmap{font-size:.92rem;color:var(--sub)}
+ul.g{list-style:none;margin:0;padding:0}
+ul.g a{display:block;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px}
+ul.g a>b{display:block;font-size:1rem}
+ul.g a>span{display:block;color:var(--sub);font-size:.85rem;margin-top:2px}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub);padding:10px 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none;margin-left:auto}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.tool{margin-bottom:12px}.tool>span{margin-bottom:0}
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+
+.cats{display:grid;gap:16px;grid-template-columns:1fr}
+.cat h3{font-size:.92rem;margin:0 0 8px;color:var(--sub);display:flex;align-items:center;gap:8px;letter-spacing:.06em}
+.cat h3::before{content:"";width:14px;height:3px;background:var(--stamp);border-radius:2px}
+.cat .tools{margin:0}
+.roadmap{margin-top:16px}
+.tools{display:grid;gap:10px;grid-template-columns:repeat(2,1fr);margin:0 0 6px}
+a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0;padding:12px;border-width:1px;border-color:var(--line);box-shadow:0 3px 0 var(--line)}
+a.tool .ic{flex:none;width:44px;height:44px;border-radius:12px;background:var(--ink);color:var(--btn-ink);display:grid;place-items:center}
+a.tool .ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+a.tool .tx{min-width:0}
+a.tool .tx b{display:block;font-size:1rem;line-height:1.4}
+a.tool .tx span.d{display:block;color:var(--sub);font-size:.82rem;line-height:1.5;margin-top:2px;margin-bottom:0}
+a.tool .tx span.d [lang]{display:inline}
+html[lang="en"] a.tool .tx span.d [lang="ja"],html[data-lang="en"] a.tool .tx span.d [lang="ja"]{display:none}
+html:not([lang="en"]):not([data-lang="en"]) a.tool .tx span.d [lang="en"]{display:none}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+ a.tool{transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+ a.tool:hover,a.tool:focus-visible{transform:translateY(-3px);border-color:var(--stamp);box-shadow:0 7px 0 var(--line)}
+ ul.g a{transition:transform .15s ease,border-color .15s ease}
+ ul.g a:hover{transform:translateY(-2px);border-color:var(--stamp)}
+}
+a.tool:hover{border-color:var(--stamp)}
+@media (max-width:599px){
+ main{padding-top:22px}
+ h1{font-size:1.55rem}
+ .lead,main>p{font-size:.92rem}
+ .safe{padding:8px 12px;font-size:.85rem;margin:12px 0 16px}
+ h2{margin-top:24px}
+ ul.g a{padding:10px 12px;margin-bottom:6px}
+ ul.g a>span{display:none}
+ ul.g b{font-size:.95rem}
+}
+@media (min-width:600px){.cats{grid-template-columns:repeat(3,1fr);align-items:start}.cat .tools{grid-template-columns:1fr}ul.g{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}ul.g a{margin-bottom:0;height:100%}a.tool{padding:16px;gap:10px}}
+@media (min-width:900px){main{max-width:960px}.top-in,.sub-in,footer{max-width:960px}a.tool{flex-direction:row;align-items:center;gap:14px}}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+.xnote{margin-top:28px}
+.how,.faq{margin-top:40px}.how h2,.faq h2{font-size:1.2rem;border-left:6px solid var(--stamp);padding-left:10px;margin:0 0 10px}
+.faq details{background:var(--paper);border:1px solid var(--line);border-radius:6px;margin-bottom:8px}
+.faq summary{cursor:pointer;padding:14px;font-weight:700;min-height:44px}.faq details p{margin:0;padding:0 14px 14px}
+.how p a,.faq p a{color:var(--ink)}
+</style>
+<meta content="website" property="og:type"/>
+<meta content="PDF Mikata" property="og:site_name"/>
+<meta content="zh_CN" property="og:locale"/>
+
+<meta content="PDF Mikata | 无需注册、在你的设备上运行的 PDF 工具" property="og:title"/>
+<meta content="无需注册、文件不会离开你设备的 PDF 工具。我们从把照片合成一个 PDF 的工具开始。" property="og:description"/>
+<meta content="https://pdfmikata.com/zh/" property="og:url"/>
+<meta content="https://pdfmikata.com/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="PDF Mikata | 无需注册、在你的设备上运行的 PDF 工具" name="twitter:title"/>
+<meta content="无需注册、文件不会离开你设备的 PDF 工具。我们从把照片合成一个 PDF 的工具开始。" name="twitter:description"/>
+<meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="#16393c" name="theme-color"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "PDFのミカタ", "alternateName": "PDF Mikata", "url": "https://pdfmikata.com/zh/", "inLanguage": "zh-Hans", "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<style>
+main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
+
+.lang{display:flex;align-items:center;border:0;overflow:visible}
+.lang .gl{width:18px;height:18px;margin:0 6px 0 10px;color:#fcfefd;flex:none}
+.lang select{appearance:none;-webkit-appearance:none;min-height:44px;border:1px solid rgba(255,255,255,.5);border-radius:6px;background:transparent;color:#fcfefd;font:inherit;font-weight:700;font-size:.85rem;padding:0 28px 0 12px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23fcfefd' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.lang select option{color:#16393c;background:#fcfefd}
+.lang select:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+@media (max-width:420px){.lang .gl{display:none}}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Noto Sans CJK SC",sans-serif}</style><link href="https://pdfmikata.com/" hreflang="ja" rel="alternate"/>
+<link href="https://pdfmikata.com/zh/" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://pdfmikata.com/es/" hreflang="es" rel="alternate"/>
+<link href="https://pdfmikata.com/" hreflang="x-default" rel="alternate"/>
+</head>
+<body>
+<header class="top"><div class="top-in"><a class="brand" href="/zh/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma" id="langsel"><option value="/?lang=ja">日本語</option><option value="/?lang=en">English</option><option selected="" value="/zh/">简体中文</option><option value="/es/">Español</option></select></div></div></header>
+<nav aria-label="站内导航" class="sub"><div class="sub-in"><a aria-current="page" href="/zh/"><span lang="zh-Hans">首页</span></a><a href="/zh/#cat-convert"><span lang="zh-Hans">转换</span></a><a href="/zh/#cat-edit"><span lang="zh-Hans">编辑</span></a><a href="/zh/#cat-optimize"><span lang="zh-Hans">优化</span></a><a href="/zh/#cat-create"><span lang="zh-Hans">制作</span></a><a href="/zh/#guide"><span lang="zh-Hans">教程</span></a></div></nav>
+<main>
+<h1><span lang="zh-Hans"><span class="hl">无需注册。<br/>留在你设备上的 PDF 工具</span></span></h1>
+<p><span lang="zh-Hans">PDF Mikata（“Mikata”在日语中意为“伙伴”）提供免费的 PDF 工具，帮你应对需要准备文件或资料的时刻。</span></p>
+<div class="safe"><p style="margin:0"><span lang="zh-Hans">你的文件只会在你的设备内处理。你的照片和文件绝不会发送到外部服务器。</span></p></div>
+<h2 id="tools"><span lang="zh-Hans">工具</span></h2>
+<div class="cats"><section class="cat" id="cat-convert"><h3><span lang="zh-Hans">转换</span></h3><div class="tools"><a class="tool" href="/zh/photo-to-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="4"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="M4 17l5-5 4 4 3-3 4 4"></path></svg></span><div class="tx"><b><span lang="zh-Hans">照片转 PDF</span></b><span class="d"><span lang="zh-Hans">把照片做成一个 PDF。</span></span></div></a><a class="tool" href="/zh/pdf-to-image.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5 3h8l3 3v6"></path><path d="M5 3v18h7"></path><rect height="7" rx="1" width="8" x="13" y="14"></rect><path d="M14 20l2-2 2 1.5 2-2"></path></svg></span><div class="tx"><b><span lang="zh-Hans">PDF 转图片</span></b><span class="d"><span lang="zh-Hans">把页面转为 JPEG 或 PNG。</span></span></div></a><a class="tool" href="/zh/image-convert.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="11" rx="2" width="11" x="3" y="3"></rect><rect height="11" rx="2" width="11" x="10" y="10"></rect><path d="M6 8l2-2 2 2"></path></svg></span><div class="tx"><b><span lang="zh-Hans">转换图片格式（JPG、PNG、WebP）</span></b><span class="d"><span lang="zh-Hans">转换为 JPG、PNG、WebP。</span></span></div></a><a class="tool" href="/zh/heic-to-jpg.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="19" rx="2.5" width="14" x="5" y="2.5"></rect><path d="M9 6h6M12 18h.01"></path><path d="M9 13l2.2-2.2 2 2L15 11"></path></svg></span><div class="tx"><b><span lang="zh-Hans">HEIC 转 JPG</span></b><span class="d"><span lang="zh-Hans">把 iPhone 的 HEIC 转成 JPG。</span></span></div></a><a class="tool" href="/zh/pdf-to-text.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"></path><path d="M9 11h6M9 14h6M9 17h4"></path></svg></span><div class="tx"><b><span lang="zh-Hans">从 PDF 提取文字</span></b><span class="d"><span lang="zh-Hans">提取文字。</span></span></div></a></div></section><section class="cat" id="cat-edit"><h3><span lang="zh-Hans">编辑</span></h3><div class="tools"><a class="tool" href="/zh/merge-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="13" rx="1.5" width="10" x="3" y="3"></rect><rect height="13" rx="1.5" width="10" x="11" y="8"></rect></svg></span><div class="tx"><b><span lang="zh-Hans">合并 PDF</span></b><span class="d"><span lang="zh-Hans">把 PDF 合并成一个。</span></span></div></a><a class="tool" href="/zh/pdf-split.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"></path><path d="M3 12h18" stroke-dasharray="2.5 2.5"></path></svg></span><div class="tx"><b><span lang="zh-Hans">拆分 PDF</span></b><span class="d"><span lang="zh-Hans">拆分成多个 PDF。</span></span></div></a><a class="tool" href="/zh/split-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"></path><path d="M9.5 13l5 5M14.5 13l-5 5"></path></svg></span><div class="tx"><b><span lang="zh-Hans">提取或删除 PDF 页面</span></b><span class="d"><span lang="zh-Hans">保留或删除页面。</span></span></div></a><a class="tool" href="/zh/pdf-rotate.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.5-5.8"></path><path d="M20 4v5h-5"></path></svg></span><div class="tx"><b><span lang="zh-Hans">旋转与重新排列 PDF 页面</span></b><span class="d"><span lang="zh-Hans">旋转并重新排列页面。</span></span></div></a><a class="tool" href="/zh/pdf-page-numbers.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"></path><path d="M10 17h4M12 14v6"></path></svg></span><div class="tx"><b><span lang="zh-Hans">给 PDF 添加页码</span></b><span class="d"><span lang="zh-Hans">添加页码。</span></span></div></a><a class="tool" href="/zh/image-crop.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 3v14h14"></path><path d="M3 7h14v14"></path></svg></span><div class="tx"><b><span lang="zh-Hans">裁剪与旋转图片</span></b><span class="d"><span lang="zh-Hans">裁剪和旋转。</span></span></div></a><a class="tool" href="/zh/pdf-nup.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="18" rx="2" width="16" x="4" y="3"></rect><path d="M12 3v18M4 12h16"></path></svg></span><div class="tx"><b><span lang="zh-Hans">把 PDF 多页排到一张纸上（2 合 1、4 合 1）</span></b><span class="d"><span lang="zh-Hans">一张纸排多页。</span></span></div></a><a class="tool" href="/zh/pdf-watermark.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"></path><path d="M8.5 17l7-6M9 12l1.5-1.5" opacity=".9"></path></svg></span><div class="tx"><b><span lang="zh-Hans">给 PDF 添加文字水印</span></b><span class="d"><span lang="zh-Hans">添加文字水印。</span></span></div></a></div></section><section class="cat" id="cat-optimize"><h3><span lang="zh-Hans">优化</span></h3><div class="tools"><a class="tool" href="/zh/compress-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 4l6 6M10 5v5H5M20 4l-6 6M14 5v5h5M4 20l6-6M10 19v-5H5M20 20l-6-6M14 19v-5h5"></path></svg></span><div class="tx"><b><span lang="zh-Hans">压缩 PDF</span></b><span class="d"><span lang="zh-Hans">压缩到符合大小限制。</span></span></div></a><a class="tool" href="/zh/image-compress.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="4"></rect><path d="M8 11l3 3 5-5"></path><path d="M9 21h6"></path></svg></span><div class="tx"><b><span lang="zh-Hans">压缩与调整图片大小</span></b><span class="d"><span lang="zh-Hans">让图片变小。</span></span></div></a><a class="tool" href="/zh/pdf-grayscale.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 3h12v18H6z"></path><path d="M12 3v18" opacity=".9"></path><path d="M12 7h6v3h-6zM12 14h6v3h-6z" fill="currentColor" opacity=".5" stroke="none"></path></svg></span><div class="tx"><b><span lang="zh-Hans">把 PDF 转为灰度（黑白）</span></b><span class="d"><span lang="zh-Hans">转为灰度。</span></span></div></a></div></section><section class="cat" id="cat-create"><h3><span lang="zh-Hans">制作</span></h3><div class="tools"><a class="tool" href="/zh/receipt-maker.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"></path><path d="M9 8h6M9 12h6"></path></svg></span><div class="tx"><b><span lang="zh-Hans">制作收据 PDF</span></b><span class="d"><span lang="zh-Hans">制作收据 PDF。</span></span></div></a><a class="tool" href="/zh/resume-maker.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="18" rx="2" width="14" x="5" y="3"></rect><circle cx="12" cy="9" r="2.2"></circle><path d="M8.5 16c.6-2 2-3 3.5-3s2.9 1 3.5 3"></path></svg></span><div class="tx"><b><span lang="zh-Hans">制作简历 PDF（日式履历书）</span></b><span class="d"><span lang="zh-Hans">制作简历 PDF。</span></span></div></a><a class="tool" href="/zh/timetable-maker.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="17" rx="2" width="18" x="3" y="4"></rect><path d="M3 9h18M9 4v17M15 9v12M3 15h18"></path></svg></span><div class="tx"><b><span lang="zh-Hans">制作课程表 / 每周日程表</span></b><span class="d"><span lang="zh-Hans">制作课程表。</span></span></div></a><a class="tool" href="/zh/namecard-maker.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="12" rx="2" width="18" x="3" y="6"></rect><path d="M6.5 10h6M6.5 13h4M15 10h2.5v3H15z"></path></svg></span><div class="tx"><b><span lang="zh-Hans">制作名片</span></b><span class="d"><span lang="zh-Hans">制作名片。</span></span></div></a><a class="tool" href="/zh/qr-code-maker.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="7" rx="1" width="7" x="3" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="3"></rect><rect height="7" rx="1" width="7" x="3" y="14"></rect><path d="M14 14h3v3h-3zM19 14h2M14 19h2M18 18h3v3h-3z"></path></svg></span><div class="tx"><b><span lang="zh-Hans">制作二维码（网址、Wi-Fi）</span></b><span class="d"><span lang="zh-Hans">制作二维码。</span></span></div></a></div></section></div>
+<p class="roadmap"><span lang="zh-Hans">我们计划陆续增加更多 PDF 工具。</span></p>
+<h2 id="guide"><span lang="zh-Hans">教程</span></h2>
+<ul class="g"><li><a href="/zh/howto-iphone.html"><b><span lang="zh-Hans">如何在 iPhone 上把照片合并成一个 PDF</span></b><span><span lang="zh-Hans">把多张 iPhone 照片合并成一个 PDF 的三种方法：本站工具、“文件”App 和“备忘录”扫描功能。</span></span></a></li><li><a href="/zh/howto-pc-android.html"><b><span lang="zh-Hans">如何把多张图片合并成一个 PDF（Windows、Mac、Android）</span></b><span><span lang="zh-Hans">在 Windows、Mac 和 Android 上把多张图片合并成一个 PDF 的方法，以及任何设备都能用的浏览器工具。</span></span></a></li><li><a href="/zh/scan-tips.html"><b><span lang="zh-Hans">清晰拍摄文件并转成 PDF 的技巧</span></b><span><span lang="zh-Hans">用手机拍摄文件、让 PDF 清晰易读的技巧：光线、角度、阴影、页面顺序和文件名。</span></span></a></li><li><a href="/zh/pdf-too-heavy.html"><b><span lang="zh-Hans">由照片制成的 PDF 太大时怎么办</span></b><span><span lang="zh-Hans">由照片制成的 PDF 太大发不出去时：画质设置、整理页面等快速办法。</span></span></a></li><li><a href="/zh/submit-tips.html"><b><span lang="zh-Hans">以 PDF 提交文件前的检查清单</span></b><span><span lang="zh-Hans">提交由手机照片制成的 PDF 前的检查清单：要求、页面顺序、方向、清晰度和隐私。</span></span></a></li><li><a href="/zh/receipt-pdf.html"><b><span lang="zh-Hans">如何用手机把收据保存为 PDF</span></b><span><span lang="zh-Hans">如何拍摄收据、转成 PDF 并整理归档，包括拍摄、文件名和保存的技巧。</span></span></a></li><li><a href="/zh/jpeg-vs-pdf.html"><b><span lang="zh-Hans">JPEG 还是 PDF：该提交哪一种？</span></b><span><span lang="zh-Hans">JPEG 与 PDF 的区别、各自适用的场合、提交文件时如何选择，以及如何转换。</span></span></a></li></ul>
+<p class="roadmap"><a href="/zh/guides.html"><span lang="zh-Hans">查看全部教程 →</span></a></p>
+<section class="how" id="how"><h2><span lang="zh-Hans">你的文件如何留在你的设备上</span></h2><p><span lang="zh-Hans">打开页面时，工具的程序会加载到你的浏览器中。你选择的文件只会在浏览器的内存中读取，在那里完成转换或编辑，再保存到你的设备。整个过程中，文件内容不会发送到互联网上的任何服务器。因此，简历、证件等不想交出去的文件也可以放心使用。</span></p><p><span lang="zh-Hans">运营者和联系方式见<a href="/about.html">关于 / 联系</a>页面（日文）。</span></p></section>
+<section class="faq" id="faq"><h2><span lang="zh-Hans">常见问题</span></h2><details><summary><span lang="zh-Hans">我的文件真的不会被上传吗？</span></summary><p><span lang="zh-Hans">可以。转换和编辑只在你的浏览器内运行，文件不会发送到任何服务器。在电脑上，你可以在使用工具时打开开发者工具的“Network（网络）”标签页，确认没有任何请求携带你的文件。</span></p></details><details><summary><span lang="zh-Hans">免费吗？需要注册吗？</span></summary><p><span lang="zh-Hans">全部免费，无需注册或登录。打开工具页面即可直接使用。</span></p></details><details><summary><span lang="zh-Hans">手机（iPhone 和 Android）上能用吗？</span></summary><p><span lang="zh-Hans">可以。在手机浏览器（Safari、Chrome 等）中打开，选择文件、处理并保存即可。在电脑上用法相同。</span></p></details><details><summary><span lang="zh-Hans">文件大小或数量有限制吗？</span></summary><p><span lang="zh-Hans">本站没有设限，但由于处理在你的设备上进行，所以取决于你的设备。仅供参考：在手机上，几十 MB 以内的 PDF 或一次 20～30 张照片左右通常比较稳定。超过这个范围，可能变慢或卡住。这时请分成几次小批量再试。</span></p></details><details><summary><span lang="zh-Hans">我的原始文件会保持不变吗？</span></summary><p><span lang="zh-Hans">你的原始文件保持不变，结果会另存为新文件。使用压缩或大小限制可能会降低画质，或使 PDF 中的文字无法选中。</span></p></details><details><summary><span lang="zh-Hans">可以处理带密码的 PDF 吗？</span></summary><p><span lang="zh-Hans">不能。请先去掉密码。</span></p></details><details><summary><span lang="zh-Hans">使用这些工具需要打赏吗？</span></summary><p><span lang="zh-Hans">不需要。所有工具都可以免费无限制使用。打赏（300 日元）完全自愿，只在你觉得本站有用时才需要。</span></p></details></section>
+<p class="xnote"><span lang="zh-Hans">新工具和教程会在 <a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank">X（@pdfmikata）</a> 上发布，欢迎关注！</span></p>
+</main>
+<footer><a href="/about.html"><span lang="zh-Hans">关于 / 联系（日文）</span></a><a href="/zh/privacy.html"><span lang="zh-Hans">隐私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hans">在 X 上查看更新</span></a></footer>
+</body>
+</html>
