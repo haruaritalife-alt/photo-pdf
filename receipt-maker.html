@@ -162,6 +162,11 @@ html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang
 html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
 @media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+.next{margin:16px 0 4px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper,#fff)}
+.next h3{margin:0 0 8px;font-size:.95rem}
+.next .nl{display:flex;flex-wrap:wrap;gap:8px}
+.next .nl a{display:inline-block;padding:9px 14px;border:2px solid var(--ink);border-radius:999px;text-decoration:none;font-weight:700;font-size:.9rem;color:var(--ink);background:var(--paper,#fff)}
+.next .nl a:hover{border-color:var(--stamp)}
 a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
 </style>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
@@ -248,6 +253,7 @@ main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;ma
 <a href="#" id="dl"></a>
 <div id="extra"></div>
 <p aria-live="polite" id="msg"></p>
+<div class="next" hidden="" id="next"><h3><span lang="ja">次は、こちらもどうぞ</span><span lang="en">Next, try these</span></h3><div class="nl" id="nl"><a href="/compress-pdf.html"><span lang="ja">PDFを圧縮</span><span lang="en">Compress PDF</span></a><a href="/merge-pdf.html"><span lang="ja">PDFを結合</span><span lang="en">Merge PDFs</span></a><a href="/pdf-page-numbers.html"><span lang="ja">PDFにページ番号を追加</span><span lang="en">Add Page Numbers to PDF</span></a></div></div>
 <div class="support" hidden="" id="support"><p><span lang="ja">PDFのミカタが役に立ったら、応援してもらえるとうれしいです。</span><span lang="en">If PDF Mikata was useful, a small tip would mean a lot.</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="ja">応援する（300円）</span><span lang="en">Send a tip (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="ja">ほしい物リストで応援</span><span lang="en">Send a gift (Amazon wishlist)</span></a></div>
 </section>
 <section class="guide" id="how">
@@ -472,6 +478,11 @@ $("go").onclick=async()=>{
   finally{endRun();go.disabled=false}
 };
 
+</script>
+<script>
+(function(){if(typeof finishOk!=="function")return;var fo=finishOk;
+finishOk=function(){fo();try{var n=document.getElementById("next");if(n)n.hidden=false}catch(e){}};
+})();
 </script>
 </body>
 </html>
