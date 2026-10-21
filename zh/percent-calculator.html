@@ -195,7 +195,7 @@ a.tool{box-shadow:0 3px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.07)}}
 .pop a:active,.btn2:active,button:not(:disabled):active{transform:scale(.97)}a.tool:active{transform:translateY(0) scale(.985)}
 h1,h2{letter-spacing:.01em}
 @media (prefers-reduced-motion:reduce){.pop a:active,.btn2:active,button:active,a.tool:active{transform:none}}
-.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b::before{content:'\1F552  '}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b{display:inline-flex;align-items:center;gap:6px}.pop.recent b svg,.pop.recent a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}.pop.recent a{display:inline-flex;align-items:center;gap:6px}.pop.recent a .pi{margin-right:0}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "工具", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "计算百分比、折扣和增减率", "item": "https://pdfmikata.com/percent-calculator.html"}]}</script>
 <meta content="website" property="og:type"/>
@@ -296,7 +296,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Original price A": "原价 A", "Ending number B": "终止数 B", "A × B ÷ 100": "A × B ÷ 100", "Could not save. Please try again.": "无法保存，请重试。", "Percent B (%)": "百分比 B（%）", "Decrease": "减少", "Starting number A": "起始数 A", "Discount B (%)": "折扣率 B（%）", "A ÷ B × 100": "A ÷ B × 100", "Number A": "数 A", "Increase": "增加", "Saving ": "保存", "Whole B": "整体 B", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Starting number A": "起始数 A", "Whole B": "整体 B", "Increase": "增加", "Decrease": "减少", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Discount B (%)": "折扣率 B（%）", "A ÷ B × 100": "A ÷ B × 100", "Could not save. Please try again.": "无法保存，请重试。", "Ending number B": "终止数 B", "Percent B (%)": "百分比 B（%）", "Saving ": "保存", "Original price A": "原价 A", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。", "Number A": "数 A", "A × B ÷ 100": "A × B ÷ 100"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";

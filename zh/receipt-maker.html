@@ -256,7 +256,7 @@ a.tool{box-shadow:0 3px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.07)}}
 .pop a:active,.btn2:active,button:not(:disabled):active{transform:scale(.97)}a.tool:active{transform:translateY(0) scale(.985)}
 h1,h2{letter-spacing:.01em}
 @media (prefers-reduced-motion:reduce){.pop a:active,.btn2:active,button:active,a.tool:active{transform:none}}
-.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b::before{content:'\1F552  '}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b{display:inline-flex;align-items:center;gap:6px}.pop.recent b svg,.pop.recent a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}.pop.recent a{display:inline-flex;align-items:center;gap:6px}.pop.recent a .pi{margin-right:0}
 </style>
 <p class="note2 warn"><span lang="zh-Hans"><b>只对实际收到的款项开具收据。</b>制作或使用与事实不符的收据，可能违法。</span></p>
 <section class="set" id="set" style="margin-top:14px">
@@ -321,7 +321,7 @@ h1,h2{letter-spacing:.01em}
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Could not create the receipt. Please try again.": "无法生成收据。请重试。", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Please check the name, amount and date once more before saving.": "保存前，请再确认一次姓名、金额和日期。", "Create receipt": "生成收据", "Could not save. Please try again.": "无法保存，请重试。", "Receipt preview": "收据预览", "The amount must be at least 1 yen and under 999,999,999,999.": "金额必须在 1 日元以上、999,999,999,999 以下。", "Save PDF": "保存 PDF", "Please enter the amount using digits only.": "请只用数字输入金额。", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。", "Could not create the image.": "无法生成图片。", "Please enter the issuer (your name or group).": "请输入开具人（你的姓名或团体）。"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Please check the name, amount and date once more before saving.": "保存前，请再确认一次姓名、金额和日期。", "Please enter the issuer (your name or group).": "请输入开具人（你的姓名或团体）。", "Receipt preview": "收据预览", "Please enter the amount using digits only.": "请只用数字输入金额。", "Could not create the receipt. Please try again.": "无法生成收据。请重试。", "Create receipt": "生成收据", "Could not create the image.": "无法生成图片。", "Could not save. Please try again.": "无法保存，请重试。", "The amount must be at least 1 yen and under 999,999,999,999.": "金额必须在 1 日元以上、999,999,999,999 以下。", "Save PDF": "保存 PDF", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";

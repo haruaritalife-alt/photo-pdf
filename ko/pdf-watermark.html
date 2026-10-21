@@ -257,7 +257,7 @@ a.tool{box-shadow:0 3px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.07)}}
 .pop a:active,.btn2:active,button:not(:disabled):active{transform:scale(.97)}a.tool:active{transform:translateY(0) scale(.985)}
 h1,h2{letter-spacing:.01em}
 @media (prefers-reduced-motion:reduce){.pop a:active,.btn2:active,button:active,a.tool:active{transform:none}}
-.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b::before{content:'\1F552  '}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b{display:inline-flex;align-items:center;gap:6px}.pop.recent b svg,.pop.recent a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}.pop.recent a{display:inline-flex;align-items:center;gap:6px}.pop.recent a .pi{margin-right:0}
 </style>
 <div class="fld"><label class="l" for="wt"><span lang="ko">워터마크 문구</span></label><input autocomplete="off" id="wt" maxlength="30" type="text" value="제출용"/>
 <div class="chips" id="chips"></div>
@@ -329,7 +329,7 @@ h1,h2{letter-spacing:.01em}
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Watermarked {0} page(s) ({1})": "{0}페이지에 워터마크를 넣었습니다 ({1})", "Password-protected PDFs are not supported. Remove the password and try again.": "비밀번호로 보호된 PDF는 지원하지 않습니다. 비밀번호를 제거한 뒤 다시 시도해 주세요.", "Please enter the watermark text.": "워터마크 글자를 입력하세요.", "Page 1 preview": "1페이지 미리보기", "Add watermark": "워터마크 넣기", "Could not save. Please try again.": "저장하지 못했습니다. 다시 시도해 주세요.", "Choose another PDF": "다른 PDF 선택", "After saving, check that the text is still readable. Keep your original PDF separately.": "저장한 뒤 글자가 읽히는지 확인하세요. 원본 PDF는 따로 보관하세요.", "p": "p", "Save PDF": "PDF 저장", "Could not read the PDF. It may be damaged or in an unsupported format.": "PDF를 읽을 수 없습니다. 파일이 손상되었거나 지원하지 않는 형식일 수 있습니다."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Add watermark": "워터마크 넣기", "Page 1 preview": "1페이지 미리보기", "Choose another PDF": "다른 PDF 선택", "Could not save. Please try again.": "저장하지 못했습니다. 다시 시도해 주세요.", "Watermarked {0} page(s) ({1})": "{0}페이지에 워터마크를 넣었습니다 ({1})", "p": "p", "Please enter the watermark text.": "워터마크 글자를 입력하세요.", "Save PDF": "PDF 저장", "Could not read the PDF. It may be damaged or in an unsupported format.": "PDF를 읽을 수 없습니다. 파일이 손상되었거나 지원하지 않는 형식일 수 있습니다.", "Password-protected PDFs are not supported. Remove the password and try again.": "비밀번호로 보호된 PDF는 지원하지 않습니다. 비밀번호를 제거한 뒤 다시 시도해 주세요.", "After saving, check that the text is still readable. Keep your original PDF separately.": "저장한 뒤 글자가 읽히는지 확인하세요. 원본 PDF는 따로 보관하세요."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
