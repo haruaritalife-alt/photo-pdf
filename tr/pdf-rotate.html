@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html data-lang="tr" lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>PDF Sayfalarını Döndürün ve Yeniden Sıralayın (kayıt gerekmez)｜PDF Mikata</title>
+<meta content="Yan duran PDF sayfalarını düzelten, yeniden sıralayan ve sayfa kaldıran ücretsiz araç. Kayıt gerekmez ve dosyalar cihazınızdan çıkmaz." name="description"/>
+
+
+<link href="https://pdfmikata.com/tr/pdf-rotate.html" rel="canonical"/>
+<script src="/site.js"></script>
+
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+.next{margin:20px 0 6px}
+.next h3{margin:0 0 10px;font-size:1.05rem}
+.ncards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(min-width:720px){.ncards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.ncards a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper,#fff);box-shadow:0 3px 0 var(--line);text-decoration:none;color:var(--ink)}
+.ncards a.tool:hover{border-color:var(--stamp)}
+.ncards .ic{flex:none;width:40px;height:40px;border-radius:11px;background:var(--ink);color:var(--btn-ink);display:grid;place-items:center}
+.ncards .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ncards .tx b{display:block;font-size:.95rem;line-height:1.4}
+.ncards .tx .d{display:block;color:var(--sub);font-size:.8rem;line-height:1.5;margin-top:2px}
+.next .allt{display:block;margin:14px 0 0;padding:13px 16px;border:2px solid var(--ink);border-radius:12px;text-align:center;font-weight:700;text-decoration:none;color:var(--ink);background:var(--paper,#fff)}
+.next .allt:hover{background:var(--ink);color:var(--btn-ink)}
+.safe{margin:14px 0 0;font-size:.85rem;color:var(--sub);line-height:1.6}
+#bar::after{content:"処理中…この端末の中だけで処理しています";display:block;margin-top:6px;font-size:.8rem;color:var(--sub)}
+html[data-lang="en"] #bar::after{content:"Working… processed only on this device"}
+html[data-lang="zh"] #bar::after{content:"处理中…仅在此设备上处理"}
+html[data-lang="es"] #bar::after{content:"Procesando… solo en este dispositivo"}
+html[data-lang="ko"] #bar::after{content:"처리 중… 이 기기 안에서만 처리합니다"}
+html[data-lang="pt"] #bar::after{content:"Processando… somente neste dispositivo"}
+html[data-lang="fr"] #bar::after{content:"Traitement… uniquement sur cet appareil"}
+html[data-lang="id"] #bar::after{content:"Memproses… hanya di perangkat ini"}
+html[data-lang="vi"] #bar::after{content:"Đang xử lý… chỉ trên thiết bị này"}
+html[data-lang="tr"] #bar::after{content:"İşleniyor… yalnızca bu cihazda"}
+html[data-lang="de"] #bar::after{content:"Wird verarbeitet… nur auf diesem Gerät"}
+html[data-lang="hi"] #bar::after{content:"प्रोसेस हो रहा है… केवल इसी डिवाइस पर"}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}
+html{background:var(--desk)}body{background-image:radial-gradient(900px 420px at 12% -6%,rgba(63,181,174,.11),transparent 62%),radial-gradient(700px 420px at 100% 0,rgba(90,120,210,.08),transparent 58%);background-repeat:no-repeat}
+a.tool{box-shadow:0 3px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.07)}}
+.pop a,.btn2,button,a.tool{transition:transform .12s ease,box-shadow .15s ease,border-color .15s ease,background-color .15s ease,color .15s ease}
+.pop a:active,.btn2:active,button:not(:disabled):active{transform:scale(.97)}a.tool:active{transform:translateY(0) scale(.985)}
+h1,h2{letter-spacing:.01em}
+@media (prefers-reduced-motion:reduce){.pop a:active,.btn2:active,button:active,a.tool:active{transform:none}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b{display:inline-flex;align-items:center;gap:6px}.pop.recent b svg,.pop.recent a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}.pop.recent a{display:inline-flex;align-items:center;gap:6px}.pop.recent a .pi{margin-right:0}
+</style>
+<script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script><script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Ana sayfa", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "Araçlar", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "PDF Sayfalarını Döndürün ve Yeniden Sıralayın", "item": "https://pdfmikata.com/pdf-rotate.html"}]}</script>
+<meta content="website" property="og:type"/>
+<meta content="PDF Mikata" property="og:site_name"/>
+<meta content="tr_TR" property="og:locale"/>
+
+<meta content="PDF Sayfalarını Döndürün ve Yeniden Sıralayın (kayıt gerekmez)｜PDF Mikata" property="og:title"/>
+<meta content="Yan duran PDF sayfalarını düzelten, yeniden sıralayan ve sayfa kaldıran ücretsiz araç. Kayıt gerekmez ve dosyalar cihazınızdan çıkmaz." property="og:description"/>
+<meta content="https://pdfmikata.com/tr/pdf-rotate.html" property="og:url"/>
+<meta content="https://pdfmikata.com/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="PDF Sayfalarını Döndürün ve Yeniden Sıralayın (kayıt gerekmez)｜PDF Mikata" name="twitter:title"/>
+<meta content="Yan duran PDF sayfalarını düzelten, yeniden sıralayan ve sayfa kaldıran ücretsiz araç. Kayıt gerekmez ve dosyalar cihazınızdan çıkmaz." name="twitter:description"/>
+<meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="#16393c" name="theme-color"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "PDF Sayfalarını Döndürün ve Yeniden Sıralayın", "alternateName": "Rotate & Reorder PDF Pages", "url": "https://pdfmikata.com/tr/pdf-rotate.html", "description": "Yan duran PDF sayfalarını düzelten, yeniden sıralayan ve sayfa kaldıran ücretsiz araç. Kayıt gerekmez ve dosyalar cihazınızdan çıkmaz.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "tr", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tr/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
+<style>
+main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
+
+.lang{display:flex;align-items:center;border:0;overflow:visible}
+.lang .gl{width:18px;height:18px;margin:0 6px 0 10px;color:#fcfefd;flex:none}
+.lang select{appearance:none;-webkit-appearance:none;min-height:44px;border:1px solid rgba(255,255,255,.5);border-radius:6px;background:transparent;color:#fcfefd;font:inherit;font-weight:700;font-size:.85rem;padding:0 28px 0 12px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23fcfefd' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.lang select option{color:#16393c;background:#fcfefd}
+.lang select:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+@media (max-width:420px){.lang .gl{display:none}}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.skip{position:absolute;left:8px;top:-60px;z-index:100;background:var(--btn-ink,#fff);color:var(--ink);padding:10px 14px;border-radius:10px;border:2px solid var(--stamp);font-weight:700;text-decoration:none;transition:top .15s}
+.skip:focus{top:8px}
+.top{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.sub{background:color-mix(in srgb,var(--paper) 80%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px)}
+ul.g a,.more a,.ncards a.tool,.cats a.tool{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background-color .15s ease}
+ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:translateY(-2px)}
+ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform:scale(.98)}
+.pop svg,.pi,.ic svg,.ncards .ic svg{stroke-width:1.8}
+#pm-toast{position:fixed;left:50%;bottom:18px;transform:translate(-50%,24px);opacity:0;z-index:60;width:min(560px,calc(100vw - 24px));background:var(--paper);color:var(--ink);border:1px solid var(--line);border-left:5px solid var(--stamp);border-radius:14px;padding:12px 40px 12px 14px;box-shadow:0 14px 34px -12px rgba(0,0,0,.35);transition:opacity .22s,transform .22s;pointer-events:none;font-size:14px;line-height:1.6}
+#pm-toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#pm-toast.warn{border-left-color:#d98a1c}
+#pm-toast b{display:block;margin-bottom:4px}
+#pm-toast .nx{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+#pm-toast .nx a{border:1px solid var(--line);border-radius:999px;padding:4px 12px;color:var(--ink);text-decoration:none;font-weight:600;background:var(--desk)}
+#pm-toast .nx a:hover{border-color:var(--stamp)}
+#pm-toast .x{position:absolute;right:6px;top:6px;width:30px;height:30px;border:0;background:transparent;color:var(--sub);font-size:20px;line-height:1;cursor:pointer;border-radius:8px}
+@media (prefers-reduced-motion:reduce){#pm-toast,.skip{transition:none}ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:none}}
+.lite .aurora{display:none}.lite .hero::before,.lite .hero::after{animation:none}
+</style><link href="https://pdfmikata.com/pdf-rotate.html" hreflang="ja" rel="alternate"/>
+<link href="https://pdfmikata.com/en/pdf-rotate.html" hreflang="en" rel="alternate"/>
+<link href="https://pdfmikata.com/zh/pdf-rotate.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://pdfmikata.com/es/pdf-rotate.html" hreflang="es" rel="alternate"/>
+<link href="https://pdfmikata.com/ko/pdf-rotate.html" hreflang="ko" rel="alternate"/>
+<link href="https://pdfmikata.com/pt/pdf-rotate.html" hreflang="pt" rel="alternate"/>
+<link href="https://pdfmikata.com/fr/pdf-rotate.html" hreflang="fr" rel="alternate"/>
+<link href="https://pdfmikata.com/id/pdf-rotate.html" hreflang="id" rel="alternate"/>
+<link href="https://pdfmikata.com/vi/pdf-rotate.html" hreflang="vi" rel="alternate"/>
+<link href="https://pdfmikata.com/tr/pdf-rotate.html" hreflang="tr" rel="alternate"/>
+<link href="https://pdfmikata.com/de/pdf-rotate.html" hreflang="de" rel="alternate"/>
+<link href="https://pdfmikata.com/hi/pdf-rotate.html" hreflang="hi" rel="alternate"/>
+<link href="https://pdfmikata.com/pdf-rotate.html" hreflang="x-default" rel="alternate"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2376251801221434" crossorigin="anonymous"></script>
+</head>
+<body><a class="skip" href="#main">İçeriğe geç</a>
+<header class="top"><div class="top-in"><a class="brand" href="/tr/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma / 언어" id="langsel"><option value="/pdf-rotate.html">日本語</option><option value="/en/pdf-rotate.html">English</option><option value="/zh/pdf-rotate.html">简体中文</option><option value="/es/pdf-rotate.html">Español</option><option value="/ko/pdf-rotate.html">한국어</option><option value="/pt/pdf-rotate.html">Português</option><option value="/fr/pdf-rotate.html">Français</option><option value="/id/pdf-rotate.html">Bahasa Indonesia</option><option value="/vi/pdf-rotate.html">Tiếng Việt</option><option selected="" value="/tr/pdf-rotate.html">Türkçe</option><option value="/de/pdf-rotate.html">Deutsch</option><option value="/hi/pdf-rotate.html">हिन्दी</option></select></div></div></header>
+<nav aria-label="Site gezinmesi" class="sub"><div class="sub-in"><a href="/tr/"><span lang="tr">Ana sayfa</span></a><a href="/tr/#cat-convert"><span lang="tr">Dönüştür</span></a><a aria-current="page" href="/tr/#cat-edit"><span lang="tr">Düzenle</span></a><a href="/tr/#cat-optimize"><span lang="tr">Optimize et</span></a><a href="/tr/#cat-create"><span lang="tr">Oluştur</span></a><a href="/tr/#guide"><span lang="tr">Rehberler</span></a></div></nav>
+<nav aria-label="Gezinti yolu" class="crumb"><ol><li><a href="/tr/"><span lang="tr">Ana sayfa</span></a></li><li><a href="/tr/#tools"><span lang="tr">Araçlar</span></a></li><li><span aria-current="page"><span lang="tr">PDF Sayfalarını Döndürün ve Yeniden Sıralayın</span></span></li></ol></nav>
+<main id="main" tabindex="-1">
+<h1><span lang="tr">PDF Sayfalarını Döndürün ve Yeniden Sıralayın</span></h1>
+<p class="lead"><span lang="tr">Yönü düzeltin, sırayı değiştirin, sayfaları kaldırın.</span></p>
+<p class="safe"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="9" rx="2" width="14" x="5" y="11"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><span><span lang="tr"><b>PDF'iniz asla yüklenmez.</b> Her şey bu cihazda işlenir.</span></span></p>
+<ol class="steps"><li><b>1</b><span lang="tr">PDF seçin</span></li><li><b>2</b><span lang="tr">Sayfaları düzeltin</span></li><li><b>3</b><span lang="tr">Kaydedin</span></li></ol>
+<label class="pick" id="drop"><input accept="application/pdf,.pdf" id="file" type="file"/><span id="pt"><span lang="tr">PDF seçin</span></span><small><span lang="tr">Bir PDF seçin</span></small></label>
+<section id="stack">
+<h2><span lang="tr">Sayfaları düzenleyin</span></h2>
+<p class="hint" id="fname"></p>
+<p class="hint"><span lang="tr">Sırayı değiştirmek için Öne / Arkaya, yönü düzeltmek için Döndür, bir sayfayı kaldırmak için Sil'i kullanın.</span></p>
+<ul id="grid"></ul>
+</section>
+<section class="set" id="set" style="display:none"><button disabled="" id="go"></button></section>
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="tr">Bitti</span></div>
+<p id="info"></p>
+<a href="#" id="dl"></a>
+<div id="extra"></div>
+<p aria-live="polite" id="msg"></p>
+<p class="safe"><span lang="tr">🔒 Dosyalarınız asla harici bir sunucuya gönderilmez. Her şey bu tarayıcının içinde güvenle işlenir.</span></p>
+<div class="support" hidden="" id="support"><p><span lang="tr">PDF Mikata işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="tr">Bahşiş gönder (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="tr">Hediye gönder (Amazon istek listesi)</span></a></div>
+</section>
+<div class="next" id="next"><h3><span lang="tr">Sık birlikte kullanılan araçlar</span></h3><div class="ncards"><a class="tool" href="/tr/split-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"></path><path d="M9.5 13l5 5M14.5 13l-5 5"></path></svg></span><div class="tx"><b><span lang="tr">PDF Sayfalarını Çıkarın veya Silin</span></b><span class="d"><span lang="tr">Sayfaları tutun veya kaldırın.</span></span></div></a><a class="tool" href="/tr/pdf-page-numbers.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"></path><path d="M10 17h4M12 14v6"></path></svg></span><div class="tx"><b><span lang="tr">PDF'e Sayfa Numarası Ekleyin</span></b><span class="d"><span lang="tr">Sayfa numarası ekleyin.</span></span></div></a><a class="tool" href="/tr/merge-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="13" rx="1.5" width="10" x="3" y="3"></rect><rect height="13" rx="1.5" width="10" x="11" y="8"></rect></svg></span><div class="tx"><b><span lang="tr">PDF'leri Birleştir</span></b><span class="d"><span lang="tr">PDF'leri tek dosyada birleştirin.</span></span></div></a><a class="tool" href="/tr/compress-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 4l6 6M10 5v5H5M20 4l-6 6M14 5v5h5M4 20l6-6M10 19v-5H5M20 20l-6-6M14 19v-5h5"></path></svg></span><div class="tx"><b><span lang="tr">PDF'i Sıkıştır</span></b><span class="d"><span lang="tr">Boyut sınırına sığacak şekilde küçültün.</span></span></div></a></div><a class="allt" href="/tr/"><span lang="tr">Tüm araçları gör (ana sayfaya dön)</span></a></div>
+<section class="guide" id="how">
+
+<div lang="tr"><h2>Nasıl kullanılır</h2>
+<ol>
+<li>“PDF seç”e dokunun ve bir PDF seçin. Sayfaları küçük görüntüler olarak görünür.</li>
+<li>Sırayı değiştirmek için Öne / Arkaya, yönü düzeltmek için Döndür, bir sayfayı kaldırmak için Sil'i kullanın.</li>
+<li>“PDF oluştur”a dokunup kaydedin.</li>
+</ol>
+<h2>Ne zaman yardımcı olur</h2>
+<ul>
+<li>Taranmış bir PDF'in bazı sayfaları yan duruyor</li>
+<li>Sayfa sırasını değiştirmek istiyorsunuz</li>
+<li>Boş sayfaları kaldırmak istiyorsunuz</li>
+</ul>
+<h2>SSS</h2>
+<details><summary>PDF'im bir yere yükleniyor mu?</summary><p>Hayır. Her şey cihazınızdaki tarayıcının içinde işlenir.</p></details>
+<details><summary>Kalite düşer mi?</summary><p>Hayır. Sayfa içerikleri olduğu gibi kalır; yalnızca yön ve sıra değişir.</p></details>
+<details><summary>Parola korumalı bir PDF kullanabilir miyim?</summary><p>Hayır. Lütfen önce parolayı kaldırın.</p></details></div>
+</section>
+<div class="support endtip"><p><span lang="tr">PDF Mikata işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank"><span lang="tr">Bahşiş gönder (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="tr">Hediye gönder (Amazon istek listesi)</span></a></div>
+<section class="more rel"><h2><span lang="tr">Bu araç için rehberler</span></h2><a href="/tr/pdf-rotate-howto.html"><span lang="tr">Yönü Düzeltmek İçin PDF Sayfalarını Döndürme</span></a><a href="/tr/pdf-reorder-pages-howto.html"><span lang="tr">Bir PDF'in Sayfalarını Yeniden Düzenleme</span></a><a href="/tr/pdf-delete-page-in-rotate.html"><span lang="tr">Bir PDF'i Düzenlemenin En İyi Sırası: Döndür, Yeniden Sırala, Sil</span></a><a href="/tr/pdf-rotate-scanned-sideways.html"><span lang="tr">Taranmış PDF'ler Neden Yan Çıkar ve Nasıl Düzeltilir</span></a><a href="/tr/pdf-rotate-iphone-photo-pdf.html"><span lang="tr">iPhone'da Oluşturulan Bir PDF'in Yönünü Düzeltme</span></a><a href="/tr/pdf-rotate-before-submit-check.html"><span lang="tr">Teslim Öncesi PDF Kontrol Listesi: Yön, Sıra ve Sayfa Sayısı</span></a><a href="/tr/pdf-rotate-landscape-pages.html"><span lang="tr">Dikey ve Yatay Sayfaları Karışık Bir PDF'i Düzenleme</span></a></section>
+<section class="more"><h2><span lang="tr">Daha fazla araç</span></h2><a href="/tr/photo-to-pdf.html"><span lang="tr">Fotoğraftan PDF'e</span><small><span lang="tr">Birkaç fotoğrafı seçtiğiniz sırayla tek bir PDF'te birleştirin. Döndürebilir, sırayı değiştirebilir ve boyut sınırı belirleyebilirsiniz.</span></small></a><a href="/tr/merge-pdf.html"><span lang="tr">PDF'leri Birleştir</span><small><span lang="tr">Birkaç PDF dosyasını seçtiğiniz sırayla tek bir dosyada birleştirin.</span></small></a><a href="/tr/split-pdf.html"><span lang="tr">PDF Sayfalarını Çıkarın veya Silin</span><small><span lang="tr">Yalnızca ihtiyacınız olan sayfaları tutun veya istemediğiniz sayfaları kaldırın.</span></small></a><a href="/tr/compress-pdf.html"><span lang="tr">PDF'i Sıkıştır</span><small><span lang="tr">Yükleme sınırlarına uymak için bir PDF'i seçtiğiniz boyutun altına küçültün.</span></small></a><a href="/tr/pdf-to-image.html"><span lang="tr">PDF'den Görüntüye</span><small><span lang="tr">Bir PDF'in her sayfasını JPEG veya PNG görüntüsü olarak kaydedin.</span></small></a><a href="/tr/image-convert.html"><span lang="tr">Görüntü biçimini dönüştürün (JPG, PNG, WebP)</span><small><span lang="tr">Görüntüleri aynı anda birkaç tane JPG, PNG veya WebP'ye dönüştürün.</span></small></a><a href="/tr/pdf-page-numbers.html"><span lang="tr">PDF'e Sayfa Numarası Ekleyin</span><small><span lang="tr">PDF'e sayfa numarası ekleyin; konumu ve stili seçin.</span></small></a><a href="/tr/image-compress.html"><span lang="tr">Görüntüleri Sıkıştırın ve Yeniden Boyutlandırın</span><small><span lang="tr">Görüntü dosyalarını küçültün ve isterseniz yeniden boyutlandırın.</span></small></a><a href="/tr/heic-to-jpg.html"><span lang="tr">HEIC'i JPG'ye Dönüştür</span><small><span lang="tr">iPhone'daki HEIC fotoğrafları JPG veya PNG'ye dönüştürün.</span></small></a><a href="/tr/pdf-split.html"><span lang="tr">PDF'i Böl</span><small><span lang="tr">Bir PDF'i birkaç dosyaya bölün: sayfa başına bir dosya, her N sayfada bir dosya veya aralıklara göre.</span></small></a><a href="/tr/image-crop.html"><span lang="tr">Görüntüyü Kırp ve Döndür</span><small><span lang="tr">Bir görüntüyü istediğiniz alana veya orana kırpın ve döndürün.</span></small></a><a href="/tr/pdf-to-text.html"><span lang="tr">PDF'ten Metin Çıkarın</span><small><span lang="tr">Kopyalamak veya kaydetmek için PDF'teki metni çıkarın.</span></small></a><a href="/tr/receipt-maker.html"><span lang="tr">Makbuz PDF'i oluşturun</span><small><span lang="tr">Ödeyen kişiyi, tutarı ve açıklamayı doldurarak makbuz PDF'i oluşturun. Vergi dökümü ve fatura kayıt numarası isteğe bağlıdır.</span></small></a><a href="/tr/resume-maker.html"><span lang="tr">Özgeçmiş PDF'i oluşturun (Japon tarzı rirekisho)</span><small><span lang="tr">Bilgilerinizi, eğitiminizi, iş geçmişinizi ve motivasyonunuzu doldurarak isteğe bağlı vesikalık fotoğraflı, Japon tarzı bir özgeçmiş (rirekisho) PDF'i oluşturun.</span></small></a><a href="/tr/timetable-maker.html"><span lang="tr">Ders programı / haftalık program oluşturun</span><small><span lang="tr">Dersleri, işleri ve planları girerek renk kodlu bir ders programı veya haftalık programı PDF ya da görüntü olarak oluşturun.</span></small></a><a href="/tr/namecard-maker.html"><span lang="tr">Kartvizit / isim kartı oluşturun</span><small><span lang="tr">Adınızı ve bilgilerinizi girerek A4 üzerine dizilmiş kartvizit veya isim kartlarını PDF olarak oluşturun. Bir listeden toplu isim kartı da hazırlayabilirsiniz.</span></small></a><a href="/tr/qr-code-maker.html"><span lang="tr">QR Kodu Oluşturun (URL, Wi-Fi)</span><small><span lang="tr">Bir URL'den, metinden veya Wi-Fi bilgilerinden QR kodu oluşturun ve PNG, SVG veya PDF olarak kaydedin.</span></small></a><a href="/tr/pdf-nup.html"><span lang="tr">PDF sayfalarını tek sayfada birleştirin (2'li, 4'lü)</span><small><span lang="tr">Yazdırırken kâğıt tasarrufu için birkaç PDF sayfasını tek bir A4 sayfasına yerleştirin (2'li, 4'lü, 6'lı, 8'li veya 9'lu).</span></small></a><a href="/tr/pdf-grayscale.html"><span lang="tr">PDF'i Gri Tonlamalıya (Siyah-Beyaz) Dönüştürün</span><small><span lang="tr">Renkli bir PDF'i gri tonlamalı veya saf siyah-beyaz yapın; tek renkli yazdırma, kopyalama veya faks için hazır olur. Çözünürlüğü seçin.</span></small></a><a href="/tr/pdf-watermark.html"><span lang="tr">PDF'e Metin Filigranı Ekle</span><small><span lang="tr">Her PDF sayfasına “Teslim için”, “Kopya” veya “Gizli” gibi bir metni soluk olarak ekleyin. Konumu, rengi ve opaklığı seçin.</span></small></a><a href="/tr/pdf-crop.html"><span lang="tr">PDF Kenar Boşluklarını Kırpın</span><small><span lang="tr">PDF kenar boşluklarını otomatik veya her kenarı ayarlayarak kırpın. Telefonda okumak kolaylaşır, baskı daha temiz olur.</span></small></a><a href="/tr/pdf-redact.html"><span lang="tr">PDF'in Bölümlerini Karartın (Redakte Edin)</span><small><span lang="tr">PDF'te gizlemek istediğiniz bölümlerin üzerine sürükleyin ve karartın. Karartılan sayfalar görüntüye dönüşür, bu yüzden altındaki metin tamamen kaybolur.</span></small></a><a href="/tr/pdf-metadata.html"><span lang="tr">PDF Özelliklerini Görüntüleyin ve Kaldırın (Yazar, Başlık)</span><small><span lang="tr">Bir PDF'te saklanan yazarı, başlığı, yazılımı ve tarihleri görün, ardından kaldırın veya düzenleyin.</span></small></a><a href="/tr/pdf-fill.html"><span lang="tr">PDF doldurun: metin, tarih, imza ve işaret ekleyin</span><small><span lang="tr">PDF'in herhangi bir yerine metin, tarih, onay işareti, daire, el yazısı imza veya (mühür gibi) bir görüntü ekleyin.</span></small></a><a href="/tr/pdf-resize.html"><span lang="tr">PDF Sayfalarını A4 veya Başka Bir Kâğıt Boyutuna Getirin</span><small><span lang="tr">Farklı boyutlardaki PDF sayfalarını A4, A3, B5 veya Letter gibi aynı boyuta getirin. Metin ve grafikler net kalır.</span></small></a><a href="/tr/pdf-delete-pages.html"><span lang="tr">PDF'ten Sayfa Silin</span><small><span lang="tr">PDF'ten istemediğiniz sayfaları seçip silin.</span></small></a><a href="/tr/pdf-extract-pages.html"><span lang="tr">PDF'ten Sayfa Çıkarın</span><small><span lang="tr">İhtiyacınız olan sayfaları seçin ve yeni bir PDF olarak kaydedin.</span></small></a><a href="/tr/pdf-reverse.html"><span lang="tr">PDF'in Sayfa Sırasını Tersine Çevirin</span><small><span lang="tr">Bir PDF'in sayfa sırasını tersine çevirin.</span></small></a><a href="/tr/pdf-insert-blank.html"><span lang="tr">PDF'e Boş Sayfa Ekle</span><small><span lang="tr">PDF'in herhangi bir yerine boş sayfa ekleyin.</span></small></a><a href="/tr/pdf-split-halves.html"><span lang="tr">PDF Çift Sayfalarını Tek Sayfalara Ayır</span><small><span lang="tr">PDF'teki çift sayfaları tek sayfalara ayırın.</span></small></a><a href="/tr/pdf-header-footer.html"><span lang="tr">PDF'e Üst Bilgi ve Alt Bilgi Ekleyin</span><small><span lang="tr">PDF'in üstüne ve altına başlık, tarih veya sayfa numarası ekleyin.</span></small></a><a href="/tr/pdf-booklet.html"><span lang="tr">PDF'i Baskı İçin Kitapçık Olarak Düzenleyin</span><small><span lang="tr">Bir PDF'i yazdırıp kitapçık olarak katlanacak şekilde yeniden sıralayın.</span></small></a><a href="/tr/pdf-blank-remove.html"><span lang="tr">PDF'teki boş sayfaları bulun ve kaldırın</span><small><span lang="tr">PDF'teki boş sayfaları otomatik bulun ve silin.</span></small></a><a href="/tr/pdf-long-image.html"><span lang="tr">PDF'i Tek Uzun Görüntüye Dönüştürün</span><small><span lang="tr">Bir PDF'in tüm sayfalarını tek bir uzun görüntüde birleştirin.</span></small></a><a href="/tr/pdf-duplex-merge.html"><span lang="tr">Ön ve arka yüz taramalarını tek bir PDF'te birleştirin</span><small><span lang="tr">Ön yüzler PDF'ini ve arka yüzler PDF'ini tek bir PDF'te iç içe geçirin.</span></small></a><a href="/tr/image-resize.html"><span lang="tr">Görüntüleri piksel boyutuna göre yeniden boyutlandırın</span><small><span lang="tr">Görüntüleri genişliğe, yüksekliğe veya yüzdeye göre yeniden boyutlandırın.</span></small></a><a href="/tr/image-rotate.html"><span lang="tr">Görüntüleri Döndürün ve Çevirin</span><small><span lang="tr">Görüntüleri döndürün ve yatay veya dikey çevirin.</span></small></a><a href="/tr/image-watermark.html"><span lang="tr">Görüntülere Metin Filigranı Ekleyin</span><small><span lang="tr">Görüntülerin üzerine “Kopya” gibi filigran metni ekleyin.</span></small></a><a href="/tr/image-mosaic.html"><span lang="tr">Görüntünün bir bölümüne mozaik veya bulanıklık uygulayın</span><small><span lang="tr">Bir görüntünün bölümlerini mozaik, bulanıklık veya siyah kutuyla gizleyin.</span></small></a><a href="/tr/image-exif-remove.html"><span lang="tr">Fotoğraflardan konum ve çekim verilerini kaldırın</span><small><span lang="tr">Fotoğraflardan GPS, tarih ve kamera verilerini kaldırın ve temiz bir kopya kaydedin.</span></small></a><a href="/tr/image-filter.html"><span lang="tr">Siyah-Beyaz, Sepya ve Diğer Görünümleri Uygulayın</span><small><span lang="tr">Görüntüleri siyah-beyaz veya sepya yapın ya da parlaklığı değiştirin.</span></small></a><a href="/tr/favicon-maker.html"><span lang="tr">Favicon (Site Simgesi) Oluşturun</span><small><span lang="tr">Tek bir görüntüden eksiksiz bir favicon seti oluşturun.</span></small></a><a href="/tr/image-stitch.html"><span lang="tr">Birkaç Görüntüyü Tek Görüntüde Birleştirin</span><small><span lang="tr">Birkaç görüntüyü üst üste dizin veya tek görüntüde birleştirin.</span></small></a><a href="/tr/id-photo.html"><span lang="tr">Vesikalık fotoğraf boyutuna kırpın ve yazdırmak için döşeyin</span><small><span lang="tr">Bir fotoğrafı vesikalık boyutuna kırpın ve L boyutlu bir sayfaya döşeyin.</span></small></a><a href="/tr/image-color-picker.html"><span lang="tr">Görüntüden renk kodu seçin</span><small><span lang="tr">Bir görüntüdeki renk kodlarını okuyun ve ana renkleri bulun.</span></small></a><a href="/tr/char-counter.html"><span lang="tr">Karakter Sayacı (başvurular ve raporlar için)</span><small><span lang="tr">Metninizin karakterlerini, satırlarını ve el yazması sayfalarını sayın.</span></small></a><a href="/tr/wareki-converter.html"><span lang="tr">Miladi Yıllar ile Japon Dönem Adları Arasında Dönüştürün</span><small><span lang="tr">Miladi yıllar ile Japon dönem adları arasında dönüştürün.</span></small></a><a href="/tr/zenkaku-hankaku.html"><span lang="tr">Tam Genişlik, Yarım Genişlik, Hiragana ve Katakana Dönüştürme</span><small><span lang="tr">Tam genişlik/yarım genişlik ile hiragana/katakana arasında dönüştürün.</span></small></a><a href="/tr/line-break-remover.html"><span lang="tr">Metindeki Satır Sonlarını Kaldırın ve Düzenleyin</span><small><span lang="tr">PDF'lerden ve başka yerlerden kopyalanan metindeki satır sonlarını düzeltin.</span></small></a><a href="/tr/tax-calculator.html"><span lang="tr">Tüketim Vergisi Hesaplayın (Vergi Dahil / Hariç)</span><small><span lang="tr">Vergi dahil ve vergi hariç fiyatları hesaplayın.</span></small></a><a href="/tr/date-calculator.html"><span lang="tr">Yaşı, iki tarih arasındaki günleri ve tarih kaydırmalarını hesaplayın</span><small><span lang="tr">Yaşı ve iki tarih arasındaki gün sayısını hesaplayın.</span></small></a><a href="/tr/pdf-unlock.html"><span lang="tr">PDF'ten Parolayı Kaldırın</span><small><span lang="tr">Parolasını bildiğiniz bir PDF'ten parolayı ve kısıtlamaları kaldırın.</span></small></a><a href="/tr/pdf-protect.html"><span lang="tr">PDF'e parola ekleyin</span><small><span lang="tr">PDF'i açmak için gereken bir parola ekleyin.</span></small></a><a href="/tr/ocr-text.html"><span lang="tr">Görüntülerden ve PDF'lerden metin okuyun (OCR)</span><small><span lang="tr">Görüntülerdeki ve taranmış PDF'lerdeki yazıyı metne dönüştürün.</span></small></a><a href="/tr/pdf-compare.html"><span lang="tr">İki PDF'i Karşılaştırın (Farkları Bulun)</span><small><span lang="tr">İki PDF arasındaki metin farklarını renk kodlu olarak gösterin.</span></small></a><a href="/tr/password-generator.html"><span lang="tr">Güçlü Rastgele Parola Üretin</span><small><span lang="tr">Güçlü rastgele parolalar anında üretin.</span></small></a><a href="/tr/percent-calculator.html"><span lang="tr">Yüzde, indirim ve yüzde değişimi hesaplayın</span><small><span lang="tr">Yüzdeleri, indirimleri ve yüzde değişimini anında hesaplayın.</span></small></a><a href="/tr/line-sort-dedupe.html"><span lang="tr">Yinelenen Satırları Kaldırın ve Listeyi Sıralayın</span><small><span lang="tr">Yinelenen satırları kaldırın ve sıralayın.</span></small></a><a href="/tr/unit-converter.html"><span lang="tr">Birim Dönüştürücü (Uzunluk, Ağırlık, Alan, Sıcaklık ve Daha Fazlası)</span><small><span lang="tr">Uzunluk, ağırlık, alan, sıcaklık ve daha fazlasını anında dönüştürün.</span></small></a><a href="/tr/zip-maker.html"><span lang="tr">ZIP Dosyası Oluşturun</span><small><span lang="tr">Birkaç dosyayı tek bir ZIP'te toplayın.</span></small></a><a href="/tr/zip-extract.html"><span lang="tr">ZIP Dosyası Açın (Arşivden Çıkarın)</span><small><span lang="tr">Bir ZIP dosyasının içindekileri görün ve ihtiyacınız olan dosyaları çıkarın.</span></small></a><a href="/tr/file-hash.html"><span lang="tr">Bir dosyanın karmasını (SHA-256) kontrol edin</span><small><span lang="tr">Bir dosyanın karmasını hesaplayın ve karşılaştırın.</span></small></a><a href="/tr/csv-json.html"><span lang="tr">CSV ve JSON Dönüştürme</span><small><span lang="tr">CSV ile JSON arasında anında dönüştürün.</span></small></a><a href="/tr/svg-to-png.html"><span lang="tr">SVG'yi PNG'ye Dönüştür</span><small><span lang="tr">Bir SVG dosyasını PNG görüntüsüne dönüştürün.</span></small></a><a href="/tr/file-base64.html"><span lang="tr">Dosyaları ve Base64'ü Dönüştürün</span><small><span lang="tr">Dosyalar ile Base64 metni arasında dönüştürün.</span></small></a><a href="/tr/json-formatter.html"><span lang="tr">JSON'u Biçimlendirin ve Doğrulayın</span><small><span lang="tr">JSON'u biçimlendirin, küçültün ve doğrulayın.</span></small></a><a href="/tr/text-diff.html"><span lang="tr">İki Metni Karşılaştırın (Diff)</span><small><span lang="tr">İki metin arasındaki farkları satır satır gösterin.</span></small></a><a href="/tr/xlsx-to-csv.html"><span lang="tr">Excel'i CSV veya JSON'a Dönüştür</span><small><span lang="tr">Bir Excel sayfasını CSV, TSV veya JSON'a dönüştürün.</span></small></a><a href="/tr/csv-to-xlsx.html"><span lang="tr">CSV'yi Excel'e (.xlsx) Dönüştür</span><small><span lang="tr">Bir CSV'yi Excel (.xlsx) dosyasına dönüştürün.</span></small></a><a href="/tr/docx-to-text.html"><span lang="tr">Word Dosyasından Metin Çıkarın</span><small><span lang="tr">Bir Word dosyasındaki düz metni çıkarın.</span></small></a><a href="/tr/pptx-to-text.html"><span lang="tr">PowerPoint'ten metin çıkarın</span><small><span lang="tr">Her PowerPoint slaydının metnini çıkarın.</span></small></a><a href="/tr/pdf-to-word.html"><span lang="tr">PDF metnini Word'e aktarın</span><small><span lang="tr">PDF metnini bir Word dosyasına çıkarın.</span></small></a><a href="/tr/image-to-word.html"><span lang="tr">Görüntüleri bir Word dosyasına yerleştirin</span><small><span lang="tr">Görüntüleri bir Word dosyasına, sayfa başına bir tane olacak şekilde yerleştirin.</span></small></a><a href="/tr/xlsx-formula-to-value.html"><span lang="tr">Excel Formüllerini Değerlere Dönüştür</span><small><span lang="tr">Excel formüllerini değerleriyle değiştirin.</span></small></a><a href="/tr/office-metadata-remove.html"><span lang="tr">Office dosyalarından yazar bilgisini kaldırın</span><small><span lang="tr">Office dosyalarında saklanan yazar ve diğer bilgileri temizleyin.</span></small></a><a href="/tr/office-image-extract.html"><span lang="tr">Word, Excel ve PowerPoint'ten görüntü çıkarın</span><small><span lang="tr">Office dosyalarındaki görüntüleri ZIP olarak çıkarın.</span></small></a><a href="/tr/docx-to-html.html"><span lang="tr">Word'ü HTML'e Dönüştür</span><small><span lang="tr">Word metnini HTML'e dönüştürün.</span></small></a><a href="/tr/xlsx-split-sheets.html"><span lang="tr">Bir Excel Dosyasını Sayfalara Göre Bölün</span><small><span lang="tr">Her Excel sayfasını kendi CSV veya TSV dosyasına bölün.</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="tr">Hakkında / İletişim (Japonca)</span></a><a href="/tr/privacy.html"><span lang="tr">Gizlilik politikası</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="tr">X'te güncellemeler</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const TR={"Could not save. Please try again.": "Kaydedilemedi. Lütfen tekrar deneyin.", "No pages left": "Sayfa kalmadı", "After saving, check the order and direction.": "Kaydettikten sonra sırayı ve yönü kontrol edin.", "Rotate": "Döndür", "Move page {0} later": "{0}. sayfayı arkaya taşı", "Earlier": "Öne", "Working…": "Çalışılıyor…", "Save PDF": "PDF'i kaydet", "Move page {0} earlier": "{0}. sayfayı öne taşı", "p": "s.", "Choose another PDF": "Başka bir PDF seçin", "Made a {0}-page PDF ({1})": "{0} sayfalık bir PDF oluşturuldu ({1})", "Password-protected PDFs are not supported. Remove the password and try again.": "Parola korumalı PDF'ler desteklenmez. Parolayı kaldırıp tekrar deneyin.", "Delete page {0}": "{0}. sayfayı sil", "Delete": "Sil", "Could not read the PDF. It may be damaged or in an unsupported format.": "PDF okunamadı. Dosya hasarlı olabilir veya biçimi desteklenmiyor olabilir.", "Make the PDF ({0} pages)": "PDF oluştur ({0} sayfa)", "Later": "Arkaya", "Rotate page {0} 90 degrees clockwise": "{0}. sayfayı saat yönünde 90 derece döndür"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=T("Could not save. Please try again.",[])}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return T("Password-protected PDFs are not supported. Remove the password and try again.",[]);
+  return T("Could not read the PDF. It may be damaged or in an unsupported format.",[]);
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  const out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+let doc=null,file=null,pages=[],token=0;
+function paint(el,p){
+  const b=p.c;
+  if(!b){el.width=96;el.height=136;const x=el.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,96,136);return}
+  const odd=p.rot%180!==0;el.width=odd?b.height:b.width;el.height=odd?b.width:b.height;
+  const x=el.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,el.width,el.height);
+  x.translate(el.width/2,el.height/2);x.rotate(p.rot*Math.PI/180);x.drawImage(b,-b.width/2,-b.height/2);
+}
+function op(txt,label,fn,dis,cls){const b=document.createElement("button");b.type="button";b.textContent=txt;b.setAttribute("aria-label",label);if(cls)b.className=cls;b.disabled=!!dis;b.onclick=fn;return b}
+function draw(){
+  const g=$("grid");g.textContent="";
+  pages.forEach((p,i)=>{
+    const li=document.createElement("li");
+    const sh=document.createElement("div");sh.className="sheet";sh.style.aspectRatio="auto";sh.style.minHeight="150px";
+    const c=document.createElement("canvas");c.style.cssText="max-width:100%;max-height:170px;height:auto;width:auto;display:block";
+    p.el=c;paint(c,p);
+    const no=document.createElement("span");no.className="no";no.textContent=i+1;
+    sh.append(c,no);
+    const ops=document.createElement("div");ops.className="ops";
+    ops.append(op(T("Earlier",[]),T("Move page {0} earlier",[(i+1)]),()=>{[pages[i-1],pages[i]]=[pages[i],pages[i-1]];draw()},i===0),
+      op(T("Later",[]),T("Move page {0} later",[(i+1)]),()=>{[pages[i+1],pages[i]]=[pages[i],pages[i+1]];draw()},i===pages.length-1),
+      op(T("Rotate",[]),T("Rotate page {0} 90 degrees clockwise",[(i+1)]),()=>{p.rot=(p.rot+90)%360;paint(c,p)}),
+      op(T("Delete",[]),T("Delete page {0}",[(i+1)]),()=>{pages.splice(i,1);draw()},false,"del"));
+    li.append(sh,ops);g.appendChild(li);
+  });
+  const n=pages.length;
+  $("go").disabled=!n;
+  $("go").textContent=n?T("Make the PDF ({0} pages)",[n]):T("No pages left",[]);
+}
+async function load(list){
+  const f=list[0];if(!f||!isPdf(f))return;
+  const my=++token;$("out").style.display="none";
+  try{
+    const d=await openPdfjs(f);if(my!==token)return;
+    doc=d;file=f;pages=[];for(let i=0;i<d.numPages;i++)pages.push({i,rot:0,c:null,el:null});
+    $("fname").textContent=f.name+"（"+d.numPages+T("p",[])+" / "+fmt(f.size)+"）";
+    $("stack").style.display="block";$("set").style.display="block";$("pt").textContent=T("Choose another PDF",[]);
+    draw();
+    for(let k=0;k<d.numPages;k++){
+      if(my!==token)return;
+      const pg=await d.getPage(k+1);const v1=pg.getViewport({scale:1});
+      const v=pg.getViewport({scale:200/Math.max(v1.width,v1.height)});
+      const b=document.createElement("canvas");b.width=Math.round(v.width);b.height=Math.round(v.height);
+      const x=b.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,b.width,b.height);
+      await pg.render({canvasContext:x,viewport:v}).promise;pg.cleanup();
+      const p=pages.find(q=>q.i===k);if(p){p.c=b;if(p.el)paint(p.el,p)}
+    }
+  }catch(e){console.error(e);doc=null;$("stack").style.display="none";$("set").style.display="none";const o=$("out");o.style.display="block";o.querySelector(".stamp").style.display="none";$("bar").style.display="none";$("info").textContent="";$("dl").style.display="none";$("support").hidden=true;$("msg").className="bad";$("msg").textContent=errText(e)}
+}
+$("file").onchange=e=>{load([...e.target.files]);e.target.value=""};
+bindDrop("drop",load);
+$("go").onclick=async()=>{
+  const go=$("go");go.disabled=true;beginRun();
+  try{
+    $("msg").textContent=T("Working…",[]);$("barf").style.width="40%";
+    const src=await PDFLib.PDFDocument.load(await file.arrayBuffer());
+    const out=await PDFLib.PDFDocument.create();
+    for(const p of pages){
+      const [cp]=await out.copyPages(src,[p.i]);
+      const cur=cp.getRotation().angle||0;
+      cp.setRotation(PDFLib.degrees(((cur+p.rot)%360+360)%360));
+      out.addPage(cp);
+    }
+    $("barf").style.width="100%";
+    const bytes=await out.save();const blob=new Blob([bytes],{type:"application/pdf"});
+    const name=baseName(file)+"_edited.pdf";
+    const dl=$("dl");dl.href="#";dl.textContent=T("Save PDF",[]);dl.style.display="inline-block";wire(dl,blob,name,"application/pdf");
+    $("info").textContent=T("Made a {0}-page PDF ({1})",[pages.length,fmt(bytes.length)]);
+    $("msg").textContent=T("After saving, check the order and direction.",[]);
+    finishOk();
+  }catch(e){console.error(e);$("msg").className="bad";$("msg").textContent=errText(e)}
+  finally{endRun();draw()}
+};
+
+</script>
+</body>
+</html>

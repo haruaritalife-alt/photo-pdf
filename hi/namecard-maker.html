@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+
+<html data-lang="hi" lang="hi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>बिज़नेस कार्ड और नेम टैग बनाएँ (मुफ़्त, A4 प्रिंट)｜PDF Mikata</title>
+<meta content="A4 पर सजे बिज़नेस कार्ड या नेम कार्ड को PDF के रूप में बनाने और सूची से नेम टैग एक साथ बनाने वाला मुफ़्त टूल। कुछ भी आपके डिवाइस से बाहर नहीं जाता।" name="description"/>
+
+
+<link href="https://pdfmikata.com/hi/namecard-maker.html" rel="canonical"/>
+<script src="/site.js"></script>
+
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+.next{margin:20px 0 6px}
+.next h3{margin:0 0 10px;font-size:1.05rem}
+.ncards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(min-width:720px){.ncards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.ncards a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper,#fff);box-shadow:0 3px 0 var(--line);text-decoration:none;color:var(--ink)}
+.ncards a.tool:hover{border-color:var(--stamp)}
+.ncards .ic{flex:none;width:40px;height:40px;border-radius:11px;background:var(--ink);color:var(--btn-ink);display:grid;place-items:center}
+.ncards .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ncards .tx b{display:block;font-size:.95rem;line-height:1.4}
+.ncards .tx .d{display:block;color:var(--sub);font-size:.8rem;line-height:1.5;margin-top:2px}
+.next .allt{display:block;margin:14px 0 0;padding:13px 16px;border:2px solid var(--ink);border-radius:12px;text-align:center;font-weight:700;text-decoration:none;color:var(--ink);background:var(--paper,#fff)}
+.next .allt:hover{background:var(--ink);color:var(--btn-ink)}
+.safe{margin:14px 0 0;font-size:.85rem;color:var(--sub);line-height:1.6}
+#bar::after{content:"処理中…この端末の中だけで処理しています";display:block;margin-top:6px;font-size:.8rem;color:var(--sub)}
+html[data-lang="en"] #bar::after{content:"Working… processed only on this device"}
+html[data-lang="zh"] #bar::after{content:"处理中…仅在此设备上处理"}
+html[data-lang="es"] #bar::after{content:"Procesando… solo en este dispositivo"}
+html[data-lang="ko"] #bar::after{content:"처리 중… 이 기기 안에서만 처리합니다"}
+html[data-lang="pt"] #bar::after{content:"Processando… somente neste dispositivo"}
+html[data-lang="fr"] #bar::after{content:"Traitement… uniquement sur cet appareil"}
+html[data-lang="id"] #bar::after{content:"Memproses… hanya di perangkat ini"}
+html[data-lang="vi"] #bar::after{content:"Đang xử lý… chỉ trên thiết bị này"}
+html[data-lang="tr"] #bar::after{content:"İşleniyor… yalnızca bu cihazda"}
+html[data-lang="de"] #bar::after{content:"Wird verarbeitet… nur auf diesem Gerät"}
+html[data-lang="hi"] #bar::after{content:"प्रोसेस हो रहा है… केवल इसी डिवाइस पर"}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+</style>
+<script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "होम", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "टूल", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "बिज़नेस कार्ड / नेम कार्ड बनाएँ", "item": "https://pdfmikata.com/namecard-maker.html"}]}</script>
+<meta content="website" property="og:type"/>
+<meta content="PDF Mikata" property="og:site_name"/>
+<meta content="hi_IN" property="og:locale"/>
+
+<meta content="बिज़नेस कार्ड और नेम टैग बनाएँ (मुफ़्त, A4 प्रिंट)｜PDF Mikata" property="og:title"/>
+<meta content="A4 पर सजे बिज़नेस कार्ड या नेम कार्ड को PDF के रूप में बनाने और सूची से नेम टैग एक साथ बनाने वाला मुफ़्त टूल। कुछ भी आपके डिवाइस से बाहर नहीं जाता।" property="og:description"/>
+<meta content="https://pdfmikata.com/hi/namecard-maker.html" property="og:url"/>
+<meta content="https://pdfmikata.com/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="बिज़नेस कार्ड और नेम टैग बनाएँ (मुफ़्त, A4 प्रिंट)｜PDF Mikata" name="twitter:title"/>
+<meta content="A4 पर सजे बिज़नेस कार्ड या नेम कार्ड को PDF के रूप में बनाने और सूची से नेम टैग एक साथ बनाने वाला मुफ़्त टूल। कुछ भी आपके डिवाइस से बाहर नहीं जाता।" name="twitter:description"/>
+<meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="#16393c" name="theme-color"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "बिज़नेस कार्ड / नेम कार्ड बनाएँ", "alternateName": "Create Business Cards / Name Cards", "url": "https://pdfmikata.com/hi/namecard-maker.html", "description": "A4 पर सजे बिज़नेस कार्ड या नेम कार्ड को PDF के रूप में बनाने और सूची से नेम टैग एक साथ बनाने वाला मुफ़्त टूल। कुछ भी आपके डिवाइस से बाहर नहीं जाता।", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "hi", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/hi/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
+<style>
+main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
+
+.lang{display:flex;align-items:center;border:0;overflow:visible}
+.lang .gl{width:18px;height:18px;margin:0 6px 0 10px;color:#fcfefd;flex:none}
+.lang select{appearance:none;-webkit-appearance:none;min-height:44px;border:1px solid rgba(255,255,255,.5);border-radius:6px;background:transparent;color:#fcfefd;font:inherit;font-weight:700;font-size:.85rem;padding:0 28px 0 12px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23fcfefd' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.lang select option{color:#16393c;background:#fcfefd}
+.lang select:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+@media (max-width:420px){.lang .gl{display:none}}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI","Noto Sans Devanagari","Nirmala UI","Mangal",sans-serif;line-height:1.75}</style><link href="https://pdfmikata.com/namecard-maker.html" hreflang="ja" rel="alternate"/>
+<link href="https://pdfmikata.com/en/namecard-maker.html" hreflang="en" rel="alternate"/>
+<link href="https://pdfmikata.com/zh/namecard-maker.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://pdfmikata.com/es/namecard-maker.html" hreflang="es" rel="alternate"/>
+<link href="https://pdfmikata.com/ko/namecard-maker.html" hreflang="ko" rel="alternate"/>
+<link href="https://pdfmikata.com/pt/namecard-maker.html" hreflang="pt" rel="alternate"/>
+<link href="https://pdfmikata.com/fr/namecard-maker.html" hreflang="fr" rel="alternate"/>
+<link href="https://pdfmikata.com/id/namecard-maker.html" hreflang="id" rel="alternate"/>
+<link href="https://pdfmikata.com/vi/namecard-maker.html" hreflang="vi" rel="alternate"/>
+<link href="https://pdfmikata.com/tr/namecard-maker.html" hreflang="tr" rel="alternate"/>
+<link href="https://pdfmikata.com/de/namecard-maker.html" hreflang="de" rel="alternate"/>
+<link href="https://pdfmikata.com/hi/namecard-maker.html" hreflang="hi" rel="alternate"/>
+<link href="https://pdfmikata.com/namecard-maker.html" hreflang="x-default" rel="alternate"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2376251801221434" crossorigin="anonymous"></script>
+</head>
+<body><a class="skip" href="#main">मुख्य सामग्री पर जाएँ</a>
+<header class="top"><div class="top-in"><a class="brand" href="/hi/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma / 언어" id="langsel"><option value="/namecard-maker.html">日本語</option><option value="/en/namecard-maker.html">English</option><option value="/zh/namecard-maker.html">简体中文</option><option value="/es/namecard-maker.html">Español</option><option value="/ko/namecard-maker.html">한국어</option><option value="/pt/namecard-maker.html">Português</option><option value="/fr/namecard-maker.html">Français</option><option value="/id/namecard-maker.html">Bahasa Indonesia</option><option value="/vi/namecard-maker.html">Tiếng Việt</option><option value="/tr/namecard-maker.html">Türkçe</option><option value="/de/namecard-maker.html">Deutsch</option><option selected="" value="/hi/namecard-maker.html">हिन्दी</option></select></div></div></header>
+<nav aria-label="साइट नेविगेशन" class="sub"><div class="sub-in"><a href="/hi/"><span lang="hi">होम</span></a><a href="/hi/#cat-convert"><span lang="hi">बदलें</span></a><a href="/hi/#cat-edit"><span lang="hi">संपादित करें</span></a><a href="/hi/#cat-optimize"><span lang="hi">ऑप्टिमाइज़ करें</span></a><a aria-current="page" href="/hi/#cat-create"><span lang="hi">बनाएँ</span></a><a href="/hi/#guide"><span lang="hi">गाइड</span></a></div></nav>
+<nav aria-label="ब्रेडक्रम्ब" class="crumb"><ol><li><a href="/hi/"><span lang="hi">होम</span></a></li><li><a href="/hi/#tools"><span lang="hi">टूल</span></a></li><li><span aria-current="page"><span lang="hi">बिज़नेस कार्ड / नेम कार्ड बनाएँ</span></span></li></ol></nav>
+<main id="main" tabindex="-1">
+<h1><span lang="hi">बिज़नेस कार्ड और नेम टैग बनाएँ</span></h1>
+<p class="lead"><span lang="hi">भरें, A4 पर प्रिंट करें। नेम टैग भी एक साथ बनते हैं।</span></p>
+<p class="safe"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="9" rx="2" width="14" x="5" y="11"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><span><span lang="hi"><b>आप जो लिखते हैं वह कभी अपलोड नहीं होता।</b> सब कुछ इसी डिवाइस पर प्रोसेस होता है।</span></span></p>
+<style>
+.fld{margin:14px 0}.fld>.l{display:block;font-weight:700;font-size:.92rem;margin-bottom:6px}
+.fld input[type=text],.fld select,.fld textarea{width:100%;min-height:46px;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;font-size:1rem;background:var(--paper);color:var(--ink)}
+.fld textarea{padding:10px 12px;min-height:150px;line-height:1.6;resize:vertical}
+.fld small{display:block;color:var(--sub);margin-top:4px;font-size:.82rem}
+.fld .chk{display:flex;align-items:center;gap:10px;min-height:46px;cursor:pointer;font-size:.98rem}
+.fld .chk input{width:22px;height:22px;flex:none;margin:0;accent-color:var(--stamp)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.two{grid-template-columns:1fr}}
+.hd{font-size:1.1rem;margin:30px 0 4px;padding-left:10px;border-left:6px solid var(--stamp)}
+.warn{border-left-color:#b3472b}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}
+html{background:var(--desk)}body{background-image:radial-gradient(900px 420px at 12% -6%,rgba(63,181,174,.11),transparent 62%),radial-gradient(700px 420px at 100% 0,rgba(90,120,210,.08),transparent 58%);background-repeat:no-repeat}
+a.tool{box-shadow:0 3px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.07)}}
+.pop a,.btn2,button,a.tool{transition:transform .12s ease,box-shadow .15s ease,border-color .15s ease,background-color .15s ease,color .15s ease}
+.pop a:active,.btn2:active,button:not(:disabled):active{transform:scale(.97)}a.tool:active{transform:translateY(0) scale(.985)}
+h1,h2{letter-spacing:.01em}
+@media (prefers-reduced-motion:reduce){.pop a:active,.btn2:active,button:active,a.tool:active{transform:none}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b{display:inline-flex;align-items:center;gap:6px}.pop.recent b svg,.pop.recent a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}.pop.recent a{display:inline-flex;align-items:center;gap:6px}.pop.recent a .pi{margin-right:0}
+
+.skip{position:absolute;left:8px;top:-60px;z-index:100;background:var(--btn-ink,#fff);color:var(--ink);padding:10px 14px;border-radius:10px;border:2px solid var(--stamp);font-weight:700;text-decoration:none;transition:top .15s}
+.skip:focus{top:8px}
+.top{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.sub{background:color-mix(in srgb,var(--paper) 80%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px)}
+ul.g a,.more a,.ncards a.tool,.cats a.tool{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background-color .15s ease}
+ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:translateY(-2px)}
+ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform:scale(.98)}
+.pop svg,.pi,.ic svg,.ncards .ic svg{stroke-width:1.8}
+#pm-toast{position:fixed;left:50%;bottom:18px;transform:translate(-50%,24px);opacity:0;z-index:60;width:min(560px,calc(100vw - 24px));background:var(--paper);color:var(--ink);border:1px solid var(--line);border-left:5px solid var(--stamp);border-radius:14px;padding:12px 40px 12px 14px;box-shadow:0 14px 34px -12px rgba(0,0,0,.35);transition:opacity .22s,transform .22s;pointer-events:none;font-size:14px;line-height:1.6}
+#pm-toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#pm-toast.warn{border-left-color:#d98a1c}
+#pm-toast b{display:block;margin-bottom:4px}
+#pm-toast .nx{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+#pm-toast .nx a{border:1px solid var(--line);border-radius:999px;padding:4px 12px;color:var(--ink);text-decoration:none;font-weight:600;background:var(--desk)}
+#pm-toast .nx a:hover{border-color:var(--stamp)}
+#pm-toast .x{position:absolute;right:6px;top:6px;width:30px;height:30px;border:0;background:transparent;color:var(--sub);font-size:20px;line-height:1;cursor:pointer;border-radius:8px}
+@media (prefers-reduced-motion:reduce){#pm-toast,.skip{transition:none}ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:none}}
+.lite .aurora{display:none}.lite .hero::before,.lite .hero::after{animation:none}
+</style>
+<p class="note2 warn"><span lang="hi"><b>सिर्फ़ अपनी जानकारी</b> दर्ज करें। किसी और व्यक्ति या संगठन का रूप धरने वाले कार्ड न बनाएँ।</span></p>
+<section class="set" id="set" style="margin-top:14px">
+<h2 class="hd"><span lang="hi">कार्ड का प्रकार</span></h2>
+<div class="row"><span><span lang="hi">आकार</span></span>
+<label><input checked="" name="sz" type="radio" value="card"/><span lang="hi">बिज़नेस कार्ड (91×55 mm, प्रति पेज 10)</span></label>
+<label><input name="sz" type="radio" value="tag"/><span lang="hi">नेम टैग (100×70 mm, प्रति पेज 8)</span></label></div>
+<div class="row"><span><span lang="hi">मोड</span></span>
+<label><input checked="" name="mode" type="radio" value="same"/><span lang="hi">हर खाने में एक ही कार्ड</span></label>
+<label><input name="mode" type="radio" value="list"/><span lang="hi">सूची से (हर व्यक्ति के लिए एक)</span></label></div>
+<h2 class="hd"><span lang="hi">सामग्री</span></h2>
+<div class="fld"><label class="l" for="org"><span lang="hi">ऊपर का टेक्स्ट (समूह, क्लब, कार्यक्रम)</span></label><input autocomplete="off" id="org" type="text"/></div>
+<div id="one">
+<div class="two"><div class="fld"><label class="l" for="name"><span lang="hi">नाम</span></label><input autocomplete="off" id="name" type="text"/></div>
+<div class="fld"><label class="l" for="kana"><span lang="hi">उच्चारण / रोमाजी (वैकल्पिक)</span></label><input autocomplete="off" id="kana" type="text"/></div></div>
+<div class="fld"><label class="l" for="ttl"><span lang="hi">पदनाम (वैकल्पिक)</span></label><input autocomplete="off" id="ttl" type="text"/></div>
+</div>
+<div hidden="" id="lst">
+<div class="fld"><label class="l" for="ppl"><span lang="hi">सूची (हर व्यक्ति एक पंक्ति में: “नाम,पदनाम”)</span></label><textarea id="ppl" placeholder="山田 太郎,代表
+佐藤 花子,会計
+鈴木 一郎"></textarea><small><span lang="hi">पदनाम वैकल्पिक है। अधिकतम 60 लोग।</span></small></div>
+</div>
+<div class="fld"><span class="l"><span lang="hi">संपर्क की पंक्तियाँ (वैकल्पिक, अधिकतम 3)</span></span>
+<input aria-label="1" autocomplete="off" id="c1" style="margin-bottom:8px" type="text"/><input aria-label="2" autocomplete="off" id="c2" style="margin-bottom:8px" type="text"/><input aria-label="3" autocomplete="off" id="c3" type="text"/>
+<small><span lang="hi">जैसे ईमेल, सोशल मीडिया ID। <b>पता या फ़ोन नंबर तभी जोड़ें जब सच में ज़रूरी हो।</b></span></small></div>
+<h2 class="hd"><span lang="hi">देखें</span></h2>
+<div class="two"><div class="fld"><label class="l" for="clr"><span lang="hi">रंग</span></label><select id="clr"><option value="#1f7f7b">ティール / Teal</option><option value="#1d3557">紺 / Navy</option><option value="#c0392b">赤 / Red</option><option value="#2e7d32">緑 / Green</option><option value="#6a3d9a">紫 / Purple</option><option value="#222222">黒 / Black</option></select></div>
+<div class="fld"><label class="l" for="font"><span lang="hi">टाइपफ़ेस</span></label><select id="font"><option value="sans">ゴシック / Sans</option><option value="serif">明朝 / Serif</option></select></div></div>
+<div class="two"><div class="fld"><label class="l" for="band"><span lang="hi">एक्सेंट</span></label><select id="band"><option value="top">上に帯 / Top band</option><option value="left">左に線 / Left stripe</option><option value="none">なし / None</option></select></div>
+<div class="fld"><label class="l" for="al"><span lang="hi">संरेखण</span></label><select id="al"><option value="left">左そろえ / Left</option><option value="center">中央 / Center</option></select></div></div>
+<div class="fld"><label class="chk"><input checked="" id="cut" type="checkbox"/><span lang="hi">हल्की कटाई रेखाएँ बनाएँ</span></label></div>
+<div class="fld"><label class="chk"><input id="rem" type="checkbox"/><span lang="hi">मेरी प्रविष्टियाँ इस डिवाइस पर ड्राफ़्ट के रूप में सहेजें</span></label><small><span lang="hi">सिर्फ़ इसी डिवाइस के इसी ब्राउज़र में सहेजा जाता है। <b>साझा कंप्यूटर पर इसे चुनें नहीं।</b></span></small></div>
+<button id="go" type="button"></button>
+</section>
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="hi">हो गया</span></div>
+<p id="info"></p>
+<a href="#" id="dl"></a>
+<div id="extra"></div>
+<p aria-live="polite" id="msg"></p>
+<p class="safe"><span lang="hi">🔒 आपकी फ़ाइलें कभी किसी बाहरी सर्वर पर नहीं भेजी जातीं। सब कुछ इसी ब्राउज़र के भीतर सुरक्षित रूप से प्रोसेस होता है।</span></p>
+<div class="support" hidden="" id="support"><p><span lang="hi">अगर PDF Mikata काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="hi">टिप भेजें (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="hi">उपहार भेजें (Amazon विशलिस्ट)</span></a></div>
+</section>
+<div class="next" id="next"><h3><span lang="hi">अक्सर साथ इस्तेमाल होने वाले टूल</span></h3><div class="ncards"><a class="tool" href="/hi/compress-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 4l6 6M10 5v5H5M20 4l-6 6M14 5v5h5M4 20l6-6M10 19v-5H5M20 20l-6-6M14 19v-5h5"></path></svg></span><div class="tx"><b><span lang="hi">PDF कंप्रेस करें</span></b><span class="d"><span lang="hi">साइज़ सीमा में फ़िट करने के लिए छोटा करें।</span></span></div></a><a class="tool" href="/hi/image-crop.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 3v14h14"></path><path d="M3 7h14v14"></path></svg></span><div class="tx"><b><span lang="hi">इमेज क्रॉप करें और घुमाएँ</span></b><span class="d"><span lang="hi">क्रॉप करें और घुमाएँ।</span></span></div></a><a class="tool" href="/hi/merge-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="13" rx="1.5" width="10" x="3" y="3"></rect><rect height="13" rx="1.5" width="10" x="11" y="8"></rect></svg></span><div class="tx"><b><span lang="hi">PDF जोड़ें</span></b><span class="d"><span lang="hi">PDF को एक में जोड़ें।</span></span></div></a><a class="tool" href="/hi/photo-to-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="4"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="M4 17l5-5 4 4 3-3 4 4"></path></svg></span><div class="tx"><b><span lang="hi">फ़ोटो से PDF</span></b><span class="d"><span lang="hi">फ़ोटो को एक PDF में बदलें।</span></span></div></a></div><a class="allt" href="/hi/"><span lang="hi">सभी टूल देखें (होम पेज पर वापस)</span></a></div>
+<section class="guide" id="how">
+
+<div lang="hi"><h2>कैसे इस्तेमाल करें</h2>
+<ol>
+<li>एक साइज़ चुनें: बिज़नेस कार्ड (91×55 mm) या बड़ा नेम टैग (100×70 mm)।</li>
+<li>“हर खाने में एक ही कार्ड” या “सूची से” चुनें।</li>
+<li>समूह, नाम, पदनाम और संपर्क की पंक्तियाँ दर्ज करें।</li>
+<li>रंग, टाइपफ़ेस और एक्सेंट चुनें, “कार्ड बनाएँ” दबाएँ और PDF सहेजें।</li>
+<li>A4 पर वास्तविक आकार में प्रिंट करें और काटें।</li>
+</ol>
+<h2>नोट्स</h2>
+<ul>
+<li><b>सिर्फ़ अपनी जानकारी</b> दर्ज करें। किसी और व्यक्ति या संगठन का रूप धरने वाले कार्ड न बनाएँ।</li>
+<li>पता या फ़ोन नंबर सिर्फ़ ज़रूरत पड़ने पर जोड़ें।</li>
+<li>प्रिंट करते समय स्केलिंग से कार्ड का साइज़ बदल जाता है।</li>
+</ul>
+<h2>अक्सर पूछे जाने वाले प्रश्न</h2>
+<details><summary>क्या मेरा लिखा कुछ कहीं अपलोड होता है?</summary><p>नहीं। सारा काम आपके डिवाइस के ब्राउज़र के भीतर ही होता है।</p></details>
+<details><summary>क्या मैं हर व्यक्ति के लिए एक टैग बना सकता हूँ?</summary><p>हाँ। “सूची से” चुनें और हर व्यक्ति को एक पंक्ति में दर्ज करें।</p></details>
+<details><summary>क्या मैं सिर्फ़ एक कार्ड इमेज के रूप में पा सकता हूँ?</summary><p>हाँ। बनाने के बाद “एक कार्ड इमेज के रूप में सहेजें” इस्तेमाल करें।</p></details></div>
+</section>
+<div class="support endtip"><p><span lang="hi">अगर PDF Mikata काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank"><span lang="hi">टिप भेजें (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="hi">उपहार भेजें (Amazon विशलिस्ट)</span></a></div>
+<section class="more rel"><h2><span lang="hi">इस टूल के गाइड</span></h2><a href="/hi/namecard-maker-howto.html"><span lang="hi">बिज़नेस कार्ड मुफ़्त में कैसे बनाएँ और प्रिंट करें (फ़ोन पर भी चलता है)</span></a><a href="/hi/namecard-size-print.html"><span lang="hi">बिज़नेस कार्ड का साइज़ और घर या दुकान पर प्रिंट करने व काटने के सुझाव</span></a><a href="/hi/namecard-student-circle.html"><span lang="hi">छात्रों और क्लबों को कार्ड पर क्या लिखना चाहिए और क्या ज़्यादा साझा नहीं करना चाहिए</span></a><a href="/hi/namecard-design-tips.html"><span lang="hi">पढ़ने योग्य बिज़नेस कार्ड के सुझाव: टेक्स्ट का आकार, रंग और खाली जगह</span></a><a href="/hi/namecard-event-nametag.html"><span lang="hi">सूची से कार्यक्रम के नेम टैग एक साथ कैसे बनाएँ</span></a><a href="/hi/namecard-exchange-manners.html"><span lang="hi">बिज़नेस कार्ड का बुनियादी शिष्टाचार: छात्रों के लिए छह ज़रूरी बातें</span></a><a href="/hi/namecard-privacy-safety.html"><span lang="hi">कार्ड और टैग पर निजी डेटा की सुरक्षा: क्या लिखें और किसे दें</span></a></section>
+<section class="more"><h2><span lang="hi">और टूल</span></h2><a href="/hi/photo-to-pdf.html"><span lang="hi">फ़ोटो से PDF</span><small><span lang="hi">कई फ़ोटो को अपने चुने क्रम में एक PDF में जोड़ें। घुमा सकते हैं, क्रम बदल सकते हैं और आकार की सीमा तय कर सकते हैं।</span></small></a><a href="/hi/merge-pdf.html"><span lang="hi">PDF जोड़ें</span><small><span lang="hi">कई PDF फ़ाइलों को अपने चुने क्रम में एक में जोड़ें।</span></small></a><a href="/hi/split-pdf.html"><span lang="hi">PDF के पेज निकालें या हटाएँ</span><small><span lang="hi">सिर्फ़ ज़रूरी पेज रखें, या जो पेज नहीं चाहिए उन्हें हटाएँ।</span></small></a><a href="/hi/compress-pdf.html"><span lang="hi">PDF कंप्रेस करें</span><small><span lang="hi">अपलोड सीमा के लिए PDF को चुने गए आकार से छोटा करें।</span></small></a><a href="/hi/pdf-to-image.html"><span lang="hi">PDF से इमेज</span><small><span lang="hi">PDF के हर पेज को JPEG या PNG इमेज के रूप में सहेजें।</span></small></a><a href="/hi/image-convert.html"><span lang="hi">इमेज फ़ॉर्मैट बदलें (JPG, PNG, WebP)</span><small><span lang="hi">कई इमेज को एक साथ JPG, PNG या WebP में बदलें।</span></small></a><a href="/hi/pdf-rotate.html"><span lang="hi">PDF के पेज घुमाएँ और क्रम बदलें</span><small><span lang="hi">आड़े हो गए पेज ठीक करें, पेज का क्रम बदलें या पेज हटाएँ।</span></small></a><a href="/hi/pdf-page-numbers.html"><span lang="hi">PDF में पेज नंबर जोड़ें</span><small><span lang="hi">PDF में पेज नंबर जोड़ें, जगह और शैली चुनें।</span></small></a><a href="/hi/image-compress.html"><span lang="hi">इमेज कंप्रेस और रीसाइज़ करें</span><small><span lang="hi">इमेज फ़ाइलें छोटी करें और चाहें तो आकार भी बदलें।</span></small></a><a href="/hi/heic-to-jpg.html"><span lang="hi">HEIC को JPG में बदलें</span><small><span lang="hi">iPhone की HEIC फ़ोटो को JPG या PNG में बदलें।</span></small></a><a href="/hi/pdf-split.html"><span lang="hi">PDF बाँटें</span><small><span lang="hi">PDF को कई फ़ाइलों में बाँटें: हर पेज की अलग फ़ाइल, हर N पेज पर, या पेज रेंज के हिसाब से।</span></small></a><a href="/hi/image-crop.html"><span lang="hi">इमेज क्रॉप करें और घुमाएँ</span><small><span lang="hi">इमेज को किसी भी हिस्से या अनुपात में क्रॉप करें और घुमाएँ।</span></small></a><a href="/hi/pdf-to-text.html"><span lang="hi">PDF से टेक्स्ट निकालें</span><small><span lang="hi">कॉपी या सेव करने के लिए PDF से टेक्स्ट निकालें।</span></small></a><a href="/hi/receipt-maker.html"><span lang="hi">रसीद PDF बनाएँ</span><small><span lang="hi">भुगतान करने वाले, राशि और विवरण भरकर रसीद PDF बनाएँ। टैक्स का ब्योरा और इनवॉइस पंजीकरण संख्या वैकल्पिक हैं।</span></small></a><a href="/hi/resume-maker.html"><span lang="hi">रेज़्यूमे PDF बनाएँ (जापानी रिरेकिशो)</span><small><span lang="hi">अपनी जानकारी, शिक्षा, कार्य-अनुभव और प्रेरणा भरकर जापानी शैली का रेज़्यूमे (रिरेकिशो) PDF बनाएँ, चाहें तो पासपोर्ट फ़ोटो के साथ।</span></small></a><a href="/hi/timetable-maker.html"><span lang="hi">टाइमटेबल / साप्ताहिक शेड्यूल बनाएँ</span><small><span lang="hi">कक्षाएँ, काम और योजनाएँ डालकर रंग-कोडित टाइमटेबल या साप्ताहिक शेड्यूल PDF या इमेज के रूप में बनाएँ।</span></small></a><a href="/hi/qr-code-maker.html"><span lang="hi">QR कोड बनाएँ (URL, Wi-Fi)</span><small><span lang="hi">URL, टेक्स्ट या Wi-Fi विवरण से QR कोड बनाएँ और PNG, SVG या PDF के रूप में सहेजें।</span></small></a><a href="/hi/pdf-nup.html"><span lang="hi">PDF पेज एक शीट पर जोड़ें (2-अप, 4-अप)</span><small><span lang="hi">प्रिंट करते समय कागज़ बचाने के लिए कई PDF पेज एक A4 शीट पर लगाएँ (2, 4, 6, 8 या 9-अप)।</span></small></a><a href="/hi/pdf-grayscale.html"><span lang="hi">PDF को ग्रेस्केल (ब्लैक-एंड-व्हाइट) में बदलें</span><small><span lang="hi">रंगीन PDF को ग्रेस्केल या शुद्ध ब्लैक-एंड-व्हाइट में बदलें, मोनोक्रोम प्रिंट, कॉपी या फ़ैक्स के लिए तैयार। रिज़ॉल्यूशन चुनें।</span></small></a><a href="/hi/pdf-watermark.html"><span lang="hi">PDF में टेक्स्ट वॉटरमार्क जोड़ें</span><small><span lang="hi">हर PDF पेज पर “जमा करने के लिए”, “कॉपी” या “गोपनीय” जैसा टेक्स्ट हल्के रंग में जोड़ें। जगह, रंग और पारदर्शिता चुनें।</span></small></a><a href="/hi/pdf-crop.html"><span lang="hi">PDF के मार्जिन क्रॉप करें</span><small><span lang="hi">PDF के मार्जिन अपने-आप या हर किनारा तय करके क्रॉप करें। फ़ोन पर पढ़ना आसान, प्रिंट ज़्यादा साफ़।</span></small></a><a href="/hi/pdf-redact.html"><span lang="hi">PDF के हिस्सों को काला करें (रिडैक्ट)</span><small><span lang="hi">PDF के जिन हिस्सों को छिपाना है उन पर ड्रैग करके उन्हें काला करें। काले किए पेज इमेज बन जाते हैं, इसलिए नीचे का टेक्स्ट पूरी तरह हट जाता है।</span></small></a><a href="/hi/pdf-metadata.html"><span lang="hi">PDF के गुण देखें और हटाएँ (लेखक, शीर्षक)</span><small><span lang="hi">PDF में सहेजे लेखक, शीर्षक, सॉफ़्टवेयर और तारीख़ें देखें, फिर उन्हें हटाएँ या बदलें।</span></small></a><a href="/hi/pdf-fill.html"><span lang="hi">PDF भरें: टेक्स्ट, तारीख़, हस्ताक्षर और निशान जोड़ें</span><small><span lang="hi">PDF में कहीं भी टेक्स्ट, तारीख़, टिक, गोले, हाथ से लिखा हस्ताक्षर या इमेज (जैसे मुहर) जोड़ें।</span></small></a><a href="/hi/pdf-resize.html"><span lang="hi">PDF पेज का आकार A4 या दूसरे पेपर साइज़ में बदलें</span><small><span lang="hi">अलग-अलग आकार के PDF पेज को A4, A3, B5 या Letter जैसे एक ही आकार में करें। टेक्स्ट और ग्राफ़िक्स साफ़ रहते हैं।</span></small></a><a href="/hi/pdf-delete-pages.html"><span lang="hi">PDF से पेज हटाएँ</span><small><span lang="hi">PDF से अनचाहे पेज चुनकर हटाएँ।</span></small></a><a href="/hi/pdf-extract-pages.html"><span lang="hi">PDF से पेज निकालें</span><small><span lang="hi">ज़रूरी पेज चुनें और उन्हें नए PDF के रूप में सहेजें।</span></small></a><a href="/hi/pdf-reverse.html"><span lang="hi">PDF के पेज का क्रम उलटें</span><small><span lang="hi">PDF के पेज का क्रम उलटें।</span></small></a><a href="/hi/pdf-insert-blank.html"><span lang="hi">PDF में खाली पेज जोड़ें</span><small><span lang="hi">PDF में कहीं भी खाली पेज जोड़ें।</span></small></a><a href="/hi/pdf-split-halves.html"><span lang="hi">PDF स्प्रेड को एकल पेज में बाँटें</span><small><span lang="hi">PDF के स्प्रेड को अलग-अलग एकल पेज में बाँटें।</span></small></a><a href="/hi/pdf-header-footer.html"><span lang="hi">PDF में हेडर और फ़ूटर जोड़ें</span><small><span lang="hi">PDF के ऊपर और नीचे शीर्षक, तारीख़ या पेज नंबर जोड़ें।</span></small></a><a href="/hi/pdf-booklet.html"><span lang="hi">PDF को प्रिंट के लिए बुकलेट में व्यवस्थित करें</span><small><span lang="hi">PDF का क्रम ऐसे बदलें कि वह बुकलेट की तरह प्रिंट और फ़ोल्ड हो सके।</span></small></a><a href="/hi/pdf-blank-remove.html"><span lang="hi">PDF में खाली पेज खोजें और हटाएँ</span><small><span lang="hi">PDF में खाली पेज अपने-आप खोजें और हटाएँ।</span></small></a><a href="/hi/pdf-long-image.html"><span lang="hi">PDF को एक लंबी इमेज में बदलें</span><small><span lang="hi">PDF के सभी पेज जोड़कर एक लंबी इमेज बनाएँ।</span></small></a><a href="/hi/pdf-duplex-merge.html"><span lang="hi">आगे और पीछे के स्कैन को एक PDF में मिलाएँ</span><small><span lang="hi">आगे वाले PDF और पीछे वाले PDF को एक PDF में बारी-बारी से मिलाएँ।</span></small></a><a href="/hi/image-resize.html"><span lang="hi">इमेज का आकार पिक्सल में बदलें</span><small><span lang="hi">इमेज का आकार चौड़ाई, ऊँचाई या प्रतिशत के हिसाब से बदलें।</span></small></a><a href="/hi/image-rotate.html"><span lang="hi">इमेज घुमाएँ और पलटें</span><small><span lang="hi">इमेज घुमाएँ और उन्हें आड़ा या खड़ा पलटें।</span></small></a><a href="/hi/image-watermark.html"><span lang="hi">इमेज में टेक्स्ट वॉटरमार्क जोड़ें</span><small><span lang="hi">इमेज पर “कॉपी” जैसा वॉटरमार्क टेक्स्ट लगाएँ।</span></small></a><a href="/hi/image-mosaic.html"><span lang="hi">इमेज के किसी हिस्से पर मोज़ेक या ब्लर लगाएँ</span><small><span lang="hi">इमेज के हिस्सों को मोज़ेक, ब्लर या काले बॉक्स से छिपाएँ।</span></small></a><a href="/hi/image-exif-remove.html"><span lang="hi">फ़ोटो से लोकेशन और शूटिंग डेटा हटाएँ</span><small><span lang="hi">फ़ोटो से GPS, तारीख़ और कैमरा डेटा हटाएँ और साफ़ कॉपी सहेजें।</span></small></a><a href="/hi/image-filter.html"><span lang="hi">ब्लैक-एंड-व्हाइट, सेपिया और दूसरे लुक लगाएँ</span><small><span lang="hi">तस्वीरों को ब्लैक-एंड-व्हाइट या सेपिया में बदलें, या चमक बदलें।</span></small></a><a href="/hi/favicon-maker.html"><span lang="hi">फ़ेविकॉन (साइट आइकन) बनाएँ</span><small><span lang="hi">एक इमेज से पूरा फ़ेविकॉन सेट बनाएँ।</span></small></a><a href="/hi/image-stitch.html"><span lang="hi">कई इमेज को एक में जोड़ें</span><small><span lang="hi">कई इमेज को एक इमेज में जोड़ें या ऊपर-नीचे लगाएँ।</span></small></a><a href="/hi/id-photo.html"><span lang="hi">पासपोर्ट फ़ोटो साइज़ में क्रॉप करें और प्रिंट के लिए टाइल करें</span><small><span lang="hi">फ़ोटो को पासपोर्ट साइज़ में क्रॉप करें और L साइज़ शीट पर टाइल करें।</span></small></a><a href="/hi/image-color-picker.html"><span lang="hi">इमेज से रंग कोड चुनें</span><small><span lang="hi">इमेज से रंग कोड पढ़ें और मुख्य रंग खोजें।</span></small></a><a href="/hi/char-counter.html"><span lang="hi">अक्षर गिनें (आवेदन और रिपोर्ट के लिए)</span><small><span lang="hi">अपने टेक्स्ट के अक्षर, पंक्तियाँ और पांडुलिपि शीट गिनें।</span></small></a><a href="/hi/wareki-converter.html"><span lang="hi">ईसवी वर्ष और जापानी युग-वर्ष के बीच बदलें</span><small><span lang="hi">ईसवी वर्ष और जापानी युग-वर्ष के बीच बदलें।</span></small></a><a href="/hi/zenkaku-hankaku.html"><span lang="hi">फ़ुल-विड्थ, हाफ़-विड्थ, हिरागाना और काताकाना बदलें</span><small><span lang="hi">फ़ुल-विड्थ/हाफ़-विड्थ और हिरागाना/काताकाना के बीच बदलें।</span></small></a><a href="/hi/line-break-remover.html"><span lang="hi">टेक्स्ट से लाइन ब्रेक हटाएँ और ठीक करें</span><small><span lang="hi">PDF या अन्य जगह से कॉपी किए टेक्स्ट के लाइन ब्रेक ठीक करें।</span></small></a><a href="/hi/tax-calculator.html"><span lang="hi">उपभोग कर निकालें (टैक्स सहित / रहित)</span><small><span lang="hi">टैक्स सहित और टैक्स रहित कीमतें निकालें।</span></small></a><a href="/hi/date-calculator.html"><span lang="hi">उम्र, दो तारीख़ों के बीच के दिन और तारीख़ का आगे-पीछे होना निकालें</span><small><span lang="hi">उम्र और दो तारीख़ों के बीच के दिन निकालें।</span></small></a><a href="/hi/pdf-unlock.html"><span lang="hi">PDF से पासवर्ड हटाएँ</span><small><span lang="hi">जिस PDF का पासवर्ड आपको पता है, उससे पासवर्ड और पाबंदियाँ हटाएँ।</span></small></a><a href="/hi/pdf-protect.html"><span lang="hi">PDF में पासवर्ड जोड़ें</span><small><span lang="hi">PDF खोलने के लिए ज़रूरी पासवर्ड जोड़ें।</span></small></a><a href="/hi/ocr-text.html"><span lang="hi">इमेज और PDF से टेक्स्ट पढ़ें (OCR)</span><small><span lang="hi">इमेज और स्कैन किए PDF में मौजूद लिखावट को टेक्स्ट में बदलें।</span></small></a><a href="/hi/pdf-compare.html"><span lang="hi">दो PDF की तुलना करें (अंतर खोजें)</span><small><span lang="hi">दो PDF के बीच टेक्स्ट के अंतर रंग-कोडित रूप में दिखाएँ।</span></small></a><a href="/hi/password-generator.html"><span lang="hi">मज़बूत रैंडम पासवर्ड बनाएँ</span><small><span lang="hi">मज़बूत रैंडम पासवर्ड तुरंत बनाएँ।</span></small></a><a href="/hi/percent-calculator.html"><span lang="hi">प्रतिशत, छूट और % बदलाव निकालें</span><small><span lang="hi">प्रतिशत, छूट और % बदलाव तुरंत निकालें।</span></small></a><a href="/hi/line-sort-dedupe.html"><span lang="hi">दोहराई पंक्तियाँ हटाएँ और सूची को क्रम में लगाएँ</span><small><span lang="hi">दोहराई गई पंक्तियाँ हटाएँ और उन्हें क्रम में लगाएँ।</span></small></a><a href="/hi/unit-converter.html"><span lang="hi">यूनिट कन्वर्टर (लंबाई, वज़न, क्षेत्रफल, तापमान और बहुत कुछ)</span><small><span lang="hi">लंबाई, वज़न, क्षेत्रफल, तापमान और बहुत कुछ तुरंत बदलें।</span></small></a><a href="/hi/zip-maker.html"><span lang="hi">ZIP फ़ाइल बनाएँ</span><small><span lang="hi">कई फ़ाइलों को एक ZIP में पैक करें।</span></small></a><a href="/hi/zip-extract.html"><span lang="hi">ZIP फ़ाइल खोलें (अनज़िप)</span><small><span lang="hi">देखें कि ZIP फ़ाइल में क्या है और ज़रूरी फ़ाइलें निकालें।</span></small></a><a href="/hi/file-hash.html"><span lang="hi">फ़ाइल का हैश (SHA-256) जाँचें</span><small><span lang="hi">फ़ाइल का हैश निकालें और उसकी तुलना करें।</span></small></a><a href="/hi/csv-json.html"><span lang="hi">CSV और JSON बदलें</span><small><span lang="hi">CSV और JSON के बीच तुरंत बदलें।</span></small></a><a href="/hi/svg-to-png.html"><span lang="hi">SVG को PNG में बदलें</span><small><span lang="hi">SVG फ़ाइल को PNG इमेज में बदलें।</span></small></a><a href="/hi/file-base64.html"><span lang="hi">फ़ाइलें और Base64 बदलें</span><small><span lang="hi">फ़ाइलों और Base64 टेक्स्ट के बीच बदलें।</span></small></a><a href="/hi/json-formatter.html"><span lang="hi">JSON फ़ॉर्मैट और वैलिडेट करें</span><small><span lang="hi">JSON को फ़ॉर्मैट, मिनिफ़ाई और वैलिडेट करें।</span></small></a><a href="/hi/text-diff.html"><span lang="hi">दो टेक्स्ट की तुलना करें (Diff)</span><small><span lang="hi">दो टेक्स्ट के बीच के अंतर पंक्ति-दर-पंक्ति दिखाएँ।</span></small></a><a href="/hi/xlsx-to-csv.html"><span lang="hi">Excel को CSV या JSON में बदलें</span><small><span lang="hi">Excel की एक शीट को CSV, TSV या JSON में बदलें।</span></small></a><a href="/hi/csv-to-xlsx.html"><span lang="hi">CSV को Excel (.xlsx) में बदलें</span><small><span lang="hi">CSV को Excel (.xlsx) फ़ाइल में बदलें।</span></small></a><a href="/hi/docx-to-text.html"><span lang="hi">Word फ़ाइल से टेक्स्ट निकालें</span><small><span lang="hi">Word फ़ाइल से सादा टेक्स्ट निकालें।</span></small></a><a href="/hi/pptx-to-text.html"><span lang="hi">PowerPoint से टेक्स्ट निकालें</span><small><span lang="hi">PowerPoint की हर स्लाइड का टेक्स्ट निकालें।</span></small></a><a href="/hi/pdf-to-word.html"><span lang="hi">PDF का टेक्स्ट Word में डालें</span><small><span lang="hi">PDF का टेक्स्ट Word फ़ाइल में निकालें।</span></small></a><a href="/hi/image-to-word.html"><span lang="hi">इमेज को Word फ़ाइल में डालें</span><small><span lang="hi">इमेज को Word फ़ाइल में डालें, हर पेज पर एक।</span></small></a><a href="/hi/xlsx-formula-to-value.html"><span lang="hi">Excel फ़ॉर्मूला को मान में बदलें</span><small><span lang="hi">Excel फ़ॉर्मूला को उनके मान से बदलें।</span></small></a><a href="/hi/office-metadata-remove.html"><span lang="hi">Office फ़ाइलों से लेखक की जानकारी हटाएँ</span><small><span lang="hi">Office फ़ाइलों में सहेजे लेखक और अन्य विवरण मिटाएँ।</span></small></a><a href="/hi/office-image-extract.html"><span lang="hi">Word, Excel और PowerPoint से इमेज निकालें</span><small><span lang="hi">Office फ़ाइलों की इमेज को ZIP के रूप में निकालें।</span></small></a><a href="/hi/docx-to-html.html"><span lang="hi">Word को HTML में बदलें</span><small><span lang="hi">Word के टेक्स्ट को HTML में बदलें।</span></small></a><a href="/hi/xlsx-split-sheets.html"><span lang="hi">Excel फ़ाइल को शीट के अनुसार बाँटें</span><small><span lang="hi">Excel की हर शीट को उसकी अपनी CSV या TSV में बाँटें।</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="hi">परिचय / संपर्क (जापानी)</span></a><a href="/hi/privacy.html"><span lang="hi">गोपनीयता नीति</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="hi">X पर अपडेट</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const TR={"Could not save. Please try again.": "सहेजा नहीं जा सका। कृपया फिर कोशिश करें।", "Password-protected PDFs are not supported. Remove the password and try again.": "पासवर्ड वाले PDF समर्थित नहीं हैं। पासवर्ड हटाकर फिर कोशिश करें।", "Create cards": "कार्ड बनाएँ", "Save one card as an image": "एक कार्ड इमेज के रूप में सहेजें", "Please enter at least one name in the list.": "कृपया सूची में कम से कम एक नाम दर्ज करें।", "Please enter a name.": "कृपया एक नाम दर्ज करें।", "Could not create the cards. Please try again.": "कार्ड नहीं बन सके। कृपया दोबारा कोशिश करें।", "Could not read the PDF. It may be damaged or in an unsupported format.": "PDF पढ़ा नहीं जा सका। फ़ाइल खराब हो सकती है या उसका फ़ॉर्मैट समर्थित नहीं है।", "  page(s) / ": "  पेज / ", "The list can have up to 60 people.": "सूची में अधिकतम 60 लोग हो सकते हैं।", "Could not create the image.": "इमेज नहीं बन सकी।", "Page 1 preview": "पेज 1 का पूर्वावलोकन", "When printing, use A4 at actual size (100%). Scaling will change the card size.": "प्रिंट करते समय A4 को वास्तविक आकार (100%) पर रखें। स्केलिंग से कार्ड का साइज़ बदल जाएगा।", "Save PDF": "PDF सहेजें"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=T("Could not save. Please try again.",[])}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return T("Password-protected PDFs are not supported. Remove the password and try again.",[]);
+  return T("Could not read the PDF. It may be damaged or in an unsupported format.",[]);
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  const out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+const SZ={card:{w:91,h:55,cols:2,rows:5},tag:{w:100,h:70,cols:2,rows:4}};
+const PW=1654,PH=2339,MM=PW/210;
+const F={sans:'"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Noto Sans CJK JP","Yu Gothic","Meiryo",sans-serif',serif:'"Hiragino Mincho ProN","Noto Serif JP","Noto Serif CJK JP","Yu Mincho","MS PMincho",serif'};
+const IDS=["org","name","kana","ttl","ppl","c1","c2","c3","clr","font","band","al"];
+$("go").textContent=T("Create cards",[]);
+function onMode(){const l=val("mode")==="list";$("one").hidden=l;$("lst").hidden=!l}
+document.querySelectorAll('input[name=mode]').forEach(r=>r.onchange=()=>{onMode();persist()});
+function persist(){try{
+  if($("rem").checked){const o={};IDS.forEach(k=>o[k]=$(k).value);o.sz=val("sz");o.mode=val("mode");o.cut=$("cut").checked;localStorage.setItem("pm_namecard",JSON.stringify(o))}
+  else localStorage.removeItem("pm_namecard")}catch(e){}}
+try{
+  const s=JSON.parse(localStorage.getItem("pm_namecard")||"null");
+  if(s){IDS.forEach(k=>{if(s[k]!=null)$(k).value=s[k]});
+    const a=document.querySelector('input[name=sz][value='+s.sz+']');if(a)a.checked=true;
+    const b=document.querySelector('input[name=mode][value='+s.mode+']');if(b)b.checked=true;
+    $("cut").checked=!!s.cut;$("rem").checked=true;onMode()}
+}catch(e){}
+IDS.forEach(k=>$(k).addEventListener("input",persist));$("rem").onchange=persist;
+document.querySelectorAll('input[name=sz]').forEach(r=>r.onchange=persist);
+function fit(x,text,maxW,size,min,weight,ff){
+  let s=size;x.font=weight+" "+s+"px "+ff;
+  while(x.measureText(text).width>maxW&&s>min){s-=2;x.font=weight+" "+s+"px "+ff}
+  return s;
+}
+function card(x,X,Y,w,h,o,p){
+  const k=w/716,pad=40*k,ff=F[o.font];
+  x.save();x.beginPath();x.rect(X,Y,w,h);x.clip();
+  x.fillStyle="#fff";x.fillRect(X,Y,w,h);
+  const band=o.band,col=o.clr;
+  let left=X+pad,top=Y;
+  if(band==="top"){x.fillStyle=col;x.fillRect(X,Y,w,78*k);top=Y+78*k}
+  if(band==="left"){x.fillStyle=col;x.fillRect(X,Y,22*k,h);left=X+pad+14*k}
+  const cw=w-(left-X)-pad,ctr=o.al==="center",tx=ctr?left+cw/2:left;
+  x.textAlign=ctr?"center":"left";x.textBaseline="alphabetic";
+  // org
+  if(o.org){
+    const sz=fit(x,o.org,cw,Math.round(30*k),Math.round(18*k),700,ff);
+    if(band==="top"){x.fillStyle="#fff";x.fillText(o.org,tx,Y+78*k/2+sz*.35)}
+    else{x.fillStyle=col;x.fillText(o.org,tx,Y+pad+sz*.8)}
+  }
+  // name
+  const hasTop=band==="top";
+  const base=top+(hasTop?(h-78*k)*0.50:h*0.45);
+  x.fillStyle="#111";
+  const nsz=fit(x,p.name,cw,Math.round(70*k),Math.round(34*k),700,ff);
+  let nl=[p.name];
+  if(x.measureText(p.name).width>cw){nl=[];let cur="";for(const ch of p.name){if(x.measureText(cur+ch).width>cw&&cur){nl.push(cur);cur=ch}else cur+=ch}if(cur)nl.push(cur);nl=nl.slice(0,3)}
+  const y0=base-(nl.length-1)*nsz*0.55,step=nsz*1.15;
+  nl.forEach((l,i)=>x.fillText(l,tx,y0+i*step));
+  const yl=y0+(nl.length-1)*step;
+  if(o.kana){x.fillStyle="#555";const s=fit(x,o.kana,cw,Math.round(24*k),Math.round(16*k),400,ff);x.fillText(o.kana,tx,y0-nsz*.98)}
+  if(p.ttl){x.fillStyle=col;const s=fit(x,p.ttl,cw,Math.round(30*k),Math.round(18*k),700,ff);x.fillText(p.ttl,tx,yl+s*1.5)}
+  // contacts
+  const cs=[o.c1,o.c2,o.c3].filter(Boolean);
+  x.fillStyle="#333";
+  cs.forEach((c,i)=>{const s=fit(x,c,cw,Math.round(23*k),Math.round(14*k),400,ff);x.fillText(c,tx,Y+h-pad*0.75-(cs.length-1-i)*32*k)});
+  x.restore();
+}
+function build(o){
+  const S=SZ[o.sz],cw=S.w*MM,ch=S.h*MM,per=S.cols*S.rows;
+  const people=o.mode==="list"?o.people:[{name:o.name,ttl:o.ttl}];
+  const count=o.mode==="list"?people.length:per;
+  const pages=Math.ceil(count/per),out=[];
+  const gx=(PW-S.cols*cw)/2,gy=(PH-S.rows*ch)/2;
+  for(let pg=0;pg<pages;pg++){
+    const c=document.createElement("canvas");c.width=PW;c.height=PH;const x=c.getContext("2d");
+    x.fillStyle="#fff";x.fillRect(0,0,PW,PH);
+    for(let i=0;i<per;i++){
+      const idx=pg*per+i;if(idx>=count)break;
+      const p=o.mode==="list"?people[idx]:people[0];
+      const X=gx+(i%S.cols)*cw,Y=gy+Math.floor(i/S.cols)*ch;
+      card(x,X,Y,cw,ch,o,p);
+      if(o.cut){x.strokeStyle="#bbb";x.lineWidth=1.5;x.strokeRect(X,Y,cw,ch)}
+    }
+    out.push(c);
+  }
+  return out;
+}
+function single(o,p){
+  const S=SZ[o.sz],w=S.w*MM*2,h=S.h*MM*2;
+  const c=document.createElement("canvas");c.width=Math.round(w);c.height=Math.round(h);
+  card(c.getContext("2d"),0,0,w,h,o,p);return c;
+}
+$("go").onclick=async()=>{
+  const go=$("go");go.disabled=true;beginRun();
+  try{
+    const bad=m=>{const e=new Error(m);e.user=true;throw e};
+    const o={};IDS.forEach(k=>o[k]=$(k).value.trim());
+    o.sz=val("sz");o.mode=val("mode");o.cut=$("cut").checked;persist();
+    if(o.mode==="list"){
+      o.kana="";
+      o.people=o.ppl.split(/\r?\n/).map(l=>l.trim()).filter(Boolean).map(l=>{const a=l.split(/[,，\t]/).map(s=>s.trim());return {name:a[0],ttl:a[1]||""}}).filter(p=>p.name);
+      if(!o.people.length)bad(T("Please enter at least one name in the list.",[]));
+      if(o.people.length>60)bad(T("The list can have up to 60 people.",[]));
+    }else if(!o.name)bad(T("Please enter a name.",[]));
+    const FS=F[o.font];
+    if(document.fonts&&document.fonts.load){try{await document.fonts.load("700 40px "+FS,"名刺氏名")}catch(e){}}
+    $("barf").style.width="30%";
+    const cs=build(o);
+    const pdf=await PDFLib.PDFDocument.create();pdf.setTitle(o.mode==="list"?"名札":"名刺");pdf.setCreator("PDFのミカタ");
+    const ex=$("extra");ex.textContent="";
+    let n=0;
+    for(const c of cs){
+      const jb=await new Promise(r=>c.toBlob(r,"image/jpeg",.93));
+      if(!jb)throw new Error(T("Could not create the image.",[]));
+      const jp=await pdf.embedJpg(new Uint8Array(await jb.arrayBuffer()));
+      const pg=pdf.addPage([595.28,841.89]);pg.drawImage(jp,{x:0,y:0,width:595.28,height:841.89});
+      if(n===0){const im=document.createElement("img");im.src=URL.createObjectURL(jb);im.alt=T("Page 1 preview",[]);im.style.cssText="max-width:100%;width:300px;border:1px solid var(--line);background:#fff;margin-top:10px";ex.appendChild(im)}
+      n++;$("barf").style.width=(30+60*n/cs.length)+"%";
+    }
+    const blob=new Blob([await pdf.save()],{type:"application/pdf"});
+    const first=o.mode==="list"?o.people[0]:{name:o.name,ttl:o.ttl};
+    const sb=await new Promise(r=>single(o,first).toBlob(r,"image/png"));
+    const row=document.createElement("div");row.className="btnrow";row.style.justifyContent="center";
+    const pbtn=document.createElement("button");pbtn.type="button";pbtn.className="btn2";pbtn.textContent=T("Save one card as an image",[]);
+    pbtn.onclick=async()=>{try{await save(sb,"card.png","image/png")}catch(e){}};
+    row.appendChild(pbtn);ex.appendChild(row);
+    const dl=$("dl");dl.href="#";dl.textContent=T("Save PDF",[]);dl.style.display="inline-block";wire(dl,blob,(o.mode==="list"?"nametags":"namecards")+".pdf","application/pdf");
+    $("barf").style.width="100%";
+    $("info").textContent=cs.length+T("  page(s) / ",[])+fmt(blob.size);
+    $("msg").textContent=T("When printing, use A4 at actual size (100%). Scaling will change the card size.",[]);
+    finishOk();
+  }catch(e){console.error(e);$("msg").className="bad";$("msg").textContent=e.user?e.message:T("Could not create the cards. Please try again.",[])}
+  finally{endRun();go.disabled=false}
+};
+
+</script>
+</body>
+</html>
