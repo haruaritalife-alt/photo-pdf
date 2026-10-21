@@ -165,6 +165,7 @@ html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang
 .next{margin:20px 0 6px}
 .next h3{margin:0 0 10px;font-size:1.05rem}
 .ncards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ncards a.tool,.ncards .tool *{min-width:0;overflow-wrap:anywhere;hyphens:auto}
 @media(min-width:720px){.ncards{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .ncards a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper,#fff);box-shadow:0 3px 0 var(--line);text-decoration:none;color:var(--ink)}
 .ncards a.tool:hover{border-color:var(--stamp)}
@@ -328,7 +329,7 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Could not save. Please try again.": "Impossible d'enregistrer. Veuillez réessayer.", "Password-protected PDFs are not supported. Remove the password and try again.": "Les PDF protégés par mot de passe ne sont pas pris en charge. Retirez le mot de passe et réessayez.", "Copy result": "Copier le résultat", "Converted {0} row(s)": "{0} ligne(s) convertie(s)", "Could not convert. Please check the format of your data.": "Conversion impossible. Vérifiez le format de vos données.", "Converted {0} item(s)": "{0} élément(s) converti(s)", "Could not read the PDF. It may be damaged or in an unsupported format.": "Impossible de lire le PDF. Il est peut-être endommagé ou dans un format non pris en charge.", "Copied": "Copié", "Save as file": "Enregistrer en fichier", "Convert": "Convertir", "Use output as input": "Utiliser la sortie comme entrée"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Convert": "Convertir", "Could not read the PDF. It may be damaged or in an unsupported format.": "Impossible de lire le PDF. Il est peut-être endommagé ou dans un format non pris en charge.", "Copy result": "Copier le résultat", "Save as file": "Enregistrer en fichier", "Password-protected PDFs are not supported. Remove the password and try again.": "Les PDF protégés par mot de passe ne sont pas pris en charge. Retirez le mot de passe et réessayez.", "Converted {0} item(s)": "{0} élément(s) converti(s)", "Converted {0} row(s)": "{0} ligne(s) convertie(s)", "Could not convert. Please check the format of your data.": "Conversion impossible. Vérifiez le format de vos données.", "Copied": "Copié", "Could not save. Please try again.": "Impossible d'enregistrer. Veuillez réessayer.", "Use output as input": "Utiliser la sortie comme entrée"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";

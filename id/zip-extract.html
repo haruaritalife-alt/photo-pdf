@@ -165,6 +165,7 @@ html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang
 .next{margin:20px 0 6px}
 .next h3{margin:0 0 10px;font-size:1.05rem}
 .ncards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ncards a.tool,.ncards .tool *{min-width:0;overflow-wrap:anywhere;hyphens:auto}
 @media(min-width:720px){.ncards{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .ncards a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper,#fff);box-shadow:0 3px 0 var(--line);text-decoration:none;color:var(--ink)}
 .ncards a.tool:hover{border-color:var(--stamp)}
@@ -321,7 +322,7 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Password-protected ZIPs cannot be opened.": "ZIP yang dilindungi kata sandi tidak dapat dibuka.", "Could not save. Please try again.": "Tidak dapat menyimpan. Coba lagi.", "Password-protected PDFs are not supported. Remove the password and try again.": "PDF yang dilindungi kata sandi tidak didukung. Hapus kata sandinya lalu coba lagi.", "Save": "Simpan", "（{0} file(s)）": "（{0} berkas）", "This ZIP is empty.": "ZIP ini kosong.", "Could not read the PDF. It may be damaged or in an unsupported format.": "Tidak dapat membaca PDF. Mungkin rusak atau formatnya tidak didukung.", "Could not extract this file.": "Tidak dapat mengekstrak berkas ini.", "Choose another ZIP": "Pilih ZIP lain", "Copied": "Tersalin", "Could not read the ZIP. It may be damaged or not a ZIP.": "Tidak dapat membaca ZIP. Mungkin rusak atau bukan ZIP."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Could not read the ZIP. It may be damaged or not a ZIP.": "Tidak dapat membaca ZIP. Mungkin rusak atau bukan ZIP.", "Choose another ZIP": "Pilih ZIP lain", "Could not read the PDF. It may be damaged or in an unsupported format.": "Tidak dapat membaca PDF. Mungkin rusak atau formatnya tidak didukung.", "（{0} file(s)）": "（{0} berkas）", "This ZIP is empty.": "ZIP ini kosong.", "Password-protected PDFs are not supported. Remove the password and try again.": "PDF yang dilindungi kata sandi tidak didukung. Hapus kata sandinya lalu coba lagi.", "Could not extract this file.": "Tidak dapat mengekstrak berkas ini.", "Password-protected ZIPs cannot be opened.": "ZIP yang dilindungi kata sandi tidak dapat dibuka.", "Copied": "Tersalin", "Could not save. Please try again.": "Tidak dapat menyimpan. Coba lagi.", "Save": "Simpan"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
