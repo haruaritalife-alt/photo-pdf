@@ -195,7 +195,7 @@ a.tool{box-shadow:0 3px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.07)}}
 .pop a:active,.btn2:active,button:not(:disabled):active{transform:scale(.97)}a.tool:active{transform:translateY(0) scale(.985)}
 h1,h2{letter-spacing:.01em}
 @media (prefers-reduced-motion:reduce){.pop a:active,.btn2:active,button:active,a.tool:active{transform:none}}
-.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b::before{content:'\1F552  '}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b{display:inline-flex;align-items:center;gap:6px}.pop.recent b svg,.pop.recent a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}.pop.recent a{display:inline-flex;align-items:center;gap:6px}.pop.recent a .pi{margin-right:0}
 </style>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "工具", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "查看并删除 PDF 属性（作者、标题）", "item": "https://pdfmikata.com/pdf-metadata.html"}]}</script>
@@ -307,7 +307,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Updated the properties{0}": "已修改属性{0}", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Removed all properties{0}": "已删除所有属性{0}", "Create the PDF": "生成 PDF", "Could not save. Please try again.": "无法保存，请重试。", "none": "无", "{0} (excluding links)": "{0} 个（不含链接）", "Choose another PDF": "选择其他 PDF", "Text and images on the pages stay as they are.": "页面上的文字和图片保持原样。", "p": "页", " (also removed {0} annotation(s))": "（另外删除了 {0} 个批注）", "Save PDF": "保存 PDF", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={" (also removed {0} annotation(s))": "（另外删除了 {0} 个批注）", "{0} (excluding links)": "{0} 个（不含链接）", "Choose another PDF": "选择其他 PDF", "Create the PDF": "生成 PDF", "Could not save. Please try again.": "无法保存，请重试。", "none": "无", "Updated the properties{0}": "已修改属性{0}", "p": "页", "Text and images on the pages stay as they are.": "页面上的文字和图片保持原样。", "Save PDF": "保存 PDF", "Removed all properties{0}": "已删除所有属性{0}", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
