@@ -165,6 +165,7 @@ html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang
 .next{margin:20px 0 6px}
 .next h3{margin:0 0 10px;font-size:1.05rem}
 .ncards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ncards a.tool,.ncards .tool *{min-width:0;overflow-wrap:anywhere;hyphens:auto}
 @media(min-width:720px){.ncards{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .ncards a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper,#fff);box-shadow:0 3px 0 var(--line);text-decoration:none;color:var(--ink)}
 .ncards a.tool:hover{border-color:var(--stamp)}
@@ -323,7 +324,7 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"No text was found. This may be a scanned (image-only) PDF, which needs OCR (text recognition).": "没有找到文字。这可能是扫描版（纯图片）PDF，需要使用 OCR（文字识别）。", "Could not save. Please try again.": "无法保存，请重试。", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Copy": "复制", "p": "页", "Copied": "已复制", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。", "Extracting… ": "正在提取… ", "Page ": "页码 ", "Choose another PDF": "选择其他 PDF", "{0} characters from {1} page(s)": "从 {1} 页中提取了 {0} 个字符", "Line breaks and order may differ from the PDF. Please check before using.": "换行和顺序可能与 PDF 不同。使用前请检查。", "Extract text": "提取文字", "Extracted text": "提取的文字", "Save as text file (.txt)": "保存为文本文件（.txt）"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Choose another PDF": "选择其他 PDF", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。", "{0} characters from {1} page(s)": "从 {1} 页中提取了 {0} 个字符", "No text was found. This may be a scanned (image-only) PDF, which needs OCR (text recognition).": "没有找到文字。这可能是扫描版（纯图片）PDF，需要使用 OCR（文字识别）。", "Copy": "复制", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "p": "页", "Extracting… ": "正在提取… ", "Line breaks and order may differ from the PDF. Please check before using.": "换行和顺序可能与 PDF 不同。使用前请检查。", "Page ": "页码 ", "Extracted text": "提取的文字", "Copied": "已复制", "Could not save. Please try again.": "无法保存，请重试。", "Save as text file (.txt)": "保存为文本文件（.txt）", "Extract text": "提取文字"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
