@@ -180,6 +180,9 @@ html[data-lang="en"] #bar::after{content:"Working… processed only on this devi
 html[data-lang="zh"] #bar::after{content:"处理中…仅在此设备上处理"}
 html[data-lang="es"] #bar::after{content:"Procesando… solo en este dispositivo"}
 html[data-lang="ko"] #bar::after{content:"처리 중… 이 기기 안에서만 처리합니다"}
+html[data-lang="pt"] #bar::after{content:"Processando… somente neste dispositivo"}
+html[data-lang="fr"] #bar::after{content:"Traitement… uniquement sur cet appareil"}
+html[data-lang="id"] #bar::after{content:"Memproses… hanya di perangkat ini"}
 a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
 
 @media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}
@@ -229,11 +232,12 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 <link href="https://pdfmikata.com/zh/csv-json.html" hreflang="zh-Hans" rel="alternate"/>
 <link href="https://pdfmikata.com/es/csv-json.html" hreflang="es" rel="alternate"/>
 <link href="https://pdfmikata.com/ko/csv-json.html" hreflang="ko" rel="alternate"/>
+<link href="https://pdfmikata.com/pt/csv-json.html" hreflang="pt" rel="alternate"/>
 <link href="https://pdfmikata.com/csv-json.html" hreflang="x-default" rel="alternate"/>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2376251801221434" crossorigin="anonymous"></script>
 </head>
 <body>
-<header class="top"><div class="top-in"><a class="brand" href="/zh/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma / 언어" id="langsel"><option value="/csv-json.html">日本語</option><option value="/en/csv-json.html">English</option><option selected="" value="/zh/csv-json.html">简体中文</option><option value="/es/csv-json.html">Español</option><option value="/ko/csv-json.html">한국어</option></select></div></div></header>
+<header class="top"><div class="top-in"><a class="brand" href="/zh/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma / 언어" id="langsel"><option value="/csv-json.html">日本語</option><option value="/en/csv-json.html">English</option><option selected="" value="/zh/csv-json.html">简体中文</option><option value="/es/csv-json.html">Español</option><option value="/ko/csv-json.html">한국어</option><option value="/pt/csv-json.html">Português</option></select></div></div></header>
 <nav aria-label="站内导航" class="sub"><div class="sub-in"><a href="/zh/"><span lang="zh-Hans">首页</span></a><a aria-current="page" href="/zh/#cat-convert"><span lang="zh-Hans">转换</span></a><a href="/zh/#cat-edit"><span lang="zh-Hans">编辑</span></a><a href="/zh/#cat-optimize"><span lang="zh-Hans">优化</span></a><a href="/zh/#cat-create"><span lang="zh-Hans">制作</span></a><a href="/zh/#guide"><span lang="zh-Hans">教程</span></a></div></nav>
 <nav aria-label="路径导航" class="crumb"><ol><li><a href="/zh/"><span lang="zh-Hans">首页</span></a></li><li><a href="/zh/#tools"><span lang="zh-Hans">工具</span></a></li><li><span aria-current="page"><span lang="zh-Hans">CSV 与 JSON 互相转换</span></span></li></ol></nav>
 <main>
@@ -295,7 +299,7 @@ body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI"
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Convert": "转换", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Could not convert. Please check the format of your data.": "无法转换。请检查数据的格式。", "Converted {0} row(s)": "已转换 {0} 行", "Converted {0} item(s)": "已转换 {0} 项", "Save as file": "保存为文件", "Use output as input": "把结果放回输入框", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。", "Could not save. Please try again.": "无法保存，请重试。", "Copy result": "复制结果", "Copied": "已复制"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Could not save. Please try again.": "无法保存，请重试。", "Copied": "已复制", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。", "Converted {0} row(s)": "已转换 {0} 行", "Converted {0} item(s)": "已转换 {0} 项", "Use output as input": "把结果放回输入框", "Could not convert. Please check the format of your data.": "无法转换。请检查数据的格式。", "Copy result": "复制结果", "Save as file": "保存为文件", "Convert": "转换"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
