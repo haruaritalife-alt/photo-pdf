@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html data-lang="it" lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Crea una favicon (icona del sito) (gratis, senza registrazione)｜PDF Mikata</title>
+<meta content="Strumento gratuito che crea un set completo di favicon da una sola immagine: PNG di ogni dimensione, favicon.ico e i tag HTML, tutto in uno ZIP. L'immagine non lascia mai il tuo dispositivo." name="description"/>
+
+
+<link href="https://pdfmikata.com/it/favicon-maker.html" rel="canonical"/>
+<script src="/site.js"></script>
+
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+.next{margin:20px 0 6px}
+.next h3{margin:0 0 10px;font-size:1.05rem}
+.ncards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ncards a.tool,.ncards .tool *{min-width:0;overflow-wrap:anywhere;hyphens:auto}
+@media(min-width:720px){.ncards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.ncards a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper,#fff);box-shadow:0 3px 0 var(--line);text-decoration:none;color:var(--ink)}
+.ncards a.tool:hover{border-color:var(--stamp)}
+.ncards .ic{flex:none;width:40px;height:40px;border-radius:11px;background:var(--ink);color:var(--btn-ink);display:grid;place-items:center}
+.ncards .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ncards .tx b{display:block;font-size:.95rem;line-height:1.4}
+.ncards .tx .d{display:block;color:var(--sub);font-size:.8rem;line-height:1.5;margin-top:2px}
+.next .allt{display:block;margin:14px 0 0;padding:13px 16px;border:2px solid var(--ink);border-radius:12px;text-align:center;font-weight:700;text-decoration:none;color:var(--ink);background:var(--paper,#fff)}
+.next .allt:hover{background:var(--ink);color:var(--btn-ink)}
+.safe{margin:14px 0 0;font-size:.85rem;color:var(--sub);line-height:1.6}
+#bar::after{content:"処理中…この端末の中だけで処理しています";display:block;margin-top:6px;font-size:.8rem;color:var(--sub)}
+html[data-lang="en"] #bar::after{content:"Working… processed only on this device"}
+html[data-lang="zh"] #bar::after{content:"处理中…仅在此设备上处理"}
+html[data-lang="es"] #bar::after{content:"Procesando… solo en este dispositivo"}
+html[data-lang="ko"] #bar::after{content:"처리 중… 이 기기 안에서만 처리합니다"}
+html[data-lang="pt"] #bar::after{content:"Processando… somente neste dispositivo"}
+html[data-lang="fr"] #bar::after{content:"Traitement… uniquement sur cet appareil"}
+html[data-lang="id"] #bar::after{content:"Memproses… hanya di perangkat ini"}
+html[data-lang="it"] #bar::after{content:"Elaborazione… solo su questo dispositivo"}
+html[data-lang="ru"] #bar::after{content:"Обработка… только на этом устройстве"}
+html[data-lang="vi"] #bar::after{content:"Đang xử lý… chỉ trên thiết bị này"}
+html[data-lang="tr"] #bar::after{content:"İşleniyor… yalnızca bu cihazda"}
+html[data-lang="de"] #bar::after{content:"Wird verarbeitet… nur auf diesem Gerät"}
+html[data-lang="hi"] #bar::after{content:"प्रोसेस हो रहा है… केवल इसी डिवाइस पर"}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}
+html{background:var(--desk)}body{background-image:radial-gradient(900px 420px at 12% -6%,rgba(63,181,174,.11),transparent 62%),radial-gradient(700px 420px at 100% 0,rgba(90,120,210,.08),transparent 58%);background-repeat:no-repeat}
+a.tool{box-shadow:0 3px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.07)}}
+.pop a,.btn2,button,a.tool{transition:transform .12s ease,box-shadow .15s ease,border-color .15s ease,background-color .15s ease,color .15s ease}
+.pop a:active,.btn2:active,button:not(:disabled):active{transform:scale(.97)}a.tool:active{transform:translateY(0) scale(.985)}
+h1,h2{letter-spacing:.01em}
+@media (prefers-reduced-motion:reduce){.pop a:active,.btn2:active,button:active,a.tool:active{transform:none}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b{display:inline-flex;align-items:center;gap:6px}.pop.recent b svg,.pop.recent a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}.pop.recent a{display:inline-flex;align-items:center;gap:6px}.pop.recent a .pi{margin-right:0}
+</style>
+<script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "Strumenti", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "Crea una favicon (icona del sito)", "item": "https://pdfmikata.com/favicon-maker.html"}]}</script>
+<meta content="website" property="og:type"/>
+<meta content="PDF Mikata" property="og:site_name"/>
+<meta content="it_IT" property="og:locale"/>
+
+<meta content="Crea una favicon (icona del sito) (gratis, senza registrazione)｜PDF Mikata" property="og:title"/>
+<meta content="Strumento gratuito che crea un set completo di favicon da una sola immagine: PNG di ogni dimensione, favicon.ico e i tag HTML, tutto in uno ZIP. L'immagine non lascia mai il tuo dispositivo." property="og:description"/>
+<meta content="https://pdfmikata.com/it/favicon-maker.html" property="og:url"/>
+<meta content="https://pdfmikata.com/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Crea una favicon (icona del sito) (gratis, senza registrazione)｜PDF Mikata" name="twitter:title"/>
+<meta content="Strumento gratuito che crea un set completo di favicon da una sola immagine: PNG di ogni dimensione, favicon.ico e i tag HTML, tutto in uno ZIP. L'immagine non lascia mai il tuo dispositivo." name="twitter:description"/>
+<meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="#16393c" name="theme-color"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Crea una favicon (icona del sito)", "alternateName": "Make a Favicon (Site Icon)", "url": "https://pdfmikata.com/it/favicon-maker.html", "description": "Strumento gratuito che crea un set completo di favicon da una sola immagine: PNG di ogni dimensione, favicon.ico e i tag HTML, tutto in uno ZIP. L'immagine non lascia mai il tuo dispositivo.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "it", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/it/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
+<style>
+main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
+
+.lang{display:flex;align-items:center;border:0;overflow:visible}
+.lang .gl{width:18px;height:18px;margin:0 6px 0 10px;color:#fcfefd;flex:none}
+.lang select{appearance:none;-webkit-appearance:none;min-height:44px;border:1px solid rgba(255,255,255,.5);border-radius:6px;background:transparent;color:#fcfefd;font:inherit;font-weight:700;font-size:.85rem;padding:0 28px 0 12px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23fcfefd' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.lang select option{color:#16393c;background:#fcfefd}
+.lang select:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+@media (max-width:420px){.lang .gl{display:none}}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.skip{position:absolute;left:8px;top:-60px;z-index:100;background:var(--btn-ink,#fff);color:var(--ink);padding:10px 14px;border-radius:10px;border:2px solid var(--stamp);font-weight:700;text-decoration:none;transition:top .15s}
+.skip:focus{top:8px}
+.top{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.sub{background:color-mix(in srgb,var(--paper) 80%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px)}
+ul.g a,.more a,.ncards a.tool,.cats a.tool{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background-color .15s ease}
+ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:translateY(-2px)}
+ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform:scale(.98)}
+.pop svg,.pi,.ic svg,.ncards .ic svg{stroke-width:1.8}
+#pm-toast{position:fixed;left:50%;bottom:18px;transform:translate(-50%,24px);opacity:0;z-index:60;width:min(560px,calc(100vw - 24px));background:var(--paper);color:var(--ink);border:1px solid var(--line);border-left:5px solid var(--stamp);border-radius:14px;padding:12px 40px 12px 14px;box-shadow:0 14px 34px -12px rgba(0,0,0,.35);transition:opacity .22s,transform .22s;pointer-events:none;font-size:14px;line-height:1.6}
+#pm-toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#pm-toast.warn{border-left-color:#d98a1c}
+#pm-toast b{display:block;margin-bottom:4px}
+#pm-toast .nx{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+#pm-toast .nx a{border:1px solid var(--line);border-radius:999px;padding:4px 12px;color:var(--ink);text-decoration:none;font-weight:600;background:var(--desk)}
+#pm-toast .nx a:hover{border-color:var(--stamp)}
+#pm-toast .x{position:absolute;right:6px;top:6px;width:30px;height:30px;border:0;background:transparent;color:var(--sub);font-size:20px;line-height:1;cursor:pointer;border-radius:8px}
+@media (prefers-reduced-motion:reduce){#pm-toast,.skip{transition:none}ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:none}}
+.lite .aurora{display:none}.lite .hero::before,.lite .hero::after{animation:none}
+</style><link href="https://pdfmikata.com/favicon-maker.html" hreflang="ja" rel="alternate"/>
+<link href="https://pdfmikata.com/en/favicon-maker.html" hreflang="en" rel="alternate"/>
+<link href="https://pdfmikata.com/zh/favicon-maker.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://pdfmikata.com/es/favicon-maker.html" hreflang="es" rel="alternate"/>
+<link href="https://pdfmikata.com/ko/favicon-maker.html" hreflang="ko" rel="alternate"/>
+<link href="https://pdfmikata.com/pt/favicon-maker.html" hreflang="pt" rel="alternate"/>
+<link href="https://pdfmikata.com/fr/favicon-maker.html" hreflang="fr" rel="alternate"/>
+<link href="https://pdfmikata.com/id/favicon-maker.html" hreflang="id" rel="alternate"/>
+<link href="https://pdfmikata.com/vi/favicon-maker.html" hreflang="vi" rel="alternate"/>
+<link href="https://pdfmikata.com/tr/favicon-maker.html" hreflang="tr" rel="alternate"/>
+<link href="https://pdfmikata.com/de/favicon-maker.html" hreflang="de" rel="alternate"/>
+<link href="https://pdfmikata.com/hi/favicon-maker.html" hreflang="hi" rel="alternate"/>
+<link href="https://pdfmikata.com/it/favicon-maker.html" hreflang="it" rel="alternate"/>
+<link href="https://pdfmikata.com/ru/favicon-maker.html" hreflang="ru" rel="alternate"/>
+<link href="https://pdfmikata.com/favicon-maker.html" hreflang="x-default" rel="alternate"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2376251801221434" crossorigin="anonymous"></script>
+</head>
+<body><a class="skip" href="#main">Vai al contenuto</a>
+<header class="top"><div class="top-in"><a class="brand" href="/it/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma / 언어" id="langsel"><option value="/favicon-maker.html">日本語</option><option value="/en/favicon-maker.html">English</option><option value="/zh/favicon-maker.html">简体中文</option><option value="/es/favicon-maker.html">Español</option><option value="/ko/favicon-maker.html">한국어</option><option value="/pt/favicon-maker.html">Português</option><option value="/fr/favicon-maker.html">Français</option><option value="/id/favicon-maker.html">Bahasa Indonesia</option><option value="/vi/favicon-maker.html">Tiếng Việt</option><option value="/tr/favicon-maker.html">Türkçe</option><option value="/de/favicon-maker.html">Deutsch</option><option value="/hi/favicon-maker.html">हिन्दी</option><option selected="" value="/it/favicon-maker.html">Italiano</option><option value="/ru/favicon-maker.html">Русский</option></select></div></div></header>
+<nav aria-label="Navigazione del sito" class="sub"><div class="sub-in"><a href="/it/"><span lang="it">Home</span></a><a href="/it/#cat-convert"><span lang="it">Conversione</span></a><a href="/it/#cat-edit"><span lang="it">Modifica</span></a><a href="/it/#cat-optimize"><span lang="it">Ottimizza</span></a><a aria-current="page" href="/it/#cat-create"><span lang="it">Crea</span></a><a href="/it/#guide"><span lang="it">Guide</span></a></div></nav>
+<nav aria-label="Percorso di navigazione" class="crumb"><ol><li><a href="/it/"><span lang="it">Home</span></a></li><li><a href="/it/#tools"><span lang="it">Strumenti</span></a></li><li><span aria-current="page"><span lang="it">Crea una favicon (icona del sito)</span></span></li></ol></nav>
+<main id="main" tabindex="-1">
+<h1><span lang="it">Crea una favicon (icona del sito)</span></h1>
+<p class="lead"><span lang="it">Crea in fretta un'icona per blog o sito.</span></p>
+<p class="safe"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="9" rx="2" width="14" x="5" y="11"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><span><span lang="it"><b>Le tue immagini non vengono mai caricate.</b> Tutto viene elaborato su questo dispositivo.</span></span></p><ol class="steps"><li><b>1</b><span lang="it">Scegli un'immagine</span></li><li><b>2</b><span lang="it">Scegli lo sfondo</span></li><li><b>3</b><span lang="it">Salva le favicon</span></li></ol>
+<label class="pick" id="drop"><input accept="image/*,.heic,.heif" id="file" type="file"/><span id="pt"><span lang="it">Scegli un'immagine</span></span><small><span lang="it">Seleziona una sola immagine</span></small></label>
+<p class="note2" id="finfo" style="display:none"></p>
+<section class="set" id="set" style="display:none">
+<div class="row"><span><span lang="it">Sfondo</span></span><label><input checked="" name="bg" type="radio" value="t"/><span lang="it">Trasparente</span></label><label><input name="bg" type="radio" value="w"/><span lang="it">Bianco</span></label></div>
+<div class="row"><span><span lang="it">Margine interno</span></span><label><input checked="" name="pd" type="radio" value="0"/><span lang="it">Nessuno</span></label><label><input name="pd" type="radio" value="0.1"/><span lang="it">Piccolo</span></label><label><input name="pd" type="radio" value="0.2"/><span lang="it">Grande</span></label></div>
+<p class="note2"><span lang="it">Il centro dell'immagine viene ritagliato in un quadrato. I file PNG in varie dimensioni e favicon.ico vengono salvati insieme in uno ZIP.</span></p>
+<button disabled="" id="go"></button>
+</section>
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="it">Fatto</span></div>
+<p id="info"></p>
+<a href="#" id="dl"></a>
+<div id="extra"></div>
+<p aria-live="polite" id="msg"></p>
+<p class="safe"><span lang="it">🔒 I tuoi file non vengono mai inviati a un server esterno. Tutto viene elaborato in sicurezza all'interno di questo browser.</span></p>
+<div class="support" hidden="" id="support"><p><span lang="it">Se PDF Mikata ti è stato utile, una piccola mancia sarebbe molto gradita.</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="it">Lascia una mancia (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="it">Invia un regalo (lista desideri Amazon)</span></a></div>
+</section>
+<div class="next" id="next"><h3><span lang="it">Strumenti usati spesso insieme</span></h3><div class="ncards"><a class="tool" href="/it/image-crop.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 3v14h14"></path><path d="M3 7h14v14"></path></svg></span><div class="tx"><b><span lang="it">Ritaglia e ruota l'immagine</span></b><span class="d"><span lang="it">Ritaglia e ruota.</span></span></div></a><a class="tool" href="/it/image-resize.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M8 16l8-8M12 8h4v4"></path></svg></span><div class="tx"><b><span lang="it">Ridimensiona le immagini in pixel</span></b><span class="d"><span lang="it">Ridimensiona per larghezza, altezza o percentuale.</span></span></div></a><a class="tool" href="/it/image-convert.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="11" rx="2" width="11" x="3" y="3"></rect><rect height="11" rx="2" width="11" x="10" y="10"></rect><path d="M6 8l2-2 2 2"></path></svg></span><div class="tx"><b><span lang="it">Converti il formato delle immagini (JPG, PNG, WebP)</span></b><span class="d"><span lang="it">Converti in JPG, PNG, WebP.</span></span></div></a><a class="tool" href="/it/merge-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="13" rx="1.5" width="10" x="3" y="3"></rect><rect height="13" rx="1.5" width="10" x="11" y="8"></rect></svg></span><div class="tx"><b><span lang="it">Unisci PDF</span></b><span class="d"><span lang="it">Unisci più PDF in uno solo.</span></span></div></a></div><a class="allt" href="/it/"><span lang="it">Vedi tutti gli strumenti (torna alla home)</span></a></div>
+<section class="guide" id="how">
+
+<div lang="it"><h2>Come si usa</h2>
+<ol>
+<li>Tocca «Scegli un'immagine» e seleziona un logo o un'altra immagine.</li>
+<li>Scegli uno «Sfondo» e un «Margine interno».</li>
+<li>Tocca «Crea favicon» e salva lo ZIP.</li>
+</ol>
+<h2>Come funziona</h2>
+<ul>
+<li>Il centro dell'immagine viene ritagliato in un quadrato.</li>
+<li>Vengono creati file PNG da 512, 192, 180, 48, 32 e 16 px e favicon.ico.</li>
+</ul>
+<h2>Note</h2>
+<ul>
+<li>Un'immagine quadrata dà il risultato più pulito.</li>
+<li>Dettagli fini e testo sono difficili da vedere nelle dimensioni piccole.</li>
+</ul>
+<h2>Domande frequenti</h2>
+<details><summary>Le mie immagini vengono caricate da qualche parte?</summary><p>No. Tutto viene elaborato nel browser, sul tuo dispositivo.</p></details>
+<details><summary>Cosa c'è nello ZIP?</summary><p>File PNG per ogni dimensione, favicon.ico e i tag da incollare nel tuo sito (html-tags.txt).</p></details>
+</div>
+</section>
+<div class="support endtip"><p><span lang="it">Se PDF Mikata ti è stato utile, una piccola mancia sarebbe molto gradita.</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank"><span lang="it">Lascia una mancia (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="it">Invia un regalo (lista desideri Amazon)</span></a></div>
+<section class="more rel"><h2><span lang="it">Guide per questo strumento</span></h2><a href="/it/favicon-maker-howto.html"><span lang="it">Come creare una favicon (gratis, anche da telefono)</span></a><a href="/it/favicon-maker-what.html"><span lang="it">Che cos'è una favicon e perché ti serve</span></a><a href="/it/favicon-maker-sizes.html"><span lang="it">Di quali dimensioni di favicon hai bisogno?</span></a><a href="/it/favicon-maker-html.html"><span lang="it">Come aggiungere una favicon al tuo sito (tag HTML)</span></a><a href="/it/favicon-maker-logo.html"><span lang="it">Consigli per creare una favicon da un logo</span></a><a href="/it/favicon-maker-blog.html"><span lang="it">Come impostare una favicon nel tuo blog</span></a><a href="/it/favicon-maker-trouble.html"><span lang="it">Cosa fare se la favicon non compare</span></a></section>
+<section class="more"><h2><span lang="it">Altri strumenti</span></h2><a href="/it/photo-to-pdf.html"><span lang="it">Da foto a PDF</span><small><span lang="it">Unisci più foto in un unico PDF nell'ordine che scegli. Puoi ruotare, riordinare e impostare un limite di dimensione.</span></small></a><a href="/it/merge-pdf.html"><span lang="it">Unisci PDF</span><small><span lang="it">Unisci più file PDF in uno solo, nell'ordine che scegli.</span></small></a><a href="/it/split-pdf.html"><span lang="it">Estrai o elimina pagine da un PDF</span><small><span lang="it">Tieni solo le pagine che ti servono, oppure rimuovi quelle che non ti servono.</span></small></a><a href="/it/compress-pdf.html"><span lang="it">Comprimi PDF</span><small><span lang="it">Riduci un PDF sotto la dimensione scelta, per i limiti di caricamento.</span></small></a><a href="/it/pdf-to-image.html"><span lang="it">Da PDF a immagini</span><small><span lang="it">Salva ogni pagina di un PDF come immagine JPEG o PNG.</span></small></a><a href="/it/image-convert.html"><span lang="it">Converti il formato delle immagini (JPG, PNG, WebP)</span><small><span lang="it">Converti più immagini insieme in JPG, PNG o WebP.</span></small></a><a href="/it/pdf-rotate.html"><span lang="it">Ruota e riordina le pagine di un PDF</span><small><span lang="it">Correggi le pagine ruotate di lato, cambia l'ordine o rimuovi pagine.</span></small></a><a href="/it/pdf-page-numbers.html"><span lang="it">Aggiungi i numeri di pagina a un PDF</span><small><span lang="it">Aggiungi i numeri di pagina a un PDF, scegliendo posizione e stile.</span></small></a><a href="/it/image-compress.html"><span lang="it">Comprimi e ridimensiona le immagini</span><small><span lang="it">Riduci il peso dei file immagine e, se vuoi, ridimensionali.</span></small></a><a href="/it/heic-to-jpg.html"><span lang="it">Converti HEIC in JPG</span><small><span lang="it">Converti le foto HEIC dell'iPhone in JPG o PNG.</span></small></a><a href="/it/pdf-split.html"><span lang="it">Dividi PDF</span><small><span lang="it">Dividi un PDF in più file: una pagina ciascuno, ogni N pagine o per intervalli.</span></small></a><a href="/it/image-crop.html"><span lang="it">Ritaglia e ruota l'immagine</span><small><span lang="it">Ritaglia un'immagine in qualsiasi area o proporzione e ruotala.</span></small></a><a href="/it/pdf-to-text.html"><span lang="it">Estrai il testo da un PDF</span><small><span lang="it">Estrai il testo da un PDF per copiarlo o salvarlo.</span></small></a><a href="/it/receipt-maker.html"><span lang="it">Crea una ricevuta in PDF</span><small><span lang="it">Inserisci chi paga, l'importo e la descrizione per creare una ricevuta in PDF. Dettaglio dell'imposta e numero di registrazione della fattura sono facoltativi.</span></small></a><a href="/it/resume-maker.html"><span lang="it">Crea un curriculum in PDF (rirekisho giapponese)</span><small><span lang="it">Inserisci i tuoi dati, studi, esperienze e motivazioni per creare un curriculum in stile giapponese (rirekisho) in PDF, con foto tessera facoltativa.</span></small></a><a href="/it/timetable-maker.html"><span lang="it">Crea un orario / programma settimanale</span><small><span lang="it">Inserisci classi, materie e impegni per creare un orario o un programma settimanale in PDF o immagine, con colori.</span></small></a><a href="/it/namecard-maker.html"><span lang="it">Crea biglietti da visita / cartellini nominativi</span><small><span lang="it">Inserisci nome e dati per creare biglietti da visita o cartellini nominativi impaginati su A4 in PDF. Puoi anche creare in blocco i cartellini da un elenco.</span></small></a><a href="/it/qr-code-maker.html"><span lang="it">Crea un codice QR (URL, Wi-Fi)</span><small><span lang="it">Crea un codice QR da un URL, un testo o dati Wi-Fi e salvalo come PNG, SVG o PDF.</span></small></a><a href="/it/pdf-nup.html"><span lang="it">Riunisci più pagine PDF su un solo foglio (2 o 4 per foglio)</span><small><span lang="it">Disponi più pagine PDF su un foglio A4 (2, 4, 6, 8 o 9 per foglio) per risparmiare carta in stampa.</span></small></a><a href="/it/pdf-grayscale.html"><span lang="it">Converti un PDF in scala di grigi (bianco e nero)</span><small><span lang="it">Trasforma un PDF a colori in scala di grigi o in bianco e nero puro, pronto per stampa, copia o fax monocromatici. Scegli la risoluzione.</span></small></a><a href="/it/pdf-watermark.html"><span lang="it">Aggiungi una filigrana di testo a un PDF</span><small><span lang="it">Aggiungi testi come «Per la consegna», «Copia» o «Riservato» in trasparenza su ogni pagina del PDF. Scegli posizione, colore e opacità.</span></small></a><a href="/it/pdf-crop.html"><span lang="it">Ritaglia i margini di un PDF</span><small><span lang="it">Ritaglia automaticamente i margini di un PDF o imposta ogni lato. Più leggibile su telefono, più pulito in stampa.</span></small></a><a href="/it/pdf-redact.html"><span lang="it">Oscura (censura) parti di un PDF</span><small><span lang="it">Trascina sulle parti del PDF da nascondere e coprile di nero. Le pagine oscurate diventano immagini, quindi il testo sottostante sparisce.</span></small></a><a href="/it/pdf-metadata.html"><span lang="it">Visualizza e rimuovi le proprietà del PDF (autore, titolo)</span><small><span lang="it">Vedi autore, titolo, software e date salvati in un PDF, poi rimuovili o modificali.</span></small></a><a href="/it/pdf-fill.html"><span lang="it">Compila un PDF: aggiungi testo, data, firma e segni</span><small><span lang="it">Aggiungi testo, data, segni di spunta, cerchi, una firma a mano o un'immagine (come un sigillo) ovunque su un PDF.</span></small></a><a href="/it/pdf-resize.html"><span lang="it">Ridimensiona le pagine PDF in A4 o in un altro formato di carta</span><small><span lang="it">Porta le pagine PDF di formati diversi alla stessa misura, come A4, A3, B5 o Letter. Testo e grafica restano nitidi.</span></small></a><a href="/it/pdf-delete-pages.html"><span lang="it">Elimina pagine da un PDF</span><small><span lang="it">Scegli ed elimina le pagine che non servono da un PDF.</span></small></a><a href="/it/pdf-extract-pages.html"><span lang="it">Estrai pagine da un PDF</span><small><span lang="it">Scegli le pagine che ti servono e salvale come nuovo PDF.</span></small></a><a href="/it/pdf-reverse.html"><span lang="it">Inverti l'ordine delle pagine di un PDF</span><small><span lang="it">Inverti l'ordine delle pagine di un PDF.</span></small></a><a href="/it/pdf-insert-blank.html"><span lang="it">Inserisci pagine vuote in un PDF</span><small><span lang="it">Inserisci pagine vuote dove vuoi in un PDF.</span></small></a><a href="/it/pdf-split-halves.html"><span lang="it">Dividi le doppie pagine di un PDF in pagine singole</span><small><span lang="it">Dividi le doppie pagine di un PDF in pagine singole.</span></small></a><a href="/it/pdf-header-footer.html"><span lang="it">Aggiungi intestazione e piè di pagina a un PDF</span><small><span lang="it">Aggiungi titolo, data o numeri di pagina in alto e in basso a un PDF.</span></small></a><a href="/it/pdf-booklet.html"><span lang="it">Disponi un PDF come libretto per la stampa</span><small><span lang="it">Riordina un PDF perché si stampi e si pieghi come libretto.</span></small></a><a href="/it/pdf-blank-remove.html"><span lang="it">Trova e rimuovi le pagine vuote in un PDF</span><small><span lang="it">Trova automaticamente le pagine vuote in un PDF ed eliminale.</span></small></a><a href="/it/pdf-long-image.html"><span lang="it">Trasforma un PDF in un'unica immagine lunga</span><small><span lang="it">Unisci tutte le pagine di un PDF in un'unica immagine lunga.</span></small></a><a href="/it/pdf-duplex-merge.html"><span lang="it">Unisci le scansioni di fronte e retro in un unico PDF</span><small><span lang="it">Alterna un PDF dei fronti e un PDF dei retri in un unico PDF.</span></small></a><a href="/it/image-resize.html"><span lang="it">Ridimensiona le immagini in pixel</span><small><span lang="it">Ridimensiona le immagini per larghezza, altezza o percentuale.</span></small></a><a href="/it/image-rotate.html"><span lang="it">Ruota e ribalta le immagini</span><small><span lang="it">Ruota le immagini e ribaltale in orizzontale o in verticale.</span></small></a><a href="/it/image-watermark.html"><span lang="it">Aggiungi una filigrana di testo alle immagini</span><small><span lang="it">Sovrapponi alle immagini un testo filigrana come «Copia».</span></small></a><a href="/it/image-mosaic.html"><span lang="it">Applica mosaico o sfocatura a una parte dell'immagine</span><small><span lang="it">Nascondi parti di un'immagine con mosaico, sfocatura o un riquadro nero.</span></small></a><a href="/it/image-exif-remove.html"><span lang="it">Rimuovi posizione e dati di scatto dalle foto</span><small><span lang="it">Rimuovi dati GPS, data e fotocamera dalle foto e salva una copia pulita.</span></small></a><a href="/it/image-filter.html"><span lang="it">Applica bianco e nero, seppia e altri effetti</span><small><span lang="it">Trasforma le immagini in bianco e nero o seppia, oppure cambia la luminosità.</span></small></a><a href="/it/image-stitch.html"><span lang="it">Unisci più immagini in una</span><small><span lang="it">Impila o unisci più immagini in una sola.</span></small></a><a href="/it/id-photo.html"><span lang="it">Ritaglia in formato foto tessera e disponi per la stampa</span><small><span lang="it">Ritaglia una foto in formato foto tessera e disponila su un foglio formato L.</span></small></a><a href="/it/image-color-picker.html"><span lang="it">Preleva i codici colore da un'immagine</span><small><span lang="it">Leggi i codici colore da un'immagine e trova i colori principali.</span></small></a><a href="/it/char-counter.html"><span lang="it">Conta caratteri (per candidature e relazioni)</span><small><span lang="it">Conta caratteri, righe e fogli di manoscritto del tuo testo.</span></small></a><a href="/it/wareki-converter.html"><span lang="it">Converti tra anni occidentali ed ere giapponesi</span><small><span lang="it">Converti tra anni dell'era volgare ed ere giapponesi.</span></small></a><a href="/it/zenkaku-hankaku.html"><span lang="it">Converti caratteri a larghezza piena e ridotta, hiragana e katakana</span><small><span lang="it">Converti larghezza piena/ridotta e hiragana/katakana.</span></small></a><a href="/it/line-break-remover.html"><span lang="it">Rimuovi e sistema gli a capo nel testo</span><small><span lang="it">Sistema gli a capo nel testo copiato da PDF e altre fonti.</span></small></a><a href="/it/tax-calculator.html"><span lang="it">Calcola l'imposta sui consumi (IVA inclusa / esclusa)</span><small><span lang="it">Calcola i prezzi con e senza imposta.</span></small></a><a href="/it/date-calculator.html"><span lang="it">Calcola l'età, i giorni tra due date e gli spostamenti di data</span><small><span lang="it">Calcola l'età e i giorni tra due date.</span></small></a><a href="/it/pdf-unlock.html"><span lang="it">Rimuovi la password da un PDF</span><small><span lang="it">Rimuovi la password e le restrizioni da un PDF di cui conosci la password.</span></small></a><a href="/it/pdf-protect.html"><span lang="it">Aggiungi una password a un PDF</span><small><span lang="it">Aggiungi una password necessaria per aprire un PDF.</span></small></a><a href="/it/ocr-text.html"><span lang="it">Leggi il testo da immagini e PDF (OCR)</span><small><span lang="it">Trasforma in testo il testo contenuto in immagini e PDF scansionati.</span></small></a><a href="/it/pdf-compare.html"><span lang="it">Confronta due PDF (trova le differenze)</span><small><span lang="it">Mostra le differenze di testo tra due PDF, con i colori.</span></small></a><a href="/it/password-generator.html"><span lang="it">Genera una password casuale sicura</span><small><span lang="it">Genera subito password casuali sicure.</span></small></a><a href="/it/percent-calculator.html"><span lang="it">Calcola percentuali, sconti e variazioni %</span><small><span lang="it">Calcola subito percentuali, sconti e variazioni %.</span></small></a><a href="/it/line-sort-dedupe.html"><span lang="it">Rimuovi le righe duplicate e ordina un elenco</span><small><span lang="it">Rimuovi le righe duplicate e ordinale.</span></small></a><a href="/it/unit-converter.html"><span lang="it">Convertitore di unità (lunghezza, peso, area, temperatura e altro)</span><small><span lang="it">Converti subito lunghezza, peso, area, temperatura e altro.</span></small></a><a href="/it/zip-maker.html"><span lang="it">Crea un file ZIP</span><small><span lang="it">Raccogli più file in un unico ZIP.</span></small></a><a href="/it/zip-extract.html"><span lang="it">Apri un file ZIP (decomprimi)</span><small><span lang="it">Guarda cosa c'è in un file ZIP ed estrai i file che ti servono.</span></small></a><a href="/it/file-hash.html"><span lang="it">Controlla l'hash di un file (SHA-256)</span><small><span lang="it">Calcola l'hash di un file e confrontalo.</span></small></a><a href="/it/csv-json.html"><span lang="it">Converti CSV e JSON</span><small><span lang="it">Converti subito tra CSV e JSON.</span></small></a><a href="/it/svg-to-png.html"><span lang="it">Converti SVG in PNG</span><small><span lang="it">Converti un file SVG in un'immagine PNG.</span></small></a><a href="/it/file-base64.html"><span lang="it">Converti file e Base64</span><small><span lang="it">Converti tra file e testo Base64.</span></small></a><a href="/it/json-formatter.html"><span lang="it">Formatta e convalida JSON</span><small><span lang="it">Formatta, minimizza e convalida JSON.</span></small></a><a href="/it/text-diff.html"><span lang="it">Confronta due testi (diff)</span><small><span lang="it">Mostra le differenze tra due testi riga per riga.</span></small></a><a href="/it/xlsx-to-csv.html"><span lang="it">Converti Excel in CSV o JSON</span><small><span lang="it">Converti un foglio Excel in CSV, TSV o JSON.</span></small></a><a href="/it/csv-to-xlsx.html"><span lang="it">Converti CSV in Excel (.xlsx)</span><small><span lang="it">Converti un CSV in un file Excel (.xlsx).</span></small></a><a href="/it/docx-to-text.html"><span lang="it">Estrai il testo da un file Word</span><small><span lang="it">Estrai il testo semplice da un file Word.</span></small></a><a href="/it/pptx-to-text.html"><span lang="it">Estrai il testo da PowerPoint</span><small><span lang="it">Estrai il testo di ogni diapositiva di PowerPoint.</span></small></a><a href="/it/pdf-to-word.html"><span lang="it">Porta il testo di un PDF in Word</span><small><span lang="it">Estrai il testo di un PDF in un file Word.</span></small></a><a href="/it/image-to-word.html"><span lang="it">Inserisci le immagini in un file Word</span><small><span lang="it">Inserisci le immagini in un file Word, una per pagina.</span></small></a><a href="/it/xlsx-formula-to-value.html"><span lang="it">Converti le formule di Excel in valori</span><small><span lang="it">Sostituisci le formule di Excel con i loro valori.</span></small></a><a href="/it/office-metadata-remove.html"><span lang="it">Rimuovi le informazioni sull'autore dai file Office</span><small><span lang="it">Cancella l'autore e le altre informazioni salvate nei file Office.</span></small></a><a href="/it/office-image-extract.html"><span lang="it">Estrai le immagini da Word, Excel e PowerPoint</span><small><span lang="it">Estrai le immagini dai file Office in un file ZIP.</span></small></a><a href="/it/docx-to-html.html"><span lang="it">Converti Word in HTML</span><small><span lang="it">Trasforma il testo di Word in HTML.</span></small></a><a href="/it/xlsx-split-sheets.html"><span lang="it">Dividi un file Excel per foglio</span><small><span lang="it">Salva ogni foglio Excel in un proprio CSV o TSV.</span></small></a><a href="/it/xlsx-to-html.html"><span lang="it">Converti una tabella Excel in HTML o Markdown</span><small><span lang="it">Converti una tabella Excel in una tabella HTML o Markdown.</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="it">Informazioni / Contatti (in giapponese)</span></a><a href="/it/privacy.html"><span lang="it">Informativa sulla privacy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="it">Novità su X</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const TR={"Save ZIP": "Salva ZIP", "Paste html-tags.txt from the ZIP into your site's <head>.": "Incolla html-tags.txt dello ZIP nel <head> del tuo sito.", "Password-protected PDFs are not supported. Remove the password and try again.": "I PDF protetti da password non sono supportati. Rimuovi la password e riprova.", "Made a favicon set ({0} files)": "Creato un set di favicon ({0} file)", "Choose other images": "Scegli altre immagini", "Could not read the PDF. It may be damaged or in an unsupported format.": "Impossibile leggere il PDF. Potrebbe essere danneggiato o in un formato non supportato.", "Make favicons": "Crea favicon", "Preview": "Anteprima", "HEIC files must be converted to JPG first with the HEIC to JPG tool.": "I file HEIC vanno prima convertiti in JPG con lo strumento da HEIC a JPG.", "Could not save. Please try again.": "Impossibile salvare. Riprova.", "Could not process the image. The format may not be supported.": "Impossibile elaborare l'immagine. Il formato potrebbe non essere supportato.", "Selected {0} images": "Selezionate {0} immagini", "Save image": "Salva immagine"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=T("Could not save. Please try again.",[])}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return T("Password-protected PDFs are not supported. Remove the password and try again.",[]);
+  return T("Could not read the PDF. It may be damaged or in an unsupported format.",[]);
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+let files=[];
+let onLoaded=async()=>{};
+function setBtn(){$("go").disabled=!files.length||(typeof ready==="function"&&!ready());$("go").textContent=T("Make favicons",[])}
+function showErr(e){const o=$("out");o.style.display="block";o.querySelector(".stamp").style.display="none";$("bar").style.display="none";$("dl").style.display="none";$("info").textContent="";$("msg").className="bad";$("msg").textContent=e.user?e.message:T("Could not process the image. The format may not be supported.",[])}
+const isImg=f=>/^image\//.test(f.type)||/\.(jpe?g|png|webp|gif|bmp|avif)$/i.test(f.name);
+async function bmp(f){
+  if(/\.hei[cf]$/i.test(f.name)||/hei[cf]/i.test(f.type))throw Object.assign(new Error(T("HEIC files must be converted to JPG first with the HEIC to JPG tool.",[])),{user:true});
+  return await createImageBitmap(f);
+}
+async function addFiles(list){
+  const fl=list.filter(isImg);if(!fl.length)return;files=[fl[0]];
+  try{
+    for(const f of files)await bmp(f);
+    $("finfo").style.display="block";$("finfo").textContent=files.length===1?files[0].name+"（"+fmt(files[0].size)+"）":T("Selected {0} images",[files.length]);
+    $("set").style.display="block";$("pt").textContent=T("Choose other images",[]);$("out").style.display="none";
+    await onLoaded();setBtn();
+  }catch(e){console.error(e);files=[];$("set").style.display="none";$("finfo").style.display="none";showErr(e)}
+}
+$("file").onchange=e=>{addFiles([...e.target.files]);e.target.value=""};
+bindDrop("drop",addFiles);
+function cvToBlob(cv,mime,q){return new Promise((res,rej)=>cv.toBlob(b=>b?res(b):rej(new Error("toBlob")),mime,q))}
+function extOf(mime){return mime==="image/png"?".png":(mime==="image/webp"?".webp":".jpg")}
+async function outImages(blobs,names,mime,infoText,msgText){
+  const dl=$("dl");dl.href="#";dl.style.display="inline-block";
+  if(blobs.length===1){dl.textContent=T("Save image",[]);wire(dl,blobs[0],names[0],mime)}
+  else{const z=new JSZip();blobs.forEach((b,i)=>z.file(names[i],b));const zb=await z.generateAsync({type:"blob"});dl.textContent=T("Save ZIP",[]);wire(dl,zb,"images.zip","application/zip")}
+  const ex=$("extra");ex.textContent="";const im=document.createElement("img");im.src=URL.createObjectURL(blobs[0]);im.alt=T("Preview",[]);im.style.cssText="max-width:100%;max-height:320px;border:1px solid var(--line);background:#fff;margin-top:10px";ex.appendChild(im);
+  $("info").textContent=infoText;$("msg").textContent=msgText||"";finishOk();
+}
+
+$("go").onclick=async()=>{
+  const go=$("go");go.disabled=true;beginRun();
+  try{
+    const b=await bmp(files[0]),bg=val("bg"),pd=+val("pd"),side=Math.min(b.width,b.height),sx=(b.width-side)/2,sy=(b.height-side)/2;
+    async function mk(n){const cv=document.createElement("canvas");cv.width=n;cv.height=n;const cx=cv.getContext("2d");
+      if(bg==="w"){cx.fillStyle="#fff";cx.fillRect(0,0,n,n)}
+      const m=Math.round(n*pd),w=n-2*m;cx.imageSmoothingQuality="high";cx.drawImage(b,sx,sy,side,side,m,m,w,w);return await cvToBlob(cv,"image/png")}
+    const sizes=[512,192,180,48,32,16],blobs=[],names=[],bm={};
+    for(let i=0;i<sizes.length;i++){$("barf").style.width=(i/sizes.length*100)+"%";const x=await mk(sizes[i]);bm[sizes[i]]=x;blobs.push(x);names.push(sizes[i]===180?"apple-touch-icon.png":"favicon-"+sizes[i]+".png")}
+    const ico=[16,32,48],bufs=[];for(const n of ico)bufs.push(new Uint8Array(await bm[n].arrayBuffer()));
+    let off=6+16*ico.length;const hd=new Uint8Array(off);const dv=new DataView(hd.buffer);dv.setUint16(2,1,true);dv.setUint16(4,ico.length,true);
+    ico.forEach((n,i)=>{const o=6+16*i;hd[o]=n;hd[o+1]=n;dv.setUint16(o+4,1,true);dv.setUint16(o+6,32,true);dv.setUint32(o+8,bufs[i].length,true);dv.setUint32(o+12,off,true);off+=bufs[i].length});
+    blobs.push(new Blob([hd,...bufs],{type:"image/x-icon"}));names.push("favicon.ico");
+    const tag='<link rel="icon" href="/favicon.ico" sizes="any">\n<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">\n<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n';
+    blobs.push(new Blob([tag],{type:"text/plain"}));names.push("html-tags.txt");
+    $("barf").style.width="100%";
+    await outImages(blobs,names,"image/png",T("Made a favicon set ({0} files)",[names.length]),T("Paste html-tags.txt from the ZIP into your site's <head>.",[]));
+  }catch(e){console.error(e);showErr(e)}
+  finally{endRun();setBtn()}
+};
+
+</script>
+</body>
+</html>
