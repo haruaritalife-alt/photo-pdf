@@ -228,6 +228,10 @@ h1,h2{letter-spacing:.01em}
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "PDF के पेज का क्रम उलटें", "alternateName": "Reverse the Page Order of a PDF", "url": "https://pdfmikata.com/hi/pdf-reverse.html", "description": "PDF के पेजों का क्रम उलटने वाला मुफ़्त टूल। जब स्कैन उलटा आए तो काम का। फ़ोन पर चलता है, और आपकी फ़ाइल डिवाइस से बाहर नहीं जाती।", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "hi", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/hi/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/manifest.webmanifest" rel="manifest"/>
 <link href="/icon-180.png" rel="apple-touch-icon"/>
 <script defer="" src="/app.js"></script>
@@ -338,7 +342,7 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Preview": "पूर्वावलोकन", "Save PDF": "PDF सहेजें", "Reorder and create the PDF": "क्रम बदलें और PDF बनाएँ", "Choose another PDF": "दूसरा PDF चुनें", "Password-protected PDFs are not supported. Remove the password and try again.": "पासवर्ड वाले PDF समर्थित नहीं हैं। पासवर्ड हटाकर फिर कोशिश करें।", "Could not save. Please try again.": "सहेजा नहीं जा सका। कृपया फिर कोशिश करें।", "Could not read the PDF. It may be damaged or in an unsupported format.": "PDF पढ़ा नहीं जा सका। फ़ाइल खराब हो सकती है या उसका फ़ॉर्मैट समर्थित नहीं है।", "Reordered {0} page(s)": "{0} पेजों का क्रम बदला गया", "p": "पेज"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"p": "पेज", "Reordered {0} page(s)": "{0} पेजों का क्रम बदला गया", "Preview": "पूर्वावलोकन", "Reorder and create the PDF": "क्रम बदलें और PDF बनाएँ", "Choose another PDF": "दूसरा PDF चुनें", "Could not save. Please try again.": "सहेजा नहीं जा सका। कृपया फिर कोशिश करें।", "Save PDF": "PDF सहेजें", "Password-protected PDFs are not supported. Remove the password and try again.": "पासवर्ड वाले PDF समर्थित नहीं हैं। पासवर्ड हटाकर फिर कोशिश करें।", "Could not read the PDF. It may be damaged or in an unsupported format.": "PDF पढ़ा नहीं जा सका। फ़ाइल खराब हो सकती है या उसका फ़ॉर्मैट समर्थित नहीं है।"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";

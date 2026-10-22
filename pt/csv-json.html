@@ -227,6 +227,10 @@ h1,h2{letter-spacing:.01em}
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Converter CSV e JSON", "alternateName": "Convert CSV and JSON", "url": "https://pdfmikata.com/pt/csv-json.html", "description": "Ferramenta gratuita para converter CSV em JSON e JSON em CSV no navegador, com o delimitador de sua escolha. Seus dados nunca saem do seu dispositivo.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "pt-BR", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/pt/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/manifest.webmanifest" rel="manifest"/>
 <link href="/icon-180.png" rel="apple-touch-icon"/>
 <script defer="" src="/app.js"></script>
@@ -343,7 +347,7 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Copied": "Copiado", "Could not convert. Please check the format of your data.": "Não foi possível converter. Confira o formato dos seus dados.", "Converted {0} row(s)": "{0} linha(s) convertida(s)", "Password-protected PDFs are not supported. Remove the password and try again.": "PDFs protegidos por senha não são compatíveis. Remova a senha e tente novamente.", "Could not save. Please try again.": "Não foi possível salvar. Tente novamente.", "Converted {0} item(s)": "{0} item(ns) convertido(s)", "Convert": "Converter", "Use output as input": "Usar a saída como entrada", "Save as file": "Salvar como arquivo", "Could not read the PDF. It may be damaged or in an unsupported format.": "Não foi possível ler o PDF. Ele pode estar danificado ou em um formato incompatível.", "Copy result": "Copiar resultado"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Copied": "Copiado", "Save as file": "Salvar como arquivo", "Could not convert. Please check the format of your data.": "Não foi possível converter. Confira o formato dos seus dados.", "Converted {0} item(s)": "{0} item(ns) convertido(s)", "Could not save. Please try again.": "Não foi possível salvar. Tente novamente.", "Converted {0} row(s)": "{0} linha(s) convertida(s)", "Copy result": "Copiar resultado", "Password-protected PDFs are not supported. Remove the password and try again.": "PDFs protegidos por senha não são compatíveis. Remova a senha e tente novamente.", "Use output as input": "Usar a saída como entrada", "Convert": "Converter", "Could not read the PDF. It may be damaged or in an unsupported format.": "Não foi possível ler o PDF. Ele pode estar danificado ou em um formato incompatível."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
@@ -402,4 +406,40 @@ function parseCsv(s,d){
   const rows=[];let r=[],f="",q=false;if(s.charCodeAt(0)===0xFEFF)s=s.slice(1);
   for(let i=0;i<s.length;i++){const c=s[i];
     if(q){if(c==='"'){if(s[i+1]==='"'){f+='"';i++}else q=false}else f+=c}
-    else if(c==
+    else if(c==='"'&&f==="")q=true;
+    else if(c===d){r.push(f);f=""}
+    else if(c==="\n"||c==="\r"){if(c==="\r"&&s[i+1]==="\n")i++;r.push(f);f="";rows.push(r);r=[]}
+    else f+=c}
+  if(f!==""||r.length){r.push(f);rows.push(r)}
+  return rows.filter(x=>!(x.length===1&&x[0]===""));
+}
+function esc(v,d){let s=v==null?"":(typeof v==="object"?JSON.stringify(v):String(v));return /["\r\n]/.test(s)||s.indexOf(d)>=0?'"'+s.replace(/"/g,'""')+'"':s}
+function conv(){
+  const m=$("cmsg");m.className="note2";m.textContent="";const src=$("cin").value,d=dlm();
+  if(!src.trim()){$("cot").value="";return}
+  try{
+    if(val("md")==="c2j"){
+      const rows=parseCsv(src,d);let out;
+      if($("hd").checked&&rows.length){const h=rows[0].map((x,i)=>x||("col"+(i+1)));out=rows.slice(1).map(r=>{const o={};h.forEach((k,i)=>{o[k]=r[i]===undefined?"":r[i]});return o})}
+      else out=rows;
+      $("cot").value=JSON.stringify(out,null,2);m.textContent=T("Converted {0} row(s)",[out.length]);
+    }else{
+      let j=JSON.parse(src);if(!Array.isArray(j))j=[j];
+      let lines=[];
+      if(j.length&&j.every(x=>x&&typeof x==="object"&&!Array.isArray(x))){
+        const keys=[];j.forEach(o=>Object.keys(o).forEach(k=>{if(keys.indexOf(k)<0)keys.push(k)}));
+        lines.push(keys.map(k=>esc(k,d)).join(d));j.forEach(o=>lines.push(keys.map(k=>esc(o[k],d)).join(d)));
+      }else j.forEach(r=>lines.push((Array.isArray(r)?r:[r]).map(v=>esc(v,d)).join(d)));
+      $("cot").value=lines.join("\r\n");m.textContent=T("Converted {0} item(s)",[j.length]);
+    }
+  }catch(e){$("cot").value="";m.className="note2 bad";m.textContent=T("Could not convert. Please check the format of your data.",[])}
+}
+$("cv").onclick=conv;$("cin").addEventListener("input",conv);
+document.querySelectorAll('input[name="md"],input[name="dl"],#hd').forEach(x=>x.addEventListener("change",conv));
+$("sw").onclick=()=>{if(!$("cot").value)return;$("cin").value=$("cot").value;const r=document.querySelector('input[name="md"]:not(:checked)');if(r)r.checked=true;conv()};
+$("cp").onclick=()=>copyText($("cp"),$("cot").value);
+$("sv").onclick=async()=>{const v=$("cot").value;if(!v)return;const j=val("md")==="c2j";const txt=j?v:"\uFEFF"+v;await save(new Blob([txt],{type:j?"application/json":"text/csv"}),j?"data.json":"data.csv",j?"application/json":"text/csv")};
+
+</script>
+</body>
+</html>

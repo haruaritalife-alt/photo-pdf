@@ -228,6 +228,10 @@ h1,h2{letter-spacing:.01em}
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "PDF에서 페이지 삭제", "alternateName": "Delete Pages from a PDF", "url": "https://pdfmikata.com/ko/pdf-delete-pages.html", "description": "PDF에서 불필요한 페이지를 삭제하는 무료 도구입니다. 썸네일을 눌러 페이지를 고릅니다. 휴대폰에서도 쓸 수 있고 파일은 기기 밖으로 나가지 않습니다.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "ko", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ko/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/manifest.webmanifest" rel="manifest"/>
 <link href="/icon-180.png" rel="apple-touch-icon"/>
 <script defer="" src="/app.js"></script>
@@ -345,7 +349,7 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Preview": "미리보기", "Save PDF": "PDF 저장", "Deleted {0} of {1} page(s) ({2} left)": "{1}페이지 중 {0}페이지를 삭제했습니다 ({2} 남음)", "Choose another PDF": "다른 PDF 선택", "Password-protected PDFs are not supported. Remove the password and try again.": "비밀번호로 보호된 PDF는 지원하지 않습니다. 비밀번호를 제거한 뒤 다시 시도해 주세요.", "Delete the selected pages and create the PDF": "선택한 페이지 삭제 후 PDF 만들기", "Could not save. Please try again.": "저장하지 못했습니다. 다시 시도해 주세요.", "Could not read the PDF. It may be damaged or in an unsupported format.": "PDF를 읽을 수 없습니다. 파일이 손상되었거나 지원하지 않는 형식일 수 있습니다.", "Invalid page range: {0}": "잘못된 페이지 범위: {0}", "Selected: {0} of {1}": "선택됨: {1}페이지 중 {0}페이지", "You cannot delete every page. Keep at least one page.": "모든 페이지를 삭제할 수는 없습니다. 최소 한 페이지는 남기세요.", "Tap the pages you want to delete (a red ✓ appears).": "삭제할 페이지를 누르세요 (빨간 ✓가 나타납니다).", "Nothing selected yet.": "아직 선택한 것이 없습니다.", "Page {0}": "{0}페이지", "p": "p", "Page numbers must be between 1 and {0}.": "페이지 번호는 1부터 {0} 사이여야 합니다."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Invalid page range: {0}": "잘못된 페이지 범위: {0}", "p": "p", "Page numbers must be between 1 and {0}.": "페이지 번호는 1부터 {0} 사이여야 합니다.", "Nothing selected yet.": "아직 선택한 것이 없습니다.", "Page {0}": "{0}페이지", "You cannot delete every page. Keep at least one page.": "모든 페이지를 삭제할 수는 없습니다. 최소 한 페이지는 남기세요.", "Preview": "미리보기", "Selected: {0} of {1}": "선택됨: {1}페이지 중 {0}페이지", "Choose another PDF": "다른 PDF 선택", "Deleted {0} of {1} page(s) ({2} left)": "{1}페이지 중 {0}페이지를 삭제했습니다 ({2} 남음)", "Could not save. Please try again.": "저장하지 못했습니다. 다시 시도해 주세요.", "Delete the selected pages and create the PDF": "선택한 페이지 삭제 후 PDF 만들기", "Save PDF": "PDF 저장", "Password-protected PDFs are not supported. Remove the password and try again.": "비밀번호로 보호된 PDF는 지원하지 않습니다. 비밀번호를 제거한 뒤 다시 시도해 주세요.", "Tap the pages you want to delete (a red ✓ appears).": "삭제할 페이지를 누르세요 (빨간 ✓가 나타납니다).", "Could not read the PDF. It may be damaged or in an unsupported format.": "PDF를 읽을 수 없습니다. 파일이 손상되었거나 지원하지 않는 형식일 수 있습니다."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";

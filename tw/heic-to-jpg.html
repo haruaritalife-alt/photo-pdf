@@ -228,6 +228,10 @@ h1,h2{letter-spacing:.01em}
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "HEIC 轉 JPG", "alternateName": "Convert HEIC to JPG", "url": "https://pdfmikata.com/tw/heic-to-jpg.html", "description": "免費工具，批次把 iPhone 的 HEIC 照片轉換為 JPG 或 PNG。無需註冊，照片不會離開你的裝置。", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "zh-Hant", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tw/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/manifest.webmanifest" rel="manifest"/>
 <link href="/icon-180.png" rel="apple-touch-icon"/>
 <script defer="" src="/app.js"></script>
@@ -334,7 +338,7 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Choose images": "選擇圖片", "Delete": "刪除", "Working…": "正在處理…", "{0} image(s) converted": "已轉換 {0} 張圖片", "Save": "儲存", "Could not save.": "無法儲存。", "This browser can't create WebP, so PNG was used instead. ": "此瀏覽器無法生成 WebP，已改用 PNG。", "Something went wrong.": "出了點問題。", "Could not read the images. They may be in a format this browser can't open, such as HEIC.": "無法讀取這些圖片。它們可能是此瀏覽器無法開啟的格式，例如 HEIC。", "{0} image(s): total {1} → {2}": "{0} 張圖片：合計 {1} → {2}", "Could not read: {0}. ": "無法讀取：{0}。", "Could not read the PDF. It may be damaged or in an unsupported format.": "無法讀取該 PDF。它可能已損壞，或格式不受支援。", "Convert": "轉換", "Add more images ({0} selected)": "繼續新增圖片（已選 {0} 張）", "The result is not smaller. Try a lighter setting, or keep the originals. ": "結果並沒有變小。請嘗試更輕的設定，或保留原圖。", "Password-protected PDFs are not supported. Remove the password and try again.": "不支援帶密碼的 PDF。請先去掉密碼再重試。", "Could not save. Please try again.": "無法儲存，請重試。", "Compress": "壓縮", "Delete {0}": "刪除 {0}", "Working… ": "正在處理…", "Save all (ZIP)": "全部儲存（ZIP）"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Working… ": "正在處理…", "Something went wrong.": "出了點問題。", "Compress": "壓縮", "Delete": "刪除", "Choose images": "選擇圖片", "This browser can't create WebP, so PNG was used instead. ": "此瀏覽器無法生成 WebP，已改用 PNG。", "Could not save. Please try again.": "無法儲存，請重試。", "Working…": "正在處理…", "Delete {0}": "刪除 {0}", "Save": "儲存", "Could not read the PDF. It may be damaged or in an unsupported format.": "無法讀取該 PDF。它可能已損壞，或格式不受支援。", "Save all (ZIP)": "全部儲存（ZIP）", "Could not read the images. They may be in a format this browser can't open, such as HEIC.": "無法讀取這些圖片。它們可能是此瀏覽器無法開啟的格式，例如 HEIC。", "Add more images ({0} selected)": "繼續新增圖片（已選 {0} 張）", "Could not read: {0}. ": "無法讀取：{0}。", "{0} image(s) converted": "已轉換 {0} 張圖片", "{0} image(s): total {1} → {2}": "{0} 張圖片：合計 {1} → {2}", "Could not save.": "無法儲存。", "The result is not smaller. Try a lighter setting, or keep the originals. ": "結果並沒有變小。請嘗試更輕的設定，或保留原圖。", "Password-protected PDFs are not supported. Remove the password and try again.": "不支援帶密碼的 PDF。請先去掉密碼再重試。", "Convert": "轉換"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
