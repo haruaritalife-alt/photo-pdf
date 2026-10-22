@@ -218,6 +218,10 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "制作二维码（网址、Wi-Fi）", "alternateName": "Create a QR Code (URL, Wi-Fi)", "url": "https://pdfmikata.com/zh/qr-code-maker.html", "description": "免费工具，根据网址、文字或 Wi-Fi 信息生成二维码，并保存为 PNG、SVG 或 PDF。你输入的内容不会离开你的设备。", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "zh-Hans", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/manifest.webmanifest" rel="manifest"/>
 <link href="/icon-180.png" rel="apple-touch-icon"/>
 <script defer="" src="/app.js"></script>
@@ -364,7 +368,7 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Create QR code": "生成二维码", "Could not create the image.": "无法生成图片。", "Save PDF": "保存 PDF", "Before using it, scan it with a phone camera and check that it opens correctly.": "使用前，请用手机相机扫一扫，确认能正常打开。", "Could not create the QR code. Please try again.": "无法生成二维码，请重试。", "Save PNG": "保存 PNG", "QR code preview": "二维码预览", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Could not save. Please try again.": "无法保存，请重试。", "Added https://. ": "已补上 https://。", "Please enter a URL or text.": "请输入网址或文字。", "Please enter the Wi-Fi name (SSID).": "请输入 Wi-Fi 名称（SSID）。", "Too much text for a QR code. Shorten it or lower the error correction.": "二维码容纳的文字太多了。请缩短文字，或降低纠错级别。", "Save SVG (scales cleanly)": "保存 SVG（可无损缩放）", "  The text is long, so the pattern is dense.": "  文字较长，所以图案较密。", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"Too much text for a QR code. Shorten it or lower the error correction.": "二维码容纳的文字太多了。请缩短文字，或降低纠错级别。", "Could not create the QR code. Please try again.": "无法生成二维码，请重试。", "Create QR code": "生成二维码", "Save SVG (scales cleanly)": "保存 SVG（可无损缩放）", "Before using it, scan it with a phone camera and check that it opens correctly.": "使用前，请用手机相机扫一扫，确认能正常打开。", "  The text is long, so the pattern is dense.": "  文字较长，所以图案较密。", "Please enter the Wi-Fi name (SSID).": "请输入 Wi-Fi 名称（SSID）。", "QR code preview": "二维码预览", "Save PDF": "保存 PDF", "Added https://. ": "已补上 https://。", "Could not save. Please try again.": "无法保存，请重试。", "Please enter a URL or text.": "请输入网址或文字。", "Could not create the image.": "无法生成图片。", "Password-protected PDFs are not supported. Remove the password and try again.": "不支持带密码的 PDF。请先去掉密码再重试。", "Save PNG": "保存 PNG", "Could not read the PDF. It may be damaged or in an unsupported format.": "无法读取该 PDF。它可能已损坏，或格式不受支持。"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";

@@ -228,6 +228,10 @@ h1,h2{letter-spacing:.01em}
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "앞면·뒷면 스캔을 하나의 PDF로 합치기", "alternateName": "Merge Front and Back Scans into One PDF", "url": "https://pdfmikata.com/ko/pdf-duplex-merge.html", "description": "앞면만 있는 PDF와 뒷면만 있는 PDF를 한 페이지씩 번갈아 하나의 PDF로 합치는 무료 도구입니다. 단면 스캐너로 양면을 스캔할 때 쓰세요. 휴대폰에서도 쓸 수 있고 파일은 기기 밖으로 나가지 않습니다.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "ko", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ko/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/manifest.webmanifest" rel="manifest"/>
 <link href="/icon-180.png" rel="apple-touch-icon"/>
 <script defer="" src="/app.js"></script>
@@ -342,7 +346,7 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 
 const $=id=>document.getElementById(id);
 const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
-const TR={"Fronts: {0} page(s), backs: {1} page(s)": "앞면: {0}페이지, 뒷면: {1}페이지", "Save PDF": "PDF 저장", "Password-protected PDFs are not supported. Remove the password and try again.": "비밀번호로 보호된 PDF는 지원하지 않습니다. 비밀번호를 제거한 뒤 다시 시도해 주세요.", "Could not save. Please try again.": "저장하지 못했습니다. 다시 시도해 주세요.", "Could not read the PDF. It may be damaged or in an unsupported format.": "PDF를 읽을 수 없습니다. 파일이 손상되었거나 지원하지 않는 형식일 수 있습니다.", "Created a {0}-page PDF (fronts {1} + backs {2})": "{0}페이지짜리 PDF를 만들었습니다 (앞면 {1} + 뒷면 {2})", "Combine into one PDF": "하나의 PDF로 합치기", "　Note: the page counts don't match.": "　참고: 페이지 수가 맞지 않습니다.", "The page counts differ, so leftover pages are at the end.": "페이지 수가 달라서 남는 페이지가 끝에 있습니다.", "p": "p"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const TR={"　Note: the page counts don't match.": "　참고: 페이지 수가 맞지 않습니다.", "p": "p", "Fronts: {0} page(s), backs: {1} page(s)": "앞면: {0}페이지, 뒷면: {1}페이지", "The page counts differ, so leftover pages are at the end.": "페이지 수가 달라서 남는 페이지가 끝에 있습니다.", "Combine into one PDF": "하나의 PDF로 합치기", "Could not save. Please try again.": "저장하지 못했습니다. 다시 시도해 주세요.", "Save PDF": "PDF 저장", "Password-protected PDFs are not supported. Remove the password and try again.": "비밀번호로 보호된 PDF는 지원하지 않습니다. 비밀번호를 제거한 뒤 다시 시도해 주세요.", "Created a {0}-page PDF (fronts {1} + backs {2})": "{0}페이지짜리 PDF를 만들었습니다 (앞면 {1} + 뒷면 {2})", "Could not read the PDF. It may be damaged or in an unsupported format.": "PDF를 읽을 수 없습니다. 파일이 손상되었거나 지원하지 않는 형식일 수 있습니다."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
 const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
 const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
 const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
