@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html data-lang="fa" dir="rtl" lang="fa">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>تبدیل آنلاین Excel (.xlsx) به CSV یا JSON (رایگان)｜PDF Mikata</title>
+<meta content="ابزار رایگان برای تبدیل برگهٔ Excel (.xlsx) به CSV، TSV یا JSON. برگه را انتخاب کنید. فایل شما هرگز از دستگاهتان خارج نمی‌شود." name="description"/>
+
+
+<link href="https://pdfmikata.com/fa/xlsx-to-csv.html" rel="canonical"/>
+<script src="/site.js"></script>
+
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+.next{margin:20px 0 6px}
+.next h3{margin:0 0 10px;font-size:1.05rem}
+.ncards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ncards a.tool,.ncards .tool *{min-width:0;overflow-wrap:anywhere;hyphens:auto}
+@media(min-width:720px){.ncards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.ncards a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper,#fff);box-shadow:0 3px 0 var(--line);text-decoration:none;color:var(--ink)}
+.ncards a.tool:hover{border-color:var(--stamp)}
+.ncards .ic{flex:none;width:40px;height:40px;border-radius:11px;background:var(--ink);color:var(--btn-ink);display:grid;place-items:center}
+.ncards .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ncards .tx b{display:block;font-size:.95rem;line-height:1.4}
+.ncards .tx .d{display:block;color:var(--sub);font-size:.8rem;line-height:1.5;margin-top:2px}
+.next .allt{display:block;margin:14px 0 0;padding:13px 16px;border:2px solid var(--ink);border-radius:12px;text-align:center;font-weight:700;text-decoration:none;color:var(--ink);background:var(--paper,#fff)}
+.next .allt:hover{background:var(--ink);color:var(--btn-ink)}
+.safe{margin:14px 0 0;font-size:.85rem;color:var(--sub);line-height:1.6}
+#bar::after{content:"処理中…この端末の中だけで処理しています";display:block;margin-top:6px;font-size:.8rem;color:var(--sub)}
+html[data-lang="en"] #bar::after{content:"Working… processed only on this device"}
+html[data-lang="zh"] #bar::after{content:"处理中…仅在此设备上处理"}
+html[data-lang="es"] #bar::after{content:"Procesando… solo en este dispositivo"}
+html[data-lang="ko"] #bar::after{content:"처리 중… 이 기기 안에서만 처리합니다"}
+html[data-lang="pt"] #bar::after{content:"Processando… somente neste dispositivo"}
+html[data-lang="fr"] #bar::after{content:"Traitement… uniquement sur cet appareil"}
+html[data-lang="id"] #bar::after{content:"Memproses… hanya di perangkat ini"}
+html[data-lang="it"] #bar::after{content:"Elaborazione… solo su questo dispositivo"}
+html[data-lang="ru"] #bar::after{content:"Обработка… только на этом устройстве"}
+html[data-lang="pl"] #bar::after{content:"Przetwarzanie… tylko na tym urządzeniu"}
+html[data-lang="nl"] #bar::after{content:"Bezig met verwerken… alleen op dit apparaat"}
+html[data-lang="th"] #bar::after{content:"กำลังประมวลผล… ทำงานบนอุปกรณ์นี้เท่านั้น"}
+html[data-lang="ar"] #bar::after{content:"جارٍ المعالجة… على هذا الجهاز فقط"}
+html[data-lang="bn"] #bar::after{content:"প্রক্রিয়া চলছে… শুধু এই ডিভাইসে"}
+html[data-lang="tl"] #bar::after{content:"Pinoproseso… sa device na ito lang"}
+html[data-lang="uk"] #bar::after{content:"Обробка… лише на цьому пристрої"}
+html[data-lang="ms"] #bar::after{content:"Memproses… pada peranti ini sahaja"}
+html[data-lang="fa"] #bar::after{content:"در حال پردازش… فقط روی همین دستگاه"}
+html[data-lang="ur"] #bar::after{content:"پروسیسنگ جاری ہے… صرف اسی ڈیوائس پر"}
+html[data-lang="tw"] #bar::after{content:"處理中…僅在此裝置上處理"}
+html[data-lang="vi"] #bar::after{content:"Đang xử lý… chỉ trên thiết bị này"}
+html[data-lang="tr"] #bar::after{content:"İşleniyor… yalnızca bu cihazda"}
+html[data-lang="de"] #bar::after{content:"Wird verarbeitet… nur auf diesem Gerät"}
+html[data-lang="hi"] #bar::after{content:"प्रोसेस हो रहा है… केवल इसी डिवाइस पर"}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}a.tool .bd{color:var(--btn-ink)}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}
+html{background:var(--desk)}body{background-image:radial-gradient(900px 420px at 12% -6%,rgba(63,181,174,.11),transparent 62%),radial-gradient(700px 420px at 100% 0,rgba(90,120,210,.08),transparent 58%);background-repeat:no-repeat}
+a.tool{box-shadow:0 3px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.07)}}
+.pop a,.btn2,button,a.tool{transition:transform .12s ease,box-shadow .15s ease,border-color .15s ease,background-color .15s ease,color .15s ease}
+.pop a:active,.btn2:active,button:not(:disabled):active{transform:scale(.97)}a.tool:active{transform:translateY(0) scale(.985)}
+h1,h2{letter-spacing:.01em}
+@media (prefers-reduced-motion:reduce){.pop a:active,.btn2:active,button:active,a.tool:active{transform:none}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b{display:inline-flex;align-items:center;gap:6px}.pop.recent b svg,.pop.recent a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}.pop.recent a{display:inline-flex;align-items:center;gap:6px}.pop.recent a .pi{margin-right:0}
+</style>
+<script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "خانه", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "ابزارها", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "تبدیل Excel به CSV یا JSON", "item": "https://pdfmikata.com/xlsx-to-csv.html"}]}</script>
+<meta content="website" property="og:type"/>
+<meta content="PDF Mikata" property="og:site_name"/>
+<meta content="fa_IR" property="og:locale"/>
+
+<meta content="تبدیل آنلاین Excel (.xlsx) به CSV یا JSON (رایگان)｜PDF Mikata" property="og:title"/>
+<meta content="ابزار رایگان برای تبدیل برگهٔ Excel (.xlsx) به CSV، TSV یا JSON. برگه را انتخاب کنید. فایل شما هرگز از دستگاهتان خارج نمی‌شود." property="og:description"/>
+<meta content="https://pdfmikata.com/fa/xlsx-to-csv.html" property="og:url"/>
+<meta content="https://pdfmikata.com/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="تبدیل آنلاین Excel (.xlsx) به CSV یا JSON (رایگان)｜PDF Mikata" name="twitter:title"/>
+<meta content="ابزار رایگان برای تبدیل برگهٔ Excel (.xlsx) به CSV، TSV یا JSON. برگه را انتخاب کنید. فایل شما هرگز از دستگاهتان خارج نمی‌شود." name="twitter:description"/>
+<meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="#16393c" name="theme-color"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "تبدیل Excel به CSV یا JSON", "alternateName": "Convert Excel to CSV or JSON", "url": "https://pdfmikata.com/fa/xlsx-to-csv.html", "description": "ابزار رایگان برای تبدیل برگهٔ Excel (.xlsx) به CSV، TSV یا JSON. برگه را انتخاب کنید. فایل شما هرگز از دستگاهتان خارج نمی‌شود.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "fa", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fa/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
+<style>
+main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
+
+.lang{display:flex;align-items:center;border:0;overflow:visible}
+.lang .gl{width:18px;height:18px;margin:0 6px 0 10px;color:#fcfefd;flex:none}
+.lang select{appearance:none;-webkit-appearance:none;min-height:44px;border:1px solid rgba(255,255,255,.5);border-radius:6px;background:transparent;color:#fcfefd;font:inherit;font-weight:700;font-size:.85rem;padding:0 28px 0 12px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23fcfefd' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.lang select option{color:#16393c;background:#fcfefd}
+.lang select:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+@media (max-width:420px){.lang .gl{display:none}}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;line-height:1.9}
+html[dir=rtl] h2,html[dir=rtl] .how h2,html[dir=rtl] .faq h2{border-left:0;border-right:6px solid var(--stamp);padding-left:0;padding-right:10px}
+html[dir=rtl] .safe{border-left:1px solid var(--line);border-right:6px solid var(--stamp)}
+html[dir=rtl] #pm-toast.warn{border-left-color:var(--line);border-right:4px solid #d98a1c}
+html[dir=rtl] .lang{margin-left:0;margin-right:auto}
+html[dir=rtl] .lang .gl{margin:0 10px 0 6px}
+html[dir=rtl] .lang select{padding:0 12px 0 28px;background-position:left 10px center}
+html[dir=rtl] a.tool .bd{right:auto;left:8px}
+html[dir=rtl] .tsearch .tqx,html[dir=rtl] #pm-toast .x{right:auto;left:6px}
+html[dir=rtl] .tqf{right:auto;left:14px}
+html[dir=rtl] .pop a .pi{margin-right:0;margin-left:6px}
+html[dir=rtl] .lang button[aria-pressed="true"]::before{margin-right:0;margin-left:5px}
+html[dir=rtl] pre,html[dir=rtl] code,html[dir=rtl] input[type=number],html[dir=rtl] input[type=url],html[dir=rtl] input[type=email],html[dir=rtl] input[type=tel]{direction:ltr;text-align:left}
+html[dir=rtl] .skip{left:auto;right:8px}
+
+.skip{position:absolute;left:8px;top:-60px;z-index:100;background:var(--btn-ink,#fff);color:var(--ink);padding:10px 14px;border-radius:10px;border:2px solid var(--stamp);font-weight:700;text-decoration:none;transition:top .15s}
+.skip:focus{top:8px}
+.top{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.sub{background:color-mix(in srgb,var(--paper) 80%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px)}
+ul.g a,.more a,.ncards a.tool,.cats a.tool{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background-color .15s ease}
+ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:translateY(-2px)}
+ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform:scale(.98)}
+.pop svg,.pi,.ic svg,.ncards .ic svg{stroke-width:1.8}
+#pm-toast{position:fixed;left:50%;bottom:18px;transform:translate(-50%,24px);opacity:0;z-index:60;width:min(560px,calc(100vw - 24px));background:var(--paper);color:var(--ink);border:1px solid var(--line);border-left:5px solid var(--stamp);border-radius:14px;padding:12px 40px 12px 14px;box-shadow:0 14px 34px -12px rgba(0,0,0,.35);transition:opacity .22s,transform .22s;pointer-events:none;font-size:14px;line-height:1.6}
+#pm-toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#pm-toast.warn{border-left-color:#d98a1c}
+#pm-toast b{display:block;margin-bottom:4px}
+#pm-toast .nx{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+#pm-toast .nx a{border:1px solid var(--line);border-radius:999px;padding:4px 12px;color:var(--ink);text-decoration:none;font-weight:600;background:var(--desk)}
+#pm-toast .nx a:hover{border-color:var(--stamp)}
+#pm-toast .x{position:absolute;right:6px;top:6px;width:30px;height:30px;border:0;background:transparent;color:var(--sub);font-size:20px;line-height:1;cursor:pointer;border-radius:8px}
+@media (prefers-reduced-motion:reduce){#pm-toast,.skip{transition:none}ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:none}}
+.lite .aurora{display:none}.lite .hero::before,.lite .hero::after{animation:none}
+</style><link href="https://pdfmikata.com/xlsx-to-csv.html" hreflang="ja" rel="alternate"/>
+<link href="https://pdfmikata.com/en/xlsx-to-csv.html" hreflang="en" rel="alternate"/>
+<link href="https://pdfmikata.com/zh/xlsx-to-csv.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://pdfmikata.com/es/xlsx-to-csv.html" hreflang="es" rel="alternate"/>
+<link href="https://pdfmikata.com/ko/xlsx-to-csv.html" hreflang="ko" rel="alternate"/>
+<link href="https://pdfmikata.com/pt/xlsx-to-csv.html" hreflang="pt" rel="alternate"/>
+<link href="https://pdfmikata.com/fr/xlsx-to-csv.html" hreflang="fr" rel="alternate"/>
+<link href="https://pdfmikata.com/id/xlsx-to-csv.html" hreflang="id" rel="alternate"/>
+<link href="https://pdfmikata.com/vi/xlsx-to-csv.html" hreflang="vi" rel="alternate"/>
+<link href="https://pdfmikata.com/tr/xlsx-to-csv.html" hreflang="tr" rel="alternate"/>
+<link href="https://pdfmikata.com/de/xlsx-to-csv.html" hreflang="de" rel="alternate"/>
+<link href="https://pdfmikata.com/hi/xlsx-to-csv.html" hreflang="hi" rel="alternate"/>
+<link href="https://pdfmikata.com/it/xlsx-to-csv.html" hreflang="it" rel="alternate"/>
+<link href="https://pdfmikata.com/ru/xlsx-to-csv.html" hreflang="ru" rel="alternate"/>
+<link href="https://pdfmikata.com/tw/xlsx-to-csv.html" hreflang="zh-Hant" rel="alternate"/>
+<link href="https://pdfmikata.com/pl/xlsx-to-csv.html" hreflang="pl" rel="alternate"/>
+<link href="https://pdfmikata.com/nl/xlsx-to-csv.html" hreflang="nl" rel="alternate"/>
+<link href="https://pdfmikata.com/th/xlsx-to-csv.html" hreflang="th" rel="alternate"/>
+<link href="https://pdfmikata.com/ar/xlsx-to-csv.html" hreflang="ar" rel="alternate"/>
+<link href="https://pdfmikata.com/bn/xlsx-to-csv.html" hreflang="bn" rel="alternate"/>
+<link href="https://pdfmikata.com/tl/xlsx-to-csv.html" hreflang="fil" rel="alternate"/>
+<link href="https://pdfmikata.com/uk/xlsx-to-csv.html" hreflang="uk" rel="alternate"/>
+<link href="https://pdfmikata.com/ms/xlsx-to-csv.html" hreflang="ms" rel="alternate"/>
+<link href="https://pdfmikata.com/fa/xlsx-to-csv.html" hreflang="fa" rel="alternate"/>
+<link href="https://pdfmikata.com/ur/xlsx-to-csv.html" hreflang="ur" rel="alternate"/>
+<link href="https://pdfmikata.com/xlsx-to-csv.html" hreflang="x-default" rel="alternate"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2376251801221434" crossorigin="anonymous"></script>
+</head>
+<body><a class="skip" href="#main">رفتن به محتوا</a>
+<header class="top"><div class="top-in"><a class="brand" href="/fa/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma / 언어" id="langsel"><option value="/xlsx-to-csv.html">日本語</option><option value="/en/xlsx-to-csv.html">English</option><option value="/zh/xlsx-to-csv.html">简体中文</option><option value="/es/xlsx-to-csv.html">Español</option><option value="/ko/xlsx-to-csv.html">한국어</option><option value="/pt/xlsx-to-csv.html">Português</option><option value="/fr/xlsx-to-csv.html">Français</option><option value="/id/xlsx-to-csv.html">Bahasa Indonesia</option><option value="/vi/xlsx-to-csv.html">Tiếng Việt</option><option value="/tr/xlsx-to-csv.html">Türkçe</option><option value="/de/xlsx-to-csv.html">Deutsch</option><option value="/hi/xlsx-to-csv.html">हिन्दी</option><option value="/it/xlsx-to-csv.html">Italiano</option><option value="/ru/xlsx-to-csv.html">Русский</option><option value="/tw/xlsx-to-csv.html">繁體中文</option><option value="/pl/xlsx-to-csv.html">Polski</option><option value="/nl/xlsx-to-csv.html">Nederlands</option><option value="/th/xlsx-to-csv.html">ไทย</option><option value="/ar/xlsx-to-csv.html">العربية</option><option value="/bn/xlsx-to-csv.html">বাংলা</option><option value="/tl/xlsx-to-csv.html">Filipino</option><option value="/uk/xlsx-to-csv.html">Українська</option><option value="/ms/xlsx-to-csv.html">Bahasa Melayu</option><option selected="" value="/fa/xlsx-to-csv.html">فارسی</option><option value="/ur/xlsx-to-csv.html">اردو</option></select></div></div></header>
+<nav aria-label="ناوبری سایت" class="sub"><div class="sub-in"><a href="/fa/"><span lang="fa">خانه</span></a><a aria-current="page" href="/fa/#cat-convert"><span lang="fa">تبدیل</span></a><a href="/fa/#cat-edit"><span lang="fa">ویرایش</span></a><a href="/fa/#cat-optimize"><span lang="fa">بهینه‌سازی</span></a><a href="/fa/#cat-create"><span lang="fa">ساخت</span></a><a href="/fa/#guide"><span lang="fa">راهنماها</span></a></div></nav>
+<nav aria-label="مسیر صفحه" class="crumb"><ol><li><a href="/fa/"><span lang="fa">خانه</span></a></li><li><a href="/fa/#tools"><span lang="fa">ابزارها</span></a></li><li><span aria-current="page"><span lang="fa">تبدیل Excel به CSV یا JSON</span></span></li></ol></nav>
+<main id="main" tabindex="-1">
+<h1><span lang="fa">تبدیل Excel به CSV یا JSON</span></h1>
+<p class="lead"><span lang="fa">وقتی داده‌های Excel را در برنامه یا نرم‌افزار دیگری لازم دارید.</span></p>
+<p class="safe"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="9" rx="2" width="14" x="5" y="11"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><span><span lang="fa"><b>فایل‌های شما هرگز بارگذاری نمی‌شوند.</b> همه‌چیز روی همین دستگاه پردازش می‌شود.</span></span></p><ol class="steps"><li><b>1</b><span lang="fa">انتخاب فایل Excel</span></li><li><b>2</b><span lang="fa">برگه و قالب را انتخاب کنید</span></li><li><b>3</b><span lang="fa">استفاده از نتیجه</span></li></ol>
+<label class="pick" id="drop"><input accept=".xlsx,.xlsm" id="file" type="file"/><span id="pt"><span lang="fa">انتخاب فایل Excel</span></span><small><span lang="fa">یک فایل Excel با پسوند .xlsx انتخاب کنید</span></small></label>
+<p class="note2" id="finfo" style="display:none"></p>
+<div id="st" style="display:none">
+<div class="row"><span><b><span lang="fa">برگه</span></b></span> <select id="sh" style="font:inherit;padding:6px;max-width:100%"></select></div>
+<div class="row"><span><span lang="fa">قالب</span></span><label><input checked="" name="fm" type="radio" value="csv"/><span lang="fa">CSV</span></label><label><input name="fm" type="radio" value="tsv"/><span lang="fa">TSV (جداشده با تب)</span></label><label><input name="fm" type="radio" value="json"/><span lang="fa">JSON</span></label></div>
+<label for="ot" style="font-weight:700"><span lang="fa">خروجی</span></label>
+<textarea id="ot" readonly="" style="width:100%;min-height:150px;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:10px 12px;font:inherit;font-size:.95rem;line-height:1.5;resize:vertical;display:block;font-family:monospace;background:var(--paper);color:var(--ink);min-height:200px"></textarea>
+<p class="note2" id="cmsg"></p>
+<div class="btnrow"><button class="btn2" id="cp" type="button"></button> <button class="btn2" id="sv" type="button"></button></div>
+</div>
+<p class="note2"><span lang="fa">فایل روی همین دستگاه خوانده می‌شود. هیچ‌چیز به جایی ارسال نمی‌شود.</span></p>
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="fa">انجام شد</span></div>
+<p id="info"></p>
+<a href="#" id="dl"></a>
+<div id="extra"></div>
+<p aria-live="polite" id="msg"></p>
+<p class="safe"><span lang="fa">🔒 فایل‌های شما هرگز به سرور خارجی ارسال نمی‌شوند. همه‌چیز با امنیت درون همین مرورگر پردازش می‌شود.</span></p>
+<div class="support" hidden="" id="support"><p><span lang="fa">اگر PDF Mikata مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="fa">ارسال انعام (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="fa">ارسال هدیه (فهرست آرزوهای آمازون)</span></a></div>
+</section>
+<div class="next" id="next"><h3 aria-level="2"><span lang="fa">ابزارهایی که اغلب با هم استفاده می‌شوند</span></h3><div class="ncards"><a class="tool" href="/fa/csv-to-xlsx.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M9 9l6 6M15 9l-6 6"></path><path d="M5 20h14"></path></svg></span><div class="tx"><b><span lang="fa">تبدیل CSV به Excel (.xlsx)</span></b><span class="d"><span lang="fa">CSV را به فایلی تبدیل کنید که در Excel باز شود.</span></span></div></a><a class="tool" href="/fa/csv-json.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M8 9c-1 0-1 1-1 2s0 2-1 2c1 0 1 1 1 2s0 2 1 2M16 9c1 0 1 1 1 2s0 2 1 2c-1 0-1 1-1 2s0 2-1 2"></path></svg></span><div class="tx"><b><span lang="fa">تبدیل CSV و JSON</span></b><span class="d"><span lang="fa">تبدیل فوری بین CSV و JSON.</span></span></div></a><a class="tool" href="/fa/docx-to-text.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M8 9l1.5 6L12 10l2.5 5L16 9"></path></svg></span><div class="tx"><b><span lang="fa">استخراج متن از فایل Word</span></b><span class="d"><span lang="fa">متن ساده را از فایل Word بیرون بکشید.</span></span></div></a><a class="tool" href="/fa/merge-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="13" rx="1.5" width="10" x="3" y="3"></rect><rect height="13" rx="1.5" width="10" x="11" y="8"></rect></svg></span><div class="tx"><b><span lang="fa">ادغام PDF</span></b><span class="d"><span lang="fa">چند PDF را در یک فایل ترکیب کنید.</span></span></div></a></div><a class="allt" href="/fa/"><span lang="fa">دیدن همهٔ ابزارها (بازگشت به صفحهٔ اصلی)</span></a></div>
+<section class="guide" id="how">
+
+<div lang="fa"><h2>روش استفاده</h2>
+<ol>
+<li>«انتخاب فایل Excel» را بزنید و فایل .xlsx را انتخاب کنید.</li>
+<li>برگه و قالب (CSV، TSV یا JSON) را انتخاب کنید.</li>
+<li>نتیجه را کپی کنید یا به‌صورت فایل ذخیره کنید.</li>
+</ol>
+<h2>چگونه کار می‌کند</h2>
+<ul>
+<li>یک برگهٔ فایل Excel به متن CSV یا JSON تبدیل می‌شود.</li>
+<li>خانه‌های تاریخ مانند «2026-10-21» نمایش داده می‌شوند.</li>
+<li>خانه‌های فرمول نتیجهٔ محاسبه‌شدهٔ ذخیره‌شده را نشان می‌دهند.</li>
+</ul>
+<h2>نکات</h2>
+<ul>
+<li>فایل‌های .xls قدیمی و فایل‌های محافظت‌شده با گذرواژه باز نمی‌شوند.</li>
+<li>فایل‌های خیلی بزرگ ممکن است کند باشند. تصاویر و نمودارها استخراج نمی‌شوند.</li>
+</ul>
+<h2>پرسش‌های متداول</h2>
+<details><summary>آیا فایل‌هایم جایی بارگذاری می‌شود؟</summary><p>خیر. همه‌چیز درون مرورگر روی دستگاه شما پردازش می‌شود.</p></details>
+<details><summary>اگر فایل چند برگه داشته باشد چه؟</summary><p>زیر «برگه» برگهٔ مورد نظر را انتخاب کنید.</p></details>
+</div>
+</section>
+<div class="support endtip"><p><span lang="fa">اگر PDF Mikata مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank"><span lang="fa">ارسال انعام (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="fa">ارسال هدیه (فهرست آرزوهای آمازون)</span></a></div>
+<section class="more rel"><h2><span lang="fa">راهنماهای این ابزار</span></h2><a href="/fa/xlsx-to-csv-howto.html"><span lang="fa">چگونه Excel را به CSV تبدیل کنیم (رایگان، روی گوشی هم)</span></a><a href="/fa/xlsx-to-csv-json.html"><span lang="fa">چگونه Excel را به JSON تبدیل کنیم</span></a><a href="/fa/xlsx-to-csv-sheets.html"><span lang="fa">تبدیل فایل Excel با چند برگه</span></a><a href="/fa/xlsx-to-csv-dates.html"><span lang="fa">وقتی تاریخ‌ها به‌صورت عدد دیده می‌شوند</span></a><a href="/fa/xlsx-to-csv-formula.html"><span lang="fa">خانه‌های فرمول چه می‌شوند</span></a><a href="/fa/xlsx-to-csv-privacy.html"><span lang="fa">آیا فایل Excel من بارگذاری می‌شود؟</span></a><a href="/fa/xlsx-to-csv-xls.html"><span lang="fa">تبدیل فایل .xls قدیمی</span></a></section>
+<section class="more"><h2><span lang="fa">ابزارهای بیشتر</span></h2><a href="/fa/photo-to-pdf.html"><span lang="fa">عکس به PDF</span><small><span lang="fa">چند عکس را به ترتیب دلخواه در یک PDF ترکیب کنید. می‌توانید بچرخانید، ترتیب را عوض کنید و محدودیت اندازه تعیین کنید.</span></small></a><a href="/fa/merge-pdf.html"><span lang="fa">ادغام PDF</span><small><span lang="fa">چند فایل PDF را به ترتیبی که انتخاب می‌کنید در یک فایل ادغام کنید.</span></small></a><a href="/fa/split-pdf.html"><span lang="fa">استخراج یا حذف صفحه‌های PDF</span><small><span lang="fa">فقط صفحه‌های لازم را نگه دارید یا صفحه‌های غیرلازم را بردارید.</span></small></a><a href="/fa/compress-pdf.html"><span lang="fa">فشرده‌سازی PDF</span><small><span lang="fa">PDF را برای محدودیت‌های بارگذاری، تا حجم دلخواه کوچک کنید.</span></small></a><a href="/fa/pdf-to-image.html"><span lang="fa">PDF به تصویر</span><small><span lang="fa">هر صفحهٔ PDF را به‌صورت تصویر JPEG یا PNG ذخیره کنید.</span></small></a><a href="/fa/image-convert.html"><span lang="fa">تبدیل قالب تصویر (JPG، PNG، WebP)</span><small><span lang="fa">تصاویر را به JPG، PNG یا WebP تبدیل کنید، چندتا یک‌جا.</span></small></a><a href="/fa/pdf-rotate.html"><span lang="fa">چرخش و ترتیب مجدد صفحه‌های PDF</span><small><span lang="fa">صفحه‌های خوابیده را درست کنید، ترتیب صفحه‌ها را عوض کنید یا صفحه‌ها را حذف کنید.</span></small></a><a href="/fa/pdf-page-numbers.html"><span lang="fa">افزودن شمارهٔ صفحه به PDF</span><small><span lang="fa">به PDF شمارهٔ صفحه اضافه کنید و موقعیت و سبک را انتخاب کنید.</span></small></a><a href="/fa/image-compress.html"><span lang="fa">فشرده‌سازی و تغییر اندازهٔ تصاویر</span><small><span lang="fa">فایل‌های تصویر را کوچک‌تر کنید و در صورت تمایل اندازه‌شان را تغییر دهید.</span></small></a><a href="/fa/heic-to-jpg.html"><span lang="fa">تبدیل HEIC به JPG</span><small><span lang="fa">عکس‌های HEIC آیفون را به JPG یا PNG تبدیل کنید.</span></small></a><a href="/fa/pdf-split.html"><span lang="fa">تقسیم PDF</span><small><span lang="fa">PDF را به چند فایل تقسیم کنید: هر صفحه یک فایل، هر N صفحه یا بر اساس بازه‌ها.</span></small></a><a href="/fa/image-crop.html"><span lang="fa">برش و چرخش تصویر</span><small><span lang="fa">تصویر را به هر ناحیه یا نسبت ببرید و بچرخانید.</span></small></a><a href="/fa/pdf-to-text.html"><span lang="fa">استخراج متن از PDF</span><small><span lang="fa">متن PDF را برای کپی یا ذخیره بیرون بکشید.</span></small></a><a href="/fa/receipt-maker.html"><span lang="fa">ساخت PDF رسید</span><small><span lang="fa">پرداخت‌کننده، مبلغ و شرح را وارد کنید تا PDF رسید بسازید. تفکیک مالیات و شمارهٔ ثبت فاکتور اختیاری است.</span></small></a><a href="/fa/resume-maker.html"><span lang="fa">ساخت رزومهٔ PDF (rirekisho ژاپنی)</span><small><span lang="fa">مشخصات، تحصیلات، سوابق کاری و انگیزه را وارد کنید تا رزومهٔ سبک ژاپنی (rirekisho) را به‌صورت PDF بسازید، با عکس پرسنلی اختیاری.</span></small></a><a href="/fa/timetable-maker.html"><span lang="fa">ساخت برنامهٔ زمانی / برنامهٔ هفتگی</span><small><span lang="fa">کلاس‌ها، کارها و برنامه‌ها را وارد کنید تا برنامهٔ زمانی یا هفتگی را با رنگ‌بندی به‌صورت PDF یا تصویر بسازید.</span></small></a><a href="/fa/namecard-maker.html"><span lang="fa">ساخت کارت ویزیت / کارت نام</span><small><span lang="fa">نام و مشخصات خود را وارد کنید تا کارت ویزیت یا کارت نام روی A4 به‌صورت PDF بسازید. همچنین می‌توانید از یک فهرست، کارت نام انبوه بسازید.</span></small></a><a href="/fa/qr-code-maker.html"><span lang="fa">ساخت کد QR (نشانی، Wi-Fi)</span><small><span lang="fa">از نشانی، متن یا اطلاعات Wi-Fi کد QR بسازید و به‌صورت PNG، SVG یا PDF ذخیره کنید.</span></small></a><a href="/fa/pdf-nup.html"><span lang="fa">ترکیب صفحه‌های PDF روی یک برگه (2 در 1، 4 در 1)</span><small><span lang="fa">چند صفحهٔ PDF را روی یک برگهٔ A4 بچینید (2، 4، 6، 8 یا 9 در 1) تا در چاپ کاغذ صرفه‌جویی شود.</span></small></a><a href="/fa/pdf-grayscale.html"><span lang="fa">تبدیل PDF به خاکستری (سیاه‌وسفید)</span><small><span lang="fa">یک PDF رنگی را به خاکستری یا سیاه‌وسفید خالص تبدیل کنید، آمادهٔ چاپ تک‌رنگ، کپی یا فکس. وضوح را انتخاب کنید.</span></small></a><a href="/fa/pdf-watermark.html"><span lang="fa">افزودن واترمارک متنی به PDF</span><small><span lang="fa">متنی مانند «برای ارائه»، «رونوشت» یا «محرمانه» را کمرنگ روی همهٔ صفحه‌های PDF بیفزایید. موقعیت، رنگ و شفافیت را انتخاب کنید.</span></small></a><a href="/fa/pdf-crop.html"><span lang="fa">برش حاشیه‌های PDF</span><small><span lang="fa">حاشیه‌های PDF را خودکار یا با تنظیم هر لبه ببرید. خواندن روی موبایل راحت‌تر و چاپ تمیزتر می‌شود.</span></small></a><a href="/fa/pdf-redact.html"><span lang="fa">سیاه کردن (سانسور) بخش‌هایی از PDF</span><small><span lang="fa">روی بخش‌هایی از PDF که می‌خواهید پنهان شوند بکشید و آن‌ها را سیاه کنید. صفحه‌های سانسورشده به تصویر تبدیل می‌شوند، پس متن زیر آن‌ها از بین می‌رود.</span></small></a><a href="/fa/pdf-metadata.html"><span lang="fa">دیدن و حذف ویژگی‌های PDF (نویسنده، عنوان)</span><small><span lang="fa">نویسنده، عنوان، نرم‌افزار و تاریخ‌های ذخیره‌شده در PDF را ببینید، سپس حذف یا ویرایش کنید.</span></small></a><a href="/fa/pdf-fill.html"><span lang="fa">پر کردن PDF: افزودن متن، تاریخ، امضا و علامت</span><small><span lang="fa">متن، تاریخ، علامت تیک، دایره، امضای دست‌نویس یا تصویر (مثل مهر) را در هر جای PDF اضافه کنید.</span></small></a><a href="/fa/pdf-resize.html"><span lang="fa">تغییر اندازهٔ صفحه‌های PDF به A4 یا اندازهٔ دیگر</span><small><span lang="fa">صفحه‌های PDF با اندازه‌های گوناگون را هم‌اندازه کنید، مانند A4، A3، B5 یا Letter. متن و گرافیک واضح می‌مانند.</span></small></a><a href="/fa/pdf-delete-pages.html"><span lang="fa">حذف صفحه از PDF</span><small><span lang="fa">صفحه‌های ناخواستهٔ یک PDF را انتخاب و حذف کنید.</span></small></a><a href="/fa/pdf-extract-pages.html"><span lang="fa">استخراج صفحه از PDF</span><small><span lang="fa">صفحه‌های لازم را انتخاب کنید و به‌صورت PDF جدید ذخیره کنید.</span></small></a><a href="/fa/pdf-reverse.html"><span lang="fa">وارونه‌کردن ترتیب صفحه‌های PDF</span><small><span lang="fa">ترتیب صفحه‌های PDF را وارونه کنید.</span></small></a><a href="/fa/pdf-insert-blank.html"><span lang="fa">درج صفحهٔ خالی در PDF</span><small><span lang="fa">صفحه‌های خالی را در هر جای PDF درج کنید.</span></small></a><a href="/fa/pdf-split-halves.html"><span lang="fa">تقسیم صفحه‌های دوتایی PDF به صفحه‌های تکی</span><small><span lang="fa">صفحه‌های دوتایی PDF را به صفحه‌های تکی تقسیم کنید.</span></small></a><a href="/fa/pdf-header-footer.html"><span lang="fa">افزودن سرصفحه و پاصفحه به PDF</span><small><span lang="fa">عنوان، تاریخ یا شمارهٔ صفحه را به بالا و پایین PDF اضافه کنید.</span></small></a><a href="/fa/pdf-booklet.html"><span lang="fa">چیدن PDF به‌صورت کتابچه برای چاپ</span><small><span lang="fa">PDF را طوری مرتب کنید که چاپ و تا شود و کتابچه شود.</span></small></a><a href="/fa/pdf-blank-remove.html"><span lang="fa">یافتن و حذف صفحه‌های خالی PDF</span><small><span lang="fa">صفحه‌های خالی یک PDF را خودکار پیدا و حذف کنید.</span></small></a><a href="/fa/pdf-long-image.html"><span lang="fa">تبدیل PDF به یک تصویر بلند</span><small><span lang="fa">همهٔ صفحه‌های PDF را به یک تصویر بلند تبدیل کنید.</span></small></a><a href="/fa/pdf-duplex-merge.html"><span lang="fa">ادغام اسکن روی و پشت در یک PDF</span><small><span lang="fa">یک PDF روها و یک PDF پشت‌ها را در یک PDF درهم‌بافی کنید.</span></small></a><a href="/fa/image-resize.html"><span lang="fa">تغییر اندازهٔ تصاویر بر حسب پیکسل</span><small><span lang="fa">تغییر اندازهٔ تصاویر بر اساس عرض، ارتفاع یا درصد.</span></small></a><a href="/fa/image-rotate.html"><span lang="fa">چرخش و قرینهٔ تصاویر</span><small><span lang="fa">تصاویر را بچرخانید و افقی یا عمودی قرینه کنید.</span></small></a><a href="/fa/image-watermark.html"><span lang="fa">افزودن واترمارک متنی به تصاویر</span><small><span lang="fa">متن واترمارک مانند «رونوشت» را روی تصاویر قرار دهید.</span></small></a><a href="/fa/image-mosaic.html"><span lang="fa">موزاییک یا محو کردن بخشی از تصویر</span><small><span lang="fa">بخش‌هایی از تصویر را با موزاییک، محو کردن یا کادر سیاه بپوشانید.</span></small></a><a href="/fa/image-exif-remove.html"><span lang="fa">حذف مکان و اطلاعات عکسبرداری از عکس‌ها</span><small><span lang="fa">مکان جی‌پی‌اس، تاریخ و اطلاعات دوربین را از عکس‌ها بردارید و نسخهٔ تمیز ذخیره کنید.</span></small></a><a href="/fa/image-filter.html"><span lang="fa">اعمال حالت‌های سیاه‌وسفید، سپیا و موارد دیگر</span><small><span lang="fa">تصاویر را سیاه‌وسفید یا سپیا کنید، یا روشنایی را تغییر دهید.</span></small></a><a href="/fa/favicon-maker.html"><span lang="fa">ساخت فاویکون (آیکون سایت)</span><small><span lang="fa">یک مجموعهٔ کامل فاویکون را از یک تصویر بسازید.</span></small></a><a href="/fa/image-stitch.html"><span lang="fa">ترکیب چند تصویر در یک تصویر</span><small><span lang="fa">چند تصویر را روی هم یا کنار هم بچینید و یک تصویر بسازید.</span></small></a><a href="/fa/id-photo.html"><span lang="fa">برش به اندازهٔ عکس پرسنلی و چیدن برای چاپ</span><small><span lang="fa">یک عکس را به اندازهٔ عکس پرسنلی ببرید و روی برگهٔ اندازهٔ L بچینید.</span></small></a><a href="/fa/image-color-picker.html"><span lang="fa">انتخاب کد رنگ از تصویر</span><small><span lang="fa">کدهای رنگ را از یک تصویر بخوانید و رنگ‌های اصلی را بیابید.</span></small></a><a href="/fa/char-counter.html"><span lang="fa">شمارندهٔ نویسه (برای درخواست‌ها و گزارش‌ها)</span><small><span lang="fa">نویسه‌ها، خطوط و برگه‌های دست‌نویس متن خود را بشمارید.</span></small></a><a href="/fa/wareki-converter.html"><span lang="fa">تبدیل سال میلادی و دوره‌های ژاپنی</span><small><span lang="fa">تبدیل بین سال میلادی و دوره‌های ژاپنی.</span></small></a><a href="/fa/zenkaku-hankaku.html"><span lang="fa">تبدیل تمام‌پهنا، نیم‌پهنا، هیراگانا و کاتاکانا</span><small><span lang="fa">تبدیل تمام‌پهنا/نیم‌پهنا و هیراگانا/کاتاکانا.</span></small></a><a href="/fa/line-break-remover.html"><span lang="fa">حذف و مرتب‌سازی خط‌شکن‌های متن</span><small><span lang="fa">خط‌شکن‌های متن کپی‌شده از PDF و جاهای دیگر را مرتب کنید.</span></small></a><a href="/fa/tax-calculator.html"><span lang="fa">محاسبهٔ مالیات بر مصرف (با مالیات / بدون مالیات)</span><small><span lang="fa">قیمت با مالیات و بدون مالیات را محاسبه کنید.</span></small></a><a href="/fa/date-calculator.html"><span lang="fa">محاسبهٔ سن، روزهای بین دو تاریخ و جابه‌جایی تاریخ</span><small><span lang="fa">سن و تعداد روزهای بین دو تاریخ را محاسبه کنید.</span></small></a><a href="/fa/pdf-unlock.html"><span lang="fa">حذف گذرواژه از PDF</span><small><span lang="fa">گذرواژه و محدودیت‌ها را از PDFی که گذرواژه‌اش را می‌دانید بردارید.</span></small></a><a href="/fa/pdf-protect.html"><span lang="fa">افزودن گذرواژه به PDF</span><small><span lang="fa">گذرواژه‌ای برای باز کردن PDF اضافه کنید.</span></small></a><a href="/fa/ocr-text.html"><span lang="fa">خواندن متن از تصاویر و PDF (OCR)</span><small><span lang="fa">متن داخل تصاویر و PDFهای اسکن‌شده را به متن تبدیل کنید.</span></small></a><a href="/fa/pdf-compare.html"><span lang="fa">مقایسهٔ دو PDF (یافتن تفاوت‌ها)</span><small><span lang="fa">تفاوت متن دو PDF را با رنگ‌بندی نشان دهید.</span></small></a><a href="/fa/password-generator.html"><span lang="fa">ساخت گذرواژهٔ تصادفی قوی</span><small><span lang="fa">گذرواژه‌های قوی و تصادفی را فوراً بسازید.</span></small></a><a href="/fa/percent-calculator.html"><span lang="fa">محاسبهٔ درصد، تخفیف و درصد تغییر</span><small><span lang="fa">درصد، تخفیف و درصد تغییر را فوراً محاسبه کنید.</span></small></a><a href="/fa/line-sort-dedupe.html"><span lang="fa">حذف خطوط تکراری و مرتب‌سازی فهرست</span><small><span lang="fa">خطوط تکراری را حذف و مرتب کنید.</span></small></a><a href="/fa/unit-converter.html"><span lang="fa">مبدل واحد (طول، وزن، مساحت، دما و بیشتر)</span><small><span lang="fa">طول، وزن، مساحت، دما و بیشتر را فوراً تبدیل کنید.</span></small></a><a href="/fa/zip-maker.html"><span lang="fa">ساخت فایل ZIP</span><small><span lang="fa">چند فایل را در یک ZIP بسته‌بندی کنید.</span></small></a><a href="/fa/zip-extract.html"><span lang="fa">باز کردن فایل ZIP (استخراج)</span><small><span lang="fa">محتوای یک ZIP را ببینید و فایل‌های لازم را استخراج کنید.</span></small></a><a href="/fa/file-hash.html"><span lang="fa">بررسی هش فایل (SHA-256)</span><small><span lang="fa">هش یک فایل را محاسبه و مقایسه کنید.</span></small></a><a href="/fa/csv-json.html"><span lang="fa">تبدیل CSV و JSON</span><small><span lang="fa">تبدیل فوری بین CSV و JSON.</span></small></a><a href="/fa/svg-to-png.html"><span lang="fa">تبدیل SVG به PNG</span><small><span lang="fa">یک فایل SVG را به تصویر PNG تبدیل کنید.</span></small></a><a href="/fa/file-base64.html"><span lang="fa">تبدیل فایل‌ها و Base64</span><small><span lang="fa">تبدیل بین فایل‌ها و متن Base64.</span></small></a><a href="/fa/json-formatter.html"><span lang="fa">قالب‌بندی و اعتبارسنجی JSON</span><small><span lang="fa">قالب‌بندی، کوچک‌سازی و اعتبارسنجی JSON.</span></small></a><a href="/fa/text-diff.html"><span lang="fa">مقایسهٔ دو متن (تفاوت)</span><small><span lang="fa">تفاوت‌های دو متن را خط‌به‌خط نشان دهید.</span></small></a><a href="/fa/csv-to-xlsx.html"><span lang="fa">تبدیل CSV به Excel (.xlsx)</span><small><span lang="fa">یک CSV را به فایل Excel (.xlsx) تبدیل کنید.</span></small></a><a href="/fa/docx-to-text.html"><span lang="fa">استخراج متن از فایل Word</span><small><span lang="fa">متن ساده را از فایل Word استخراج کنید.</span></small></a><a href="/fa/pptx-to-text.html"><span lang="fa">استخراج متن از PowerPoint</span><small><span lang="fa">متن هر اسلاید PowerPoint را استخراج کنید.</span></small></a><a href="/fa/pdf-to-word.html"><span lang="fa">قرار دادن متن PDF در Word</span><small><span lang="fa">متن PDF را در یک فایل Word استخراج کنید.</span></small></a><a href="/fa/image-to-word.html"><span lang="fa">قرار دادن تصاویر در فایل Word</span><small><span lang="fa">تصاویر را در فایل Word بگذارید، هر کدام در یک صفحه.</span></small></a><a href="/fa/xlsx-formula-to-value.html"><span lang="fa">تبدیل فرمول‌های Excel به مقدار</span><small><span lang="fa">فرمول‌های Excel را با مقادیرشان جایگزین کنید.</span></small></a><a href="/fa/office-metadata-remove.html"><span lang="fa">حذف اطلاعات نویسنده از فایل‌های Office</span><small><span lang="fa">نام نویسنده و اطلاعات دیگر ذخیره‌شده در فایل‌های Office را پاک کنید.</span></small></a><a href="/fa/office-image-extract.html"><span lang="fa">استخراج تصاویر از Word، Excel و PowerPoint</span><small><span lang="fa">تصاویر فایل‌های Office را به‌صورت ZIP استخراج کنید.</span></small></a><a href="/fa/docx-to-html.html"><span lang="fa">تبدیل Word به HTML</span><small><span lang="fa">متن Word را به HTML تبدیل کنید.</span></small></a><a href="/fa/xlsx-split-sheets.html"><span lang="fa">تقسیم فایل Excel بر اساس برگه</span><small><span lang="fa">هر برگهٔ Excel را به CSV یا TSV جداگانه تقسیم کنید.</span></small></a><a href="/fa/xlsx-to-html.html"><span lang="fa">تبدیل جدول Excel به HTML یا Markdown</span><small><span lang="fa">یک جدول Excel را به جدول HTML یا Markdown تبدیل کنید.</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="fa">دربارهٔ ما / تماس (ژاپنی)</span></a><a href="/fa/privacy.html"><span lang="fa">سیاست حفظ حریم خصوصی</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="fa">خبرها در X</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const TR={"{0} rows × {1} columns": "{0} ردیف × {1} ستون", "Choose another file": "انتخاب فایل دیگر", "Save as file": "ذخیره به‌صورت فایل", "Copy result": "کپی نتیجه", "Could not save. Please try again.": "ذخیره نشد. لطفاً دوباره تلاش کنید.", "Password-protected PDFs are not supported. Remove the password and try again.": "PDFهای دارای گذرواژه پشتیبانی نمی‌شوند. گذرواژه را بردارید و دوباره تلاش کنید.", "Could not read the PDF. It may be damaged or in an unsupported format.": "PDF خوانده نشد. ممکن است خراب باشد یا قالبش پشتیبانی نشود.", "Could not read this as an Excel (.xlsx) file. Old .xls files and password-protected files cannot be opened.": "این را نتوانست به‌عنوان فایل Excel (.xlsx) بخواند. فایل‌های .xls قدیمی و فایل‌های محافظت‌شده با گذرواژه باز نمی‌شوند.", "Copied": "کپی شد"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=T("Could not save. Please try again.",[])}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return T("Password-protected PDFs are not supported. Remove the password and try again.",[]);
+  return T("Could not read the PDF. It may be damaged or in an unsupported format.",[]);
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+async function copyText(btn,text){try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(_){}ta.remove()}
+  const o=btn.textContent;btn.textContent=T("Copied",[]);setTimeout(()=>{btn.textContent=o},1500)}
+function showErr2(m){const o=$("out");o.style.display="block";o.querySelector(".stamp").style.display="none";$("bar").style.display="none";$("dl").style.display="none";$("info").textContent="";$("msg").className="bad";$("msg").textContent=m}
+
+const dp=new DOMParser();
+const xml=s=>dp.parseFromString(s,"application/xml");
+const els=(n,name)=>Array.from(n.getElementsByTagNameNS("*",name));
+async function zt(z,p){const f=z.file(p);return f?await f.async("string"):null}
+function dl(blob,name,mime){return save(blob,name,mime)}
+
+$("cp").textContent=T("Copy result",[]);$("sv").textContent=T("Save as file",[]);
+let WB=null,base="book";
+function colNum(r){const m=r.match(/^([A-Z]+)/);let n=0;for(const c of m[1])n=n*26+c.charCodeAt(0)-64;return n-1}
+function isDateFmt(code){const c=code.replace(/"[^"]*"|\[[^\]]*\]|\\.|_.|\*./g,"");return /[ymdhs]/i.test(c)&&!/^(general|0|#)/i.test(c)}
+function serial(v){const ms=Math.round((v-25569)*86400000),d=new Date(ms),p=n=>String(n).padStart(2,"0");
+  const ds=d.getUTCFullYear()+"-"+p(d.getUTCMonth()+1)+"-"+p(d.getUTCDate());const tm=p(d.getUTCHours())+":"+p(d.getUTCMinutes())+":"+p(d.getUTCSeconds());
+  return (v%1===0)?ds:(v<1?tm:ds+" "+tm)}
+async function readBook(z){
+  const wb=xml(await zt(z,"xl/workbook.xml")),rel=xml(await zt(z,"xl/_rels/workbook.xml.rels"));
+  const rmap={};els(rel,"Relationship").forEach(r=>{rmap[r.getAttribute("Id")]=r.getAttribute("Target")});
+  const ss=[];const sx=await zt(z,"xl/sharedStrings.xml");
+  if(sx)els(xml(sx),"si").forEach(si=>{ss.push(els(si,"t").filter(t=>!t.parentNode||t.parentNode.localName!=="rPh").map(t=>t.textContent).join(""))});
+  const dateX=new Set();const st=await zt(z,"xl/styles.xml");
+  if(st){const sd=xml(st),nf={};els(sd,"numFmt").forEach(n=>{nf[n.getAttribute("numFmtId")]=n.getAttribute("formatCode")});
+    const cx=els(sd,"cellXfs")[0];if(cx)Array.from(cx.children).forEach((x,i)=>{const id=x.getAttribute("numFmtId");if((id>=14&&id<=22)||(id>=45&&id<=47)||(nf[id]&&isDateFmt(nf[id])))dateX.add(String(i))})}
+  const sheets=[];
+  for(const s of els(wb,"sheet")){
+    const rid=s.getAttributeNS("http://schemas.openxmlformats.org/officeDocument/2006/relationships","id")||s.getAttribute("r:id");
+    let tg=rmap[rid];if(!tg)continue;tg=tg.replace(/^\//,"");if(!/^xl\//.test(tg))tg="xl/"+tg;
+    const tx=await zt(z,tg);if(!tx)continue;const sd=xml(tx),rows=[];
+    els(sd,"row").forEach(r=>{const arr=[];els(r,"c").forEach(c=>{
+      const ci=colNum(c.getAttribute("r")||"A1"),ty=c.getAttribute("t"),vN=els(c,"v")[0],v=vN?vN.textContent:"";let out="";
+      if(ty==="s")out=ss[+v]||"";else if(ty==="inlineStr")out=els(c,"t").map(t=>t.textContent).join("");
+      else if(ty==="b")out=v==="1"?"TRUE":"FALSE";else if(ty==="str"||ty==="e")out=v;
+      else if(v!==""&&dateX.has(c.getAttribute("s")||"0")&&isFinite(+v))out=serial(+v);else out=v;
+      arr[ci]=out});
+      const rn=+(r.getAttribute("r")||rows.length+1)-1;for(let i=rows.length;i<rn;i++)rows.push([]);rows.push(Array.from(arr,x=>x===undefined?"":x))});
+    while(rows.length&&rows[rows.length-1].every(x=>x===""))rows.pop();
+    sheets.push({name:s.getAttribute("name"),rows});
+  }
+  return sheets;
+}
+function esc(v,d){const s=String(v);return /["\r\n]/.test(s)||s.indexOf(d)>=0?'"'+s.replace(/"/g,'""')+'"':s}
+function render(){
+  if(!WB)return;const sh=WB[+$("sh").value],f=val("fm"),rows=sh.rows,m=$("cmsg");m.className="note2";
+  const w=Math.max(0,...rows.map(r=>r.length));const R=rows.map(r=>{const a=r.slice();for(let i=0;i<w;i++)if(a[i]===undefined)a[i]="";return a});
+  let out;
+  if(f==="json"){if(!R.length)out="[]";else{const h=R[0].map((x,i)=>x||("col"+(i+1)));out=JSON.stringify(R.slice(1).map(r=>{const o={};h.forEach((k,i)=>{o[k]=r[i]});return o}),null,2)}}
+  else{const d=f==="tsv"?"\t":",";out=R.map(r=>r.map(x=>esc(x,d)).join(d)).join("\r\n")}
+  $("ot").value=out.length>2000000?out.slice(0,2000000):out;
+  m.textContent=T("{0} rows × {1} columns",[R.length,w]);
+}
+async function load(list){
+  const f=list[0];if(!f)return;const info=$("finfo");info.style.display="block";info.className="note2";info.textContent=f.name+"（"+fmt(f.size)+"）";
+  try{
+    const z=await JSZip.loadAsync(f);if(!z.file("xl/workbook.xml"))throw new Error("x");
+    WB=await readBook(z);if(!WB.length)throw new Error("x");base=baseName(f);
+    const sel=$("sh");sel.textContent="";WB.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=s.name;sel.appendChild(o)});
+    $("st").style.display="block";$("pt").textContent=T("Choose another file",[]);render();
+  }catch(e){console.error(e);WB=null;$("st").style.display="none";info.className="note2 bad";info.textContent=T("Could not read this as an Excel (.xlsx) file. Old .xls files and password-protected files cannot be opened.",[])}
+}
+$("file").onchange=e=>{load([...e.target.files]);e.target.value=""};bindDrop("drop",load);
+$("sh").onchange=render;document.querySelectorAll('input[name="fm"]').forEach(x=>x.addEventListener("change",render));
+$("cp").onclick=()=>copyText($("cp"),$("ot").value);
+$("sv").onclick=async()=>{const f=val("fm"),v=$("ot").value;if(!v)return;const j=f==="json";await save(new Blob([j?v:"\uFEFF"+v],{type:j?"application/json":"text/csv"}),base+"."+(j?"json":f),j?"application/json":"text/csv")};
+
+</script>
+</body>
+</html>
