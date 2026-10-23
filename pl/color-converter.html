@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html data-lang="pl" lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Konwerter kodów kolorów: HEX, RGB, HSL (za darmo, bez rejestracji)｜PDF Mikata</title>
+<meta content="Darmowe narzędzie do przeliczania kodów kolorów między HEX, RGB i HSL oraz sprawdzania kontrastu z bielą i czernią. To, co wpisujesz, nigdy nie opuszcza urządzenia." name="description"/>
+
+
+<link href="https://pdfmikata.com/pl/color-converter.html" rel="canonical"/>
+<script src="/site.js"></script>
+
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+.next{margin:20px 0 6px}
+.next h3{margin:0 0 10px;font-size:1.05rem}
+.ncards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ncards a.tool,.ncards .tool *{min-width:0;overflow-wrap:anywhere;hyphens:auto}
+@media(min-width:720px){.ncards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.ncards a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper,#fff);box-shadow:0 3px 0 var(--line);text-decoration:none;color:var(--ink)}
+.ncards a.tool:hover{border-color:var(--stamp)}
+.ncards .ic{flex:none;width:40px;height:40px;border-radius:11px;background:var(--ink);color:var(--btn-ink);display:grid;place-items:center}
+.ncards .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ncards .tx b{display:block;font-size:.95rem;line-height:1.4}
+.ncards .tx .d{display:block;color:var(--sub);font-size:.8rem;line-height:1.5;margin-top:2px}
+.next .allt{display:block;margin:14px 0 0;padding:13px 16px;border:2px solid var(--ink);border-radius:12px;text-align:center;font-weight:700;text-decoration:none;color:var(--ink);background:var(--paper,#fff)}
+.next .allt:hover{background:var(--ink);color:var(--btn-ink)}
+.safe{margin:14px 0 0;font-size:.85rem;color:var(--sub);line-height:1.6}
+#bar::after{content:"処理中…この端末の中だけで処理しています";display:block;margin-top:6px;font-size:.8rem;color:var(--sub)}
+html[data-lang="en"] #bar::after{content:"Working… processed only on this device"}
+html[data-lang="zh"] #bar::after{content:"处理中…仅在此设备上处理"}
+html[data-lang="es"] #bar::after{content:"Procesando… solo en este dispositivo"}
+html[data-lang="ko"] #bar::after{content:"처리 중… 이 기기 안에서만 처리합니다"}
+html[data-lang="pt"] #bar::after{content:"Processando… somente neste dispositivo"}
+html[data-lang="fr"] #bar::after{content:"Traitement… uniquement sur cet appareil"}
+html[data-lang="id"] #bar::after{content:"Memproses… hanya di perangkat ini"}
+html[data-lang="it"] #bar::after{content:"Elaborazione… solo su questo dispositivo"}
+html[data-lang="ru"] #bar::after{content:"Обработка… только на этом устройстве"}
+html[data-lang="pl"] #bar::after{content:"Przetwarzanie… tylko na tym urządzeniu"}
+html[data-lang="nl"] #bar::after{content:"Bezig met verwerken… alleen op dit apparaat"}
+html[data-lang="th"] #bar::after{content:"กำลังประมวลผล… ทำงานบนอุปกรณ์นี้เท่านั้น"}
+html[data-lang="ar"] #bar::after{content:"جارٍ المعالجة… على هذا الجهاز فقط"}
+html[data-lang="bn"] #bar::after{content:"প্রক্রিয়া চলছে… শুধু এই ডিভাইসে"}
+html[data-lang="tl"] #bar::after{content:"Pinoproseso… sa device na ito lang"}
+html[data-lang="uk"] #bar::after{content:"Обробка… лише на цьому пристрої"}
+html[data-lang="ms"] #bar::after{content:"Memproses… pada peranti ini sahaja"}
+html[data-lang="fa"] #bar::after{content:"در حال پردازش… فقط روی همین دستگاه"}
+html[data-lang="ur"] #bar::after{content:"پروسیسنگ جاری ہے… صرف اسی ڈیوائس پر"}
+html[data-lang="tw"] #bar::after{content:"處理中…僅在此裝置上處理"}
+html[data-lang="vi"] #bar::after{content:"Đang xử lý… chỉ trên thiết bị này"}
+html[data-lang="tr"] #bar::after{content:"İşleniyor… yalnızca bu cihazda"}
+html[data-lang="de"] #bar::after{content:"Wird verarbeitet… nur auf diesem Gerät"}
+html[data-lang="hi"] #bar::after{content:"प्रोसेस हो रहा है… केवल इसी डिवाइस पर"}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}a.tool .bd{color:var(--btn-ink)}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}
+html{background:var(--desk)}body{background-image:radial-gradient(900px 420px at 12% -6%,rgba(63,181,174,.11),transparent 62%),radial-gradient(700px 420px at 100% 0,rgba(90,120,210,.08),transparent 58%);background-repeat:no-repeat}
+a.tool{box-shadow:0 3px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.07)}}
+.pop a,.btn2,button,a.tool{transition:transform .12s ease,box-shadow .15s ease,border-color .15s ease,background-color .15s ease,color .15s ease}
+.pop a:active,.btn2:active,button:not(:disabled):active{transform:scale(.97)}a.tool:active{transform:translateY(0) scale(.985)}
+h1,h2{letter-spacing:.01em}
+@media (prefers-reduced-motion:reduce){.pop a:active,.btn2:active,button:active,a.tool:active{transform:none}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b{display:inline-flex;align-items:center;gap:6px}.pop.recent b svg,.pop.recent a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}.pop.recent a{display:inline-flex;align-items:center;gap:6px}.pop.recent a .pi{margin-right:0}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "Narzędzia", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "Konwerter kodów kolorów (HEX, RGB, HSL)", "item": "https://pdfmikata.com/color-converter.html"}]}</script>
+<meta content="website" property="og:type"/>
+<meta content="PDF Mikata" property="og:site_name"/>
+<meta content="pl_PL" property="og:locale"/>
+
+<meta content="Konwerter kodów kolorów: HEX, RGB, HSL (za darmo, bez rejestracji)｜PDF Mikata" property="og:title"/>
+<meta content="Darmowe narzędzie do przeliczania kodów kolorów między HEX, RGB i HSL oraz sprawdzania kontrastu z bielą i czernią. To, co wpisujesz, nigdy nie opuszcza urządzenia." property="og:description"/>
+<meta content="https://pdfmikata.com/pl/color-converter.html" property="og:url"/>
+<meta content="https://pdfmikata.com/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Konwerter kodów kolorów: HEX, RGB, HSL (za darmo, bez rejestracji)｜PDF Mikata" name="twitter:title"/>
+<meta content="Darmowe narzędzie do przeliczania kodów kolorów między HEX, RGB i HSL oraz sprawdzania kontrastu z bielą i czernią. To, co wpisujesz, nigdy nie opuszcza urządzenia." name="twitter:description"/>
+<meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="#16393c" name="theme-color"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Konwerter kodów kolorów (HEX, RGB, HSL)", "alternateName": "Color Code Converter (HEX, RGB, HSL)", "url": "https://pdfmikata.com/pl/color-converter.html", "description": "Darmowe narzędzie do przeliczania kodów kolorów między HEX, RGB i HSL oraz sprawdzania kontrastu z bielą i czernią. To, co wpisujesz, nigdy nie opuszcza urządzenia.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "pl", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/pl/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
+<style>
+main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
+
+.lang{display:flex;align-items:center;border:0;overflow:visible}
+.lang .gl{width:18px;height:18px;margin:0 6px 0 10px;color:#fcfefd;flex:none}
+.lang select{appearance:none;-webkit-appearance:none;min-height:44px;border:1px solid rgba(255,255,255,.5);border-radius:6px;background:transparent;color:#fcfefd;font:inherit;font-weight:700;font-size:.85rem;padding:0 28px 0 12px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23fcfefd' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.lang select option{color:#16393c;background:#fcfefd}
+.lang select:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+@media (max-width:420px){.lang .gl{display:none}}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.skip{position:absolute;left:8px;top:-60px;z-index:100;background:var(--btn-ink,#fff);color:var(--ink);padding:10px 14px;border-radius:10px;border:2px solid var(--stamp);font-weight:700;text-decoration:none;transition:top .15s}
+.skip:focus{top:8px}
+.top{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.sub{background:color-mix(in srgb,var(--paper) 80%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px)}
+ul.g a,.more a,.ncards a.tool,.cats a.tool{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background-color .15s ease}
+ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:translateY(-2px)}
+ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform:scale(.98)}
+.pop svg,.pi,.ic svg,.ncards .ic svg{stroke-width:1.8}
+#pm-toast{position:fixed;left:50%;bottom:18px;transform:translate(-50%,24px);opacity:0;z-index:60;width:min(560px,calc(100vw - 24px));background:var(--paper);color:var(--ink);border:1px solid var(--line);border-left:5px solid var(--stamp);border-radius:14px;padding:12px 40px 12px 14px;box-shadow:0 14px 34px -12px rgba(0,0,0,.35);transition:opacity .22s,transform .22s;pointer-events:none;font-size:14px;line-height:1.6}
+#pm-toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#pm-toast.warn{border-left-color:#d98a1c}
+#pm-toast b{display:block;margin-bottom:4px}
+#pm-toast .nx{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+#pm-toast .nx a{border:1px solid var(--line);border-radius:999px;padding:4px 12px;color:var(--ink);text-decoration:none;font-weight:600;background:var(--desk)}
+#pm-toast .nx a:hover{border-color:var(--stamp)}
+#pm-toast .x{position:absolute;right:6px;top:6px;width:30px;height:30px;border:0;background:transparent;color:var(--sub);font-size:20px;line-height:1;cursor:pointer;border-radius:8px}
+@media (prefers-reduced-motion:reduce){#pm-toast,.skip{transition:none}ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:none}}
+.lite .aurora{display:none}.lite .hero::before,.lite .hero::after{animation:none}
+</style><link href="https://pdfmikata.com/color-converter.html" hreflang="ja" rel="alternate"/>
+<link href="https://pdfmikata.com/en/color-converter.html" hreflang="en" rel="alternate"/>
+<link href="https://pdfmikata.com/zh/color-converter.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://pdfmikata.com/es/color-converter.html" hreflang="es" rel="alternate"/>
+<link href="https://pdfmikata.com/ko/color-converter.html" hreflang="ko" rel="alternate"/>
+<link href="https://pdfmikata.com/pt/color-converter.html" hreflang="pt" rel="alternate"/>
+<link href="https://pdfmikata.com/fr/color-converter.html" hreflang="fr" rel="alternate"/>
+<link href="https://pdfmikata.com/id/color-converter.html" hreflang="id" rel="alternate"/>
+<link href="https://pdfmikata.com/vi/color-converter.html" hreflang="vi" rel="alternate"/>
+<link href="https://pdfmikata.com/tr/color-converter.html" hreflang="tr" rel="alternate"/>
+<link href="https://pdfmikata.com/de/color-converter.html" hreflang="de" rel="alternate"/>
+<link href="https://pdfmikata.com/hi/color-converter.html" hreflang="hi" rel="alternate"/>
+<link href="https://pdfmikata.com/it/color-converter.html" hreflang="it" rel="alternate"/>
+<link href="https://pdfmikata.com/ru/color-converter.html" hreflang="ru" rel="alternate"/>
+<link href="https://pdfmikata.com/tw/color-converter.html" hreflang="zh-Hant" rel="alternate"/>
+<link href="https://pdfmikata.com/pl/color-converter.html" hreflang="pl" rel="alternate"/>
+<link href="https://pdfmikata.com/nl/color-converter.html" hreflang="nl" rel="alternate"/>
+<link href="https://pdfmikata.com/th/color-converter.html" hreflang="th" rel="alternate"/>
+<link href="https://pdfmikata.com/ar/color-converter.html" hreflang="ar" rel="alternate"/>
+<link href="https://pdfmikata.com/bn/color-converter.html" hreflang="bn" rel="alternate"/>
+<link href="https://pdfmikata.com/tl/color-converter.html" hreflang="fil" rel="alternate"/>
+<link href="https://pdfmikata.com/uk/color-converter.html" hreflang="uk" rel="alternate"/>
+<link href="https://pdfmikata.com/ms/color-converter.html" hreflang="ms" rel="alternate"/>
+<link href="https://pdfmikata.com/fa/color-converter.html" hreflang="fa" rel="alternate"/>
+<link href="https://pdfmikata.com/ur/color-converter.html" hreflang="ur" rel="alternate"/>
+<link href="https://pdfmikata.com/color-converter.html" hreflang="x-default" rel="alternate"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2376251801221434" crossorigin="anonymous"></script>
+</head>
+<body><a class="skip" href="#main">Przejdź do treści</a>
+<header class="top"><div class="top-in"><a class="brand" href="/pl/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma / 언어" id="langsel"><option value="/color-converter.html">日本語</option><option value="/en/color-converter.html">English</option><option value="/zh/color-converter.html">简体中文</option><option value="/es/color-converter.html">Español</option><option value="/ko/color-converter.html">한국어</option><option value="/pt/color-converter.html">Português</option><option value="/fr/color-converter.html">Français</option><option value="/id/color-converter.html">Bahasa Indonesia</option><option value="/vi/color-converter.html">Tiếng Việt</option><option value="/tr/color-converter.html">Türkçe</option><option value="/de/color-converter.html">Deutsch</option><option value="/hi/color-converter.html">हिन्दी</option><option value="/it/color-converter.html">Italiano</option><option value="/ru/color-converter.html">Русский</option><option value="/tw/color-converter.html">繁體中文</option><option selected="" value="/pl/color-converter.html">Polski</option><option value="/nl/color-converter.html">Nederlands</option><option value="/th/color-converter.html">ไทย</option><option value="/ar/color-converter.html">العربية</option><option value="/bn/color-converter.html">বাংলা</option><option value="/tl/color-converter.html">Filipino</option><option value="/uk/color-converter.html">Українська</option><option value="/ms/color-converter.html">Bahasa Melayu</option><option value="/fa/color-converter.html">فارسی</option><option value="/ur/color-converter.html">اردو</option></select></div></div></header>
+<nav aria-label="Nawigacja po witrynie" class="sub"><div class="sub-in"><a href="/pl/"><span lang="pl">Strona główna</span></a><a aria-current="page" href="/pl/#cat-convert"><span lang="pl">Konwersja</span></a><a href="/pl/#cat-edit"><span lang="pl">Edycja</span></a><a href="/pl/#cat-optimize"><span lang="pl">Optymalizacja</span></a><a href="/pl/#cat-create"><span lang="pl">Tworzenie</span></a><a href="/pl/#guide"><span lang="pl">Poradniki</span></a></div></nav>
+<nav aria-label="Ścieżka nawigacji" class="crumb"><ol><li><a href="/pl/"><span lang="pl">Strona główna</span></a></li><li><a href="/pl/#tools"><span lang="pl">Narzędzia</span></a></li><li><span aria-current="page"><span lang="pl">Konwerter kodów kolorów (HEX, RGB, HSL)</span></span></li></ol></nav>
+<main id="main" tabindex="-1">
+<h1><span lang="pl">Konwerter kodów kolorów (HEX, RGB, HSL)</span></h1>
+<p class="lead"><span lang="pl">Gdy potrzebujesz koloru z sieci w innym formacie.</span></p>
+<p class="safe"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="9" rx="2" width="14" x="5" y="11"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><span><span lang="pl"><b>To, co wpisujesz, nigdy nie jest przesyłane.</b> Wszystko jest przetwarzane na tym urządzeniu.</span></span></p><ol class="steps"><li><b>1</b><span lang="pl">Wpisz kolor</span></li><li><b>2</b><span lang="pl">Zobacz przeliczenia</span></li><li><b>3</b><span lang="pl">Kopiuj</span></li></ol>
+<label for="pk" style="font-weight:700;display:block"><span lang="pl">Wybierz kolor</span></label>
+<input id="pk" style="width:70px;height:40px;padding:0;border:1px solid var(--ink);border-radius:6px;background:var(--paper)" type="color" value="#2d6cdf"/>
+<label for="ci" style="font-weight:700;display:block;margin-top:10px"><span lang="pl">Kod koloru (HEX, rgb() lub hsl())</span></label>
+<input autocomplete="off" id="ci" placeholder="#2d6cdf / rgb(45,108,223) / hsl(217,74%,52%)" style="width:100%;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:8px 10px;font:inherit;font-family:monospace;background:var(--paper);color:var(--ink)" type="text"/>
+<div id="sw" style="height:56px;border:1px solid var(--line);border-radius:6px;margin-top:10px"></div>
+<label for="o1" style="font-weight:700;display:block;margin-top:10px"><span lang="pl">HEX</span></label>
+<input autocomplete="off" id="o1" placeholder="" readonly="" style="width:100%;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:8px 10px;font:inherit;font-family:monospace;background:var(--paper);color:var(--ink);background:#f7f7f7" type="text"/>
+<label for="o2" style="font-weight:700;display:block;margin-top:10px"><span lang="pl">RGB</span></label>
+<input autocomplete="off" id="o2" placeholder="" readonly="" style="width:100%;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:8px 10px;font:inherit;font-family:monospace;background:var(--paper);color:var(--ink);background:#f7f7f7" type="text"/>
+<label for="o3" style="font-weight:700;display:block;margin-top:10px"><span lang="pl">HSL</span></label>
+<input autocomplete="off" id="o3" placeholder="" readonly="" style="width:100%;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:8px 10px;font:inherit;font-family:monospace;background:var(--paper);color:var(--ink);background:#f7f7f7" type="text"/>
+<p class="note2" id="ct"></p>
+<div class="btnrow" style="margin-top:6px"><button class="btn2" id="c1" type="button"></button><button class="btn2" id="c2" type="button"></button><button class="btn2" id="c3" type="button"></button></div>
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="pl">Gotowe</span></div>
+<p id="info"></p>
+<a href="#" id="dl"></a>
+<div id="extra"></div>
+<p aria-live="polite" id="msg"></p>
+<p class="safe"><span lang="pl">🔒 Twoje pliki nigdy nie są wysyłane na zewnętrzny serwer. Całe przetwarzanie odbywa się bezpiecznie w tej przeglądarce.</span></p>
+<div class="support" hidden="" id="support"><p><span lang="pl">Jeśli PDF Mikata się przydało, mały napiwek będzie dla nas ogromnym wsparciem.</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="pl">Wesprzyj nas napiwkiem (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="pl">Wyślij prezent (lista życzeń Amazon)</span></a></div>
+</section>
+<div class="next" id="next"><h3 aria-level="2"><span lang="pl">Narzędzia często używane razem</span></h3><div class="ncards"><a class="tool" href="/pl/image-filter.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><circle cx="12" cy="12" r="4"></circle></svg></span><div class="tx"><b><span lang="pl">Filtry czarno-biały, sepia i inne</span></b><span class="d"><span lang="pl">Czerń i biel, sepia, jasność.</span></span></div></a><a class="tool" href="/pl/favicon-maker.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><rect height="8" width="8" x="8" y="8"></rect></svg></span><div class="tx"><b><span lang="pl">Tworzenie favicony (ikony witryny)</span></b><span class="d"><span lang="pl">Utwórz zestaw faviconów z obrazu.</span></span></div></a><a class="tool" href="/pl/unit-converter.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M7 9h10M14 6l3 3-3 3M17 15H7M10 12l-3 3 3 3"></path></svg></span><div class="tx"><b><span lang="pl">Przelicznik jednostek (długość, masa, powierzchnia, temperatura i inne)</span></b><span class="d"><span lang="pl">Przeliczaj długość, masę, powierzchnię i inne.</span></span></div></a><a class="tool" href="/pl/merge-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="13" rx="1.5" width="10" x="3" y="3"></rect><rect height="13" rx="1.5" width="10" x="11" y="8"></rect></svg></span><div class="tx"><b><span lang="pl">Łączenie plików PDF</span></b><span class="d"><span lang="pl">Połącz pliki PDF w jeden.</span></span></div></a></div><a class="allt" href="/pl/"><span lang="pl">Zobacz wszystkie narzędzia (powrót do strony głównej)</span></a></div>
+<section class="guide" id="how">
+
+<div lang="pl"><h2>Jak używać</h2>
+<ol>
+<li>Wpisz kod koloru albo kliknij kwadrat, aby wybrać kolor.</li>
+<li>HEX, RGB i HSL są pokazane obok siebie.</li>
+<li>Skopiuj potrzebny format jego przyciskiem.</li>
+</ol>
+<h2>Jak to działa</h2>
+<ul>
+<li>HEX to 6-cyfrowy kod, np. "#2d6cdf" (3 cyfry też działają).</li>
+<li>RGB to natężenie czerwieni, zieleni i błękitu (0–255); HSL to odcień, nasycenie i jasność.</li>
+</ul>
+<h2>Uwagi</h2>
+<ul>
+<li>Przezroczystość (alfa) nie jest obsługiwana. W rgba() i hsla() odczytywana jest tylko część koloru.</li>
+<li>Kontrast z bielą lub czernią to przybliżona wskazówka czytelności tekstu.</li>
+</ul>
+<h2>Najczęstsze pytania</h2>
+<details><summary>Czy to, co wpiszę, jest dokądś wysyłane?</summary><p>Nie. Całe przetwarzanie odbywa się w przeglądarce na Twoim urządzeniu.</p></details>
+<details><summary>Czy kody HEX z 3 cyframi są obsługiwane?</summary><p>Tak. Kody takie jak "#fff" są odczytywane i pokazywane w postaci 6-cyfrowej.</p></details>
+</div>
+</section>
+<div class="support endtip"><p><span lang="pl">Jeśli PDF Mikata się przydało, mały napiwek będzie dla nas ogromnym wsparciem.</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank"><span lang="pl">Wesprzyj nas napiwkiem (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="pl">Wyślij prezent (lista życzeń Amazon)</span></a></div>
+<section class="more rel"><h2><span lang="pl">Poradniki do tego narzędzia</span></h2><a href="/pl/color-converter-howto.html"><span lang="pl">Jak przeliczać kolory między HEX, RGB i HSL (za darmo)</span></a><a href="/pl/color-converter-hex-rgb.html"><span lang="pl">HEX a RGB i jak je czytać</span></a><a href="/pl/color-converter-hsl.html"><span lang="pl">Rozjaśnianie i przyciemnianie koloru w HSL</span></a><a href="/pl/color-converter-contrast.html"><span lang="pl">Kontrast tekstu i tła</span></a><a href="/pl/color-converter-css.html"><span lang="pl">Zapisywanie kolorów w CSS</span></a><a href="/pl/color-converter-trouble.html"><span lang="pl">Co zrobić, gdy nie działa</span></a><a href="/pl/color-converter-safe-offline.html"><span lang="pl">Konwersja kodów kolorów bez wysyłania</span></a></section>
+<section class="more"><h2><span lang="pl">Więcej narzędzi</span></h2><a href="/pl/photo-to-pdf.html"><span lang="pl">Zdjęcia do PDF</span><small><span lang="pl">Połącz kilka zdjęć w jeden PDF w wybranej kolejności. Możesz je obracać, zmieniać ich kolejność i ustawić limit rozmiaru.</span></small></a><a href="/pl/merge-pdf.html"><span lang="pl">Łączenie plików PDF</span><small><span lang="pl">Połącz kilka plików PDF w jeden, w wybranej kolejności.</span></small></a><a href="/pl/split-pdf.html"><span lang="pl">Wyodrębnianie lub usuwanie stron PDF</span><small><span lang="pl">Zachowaj tylko potrzebne strony albo usuń te, których nie potrzebujesz.</span></small></a><a href="/pl/compress-pdf.html"><span lang="pl">Kompresja PDF</span><small><span lang="pl">Zmniejsz PDF do wybranego rozmiaru, aby spełnić limity przesyłania.</span></small></a><a href="/pl/pdf-to-image.html"><span lang="pl">PDF na obrazy</span><small><span lang="pl">Zapisz każdą stronę PDF jako obraz JPEG lub PNG.</span></small></a><a href="/pl/image-convert.html"><span lang="pl">Zmiana formatu obrazu (JPG, PNG, WebP)</span><small><span lang="pl">Konwertuj obrazy na JPG, PNG lub WebP, wiele naraz.</span></small></a><a href="/pl/pdf-rotate.html"><span lang="pl">Obracanie i zmiana kolejności stron PDF</span><small><span lang="pl">Napraw strony ustawione bokiem, zmień ich kolejność lub usuń strony.</span></small></a><a href="/pl/pdf-page-numbers.html"><span lang="pl">Dodawanie numerów stron do PDF</span><small><span lang="pl">Dodaj numery stron do PDF, wybierając położenie i styl.</span></small></a><a href="/pl/image-compress.html"><span lang="pl">Kompresja i zmiana rozmiaru obrazów</span><small><span lang="pl">Zmniejsz pliki obrazów i w razie potrzeby zmień ich rozmiar.</span></small></a><a href="/pl/heic-to-jpg.html"><span lang="pl">Konwersja HEIC na JPG</span><small><span lang="pl">Konwertuj zdjęcia HEIC z iPhone'a na JPG lub PNG.</span></small></a><a href="/pl/pdf-split.html"><span lang="pl">Dzielenie PDF</span><small><span lang="pl">Podziel PDF na kilka plików: po jednej stronie, co N stron lub według zakresów.</span></small></a><a href="/pl/image-crop.html"><span lang="pl">Przycinanie i obracanie obrazu</span><small><span lang="pl">Przytnij obraz do dowolnego obszaru lub proporcji i obróć go.</span></small></a><a href="/pl/pdf-to-text.html"><span lang="pl">Wyodrębnianie tekstu z PDF</span><small><span lang="pl">Wyciągnij tekst z PDF, aby go skopiować lub zapisać.</span></small></a><a href="/pl/receipt-maker.html"><span lang="pl">Tworzenie potwierdzenia odbioru w PDF</span><small><span lang="pl">Wpisz płatnika, kwotę i opis, aby utworzyć potwierdzenie odbioru w PDF. Zestawienie podatku i numer rejestracyjny faktury są opcjonalne.</span></small></a><a href="/pl/resume-maker.html"><span lang="pl">Tworzenie CV w PDF (japoński rirekisho)</span><small><span lang="pl">Wpisz swoje dane, wykształcenie, historię zatrudnienia i motywację, aby utworzyć PDF z CV w stylu japońskim (rirekisho), opcjonalnie ze zdjęciem.</span></small></a><a href="/pl/timetable-maker.html"><span lang="pl">Tworzenie planu lekcji / tygodniowego harmonogramu</span><small><span lang="pl">Wpisz zajęcia, prace i plany, aby utworzyć plan lekcji lub tygodniowy harmonogram w PDF lub jako obraz, z kodowaniem kolorami.</span></small></a><a href="/pl/namecard-maker.html"><span lang="pl">Tworzenie wizytówek</span><small><span lang="pl">Wpisz imię i nazwisko oraz dane, aby utworzyć wizytówki lub identyfikatory ułożone na A4 w PDF. Możesz też utworzyć identyfikatory hurtowo z listy.</span></small></a><a href="/pl/qr-code-maker.html"><span lang="pl">Tworzenie kodu QR (adres URL, Wi-Fi)</span><small><span lang="pl">Utwórz kod QR z adresu URL, tekstu lub danych Wi-Fi i zapisz go jako PNG, SVG lub PDF.</span></small></a><a href="/pl/pdf-nup.html"><span lang="pl">Kilka stron PDF na jednym arkuszu (2, 4 na stronę)</span><small><span lang="pl">Ułóż kilka stron PDF na jednym arkuszu A4 (po 2, 4, 6, 8 lub 9), aby oszczędzić papier przy drukowaniu.</span></small></a><a href="/pl/pdf-grayscale.html"><span lang="pl">Konwersja PDF na skalę szarości (czarno-biały)</span><small><span lang="pl">Zamień kolorowy PDF na skalę szarości lub czysty czarno-biały, gotowy do druku, kopiowania lub faksowania w trybie monochromatycznym. Wybierz rozdzielczość.</span></small></a><a href="/pl/pdf-watermark.html"><span lang="pl">Dodawanie znaku wodnego z tekstem do PDF</span><small><span lang="pl">Dodaj tekst, np. „Do złożenia”, „Kopia” lub „Poufne”, delikatnie na każdej stronie PDF. Wybierz położenie, kolor i przezroczystość.</span></small></a><a href="/pl/pdf-crop.html"><span lang="pl">Przycinanie marginesów PDF</span><small><span lang="pl">Przytnij marginesy PDF automatycznie lub ustaw każdą krawędź osobno. Łatwiejsze czytanie na telefonie i czystszy wydruk.</span></small></a><a href="/pl/pdf-redact.html"><span lang="pl">Zaczernianie (redagowanie) fragmentów PDF</span><small><span lang="pl">Przeciągnij po fragmentach PDF, które chcesz ukryć, i zaczerń je. Zaczernione strony zamieniane są na obrazy, więc tekst pod spodem znika.</span></small></a><a href="/pl/pdf-metadata.html"><span lang="pl">Podgląd i usuwanie właściwości PDF (autor, tytuł)</span><small><span lang="pl">Zobacz autora, tytuł, oprogramowanie i daty zapisane w PDF, a następnie usuń je lub zmień.</span></small></a><a href="/pl/pdf-fill.html"><span lang="pl">Wypełnianie PDF: tekst, data, podpis i znaczki</span><small><span lang="pl">Dodaj tekst, datę, znaczki wyboru, kółka, odręczny podpis lub obraz (np. pieczęć) w dowolnym miejscu PDF.</span></small></a><a href="/pl/pdf-resize.html"><span lang="pl">Zmiana rozmiaru stron PDF na A4 lub inny format</span><small><span lang="pl">Zrównaj rozmiar stron PDF o różnych formatach do jednego, np. A4, A3, B5 lub Letter. Tekst i grafika pozostają ostre.</span></small></a><a href="/pl/pdf-delete-pages.html"><span lang="pl">Usuwanie stron z PDF</span><small><span lang="pl">Wybierz niepotrzebne strony PDF i usuń je.</span></small></a><a href="/pl/pdf-extract-pages.html"><span lang="pl">Wyodrębnianie stron z PDF</span><small><span lang="pl">Wybierz potrzebne strony i zapisz je jako nowy PDF.</span></small></a><a href="/pl/pdf-reverse.html"><span lang="pl">Odwracanie kolejności stron PDF</span><small><span lang="pl">Odwróć kolejność stron PDF.</span></small></a><a href="/pl/pdf-insert-blank.html"><span lang="pl">Wstawianie pustych stron do PDF</span><small><span lang="pl">Wstaw puste strony w dowolnym miejscu PDF.</span></small></a><a href="/pl/pdf-split-halves.html"><span lang="pl">Dzielenie rozkładówek PDF na pojedyncze strony</span><small><span lang="pl">Podziel rozkładówki w PDF na pojedyncze strony.</span></small></a><a href="/pl/pdf-header-footer.html"><span lang="pl">Dodawanie nagłówka i stopki do PDF</span><small><span lang="pl">Dodaj tytuł, datę lub numery stron u góry i u dołu PDF.</span></small></a><a href="/pl/pdf-booklet.html"><span lang="pl">Układ PDF jako broszura do druku</span><small><span lang="pl">Zmień kolejność stron PDF tak, aby po wydrukowaniu i złożeniu powstała broszura.</span></small></a><a href="/pl/pdf-blank-remove.html"><span lang="pl">Wyszukiwanie i usuwanie pustych stron w PDF</span><small><span lang="pl">Automatycznie znajdź puste strony w PDF i usuń je.</span></small></a><a href="/pl/pdf-long-image.html"><span lang="pl">PDF jako jeden długi obraz</span><small><span lang="pl">Połącz wszystkie strony PDF w jeden wysoki obraz.</span></small></a><a href="/pl/pdf-duplex-merge.html"><span lang="pl">Łączenie skanów awersu i rewersu w jeden PDF</span><small><span lang="pl">Połącz PDF ze stronami przednimi i PDF ze stronami tylnymi w jeden PDF, przeplatając strony.</span></small></a><a href="/pl/image-resize.html"><span lang="pl">Zmiana rozmiaru obrazów w pikselach</span><small><span lang="pl">Zmień rozmiar obrazów według szerokości, wysokości lub procentu.</span></small></a><a href="/pl/image-rotate.html"><span lang="pl">Obracanie i odbijanie obrazów</span><small><span lang="pl">Obracaj obrazy i odbijaj je w poziomie lub w pionie.</span></small></a><a href="/pl/image-watermark.html"><span lang="pl">Dodawanie znaku wodnego z tekstem do obrazów</span><small><span lang="pl">Nałóż na obrazy tekst znaku wodnego, np. „Kopia”.</span></small></a><a href="/pl/image-mosaic.html"><span lang="pl">Mozaika lub rozmycie fragmentu obrazu</span><small><span lang="pl">Ukryj fragmenty obrazu mozaiką, rozmyciem lub czarnym prostokątem.</span></small></a><a href="/pl/image-exif-remove.html"><span lang="pl">Usuwanie lokalizacji i danych o zdjęciu</span><small><span lang="pl">Usuń z zdjęć dane GPS, datę i informacje o aparacie i zapisz czystą kopię.</span></small></a><a href="/pl/image-filter.html"><span lang="pl">Filtry czarno-biały, sepia i inne</span><small><span lang="pl">Zamień obrazy na czarno-białe lub sepię albo zmień jasność.</span></small></a><a href="/pl/favicon-maker.html"><span lang="pl">Tworzenie favicony (ikony witryny)</span><small><span lang="pl">Utwórz kompletny zestaw faviconów z jednego obrazu.</span></small></a><a href="/pl/image-stitch.html"><span lang="pl">Łączenie kilku obrazów w jeden</span><small><span lang="pl">Ułóż lub połącz kilka obrazów w jeden obraz.</span></small></a><a href="/pl/id-photo.html"><span lang="pl">Kadrowanie do zdjęcia legitymacyjnego i układ do druku</span><small><span lang="pl">Przytnij zdjęcie do rozmiaru zdjęcia legitymacyjnego i ułóż je na arkuszu L.</span></small></a><a href="/pl/image-color-picker.html"><span lang="pl">Pobieranie kodów kolorów z obrazu</span><small><span lang="pl">Odczytaj kody kolorów z obrazu i znajdź główne kolory.</span></small></a><a href="/pl/char-counter.html"><span lang="pl">Licznik znaków (do podań i prac)</span><small><span lang="pl">Policz znaki, wiersze i arkusze rękopisu w swoim tekście.</span></small></a><a href="/pl/wareki-converter.html"><span lang="pl">Zamiana lat gregoriańskich na japońskie ery i odwrotnie</span><small><span lang="pl">Zamieniaj lata gregoriańskie na japońskie ery i odwrotnie.</span></small></a><a href="/pl/zenkaku-hankaku.html"><span lang="pl">Konwersja znaków pełnej i połowicznej szerokości, hiragany i katakany</span><small><span lang="pl">Konwertuj znaki pełnej i połowicznej szerokości oraz hiraganę i katakanę.</span></small></a><a href="/pl/line-break-remover.html"><span lang="pl">Usuwanie i porządkowanie podziałów wierszy w tekście</span><small><span lang="pl">Uporządkuj podziały wierszy w tekście skopiowanym z PDF i innych źródeł.</span></small></a><a href="/pl/tax-calculator.html"><span lang="pl">Obliczanie podatku konsumpcyjnego (z podatkiem / bez)</span><small><span lang="pl">Oblicz ceny z podatkiem i bez podatku.</span></small></a><a href="/pl/date-calculator.html"><span lang="pl">Obliczanie wieku, liczby dni między datami i przesunięć dat</span><small><span lang="pl">Oblicz wiek i liczbę dni między datami.</span></small></a><a href="/pl/pdf-unlock.html"><span lang="pl">Usuwanie hasła z PDF</span><small><span lang="pl">Usuń hasło i ograniczenia z PDF, którego hasło znasz.</span></small></a><a href="/pl/pdf-protect.html"><span lang="pl">Dodawanie hasła do PDF</span><small><span lang="pl">Dodaj hasło wymagane do otwarcia PDF.</span></small></a><a href="/pl/ocr-text.html"><span lang="pl">Odczytywanie tekstu z obrazów i PDF (OCR)</span><small><span lang="pl">Zamień tekst na obrazach i w zeskanowanych plikach PDF na zwykły tekst.</span></small></a><a href="/pl/pdf-compare.html"><span lang="pl">Porównywanie dwóch PDF (wyszukiwanie różnic)</span><small><span lang="pl">Pokaż różnice w tekście między dwoma plikami PDF, oznaczone kolorami.</span></small></a><a href="/pl/password-generator.html"><span lang="pl">Generowanie silnego losowego hasła</span><small><span lang="pl">Natychmiast generuj silne losowe hasła.</span></small></a><a href="/pl/percent-calculator.html"><span lang="pl">Obliczanie procentów, rabatów i zmian procentowych</span><small><span lang="pl">Natychmiast oblicz procenty, rabaty i zmiany procentowe.</span></small></a><a href="/pl/line-sort-dedupe.html"><span lang="pl">Usuwanie duplikatów wierszy i sortowanie listy</span><small><span lang="pl">Usuń zduplikowane wiersze i posortuj je.</span></small></a><a href="/pl/unit-converter.html"><span lang="pl">Przelicznik jednostek (długość, masa, powierzchnia, temperatura i inne)</span><small><span lang="pl">Natychmiast przeliczaj długość, masę, powierzchnię, temperaturę i inne.</span></small></a><a href="/pl/zip-maker.html"><span lang="pl">Tworzenie pliku ZIP</span><small><span lang="pl">Spakuj kilka plików do jednego ZIP-a.</span></small></a><a href="/pl/zip-extract.html"><span lang="pl">Otwieranie pliku ZIP (rozpakowywanie)</span><small><span lang="pl">Zobacz, co jest w pliku ZIP, i wypakuj potrzebne pliki.</span></small></a><a href="/pl/file-hash.html"><span lang="pl">Sprawdzanie skrótu pliku (SHA-256)</span><small><span lang="pl">Oblicz skrót pliku i porównaj go.</span></small></a><a href="/pl/csv-json.html"><span lang="pl">Konwersja CSV i JSON</span><small><span lang="pl">Natychmiast konwertuj między CSV a JSON.</span></small></a><a href="/pl/svg-to-png.html"><span lang="pl">Konwersja SVG na PNG</span><small><span lang="pl">Zamień plik SVG na obraz PNG.</span></small></a><a href="/pl/file-base64.html"><span lang="pl">Konwersja plików i Base64</span><small><span lang="pl">Konwertuj między plikami a tekstem Base64.</span></small></a><a href="/pl/json-formatter.html"><span lang="pl">Formatowanie i walidacja JSON</span><small><span lang="pl">Formatuj, minifikuj i waliduj JSON.</span></small></a><a href="/pl/text-diff.html"><span lang="pl">Porównywanie dwóch tekstów (diff)</span><small><span lang="pl">Pokaż różnice między dwoma tekstami wiersz po wierszu.</span></small></a><a href="/pl/xlsx-to-csv.html"><span lang="pl">Konwersja Excela na CSV lub JSON</span><small><span lang="pl">Zamień arkusz Excela na CSV, TSV lub JSON.</span></small></a><a href="/pl/csv-to-xlsx.html"><span lang="pl">Konwersja CSV na Excel (.xlsx)</span><small><span lang="pl">Zamień plik CSV na plik Excela (.xlsx).</span></small></a><a href="/pl/docx-to-text.html"><span lang="pl">Wyodrębnianie tekstu z pliku Word</span><small><span lang="pl">Wyodrębnij zwykły tekst z pliku Word.</span></small></a><a href="/pl/pptx-to-text.html"><span lang="pl">Wyodrębnianie tekstu z PowerPointa</span><small><span lang="pl">Wyodrębnij tekst z każdego slajdu PowerPointa.</span></small></a><a href="/pl/pdf-to-word.html"><span lang="pl">Tekst z PDF do Worda</span><small><span lang="pl">Wyodrębnij tekst z PDF do pliku Word.</span></small></a><a href="/pl/image-to-word.html"><span lang="pl">Wstawianie obrazów do pliku Word</span><small><span lang="pl">Wstaw obrazy do pliku Word, po jednym na stronę.</span></small></a><a href="/pl/xlsx-formula-to-value.html"><span lang="pl">Zamiana formuł Excela na wartości</span><small><span lang="pl">Zastąp formuły Excela ich wartościami.</span></small></a><a href="/pl/office-metadata-remove.html"><span lang="pl">Usuwanie danych autora z plików Office</span><small><span lang="pl">Usuń autora i inne informacje zapisane w plikach Office.</span></small></a><a href="/pl/office-image-extract.html"><span lang="pl">Wyodrębnianie obrazów z Worda, Excela i PowerPointa</span><small><span lang="pl">Wyodrębnij obrazy z plików Office do pliku ZIP.</span></small></a><a href="/pl/docx-to-html.html"><span lang="pl">Konwersja Worda na HTML</span><small><span lang="pl">Zamień tekst z Worda na HTML.</span></small></a><a href="/pl/xlsx-split-sheets.html"><span lang="pl">Podział pliku Excela według arkuszy</span><small><span lang="pl">Podziel każdy arkusz Excela na osobny plik CSV lub TSV.</span></small></a><a href="/pl/xlsx-to-html.html"><span lang="pl">Konwersja tabeli Excela na HTML lub Markdown</span><small><span lang="pl">Zamień tabelę Excela na tabelę HTML lub Markdown.</span></small></a><a href="/pl/charset-convert.html"><span lang="pl">Konwertuj kodowanie tekstu (napraw krzaczki)</span><small><span lang="pl">Konwertuj pliki tekstowe między Shift_JIS, UTF-8, EUC-JP i innymi, aby naprawić krzaczki.</span></small></a><a href="/pl/image-split.html"><span lang="pl">Podziel obraz na siatkę (do postów w mediach społecznościowych)</span><small><span lang="pl">Podziel obraz na równe części w poziomie i pionie i zapisz je.</span></small></a><a href="/pl/image-to-gif.html"><span lang="pl">Utwórz animowany GIF z obrazów</span><small><span lang="pl">Połącz kilka obrazów po kolei w animowany GIF.</span></small></a><a href="/pl/file-rename.html"><span lang="pl">Zmień nazwy wielu plików naraz (numery, daty)</span><small><span lang="pl">Zmień nazwy wielu plików naraz, używając numerów lub dat.</span></small></a><a href="/pl/csv-tools.html"><span lang="pl">Scalaj, dziel i wybieraj kolumny z CSV</span><small><span lang="pl">Scalaj pliki CSV, dziel według wierszy lub zachowaj tylko wybrane kolumny.</span></small></a><a href="/pl/pdf-extract-images.html"><span lang="pl">Wyodrębnij obrazy z PDF</span><small><span lang="pl">Wyodrębnij obrazy osadzone w PDF w oryginalnej jakości.</span></small></a><a href="/pl/file-dupes.html"><span lang="pl">Znajdź duplikaty plików</span><small><span lang="pl">Znajdź pliki o identycznej zawartości i zapisz ZIP bez duplikatów.</span></small></a><a href="/pl/file-type-check.html"><span lang="pl">Sprawdź prawdziwy typ pliku (rozszerzenie a zawartość)</span><small><span lang="pl">Rozpoznaj typ pliku po zawartości i sprawdź, czy rozszerzenie się zgadza.</span></small></a><a href="/pl/file-encrypt.html"><span lang="pl">Szyfruj i odszyfruj plik hasłem</span><small><span lang="pl">Szyfruj i odszyfruj dowolny plik hasłem (AES-256).</span></small></a><a href="/pl/txt-merge-split.html"><span lang="pl">Scalaj i dziel pliki tekstowe</span><small><span lang="pl">Scalaj pliki tekstowe w jeden lub dziel je według wierszy albo rozmiaru.</span></small></a><a href="/pl/xlsx-merge-csv.html"><span lang="pl">Scal kilka plików Excel w jeden CSV</span><small><span lang="pl">Połącz dane z kilku plików Excel w jeden CSV.</span></small></a><a href="/pl/pdf-bookmarks.html"><span lang="pl">Wyświetl i dodaj zakładki PDF</span><small><span lang="pl">Wyświetl i dodaj zakładki (spis treści) PDF.</span></small></a><a href="/pl/audio-trim.html"><span lang="pl">Przytnij plik audio</span><small><span lang="pl">Wytnij część pliku audio i zapisz jako WAV.</span></small></a><a href="/pl/video-frame.html"><span lang="pl">Zapisz klatki wideo jako obrazy</span><small><span lang="pl">Zapisz dowolny moment wideo jako obraz.</span></small></a><a href="/pl/url-encoder.html"><span lang="pl">Kodowanie i dekodowanie URL</span><small><span lang="pl">Kodowanie i dekodowanie tekstu w adresach URL.</span></small></a><a href="/pl/markdown-to-html.html"><span lang="pl">Markdown na HTML</span><small><span lang="pl">Zamiana Markdown na HTML.</span></small></a><a href="/pl/random-picker.html"><span lang="pl">Losowanie, kolejność i grupy</span><small><span lang="pl">Losuj imiona, ustal losową kolejność lub podziel na grupy.</span></small></a><a href="/pl/timestamp-converter.html"><span lang="pl">Konwerter znacznika czasu UNIX</span><small><span lang="pl">Zamiana między czasem UNIX a datami.</span></small></a><a href="/pl/regex-tester.html"><span lang="pl">Tester wyrażeń regularnych</span><small><span lang="pl">Testuj wyrażenia regularne wraz z dopasowaniami i zamianami.</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="pl">O stronie / Kontakt (po japońsku)</span></a><a href="/pl/privacy.html"><span lang="pl">Polityka prywatności</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="pl">Aktualności na X</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const TR={"Could not read the color code. Examples: #2d6cdf, rgb(45,108,223), hsl(217,74%,52%)": "Nie udało się odczytać kodu koloru. Przykłady: #2d6cdf, rgb(45,108,223), hsl(217,74%,52%)", "Could not read the PDF. It may be damaged or in an unsupported format.": "Nie udało się odczytać PDF. Plik może być uszkodzony lub w nieobsługiwanym formacie.", ", with black: ": ", z czernią: ", "{0}": "{0}", "Contrast with white: ": "Kontrast z bielą: ", "Could not save. Please try again.": "Nie udało się zapisać. Spróbuj ponownie.", "Password-protected PDFs are not supported. Remove the password and try again.": "Pliki PDF chronione hasłem nie są obsługiwane. Usuń hasło i spróbuj ponownie.", "Copied": "Skopiowano"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=T("Could not save. Please try again.",[])}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return T("Password-protected PDFs are not supported. Remove the password and try again.",[]);
+  return T("Could not read the PDF. It may be damaged or in an unsupported format.",[]);
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+async function copyText(btn,text,ja,en){try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(_){}document.body.removeChild(ta)}
+  const o=btn.textContent;btn.textContent=T("Copied",[]);setTimeout(()=>{btn.textContent=o},1500)}
+
+const hex2=n=>Math.round(n).toString(16).padStart(2,"0");
+function parse(s){
+  s=s.trim().toLowerCase();let m;
+  if((m=s.match(/^#?([0-9a-f]{3})$/)))return m[1].split("").map(c=>parseInt(c+c,16));
+  if((m=s.match(/^#?([0-9a-f]{6})$/)))return [0,2,4].map(i=>parseInt(m[1].substr(i,2),16));
+  if((m=s.match(/^rgba?\(\s*(\d{1,3})[\s,]+(\d{1,3})[\s,]+(\d{1,3})/))){const a=[+m[1],+m[2],+m[3]];return a.every(v=>v<=255)?a:null}
+  if((m=s.match(/^hsla?\(\s*(-?[\d.]+)(?:deg)?[\s,]+([\d.]+)%[\s,]+([\d.]+)%/)))return hsl2rgb(((+m[1])%360+360)%360,Math.min(100,+m[2]),Math.min(100,+m[3]));
+  return null;
+}
+function hsl2rgb(h,s,l){s/=100;l/=100;const k=n=>(n+h/30)%12,a=s*Math.min(l,1-l),f=n=>l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1)));return [f(0),f(8),f(4)].map(v=>Math.round(v*255))}
+function rgb2hsl(r,g,b){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b),l=(mx+mn)/2,d=mx-mn;let h=0,s=0;
+  if(d){s=d/(1-Math.abs(2*l-1));h=mx===r?((g-b)/d)%6:mx===g?(b-r)/d+2:(r-g)/d+4;h*=60;if(h<0)h+=360}
+  return [Math.round(h),Math.round(s*100),Math.round(l*100)]}
+const lum=c=>{const f=v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)};return .2126*f(c[0])+.7152*f(c[1])+.0722*f(c[2])};
+function show(rgb,fromPick){
+  const ct=$("ct");
+  if(!rgb){["o1","o2","o3"].forEach(i=>$(i).value="");$("sw").style.background="transparent";ct.className="note2"+($("ci").value.trim()?" bad":"");ct.textContent=$("ci").value.trim()?T("Could not read the color code. Examples: #2d6cdf, rgb(45,108,223), hsl(217,74%,52%)",[]):"";return}
+  const h="#"+rgb.map(hex2).join(""),hs=rgb2hsl(...rgb);
+  $("o1").value=h;$("o2").value="rgb("+rgb.join(", ")+")";$("o3").value="hsl("+hs[0]+", "+hs[1]+"%, "+hs[2]+"%)";
+  $("sw").style.background=h;if(fromPick!==2)$("pk").value=h;
+  const L=lum(rgb),cw=(1.05)/(L+.05),cb=(L+.05)/.05;
+  ct.className="note2";ct.textContent=T("Contrast with white: ",[])+cw.toFixed(2)+T(", with black: ",[])+cb.toFixed(2);
+}
+$("ci").addEventListener("input",()=>show(parse($("ci").value),2));
+$("pk").addEventListener("input",()=>{$("ci").value=$("pk").value;show(parse($("pk").value),1)});
+[["c1","o1","HEXをコピー","Copy HEX"],["c2","o2","RGBをコピー","Copy RGB"],["c3","o3","HSLをコピー","Copy HSL"]].forEach(a=>{$(a[0]).textContent=T("{0}",[a[3]]);$(a[0]).onclick=()=>{if($(a[1]).value)copyText($(a[0]),$(a[1]).value)}});
+$("ci").value="#2d6cdf";show(parse("#2d6cdf"),1);
+
+</script>
+</body>
+</html>
