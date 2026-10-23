@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html data-lang="th" lang="th">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>รวมและแบ่งไฟล์ข้อความตามบรรทัดหรือขนาด (ฟรี)｜PDF Mikata</title>
+<meta content="เครื่องมือฟรีสำหรับรวมไฟล์ข้อความเป็นไฟล์เดียวหรือแบ่งตามบรรทัดหรือขนาด เหมาะกับล็อกและบันทึก ไฟล์ของคุณไม่เคยออกจากอุปกรณ์" name="description"/>
+
+
+<link href="https://pdfmikata.com/th/txt-merge-split.html" rel="canonical"/>
+<script src="/site.js"></script>
+
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+.next{margin:20px 0 6px}
+.next h3{margin:0 0 10px;font-size:1.05rem}
+.ncards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ncards a.tool,.ncards .tool *{min-width:0;overflow-wrap:anywhere;hyphens:auto}
+@media(min-width:720px){.ncards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.ncards a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper,#fff);box-shadow:0 3px 0 var(--line);text-decoration:none;color:var(--ink)}
+.ncards a.tool:hover{border-color:var(--stamp)}
+.ncards .ic{flex:none;width:40px;height:40px;border-radius:11px;background:var(--ink);color:var(--btn-ink);display:grid;place-items:center}
+.ncards .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ncards .tx b{display:block;font-size:.95rem;line-height:1.4}
+.ncards .tx .d{display:block;color:var(--sub);font-size:.8rem;line-height:1.5;margin-top:2px}
+.next .allt{display:block;margin:14px 0 0;padding:13px 16px;border:2px solid var(--ink);border-radius:12px;text-align:center;font-weight:700;text-decoration:none;color:var(--ink);background:var(--paper,#fff)}
+.next .allt:hover{background:var(--ink);color:var(--btn-ink)}
+.safe{margin:14px 0 0;font-size:.85rem;color:var(--sub);line-height:1.6}
+#bar::after{content:"処理中…この端末の中だけで処理しています";display:block;margin-top:6px;font-size:.8rem;color:var(--sub)}
+html[data-lang="en"] #bar::after{content:"Working… processed only on this device"}
+html[data-lang="zh"] #bar::after{content:"处理中…仅在此设备上处理"}
+html[data-lang="es"] #bar::after{content:"Procesando… solo en este dispositivo"}
+html[data-lang="ko"] #bar::after{content:"처리 중… 이 기기 안에서만 처리합니다"}
+html[data-lang="pt"] #bar::after{content:"Processando… somente neste dispositivo"}
+html[data-lang="fr"] #bar::after{content:"Traitement… uniquement sur cet appareil"}
+html[data-lang="id"] #bar::after{content:"Memproses… hanya di perangkat ini"}
+html[data-lang="it"] #bar::after{content:"Elaborazione… solo su questo dispositivo"}
+html[data-lang="ru"] #bar::after{content:"Обработка… только на этом устройстве"}
+html[data-lang="pl"] #bar::after{content:"Przetwarzanie… tylko na tym urządzeniu"}
+html[data-lang="nl"] #bar::after{content:"Bezig met verwerken… alleen op dit apparaat"}
+html[data-lang="th"] #bar::after{content:"กำลังประมวลผล… ทำงานบนอุปกรณ์นี้เท่านั้น"}
+html[data-lang="ar"] #bar::after{content:"جارٍ المعالجة… على هذا الجهاز فقط"}
+html[data-lang="bn"] #bar::after{content:"প্রক্রিয়া চলছে… শুধু এই ডিভাইসে"}
+html[data-lang="tl"] #bar::after{content:"Pinoproseso… sa device na ito lang"}
+html[data-lang="uk"] #bar::after{content:"Обробка… лише на цьому пристрої"}
+html[data-lang="ms"] #bar::after{content:"Memproses… pada peranti ini sahaja"}
+html[data-lang="fa"] #bar::after{content:"در حال پردازش… فقط روی همین دستگاه"}
+html[data-lang="ur"] #bar::after{content:"پروسیسنگ جاری ہے… صرف اسی ڈیوائس پر"}
+html[data-lang="tw"] #bar::after{content:"處理中…僅在此裝置上處理"}
+html[data-lang="vi"] #bar::after{content:"Đang xử lý… chỉ trên thiết bị này"}
+html[data-lang="tr"] #bar::after{content:"İşleniyor… yalnızca bu cihazda"}
+html[data-lang="de"] #bar::after{content:"Wird verarbeitet… nur auf diesem Gerät"}
+html[data-lang="hi"] #bar::after{content:"प्रोसेस हो रहा है… केवल इसी डिवाइस पर"}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}a.tool .bd{color:var(--btn-ink)}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}
+html{background:var(--desk)}body{background-image:radial-gradient(900px 420px at 12% -6%,rgba(63,181,174,.11),transparent 62%),radial-gradient(700px 420px at 100% 0,rgba(90,120,210,.08),transparent 58%);background-repeat:no-repeat}
+a.tool{box-shadow:0 3px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.07)}}
+.pop a,.btn2,button,a.tool{transition:transform .12s ease,box-shadow .15s ease,border-color .15s ease,background-color .15s ease,color .15s ease}
+.pop a:active,.btn2:active,button:not(:disabled):active{transform:scale(.97)}a.tool:active{transform:translateY(0) scale(.985)}
+h1,h2{letter-spacing:.01em}
+@media (prefers-reduced-motion:reduce){.pop a:active,.btn2:active,button:active,a.tool:active{transform:none}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b{display:inline-flex;align-items:center;gap:6px}.pop.recent b svg,.pop.recent a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}.pop.recent a{display:inline-flex;align-items:center;gap:6px}.pop.recent a .pi{margin-right:0}
+</style>
+<script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "หน้าแรก", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "เครื่องมือ", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "รวมและแยกไฟล์ข้อความ", "item": "https://pdfmikata.com/txt-merge-split.html"}]}</script>
+<meta content="website" property="og:type"/>
+<meta content="PDF Mikata" property="og:site_name"/>
+<meta content="th_TH" property="og:locale"/>
+
+<meta content="รวมและแบ่งไฟล์ข้อความตามบรรทัดหรือขนาด (ฟรี)｜PDF Mikata" property="og:title"/>
+<meta content="เครื่องมือฟรีสำหรับรวมไฟล์ข้อความเป็นไฟล์เดียวหรือแบ่งตามบรรทัดหรือขนาด เหมาะกับล็อกและบันทึก ไฟล์ของคุณไม่เคยออกจากอุปกรณ์" property="og:description"/>
+<meta content="https://pdfmikata.com/th/txt-merge-split.html" property="og:url"/>
+<meta content="https://pdfmikata.com/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="รวมและแบ่งไฟล์ข้อความตามบรรทัดหรือขนาด (ฟรี)｜PDF Mikata" name="twitter:title"/>
+<meta content="เครื่องมือฟรีสำหรับรวมไฟล์ข้อความเป็นไฟล์เดียวหรือแบ่งตามบรรทัดหรือขนาด เหมาะกับล็อกและบันทึก ไฟล์ของคุณไม่เคยออกจากอุปกรณ์" name="twitter:description"/>
+<meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="#16393c" name="theme-color"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "รวมและแยกไฟล์ข้อความ", "alternateName": "Merge and Split Text Files", "url": "https://pdfmikata.com/th/txt-merge-split.html", "description": "เครื่องมือฟรีสำหรับรวมไฟล์ข้อความเป็นไฟล์เดียวหรือแบ่งตามบรรทัดหรือขนาด เหมาะกับล็อกและบันทึก ไฟล์ของคุณไม่เคยออกจากอุปกรณ์", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "th", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
+<style>
+main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
+
+.lang{display:flex;align-items:center;border:0;overflow:visible}
+.lang .gl{width:18px;height:18px;margin:0 6px 0 10px;color:#fcfefd;flex:none}
+.lang select{appearance:none;-webkit-appearance:none;min-height:44px;border:1px solid rgba(255,255,255,.5);border-radius:6px;background:transparent;color:#fcfefd;font:inherit;font-weight:700;font-size:.85rem;padding:0 28px 0 12px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23fcfefd' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.lang select option{color:#16393c;background:#fcfefd}
+.lang select:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+@media (max-width:420px){.lang .gl{display:none}}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI","Noto Sans Thai","Leelawadee UI",Tahoma,sans-serif;line-height:1.8}
+.skip{position:absolute;left:8px;top:-60px;z-index:100;background:var(--btn-ink,#fff);color:var(--ink);padding:10px 14px;border-radius:10px;border:2px solid var(--stamp);font-weight:700;text-decoration:none;transition:top .15s}
+.skip:focus{top:8px}
+.top{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.sub{background:color-mix(in srgb,var(--paper) 80%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px)}
+ul.g a,.more a,.ncards a.tool,.cats a.tool{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background-color .15s ease}
+ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:translateY(-2px)}
+ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform:scale(.98)}
+.pop svg,.pi,.ic svg,.ncards .ic svg{stroke-width:1.8}
+#pm-toast{position:fixed;left:50%;bottom:18px;transform:translate(-50%,24px);opacity:0;z-index:60;width:min(560px,calc(100vw - 24px));background:var(--paper);color:var(--ink);border:1px solid var(--line);border-left:5px solid var(--stamp);border-radius:14px;padding:12px 40px 12px 14px;box-shadow:0 14px 34px -12px rgba(0,0,0,.35);transition:opacity .22s,transform .22s;pointer-events:none;font-size:14px;line-height:1.6}
+#pm-toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#pm-toast.warn{border-left-color:#d98a1c}
+#pm-toast b{display:block;margin-bottom:4px}
+#pm-toast .nx{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+#pm-toast .nx a{border:1px solid var(--line);border-radius:999px;padding:4px 12px;color:var(--ink);text-decoration:none;font-weight:600;background:var(--desk)}
+#pm-toast .nx a:hover{border-color:var(--stamp)}
+#pm-toast .x{position:absolute;right:6px;top:6px;width:30px;height:30px;border:0;background:transparent;color:var(--sub);font-size:20px;line-height:1;cursor:pointer;border-radius:8px}
+@media (prefers-reduced-motion:reduce){#pm-toast,.skip{transition:none}ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:none}}
+.lite .aurora{display:none}.lite .hero::before,.lite .hero::after{animation:none}
+</style><link href="https://pdfmikata.com/txt-merge-split.html" hreflang="ja" rel="alternate"/>
+<link href="https://pdfmikata.com/en/txt-merge-split.html" hreflang="en" rel="alternate"/>
+<link href="https://pdfmikata.com/zh/txt-merge-split.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://pdfmikata.com/es/txt-merge-split.html" hreflang="es" rel="alternate"/>
+<link href="https://pdfmikata.com/ko/txt-merge-split.html" hreflang="ko" rel="alternate"/>
+<link href="https://pdfmikata.com/pt/txt-merge-split.html" hreflang="pt" rel="alternate"/>
+<link href="https://pdfmikata.com/fr/txt-merge-split.html" hreflang="fr" rel="alternate"/>
+<link href="https://pdfmikata.com/id/txt-merge-split.html" hreflang="id" rel="alternate"/>
+<link href="https://pdfmikata.com/vi/txt-merge-split.html" hreflang="vi" rel="alternate"/>
+<link href="https://pdfmikata.com/tr/txt-merge-split.html" hreflang="tr" rel="alternate"/>
+<link href="https://pdfmikata.com/de/txt-merge-split.html" hreflang="de" rel="alternate"/>
+<link href="https://pdfmikata.com/hi/txt-merge-split.html" hreflang="hi" rel="alternate"/>
+<link href="https://pdfmikata.com/it/txt-merge-split.html" hreflang="it" rel="alternate"/>
+<link href="https://pdfmikata.com/ru/txt-merge-split.html" hreflang="ru" rel="alternate"/>
+<link href="https://pdfmikata.com/tw/txt-merge-split.html" hreflang="zh-Hant" rel="alternate"/>
+<link href="https://pdfmikata.com/pl/txt-merge-split.html" hreflang="pl" rel="alternate"/>
+<link href="https://pdfmikata.com/nl/txt-merge-split.html" hreflang="nl" rel="alternate"/>
+<link href="https://pdfmikata.com/th/txt-merge-split.html" hreflang="th" rel="alternate"/>
+<link href="https://pdfmikata.com/ar/txt-merge-split.html" hreflang="ar" rel="alternate"/>
+<link href="https://pdfmikata.com/bn/txt-merge-split.html" hreflang="bn" rel="alternate"/>
+<link href="https://pdfmikata.com/tl/txt-merge-split.html" hreflang="fil" rel="alternate"/>
+<link href="https://pdfmikata.com/uk/txt-merge-split.html" hreflang="uk" rel="alternate"/>
+<link href="https://pdfmikata.com/ms/txt-merge-split.html" hreflang="ms" rel="alternate"/>
+<link href="https://pdfmikata.com/fa/txt-merge-split.html" hreflang="fa" rel="alternate"/>
+<link href="https://pdfmikata.com/ur/txt-merge-split.html" hreflang="ur" rel="alternate"/>
+<link href="https://pdfmikata.com/txt-merge-split.html" hreflang="x-default" rel="alternate"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2376251801221434" crossorigin="anonymous"></script>
+</head>
+<body><a class="skip" href="#main">ข้ามไปยังเนื้อหา</a>
+<header class="top"><div class="top-in"><a class="brand" href="/th/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma / 언어" id="langsel"><option value="/txt-merge-split.html">日本語</option><option value="/en/txt-merge-split.html">English</option><option value="/zh/txt-merge-split.html">简体中文</option><option value="/es/txt-merge-split.html">Español</option><option value="/ko/txt-merge-split.html">한국어</option><option value="/pt/txt-merge-split.html">Português</option><option value="/fr/txt-merge-split.html">Français</option><option value="/id/txt-merge-split.html">Bahasa Indonesia</option><option value="/vi/txt-merge-split.html">Tiếng Việt</option><option value="/tr/txt-merge-split.html">Türkçe</option><option value="/de/txt-merge-split.html">Deutsch</option><option value="/hi/txt-merge-split.html">हिन्दी</option><option value="/it/txt-merge-split.html">Italiano</option><option value="/ru/txt-merge-split.html">Русский</option><option value="/tw/txt-merge-split.html">繁體中文</option><option value="/pl/txt-merge-split.html">Polski</option><option value="/nl/txt-merge-split.html">Nederlands</option><option selected="" value="/th/txt-merge-split.html">ไทย</option><option value="/ar/txt-merge-split.html">العربية</option><option value="/bn/txt-merge-split.html">বাংলা</option><option value="/tl/txt-merge-split.html">Filipino</option><option value="/uk/txt-merge-split.html">Українська</option><option value="/ms/txt-merge-split.html">Bahasa Melayu</option><option value="/fa/txt-merge-split.html">فارسی</option><option value="/ur/txt-merge-split.html">اردو</option></select></div></div></header>
+<nav aria-label="การนำทางในเว็บไซต์" class="sub"><div class="sub-in"><a href="/th/"><span lang="th">หน้าแรก</span></a><a href="/th/#cat-convert"><span lang="th">แปลง</span></a><a aria-current="page" href="/th/#cat-edit"><span lang="th">แก้ไข</span></a><a href="/th/#cat-optimize"><span lang="th">ปรับให้เหมาะสม</span></a><a href="/th/#cat-create"><span lang="th">สร้าง</span></a><a href="/th/#guide"><span lang="th">คู่มือ</span></a></div></nav>
+<nav aria-label="เส้นทางนำทาง" class="crumb"><ol><li><a href="/th/"><span lang="th">หน้าแรก</span></a></li><li><a href="/th/#tools"><span lang="th">เครื่องมือ</span></a></li><li><span aria-current="page"><span lang="th">รวมและแยกไฟล์ข้อความ</span></span></li></ol></nav>
+<main id="main" tabindex="-1">
+<h1><span lang="th">รวมและแยกไฟล์ข้อความ</span></h1>
+<p class="lead"><span lang="th">สำหรับจัดระเบียบล็อกและบันทึก</span></p>
+<p class="safe"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="9" rx="2" width="14" x="5" y="11"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><span><span lang="th"><b>ไฟล์ของคุณจะไม่ถูกอัปโหลด</b> ทุกอย่างประมวลผลบนอุปกรณ์นี้</span></span></p><ol class="steps"><li><b>1</b><span lang="th">เลือกไฟล์</span></li><li><b>2</b><span lang="th">รวมหรือแบ่ง</span></li><li><b>3</b><span lang="th">บันทึก</span></li></ol>
+<label class="pick" id="drop"><input accept=".txt,.log,.md,.csv,text/plain" id="file" multiple="" type="file"/><span id="pt"><span lang="th">เลือกไฟล์ข้อความ</span></span><small><span lang="th">เลือกไฟล์ข้อความ (เลือกได้หลายไฟล์)</span></small></label>
+<p class="note2" id="finfo" style="display:none"></p>
+<section class="set" id="set" style="display:none">
+<div class="row"><span><span lang="th">ต้องทำอย่างไร</span></span><label><input checked="" name="md" type="radio" value="merge"/><span lang="th">รวมเป็นไฟล์เดียว</span></label><label><input name="md" type="radio" value="split"/><span lang="th">แบ่งตามบรรทัดหรือขนาด</span></label></div>
+<div id="o_merge"><div class="row"><label><input id="fn" type="checkbox"/><span lang="th">แทรกชื่อไฟล์แต่ละไฟล์เป็นหัวข้อ</span></label></div>
+</div>
+<div id="o_split" style="display:none"><div class="row"><span><span lang="th">แบ่งตาม</span></span><label><input checked="" name="sb" type="radio" value="lines"/><span lang="th">จำนวนบรรทัด</span></label><label><input name="sb" type="radio" value="kb"/><span lang="th">ขนาด (KB)</span></label></div>
+<div class="rng"><label for="sn"><b><span lang="th">ต่อไฟล์</span></b></label><input id="sn" inputmode="numeric" max="10000000" min="1" type="number" value="1000"/></div>
+</div>
+<p class="note2" id="det"></p>
+<label for="pvt" style="font-weight:700"><span lang="th">ตัวอย่าง</span></label>
+<textarea id="pvt" readonly="" style="width:100%;min-height:150px;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:10px 12px;font:inherit;font-size:.95rem;line-height:1.5;resize:vertical;display:block;background:var(--paper);color:var(--ink);min-height:110px"></textarea>
+<p class="note2"><span lang="th">ตรวจจับการเข้ารหัสโดยอัตโนมัติและบันทึกผลเป็น UTF-8 (รองรับ UTF-8 และ Shift_JIS)</span></p>
+<button disabled="" id="go"></button>
+</section>
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="th">เสร็จสิ้น</span></div>
+<p id="info"></p>
+<a href="#" id="dl"></a>
+<div id="extra"></div>
+<p aria-live="polite" id="msg"></p>
+<p class="safe"><span lang="th">🔒 ไฟล์ของคุณจะไม่ถูกส่งไปยังเซิร์ฟเวอร์ภายนอก ทุกอย่างประมวลผลอย่างปลอดภัยภายในเบราว์เซอร์นี้</span></p>
+<div class="support" hidden="" id="support"><p><span lang="th">หาก PDF Mikata มีประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="th">ส่งทิป (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="th">ส่งของขวัญ (Amazon wishlist)</span></a></div>
+</section>
+<div class="next" id="next"><h3 aria-level="2"><span lang="th">เครื่องมือที่มักใช้ร่วมกัน</span></h3><div class="ncards"><a class="tool" href="/th/line-break-remover.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M7 9h10M7 13h10M7 17h6"></path></svg></span><div class="tx"><b><span lang="th">ลบและจัดระเบียบการขึ้นบรรทัดใหม่ในข้อความ</span></b><span class="d"><span lang="th">จัดระเบียบการขึ้นบรรทัดใหม่ในข้อความที่คัดลอก</span></span></div></a><a class="tool" href="/th/charset-convert.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M8 10h8M8 14h5"></path></svg></span><div class="tx"><b><span lang="th">แปลงการเข้ารหัสข้อความ (แก้ข้อความเพี้ยน)</span></b><span class="d"><span lang="th">แปลง Shift_JIS, UTF-8 และอื่น ๆ</span></span></div></a><a class="tool" href="/th/csv-tools.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M8 4v16M3 10h18"></path></svg></span><div class="tx"><b><span lang="th">รวม แยก และเลือกคอลัมน์จาก CSV</span></b><span class="d"><span lang="th">รวม แบ่ง หรือตัดไฟล์ CSV</span></span></div></a><a class="tool" href="/th/merge-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="13" rx="1.5" width="10" x="3" y="3"></rect><rect height="13" rx="1.5" width="10" x="11" y="8"></rect></svg></span><div class="tx"><b><span lang="th">รวม PDF</span></b><span class="d"><span lang="th">รวม PDF เป็นไฟล์เดียว</span></span></div></a></div><a class="allt" href="/th/"><span lang="th">ดูเครื่องมือทั้งหมด (กลับไปหน้าแรก)</span></a></div>
+<section class="guide" id="how">
+
+<div lang="th"><h2>วิธีใช้</h2>
+<ol>
+<li>แตะ "เลือกไฟล์ข้อความ" แล้วเลือกไฟล์ (เลือกหลายไฟล์เพื่อรวม)</li>
+<li>เลือกรวมหรือแบ่งแล้วตั้งค่าตัวเลือก</li>
+<li>แตะ "เรียกใช้และบันทึก" แล้วบันทึก</li>
+</ol>
+<h2>วิธีการทำงาน</h2>
+<ul>
+<li>รวม: รวมไฟล์ตามลำดับที่เลือก เพิ่มชื่อไฟล์แต่ละไฟล์เป็นหัวข้อได้</li>
+<li>แบ่ง: แบ่งไฟล์ตามจำนวนบรรทัดหรือขนาด (บันทึกเป็น ZIP)</li>
+<li>ตรวจจับการเข้ารหัสโดยอัตโนมัติและบันทึกเป็น UTF-8</li>
+</ul>
+<h2>หมายเหตุ</h2>
+<ul>
+<li>ไฟล์ที่ไม่ใช่ข้อความ เช่น รูปภาพหรือ PDF รวมหรือแบ่งไม่ได้</li>
+<li>ไม่รองรับไฟล์ขนาดใหญ่มาก (เกิน 50 MB)</li>
+<li>การแบ่งไม่ตัดกลางบรรทัด</li>
+</ul>
+<h2>คำถามที่พบบ่อย</h2>
+<details><summary>ไฟล์ของฉันถูกอัปโหลดที่ใดหรือไม่</summary><p>ไม่ ทุกอย่างประมวลผลภายในเบราว์เซอร์บนอุปกรณ์ของคุณ</p></details>
+<details><summary>ไฟล์ถูกรวมตามลำดับใด</summary><p>ตามลำดับที่เลือก หากต้องการเปลี่ยนลำดับ ให้เปลี่ยนลำดับที่เลือก</p></details>
+</div>
+</section>
+<div class="support endtip"><p><span lang="th">หาก PDF Mikata มีประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank"><span lang="th">ส่งทิป (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="th">ส่งของขวัญ (Amazon wishlist)</span></a></div>
+<section class="more rel"><h2><span lang="th">คู่มือของเครื่องมือนี้</span></h2><a href="/th/txt-merge-split-howto.html"><span lang="th">วิธีรวมและแบ่งไฟล์ข้อความ (ฟรี ใช้บนมือถือได้)</span></a><a href="/th/txt-merge-split-merge.html"><span lang="th">รวมบันทึกหรือล็อกหลายไฟล์เป็นไฟล์เดียว</span></a><a href="/th/txt-merge-split-split-lines.html"><span lang="th">แบ่งไฟล์ข้อความขนาดใหญ่ตามบรรทัด</span></a><a href="/th/txt-merge-split-split-size.html"><span lang="th">แบ่งข้อความให้พอดีกับขีดจำกัดขนาดอีเมล</span></a><a href="/th/txt-merge-split-encoding.html"><span lang="th">รวมข้อความที่ดูเพี้ยน</span></a><a href="/th/txt-merge-split-trouble.html"><span lang="th">ต้องทำอย่างไรเมื่อรวมหรือแบ่งไม่สำเร็จ</span></a><a href="/th/txt-merge-split-safe-offline.html"><span lang="th">รวมและแบ่งข้อความโดยไม่ต้องอัปโหลด</span></a></section>
+<section class="more"><h2><span lang="th">เครื่องมืออื่น ๆ</span></h2><a href="/th/photo-to-pdf.html"><span lang="th">รูปภาพเป็น PDF</span><small><span lang="th">รวมรูปถ่ายหลายรูปเป็น PDF เดียวตามลำดับที่คุณเลือก หมุน จัดลำดับ และกำหนดขีดจำกัดขนาดได้</span></small></a><a href="/th/merge-pdf.html"><span lang="th">รวม PDF</span><small><span lang="th">รวมไฟล์ PDF หลายไฟล์เป็นไฟล์เดียวตามลำดับที่คุณเลือก</span></small></a><a href="/th/split-pdf.html"><span lang="th">ดึงหรือลบหน้า PDF</span><small><span lang="th">เก็บเฉพาะหน้าที่ต้องการ หรือลบหน้าที่ไม่ต้องการ</span></small></a><a href="/th/compress-pdf.html"><span lang="th">บีบอัด PDF</span><small><span lang="th">ย่อ PDF ให้เล็กกว่าขนาดที่คุณเลือก สำหรับขีดจำกัดการอัปโหลด</span></small></a><a href="/th/pdf-to-image.html"><span lang="th">PDF เป็นรูปภาพ</span><small><span lang="th">บันทึกแต่ละหน้าของ PDF เป็นรูปภาพ JPEG หรือ PNG</span></small></a><a href="/th/image-convert.html"><span lang="th">แปลงรูปแบบรูปภาพ (JPG, PNG, WebP)</span><small><span lang="th">แปลงรูปภาพเป็น JPG, PNG หรือ WebP ได้หลายไฟล์พร้อมกัน</span></small></a><a href="/th/pdf-rotate.html"><span lang="th">หมุนและจัดเรียงหน้า PDF ใหม่</span><small><span lang="th">แก้หน้าที่กลับด้าน เปลี่ยนลำดับหน้า หรือลบหน้า</span></small></a><a href="/th/pdf-page-numbers.html"><span lang="th">เพิ่มเลขหน้าลงใน PDF</span><small><span lang="th">เพิ่มเลขหน้าลงใน PDF โดยเลือกตำแหน่งและรูปแบบ</span></small></a><a href="/th/image-compress.html"><span lang="th">บีบอัดและปรับขนาดรูปภาพ</span><small><span lang="th">ทำให้ไฟล์รูปภาพเล็กลง และปรับขนาดได้หากต้องการ</span></small></a><a href="/th/heic-to-jpg.html"><span lang="th">แปลง HEIC เป็น JPG</span><small><span lang="th">แปลงรูปถ่าย HEIC จาก iPhone เป็น JPG หรือ PNG</span></small></a><a href="/th/pdf-split.html"><span lang="th">แยก PDF</span><small><span lang="th">แยก PDF เป็นหลายไฟล์: หน้าละไฟล์ ทุก N หน้า หรือตามช่วง</span></small></a><a href="/th/image-crop.html"><span lang="th">ครอบตัดและหมุนรูปภาพ</span><small><span lang="th">ครอบตัดรูปภาพตามพื้นที่หรืออัตราส่วนที่ต้องการ และหมุนได้</span></small></a><a href="/th/pdf-to-text.html"><span lang="th">ดึงข้อความจาก PDF</span><small><span lang="th">ดึงข้อความออกจาก PDF เพื่อคัดลอกหรือบันทึก</span></small></a><a href="/th/receipt-maker.html"><span lang="th">สร้าง PDF ใบเสร็จรับเงิน</span><small><span lang="th">กรอกผู้จ่าย จำนวนเงิน และรายละเอียดเพื่อสร้าง PDF ใบเสร็จรับเงิน รายละเอียดภาษีและเลขทะเบียนใบกำกับภาษีเป็นตัวเลือก</span></small></a><a href="/th/resume-maker.html"><span lang="th">สร้าง PDF เรซูเม่ (rirekisho แบบญี่ปุ่น)</span><small><span lang="th">กรอกรายละเอียด ประวัติการศึกษา ประวัติการทำงาน และแรงจูงใจ เพื่อสร้างเรซูเม่แบบญี่ปุ่น (rirekisho) เป็น PDF พร้อมรูปถ่ายติดบัตรหากต้องการ</span></small></a><a href="/th/timetable-maker.html"><span lang="th">สร้างตารางเรียน / ตารางกิจกรรมรายสัปดาห์</span><small><span lang="th">ใส่วิชาเรียน งาน และแผนต่าง ๆ เพื่อสร้างตารางเรียนหรือตารางรายสัปดาห์เป็น PDF หรือรูปภาพ พร้อมรหัสสี</span></small></a><a href="/th/namecard-maker.html"><span lang="th">สร้างนามบัตร / ป้ายชื่อ</span><small><span lang="th">ใส่ชื่อและรายละเอียดของคุณเพื่อสร้างนามบัตรหรือป้ายชื่อที่จัดวางบน A4 เป็น PDF ทำป้ายชื่อจำนวนมากจากรายชื่อก็ได้</span></small></a><a href="/th/qr-code-maker.html"><span lang="th">สร้าง QR Code (URL, Wi-Fi)</span><small><span lang="th">สร้าง QR Code จาก URL ข้อความ หรือข้อมูล Wi-Fi แล้วบันทึกเป็น PNG, SVG หรือ PDF</span></small></a><a href="/th/pdf-nup.html"><span lang="th">รวมหน้า PDF ไว้บนแผ่นเดียว (2-up, 4-up)</span><small><span lang="th">จัดหน้า PDF หลายหน้าบนแผ่น A4 แผ่นเดียว (2, 4, 6, 8 หรือ 9 หน้าต่อแผ่น) เพื่อประหยัดกระดาษเมื่อพิมพ์</span></small></a><a href="/th/pdf-grayscale.html"><span lang="th">แปลง PDF เป็นโทนสีเทา (ขาวดำ)</span><small><span lang="th">เปลี่ยน PDF สีเป็นโทนสีเทาหรือขาวดำล้วน พร้อมพิมพ์ ถ่ายเอกสาร หรือส่งแฟกซ์แบบขาวดำ เลือกความละเอียดได้</span></small></a><a href="/th/pdf-watermark.html"><span lang="th">เพิ่มลายน้ำข้อความลงใน PDF</span><small><span lang="th">เพิ่มข้อความ เช่น “สำหรับยื่น” “สำเนา” หรือ “ลับ” แบบจาง ๆ ทั่วทุกหน้า PDF เลือกตำแหน่ง สี และความโปร่งใสได้</span></small></a><a href="/th/pdf-crop.html"><span lang="th">ตัดขอบ PDF</span><small><span lang="th">ตัดขอบ PDF โดยอัตโนมัติหรือกำหนดแต่ละด้านเอง อ่านบนมือถือได้ง่ายขึ้นและพิมพ์ออกมาสะอาดขึ้น</span></small></a><a href="/th/pdf-redact.html"><span lang="th">ปิดทับสีดำ (ลบข้อมูล) บางส่วนของ PDF</span><small><span lang="th">ลากคลุมส่วนของ PDF ที่ต้องการซ่อนเพื่อปิดทับด้วยสีดำ หน้าที่ถูกปิดจะกลายเป็นรูปภาพ ข้อความด้านล่างจึงหายไป</span></small></a><a href="/th/pdf-metadata.html"><span lang="th">ดูและลบคุณสมบัติของ PDF (ผู้เขียน ชื่อเรื่อง)</span><small><span lang="th">ดูผู้เขียน ชื่อเรื่อง ซอฟต์แวร์ และวันที่ที่เก็บไว้ใน PDF แล้วลบหรือแก้ไข</span></small></a><a href="/th/pdf-fill.html"><span lang="th">กรอก PDF: เพิ่มข้อความ วันที่ ลายเซ็น และเครื่องหมาย</span><small><span lang="th">เพิ่มข้อความ วันที่ เครื่องหมายถูก วงกลม ลายเซ็นเขียนด้วยมือ หรือรูปภาพ (เช่น ตราประทับ) ที่ตำแหน่งใดก็ได้บน PDF</span></small></a><a href="/th/pdf-resize.html"><span lang="th">ปรับขนาดหน้า PDF เป็น A4 หรือขนาดกระดาษอื่น</span><small><span lang="th">ทำให้หน้า PDF ที่มีหลายขนาดมีขนาดเท่ากันทั้งหมด เช่น A4, A3, B5 หรือ Letter ข้อความและกราฟิกยังคงคมชัด</span></small></a><a href="/th/pdf-delete-pages.html"><span lang="th">ลบหน้าออกจาก PDF</span><small><span lang="th">เลือกและลบหน้าที่ไม่ต้องการออกจาก PDF</span></small></a><a href="/th/pdf-extract-pages.html"><span lang="th">ดึงหน้าออกจาก PDF</span><small><span lang="th">เลือกหน้าที่ต้องการแล้วบันทึกเป็น PDF ใหม่</span></small></a><a href="/th/pdf-reverse.html"><span lang="th">กลับลำดับหน้าของ PDF</span><small><span lang="th">กลับลำดับหน้าของ PDF</span></small></a><a href="/th/pdf-insert-blank.html"><span lang="th">แทรกหน้าว่างลงใน PDF</span><small><span lang="th">แทรกหน้าว่างที่ตำแหน่งใดก็ได้ใน PDF</span></small></a><a href="/th/pdf-split-halves.html"><span lang="th">แยกหน้าคู่ของ PDF เป็นหน้าเดี่ยว</span><small><span lang="th">แยกหน้าคู่ใน PDF เป็นหน้าเดี่ยว</span></small></a><a href="/th/pdf-header-footer.html"><span lang="th">เพิ่มส่วนหัวและส่วนท้ายลงใน PDF</span><small><span lang="th">เพิ่มชื่อเรื่อง วันที่ หรือเลขหน้าที่ด้านบนและด้านล่างของ PDF</span></small></a><a href="/th/pdf-booklet.html"><span lang="th">จัดเรียง PDF เป็นเล่มเล็กสำหรับพิมพ์</span><small><span lang="th">จัดลำดับ PDF ใหม่ให้พิมพ์และพับเป็นเล่มเล็กได้</span></small></a><a href="/th/pdf-blank-remove.html"><span lang="th">ค้นหาและลบหน้าว่างใน PDF</span><small><span lang="th">ค้นหาหน้าว่างใน PDF โดยอัตโนมัติและลบออก</span></small></a><a href="/th/pdf-long-image.html"><span lang="th">เปลี่ยน PDF เป็นรูปภาพยาวรูปเดียว</span><small><span lang="th">ต่อทุกหน้าของ PDF เป็นรูปภาพยาวรูปเดียว</span></small></a><a href="/th/pdf-duplex-merge.html"><span lang="th">รวมสแกนด้านหน้าและด้านหลังเป็น PDF เดียว</span><small><span lang="th">สลับ PDF ด้านหน้าและ PDF ด้านหลังเป็น PDF เดียว</span></small></a><a href="/th/image-resize.html"><span lang="th">ปรับขนาดรูปภาพตามพิกเซล</span><small><span lang="th">ปรับขนาดรูปภาพตามความกว้าง ความสูง หรือเปอร์เซ็นต์</span></small></a><a href="/th/image-rotate.html"><span lang="th">หมุนและพลิกรูปภาพ</span><small><span lang="th">หมุนรูปภาพและพลิกในแนวนอนหรือแนวตั้ง</span></small></a><a href="/th/image-watermark.html"><span lang="th">เพิ่มลายน้ำข้อความลงในรูปภาพ</span><small><span lang="th">ซ้อนข้อความลายน้ำ เช่น “สำเนา” บนรูปภาพ</span></small></a><a href="/th/image-mosaic.html"><span lang="th">ทำโมเสกหรือเบลอบางส่วนของรูปภาพ</span><small><span lang="th">ซ่อนบางส่วนของรูปภาพด้วยโมเสก เบลอ หรือกล่องสีดำ</span></small></a><a href="/th/image-exif-remove.html"><span lang="th">ลบข้อมูลตำแหน่งและการถ่ายภาพออกจากรูปถ่าย</span><small><span lang="th">ลบข้อมูล GPS วันที่ และกล้องออกจากรูปถ่ายแล้วบันทึกสำเนาที่สะอาด</span></small></a><a href="/th/image-filter.html"><span lang="th">ใช้ลุคขาวดำ ซีเปีย และอื่น ๆ</span><small><span lang="th">ทำให้รูปภาพเป็นขาวดำหรือซีเปีย หรือเปลี่ยนความสว่าง</span></small></a><a href="/th/favicon-maker.html"><span lang="th">สร้างไอคอนเว็บไซต์ (Favicon)</span><small><span lang="th">สร้างชุดไอคอนเว็บไซต์ครบชุดจากรูปภาพเดียว</span></small></a><a href="/th/image-stitch.html"><span lang="th">รวมรูปภาพหลายรูปเป็นรูปเดียว</span><small><span lang="th">ซ้อนหรือรวมรูปภาพหลายรูปเป็นรูปเดียว</span></small></a><a href="/th/id-photo.html"><span lang="th">ครอบตัดเป็นขนาดรูปถ่ายติดบัตรและจัดเรียงเพื่อพิมพ์</span><small><span lang="th">ครอบตัดรูปถ่ายเป็นขนาดรูปติดบัตรและจัดเรียงบนแผ่นขนาด L</span></small></a><a href="/th/image-color-picker.html"><span lang="th">ดึงรหัสสีจากรูปภาพ</span><small><span lang="th">อ่านรหัสสีจากรูปภาพและค้นหาสีหลัก</span></small></a><a href="/th/char-counter.html"><span lang="th">นับตัวอักษร (สำหรับใบสมัครและรายงาน)</span><small><span lang="th">นับตัวอักษร บรรทัด และแผ่นกระดาษต้นฉบับของข้อความ</span></small></a><a href="/th/wareki-converter.html"><span lang="th">แปลงระหว่างปี ค.ศ. กับศักราชญี่ปุ่น</span><small><span lang="th">แปลงระหว่างปี ค.ศ. กับศักราชญี่ปุ่น</span></small></a><a href="/th/zenkaku-hankaku.html"><span lang="th">แปลงอักษรเต็มความกว้าง ครึ่งความกว้าง ฮิระงะนะ และคะตะกะนะ</span><small><span lang="th">แปลงอักษรเต็มความกว้าง/ครึ่งความกว้าง และฮิระงะนะ/คะตะกะนะ</span></small></a><a href="/th/line-break-remover.html"><span lang="th">ลบและจัดระเบียบการขึ้นบรรทัดใหม่ในข้อความ</span><small><span lang="th">จัดระเบียบการขึ้นบรรทัดใหม่ในข้อความที่คัดลอกจาก PDF และที่อื่น ๆ</span></small></a><a href="/th/tax-calculator.html"><span lang="th">คำนวณภาษีการบริโภค (รวม / ไม่รวมภาษี)</span><small><span lang="th">คำนวณราคารวมและไม่รวมภาษี</span></small></a><a href="/th/date-calculator.html"><span lang="th">คำนวณอายุ จำนวนวันระหว่างวันที่ และการเลื่อนวันที่</span><small><span lang="th">คำนวณอายุและจำนวนวันระหว่างวันที่</span></small></a><a href="/th/pdf-unlock.html"><span lang="th">ลบรหัสผ่านออกจาก PDF</span><small><span lang="th">ลบรหัสผ่านและข้อจำกัดออกจาก PDF ที่คุณทราบรหัสผ่าน</span></small></a><a href="/th/pdf-protect.html"><span lang="th">เพิ่มรหัสผ่านให้ PDF</span><small><span lang="th">เพิ่มรหัสผ่านที่ต้องใช้เปิด PDF</span></small></a><a href="/th/ocr-text.html"><span lang="th">อ่านข้อความจากรูปภาพและ PDF (OCR)</span><small><span lang="th">แปลงข้อความในรูปภาพและ PDF ที่สแกนเป็นข้อความ</span></small></a><a href="/th/pdf-compare.html"><span lang="th">เปรียบเทียบ PDF สองไฟล์ (ค้นหาความแตกต่าง)</span><small><span lang="th">แสดงความแตกต่างของข้อความระหว่าง PDF สองไฟล์ โดยแยกสี</span></small></a><a href="/th/password-generator.html"><span lang="th">สร้างรหัสผ่านสุ่มที่รัดกุม</span><small><span lang="th">สร้างรหัสผ่านสุ่มที่รัดกุมได้ทันที</span></small></a><a href="/th/percent-calculator.html"><span lang="th">คำนวณเปอร์เซ็นต์ ส่วนลด และการเปลี่ยนแปลงเป็น %</span><small><span lang="th">คำนวณเปอร์เซ็นต์ ส่วนลด และการเปลี่ยนแปลงเป็น % ได้ทันที</span></small></a><a href="/th/line-sort-dedupe.html"><span lang="th">ลบบรรทัดซ้ำและเรียงลำดับรายการ</span><small><span lang="th">ลบบรรทัดซ้ำและเรียงลำดับ</span></small></a><a href="/th/unit-converter.html"><span lang="th">ตัวแปลงหน่วย (ความยาว น้ำหนัก พื้นที่ อุณหภูมิ และอื่น ๆ)</span><small><span lang="th">แปลงความยาว น้ำหนัก พื้นที่ อุณหภูมิ และอื่น ๆ ได้ทันที</span></small></a><a href="/th/zip-maker.html"><span lang="th">สร้างไฟล์ ZIP</span><small><span lang="th">รวมไฟล์หลายไฟล์เป็น ZIP เดียว</span></small></a><a href="/th/zip-extract.html"><span lang="th">เปิดไฟล์ ZIP (แตกไฟล์)</span><small><span lang="th">ดูว่ามีอะไรอยู่ใน ZIP และดึงไฟล์ที่ต้องการ</span></small></a><a href="/th/file-hash.html"><span lang="th">ตรวจสอบแฮชของไฟล์ (SHA-256)</span><small><span lang="th">คำนวณแฮชของไฟล์และเปรียบเทียบ</span></small></a><a href="/th/csv-json.html"><span lang="th">แปลง CSV และ JSON</span><small><span lang="th">แปลงระหว่าง CSV และ JSON ได้ทันที</span></small></a><a href="/th/svg-to-png.html"><span lang="th">แปลง SVG เป็น PNG</span><small><span lang="th">แปลงไฟล์ SVG เป็นรูปภาพ PNG</span></small></a><a href="/th/file-base64.html"><span lang="th">แปลงไฟล์และ Base64</span><small><span lang="th">แปลงระหว่างไฟล์กับข้อความ Base64</span></small></a><a href="/th/json-formatter.html"><span lang="th">จัดรูปแบบและตรวจสอบ JSON</span><small><span lang="th">จัดรูปแบบ ลดขนาด และตรวจสอบ JSON</span></small></a><a href="/th/text-diff.html"><span lang="th">เปรียบเทียบข้อความสองชุด (Diff)</span><small><span lang="th">แสดงความแตกต่างระหว่างข้อความสองชุดทีละบรรทัด</span></small></a><a href="/th/xlsx-to-csv.html"><span lang="th">แปลง Excel เป็น CSV หรือ JSON</span><small><span lang="th">แปลงชีต Excel เป็น CSV, TSV หรือ JSON</span></small></a><a href="/th/csv-to-xlsx.html"><span lang="th">แปลง CSV เป็น Excel (.xlsx)</span><small><span lang="th">แปลง CSV เป็นไฟล์ Excel (.xlsx)</span></small></a><a href="/th/docx-to-text.html"><span lang="th">ดึงข้อความจากไฟล์ Word</span><small><span lang="th">ดึงข้อความธรรมดาจากไฟล์ Word</span></small></a><a href="/th/pptx-to-text.html"><span lang="th">ดึงข้อความจาก PowerPoint</span><small><span lang="th">ดึงข้อความของแต่ละสไลด์ PowerPoint</span></small></a><a href="/th/pdf-to-word.html"><span lang="th">นำข้อความ PDF ไปใส่ใน Word</span><small><span lang="th">ดึงข้อความ PDF ไปใส่ในไฟล์ Word</span></small></a><a href="/th/image-to-word.html"><span lang="th">ใส่รูปภาพลงในไฟล์ Word</span><small><span lang="th">ใส่รูปภาพลงในไฟล์ Word หน้าละรูป</span></small></a><a href="/th/xlsx-formula-to-value.html"><span lang="th">แปลงสูตร Excel เป็นค่า</span><small><span lang="th">แทนที่สูตร Excel ด้วยค่าของสูตร</span></small></a><a href="/th/office-metadata-remove.html"><span lang="th">ลบข้อมูลผู้เขียนออกจากไฟล์ Office</span><small><span lang="th">ล้างข้อมูลผู้เขียนและข้อมูลอื่น ๆ ที่เก็บไว้ในไฟล์ Office</span></small></a><a href="/th/office-image-extract.html"><span lang="th">ดึงรูปภาพจาก Word, Excel และ PowerPoint</span><small><span lang="th">ดึงรูปภาพจากไฟล์ Office เป็นไฟล์ ZIP</span></small></a><a href="/th/docx-to-html.html"><span lang="th">แปลง Word เป็น HTML</span><small><span lang="th">แปลงข้อความ Word เป็น HTML</span></small></a><a href="/th/xlsx-split-sheets.html"><span lang="th">แยกไฟล์ Excel ตามชีต</span><small><span lang="th">แยกแต่ละชีต Excel เป็นไฟล์ CSV หรือ TSV ของตัวเอง</span></small></a><a href="/th/xlsx-to-html.html"><span lang="th">แปลงตาราง Excel เป็น HTML หรือ Markdown</span><small><span lang="th">แปลงตาราง Excel เป็นตาราง HTML หรือ Markdown</span></small></a><a href="/th/charset-convert.html"><span lang="th">แปลงการเข้ารหัสข้อความ (แก้ข้อความเพี้ยน)</span><small><span lang="th">แปลงไฟล์ข้อความระหว่าง Shift_JIS, UTF-8, EUC-JP และอื่น ๆ เพื่อแก้ข้อความเพี้ยน</span></small></a><a href="/th/image-split.html"><span lang="th">แบ่งรูปภาพเป็นตาราง (สำหรับโพสต์โซเชียล)</span><small><span lang="th">แบ่งรูปภาพเป็นชิ้นเท่า ๆ กันตามแนวนอนและแนวตั้งแล้วบันทึก</span></small></a><a href="/th/image-to-gif.html"><span lang="th">สร้าง GIF เคลื่อนไหวจากรูปภาพ</span><small><span lang="th">รวมรูปภาพหลายรูปตามลำดับเป็น GIF เคลื่อนไหว</span></small></a><a href="/th/file-rename.html"><span lang="th">เปลี่ยนชื่อไฟล์จำนวนมากพร้อมกัน (ตัวเลข วันที่)</span><small><span lang="th">เปลี่ยนชื่อไฟล์จำนวนมากพร้อมกันด้วยตัวเลขหรือวันที่</span></small></a><a href="/th/csv-tools.html"><span lang="th">รวม แยก และเลือกคอลัมน์จาก CSV</span><small><span lang="th">รวมไฟล์ CSV แยกตามแถว หรือเก็บเฉพาะคอลัมน์ที่เลือก</span></small></a><a href="/th/pdf-extract-images.html"><span lang="th">ดึงรูปภาพออกจาก PDF</span><small><span lang="th">ดึงรูปภาพที่ฝังใน PDF ออกมาในคุณภาพต้นฉบับ</span></small></a><a href="/th/file-dupes.html"><span lang="th">ค้นหาไฟล์ซ้ำ</span><small><span lang="th">ค้นหาไฟล์ที่มีเนื้อหาเหมือนกันแล้วบันทึก ZIP ที่ไม่มีไฟล์ซ้ำ</span></small></a><a href="/th/file-type-check.html"><span lang="th">ตรวจสอบประเภทจริงของไฟล์ (นามสกุลเทียบกับเนื้อหา)</span><small><span lang="th">ตัดสินประเภทไฟล์จากเนื้อหาและตรวจสอบว่านามสกุลตรงกันหรือไม่</span></small></a><a href="/th/file-encrypt.html"><span lang="th">เข้ารหัสและถอดรหัสไฟล์ด้วยรหัสผ่าน</span><small><span lang="th">เข้ารหัสและถอดรหัสไฟล์ใดก็ได้ด้วยรหัสผ่าน (AES-256)</span></small></a><a href="/th/xlsx-merge-csv.html"><span lang="th">รวมไฟล์ Excel หลายไฟล์เป็น CSV เดียว</span><small><span lang="th">นำข้อมูลจากไฟล์ Excel หลายไฟล์มาต่อกันเป็น CSV เดียว</span></small></a><a href="/th/pdf-bookmarks.html"><span lang="th">ดูและเพิ่มบุ๊กมาร์ก PDF</span><small><span lang="th">ดูและเพิ่มบุ๊กมาร์ก (สารบัญ) ของ PDF</span></small></a><a href="/th/audio-trim.html"><span lang="th">ตัดไฟล์เสียง</span><small><span lang="th">ตัดส่วนหนึ่งของไฟล์เสียงแล้วบันทึกเป็น WAV</span></small></a><a href="/th/video-frame.html"><span lang="th">บันทึกเฟรมวิดีโอเป็นรูปภาพ</span><small><span lang="th">บันทึกช่วงใดก็ได้ของวิดีโอเป็นรูปภาพ</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="th">เกี่ยวกับ / ติดต่อ (ภาษาญี่ปุ่น)</span></a><a href="/th/privacy.html"><span lang="th">นโยบายความเป็นส่วนตัว</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="th">อัปเดตบน X</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const TR={"Run and save": "เรียกใช้และบันทึก", "Could not process the files.": "ประมวลผลไฟล์ไม่ได้", "Save ZIP": "บันทึก ZIP", "Could not read the file.": "อ่านไฟล์ไม่ได้", "Choose other files": "เลือกไฟล์อื่น", "Could not read the PDF. It may be damaged or in an unsupported format.": "อ่าน PDF ไม่ได้ อาจเสียหายหรืออยู่ในรูปแบบที่ไม่รองรับ", "Save text": "บันทึกข้อความ", "First file: {0} lines": "ไฟล์แรก: {0} บรรทัด", "Split into {0} file(s)": "แยกเป็น {0} ไฟล์", "Could not save. Please try again.": "บันทึกไม่สำเร็จ โปรดลองอีกครั้ง", "{0} file(s) / total {1}": "{0} ไฟล์ / รวม {1}", "A file is too large (up to 50 MB).": "ไฟล์ใหญ่เกินไป (สูงสุด 50 MB)", "Merged {0} file(s)": "รวมแล้ว {0} ไฟล์", "Password-protected PDFs are not supported. Remove the password and try again.": "ไม่รองรับ PDF ที่มีรหัสผ่าน โปรดลบรหัสผ่านแล้วลองอีกครั้ง"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=T("Could not save. Please try again.",[])}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return T("Password-protected PDFs are not supported. Remove the password and try again.",[]);
+  return T("Could not read the PDF. It may be damaged or in an unsupported format.",[]);
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+function showErr2(m){const o=$("out");o.style.display="block";o.querySelector(".stamp").style.display="none";$("bar").style.display="none";$("dl").style.display="none";$("info").textContent="";$("msg").className="bad";$("msg").textContent=m}
+
+let files=[],texts=[];
+function setBtn(){$("go").disabled=!texts.length;$("go").textContent=T("Run and save",[])}
+function dec(u8){try{let s=new TextDecoder("utf-8",{fatal:true}).decode(u8);return s.charCodeAt(0)===0xFEFF?s.slice(1):s}catch(e){return new TextDecoder("shift_jis").decode(u8)}}
+function mode(){const m=val("md");$("o_merge").style.display=m==="merge"?"block":"none";$("o_split").style.display=m==="split"?"block":"none"}
+async function load(list){
+  const fl=list.filter(f=>f&&f.size>=0);if(!fl.length)return;
+  try{texts=[];files=fl;let tot=0;
+    for(const f of fl){if(f.size>50*1024*1024)throw new Error(T("A file is too large (up to 50 MB).",[]));texts.push({name:f.name,s:dec(new Uint8Array(await f.arrayBuffer()))});tot+=f.size}
+    $("finfo").style.display="block";$("finfo").textContent=T("{0} file(s) / total {1}",[fl.length,fmt(tot)]);
+    $("det").textContent=T("First file: {0} lines",[texts[0].s.split(/\r?\n/).length]);$("pvt").value=texts[0].s.slice(0,500);
+    $("set").style.display="block";$("pt").textContent=T("Choose other files",[]);$("out").style.display="none";mode();setBtn();
+  }catch(e){console.error(e);texts=[];$("set").style.display="none";showErr2(e.message||T("Could not read the file.",[]))}
+}
+$("file").onchange=e=>{load([...e.target.files]);e.target.value=""};bindDrop("drop",load);
+document.querySelectorAll('input[name="md"]').forEach(x=>x.addEventListener("change",mode));
+$("go").onclick=async()=>{
+  const go=$("go");go.disabled=true;beginRun();
+  try{
+    const m=val("md"),dl=$("dl");dl.href="#";dl.style.display="inline-block";let blob,info;
+    if(m==="merge"){
+      const parts=texts.map(x=>($("fn").checked?"■ "+x.name+"\n":"")+x.s.replace(/\r\n?/g,"\n").replace(/\n+$/,""));
+      blob=new Blob([parts.join("\n\n")+"\n"],{type:"text/plain"});info=T("Merged {0} file(s)",[texts.length]);
+      dl.textContent=T("Save text",[]);wire(dl,blob,"merged.txt","text/plain");
+    }else{
+      const N=Math.max(1,Math.floor(+$("sn").value||1000)),by=val("sb"),z=new JSZip();let cnt=0;
+      for(const x of texts){const lines=x.s.replace(/\r\n?/g,"\n").replace(/\n$/,"").split("\n"),stem=x.name.replace(/\.[^.]*$/,"");let chunks=[];
+        if(by==="lines"){for(let i=0;i<lines.length;i+=N)chunks.push(lines.slice(i,i+N).join("\n"))}
+        else{let cur=[],sz=0;for(const l of lines){const b=new TextEncoder().encode(l+"\n").length;if(sz+b>N*1024&&cur.length){chunks.push(cur.join("\n"));cur=[];sz=0}cur.push(l);sz+=b}if(cur.length)chunks.push(cur.join("\n"))}
+        if(!chunks.length)chunks=[""];chunks.forEach((c,k)=>{z.file(stem+"_"+String(k+1).padStart(3,"0")+".txt",c+"\n");cnt++})}
+      blob=await z.generateAsync({type:"blob",compression:"DEFLATE"});info=T("Split into {0} file(s)",[cnt]);
+      dl.textContent=T("Save ZIP",[]);wire(dl,blob,"split.zip","application/zip");
+    }
+    $("barf").style.width="100%";$("info").textContent=info+"（"+fmt(blob.size)+"）";$("msg").className="";$("msg").textContent="";finishOk();
+  }catch(e){console.error(e);showErr2(e.message||T("Could not process the files.",[]))}
+  finally{endRun();setBtn()}
+};
+
+</script>
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html data-lang="tw" lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>轉換文字編碼並修復亂碼（Shift_JIS、UTF-8）｜免費｜PDF Mikata</title>
+<meta content="免費工具，修復亂碼的 CSV 和文字檔案。可在 Shift_JIS、UTF-8、EUC-JP 和 UTF-16 之間轉換。檔案不會離開你的裝置。" name="description"/>
+
+
+<link href="https://pdfmikata.com/tw/charset-convert.html" rel="canonical"/>
+<script src="/site.js"></script>
+
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+.next{margin:20px 0 6px}
+.next h3{margin:0 0 10px;font-size:1.05rem}
+.ncards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ncards a.tool,.ncards .tool *{min-width:0;overflow-wrap:anywhere;hyphens:auto}
+@media(min-width:720px){.ncards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.ncards a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper,#fff);box-shadow:0 3px 0 var(--line);text-decoration:none;color:var(--ink)}
+.ncards a.tool:hover{border-color:var(--stamp)}
+.ncards .ic{flex:none;width:40px;height:40px;border-radius:11px;background:var(--ink);color:var(--btn-ink);display:grid;place-items:center}
+.ncards .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ncards .tx b{display:block;font-size:.95rem;line-height:1.4}
+.ncards .tx .d{display:block;color:var(--sub);font-size:.8rem;line-height:1.5;margin-top:2px}
+.next .allt{display:block;margin:14px 0 0;padding:13px 16px;border:2px solid var(--ink);border-radius:12px;text-align:center;font-weight:700;text-decoration:none;color:var(--ink);background:var(--paper,#fff)}
+.next .allt:hover{background:var(--ink);color:var(--btn-ink)}
+.safe{margin:14px 0 0;font-size:.85rem;color:var(--sub);line-height:1.6}
+#bar::after{content:"処理中…この端末の中だけで処理しています";display:block;margin-top:6px;font-size:.8rem;color:var(--sub)}
+html[data-lang="en"] #bar::after{content:"Working… processed only on this device"}
+html[data-lang="zh"] #bar::after{content:"处理中…仅在此设备上处理"}
+html[data-lang="es"] #bar::after{content:"Procesando… solo en este dispositivo"}
+html[data-lang="ko"] #bar::after{content:"처리 중… 이 기기 안에서만 처리합니다"}
+html[data-lang="pt"] #bar::after{content:"Processando… somente neste dispositivo"}
+html[data-lang="fr"] #bar::after{content:"Traitement… uniquement sur cet appareil"}
+html[data-lang="id"] #bar::after{content:"Memproses… hanya di perangkat ini"}
+html[data-lang="it"] #bar::after{content:"Elaborazione… solo su questo dispositivo"}
+html[data-lang="ru"] #bar::after{content:"Обработка… только на этом устройстве"}
+html[data-lang="pl"] #bar::after{content:"Przetwarzanie… tylko na tym urządzeniu"}
+html[data-lang="nl"] #bar::after{content:"Bezig met verwerken… alleen op dit apparaat"}
+html[data-lang="th"] #bar::after{content:"กำลังประมวลผล… ทำงานบนอุปกรณ์นี้เท่านั้น"}
+html[data-lang="ar"] #bar::after{content:"جارٍ المعالجة… على هذا الجهاز فقط"}
+html[data-lang="bn"] #bar::after{content:"প্রক্রিয়া চলছে… শুধু এই ডিভাইসে"}
+html[data-lang="tl"] #bar::after{content:"Pinoproseso… sa device na ito lang"}
+html[data-lang="uk"] #bar::after{content:"Обробка… лише на цьому пристрої"}
+html[data-lang="ms"] #bar::after{content:"Memproses… pada peranti ini sahaja"}
+html[data-lang="fa"] #bar::after{content:"در حال پردازش… فقط روی همین دستگاه"}
+html[data-lang="ur"] #bar::after{content:"پروسیسنگ جاری ہے… صرف اسی ڈیوائس پر"}
+html[data-lang="tw"] #bar::after{content:"處理中…僅在此裝置上處理"}
+html[data-lang="vi"] #bar::after{content:"Đang xử lý… chỉ trên thiết bị này"}
+html[data-lang="tr"] #bar::after{content:"İşleniyor… yalnızca bu cihazda"}
+html[data-lang="de"] #bar::after{content:"Wird verarbeitet… nur auf diesem Gerät"}
+html[data-lang="hi"] #bar::after{content:"प्रोसेस हो रहा है… केवल इसी डिवाइस पर"}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}a.tool .bd{color:var(--btn-ink)}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}
+html{background:var(--desk)}body{background-image:radial-gradient(900px 420px at 12% -6%,rgba(63,181,174,.11),transparent 62%),radial-gradient(700px 420px at 100% 0,rgba(90,120,210,.08),transparent 58%);background-repeat:no-repeat}
+a.tool{box-shadow:0 3px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.07)}}
+.pop a,.btn2,button,a.tool{transition:transform .12s ease,box-shadow .15s ease,border-color .15s ease,background-color .15s ease,color .15s ease}
+.pop a:active,.btn2:active,button:not(:disabled):active{transform:scale(.97)}a.tool:active{transform:translateY(0) scale(.985)}
+h1,h2{letter-spacing:.01em}
+@media (prefers-reduced-motion:reduce){.pop a:active,.btn2:active,button:active,a.tool:active{transform:none}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b{display:inline-flex;align-items:center;gap:6px}.pop.recent b svg,.pop.recent a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}.pop.recent a{display:inline-flex;align-items:center;gap:6px}.pop.recent a .pi{margin-right:0}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首頁", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "工具", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "轉換文字編碼（修復亂碼）", "item": "https://pdfmikata.com/charset-convert.html"}]}</script>
+<meta content="website" property="og:type"/>
+<meta content="PDF Mikata" property="og:site_name"/>
+<meta content="zh_TW" property="og:locale"/>
+
+<meta content="轉換文字編碼並修復亂碼（Shift_JIS、UTF-8）｜免費｜PDF Mikata" property="og:title"/>
+<meta content="免費工具，修復亂碼的 CSV 和文字檔案。可在 Shift_JIS、UTF-8、EUC-JP 和 UTF-16 之間轉換。檔案不會離開你的裝置。" property="og:description"/>
+<meta content="https://pdfmikata.com/tw/charset-convert.html" property="og:url"/>
+<meta content="https://pdfmikata.com/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="轉換文字編碼並修復亂碼（Shift_JIS、UTF-8）｜免費｜PDF Mikata" name="twitter:title"/>
+<meta content="免費工具，修復亂碼的 CSV 和文字檔案。可在 Shift_JIS、UTF-8、EUC-JP 和 UTF-16 之間轉換。檔案不會離開你的裝置。" name="twitter:description"/>
+<meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="#16393c" name="theme-color"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "轉換文字編碼（修復亂碼）", "alternateName": "Convert Text Encoding (Fix Garbled Text)", "url": "https://pdfmikata.com/tw/charset-convert.html", "description": "免費工具，修復亂碼的 CSV 和文字檔案。可在 Shift_JIS、UTF-8、EUC-JP 和 UTF-16 之間轉換。檔案不會離開你的裝置。", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "zh-Hant", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tw/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
+<style>
+main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
+
+.lang{display:flex;align-items:center;border:0;overflow:visible}
+.lang .gl{width:18px;height:18px;margin:0 6px 0 10px;color:#fcfefd;flex:none}
+.lang select{appearance:none;-webkit-appearance:none;min-height:44px;border:1px solid rgba(255,255,255,.5);border-radius:6px;background:transparent;color:#fcfefd;font:inherit;font-weight:700;font-size:.85rem;padding:0 28px 0 12px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23fcfefd' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.lang select option{color:#16393c;background:#fcfefd}
+.lang select:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+@media (max-width:420px){.lang .gl{display:none}}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI","PingFang TC","Microsoft JhengHei","Noto Sans TC","Noto Sans CJK TC",sans-serif}
+.skip{position:absolute;left:8px;top:-60px;z-index:100;background:var(--btn-ink,#fff);color:var(--ink);padding:10px 14px;border-radius:10px;border:2px solid var(--stamp);font-weight:700;text-decoration:none;transition:top .15s}
+.skip:focus{top:8px}
+.top{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.sub{background:color-mix(in srgb,var(--paper) 80%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px)}
+ul.g a,.more a,.ncards a.tool,.cats a.tool{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background-color .15s ease}
+ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:translateY(-2px)}
+ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform:scale(.98)}
+.pop svg,.pi,.ic svg,.ncards .ic svg{stroke-width:1.8}
+#pm-toast{position:fixed;left:50%;bottom:18px;transform:translate(-50%,24px);opacity:0;z-index:60;width:min(560px,calc(100vw - 24px));background:var(--paper);color:var(--ink);border:1px solid var(--line);border-left:5px solid var(--stamp);border-radius:14px;padding:12px 40px 12px 14px;box-shadow:0 14px 34px -12px rgba(0,0,0,.35);transition:opacity .22s,transform .22s;pointer-events:none;font-size:14px;line-height:1.6}
+#pm-toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#pm-toast.warn{border-left-color:#d98a1c}
+#pm-toast b{display:block;margin-bottom:4px}
+#pm-toast .nx{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+#pm-toast .nx a{border:1px solid var(--line);border-radius:999px;padding:4px 12px;color:var(--ink);text-decoration:none;font-weight:600;background:var(--desk)}
+#pm-toast .nx a:hover{border-color:var(--stamp)}
+#pm-toast .x{position:absolute;right:6px;top:6px;width:30px;height:30px;border:0;background:transparent;color:var(--sub);font-size:20px;line-height:1;cursor:pointer;border-radius:8px}
+@media (prefers-reduced-motion:reduce){#pm-toast,.skip{transition:none}ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:none}}
+.lite .aurora{display:none}.lite .hero::before,.lite .hero::after{animation:none}
+</style><link href="https://pdfmikata.com/charset-convert.html" hreflang="ja" rel="alternate"/>
+<link href="https://pdfmikata.com/en/charset-convert.html" hreflang="en" rel="alternate"/>
+<link href="https://pdfmikata.com/zh/charset-convert.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://pdfmikata.com/es/charset-convert.html" hreflang="es" rel="alternate"/>
+<link href="https://pdfmikata.com/ko/charset-convert.html" hreflang="ko" rel="alternate"/>
+<link href="https://pdfmikata.com/pt/charset-convert.html" hreflang="pt" rel="alternate"/>
+<link href="https://pdfmikata.com/fr/charset-convert.html" hreflang="fr" rel="alternate"/>
+<link href="https://pdfmikata.com/id/charset-convert.html" hreflang="id" rel="alternate"/>
+<link href="https://pdfmikata.com/vi/charset-convert.html" hreflang="vi" rel="alternate"/>
+<link href="https://pdfmikata.com/tr/charset-convert.html" hreflang="tr" rel="alternate"/>
+<link href="https://pdfmikata.com/de/charset-convert.html" hreflang="de" rel="alternate"/>
+<link href="https://pdfmikata.com/hi/charset-convert.html" hreflang="hi" rel="alternate"/>
+<link href="https://pdfmikata.com/it/charset-convert.html" hreflang="it" rel="alternate"/>
+<link href="https://pdfmikata.com/ru/charset-convert.html" hreflang="ru" rel="alternate"/>
+<link href="https://pdfmikata.com/tw/charset-convert.html" hreflang="zh-Hant" rel="alternate"/>
+<link href="https://pdfmikata.com/pl/charset-convert.html" hreflang="pl" rel="alternate"/>
+<link href="https://pdfmikata.com/nl/charset-convert.html" hreflang="nl" rel="alternate"/>
+<link href="https://pdfmikata.com/th/charset-convert.html" hreflang="th" rel="alternate"/>
+<link href="https://pdfmikata.com/ar/charset-convert.html" hreflang="ar" rel="alternate"/>
+<link href="https://pdfmikata.com/bn/charset-convert.html" hreflang="bn" rel="alternate"/>
+<link href="https://pdfmikata.com/tl/charset-convert.html" hreflang="fil" rel="alternate"/>
+<link href="https://pdfmikata.com/uk/charset-convert.html" hreflang="uk" rel="alternate"/>
+<link href="https://pdfmikata.com/ms/charset-convert.html" hreflang="ms" rel="alternate"/>
+<link href="https://pdfmikata.com/fa/charset-convert.html" hreflang="fa" rel="alternate"/>
+<link href="https://pdfmikata.com/ur/charset-convert.html" hreflang="ur" rel="alternate"/>
+<link href="https://pdfmikata.com/charset-convert.html" hreflang="x-default" rel="alternate"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2376251801221434" crossorigin="anonymous"></script>
+</head>
+<body><a class="skip" href="#main">跳到正文</a>
+<header class="top"><div class="top-in"><a class="brand" href="/tw/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma / 언어" id="langsel"><option value="/charset-convert.html">日本語</option><option value="/en/charset-convert.html">English</option><option value="/zh/charset-convert.html">简体中文</option><option value="/es/charset-convert.html">Español</option><option value="/ko/charset-convert.html">한국어</option><option value="/pt/charset-convert.html">Português</option><option value="/fr/charset-convert.html">Français</option><option value="/id/charset-convert.html">Bahasa Indonesia</option><option value="/vi/charset-convert.html">Tiếng Việt</option><option value="/tr/charset-convert.html">Türkçe</option><option value="/de/charset-convert.html">Deutsch</option><option value="/hi/charset-convert.html">हिन्दी</option><option value="/it/charset-convert.html">Italiano</option><option value="/ru/charset-convert.html">Русский</option><option selected="" value="/tw/charset-convert.html">繁體中文</option><option value="/pl/charset-convert.html">Polski</option><option value="/nl/charset-convert.html">Nederlands</option><option value="/th/charset-convert.html">ไทย</option><option value="/ar/charset-convert.html">العربية</option><option value="/bn/charset-convert.html">বাংলা</option><option value="/tl/charset-convert.html">Filipino</option><option value="/uk/charset-convert.html">Українська</option><option value="/ms/charset-convert.html">Bahasa Melayu</option><option value="/fa/charset-convert.html">فارسی</option><option value="/ur/charset-convert.html">اردو</option></select></div></div></header>
+<nav aria-label="站內導覽" class="sub"><div class="sub-in"><a href="/tw/"><span lang="zh-Hant">首頁</span></a><a aria-current="page" href="/tw/#cat-convert"><span lang="zh-Hant">轉換</span></a><a href="/tw/#cat-edit"><span lang="zh-Hant">編輯</span></a><a href="/tw/#cat-optimize"><span lang="zh-Hant">最佳化</span></a><a href="/tw/#cat-create"><span lang="zh-Hant">製作</span></a><a href="/tw/#guide"><span lang="zh-Hant">教程</span></a></div></nav>
+<nav aria-label="路徑導覽" class="crumb"><ol><li><a href="/tw/"><span lang="zh-Hant">首頁</span></a></li><li><a href="/tw/#tools"><span lang="zh-Hant">工具</span></a></li><li><span aria-current="page"><span lang="zh-Hant">轉換文字編碼（修復亂碼）</span></span></li></ol></nav>
+<main id="main" tabindex="-1">
+<h1><span lang="zh-Hant">轉換文字編碼（修復亂碼）</span></h1>
+<p class="lead"><span lang="zh-Hant">文字檔案顯示亂碼時。</span></p>
+<p class="safe"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="9" rx="2" width="14" x="5" y="11"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><span><span lang="zh-Hant"><b>你的檔案不會被上傳。</b>所有處理都只在這臺裝置上完成。</span></span></p><ol class="steps"><li><b>1</b><span lang="zh-Hant">選擇檔案</span></li><li><b>2</b><span lang="zh-Hant">選擇編碼</span></li><li><b>3</b><span lang="zh-Hant">轉換並儲存</span></li></ol>
+<label class="pick" id="drop"><input id="file" type="file"/><span id="pt"><span lang="zh-Hant">選擇文字檔案</span></span><small><span lang="zh-Hant">選擇一個 CSV、TXT 或類似檔案</span></small></label>
+<p class="note2" id="finfo" style="display:none"></p>
+<section class="set" id="set" style="display:none">
+<div class="row"><span><span lang="zh-Hant">當前編碼</span></span><label><input checked="" name="src" type="radio" value="auto"/><span lang="zh-Hant">自動判斷</span></label><label><input name="src" type="radio" value="utf-8"/><span lang="zh-Hant">UTF-8</span></label><label><input name="src" type="radio" value="shift_jis"/><span lang="zh-Hant">Shift_JIS（Windows）</span></label><label><input name="src" type="radio" value="euc-jp"/><span lang="zh-Hant">EUC-JP</span></label><label><input name="src" type="radio" value="utf-16le"/><span lang="zh-Hant">UTF-16（LE）</span></label></div>
+<div class="row"><span><span lang="zh-Hant">轉換為</span></span><label><input checked="" name="dst" type="radio" value="utf8"/><span lang="zh-Hant">UTF-8</span></label><label><input name="dst" type="radio" value="utf8bom"/><span lang="zh-Hant">帶 BOM 的 UTF-8（用於 Excel）</span></label><label><input name="dst" type="radio" value="shift_jis"/><span lang="zh-Hant">Shift_JIS（Windows）</span></label><label><input name="dst" type="radio" value="euc-jp"/><span lang="zh-Hant">EUC-JP</span></label><label><input name="dst" type="radio" value="utf16le"/><span lang="zh-Hant">帶 BOM 的 UTF-16 LE</span></label></div>
+<div class="row"><span><span lang="zh-Hant">換行符</span></span><label><input checked="" name="nl" type="radio" value="keep"/><span lang="zh-Hant">保持</span></label><label><input name="nl" type="radio" value="crlf"/><span lang="zh-Hant">CRLF（Windows）</span></label><label><input name="nl" type="radio" value="lf"/><span lang="zh-Hant">LF（Mac / Linux）</span></label></div>
+<p class="note2" id="det"></p>
+<label for="pvt" style="font-weight:700"><span lang="zh-Hant">預覽（開頭部分）</span></label>
+<textarea id="pvt" readonly="" style="width:100%;min-height:150px;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:10px 12px;font:inherit;font-size:.95rem;line-height:1.5;resize:vertical;display:block;background:var(--paper);color:var(--ink);min-height:120px"></textarea>
+<p class="note2"><span lang="zh-Hant">如果預覽是亂碼，請更改「當前編碼」換一種方式讀取。</span></p>
+<button disabled="" id="go"></button>
+</section>
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="zh-Hant">完成</span></div>
+<p id="info"></p>
+<a href="#" id="dl"></a>
+<div id="extra"></div>
+<p aria-live="polite" id="msg"></p>
+<p class="safe"><span lang="zh-Hant">🔒 檔案不會傳送到外部伺服器，所有處理都在此瀏覽器內安全完成。</span></p>
+<div class="support" hidden="" id="support"><p><span lang="zh-Hant">如果 PDF Mikata 對你有幫助，一點小小的打賞會讓我們非常開心。</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="zh-Hant">打賞（300 日元）</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="zh-Hant">贈送禮物（亞馬遜心願單）</span></a></div>
+</section>
+<div class="next" id="next"><h3 aria-level="2"><span lang="zh-Hant">常一起使用的工具</span></h3><div class="ncards"><a class="tool" href="/tw/csv-json.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M8 9c-1 0-1 1-1 2s0 2-1 2c1 0 1 1 1 2s0 2 1 2M16 9c1 0 1 1 1 2s0 2 1 2c-1 0-1 1-1 2s0 2-1 2"></path></svg></span><div class="tx"><b><span lang="zh-Hant">CSV 與 JSON 互相轉換</span></b><span class="d"><span lang="zh-Hant">立即在 CSV 和 JSON 之間互相轉換。</span></span></div></a><a class="tool" href="/tw/csv-to-xlsx.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M9 9l6 6M15 9l-6 6"></path><path d="M5 20h14"></path></svg></span><div class="tx"><b><span lang="zh-Hant">把 CSV 轉換成 Excel（.xlsx）</span></b><span class="d"><span lang="zh-Hant">把 CSV 變成可以在 Excel 中開啟的檔案。</span></span></div></a><a class="tool" href="/tw/line-break-remover.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M7 9h10M7 13h10M7 17h6"></path></svg></span><div class="tx"><b><span lang="zh-Hant">刪除和整理文字中的換行</span></b><span class="d"><span lang="zh-Hant">整理複製文字中的換行。</span></span></div></a><a class="tool" href="/tw/merge-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="13" rx="1.5" width="10" x="3" y="3"></rect><rect height="13" rx="1.5" width="10" x="11" y="8"></rect></svg></span><div class="tx"><b><span lang="zh-Hant">合併 PDF</span></b><span class="d"><span lang="zh-Hant">把 PDF 合併成一個。</span></span></div></a></div><a class="allt" href="/tw/"><span lang="zh-Hant">檢視所有工具（返回首頁）</span></a></div>
+<section class="guide" id="how">
+
+<div lang="zh-Hant"><h2>使用方法</h2>
+<ol>
+<li>點選「選擇文字檔案」並選擇 CSV 或 TXT 檔案。</li>
+<li>選擇當前編碼和要轉換成的編碼。下方會顯示預覽。</li>
+<li>點選「轉換並儲存」並儲存檔案。</li>
+</ol>
+<h2>工作原理</h2>
+<ul>
+<li>編碼是把文字變成資料的規則。用錯誤的規則開啟檔案，文字就會亂碼。</li>
+<li>「自動檢測」可區分 UTF-8、Shift_JIS、EUC-JP 等。</li>
+<li>不會更改原檔案，而是儲存為新檔案。</li>
+</ul>
+<h2>注意事項</h2>
+<ul>
+<li>轉換為 Shift_JIS 等編碼時，它無法表示的字元（如 emoji）會變成「?」。</li>
+<li>圖片、PDF 等非純文字檔案無法轉換。</li>
+</ul>
+<h2>常見問題</h2>
+<details><summary>我的檔案會被上傳到別處嗎？</summary><p>不會。所有處理都在你裝置上的瀏覽器內完成。</p></details>
+<details><summary>我的 CSV 在 Excel 中顯示為亂碼。</summary><p>轉換為「帶 BOM 的 UTF-8（用於 Excel）」後，在 Excel 中更容易開啟。</p></details>
+</div>
+</section>
+<div class="support endtip"><p><span lang="zh-Hant">如果 PDF Mikata 對你有幫助，一點小小的打賞會讓我們非常開心。</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank"><span lang="zh-Hant">打賞（300 日元）</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="zh-Hant">贈送禮物（亞馬遜心願單）</span></a></div>
+<section class="more rel"><h2><span lang="zh-Hant">此工具的相關教程</span></h2><a href="/tw/charset-convert-howto.html"><span lang="zh-Hant">如何轉換文字檔案的編碼（免費，手機也能用）</span></a><a href="/tw/charset-convert-garbled-csv.html"><span lang="zh-Hant">CSV 為什麼會亂碼，以及如何修復</span></a><a href="/tw/charset-convert-excel-utf8.html"><span lang="zh-Hant">在 Excel 中開啟 UTF-8 的 CSV（轉換為帶 BOM 的 UTF-8）</span></a><a href="/tw/charset-convert-shift-jis-system.html"><span lang="zh-Hant">為只接受 Shift_JIS 的系統進行轉換</span></a><a href="/tw/charset-convert-line-breaks.html"><span lang="zh-Hant">如何統一換行符（CRLF 與 LF）</span></a><a href="/tw/charset-convert-auto-detect.html"><span lang="zh-Hant">編碼自動檢測的原理，以及檢測失敗時怎麼辦</span></a><a href="/tw/charset-convert-safe-offline.html"><span lang="zh-Hant">不上傳檔案即可轉換編碼</span></a></section>
+<section class="more"><h2><span lang="zh-Hant">更多工具</span></h2><a href="/tw/photo-to-pdf.html"><span lang="zh-Hant">照片轉 PDF</span><small><span lang="zh-Hant">按你選擇的順序，把多張照片合併成一個 PDF。可旋轉、調整順序並指定大小上限。</span></small></a><a href="/tw/merge-pdf.html"><span lang="zh-Hant">合併 PDF</span><small><span lang="zh-Hant">按你選擇的順序，把多個 PDF 檔案合併成一個。</span></small></a><a href="/tw/split-pdf.html"><span lang="zh-Hant">提取或刪除 PDF 頁面</span><small><span lang="zh-Hant">只保留需要的頁面，或刪除不需要的頁面。</span></small></a><a href="/tw/compress-pdf.html"><span lang="zh-Hant">壓縮 PDF</span><small><span lang="zh-Hant">把 PDF 壓縮到你指定的大小以下，應對上傳大小限制。</span></small></a><a href="/tw/pdf-to-image.html"><span lang="zh-Hant">PDF 轉圖片</span><small><span lang="zh-Hant">把 PDF 的每一頁儲存為 JPEG 或 PNG 圖片。</span></small></a><a href="/tw/image-convert.html"><span lang="zh-Hant">轉換圖片格式（JPG、PNG、WebP）</span><small><span lang="zh-Hant">把圖片一次批次轉換為 JPG、PNG 或 WebP。</span></small></a><a href="/tw/pdf-rotate.html"><span lang="zh-Hant">旋轉與重新排列 PDF 頁面</span><small><span lang="zh-Hant">糾正橫放的頁面、調整頁面順序或刪除頁面。</span></small></a><a href="/tw/pdf-page-numbers.html"><span lang="zh-Hant">給 PDF 新增頁碼</span><small><span lang="zh-Hant">給 PDF 新增頁碼，可選擇位置和樣式。</span></small></a><a href="/tw/image-compress.html"><span lang="zh-Hant">壓縮與調整圖片大小</span><small><span lang="zh-Hant">讓圖片檔案變小，也可以調整尺寸。</span></small></a><a href="/tw/heic-to-jpg.html"><span lang="zh-Hant">HEIC 轉 JPG</span><small><span lang="zh-Hant">把 iPhone 的 HEIC 照片轉換為 JPG 或 PNG。</span></small></a><a href="/tw/pdf-split.html"><span lang="zh-Hant">拆分 PDF</span><small><span lang="zh-Hant">把 PDF 拆分成多個檔案：每頁一個、每 N 頁一個，或按頁碼範圍拆分。</span></small></a><a href="/tw/image-crop.html"><span lang="zh-Hant">裁剪與旋轉圖片</span><small><span lang="zh-Hant">按任意區域或比例裁剪圖片，並可旋轉。</span></small></a><a href="/tw/pdf-to-text.html"><span lang="zh-Hant">從 PDF 提取文字</span><small><span lang="zh-Hant">提取 PDF 中的文字，用於複製或儲存。</span></small></a><a href="/tw/receipt-maker.html"><span lang="zh-Hant">製作收據 PDF</span><small><span lang="zh-Hant">填寫付款人、金額和事由，即可製作收據 PDF。稅額明細和發票登記號為選填項。</span></small></a><a href="/tw/resume-maker.html"><span lang="zh-Hant">製作簡歷 PDF（日式履歷書）</span><small><span lang="zh-Hant">填寫個人資訊、學歷、工作經歷和求職動機，製作日式簡歷（履歷書）PDF，可選擇新增證件照。</span></small></a><a href="/tw/timetable-maker.html"><span lang="zh-Hant">製作課程表 / 每週日程表</span><small><span lang="zh-Hant">輸入課程、兼職和安排，製作帶顏色分類的課程表或每週日程表，可儲存為 PDF 或圖片。</span></small></a><a href="/tw/namecard-maker.html"><span lang="zh-Hant">製作名片</span><small><span lang="zh-Hant">輸入姓名和資訊，即可製作排在 A4 紙上的名片或姓名牌 PDF。也可以根據名單批次製作姓名牌。</span></small></a><a href="/tw/qr-code-maker.html"><span lang="zh-Hant">製作二維碼（網址、Wi-Fi）</span><small><span lang="zh-Hant">根據網址、文字或 Wi-Fi 資訊生成二維碼，可儲存為 PNG、SVG 或 PDF。</span></small></a><a href="/tw/pdf-nup.html"><span lang="zh-Hant">把 PDF 多頁排到一張紙上（2 合 1、4 合 1）</span><small><span lang="zh-Hant">把多頁 PDF 排在一張 A4 紙上（2、4、6、8 或 9 合 1），列印時節省紙張。</span></small></a><a href="/tw/pdf-grayscale.html"><span lang="zh-Hant">把 PDF 轉為灰度（黑白）</span><small><span lang="zh-Hant">把彩色 PDF 轉為灰度或純黑白，便於黑白列印、影印或傳真。可選擇解析度。</span></small></a><a href="/tw/pdf-watermark.html"><span lang="zh-Hant">給 PDF 新增文字水印</span><small><span lang="zh-Hant">在 PDF 的每一頁上淡淡地加上「僅限提交」「副本」「機密」等文字。可選擇位置、顏色和透明度。</span></small></a><a href="/tw/pdf-crop.html"><span lang="zh-Hant">裁剪 PDF 頁邊空白</span><small><span lang="zh-Hant">自動或逐邊指定來裁掉 PDF 的頁邊空白。在手機上更好讀，列印也更清爽。</span></small></a><a href="/tw/pdf-redact.html"><span lang="zh-Hant">把 PDF 的一部分塗黑</span><small><span lang="zh-Hant">用手指或滑鼠框住 PDF 裡不想讓人看到的部分，把它塗黑。塗黑的頁面會變成圖片，下面的文字也不會留下。</span></small></a><a href="/tw/pdf-metadata.html"><span lang="zh-Hant">檢視並刪除 PDF 屬性（作者、標題）</span><small><span lang="zh-Hant">檢視 PDF 裡儲存的作者、標題、軟體和日期，然後刪除或修改它們。</span></small></a><a href="/tw/pdf-fill.html"><span lang="zh-Hant">在 PDF 上填寫文字、日期、簽名和標記</span><small><span lang="zh-Hant">在 PDF 的任意位置新增文字、日期、對勾、圓圈、手寫簽名或圖片（例如印章）。</span></small></a><a href="/tw/pdf-resize.html"><span lang="zh-Hant">把 PDF 頁面調整為 A4 等紙張尺寸</span><small><span lang="zh-Hant">把尺寸不一的 PDF 頁面統一成 A4、A3、B5 或 Letter 等相同大小。文字和圖形依然清晰。</span></small></a><a href="/tw/pdf-delete-pages.html"><span lang="zh-Hant">刪除 PDF 中不需要的頁面</span><small><span lang="zh-Hant">選擇並刪除 PDF 中不需要的頁面。</span></small></a><a href="/tw/pdf-extract-pages.html"><span lang="zh-Hant">只提取 PDF 中需要的頁面</span><small><span lang="zh-Hant">選出需要的頁面，儲存成新的 PDF。</span></small></a><a href="/tw/pdf-reverse.html"><span lang="zh-Hant">把 PDF 的頁面順序倒過來</span><small><span lang="zh-Hant">把 PDF 的頁面順序倒過來。</span></small></a><a href="/tw/pdf-insert-blank.html"><span lang="zh-Hant">在 PDF 中插入空白頁</span><small><span lang="zh-Hant">在 PDF 的任意位置插入空白頁。</span></small></a><a href="/tw/pdf-split-halves.html"><span lang="zh-Hant">把 PDF 的跨頁拆成單頁</span><small><span lang="zh-Hant">把 PDF 裡的跨頁拆成一頁一頁。</span></small></a><a href="/tw/pdf-header-footer.html"><span lang="zh-Hant">給 PDF 新增頁首和頁尾</span><small><span lang="zh-Hant">在 PDF 的頂部和底部新增標題、日期或頁碼。</span></small></a><a href="/tw/pdf-booklet.html"><span lang="zh-Hant">把 PDF 排成小冊子用於列印</span><small><span lang="zh-Hant">調整 PDF 的頁面順序，列印後折起來就是小冊子。</span></small></a><a href="/tw/pdf-blank-remove.html"><span lang="zh-Hant">自動找出並刪除 PDF 中的空白頁</span><small><span lang="zh-Hant">自動找出 PDF 中的空白頁並刪除。</span></small></a><a href="/tw/pdf-long-image.html"><span lang="zh-Hant">把 PDF 變成一張豎向長圖</span><small><span lang="zh-Hant">把 PDF 的所有頁面豎著連成一張長圖。</span></small></a><a href="/tw/pdf-duplex-merge.html"><span lang="zh-Hant">把正面和背面的掃描件合成一個 PDF</span><small><span lang="zh-Hant">把正面 PDF 和背面 PDF 交替排成一個 PDF。</span></small></a><a href="/tw/image-resize.html"><span lang="zh-Hant">按畫素調整圖片大小</span><small><span lang="zh-Hant">按寬度、高度或百分比調整圖片大小。</span></small></a><a href="/tw/image-rotate.html"><span lang="zh-Hant">旋轉和翻轉圖片</span><small><span lang="zh-Hant">旋轉圖片，並可左右或上下翻轉。</span></small></a><a href="/tw/image-watermark.html"><span lang="zh-Hant">給圖片新增文字水印</span><small><span lang="zh-Hant">在圖片上疊加「影印件」等水印文字。</span></small></a><a href="/tw/image-mosaic.html"><span lang="zh-Hant">給圖片區域性打馬賽克或模糊</span><small><span lang="zh-Hant">用馬賽克、模糊或黑塊遮住圖片的一部分。</span></small></a><a href="/tw/image-exif-remove.html"><span lang="zh-Hant">刪除照片中的位置和拍攝資訊</span><small><span lang="zh-Hant">刪除照片中的 GPS、日期和相機資訊，另存為乾淨的副本。</span></small></a><a href="/tw/image-filter.html"><span lang="zh-Hant">把圖片變成黑白、棕褐色等效果</span><small><span lang="zh-Hant">把圖片變成黑白或棕褐色，或調整明暗。</span></small></a><a href="/tw/favicon-maker.html"><span lang="zh-Hant">製作網站圖示（Favicon）</span><small><span lang="zh-Hant">用一張圖片製作一整套網站圖示。</span></small></a><a href="/tw/image-stitch.html"><span lang="zh-Hant">把多張圖片拼成一張</span><small><span lang="zh-Hant">把多張圖片縱向或橫向拼成一張圖片。</span></small></a><a href="/tw/id-photo.html"><span lang="zh-Hant">裁成證件照尺寸並排版列印</span><small><span lang="zh-Hant">把照片裁成證件照尺寸，並排版到 L 版相紙上。</span></small></a><a href="/tw/image-color-picker.html"><span lang="zh-Hant">從圖片中獲取顏色程式碼</span><small><span lang="zh-Hant">讀取圖片的顏色程式碼，並找出主要的顏色。</span></small></a><a href="/tw/char-counter.html"><span lang="zh-Hant">文字數統計（用於求職申請表和報告）</span><small><span lang="zh-Hant">統計文字的字數、行數和稿紙張數。</span></small></a><a href="/tw/wareki-converter.html"><span lang="zh-Hant">西曆與日本年號互相轉換</span><small><span lang="zh-Hant">西曆與日本年號互相轉換。</span></small></a><a href="/tw/zenkaku-hankaku.html"><span lang="zh-Hant">全形、半形、平假名、片假名互相轉換</span><small><span lang="zh-Hant">全形與半形、平假名與片假名互相轉換。</span></small></a><a href="/tw/line-break-remover.html"><span lang="zh-Hant">刪除和整理文字中的換行</span><small><span lang="zh-Hant">整理從 PDF 等處複製的文字中的換行。</span></small></a><a href="/tw/tax-calculator.html"><span lang="zh-Hant">計算消費稅（含稅／不含稅）</span><small><span lang="zh-Hant">立即計算含稅和不含稅金額。</span></small></a><a href="/tw/date-calculator.html"><span lang="zh-Hant">計算年齡、日期間隔天數和日期加減</span><small><span lang="zh-Hant">計算年齡和兩個日期之間的天數。</span></small></a><a href="/tw/pdf-unlock.html"><span lang="zh-Hant">解除 PDF 的密碼</span><small><span lang="zh-Hant">從你知道密碼的 PDF 中解除密碼和限制。</span></small></a><a href="/tw/pdf-protect.html"><span lang="zh-Hant">給 PDF 設定密碼</span><small><span lang="zh-Hant">給 PDF 設定開啟時需要的密碼。</span></small></a><a href="/tw/ocr-text.html"><span lang="zh-Hant">讀取圖片和 PDF 中的文字（OCR）</span><small><span lang="zh-Hant">把圖片和掃描 PDF 中的文字變成文字資料。</span></small></a><a href="/tw/pdf-compare.html"><span lang="zh-Hant">比較兩個 PDF（找出差異）</span><small><span lang="zh-Hant">用顏色區分，顯示兩個 PDF 之間的文字差異。</span></small></a><a href="/tw/password-generator.html"><span lang="zh-Hant">生成高強度隨機密碼</span><small><span lang="zh-Hant">立即生成高強度隨機密碼。</span></small></a><a href="/tw/percent-calculator.html"><span lang="zh-Hant">計算百分比、折扣和增減率</span><small><span lang="zh-Hant">立即計算百分比、折扣和增減率。</span></small></a><a href="/tw/line-sort-dedupe.html"><span lang="zh-Hant">刪除重複行並排序</span><small><span lang="zh-Hant">刪除重複的行並排序。</span></small></a><a href="/tw/unit-converter.html"><span lang="zh-Hant">單位換算（長度、重量、面積、溫度等）</span><small><span lang="zh-Hant">立即換算長度、重量、面積、溫度等。</span></small></a><a href="/tw/zip-maker.html"><span lang="zh-Hant">把檔案打包成 ZIP</span><small><span lang="zh-Hant">把多個檔案打包成一個 ZIP。</span></small></a><a href="/tw/zip-extract.html"><span lang="zh-Hant">開啟 ZIP 檔案（解壓）</span><small><span lang="zh-Hant">檢視 ZIP 裡有什麼，只取出需要的檔案。</span></small></a><a href="/tw/file-hash.html"><span lang="zh-Hant">檢視檔案的雜湊值（SHA-256）</span><small><span lang="zh-Hant">計算檔案的雜湊值並進行比對。</span></small></a><a href="/tw/csv-json.html"><span lang="zh-Hant">CSV 與 JSON 互相轉換</span><small><span lang="zh-Hant">立即在 CSV 和 JSON 之間互相轉換。</span></small></a><a href="/tw/svg-to-png.html"><span lang="zh-Hant">把 SVG 轉換成 PNG</span><small><span lang="zh-Hant">把 SVG 檔案轉換成 PNG 圖片。</span></small></a><a href="/tw/file-base64.html"><span lang="zh-Hant">檔案與 Base64 互相轉換</span><small><span lang="zh-Hant">在檔案和 Base64 文字之間互相轉換。</span></small></a><a href="/tw/json-formatter.html"><span lang="zh-Hant">整理並檢查 JSON</span><small><span lang="zh-Hant">整理、壓縮並檢查 JSON。</span></small></a><a href="/tw/text-diff.html"><span lang="zh-Hant">對比兩段文字的差異</span><small><span lang="zh-Hant">逐行顯示兩段文字的差異。</span></small></a><a href="/tw/xlsx-to-csv.html"><span lang="zh-Hant">把 Excel 轉換成 CSV 或 JSON</span><small><span lang="zh-Hant">把 Excel 工作表轉換成 CSV、TSV 或 JSON。</span></small></a><a href="/tw/csv-to-xlsx.html"><span lang="zh-Hant">把 CSV 轉換成 Excel（.xlsx）</span><small><span lang="zh-Hant">把 CSV 轉換成 Excel（.xlsx）檔案。</span></small></a><a href="/tw/docx-to-text.html"><span lang="zh-Hant">提取 Word 檔案中的文字</span><small><span lang="zh-Hant">提取 Word 檔案中的純文字。</span></small></a><a href="/tw/pptx-to-text.html"><span lang="zh-Hant">提取 PowerPoint 中的文字</span><small><span lang="zh-Hant">提取 PowerPoint 每張幻燈片的文字。</span></small></a><a href="/tw/pdf-to-word.html"><span lang="zh-Hant">把 PDF 的文字放進 Word</span><small><span lang="zh-Hant">把 PDF 的文字提取到 Word 檔案中。</span></small></a><a href="/tw/image-to-word.html"><span lang="zh-Hant">把圖片放進 Word 檔案</span><small><span lang="zh-Hant">把圖片放進 Word 檔案，每頁一張。</span></small></a><a href="/tw/xlsx-formula-to-value.html"><span lang="zh-Hant">把 Excel 公式轉換成數值</span><small><span lang="zh-Hant">把 Excel 公式替換成計算結果。</span></small></a><a href="/tw/office-metadata-remove.html"><span lang="zh-Hant">清除 Office 檔案中的作者資訊</span><small><span lang="zh-Hant">清除 Office 檔案中儲存的作者等資訊。</span></small></a><a href="/tw/office-image-extract.html"><span lang="zh-Hant">從 Word、Excel、PowerPoint 提取圖片</span><small><span lang="zh-Hant">把 Office 檔案中的圖片提取成 ZIP。</span></small></a><a href="/tw/docx-to-html.html"><span lang="zh-Hant">把 Word 轉換成 HTML</span><small><span lang="zh-Hant">把 Word 的文字轉換成 HTML。</span></small></a><a href="/tw/xlsx-split-sheets.html"><span lang="zh-Hant">按工作表拆分 Excel 檔案</span><small><span lang="zh-Hant">把 Excel 的每個工作表拆成單獨的 CSV 或 TSV。</span></small></a><a href="/tw/xlsx-to-html.html"><span lang="zh-Hant">把 Excel 表格轉換成 HTML 或 Markdown</span><small><span lang="zh-Hant">把 Excel 表格轉換成 HTML 或 Markdown 表格。</span></small></a><a href="/tw/image-split.html"><span lang="zh-Hant">將圖片拆分為網格（用於社交媒體釋出）</span><small><span lang="zh-Hant">將圖片橫向和縱向等分後分別儲存。</span></small></a><a href="/tw/image-to-gif.html"><span lang="zh-Hant">用圖片製作 GIF 動圖</span><small><span lang="zh-Hant">將多張圖片按順序合成 GIF 動圖。</span></small></a><a href="/tw/file-rename.html"><span lang="zh-Hant">一次性重新命名多個檔案（編號、日期）</span><small><span lang="zh-Hant">用編號或日期一次性重新命名多個檔案。</span></small></a><a href="/tw/csv-tools.html"><span lang="zh-Hant">合併、拆分 CSV 並選取列</span><small><span lang="zh-Hant">合併 CSV 檔案、按行拆分，或只保留所選列。</span></small></a><a href="/tw/pdf-extract-images.html"><span lang="zh-Hant">提取 PDF 中的圖片</span><small><span lang="zh-Hant">以原始畫質提取 PDF 中嵌入的圖片。</span></small></a><a href="/tw/file-dupes.html"><span lang="zh-Hant">查詢重複檔案</span><small><span lang="zh-Hant">查詢內容完全相同的檔案，並儲存去重後的 ZIP。</span></small></a><a href="/tw/file-type-check.html"><span lang="zh-Hant">檢查檔案的真實型別（副檔名與內容）</span><small><span lang="zh-Hant">根據內容判斷檔案型別，並檢查副檔名是否一致。</span></small></a><a href="/tw/file-encrypt.html"><span lang="zh-Hant">用密碼加密和解密檔案</span><small><span lang="zh-Hant">用密碼加密和解密任意檔案（AES-256）。</span></small></a><a href="/tw/txt-merge-split.html"><span lang="zh-Hant">合併和拆分文字檔案</span><small><span lang="zh-Hant">將文字檔案合併為一個，或按行數、大小拆分。</span></small></a><a href="/tw/xlsx-merge-csv.html"><span lang="zh-Hant">將多個 Excel 檔案合併為一個 CSV</span><small><span lang="zh-Hant">將多個 Excel 檔案的資料合併為一個 CSV。</span></small></a><a href="/tw/pdf-bookmarks.html"><span lang="zh-Hant">檢視和新增 PDF 書籤</span><small><span lang="zh-Hant">檢視並新增 PDF 的書籤（目錄）。</span></small></a><a href="/tw/audio-trim.html"><span lang="zh-Hant">擷取音訊檔案</span><small><span lang="zh-Hant">擷取音訊的一部分並儲存為 WAV。</span></small></a><a href="/tw/video-frame.html"><span lang="zh-Hant">將影片畫面儲存為圖片</span><small><span lang="zh-Hant">將影片中的任意時刻儲存為圖片。</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="zh-Hant">關於 / 聯絡（日文）</span></a><a href="/tw/privacy.html"><span lang="zh-Hant">隱私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hant">在 X 上檢視更新</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const TR={"Reading as: ": "讀取為：", "Choose another file": "選擇其他檔案", "Save the converted file": "儲存轉換後的檔案", "Convert and save": "轉換並儲存", "Could not read the PDF. It may be damaged or in an unsupported format.": "無法讀取該 PDF。它可能已損壞，或格式不受支援。", "Replaced {0} character(s) with \"?\" because the target encoding cannot represent them.": "目標編碼無法表示 {0} 個字元，已替換為「?」。", "Converted ({0})": "已轉換（{0}）", "Detected: ": "檢測結果：", "Could not convert. Try a different \"Current encoding\".": "無法轉換。請試試其他「當前編碼」。", "Could not save. Please try again.": "無法儲存，請重試。", "The file is too large (up to 50 MB).": "檔案太大（最大 50 MB）。", "Password-protected PDFs are not supported. Remove the password and try again.": "不支援帶密碼的 PDF。請先去掉密碼再重試。"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=T("Could not save. Please try again.",[])}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return T("Password-protected PDFs are not supported. Remove the password and try again.",[]);
+  return T("Could not read the PDF. It may be damaged or in an unsupported format.",[]);
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+function showErr2(m){const o=$("out");o.style.display="block";o.querySelector(".stamp").style.display="none";$("bar").style.display="none";$("dl").style.display="none";$("info").textContent="";$("msg").className="bad";$("msg").textContent=m}
+
+let file=null,buf=null,ready_=false;
+function setBtn(){$("go").disabled=!file;$("go").textContent=T("Convert and save",[])}
+function detect(u8){
+  if(u8.length>=3&&u8[0]===0xEF&&u8[1]===0xBB&&u8[2]===0xBF)return "utf-8";
+  if(u8.length>=2&&u8[0]===0xFF&&u8[1]===0xFE)return "utf-16le";
+  try{new TextDecoder("utf-8",{fatal:true}).decode(u8);return "utf-8"}catch(e){}
+  let sj=0,eu=0;
+  for(let i=0;i<u8.length-1&&i<200000;i++){const a=u8[i],b=u8[i+1];
+    if(((a>=0x81&&a<=0x9F)||(a>=0xE0&&a<=0xFC))&&((b>=0x40&&b<=0x7E)||(b>=0x80&&b<=0xFC))){sj++;i++}
+  }
+  for(let i=0;i<u8.length-1&&i<200000;i++){const a=u8[i],b=u8[i+1];
+    if(a>=0xA1&&a<=0xFE&&b>=0xA1&&b<=0xFE){eu++;i++}
+  }
+  return eu>sj*1.3?"euc-jp":"shift_jis";
+}
+function decode(u8,enc){
+  if(enc==="utf-8"){let s=new TextDecoder("utf-8").decode(u8);return s.charCodeAt(0)===0xFEFF?s.slice(1):s}
+  if(enc==="utf-16le"){let s=new TextDecoder("utf-16le").decode(u8);return s.charCodeAt(0)===0xFEFF?s.slice(1):s}
+  return new TextDecoder(enc).decode(u8);
+}
+const maps={};
+function revMap(enc){
+  if(maps[enc])return maps[enc];const m=new Map(),dec=new TextDecoder(enc);
+  for(let b=0;b<0x80;b++)m.set(String.fromCharCode(b),[b]);
+  const one=x=>{const s=dec.decode(new Uint8Array(x));if([...s].length===1&&s!=="�"&&!m.has(s))m.set(s,x)};
+  if(enc==="shift_jis"){
+    for(let b=0xA1;b<=0xDF;b++)one([b]);
+    for(let l=0x81;l<=0xFC;l++){if(l>0x9F&&l<0xE0)continue;for(let r=0x40;r<=0xFC;r++){if(r===0x7F)continue;one([l,r])}}
+  }else{
+    for(let r=0xA1;r<=0xDF;r++)one([0x8E,r]);
+    for(let l=0xA1;l<=0xFE;l++)for(let r=0xA1;r<=0xFE;r++)one([l,r]);
+  }
+  return maps[enc]=m;
+}
+function encode(s,dst){
+  let bad=0;
+  if(dst==="utf8"||dst==="utf8bom"){const b=new TextEncoder().encode(s);if(dst==="utf8"){return {bytes:b,bad:0}}const o=new Uint8Array(b.length+3);o.set([0xEF,0xBB,0xBF]);o.set(b,3);return {bytes:o,bad:0}}
+  if(dst==="utf16le"){const o=new Uint8Array(2+s.length*2);o[0]=0xFF;o[1]=0xFE;for(let i=0;i<s.length;i++){const c=s.charCodeAt(i);o[2+i*2]=c&255;o[3+i*2]=c>>8}return {bytes:o,bad:0}}
+  const m=revMap(dst),out=[];
+  for(const ch of s){const x=m.get(ch);if(x)out.push(...x);else{bad++;out.push(0x3F)}}
+  return {bytes:new Uint8Array(out),bad};
+}
+function nlfix(s,mode){if(mode==="keep")return s;const x=s.replace(/\r\n?/g,"\n");return mode==="crlf"?x.replace(/\n/g,"\r\n"):x}
+function refresh(){
+  if(!buf)return;
+  let enc=val("src");if(enc==="auto")enc=detect(buf);
+  const names={"utf-8":"UTF-8","shift_jis":"Shift_JIS","euc-jp":"EUC-JP","utf-16le":"UTF-16 LE"};
+  $("det").textContent=val("src")==="auto"?T("Detected: ",[])+names[enc]:T("Reading as: ",[])+names[enc];
+  try{$("pvt").value=decode(buf,enc).slice(0,600)}catch(e){$("pvt").value=""}
+}
+async function load(list){
+  const f=list[0];if(!f)return;
+  try{
+    if(f.size>50*1024*1024)throw new Error(T("The file is too large (up to 50 MB).",[]));
+    buf=new Uint8Array(await f.arrayBuffer());file=f;
+    $("finfo").style.display="block";$("finfo").textContent=f.name+"（"+fmt(f.size)+"）";
+    $("set").style.display="block";$("pt").textContent=T("Choose another file",[]);$("out").style.display="none";
+    refresh();setBtn();
+  }catch(e){console.error(e);file=null;buf=null;$("set").style.display="none";showErr2(e.message)}
+}
+$("file").onchange=e=>{load([...e.target.files]);e.target.value=""};
+bindDrop("drop",load);
+document.querySelectorAll('input[name="src"]').forEach(x=>x.addEventListener("change",refresh));
+$("go").onclick=async()=>{
+  const go=$("go");go.disabled=true;beginRun();
+  try{
+    let enc=val("src");if(enc==="auto")enc=detect(buf);
+    const text=nlfix(decode(buf,enc),val("nl")),dst=val("dst");$("barf").style.width="50%";
+    const r=encode(text,dst);
+    const suf={utf8:"_utf8",utf8bom:"_utf8bom","shift_jis":"_sjis","euc-jp":"_eucjp",utf16le:"_utf16"}[dst];
+    const nm=file.name.replace(/(\.[^.]*)?$/,suf+"$1");
+    const blob=new Blob([r.bytes],{type:"text/plain"});
+    const dl=$("dl");dl.href="#";dl.textContent=T("Save the converted file",[]);dl.style.display="inline-block";wire(dl,blob,nm,"text/plain");
+    $("barf").style.width="100%";
+    $("info").textContent=T("Converted ({0})",[fmt(blob.size)]);
+    $("msg").className="";$("msg").textContent=r.bad?T("Replaced {0} character(s) with \"?\" because the target encoding cannot represent them.",[r.bad]):"";
+    finishOk();
+  }catch(e){console.error(e);showErr2(T("Could not convert. Try a different \"Current encoding\".",[]))}
+  finally{endRun();setBtn()}
+};
+
+</script>
+</body>
+</html>
