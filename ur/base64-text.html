@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html data-lang="ur" dir="rtl" lang="ur">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>آن لائن Base64 ٹیکسٹ انکوڈ اور ڈیکوڈ (مفت، رجسٹریشن کے بغیر)｜PDF Mikata</title>
+<meta content="متن کو Base64 میں انکوڈ اور Base64 کو واپس متن میں ڈیکوڈ کرنے کا مفت ٹول، UTF-8 سپورٹ کے ساتھ۔ آپ جو درج کرتے ہیں وہ آپ کے آلے سے باہر نہیں جاتا۔" name="description"/>
+
+
+<link href="https://pdfmikata.com/ur/base64-text.html" rel="canonical"/>
+<script src="/site.js"></script>
+
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+.next{margin:20px 0 6px}
+.next h3{margin:0 0 10px;font-size:1.05rem}
+.ncards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ncards a.tool,.ncards .tool *{min-width:0;overflow-wrap:anywhere;hyphens:auto}
+@media(min-width:720px){.ncards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.ncards a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper,#fff);box-shadow:0 3px 0 var(--line);text-decoration:none;color:var(--ink)}
+.ncards a.tool:hover{border-color:var(--stamp)}
+.ncards .ic{flex:none;width:40px;height:40px;border-radius:11px;background:var(--ink);color:var(--btn-ink);display:grid;place-items:center}
+.ncards .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ncards .tx b{display:block;font-size:.95rem;line-height:1.4}
+.ncards .tx .d{display:block;color:var(--sub);font-size:.8rem;line-height:1.5;margin-top:2px}
+.next .allt{display:block;margin:14px 0 0;padding:13px 16px;border:2px solid var(--ink);border-radius:12px;text-align:center;font-weight:700;text-decoration:none;color:var(--ink);background:var(--paper,#fff)}
+.next .allt:hover{background:var(--ink);color:var(--btn-ink)}
+.safe{margin:14px 0 0;font-size:.85rem;color:var(--sub);line-height:1.6}
+#bar::after{content:"処理中…この端末の中だけで処理しています";display:block;margin-top:6px;font-size:.8rem;color:var(--sub)}
+html[data-lang="en"] #bar::after{content:"Working… processed only on this device"}
+html[data-lang="zh"] #bar::after{content:"处理中…仅在此设备上处理"}
+html[data-lang="es"] #bar::after{content:"Procesando… solo en este dispositivo"}
+html[data-lang="ko"] #bar::after{content:"처리 중… 이 기기 안에서만 처리합니다"}
+html[data-lang="pt"] #bar::after{content:"Processando… somente neste dispositivo"}
+html[data-lang="fr"] #bar::after{content:"Traitement… uniquement sur cet appareil"}
+html[data-lang="id"] #bar::after{content:"Memproses… hanya di perangkat ini"}
+html[data-lang="it"] #bar::after{content:"Elaborazione… solo su questo dispositivo"}
+html[data-lang="ru"] #bar::after{content:"Обработка… только на этом устройстве"}
+html[data-lang="pl"] #bar::after{content:"Przetwarzanie… tylko na tym urządzeniu"}
+html[data-lang="nl"] #bar::after{content:"Bezig met verwerken… alleen op dit apparaat"}
+html[data-lang="th"] #bar::after{content:"กำลังประมวลผล… ทำงานบนอุปกรณ์นี้เท่านั้น"}
+html[data-lang="ar"] #bar::after{content:"جارٍ المعالجة… على هذا الجهاز فقط"}
+html[data-lang="bn"] #bar::after{content:"প্রক্রিয়া চলছে… শুধু এই ডিভাইসে"}
+html[data-lang="tl"] #bar::after{content:"Pinoproseso… sa device na ito lang"}
+html[data-lang="uk"] #bar::after{content:"Обробка… лише на цьому пристрої"}
+html[data-lang="ms"] #bar::after{content:"Memproses… pada peranti ini sahaja"}
+html[data-lang="fa"] #bar::after{content:"در حال پردازش… فقط روی همین دستگاه"}
+html[data-lang="ur"] #bar::after{content:"پروسیسنگ جاری ہے… صرف اسی ڈیوائس پر"}
+html[data-lang="tw"] #bar::after{content:"處理中…僅在此裝置上處理"}
+html[data-lang="vi"] #bar::after{content:"Đang xử lý… chỉ trên thiết bị này"}
+html[data-lang="tr"] #bar::after{content:"İşleniyor… yalnızca bu cihazda"}
+html[data-lang="de"] #bar::after{content:"Wird verarbeitet… nur auf diesem Gerät"}
+html[data-lang="hi"] #bar::after{content:"प्रोसेस हो रहा है… केवल इसी डिवाइस पर"}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}a.tool .bd{color:var(--btn-ink)}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}
+html{background:var(--desk)}body{background-image:radial-gradient(900px 420px at 12% -6%,rgba(63,181,174,.11),transparent 62%),radial-gradient(700px 420px at 100% 0,rgba(90,120,210,.08),transparent 58%);background-repeat:no-repeat}
+a.tool{box-shadow:0 3px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.07)}}
+.pop a,.btn2,button,a.tool{transition:transform .12s ease,box-shadow .15s ease,border-color .15s ease,background-color .15s ease,color .15s ease}
+.pop a:active,.btn2:active,button:not(:disabled):active{transform:scale(.97)}a.tool:active{transform:translateY(0) scale(.985)}
+h1,h2{letter-spacing:.01em}
+@media (prefers-reduced-motion:reduce){.pop a:active,.btn2:active,button:active,a.tool:active{transform:none}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b{display:inline-flex;align-items:center;gap:6px}.pop.recent b svg,.pop.recent a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}.pop.recent a{display:inline-flex;align-items:center;gap:6px}.pop.recent a .pi{margin-right:0}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ہوم", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "ٹولز", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "Base64 ٹیکسٹ انکوڈر اور ڈیکوڈر", "item": "https://pdfmikata.com/base64-text.html"}]}</script>
+<meta content="website" property="og:type"/>
+<meta content="PDF Mikata" property="og:site_name"/>
+<meta content="ur_PK" property="og:locale"/>
+
+<meta content="آن لائن Base64 ٹیکسٹ انکوڈ اور ڈیکوڈ (مفت، رجسٹریشن کے بغیر)｜PDF Mikata" property="og:title"/>
+<meta content="متن کو Base64 میں انکوڈ اور Base64 کو واپس متن میں ڈیکوڈ کرنے کا مفت ٹول، UTF-8 سپورٹ کے ساتھ۔ آپ جو درج کرتے ہیں وہ آپ کے آلے سے باہر نہیں جاتا۔" property="og:description"/>
+<meta content="https://pdfmikata.com/ur/base64-text.html" property="og:url"/>
+<meta content="https://pdfmikata.com/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="آن لائن Base64 ٹیکسٹ انکوڈ اور ڈیکوڈ (مفت، رجسٹریشن کے بغیر)｜PDF Mikata" name="twitter:title"/>
+<meta content="متن کو Base64 میں انکوڈ اور Base64 کو واپس متن میں ڈیکوڈ کرنے کا مفت ٹول، UTF-8 سپورٹ کے ساتھ۔ آپ جو درج کرتے ہیں وہ آپ کے آلے سے باہر نہیں جاتا۔" name="twitter:description"/>
+<meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="#16393c" name="theme-color"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Base64 ٹیکسٹ انکوڈر اور ڈیکوڈر", "alternateName": "Base64 Text Encoder and Decoder", "url": "https://pdfmikata.com/ur/base64-text.html", "description": "متن کو Base64 میں انکوڈ اور Base64 کو واپس متن میں ڈیکوڈ کرنے کا مفت ٹول، UTF-8 سپورٹ کے ساتھ۔ آپ جو درج کرتے ہیں وہ آپ کے آلے سے باہر نہیں جاتا۔", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "ur", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ur/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
+<style>
+main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
+
+.lang{display:flex;align-items:center;border:0;overflow:visible}
+.lang .gl{width:18px;height:18px;margin:0 6px 0 10px;color:#fcfefd;flex:none}
+.lang select{appearance:none;-webkit-appearance:none;min-height:44px;border:1px solid rgba(255,255,255,.5);border-radius:6px;background:transparent;color:#fcfefd;font:inherit;font-weight:700;font-size:.85rem;padding:0 28px 0 12px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23fcfefd' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.lang select option{color:#16393c;background:#fcfefd}
+.lang select:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+@media (max-width:420px){.lang .gl{display:none}}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;line-height:1.9}
+html[dir=rtl] h2,html[dir=rtl] .how h2,html[dir=rtl] .faq h2{border-left:0;border-right:6px solid var(--stamp);padding-left:0;padding-right:10px}
+html[dir=rtl] .safe{border-left:1px solid var(--line);border-right:6px solid var(--stamp)}
+html[dir=rtl] #pm-toast.warn{border-left-color:var(--line);border-right:4px solid #d98a1c}
+html[dir=rtl] .lang{margin-left:0;margin-right:auto}
+html[dir=rtl] .lang .gl{margin:0 10px 0 6px}
+html[dir=rtl] .lang select{padding:0 12px 0 28px;background-position:left 10px center}
+html[dir=rtl] a.tool .bd{right:auto;left:8px}
+html[dir=rtl] .tsearch .tqx,html[dir=rtl] #pm-toast .x{right:auto;left:6px}
+html[dir=rtl] .tqf{right:auto;left:14px}
+html[dir=rtl] .pop a .pi{margin-right:0;margin-left:6px}
+html[dir=rtl] .lang button[aria-pressed="true"]::before{margin-right:0;margin-left:5px}
+html[dir=rtl] pre,html[dir=rtl] code,html[dir=rtl] input[type=number],html[dir=rtl] input[type=url],html[dir=rtl] input[type=email],html[dir=rtl] input[type=tel]{direction:ltr;text-align:left}
+html[dir=rtl] .skip{left:auto;right:8px}
+
+.skip{position:absolute;left:8px;top:-60px;z-index:100;background:var(--btn-ink,#fff);color:var(--ink);padding:10px 14px;border-radius:10px;border:2px solid var(--stamp);font-weight:700;text-decoration:none;transition:top .15s}
+.skip:focus{top:8px}
+.top{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.sub{background:color-mix(in srgb,var(--paper) 80%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px)}
+ul.g a,.more a,.ncards a.tool,.cats a.tool{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background-color .15s ease}
+ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:translateY(-2px)}
+ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform:scale(.98)}
+.pop svg,.pi,.ic svg,.ncards .ic svg{stroke-width:1.8}
+#pm-toast{position:fixed;left:50%;bottom:18px;transform:translate(-50%,24px);opacity:0;z-index:60;width:min(560px,calc(100vw - 24px));background:var(--paper);color:var(--ink);border:1px solid var(--line);border-left:5px solid var(--stamp);border-radius:14px;padding:12px 40px 12px 14px;box-shadow:0 14px 34px -12px rgba(0,0,0,.35);transition:opacity .22s,transform .22s;pointer-events:none;font-size:14px;line-height:1.6}
+#pm-toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#pm-toast.warn{border-left-color:#d98a1c}
+#pm-toast b{display:block;margin-bottom:4px}
+#pm-toast .nx{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+#pm-toast .nx a{border:1px solid var(--line);border-radius:999px;padding:4px 12px;color:var(--ink);text-decoration:none;font-weight:600;background:var(--desk)}
+#pm-toast .nx a:hover{border-color:var(--stamp)}
+#pm-toast .x{position:absolute;right:6px;top:6px;width:30px;height:30px;border:0;background:transparent;color:var(--sub);font-size:20px;line-height:1;cursor:pointer;border-radius:8px}
+@media (prefers-reduced-motion:reduce){#pm-toast,.skip{transition:none}ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:none}}
+.lite .aurora{display:none}.lite .hero::before,.lite .hero::after{animation:none}
+</style><link href="https://pdfmikata.com/base64-text.html" hreflang="ja" rel="alternate"/>
+<link href="https://pdfmikata.com/en/base64-text.html" hreflang="en" rel="alternate"/>
+<link href="https://pdfmikata.com/zh/base64-text.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://pdfmikata.com/es/base64-text.html" hreflang="es" rel="alternate"/>
+<link href="https://pdfmikata.com/ko/base64-text.html" hreflang="ko" rel="alternate"/>
+<link href="https://pdfmikata.com/pt/base64-text.html" hreflang="pt" rel="alternate"/>
+<link href="https://pdfmikata.com/fr/base64-text.html" hreflang="fr" rel="alternate"/>
+<link href="https://pdfmikata.com/id/base64-text.html" hreflang="id" rel="alternate"/>
+<link href="https://pdfmikata.com/vi/base64-text.html" hreflang="vi" rel="alternate"/>
+<link href="https://pdfmikata.com/tr/base64-text.html" hreflang="tr" rel="alternate"/>
+<link href="https://pdfmikata.com/de/base64-text.html" hreflang="de" rel="alternate"/>
+<link href="https://pdfmikata.com/hi/base64-text.html" hreflang="hi" rel="alternate"/>
+<link href="https://pdfmikata.com/it/base64-text.html" hreflang="it" rel="alternate"/>
+<link href="https://pdfmikata.com/ru/base64-text.html" hreflang="ru" rel="alternate"/>
+<link href="https://pdfmikata.com/tw/base64-text.html" hreflang="zh-Hant" rel="alternate"/>
+<link href="https://pdfmikata.com/pl/base64-text.html" hreflang="pl" rel="alternate"/>
+<link href="https://pdfmikata.com/nl/base64-text.html" hreflang="nl" rel="alternate"/>
+<link href="https://pdfmikata.com/th/base64-text.html" hreflang="th" rel="alternate"/>
+<link href="https://pdfmikata.com/ar/base64-text.html" hreflang="ar" rel="alternate"/>
+<link href="https://pdfmikata.com/bn/base64-text.html" hreflang="bn" rel="alternate"/>
+<link href="https://pdfmikata.com/tl/base64-text.html" hreflang="fil" rel="alternate"/>
+<link href="https://pdfmikata.com/uk/base64-text.html" hreflang="uk" rel="alternate"/>
+<link href="https://pdfmikata.com/ms/base64-text.html" hreflang="ms" rel="alternate"/>
+<link href="https://pdfmikata.com/fa/base64-text.html" hreflang="fa" rel="alternate"/>
+<link href="https://pdfmikata.com/ur/base64-text.html" hreflang="ur" rel="alternate"/>
+<link href="https://pdfmikata.com/base64-text.html" hreflang="x-default" rel="alternate"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2376251801221434" crossorigin="anonymous"></script>
+</head>
+<body><a class="skip" href="#main">مواد پر جائیں</a>
+<header class="top"><div class="top-in"><a class="brand" href="/ur/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma / 언어" id="langsel"><option value="/base64-text.html">日本語</option><option value="/en/base64-text.html">English</option><option value="/zh/base64-text.html">简体中文</option><option value="/es/base64-text.html">Español</option><option value="/ko/base64-text.html">한국어</option><option value="/pt/base64-text.html">Português</option><option value="/fr/base64-text.html">Français</option><option value="/id/base64-text.html">Bahasa Indonesia</option><option value="/vi/base64-text.html">Tiếng Việt</option><option value="/tr/base64-text.html">Türkçe</option><option value="/de/base64-text.html">Deutsch</option><option value="/hi/base64-text.html">हिन्दी</option><option value="/it/base64-text.html">Italiano</option><option value="/ru/base64-text.html">Русский</option><option value="/tw/base64-text.html">繁體中文</option><option value="/pl/base64-text.html">Polski</option><option value="/nl/base64-text.html">Nederlands</option><option value="/th/base64-text.html">ไทย</option><option value="/ar/base64-text.html">العربية</option><option value="/bn/base64-text.html">বাংলা</option><option value="/tl/base64-text.html">Filipino</option><option value="/uk/base64-text.html">Українська</option><option value="/ms/base64-text.html">Bahasa Melayu</option><option value="/fa/base64-text.html">فارسی</option><option selected="" value="/ur/base64-text.html">اردو</option></select></div></div></header>
+<nav aria-label="سائٹ نیویگیشن" class="sub"><div class="sub-in"><a href="/ur/"><span lang="ur">ہوم</span></a><a aria-current="page" href="/ur/#cat-convert"><span lang="ur">تبدیل کریں</span></a><a href="/ur/#cat-edit"><span lang="ur">ایڈٹ کریں</span></a><a href="/ur/#cat-optimize"><span lang="ur">آپٹمائز کریں</span></a><a href="/ur/#cat-create"><span lang="ur">بنائیں</span></a><a href="/ur/#guide"><span lang="ur">گائیڈز</span></a></div></nav>
+<nav aria-label="بریڈکرم" class="crumb"><ol><li><a href="/ur/"><span lang="ur">ہوم</span></a></li><li><a href="/ur/#tools"><span lang="ur">ٹولز</span></a></li><li><span aria-current="page"><span lang="ur">Base64 ٹیکسٹ انکوڈر اور ڈیکوڈر</span></span></li></ol></nav>
+<main id="main" tabindex="-1">
+<h1><span lang="ur">Base64 ٹیکسٹ انکوڈر اور ڈیکوڈر</span></h1>
+<p class="lead"><span lang="ur">جب آپ متن کو Base64 میں بدلنا یا Base64 اسٹرنگ کا مواد پڑھنا چاہیں۔</span></p>
+<p class="safe"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="9" rx="2" width="14" x="5" y="11"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><span><span lang="ur"><b>آپ جو درج کرتے ہیں وہ کبھی اپ لوڈ نہیں ہوتا۔</b> سب کچھ اسی آلے پر پراسیس ہوتا ہے۔</span></span></p><ol class="steps"><li><b>1</b><span lang="ur">متن درج کریں</span></li><li><b>2</b><span lang="ur">انکوڈ یا ڈی کوڈ منتخب کریں</span></li><li><b>3</b><span lang="ur">کاپی</span></li></ol>
+<label for="tx" style="font-weight:700;display:block;margin-top:10px"><span lang="ur">متن یا Base64</span></label>
+<textarea id="tx" placeholder="Hello, こんにちは" style="width:100%;min-height:150px;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:10px 12px;font:inherit;font-size:1rem;line-height:1.6;resize:vertical;display:block;background:var(--paper);color:var(--ink)"></textarea>
+<div class="btnrow" style="margin-top:8px"><button class="btn2" id="en" type="button"></button><button class="btn2" id="de" type="button"></button></div>
+<p class="note2" id="ct"></p>
+<label for="ot" style="font-weight:700;display:block;margin-top:10px"><span lang="ur">نتیجہ</span></label>
+<textarea id="ot" placeholder="" readonly="" style="width:100%;min-height:150px;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:10px 12px;font:inherit;font-size:1rem;line-height:1.6;resize:vertical;display:block;background:var(--paper);color:var(--ink);background:#f7f7f7"></textarea>
+<div class="btnrow" style="margin-top:6px"><button class="btn2" id="cp" type="button"></button></div>
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="ur">ہو گیا</span></div>
+<p id="info"></p>
+<a href="#" id="dl"></a>
+<div id="extra"></div>
+<p aria-live="polite" id="msg"></p>
+<p class="safe"><span lang="ur">🔒 آپ کی فائلیں کبھی کسی بیرونی سرور پر نہیں بھیجی جاتیں۔ سب کچھ اسی براؤزر کے اندر محفوظ طریقے سے پراسیس ہوتا ہے۔</span></p>
+<div class="support" hidden="" id="support"><p><span lang="ur">اگر PDF Mikata مفید رہا تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="ur">ٹپ بھیجیں (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="ur">تحفہ بھیجیں (ایمیزون وش لسٹ)</span></a></div>
+</section>
+<div class="next" id="next"><h3 aria-level="2"><span lang="ur">وہ ٹولز جو اکثر ساتھ استعمال ہوتے ہیں</span></h3><div class="ncards"><a class="tool" href="/ur/file-base64.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M8 9h3a2 2 0 0 1 0 3H8zM8 12h3.5a2 2 0 0 1 0 3H8z"></path></svg></span><div class="tx"><b><span lang="ur">فائلیں اور Base64 تبدیل کریں</span></b><span class="d"><span lang="ur">فائل کو Base64 اور واپس بدلیں۔</span></span></div></a><a class="tool" href="/ur/url-encoder.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M8 9l-3 3 3 3M16 9l3 3-3 3M13 8l-2 8"></path></svg></span><div class="tx"><b><span lang="ur">URL انکوڈ اور ڈی کوڈ</span></b><span class="d"><span lang="ur">URL کے متن کو انکوڈ اور ڈی کوڈ کریں۔</span></span></div></a><a class="tool" href="/ur/json-formatter.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M8 9c-1 0-1 1-1 2s0 2-1 2c1 0 1 1 1 2s0 2 1 2"></path><path d="M12 10v6"></path></svg></span><div class="tx"><b><span lang="ur">JSON کو فارمیٹ اور ویلیڈیٹ کریں</span></b><span class="d"><span lang="ur">پڑھنے میں مشکل JSON کو آسان بنائیں۔</span></span></div></a><a class="tool" href="/ur/merge-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="13" rx="1.5" width="10" x="3" y="3"></rect><rect height="13" rx="1.5" width="10" x="11" y="8"></rect></svg></span><div class="tx"><b><span lang="ur">PDF ملائیں</span></b><span class="d"><span lang="ur">کئی PDF کو ایک میں ملائیں۔</span></span></div></a></div><a class="allt" href="/ur/"><span lang="ur">تمام ٹولز دیکھیں (ہوم پیج پر واپس)</span></a></div>
+<section class="guide" id="how">
+
+<div lang="ur"><h2>استعمال کا طریقہ</h2>
+<ol>
+<li>اوپر والے باکس میں متن یا Base64 درج کریں۔</li>
+<li>"Base64 میں انکوڈ کریں" یا "متن میں ڈیکوڈ کریں" دبائیں۔</li>
+<li>نتیجہ کاپی کر کے استعمال کریں۔</li>
+</ol>
+<h2>یہ کیسے کام کرتا ہے</h2>
+<ul>
+<li>جاپانی جیسے حروف UTF-8 کے طور پر سنبھالے جاتے ہیں۔</li>
+<li>Base64 ڈیٹا کو صرف حروف، ہندسوں اور چند علامتوں سے ظاہر کرتا ہے۔</li>
+</ul>
+<h2>نوٹس</h2>
+<ul>
+<li>Base64 خفیہ کاری نہیں ہے۔ کوئی بھی اسے پلٹ سکتا ہے، اس لیے یہ رازوں کی حفاظت نہیں کرتا۔</li>
+<li>ڈیکوڈ کرنے پر متن تبھی ملتا ہے جب اصل متن ہو۔</li>
+</ul>
+<h2>اکثر پوچھے گئے سوالات</h2>
+<details><summary>کیا میں جو درج کرتا ہوں وہ کہیں بھیجا جاتا ہے؟</summary><p>نہیں۔ سب کچھ آپ کی ڈیوائس پر براؤزر کے اندر پراسیس ہوتا ہے۔</p></details>
+<details><summary>کیا میں فائلوں کو بھی Base64 میں انکوڈ کر سکتا ہوں؟</summary><p>یہ ٹول متن کے لیے ہے۔ فائلوں کے لیے فائل Base64 ٹول استعمال کریں۔</p></details>
+</div>
+</section>
+<div class="support endtip"><p><span lang="ur">اگر PDF Mikata مفید رہا تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank"><span lang="ur">ٹپ بھیجیں (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="ur">تحفہ بھیجیں (ایمیزون وش لسٹ)</span></a></div>
+<section class="more rel"><h2><span lang="ur">اس ٹول کی گائیڈز</span></h2><a href="/ur/base64-text-howto.html"><span lang="ur">متن کو Base64 میں کیسے انکوڈ کریں (مفت)</span></a><a href="/ur/base64-text-decode.html"><span lang="ur">Base64 کو واپس متن میں کیسے ڈیکوڈ کریں</span></a><a href="/ur/base64-text-japanese.html"><span lang="ur">Base64، جاپانی اور بگڑے ہوئے حروف</span></a><a href="/ur/base64-text-not-encryption.html"><span lang="ur">Base64 خفیہ کاری کیوں نہیں ہے</span></a><a href="/ur/base64-text-urlsafe.html"><span lang="ur">- اور _ والا URL-محفوظ Base64</span></a><a href="/ur/base64-text-trouble.html"><span lang="ur">اگر کام نہ کرے تو کیا کریں</span></a><a href="/ur/base64-text-safe-offline.html"><span lang="ur">بغیر اپ لوڈ کے Base64 تبدیلی</span></a></section>
+<section class="more"><h2><span lang="ur">مزید ٹولز</span></h2><a href="/ur/photo-to-pdf.html"><span lang="ur">تصاویر سے PDF</span><small><span lang="ur">کئی تصاویر کو اپنی چنی ہوئی ترتیب میں ایک PDF میں ملائیں۔ آپ گھما سکتے ہیں، ترتیب بدل سکتے ہیں اور سائز کی حد مقرر کر سکتے ہیں۔</span></small></a><a href="/ur/merge-pdf.html"><span lang="ur">PDF ملائیں</span><small><span lang="ur">کئی PDF فائلوں کو اپنی چنی ہوئی ترتیب میں ایک میں ملائیں۔</span></small></a><a href="/ur/split-pdf.html"><span lang="ur">PDF صفحات نکالیں یا حذف کریں</span><small><span lang="ur">صرف ضروری صفحات رکھیں یا غیر ضروری صفحات ہٹا دیں۔</span></small></a><a href="/ur/compress-pdf.html"><span lang="ur">PDF کمپریس کریں</span><small><span lang="ur">اپ لوڈ کی حدوں کے لیے PDF کو اپنی چنی ہوئی سائز تک چھوٹا کریں۔</span></small></a><a href="/ur/pdf-to-image.html"><span lang="ur">PDF سے تصاویر</span><small><span lang="ur">PDF کا ہر صفحہ JPEG یا PNG تصویر کے طور پر محفوظ کریں۔</span></small></a><a href="/ur/image-convert.html"><span lang="ur">تصویر کا فارمیٹ بدلیں (JPG، PNG، WebP)</span><small><span lang="ur">تصاویر کو JPG، PNG یا WebP میں بدلیں، کئی ایک ساتھ۔</span></small></a><a href="/ur/pdf-rotate.html"><span lang="ur">PDF صفحات گھمائیں اور ترتیب بدلیں</span><small><span lang="ur">پہلو کے بل صفحات سیدھے کریں، صفحات کی ترتیب بدلیں یا صفحات ہٹائیں۔</span></small></a><a href="/ur/pdf-page-numbers.html"><span lang="ur">PDF میں صفحہ نمبر شامل کریں</span><small><span lang="ur">PDF میں صفحہ نمبر شامل کریں، مقام اور انداز چنیں۔</span></small></a><a href="/ur/image-compress.html"><span lang="ur">تصاویر کمپریس اور ری سائز کریں</span><small><span lang="ur">تصویری فائلوں کو چھوٹا کریں اور چاہیں تو سائز بدلیں۔</span></small></a><a href="/ur/heic-to-jpg.html"><span lang="ur">HEIC کو JPG میں بدلیں</span><small><span lang="ur">آئی فون کی HEIC تصاویر کو JPG یا PNG میں بدلیں۔</span></small></a><a href="/ur/pdf-split.html"><span lang="ur">PDF تقسیم کریں</span><small><span lang="ur">PDF کو کئی فائلوں میں تقسیم کریں: ایک صفحہ فی فائل، ہر N صفحات یا رینجز کے مطابق۔</span></small></a><a href="/ur/image-crop.html"><span lang="ur">تصویر کراپ اور روٹیٹ کریں</span><small><span lang="ur">تصویر کو کسی بھی حصے یا تناسب میں کراپ کریں اور گھمائیں۔</span></small></a><a href="/ur/pdf-to-text.html"><span lang="ur">PDF سے متن نکالیں</span><small><span lang="ur">PDF کا متن کاپی یا محفوظ کرنے کے لیے نکالیں۔</span></small></a><a href="/ur/receipt-maker.html"><span lang="ur">رسید PDF بنائیں</span><small><span lang="ur">ادا کرنے والا، رقم اور تفصیل درج کر کے رسید کی PDF بنائیں۔ ٹیکس کی تفصیل اور انوائس رجسٹریشن نمبر اختیاری ہیں۔</span></small></a><a href="/ur/resume-maker.html"><span lang="ur">ریزیومے PDF بنائیں (جاپانی rirekisho)</span><small><span lang="ur">اپنی تفصیلات، تعلیم، ملازمت کی تاریخ اور محرک درج کریں اور جاپانی طرز کا ریزیومے (rirekisho) PDF بنائیں، اختیاری آئی ڈی فوٹو کے ساتھ۔</span></small></a><a href="/ur/timetable-maker.html"><span lang="ur">ٹائم ٹیبل / ہفتہ وار شیڈول بنائیں</span><small><span lang="ur">کلاسز، کام اور منصوبے درج کر کے رنگوں کے ساتھ ٹائم ٹیبل یا ہفتہ وار شیڈول PDF یا تصویر کی صورت میں بنائیں۔</span></small></a><a href="/ur/namecard-maker.html"><span lang="ur">بزنس کارڈ / نیم کارڈ بنائیں</span><small><span lang="ur">اپنا نام اور تفصیلات درج کر کے A4 پر ترتیب شدہ بزنس یا نیم کارڈز PDF کی صورت میں بنائیں۔ فہرست سے بڑی تعداد میں نیم ٹیگ بھی بنا سکتے ہیں۔</span></small></a><a href="/ur/qr-code-maker.html"><span lang="ur">QR کوڈ بنائیں (URL، وائی فائی)</span><small><span lang="ur">URL، متن یا وائی فائی کی تفصیلات سے QR کوڈ بنائیں اور PNG، SVG یا PDF کے طور پر محفوظ کریں۔</span></small></a><a href="/ur/pdf-nup.html"><span lang="ur">PDF صفحات کو ایک شیٹ پر یکجا کریں (2-اپ، 4-اپ)</span><small><span lang="ur">کئی PDF صفحات کو ایک A4 شیٹ پر ترتیب دیں (2، 4، 6، 8 یا 9-اپ) تاکہ پرنٹنگ میں کاغذ بچے۔</span></small></a><a href="/ur/pdf-grayscale.html"><span lang="ur">PDF کو گرے اسکیل (بلیک اینڈ وائٹ) میں بدلیں</span><small><span lang="ur">رنگین PDF کو گرے اسکیل یا خالص بلیک اینڈ وائٹ میں بدلیں، مونوکروم پرنٹنگ، کاپی یا فیکس کے لیے تیار۔ ریزولوشن چنیں۔</span></small></a><a href="/ur/pdf-watermark.html"><span lang="ur">PDF میں ٹیکسٹ واٹر مارک شامل کریں</span><small><span lang="ur">«جمع کروانے کے لیے»، «نقل» یا «خفیہ» جیسا متن PDF کے ہر صفحے پر ہلکا سا شامل کریں۔ مقام، رنگ اور شفافیت چنیں۔</span></small></a><a href="/ur/pdf-crop.html"><span lang="ur">PDF کے حاشیے کراپ کریں</span><small><span lang="ur">PDF کے حاشیے خود بخود یا ہر کنارہ سیٹ کر کے کراپ کریں۔ فون پر پڑھنا آسان اور پرنٹ زیادہ صاف ہوتا ہے۔</span></small></a><a href="/ur/pdf-redact.html"><span lang="ur">PDF کے کچھ حصے سیاہ کریں (ریڈیکٹ)</span><small><span lang="ur">PDF کے جن حصوں کو چھپانا ہو ان پر ڈریگ کریں اور انہیں سیاہ کر دیں۔ ریڈیکٹ کیے گئے صفحات تصویر بن جاتے ہیں، اس لیے نیچے کا متن ختم ہو جاتا ہے۔</span></small></a><a href="/ur/pdf-metadata.html"><span lang="ur">PDF کی پراپرٹیز (مصنف، عنوان) دیکھیں اور ہٹائیں</span><small><span lang="ur">PDF میں محفوظ مصنف، عنوان، سافٹ ویئر اور تاریخیں دیکھیں، پھر ہٹائیں یا ایڈٹ کریں۔</span></small></a><a href="/ur/pdf-fill.html"><span lang="ur">PDF بھریں: متن، تاریخ، دستخط اور نشانات شامل کریں</span><small><span lang="ur">PDF پر کہیں بھی متن، تاریخ، ٹک مارک، دائرہ، ہاتھ کا دستخط یا تصویر (جیسے مہر) شامل کریں۔</span></small></a><a href="/ur/pdf-resize.html"><span lang="ur">PDF صفحات کا سائز A4 یا کسی اور کاغذی سائز میں بدلیں</span><small><span lang="ur">مختلف سائز کے PDF صفحات کو ایک سائز کا کریں، جیسے A4، A3، B5 یا Letter۔ متن اور گرافکس صاف رہتے ہیں۔</span></small></a><a href="/ur/pdf-delete-pages.html"><span lang="ur">PDF سے صفحات حذف کریں</span><small><span lang="ur">PDF کے غیر ضروری صفحات منتخب کر کے حذف کریں۔</span></small></a><a href="/ur/pdf-extract-pages.html"><span lang="ur">PDF سے صفحات نکالیں</span><small><span lang="ur">ضروری صفحات چن کر انہیں نئی PDF کے طور پر محفوظ کریں۔</span></small></a><a href="/ur/pdf-reverse.html"><span lang="ur">PDF صفحات کی ترتیب الٹیں</span><small><span lang="ur">PDF صفحات کی ترتیب الٹ دیں۔</span></small></a><a href="/ur/pdf-insert-blank.html"><span lang="ur">PDF میں خالی صفحات شامل کریں</span><small><span lang="ur">PDF میں کہیں بھی خالی صفحات شامل کریں۔</span></small></a><a href="/ur/pdf-split-halves.html"><span lang="ur">PDF کے دو صفحاتی اسپریڈز کو الگ الگ صفحات میں تقسیم کریں</span><small><span lang="ur">PDF کے دو صفحاتی اسپریڈز کو الگ صفحات میں تقسیم کریں۔</span></small></a><a href="/ur/pdf-header-footer.html"><span lang="ur">PDF میں ہیڈر اور فوٹر شامل کریں</span><small><span lang="ur">PDF کے اوپر اور نیچے عنوان، تاریخ یا صفحہ نمبر شامل کریں۔</span></small></a><a href="/ur/pdf-booklet.html"><span lang="ur">PDF کو پرنٹنگ کے لیے کتابچے کی ترتیب میں لگائیں</span><small><span lang="ur">PDF کی ترتیب ایسی بدلیں کہ پرنٹ اور فولڈ کر کے کتابچہ بن جائے۔</span></small></a><a href="/ur/pdf-blank-remove.html"><span lang="ur">PDF کے خالی صفحات تلاش کریں اور ہٹائیں</span><small><span lang="ur">PDF کے خالی صفحات خود بخود تلاش کر کے حذف کریں۔</span></small></a><a href="/ur/pdf-long-image.html"><span lang="ur">PDF کو ایک لمبی تصویر میں بدلیں</span><small><span lang="ur">PDF کے تمام صفحات کو ایک لمبی تصویر میں جوڑیں۔</span></small></a><a href="/ur/pdf-duplex-merge.html"><span lang="ur">سامنے اور پیچھے کے اسکین ایک PDF میں ملائیں</span><small><span lang="ur">سامنے والی PDF اور پیچھے والی PDF کو ایک PDF میں ملا کر ترتیب دیں۔</span></small></a><a href="/ur/image-resize.html"><span lang="ur">تصاویر کا سائز پکسلز میں تبدیل کریں</span><small><span lang="ur">تصاویر کا سائز چوڑائی، اونچائی یا فیصد کے مطابق بدلیں۔</span></small></a><a href="/ur/image-rotate.html"><span lang="ur">تصاویر گھمائیں اور پلٹیں</span><small><span lang="ur">تصاویر گھمائیں اور افقی یا عمودی طور پر پلٹیں۔</span></small></a><a href="/ur/image-watermark.html"><span lang="ur">تصاویر میں ٹیکسٹ واٹر مارک شامل کریں</span><small><span lang="ur">تصاویر پر «نقل» جیسا واٹر مارک متن لگائیں۔</span></small></a><a href="/ur/image-mosaic.html"><span lang="ur">تصویر کے کسی حصے کو موزیک یا بلر کریں</span><small><span lang="ur">تصویر کے کچھ حصوں کو موزیک، بلر یا سیاہ باکس سے چھپائیں۔</span></small></a><a href="/ur/image-exif-remove.html"><span lang="ur">تصاویر سے مقام اور شوٹنگ کی معلومات ہٹائیں</span><small><span lang="ur">تصاویر سے GPS، تاریخ اور کیمرے کی معلومات ہٹائیں اور صاف کاپی محفوظ کریں۔</span></small></a><a href="/ur/image-filter.html"><span lang="ur">بلیک اینڈ وائٹ، سیپیا اور دیگر لُکس لگائیں</span><small><span lang="ur">تصاویر کو بلیک اینڈ وائٹ یا سیپیا بنائیں، یا برائٹنس بدلیں۔</span></small></a><a href="/ur/favicon-maker.html"><span lang="ur">فیویکون (سائٹ آئیکن) بنائیں</span><small><span lang="ur">ایک تصویر سے مکمل فیویکون سیٹ بنائیں۔</span></small></a><a href="/ur/image-stitch.html"><span lang="ur">کئی تصاویر کو ایک میں جوڑیں</span><small><span lang="ur">کئی تصاویر کو اوپر نیچے یا ساتھ جوڑ کر ایک تصویر بنائیں۔</span></small></a><a href="/ur/id-photo.html"><span lang="ur">آئی ڈی فوٹو سائز میں کراپ کریں اور پرنٹنگ کے لیے ٹائل کریں</span><small><span lang="ur">تصویر کو آئی ڈی فوٹو سائز میں کراپ کریں اور L سائز شیٹ پر ٹائل کریں۔</span></small></a><a href="/ur/image-color-picker.html"><span lang="ur">تصویر سے کلر کوڈ چنیں</span><small><span lang="ur">تصویر سے کلر کوڈز پڑھیں اور بنیادی رنگ تلاش کریں۔</span></small></a><a href="/ur/char-counter.html"><span lang="ur">کریکٹر کاؤنٹر (درخواستوں اور رپورٹس کے لیے)</span><small><span lang="ur">اپنے متن کے حروف، لائنیں اور مسودہ شیٹس گنیں۔</span></small></a><a href="/ur/wareki-converter.html"><span lang="ur">مغربی سال اور جاپانی ادوار کے درمیان تبدیلی</span><small><span lang="ur">مغربی سال اور جاپانی ادوار کے درمیان تبدیلی کریں۔</span></small></a><a href="/ur/zenkaku-hankaku.html"><span lang="ur">مکمل چوڑائی، نصف چوڑائی، ہیراگانا اور کاتاکانا تبدیل کریں</span><small><span lang="ur">مکمل/نصف چوڑائی اور ہیراگانا/کاتاکانا تبدیل کریں۔</span></small></a><a href="/ur/line-break-remover.html"><span lang="ur">متن کے لائن بریکس ہٹائیں اور درست کریں</span><small><span lang="ur">PDF اور دیگر جگہوں سے کاپی کیے گئے متن کے لائن بریکس درست کریں۔</span></small></a><a href="/ur/tax-calculator.html"><span lang="ur">کنزمپشن ٹیکس کا حساب (ٹیکس سمیت / ٹیکس کے بغیر)</span><small><span lang="ur">ٹیکس سمیت اور ٹیکس کے بغیر قیمتیں نکالیں۔</span></small></a><a href="/ur/date-calculator.html"><span lang="ur">عمر، دو تاریخوں کے درمیان دن اور تاریخی فرق کا حساب</span><small><span lang="ur">عمر اور دو تاریخوں کے درمیان دن نکالیں۔</span></small></a><a href="/ur/pdf-unlock.html"><span lang="ur">PDF سے پاس ورڈ ہٹائیں</span><small><span lang="ur">جس PDF کا پاس ورڈ آپ جانتے ہیں اس سے پاس ورڈ اور پابندیاں ہٹائیں۔</span></small></a><a href="/ur/pdf-protect.html"><span lang="ur">PDF میں پاس ورڈ شامل کریں</span><small><span lang="ur">PDF کھولنے کے لیے پاس ورڈ شامل کریں۔</span></small></a><a href="/ur/ocr-text.html"><span lang="ur">تصاویر اور PDF سے متن پڑھیں (OCR)</span><small><span lang="ur">تصاویر اور اسکین شدہ PDF میں موجود متن کو متن میں بدلیں۔</span></small></a><a href="/ur/pdf-compare.html"><span lang="ur">دو PDF کا موازنہ (فرق تلاش کریں)</span><small><span lang="ur">دو PDF کے متن کے فرق رنگوں کے ساتھ دکھائیں۔</span></small></a><a href="/ur/password-generator.html"><span lang="ur">مضبوط رینڈم پاس ورڈ بنائیں</span><small><span lang="ur">مضبوط رینڈم پاس ورڈ فوراً بنائیں۔</span></small></a><a href="/ur/percent-calculator.html"><span lang="ur">فیصد، رعایت اور فیصد تبدیلی کا حساب</span><small><span lang="ur">فیصد، رعایت اور فیصد تبدیلی فوراً نکالیں۔</span></small></a><a href="/ur/line-sort-dedupe.html"><span lang="ur">ڈپلیکیٹ لائنیں ہٹائیں اور فہرست ترتیب دیں</span><small><span lang="ur">ڈپلیکیٹ لائنیں ہٹائیں اور ترتیب دیں۔</span></small></a><a href="/ur/unit-converter.html"><span lang="ur">یونٹ کنورٹر (لمبائی، وزن، رقبہ، درجہ حرارت اور مزید)</span><small><span lang="ur">لمبائی، وزن، رقبہ، درجہ حرارت اور مزید فوراً تبدیل کریں۔</span></small></a><a href="/ur/zip-maker.html"><span lang="ur">ZIP فائل بنائیں</span><small><span lang="ur">کئی فائلوں کو ایک ZIP میں پیک کریں۔</span></small></a><a href="/ur/zip-extract.html"><span lang="ur">ZIP فائل کھولیں (ان زپ)</span><small><span lang="ur">ZIP کے اندر کا مواد دیکھیں اور ضروری فائلیں نکالیں۔</span></small></a><a href="/ur/file-hash.html"><span lang="ur">فائل کا ہیش چیک کریں (SHA-256)</span><small><span lang="ur">فائل کا ہیش نکالیں اور موازنہ کریں۔</span></small></a><a href="/ur/csv-json.html"><span lang="ur">CSV اور JSON تبدیل کریں</span><small><span lang="ur">CSV اور JSON کے درمیان فوراً تبدیل کریں۔</span></small></a><a href="/ur/svg-to-png.html"><span lang="ur">SVG کو PNG میں بدلیں</span><small><span lang="ur">SVG فائل کو PNG تصویر میں بدلیں۔</span></small></a><a href="/ur/file-base64.html"><span lang="ur">فائلیں اور Base64 تبدیل کریں</span><small><span lang="ur">فائلوں اور Base64 متن کے درمیان تبدیلی کریں۔</span></small></a><a href="/ur/json-formatter.html"><span lang="ur">JSON کو فارمیٹ اور ویلیڈیٹ کریں</span><small><span lang="ur">JSON کو فارمیٹ، منی فائی اور ویلیڈیٹ کریں۔</span></small></a><a href="/ur/text-diff.html"><span lang="ur">دو متنوں کا موازنہ (فرق)</span><small><span lang="ur">دو متنوں کے فرق لائن بہ لائن دکھائیں۔</span></small></a><a href="/ur/xlsx-to-csv.html"><span lang="ur">ایکسل کو CSV یا JSON میں بدلیں</span><small><span lang="ur">ایکسل شیٹ کو CSV، TSV یا JSON میں بدلیں۔</span></small></a><a href="/ur/csv-to-xlsx.html"><span lang="ur">CSV کو ایکسل (.xlsx) میں بدلیں</span><small><span lang="ur">CSV کو ایکسل (.xlsx) فائل میں بدلیں۔</span></small></a><a href="/ur/docx-to-text.html"><span lang="ur">ورڈ فائل سے متن نکالیں</span><small><span lang="ur">ورڈ فائل سے سادہ متن نکالیں۔</span></small></a><a href="/ur/pptx-to-text.html"><span lang="ur">پاور پوائنٹ سے متن نکالیں</span><small><span lang="ur">ہر پاور پوائنٹ سلائیڈ کا متن نکالیں۔</span></small></a><a href="/ur/pdf-to-word.html"><span lang="ur">PDF کا متن ورڈ میں رکھیں</span><small><span lang="ur">PDF کا متن ورڈ فائل میں نکالیں۔</span></small></a><a href="/ur/image-to-word.html"><span lang="ur">تصاویر کو ورڈ فائل میں ڈالیں</span><small><span lang="ur">تصاویر کو ورڈ فائل میں رکھیں، ہر صفحے پر ایک۔</span></small></a><a href="/ur/xlsx-formula-to-value.html"><span lang="ur">ایکسل فارمولوں کو ویلیوز میں بدلیں</span><small><span lang="ur">ایکسل فارمولوں کو ان کی ویلیوز سے بدلیں۔</span></small></a><a href="/ur/office-metadata-remove.html"><span lang="ur">آفس فائلوں سے مصنف کی معلومات ہٹائیں</span><small><span lang="ur">آفس فائلوں میں محفوظ مصنف کا نام اور دیگر معلومات صاف کریں۔</span></small></a><a href="/ur/office-image-extract.html"><span lang="ur">ورڈ، ایکسل اور پاور پوائنٹ سے تصاویر نکالیں</span><small><span lang="ur">آفس فائلوں سے تصاویر ZIP کی صورت میں نکالیں۔</span></small></a><a href="/ur/docx-to-html.html"><span lang="ur">ورڈ کو HTML میں بدلیں</span><small><span lang="ur">ورڈ کا متن HTML میں بدلیں۔</span></small></a><a href="/ur/xlsx-split-sheets.html"><span lang="ur">ایکسل فائل کو شیٹ کے مطابق تقسیم کریں</span><small><span lang="ur">ہر ایکسل شیٹ کو الگ CSV یا TSV میں تقسیم کریں۔</span></small></a><a href="/ur/xlsx-to-html.html"><span lang="ur">ایکسل ٹیبل کو HTML یا مارک ڈاؤن میں بدلیں</span><small><span lang="ur">ایکسل ٹیبل کو HTML یا مارک ڈاؤن ٹیبل میں بدلیں۔</span></small></a><a href="/ur/charset-convert.html"><span lang="ur">ٹیکسٹ انکوڈنگ تبدیل کریں (خراب متن ٹھیک کریں)</span><small><span lang="ur">خراب متن ٹھیک کرنے کے لیے ٹیکسٹ فائلوں کو Shift_JIS، UTF-8، EUC-JP وغیرہ کے درمیان تبدیل کریں۔</span></small></a><a href="/ur/image-split.html"><span lang="ur">تصویر کو گرڈ میں تقسیم کریں (سوشل پوسٹ کے لیے)</span><small><span lang="ur">تصویر کو افقی اور عمودی برابر ٹکڑوں میں تقسیم کر کے محفوظ کریں۔</span></small></a><a href="/ur/image-to-gif.html"><span lang="ur">تصاویر سے متحرک GIF بنائیں</span><small><span lang="ur">کئی تصاویر کو ترتیب سے جوڑ کر متحرک GIF بنائیں۔</span></small></a><a href="/ur/file-rename.html"><span lang="ur">بہت سی فائلوں کے نام ایک ساتھ بدلیں (نمبر، تاریخ)</span><small><span lang="ur">نمبر یا تاریخ کے ساتھ بہت سی فائلوں کے نام ایک ساتھ بدلیں۔</span></small></a><a href="/ur/csv-tools.html"><span lang="ur">CSV سے ملائیں، تقسیم کریں اور کالم منتخب کریں</span><small><span lang="ur">CSV فائلیں ملائیں، قطاروں کے حساب سے تقسیم کریں، یا صرف منتخب کالم رکھیں۔</span></small></a><a href="/ur/pdf-extract-images.html"><span lang="ur">PDF سے تصاویر نکالیں</span><small><span lang="ur">PDF میں شامل تصاویر اصل معیار پر نکالیں۔</span></small></a><a href="/ur/file-dupes.html"><span lang="ur">ڈپلیکیٹ فائلیں تلاش کریں</span><small><span lang="ur">یکساں مواد والی فائلیں تلاش کریں اور ڈپلیکیٹ کے بغیر ZIP محفوظ کریں۔</span></small></a><a href="/ur/file-type-check.html"><span lang="ur">فائل کی اصل قسم جانچیں (ایکسٹینشن بمقابلہ مواد)</span><small><span lang="ur">فائل کی قسم اس کے مواد سے پہچانیں اور جانچیں کہ ایکسٹینشن درست ہے۔</span></small></a><a href="/ur/file-encrypt.html"><span lang="ur">پاس ورڈ سے فائل انکرپٹ اور ڈی کرپٹ کریں</span><small><span lang="ur">کسی بھی فائل کو پاس ورڈ سے انکرپٹ اور ڈی کرپٹ کریں (AES-256)۔</span></small></a><a href="/ur/txt-merge-split.html"><span lang="ur">ٹیکسٹ فائلیں ملائیں اور تقسیم کریں</span><small><span lang="ur">ٹیکسٹ فائلوں کو ایک میں ملائیں یا سطروں یا سائز کے حساب سے تقسیم کریں۔</span></small></a><a href="/ur/xlsx-merge-csv.html"><span lang="ur">کئی Excel فائلوں کو ایک CSV میں ملائیں</span><small><span lang="ur">کئی Excel فائلوں کا ڈیٹا ایک CSV میں جمع کریں۔</span></small></a><a href="/ur/pdf-bookmarks.html"><span lang="ur">PDF بک مارکس دیکھیں اور شامل کریں</span><small><span lang="ur">PDF کے بک مارکس (فہرستِ مضامین) دیکھیں اور شامل کریں۔</span></small></a><a href="/ur/audio-trim.html"><span lang="ur">آڈیو فائل تراشیں</span><small><span lang="ur">آڈیو فائل کا ایک حصہ کاٹ کر WAV کے طور پر محفوظ کریں۔</span></small></a><a href="/ur/video-frame.html"><span lang="ur">ویڈیو فریم تصاویر کے طور پر محفوظ کریں</span><small><span lang="ur">ویڈیو کا کوئی بھی لمحہ تصویر کے طور پر محفوظ کریں۔</span></small></a><a href="/ur/url-encoder.html"><span lang="ur">URL انکوڈ اور ڈی کوڈ</span><small><span lang="ur">URL میں متن کو انکوڈ اور ڈی کوڈ کریں۔</span></small></a><a href="/ur/markdown-to-html.html"><span lang="ur">Markdown سے HTML</span><small><span lang="ur">Markdown کو HTML میں تبدیل کریں۔</span></small></a><a href="/ur/random-picker.html"><span lang="ur">بے ترتیب انتخاب، ترتیب اور گروپ</span><small><span lang="ur">نام نکالیں، بے ترتیب ترتیب طے کریں یا گروپوں میں تقسیم کریں۔</span></small></a><a href="/ur/color-converter.html"><span lang="ur">رنگ کوڈ کنورٹر (HEX، RGB، HSL)</span><small><span lang="ur">رنگ کے کوڈ HEX، RGB اور HSL کے درمیان تبدیل کریں۔</span></small></a><a href="/ur/timestamp-converter.html"><span lang="ur">UNIX ٹائم اسٹیمپ کنورٹر</span><small><span lang="ur">UNIX وقت اور تاریخوں کے درمیان تبدیل کریں۔</span></small></a><a href="/ur/regex-tester.html"><span lang="ur">ریگولر ایکسپریشن ٹیسٹر</span><small><span lang="ur">ریگولر ایکسپریشن کو مماثلتوں اور تبدیلیوں کے ساتھ جانچیں۔</span></small></a><a href="/ur/text-case-converter.html"><span lang="ur">کیس کنورٹر (camelCase، snake_case)</span><small><span lang="ur">متن کے حروف کی صورت اور نام رکھنے کے انداز بدلیں۔</span></small></a><a href="/ur/uuid-generator.html"><span lang="ur">UUID جنریٹر (v4، ایک ساتھ کئی)</span><small><span lang="ur">ایک ساتھ کئی UUID (v4) بنائیں۔</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="ur">تعارف / رابطہ (جاپانی)</span></a><a href="/ur/privacy.html"><span lang="ur">رازداری کی پالیسی</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ur">X پر اپ ڈیٹس</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const TR={"Copy result": "نتیجہ کاپی کریں", "Could not save. Please try again.": "محفوظ نہیں ہو سکا۔ براہ کرم دوبارہ کوشش کریں۔", "Could not read the PDF. It may be damaged or in an unsupported format.": "PDF پڑھی نہیں جا سکی۔ ہو سکتا ہے خراب ہو یا اس کا فارمیٹ سپورٹڈ نہ ہو۔", "Copied": "کاپی ہو گیا", "Password-protected PDFs are not supported. Remove the password and try again.": "پاس ورڈ والی PDF سپورٹڈ نہیں ہیں۔ پاس ورڈ ہٹائیں اور دوبارہ کوشش کریں۔", "Encode to Base64": "Base64 میں انکوڈ کریں", "Decode to text": "متن میں ڈیکوڈ کریں", "Could not read this as Base64.": "اسے Base64 کے طور پر پڑھا نہیں جا سکا۔"};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=T("Could not save. Please try again.",[])}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return T("Password-protected PDFs are not supported. Remove the password and try again.",[]);
+  return T("Could not read the PDF. It may be damaged or in an unsupported format.",[]);
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+async function copyText(btn,text,ja,en){try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(_){}document.body.removeChild(ta)}
+  const o=btn.textContent;btn.textContent=T("Copied",[]);setTimeout(()=>{btn.textContent=o},1500)}
+
+function enc(s){const b=new TextEncoder().encode(s);let r="";b.forEach(c=>r+=String.fromCharCode(c));return btoa(r)}
+function dec(s){s=s.replace(/\s+/g,"").replace(/-/g,"+").replace(/_/g,"/");const r=atob(s),b=new Uint8Array(r.length);for(let i=0;i<r.length;i++)b[i]=r.charCodeAt(i);return new TextDecoder("utf-8",{fatal:true}).decode(b)}
+const ct=$("ct");
+$("en").textContent=T("Encode to Base64",[]);$("de").textContent=T("Decode to text",[]);$("cp").textContent=T("Copy result",[]);
+$("en").onclick=()=>{ct.className="note2";ct.textContent="";$("ot").value=enc($("tx").value)};
+$("de").onclick=()=>{try{$("ot").value=dec($("tx").value);ct.className="note2";ct.textContent=""}catch(e){$("ot").value="";ct.className="note2 bad";ct.textContent=T("Could not read this as Base64.",[])}};
+$("cp").onclick=()=>{if($("ot").value)copyText($("cp"),$("ot").value)};
+$("tx").value="Hello, こんにちは";$("en").click();
+
+</script>
+</body>
+</html>
