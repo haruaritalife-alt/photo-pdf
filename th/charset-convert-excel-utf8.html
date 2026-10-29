@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>เปิด CSV แบบ UTF-8 ใน Excel (แปลงเป็น UTF-8 with BOM)</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือกไฟล์ CSV</li><li>ตั้งปลายทางเป็น "UTF-8 with BOM"</li><li>บันทึกแล้วเปิดใน Excel</li></ul></div>
-<p>Excel บางเวอร์ชันแสดงไฟล์ UTF-8 ที่ไม่มี BOM เพี้ยน การเพิ่ม BOM ด้วย <a href="/th/charset-convert.html">แปลงการเข้ารหัสข้อความ</a> ช่วยให้เปิดได้แน่นอนขึ้น</p>
+<p lang="en">You want to open a UTF-8 CSV in Excel without garbling. Older Excel versions may open UTF-8 without a BOM garbled. Adding a BOM with <a href="/th/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> makes it open more easily.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือกไฟล์ CSV แบบ UTF-8</li>
-<li>ใน "แปลงเป็น" เลือก "UTF-8 with BOM (สำหรับ Excel)"</li>
-<li>เปิดไฟล์ที่บันทึกใน Excel</li>
+<li lang="en">Choose the UTF-8 CSV with "Choose a text file".</li>
+<li lang="en">Under "Convert to", choose "UTF-8 (with BOM, for Excel)".</li>
+<li lang="en">Press "Convert and save".</li>
+<li lang="en">Open the saved file in Excel.</li>
 </ol>
-<div class="note">BOM อาจเพิ่มอักขระพิเศษที่ต้นไฟล์เมื่อโปรแกรมหรือระบบเว็บโหลดไฟล์ ให้เลือกตามวัตถุประสงค์</div>
+<div class="note" lang="en">A BOM-prefixed file may add stray characters at the start when imported into programs or web systems. Choose according to the purpose.</div>
+<h2 lang="en">What a BOM is</h2>
+<p lang="en">A marker at the start of a file saying "this file is UTF-8". Excel looks at this marker to read the characters correctly.</p>
+<h2 lang="en">Choosing</h2>
+<ul>
+<li lang="en"><b>Opening or editing in Excel</b>: UTF-8 with BOM</li>
+<li lang="en"><b>Importing into programs or web systems</b>: UTF-8 without BOM</li>
+<li lang="en"><b>Systems specifying Shift_JIS</b>: Shift_JIS</li>
+</ul>
+<h2 lang="en">Flow</h2>
+<p lang="en">Original CSV (UTF-8) → this tool → UTF-8 CSV with BOM → opens correctly in Excel</p>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en">Re-saving in Excel may make it another encoding (such as Shift_JIS) again</li>
+<li lang="en">When handing the re-saved file to other systems, check the encoding</li>
+<li lang="en">Recent Excel may open UTF-8 without a BOM too</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Wanting to view data downloaded from web services in Excel</li>
+<li lang="en">Wanting to open overseas system data in Excel</li>
+<li lang="en">Handing a client a CSV that opens in Excel</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Wanted to show a colleague a CSV written by a program in Excel. Converting to UTF-8 with BOM made it open without garbling in their Excel.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The system can't read it after adding a BOM</b>: go back to without BOM.</li>
+<li lang="en"><b>Leading zeros disappear even after opening</b>: Excel's behaviour. When importing, specify the column as text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does adding a BOM change the data?</h3>
+<p lang="en">The text content doesn't change. Only a marker is added at the start.</p>
+<h2>สรุป</h2>
+<p lang="en">To open in Excel, UTF-8 with BOM. To pass to a system, without BOM.</p>
 <a class="cta" href="/th/charset-convert.html">ใช้ “แปลงการเข้ารหัสข้อความ (แก้ข้อความเพี้ยน)” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/csv-json.html">แปลง CSV และ JSON</a>: แปลงระหว่าง CSV และ JSON ได้ทันที</li><li><a href="/th/csv-to-xlsx.html">แปลง CSV เป็น Excel (.xlsx)</a>: แปลง CSV เป็นไฟล์ Excel (.xlsx)</li><li><a href="/th/line-break-remover.html">ลบและจัดระเบียบการขึ้นบรรทัดใหม่ในข้อความ</a>: จัดระเบียบการขึ้นบรรทัดใหม่ในข้อความที่คัดลอกจาก PDF และที่อื่น ๆ</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

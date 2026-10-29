@@ -200,14 +200,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>文字コードの自動判定のしくみと、うまくいかないとき</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>自動判定の結果を見る</li><li>読み取りを手動で変える</li><li>表示が直ったら変換する</li></ul></div>
-<p><a href="/charset-convert.html">文字コードを変換する</a> は、ファイルの先頭と、バイトの並びから、文字コードを推定します。</p>
+<p>文字コードが何か分からないファイルを、どう扱えばよいのでしょうか。<a href="/charset-convert.html">文字コードを変換する（文字化けを直す）</a> は、ファイルの先頭と、バイトの並びから、文字コードを推定します。これが「自動判定」です。</p>
 <h2>手順</h2>
 <ol>
-<li>ファイルを選び、「自動判定：」の表示を見る</li>
-<li>文字が化けていたら、「今の文字コード」を別のものにする</li>
-<li>下の表示が正しくなったら、変換する</li>
+<li>ファイルを選び、「自動判定：」の表示を見る。</li>
+<li>文字が化けていたら、「今の文字コード」を別のものにする。</li>
+<li>「読み取った内容（先頭）」が正しくなったら、変換する。</li>
 </ol>
-<div class="note">短いファイルは、判定を間違えやすいです。表示を見て、手動で選び直してください。</div>
+<div class="note">短いファイルは、判定をまちがえやすいです。表示を見て、手動で選び直してください。</div>
+<h2>自動判定のしくみ</h2>
+<ul>
+<li>ファイルの先頭に、BOM（UTF-8などの目印）があれば、それを使う</li>
+<li>なければ、バイトの並びの特徴から、推定する</li>
+<li>日本語では、UTF-8、Shift_JIS、EUC-JPなどを、見分ける</li>
+</ul>
+<h2>判定がはずれやすいケース</h2>
+<ul>
+<li>文字数が少ない、短いファイル</li>
+<li>半角英数字だけで、日本語がほとんどない</li>
+<li>複数の文字コードが混ざった、壊れたファイル</li>
+</ul>
+<h2>手動で選び直す手順</h2>
+<ol>
+<li>「今の文字コード」を「UTF-8」にして、読み取りを確かめる。</li>
+<li>化けていたら、「Shift_JIS（Windows）」にして、確かめる。</li>
+<li>それでもだめなら、「EUC-JP」や「UTF-16（LE）」を試す。</li>
+<li>読めた文字コードが、そのファイルの文字コード。</li>
+</ol>
+<h2>見分けるヒント</h2>
+<ul>
+<li>Webからダウンロードしたデータ → UTF-8が多い</li>
+<li>古いWindowsのソフト → Shift_JISが多い</li>
+<li>古いUNIX系のシステム → EUC-JPが多い</li>
+<li>Windowsのメモ帳で「Unicode」と保存 → UTF-16が多い</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>出所の分からないファイルの確認</li>
+<li>取引先から届いたファイルの、文字コードの調査</li>
+</ul>
+<h2>例</h2>
+<p>出所不明のテキストを開くと化けていた。自動判定ははずれたが、「今の文字コード」をShift_JISにすると読めた。そのまま、UTF-8に変換して保存した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>どれにしても化ける</b>：すでに文字が壊れている可能性。</li>
+<li><b>一部だけ化ける</b>：複数の文字コードが混ざっている。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>自動判定は、いつも正しいですか？</h3>
+<p>いいえ。短いファイルでは、まちがえることがあります。読み取りの表示で、確かめましょう。</p>
+<h2>まとめ</h2>
+<p>自動判定は便利だが万能ではない。読み取りの表示を見て、合う文字コードを選びましょう。</p>
 <a class="cta" href="/charset-convert.html">文字コードを変換する（文字化けを直す）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/csv-json.html">CSVとJSONを相互変換する</a>：CSVとJSONを、すぐに相互変換します。</li><li><a href="/csv-to-xlsx.html">CSVをExcelファイルにする</a>：CSVを、Excelで開ける .xlsx ファイルにします。</li><li><a href="/line-break-remover.html">文章の改行を消す・整える</a>：PDFなどからコピーした文章の改行を整えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +262,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How Encoding Auto-Detect Works and What to Do When It Fails</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the detected encoding</li><li>Change the reading manually</li><li>Convert once it looks right</li></ul></div>
-<p><a href="/charset-convert.html">Convert Text Encoding</a> guesses the encoding from the start of the file and its byte patterns.</p>
+<p>How should you handle a file whose encoding you don't know? <a href="/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> estimates the encoding from the start of the file and the arrangement of bytes. This is "auto-detection".</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose the file and read the "Detected:" line</li>
-<li>If it is garbled, pick another "Current encoding"</li>
-<li>When the preview looks right, convert</li>
+<li>Choose a file and look at the "Auto-detected:" display.</li>
+<li>If the text is garbled, change "Current encoding" to another.</li>
+<li>Once "Content read (beginning)" is correct, convert.</li>
 </ol>
-<div class="note">Short files are easy to misjudge. Check the preview and choose manually if needed.</div>
+<div class="note">Short files are easily misjudged. Look at the display and choose manually.</div>
+<h2>How auto-detection works</h2>
+<ul>
+<li>If the file starts with a BOM (a marker for UTF-8 etc.), it uses that</li>
+<li>If not, it estimates from the characteristics of the byte arrangement</li>
+<li>For Japanese, it tells apart UTF-8, Shift_JIS, EUC-JP and so on</li>
+</ul>
+<h2>Cases where detection easily misses</h2>
+<ul>
+<li>Short files with few characters</li>
+<li>Files of only half-width alphanumerics with almost no Japanese</li>
+<li>Broken files mixing several encodings</li>
+</ul>
+<h2>Steps to choose manually</h2>
+<ol>
+<li>Set "Current encoding" to "UTF-8" and check the reading.</li>
+<li>If garbled, set "Shift_JIS (Windows)" and check.</li>
+<li>If still wrong, try "EUC-JP" or "UTF-16 (LE)".</li>
+<li>The encoding that reads correctly is the file's encoding.</li>
+</ol>
+<h2>Hints for telling them apart</h2>
+<ul>
+<li>Data downloaded from the web → often UTF-8</li>
+<li>Old Windows software → often Shift_JIS</li>
+<li>Old UNIX-type systems → often EUC-JP</li>
+<li>Saved as "Unicode" in Windows Notepad → often UTF-16</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Checking files of unknown origin</li>
+<li>Investigating the encoding of files from clients</li>
+</ul>
+<h2>Example</h2>
+<p>Opening a text of unknown origin showed garbling. Auto-detection missed, but setting "Current encoding" to Shift_JIS made it readable. I converted it to UTF-8 and saved.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Garbled whichever you choose</b>: the characters may already be broken.</li>
+<li><b>Only part is garbled</b>: several encodings are mixed.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is auto-detection always right?</h3>
+<p>No. With short files it can be wrong. Confirm with the displayed reading.</p>
+<h2>Summary</h2>
+<p>Auto-detection is handy but not all-powerful. Look at the reading and choose the matching encoding.</p>
 <a class="cta" href="/charset-convert.html">Use "Convert Text Encoding (Fix Garbled Text)" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li><li><a href="/csv-to-xlsx.html">Convert CSV to Excel (.xlsx)</a>: Convert a CSV to an Excel (.xlsx) file.</li><li><a href="/line-break-remover.html">Remove and Tidy Line Breaks in Text</a>: Tidy line breaks in text copied from PDFs and elsewhere.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

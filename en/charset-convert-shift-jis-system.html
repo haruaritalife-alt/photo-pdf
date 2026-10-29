@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Converting for Systems That Only Accept Shift_JIS</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose the file</li><li>Set the target to "Shift_JIS"</li><li>Check characters that could not be converted</li></ul></div>
-<p>With <a href="/en/charset-convert.html">Convert Text Encoding</a> you can convert a UTF-8 file to Shift_JIS.</p>
+<p>When importing data into an old system, it says "The character encoding is incorrect". Many old systems accept only Shift_JIS. Convert to Shift_JIS with <a href="/en/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> and send.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose the file</li>
-<li>Under "Convert to" choose "Shift_JIS (Windows)"</li>
-<li>Check the message for characters that became "?"</li>
+<li>Choose a UTF-8 or other file with "Choose a text file".</li>
+<li>Set "Current encoding" to auto or a readable encoding.</li>
+<li>Under "Convert to", choose "Shift_JIS".</li>
+<li>If needed, set "Line breaks" to "CRLF (Windows)".</li>
+<li>Press "Convert and save" and import into the system.</li>
 </ol>
-<div class="note">Characters Shift_JIS cannot represent, such as old kanji forms and emoji, become "?". Check the contents before sending.</div>
+<div class="note">Characters not in Shift_JIS (some symbols, emoji, old-style kanji and so on) can't be converted and may turn into "?".</div>
+<h2>Characters Shift_JIS can't use</h2>
+<ul>
+<li>Emoji</li>
+<li>Some old-style kanji</li>
+<li>Some symbols (circled numbers etc. depend on the environment)</li>
+<li>Special characters of foreign languages</li>
+</ul>
+<h2>Checks before converting</h2>
+<ul>
+<li>Check that the file contains no emoji or special characters</li>
+<li>If it does, replace them with ordinary characters before converting</li>
+<li>Check that the kanji in names can be handled by the system</li>
+</ul>
+<h2>Confirm the system's requirements</h2>
+<ul>
+<li>Encoding (Shift_JIS, EUC-JP, etc.)</li>
+<li>Line break code (CRLF or LF)</li>
+<li>Whether there is a header row</li>
+<li>Delimiter (comma or tab)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Importing into old accounting, payroll or sales-management systems</li>
+<li>Creating fixed-format data for banks and government offices</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to import transaction data into an old accounting system. A UTF-8 CSV wouldn't import, but converting to Shift_JIS with CRLF and saving made it import.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Some characters become "?"</b>: characters not in Shift_JIS. Replace the originals.</li>
+<li><b>Still won't import</b>: check line breaks and whether there's a header.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Are Shift_JIS and the Windows encoding the same?</h3>
+<p>Almost, but with small differences. Check the system's specification.</p>
+<h2>Summary</h2>
+<p>Shift_JIS for old systems. Before converting, check for characters that can't be used.</p>
 <a class="cta" href="/en/charset-convert.html">Use "Convert Text Encoding (Fix Garbled Text)" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li><li><a href="/en/csv-to-xlsx.html">Convert CSV to Excel (.xlsx)</a>: Convert a CSV to an Excel (.xlsx) file.</li><li><a href="/en/line-break-remover.html">Remove and Tidy Line Breaks in Text</a>: Tidy line breaks in text copied from PDFs and elsewhere.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

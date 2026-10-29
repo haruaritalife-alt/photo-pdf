@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Perché un CSV appare illeggibile e come correggerlo</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Imposta la codifica attuale su rilevamento automatico</li><li>Controlla l'anteprima</li><li>Converti in UTF-8 o Shift_JIS</li></ul></div>
-<p>I file CSV appaiono illeggibili quando la codifica con cui sono stati salvati è diversa da quella attesa dall'app. <a href="/it/charset-convert.html">Converti codifica del testo</a> permette di farle coincidere.</p>
-<h2>Passaggi</h2>
+<p lang="en">You opened a CSV in Excel and Japanese was garbled. This is common, and the cause is mostly a difference in character encoding. Use <a href="/it/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> to find out how to fix it.</p>
+<h2>Cause</h2>
+<ul>
+<li lang="en">The CSV is saved as UTF-8 but Excel opens it assuming Shift_JIS</li>
+<li lang="en">Conversely, it is saved as Shift_JIS but opened as UTF-8</li>
+</ul>
+<p lang="en">CSVs output from web services and programs are often UTF-8 and can garble when opened in Japanese Excel.</p>
+<h2 lang="en">Steps to fix</h2>
 <ol>
-<li>Scegli il file e lascia "Rilevamento automatico"</li>
-<li>Controlla nell'anteprima che i caratteri siano corretti</li>
-<li>Converti nella codifica che ti serve e salva</li>
+<li lang="en">Choose the garbled CSV with "Choose a text file".</li>
+<li lang="en">Look at "Content read (beginning)". If garbled, change "Current encoding".</li>
+<li lang="en">Once readable, choose "UTF-8 (with BOM, for Excel)" under "Convert to".</li>
+<li lang="en">Press "Convert and save" and open the saved file in Excel.</li>
 </ol>
-<div class="note">Se nessuna codifica risolve, il file potrebbe essere danneggiato o non essere testo.</div>
+<div class="note" lang="en">The "Current encoding" at which the text reads correctly is the file's true encoding.</div>
+<h2 lang="en">Hints from the garbling</h2>
+<ul>
+<li lang="en">Characters like "縺ゅ縺": UTF-8 being read as Shift_JIS</li>
+<li lang="en">Characters like "繧ゅ": the same</li>
+<li lang="en">"????" or "□": the characters may already be lost</li>
+</ul>
+<h2 lang="en">If it isn't fixed</h2>
+<ul>
+<li lang="en">Try "Current encoding" options in turn</li>
+<li lang="en">Check the original file wasn't already damaged by other software</li>
+<li lang="en">Respecify the encoding at the original source</li>
+</ul>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Data downloaded from web systems is garbled</li>
+<li lang="en">CSVs from overseas systems are garbled</li>
+<li lang="en">Making old files readable</li>
+</ul>
+<h2>Esempio</h2>
+<p lang="en">An online shop's order-data CSV was garbled in Excel. In this tool, I set "Current encoding" to UTF-8 to check the content, converted for Excel and saved; it was fixed.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Still garbled after converting</b>: the "Current encoding" choice is wrong.</li>
+<li lang="en"><b>"????" mixed in</b>: the original data has already been lost.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Will re-opening and saving in Excel fix it?</h3>
+<p lang="en">Saving while garbled makes it impossible to restore. Use this tool first.</p>
+<h2>Riepilogo</h2>
+<p lang="en">CSV garbling is fixed by matching the encoding. For Excel, UTF-8 with BOM.</p>
 <a class="cta" href="/it/charset-convert.html">Usa “Convertire la codifica del testo (correggere caratteri illeggibili)” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/csv-json.html">Converti CSV e JSON</a>: Converti all'istante tra CSV e JSON.</li><li><a href="/it/csv-to-xlsx.html">Converti CSV in Excel (.xlsx)</a>: Converti un CSV in un file Excel (.xlsx).</li><li><a href="/it/line-break-remover.html">Rimuovi e riordina gli a capo nel testo</a>: Riordina gli a capo nel testo copiato da PDF e altre fonti.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>

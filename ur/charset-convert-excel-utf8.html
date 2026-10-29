@@ -215,14 +215,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Excel میں UTF-8 CSV کھولنا (BOM والے UTF-8 میں تبدیل کریں)</h1>
 <p class="meta">شائع شدہ: 19 اکتوبر 2026 | اپ ڈیٹ: 19 اکتوبر 2026 | <a href="/about.html">تعارف (جاپانی)</a></p>
 <div class="points"><b>اہم نکات</b><ul><li>CSV منتخب کریں</li><li>ہدف کو «BOM والا UTF-8» پر رکھیں</li><li>محفوظ کریں اور Excel میں کھولیں</li></ul></div>
-<p>Excel کے کچھ ورژن بغیر BOM والی UTF-8 فائلوں کو خراب دکھاتے ہیں۔ <a href="/ur/charset-convert.html">ٹیکسٹ انکوڈنگ تبدیل کریں</a> سے BOM شامل کرنے پر وہ زیادہ قابل اعتماد طریقے سے کھلتی ہیں۔</p>
+<p lang="en">You want to open a UTF-8 CSV in Excel without garbling. Older Excel versions may open UTF-8 without a BOM garbled. Adding a BOM with <a href="/ur/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> makes it open more easily.</p>
 <h2>مراحل</h2>
 <ol>
-<li>UTF-8 CSV فائل منتخب کریں</li>
-<li>«تبدیل کریں بطور» کے تحت «BOM والا UTF-8 (Excel کے لیے)» منتخب کریں</li>
-<li>محفوظ شدہ فائل Excel میں کھولیں</li>
+<li lang="en">Choose the UTF-8 CSV with "Choose a text file".</li>
+<li lang="en">Under "Convert to", choose "UTF-8 (with BOM, for Excel)".</li>
+<li lang="en">Press "Convert and save".</li>
+<li lang="en">Open the saved file in Excel.</li>
 </ol>
-<div class="note">جب فائل پروگرام یا ویب سسٹم لوڈ کریں تو BOM آغاز میں ایک اضافی حرف شامل کر سکتا ہے۔ مقصد کے مطابق انتخاب کریں۔</div>
+<div class="note" lang="en">A BOM-prefixed file may add stray characters at the start when imported into programs or web systems. Choose according to the purpose.</div>
+<h2 lang="en">What a BOM is</h2>
+<p lang="en">A marker at the start of a file saying "this file is UTF-8". Excel looks at this marker to read the characters correctly.</p>
+<h2 lang="en">Choosing</h2>
+<ul>
+<li lang="en"><b>Opening or editing in Excel</b>: UTF-8 with BOM</li>
+<li lang="en"><b>Importing into programs or web systems</b>: UTF-8 without BOM</li>
+<li lang="en"><b>Systems specifying Shift_JIS</b>: Shift_JIS</li>
+</ul>
+<h2 lang="en">Flow</h2>
+<p lang="en">Original CSV (UTF-8) → this tool → UTF-8 CSV with BOM → opens correctly in Excel</p>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en">Re-saving in Excel may make it another encoding (such as Shift_JIS) again</li>
+<li lang="en">When handing the re-saved file to other systems, check the encoding</li>
+<li lang="en">Recent Excel may open UTF-8 without a BOM too</li>
+</ul>
+<h2>ان کے لیے موزوں</h2>
+<ul>
+<li lang="en">Wanting to view data downloaded from web services in Excel</li>
+<li lang="en">Wanting to open overseas system data in Excel</li>
+<li lang="en">Handing a client a CSV that opens in Excel</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Wanted to show a colleague a CSV written by a program in Excel. Converting to UTF-8 with BOM made it open without garbling in their Excel.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The system can't read it after adding a BOM</b>: go back to without BOM.</li>
+<li lang="en"><b>Leading zeros disappear even after opening</b>: Excel's behaviour. When importing, specify the column as text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does adding a BOM change the data?</h3>
+<p lang="en">The text content doesn't change. Only a marker is added at the start.</p>
+<h2>خلاصہ</h2>
+<p lang="en">To open in Excel, UTF-8 with BOM. To pass to a system, without BOM.</p>
 <a class="cta" href="/ur/charset-convert.html">«ٹیکسٹ انکوڈنگ تبدیل کریں (خراب متن ٹھیک کریں)» استعمال کریں (مفت)</a>
 <h2>وہ ٹولز جو اس کے ساتھ اچھے لگتے ہیں</h2><ul><li><a href="/ur/csv-json.html">CSV اور JSON تبدیل کریں</a>: CSV اور JSON کے درمیان فوراً تبدیل کریں۔</li><li><a href="/ur/csv-to-xlsx.html">CSV کو ایکسل (.xlsx) میں بدلیں</a>: CSV کو ایکسل (.xlsx) فائل میں بدلیں۔</li><li><a href="/ur/line-break-remover.html">متن کے لائن بریکس ہٹائیں اور درست کریں</a>: PDF اور دیگر جگہوں سے کاپی کیے گئے متن کے لائن بریکس درست کریں۔</li></ul>
 <div class="tip"><p>اگر یہ گائیڈ مفید رہی تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ٹپ بھیجیں (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">تحفہ بھیجیں (ایمیزون وش لسٹ)</a></div>

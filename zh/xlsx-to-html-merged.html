@@ -201,12 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>合并单元格的处理方式</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>确认</li><li>解决办法</li></ul></div>
-<h2>步骤</h2>
+<p lang="en">Excel tables sometimes have merged cells for looks. When converted with <a href="/zh/xlsx-to-html.html">Convert an Excel Table to HTML or Markdown</a>, a merged cell's text goes only into the top-left one, and the other cells become empty.</p>
+<h2 lang="en">Conversion rule</h2>
+<ul>
+<li lang="en">A merged cell's text goes only into the top-left cell.</li>
+<li lang="en">The other cells become empty.</li>
+</ul>
+<div class="note" lang="en">HTML merge attributes are not included. The look may differ from the original table.</div>
+<h2 lang="en">What commonly happens</h2>
+<ul>
+<li lang="en">A "Category" cell merged across 3 rows → only the first row holds "Category"; rows 2 and 3 are empty</li>
+<li lang="en">A table title merged across all columns → only the first column holds the title</li>
+</ul>
+<h2 lang="en">Steps (to convert cleanly)</h2>
 <ol>
-<li>合并单元格只有左上角那个单元格保留文字。</li>
-<li>其他单元格会留空。</li>
-<li>如有需要，转换后再修改表格。</li>
+<li lang="en">Before converting, unmerge cells in Excel.</li>
+<li lang="en">Fill the now-empty cells with the same text.</li>
+<li lang="en">Convert with this tool.</li>
+<li lang="en">Check the converted table.</li>
 </ol>
+<h2 lang="en">Tips for unmerging</h2>
+<ol>
+<li lang="en">Select the merged cell.</li>
+<li lang="en">Press "Merge &amp; Center" to unmerge.</li>
+<li lang="en">Copy the text into the emptied cells.</li>
+</ol>
+<h2 lang="en">Why not to merge</h2>
+<ul>
+<li lang="en">Sorting and filtering don't work well</li>
+<li lang="en">Empty cells get in the way when handling it as data</li>
+<li lang="en">It breaks easily when pasted into web pages or systems</li>
+</ul>
+<h2 lang="en">How to fix after converting</h2>
+<p lang="en">If you want to keep merging in HTML, add colspan (column merge) or rowspan (row merge) by hand to the converted HTML.</p>
+<h2>适合</h2>
+<ul>
+<li lang="en">Converting clean tables without merged cells</li>
+<li lang="en">Extracting just the data from tables that contain merged cells</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">In a monthly summary, "Q1" was merged across three months. After converting, only January had the text, so I unmerged in Excel, re-entered it for each month and redid it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The text seems to have vanished</b>: when merged, everything except the top-left is empty.</li>
+<li lang="en"><b>Columns shift</b>: unmerge before converting.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can it convert keeping the merge?</h3>
+<p lang="en">The merged look isn't included. Unmerging is the reliable way.</p>
+<h2>小结</h2>
+<p lang="en">For merged cells, only the top-left gets the text. Unmerge before converting for a clean result.</p>
 <a class="cta" href="/zh/xlsx-to-html.html">使用“把 Excel 表格转换成 HTML 或 Markdown”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/xlsx-to-csv.html">把 Excel 转换成 CSV 或 JSON</a>：把 Excel 工作表转换成 CSV、TSV 或 JSON。</li><li><a href="/zh/docx-to-html.html">把 Word 转换成 HTML</a>：把 Word 的文字转换成 HTML。</li><li><a href="/zh/csv-json.html">CSV 与 JSON 互相转换</a>：立即在 CSV 和 JSON 之间互相转换。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Excel-এ UTF-8 CSV খোলা (BOM-সহ UTF-8-এ রূপান্তর)</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>CSV বেছে নিন</li><li>লক্ষ্য "BOM-সহ UTF-8" ঠিক করুন</li><li>সংরক্ষণ করে Excel-এ খুলুন</li></ul></div>
-<p>Excel-এর কিছু সংস্করণ BOM ছাড়া UTF-8 ফাইলের অক্ষর বিকৃত করে। <a href="/bn/charset-convert.html">টেক্সট এনকোডিং রূপান্তর</a> দিয়ে BOM যোগ করলে ফাইল আরও নির্ভরযোগ্যভাবে খোলে।</p>
+<p lang="en">You want to open a UTF-8 CSV in Excel without garbling. Older Excel versions may open UTF-8 without a BOM garbled. Adding a BOM with <a href="/bn/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> makes it open more easily.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>UTF-8 CSV ফাইল বেছে নিন</li>
-<li>"রূপান্তর করুন" এর অধীনে "BOM-সহ UTF-8 (Excel-এর জন্য)" বেছে নিন</li>
-<li>সংরক্ষিত ফাইল Excel-এ খুলুন</li>
+<li lang="en">Choose the UTF-8 CSV with "Choose a text file".</li>
+<li lang="en">Under "Convert to", choose "UTF-8 (with BOM, for Excel)".</li>
+<li lang="en">Press "Convert and save".</li>
+<li lang="en">Open the saved file in Excel.</li>
 </ol>
-<div class="note">প্রোগ্রাম বা ওয়েব সিস্টেম ফাইল লোড করলে BOM শুরুতে একটি বাড়তি অক্ষর যোগ করতে পারে। উদ্দেশ্য অনুযায়ী বেছে নিন।</div>
+<div class="note" lang="en">A BOM-prefixed file may add stray characters at the start when imported into programs or web systems. Choose according to the purpose.</div>
+<h2 lang="en">What a BOM is</h2>
+<p lang="en">A marker at the start of a file saying "this file is UTF-8". Excel looks at this marker to read the characters correctly.</p>
+<h2 lang="en">Choosing</h2>
+<ul>
+<li lang="en"><b>Opening or editing in Excel</b>: UTF-8 with BOM</li>
+<li lang="en"><b>Importing into programs or web systems</b>: UTF-8 without BOM</li>
+<li lang="en"><b>Systems specifying Shift_JIS</b>: Shift_JIS</li>
+</ul>
+<h2 lang="en">Flow</h2>
+<p lang="en">Original CSV (UTF-8) → this tool → UTF-8 CSV with BOM → opens correctly in Excel</p>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en">Re-saving in Excel may make it another encoding (such as Shift_JIS) again</li>
+<li lang="en">When handing the re-saved file to other systems, check the encoding</li>
+<li lang="en">Recent Excel may open UTF-8 without a BOM too</li>
+</ul>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Wanting to view data downloaded from web services in Excel</li>
+<li lang="en">Wanting to open overseas system data in Excel</li>
+<li lang="en">Handing a client a CSV that opens in Excel</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">Wanted to show a colleague a CSV written by a program in Excel. Converting to UTF-8 with BOM made it open without garbling in their Excel.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The system can't read it after adding a BOM</b>: go back to without BOM.</li>
+<li lang="en"><b>Leading zeros disappear even after opening</b>: Excel's behaviour. When importing, specify the column as text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does adding a BOM change the data?</h3>
+<p lang="en">The text content doesn't change. Only a marker is added at the start.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">To open in Excel, UTF-8 with BOM. To pass to a system, without BOM.</p>
 <a class="cta" href="/bn/charset-convert.html">“টেক্সট এনকোডিং রূপান্তর (বিকৃত অক্ষর ঠিক করুন)” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/csv-json.html">CSV ও JSON রূপান্তর</a>: CSV ও JSON-এর মধ্যে মুহূর্তে রূপান্তর করুন।</li><li><a href="/bn/csv-to-xlsx.html">CSV থেকে এক্সেল (.xlsx) রূপান্তর</a>: CSV-কে এক্সেল (.xlsx) ফাইলে রূপান্তর করুন।</li><li><a href="/bn/line-break-remover.html">টেক্সটের লাইন ব্রেক সরান ও গুছিয়ে নিন</a>: PDF ও অন্যান্য জায়গা থেকে কপি করা টেক্সটের লাইন ব্রেক গুছিয়ে নিন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

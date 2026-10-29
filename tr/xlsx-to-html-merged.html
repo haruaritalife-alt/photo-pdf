@@ -201,12 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Birleştirilmiş Hücreler Nasıl Ele Alınır</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>Kontrol edin</li><li>Düzeltin</li></ul></div>
-<h2>Adımlar</h2>
+<p lang="en">Excel tables sometimes have merged cells for looks. When converted with <a href="/tr/xlsx-to-html.html">Convert an Excel Table to HTML or Markdown</a>, a merged cell's text goes only into the top-left one, and the other cells become empty.</p>
+<h2 lang="en">Conversion rule</h2>
+<ul>
+<li lang="en">A merged cell's text goes only into the top-left cell.</li>
+<li lang="en">The other cells become empty.</li>
+</ul>
+<div class="note" lang="en">HTML merge attributes are not included. The look may differ from the original table.</div>
+<h2 lang="en">What commonly happens</h2>
+<ul>
+<li lang="en">A "Category" cell merged across 3 rows → only the first row holds "Category"; rows 2 and 3 are empty</li>
+<li lang="en">A table title merged across all columns → only the first column holds the title</li>
+</ul>
+<h2 lang="en">Steps (to convert cleanly)</h2>
 <ol>
-<li>Birleştirilmiş bir hücrede yalnızca sol üstteki hücre metnini korur.</li>
-<li>Diğer hücreler boş kalır.</li>
-<li>Gerekirse dönüştürdükten sonra tabloyu düzeltin.</li>
+<li lang="en">Before converting, unmerge cells in Excel.</li>
+<li lang="en">Fill the now-empty cells with the same text.</li>
+<li lang="en">Convert with this tool.</li>
+<li lang="en">Check the converted table.</li>
 </ol>
+<h2 lang="en">Tips for unmerging</h2>
+<ol>
+<li lang="en">Select the merged cell.</li>
+<li lang="en">Press "Merge &amp; Center" to unmerge.</li>
+<li lang="en">Copy the text into the emptied cells.</li>
+</ol>
+<h2 lang="en">Why not to merge</h2>
+<ul>
+<li lang="en">Sorting and filtering don't work well</li>
+<li lang="en">Empty cells get in the way when handling it as data</li>
+<li lang="en">It breaks easily when pasted into web pages or systems</li>
+</ul>
+<h2 lang="en">How to fix after converting</h2>
+<p lang="en">If you want to keep merging in HTML, add colspan (column merge) or rowspan (row merge) by hand to the converted HTML.</p>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Converting clean tables without merged cells</li>
+<li lang="en">Extracting just the data from tables that contain merged cells</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">In a monthly summary, "Q1" was merged across three months. After converting, only January had the text, so I unmerged in Excel, re-entered it for each month and redid it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The text seems to have vanished</b>: when merged, everything except the top-left is empty.</li>
+<li lang="en"><b>Columns shift</b>: unmerge before converting.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can it convert keeping the merge?</h3>
+<p lang="en">The merged look isn't included. Unmerging is the reliable way.</p>
+<h2>Özet</h2>
+<p lang="en">For merged cells, only the top-left gets the text. Unmerge before converting for a clean result.</p>
 <a class="cta" href="/tr/xlsx-to-html.html">“Excel Tablosunu HTML veya Markdown'a Dönüştür” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/xlsx-to-csv.html">Excel'i CSV veya JSON'a Dönüştür</a>: Bir Excel sayfasını CSV, TSV veya JSON'a dönüştürün.</li><li><a href="/tr/docx-to-html.html">Word'ü HTML'e Dönüştür</a>: Word metnini HTML'e dönüştürün.</li><li><a href="/tr/csv-json.html">CSV ve JSON Dönüştürme</a>: CSV ile JSON arasında anında dönüştürün.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

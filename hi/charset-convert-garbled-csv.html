@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>CSV के अक्षर क्यों बिगड़े दिखते हैं और उसे कैसे ठीक करें</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>वर्तमान एन्कोडिंग को ऑटो-डिटेक्ट पर रखें</li><li>प्रीव्यू जाँचें</li><li>UTF-8 या Shift_JIS में बदलें</li></ul></div>
-<p>जब CSV उस एन्कोडिंग से अलग एन्कोडिंग में सहेजी गई हो जिसकी ऐप उम्मीद करता है, तब उसके अक्षर बिगड़ जाते हैं। <a href="/hi/charset-convert.html">टेक्स्ट एन्कोडिंग बदलें</a> से आप उन्हें मिला सकते हैं।</p>
-<h2>चरण</h2>
+<p lang="en">You opened a CSV in Excel and Japanese was garbled. This is common, and the cause is mostly a difference in character encoding. Use <a href="/hi/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> to find out how to fix it.</p>
+<h2>कारण</h2>
+<ul>
+<li lang="en">The CSV is saved as UTF-8 but Excel opens it assuming Shift_JIS</li>
+<li lang="en">Conversely, it is saved as Shift_JIS but opened as UTF-8</li>
+</ul>
+<p lang="en">CSVs output from web services and programs are often UTF-8 and can garble when opened in Japanese Excel.</p>
+<h2 lang="en">Steps to fix</h2>
 <ol>
-<li>फ़ाइल चुनें और "ऑटो-डिटेक्ट" रहने दें</li>
-<li>प्रीव्यू में जाँचें कि अक्षर सही दिख रहे हैं</li>
-<li>आपको जो एन्कोडिंग चाहिए उसमें बदलकर सहेजें</li>
+<li lang="en">Choose the garbled CSV with "Choose a text file".</li>
+<li lang="en">Look at "Content read (beginning)". If garbled, change "Current encoding".</li>
+<li lang="en">Once readable, choose "UTF-8 (with BOM, for Excel)" under "Convert to".</li>
+<li lang="en">Press "Convert and save" and open the saved file in Excel.</li>
 </ol>
-<div class="note">अगर कोई एन्कोडिंग ठीक न करे, तो फ़ाइल क्षतिग्रस्त हो सकती है या टेक्स्ट नहीं हो सकती।</div>
+<div class="note" lang="en">The "Current encoding" at which the text reads correctly is the file's true encoding.</div>
+<h2 lang="en">Hints from the garbling</h2>
+<ul>
+<li lang="en">Characters like "縺ゅ縺": UTF-8 being read as Shift_JIS</li>
+<li lang="en">Characters like "繧ゅ": the same</li>
+<li lang="en">"????" or "□": the characters may already be lost</li>
+</ul>
+<h2 lang="en">If it isn't fixed</h2>
+<ul>
+<li lang="en">Try "Current encoding" options in turn</li>
+<li lang="en">Check the original file wasn't already damaged by other software</li>
+<li lang="en">Respecify the encoding at the original source</li>
+</ul>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">Data downloaded from web systems is garbled</li>
+<li lang="en">CSVs from overseas systems are garbled</li>
+<li lang="en">Making old files readable</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">An online shop's order-data CSV was garbled in Excel. In this tool, I set "Current encoding" to UTF-8 to check the content, converted for Excel and saved; it was fixed.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Still garbled after converting</b>: the "Current encoding" choice is wrong.</li>
+<li lang="en"><b>"????" mixed in</b>: the original data has already been lost.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Will re-opening and saving in Excel fix it?</h3>
+<p lang="en">Saving while garbled makes it impossible to restore. Use this tool first.</p>
+<h2>सारांश</h2>
+<p lang="en">CSV garbling is fixed by matching the encoding. For Excel, UTF-8 with BOM.</p>
 <a class="cta" href="/hi/charset-convert.html">“टेक्स्ट एन्कोडिंग बदलें (बिगड़े अक्षर ठीक करें)” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/csv-json.html">CSV और JSON बदलें</a>: CSV और JSON के बीच तुरंत बदलें।</li><li><a href="/hi/csv-to-xlsx.html">CSV को Excel (.xlsx) में बदलें</a>: CSV को Excel (.xlsx) फ़ाइल में बदलें।</li><li><a href="/hi/line-break-remover.html">टेक्स्ट से लाइन ब्रेक हटाएँ और ठीक करें</a>: PDF या अन्य जगह से कॉपी किए टेक्स्ट के लाइन ब्रेक ठीक करें।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>
