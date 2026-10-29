@@ -201,14 +201,32 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Counting Distinct Values</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose UNIQUE</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/countif-formula-builder.html">COUNTIF Builder</a> you can build a formula that counts each value once.</p>
+<p>In a column where the same value appears again and again, you sometimes want to know how many different values there are, such as how many different customers appear in a column of names. With <a href="/en/countif-formula-builder.html">Build a COUNTIF Formula</a> you can build formulas that count distinct values.</p>
+<h2>The basic formulas</h2>
+<p>The long-standing classic is <code>=SUMPRODUCT(1/COUNTIF(A2:A100,A2:A100))</code>. Each cell is divided by how many times its value appears, and adding everything up gives the number of distinct values.</p>
+<p>In Excel 365 and Google Sheets, <code>=COUNTA(UNIQUE(A2:A100))</code> is easier to read and is the one we recommend.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose UNIQUE</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>Choose UNIQUE.</li>
+<li>Enter the range (for example A2:A100).</li>
+<li>Copy the formula and paste it.</li>
 </ol>
-<div class="note">The second formula is for Google Sheets.</div>
+<div class="note">If the range contains empty cells, the classic formula returns #DIV/0!. Use a version that skips blanks.</div>
+<h2>Example</h2>
+<p>If a purchase history has 500 rows of customer names, <code>=COUNTA(UNIQUE(A2:A501))</code> tells you how many different people bought something, not how many purchases were made.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Empty cells mixed in</b>: UNIQUE treats an empty cell as one value. To exclude them, combine it with FILTER.</li>
+<li><b>Full-width, half-width and spaces</b>: values that look the same can still count as different. Tidy them up first.</li>
+<li><b>UNIQUE is missing in older Excel</b>: use the SUMPRODUCT formula.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How do I find only the values that repeat?</h3>
+<p>Use COUNTIF to get the count for each cell and look for 2 or more.</p>
+<h3>Does it tell upper and lower case apart?</h3>
+<p>No. They are counted as the same value.</p>
+<h2>Summary</h2>
+<p>To count distinct values, use UNIQUE in newer apps and the SUMPRODUCT formula in older ones.</p>
 <a class="cta" href="/en/countif-formula-builder.html">Use "Build a COUNTIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/unique-formula-builder.html">Build a UNIQUE Formula</a>: Build duplicate-handling formulas.</li><li><a href="/en/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a>: Build conditional formatting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

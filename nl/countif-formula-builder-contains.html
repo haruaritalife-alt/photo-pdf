@@ -201,14 +201,38 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Cellen met tekst tellen</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Kies CONTAINS</li><li>Voer de te zoeken tekst in</li><li>Kopieer</li></ul></div>
-<p>In <a href="/nl/countif-formula-builder.html">COUNTIF-maker</a> kun je een formule maken die de cellen telt die de tekst bevatten.</p>
+<p lang="en">Sometimes you want to count cells that match only in part: addresses containing "Tokyo", or file names with "invoice" in them. With <a href="/nl/countif-formula-builder.html">Build a COUNTIF Formula</a> you can build COUNTIF formulas that use wildcards.</p>
+<h2 lang="en">How wildcards work</h2>
+<p lang="en">In a COUNTIF condition, "*" stands for any run of zero or more characters, and "?" stands for exactly one character.</p>
+<ul>
+<li lang="en"><code>"*Tokyo*"</code>: contains "Tokyo" anywhere</li>
+<li lang="en"><code>"Tokyo*"</code>: starts with "Tokyo"</li>
+<li lang="en"><code>"*Tokyo"</code>: ends with "Tokyo"</li>
+<li lang="en"><code>"Ta?"</code>: "Ta" followed by exactly one character</li>
+</ul>
 <h2>Stappen</h2>
 <ol>
-<li>Kies CONTAINS</li>
-<li>Voer de te zoeken tekst in</li>
-<li>Kopieer</li>
+<li lang="en">Enter the range (for example A2:A100).</li>
+<li lang="en">Enter the text to look for (for example Tokyo).</li>
+<li lang="en">Choose contains, starts with or ends with.</li>
+<li lang="en">Copy the formula and paste it.</li>
 </ol>
-<div class="note">Telt de cel, wat er ook voor of na staat.</div>
+<div class="note" lang="en">If the text is written in another cell, join it with "&amp;", as in <code>"*"&amp;E2&amp;"*"</code>.</div>
+<h2 lang="en">Examples</h2>
+<p lang="en">To count the people in Tokyo in an address column, use <code>=COUNTIF(A2:A500,"Tokyo*")</code>. To count product names containing "limited", use <code>=COUNTIF(B2:B300,"*limited*")</code>.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looking for "*" or "?" itself</b>: put "~" in front, as in <code>"~*"</code>.</li>
+<li lang="en"><b>Numbers may be skipped</b>: wildcards work on text cells. Cells that hold only numbers may not match, so convert them to text if needed.</li>
+<li lang="en"><b>Case is ignored</b>: "Tokyo" and "tokyo" are counted together.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I count cells that contain either of two words?</h3>
+<p lang="en">Add two COUNTIF formulas. If a cell can contain both, subtract the overlap.</p>
+<h3 lang="en">Can I use regular expressions?</h3>
+<p lang="en">Not in COUNTIF. Use another method for complex matching.</p>
+<h2>Samenvatting</h2>
+<p lang="en">For a partial match, put "*" on both sides of the text. When the text is in another cell, join it with "&amp;".</p>
 <a class="cta" href="/nl/countif-formula-builder.html">Gebruik “Een COUNTIF-formule maken” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/sumif-formula-builder.html">Een SUMIF- of COUNTIF-formule maken</a>: Maak SUMIF- en COUNTIF-formules.</li><li><a href="/nl/unique-formula-builder.html">Een UNIQUE-formule maken</a>: Maak formules om dubbele waarden te verwerken.</li><li><a href="/nl/cond-format-formula-builder.html">Een formule voor voorwaardelijke opmaak maken</a>: Maak formules voor voorwaardelijke opmaak.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>

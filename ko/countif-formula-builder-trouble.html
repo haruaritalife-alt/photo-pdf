@@ -201,14 +201,39 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/countif-formula-builder.html">COUNTIF 만들기</a>이(가) 작동하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">You pasted a COUNTIF formula but the result is 0, an error appears, or the number is not what you expected. Here are the points to check, most common first. Formulas built with <a href="/ko/countif-formula-builder.html">Build a COUNTIF Formula</a> can hit the same problems, depending on the state of your data.</p>
+<h2 lang="en">When the result is 0</h2>
+<ul>
+<li lang="en"><b>How the range is written</b>: check that it is joined with a colon, as in <code>A2:A100</code>.</li>
+<li lang="en"><b>Quotation marks around the condition</b>: text and comparisons go inside <code>"..."</code>. Curly or full-width quotes will not work.</li>
+<li lang="en"><b>Invisible spaces</b>: spaces before or after the text stop it from matching. Clean it with TRIM.</li>
+<li lang="en"><b>Full-width and half-width</b>: "ABC" and "ＡＢＣ" are different characters.</li>
+</ul>
+<h2 lang="en">When the count is too low</h2>
+<ul>
+<li lang="en"><b>Numbers stored as text</b>: a small green mark may appear in the corner of the cell. Convert them to numbers and they will be counted.</li>
+<li lang="en"><b>A missing wildcard</b>: to count partial matches, use <code>"*text*"</code>.</li>
+<li lang="en"><b>The range is too short</b>: it is common to add data and leave the range as it was. Using the whole column, <code>A:A</code>, covers new rows.</li>
+</ul>
+<h2 lang="en">When an error appears</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: shows up in COUNTIFS when the ranges are different sizes.</li>
+<li lang="en"><b>#NAME?</b>: a mistyped function name, or a function the app does not have.</li>
+<li lang="en"><b>#REF!</b>: appears when you delete cells or a column that the range used.</li>
+</ul>
+<h2 lang="en">Ways to check</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Pick one value, filter for it, and compare the count with what you can see.</li>
+<li lang="en">Simplify the condition, then add parts back one at a time.</li>
+<li lang="en">Shrink the range and see whether the result changes.</li>
 </ol>
-<div class="note">수식이 나오지 않으면 범위가 A2:A100처럼 쓰여 있는지, 조건이 입력되어 있는지 확인하세요.</div>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">The range moved when I copied the formula</h3>
+<p lang="en">Fix it with "$", as in <code>$A$2:$A$100</code>.</p>
+<h3 lang="en">Can I count data on another sheet?</h3>
+<p lang="en">Yes. Put the sheet name in front, as in <code>Sheet2!A2:A100</code>.</p>
+<h2>요약</h2>
+<p lang="en">Most causes are invisible spaces, full-width versus half-width characters, and numbers stored as text. Suspect those first.</p>
 <a class="cta" href="/ko/countif-formula-builder.html">“COUNTIF 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li><li><a href="/ko/unique-formula-builder.html">UNIQUE 수식 만들기</a>: 중복을 다루는 수식을 만듭니다.</li><li><a href="/ko/cond-format-formula-builder.html">조건부 서식 수식 만들기</a>: 조건부 서식 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

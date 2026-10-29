@@ -201,14 +201,32 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>การนับค่าที่ไม่ซ้ำกัน</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก UNIQUE</li><li>ป้อนช่วงเวลา</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/countif-formula-builder.html">ตัวสร้างสูตร COUNTIF</a> คุณสร้างสูตรที่นับแต่ละค่าเพียงครั้งเดียวได้</p>
+<p lang="en">In a column where the same value appears again and again, you sometimes want to know how many different values there are, such as how many different customers appear in a column of names. With <a href="/th/countif-formula-builder.html">Build a COUNTIF Formula</a> you can build formulas that count distinct values.</p>
+<h2 lang="en">The basic formulas</h2>
+<p lang="en">The long-standing classic is <code>=SUMPRODUCT(1/COUNTIF(A2:A100,A2:A100))</code>. Each cell is divided by how many times its value appears, and adding everything up gives the number of distinct values.</p>
+<p lang="en">In Excel 365 and Google Sheets, <code>=COUNTA(UNIQUE(A2:A100))</code> is easier to read and is the one we recommend.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือก UNIQUE</li>
-<li>ป้อนช่วงเวลา</li>
-<li>คัดลอก</li>
+<li lang="en">Choose UNIQUE.</li>
+<li lang="en">Enter the range (for example A2:A100).</li>
+<li lang="en">Copy the formula and paste it.</li>
 </ol>
-<div class="note">สูตรที่สองใช้สำหรับ Google ชีต</div>
+<div class="note" lang="en">If the range contains empty cells, the classic formula returns #DIV/0!. Use a version that skips blanks.</div>
+<h2>ตัวอย่าง</h2>
+<p lang="en">If a purchase history has 500 rows of customer names, <code>=COUNTA(UNIQUE(A2:A501))</code> tells you how many different people bought something, not how many purchases were made.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Empty cells mixed in</b>: UNIQUE treats an empty cell as one value. To exclude them, combine it with FILTER.</li>
+<li lang="en"><b>Full-width, half-width and spaces</b>: values that look the same can still count as different. Tidy them up first.</li>
+<li lang="en"><b>UNIQUE is missing in older Excel</b>: use the SUMPRODUCT formula.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I find only the values that repeat?</h3>
+<p lang="en">Use COUNTIF to get the count for each cell and look for 2 or more.</p>
+<h3 lang="en">Does it tell upper and lower case apart?</h3>
+<p lang="en">No. They are counted as the same value.</p>
+<h2>สรุป</h2>
+<p lang="en">To count distinct values, use UNIQUE in newer apps and the SUMPRODUCT formula in older ones.</p>
 <a class="cta" href="/th/countif-formula-builder.html">ใช้ “สร้างสูตร COUNTIF” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/sumif-formula-builder.html">สร้างสูตร SUMIF หรือ COUNTIF</a>: สร้างสูตร SUMIF และ COUNTIF</li><li><a href="/th/unique-formula-builder.html">สร้างสูตร UNIQUE</a>: สร้างสูตรจัดการค่าที่ซ้ำ</li><li><a href="/th/cond-format-formula-builder.html">สร้างสูตรการจัดรูปแบบตามเงื่อนไข</a>: สร้างสูตรการจัดรูปแบบตามเงื่อนไข</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

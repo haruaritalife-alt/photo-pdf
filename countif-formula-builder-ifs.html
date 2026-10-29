@@ -200,14 +200,38 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>2つの条件で数える</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>COUNTIFSを選ぶ</li><li>2つの範囲と条件を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/countif-formula-builder.html">条件に合う数の式の作成</a> では、2つの条件を両方満たすセルの数を数える式を作れます。</p>
+<p>複数の条件をすべて満たす行だけを数えたいとき、COUNTIF では足りません。そこで使うのが COUNTIFS です。<a href="/countif-formula-builder.html">条件に合う数を数える式を作る</a> では、2つの範囲と2つの条件を入れるだけで COUNTIFS の式が作れます。</p>
+<h2>COUNTIFSとは</h2>
+<p>書き方は <code>=COUNTIFS(範囲1,条件1,範囲2,条件2)</code> です。「AかつB」を満たすセルだけが数えられます。たとえば、A列が「東京」で、同じ行のC列が100以上の件数は <code>=COUNTIFS(A2:A100,"東京",C2:C100,"&gt;=100")</code> です。</p>
 <h2>手順</h2>
 <ol>
-<li>COUNTIFSを選ぶ</li>
-<li>2つの範囲と条件を入れる</li>
-<li>コピーする</li>
+<li>COUNTIFSを選びます。</li>
+<li>1つ目の範囲と条件を入れます（例：A2:A100、東京）。</li>
+<li>2つ目の範囲と条件を入れます（例：C2:C100、&gt;=100）。</li>
+<li>式をコピーして、結果を出したいセルに貼り付けます。</li>
 </ol>
-<div class="note">2つの範囲は、同じ大きさにそろえます。</div>
+<div class="note">2つの範囲は、行数を同じにそろえます。ずれていると #VALUE! が出ます。</div>
+<h2>具体例</h2>
+<ul>
+<li>売上表で、担当者が「佐藤」かつ金額が10,000円以上の件数</li>
+<li>名簿で、住所が「大阪」かつ年齢が20以上の人数</li>
+<li>在庫表で、分類が「文房具」かつ在庫が0の商品数</li>
+</ul>
+<h2>期間で絞りたいとき</h2>
+<p>日付の範囲を数えるには、同じ列を2回使います。<code>=COUNTIFS(B2:B100,"&gt;="&amp;D1,B2:B100,"&lt;="&amp;D2)</code> とすれば、D1からD2の間の日付の件数がわかります。</p>
+<h2>よくある間違い</h2>
+<ul>
+<li><b>ORにならない</b>：COUNTIFS は「かつ」の条件です。「AまたはB」を数えたいときは、COUNTIF を2つ足します。</li>
+<li><b>範囲の大きさが違う</b>：片方がA2:A100、もう片方がC2:C50のようだと、エラーになります。</li>
+<li><b>条件の引用符を忘れる</b>：文字や比較は <code>"..."</code> で囲みます。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>条件はいくつまで使えますか？</h3>
+<p>Excelでは最大127組まで指定できます。このツールでは2組の式を作ります。</p>
+<h3>一つのセルに2つの条件を書いてもいいですか？</h3>
+<p>書けません。条件ごとに範囲と条件のペアを分けてください。</p>
+<h2>まとめ</h2>
+<p>「かつ」で絞るなら COUNTIFS です。範囲の大きさをそろえることだけ、忘れないでください。</p>
 <a class="cta" href="/countif-formula-builder.html">条件に合う数を数える式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/unique-formula-builder.html">UNIQUEの式を作る</a>：重複を扱う式を作ります。</li><li><a href="/cond-format-formula-builder.html">条件付き書式の式を作る</a>：条件付き書式の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +243,38 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Counting with Two Conditions</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose COUNTIFS</li><li>Enter the two ranges and conditions</li><li>Copy it</li></ul></div>
-<p>In <a href="/countif-formula-builder.html">COUNTIF Builder</a> you can build a formula that counts the cells that meet both conditions.</p>
+<p>When you want to count only the rows that meet every one of several conditions, COUNTIF is not enough. That is the job of COUNTIFS. With <a href="/countif-formula-builder.html">Build a COUNTIF Formula</a> you enter two ranges and two conditions and get a COUNTIFS formula.</p>
+<h2>What COUNTIFS is</h2>
+<p>The shape is <code>=COUNTIFS(range1,condition1,range2,condition2)</code>. Only cells that meet both conditions are counted. For example, to count rows where column A is "Tokyo" and column C in the same row is 100 or more, write <code>=COUNTIFS(A2:A100,"Tokyo",C2:C100,"&gt;=100")</code>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose COUNTIFS</li>
-<li>Enter the two ranges and conditions</li>
-<li>Copy it</li>
+<li>Choose COUNTIFS.</li>
+<li>Enter the first range and condition (for example A2:A100 and Tokyo).</li>
+<li>Enter the second range and condition (for example C2:C100 and &gt;=100).</li>
+<li>Copy the formula and paste it into the cell where you want the result.</li>
 </ol>
-<div class="note">Make the two ranges the same size.</div>
+<div class="note">Make the two ranges the same number of rows. If they differ, you get #VALUE!.</div>
+<h2>Examples</h2>
+<ul>
+<li>In a sales sheet, the number of rows where the person is "Sato" and the amount is 10,000 or more</li>
+<li>In a roster, the number of people whose address is "Osaka" and whose age is 20 or over</li>
+<li>In a stock sheet, the number of items in the category "Stationery" with zero stock</li>
+</ul>
+<h2>Counting within a date range</h2>
+<p>To count dates between two limits, use the same column twice: <code>=COUNTIFS(B2:B100,"&gt;="&amp;D1,B2:B100,"&lt;="&amp;D2)</code> counts the dates from D1 to D2.</p>
+<h2>Common mistakes</h2>
+<ul>
+<li><b>It is not OR</b>: COUNTIFS means "and". To count "A or B", add two COUNTIF formulas.</li>
+<li><b>Ranges of different sizes</b>: if one is A2:A100 and the other is C2:C50, you get an error.</li>
+<li><b>Missing quotation marks</b>: text and comparisons go inside <code>"..."</code>.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How many conditions can I use?</h3>
+<p>Excel allows up to 127 pairs. This tool builds a formula with two pairs.</p>
+<h3>Can I put two conditions in one cell?</h3>
+<p>No. Give each condition its own range-and-condition pair.</p>
+<h2>Summary</h2>
+<p>Use COUNTIFS to narrow down with "and". Just remember to keep the ranges the same size.</p>
 <a class="cta" href="/countif-formula-builder.html">Use "Build a COUNTIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/unique-formula-builder.html">Build a UNIQUE Formula</a>: Build duplicate-handling formulas.</li><li><a href="/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a>: Build conditional formatting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

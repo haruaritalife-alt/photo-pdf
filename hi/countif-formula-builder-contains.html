@@ -201,14 +201,38 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>टेक्स्ट वाले सेल गिनना</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>CONTAINS चुनें</li><li>ढूँढने वाला टेक्स्ट दर्ज करें</li><li>कॉपी करें</li></ul></div>
-<p><a href="/hi/countif-formula-builder.html">COUNTIF सूत्र बनाने वाला टूल</a> में आप ऐसा सूत्र बना सकते हैं जो उस टेक्स्ट वाले सेल गिनता है।</p>
+<p lang="en">Sometimes you want to count cells that match only in part: addresses containing "Tokyo", or file names with "invoice" in them. With <a href="/hi/countif-formula-builder.html">Build a COUNTIF Formula</a> you can build COUNTIF formulas that use wildcards.</p>
+<h2 lang="en">How wildcards work</h2>
+<p lang="en">In a COUNTIF condition, "*" stands for any run of zero or more characters, and "?" stands for exactly one character.</p>
+<ul>
+<li lang="en"><code>"*Tokyo*"</code>: contains "Tokyo" anywhere</li>
+<li lang="en"><code>"Tokyo*"</code>: starts with "Tokyo"</li>
+<li lang="en"><code>"*Tokyo"</code>: ends with "Tokyo"</li>
+<li lang="en"><code>"Ta?"</code>: "Ta" followed by exactly one character</li>
+</ul>
 <h2>चरण</h2>
 <ol>
-<li>CONTAINS चुनें</li>
-<li>ढूँढने वाला टेक्स्ट दर्ज करें</li>
-<li>कॉपी करें</li>
+<li lang="en">Enter the range (for example A2:A100).</li>
+<li lang="en">Enter the text to look for (for example Tokyo).</li>
+<li lang="en">Choose contains, starts with or ends with.</li>
+<li lang="en">Copy the formula and paste it.</li>
 </ol>
-<div class="note">आगे या पीछे कुछ भी हो, सेल गिना जाता है।</div>
+<div class="note" lang="en">If the text is written in another cell, join it with "&amp;", as in <code>"*"&amp;E2&amp;"*"</code>.</div>
+<h2 lang="en">Examples</h2>
+<p lang="en">To count the people in Tokyo in an address column, use <code>=COUNTIF(A2:A500,"Tokyo*")</code>. To count product names containing "limited", use <code>=COUNTIF(B2:B300,"*limited*")</code>.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looking for "*" or "?" itself</b>: put "~" in front, as in <code>"~*"</code>.</li>
+<li lang="en"><b>Numbers may be skipped</b>: wildcards work on text cells. Cells that hold only numbers may not match, so convert them to text if needed.</li>
+<li lang="en"><b>Case is ignored</b>: "Tokyo" and "tokyo" are counted together.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I count cells that contain either of two words?</h3>
+<p lang="en">Add two COUNTIF formulas. If a cell can contain both, subtract the overlap.</p>
+<h3 lang="en">Can I use regular expressions?</h3>
+<p lang="en">Not in COUNTIF. Use another method for complex matching.</p>
+<h2>सारांश</h2>
+<p lang="en">For a partial match, put "*" on both sides of the text. When the text is in another cell, join it with "&amp;".</p>
 <a class="cta" href="/hi/countif-formula-builder.html">“COUNTIF सूत्र बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/sumif-formula-builder.html">SUMIF या COUNTIF फ़ॉर्मूला बनाएँ</a>: SUMIF और COUNTIF फ़ॉर्मूले बनाएँ।</li><li><a href="/hi/unique-formula-builder.html">UNIQUE सूत्र बनाएँ</a>: डुप्लिकेट संभालने वाले सूत्र बनाएँ।</li><li><a href="/hi/cond-format-formula-builder.html">सशर्त फ़ॉर्मेटिंग का सूत्र बनाएँ</a>: सशर्त फ़ॉर्मेटिंग के सूत्र बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

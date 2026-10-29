@@ -200,14 +200,39 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/countif-formula-builder.html">条件に合う数の式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>COUNTIF の式を貼ったのに、結果が0になる、エラーが出る、思った数と違う。そんなときに確認したい点を、よくある順にまとめました。<a href="/countif-formula-builder.html">条件に合う数を数える式を作る</a> で作った式でも、データの状態によっては同じことが起きます。</p>
+<h2>結果が0になるとき</h2>
+<ul>
+<li><b>範囲の書き方</b>：<code>A2:A100</code> のように、コロンでつないでいるか確認します。</li>
+<li><b>条件の引用符</b>：文字や比較は <code>"..."</code> で囲みます。引用符が全角の「”」になっていると動きません。</li>
+<li><b>見えない空白</b>：セルの前後にスペースがあると一致しません。TRIM で整えます。</li>
+<li><b>全角と半角</b>：「ABC」と「ＡＢＣ」は別の文字です。</li>
+</ul>
+<h2>数が足りないとき</h2>
+<ul>
+<li><b>数字が文字として保存されている</b>：セルの左上に緑の印が出ていることがあります。数値に変換すると数えられます。</li>
+<li><b>ワイルドカードの付け忘れ</b>：一部が一致すれば数えたいときは、<code>"*文字*"</code> にします。</li>
+<li><b>範囲が短い</b>：データを追加したのに、範囲が古いまま、ということがよくあります。列全体の <code>A:A</code> にすると、追加分も入ります。</li>
+</ul>
+<h2>エラーが出るとき</h2>
+<ul>
+<li><b>#VALUE!</b>：COUNTIFS で、範囲の大きさが違うときに出ます。</li>
+<li><b>#NAME?</b>：関数名の打ち間違い、またはその環境にない関数です。</li>
+<li><b>#REF!</b>：範囲に使っていたセルや列を消したときに出ます。</li>
+</ul>
+<h2>確かめるコツ</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>数えたい値を1つだけ選び、フィルターで目で数えた数と比べます。</li>
+<li>条件を単純にして、少しずつ戻していきます。</li>
+<li>範囲を小さくして、結果が変わるか見ます。</li>
 </ol>
-<div class="note">式が出ないときは、範囲がA2:A100のように書かれているか、条件が入っているか確かめます。</div>
+<h2>よくある質問</h2>
+<h3>式をコピーしたら範囲がずれてしまった</h3>
+<p>「$」を付けて固定します。例：<code>$A$2:$A$100</code></p>
+<h3>別のシートのデータを数えられますか？</h3>
+<p>はい。<code>Sheet2!A2:A100</code> のようにシート名を前に付けます。</p>
+<h2>まとめ</h2>
+<p>多くの原因は、見えない空白、全角半角、数字の文字化の3つです。まずそこから疑ってみてください。</p>
 <a class="cta" href="/countif-formula-builder.html">条件に合う数を数える式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/unique-formula-builder.html">UNIQUEの式を作る</a>：重複を扱う式を作ります。</li><li><a href="/cond-format-formula-builder.html">条件付き書式の式を作る</a>：条件付き書式の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +244,39 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/countif-formula-builder.html">COUNTIF Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted a COUNTIF formula but the result is 0, an error appears, or the number is not what you expected. Here are the points to check, most common first. Formulas built with <a href="/countif-formula-builder.html">Build a COUNTIF Formula</a> can hit the same problems, depending on the state of your data.</p>
+<h2>When the result is 0</h2>
+<ul>
+<li><b>How the range is written</b>: check that it is joined with a colon, as in <code>A2:A100</code>.</li>
+<li><b>Quotation marks around the condition</b>: text and comparisons go inside <code>"..."</code>. Curly or full-width quotes will not work.</li>
+<li><b>Invisible spaces</b>: spaces before or after the text stop it from matching. Clean it with TRIM.</li>
+<li><b>Full-width and half-width</b>: "ABC" and "ＡＢＣ" are different characters.</li>
+</ul>
+<h2>When the count is too low</h2>
+<ul>
+<li><b>Numbers stored as text</b>: a small green mark may appear in the corner of the cell. Convert them to numbers and they will be counted.</li>
+<li><b>A missing wildcard</b>: to count partial matches, use <code>"*text*"</code>.</li>
+<li><b>The range is too short</b>: it is common to add data and leave the range as it was. Using the whole column, <code>A:A</code>, covers new rows.</li>
+</ul>
+<h2>When an error appears</h2>
+<ul>
+<li><b>#VALUE!</b>: shows up in COUNTIFS when the ranges are different sizes.</li>
+<li><b>#NAME?</b>: a mistyped function name, or a function the app does not have.</li>
+<li><b>#REF!</b>: appears when you delete cells or a column that the range used.</li>
+</ul>
+<h2>Ways to check</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Pick one value, filter for it, and compare the count with what you can see.</li>
+<li>Simplify the condition, then add parts back one at a time.</li>
+<li>Shrink the range and see whether the result changes.</li>
 </ol>
-<div class="note">If no formula appears, check that the range is written like A2:A100 and that a condition is entered.</div>
+<h2>Frequently asked questions</h2>
+<h3>The range moved when I copied the formula</h3>
+<p>Fix it with "$", as in <code>$A$2:$A$100</code>.</p>
+<h3>Can I count data on another sheet?</h3>
+<p>Yes. Put the sheet name in front, as in <code>Sheet2!A2:A100</code>.</p>
+<h2>Summary</h2>
+<p>Most causes are invisible spaces, full-width versus half-width characters, and numbers stored as text. Suspect those first.</p>
 <a class="cta" href="/countif-formula-builder.html">Use "Build a COUNTIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/unique-formula-builder.html">Build a UNIQUE Formula</a>: Build duplicate-handling formulas.</li><li><a href="/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a>: Build conditional formatting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

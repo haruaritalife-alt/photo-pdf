@@ -201,14 +201,39 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/countif-formula-builder.html">COUNTIF Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted a COUNTIF formula but the result is 0, an error appears, or the number is not what you expected. Here are the points to check, most common first. Formulas built with <a href="/en/countif-formula-builder.html">Build a COUNTIF Formula</a> can hit the same problems, depending on the state of your data.</p>
+<h2>When the result is 0</h2>
+<ul>
+<li><b>How the range is written</b>: check that it is joined with a colon, as in <code>A2:A100</code>.</li>
+<li><b>Quotation marks around the condition</b>: text and comparisons go inside <code>"..."</code>. Curly or full-width quotes will not work.</li>
+<li><b>Invisible spaces</b>: spaces before or after the text stop it from matching. Clean it with TRIM.</li>
+<li><b>Full-width and half-width</b>: "ABC" and "ＡＢＣ" are different characters.</li>
+</ul>
+<h2>When the count is too low</h2>
+<ul>
+<li><b>Numbers stored as text</b>: a small green mark may appear in the corner of the cell. Convert them to numbers and they will be counted.</li>
+<li><b>A missing wildcard</b>: to count partial matches, use <code>"*text*"</code>.</li>
+<li><b>The range is too short</b>: it is common to add data and leave the range as it was. Using the whole column, <code>A:A</code>, covers new rows.</li>
+</ul>
+<h2>When an error appears</h2>
+<ul>
+<li><b>#VALUE!</b>: shows up in COUNTIFS when the ranges are different sizes.</li>
+<li><b>#NAME?</b>: a mistyped function name, or a function the app does not have.</li>
+<li><b>#REF!</b>: appears when you delete cells or a column that the range used.</li>
+</ul>
+<h2>Ways to check</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Pick one value, filter for it, and compare the count with what you can see.</li>
+<li>Simplify the condition, then add parts back one at a time.</li>
+<li>Shrink the range and see whether the result changes.</li>
 </ol>
-<div class="note">If no formula appears, check that the range is written like A2:A100 and that a condition is entered.</div>
+<h2>Frequently asked questions</h2>
+<h3>The range moved when I copied the formula</h3>
+<p>Fix it with "$", as in <code>$A$2:$A$100</code>.</p>
+<h3>Can I count data on another sheet?</h3>
+<p>Yes. Put the sheet name in front, as in <code>Sheet2!A2:A100</code>.</p>
+<h2>Summary</h2>
+<p>Most causes are invisible spaces, full-width versus half-width characters, and numbers stored as text. Suspect those first.</p>
 <a class="cta" href="/en/countif-formula-builder.html">Use "Build a COUNTIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/unique-formula-builder.html">Build a UNIQUE Formula</a>: Build duplicate-handling formulas.</li><li><a href="/en/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a>: Build conditional formatting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

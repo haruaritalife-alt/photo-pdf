@@ -201,14 +201,39 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ต้องทำอย่างไรเมื่อใช้งานไม่ได้</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ตรวจสอบไฟล์</li><li>ตรวจสอบขนาด</li><li>ลองใช้อุปกรณ์อื่น</li></ul></div>
-<p>หาก <a href="/th/countif-formula-builder.html">ตัวสร้างสูตร COUNTIF</a> ไม่ทำงาน ให้ตรวจสอบสิ่งต่อไปนี้</p>
-<h2>ขั้นตอน</h2>
+<p lang="en">You pasted a COUNTIF formula but the result is 0, an error appears, or the number is not what you expected. Here are the points to check, most common first. Formulas built with <a href="/th/countif-formula-builder.html">Build a COUNTIF Formula</a> can hit the same problems, depending on the state of your data.</p>
+<h2 lang="en">When the result is 0</h2>
+<ul>
+<li lang="en"><b>How the range is written</b>: check that it is joined with a colon, as in <code>A2:A100</code>.</li>
+<li lang="en"><b>Quotation marks around the condition</b>: text and comparisons go inside <code>"..."</code>. Curly or full-width quotes will not work.</li>
+<li lang="en"><b>Invisible spaces</b>: spaces before or after the text stop it from matching. Clean it with TRIM.</li>
+<li lang="en"><b>Full-width and half-width</b>: "ABC" and "ＡＢＣ" are different characters.</li>
+</ul>
+<h2 lang="en">When the count is too low</h2>
+<ul>
+<li lang="en"><b>Numbers stored as text</b>: a small green mark may appear in the corner of the cell. Convert them to numbers and they will be counted.</li>
+<li lang="en"><b>A missing wildcard</b>: to count partial matches, use <code>"*text*"</code>.</li>
+<li lang="en"><b>The range is too short</b>: it is common to add data and leave the range as it was. Using the whole column, <code>A:A</code>, covers new rows.</li>
+</ul>
+<h2 lang="en">When an error appears</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: shows up in COUNTIFS when the ranges are different sizes.</li>
+<li lang="en"><b>#NAME?</b>: a mistyped function name, or a function the app does not have.</li>
+<li lang="en"><b>#REF!</b>: appears when you delete cells or a column that the range used.</li>
+</ul>
+<h2 lang="en">Ways to check</h2>
 <ol>
-<li>ตรวจสอบไฟล์</li>
-<li>ตรวจสอบขนาด</li>
-<li>ลองใช้อุปกรณ์อื่น</li>
+<li lang="en">Pick one value, filter for it, and compare the count with what you can see.</li>
+<li lang="en">Simplify the condition, then add parts back one at a time.</li>
+<li lang="en">Shrink the range and see whether the result changes.</li>
 </ol>
-<div class="note">หากไม่มีสูตรปรากฏ ให้ตรวจสอบว่าช่วงเขียนเป็น A2:A100 และป้อนเงื่อนไขแล้ว</div>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">The range moved when I copied the formula</h3>
+<p lang="en">Fix it with "$", as in <code>$A$2:$A$100</code>.</p>
+<h3 lang="en">Can I count data on another sheet?</h3>
+<p lang="en">Yes. Put the sheet name in front, as in <code>Sheet2!A2:A100</code>.</p>
+<h2>สรุป</h2>
+<p lang="en">Most causes are invisible spaces, full-width versus half-width characters, and numbers stored as text. Suspect those first.</p>
 <a class="cta" href="/th/countif-formula-builder.html">ใช้ “สร้างสูตร COUNTIF” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/sumif-formula-builder.html">สร้างสูตร SUMIF หรือ COUNTIF</a>: สร้างสูตร SUMIF และ COUNTIF</li><li><a href="/th/unique-formula-builder.html">สร้างสูตร UNIQUE</a>: สร้างสูตรจัดการค่าที่ซ้ำ</li><li><a href="/th/cond-format-formula-builder.html">สร้างสูตรการจัดรูปแบบตามเงื่อนไข</a>: สร้างสูตรการจัดรูปแบบตามเงื่อนไข</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>
