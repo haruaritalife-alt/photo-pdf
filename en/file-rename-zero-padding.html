@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Zero-Padding Numbers (001, 002)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose the digits</li><li>Choose the first number</li><li>Check the names</li></ul></div>
-<p>In <a href="/en/file-rename.html">Rename Many Files at Once</a>, setting digits to 3 makes the first number "001".</p>
+<p>Files you numbered line up in an odd order such as "1, 10, 11, 2, 3...". The cause is that the digit counts aren't aligned. Zero-padding like "001, 002, 003..." with "Sequence digits" in <a href="/en/file-rename.html">Rename Many Files at Once (Numbers, Dates)</a> fixes it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose digits to fit the number of files</li>
-<li>Set "First number"</li>
-<li>Check the preview shows names like 001</li>
+<li>Choose files with "Choose files".</li>
+<li>Put {n} in "New name rule" (e.g. document_{n}).</li>
+<li>Set "Sequence digits" to match the number of files.</li>
+<li>Check "Name after change (first)".</li>
+<li>Press "Rename and save as ZIP".</li>
 </ol>
-<div class="note">Padded numbers sort in the right order more reliably on a computer.</div>
+<div class="note">Choose digits that fit the largest number. Up to 99 files is 2 digits; up to 999 is 3.</div>
+<h2>Guide to digits</h2>
+<ul>
+<li>Up to 9 files: 1 digit</li>
+<li>Up to 99 files: 2 digits (01–99)</li>
+<li>Up to 999 files: 3 digits (001–999)</li>
+<li>Up to 9999 files: 4 digits</li>
+</ul>
+<p>If unsure, use a slightly larger number of digits to be safe if files increase later.</p>
+<h2>Why the order goes wrong</h2>
+<p>Computers decide order by treating names as strings of characters. "10" starts with "1", so it comes after "1" and before "2".</p>
+<ul>
+<li>Without zero-padding: 1, 10, 11, 2, 3 ...</li>
+<li>With zero-padding: 01, 02, 03, 10, 11 ...</li>
+</ul>
+<h2>Benefits of zero-padding</h2>
+<ul>
+<li>Sorts correctly in any software</li>
+<li>File name lengths are even and easy to read</li>
+<li>The order doesn't break when importing into systems</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Numbering 10 or more files</li>
+<li>Organising photos and scanned data</li>
+<li>Processing files in order with programs</li>
+</ul>
+<h2>Example</h2>
+<p>Numbered 50 scanned pages. With 1 digit, "10" lined up before "2". Redoing it with 2 digits, they sorted 01–50.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Too few digits and numbers are cut</b>: use digits that fit the largest number.</li>
+<li><b>The count increased later</b>: allow spare digits from the start.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I change the zero-padding digits later?</h3>
+<p>Set the rule again and remake it.</p>
+<h2>Summary</h2>
+<p>For 10 or more, zero-pad. Choose digits that fit the largest number.</p>
 <a class="cta" href="/en/file-rename.html">Use "Rename Many Files at Once (Numbers, Dates)" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/zip-maker.html">Make a ZIP File</a>: Pack several files into one ZIP.</li><li><a href="/en/zip-extract.html">Open a ZIP File (Unzip)</a>: See what is inside a ZIP and extract the files you need.</li><li><a href="/en/image-resize.html">Resize Images by Pixel Size</a>: Resize images by width, height or percentage.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

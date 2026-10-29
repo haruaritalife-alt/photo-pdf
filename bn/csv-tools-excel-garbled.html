@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Excel-এ CSV বিকৃত দেখালে কী করবেন</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>"BOM-সহ UTF-8" টিক করুন</li><li>সংরক্ষণ করুন</li><li>Excel-এ খুলুন</li></ul></div>
-<p><a href="/bn/csv-tools.html">CSV ফাইল মার্জ ও স্প্লিট</a> সংরক্ষণের সময় BOM যোগ করতে পারে, যাতে Excel অক্ষর বিকৃত না করে।</p>
-<h2>ধাপ</h2>
+<p lang="en">You opened a CSV in Excel and Japanese was garbled. This is a problem that easily arises when opening in Excel after merging, splitting or extracting columns with <a href="/bn/csv-tools.html">Merge, Split and Pick Columns from CSV</a>. Settings at save time can prevent it.</p>
+<h2>কী করবেন</h2>
 <ol>
-<li>"BOM-সহ UTF-8 হিসেবে সংরক্ষণ" টিক করুন</li>
-<li>চালান ও সংরক্ষণ করুন</li>
-<li>সংরক্ষিত CSV Excel-এ খুলুন</li>
+<li lang="en">After making the "What to do" settings, tick "Save as UTF-8 (with BOM) (easy to open in Excel)".</li>
+<li lang="en">Press "Run and save".</li>
+<li lang="en">Open the saved CSV in Excel.</li>
 </ol>
-<div class="note">আসল ফাইল আগে থেকেই বিকৃত হলে <a href="/bn/charset-convert.html">টেক্সট এনকোডিং রূপান্তর</a> ব্যবহার করুন।</div>
+<div class="note" lang="en">A BOM is a marker saying "this file is UTF-8". Excel looks at it to read correctly.</div>
+<h2>কারণ</h2>
+<ul>
+<li lang="en">The CSV is UTF-8 but Excel opens it assuming Shift_JIS</li>
+<li lang="en">UTF-8 without a BOM easily garbles in older Excel</li>
+</ul>
+<h2 lang="en">Choosing</h2>
+<ul>
+<li lang="en"><b>Opening in Excel</b>: UTF-8 with BOM</li>
+<li lang="en"><b>Importing into a system</b>: match the system's specification (without BOM, Shift_JIS, etc.)</li>
+</ul>
+<h2 lang="en">Check with the beginning of content</h2>
+<p lang="en">Right after loading, this tool shows "Beginning of content". If the text is garbled here, it's a problem with the original CSV's encoding.</p>
+<h2 lang="en">When the original CSV is garbled</h2>
+<p lang="en">If the original CSV already looks garbled, fix it first with the encoding conversion tool.</p>
+<h2 lang="en">Cautions when opening CSVs in Excel</h2>
+<ul>
+<li lang="en">Numbers with leading zeros (phone numbers etc.) may lose the zeros</li>
+<li lang="en">Long numbers may become exponent notation (1.23E+10)</li>
+<li lang="en">Date formats may change on their own</li>
+</ul>
+<p lang="en">If you open and re-save in Excel, these get saved as they are. It's safer to open only and not overwrite-save.</p>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Wanting to check a merged CSV in Excel</li>
+<li lang="en">Showing a colleague split CSVs in Excel</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">After merging 10 CSVs, opening in Excel garbled them. Re-saving with BOM made them open correctly in Excel.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Saved with BOM but the system can't read it</b>: for systems, go without BOM.</li>
+<li lang="en"><b>Zeros vanished</b>: Excel's behaviour. When importing, set the column as text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does adding a BOM change the data?</h3>
+<p lang="en">The text content doesn't change. Only a marker is added at the start.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">To open in Excel, save with BOM. For systems, match the specification.</p>
 <a class="cta" href="/bn/csv-tools.html">“CSV মার্জ, স্প্লিট ও কলাম বাছাই করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/csv-json.html">CSV ও JSON রূপান্তর</a>: CSV ও JSON-এর মধ্যে মুহূর্তে রূপান্তর করুন।</li><li><a href="/bn/csv-to-xlsx.html">CSV থেকে এক্সেল (.xlsx) রূপান্তর</a>: CSV-কে এক্সেল (.xlsx) ফাইলে রূপান্তর করুন।</li><li><a href="/bn/charset-convert.html">টেক্সট এনকোডিং রূপান্তর (বিকৃত অক্ষর ঠিক করুন)</a>: অক্ষর বিকৃত হওয়া ঠিক করতে টেক্সট ফাইল Shift_JIS, UTF-8, EUC-JP ইত্যাদির মধ্যে রূপান্তর করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

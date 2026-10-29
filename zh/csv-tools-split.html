@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>按行数拆分大型 CSV</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>选择 CSV</li><li>选择“拆分”和行数</li><li>保存 ZIP</li></ul></div>
-<p>在<a href="/zh/csv-tools.html">合并和拆分 CSV 文件</a>中，表头会被添加到每个文件中。</p>
+<p lang="en">A CSV with too many rows to open in Excel. A system that caps rows per file. In such cases, "Split" in <a href="/zh/csv-tools.html">Merge, Split and Pick Columns from CSV</a> divides it into pieces by row count.</p>
 <h2>步骤</h2>
 <ol>
-<li>选择要拆分的 CSV</li>
-<li>选择“按行数拆分”并输入每个文件的行数</li>
-<li>点击“执行并保存”并打开 ZIP</li>
+<li lang="en">With "Choose CSV files", choose the large CSV.</li>
+<li lang="en">Under "What to do", choose "Split (by number of rows)".</li>
+<li lang="en">Tick "First row is a header" (if there is a header).</li>
+<li lang="en">Enter "Rows per file".</li>
+<li lang="en">Press "Run and save" and save with "Save ZIP".</li>
 </ol>
-<div class="note">一个 Excel 工作表最多约有 1,048,576 行。</div>
+<div class="note" lang="en">If there is a header, each split CSV gets the header at its top.</div>
+<h2 lang="en">Deciding the row count</h2>
+<ul>
+<li lang="en">Excel's limit is about 1.04 million rows</li>
+<li lang="en">If the system's import limit is 10,000 rows, use 10,000</li>
+<li lang="en">Leave some margin by going slightly below the limit</li>
+</ul>
+<h2 lang="en">Example of splitting</h2>
+<p lang="en">A 100,000-row CSV at 10,000 rows per file divides into 10 CSVs. They are saved bundled in a ZIP.</p>
+<h2 lang="en">Using the pieces</h2>
+<ul>
+<li lang="en">Open the ZIP and use them in order</li>
+<li lang="en">File order follows the original CSV's order</li>
+<li lang="en">Import into the system one by one</li>
+</ul>
+<h2>适合</h2>
+<ul>
+<li lang="en">Registering data in systems with an import limit</li>
+<li lang="en">Dividing a large CSV among several people</li>
+<li lang="en">Making a CSV too heavy to open into a manageable size</li>
+</ul>
+<h2>注意事项</h2>
+<ul>
+<li lang="en">Rows per file excludes the header row</li>
+<li lang="en">The last CSV may have fewer rows</li>
+<li lang="en">The original CSV is unchanged</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Split a 50,000-row customer CSV to the system's limit of 10,000 rows. Five CSVs resulted and could be imported one by one.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Over 30MB</b>: "The file is too large (up to 30MB)." appears.</li>
+<li lang="en"><b>Missing headers</b>: check "First row is a header".</li>
+<li lang="en"><b>Garbled text</b>: save with BOM.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I merge the split CSVs again?</h3>
+<p lang="en">Yes. "Merge" restores them.</p>
+<h2>小结</h2>
+<p lang="en">Divide by rows and save as ZIP. A large CSV becomes easier to handle.</p>
 <a class="cta" href="/zh/csv-tools.html">使用“合并、拆分 CSV 并选取列”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/csv-json.html">CSV 与 JSON 互相转换</a>：立即在 CSV 和 JSON 之间互相转换。</li><li><a href="/zh/csv-to-xlsx.html">把 CSV 转换成 Excel（.xlsx）</a>：把 CSV 转换成 Excel（.xlsx）文件。</li><li><a href="/zh/charset-convert.html">转换文本编码（修复乱码）</a>: 在 Shift_JIS、UTF-8、EUC-JP 等之间转换文本文件，修复乱码。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

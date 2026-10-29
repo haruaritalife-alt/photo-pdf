@@ -200,14 +200,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>見出し（1行目）の扱い方</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>見出しがあるか確認する</li><li>チェックを合わせる</li><li>結果を確認する</li></ul></div>
-<p><a href="/csv-tools.html">CSVを結合・分割する</a> では、見出しがある場合、結合しても見出しが重なりません。</p>
+<p>CSVの1行目が、「見出し」なのか、ふつうのデータなのかで、結合・分割・列抜き出しの結果は変わります。<a href="/csv-tools.html">CSVを結合・分割・列抜き出し</a> の「1行目は見出し」のチェックで、扱い方を決められます。</p>
 <h2>手順</h2>
 <ol>
-<li>CSVの1行目が見出しか確認する</li>
-<li>「1行目は見出し」のチェックを合わせる</li>
-<li>保存したCSVを開いて、確認する</li>
+<li>「CSVファイルを選びます」で、CSVを選ぶ。</li>
+<li>「先頭の内容」で、1行目が見出しかどうかを確かめる。</li>
+<li>見出しなら「1行目は見出し」にチェックを入れる。そうでなければ、外す。</li>
+<li>「実行して保存」を押す。</li>
 </ol>
-<div class="note">見出しがないCSVは、チェックを外してください。</div>
+<div class="note">結合のとき、見出しがあるCSVを、チェックなしで結合すると、見出し行が、途中に何回も入ります。</div>
+<h2>機能ごとの違い</h2>
+<ul>
+<li><b>結合する</b>：チェックありなら、見出しは先頭に1回だけ入る。</li>
+<li><b>分割する</b>：チェックありなら、分割した各CSVの先頭に、見出しがつく。</li>
+<li><b>列を取り出す</b>：チェックありなら、見出し行も一緒に、取り出した列が残る。</li>
+</ul>
+<h2>見出しかどうかの見分け方</h2>
+<ul>
+<li>1行目に「氏名」「住所」「金額」など、列の名前が並んでいる → 見出し</li>
+<li>1行目から、データ（名前、数字）が始まっている → 見出しなし</li>
+</ul>
+<h2>見出しがないCSVのとき</h2>
+<p>システムから出力されたCSVには、見出しがない場合があります。その場合は、チェックを外して処理します。</p>
+<h2>見出しが複数行あるとき</h2>
+<p>見出しが2行以上ある場合は、1行目だけが見出しとして扱われます。2行目以降は、データとして扱われます。先に、Excelなどで、見出しを1行にそろえます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>見出しありのCSVを、きれいに結合したい</li>
+<li>分割したCSVに、すべて見出しをつけたい</li>
+<li>見出しなしのデータを、そのまま扱いたい</li>
+</ul>
+<h2>例</h2>
+<p>10個のCSVを結合したら、見出し行が、途中に10回入った。「1行目は見出し」にチェックを入れてやり直すと、見出しは先頭の1回だけになった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>見出しがデータとして扱われる</b>：チェックを入れていない。</li>
+<li><b>データの1行目が消えた</b>：見出しがないCSVに、チェックを入れた。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>チェックを間違えたら？</h3>
+<p>もう一度、設定を変えて、実行し直します。元のCSVは変わりません。</p>
+<h2>まとめ</h2>
+<p>見出しの有無で、チェックを決める。迷ったら、「先頭の内容」を見ましょう。</p>
 <a class="cta" href="/csv-tools.html">CSVを結合・分割・列抜き出しを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/csv-json.html">CSVとJSONを相互変換する</a>：CSVとJSONを、すぐに相互変換します。</li><li><a href="/csv-to-xlsx.html">CSVをExcelファイルにする</a>：CSVを、Excelで開ける .xlsx ファイルにします。</li><li><a href="/charset-convert.html">文字コードを変換する（文字化けを直す）</a>：Shift_JIS・UTF-8・EUC-JPなどの文字コードを変換し、文字化けを直します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +253,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How the Header Row Is Handled</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check whether there is a header</li><li>Set the checkbox to match</li><li>Check the result</li></ul></div>
-<p>In <a href="/csv-tools.html">Merge and Split CSV Files</a>, with a header, merging does not repeat it.</p>
+<p>Whether a CSV's first row is a "header" or ordinary data changes the results of merging, splitting and extracting columns. You can decide the handling with the "First row is a header" tick in <a href="/csv-tools.html">Merge, Split and Pick Columns from CSV</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Check whether row 1 is a header</li>
-<li>Set the "first row is a header" checkbox</li>
-<li>Open the saved CSV and check</li>
+<li>Choose the CSV with "Choose CSV files".</li>
+<li>Check under "Beginning of content" whether the first row is a header.</li>
+<li>If it is a header, tick "First row is a header". Otherwise untick.</li>
+<li>Press "Run and save".</li>
 </ol>
-<div class="note">For a CSV without a header, untick the box.</div>
+<div class="note">When merging CSVs with headers without the tick, header rows appear several times in the middle.</div>
+<h2>Differences by function</h2>
+<ul>
+<li><b>Merge</b>: with the tick, the header goes in once at the top.</li>
+<li><b>Split</b>: with the tick, each split CSV gets the header at its top.</li>
+<li><b>Extract columns</b>: with the tick, the header row stays along with the extracted columns.</li>
+</ul>
+<h2>How to tell whether it's a header</h2>
+<ul>
+<li>The first row lists column names such as "Name", "Address", "Amount" → header</li>
+<li>Data (names, numbers) starts from the first row → no header</li>
+</ul>
+<h2>For CSVs without headers</h2>
+<p>CSVs output from systems may have no header. In that case, untick and process.</p>
+<h2>When there are multiple header rows</h2>
+<p>If there are two or more header rows, only the first row is treated as the header. Rows from the second on are treated as data. First align the header into one row in Excel or similar.</p>
+<h2>Good for</h2>
+<ul>
+<li>Merging CSVs with headers cleanly</li>
+<li>Giving all split CSVs headers</li>
+<li>Handling header-less data as it is</li>
+</ul>
+<h2>Example</h2>
+<p>After merging 10 CSVs, the header row appeared 10 times in the middle. Redoing it with "First row is a header" ticked left the header only once at the top.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The header is treated as data</b>: the tick wasn't set.</li>
+<li><b>The first data row vanished</b>: the tick was set on a CSV without a header.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I got the tick wrong?</h3>
+<p>Change the setting and run again. The original CSV is unchanged.</p>
+<h2>Summary</h2>
+<p>Decide the tick by whether a header exists. If unsure, look at "Beginning of content".</p>
 <a class="cta" href="/csv-tools.html">Use "Merge, Split and Pick Columns from CSV" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li><li><a href="/csv-to-xlsx.html">Convert CSV to Excel (.xlsx)</a>: Convert a CSV to an Excel (.xlsx) file.</li><li><a href="/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a>: Convert text files between Shift_JIS, UTF-8, EUC-JP and more to fix garbled text.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
