@@ -201,12 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ข้อผิดพลาดที่พบบ่อยใน JSON</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เรียนรู้</li><li>แก้ไข</li></ul></div>
+<p lang="en">JSON syntax is strict, and a small mistake makes it unreadable. Here are the common mistakes to check when <a href="/th/json-formatter.html">Format and Validate JSON</a> shows "The JSON is malformed".</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>ครอบคีย์และสตริงด้วยเครื่องหมายคำพูดคู่</li>
-<li>อย่าใส่เครื่องหมายจุลภาคหลังรายการสุดท้าย</li>
-<li>ไม่อนุญาตให้ใส่ความคิดเห็น ตรวจสอบด้วย <a href="/th/json-formatter.html">จัดรูปแบบและตรวจสอบ JSON</a></li>
+<li lang="en">Paste the JSON into "Before".</li>
+<li lang="en">Press "Format".</li>
+<li lang="en">If there is an error, "The JSON is malformed" is shown.</li>
+<li lang="en">Check the common mistakes below in order and fix them.</li>
 </ol>
+<div class="note" lang="en">This tool doesn't show the error location. Shortening and trying narrows down the place.</div>
+<h2>ข้อผิดพลาดที่พบบ่อย</h2>
+<ul>
+<li lang="en"><b>An extra comma after the last item</b>: {"a": 1, "b": 2,} is wrong. Delete the last comma.</li>
+<li lang="en"><b>Using single quotes</b>: JSON uses only double quotes (").</li>
+<li lang="en"><b>No quotes on item names</b>: {name: "Yamada"} is wrong. Write {"name": "Yamada"}.</li>
+<li lang="en"><b>Unclosed brackets</b>: match the numbers of { and }, [ and ].</li>
+<li lang="en"><b>Missing commas</b>: a comma is needed between items.</li>
+<li lang="en"><b>Writing comments</b>: JSON can't have comments.</li>
+<li lang="en"><b>Full-width symbols</b>: full-width brackets, quotes, colons and commas can't be used.</li>
+<li lang="en"><b>Wrong value notation</b>: true, false and null are lowercase. True and NULL are wrong.</li>
+<li lang="en"><b>Number notation</b>: leading zeros (007) and trailing decimal points are wrong.</li>
+<li lang="en"><b>Line breaks in strings</b>: a raw line break can't go inside a string. Write "\n".</li>
+<li lang="en"><b>Quotes in strings</b>: they need escaping as \".</li>
+</ul>
+<h2 lang="en">Example of the correct form</h2>
+<p lang="en">Inside braces, join item names and values with colons and separate items with commas. Enclose item names and strings in double quotes.</p>
+<h2 lang="en">Tips for fixing</h2>
+<ul>
+<li lang="en">Look first at the place you edited last</li>
+<li lang="en">If long, split it in half and narrow down which half has the error</li>
+<li lang="en">Fix a bit at a time until it can be formatted</li>
+</ul>
+<h2 lang="en">Finding full-width symbols</h2>
+<p lang="en">Though they look similar, full-width brackets and quotes differ in width from half-width. Search for full-width symbols in a text editor.</p>
+<h2 lang="en">A useful approach</h2>
+<p lang="en">These are common mistakes in JSON edited by hand or in Notepad. After editing, always check with this tool.</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">After editing a configuration file it couldn't be loaded. Investigation showed the quotes on the item names were full-width. Changed to half-width and solved it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Fixed but still an error</b>: there are other errors. Check repeatedly.</li>
+<li lang="en"><b>Can't tell where the error is</b>: shorten and try.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can a JavaScript object be pasted as it is?</h3>
+<p lang="en">If item names lack quotes, it's an error. Rewrite it in JSON syntax.</p>
+<h2>สรุป</h2>
+<p lang="en">Watch for extra commas, quotes, brackets and full-width characters. After fixing, check again.</p>
 <a class="cta" href="/th/json-formatter.html">ใช้ “จัดรูปแบบและตรวจสอบ JSON” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/csv-json.html">แปลง CSV และ JSON</a>: แปลงระหว่าง CSV และ JSON ได้ทันที</li><li><a href="/th/file-base64.html">แปลงไฟล์และ Base64</a>: แปลงระหว่างไฟล์กับข้อความ Base64</li><li><a href="/th/line-sort-dedupe.html">ลบบรรทัดซ้ำและเรียงลำดับรายการ</a>: ลบบรรทัดซ้ำและเรียงลำดับ</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

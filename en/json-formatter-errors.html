@@ -201,12 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Common JSON Mistakes</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Learn</li><li>Fix</li></ul></div>
+<p>JSON syntax is strict, and a small mistake makes it unreadable. Here are the common mistakes to check when <a href="/en/json-formatter.html">Format and Validate JSON</a> shows "The JSON is malformed".</p>
 <h2>Steps</h2>
 <ol>
-<li>Wrap keys and strings in double quotes.</li>
-<li>Do not put a comma after the last item.</li>
-<li>Comments are not allowed. Check with <a href="/en/json-formatter.html">Format and Validate JSON</a>.</li>
+<li>Paste the JSON into "Before".</li>
+<li>Press "Format".</li>
+<li>If there is an error, "The JSON is malformed" is shown.</li>
+<li>Check the common mistakes below in order and fix them.</li>
 </ol>
+<div class="note">This tool doesn't show the error location. Shortening and trying narrows down the place.</div>
+<h2>Common mistakes</h2>
+<ul>
+<li><b>An extra comma after the last item</b>: {"a": 1, "b": 2,} is wrong. Delete the last comma.</li>
+<li><b>Using single quotes</b>: JSON uses only double quotes (").</li>
+<li><b>No quotes on item names</b>: {name: "Yamada"} is wrong. Write {"name": "Yamada"}.</li>
+<li><b>Unclosed brackets</b>: match the numbers of { and }, [ and ].</li>
+<li><b>Missing commas</b>: a comma is needed between items.</li>
+<li><b>Writing comments</b>: JSON can't have comments.</li>
+<li><b>Full-width symbols</b>: full-width brackets, quotes, colons and commas can't be used.</li>
+<li><b>Wrong value notation</b>: true, false and null are lowercase. True and NULL are wrong.</li>
+<li><b>Number notation</b>: leading zeros (007) and trailing decimal points are wrong.</li>
+<li><b>Line breaks in strings</b>: a raw line break can't go inside a string. Write "\n".</li>
+<li><b>Quotes in strings</b>: they need escaping as \".</li>
+</ul>
+<h2>Example of the correct form</h2>
+<p>Inside braces, join item names and values with colons and separate items with commas. Enclose item names and strings in double quotes.</p>
+<h2>Tips for fixing</h2>
+<ul>
+<li>Look first at the place you edited last</li>
+<li>If long, split it in half and narrow down which half has the error</li>
+<li>Fix a bit at a time until it can be formatted</li>
+</ul>
+<h2>Finding full-width symbols</h2>
+<p>Though they look similar, full-width brackets and quotes differ in width from half-width. Search for full-width symbols in a text editor.</p>
+<h2>A useful approach</h2>
+<p>These are common mistakes in JSON edited by hand or in Notepad. After editing, always check with this tool.</p>
+<h2>Example</h2>
+<p>After editing a configuration file it couldn't be loaded. Investigation showed the quotes on the item names were full-width. Changed to half-width and solved it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Fixed but still an error</b>: there are other errors. Check repeatedly.</li>
+<li><b>Can't tell where the error is</b>: shorten and try.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can a JavaScript object be pasted as it is?</h3>
+<p>If item names lack quotes, it's an error. Rewrite it in JSON syntax.</p>
+<h2>Summary</h2>
+<p>Watch for extra commas, quotes, brackets and full-width characters. After fixing, check again.</p>
 <a class="cta" href="/en/json-formatter.html">Use "Format and Validate JSON" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li><li><a href="/en/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li><li><a href="/en/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

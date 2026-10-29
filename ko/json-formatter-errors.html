@@ -201,12 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>JSON에서 자주 하는 실수</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>알아보기</li><li>수정</li></ul></div>
+<p lang="en">JSON syntax is strict, and a small mistake makes it unreadable. Here are the common mistakes to check when <a href="/ko/json-formatter.html">Format and Validate JSON</a> shows "The JSON is malformed".</p>
 <h2>순서</h2>
 <ol>
-<li>키와 문자열은 큰따옴표로 감싸세요.</li>
-<li>마지막 항목 뒤에는 쉼표를 붙이지 마세요.</li>
-<li>주석은 허용되지 않습니다. <a href="/ko/json-formatter.html">JSON 정리 및 검증</a>으로 확인하세요.</li>
+<li lang="en">Paste the JSON into "Before".</li>
+<li lang="en">Press "Format".</li>
+<li lang="en">If there is an error, "The JSON is malformed" is shown.</li>
+<li lang="en">Check the common mistakes below in order and fix them.</li>
 </ol>
+<div class="note" lang="en">This tool doesn't show the error location. Shortening and trying narrows down the place.</div>
+<h2>자주 하는 실수</h2>
+<ul>
+<li lang="en"><b>An extra comma after the last item</b>: {"a": 1, "b": 2,} is wrong. Delete the last comma.</li>
+<li lang="en"><b>Using single quotes</b>: JSON uses only double quotes (").</li>
+<li lang="en"><b>No quotes on item names</b>: {name: "Yamada"} is wrong. Write {"name": "Yamada"}.</li>
+<li lang="en"><b>Unclosed brackets</b>: match the numbers of { and }, [ and ].</li>
+<li lang="en"><b>Missing commas</b>: a comma is needed between items.</li>
+<li lang="en"><b>Writing comments</b>: JSON can't have comments.</li>
+<li lang="en"><b>Full-width symbols</b>: full-width brackets, quotes, colons and commas can't be used.</li>
+<li lang="en"><b>Wrong value notation</b>: true, false and null are lowercase. True and NULL are wrong.</li>
+<li lang="en"><b>Number notation</b>: leading zeros (007) and trailing decimal points are wrong.</li>
+<li lang="en"><b>Line breaks in strings</b>: a raw line break can't go inside a string. Write "\n".</li>
+<li lang="en"><b>Quotes in strings</b>: they need escaping as \".</li>
+</ul>
+<h2 lang="en">Example of the correct form</h2>
+<p lang="en">Inside braces, join item names and values with colons and separate items with commas. Enclose item names and strings in double quotes.</p>
+<h2 lang="en">Tips for fixing</h2>
+<ul>
+<li lang="en">Look first at the place you edited last</li>
+<li lang="en">If long, split it in half and narrow down which half has the error</li>
+<li lang="en">Fix a bit at a time until it can be formatted</li>
+</ul>
+<h2 lang="en">Finding full-width symbols</h2>
+<p lang="en">Though they look similar, full-width brackets and quotes differ in width from half-width. Search for full-width symbols in a text editor.</p>
+<h2 lang="en">A useful approach</h2>
+<p lang="en">These are common mistakes in JSON edited by hand or in Notepad. After editing, always check with this tool.</p>
+<h2>예</h2>
+<p lang="en">After editing a configuration file it couldn't be loaded. Investigation showed the quotes on the item names were full-width. Changed to half-width and solved it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Fixed but still an error</b>: there are other errors. Check repeatedly.</li>
+<li lang="en"><b>Can't tell where the error is</b>: shorten and try.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can a JavaScript object be pasted as it is?</h3>
+<p lang="en">If item names lack quotes, it's an error. Rewrite it in JSON syntax.</p>
+<h2>요약</h2>
+<p lang="en">Watch for extra commas, quotes, brackets and full-width characters. After fixing, check again.</p>
 <a class="cta" href="/ko/json-formatter.html">“JSON 정리 및 검증” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/csv-json.html">CSV와 JSON 변환</a>: CSV와 JSON을 즉시 서로 변환합니다.</li><li><a href="/ko/file-base64.html">파일과 Base64 변환</a>: 파일과 Base64 텍스트를 서로 변환합니다.</li><li><a href="/ko/line-sort-dedupe.html">중복된 줄 제거 및 목록 정렬</a>: 중복된 줄을 제거하고 정렬합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

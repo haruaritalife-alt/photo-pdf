@@ -201,13 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Wenn ein CSV verstümmelt aussieht</h1>
 <p class="meta">Veröffentlicht: 19.10.2026 | Aktualisiert: 19.10.2026 | <a href="/about.html">Über uns (Japanisch)</a></p>
 <div class="points"><b>Wichtige Punkte</b><ul><li>Umwandeln</li><li>Öffnen</li></ul></div>
-<p>Ein CSV direkt zu öffnen kann Text wegen unterschiedlicher Zeichenkodierung verstümmeln.</p>
+<p lang="en">A CSV output from a system opened in Excel showed Japanese garbled like "縺ゅ＞縺…". Turning it into an Excel file with <a href="/de/csv-to-xlsx.html">Convert CSV to Excel (.xlsx)</a> lets it open without garbling.</p>
 <h2>Schritte</h2>
 <ol>
-<li>Wandeln Sie das CSV mit <a href="/de/csv-to-xlsx.html">CSV in Excel (.xlsx) umwandeln</a> um.</li>
-<li>Öffnen Sie die entstandene .xlsx-Datei in Excel.</li>
-<li>Japanischer Text wird korrekt angezeigt.</li>
+<li lang="en">Choose the CSV with "Choose a CSV file".</li>
+<li lang="en">The "Delimiter" can stay at "Detect automatically".</li>
+<li lang="en">Press "Make Excel and save" and save.</li>
+<li lang="en">Open the resulting .xlsx in Excel. The Japanese displays without garbling.</li>
 </ol>
+<div class="note" lang="en">Opening a CSV directly can garble text due to differences in character encoding. Making it .xlsx avoids that problem.</div>
+<h2 lang="en">Cause of garbling</h2>
+<p lang="en">A CSV is a plain text file. Depending on the method (character encoding) used to write the characters, if the reading side reads with a different one, the text garbles.</p>
+<ul>
+<li lang="en"><b>UTF-8</b>: used by many systems. Excel may not read it correctly as it is.</li>
+<li lang="en"><b>Shift_JIS</b>: used by older Japanese systems.</li>
+</ul>
+<h2 lang="en">Why this tool fixes it</h2>
+<p lang="en">This tool reads the CSV's characters and then writes them out anew as an Excel file. Inside the Excel file the characters are stored in the correct form, so they don't garble on opening.</p>
+<h2 lang="en">When it still garbles</h2>
+<ul>
+<li lang="en">It was already broken at the point of reading the CSV</li>
+<li lang="en">The original CSV was made in an unusual encoding (such as EUC-JP)</li>
+<li lang="en">The original file was broken by another conversion</li>
+</ul>
+<p lang="en">In that case, check whether you can output again from the original system specifying the encoding.</p>
+<h2 lang="en">Trying by pasting</h2>
+<p lang="en">If choosing the file garbles it, open it in a text editor, copy the content and paste it into "CSV content".</p>
+<h2>Gut geeignet für</h2>
+<ul>
+<li lang="en">Opening CSVs from membership systems or online shops</li>
+<li lang="en">Viewing CSVs received from business partners</li>
+</ul>
+<h2>Beispiel</h2>
+<p lang="en">An order CSV output from an online shop was garbled when opened in Excel. Converting it to Excel with this tool displayed the Japanese product names cleanly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Still garbled after converting</b>: the original CSV may use an unusual encoding.</li>
+<li lang="en"><b>Only some characters garble</b>: possibly platform-dependent characters or emoji.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does converting change the data?</h3>
+<p lang="en">No. The content is the same and just takes Excel's format.</p>
+<h2>Zusammenfassung</h2>
+<p lang="en">CSV garbling can be avoided by making it .xlsx and opening that. If it still garbles, review the original output settings.</p>
 <a class="cta" href="/de/csv-to-xlsx.html">„CSV in Excel (.xlsx) umwandeln“ verwenden (kostenlos)</a>
 <h2>Passende Werkzeuge dazu</h2><ul><li><a href="/de/xlsx-to-csv.html">Excel in CSV oder JSON umwandeln</a>: Ein Excel-Blatt in CSV, TSV oder JSON umwandeln.</li><li><a href="/de/csv-json.html">CSV und JSON umwandeln</a>: Sofort zwischen CSV und JSON umwandeln.</li><li><a href="/de/line-sort-dedupe.html">Doppelte Zeilen entfernen und eine Liste sortieren</a>: Doppelte Zeilen entfernen und sortieren.</li></ul>
 <div class="tip"><p>Wenn Ihnen diese Anleitung geholfen hat, freuen wir uns über ein kleines Trinkgeld.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Trinkgeld senden (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Geschenk senden (Amazon-Wunschliste)</a></div>

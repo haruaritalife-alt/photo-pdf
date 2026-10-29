@@ -200,13 +200,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>CSVを開くと文字化けするとき</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>変換する</li><li>開く</li></ul></div>
-<p>CSVをそのまま開くと、文字コードの違いで文字化けすることがあります。</p>
+<p>システムから出力したCSVを、Excelで開いたら、日本語が「縺ゅ＞縺…」のような文字化けになった。<a href="/csv-to-xlsx.html">CSVをExcelファイルにする</a> でExcelファイルにすれば、文字化けせずに開けます。</p>
 <h2>手順</h2>
 <ol>
-<li><a href="/csv-to-xlsx.html">CSVをExcelファイルにする</a> で、CSVをExcelファイルにします。</li>
-<li>できた .xlsx を、Excelで開きます。</li>
-<li>日本語も、文字化けせずに表示されます。</li>
+<li>「CSVファイルを選ぶ」で、CSVを選びます。</li>
+<li>「区切り文字」は、「自動で判定」のままで構いません。</li>
+<li>「Excelにして保存」を押して、保存します。</li>
+<li>できた.xlsxを、Excelで開きます。日本語も、文字化けせずに表示されます。</li>
 </ol>
+<div class="note">CSVをそのまま開くと、文字コードの違いで文字化けすることがあります。.xlsxにすれば、その問題を避けられます。</div>
+<h2>文字化けの原因</h2>
+<p>CSVは、ただの文字のファイルです。文字をどの方式（文字コード）で書き込んだかによって、読み取る側が、違う方式で読むと、文字化けします。</p>
+<ul>
+<li><b>UTF-8</b>：多くのシステムで使われる。Excelが、そのままでは正しく読めない場合がある。</li>
+<li><b>Shift_JIS</b>：日本の古いシステムで使われる。</li>
+</ul>
+<h2>このツールで直る理由</h2>
+<p>このツールは、CSVの文字を読み取ってから、Excelファイルとして新しく書き出します。Excelファイルの中では、文字は正しい形で保存されるため、開くときに文字化けしません。</p>
+<h2>それでも文字化けするとき</h2>
+<ul>
+<li>CSVを読み込む時点で、すでに崩れている</li>
+<li>元のCSVが、特殊な文字コード（EUC-JPなど）で作られている</li>
+<li>元のファイルが、別の変換で壊れている</li>
+</ul>
+<p>この場合は、元のシステムで、文字コードを指定して、出力し直せないか確認します。</p>
+<h2>貼り付けで試す</h2>
+<p>ファイルを選んで文字化けしたら、テキストエディタで開いて、内容をコピーし、「CSVの内容」に貼り付けてみます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>会員システムや、通販サイトのCSVを開きたい</li>
+<li>取引先から届いたCSVを、見たい</li>
+</ul>
+<h2>例</h2>
+<p>通販サイトから出力した注文CSVが、Excelで開くと文字化けした。このツールでExcelに変換したところ、商品名の日本語がきれいに表示された。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>変換しても化ける</b>：元のCSVが、特殊な文字コードの可能性。</li>
+<li><b>一部の文字だけ化ける</b>：環境依存文字や、絵文字の可能性。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>変換すると、データは変わりますか？</h3>
+<p>いいえ。中身は同じで、Excelの形式になるだけです。</p>
+<h2>まとめ</h2>
+<p>CSVの文字化けは、.xlsxにして開くと避けられます。それでも化けるときは、元の出力設定を見直しましょう。</p>
 <a class="cta" href="/csv-to-xlsx.html">CSVをExcelファイルにするを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/xlsx-to-csv.html">ExcelをCSV・JSONに変換する</a>：Excelのシートを、CSV・TSV・JSONに変換します。</li><li><a href="/csv-json.html">CSVとJSONを相互変換する</a>：CSVとJSONを、すぐに相互変換します。</li><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -218,13 +254,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>When a CSV Looks Garbled</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Convert</li><li>Open</li></ul></div>
-<p>Opening a CSV directly can garble text because of character encoding differences.</p>
+<p>A CSV output from a system opened in Excel showed Japanese garbled like "縺ゅ＞縺…". Turning it into an Excel file with <a href="/csv-to-xlsx.html">Convert CSV to Excel (.xlsx)</a> lets it open without garbling.</p>
 <h2>Steps</h2>
 <ol>
-<li>Convert the CSV with <a href="/csv-to-xlsx.html">Convert CSV to Excel (.xlsx)</a>.</li>
-<li>Open the resulting .xlsx in Excel.</li>
-<li>Japanese text displays correctly.</li>
+<li>Choose the CSV with "Choose a CSV file".</li>
+<li>The "Delimiter" can stay at "Detect automatically".</li>
+<li>Press "Make Excel and save" and save.</li>
+<li>Open the resulting .xlsx in Excel. The Japanese displays without garbling.</li>
 </ol>
+<div class="note">Opening a CSV directly can garble text due to differences in character encoding. Making it .xlsx avoids that problem.</div>
+<h2>Cause of garbling</h2>
+<p>A CSV is a plain text file. Depending on the method (character encoding) used to write the characters, if the reading side reads with a different one, the text garbles.</p>
+<ul>
+<li><b>UTF-8</b>: used by many systems. Excel may not read it correctly as it is.</li>
+<li><b>Shift_JIS</b>: used by older Japanese systems.</li>
+</ul>
+<h2>Why this tool fixes it</h2>
+<p>This tool reads the CSV's characters and then writes them out anew as an Excel file. Inside the Excel file the characters are stored in the correct form, so they don't garble on opening.</p>
+<h2>When it still garbles</h2>
+<ul>
+<li>It was already broken at the point of reading the CSV</li>
+<li>The original CSV was made in an unusual encoding (such as EUC-JP)</li>
+<li>The original file was broken by another conversion</li>
+</ul>
+<p>In that case, check whether you can output again from the original system specifying the encoding.</p>
+<h2>Trying by pasting</h2>
+<p>If choosing the file garbles it, open it in a text editor, copy the content and paste it into "CSV content".</p>
+<h2>Good for</h2>
+<ul>
+<li>Opening CSVs from membership systems or online shops</li>
+<li>Viewing CSVs received from business partners</li>
+</ul>
+<h2>Example</h2>
+<p>An order CSV output from an online shop was garbled when opened in Excel. Converting it to Excel with this tool displayed the Japanese product names cleanly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Still garbled after converting</b>: the original CSV may use an unusual encoding.</li>
+<li><b>Only some characters garble</b>: possibly platform-dependent characters or emoji.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does converting change the data?</h3>
+<p>No. The content is the same and just takes Excel's format.</p>
+<h2>Summary</h2>
+<p>CSV garbling can be avoided by making it .xlsx and opening that. If it still garbles, review the original output settings.</p>
 <a class="cta" href="/csv-to-xlsx.html">Use "Convert CSV to Excel (.xlsx)" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/xlsx-to-csv.html">Convert Excel to CSV or JSON</a>: Convert an Excel sheet to CSV, TSV or JSON.</li><li><a href="/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

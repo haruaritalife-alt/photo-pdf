@@ -201,13 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Sort the Keys</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Paste</li><li>Tick</li></ul></div>
-<p>Handy when comparing two JSONs.</p>
+<p>You want to compare two JSONs, but a mass of differences appears just because item order differs. In that case, align the order first with "Sort keys" in <a href="/en/json-formatter.html">Format and Validate JSON</a> and then compare.</p>
 <h2>Steps</h2>
 <ol>
-<li>Paste the JSON into <a href="/en/json-formatter.html">Format and Validate JSON</a>.</li>
-<li>Tick "Sort the keys".</li>
-<li>Copy the sorted result.</li>
+<li>Paste the JSON into "Before".</li>
+<li>Tick "Sort keys".</li>
+<li>Press "Format".</li>
+<li>JSON with items in name order appears under "After".</li>
+<li>Copy it with "Copy result".</li>
 </ol>
+<div class="note">Sorting is by item name (dictionary order). Items inside nesting are sorted too.</div>
+<h2>Effects of sorting</h2>
+<ul>
+<li>JSON with the same content gets the same order</li>
+<li>Comparing differences becomes easier</li>
+<li>Items become easier to find</li>
+<li>Pointless differences in version control decrease</li>
+</ul>
+<h2>Steps for comparing</h2>
+<ol>
+<li>Format each of the two JSONs with "Sort keys".</li>
+<li>Paste the results into the tool that finds differences between two texts.</li>
+<li>Only the real differences are shown.</li>
+</ol>
+<h2>What does not change with sorting</h2>
+<ul>
+<li>The pairing of items and values doesn't change.</li>
+<li>The order inside arrays (lists) doesn't change, because order in arrays is meaningful.</li>
+</ul>
+<h2>Cautions</h2>
+<ul>
+<li>For data where item order matters (such as the loading order of settings), sorting can change the meaning.</li>
+<li>When you want to keep the original order, format without ticking.</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Checking whether two JSONs have the same content</li>
+<li>Managing differences in configuration files</li>
+<li>Formatting samples in API specifications</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to compare JSON output by two systems. Item order differed, so it was unclear by eye. After sorting both and comparing, only one item actually differed.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>It got harder to read after sorting</b>: the order was meaningful. Untick.</li>
+<li><b>Array contents are not sorted</b>: array order is preserved.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How are numeric item names ordered?</h3>
+<p>As characters. "10" comes before "2".</p>
+<h2>Summary</h2>
+<p>Align key order before comparing. Array order doesn't change.</p>
 <a class="cta" href="/en/json-formatter.html">Use "Format and Validate JSON" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li><li><a href="/en/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li><li><a href="/en/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
