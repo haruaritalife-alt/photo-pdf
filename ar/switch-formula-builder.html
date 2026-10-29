@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html data-lang="ar" dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>أنشئ صيغ SWITCH وCHOOSE (مجانًا)｜PDF Mikata</title>
+<meta content="أداة مجانية تُنشئ صيغ SWITCH وCHOOSE التي تُرجع نتيجة لكل قيمة من خلية واحدة وقائمة أزواج فقط، بما في ذلك نسخة لـ Excel الأقدم. ما تدخله لا يغادر جهازك أبدًا." name="description"/>
+
+
+<link href="https://pdfmikata.com/ar/switch-formula-builder.html" rel="canonical"/>
+<script src="/site.js"></script>
+
+<style>
+:root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;--head:#16393c;--teal:#16393c;
+box-sizing:border-box;padding-top:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}}
+:root[data-theme="dark"]{--desk:#0e1d1f;--paper:#172a2c;--ink:#e4f0ef;--sub:#9bb3b2;--line:#2b4446;--stamp:#6fc7c0;--btn-ink:#0e1d1f;--head:#0a2427;--teal:#6fc7c0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.8}
+main{max-width:680px;margin:0 auto;padding:36px 18px 24px}
+h1{font-size:2.1rem;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:.02em}
+.lead{margin:0 0 26px;color:var(--sub)}
+h2{font-size:1.1rem;margin:0 0 8px}
+.pick{display:block;text-align:center;background:var(--teal);color:var(--btn-ink);border-radius:6px;padding:18px 12px;font-weight:700;font-size:1.1rem;cursor:pointer}
+.pick:focus-within{outline:3px solid var(--stamp);outline-offset:3px}
+.pick small{display:block;font-weight:400;opacity:.75;font-size:.82rem}
+#drop.on{outline:3px dashed var(--stamp);outline-offset:3px}
+input[type=file]{position:absolute;opacity:0;width:1px;height:1px}
+#stack{display:none;margin-top:28px}
+#grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:22px 16px}
+.sheet{position:relative;aspect-ratio:1/1.414;background:var(--paper);border:1px solid var(--line);box-shadow:4px 4px 0 var(--line);display:flex;align-items:center;justify-content:center;padding:8%}
+.sheet img{max-width:100%;max-height:100%;display:block}
+.no{position:absolute;left:-8px;top:-10px;min-width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--btn-ink);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.ops button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:46px;font-size:.95rem;font-weight:700;color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:6px}
+.ops button:disabled{opacity:.3;cursor:default;text-decoration:none}
+.ops button.del{color:var(--stamp);border-color:var(--stamp)}
+.ops button:focus-visible{outline:2px solid var(--stamp);border-radius:3px}
+.set{margin-top:30px;border-top:2px solid var(--ink);padding-top:14px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:0 0 100%;font-weight:700;font-size:.92rem}
+.row label{display:inline-flex;align-items:center;gap:8px;padding:10px 4px;cursor:pointer;font-size:1.02rem;white-space:nowrap}
+.row input{appearance:none;-webkit-appearance:none;flex:none;width:1.5em;height:1.5em;margin:0;border:2px solid var(--ink);border-radius:50%;background:transparent;display:inline-grid;place-content:center}.row input::before{content:"";width:.75em;height:.75em;border-radius:50%;background:var(--stamp);transform:scale(0);transition:transform .12s}.row input:checked{border-color:var(--stamp)}.row input:checked::before{transform:scale(1)}.row input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}@media (prefers-reduced-motion:reduce){.row input::before{transition:none}}
+#go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:22px;background:var(--stamp);color:var(--btn-ink);border-radius:6px;padding:16px;font-weight:700;font-size:1.1rem;cursor:pointer}
+#go:disabled{opacity:.35;cursor:not-allowed}
+#go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#out{display:none;margin-top:26px;background:var(--paper);border:1px solid var(--line);padding:20px;text-align:center}
+.stamp{display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;border:4px solid var(--stamp);border-radius:50%;color:var(--stamp);font-weight:700;font-size:1.5rem;transform:rotate(-9deg);animation:st .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes st{from{transform:rotate(-9deg) scale(2);opacity:0}to{transform:rotate(-9deg) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}}
+#info{margin:12px 0;font-weight:700}
+#dl{display:none;background:var(--ink);color:var(--btn-ink);text-decoration:none;font-weight:700;font-size:1.05rem;border-radius:6px;padding:16px 22px}
+#dl:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+#msg{margin:12px 0 0;font-size:.92rem}
+.bad{color:var(--ink);font-weight:700;border-left:4px solid var(--stamp);padding-left:8px}
+.guide{margin-top:44px}.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+.guide ol,.guide ul{padding-left:1.3em;margin:0}
+details{border-top:1px solid var(--line);padding:10px 0}details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700}summary:focus-visible{outline:2px solid var(--stamp)}
+details p{margin:6px 0 0;color:var(--sub)}
+footer{max-width:680px;margin:0 auto;padding:10px 18px 40px;display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem}
+footer a{color:var(--sub)}
+a{color:var(--ink);text-underline-offset:3px}.guide a{font-weight:700}
+.top{background:var(--head);color:#fcfefd;border-bottom:4px solid var(--stamp);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:680px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;color:#fcfefd;text-decoration:none;font-weight:700;font-size:1.05rem}
+.logo{width:30px;height:30px;flex:none}
+.top nav{display:flex;gap:2px}
+.top nav a{color:#fcfefd;text-decoration:none;font-size:.9rem;padding:10px;border-radius:6px}
+.top nav a:hover{background:rgba(255,255,255,.12)}
+.top a:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+h1 span{background:linear-gradient(transparent 62%,color-mix(in srgb,var(--stamp) 30%,transparent) 62%)}
+.steps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.steps li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 4px;text-align:center;font-size:.85rem;font-weight:700}
+.steps b{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--teal);color:var(--btn-ink);font-size:.85rem}
+.lead{margin-bottom:12px}
+.safe{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:0 0 22px;font-size:.9rem;line-height:1.6}
+.safe svg{flex:none;width:28px;height:28px;color:var(--ink)}
+.pick{padding:26px 12px;font-size:1.3rem;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+#pt::before{content:"＋";margin-right:.4em}
+.hint{margin:0 0 14px;font-size:.88rem;color:var(--sub)}
+.sheet{cursor:grab}
+.row label{padding:12px 4px}
+footer a{padding:10px 0}
+.bar{display:none;height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 auto 14px;max-width:360px}
+.bar i{display:block;height:100%;width:0;background:var(--stamp);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.lang{display:flex;border:1px solid rgba(255,255,255,.5);border-radius:6px;overflow:hidden;flex:none}
+.lang button{all:unset;box-sizing:border-box;cursor:pointer;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:.85rem;font-weight:700;color:#fcfefd}
+.lang button[aria-pressed="true"]{background:#fcfefd;color:#16393c}
+.lang button:focus-visible{outline:3px solid #fcfefd;outline-offset:-3px}
+@media (max-width:540px){.top nav{display:none}}
+.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.92rem}
+.support[hidden]{display:none}
+.support p{margin:0}
+.support a{display:inline-block;margin-top:10px;min-height:46px;line-height:26px;border:2px solid var(--ink);border-radius:6px;padding:9px 18px;font-weight:700;text-decoration:none;color:var(--ink)}
+.support a:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+.endtip{margin:36px 0 0}
+
+html[data-lang="en"] body [lang="ja"]{display:none!important}
+html:not([data-lang="en"]) body [lang="en"]{display:none!important}
+.lang{margin-left:auto}
+h1 span{background:none}
+@media (max-width:540px){.top nav{display:none}}
+.flist{list-style:none;margin:0;padding:0}
+.fi{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px}
+.fi .no2{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--btn-ink);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.fi .nm{flex:1;min-width:0}.fi .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.95rem}.fi .nm small{color:var(--sub)}
+.fi button,.btn2{all:unset;box-sizing:border-box;cursor:pointer;min-width:46px;min-height:46px;display:inline-grid;place-items:center;border:1px solid var(--ink);border-radius:6px;font-weight:700;font-size:.95rem;color:var(--ink);background:var(--paper);padding:0 12px}
+.fi button:disabled,.btn2:disabled{opacity:.3;cursor:default}
+.fi button.del{color:var(--stamp);border-color:var(--stamp)}
+.fi button:focus-visible,.btn2:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pgs{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:14px 10px}
+.pgs button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;position:relative;background:var(--paper);border:2px solid var(--line);border-radius:4px;padding:6px 6px 22px;min-height:110px;text-align:center}
+.pgs button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.pgs button[aria-pressed="true"]{border-color:var(--stamp);box-shadow:0 0 0 2px var(--stamp)}
+.pgs canvas{display:block;max-width:100%;height:auto;margin:0 auto;background:#fff}
+.pgs .n{position:absolute;left:0;right:0;bottom:2px;font-size:.78rem;font-weight:700}
+.pgs button[aria-pressed="true"]::after{content:"\2713";position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--stamp);color:var(--btn-ink);display:grid;place-items:center;font-size:.85rem}
+.rng{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.rng input[type=text],.rng input[type=number]{flex:1;min-width:140px;min-height:46px;border:1px solid var(--ink);border-radius:6px;padding:0 12px;font:inherit;background:var(--paper);color:var(--ink)}
+.imgs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin:16px 0 0;text-align:center}
+.imgs img{max-width:100%;border:1px solid var(--line);background:#fff;display:block;margin:0 auto 6px}
+.imgs .btn2{min-height:42px;font-size:.88rem}
+.note2{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--stamp);padding:10px 14px;margin:16px 0;font-size:.9rem}
+.more{margin-top:40px}.more h2{font-size:1.2rem;border-left:6px solid var(--teal);padding-left:10px;margin:0 0 10px}
+.more a{display:block;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;color:var(--ink);text-decoration:none;font-weight:700}
+.more a small{display:block;font-weight:400;color:var(--sub)}
+.guide h2{font-size:1.2rem;margin:30px 0 8px;border-left:6px solid var(--teal);padding-left:10px}
+
+.lang{align-items:center}
+.lang .gl{width:18px;height:18px;margin:0 2px 0 10px;color:#fcfefd;flex:none}
+.lang button{min-height:44px}
+.lang button[aria-pressed="true"]::before{content:"\2713";margin-right:5px}
+.lang button:not([aria-pressed="true"]):hover{background:rgba(255,255,255,.16)}
+@media (min-width:721px){.sub-in{flex-wrap:wrap;overflow:visible}}
+@media (max-width:420px){.lang .gl{display:none}}
+@media (max-width:360px){.lang button[aria-pressed="true"]::before{content:none}}
+
+.sub{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.sub-in{max-width:680px;margin:0 auto;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-in::-webkit-scrollbar{display:none}
+.sub a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none;font-size:.9rem;font-weight:700;white-space:nowrap;background:var(--desk)}
+.sub a[aria-current="page"]{background:var(--ink);color:var(--btn-ink,#fcfefd);border-color:var(--ink)}
+.sub a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.crumb{max-width:680px;margin:0 auto;padding:12px 18px 0;font-size:.85rem;color:var(--sub)}
+.crumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 0}
+.crumb li{display:inline-flex;align-items:center;min-width:0}
+.crumb li+li::before{content:"\203A";margin:0 8px;color:var(--sub)}
+.crumb a{color:var(--sub);display:inline-flex;align-items:center;min-height:32px}
+.crumb [aria-current]{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw;display:inline-block}
+.crumb ol{flex-wrap:nowrap}
+.crumb li{flex:none}.crumb li:last-child{flex:1 1 auto;min-width:0}
+.crumb [aria-current]{display:block;max-width:100%}
+.brand{white-space:nowrap}
+@media (max-width:360px){.brand{font-size:.95rem;gap:8px}.logo{width:26px;height:26px}.lang button{padding:0 9px;font-size:.8rem}.top-in{gap:8px}}
+.sub [lang="en"],.crumb [lang="en"]{display:none}
+html[lang="en"] .sub [lang="en"],html[data-lang="en"] .sub [lang="en"],html[lang="en"] .crumb [lang="en"],html[data-lang="en"] .crumb [lang="en"]{display:inline}
+html[lang="en"] .sub [lang="ja"],html[data-lang="en"] .sub [lang="ja"],html[lang="en"] .crumb [lang="ja"],html[data-lang="en"] .crumb [lang="ja"]{display:none!important}
+@media (min-width:600px){.more{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.more h2{grid-column:1/-1;margin-bottom:0}.more a{margin-bottom:0}}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.more a{transition:transform .15s ease,border-color .15s ease}.more a:hover{transform:translateY(-2px);border-color:var(--stamp)}}
+.next{margin:20px 0 6px}
+.next h3{margin:0 0 10px;font-size:1.05rem}
+.ncards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ncards a.tool,.ncards .tool *{min-width:0;overflow-wrap:anywhere;hyphens:auto}
+@media(min-width:720px){.ncards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.ncards a.tool{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--paper,#fff);box-shadow:0 3px 0 var(--line);text-decoration:none;color:var(--ink)}
+.ncards a.tool:hover{border-color:var(--stamp)}
+.ncards .ic{flex:none;width:40px;height:40px;border-radius:11px;background:var(--ink);color:var(--btn-ink);display:grid;place-items:center}
+.ncards .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ncards .tx b{display:block;font-size:.95rem;line-height:1.4}
+.ncards .tx .d{display:block;color:var(--sub);font-size:.8rem;line-height:1.5;margin-top:2px}
+.next .allt{display:block;margin:14px 0 0;padding:13px 16px;border:2px solid var(--ink);border-radius:12px;text-align:center;font-weight:700;text-decoration:none;color:var(--ink);background:var(--paper,#fff)}
+.next .allt:hover{background:var(--ink);color:var(--btn-ink)}
+.safe{margin:14px 0 0;font-size:.85rem;color:var(--sub);line-height:1.6}
+#bar::after{content:"処理中…この端末の中だけで処理しています";display:block;margin-top:6px;font-size:.8rem;color:var(--sub)}
+html[data-lang="en"] #bar::after{content:"Working… processed only on this device"}
+html[data-lang="zh"] #bar::after{content:"处理中…仅在此设备上处理"}
+html[data-lang="es"] #bar::after{content:"Procesando… solo en este dispositivo"}
+html[data-lang="ko"] #bar::after{content:"처리 중… 이 기기 안에서만 처리합니다"}
+html[data-lang="pt"] #bar::after{content:"Processando… somente neste dispositivo"}
+html[data-lang="fr"] #bar::after{content:"Traitement… uniquement sur cet appareil"}
+html[data-lang="id"] #bar::after{content:"Memproses… hanya di perangkat ini"}
+html[data-lang="it"] #bar::after{content:"Elaborazione… solo su questo dispositivo"}
+html[data-lang="ru"] #bar::after{content:"Обработка… только на этом устройстве"}
+html[data-lang="pl"] #bar::after{content:"Przetwarzanie… tylko na tym urządzeniu"}
+html[data-lang="nl"] #bar::after{content:"Bezig met verwerken… alleen op dit apparaat"}
+html[data-lang="th"] #bar::after{content:"กำลังประมวลผล… ทำงานบนอุปกรณ์นี้เท่านั้น"}
+html[data-lang="ar"] #bar::after{content:"جارٍ المعالجة… على هذا الجهاز فقط"}
+html[data-lang="bn"] #bar::after{content:"প্রক্রিয়া চলছে… শুধু এই ডিভাইসে"}
+html[data-lang="tl"] #bar::after{content:"Pinoproseso… sa device na ito lang"}
+html[data-lang="uk"] #bar::after{content:"Обробка… лише на цьому пристрої"}
+html[data-lang="ms"] #bar::after{content:"Memproses… pada peranti ini sahaja"}
+html[data-lang="fa"] #bar::after{content:"در حال پردازش… فقط روی همین دستگاه"}
+html[data-lang="ur"] #bar::after{content:"پروسیسنگ جاری ہے… صرف اسی ڈیوائس پر"}
+html[data-lang="tw"] #bar::after{content:"處理中…僅在此裝置上處理"}
+html[data-lang="vi"] #bar::after{content:"Đang xử lý… chỉ trên thiết bị này"}
+html[data-lang="tr"] #bar::after{content:"İşleniyor… yalnızca bu cihazda"}
+html[data-lang="de"] #bar::after{content:"Wird verarbeitet… nur auf diesem Gerät"}
+html[data-lang="hi"] #bar::after{content:"प्रोसेस हो रहा है… केवल इसी डिवाइस पर"}
+a.wl{display:inline-block;min-height:44px;line-height:24px;padding:10px 16px;border:2px solid var(--ink);border-radius:6px;font-weight:700;text-decoration:none;color:var(--ink);margin:8px 0 0 0;background:transparent}a:has(+a.wl){margin-right:8px}
+
+@media (prefers-color-scheme:dark){:root{--desk:#0d1b1d;--paper:#152a2c;--ink:#e4efee;--sub:#9fb7b6;--line:#2f4b4d;--stamp:#3fb5ae;--btn-ink:#0d1b1d;--head:#0a1415}a.tool .bd{color:var(--btn-ink)}
+body{color-scheme:dark}img.ph,canvas{background:#fff}
+a.tool .ic,.tool .ic{color:#0d1b1d}a.tool:hover{background:var(--paper)}
+.pop a:hover{color:var(--btn-ink)}
+html{background:var(--desk)}body{background-image:radial-gradient(900px 420px at 12% -6%,rgba(63,181,174,.11),transparent 62%),radial-gradient(700px 420px at 100% 0,rgba(90,120,210,.08),transparent 58%);background-repeat:no-repeat}
+a.tool{box-shadow:0 3px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.07)}}
+.pop a,.btn2,button,a.tool{transition:transform .12s ease,box-shadow .15s ease,border-color .15s ease,background-color .15s ease,color .15s ease}
+.pop a:active,.btn2:active,button:not(:disabled):active{transform:scale(.97)}a.tool:active{transform:translateY(0) scale(.985)}
+h1,h2{letter-spacing:.01em}
+@media (prefers-reduced-motion:reduce){.pop a:active,.btn2:active,button:active,a.tool:active{transform:none}}
+.pop.recent{margin-top:-4px}.pop.recent a{border-style:dashed;border-color:var(--line);color:var(--sub);background:transparent}.pop.recent b{display:inline-flex;align-items:center;gap:6px}.pop.recent b svg,.pop.recent a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}.pop.recent a{display:inline-flex;align-items:center;gap:6px}.pop.recent a .pi{margin-right:0}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://pdfmikata.com/"}, {"@type": "ListItem", "position": 2, "name": "الأدوات", "item": "https://pdfmikata.com/#tools"}, {"@type": "ListItem", "position": 3, "name": "أنشئ صيغة SWITCH", "item": "https://pdfmikata.com/switch-formula-builder.html"}]}</script>
+<meta content="website" property="og:type"/>
+<meta content="PDF Mikata" property="og:site_name"/>
+<meta content="ar_AR" property="og:locale"/>
+
+<meta content="أنشئ صيغ SWITCH وCHOOSE (مجانًا)｜PDF Mikata" property="og:title"/>
+<meta content="أداة مجانية تُنشئ صيغ SWITCH وCHOOSE التي تُرجع نتيجة لكل قيمة من خلية واحدة وقائمة أزواج فقط، بما في ذلك نسخة لـ Excel الأقدم. ما تدخله لا يغادر جهازك أبدًا." property="og:description"/>
+<meta content="https://pdfmikata.com/ar/switch-formula-builder.html" property="og:url"/>
+<meta content="https://pdfmikata.com/og.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="أنشئ صيغ SWITCH وCHOOSE (مجانًا)｜PDF Mikata" name="twitter:title"/>
+<meta content="أداة مجانية تُنشئ صيغ SWITCH وCHOOSE التي تُرجع نتيجة لكل قيمة من خلية واحدة وقائمة أزواج فقط، بما في ذلك نسخة لـ Excel الأقدم. ما تدخله لا يغادر جهازك أبدًا." name="twitter:description"/>
+<meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="#16393c" name="theme-color"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "أنشئ صيغة SWITCH", "alternateName": "Build a SWITCH Formula", "url": "https://pdfmikata.com/ar/switch-formula-builder.html", "description": "أداة مجانية تُنشئ صيغ SWITCH وCHOOSE التي تُرجع نتيجة لكل قيمة من خلية واحدة وقائمة أزواج فقط، بما في ذلك نسخة لـ Excel الأقدم. ما تدخله لا يغادر جهازك أبدًا.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "inLanguage": "ar", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ar/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/manifest.webmanifest" rel="manifest"/>
+<link href="/icon-180.png" rel="apple-touch-icon"/>
+<script defer="" src="/app.js"></script>
+<style>
+main li,main p,main code{overflow-wrap:anywhere}.row label{white-space:normal;max-width:100%}.row label span{overflow-wrap:anywhere}.crumb span,.crumb a{overflow-wrap:anywhere;white-space:normal}
+
+.lang{display:flex;align-items:center;border:0;overflow:visible}
+.lang .gl{width:18px;height:18px;margin:0 6px 0 10px;color:#fcfefd;flex:none}
+.lang select{appearance:none;-webkit-appearance:none;min-height:44px;border:1px solid rgba(255,255,255,.5);border-radius:6px;background:transparent;color:#fcfefd;font:inherit;font-weight:700;font-size:.85rem;padding:0 28px 0 12px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23fcfefd' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.lang select option{color:#16393c;background:#fcfefd}
+.lang select:focus-visible{outline:3px solid #fcfefd;outline-offset:2px}
+@media (max-width:420px){.lang .gl{display:none}}
+body,button,input,select,textarea{font-family:system-ui,-apple-system,"Segoe UI","Noto Sans Arabic","Noto Naskh Arabic",Tahoma,Arial,sans-serif;line-height:1.85}
+html[dir=rtl] h2,html[dir=rtl] .how h2,html[dir=rtl] .faq h2{border-left:0;border-right:6px solid var(--stamp);padding-left:0;padding-right:10px}
+html[dir=rtl] .safe{border-left:1px solid var(--line);border-right:6px solid var(--stamp)}
+html[dir=rtl] #pm-toast.warn{border-left-color:var(--line);border-right:4px solid #d98a1c}
+html[dir=rtl] .lang{margin-left:0;margin-right:auto}
+html[dir=rtl] .lang .gl{margin:0 10px 0 6px}
+html[dir=rtl] .lang select{padding:0 12px 0 28px;background-position:left 10px center}
+html[dir=rtl] a.tool .bd{right:auto;left:8px}
+html[dir=rtl] .tsearch .tqx,html[dir=rtl] #pm-toast .x{right:auto;left:6px}
+html[dir=rtl] .tqf{right:auto;left:14px}
+html[dir=rtl] .pop a .pi{margin-right:0;margin-left:6px}
+html[dir=rtl] .lang button[aria-pressed="true"]::before{margin-right:0;margin-left:5px}
+html[dir=rtl] pre,html[dir=rtl] code,html[dir=rtl] input[type=number],html[dir=rtl] input[type=url],html[dir=rtl] input[type=email],html[dir=rtl] input[type=tel]{direction:ltr;text-align:left}
+html[dir=rtl] .skip{left:auto;right:8px}
+
+.skip{position:absolute;left:8px;top:-60px;z-index:100;background:var(--btn-ink,#fff);color:var(--ink);padding:10px 14px;border-radius:10px;border:2px solid var(--stamp);font-weight:700;text-decoration:none;transition:top .15s}
+.skip:focus{top:8px}
+.top{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.sub{background:color-mix(in srgb,var(--paper) 80%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px)}
+ul.g a,.more a,.ncards a.tool,.cats a.tool{transition:transform .16s ease,box-shadow .18s ease,border-color .15s ease,background-color .15s ease}
+ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:translateY(-2px)}
+ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform:scale(.98)}
+.pop svg,.pi,.ic svg,.ncards .ic svg{stroke-width:1.8}
+#pm-toast{position:fixed;left:50%;bottom:18px;transform:translate(-50%,24px);opacity:0;z-index:60;width:min(560px,calc(100vw - 24px));background:var(--paper);color:var(--ink);border:1px solid var(--line);border-left:5px solid var(--stamp);border-radius:14px;padding:12px 40px 12px 14px;box-shadow:0 14px 34px -12px rgba(0,0,0,.35);transition:opacity .22s,transform .22s;pointer-events:none;font-size:14px;line-height:1.6}
+#pm-toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#pm-toast.warn{border-left-color:#d98a1c}
+#pm-toast b{display:block;margin-bottom:4px}
+#pm-toast .nx{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+#pm-toast .nx a{border:1px solid var(--line);border-radius:999px;padding:4px 12px;color:var(--ink);text-decoration:none;font-weight:600;background:var(--desk)}
+#pm-toast .nx a:hover{border-color:var(--stamp)}
+#pm-toast .x{position:absolute;right:6px;top:6px;width:30px;height:30px;border:0;background:transparent;color:var(--sub);font-size:20px;line-height:1;cursor:pointer;border-radius:8px}
+@media (prefers-reduced-motion:reduce){#pm-toast,.skip{transition:none}ul.g a:hover,.more a:hover,.ncards a.tool:hover{transform:none}}
+.lite .aurora{display:none}.lite .hero::before,.lite .hero::after{animation:none}
+</style><link href="https://pdfmikata.com/switch-formula-builder.html" hreflang="ja" rel="alternate"/>
+<link href="https://pdfmikata.com/en/switch-formula-builder.html" hreflang="en" rel="alternate"/>
+<link href="https://pdfmikata.com/zh/switch-formula-builder.html" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://pdfmikata.com/es/switch-formula-builder.html" hreflang="es" rel="alternate"/>
+<link href="https://pdfmikata.com/ko/switch-formula-builder.html" hreflang="ko" rel="alternate"/>
+<link href="https://pdfmikata.com/pt/switch-formula-builder.html" hreflang="pt" rel="alternate"/>
+<link href="https://pdfmikata.com/fr/switch-formula-builder.html" hreflang="fr" rel="alternate"/>
+<link href="https://pdfmikata.com/id/switch-formula-builder.html" hreflang="id" rel="alternate"/>
+<link href="https://pdfmikata.com/vi/switch-formula-builder.html" hreflang="vi" rel="alternate"/>
+<link href="https://pdfmikata.com/tr/switch-formula-builder.html" hreflang="tr" rel="alternate"/>
+<link href="https://pdfmikata.com/de/switch-formula-builder.html" hreflang="de" rel="alternate"/>
+<link href="https://pdfmikata.com/hi/switch-formula-builder.html" hreflang="hi" rel="alternate"/>
+<link href="https://pdfmikata.com/it/switch-formula-builder.html" hreflang="it" rel="alternate"/>
+<link href="https://pdfmikata.com/ru/switch-formula-builder.html" hreflang="ru" rel="alternate"/>
+<link href="https://pdfmikata.com/tw/switch-formula-builder.html" hreflang="zh-Hant" rel="alternate"/>
+<link href="https://pdfmikata.com/pl/switch-formula-builder.html" hreflang="pl" rel="alternate"/>
+<link href="https://pdfmikata.com/nl/switch-formula-builder.html" hreflang="nl" rel="alternate"/>
+<link href="https://pdfmikata.com/th/switch-formula-builder.html" hreflang="th" rel="alternate"/>
+<link href="https://pdfmikata.com/ar/switch-formula-builder.html" hreflang="ar" rel="alternate"/>
+<link href="https://pdfmikata.com/bn/switch-formula-builder.html" hreflang="bn" rel="alternate"/>
+<link href="https://pdfmikata.com/tl/switch-formula-builder.html" hreflang="fil" rel="alternate"/>
+<link href="https://pdfmikata.com/uk/switch-formula-builder.html" hreflang="uk" rel="alternate"/>
+<link href="https://pdfmikata.com/ms/switch-formula-builder.html" hreflang="ms" rel="alternate"/>
+<link href="https://pdfmikata.com/fa/switch-formula-builder.html" hreflang="fa" rel="alternate"/>
+<link href="https://pdfmikata.com/ur/switch-formula-builder.html" hreflang="ur" rel="alternate"/>
+<link href="https://pdfmikata.com/switch-formula-builder.html" hreflang="x-default" rel="alternate"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2376251801221434" crossorigin="anonymous"></script>
+</head>
+<body><a class="skip" href="#main">انتقل إلى المحتوى</a>
+<header class="top"><div class="top-in"><a class="brand" href="/ar/"><svg aria-hidden="true" class="logo" viewbox="0 0 32 32"><rect fill="#fcfefd" height="26" opacity=".5" rx="2" transform="rotate(-8 16 16)" width="20" x="6" y="3"></rect><rect fill="#fcfefd" height="26" rx="2" width="20" x="6" y="3"></rect><path d="M18 3h8v8z" fill="#1f7f7b"></path><rect fill="#16393c" height="2" width="12" x="10" y="16"></rect><rect fill="#16393c" height="2" width="9" x="10" y="21"></rect></svg><span>PDF Mikata</span></a><div class="lang"><svg aria-hidden="true" class="gl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg><select aria-label="Language / 言語 / 语言 / Idioma / 언어" id="langsel"><option value="/switch-formula-builder.html">日本語</option><option value="/en/switch-formula-builder.html">English</option><option value="/zh/switch-formula-builder.html">简体中文</option><option value="/es/switch-formula-builder.html">Español</option><option value="/ko/switch-formula-builder.html">한국어</option><option value="/pt/switch-formula-builder.html">Português</option><option value="/fr/switch-formula-builder.html">Français</option><option value="/id/switch-formula-builder.html">Bahasa Indonesia</option><option value="/vi/switch-formula-builder.html">Tiếng Việt</option><option value="/tr/switch-formula-builder.html">Türkçe</option><option value="/de/switch-formula-builder.html">Deutsch</option><option value="/hi/switch-formula-builder.html">हिन्दी</option><option value="/it/switch-formula-builder.html">Italiano</option><option value="/ru/switch-formula-builder.html">Русский</option><option value="/tw/switch-formula-builder.html">繁體中文</option><option value="/pl/switch-formula-builder.html">Polski</option><option value="/nl/switch-formula-builder.html">Nederlands</option><option value="/th/switch-formula-builder.html">ไทย</option><option selected="" value="/ar/switch-formula-builder.html">العربية</option><option value="/bn/switch-formula-builder.html">বাংলা</option><option value="/tl/switch-formula-builder.html">Filipino</option><option value="/uk/switch-formula-builder.html">Українська</option><option value="/ms/switch-formula-builder.html">Bahasa Melayu</option><option value="/fa/switch-formula-builder.html">فارسی</option><option value="/ur/switch-formula-builder.html">اردو</option></select></div></div></header>
+<nav aria-label="التنقل في الموقع" class="sub"><div class="sub-in"><a href="/ar/"><span lang="ar">الرئيسية</span></a><a href="/ar/#cat-convert"><span lang="ar">تحويل</span></a><a href="/ar/#cat-edit"><span lang="ar">تحرير</span></a><a href="/ar/#cat-optimize"><span lang="ar">تحسين</span></a><a aria-current="page" href="/ar/#cat-create"><span lang="ar">إنشاء</span></a><a href="/ar/#guide"><span lang="ar">الأدلة</span></a></div></nav>
+<nav aria-label="مسار التنقل" class="crumb"><ol><li><a href="/ar/"><span lang="ar">الرئيسية</span></a></li><li><a href="/ar/#tools"><span lang="ar">الأدوات</span></a></li><li><span aria-current="page"><span lang="ar">أنشئ صيغة SWITCH</span></span></li></ol></nav>
+<main id="main" tabindex="-1">
+<h1><span lang="ar">أنشئ صيغة SWITCH</span></h1>
+<p class="lead"><span lang="ar">عندما تريد نتيجة لكل قيمة دون تداخل الكثير من IF.</span></p>
+<p class="safe"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="9" rx="2" width="14" x="5" y="11"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><span><span lang="ar"><b>لا يُرفع ما تدخله أبدًا.</b> تتم المعالجة كلها على هذا الجهاز.</span></span></p><ol class="steps"><li><b>1</b><span lang="ar">اكتب الخلية والأزواج</span></li><li><b>2</b><span lang="ar">اختر النوع</span></li><li><b>3</b><span lang="ar">انسخ الصيغة</span></li></ol>
+<label for="ce" style="font-weight:700;display:block;margin-top:10px"><span lang="ar">الخلية المراد فحصها (مثل A2)</span></label>
+<input autocomplete="off" id="ce" placeholder="A2" style="width:100%;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:8px 10px;font:inherit;font-family:monospace;background:var(--paper);color:var(--ink)" type="text" value="A2"/>
+<label for="fn" style="font-weight:700;display:block;margin-top:10px"><span lang="ar">النوع</span></label>
+<select id="fn" style="width:100%;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:8px 10px;font:inherit;font-family:monospace;background:var(--paper);color:var(--ink)"><option>SWITCH</option><option>CHOOSE</option></select>
+<label for="pr" style="font-weight:700;display:block;margin-top:10px"><span lang="ar">الأزواج (A=Apple,B=Orange). وفي CHOOSE القيم فقط (Apple,Orange)</span></label>
+<input autocomplete="off" id="pr" placeholder="A=Apple,B=Orange" style="width:100%;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:8px 10px;font:inherit;font-family:monospace;background:var(--paper);color:var(--ink)" type="text" value="A=Apple,B=Orange"/>
+<label for="df" style="font-weight:700;display:block;margin-top:10px"><span lang="ar">القيمة عند عدم وجود تطابق (يمكن تركها فارغة)</span></label>
+<input autocomplete="off" id="df" placeholder="Other" style="width:100%;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:8px 10px;font:inherit;font-family:monospace;background:var(--paper);color:var(--ink)" type="text" value="Other"/>
+<label for="ot" style="font-weight:700;display:block;margin-top:10px"><span lang="ar">الصيغة</span></label>
+<input id="ot" readonly="" style="width:100%;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:8px 10px;font:inherit;font-family:monospace;background:var(--paper);color:var(--ink);background:#f7f7f7;font-family:monospace" type="text"/>
+<label for="o2" style="font-weight:700;display:block;margin-top:10px"><span lang="ar">صيغة تعمل في أي إصدار من Excel</span></label>
+<input id="o2" readonly="" style="width:100%;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;padding:8px 10px;font:inherit;font-family:monospace;background:var(--paper);color:var(--ink);background:#f7f7f7;font-family:monospace" type="text"/>
+<p class="note2" id="ct" style="font-size:1.1em;font-weight:700"></p>
+<div class="btnrow" style="margin-top:6px"><button class="btn2" id="cp" type="button"></button> <button class="btn2" id="cp2" type="button"></button></div>
+<section id="out">
+<div class="bar" id="bar"><i id="barf"></i></div>
+<div class="stamp"><span lang="ar">تم</span></div>
+<p id="info"></p>
+<a href="#" id="dl"></a>
+<div id="extra"></div>
+<p aria-live="polite" id="msg"></p>
+<p class="safe"><span lang="ar">🔒 لا تُرسل ملفاتك أبدًا إلى خادم خارجي. تتم المعالجة كلها بأمان داخل هذا المتصفح.</span></p>
+<div class="support" hidden="" id="support"><p><span lang="ar">إذا أفادك PDF Mikata، فإن إكرامية صغيرة تعني لنا الكثير.</span></p><a href="#" id="supl" rel="noopener" target="_blank"><span lang="ar">أرسل إكرامية (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="ar">أرسل هدية (قائمة أمنيات Amazon)</span></a></div>
+</section>
+<div class="next" id="next"><h3 aria-level="2"><span lang="ar">أدوات تُستخدم معًا غالبًا</span></h3><div class="ncards"><a class="tool" href="/ar/excel-if-builder.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><path d="M6 5v14M6 12h6l6-6M12 12l6 6"></path></svg></span><div class="tx"><b><span lang="ar">إنشاء صيغة IF</span></b><span class="d"><span lang="ar">أنشئ صيغة IF.</span></span></div></a><a class="tool" href="/ar/vlookup-formula-builder.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><circle cx="10" cy="10" r="6"></circle><path d="M15 15l5 5"></path><path d="M8 10h4"></path></svg></span><div class="tx"><b><span lang="ar">إنشاء صيغة VLOOKUP أو XLOOKUP</span></b><span class="d"><span lang="ar">أنشئ صيغ VLOOKUP وXLOOKUP.</span></span></div></a><a class="tool" href="/ar/index-match-builder.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="4"></rect><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 3v18"></path></svg></span><div class="tx"><b><span lang="ar">إنشاء صيغة INDEX وMATCH</span></b><span class="d"><span lang="ar">أنشئ صيغ INDEX وMATCH.</span></span></div></a><a class="tool" href="/ar/merge-pdf.html"><span class="ic"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="13" rx="1.5" width="10" x="3" y="3"></rect><rect height="13" rx="1.5" width="10" x="11" y="8"></rect></svg></span><div class="tx"><b><span lang="ar">دمج ملفات PDF</span></b><span class="d"><span lang="ar">ادمج ملفات PDF في ملف واحد.</span></span></div></a></div><a class="allt" href="/ar/"><span lang="ar">عرض جميع الأدوات (العودة إلى الصفحة الرئيسية)</span></a></div>
+<section class="guide" id="how">
+
+<div lang="ar"><h2>طريقة الاستخدام</h2>
+<ol>
+<li>اكتب الخلية المراد فحصها والأزواج.</li>
+<li>اختر النوع.</li>
+<li>انسخ الصيغة والصقها في خلية.</li>
+</ol>
+<h2>كيف تعمل</h2>
+<ul>
+<li>تُرجع SWITCH لكل قيمة النتيجة التي حددتها.</li>
+<li>تُرجع CHOOSE قيمة بحسب رقم مثل 1 أو 2 أو 3.</li>
+</ul>
+<h2>ملاحظات</h2>
+<ul>
+<li>افصل الأزواج بفواصل.</li>
+<li>تعمل الصيغة الثانية أيضًا في إصدارات Excel الأقدم.</li>
+</ul>
+<h2>الأسئلة الشائعة</h2>
+<details><summary>هل يُرسل ما أدخله إلى أي مكان؟</summary><p>لا. تتم المعالجة كلها داخل المتصفح على جهازك.</p></details>
+<details><summary>هل أحتاج إلى رفع ملف؟</summary><p>لا. تُنشأ الصيغة داخل المتصفح فقط.</p></details>
+</div>
+</section>
+<div class="support endtip"><p><span lang="ar">إذا أفادك PDF Mikata، فإن إكرامية صغيرة تعني لنا الكثير.</span></p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank"><span lang="ar">أرسل إكرامية (¥300)</span></a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank"><span lang="ar">أرسل هدية (قائمة أمنيات Amazon)</span></a></div>
+<section class="more rel"><h2><span lang="ar">أدلة هذه الأداة</span></h2><a href="/ar/switch-formula-builder-howto.html"><span lang="ar">كيف تكتب SWITCH (أنشئها تلقائيًا، مجانًا)</span></a><a href="/ar/switch-formula-builder-default.html"><span lang="ar">عند عدم وجود تطابق</span></a><a href="/ar/switch-formula-builder-choose.html"><span lang="ar">الاختيار بحسب الرقم</span></a><a href="/ar/switch-formula-builder-lookup.html"><span lang="ar">الاستخدام في Excel الأقدم</span></a><a href="/ar/switch-formula-builder-number.html"><span lang="ar">مطابقة الأرقام</span></a><a href="/ar/switch-formula-builder-trouble.html"><span lang="ar">ماذا تفعل إذا لم يعمل</span></a><a href="/ar/switch-formula-builder-safe-offline.html"><span lang="ar">منشئ SWITCH دون رفع</span></a></section>
+<section class="more"><h2><span lang="ar">المزيد من الأدوات</span></h2><a href="/ar/photo-to-pdf.html"><span lang="ar">الصور إلى PDF</span><small><span lang="ar">ادمج عدة صور في ملف PDF واحد بالترتيب الذي تختاره. يمكنك التدوير وإعادة الترتيب وتحديد حد للحجم.</span></small></a><a href="/ar/merge-pdf.html"><span lang="ar">دمج ملفات PDF</span><small><span lang="ar">ادمج عدة ملفات PDF في ملف واحد بالترتيب الذي تختاره.</span></small></a><a href="/ar/split-pdf.html"><span lang="ar">استخراج صفحات PDF أو حذفها</span><small><span lang="ar">احتفظ بالصفحات التي تحتاجها فقط، أو أزل التي لا تريدها.</span></small></a><a href="/ar/compress-pdf.html"><span lang="ar">ضغط PDF</span><small><span lang="ar">قلّص PDF ليكون أصغر من حجم تختاره، لتلائم حدود الرفع.</span></small></a><a href="/ar/pdf-to-image.html"><span lang="ar">PDF إلى صور</span><small><span lang="ar">احفظ كل صفحة من PDF كصورة JPEG أو PNG.</span></small></a><a href="/ar/image-convert.html"><span lang="ar">تحويل صيغة الصورة (JPG وPNG وWebP)</span><small><span lang="ar">حوّل الصور إلى JPG أو PNG أو WebP، عدة ملفات دفعة واحدة.</span></small></a><a href="/ar/pdf-rotate.html"><span lang="ar">تدوير صفحات PDF وإعادة ترتيبها</span><small><span lang="ar">أصلح الصفحات الجانبية، أو غيّر ترتيب الصفحات، أو احذف صفحات.</span></small></a><a href="/ar/pdf-page-numbers.html"><span lang="ar">إضافة أرقام صفحات إلى PDF</span><small><span lang="ar">أضف أرقام الصفحات إلى PDF مع اختيار الموضع والنمط.</span></small></a><a href="/ar/image-compress.html"><span lang="ar">ضغط الصور وتغيير حجمها</span><small><span lang="ar">صغّر حجم ملفات الصور، وغيّر أبعادها إن أردت.</span></small></a><a href="/ar/heic-to-jpg.html"><span lang="ar">تحويل HEIC إلى JPG</span><small><span lang="ar">حوّل صور HEIC من iPhone إلى JPG أو PNG.</span></small></a><a href="/ar/pdf-split.html"><span lang="ar">تقسيم PDF</span><small><span lang="ar">قسّم PDF إلى عدة ملفات: صفحة لكل ملف، أو كل N صفحة، أو بحسب نطاقات.</span></small></a><a href="/ar/image-crop.html"><span lang="ar">قص الصورة وتدويرها</span><small><span lang="ar">اقصص الصورة بأي منطقة أو نسبة، ودوّرها.</span></small></a><a href="/ar/pdf-to-text.html"><span lang="ar">استخراج النص من PDF</span><small><span lang="ar">استخرج النص من PDF لنسخه أو حفظه.</span></small></a><a href="/ar/receipt-maker.html"><span lang="ar">إنشاء إيصال بصيغة PDF</span><small><span lang="ar">املأ الدافع والمبلغ والوصف لإنشاء إيصال بصيغة PDF. تفصيل الضريبة ورقم تسجيل الفاتورة اختياريان.</span></small></a><a href="/ar/resume-maker.html"><span lang="ar">إنشاء سيرة ذاتية بصيغة PDF (rirekisho الياباني)</span><small><span lang="ar">املأ بياناتك وتعليمك وخبرتك ودوافعك لإنشاء سيرة ذاتية على الطراز الياباني (rirekisho) بصيغة PDF، مع صورة هوية اختيارية.</span></small></a><a href="/ar/timetable-maker.html"><span lang="ar">إنشاء جدول دراسي / جدول أسبوعي</span><small><span lang="ar">أدخل الحصص والأعمال والخطط لإنشاء جدول دراسي أو أسبوعي بصيغة PDF أو صورة، مع ترميز لوني.</span></small></a><a href="/ar/namecard-maker.html"><span lang="ar">إنشاء بطاقات أعمال / بطاقات أسماء</span><small><span lang="ar">أدخل اسمك وبياناتك لإنشاء بطاقات أعمال أو بطاقات أسماء مرتّبة على A4 بصيغة PDF. يمكنك أيضًا إنشاء بطاقات أسماء بالجملة من قائمة.</span></small></a><a href="/ar/qr-code-maker.html"><span lang="ar">إنشاء رمز QR (URL وWi-Fi)</span><small><span lang="ar">أنشئ رمز QR من URL أو نص أو بيانات Wi-Fi واحفظه بصيغة PNG أو SVG أو PDF.</span></small></a><a href="/ar/pdf-nup.html"><span lang="ar">دمج صفحات PDF على ورقة واحدة (2 أو 4 في الورقة)</span><small><span lang="ar">رتّب عدة صفحات PDF على ورقة A4 واحدة (2 أو 4 أو 6 أو 8 أو 9 في الورقة) لتوفير الورق عند الطباعة.</span></small></a><a href="/ar/pdf-grayscale.html"><span lang="ar">تحويل PDF إلى تدرج رمادي (أبيض وأسود)</span><small><span lang="ar">حوّل ملف PDF الملوّن إلى تدرج رمادي أو أبيض وأسود خالص، جاهزًا للطباعة أو النسخ أو الفاكس بالأبيض والأسود. اختر الدقة.</span></small></a><a href="/ar/pdf-watermark.html"><span lang="ar">إضافة علامة مائية نصية إلى PDF</span><small><span lang="ar">أضف نصًا مثل «للتقديم» أو «نسخة» أو «سري» بشكل خفيف عبر كل صفحات PDF. اختر الموضع واللون والشفافية.</span></small></a><a href="/ar/pdf-crop.html"><span lang="ar">قص هوامش PDF</span><small><span lang="ar">قص هوامش PDF تلقائيًا أو بضبط كل حافة. أسهل في القراءة على الهاتف وأنظف عند الطباعة.</span></small></a><a href="/ar/pdf-redact.html"><span lang="ar">تظليل أجزاء من PDF بالأسود (حجب)</span><small><span lang="ar">اسحب فوق أجزاء PDF التي تريد إخفاءها لتظليلها بالأسود. تتحول الصفحات المحجوبة إلى صور، فيزول النص الموجود تحتها.</span></small></a><a href="/ar/pdf-metadata.html"><span lang="ar">عرض خصائص PDF (المؤلف والعنوان) وإزالتها</span><small><span lang="ar">اعرض المؤلف والعنوان والبرنامج والتواريخ المخزنة في PDF ثم أزلها أو عدّلها.</span></small></a><a href="/ar/pdf-fill.html"><span lang="ar">ملء PDF: إضافة نص وتاريخ وتوقيع وعلامات</span><small><span lang="ar">أضف نصًا أو تاريخًا أو علامات صح أو دوائر أو توقيعًا بخط اليد أو صورة (مثل ختم) في أي موضع من PDF.</span></small></a><a href="/ar/pdf-resize.html"><span lang="ar">تغيير حجم صفحات PDF إلى A4 أو حجم ورق آخر</span><small><span lang="ar">اجعل صفحات PDF ذات الأحجام المختلفة بحجم واحد، مثل A4 أو A3 أو B5 أو Letter. يبقى النص والرسومات واضحة.</span></small></a><a href="/ar/pdf-delete-pages.html"><span lang="ar">حذف صفحات من PDF</span><small><span lang="ar">اختر الصفحات غير المرغوبة من PDF واحذفها.</span></small></a><a href="/ar/pdf-extract-pages.html"><span lang="ar">استخراج صفحات من PDF</span><small><span lang="ar">اختر الصفحات التي تحتاجها واحفظها كملف PDF جديد.</span></small></a><a href="/ar/pdf-reverse.html"><span lang="ar">عكس ترتيب صفحات PDF</span><small><span lang="ar">اعكس ترتيب صفحات PDF.</span></small></a><a href="/ar/pdf-insert-blank.html"><span lang="ar">إدراج صفحات فارغة في PDF</span><small><span lang="ar">أدرج صفحات فارغة في أي موضع من PDF.</span></small></a><a href="/ar/pdf-split-halves.html"><span lang="ar">تقسيم الصفحات المزدوجة في PDF إلى صفحات مفردة</span><small><span lang="ar">قسّم الصفحات المزدوجة في PDF إلى صفحات مفردة.</span></small></a><a href="/ar/pdf-header-footer.html"><span lang="ar">إضافة رأس وتذييل إلى PDF</span><small><span lang="ar">أضف عنوانًا أو تاريخًا أو أرقام صفحات في أعلى PDF وأسفله.</span></small></a><a href="/ar/pdf-booklet.html"><span lang="ar">ترتيب PDF ككتيّب للطباعة</span><small><span lang="ar">أعد ترتيب PDF ليُطبع ويُطوى ككتيّب.</span></small></a><a href="/ar/pdf-blank-remove.html"><span lang="ar">العثور على الصفحات الفارغة في PDF وإزالتها</span><small><span lang="ar">اعثر على الصفحات الفارغة في PDF تلقائيًا واحذفها.</span></small></a><a href="/ar/pdf-long-image.html"><span lang="ar">تحويل PDF إلى صورة طويلة واحدة</span><small><span lang="ar">اربط كل صفحات PDF في صورة طويلة واحدة.</span></small></a><a href="/ar/pdf-duplex-merge.html"><span lang="ar">دمج مسح الوجه الأمامي والخلفي في ملف PDF واحد</span><small><span lang="ar">ادمج ملف PDF للوجوه الأمامية وملف PDF للوجوه الخلفية بالتناوب في ملف واحد.</span></small></a><a href="/ar/image-resize.html"><span lang="ar">تغيير حجم الصور بالبكسل</span><small><span lang="ar">غيّر حجم الصور بحسب العرض أو الارتفاع أو النسبة المئوية.</span></small></a><a href="/ar/image-rotate.html"><span lang="ar">تدوير الصور وقلبها</span><small><span lang="ar">دوّر الصور واقلبها أفقيًا أو رأسيًا.</span></small></a><a href="/ar/image-watermark.html"><span lang="ar">إضافة علامة مائية نصية إلى الصور</span><small><span lang="ar">ضع نصًا مائيًا مثل «نسخة» فوق الصور.</span></small></a><a href="/ar/image-mosaic.html"><span lang="ar">تمويه جزء من الصورة بالفسيفساء أو الطمس</span><small><span lang="ar">أخفِ أجزاء من الصورة بالفسيفساء أو الطمس أو مربع أسود.</span></small></a><a href="/ar/image-exif-remove.html"><span lang="ar">إزالة بيانات الموقع والتصوير من الصور</span><small><span lang="ar">أزل بيانات GPS والتاريخ والكاميرا من الصور واحفظ نسخة نظيفة.</span></small></a><a href="/ar/image-filter.html"><span lang="ar">تطبيق مظاهر الأبيض والأسود والسيبيا وغيرها</span><small><span lang="ar">حوّل الصور إلى أبيض وأسود أو سيبيا، أو غيّر السطوع.</span></small></a><a href="/ar/favicon-maker.html"><span lang="ar">إنشاء أيقونة موقع (Favicon)</span><small><span lang="ar">أنشئ مجموعة Favicon كاملة من صورة واحدة.</span></small></a><a href="/ar/image-stitch.html"><span lang="ar">دمج عدة صور في صورة واحدة</span><small><span lang="ar">ضع عدة صور فوق بعضها أو اجمعها في صورة واحدة.</span></small></a><a href="/ar/id-photo.html"><span lang="ar">القص بحجم صورة الهوية وترتيبها للطباعة</span><small><span lang="ar">اقصص صورة بحجم صورة الهوية ورتّبها على ورقة بحجم L.</span></small></a><a href="/ar/image-color-picker.html"><span lang="ar">التقاط رموز الألوان من صورة</span><small><span lang="ar">اقرأ رموز الألوان من صورة واعثر على الألوان الرئيسية.</span></small></a><a href="/ar/char-counter.html"><span lang="ar">عدّاد الأحرف (للطلبات والتقارير)</span><small><span lang="ar">عدّ أحرف نصك وأسطره وأوراق المخطوطة.</span></small></a><a href="/ar/wareki-converter.html"><span lang="ar">التحويل بين السنوات الميلادية والعصور اليابانية</span><small><span lang="ar">حوّل بين السنوات الميلادية والعصور اليابانية.</span></small></a><a href="/ar/zenkaku-hankaku.html"><span lang="ar">تحويل الأحرف كاملة العرض ونصف العرض والهيراغانا والكاتاكانا</span><small><span lang="ar">حوّل بين الأحرف كاملة العرض ونصف العرض، وبين الهيراغانا والكاتاكانا.</span></small></a><a href="/ar/line-break-remover.html"><span lang="ar">إزالة فواصل الأسطر في النص وتنظيفها</span><small><span lang="ar">رتّب فواصل الأسطر في النص المنسوخ من PDF وغيره.</span></small></a><a href="/ar/tax-calculator.html"><span lang="ar">حساب ضريبة الاستهلاك (شاملة / غير شاملة)</span><small><span lang="ar">احسب الأسعار شاملة الضريبة وغير شاملة لها.</span></small></a><a href="/ar/date-calculator.html"><span lang="ar">حساب العمر والأيام بين تاريخين وإزاحة التواريخ</span><small><span lang="ar">احسب العمر والأيام بين تاريخين.</span></small></a><a href="/ar/pdf-unlock.html"><span lang="ar">إزالة كلمة المرور من PDF</span><small><span lang="ar">أزل كلمة المرور والقيود من ملف PDF تعرف كلمة مروره.</span></small></a><a href="/ar/pdf-protect.html"><span lang="ar">إضافة كلمة مرور إلى PDF</span><small><span lang="ar">أضف كلمة مرور مطلوبة لفتح PDF.</span></small></a><a href="/ar/ocr-text.html"><span lang="ar">قراءة النص من الصور وملفات PDF (OCR)</span><small><span lang="ar">حوّل النص في الصور وملفات PDF الممسوحة ضوئيًا إلى نص.</span></small></a><a href="/ar/pdf-compare.html"><span lang="ar">مقارنة ملفي PDF (العثور على الفروق)</span><small><span lang="ar">اعرض فروق النص بين ملفي PDF بألوان مميزة.</span></small></a><a href="/ar/password-generator.html"><span lang="ar">إنشاء كلمة مرور عشوائية قوية</span><small><span lang="ar">أنشئ كلمات مرور عشوائية قوية فورًا.</span></small></a><a href="/ar/percent-calculator.html"><span lang="ar">حساب النسب المئوية والخصومات والتغير بالنسبة المئوية</span><small><span lang="ar">احسب النسب المئوية والخصومات والتغير بالنسبة المئوية فورًا.</span></small></a><a href="/ar/line-sort-dedupe.html"><span lang="ar">حذف الأسطر المكررة وترتيب القائمة</span><small><span lang="ar">احذف الأسطر المكررة ورتّبها.</span></small></a><a href="/ar/unit-converter.html"><span lang="ar">محوّل الوحدات (الطول والوزن والمساحة والحرارة وغيرها)</span><small><span lang="ar">حوّل الطول والوزن والمساحة والحرارة وغيرها فورًا.</span></small></a><a href="/ar/zip-maker.html"><span lang="ar">إنشاء ملف ZIP</span><small><span lang="ar">اجمع عدة ملفات في ملف ZIP واحد.</span></small></a><a href="/ar/zip-extract.html"><span lang="ar">فتح ملف ZIP (فك الضغط)</span><small><span lang="ar">اطّلع على محتويات ZIP واستخرج الملفات التي تحتاجها.</span></small></a><a href="/ar/file-hash.html"><span lang="ar">التحقق من تجزئة ملف (SHA-256)</span><small><span lang="ar">احسب تجزئة ملف وقارنها.</span></small></a><a href="/ar/csv-json.html"><span lang="ar">تحويل CSV وJSON</span><small><span lang="ar">حوّل بين CSV وJSON فورًا.</span></small></a><a href="/ar/svg-to-png.html"><span lang="ar">تحويل SVG إلى PNG</span><small><span lang="ar">حوّل ملف SVG إلى صورة PNG.</span></small></a><a href="/ar/file-base64.html"><span lang="ar">تحويل الملفات وBase64</span><small><span lang="ar">حوّل بين الملفات ونص Base64.</span></small></a><a href="/ar/json-formatter.html"><span lang="ar">تنسيق JSON والتحقق منه</span><small><span lang="ar">تنسيق JSON وتصغيره والتحقق منه.</span></small></a><a href="/ar/text-diff.html"><span lang="ar">مقارنة نصين (Diff)</span><small><span lang="ar">اعرض الفروق بين نصين سطرًا بسطر.</span></small></a><a href="/ar/xlsx-to-csv.html"><span lang="ar">تحويل Excel إلى CSV أو JSON</span><small><span lang="ar">حوّل ورقة Excel إلى CSV أو TSV أو JSON.</span></small></a><a href="/ar/csv-to-xlsx.html"><span lang="ar">تحويل CSV إلى Excel (.xlsx)</span><small><span lang="ar">حوّل CSV إلى ملف Excel (.xlsx).</span></small></a><a href="/ar/docx-to-text.html"><span lang="ar">استخراج النص من ملف Word</span><small><span lang="ar">استخرج النص العادي من ملف Word.</span></small></a><a href="/ar/pptx-to-text.html"><span lang="ar">استخراج النص من PowerPoint</span><small><span lang="ar">استخرج نص كل شريحة PowerPoint.</span></small></a><a href="/ar/pdf-to-word.html"><span lang="ar">وضع نص PDF في Word</span><small><span lang="ar">انقل نص PDF إلى ملف Word.</span></small></a><a href="/ar/image-to-word.html"><span lang="ar">وضع الصور في ملف Word</span><small><span lang="ar">ضع الصور في ملف Word، صورة لكل صفحة.</span></small></a><a href="/ar/xlsx-formula-to-value.html"><span lang="ar">تحويل صيغ Excel إلى قيم</span><small><span lang="ar">استبدل صيغ Excel بقيمها.</span></small></a><a href="/ar/office-metadata-remove.html"><span lang="ar">إزالة معلومات المؤلف من ملفات Office</span><small><span lang="ar">امسح المؤلف وغيره من المعلومات المخزنة في ملفات Office.</span></small></a><a href="/ar/office-image-extract.html"><span lang="ar">استخراج الصور من Word وExcel وPowerPoint</span><small><span lang="ar">استخرج الصور من ملفات Office كملف ZIP.</span></small></a><a href="/ar/docx-to-html.html"><span lang="ar">تحويل Word إلى HTML</span><small><span lang="ar">حوّل نص Word إلى HTML.</span></small></a><a href="/ar/xlsx-split-sheets.html"><span lang="ar">تقسيم ملف Excel حسب الأوراق</span><small><span lang="ar">قسّم كل ورقة Excel إلى ملف CSV أو TSV خاص بها.</span></small></a><a href="/ar/xlsx-to-html.html"><span lang="ar">تحويل جدول Excel إلى HTML أو Markdown</span><small><span lang="ar">حوّل جدول Excel إلى جدول HTML أو Markdown.</span></small></a><a href="/ar/charset-convert.html"><span lang="ar">تحويل ترميز النص (إصلاح النص المشوّه)</span><small><span lang="ar">حوّل الملفات النصية بين Shift_JIS وUTF-8 وEUC-JP وغيرها لإصلاح النص المشوّه.</span></small></a><a href="/ar/image-split.html"><span lang="ar">تقسيم الصورة إلى شبكة (لمنشورات التواصل الاجتماعي)</span><small><span lang="ar">قسّم صورة إلى أجزاء متساوية أفقيًا وعموديًا واحفظها.</span></small></a><a href="/ar/image-to-gif.html"><span lang="ar">إنشاء GIF متحرك من الصور</span><small><span lang="ar">اربط عدة صور بالترتيب في GIF متحرك.</span></small></a><a href="/ar/file-rename.html"><span lang="ar">إعادة تسمية ملفات كثيرة دفعة واحدة (أرقام، تواريخ)</span><small><span lang="ar">غيّر أسماء ملفات كثيرة دفعة واحدة بأرقام أو تواريخ.</span></small></a><a href="/ar/csv-tools.html"><span lang="ar">دمج CSV وتقسيمه واختيار الأعمدة</span><small><span lang="ar">ادمج ملفات CSV أو قسّمها حسب الصفوف أو احتفظ بأعمدة محددة فقط.</span></small></a><a href="/ar/pdf-extract-images.html"><span lang="ar">استخراج الصور من PDF</span><small><span lang="ar">استخرج الصور المضمّنة في PDF بجودتها الأصلية.</span></small></a><a href="/ar/file-dupes.html"><span lang="ar">ابحث عن الملفات المكررة</span><small><span lang="ar">ابحث عن الملفات ذات المحتوى المتطابق واحفظ ZIP بدون مكررات.</span></small></a><a href="/ar/file-type-check.html"><span lang="ar">تحقق من النوع الحقيقي للملف (الامتداد مقابل المحتوى)</span><small><span lang="ar">حدّد نوع الملف من محتواه وتحقق من تطابق الامتداد.</span></small></a><a href="/ar/file-encrypt.html"><span lang="ar">تشفير ملف وفك تشفيره بكلمة مرور</span><small><span lang="ar">شفّر أي ملف وفك تشفيره بكلمة مرور (AES-256).</span></small></a><a href="/ar/txt-merge-split.html"><span lang="ar">دمج الملفات النصية وتقسيمها</span><small><span lang="ar">ادمج الملفات النصية في ملف واحد أو قسّمها حسب الأسطر أو الحجم.</span></small></a><a href="/ar/xlsx-merge-csv.html"><span lang="ar">دمج عدة ملفات Excel في ملف CSV واحد</span><small><span lang="ar">كدّس بيانات عدة ملفات Excel في ملف CSV واحد.</span></small></a><a href="/ar/pdf-bookmarks.html"><span lang="ar">عرض إشارات PDF المرجعية وإضافتها</span><small><span lang="ar">اعرض إشارات PDF المرجعية (جدول المحتويات) وأضفها.</span></small></a><a href="/ar/audio-trim.html"><span lang="ar">قص ملف صوتي</span><small><span lang="ar">اقصص جزءًا من ملف صوتي واحفظه بصيغة WAV.</span></small></a><a href="/ar/video-frame.html"><span lang="ar">حفظ إطارات الفيديو كصور</span><small><span lang="ar">احفظ أي لحظة من الفيديو كصورة.</span></small></a><a href="/ar/url-encoder.html"><span lang="ar">ترميز URL وفك ترميزه</span><small><span lang="ar">ترميز النص في عناوين URL وفك ترميزه.</span></small></a><a href="/ar/markdown-to-html.html"><span lang="ar">Markdown إلى HTML</span><small><span lang="ar">حوّل Markdown إلى HTML.</span></small></a><a href="/ar/random-picker.html"><span lang="ar">الاختيار العشوائي والترتيب والمجموعات</span><small><span lang="ar">اسحب الأسماء أو حدّد ترتيبًا عشوائيًا أو قسّم إلى مجموعات.</span></small></a><a href="/ar/color-converter.html"><span lang="ar">محوّل رموز الألوان (HEX, RGB, HSL)</span><small><span lang="ar">حوّل رموز الألوان بين HEX وRGB وHSL.</span></small></a><a href="/ar/timestamp-converter.html"><span lang="ar">محوّل الطابع الزمني UNIX</span><small><span lang="ar">حوّل بين وقت UNIX والتواريخ.</span></small></a><a href="/ar/regex-tester.html"><span lang="ar">أداة اختبار التعبيرات النمطية</span><small><span lang="ar">اختبر التعبيرات النمطية مع المطابقات والاستبدالات.</span></small></a><a href="/ar/text-case-converter.html"><span lang="ar">محوّل حالة الأحرف (camelCase وsnake_case)</span><small><span lang="ar">حوّل حالة الأحرف وأنماط التسمية في النص.</span></small></a><a href="/ar/base64-text.html"><span lang="ar">مشفّر ومفكّك نص Base64</span><small><span lang="ar">حوّل النص إلى Base64 والعكس.</span></small></a><a href="/ar/uuid-generator.html"><span lang="ar">مولّد UUID (الإصدار 4، دفعة واحدة)</span><small><span lang="ar">أنشئ معرّفات UUID (الإصدار 4) دفعة واحدة.</span></small></a><a href="/ar/dummy-text-generator.html"><span lang="ar">مولّد النص التجريبي (ياباني، Lorem ipsum)</span><small><span lang="ar">أنشئ نصًا تجريبيًا لفحص التصميمات.</span></small></a><a href="/ar/html-escape.html"><span lang="ar">تهريب HTML وإلغاؤه</span><small><span lang="ar">هرِّب أحرف HTML الخاصة وألغِ تهريبها.</span></small></a><a href="/ar/bmi-calculator.html"><span lang="ar">حاسبة مؤشر كتلة الجسم (مع الوزن المرجعي)</span><small><span lang="ar">احسب مؤشر كتلة الجسم من الطول والوزن.</span></small></a><a href="/ar/age-calculator.html"><span lang="ar">حاسبة العمر (سنوات، أشهر، أيام)</span><small><span lang="ar">احسب العمر من تاريخ الميلاد.</span></small></a><a href="/ar/split-bill-calculator.html"><span lang="ar">حاسبة تقسيم الفاتورة (مع التقريب)</span><small><span lang="ar">قسّم مبلغًا إجماليًا بين الأشخاص.</span></small></a><a href="/ar/work-hours-calculator.html"><span lang="ar">حاسبة ساعات العمل (مع الاستراحة والأجر)</span><small><span lang="ar">احسب وقت العمل من وقتي البداية والنهاية.</span></small></a><a href="/ar/google-drive-direct-link.html"><span lang="ar">محوّل روابط Google Drive المباشرة</span><small><span lang="ar">حوّل رابط مشاركة Drive إلى رابط مباشر.</span></small></a><a href="/ar/google-export-link.html"><span lang="ar">منشئ روابط تصدير Google Docs وSheets وSlides</span><small><span lang="ar">أنشئ روابط تصدير لملفات Google.</span></small></a><a href="/ar/google-calendar-link.html"><span lang="ar">منشئ رابط إضافة حدث إلى تقويم Google (مع ICS)</span><small><span lang="ar">أنشئ رابط الإضافة إلى التقويم.</span></small></a><a href="/ar/excel-column-letter.html"><span lang="ar">محول رقم وحرف عمود Excel</span><small><span lang="ar">حوّل أرقام أعمدة Excel وحروفها.</span></small></a><a href="/ar/excel-serial-date.html"><span lang="ar">محول القيمة التسلسلية والتاريخ في Excel</span><small><span lang="ar">حوّل القيم التسلسلية والتواريخ في Excel.</span></small></a><a href="/ar/table-paste-convert.html"><span lang="ar">جدول Excel إلى Markdown وHTML وCSV وJSON</span><small><span lang="ar">حوّل جدولًا ملصقًا إلى Markdown أو HTML أو CSV أو JSON.</span></small></a><a href="/ar/table-transpose.html"><span lang="ar">تبديل صفوف الجدول وأعمدته</span><small><span lang="ar">بدّل صفوف جدول ملصق وأعمدته.</span></small></a><a href="/ar/excel-text-clean.html"><span lang="ar">إزالة المسافات الزائدة والأحرف غير المرئية من نص Excel</span><small><span lang="ar">أزل المسافات الزائدة والأحرف غير المرئية.</span></small></a><a href="/ar/excel-range-info.html"><span lang="ar">عدّ الخلايا والصفوف والأعمدة في نطاق Excel</span><small><span lang="ar">اعرف الخلايا والصفوف والأعمدة في نطاق.</span></small></a><a href="/ar/markdown-table-to-excel.html"><span lang="ar">تحويل جدول Markdown لاستخدامه في Excel</span><small><span lang="ar">حوّل جدول Markdown إلى جدول لـ Excel.</span></small></a><a href="/ar/text-to-columns.html"><span lang="ar">تقسيم النص إلى أعمدة بفاصل</span><small><span lang="ar">قسّم النص إلى أعمدة بفاصل.</span></small></a><a href="/ar/vlookup-formula-builder.html"><span lang="ar">إنشاء صيغة VLOOKUP أو XLOOKUP</span><small><span lang="ar">أنشئ صيغ VLOOKUP وXLOOKUP.</span></small></a><a href="/ar/column-stats.html"><span lang="ar">المجموع والمتوسط والوسيط لعمود من الأرقام</span><small><span lang="ar">احصل على مجموع ومتوسط الأرقام الملصقة.</span></small></a><a href="/ar/excel-text-format-builder.html"><span lang="ar">إنشاء صيغة TEXT في Excel</span><small><span lang="ar">أنشئ صيغة TEXT.</span></small></a><a href="/ar/textjoin-formula-builder.html"><span lang="ar">إنشاء صيغة TEXTJOIN</span><small><span lang="ar">أنشئ صيغة TEXTJOIN.</span></small></a><a href="/ar/sumif-formula-builder.html"><span lang="ar">إنشاء صيغة SUMIF أو COUNTIF</span><small><span lang="ar">أنشئ صيغ SUMIF وCOUNTIF.</span></small></a><a href="/ar/sheet-name-checker.html"><span lang="ar">فحص اسم ورقة Excel</span><small><span lang="ar">افحص ما إذا كان اسم الورقة مسموحًا به.</span></small></a><a href="/ar/excel-if-builder.html"><span lang="ar">إنشاء صيغة IF</span><small><span lang="ar">أنشئ صيغة IF.</span></small></a><a href="/ar/datedif-formula-builder.html"><span lang="ar">إنشاء صيغة DATEDIF</span><small><span lang="ar">أنشئ صيغة DATEDIF.</span></small></a><a href="/ar/importrange-builder.html"><span lang="ar">إنشاء صيغة IMPORTRANGE</span><small><span lang="ar">أنشئ صيغة IMPORTRANGE.</span></small></a><a href="/ar/filter-formula-builder.html"><span lang="ar">إنشاء صيغة FILTER</span><small><span lang="ar">أنشئ صيغة FILTER.</span></small></a><a href="/ar/query-formula-builder.html"><span lang="ar">إنشاء صيغة QUERY</span><small><span lang="ar">أنشئ صيغة QUERY.</span></small></a><a href="/ar/round-formula-builder.html"><span lang="ar">إنشاء صيغة تقريب</span><small><span lang="ar">أنشئ صيغًا من نوع ROUND.</span></small></a><a href="/ar/excel-left-mid-builder.html"><span lang="ar">إنشاء صيغة LEFT أو MID أو RIGHT</span><small><span lang="ar">أنشئ صيغًا لاستخراج النص.</span></small></a><a href="/ar/date-offset-formula-builder.html"><span lang="ar">إنشاء صيغة إزاحة التاريخ</span><small><span lang="ar">أنشئ صيغ إزاحة التاريخ.</span></small></a><a href="/ar/rank-formula-builder.html"><span lang="ar">إنشاء صيغة ترتيب</span><small><span lang="ar">أنشئ صيغ الترتيب.</span></small></a><a href="/ar/import-formula-builder.html"><span lang="ar">إنشاء صيغة IMPORTHTML</span><small><span lang="ar">أنشئ صيغًا من نوع IMPORTHTML.</span></small></a><a href="/ar/index-match-builder.html"><span lang="ar">إنشاء صيغة INDEX وMATCH</span><small><span lang="ar">أنشئ صيغ INDEX وMATCH.</span></small></a><a href="/ar/substitute-formula-builder.html"><span lang="ar">إنشاء صيغة SUBSTITUTE</span><small><span lang="ar">أنشئ صيغ استبدال النص.</span></small></a><a href="/ar/cond-format-formula-builder.html"><span lang="ar">إنشاء صيغة تنسيق شرطي</span><small><span lang="ar">أنشئ صيغ التنسيق الشرطي.</span></small></a><a href="/ar/arrayformula-builder.html"><span lang="ar">إنشاء ARRAYFORMULA</span><small><span lang="ar">أنشئ صيغ ARRAYFORMULA.</span></small></a><a href="/ar/split-formula-builder.html"><span lang="ar">إنشاء صيغة SPLIT</span><small><span lang="ar">أنشئ صيغ تقسيم النص.</span></small></a><a href="/ar/unique-formula-builder.html"><span lang="ar">إنشاء صيغة UNIQUE</span><small><span lang="ar">أنشئ صيغًا للتعامل مع القيم المكررة.</span></small></a><a href="/ar/networkdays-formula-builder.html"><span lang="ar">إنشاء صيغة NETWORKDAYS</span><small><span lang="ar">أنشئ صيغ أيام العمل.</span></small></a><a href="/ar/sumproduct-formula-builder.html"><span lang="ar">إنشاء صيغة SUMPRODUCT</span><small><span lang="ar">أنشئ صيغ SUMPRODUCT.</span></small></a><a href="/ar/sparkline-formula-builder.html"><span lang="ar">إنشاء صيغة SPARKLINE</span><small><span lang="ar">أنشئ صيغ SPARKLINE.</span></small></a><a href="/ar/hyperlink-formula-builder.html"><span lang="ar">إنشاء صيغة HYPERLINK</span><small><span lang="ar">أنشئ صيغ HYPERLINK.</span></small></a><a href="/ar/regex-formula-builder.html"><span lang="ar">أنشئ صيغة التعبير النمطي</span><small><span lang="ar">أنشئ صيغ التعابير النمطية.</span></small></a><a href="/ar/sort-formula-builder.html"><span lang="ar">أنشئ صيغة SORT</span><small><span lang="ar">أنشئ صيغ الفرز.</span></small></a><a href="/ar/large-small-formula-builder.html"><span lang="ar">أنشئ صيغة LARGE وSMALL</span><small><span lang="ar">أنشئ صيغًا لأكبر أو أصغر قيمة رقم N.</span></small></a><a href="/ar/sequence-formula-builder.html"><span lang="ar">أنشئ صيغة SEQUENCE</span><small><span lang="ar">أنشئ صيغًا لمتتاليات الأرقام والتواريخ.</span></small></a><a href="/ar/pmt-formula-builder.html"><span lang="ar">أنشئ صيغة PMT</span><small><span lang="ar">أنشئ صيغًا لأقساط القروض.</span></small></a><a href="/ar/text-case-formula-builder.html"><span lang="ar">أنشئ صيغة حالة الأحرف والمسافات</span><small><span lang="ar">أنشئ صيغًا تنظّم حالة الأحرف والمسافات.</span></small></a><a href="/ar/weekday-formula-builder.html"><span lang="ar">أنشئ صيغة WEEKDAY</span><small><span lang="ar">أنشئ صيغًا ليوم الأسبوع ورقم الأسبوع.</span></small></a><a href="/ar/find-formula-builder.html"><span lang="ar">أنشئ صيغة FIND</span><small><span lang="ar">أنشئ صيغًا تبحث عن نص وتعدّ الأحرف.</span></small></a><a href="/ar/transpose-formula-builder.html"><span lang="ar">أنشئ صيغة TRANSPOSE</span><small><span lang="ar">أنشئ صيغًا تبدّل الصفوف والأعمدة.</span></small></a></section>
+</main>
+<footer><a href="/about.html"><span lang="ar">حول / اتصل بنا (باليابانية)</span></a><a href="/ar/privacy.html"><span lang="ar">سياسة الخصوصية</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ar">التحديثات على X</span></a></footer>
+<script>
+
+const $=id=>document.getElementById(id);
+const EN=()=>document.documentElement.getAttribute("data-lang")==="en";
+const TR={"Copy the second": "انسخ الثانية", "Copy result": "نسخ النتيجة", "Password-protected PDFs are not supported. Remove the password and try again.": "ملفات PDF المحمية بكلمة مرور غير مدعومة. أزل كلمة المرور وحاول مرة أخرى.", "Could not save. Please try again.": "تعذّر الحفظ. يُرجى المحاولة مرة أخرى.", "The input is not valid.": "المُدخل غير صالح.", "Copied": "تم النسخ", "Could not read the PDF. It may be damaged or in an unsupported format.": "تعذّرت قراءة PDF. قد يكون تالفًا أو بصيغة غير مدعومة."};const T=(k,a)=>(TR[k]||k).replace(/\{(\d+)\}/g,(m,i)=>a[i]);
+const fmt=n=>n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB";
+const val=n=>{const r=document.querySelector('input[name="'+n+'"]:checked');return r?r.value:""};
+const SUPPORT_URL="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00";
+const IOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+async function save(blob,name,type){
+  if(IOS){
+    try{
+      const f=new File([blob],name,{type});
+      if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}
+    }catch(err){if(err&&err.name==="AbortError")return}
+  }
+  const a=document.createElement("a");const u=URL.createObjectURL(blob);
+  a.href=u;a.download=name;a.style.display="none";document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},5000);
+}
+function wire(a,blob,name,type){a.onclick=async e=>{e.preventDefault();try{await save(blob,name,type)}catch(err){$("msg").className="bad";$("msg").textContent=T("Could not save. Please try again.",[])}}}
+function baseName(f){return f.name.replace(/\.[^.]*$/,"")||"file"}
+function errText(e){
+  if(e&&(e.name==="PasswordException"||/password|encrypt/i.test(e.message||"")))return T("Password-protected PDFs are not supported. Remove the password and try again.",[]);
+  return T("Could not read the PDF. It may be damaged or in an unsupported format.",[]);
+}
+function isPdf(f){return f.type==="application/pdf"||/\.pdf$/i.test(f.name)}
+async function openPdfjs(file){
+  const buf=new Uint8Array(await file.arrayBuffer());
+  return pdfjsLib.getDocument({data:buf}).promise;
+}
+function beginRun(){
+  const out=$("out");out.style.display="block";
+  $("dl")&&($("dl").style.display="none");
+  $("info").textContent="";$("msg").className="";$("msg").textContent="";
+  out.querySelector(".stamp").style.display="none";
+  $("bar").style.display="block";$("barf").style.width="0";$("support").hidden=true;
+  const ex=$("extra");if(ex)ex.textContent="";
+}
+function endRun(){$("bar").style.display="none"}
+function finishOk(){
+  out=$("out");out.querySelector(".stamp").style.display="inline-flex";
+  if(SUPPORT_URL){$("supl").href=SUPPORT_URL;$("support").hidden=false}
+}
+function bindDrop(pickId,onFiles){
+  const dz=$(pickId);
+  dz.ondragover=e=>{e.preventDefault();dz.classList.add("on")};
+  dz.ondragleave=()=>dz.classList.remove("on");
+  dz.ondrop=e=>{e.preventDefault();dz.classList.remove("on");onFiles([...e.dataTransfer.files])};
+}
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+async function copyText(btn,text,ja,en){try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(_){}document.body.removeChild(ta)}
+  const o=btn.textContent;btn.textContent=T("Copied",[]);setTimeout(()=>{btn.textContent=o},1500)}
+const isC=s=>/^[A-Z]{1,3}\d+$/.test(s),isR=s=>/^[A-Z]{1,3}\d+:[A-Z]{1,3}\d+$/.test(s),nz=s=>s.trim().toUpperCase().replace(/\$/g,"");
+function absr(s){const m=/^([A-Z]{1,3})(\d+):([A-Z]{1,3})(\d+)$/.exec(s);return "$"+m[1]+"$"+m[2]+":$"+m[3]+"$"+m[4]}
+
+function q(s){s=s.trim();if(s==="")return '""';if(/^-?\d+(\.\d+)?$/.test(s))return s;if(/^\$?[A-Za-z]{1,3}\$?\d+$/.test(s))return s.toUpperCase();if(s.length>1&&s[0]==='"'&&s[s.length-1]==='"')return s;return '"'+s.replace(/"/g,'""')+'"'}
+function clr(){$("ot").value="";if($("o2"))$("o2").value="";$("ct").textContent=""}
+const Q=x=>'"'+x.replace(/"/g,'""')+'"';
+
+function conv(){const c=nz($("ce").value),f=$("fn").value,df=$("df").value,items=$("pr").value.split(",").map(s=>s.trim()).filter(s=>s!=="");
+ if(!isC(c)||items.length===0){clr();if(c||$("pr").value)$("ct").textContent=T("The input is not valid.",[]);return}
+ let fx,fo;
+ if(f==="SWITCH"){const ks=[],vs=[];
+  for(const it of items){const i=it.indexOf("=");if(i<1){clr();$("ct").textContent=T("The input is not valid.",[]);return}ks.push(it.slice(0,i).trim());vs.push(it.slice(i+1).trim())}
+  fx="SWITCH("+c+","+ks.map((k,i)=>q(k)+","+q(vs[i])).join(",")+(df!==""?","+q(df):"")+")";
+  fo="IFERROR(INDEX({"+vs.map(q).join(",")+"},MATCH("+c+",{"+ks.map(q).join(",")+"},0)),"+(df!==""?q(df):'""')+")"}
+ else{fx="CHOOSE("+c+","+items.map(q).join(",")+")";fo="INDEX({"+items.map(q).join(",")+"},"+c+")"}
+ $("ot").value="="+fx;$("o2").value="="+fo;$("ct").textContent=""}
+$("cp").textContent=T("Copy result",[]);$("cp").onclick=()=>{if($("ot").value)copyText($("cp"),$("ot").value)};
+$("cp2").textContent=T("Copy the second",[]);$("cp2").onclick=()=>{if($("o2").value)copyText($("cp2"),$("o2").value)};
+["ce","fn","pr","df"].forEach(i=>{$(i).addEventListener("input",conv);$(i).addEventListener("change",conv)});conv();
+
+</script>
+</body>
+</html>
