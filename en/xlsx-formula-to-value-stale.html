@@ -201,12 +201,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>When the Results Are Out of Date</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Refresh</li><li>Convert</li></ul></div>
-<h2>Steps</h2>
+<p>After converting, the calculated values are stale or empty. The cause is that the "calculated results" stored in the Excel file are out of date. <a href="/en/xlsx-formula-to-value.html">Convert Excel Formulas to Values</a> turns the results stored in the file into values.</p>
+<h2>Why it happens</h2>
+<p>An Excel file stores formulas together with their calculated results. This tool extracts the stored results. If the program that made the file didn't store results, values come out empty.</p>
+<h2>What to do</h2>
 <ol>
-<li>Open the file in Excel and re-save it to refresh the results.</li>
-<li>Select the refreshed file in <a href="/en/xlsx-formula-to-value.html">Convert Excel Formulas to Values</a>.</li>
-<li>Convert and save.</li>
+<li>Open the original file in Excel.</li>
+<li>Wait for calculation to finish.</li>
+<li>Save (overwrite).</li>
+<li>Convert the saved file with this tool again.</li>
 </ol>
+<div class="note">If calculation is set to manual, results aren't updated. Switch Excel's calculation mode to "Automatic" and then save.</div>
+<h2>Common causes</h2>
+<ul>
+<li><b>Files made by other programs</b>: results weren't stored.</li>
+<li><b>Manual calculation setting</b>: saved without recalculating.</li>
+<li><b>External references</b>: the referenced file couldn't be opened, so no update.</li>
+<li><b>Large files</b>: saved before calculation finished.</li>
+</ul>
+<h2>Tips for checking</h2>
+<ul>
+<li>In the converted file, verify some cells' values with a calculator</li>
+<li>Check that dates and division results look right</li>
+<li>Check that no error values (#DIV/0! etc.) remain</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Converting Excel files output from other systems</li>
+<li>Converting old files not updated for a long time</li>
+</ul>
+<h2>Example</h2>
+<p>Converting an Excel exported from a system to values left the total at 0. After opening in Excel and re-saving, converting gave the correct total.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>No change after re-saving</b>: check whether calculation is still manual.</li>
+<li><b>Error values remain</b>: fix the cause in the original formula first.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Are stale results a bug in this tool?</h3>
+<p>It uses the results stored in the file. Re-saving in Excel fixes it.</p>
+<h2>Summary</h2>
+<p>If values look wrong, open and re-save in Excel, then convert.</p>
 <a class="cta" href="/en/xlsx-formula-to-value.html">Use "Convert Excel Formulas to Values" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/xlsx-to-csv.html">Convert Excel to CSV or JSON</a>: Convert an Excel sheet to CSV, TSV or JSON.</li><li><a href="/en/csv-to-xlsx.html">Convert CSV to Excel (.xlsx)</a>: Convert a CSV to an Excel (.xlsx) file.</li><li><a href="/en/docx-to-text.html">Extract Text from a Word File</a>: Extract the plain text from a Word file.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

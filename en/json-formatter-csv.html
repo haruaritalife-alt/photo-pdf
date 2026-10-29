@@ -201,12 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Going Between JSON and CSV</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Format</li><li>Convert</li></ul></div>
-<h2>Steps</h2>
+<p>JSON is convenient for programs but a table suits people totalling things. Conversely, table data needs to be JSON to be handed to a program. Here is how to combine JSON formatted with <a href="/en/json-formatter.html">Format and Validate JSON</a> and the CSV conversion tool.</p>
+<h2>Flow (JSON → table)</h2>
 <ol>
-<li>Format the JSON with <a href="/en/json-formatter.html">Format and Validate JSON</a>.</li>
-<li>To make a table, use the Convert CSV and JSON tool.</li>
-<li>You can then open it in Excel.</li>
+<li>Format the JSON with this tool and check it's correct.</li>
+<li>Paste the tidy JSON into "JSON → CSV" of the CSV/JSON conversion tool.</li>
+<li>Convert to CSV, save and open in Excel.</li>
 </ol>
+<h2>Flow (table → JSON)</h2>
+<ol>
+<li>Copy the Excel table and convert it with "CSV → JSON" in the CSV/JSON conversion tool.</li>
+<li>Format the resulting JSON with this tool and check it's correct.</li>
+<li>If needed, compress with "Make one line".</li>
+</ol>
+<div class="note">Checking that the JSON syntax is correct before converting prevents conversion errors.</div>
+<h2>JSON shapes that can be converted</h2>
+<p>A form where data with the same items is lined up is easy to convert to a table. Nested parts, when converted to a table, go into one cell as text.</p>
+<h2>Benefits of combining</h2>
+<ul>
+<li>Conversion errors can be prevented in advance</li>
+<li>You can understand the data's structure through formatting before converting</li>
+<li>The converted JSON can be formatted at once</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Totalling API results in Excel</li>
+<li>Turning Excel data into web app data</li>
+<li>Managing configuration data as a table</li>
+</ul>
+<h2>Cautions</h2>
+<ul>
+<li>What a table can handle is flat structures. Flatten deep nesting first, or extract the needed parts.</li>
+<li>The distinction between numbers and strings can change in conversion.</li>
+</ul>
+<h2>Example</h2>
+<p>Formatted JSON from an API with this tool to see its structure. Finding that the needed items were outside the nesting, it converted straight to CSV and could be totalled in Excel.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Nested items go into one cell</b>: reshape first.</li>
+<li><b>Date and number formats change</b>: set the format on the Excel side.</li>
+<li><b>Garbled text</b>: specify the encoding when opening in Excel.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Which tool comes first?</h3>
+<p>On receiving JSON, first format and check. Then convert.</p>
+<h2>Summary</h2>
+<p>Use JSON formatting and checking in combination with conversion to CSV.</p>
 <a class="cta" href="/en/json-formatter.html">Use "Format and Validate JSON" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li><li><a href="/en/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li><li><a href="/en/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

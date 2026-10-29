@@ -200,12 +200,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>JSONとCSVを行き来する</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>整える</li><li>変換する</li></ul></div>
-<h2>手順</h2>
+<p>JSONは、プログラムには便利でも、人が集計するには、表のほうが向いています。逆に、表のデータを、プログラムに渡すにはJSONが必要です。<a href="/json-formatter.html">JSONを整える・チェックする</a> で整えたJSONを、CSVとの変換ツールと組み合わせる方法です。</p>
+<h2>流れ（JSON → 表）</h2>
 <ol>
-<li><a href="/json-formatter.html">JSONを整える・チェックする</a> でJSONを整えます。</li>
-<li>表にしたいときは、「CSVとJSONを変換」を使います。</li>
-<li>Excelなどで開けます。</li>
+<li>このツールで、JSONを整えて、正しいか確認する。</li>
+<li>整ったJSONを、CSV・JSONの変換ツールの「JSON → CSV」に貼り付ける。</li>
+<li>CSVに変換して保存し、Excelで開く。</li>
 </ol>
+<h2>流れ（表 → JSON）</h2>
+<ol>
+<li>Excelの表をコピーして、CSV・JSONの変換ツールで「CSV → JSON」に変換する。</li>
+<li>できたJSONを、このツールで整えて、正しいか確認する。</li>
+<li>必要なら「1行にまとめる」で、詰める。</li>
+</ol>
+<div class="note">変換の前に、JSONの書き方が正しいかを確認しておくと、変換のエラーを防げます。</div>
+<h2>変換できるJSONの形</h2>
+<p>同じ項目を持つデータが、並んでいる形が、表に変換しやすいです。入れ子の部分は、表に変換すると、1つのセルに文字として入ります。</p>
+<h2>組み合わせるメリット</h2>
+<ul>
+<li>変換のエラーを、事前に防げる</li>
+<li>整形で、データの構造を理解してから、変換できる</li>
+<li>変換後のJSONも、すぐに整形できる</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>APIの結果を、Excelで集計する</li>
+<li>Excelのデータを、Webアプリのデータにする</li>
+<li>設定データの、表での管理</li>
+</ul>
+<h2>注意すること</h2>
+<ul>
+<li>表で扱えるのは、平らな構造です。深い入れ子は、先に平らにするか、必要な部分を抜き出します。</li>
+<li>数値と文字列の区別が、変換で変わる場合があります。</li>
+</ul>
+<h2>例</h2>
+<p>APIの結果のJSONを、このツールで整えて構造を確認した。必要な項目が入れ子の外にあると分かったので、そのままCSVに変換して、Excelで集計できた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>入れ子の項目が、1つのセルに入る</b>：先に整形する。</li>
+<li><b>日付や数値の書式が変わる</b>：Excel側で書式を設定する。</li>
+<li><b>文字化け</b>：Excelで開くときの、文字コードの指定。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>2つのツールの順番は、どちらが先ですか？</h3>
+<p>JSONを受け取ったら、まず整形・チェック。それから変換です。</p>
+<h2>まとめ</h2>
+<p>JSONの整形・チェックと、CSVへの変換を、組み合わせて使いましょう。</p>
 <a class="cta" href="/json-formatter.html">JSONを整える・チェックするを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/csv-json.html">CSVとJSONを相互変換する</a>：CSVとJSONを、すぐに相互変換します。</li><li><a href="/file-base64.html">ファイルとBase64を相互変換する</a>：ファイルとBase64の文字を相互に変換します。</li><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -217,12 +257,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Going Between JSON and CSV</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Format</li><li>Convert</li></ul></div>
-<h2>Steps</h2>
+<p>JSON is convenient for programs but a table suits people totalling things. Conversely, table data needs to be JSON to be handed to a program. Here is how to combine JSON formatted with <a href="/json-formatter.html">Format and Validate JSON</a> and the CSV conversion tool.</p>
+<h2>Flow (JSON → table)</h2>
 <ol>
-<li>Format the JSON with <a href="/json-formatter.html">Format and Validate JSON</a>.</li>
-<li>To make a table, use the Convert CSV and JSON tool.</li>
-<li>You can then open it in Excel.</li>
+<li>Format the JSON with this tool and check it's correct.</li>
+<li>Paste the tidy JSON into "JSON → CSV" of the CSV/JSON conversion tool.</li>
+<li>Convert to CSV, save and open in Excel.</li>
 </ol>
+<h2>Flow (table → JSON)</h2>
+<ol>
+<li>Copy the Excel table and convert it with "CSV → JSON" in the CSV/JSON conversion tool.</li>
+<li>Format the resulting JSON with this tool and check it's correct.</li>
+<li>If needed, compress with "Make one line".</li>
+</ol>
+<div class="note">Checking that the JSON syntax is correct before converting prevents conversion errors.</div>
+<h2>JSON shapes that can be converted</h2>
+<p>A form where data with the same items is lined up is easy to convert to a table. Nested parts, when converted to a table, go into one cell as text.</p>
+<h2>Benefits of combining</h2>
+<ul>
+<li>Conversion errors can be prevented in advance</li>
+<li>You can understand the data's structure through formatting before converting</li>
+<li>The converted JSON can be formatted at once</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Totalling API results in Excel</li>
+<li>Turning Excel data into web app data</li>
+<li>Managing configuration data as a table</li>
+</ul>
+<h2>Cautions</h2>
+<ul>
+<li>What a table can handle is flat structures. Flatten deep nesting first, or extract the needed parts.</li>
+<li>The distinction between numbers and strings can change in conversion.</li>
+</ul>
+<h2>Example</h2>
+<p>Formatted JSON from an API with this tool to see its structure. Finding that the needed items were outside the nesting, it converted straight to CSV and could be totalled in Excel.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Nested items go into one cell</b>: reshape first.</li>
+<li><b>Date and number formats change</b>: set the format on the Excel side.</li>
+<li><b>Garbled text</b>: specify the encoding when opening in Excel.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Which tool comes first?</h3>
+<p>On receiving JSON, first format and check. Then convert.</p>
+<h2>Summary</h2>
+<p>Use JSON formatting and checking in combination with conversion to CSV.</p>
 <a class="cta" href="/json-formatter.html">Use "Format and Validate JSON" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li><li><a href="/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
