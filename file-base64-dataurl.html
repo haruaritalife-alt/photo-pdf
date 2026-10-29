@@ -200,13 +200,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>画像をデータURLにしてHTMLに埋め込む</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>選ぶ</li><li>印をつける</li><li>貼る</li></ul></div>
-<p>小さな画像に向いています。大きな画像だと、ページが重くなります。</p>
+<p>小さな画像を、別ファイルにせず、HTMLやCSSの中に直接埋め込みたい。そのときに使うのが、データURLです。<a href="/file-base64.html">ファイルとBase64を相互変換する</a> の「データURLの形式にする（data:…;base64,）」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li><a href="/file-base64.html">ファイルとBase64を相互変換する</a> で、画像のファイルを選びます。</li>
-<li>「データURLの形式にする」にチェックを入れます。</li>
-<li>できた文字を、HTMLの画像のsrcに貼り付けます。</li>
+<li>「向きを選ぶ」で、「ファイル → Base64」を選びます。</li>
+<li>「ファイルを1つ選ぶ」で、画像のファイルを選びます。</li>
+<li>「データURLの形式にする（data:…;base64,）」にチェックを入れます。</li>
+<li>「変換後のBase64」に、「data:image/png;base64,…」のような文字列が出ます。</li>
+<li>「結果をコピー」でコピーして、HTMLの画像のsrcに貼り付けます。</li>
 </ol>
+<div class="note">小さな画像に向いています。大きな画像だと、ページが重くなります。</div>
+<h2>使い方の例</h2>
+<p>HTMLに貼り付けるときの形：画像のタグのsrcに、作った文字列を入れます。CSSの背景画像のurl()の中にも、入れられます。</p>
+<h2>データURLのメリット</h2>
+<ul>
+<li>画像を別ファイルとして、用意しなくてよい</li>
+<li>画像の読み込みのための、通信が減る</li>
+<li>1つのファイルで、完結する（メールのHTMLなど）</li>
+</ul>
+<h2>データURLのデメリット</h2>
+<ul>
+<li>文字数が、元の約1.3倍になる</li>
+<li>HTMLが長くなり、読みにくい</li>
+<li>ブラウザに、画像がキャッシュされない</li>
+<li>同じ画像を、複数の場所で使うと、そのたびに文字が増える</li>
+</ul>
+<h2>向いている画像</h2>
+<ul>
+<li>小さなアイコン（数KB程度）</li>
+<li>単色のロゴや、小さな装飾</li>
+<li>背景のパターン</li>
+</ul>
+<h2>向かない画像</h2>
+<ul>
+<li>写真</li>
+<li>大きな画像</li>
+<li>何度も使う画像</li>
+</ul>
+<h2>目安の大きさ</h2>
+<p>一般には、数KB〜十数KB程度までの画像が、埋め込みに向くと言われます。それ以上は、別ファイルにするほうが扱いやすいです。</p>
+<h2>例</h2>
+<p>2KBの小さなアイコンを、メール用のHTMLに埋め込んだ。画像を添付しなくても、表示できるようになった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>メールで表示されない</b>：メールソフトによっては、データURLの画像を表示しない。</li>
+<li><b>HTMLが長すぎて扱いにくい</b>：大きな画像には、使わない。</li>
+<li><b>種類が合っていない</b>：先頭の「image/png」の部分が、画像の形式と合っているか。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>画像以外でも、データURLにできますか？</h3>
+<p>できます。PDFやテキストなども、データURLにできます。ただし、使える場面は限られます。</p>
+<h2>まとめ</h2>
+<p>小さな画像だけを、データURLにして埋め込む。大きな画像は、別ファイルにしましょう。</p>
 <a class="cta" href="/file-base64.html">ファイルとBase64を相互変換するを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/file-hash.html">ファイルのハッシュ値を調べる（SHA-256）</a>：ファイルのハッシュ値を調べて、照合します。</li><li><a href="/csv-json.html">CSVとJSONを相互変換する</a>：CSVとJSONを、すぐに相互変換します。</li><li><a href="/zip-maker.html">ファイルをZIPにまとめる</a>：複数のファイルを、1つのZIPにまとめます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -218,13 +263,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Embedding an Image in HTML as a Data URL</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose</li><li>Tick</li><li>Paste</li></ul></div>
-<p>Best for small images. Large ones make the page heavy.</p>
+<p>You want to embed a small image directly in HTML or CSS without making it a separate file. A data URL is what you use. You can make one with "Use data URL format (data:…;base64,)" in <a href="/file-base64.html">Convert Files and Base64</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Select an image in <a href="/file-base64.html">Convert Files and Base64</a>.</li>
-<li>Tick "Make a data URL".</li>
-<li>Paste the result into the src of an image in HTML.</li>
+<li>For "Direction", choose "File → Base64".</li>
+<li>With "Choose one file", choose the image file.</li>
+<li>Tick "Use data URL format (data:…;base64,)".</li>
+<li>A string like "data:image/png;base64,…" appears under "Base64 after conversion".</li>
+<li>Copy with "Copy result" and paste it into the HTML image's src.</li>
 </ol>
+<div class="note">It suits small images. Large images make the page heavy.</div>
+<h2>Example of use</h2>
+<p>The form for pasting into HTML: put the string you made in the src of the image tag. It can also go inside url() of a CSS background image.</p>
+<h2>Advantages of data URLs</h2>
+<ul>
+<li>No need to prepare the image as a separate file</li>
+<li>Less communication for loading images</li>
+<li>Completes in one file (such as email HTML)</li>
+</ul>
+<h2>Disadvantages of data URLs</h2>
+<ul>
+<li>The character count becomes about 1.3 times the original</li>
+<li>The HTML gets long and hard to read</li>
+<li>The browser cannot cache the image</li>
+<li>Using the same image in several places adds the text each time</li>
+</ul>
+<h2>Images that suit</h2>
+<ul>
+<li>Small icons (a few KB)</li>
+<li>Single-colour logos and small decorations</li>
+<li>Background patterns</li>
+</ul>
+<h2>Images that don't suit</h2>
+<ul>
+<li>Photos</li>
+<li>Large images</li>
+<li>Images used many times</li>
+</ul>
+<h2>A guide to size</h2>
+<p>Generally images up to a few KB to a dozen or so KB are said to suit embedding. Larger ones are easier to handle as separate files.</p>
+<h2>Example</h2>
+<p>Embedded a 2KB small icon in HTML for email. It could be displayed without attaching the image.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Not displayed in email</b>: some email software doesn't display data URL images.</li>
+<li><b>The HTML is too long to handle</b>: don't use it for large images.</li>
+<li><b>The type doesn't match</b>: check that the leading "image/png" part matches the image format.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can things other than images become data URLs?</h3>
+<p>Yes. PDFs, text and so on can also be data URLs. But the situations to use them are limited.</p>
+<h2>Summary</h2>
+<p>Make only small images into data URLs and embed them. Keep large images as separate files.</p>
 <a class="cta" href="/file-base64.html">Use "Convert Files and Base64" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/file-hash.html">Check a File's Hash (SHA-256)</a>: Calculate a file's hash and compare it.</li><li><a href="/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li><li><a href="/zip-maker.html">Make a ZIP File</a>: Pack several files into one ZIP.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

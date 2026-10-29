@@ -200,13 +200,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>JSONをCSVに変換してExcelで開く方法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>選ぶ</li><li>貼る</li><li>保存する</li></ul></div>
-<p>保存したCSVは、Excelで文字化けしにくくしてあります。</p>
-<h2>手順</h2>
+<p>APIなどから受け取ったJSONのデータを、Excelで開いて、並べ替えたり集計したりしたい。<a href="/csv-json.html">CSVとJSONを相互変換する</a> で、JSONをCSVに変換できます。</p>
+<h2>手順（JSON → CSV）</h2>
 <ol>
-<li><a href="/csv-json.html">CSVとJSONを相互変換する</a> で、「JSON → CSV」を選びます。</li>
-<li>JSONを貼り付けます。</li>
-<li>「ファイルで保存」で、CSVを保存します。</li>
+<li>「変換の向き」で、「JSON → CSV」を選びます。</li>
+<li>「区切り文字（CSV）」を選びます。Excelで開くなら、「カンマ」がおすすめです。</li>
+<li>「変換前」に、JSONを貼り付けます。</li>
+<li>「変換する」を押します。</li>
+<li>「変換後」に、CSVが出ます。「ファイルで保存」で、ファイルにします。</li>
+<li>保存したファイルを、Excelで開きます。</li>
 </ol>
+<div class="note">変換できないときは、「変換できませんでした。JSONの書き方などを確かめてください。」と表示されます。</div>
+<h2>変換できるJSONの形</h2>
+<p>同じ項目を持つデータが、並んだ形が向いています。</p>
+<p>例：「名前」と「年齢」を持つデータが、複数件並んでいる。</p>
+<p>このような形なら、1件が1行、項目名が見出しになります。</p>
+<h2>Excelで開くときのコツ</h2>
+<ul>
+<li>保存したファイルをダブルクリックしても、文字化けする場合がある。</li>
+<li>文字化けするときは、Excelの「データ」メニューから、「テキストまたはCSVから」で読み込むと、文字コードを指定できる。</li>
+<li>区切り文字をタブにして、そのまま貼り付ける方法もある。</li>
+</ul>
+<h2>貼り付けて使う方法</h2>
+<p>「結果をコピー」でコピーして、Excelのセルに貼り付けると、1つのセルに入ってしまうことがあります。そのときは、Excelの「区切り位置」機能を使います。タブ区切りで変換すれば、そのまま列に分かれて貼り付けられます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>APIの結果を、表で確認する</li>
+<li>アクセスログや、設定データを、集計する</li>
+<li>別のシステムからの出力を、Excelで見る</li>
+</ul>
+<h2>例</h2>
+<p>WebサービスのAPIが返したJSONを、Excelで集計したかった。JSONを貼り付けて「JSON → CSV」に変換。保存したファイルをExcelで開いて、グラフを作った。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>入れ子のJSONが、1つのセルに入る</b>：別の解説を参照。</li>
+<li><b>項目が揃っていないデータ</b>：行によって、列が足りないことがある。</li>
+<li><b>数値が文字として扱われる</b>：Excel側で、書式を設定する。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>日本語は文字化けしませんか？</h3>
+<p>ファイルを開く側の設定によります。文字化けするときは、文字コードを指定して読み込みます。</p>
+<h2>まとめ</h2>
+<p>JSONを貼り付けて変換し、ファイルにしてExcelで開く。文字化けには、読み込みの設定で対応します。</p>
 <a class="cta" href="/csv-json.html">CSVとJSONを相互変換するを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li><li><a href="/zip-maker.html">ファイルをZIPにまとめる</a>：複数のファイルを、1つのZIPにまとめます。</li><li><a href="/char-counter.html">文字数カウント（エントリーシート・レポート用）</a>：文章の文字数・行数・原稿用紙の枚数などを数えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -218,13 +253,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Convert JSON to CSV and Open It in Excel</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose</li><li>Paste</li><li>Save</li></ul></div>
-<p>The saved CSV is prepared to avoid garbling in Excel.</p>
-<h2>Steps</h2>
+<p>You want to open JSON data received from an API or similar in Excel, to sort or total it. <a href="/csv-json.html">Convert CSV and JSON</a> can convert JSON to CSV.</p>
+<h2>Steps (JSON → CSV)</h2>
 <ol>
-<li>In <a href="/csv-json.html">Convert CSV and JSON</a>, choose "JSON → CSV".</li>
-<li>Paste the JSON.</li>
-<li>Use "Save as file" to save the CSV.</li>
+<li>For "Direction", choose "JSON → CSV".</li>
+<li>Choose the "Delimiter (CSV)". For opening in Excel, "comma" is recommended.</li>
+<li>Paste the JSON into "Before conversion".</li>
+<li>Press "Convert".</li>
+<li>The CSV appears under "After conversion". Make it a file with "Save as file".</li>
+<li>Open the saved file in Excel.</li>
 </ol>
+<div class="note">When it cannot convert, "Could not convert. Check the JSON syntax and so on." is shown.</div>
+<h2>The JSON shapes that can be converted</h2>
+<p>A form where data with the same items is lined up suits it.</p>
+<p>Example: several records each with a "name" and "age".</p>
+<p>In such a form, one record becomes one row and the item names become headings.</p>
+<h2>Tips for opening in Excel</h2>
+<ul>
+<li>Double-clicking the saved file may garble the text.</li>
+<li>If garbled, import via Excel's "Data" menu, "From Text/CSV", where you can specify the encoding.</li>
+<li>Another way is to set the delimiter to tab and paste as is.</li>
+</ul>
+<h2>Using paste</h2>
+<p>Copying with "Copy result" and pasting into an Excel cell may put everything in one cell. In that case use Excel's "Text to Columns". If converted with tab as the delimiter, it pastes straight into columns.</p>
+<h2>Good for</h2>
+<ul>
+<li>Viewing API results as a table</li>
+<li>Totalling access logs and configuration data</li>
+<li>Viewing output from another system in Excel</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to total JSON returned by a web service's API in Excel. Pasted the JSON and converted with "JSON → CSV". Opened the saved file in Excel and made a chart.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Nested JSON goes into one cell</b>: see the separate guide.</li>
+<li><b>Data with uneven items</b>: some rows may lack columns.</li>
+<li><b>Numbers treated as text</b>: set the format on the Excel side.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Won't Japanese be garbled?</h3>
+<p>It depends on the settings of the side opening the file. If garbled, import specifying the encoding.</p>
+<h2>Summary</h2>
+<p>Paste JSON, convert, save as a file and open in Excel. Handle garbling through the import settings.</p>
 <a class="cta" href="/csv-json.html">Use "Convert CSV and JSON" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li><li><a href="/zip-maker.html">Make a ZIP File</a>: Pack several files into one ZIP.</li><li><a href="/char-counter.html">Character Counter (for Applications and Reports)</a>: Count characters, lines and manuscript sheets of your text.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

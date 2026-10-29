@@ -200,12 +200,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>入れ子になったJSONを変換するときの注意</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>貼る</li><li>確かめる</li></ul></div>
+<p>APIなどのJSONには、データの中に、さらにデータが入った「入れ子」の形が、よくあります。<a href="/csv-json.html">CSVとJSONを相互変換する</a> で、入れ子のJSONをCSVに変換するときの注意をまとめます。</p>
 <h2>手順</h2>
 <ol>
-<li><a href="/csv-json.html">CSVとJSONを相互変換する</a> にJSONを貼り付けます。</li>
-<li>入れ子の部分は、文字列のまま1つのセルに入ります。</li>
-<li>必要なら、先にJSONを平らな形に直します。</li>
+<li>「変換の向き」で、「JSON → CSV」を選びます。</li>
+<li>「変換前」に、JSONを貼り付けます。</li>
+<li>「変換する」を押します。</li>
+<li>「変換後」を確認します。</li>
 </ol>
+<div class="note">入れ子の部分は、文字列のまま1つのセルに入ります。必要なら、先にJSONを平らな形に直します。</div>
+<h2>入れ子とは</h2>
+<p>たとえば、次のようなデータです。</p>
+<ul>
+<li>名前：山田</li>
+<li>住所：（都道府県：東京、市区町村：新宿）</li>
+</ul>
+<p>「住所」の中に、さらに項目が入っています。これが、入れ子です。</p>
+<h2>変換したときの結果</h2>
+<p>CSVは、平らな表です。入れ子の部分は、表の形にできないため、中身が文字としてそのまま、1つのセルに入ります。</p>
+<h2>平らな形に直す方法</h2>
+<ul>
+<li><b>項目を展開する</b>：住所の中身を、「都道府県」「市区町村」の別の項目として、外に出す。</li>
+<li><b>テキストエディタで直す</b>：置換機能などで、構造を変える。</li>
+<li><b>必要な部分だけを抜き出す</b>：目的の項目だけの、JSONを作る。</li>
+</ul>
+<h2>どのくらい直すか</h2>
+<ul>
+<li>入れ子の中の値が必要ない → そのままでよい</li>
+<li>入れ子の中の値を、Excelで集計したい → 平らにしてから変換</li>
+</ul>
+<h2>配列（リスト）の入れ子</h2>
+<p>1つの項目に、複数の値（リスト）が入っている場合も、1つのセルに文字として入ります。リストの要素ごとに、行を分けたいときは、先に整形します。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>構造が単純なJSONの変換（入れ子がない）</li>
+<li>入れ子の中身は、そのまま確認できればよい場合</li>
+</ul>
+<h2>例</h2>
+<p>注文データのJSONを変換した。「商品」の項目に、商品の一覧が入っていて、1つのセルに文字として入った。商品ごとに集計するため、先に商品ごとの行になるよう整形してから、変換し直した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>セルに、かっこや記号だらけの文字が入る</b>：入れ子の部分。</li>
+<li><b>列の数が行によって違う</b>：項目が揃っていないデータ。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>入れ子を自動で展開できますか？</h3>
+<p>このツールは、入れ子の展開はしません。先に整形してください。</p>
+<h2>まとめ</h2>
+<p>入れ子は、1つのセルに文字として入る。集計したいなら、先に平らにしましょう。</p>
 <a class="cta" href="/csv-json.html">CSVとJSONを相互変換するを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li><li><a href="/zip-maker.html">ファイルをZIPにまとめる</a>：複数のファイルを、1つのZIPにまとめます。</li><li><a href="/char-counter.html">文字数カウント（エントリーシート・レポート用）</a>：文章の文字数・行数・原稿用紙の枚数などを数えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -217,12 +259,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Notes on Nested JSON</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Paste</li><li>Check</li></ul></div>
+<p>JSON from APIs and the like often has a "nested" form, where data contains further data. Here are cautions for converting nested JSON to CSV with <a href="/csv-json.html">Convert CSV and JSON</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Paste the JSON into <a href="/csv-json.html">Convert CSV and JSON</a>.</li>
-<li>Nested parts are kept as text in a single cell.</li>
-<li>Flatten the JSON first if you need to.</li>
+<li>For "Direction", choose "JSON → CSV".</li>
+<li>Paste the JSON into "Before conversion".</li>
+<li>Press "Convert".</li>
+<li>Check "After conversion".</li>
 </ol>
+<div class="note">Nested parts go into a single cell as text. If needed, flatten the JSON first.</div>
+<h2>What nesting is</h2>
+<p>For example, data like this.</p>
+<ul>
+<li>Name: Yamada</li>
+<li>Address: (prefecture: Tokyo, city: Shinjuku)</li>
+</ul>
+<p>Inside "Address" are further items. That is nesting.</p>
+<h2>The result after conversion</h2>
+<p>CSV is a flat table. Nested parts cannot take a table form, so their content goes into a single cell as text.</p>
+<h2>Ways to flatten</h2>
+<ul>
+<li><b>Expand the items</b>: bring the contents of the address out as separate items "prefecture" and "city".</li>
+<li><b>Fix with a text editor</b>: change the structure with find-and-replace and so on.</li>
+<li><b>Extract just the needed parts</b>: make JSON with only the target items.</li>
+</ul>
+<h2>How much to fix</h2>
+<ul>
+<li>The values inside the nesting aren't needed → fine as it is</li>
+<li>You want to total the values inside the nesting in Excel → flatten before converting</li>
+</ul>
+<h2>Nested arrays (lists)</h2>
+<p>When one item holds several values (a list), it also goes into one cell as text. If you want rows split per list element, reshape first.</p>
+<h2>Good for</h2>
+<ul>
+<li>Converting simply structured JSON (no nesting)</li>
+<li>When it is enough to see the nested contents as they are</li>
+</ul>
+<h2>Example</h2>
+<p>Converted order data JSON. The "products" item held a list of products and went into one cell as text. To total per product, reshaped it to one row per product first and converted again.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>A cell is full of brackets and symbols</b>: that is the nested part.</li>
+<li><b>The number of columns differs by row</b>: data with uneven items.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can nesting be expanded automatically?</h3>
+<p>This tool does not expand nesting. Reshape first.</p>
+<h2>Summary</h2>
+<p>Nesting goes into one cell as text. If you want to total it, flatten first.</p>
 <a class="cta" href="/csv-json.html">Use "Convert CSV and JSON" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li><li><a href="/zip-maker.html">Make a ZIP File</a>: Pack several files into one ZIP.</li><li><a href="/char-counter.html">Character Counter (for Applications and Reports)</a>: Count characters, lines and manuscript sheets of your text.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

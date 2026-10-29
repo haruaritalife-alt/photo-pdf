@@ -200,13 +200,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ハッシュ値とは？</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>知る</li><li>使う</li></ul></div>
-<p>元のファイルに戻すことは、できません。</p>
-<h2>手順</h2>
+<p>ソフトの配布ページに、長い英数字の「SHA-256」が載っているけれど、何のためのもの？ それが、ハッシュ値です。<a href="/file-hash.html">ファイルのハッシュ値を調べる（SHA-256）</a> で調べられるハッシュ値の、基本をやさしく説明します。</p>
+<h2>ハッシュ値とは</h2>
+<p>ファイルの中身を、決まった計算で、決まった長さの文字列にしたものです。ファイルの「指紋」にたとえられます。</p>
+<h2>ハッシュ値の特徴</h2>
+<ul>
+<li><b>同じ中身なら、同じ値</b>：何度計算しても、同じ結果になる。</li>
+<li><b>1文字違えば、まったく別の値</b>：わずかな違いでも、値が大きく変わる。</li>
+<li><b>元に戻せない</b>：値から、元のファイルは復元できない。</li>
+<li><b>長さが決まっている</b>：ファイルが大きくても小さくても、同じ長さ（SHA-256なら64文字）。</li>
+</ul>
+<h2>何に使うのか</h2>
+<ul>
+<li><b>ダウンロードの確認</b>：正しくダウンロードできたか。</li>
+<li><b>改ざんの検出</b>：途中で書き換えられていないか。</li>
+<li><b>同じファイルかの判定</b>：2つのファイルが、同じ内容か。</li>
+<li><b>重複ファイルの発見</b>：同じ値のファイルは、同じ内容。</li>
+</ul>
+<h2>手順（調べる）</h2>
 <ol>
-<li>ハッシュ値は、ファイルの中身から計算する、短い文字列です。</li>
-<li>中身が1文字でも違えば、まったく別の値になります。</li>
-<li><a href="/file-hash.html">ファイルのハッシュ値を調べる</a> で、すぐに計算できます。</li>
+<li>「ファイルを1つ選ぶ」で、ファイルを選びます。</li>
+<li>少し待つと、ハッシュ値（SHA-256）が表示されます。</li>
+<li>「SHA-256をコピー」で、コピーできます。</li>
 </ol>
+<div class="note">ファイル名を変えても、中身が同じなら、ハッシュ値は変わりません。</div>
+<h2>ハッシュ値でわからないこと</h2>
+<ul>
+<li>ファイルの安全性（ウイルスがないか）</li>
+<li>ファイルの作者や、出どころ</li>
+<li>ファイルが正しい内容か</li>
+</ul>
+<p>ハッシュ値は、「同じかどうか」を確かめるものです。</p>
+<h2>パスワードとの関係</h2>
+<p>サービスは、パスワードをそのまま保存せず、ハッシュ値にして保存することがあります。同じ仕組みを使っています。</p>
+<h2>例</h2>
+<p>2つのバックアップファイルのハッシュ値を調べたら、同じ値だった。ファイル名は違っても、中身は同じと分かった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「暗号化」と混同する</b>：ハッシュは、元に戻せない。暗号化は、鍵で元に戻せる。</li>
+<li><b>値の一部だけ比べる</b>：全部を比べないと、確実ではない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>ハッシュ値が同じなら、必ず同じファイルですか？</h3>
+<p>実用上、SHA-256が同じなら、同じファイルと考えて問題ありません。</p>
+<h2>まとめ</h2>
+<p>ハッシュ値は、ファイルの指紋。同じかどうかを確かめるために使います。</p>
 <a class="cta" href="/file-hash.html">ファイルのハッシュ値を調べる（SHA-256）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/zip-extract.html">ZIPを開く（解凍）</a>：ZIPの中身を見て、ほしいファイルだけ取り出します。</li><li><a href="/zip-maker.html">ファイルをZIPにまとめる</a>：複数のファイルを、1つのZIPにまとめます。</li><li><a href="/password-generator.html">安全なパスワードを作る（ランダム生成）</a>：強いランダムなパスワードを、すぐに作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -218,13 +256,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What Is a Hash?</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Learn</li><li>Use</li></ul></div>
-<p>It cannot be turned back into the original file.</p>
-<h2>Steps</h2>
+<p>A software download page lists a long string of letters and digits called "SHA-256". What is it for? That is a hash value. Here is a gentle explanation of the basics of the hash value that <a href="/file-hash.html">Check a File's Hash (SHA-256)</a> can check.</p>
+<h2>What a hash is</h2>
+<p>It turns a file's contents, by a fixed calculation, into a string of fixed length. It is compared to the file's "fingerprint".</p>
+<h2>Characteristics of a hash</h2>
+<ul>
+<li><b>Same contents, same value</b>: the result is the same however many times it is calculated.</li>
+<li><b>One character different, a totally different value</b>: even a slight difference changes the value greatly.</li>
+<li><b>Cannot be reversed</b>: the original file cannot be restored from the value.</li>
+<li><b>Fixed length</b>: the same length (64 characters for SHA-256) whether the file is large or small.</li>
+</ul>
+<h2>What it is used for</h2>
+<ul>
+<li><b>Checking downloads</b>: whether it downloaded correctly.</li>
+<li><b>Detecting tampering</b>: whether it was rewritten on the way.</li>
+<li><b>Judging whether files are the same</b>: whether two files have the same contents.</li>
+<li><b>Finding duplicate files</b>: files with the same value have the same contents.</li>
+</ul>
+<h2>Steps (checking)</h2>
 <ol>
-<li>A hash is a short string calculated from a file's contents.</li>
-<li>Even one different character gives a completely different value.</li>
-<li><a href="/file-hash.html">Check a File's Hash (SHA-256)</a> calculates it instantly.</li>
+<li>Choose a file with "Choose one file".</li>
+<li>After a short wait, the hash (SHA-256) is displayed.</li>
+<li>Copy it with "Copy SHA-256".</li>
 </ol>
+<div class="note">Even if you change the file name, the hash does not change as long as the contents are the same.</div>
+<h2>What a hash cannot tell you</h2>
+<ul>
+<li>The file's safety (whether it has a virus)</li>
+<li>The file's author or origin</li>
+<li>Whether the file's contents are correct</li>
+</ul>
+<p>A hash is for checking "whether it is the same".</p>
+<h2>Relation to passwords</h2>
+<p>Services sometimes store passwords not as they are but as hashes. The same mechanism is used.</p>
+<h2>Example</h2>
+<p>Checking the hashes of two backup files gave the same value. Although the file names differed, the contents were the same.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Confusing it with "encryption"</b>: a hash cannot be reversed. Encryption can be undone with a key.</li>
+<li><b>Comparing only part of the value</b>: it is not certain unless you compare all of it.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>If the hashes are the same, is it certainly the same file?</h3>
+<p>In practice, if the SHA-256 is the same, it is fine to consider it the same file.</p>
+<h2>Summary</h2>
+<p>A hash is a file's fingerprint. It is used to check whether things are the same.</p>
 <a class="cta" href="/file-hash.html">Use "Check a File's Hash (SHA-256)" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/zip-extract.html">Open a ZIP File (Unzip)</a>: See what is inside a ZIP and extract the files you need.</li><li><a href="/zip-maker.html">Make a ZIP File</a>: Pack several files into one ZIP.</li><li><a href="/password-generator.html">Generate a Strong Random Password</a>: Generate strong random passwords instantly.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

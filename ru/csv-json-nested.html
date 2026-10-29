@@ -201,12 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>О вложенном JSON</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Вставка</li><li>Проверка</li></ul></div>
+<p lang="en">JSON from APIs and the like often has a "nested" form, where data contains further data. Here are cautions for converting nested JSON to CSV with <a href="/ru/csv-json.html">Convert CSV and JSON</a>.</p>
 <h2>Шаги</h2>
 <ol>
-<li>Вставьте JSON в <a href="/ru/csv-json.html">Преобразовать CSV и JSON</a>.</li>
-<li>Вложенные части сохраняются как текст в одной ячейке.</li>
-<li>При необходимости сначала «разверните» JSON в плоский вид.</li>
+<li lang="en">For "Direction", choose "JSON → CSV".</li>
+<li lang="en">Paste the JSON into "Before conversion".</li>
+<li lang="en">Press "Convert".</li>
+<li lang="en">Check "After conversion".</li>
 </ol>
+<div class="note" lang="en">Nested parts go into a single cell as text. If needed, flatten the JSON first.</div>
+<h2 lang="en">What nesting is</h2>
+<p lang="en">For example, data like this.</p>
+<ul>
+<li lang="en">Name: Yamada</li>
+<li lang="en">Address: (prefecture: Tokyo, city: Shinjuku)</li>
+</ul>
+<p lang="en">Inside "Address" are further items. That is nesting.</p>
+<h2 lang="en">The result after conversion</h2>
+<p lang="en">CSV is a flat table. Nested parts cannot take a table form, so their content goes into a single cell as text.</p>
+<h2 lang="en">Ways to flatten</h2>
+<ul>
+<li lang="en"><b>Expand the items</b>: bring the contents of the address out as separate items "prefecture" and "city".</li>
+<li lang="en"><b>Fix with a text editor</b>: change the structure with find-and-replace and so on.</li>
+<li lang="en"><b>Extract just the needed parts</b>: make JSON with only the target items.</li>
+</ul>
+<h2 lang="en">How much to fix</h2>
+<ul>
+<li lang="en">The values inside the nesting aren't needed → fine as it is</li>
+<li lang="en">You want to total the values inside the nesting in Excel → flatten before converting</li>
+</ul>
+<h2 lang="en">Nested arrays (lists)</h2>
+<p lang="en">When one item holds several values (a list), it also goes into one cell as text. If you want rows split per list element, reshape first.</p>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Converting simply structured JSON (no nesting)</li>
+<li lang="en">When it is enough to see the nested contents as they are</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">Converted order data JSON. The "products" item held a list of products and went into one cell as text. To total per product, reshaped it to one row per product first and converted again.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>A cell is full of brackets and symbols</b>: that is the nested part.</li>
+<li lang="en"><b>The number of columns differs by row</b>: data with uneven items.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can nesting be expanded automatically?</h3>
+<p lang="en">This tool does not expand nesting. Reshape first.</p>
+<h2>Итог</h2>
+<p lang="en">Nesting goes into one cell as text. If you want to total it, flatten first.</p>
 <a class="cta" href="/ru/csv-json.html">Использовать «Преобразовать CSV и JSON» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/line-sort-dedupe.html">Удалить повторяющиеся строки и отсортировать список</a>: Удалите повторяющиеся строки и отсортируйте их.</li><li><a href="/ru/zip-maker.html">Создать ZIP-файл</a>: Упакуйте несколько файлов в один ZIP.</li><li><a href="/ru/char-counter.html">Счётчик символов (для заявок и работ)</a>: Считайте символы, строки и листы рукописи в вашем тексте.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>
