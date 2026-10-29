@@ -201,12 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How Merged Cells Are Handled</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check</li><li>Fix</li></ul></div>
-<h2>Steps</h2>
+<p>Excel tables sometimes have merged cells for looks. When converted with <a href="/en/xlsx-to-html.html">Convert an Excel Table to HTML or Markdown</a>, a merged cell's text goes only into the top-left one, and the other cells become empty.</p>
+<h2>Conversion rule</h2>
+<ul>
+<li>A merged cell's text goes only into the top-left cell.</li>
+<li>The other cells become empty.</li>
+</ul>
+<div class="note">HTML merge attributes are not included. The look may differ from the original table.</div>
+<h2>What commonly happens</h2>
+<ul>
+<li>A "Category" cell merged across 3 rows → only the first row holds "Category"; rows 2 and 3 are empty</li>
+<li>A table title merged across all columns → only the first column holds the title</li>
+</ul>
+<h2>Steps (to convert cleanly)</h2>
 <ol>
-<li>In a merged cell only the top-left cell keeps its text.</li>
-<li>The other cells are left empty.</li>
-<li>If needed, fix the table after converting.</li>
+<li>Before converting, unmerge cells in Excel.</li>
+<li>Fill the now-empty cells with the same text.</li>
+<li>Convert with this tool.</li>
+<li>Check the converted table.</li>
 </ol>
+<h2>Tips for unmerging</h2>
+<ol>
+<li>Select the merged cell.</li>
+<li>Press "Merge &amp; Center" to unmerge.</li>
+<li>Copy the text into the emptied cells.</li>
+</ol>
+<h2>Why not to merge</h2>
+<ul>
+<li>Sorting and filtering don't work well</li>
+<li>Empty cells get in the way when handling it as data</li>
+<li>It breaks easily when pasted into web pages or systems</li>
+</ul>
+<h2>How to fix after converting</h2>
+<p>If you want to keep merging in HTML, add colspan (column merge) or rowspan (row merge) by hand to the converted HTML.</p>
+<h2>Good for</h2>
+<ul>
+<li>Converting clean tables without merged cells</li>
+<li>Extracting just the data from tables that contain merged cells</li>
+</ul>
+<h2>Example</h2>
+<p>In a monthly summary, "Q1" was merged across three months. After converting, only January had the text, so I unmerged in Excel, re-entered it for each month and redid it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The text seems to have vanished</b>: when merged, everything except the top-left is empty.</li>
+<li><b>Columns shift</b>: unmerge before converting.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can it convert keeping the merge?</h3>
+<p>The merged look isn't included. Unmerging is the reliable way.</p>
+<h2>Summary</h2>
+<p>For merged cells, only the top-left gets the text. Unmerge before converting for a clean result.</p>
 <a class="cta" href="/en/xlsx-to-html.html">Use "Convert an Excel Table to HTML or Markdown" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/xlsx-to-csv.html">Convert Excel to CSV or JSON</a>: Convert an Excel sheet to CSV, TSV or JSON.</li><li><a href="/en/docx-to-html.html">Convert Word to HTML</a>: Turn Word text into HTML.</li><li><a href="/en/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

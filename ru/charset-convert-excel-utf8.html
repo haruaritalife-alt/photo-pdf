@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Открытие CSV в UTF-8 в Excel (преобразование в UTF-8 с BOM)</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Выберите CSV</li><li>Установите целевую кодировку «UTF-8 с BOM»</li><li>Сохраните и откройте в Excel</li></ul></div>
-<p>Некоторые версии Excel искажают файлы UTF-8 без BOM. Добавление BOM с помощью <a href="/ru/charset-convert.html">Преобразовать кодировку текста</a> делает открытие надёжнее.</p>
+<p lang="en">You want to open a UTF-8 CSV in Excel without garbling. Older Excel versions may open UTF-8 without a BOM garbled. Adding a BOM with <a href="/ru/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> makes it open more easily.</p>
 <h2>Шаги</h2>
 <ol>
-<li>Выберите файл CSV в UTF-8</li>
-<li>В «Преобразовать в» выберите «UTF-8 с BOM (для Excel)»</li>
-<li>Откройте сохранённый файл в Excel</li>
+<li lang="en">Choose the UTF-8 CSV with "Choose a text file".</li>
+<li lang="en">Under "Convert to", choose "UTF-8 (with BOM, for Excel)".</li>
+<li lang="en">Press "Convert and save".</li>
+<li lang="en">Open the saved file in Excel.</li>
 </ol>
-<div class="note">BOM может добавить лишний символ в начале, когда файлы загружают программы или веб-системы. Выбирайте по задаче.</div>
+<div class="note" lang="en">A BOM-prefixed file may add stray characters at the start when imported into programs or web systems. Choose according to the purpose.</div>
+<h2 lang="en">What a BOM is</h2>
+<p lang="en">A marker at the start of a file saying "this file is UTF-8". Excel looks at this marker to read the characters correctly.</p>
+<h2 lang="en">Choosing</h2>
+<ul>
+<li lang="en"><b>Opening or editing in Excel</b>: UTF-8 with BOM</li>
+<li lang="en"><b>Importing into programs or web systems</b>: UTF-8 without BOM</li>
+<li lang="en"><b>Systems specifying Shift_JIS</b>: Shift_JIS</li>
+</ul>
+<h2 lang="en">Flow</h2>
+<p lang="en">Original CSV (UTF-8) → this tool → UTF-8 CSV with BOM → opens correctly in Excel</p>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en">Re-saving in Excel may make it another encoding (such as Shift_JIS) again</li>
+<li lang="en">When handing the re-saved file to other systems, check the encoding</li>
+<li lang="en">Recent Excel may open UTF-8 without a BOM too</li>
+</ul>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Wanting to view data downloaded from web services in Excel</li>
+<li lang="en">Wanting to open overseas system data in Excel</li>
+<li lang="en">Handing a client a CSV that opens in Excel</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">Wanted to show a colleague a CSV written by a program in Excel. Converting to UTF-8 with BOM made it open without garbling in their Excel.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The system can't read it after adding a BOM</b>: go back to without BOM.</li>
+<li lang="en"><b>Leading zeros disappear even after opening</b>: Excel's behaviour. When importing, specify the column as text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does adding a BOM change the data?</h3>
+<p lang="en">The text content doesn't change. Only a marker is added at the start.</p>
+<h2>Итог</h2>
+<p lang="en">To open in Excel, UTF-8 with BOM. To pass to a system, without BOM.</p>
 <a class="cta" href="/ru/charset-convert.html">Использовать «Преобразовать кодировку текста (исправить «кракозябры»)» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/csv-json.html">Преобразовать CSV и JSON</a>: Мгновенно преобразуйте между CSV и JSON.</li><li><a href="/ru/csv-to-xlsx.html">Преобразовать CSV в Excel (.xlsx)</a>: Преобразуйте CSV в файл Excel (.xlsx).</li><li><a href="/ru/line-break-remover.html">Убрать и привести в порядок переводы строк в тексте</a>: Приведите в порядок переводы строк в тексте, скопированном из PDF и других источников.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

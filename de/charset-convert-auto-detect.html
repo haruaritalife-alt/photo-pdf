@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Wie die automatische Codierungserkennung funktioniert und was bei einem Fehlschlag zu tun ist</h1>
 <p class="meta">Veröffentlicht: 19.10.2026 | Aktualisiert: 19.10.2026 | <a href="/about.html">Über uns (Japanisch)</a></p>
 <div class="points"><b>Wichtige Punkte</b><ul><li>Erkannte Codierung prüfen</li><li>Das Einlesen manuell ändern</li><li>Umwandeln, sobald es stimmt</li></ul></div>
-<p><a href="/de/charset-convert.html">Textcodierung umwandeln</a> errät die Codierung anhand des Dateianfangs und der Bytemuster.</p>
+<p lang="en">How should you handle a file whose encoding you don't know? <a href="/de/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> estimates the encoding from the start of the file and the arrangement of bytes. This is "auto-detection".</p>
 <h2>Schritte</h2>
 <ol>
-<li>Datei auswählen und die Zeile „Erkannt:“ lesen</li>
-<li>Bei unleserlichem Text eine andere „Aktuelle Codierung“ wählen</li>
-<li>Wenn die Vorschau stimmt, umwandeln</li>
+<li lang="en">Choose a file and look at the "Auto-detected:" display.</li>
+<li lang="en">If the text is garbled, change "Current encoding" to another.</li>
+<li lang="en">Once "Content read (beginning)" is correct, convert.</li>
 </ol>
-<div class="note">Kurze Dateien lassen sich leicht falsch einschätzen. Prüfen Sie die Vorschau und wählen Sie bei Bedarf manuell.</div>
+<div class="note" lang="en">Short files are easily misjudged. Look at the display and choose manually.</div>
+<h2 lang="en">How auto-detection works</h2>
+<ul>
+<li lang="en">If the file starts with a BOM (a marker for UTF-8 etc.), it uses that</li>
+<li lang="en">If not, it estimates from the characteristics of the byte arrangement</li>
+<li lang="en">For Japanese, it tells apart UTF-8, Shift_JIS, EUC-JP and so on</li>
+</ul>
+<h2 lang="en">Cases where detection easily misses</h2>
+<ul>
+<li lang="en">Short files with few characters</li>
+<li lang="en">Files of only half-width alphanumerics with almost no Japanese</li>
+<li lang="en">Broken files mixing several encodings</li>
+</ul>
+<h2 lang="en">Steps to choose manually</h2>
+<ol>
+<li lang="en">Set "Current encoding" to "UTF-8" and check the reading.</li>
+<li lang="en">If garbled, set "Shift_JIS (Windows)" and check.</li>
+<li lang="en">If still wrong, try "EUC-JP" or "UTF-16 (LE)".</li>
+<li lang="en">The encoding that reads correctly is the file's encoding.</li>
+</ol>
+<h2 lang="en">Hints for telling them apart</h2>
+<ul>
+<li lang="en">Data downloaded from the web → often UTF-8</li>
+<li lang="en">Old Windows software → often Shift_JIS</li>
+<li lang="en">Old UNIX-type systems → often EUC-JP</li>
+<li lang="en">Saved as "Unicode" in Windows Notepad → often UTF-16</li>
+</ul>
+<h2>Gut geeignet für</h2>
+<ul>
+<li lang="en">Checking files of unknown origin</li>
+<li lang="en">Investigating the encoding of files from clients</li>
+</ul>
+<h2>Beispiel</h2>
+<p lang="en">Opening a text of unknown origin showed garbling. Auto-detection missed, but setting "Current encoding" to Shift_JIS made it readable. I converted it to UTF-8 and saved.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Garbled whichever you choose</b>: the characters may already be broken.</li>
+<li lang="en"><b>Only part is garbled</b>: several encodings are mixed.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is auto-detection always right?</h3>
+<p lang="en">No. With short files it can be wrong. Confirm with the displayed reading.</p>
+<h2>Zusammenfassung</h2>
+<p lang="en">Auto-detection is handy but not all-powerful. Look at the reading and choose the matching encoding.</p>
 <a class="cta" href="/de/charset-convert.html">„Textcodierung umwandeln (unleserliche Zeichen beheben)“ verwenden (kostenlos)</a>
 <h2>Passende Werkzeuge dazu</h2><ul><li><a href="/de/csv-json.html">CSV und JSON umwandeln</a>: Sofort zwischen CSV und JSON umwandeln.</li><li><a href="/de/csv-to-xlsx.html">CSV in Excel (.xlsx) umwandeln</a>: Eine CSV-Datei in eine Excel-Datei (.xlsx) umwandeln.</li><li><a href="/de/line-break-remover.html">Zeilenumbrüche in Text entfernen und bereinigen</a>: Zeilenumbrüche in aus PDFs und anderswo kopiertem Text bereinigen.</li></ul>
 <div class="tip"><p>Wenn Ihnen diese Anleitung geholfen hat, freuen wir uns über ein kleines Trinkgeld.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Trinkgeld senden (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Geschenk senden (Amazon-Wunschliste)</a></div>

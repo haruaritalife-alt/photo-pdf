@@ -201,12 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Cách xử lý ô đã gộp</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Kiểm tra</li><li>Sửa</li></ul></div>
-<h2>Các bước</h2>
+<p lang="en">Excel tables sometimes have merged cells for looks. When converted with <a href="/vi/xlsx-to-html.html">Convert an Excel Table to HTML or Markdown</a>, a merged cell's text goes only into the top-left one, and the other cells become empty.</p>
+<h2 lang="en">Conversion rule</h2>
+<ul>
+<li lang="en">A merged cell's text goes only into the top-left cell.</li>
+<li lang="en">The other cells become empty.</li>
+</ul>
+<div class="note" lang="en">HTML merge attributes are not included. The look may differ from the original table.</div>
+<h2 lang="en">What commonly happens</h2>
+<ul>
+<li lang="en">A "Category" cell merged across 3 rows → only the first row holds "Category"; rows 2 and 3 are empty</li>
+<li lang="en">A table title merged across all columns → only the first column holds the title</li>
+</ul>
+<h2 lang="en">Steps (to convert cleanly)</h2>
 <ol>
-<li>Ở ô đã gộp, chỉ ô trên cùng bên trái giữ lại chữ.</li>
-<li>Các ô còn lại để trống.</li>
-<li>Nếu cần, hãy chỉnh bảng sau khi chuyển.</li>
+<li lang="en">Before converting, unmerge cells in Excel.</li>
+<li lang="en">Fill the now-empty cells with the same text.</li>
+<li lang="en">Convert with this tool.</li>
+<li lang="en">Check the converted table.</li>
 </ol>
+<h2 lang="en">Tips for unmerging</h2>
+<ol>
+<li lang="en">Select the merged cell.</li>
+<li lang="en">Press "Merge &amp; Center" to unmerge.</li>
+<li lang="en">Copy the text into the emptied cells.</li>
+</ol>
+<h2 lang="en">Why not to merge</h2>
+<ul>
+<li lang="en">Sorting and filtering don't work well</li>
+<li lang="en">Empty cells get in the way when handling it as data</li>
+<li lang="en">It breaks easily when pasted into web pages or systems</li>
+</ul>
+<h2 lang="en">How to fix after converting</h2>
+<p lang="en">If you want to keep merging in HTML, add colspan (column merge) or rowspan (row merge) by hand to the converted HTML.</p>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Converting clean tables without merged cells</li>
+<li lang="en">Extracting just the data from tables that contain merged cells</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">In a monthly summary, "Q1" was merged across three months. After converting, only January had the text, so I unmerged in Excel, re-entered it for each month and redid it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The text seems to have vanished</b>: when merged, everything except the top-left is empty.</li>
+<li lang="en"><b>Columns shift</b>: unmerge before converting.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can it convert keeping the merge?</h3>
+<p lang="en">The merged look isn't included. Unmerging is the reliable way.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">For merged cells, only the top-left gets the text. Unmerge before converting for a clean result.</p>
 <a class="cta" href="/vi/xlsx-to-html.html">Dùng “Chuyển bảng Excel sang HTML hoặc Markdown” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/xlsx-to-csv.html">Chuyển Excel sang CSV hoặc JSON</a>: Chuyển một trang tính Excel sang CSV, TSV hoặc JSON.</li><li><a href="/vi/docx-to-html.html">Chuyển Word sang HTML</a>: Chuyển văn bản Word thành HTML.</li><li><a href="/vi/csv-json.html">Chuyển đổi CSV và JSON</a>: Chuyển đổi giữa CSV và JSON ngay lập tức.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

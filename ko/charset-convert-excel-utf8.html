@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Excel에서 UTF-8 CSV 열기 (BOM이 있는 UTF-8로 변환)</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>CSV 선택하기</li><li>변환 대상을 'BOM이 있는 UTF-8'로 설정하기</li><li>저장한 뒤 Excel에서 열기</li></ul></div>
-<p>일부 Excel 버전은 BOM이 없는 UTF-8 파일이 깨져 보입니다. <a href="/ko/charset-convert.html">텍스트 인코딩 변환</a>으로 BOM을 붙이면 더 안정적으로 열립니다.</p>
+<p lang="en">You want to open a UTF-8 CSV in Excel without garbling. Older Excel versions may open UTF-8 without a BOM garbled. Adding a BOM with <a href="/ko/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> makes it open more easily.</p>
 <h2>순서</h2>
 <ol>
-<li>UTF-8 CSV 파일 선택하기</li>
-<li>'변환 형식'에서 'BOM이 있는 UTF-8 (Excel용)' 선택하기</li>
-<li>저장한 파일을 Excel에서 열기</li>
+<li lang="en">Choose the UTF-8 CSV with "Choose a text file".</li>
+<li lang="en">Under "Convert to", choose "UTF-8 (with BOM, for Excel)".</li>
+<li lang="en">Press "Convert and save".</li>
+<li lang="en">Open the saved file in Excel.</li>
 </ol>
-<div class="note">프로그램이나 웹 시스템이 파일을 읽을 때 BOM이 맨 앞에 문자를 하나 더 붙일 수 있습니다. 용도에 맞게 고르세요.</div>
+<div class="note" lang="en">A BOM-prefixed file may add stray characters at the start when imported into programs or web systems. Choose according to the purpose.</div>
+<h2 lang="en">What a BOM is</h2>
+<p lang="en">A marker at the start of a file saying "this file is UTF-8". Excel looks at this marker to read the characters correctly.</p>
+<h2 lang="en">Choosing</h2>
+<ul>
+<li lang="en"><b>Opening or editing in Excel</b>: UTF-8 with BOM</li>
+<li lang="en"><b>Importing into programs or web systems</b>: UTF-8 without BOM</li>
+<li lang="en"><b>Systems specifying Shift_JIS</b>: Shift_JIS</li>
+</ul>
+<h2 lang="en">Flow</h2>
+<p lang="en">Original CSV (UTF-8) → this tool → UTF-8 CSV with BOM → opens correctly in Excel</p>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en">Re-saving in Excel may make it another encoding (such as Shift_JIS) again</li>
+<li lang="en">When handing the re-saved file to other systems, check the encoding</li>
+<li lang="en">Recent Excel may open UTF-8 without a BOM too</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Wanting to view data downloaded from web services in Excel</li>
+<li lang="en">Wanting to open overseas system data in Excel</li>
+<li lang="en">Handing a client a CSV that opens in Excel</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted to show a colleague a CSV written by a program in Excel. Converting to UTF-8 with BOM made it open without garbling in their Excel.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The system can't read it after adding a BOM</b>: go back to without BOM.</li>
+<li lang="en"><b>Leading zeros disappear even after opening</b>: Excel's behaviour. When importing, specify the column as text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does adding a BOM change the data?</h3>
+<p lang="en">The text content doesn't change. Only a marker is added at the start.</p>
+<h2>요약</h2>
+<p lang="en">To open in Excel, UTF-8 with BOM. To pass to a system, without BOM.</p>
 <a class="cta" href="/ko/charset-convert.html">“텍스트 인코딩 변환 (깨진 글자 고치기)” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/csv-json.html">CSV와 JSON 변환</a>: CSV와 JSON을 즉시 서로 변환합니다.</li><li><a href="/ko/csv-to-xlsx.html">CSV를 Excel(.xlsx)로 변환</a>: CSV를 Excel(.xlsx) 파일로 변환합니다.</li><li><a href="/ko/line-break-remover.html">텍스트의 줄바꿈 제거 및 정리</a>: PDF 등에서 복사한 텍스트의 줄바꿈을 정리합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

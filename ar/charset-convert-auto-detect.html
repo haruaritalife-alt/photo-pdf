@@ -215,14 +215,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>كيف يعمل الكشف التلقائي عن الترميز وماذا تفعل عند فشله</h1>
 <p class="meta">تاريخ النشر: 19 أكتوبر 2026 | آخر تحديث: 19 أكتوبر 2026 | <a href="/about.html">حول (باليابانية)</a></p>
 <div class="points"><b>النقاط الرئيسية</b><ul><li>تحقق من الترميز المكتشف</li><li>غيّر طريقة القراءة يدويًا</li><li>حوّل عندما يبدو صحيحًا</li></ul></div>
-<p>يخمّن <a href="/ar/charset-convert.html">تحويل ترميز النص</a> الترميز من بداية الملف وأنماط البايتات.</p>
+<p lang="en">How should you handle a file whose encoding you don't know? <a href="/ar/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> estimates the encoding from the start of the file and the arrangement of bytes. This is "auto-detection".</p>
 <h2>الخطوات</h2>
 <ol>
-<li>اختر الملف واقرأ سطر "تم الكشف:"</li>
-<li>إذا ظهر مشوّهًا، اختر "ترميزًا حاليًا" آخر</li>
-<li>عندما تبدو المعاينة صحيحة، حوّل</li>
+<li lang="en">Choose a file and look at the "Auto-detected:" display.</li>
+<li lang="en">If the text is garbled, change "Current encoding" to another.</li>
+<li lang="en">Once "Content read (beginning)" is correct, convert.</li>
 </ol>
-<div class="note">الملفات القصيرة يسهل الخطأ في تقديرها. تحقق من المعاينة واختر يدويًا عند الحاجة.</div>
+<div class="note" lang="en">Short files are easily misjudged. Look at the display and choose manually.</div>
+<h2 lang="en">How auto-detection works</h2>
+<ul>
+<li lang="en">If the file starts with a BOM (a marker for UTF-8 etc.), it uses that</li>
+<li lang="en">If not, it estimates from the characteristics of the byte arrangement</li>
+<li lang="en">For Japanese, it tells apart UTF-8, Shift_JIS, EUC-JP and so on</li>
+</ul>
+<h2 lang="en">Cases where detection easily misses</h2>
+<ul>
+<li lang="en">Short files with few characters</li>
+<li lang="en">Files of only half-width alphanumerics with almost no Japanese</li>
+<li lang="en">Broken files mixing several encodings</li>
+</ul>
+<h2 lang="en">Steps to choose manually</h2>
+<ol>
+<li lang="en">Set "Current encoding" to "UTF-8" and check the reading.</li>
+<li lang="en">If garbled, set "Shift_JIS (Windows)" and check.</li>
+<li lang="en">If still wrong, try "EUC-JP" or "UTF-16 (LE)".</li>
+<li lang="en">The encoding that reads correctly is the file's encoding.</li>
+</ol>
+<h2 lang="en">Hints for telling them apart</h2>
+<ul>
+<li lang="en">Data downloaded from the web → often UTF-8</li>
+<li lang="en">Old Windows software → often Shift_JIS</li>
+<li lang="en">Old UNIX-type systems → often EUC-JP</li>
+<li lang="en">Saved as "Unicode" in Windows Notepad → often UTF-16</li>
+</ul>
+<h2>مناسب لـ</h2>
+<ul>
+<li lang="en">Checking files of unknown origin</li>
+<li lang="en">Investigating the encoding of files from clients</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Opening a text of unknown origin showed garbling. Auto-detection missed, but setting "Current encoding" to Shift_JIS made it readable. I converted it to UTF-8 and saved.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Garbled whichever you choose</b>: the characters may already be broken.</li>
+<li lang="en"><b>Only part is garbled</b>: several encodings are mixed.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is auto-detection always right?</h3>
+<p lang="en">No. With short files it can be wrong. Confirm with the displayed reading.</p>
+<h2>الخلاصة</h2>
+<p lang="en">Auto-detection is handy but not all-powerful. Look at the reading and choose the matching encoding.</p>
 <a class="cta" href="/ar/charset-convert.html">استخدم «تحويل ترميز النص (إصلاح النص المشوّه)» (مجانًا)</a>
 <h2>أدوات تتكامل مع هذه الأداة</h2><ul><li><a href="/ar/csv-json.html">تحويل CSV وJSON</a>: حوّل بين CSV وJSON فورًا.</li><li><a href="/ar/csv-to-xlsx.html">تحويل CSV إلى Excel (.xlsx)</a>: حوّل CSV إلى ملف Excel (.xlsx).</li><li><a href="/ar/line-break-remover.html">إزالة فواصل الأسطر في النص وتنظيفها</a>: رتّب فواصل الأسطر في النص المنسوخ من PDF وغيره.</li></ul>
 <div class="tip"><p>إذا أفادك هذا الدليل، فإن إكرامية صغيرة تعني لنا الكثير.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">أرسل إكرامية (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">أرسل هدية (قائمة أمنيات Amazon)</a></div>

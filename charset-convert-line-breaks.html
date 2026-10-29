@@ -200,14 +200,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>改行コード（CRLF・LF）をそろえる方法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを選ぶ</li><li>「改行」を選ぶ</li><li>変換して保存する</li></ul></div>
-<p>Windowsは「CRLF」、MacやLinuxは「LF」が一般的です。<a href="/charset-convert.html">文字コードを変換する</a> は、文字コードの変換と同時に、改行もそろえられます。</p>
+<p>ファイルを別のシステムに渡したら、行の終わりがおかしくなった。原因は、改行コードの違いです。<a href="/charset-convert.html">文字コードを変換する（文字化けを直す）</a> は、文字コードの変換と同時に、改行もそろえられます。</p>
+<h2>改行コードとは</h2>
+<p>行の終わりを表す、見えない文字です。</p>
+<ul>
+<li><b>CRLF</b>：Windowsで一般的。</li>
+<li><b>LF</b>：MacやLinuxで一般的。</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>ファイルを選ぶ</li>
-<li>「改行」で、CRLFかLFを選ぶ</li>
-<li>「変換して保存」を押す</li>
+<li>「テキストファイルを選ぶ」で、ファイルを選ぶ。</li>
+<li>「改行」で、CRLFかLFを選ぶ。</li>
+<li>「変換して保存」を押す。</li>
 </ol>
 <div class="note">「そのまま」を選ぶと、元の改行を変えません。</div>
+<h2>食い違うと、起こること</h2>
+<ul>
+<li>メモ帳で、すべての行がつながって表示される</li>
+<li>行の末尾に、余計な記号が見える</li>
+<li>システムが、1行として読んでしまう</li>
+<li>プログラムで、行の判定がずれる</li>
+</ul>
+<h2>選び方</h2>
+<ul>
+<li><b>Windowsのシステム・メモ帳で使う</b>：CRLF</li>
+<li><b>MacやLinux、プログラムで使う</b>：LF</li>
+<li><b>よく分からない</b>：「そのまま」にして、問題が出たら変える</li>
+</ul>
+<h2>改行コードを確かめる方法</h2>
+<p>エディタ（サクラエディタなど）の画面の下に、改行コードが表示されます。ない場合は、このツールで変換して、問題が直るかを試します。</p>
+<h2>文字コードと同時に直す</h2>
+<p>文字化けと改行の食い違いは、同時に起こることがよくあります。両方を一度に直せるので、ツールの中で、文字コードと改行を、まとめて設定しましょう。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>システム間のデータ受け渡し</li>
+<li>ログファイルや、設定ファイルの調整</li>
+<li>CSVを、プログラムで読み込む前の準備</li>
+</ul>
+<h2>例</h2>
+<p>Macで作ったCSVを、Windowsの業務システムに取り込むと、1行にまとまってしまった。改行をCRLFにそろえて保存すると、正しく取り込めた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>変換しても直らない</b>：改行ではなく、文字コードの問題かもしれない。</li>
+<li><b>空行が増えた</b>：二重に変換した可能性。元のファイルから、やり直す。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>改行を変えると、データの内容は変わりますか？</h3>
+<p>行の区切りだけが変わります。文字の内容は変わりません。</p>
+<h2>まとめ</h2>
+<p>Windowsは「CRLF」、MacやLinuxは「LF」。渡す先に合わせてそろえましょう。</p>
 <a class="cta" href="/charset-convert.html">文字コードを変換する（文字化けを直す）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/csv-json.html">CSVとJSONを相互変換する</a>：CSVとJSONを、すぐに相互変換します。</li><li><a href="/csv-to-xlsx.html">CSVをExcelファイルにする</a>：CSVを、Excelで開ける .xlsx ファイルにします。</li><li><a href="/line-break-remover.html">文章の改行を消す・整える</a>：PDFなどからコピーした文章の改行を整えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +260,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Match Line Endings (CRLF and LF)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose the file</li><li>Choose "Line breaks"</li><li>Convert and save</li></ul></div>
-<p>Windows usually uses CRLF, while Mac and Linux use LF. <a href="/charset-convert.html">Convert Text Encoding</a> can match line endings at the same time as converting the encoding.</p>
+<p>After handing a file to another system, the ends of lines went wrong. The cause is a difference in line break codes. <a href="/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> can align line breaks at the same time as converting the encoding.</p>
+<h2>What line break codes are</h2>
+<p>Invisible characters that mark the end of a line.</p>
+<ul>
+<li><b>CRLF</b>: common on Windows.</li>
+<li><b>LF</b>: common on Mac and Linux.</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Choose the file</li>
-<li>Under "Line breaks" choose CRLF or LF</li>
-<li>Tap "Convert and save"</li>
+<li>Choose a file with "Choose a text file".</li>
+<li>Under "Line breaks", choose CRLF or LF.</li>
+<li>Press "Convert and save".</li>
 </ol>
-<div class="note">Choose "Keep" to leave the original line endings.</div>
+<div class="note">Choosing "As is" leaves the original line breaks unchanged.</div>
+<h2>What happens when they mismatch</h2>
+<ul>
+<li>Notepad shows all lines joined together</li>
+<li>Stray symbols appear at line ends</li>
+<li>The system reads it as a single line</li>
+<li>Line detection goes wrong in programs</li>
+</ul>
+<h2>How to choose</h2>
+<ul>
+<li><b>For Windows systems and Notepad</b>: CRLF</li>
+<li><b>For Mac, Linux and programs</b>: LF</li>
+<li><b>Not sure</b>: leave as "As is" and change if problems arise</li>
+</ul>
+<h2>How to check line breaks</h2>
+<p>Editors (such as Sakura Editor) show the line break code at the bottom of the screen. If not, convert with this tool and see whether the problem is fixed.</p>
+<h2>Fixing together with the encoding</h2>
+<p>Garbling and line-break mismatches often occur together. Since both can be fixed at once, set encoding and line breaks together in the tool.</p>
+<h2>Good for</h2>
+<ul>
+<li>Handing data between systems</li>
+<li>Adjusting log files and configuration files</li>
+<li>Preparing CSVs before loading them in programs</li>
+</ul>
+<h2>Example</h2>
+<p>A CSV made on a Mac was imported into a Windows business system and ended up as a single line. Aligning line breaks to CRLF and saving made it import correctly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Not fixed after converting</b>: it may be an encoding problem, not line breaks.</li>
+<li><b>Blank lines increased</b>: may have been converted twice. Redo from the original file.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does changing line breaks change the data?</h3>
+<p>Only the line separators change. The text content doesn't.</p>
+<h2>Summary</h2>
+<p>Windows uses "CRLF", Mac and Linux "LF". Align to the destination.</p>
 <a class="cta" href="/charset-convert.html">Use "Convert Text Encoding (Fix Garbled Text)" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li><li><a href="/csv-to-xlsx.html">Convert CSV to Excel (.xlsx)</a>: Convert a CSV to an Excel (.xlsx) file.</li><li><a href="/line-break-remover.html">Remove and Tidy Line Breaks in Text</a>: Tidy line breaks in text copied from PDFs and elsewhere.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

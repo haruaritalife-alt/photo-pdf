@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>การตรวจจับการเข้ารหัสอัตโนมัติทำงานอย่างไร และต้องทำอย่างไรเมื่อล้มเหลว</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ตรวจสอบการเข้ารหัสที่ตรวจพบ</li><li>เปลี่ยนการอ่านด้วยตนเอง</li><li>แปลงเมื่อดูถูกต้องแล้ว</li></ul></div>
-<p><a href="/th/charset-convert.html">แปลงการเข้ารหัสข้อความ</a> เดาการเข้ารหัสจากส่วนต้นของไฟล์และรูปแบบไบต์</p>
+<p lang="en">How should you handle a file whose encoding you don't know? <a href="/th/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> estimates the encoding from the start of the file and the arrangement of bytes. This is "auto-detection".</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือกไฟล์แล้วอ่านบรรทัด "ตรวจพบ:"</li>
-<li>หากข้อความเพี้ยน ให้เลือก "การเข้ารหัสปัจจุบัน" อื่น</li>
-<li>เมื่อตัวอย่างดูถูกต้อง ให้แปลง</li>
+<li lang="en">Choose a file and look at the "Auto-detected:" display.</li>
+<li lang="en">If the text is garbled, change "Current encoding" to another.</li>
+<li lang="en">Once "Content read (beginning)" is correct, convert.</li>
 </ol>
-<div class="note">ไฟล์สั้นมักตัดสินผิดได้ง่าย ตรวจสอบตัวอย่างและเลือกเองหากจำเป็น</div>
+<div class="note" lang="en">Short files are easily misjudged. Look at the display and choose manually.</div>
+<h2 lang="en">How auto-detection works</h2>
+<ul>
+<li lang="en">If the file starts with a BOM (a marker for UTF-8 etc.), it uses that</li>
+<li lang="en">If not, it estimates from the characteristics of the byte arrangement</li>
+<li lang="en">For Japanese, it tells apart UTF-8, Shift_JIS, EUC-JP and so on</li>
+</ul>
+<h2 lang="en">Cases where detection easily misses</h2>
+<ul>
+<li lang="en">Short files with few characters</li>
+<li lang="en">Files of only half-width alphanumerics with almost no Japanese</li>
+<li lang="en">Broken files mixing several encodings</li>
+</ul>
+<h2 lang="en">Steps to choose manually</h2>
+<ol>
+<li lang="en">Set "Current encoding" to "UTF-8" and check the reading.</li>
+<li lang="en">If garbled, set "Shift_JIS (Windows)" and check.</li>
+<li lang="en">If still wrong, try "EUC-JP" or "UTF-16 (LE)".</li>
+<li lang="en">The encoding that reads correctly is the file's encoding.</li>
+</ol>
+<h2 lang="en">Hints for telling them apart</h2>
+<ul>
+<li lang="en">Data downloaded from the web → often UTF-8</li>
+<li lang="en">Old Windows software → often Shift_JIS</li>
+<li lang="en">Old UNIX-type systems → often EUC-JP</li>
+<li lang="en">Saved as "Unicode" in Windows Notepad → often UTF-16</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Checking files of unknown origin</li>
+<li lang="en">Investigating the encoding of files from clients</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Opening a text of unknown origin showed garbling. Auto-detection missed, but setting "Current encoding" to Shift_JIS made it readable. I converted it to UTF-8 and saved.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Garbled whichever you choose</b>: the characters may already be broken.</li>
+<li lang="en"><b>Only part is garbled</b>: several encodings are mixed.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is auto-detection always right?</h3>
+<p lang="en">No. With short files it can be wrong. Confirm with the displayed reading.</p>
+<h2>สรุป</h2>
+<p lang="en">Auto-detection is handy but not all-powerful. Look at the reading and choose the matching encoding.</p>
 <a class="cta" href="/th/charset-convert.html">ใช้ “แปลงการเข้ารหัสข้อความ (แก้ข้อความเพี้ยน)” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/csv-json.html">แปลง CSV และ JSON</a>: แปลงระหว่าง CSV และ JSON ได้ทันที</li><li><a href="/th/csv-to-xlsx.html">แปลง CSV เป็น Excel (.xlsx)</a>: แปลง CSV เป็นไฟล์ Excel (.xlsx)</li><li><a href="/th/line-break-remover.html">ลบและจัดระเบียบการขึ้นบรรทัดใหม่ในข้อความ</a>: จัดระเบียบการขึ้นบรรทัดใหม่ในข้อความที่คัดลอกจาก PDF และที่อื่น ๆ</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Mengapa CSV Nampak Rosak dan Cara Membetulkannya</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Dikemas kini: 19 Okt 2026 | <a href="/about.html">Perihal (Jepun)</a></p>
 <div class="points"><b>Perkara penting</b><ul><li>Tetapkan pengekodan semasa kepada pengesanan automatik</li><li>Semak pratonton</li><li>Tukar kepada UTF-8 atau Shift_JIS</li></ul></div>
-<p>Fail CSV nampak rosak apabila pengekodan simpanannya berbeza daripada yang dijangka aplikasi. <a href="/ms/charset-convert.html">Tukar Pengekodan Teks</a> membolehkan anda menyamakannya.</p>
-<h2>Langkah</h2>
+<p lang="en">You opened a CSV in Excel and Japanese was garbled. This is common, and the cause is mostly a difference in character encoding. Use <a href="/ms/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> to find out how to fix it.</p>
+<h2>Punca</h2>
+<ul>
+<li lang="en">The CSV is saved as UTF-8 but Excel opens it assuming Shift_JIS</li>
+<li lang="en">Conversely, it is saved as Shift_JIS but opened as UTF-8</li>
+</ul>
+<p lang="en">CSVs output from web services and programs are often UTF-8 and can garble when opened in Japanese Excel.</p>
+<h2 lang="en">Steps to fix</h2>
 <ol>
-<li>Pilih fail dan kekalkan "Pengesanan automatik"</li>
-<li>Semak dalam pratonton bahawa aksara kelihatan betul</li>
-<li>Tukar kepada pengekodan yang diperlukan dan simpan</li>
+<li lang="en">Choose the garbled CSV with "Choose a text file".</li>
+<li lang="en">Look at "Content read (beginning)". If garbled, change "Current encoding".</li>
+<li lang="en">Once readable, choose "UTF-8 (with BOM, for Excel)" under "Convert to".</li>
+<li lang="en">Press "Convert and save" and open the saved file in Excel.</li>
 </ol>
-<div class="note">Jika tiada pengekodan yang membetulkannya, fail mungkin rosak atau bukan teks.</div>
+<div class="note" lang="en">The "Current encoding" at which the text reads correctly is the file's true encoding.</div>
+<h2 lang="en">Hints from the garbling</h2>
+<ul>
+<li lang="en">Characters like "縺ゅ縺": UTF-8 being read as Shift_JIS</li>
+<li lang="en">Characters like "繧ゅ": the same</li>
+<li lang="en">"????" or "□": the characters may already be lost</li>
+</ul>
+<h2 lang="en">If it isn't fixed</h2>
+<ul>
+<li lang="en">Try "Current encoding" options in turn</li>
+<li lang="en">Check the original file wasn't already damaged by other software</li>
+<li lang="en">Respecify the encoding at the original source</li>
+</ul>
+<h2>Sesuai untuk</h2>
+<ul>
+<li lang="en">Data downloaded from web systems is garbled</li>
+<li lang="en">CSVs from overseas systems are garbled</li>
+<li lang="en">Making old files readable</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">An online shop's order-data CSV was garbled in Excel. In this tool, I set "Current encoding" to UTF-8 to check the content, converted for Excel and saved; it was fixed.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Still garbled after converting</b>: the "Current encoding" choice is wrong.</li>
+<li lang="en"><b>"????" mixed in</b>: the original data has already been lost.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Will re-opening and saving in Excel fix it?</h3>
+<p lang="en">Saving while garbled makes it impossible to restore. Use this tool first.</p>
+<h2>Ringkasan</h2>
+<p lang="en">CSV garbling is fixed by matching the encoding. For Excel, UTF-8 with BOM.</p>
 <a class="cta" href="/ms/charset-convert.html">Guna “Tukar Pengekodan Teks (Betulkan Teks Rosak)” (percuma)</a>
 <h2>Alat yang sepadan dengan ini</h2><ul><li><a href="/ms/csv-json.html">Tukar CSV dan JSON</a>: Tukar antara CSV dan JSON dengan serta-merta.</li><li><a href="/ms/csv-to-xlsx.html">Tukar CSV kepada Excel (.xlsx)</a>: Tukar CSV kepada fail Excel (.xlsx).</li><li><a href="/ms/line-break-remover.html">Buang dan Kemaskan Pemisah Baris dalam Teks</a>: Kemaskan pemisah baris dalam teks yang disalin daripada PDF dan lain-lain.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil amat dihargai.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Hantar tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hantar hadiah (senarai hajat Amazon)</a></div>

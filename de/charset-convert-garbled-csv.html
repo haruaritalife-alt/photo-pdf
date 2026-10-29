@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Warum eine CSV unleserlich aussieht und wie man es behebt</h1>
 <p class="meta">Veröffentlicht: 19.10.2026 | Aktualisiert: 19.10.2026 | <a href="/about.html">Über uns (Japanisch)</a></p>
 <div class="points"><b>Wichtige Punkte</b><ul><li>Aktuelle Codierung auf automatische Erkennung setzen</li><li>Die Vorschau prüfen</li><li>In UTF-8 oder Shift_JIS umwandeln</li></ul></div>
-<p>CSV-Dateien sehen unleserlich aus, wenn die Codierung beim Speichern von der erwarteten der Anwendung abweicht. Mit <a href="/de/charset-convert.html">Textcodierung umwandeln</a> gleichen Sie beide an.</p>
-<h2>Schritte</h2>
+<p lang="en">You opened a CSV in Excel and Japanese was garbled. This is common, and the cause is mostly a difference in character encoding. Use <a href="/de/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> to find out how to fix it.</p>
+<h2>Ursachen</h2>
+<ul>
+<li lang="en">The CSV is saved as UTF-8 but Excel opens it assuming Shift_JIS</li>
+<li lang="en">Conversely, it is saved as Shift_JIS but opened as UTF-8</li>
+</ul>
+<p lang="en">CSVs output from web services and programs are often UTF-8 and can garble when opened in Japanese Excel.</p>
+<h2 lang="en">Steps to fix</h2>
 <ol>
-<li>Datei auswählen und „Automatisch erkennen“ beibehalten</li>
-<li>In der Vorschau prüfen, ob die Zeichen richtig aussehen</li>
-<li>In die benötigte Codierung umwandeln und speichern</li>
+<li lang="en">Choose the garbled CSV with "Choose a text file".</li>
+<li lang="en">Look at "Content read (beginning)". If garbled, change "Current encoding".</li>
+<li lang="en">Once readable, choose "UTF-8 (with BOM, for Excel)" under "Convert to".</li>
+<li lang="en">Press "Convert and save" and open the saved file in Excel.</li>
 </ol>
-<div class="note">Hilft keine Codierung, ist die Datei möglicherweise beschädigt oder kein Text.</div>
+<div class="note" lang="en">The "Current encoding" at which the text reads correctly is the file's true encoding.</div>
+<h2 lang="en">Hints from the garbling</h2>
+<ul>
+<li lang="en">Characters like "縺ゅ縺": UTF-8 being read as Shift_JIS</li>
+<li lang="en">Characters like "繧ゅ": the same</li>
+<li lang="en">"????" or "□": the characters may already be lost</li>
+</ul>
+<h2 lang="en">If it isn't fixed</h2>
+<ul>
+<li lang="en">Try "Current encoding" options in turn</li>
+<li lang="en">Check the original file wasn't already damaged by other software</li>
+<li lang="en">Respecify the encoding at the original source</li>
+</ul>
+<h2>Gut geeignet für</h2>
+<ul>
+<li lang="en">Data downloaded from web systems is garbled</li>
+<li lang="en">CSVs from overseas systems are garbled</li>
+<li lang="en">Making old files readable</li>
+</ul>
+<h2>Beispiel</h2>
+<p lang="en">An online shop's order-data CSV was garbled in Excel. In this tool, I set "Current encoding" to UTF-8 to check the content, converted for Excel and saved; it was fixed.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Still garbled after converting</b>: the "Current encoding" choice is wrong.</li>
+<li lang="en"><b>"????" mixed in</b>: the original data has already been lost.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Will re-opening and saving in Excel fix it?</h3>
+<p lang="en">Saving while garbled makes it impossible to restore. Use this tool first.</p>
+<h2>Zusammenfassung</h2>
+<p lang="en">CSV garbling is fixed by matching the encoding. For Excel, UTF-8 with BOM.</p>
 <a class="cta" href="/de/charset-convert.html">„Textcodierung umwandeln (unleserliche Zeichen beheben)“ verwenden (kostenlos)</a>
 <h2>Passende Werkzeuge dazu</h2><ul><li><a href="/de/csv-json.html">CSV und JSON umwandeln</a>: Sofort zwischen CSV und JSON umwandeln.</li><li><a href="/de/csv-to-xlsx.html">CSV in Excel (.xlsx) umwandeln</a>: Eine CSV-Datei in eine Excel-Datei (.xlsx) umwandeln.</li><li><a href="/de/line-break-remover.html">Zeilenumbrüche in Text entfernen und bereinigen</a>: Zeilenumbrüche in aus PDFs und anderswo kopiertem Text bereinigen.</li></ul>
 <div class="tip"><p>Wenn Ihnen diese Anleitung geholfen hat, freuen wir uns über ein kleines Trinkgeld.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Trinkgeld senden (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Geschenk senden (Amazon-Wunschliste)</a></div>

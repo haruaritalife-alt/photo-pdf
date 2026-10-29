@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Come funziona il rilevamento automatico della codifica e cosa fare quando fallisce</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Controlla la codifica rilevata</li><li>Cambia la lettura manualmente</li><li>Converti quando è corretto</li></ul></div>
-<p><a href="/it/charset-convert.html">Converti codifica del testo</a> deduce la codifica dall'inizio del file e dai suoi schemi di byte.</p>
+<p lang="en">How should you handle a file whose encoding you don't know? <a href="/it/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> estimates the encoding from the start of the file and the arrangement of bytes. This is "auto-detection".</p>
 <h2>Passaggi</h2>
 <ol>
-<li>Scegli il file e leggi la riga "Rilevato:"</li>
-<li>Se è illeggibile, scegli un'altra "Codifica attuale"</li>
-<li>Quando l'anteprima è corretta, converti</li>
+<li lang="en">Choose a file and look at the "Auto-detected:" display.</li>
+<li lang="en">If the text is garbled, change "Current encoding" to another.</li>
+<li lang="en">Once "Content read (beginning)" is correct, convert.</li>
 </ol>
-<div class="note">I file brevi sono facili da giudicare male. Controlla l'anteprima e scegli manualmente se serve.</div>
+<div class="note" lang="en">Short files are easily misjudged. Look at the display and choose manually.</div>
+<h2 lang="en">How auto-detection works</h2>
+<ul>
+<li lang="en">If the file starts with a BOM (a marker for UTF-8 etc.), it uses that</li>
+<li lang="en">If not, it estimates from the characteristics of the byte arrangement</li>
+<li lang="en">For Japanese, it tells apart UTF-8, Shift_JIS, EUC-JP and so on</li>
+</ul>
+<h2 lang="en">Cases where detection easily misses</h2>
+<ul>
+<li lang="en">Short files with few characters</li>
+<li lang="en">Files of only half-width alphanumerics with almost no Japanese</li>
+<li lang="en">Broken files mixing several encodings</li>
+</ul>
+<h2 lang="en">Steps to choose manually</h2>
+<ol>
+<li lang="en">Set "Current encoding" to "UTF-8" and check the reading.</li>
+<li lang="en">If garbled, set "Shift_JIS (Windows)" and check.</li>
+<li lang="en">If still wrong, try "EUC-JP" or "UTF-16 (LE)".</li>
+<li lang="en">The encoding that reads correctly is the file's encoding.</li>
+</ol>
+<h2 lang="en">Hints for telling them apart</h2>
+<ul>
+<li lang="en">Data downloaded from the web → often UTF-8</li>
+<li lang="en">Old Windows software → often Shift_JIS</li>
+<li lang="en">Old UNIX-type systems → often EUC-JP</li>
+<li lang="en">Saved as "Unicode" in Windows Notepad → often UTF-16</li>
+</ul>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Checking files of unknown origin</li>
+<li lang="en">Investigating the encoding of files from clients</li>
+</ul>
+<h2>Esempio</h2>
+<p lang="en">Opening a text of unknown origin showed garbling. Auto-detection missed, but setting "Current encoding" to Shift_JIS made it readable. I converted it to UTF-8 and saved.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Garbled whichever you choose</b>: the characters may already be broken.</li>
+<li lang="en"><b>Only part is garbled</b>: several encodings are mixed.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is auto-detection always right?</h3>
+<p lang="en">No. With short files it can be wrong. Confirm with the displayed reading.</p>
+<h2>Riepilogo</h2>
+<p lang="en">Auto-detection is handy but not all-powerful. Look at the reading and choose the matching encoding.</p>
 <a class="cta" href="/it/charset-convert.html">Usa “Convertire la codifica del testo (correggere caratteri illeggibili)” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/csv-json.html">Converti CSV e JSON</a>: Converti all'istante tra CSV e JSON.</li><li><a href="/it/csv-to-xlsx.html">Converti CSV in Excel (.xlsx)</a>: Converti un CSV in un file Excel (.xlsx).</li><li><a href="/it/line-break-remover.html">Rimuovi e riordina gli a capo nel testo</a>: Riordina gli a capo nel testo copiato da PDF e altre fonti.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>

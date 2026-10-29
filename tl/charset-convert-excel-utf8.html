@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pagbubukas ng UTF-8 CSV sa Excel (I-convert sa UTF-8 na may BOM)</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Piliin ang CSV</li><li>Itakda ang target sa "UTF-8 na may BOM"</li><li>I-save at buksan sa Excel</li></ul></div>
-<p>Sinisira ng ilang bersyon ng Excel ang mga UTF-8 file na walang BOM. Kapag nagdagdag ng BOM gamit ang <a href="/tl/charset-convert.html">I-convert ang Text Encoding</a>, mas maaasahan itong nabubuksan.</p>
+<p lang="en">You want to open a UTF-8 CSV in Excel without garbling. Older Excel versions may open UTF-8 without a BOM garbled. Adding a BOM with <a href="/tl/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> makes it open more easily.</p>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Piliin ang UTF-8 CSV file</li>
-<li>Sa ilalim ng "I-convert sa" piliin ang "UTF-8 na may BOM (para sa Excel)"</li>
-<li>Buksan ang na-save na file sa Excel</li>
+<li lang="en">Choose the UTF-8 CSV with "Choose a text file".</li>
+<li lang="en">Under "Convert to", choose "UTF-8 (with BOM, for Excel)".</li>
+<li lang="en">Press "Convert and save".</li>
+<li lang="en">Open the saved file in Excel.</li>
 </ol>
-<div class="note">Maaaring magdagdag ang BOM ng sobrang character sa simula kapag nilo-load ng mga programa o web system ang mga file. Pumili ayon sa layunin.</div>
+<div class="note" lang="en">A BOM-prefixed file may add stray characters at the start when imported into programs or web systems. Choose according to the purpose.</div>
+<h2 lang="en">What a BOM is</h2>
+<p lang="en">A marker at the start of a file saying "this file is UTF-8". Excel looks at this marker to read the characters correctly.</p>
+<h2 lang="en">Choosing</h2>
+<ul>
+<li lang="en"><b>Opening or editing in Excel</b>: UTF-8 with BOM</li>
+<li lang="en"><b>Importing into programs or web systems</b>: UTF-8 without BOM</li>
+<li lang="en"><b>Systems specifying Shift_JIS</b>: Shift_JIS</li>
+</ul>
+<h2 lang="en">Flow</h2>
+<p lang="en">Original CSV (UTF-8) → this tool → UTF-8 CSV with BOM → opens correctly in Excel</p>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en">Re-saving in Excel may make it another encoding (such as Shift_JIS) again</li>
+<li lang="en">When handing the re-saved file to other systems, check the encoding</li>
+<li lang="en">Recent Excel may open UTF-8 without a BOM too</li>
+</ul>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Wanting to view data downloaded from web services in Excel</li>
+<li lang="en">Wanting to open overseas system data in Excel</li>
+<li lang="en">Handing a client a CSV that opens in Excel</li>
+</ul>
+<h2>Halimbawa</h2>
+<p lang="en">Wanted to show a colleague a CSV written by a program in Excel. Converting to UTF-8 with BOM made it open without garbling in their Excel.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The system can't read it after adding a BOM</b>: go back to without BOM.</li>
+<li lang="en"><b>Leading zeros disappear even after opening</b>: Excel's behaviour. When importing, specify the column as text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does adding a BOM change the data?</h3>
+<p lang="en">The text content doesn't change. Only a marker is added at the start.</p>
+<h2>Buod</h2>
+<p lang="en">To open in Excel, UTF-8 with BOM. To pass to a system, without BOM.</p>
 <a class="cta" href="/tl/charset-convert.html">Gamitin ang “I-convert ang Text Encoding (Ayusin ang Sirang Text)” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/csv-json.html">I-convert ang CSV at JSON</a>: Agad na mag-convert sa pagitan ng CSV at JSON.</li><li><a href="/tl/csv-to-xlsx.html">I-convert ang CSV sa Excel (.xlsx)</a>: I-convert ang CSV sa Excel (.xlsx) na file.</li><li><a href="/tl/line-break-remover.html">Alisin at Ayusin ang mga Line Break sa Text</a>: Ayusin ang mga line break sa text na kinopya mula sa PDF at iba pa.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

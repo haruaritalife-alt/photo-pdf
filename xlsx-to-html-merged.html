@@ -200,12 +200,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>結合したセルの扱い</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>確かめる</li><li>直す</li></ul></div>
-<h2>手順</h2>
+<p>Excelの表には、見栄えのために、セルを結合していることがあります。<a href="/xlsx-to-html.html">Excelの表をHTML・Markdownにする</a> で変換すると、結合したセルは、左上の1つだけに文字が入り、ほかのセルは空になります。</p>
+<h2>変換のルール</h2>
+<ul>
+<li>結合したセルは、左上の1つだけに文字が入る。</li>
+<li>そのほかのセルは、空になる。</li>
+</ul>
+<div class="note">HTMLの結合の指定は、含まれません。見た目が、元の表と違うことがあります。</div>
+<h2>起こりやすいこと</h2>
+<ul>
+<li>「分類」のセルを3行分結合 → 1行目だけに「分類」が入り、2・3行目は空になる</li>
+<li>表のタイトルを、全列で結合 → 最初の列だけにタイトルが入る</li>
+</ul>
+<h2>手順（きれいに変換するには）</h2>
 <ol>
-<li>結合したセルは、左上の1つだけに文字が入ります。</li>
-<li>そのほかのセルは、空になります。</li>
-<li>必要なら、変換後に表を直します。</li>
+<li>変換する前に、Excelで結合を解除する。</li>
+<li>空になったセルに、同じ文字を入れる。</li>
+<li>このツールで、変換する。</li>
+<li>変換後の表を確かめる。</li>
 </ol>
+<h2>結合を解除するコツ</h2>
+<ol>
+<li>結合したセルを選ぶ。</li>
+<li>「セルを結合して中央揃え」を押して、解除する。</li>
+<li>空になったセルに、文字をコピーして入れる。</li>
+</ol>
+<h2>結合しないほうがよい理由</h2>
+<ul>
+<li>並べ替えや、フィルターがうまく動かない</li>
+<li>データとして扱うときに、空のセルが邪魔になる</li>
+<li>Webページや、システムに貼るときに、崩れやすい</li>
+</ul>
+<h2>変換後に直す方法</h2>
+<p>HTMLで、結合したままにしたい場合は、変換後のHTMLに、colspan（列の結合）や rowspan（行の結合）を手で書き足します。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>結合セルのない、きれいな表の変換</li>
+<li>結合セルを含む表の、データだけを取り出す</li>
+</ul>
+<h2>例</h2>
+<p>月ごとの集計表で、「第1四半期」が3か月分結合されていた。変換すると、1月だけに文字が入ったので、Excelで結合を解除して、各月に入れ直してから、やり直した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>文字が消えたように見える</b>：結合のとき、左上以外は空になる。</li>
+<li><b>列がずれる</b>：結合を解除してから、変換する。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>結合のまま、変換できますか？</h3>
+<p>結合の見た目は、含まれません。解除するのが確実です。</p>
+<h2>まとめ</h2>
+<p>結合セルは、左上だけに文字が入る。変換前に解除しておくと、きれいにできます。</p>
 <a class="cta" href="/xlsx-to-html.html">Excelの表をHTML・Markdownにするを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/xlsx-to-csv.html">ExcelをCSV・JSONに変換する</a>：Excelのシートを、CSV・TSV・JSONに変換します。</li><li><a href="/docx-to-html.html">WordをHTMLに変換する</a>：Wordの文章を、Webに貼れるHTMLにします。</li><li><a href="/csv-json.html">CSVとJSONを相互変換する</a>：CSVとJSONを、すぐに相互変換します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -217,12 +261,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How Merged Cells Are Handled</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check</li><li>Fix</li></ul></div>
-<h2>Steps</h2>
+<p>Excel tables sometimes have merged cells for looks. When converted with <a href="/xlsx-to-html.html">Convert an Excel Table to HTML or Markdown</a>, a merged cell's text goes only into the top-left one, and the other cells become empty.</p>
+<h2>Conversion rule</h2>
+<ul>
+<li>A merged cell's text goes only into the top-left cell.</li>
+<li>The other cells become empty.</li>
+</ul>
+<div class="note">HTML merge attributes are not included. The look may differ from the original table.</div>
+<h2>What commonly happens</h2>
+<ul>
+<li>A "Category" cell merged across 3 rows → only the first row holds "Category"; rows 2 and 3 are empty</li>
+<li>A table title merged across all columns → only the first column holds the title</li>
+</ul>
+<h2>Steps (to convert cleanly)</h2>
 <ol>
-<li>In a merged cell only the top-left cell keeps its text.</li>
-<li>The other cells are left empty.</li>
-<li>If needed, fix the table after converting.</li>
+<li>Before converting, unmerge cells in Excel.</li>
+<li>Fill the now-empty cells with the same text.</li>
+<li>Convert with this tool.</li>
+<li>Check the converted table.</li>
 </ol>
+<h2>Tips for unmerging</h2>
+<ol>
+<li>Select the merged cell.</li>
+<li>Press "Merge &amp; Center" to unmerge.</li>
+<li>Copy the text into the emptied cells.</li>
+</ol>
+<h2>Why not to merge</h2>
+<ul>
+<li>Sorting and filtering don't work well</li>
+<li>Empty cells get in the way when handling it as data</li>
+<li>It breaks easily when pasted into web pages or systems</li>
+</ul>
+<h2>How to fix after converting</h2>
+<p>If you want to keep merging in HTML, add colspan (column merge) or rowspan (row merge) by hand to the converted HTML.</p>
+<h2>Good for</h2>
+<ul>
+<li>Converting clean tables without merged cells</li>
+<li>Extracting just the data from tables that contain merged cells</li>
+</ul>
+<h2>Example</h2>
+<p>In a monthly summary, "Q1" was merged across three months. After converting, only January had the text, so I unmerged in Excel, re-entered it for each month and redid it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The text seems to have vanished</b>: when merged, everything except the top-left is empty.</li>
+<li><b>Columns shift</b>: unmerge before converting.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can it convert keeping the merge?</h3>
+<p>The merged look isn't included. Unmerging is the reliable way.</p>
+<h2>Summary</h2>
+<p>For merged cells, only the top-left gets the text. Unmerge before converting for a clean result.</p>
 <a class="cta" href="/xlsx-to-html.html">Use "Convert an Excel Table to HTML or Markdown" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/xlsx-to-csv.html">Convert Excel to CSV or JSON</a>: Convert an Excel sheet to CSV, TSV or JSON.</li><li><a href="/docx-to-html.html">Convert Word to HTML</a>: Turn Word text into HTML.</li><li><a href="/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Otwieranie CSV w UTF-8 w Excelu (konwersja na UTF-8 z BOM)</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Wybierz plik CSV</li><li>Ustaw docelowe kodowanie „UTF-8 z BOM”</li><li>Zapisz i otwórz w Excelu</li></ul></div>
-<p>Niektóre wersje Excela psują pliki UTF-8 bez BOM. Dodanie BOM w <a href="/pl/charset-convert.html">Konwertuj kodowanie tekstu</a> sprawia, że otwierają się pewniej.</p>
+<p lang="en">You want to open a UTF-8 CSV in Excel without garbling. Older Excel versions may open UTF-8 without a BOM garbled. Adding a BOM with <a href="/pl/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> makes it open more easily.</p>
 <h2>Kroki</h2>
 <ol>
-<li>Wybierz plik CSV w UTF-8</li>
-<li>W „Konwertuj na” wybierz „UTF-8 z BOM (dla Excela)”</li>
-<li>Otwórz zapisany plik w Excelu</li>
+<li lang="en">Choose the UTF-8 CSV with "Choose a text file".</li>
+<li lang="en">Under "Convert to", choose "UTF-8 (with BOM, for Excel)".</li>
+<li lang="en">Press "Convert and save".</li>
+<li lang="en">Open the saved file in Excel.</li>
 </ol>
-<div class="note">BOM może dodać dodatkowy znak na początku, gdy pliki wczytują programy lub systemy webowe. Wybierz zależnie od celu.</div>
+<div class="note" lang="en">A BOM-prefixed file may add stray characters at the start when imported into programs or web systems. Choose according to the purpose.</div>
+<h2 lang="en">What a BOM is</h2>
+<p lang="en">A marker at the start of a file saying "this file is UTF-8". Excel looks at this marker to read the characters correctly.</p>
+<h2 lang="en">Choosing</h2>
+<ul>
+<li lang="en"><b>Opening or editing in Excel</b>: UTF-8 with BOM</li>
+<li lang="en"><b>Importing into programs or web systems</b>: UTF-8 without BOM</li>
+<li lang="en"><b>Systems specifying Shift_JIS</b>: Shift_JIS</li>
+</ul>
+<h2 lang="en">Flow</h2>
+<p lang="en">Original CSV (UTF-8) → this tool → UTF-8 CSV with BOM → opens correctly in Excel</p>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en">Re-saving in Excel may make it another encoding (such as Shift_JIS) again</li>
+<li lang="en">When handing the re-saved file to other systems, check the encoding</li>
+<li lang="en">Recent Excel may open UTF-8 without a BOM too</li>
+</ul>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">Wanting to view data downloaded from web services in Excel</li>
+<li lang="en">Wanting to open overseas system data in Excel</li>
+<li lang="en">Handing a client a CSV that opens in Excel</li>
+</ul>
+<h2>Przykład</h2>
+<p lang="en">Wanted to show a colleague a CSV written by a program in Excel. Converting to UTF-8 with BOM made it open without garbling in their Excel.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The system can't read it after adding a BOM</b>: go back to without BOM.</li>
+<li lang="en"><b>Leading zeros disappear even after opening</b>: Excel's behaviour. When importing, specify the column as text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does adding a BOM change the data?</h3>
+<p lang="en">The text content doesn't change. Only a marker is added at the start.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">To open in Excel, UTF-8 with BOM. To pass to a system, without BOM.</p>
 <a class="cta" href="/pl/charset-convert.html">Użyj „Konwertuj kodowanie tekstu (napraw krzaczki)” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/csv-json.html">Konwersja CSV i JSON</a>: Natychmiast konwertuj między CSV a JSON.</li><li><a href="/pl/csv-to-xlsx.html">Konwersja CSV na Excel (.xlsx)</a>: Zamień plik CSV na plik Excela (.xlsx).</li><li><a href="/pl/line-break-remover.html">Usuwanie i porządkowanie podziałów wierszy w tekście</a>: Uporządkuj podziały wierszy w tekście skopiowanym z PDF i innych źródeł.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

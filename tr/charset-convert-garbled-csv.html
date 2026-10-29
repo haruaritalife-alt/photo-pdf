@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>CSV neden bozuk görünür ve nasıl düzeltilir</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>Geçerli kodlamayı otomatik algılamaya ayarlayın</li><li>Önizlemeyi kontrol edin</li><li>UTF-8 veya Shift_JIS'e dönüştürün</li></ul></div>
-<p>CSV dosyaları, kaydedildiği kodlama uygulamanın beklediğinden farklıysa bozuk görünür. <a href="/tr/charset-convert.html">Metin kodlamasını dönüştür</a> bunları eşleştirmenizi sağlar.</p>
-<h2>Adımlar</h2>
+<p lang="en">You opened a CSV in Excel and Japanese was garbled. This is common, and the cause is mostly a difference in character encoding. Use <a href="/tr/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> to find out how to fix it.</p>
+<h2>Nedenler</h2>
+<ul>
+<li lang="en">The CSV is saved as UTF-8 but Excel opens it assuming Shift_JIS</li>
+<li lang="en">Conversely, it is saved as Shift_JIS but opened as UTF-8</li>
+</ul>
+<p lang="en">CSVs output from web services and programs are often UTF-8 and can garble when opened in Japanese Excel.</p>
+<h2 lang="en">Steps to fix</h2>
 <ol>
-<li>Dosyayı seçin ve "Otomatik algıla"yı bırakın</li>
-<li>Önizlemede karakterlerin doğru göründüğünü kontrol edin</li>
-<li>İhtiyacınız olan kodlamaya dönüştürüp kaydedin</li>
+<li lang="en">Choose the garbled CSV with "Choose a text file".</li>
+<li lang="en">Look at "Content read (beginning)". If garbled, change "Current encoding".</li>
+<li lang="en">Once readable, choose "UTF-8 (with BOM, for Excel)" under "Convert to".</li>
+<li lang="en">Press "Convert and save" and open the saved file in Excel.</li>
 </ol>
-<div class="note">Hiçbir kodlama düzeltmezse dosya hasarlı veya metin olmayabilir.</div>
+<div class="note" lang="en">The "Current encoding" at which the text reads correctly is the file's true encoding.</div>
+<h2 lang="en">Hints from the garbling</h2>
+<ul>
+<li lang="en">Characters like "縺ゅ縺": UTF-8 being read as Shift_JIS</li>
+<li lang="en">Characters like "繧ゅ": the same</li>
+<li lang="en">"????" or "□": the characters may already be lost</li>
+</ul>
+<h2 lang="en">If it isn't fixed</h2>
+<ul>
+<li lang="en">Try "Current encoding" options in turn</li>
+<li lang="en">Check the original file wasn't already damaged by other software</li>
+<li lang="en">Respecify the encoding at the original source</li>
+</ul>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Data downloaded from web systems is garbled</li>
+<li lang="en">CSVs from overseas systems are garbled</li>
+<li lang="en">Making old files readable</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">An online shop's order-data CSV was garbled in Excel. In this tool, I set "Current encoding" to UTF-8 to check the content, converted for Excel and saved; it was fixed.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Still garbled after converting</b>: the "Current encoding" choice is wrong.</li>
+<li lang="en"><b>"????" mixed in</b>: the original data has already been lost.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Will re-opening and saving in Excel fix it?</h3>
+<p lang="en">Saving while garbled makes it impossible to restore. Use this tool first.</p>
+<h2>Özet</h2>
+<p lang="en">CSV garbling is fixed by matching the encoding. For Excel, UTF-8 with BOM.</p>
 <a class="cta" href="/tr/charset-convert.html">“Metin kodlamasını dönüştür (bozuk metni düzelt)” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/csv-json.html">CSV ve JSON Dönüştürme</a>: CSV ile JSON arasında anında dönüştürün.</li><li><a href="/tr/csv-to-xlsx.html">CSV'yi Excel'e (.xlsx) Dönüştür</a>: Bir CSV'yi Excel (.xlsx) dosyasına dönüştürün.</li><li><a href="/tr/line-break-remover.html">Metindeki Satır Sonlarını Kaldırın ve Düzenleyin</a>: PDF'lerden ve başka yerlerden kopyalanan metindeki satır sonlarını düzeltin.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

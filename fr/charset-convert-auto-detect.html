@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Comment fonctionne la détection automatique de l'encodage et que faire en cas d'échec</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Vérifiez l'encodage détecté</li><li>Modifiez la lecture manuellement</li><li>Convertissez quand c'est correct</li></ul></div>
-<p><a href="/fr/charset-convert.html">Convertir l'encodage du texte</a> devine l'encodage d'après le début du fichier et ses motifs d'octets.</p>
+<p lang="en">How should you handle a file whose encoding you don't know? <a href="/fr/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> estimates the encoding from the start of the file and the arrangement of bytes. This is "auto-detection".</p>
 <h2>Étapes</h2>
 <ol>
-<li>Choisissez le fichier et lisez la ligne « Détecté : »</li>
-<li>Si c'est illisible, choisissez un autre « Encodage actuel »</li>
-<li>Quand l'aperçu est correct, convertissez</li>
+<li lang="en">Choose a file and look at the "Auto-detected:" display.</li>
+<li lang="en">If the text is garbled, change "Current encoding" to another.</li>
+<li lang="en">Once "Content read (beginning)" is correct, convert.</li>
 </ol>
-<div class="note">Les fichiers courts sont faciles à mal juger. Vérifiez l'aperçu et choisissez manuellement si besoin.</div>
+<div class="note" lang="en">Short files are easily misjudged. Look at the display and choose manually.</div>
+<h2 lang="en">How auto-detection works</h2>
+<ul>
+<li lang="en">If the file starts with a BOM (a marker for UTF-8 etc.), it uses that</li>
+<li lang="en">If not, it estimates from the characteristics of the byte arrangement</li>
+<li lang="en">For Japanese, it tells apart UTF-8, Shift_JIS, EUC-JP and so on</li>
+</ul>
+<h2 lang="en">Cases where detection easily misses</h2>
+<ul>
+<li lang="en">Short files with few characters</li>
+<li lang="en">Files of only half-width alphanumerics with almost no Japanese</li>
+<li lang="en">Broken files mixing several encodings</li>
+</ul>
+<h2 lang="en">Steps to choose manually</h2>
+<ol>
+<li lang="en">Set "Current encoding" to "UTF-8" and check the reading.</li>
+<li lang="en">If garbled, set "Shift_JIS (Windows)" and check.</li>
+<li lang="en">If still wrong, try "EUC-JP" or "UTF-16 (LE)".</li>
+<li lang="en">The encoding that reads correctly is the file's encoding.</li>
+</ol>
+<h2 lang="en">Hints for telling them apart</h2>
+<ul>
+<li lang="en">Data downloaded from the web → often UTF-8</li>
+<li lang="en">Old Windows software → often Shift_JIS</li>
+<li lang="en">Old UNIX-type systems → often EUC-JP</li>
+<li lang="en">Saved as "Unicode" in Windows Notepad → often UTF-16</li>
+</ul>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Checking files of unknown origin</li>
+<li lang="en">Investigating the encoding of files from clients</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">Opening a text of unknown origin showed garbling. Auto-detection missed, but setting "Current encoding" to Shift_JIS made it readable. I converted it to UTF-8 and saved.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Garbled whichever you choose</b>: the characters may already be broken.</li>
+<li lang="en"><b>Only part is garbled</b>: several encodings are mixed.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is auto-detection always right?</h3>
+<p lang="en">No. With short files it can be wrong. Confirm with the displayed reading.</p>
+<h2>En résumé</h2>
+<p lang="en">Auto-detection is handy but not all-powerful. Look at the reading and choose the matching encoding.</p>
 <a class="cta" href="/fr/charset-convert.html">Utiliser « Convertir l'encodage du texte (corriger les caractères illisibles) » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/csv-json.html">Convertir CSV et JSON</a>: Convertissez instantanément entre CSV et JSON.</li><li><a href="/fr/csv-to-xlsx.html">Convertir un CSV en Excel (.xlsx)</a>: Convertissez un CSV en fichier Excel (.xlsx).</li><li><a href="/fr/line-break-remover.html">Supprimer et nettoyer les sauts de ligne d'un texte</a>: Nettoyez les sauts de ligne d'un texte copié depuis un PDF ou ailleurs.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

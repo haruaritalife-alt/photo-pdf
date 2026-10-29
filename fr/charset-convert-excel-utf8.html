@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Ouvrir un CSV UTF-8 dans Excel (convertir en UTF-8 avec BOM)</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Choisissez le CSV</li><li>Définissez la cible sur « UTF-8 avec BOM »</li><li>Enregistrez et ouvrez dans Excel</li></ul></div>
-<p>Certaines versions d'Excel affichent mal les fichiers UTF-8 sans BOM. Ajouter un BOM avec <a href="/fr/charset-convert.html">Convertir l'encodage du texte</a> les fait s'ouvrir plus fiablement.</p>
+<p lang="en">You want to open a UTF-8 CSV in Excel without garbling. Older Excel versions may open UTF-8 without a BOM garbled. Adding a BOM with <a href="/fr/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> makes it open more easily.</p>
 <h2>Étapes</h2>
 <ol>
-<li>Choisissez le fichier CSV en UTF-8</li>
-<li>Dans « Convertir en », choisissez « UTF-8 avec BOM (pour Excel) »</li>
-<li>Ouvrez le fichier enregistré dans Excel</li>
+<li lang="en">Choose the UTF-8 CSV with "Choose a text file".</li>
+<li lang="en">Under "Convert to", choose "UTF-8 (with BOM, for Excel)".</li>
+<li lang="en">Press "Convert and save".</li>
+<li lang="en">Open the saved file in Excel.</li>
 </ol>
-<div class="note">Un BOM peut ajouter un caractère supplémentaire au début lorsque les fichiers sont chargés par des programmes ou des systèmes web. Choisissez selon l'usage.</div>
+<div class="note" lang="en">A BOM-prefixed file may add stray characters at the start when imported into programs or web systems. Choose according to the purpose.</div>
+<h2 lang="en">What a BOM is</h2>
+<p lang="en">A marker at the start of a file saying "this file is UTF-8". Excel looks at this marker to read the characters correctly.</p>
+<h2 lang="en">Choosing</h2>
+<ul>
+<li lang="en"><b>Opening or editing in Excel</b>: UTF-8 with BOM</li>
+<li lang="en"><b>Importing into programs or web systems</b>: UTF-8 without BOM</li>
+<li lang="en"><b>Systems specifying Shift_JIS</b>: Shift_JIS</li>
+</ul>
+<h2 lang="en">Flow</h2>
+<p lang="en">Original CSV (UTF-8) → this tool → UTF-8 CSV with BOM → opens correctly in Excel</p>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en">Re-saving in Excel may make it another encoding (such as Shift_JIS) again</li>
+<li lang="en">When handing the re-saved file to other systems, check the encoding</li>
+<li lang="en">Recent Excel may open UTF-8 without a BOM too</li>
+</ul>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Wanting to view data downloaded from web services in Excel</li>
+<li lang="en">Wanting to open overseas system data in Excel</li>
+<li lang="en">Handing a client a CSV that opens in Excel</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">Wanted to show a colleague a CSV written by a program in Excel. Converting to UTF-8 with BOM made it open without garbling in their Excel.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The system can't read it after adding a BOM</b>: go back to without BOM.</li>
+<li lang="en"><b>Leading zeros disappear even after opening</b>: Excel's behaviour. When importing, specify the column as text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does adding a BOM change the data?</h3>
+<p lang="en">The text content doesn't change. Only a marker is added at the start.</p>
+<h2>En résumé</h2>
+<p lang="en">To open in Excel, UTF-8 with BOM. To pass to a system, without BOM.</p>
 <a class="cta" href="/fr/charset-convert.html">Utiliser « Convertir l'encodage du texte (corriger les caractères illisibles) » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/csv-json.html">Convertir CSV et JSON</a>: Convertissez instantanément entre CSV et JSON.</li><li><a href="/fr/csv-to-xlsx.html">Convertir un CSV en Excel (.xlsx)</a>: Convertissez un CSV en fichier Excel (.xlsx).</li><li><a href="/fr/line-break-remover.html">Supprimer et nettoyer les sauts de ligne d'un texte</a>: Nettoyez les sauts de ligne d'un texte copié depuis un PDF ou ailleurs.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>
