@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>CSV 在 Excel 中顯示亂碼時怎麼辦</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>勾選「帶 BOM 的 UTF-8」</li><li>儲存</li><li>在 Excel 中開啟</li></ul></div>
-<p><a href="/tw/csv-tools.html">合併和拆分 CSV 檔案</a>可以在儲存時新增 BOM，避免 Excel 出現亂碼。</p>
-<h2>步驟</h2>
+<p lang="en">You opened a CSV in Excel and Japanese was garbled. This is a problem that easily arises when opening in Excel after merging, splitting or extracting columns with <a href="/tw/csv-tools.html">Merge, Split and Pick Columns from CSV</a>. Settings at save time can prevent it.</p>
+<h2>怎麼做</h2>
 <ol>
-<li>勾選「以帶 BOM 的 UTF-8 儲存」</li>
-<li>執行並儲存</li>
-<li>在 Excel 中開啟儲存的 CSV</li>
+<li lang="en">After making the "What to do" settings, tick "Save as UTF-8 (with BOM) (easy to open in Excel)".</li>
+<li lang="en">Press "Run and save".</li>
+<li lang="en">Open the saved CSV in Excel.</li>
 </ol>
-<div class="note">如果原檔案本身已經是亂碼，請使用<a href="/tw/charset-convert.html">轉換文字編碼</a>。</div>
+<div class="note" lang="en">A BOM is a marker saying "this file is UTF-8". Excel looks at it to read correctly.</div>
+<h2>原因</h2>
+<ul>
+<li lang="en">The CSV is UTF-8 but Excel opens it assuming Shift_JIS</li>
+<li lang="en">UTF-8 without a BOM easily garbles in older Excel</li>
+</ul>
+<h2 lang="en">Choosing</h2>
+<ul>
+<li lang="en"><b>Opening in Excel</b>: UTF-8 with BOM</li>
+<li lang="en"><b>Importing into a system</b>: match the system's specification (without BOM, Shift_JIS, etc.)</li>
+</ul>
+<h2 lang="en">Check with the beginning of content</h2>
+<p lang="en">Right after loading, this tool shows "Beginning of content". If the text is garbled here, it's a problem with the original CSV's encoding.</p>
+<h2 lang="en">When the original CSV is garbled</h2>
+<p lang="en">If the original CSV already looks garbled, fix it first with the encoding conversion tool.</p>
+<h2 lang="en">Cautions when opening CSVs in Excel</h2>
+<ul>
+<li lang="en">Numbers with leading zeros (phone numbers etc.) may lose the zeros</li>
+<li lang="en">Long numbers may become exponent notation (1.23E+10)</li>
+<li lang="en">Date formats may change on their own</li>
+</ul>
+<p lang="en">If you open and re-save in Excel, these get saved as they are. It's safer to open only and not overwrite-save.</p>
+<h2>適合</h2>
+<ul>
+<li lang="en">Wanting to check a merged CSV in Excel</li>
+<li lang="en">Showing a colleague split CSVs in Excel</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">After merging 10 CSVs, opening in Excel garbled them. Re-saving with BOM made them open correctly in Excel.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Saved with BOM but the system can't read it</b>: for systems, go without BOM.</li>
+<li lang="en"><b>Zeros vanished</b>: Excel's behaviour. When importing, set the column as text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does adding a BOM change the data?</h3>
+<p lang="en">The text content doesn't change. Only a marker is added at the start.</p>
+<h2>小結</h2>
+<p lang="en">To open in Excel, save with BOM. For systems, match the specification.</p>
 <a class="cta" href="/tw/csv-tools.html">使用「合併、拆分 CSV 並選取列」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/csv-json.html">CSV 與 JSON 互相轉換</a>：立即在 CSV 和 JSON 之間互相轉換。</li><li><a href="/tw/csv-to-xlsx.html">把 CSV 轉換成 Excel（.xlsx）</a>：把 CSV 轉換成 Excel（.xlsx）檔案。</li><li><a href="/tw/charset-convert.html">轉換文字編碼（修復亂碼）</a>: 在 Shift_JIS、UTF-8、EUC-JP 等之間轉換文字檔案，修復亂碼。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When a CSV Looks Garbled in Excel</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Tick "UTF-8 with BOM"</li><li>Save</li><li>Open in Excel</li></ul></div>
-<p><a href="/en/csv-tools.html">Merge and Split CSV Files</a> can add a BOM when saving, which keeps Excel from garbling the text.</p>
-<h2>Steps</h2>
+<p>You opened a CSV in Excel and Japanese was garbled. This is a problem that easily arises when opening in Excel after merging, splitting or extracting columns with <a href="/en/csv-tools.html">Merge, Split and Pick Columns from CSV</a>. Settings at save time can prevent it.</p>
+<h2>What to do</h2>
 <ol>
-<li>Tick "Save as UTF-8 with BOM"</li>
-<li>Run and save</li>
-<li>Open the saved CSV in Excel</li>
+<li>After making the "What to do" settings, tick "Save as UTF-8 (with BOM) (easy to open in Excel)".</li>
+<li>Press "Run and save".</li>
+<li>Open the saved CSV in Excel.</li>
 </ol>
-<div class="note">If the original file is already garbled, use <a href="/en/charset-convert.html">Convert Text Encoding</a>.</div>
+<div class="note">A BOM is a marker saying "this file is UTF-8". Excel looks at it to read correctly.</div>
+<h2>Causes</h2>
+<ul>
+<li>The CSV is UTF-8 but Excel opens it assuming Shift_JIS</li>
+<li>UTF-8 without a BOM easily garbles in older Excel</li>
+</ul>
+<h2>Choosing</h2>
+<ul>
+<li><b>Opening in Excel</b>: UTF-8 with BOM</li>
+<li><b>Importing into a system</b>: match the system's specification (without BOM, Shift_JIS, etc.)</li>
+</ul>
+<h2>Check with the beginning of content</h2>
+<p>Right after loading, this tool shows "Beginning of content". If the text is garbled here, it's a problem with the original CSV's encoding.</p>
+<h2>When the original CSV is garbled</h2>
+<p>If the original CSV already looks garbled, fix it first with the encoding conversion tool.</p>
+<h2>Cautions when opening CSVs in Excel</h2>
+<ul>
+<li>Numbers with leading zeros (phone numbers etc.) may lose the zeros</li>
+<li>Long numbers may become exponent notation (1.23E+10)</li>
+<li>Date formats may change on their own</li>
+</ul>
+<p>If you open and re-save in Excel, these get saved as they are. It's safer to open only and not overwrite-save.</p>
+<h2>Good for</h2>
+<ul>
+<li>Wanting to check a merged CSV in Excel</li>
+<li>Showing a colleague split CSVs in Excel</li>
+</ul>
+<h2>Example</h2>
+<p>After merging 10 CSVs, opening in Excel garbled them. Re-saving with BOM made them open correctly in Excel.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Saved with BOM but the system can't read it</b>: for systems, go without BOM.</li>
+<li><b>Zeros vanished</b>: Excel's behaviour. When importing, set the column as text.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does adding a BOM change the data?</h3>
+<p>The text content doesn't change. Only a marker is added at the start.</p>
+<h2>Summary</h2>
+<p>To open in Excel, save with BOM. For systems, match the specification.</p>
 <a class="cta" href="/en/csv-tools.html">Use "Merge, Split and Pick Columns from CSV" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li><li><a href="/en/csv-to-xlsx.html">Convert CSV to Excel (.xlsx)</a>: Convert a CSV to an Excel (.xlsx) file.</li><li><a href="/en/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a>: Convert text files between Shift_JIS, UTF-8, EUC-JP and more to fix garbled text.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

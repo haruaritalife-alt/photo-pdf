@@ -215,14 +215,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>اگر CSV در Excel خراب دیده شد چه باید کرد</h1>
 <p class="meta">منتشرشده: 19 اکتبر 2026 | به‌روزرسانی: 19 اکتبر 2026 | <a href="/about.html">دربارهٔ ما (ژاپنی)</a></p>
 <div class="points"><b>نکات کلیدی</b><ul><li>«UTF-8 همراه BOM» را تیک بزنید</li><li>ذخیره</li><li>در Excel باز کنید</li></ul></div>
-<p><a href="/fa/csv-tools.html">ادغام و تقسیم فایل‌های CSV</a> می‌تواند هنگام ذخیره BOM اضافه کند که از خراب شدن متن در Excel جلوگیری می‌کند.</p>
-<h2>مراحل</h2>
+<p lang="en">You opened a CSV in Excel and Japanese was garbled. This is a problem that easily arises when opening in Excel after merging, splitting or extracting columns with <a href="/fa/csv-tools.html">Merge, Split and Pick Columns from CSV</a>. Settings at save time can prevent it.</p>
+<h2>چه کنیم</h2>
 <ol>
-<li>«ذخیره به‌صورت UTF-8 همراه BOM» را تیک بزنید</li>
-<li>اجرا و ذخیره</li>
-<li>CSV ذخیره‌شده را در Excel باز کنید</li>
+<li lang="en">After making the "What to do" settings, tick "Save as UTF-8 (with BOM) (easy to open in Excel)".</li>
+<li lang="en">Press "Run and save".</li>
+<li lang="en">Open the saved CSV in Excel.</li>
 </ol>
-<div class="note">اگر فایل اصلی از قبل خراب است، از <a href="/fa/charset-convert.html">تبدیل کدگذاری متن</a> استفاده کنید.</div>
+<div class="note" lang="en">A BOM is a marker saying "this file is UTF-8". Excel looks at it to read correctly.</div>
+<h2>علت‌ها</h2>
+<ul>
+<li lang="en">The CSV is UTF-8 but Excel opens it assuming Shift_JIS</li>
+<li lang="en">UTF-8 without a BOM easily garbles in older Excel</li>
+</ul>
+<h2 lang="en">Choosing</h2>
+<ul>
+<li lang="en"><b>Opening in Excel</b>: UTF-8 with BOM</li>
+<li lang="en"><b>Importing into a system</b>: match the system's specification (without BOM, Shift_JIS, etc.)</li>
+</ul>
+<h2 lang="en">Check with the beginning of content</h2>
+<p lang="en">Right after loading, this tool shows "Beginning of content". If the text is garbled here, it's a problem with the original CSV's encoding.</p>
+<h2 lang="en">When the original CSV is garbled</h2>
+<p lang="en">If the original CSV already looks garbled, fix it first with the encoding conversion tool.</p>
+<h2 lang="en">Cautions when opening CSVs in Excel</h2>
+<ul>
+<li lang="en">Numbers with leading zeros (phone numbers etc.) may lose the zeros</li>
+<li lang="en">Long numbers may become exponent notation (1.23E+10)</li>
+<li lang="en">Date formats may change on their own</li>
+</ul>
+<p lang="en">If you open and re-save in Excel, these get saved as they are. It's safer to open only and not overwrite-save.</p>
+<h2>مناسب برای</h2>
+<ul>
+<li lang="en">Wanting to check a merged CSV in Excel</li>
+<li lang="en">Showing a colleague split CSVs in Excel</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">After merging 10 CSVs, opening in Excel garbled them. Re-saving with BOM made them open correctly in Excel.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Saved with BOM but the system can't read it</b>: for systems, go without BOM.</li>
+<li lang="en"><b>Zeros vanished</b>: Excel's behaviour. When importing, set the column as text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does adding a BOM change the data?</h3>
+<p lang="en">The text content doesn't change. Only a marker is added at the start.</p>
+<h2>خلاصه</h2>
+<p lang="en">To open in Excel, save with BOM. For systems, match the specification.</p>
 <a class="cta" href="/fa/csv-tools.html">استفاده از «ادغام، تقسیم و انتخاب ستون از CSV» (رایگان)</a>
 <h2>ابزارهایی که با این ابزار خوب هماهنگ‌اند</h2><ul><li><a href="/fa/csv-json.html">تبدیل CSV و JSON</a>: تبدیل فوری بین CSV و JSON.</li><li><a href="/fa/csv-to-xlsx.html">تبدیل CSV به Excel (.xlsx)</a>: یک CSV را به فایل Excel (.xlsx) تبدیل کنید.</li><li><a href="/fa/charset-convert.html">تبدیل کدگذاری متن (رفع متن خراب)</a>: فایل‌های متنی را بین Shift_JIS، UTF-8، EUC-JP و غیره تبدیل کنید تا متن خراب درست شود.</li></ul>
 <div class="tip"><p>اگر این راهنما مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ارسال انعام (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ارسال هدیه (فهرست آرزوهای آمازون)</a></div>
