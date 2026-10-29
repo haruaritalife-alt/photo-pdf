@@ -201,26 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Vì sao đặt hộp đen lên trên là chưa đủ: cách che PDF đúng đắn</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Hiểu rằng hộp đen chỉ được đặt lên trên</li><li>Biến trang thành ảnh để xóa chữ bên dưới</li><li>Sau khi lưu, kiểm tra rằng không chọn được chữ</li></ul></div>
-<p>Dù bạn vẽ một “hộp đen” lên PDF để che gì đó, <b>chữ bên dưới vẫn có thể còn đó</b>.</p>
-<h2>Vì sao nó vẫn còn</h2>
-<p>Trong nhiều chương trình, hộp đen chỉ được <b>vẽ chồng lên</b> chữ. Bản thân dữ liệu chữ vẫn nằm dưới hộp.</p>
+<p lang="en">Even if you lay a black box over a PDF and think you have hidden it, the text underneath may remain. Copy the text or search, and the content you meant to hide appears. This really happens. Here is how <a href="/vi/pdf-redact.html">Black Out (Redact) Parts of a PDF</a> avoids this problem.</p>
+<h2 lang="en">Why a black box alone is dangerous</h2>
+<p lang="en">A PDF displays text, shapes and images layered on a page. Even if you add a black box, the text underneath remains as data.</p>
 <ul>
-<li>Nếu bạn <b>kéo qua vùng đen rồi sao chép</b>, chữ bên dưới có thể hiện ra.</li>
-<li>Nếu bạn mở tệp bằng phần mềm khác rồi <b>di chuyển hoặc xóa hộp</b>, chữ có thể hiện ra.</li>
-<li><b>Tìm kiếm</b> có thể tìm ra những từ bạn định ẩn.</li>
+<li lang="en">Select all and copy, and the hidden text comes out too</li>
+<li lang="en">Search, and the hidden text is found</li>
+<li lang="en">Delete the black box, and the text underneath is visible</li>
+<li lang="en">Opened in other software, it may be visible</li>
 </ul>
-<h2>Một cách đáng tin để ẩn</h2>
-<p>Biến trang <b>thành ảnh</b>, để hộp đen và trang hòa thành một bức hình. Khi đã là ảnh, dữ liệu chữ bên dưới không được giữ trong tệp.</p>
-<p><a href="/vi/pdf-redact.html">Che đen một phần PDF</a> che theo cách này. Trang đã che trở thành ảnh, và chữ của chúng không còn chọn hay tìm kiếm được.</p>
-<h2>Còn các trang bạn không che thì sao?</h2>
-<p>Trang bạn không che vẫn như cũ. Chọn và tìm kiếm chữ vẫn dùng được trên đó.</p>
-<h2>Cách kiểm tra</h2>
+<h2 lang="en">What correct redaction means</h2>
+<p lang="en">It means leaving no data of the original text or images in the blacked-out part.</p>
+<p lang="en">This tool rebuilds a blacked-out page entirely as an image. Once it is an image, the text data is gone.</p>
+<h2 lang="en">The flow in this tool</h2>
 <ol>
-<li>Mở PDF đã lưu.</li>
-<li><b>Kéo để chọn chữ</b> trên vùng đen. Nếu không chọn được, chữ không còn ở đó.</li>
-<li>Tìm <b>những từ bạn đã ẩn</b> và xác nhận không tìm thấy.</li>
+<li lang="en">Enclose the area to hide.</li>
+<li lang="en">With "Black out and create PDF", the page becomes an image with the black burned in.</li>
+<li lang="en">A page turned into an image cannot be selected or searched.</li>
+<li lang="en">Pages you did not black out stay as they are.</li>
 </ol>
-<div class="note">Một hộp có thể trông đen trên màn hình trong khi <b>nội dung vẫn còn</b>. Đừng đánh giá chỉ bằng vẻ ngoài.</div>
+<h2 lang="en">Steps (including checking)</h2>
+<ol>
+<li lang="en">Enclose the areas, black them out and save.</li>
+<li>Mở PDF đã lưu.</li>
+<li lang="en">Try tracing over the blacked-out part to select it. If you cannot select it, no text data remains.</li>
+<li lang="en">Search for the hidden word. If it is not found, it worked.</li>
+</ol>
+<div class="note" lang="en">After saving, open it and check that the text under the black cannot be selected.</div>
+<h2>Điều cần lưu ý</h2>
+<ul>
+<li lang="en"><b>Is the same information elsewhere?</b> A name may also be in a header, footer or another page. "Apply the same area to all pages" helps.</li>
+<li lang="en"><b>File properties</b>: a name may be in the author field. Check with the PDF properties tool.</li>
+<li lang="en"><b>File name</b>: check that it does not contain a name or number.</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">Hiding the bank account number on an invoice: enclose the account number field and black it out, and after saving, select it to confirm no text comes out.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>You thought you blacked it out but did not</b>: if "There are no blackout areas yet" appears, no area has been selected.</li>
+<li lang="en"><b>The text could be selected</b>: that page was not blacked out. Check the area and make it again.</li>
+<li lang="en"><b>You hid only some pages</b>: check whether the same information is on other pages.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about blacking out in Word and then making a PDF?</h3>
+<p lang="en">A black rectangle shape in Word may leave the text underneath even after PDF conversion. It is more reliable to make the PDF first and then black it out with this tool.</p>
+<h3 lang="en">Are image pages fine?</h3>
+<p lang="en">For pages that are images from the start, there is no text data, so the blacked-out area is painted over as an image.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">Laying a black box leaves the text. Turn the page into an image with the black burned in, and after saving check by selecting and searching.</p>
 <a class="cta" href="/vi/pdf-redact.html">Dùng “Che đen (che thông tin) một phần PDF” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/pdf-grayscale.html">Chuyển PDF sang thang xám (đen trắng)</a>: Biến PDF màu thành thang xám hoặc đen trắng thuần, sẵn sàng cho in đơn sắc, sao chép hoặc fax. Chọn độ phân giải.</li><li><a href="/vi/split-pdf.html">Trích xuất hoặc xóa trang PDF</a>: Chỉ giữ lại các trang bạn cần, hoặc xóa các trang không cần.</li><li><a href="/vi/compress-pdf.html">Nén PDF</a>: Thu nhỏ PDF dưới dung lượng bạn chọn để vừa giới hạn tải lên.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>
