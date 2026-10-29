@@ -200,14 +200,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>「%E3%81…」のURLを読める文字に戻す</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>URLを貼り付ける</li><li>デコードを選ぶ</li><li>結果を読む</li></ul></div>
-<p><a href="/url-encoder.html">URLエンコード</a> のデコードで、「%」の並びを、元の文字に戻せます。</p>
+<p>メールやSNSで届いたURLが、「https://example.com/%E3%81%82…」のように、意味の分からない文字の並びになっていた。実は、日本語がエンコードされているだけです。<a href="/url-encoder.html">URLエンコード・デコード</a> の「デコード」で、読める文字に戻せます。</p>
 <h2>手順</h2>
 <ol>
-<li>URLを貼り付ける</li>
-<li>デコードを選ぶ</li>
-<li>結果を読む</li>
+<li>「変換前」の欄に、「%E3%81…」を含むURLを貼り付ける。</li>
+<li>「変換」で、「デコード（%E3… → 文字）」を選ぶ。</li>
+<li>「変換後」の欄で、読める文字になったか確かめる。</li>
+<li>「結果をコピー」でコピーする。</li>
 </ol>
-<div class="note">UTF-8以外の古い形式では、うまく戻らないことがあります。</div>
+<div class="note">「%」のあとの2桁は、文字を数字で表したものです。デコードで、元の日本語に戻ります。</div>
+<h2>なぜ、こうなるのか</h2>
+<p>URLには、半角の英数字と、一部の記号しか使えません。日本語を入れるときは、「%」と16進数の並びに、置き換えます。これがエンコードです。</p>
+<ul>
+<li>「あ」→「%E3%81%82」</li>
+<li>空白→「%20」</li>
+</ul>
+<h2>デコードできないとき</h2>
+<p>「デコードできませんでした。『%』のあとが正しい形か確かめてください。」と出る場合は、次を確かめます。</p>
+<ul>
+<li>%のあとが、2桁の16進数（0〜9、A〜F）になっているか</li>
+<li>%が途中で切れていないか</li>
+<li>本当に、日本語ではなく、%記号がそのままの文字ではないか</li>
+</ul>
+<h2>よくある混乱</h2>
+<ul>
+<li>「%」で始まる文字列が、すべてエンコードとは限らない（例：「50%」）</li>
+<li>二重にエンコードされている場合は、デコードを2回行う</li>
+<li>文字コード（UTF-8かShift_JISか）によって、結果が変わる場合がある</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>長いURLの、内容を確かめたい</li>
+<li>検索結果のURLから、検索語を読み取りたい</li>
+<li>ログに残ったURLを、読める形にしたい</li>
+</ul>
+<h2>例</h2>
+<p>アクセスログに、「%E3%81%8A%E5%95%8F…」というURLが残っていた。デコードすると、「お問い合わせ」のページだと分かった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>文字化けする</b>：もとの文字コードが、UTF-8ではない場合。</li>
+<li><b>一部だけ変換される</b>：二重エンコード。もう一度デコードする。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>デコードしたURLは、そのまま使えますか？</h3>
+<p>読むためのものです。リンクに使うときは、エンコードされた形のほうが安全です。</p>
+<h2>まとめ</h2>
+<p>「%E3…」はエンコードされた日本語。デコードで、読める文字に戻せます。</p>
 <a class="cta" href="/url-encoder.html">URLエンコード・デコードを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/json-formatter.html">JSONを整える・チェックする</a>：JSONを整形・圧縮し、書き方をチェックします。</li><li><a href="/text-diff.html">2つの文章の違いを調べる</a>：2つの文章の違いを、行ごとに色つきで示します。</li><li><a href="/file-base64.html">ファイルとBase64を相互変換する</a>：ファイルとBase64の文字を相互に変換します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +257,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Turning %E3%81… URLs Back into Readable Text</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Paste the URL</li><li>Choose Decode</li><li>Read the result</li></ul></div>
-<p>Decoding with <a href="/url-encoder.html">URL Encode</a> turns the % codes back into the original characters.</p>
+<p>A URL that arrived by email or social media was a meaningless string like "https://example.com/%E3%81%82...". It's just Japanese characters encoded. "Decode" in <a href="/url-encoder.html">URL Encode and Decode</a> turns it back into readable characters.</p>
 <h2>Steps</h2>
 <ol>
-<li>Paste the URL</li>
-<li>Choose Decode</li>
-<li>Read the result</li>
+<li>Paste the URL containing "%E3%81..." into the "Before" field.</li>
+<li>Under "Convert", choose "Decode (%E3… → text)".</li>
+<li>Check in the "After" field that it became readable.</li>
+<li>Copy with "Copy result".</li>
 </ol>
-<div class="note">Older non-UTF-8 forms may not decode correctly.</div>
+<div class="note">The two digits after "%" represent the character as numbers. Decoding restores the original Japanese.</div>
+<h2>Why this happens</h2>
+<p>URLs can use only half-width alphanumerics and some symbols. When Japanese is included, it's replaced by "%" and a sequence of hexadecimal digits. That's encoding.</p>
+<ul>
+<li>"あ" → "%E3%81%82"</li>
+<li>A space → "%20"</li>
+</ul>
+<h2>When it can't be decoded</h2>
+<p>If "Could not decode. Check that what follows '%' is in the correct form." appears, check:</p>
+<ul>
+<li>Is what follows % two hexadecimal digits (0–9, A–F)?</li>
+<li>Is % cut off partway?</li>
+<li>Is it really not just a literal % sign rather than encoded text?</li>
+</ul>
+<h2>Common confusions</h2>
+<ul>
+<li>A string beginning with "%" isn't always encoded (e.g. "50%")</li>
+<li>If encoded twice, decode twice</li>
+<li>Depending on the encoding (UTF-8 or Shift_JIS), the result can differ</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Checking the content of a long URL</li>
+<li>Reading search terms from a search-result URL</li>
+<li>Making URLs left in logs readable</li>
+</ul>
+<h2>Example</h2>
+<p>An access log contained a URL like "%E3%81%8A%E5%95%8F...". Decoding showed it was the "Contact us" page.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Garbled text</b>: the original encoding isn't UTF-8.</li>
+<li><b>Only part converts</b>: encoded twice. Decode again.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can the decoded URL be used as is?</h3>
+<p>It's for reading. For use in links, the encoded form is safer.</p>
+<h2>Summary</h2>
+<p>"%E3…" is encoded Japanese. Decoding turns it back into readable characters.</p>
 <a class="cta" href="/url-encoder.html">Use "URL Encode and Decode" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li><li><a href="/text-diff.html">Compare Two Texts (Diff)</a>: Show the differences between two texts line by line.</li><li><a href="/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

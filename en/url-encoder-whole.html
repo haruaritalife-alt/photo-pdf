@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Whole URL vs. Part of a URL</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose a target</li><li>Compare results</li><li>Use the right one</li></ul></div>
-<p>In <a href="/en/url-encoder.html">URL Encode</a>, "A whole URL" keeps ? &amp; and /.</p>
+<p>URL encoding has two targets: "part of a string" and "whole URL". The result changes depending on which you choose. Check the difference with <a href="/en/url-encoder.html">URL Encode and Decode</a>.</p>
+<h2>The difference</h2>
+<ul>
+<li><b>Part of a string (also converts ? and &amp;)</b>: converts almost all symbols, including symbols. Suited to search terms and parameter values.</li>
+<li><b>Whole URL (keeps ? and &amp;)</b>: keeps symbols expressing URL structure (: / ? &amp; = # etc.) and converts only parts like Japanese characters. Suited to a whole URL.</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Choose a target</li>
-<li>Compare results</li>
-<li>Use the right one</li>
+<li>Enter text or a URL in the "Before" field.</li>
+<li>Under "Convert", choose "URL-encode".</li>
+<li>Choose the "Target" to suit the purpose.</li>
+<li>Check the "After" and copy it.</li>
 </ol>
-<div class="note">If unsure, check the resulting URL carefully.</div>
+<div class="note">If unsure, remember: "whole URL" is for a URL as a whole, "part of a string" is for a single value within a URL.</div>
+<h2>Concrete example</h2>
+<p>Original: https://example.com/search-in-japanese?q=A&amp;B</p>
+<ul>
+<li><b>Whole URL</b>: the structure symbols stay intact</li>
+<li><b>Part of a string</b>: https%3A%2F%2Fexample.com%2F... symbols are converted too</li>
+</ul>
+<h2>Choosing</h2>
+<ul>
+<li>Want to make a URL containing Japanese into a link as it is → whole URL</li>
+<li>Want to put only a search term or parameter value into a URL → part of a string</li>
+<li>Want to pass a URL as the value of another URL → part of a string</li>
+</ul>
+<h2>Common mistakes</h2>
+<ul>
+<li>Converting a whole URL as "part of a string" changes even the ":" and "/" of "https://" and the link becomes unusable</li>
+<li>Converting a search term as "whole URL" leaves "&amp;" and "?" unconverted and breaks the parameters</li>
+</ul>
+<h2>How to tell</h2>
+<p>Check the "After": if it looks like "https%3A%2F%2F", symbols were converted too. To keep the URL's structure, choose "Whole URL" again.</p>
+<h2>Good for</h2>
+<ul>
+<li>Sharing URLs containing Japanese page names</li>
+<li>Passing a URL as a parameter of another URL</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to share by email a URL containing a Japanese page name. Converting as "Whole URL" encoded only the Japanese while keeping the structure.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The link doesn't open</b>: a whole URL was converted as "part of a string".</li>
+<li><b>A search term is cut off</b>: it was converted as "whole URL".</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What happens to "#"?</h3>
+<p>It stays with "Whole URL" and is converted with "Part of a string".</p>
+<h2>Summary</h2>
+<p>"Whole URL" for a URL as a whole, "part of a string" for values only. If unsure, choose by looking at the result.</p>
 <a class="cta" href="/en/url-encoder.html">Use "URL Encode and Decode" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li><li><a href="/en/text-diff.html">Compare Two Texts (Diff)</a>: Show the differences between two texts line by line.</li><li><a href="/en/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

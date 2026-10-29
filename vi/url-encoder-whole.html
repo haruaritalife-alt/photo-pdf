@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Toàn bộ URL và một phần của URL</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Chọn đối tượng</li><li>So sánh kết quả</li><li>Dùng đúng cách</li></ul></div>
-<p>Trong <a href="/vi/url-encoder.html">Mã hóa URL</a>, "Toàn bộ URL" giữ nguyên ? &amp; và /.</p>
+<p lang="en">URL encoding has two targets: "part of a string" and "whole URL". The result changes depending on which you choose. Check the difference with <a href="/vi/url-encoder.html">URL Encode and Decode</a>.</p>
+<h2>Điểm khác biệt</h2>
+<ul>
+<li lang="en"><b>Part of a string (also converts ? and &amp;)</b>: converts almost all symbols, including symbols. Suited to search terms and parameter values.</li>
+<li lang="en"><b>Whole URL (keeps ? and &amp;)</b>: keeps symbols expressing URL structure (: / ? &amp; = # etc.) and converts only parts like Japanese characters. Suited to a whole URL.</li>
+</ul>
 <h2>Các bước</h2>
 <ol>
-<li>Chọn đối tượng</li>
-<li>So sánh kết quả</li>
-<li>Dùng đúng cách</li>
+<li lang="en">Enter text or a URL in the "Before" field.</li>
+<li lang="en">Under "Convert", choose "URL-encode".</li>
+<li lang="en">Choose the "Target" to suit the purpose.</li>
+<li lang="en">Check the "After" and copy it.</li>
 </ol>
-<div class="note">Nếu không chắc, hãy kiểm tra kỹ URL kết quả.</div>
+<div class="note" lang="en">If unsure, remember: "whole URL" is for a URL as a whole, "part of a string" is for a single value within a URL.</div>
+<h2 lang="en">Concrete example</h2>
+<p lang="en">Original: https://example.com/search-in-japanese?q=A&amp;B</p>
+<ul>
+<li lang="en"><b>Whole URL</b>: the structure symbols stay intact</li>
+<li lang="en"><b>Part of a string</b>: https%3A%2F%2Fexample.com%2F... symbols are converted too</li>
+</ul>
+<h2 lang="en">Choosing</h2>
+<ul>
+<li lang="en">Want to make a URL containing Japanese into a link as it is → whole URL</li>
+<li lang="en">Want to put only a search term or parameter value into a URL → part of a string</li>
+<li lang="en">Want to pass a URL as the value of another URL → part of a string</li>
+</ul>
+<h2>Lỗi thường gặp</h2>
+<ul>
+<li lang="en">Converting a whole URL as "part of a string" changes even the ":" and "/" of "https://" and the link becomes unusable</li>
+<li lang="en">Converting a search term as "whole URL" leaves "&amp;" and "?" unconverted and breaks the parameters</li>
+</ul>
+<h2>Cách nhận biết</h2>
+<p lang="en">Check the "After": if it looks like "https%3A%2F%2F", symbols were converted too. To keep the URL's structure, choose "Whole URL" again.</p>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Sharing URLs containing Japanese page names</li>
+<li lang="en">Passing a URL as a parameter of another URL</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">Wanted to share by email a URL containing a Japanese page name. Converting as "Whole URL" encoded only the Japanese while keeping the structure.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The link doesn't open</b>: a whole URL was converted as "part of a string".</li>
+<li lang="en"><b>A search term is cut off</b>: it was converted as "whole URL".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What happens to "#"?</h3>
+<p lang="en">It stays with "Whole URL" and is converted with "Part of a string".</p>
+<h2>Tóm tắt</h2>
+<p lang="en">"Whole URL" for a URL as a whole, "part of a string" for values only. If unsure, choose by looking at the result.</p>
 <a class="cta" href="/vi/url-encoder.html">Dùng “Mã hóa và giải mã URL” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/json-formatter.html">Định dạng và kiểm tra JSON</a>: Định dạng, rút gọn và kiểm tra JSON.</li><li><a href="/vi/text-diff.html">So sánh hai văn bản (Diff)</a>: Hiển thị sự khác biệt giữa hai văn bản theo từng dòng.</li><li><a href="/vi/file-base64.html">Chuyển đổi tệp và Base64</a>: Chuyển đổi giữa tệp và văn bản Base64.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

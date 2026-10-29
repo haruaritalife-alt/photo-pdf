@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/url-encoder.html">URL 인코딩</a>이 동작하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">URL encoding or decoding isn't working. Here are troubles that commonly occur with <a href="/ko/url-encoder.html">URL Encode and Decode</a> and how to handle them.</p>
+<h2 lang="en">Messages shown</h2>
+<ul>
+<li lang="en"><b>"Could not decode. Check that what follows '%' is in the correct form."</b>: what follows % isn't a correct two-digit hexadecimal.</li>
+</ul>
+<h2>원인과 해결</h2>
+<ul>
+<li lang="en"><b>Encoded twice</b>: if "%25" appears, as in "%2520", it's double encoding. Decode once to restore.</li>
+<li lang="en"><b>Decoding fails</b>: % is cut off, or a literal "%" sign is used as it is. Fix or remove that part.</li>
+<li lang="en"><b>The link doesn't open</b>: the target choice is wrong. For a whole URL, choose "Whole URL".</li>
+<li lang="en"><b>Garbled text</b>: the original encoding may not be UTF-8.</li>
+<li lang="en"><b>Spaces come out as "+"</b>: some sites express spaces as "+". This tool's decoding turns "%20" back into a space.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Review the text before conversion.</li>
+<li lang="en">Check "Convert" (encode or decode).</li>
+<li lang="en">Check the "Target".</li>
+<li lang="en">Paste the result in the browser's address bar and check.</li>
 </ol>
-<div class="note">디코딩이 실패하면 모든 "%" 뒤에 16진수 두 자리가 오는지 확인하세요.</div>
+<div class="note" lang="en">"%25" represents "%" itself. "%2520" is "%20" encoded once more.</div>
+<h2>자주 하는 실수</h2>
+<ul>
+<li lang="en">Encoding an already-encoded URL again</li>
+<li lang="en">Converting a whole URL as "part of a string"</li>
+<li lang="en">Copying a URL with Japanese and using it without encoding</li>
+</ul>
+<h2>확인 방법</h2>
+<ul>
+<li lang="en">Does the encoded URL still contain Japanese?</li>
+<li lang="en">Does "%" remain after decoding?</li>
+<li lang="en">Does it open in a browser?</li>
+</ul>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Finding the cause of odd parts of a result</li>
+</ul>
+<h2>예</h2>
+<p lang="en">An encoded URL became full of "%2520". It had been encoded twice. Decoding once restored the proper encoded form.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>What follows "%" isn't a number</b>: can't be decoded.</li>
+<li lang="en"><b>Upper/lower case</b>: "%e3" and "%E3" mean the same.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">May I repeat encoding and decoding?</h3>
+<p lang="en">Yes. But take care not to encode something already encoded.</p>
+<h2>요약</h2>
+<p lang="en">Mind double encoding and the target choice. Check results in a browser.</p>
 <a class="cta" href="/ko/url-encoder.html">“URL 인코딩·디코딩” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/json-formatter.html">JSON 정리 및 검증</a>: JSON을 정리하고, 압축하고, 검증합니다.</li><li><a href="/ko/text-diff.html">두 텍스트 비교 (Diff)</a>: 두 텍스트의 차이를 줄 단위로 보여 줍니다.</li><li><a href="/ko/file-base64.html">파일과 Base64 변환</a>: 파일과 Base64 텍스트를 서로 변환합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

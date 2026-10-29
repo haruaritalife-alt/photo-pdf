@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Encoding Search Words for a URL</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the words</li><li>Choose "A part of a URL"</li><li>Append it to the URL</li></ul></div>
-<p>In <a href="/en/url-encoder.html">URL Encode</a>, choosing "A part of a URL" also converts ? and &amp;.</p>
+<p>You want to make a search-page link yourself. When putting a Japanese search term after "https://example.com/search?q=", encoding is needed. With <a href="/en/url-encoder.html">URL Encode and Decode</a> you can put a search term safely into a URL.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the words</li>
-<li>Choose "A part of a URL"</li>
-<li>Append it to the URL</li>
+<li>Enter the search term in the "Before" field (e.g. Tokyo cafe).</li>
+<li>Under "Convert", choose "URL-encode (text → %E3…)".</li>
+<li>Under "Target", choose "Part of a string (also converts ? and &amp;)".</li>
+<li>Copy the "After" and paste it after "?q=".</li>
 </ol>
-<div class="note">A space becomes %20.</div>
+<div class="note">Convert the search term as "part of a string". Otherwise "&amp;" or "?" inside the term would be mistaken for URL separators.</div>
+<h2>How to assemble</h2>
+<p>"(page URL)?q=(encoded search term)"</p>
+<ul>
+<li>Search term: Tokyo cafe (in Japanese)</li>
+<li>After encoding: %E6%9D%B1%E4%BA%AC%20%E3%82%AB%E3%83%95%E3%82%A7</li>
+<li>Result: https://example.com/search?q=%E6%9D%B1%E4%BA%AC%20%E3%82%AB%E3%83%95%E3%82%A7</li>
+</ul>
+<h2>Handling spaces</h2>
+<p>Spaces are written as "%20" or "+". Which form is used differs by site. This tool converts to "%20".</p>
+<h2>Search terms with symbols</h2>
+<p>Search terms containing symbols like "A&amp;B" or "100%" must be encoded as "part of a string".</p>
+<ul>
+<li>"&amp;" → "%26"</li>
+<li>"%" → "%25"</li>
+<li>"?" → "%3F"</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Putting links to search results in blogs or emails</li>
+<li>Registering a search URL in an app's settings</li>
+<li>Adding a search engine in a browser</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>The "q" in ?q= differs by site (q, query, keyword, etc.)</li>
+<li>Don't encode the page URL itself</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to make a link searching "Shibuya Station ramen" on a map site. Encoding the term and joining it to the map site's search URL opened the results directly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>No search results</b>: the parameter name (q etc.) differs from the site's specification.</li>
+<li><b>The term is cut off</b>: a term containing "&amp;" wasn't encoded.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Do English-only search terms need encoding?</h3>
+<p>Not if there are no spaces or symbols.</p>
+<h2>Summary</h2>
+<p>Encode the search term as "part of a string". Join it to the URL and the search link is done.</p>
 <a class="cta" href="/en/url-encoder.html">Use "URL Encode and Decode" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li><li><a href="/en/text-diff.html">Compare Two Texts (Diff)</a>: Show the differences between two texts line by line.</li><li><a href="/en/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
