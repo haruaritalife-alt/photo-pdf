@@ -200,14 +200,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>重複を調べる仕組み（SHA-256という指紋）</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>大きさを比べる</li><li>指紋を計算する</li><li>同じものをまとめる</li></ul></div>
-<p><a href="/file-dupes.html">重複ファイルを見つける</a> は、名前ではなく、中身の指紋で比べます。</p>
-<h2>手順</h2>
+<p>中身が同じかどうかを、どうやって調べているのでしょうか。<a href="/file-dupes.html">重複ファイルを見つける（中身が同じファイル）</a> は、ファイルの「指紋」にあたる値（SHA-256のハッシュ値）を計算して、同じ指紋のファイルを重複とみなします。</p>
+<h2>ハッシュ値とは</h2>
+<p>ファイルの中身から計算される、長い文字と数字の並びです。ファイルの「指紋」のようなものです。</p>
+<ul>
+<li>中身が同じなら、必ず同じ値になる</li>
+<li>中身が1ビットでも違えば、まったく違う値になる</li>
+<li>値から、元のファイルを再現することは、できない</li>
+</ul>
+<h2>手順（このツールで調べる）</h2>
 <ol>
-<li>まず、ファイルの大きさを比べる</li>
-<li>大きさが同じものだけ、SHA-256の指紋を計算する</li>
-<li>指紋が同じものを、重複としてまとめる</li>
+<li>「ファイルを選びます」で、ファイルを選ぶ。</li>
+<li>ツールが、各ファイルの指紋を計算する。</li>
+<li>同じ指紋のファイルが、重複として表示される。</li>
 </ol>
-<div class="note">指紋が同じなら、中身は、実質的に同じです。</div>
+<div class="note">名前や、更新日は関係ありません。中身だけで判断されます。</div>
+<h2>なぜ名前では判断しないのか</h2>
+<p>名前が同じでも、中身が違うファイルは、たくさんあります。逆に、名前が違っても、中身が同じファイルもあります。中身で比べるのが、確実です。</p>
+<h2>SHA-256の安全性</h2>
+<p>SHA-256は、広く使われている方式で、別のファイルが同じ指紋になる確率は、事実上ゼロです。そのため、重複の判定に、安心して使えます。</p>
+<h2>ハッシュ値を自分で調べたいとき</h2>
+<p>「ファイルのハッシュ値を調べる（SHA-256）」のツールで、1つのファイルの指紋を、表示できます。2つのファイルが同じか、確かめたいときに便利です。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>ファイルが、本当に同じか確かめたい</li>
+<li>ダウンロードしたファイルが、壊れていないか確かめたい</li>
+<li>重複を、確実に見つけたい</li>
+</ul>
+<h2>例</h2>
+<p>2つのPDFが同じものか分からなかった。ハッシュ値を比べると、完全に一致したので、1つを消した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>見た目が同じなのに、別と判定される</b>：保存し直しなどで、中身が少し違う。</li>
+<li><b>大きなファイルで時間がかかる</b>：計算に時間がかかる。待つ。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>ハッシュ値から、ファイルの中身が分かりますか？</h3>
+<p>いいえ。値から、元のファイルを作ることはできません。</p>
+<h2>まとめ</h2>
+<p>指紋が同じなら、中身が同じ。名前に関係なく、確実に重複を見つけられます。</p>
 <a class="cta" href="/file-dupes.html">重複ファイルを見つける（中身が同じファイル）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/file-hash.html">ファイルのハッシュ値を調べる（SHA-256）</a>：ファイルのハッシュ値を調べて、照合します。</li><li><a href="/zip-maker.html">ファイルをZIPにまとめる</a>：複数のファイルを、1つのZIPにまとめます。</li><li><a href="/file-rename.html">ファイル名を一括で変更する（連番・日付）</a>：複数のファイルの名前を、連番や日付つきでまとめて変更します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +250,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How Duplicates Are Detected (SHA-256 Fingerprints)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Compare sizes</li><li>Calculate fingerprints</li><li>Group identical ones</li></ul></div>
-<p><a href="/file-dupes.html">Find Duplicate Files</a> compares fingerprints of the contents, not names.</p>
-<h2>Steps</h2>
+<p>How does it check whether contents are the same? <a href="/file-dupes.html">Find Duplicate Files</a> calculates a value equivalent to a file's "fingerprint" (a SHA-256 hash) and treats files with the same fingerprint as duplicates.</p>
+<h2>What a hash is</h2>
+<p>A long string of characters and digits calculated from a file's contents. It's like the file's "fingerprint".</p>
+<ul>
+<li>Same contents always give the same value</li>
+<li>Even one bit of difference gives a completely different value</li>
+<li>The original file cannot be reproduced from the value</li>
+</ul>
+<h2>Steps (checking with this tool)</h2>
 <ol>
-<li>First compare file sizes</li>
-<li>For files of the same size, calculate a SHA-256 fingerprint</li>
-<li>Group files with the same fingerprint as duplicates</li>
+<li>Choose files with "Choose files".</li>
+<li>The tool calculates each file's fingerprint.</li>
+<li>Files with the same fingerprint are shown as duplicates.</li>
 </ol>
-<div class="note">If the fingerprints match, the contents are in practice identical.</div>
+<div class="note">Names and modified dates don't matter. Judgement is by contents alone.</div>
+<h2>Why not judge by name</h2>
+<p>Many files share a name but differ in contents. Conversely, some files have different names but the same contents. Comparing contents is the reliable way.</p>
+<h2>Safety of SHA-256</h2>
+<p>SHA-256 is widely used, and the chance of different files having the same fingerprint is effectively zero. So it can be used with confidence for judging duplicates.</p>
+<h2>When you want to check a hash yourself</h2>
+<p>The "Check a file's hash (SHA-256)" tool displays one file's fingerprint. Handy for confirming whether two files are the same.</p>
+<h2>Good for</h2>
+<ul>
+<li>Confirming that files are truly the same</li>
+<li>Checking that downloaded files aren't corrupted</li>
+<li>Finding duplicates reliably</li>
+</ul>
+<h2>Example</h2>
+<p>Couldn't tell whether two PDFs were the same. Comparing hashes showed a perfect match, so I deleted one.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Looks identical but is judged different</b>: re-saving etc. made the contents slightly different.</li>
+<li><b>Large files take time</b>: calculation takes time. Wait.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can the file's contents be known from the hash?</h3>
+<p>No. The original file cannot be made from the value.</p>
+<h2>Summary</h2>
+<p>Same fingerprint, same contents. Duplicates are found reliably regardless of name.</p>
 <a class="cta" href="/file-dupes.html">Use "Find Duplicate Files" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/file-hash.html">Check a File's Hash (SHA-256)</a>: Calculate a file's hash and compare it.</li><li><a href="/zip-maker.html">Make a ZIP File</a>: Pack several files into one ZIP.</li><li><a href="/file-rename.html">Rename Many Files at Once (Numbers, Dates)</a>: Rename many files at once with numbers or dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

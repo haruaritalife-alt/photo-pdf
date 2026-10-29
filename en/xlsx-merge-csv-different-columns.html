@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Merging Excel Files with Different Columns</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Match the columns first</li><li>Merge</li><li>Check the result</li></ul></div>
-<p><a href="/en/xlsx-merge-csv.html">Merge Several Excel Files</a> stacks by column position, not by column name.</p>
-<h2>Steps</h2>
+<p>Each branch builds its Excel differently, so column order varies. Combining them as they are shifts the data. <a href="/en/xlsx-merge-csv.html">Merge Several Excel Files into One CSV</a> is "suited to combining files with the same column order". Here is what to do when columns differ.</p>
+<h2>What happens</h2>
+<p>This tool lines up the files' columns <b>from the left in order</b>. It doesn't look at column names. So if column order differs, data shifts, e.g. dates ending up in an "Amount" column.</p>
+<h2>Steps (align columns, then combine)</h2>
 <ol>
-<li>Match the column order in each Excel file</li>
-<li>Merge and save</li>
-<li>Check the columns in the saved CSV</li>
+<li>Open all Excel files and check the column order.</li>
+<li>For files with a different order, rearrange columns to align.</li>
+<li>Add empty columns for any that are missing.</li>
+<li>Combine the aligned files with this tool.</li>
 </ol>
-<div class="note">Different layouts put data in the wrong columns.</div>
+<div class="note">You can rearrange columns in Excel by selecting a column and dragging it.</div>
+<h2>Points to align</h2>
+<ul>
+<li>Number of columns</li>
+<li>Column order</li>
+<li>Header names</li>
+<li>Data formats (dates, amounts, etc.)</li>
+</ul>
+<h2>When alignment is hard</h2>
+<ul>
+<li>Decide on one reference file and match the others to it</li>
+<li>Extract only the common columns first (the CSV "Extract columns" can be used)</li>
+</ul>
+<h2>Method using CSV column extraction</h2>
+<ol>
+<li>Turn each Excel into CSV.</li>
+<li>With CSV column extraction, take out only the common columns in the same order.</li>
+<li>Merge the extracted CSVs.</li>
+</ol>
+<h2>Preparing for the future</h2>
+<ul>
+<li>Make a template Excel so everyone enters in the same format</li>
+<li>Use data validation to prevent added columns</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Gathering Excel files from several people</li>
+<li>Analysing past Excel files together</li>
+</ul>
+<h2>Example</h2>
+<p>In three branches' Excel files, the "Date" and "Amount" columns were in different positions. After rearranging columns to align them, combining worked correctly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The meaning of data shifts</b>: you notice after merging. Check headers beforehand.</li>
+<li><b>The number of columns differs</b>: add empty columns to align.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can it align automatically by column name?</h3>
+<p>This tool lines up from the left. Automatic adjustment by name isn't possible.</p>
+<h2>Summary</h2>
+<p>Align column order beforehand. That's the secret to combining without shifts.</p>
 <a class="cta" href="/en/xlsx-merge-csv.html">Use "Merge Several Excel Files into One CSV" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/xlsx-to-csv.html">Convert Excel to CSV or JSON</a>: Convert an Excel sheet to CSV, TSV or JSON.</li><li><a href="/en/xlsx-split-sheets.html">Split an Excel File by Sheet</a>: Split each Excel sheet into its own CSV or TSV.</li><li><a href="/en/csv-tools.html">Merge, Split and Pick Columns from CSV</a>: Merge CSV files, split by rows, or keep only chosen columns.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

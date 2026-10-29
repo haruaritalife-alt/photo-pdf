@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>รวมข้อความที่ดูเพี้ยน</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ตรวจสอบส่วนต้นของแต่ละไฟล์</li><li>รวม</li><li>หากข้อความเพี้ยน ให้แก้การเข้ารหัส</li></ul></div>
-<p><a href="/th/txt-merge-split.html">รวมและแบ่งไฟล์ข้อความ</a> ตรวจจับ UTF-8 และ Shift_JIS โดยอัตโนมัติแล้วรวมให้</p>
+<p lang="en">After combining garbled texts, they became even less readable. <a href="/th/txt-merge-split.html">Merge and Split Text Files</a> supports UTF-8 and Shift_JIS, auto-detects the encoding and saves as UTF-8. Here is what to do when garbling persists anyway.</p>
+<h2>วิธีการทำงาน</h2>
+<ul>
+<li lang="en">When reading, it detects the encoding for each file</li>
+<li lang="en">When saving, it aligns to UTF-8</li>
+</ul>
+<p lang="en">So even a mix of UTF-8 and Shift_JIS can be merged.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>ตรวจสอบตัวอย่างของไฟล์แรก</li>
-<li>รวมและบันทึก</li>
-<li>หากเพี้ยน แก้ด้วย <a href="/th/charset-convert.html">แปลงการเข้ารหัสข้อความ</a></li>
+<li lang="en">Choose files with "Choose text files".</li>
+<li lang="en">Look at "Beginning of content" and check for garbling.</li>
+<li lang="en">If not garbled, press "Run and save".</li>
+<li lang="en">Open the saved file in an editor that supports UTF-8.</li>
 </ol>
-<div class="note">การตรวจจับทำแยกตามไฟล์</div>
+<div class="note" lang="en">The encoding is auto-detected and saved as UTF-8 (UTF-8 and Shift_JIS are supported).</div>
+<h2 lang="en">If garbled</h2>
+<ul>
+<li lang="en"><b>EUC-JP, UTF-16 and so on</b>: not supported by this tool. First convert to UTF-8 with the encoding conversion tool.</li>
+<li lang="en"><b>The saved file is garbled</b>: the opening app doesn't support UTF-8. Apps that expect Shift_JIS need conversion.</li>
+<li lang="en"><b>Short files</b>: detection can be wrong.</li>
+</ul>
+<h2 lang="en">Steps (fix garbled files before merging)</h2>
+<ol>
+<li lang="en">Convert the garbled file to UTF-8 with the encoding conversion tool.</li>
+<li lang="en">Choose the fixed file together with the others.</li>
+<li lang="en">Merge.</li>
+</ol>
+<h2 lang="en">When garbled in Windows Notepad after merging</h2>
+<p lang="en">Recent Notepad supports UTF-8, but older versions may garble. In that case, use another editor or convert to Shift_JIS.</p>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Combining old-system logs (Shift_JIS) with new notes (UTF-8)</li>
+<li lang="en">Gathering texts from different sources</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Wanted to combine an old Shift_JIS log with a new UTF-8 log. Choosing them in this tool auto-detected both and produced one UTF-8 file.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Only part is garbled</b>: that file is in an unsupported encoding.</li>
+<li lang="en"><b>Everything is garbled</b>: check the opening app's settings.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can it save as Shift_JIS?</h3>
+<p lang="en">This tool saves as UTF-8. If you need Shift_JIS, use the encoding conversion tool.</p>
+<h2>สรุป</h2>
+<p lang="en">UTF-8 and Shift_JIS are auto-detected. For others, convert first and then merge.</p>
 <a class="cta" href="/th/txt-merge-split.html">ใช้ “รวมและแยกไฟล์ข้อความ” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/line-break-remover.html">ลบและจัดระเบียบการขึ้นบรรทัดใหม่ในข้อความ</a>: จัดระเบียบการขึ้นบรรทัดใหม่ในข้อความที่คัดลอกจาก PDF และที่อื่น ๆ</li><li><a href="/th/charset-convert.html">แปลงการเข้ารหัสข้อความ (แก้ข้อความเพี้ยน)</a>: แปลงไฟล์ข้อความระหว่าง Shift_JIS, UTF-8, EUC-JP และอื่น ๆ เพื่อแก้ข้อความเพี้ยน</li><li><a href="/th/csv-tools.html">รวม แยก และเลือกคอลัมน์จาก CSV</a>: รวมไฟล์ CSV แยกตามแถว หรือเก็บเฉพาะคอลัมน์ที่เลือก</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>
