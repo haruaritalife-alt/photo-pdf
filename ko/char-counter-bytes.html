@@ -201,13 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>글자 수와 바이트 수의 차이</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>일본어 글자는 여러 바이트를 사용합니다</li><li>UTF-8 기준으로 계산</li><li>제한이 바이트 단위일 때 확인하세요</li></ul></div>
+<p lang="en">"Character count" and "byte count" are different things. System input boxes and database limits sometimes use bytes. <a href="/ko/char-counter.html">Character Counter (for Applications and Reports)</a> also shows the byte count in UTF-8.</p>
 <h2>차이점</h2>
 <ul>
-<li>영문자와 숫자는 각각 1바이트입니다.</li>
-<li>일본어 글자는 한 글자당 3바이트입니다 (UTF-8).</li>
+<li lang="en"><b>Character count</b>: the number of characters. The number of "visible characters" a person counts.</li>
+<li lang="en"><b>Byte count</b>: the unit in which a computer handles data size. The bytes per character depend on the kind of character.</li>
 </ul>
-<p><a href="/ko/char-counter.html">글자 수 세기 (지원서·리포트용)</a>에서도 바이트 수를 확인할 수 있습니다.</p>
-<div class="note">입력 양식의 제한이 바이트 단위일 때 확인해 보세요.</div>
+<h2 lang="en">Guide to UTF-8 bytes</h2>
+<ul>
+<li lang="en">Half-width letters, digits and symbols: 1 character = 1 byte</li>
+<li lang="en">Hiragana, katakana, kanji and full-width symbols: 1 character = 3 bytes</li>
+<li lang="en">Some emoji and rare kanji: 4 bytes</li>
+</ul>
+<h2>순서</h2>
+<ol>
+<li lang="en">Paste text in the "Text" field.</li>
+<li lang="en">Look at the "Bytes (UTF-8)" field.</li>
+<li lang="en">Compare with the byte limit.</li>
+</ol>
+<div class="note" lang="en">The byte count changes with the character encoding. This tool calculates in UTF-8.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">"Hello" → 5 characters, 5 bytes</li>
+<li lang="en">"こんにちは" → 5 characters, 15 bytes</li>
+<li lang="en">"Hello こんにちは" → 11 characters, 21 bytes (5 + 1 + 15)</li>
+</ul>
+<p lang="en">Check the actual value in the tool's display.</p>
+<h2 lang="en">Where bytes are used</h2>
+<ul>
+<li lang="en">Length limits on database fields</li>
+<li lang="en">Input boxes of older systems</li>
+<li lang="en">Length limits of SMS (short messages)</li>
+<li lang="en">Email subjects, limits on strings in programs</li>
+<li lang="en">Length limits on file names</li>
+</ul>
+<h2 lang="en">Full-width counts more</h2>
+<p lang="en">For the same number of characters, Japanese takes about three times the bytes of English. When there is a byte limit, Japanese allows fewer characters.</p>
+<h2>예</h2>
+<p lang="en">An input box with "up to 100 bytes". In Japanese, about 33 characters. In letters and digits, 100 characters.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Unsure whether the limit is characters or bytes</b>: check the input box's description.</li>
+<li lang="en"><b>Shift_JIS counts differently</b>: in Shift_JIS, Japanese is 2 bytes per character. This tool uses UTF-8.</li>
+<li lang="en"><b>Emoji increase the count</b>: emoji can be 4 bytes.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are bytes and file size the same?</h3>
+<p lang="en">For a text-only file, nearly the same.</p>
+<h2>요약</h2>
+<p lang="en">Characters and bytes are separate. If the limit is in bytes, calculate Japanese at about 3 bytes per character.</p>
 <a class="cta" href="/ko/char-counter.html">“글자 수 세기 (지원서·리포트용)” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/line-break-remover.html">텍스트의 줄바꿈 제거 및 정리</a>: PDF 등에서 복사한 텍스트의 줄바꿈을 정리합니다.</li><li><a href="/ko/zenkaku-hankaku.html">전각·반각·히라가나·가타카나 변환</a>: 전각/반각 및 히라가나/가타카나를 변환합니다.</li><li><a href="/ko/pdf-to-text.html">PDF에서 텍스트 추출</a>: PDF에서 텍스트를 추출해 복사하거나 저장합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>
