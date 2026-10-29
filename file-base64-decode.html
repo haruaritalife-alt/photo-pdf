@@ -200,13 +200,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Base64をファイルに戻す方法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>選ぶ</li><li>貼る</li><li>保存する</li></ul></div>
-<p>データURLの形式でも、貼り付けて使えます。</p>
+<p>APIの結果や、メールの中に、長い英数字の文字列（Base64）が入っていて、中身が画像やPDFらしい。<a href="/file-base64.html">ファイルとBase64を相互変換する</a> の「Base64 → ファイル」で、元のファイルに戻せます。</p>
 <h2>手順</h2>
 <ol>
-<li><a href="/file-base64.html">ファイルとBase64を相互変換する</a> で、「Base64 → ファイル」を選びます。</li>
-<li>Base64の文字を貼り付けます。</li>
-<li>ファイル名を決めて、「ファイルとして保存」を押します。</li>
+<li>「向きを選ぶ」で、「Base64 → ファイル」を選びます。</li>
+<li>「Base64の文字」に、文字列を貼り付けます。</li>
+<li>「保存するファイル名」を入れます。拡張子もつけます（例：image.png、document.pdf）。</li>
+<li>「ファイルとして保存」を押して、保存します。</li>
+<li>保存したファイルを、開いて確認します。</li>
 </ol>
+<div class="note">「Base64として読み取れませんでした。文字を確かめてください。」と出たら、文字が欠けているか、余分な文字が混ざっています。</div>
+<h2>拡張子の決め方</h2>
+<p>Base64の文字だけでは、元のファイルの種類が分かりません。次のような手がかりで、判断します。</p>
+<ul>
+<li>データURLの形式なら、先頭に「data:image/png;base64,」のように種類が書かれている</li>
+<li>先頭の文字で、見当がつく場合がある（PNG画像は「iVBOR」、PDFは「JVBER」、JPEG画像は「/9j/」で始まることが多い）</li>
+<li>取得元の説明（APIの仕様など）に書かれている</li>
+</ul>
+<h2>データURLの場合</h2>
+<p>「data:image/png;base64,」のような、先頭の部分がついている文字列は、そのまま貼り付けられます。または、先頭部分を除いた、コンマ以降の文字だけを貼り付けます。</p>
+<h2>保存後の確認</h2>
+<ul>
+<li>画像なら、ギャラリーや画像ビューアで開く</li>
+<li>PDFなら、PDFビューアで開く</li>
+<li>開けない場合は、拡張子が違う可能性がある</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>APIで受け取ったデータを、ファイルとして確認する</li>
+<li>メールの中の、埋め込みデータを取り出す</li>
+<li>開発中の、テストデータを確認する</li>
+</ul>
+<h2>例</h2>
+<p>APIの応答に、Base64の長い文字列があった。「Base64 → ファイル」に貼り付け、ファイル名を「result.pdf」にして保存。PDFとして開けた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>文字が途中で切れている</b>：コピーが不完全。全体をコピーし直す。</li>
+<li><b>改行やスペースが混ざっている</b>：取り除いてから、貼り付ける。</li>
+<li><b>ファイルが壊れていると言われる</b>：拡張子が違う、またはデータが欠けている。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>長い文字列も貼り付けられますか？</h3>
+<p>はい。ただし、非常に長い場合は、時間がかかります。</p>
+<h2>まとめ</h2>
+<p>貼り付けて、拡張子つきのファイル名で保存。種類は、先頭の文字や説明から判断します。</p>
 <a class="cta" href="/file-base64.html">ファイルとBase64を相互変換するを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/file-hash.html">ファイルのハッシュ値を調べる（SHA-256）</a>：ファイルのハッシュ値を調べて、照合します。</li><li><a href="/csv-json.html">CSVとJSONを相互変換する</a>：CSVとJSONを、すぐに相互変換します。</li><li><a href="/zip-maker.html">ファイルをZIPにまとめる</a>：複数のファイルを、1つのZIPにまとめます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -218,13 +255,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Turn Base64 Back into a File</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose</li><li>Paste</li><li>Save</li></ul></div>
-<p>Data URLs can be pasted as well.</p>
+<p>An API result or an email contains a long string of letters and digits (Base64) that seems to be an image or PDF. "Base64 → file" in <a href="/file-base64.html">Convert Files and Base64</a> can turn it back into the original file.</p>
 <h2>Steps</h2>
 <ol>
-<li>In <a href="/file-base64.html">Convert Files and Base64</a>, choose "Base64 → File".</li>
-<li>Paste the Base64 text.</li>
-<li>Set a file name and tap "Save as file".</li>
+<li>For "Direction", choose "Base64 → file".</li>
+<li>Paste the string into "Base64 text".</li>
+<li>Enter the "File name to save", with an extension (for example image.png, document.pdf).</li>
+<li>Press "Save as file" to save.</li>
+<li>Open the saved file and check it.</li>
 </ol>
+<div class="note">If "Could not read as Base64. Check the characters." appears, characters are missing or extra ones are mixed in.</div>
+<h2>Deciding the extension</h2>
+<p>The Base64 text alone doesn't tell the original file type. Judge from clues like these.</p>
+<ul>
+<li>In data URL form, the type is written at the start, like "data:image/png;base64,"</li>
+<li>The first characters can give a hint (PNG images often start with "iVBOR", PDFs with "JVBER", JPEG images with "/9j/")</li>
+<li>It is stated in the source's documentation (such as the API specification)</li>
+</ul>
+<h2>For data URLs</h2>
+<p>A string with a leading part like "data:image/png;base64," can be pasted as it is. Or paste only the characters after the comma, excluding the leading part.</p>
+<h2>Checking after saving</h2>
+<ul>
+<li>For an image, open in the gallery or an image viewer</li>
+<li>For a PDF, open in a PDF viewer</li>
+<li>If it won't open, the extension may be wrong</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Checking data received from an API as a file</li>
+<li>Extracting embedded data from an email</li>
+<li>Checking test data during development</li>
+</ul>
+<h2>Example</h2>
+<p>An API response contained a long Base64 string. Pasted it into "Base64 → file", named the file "result.pdf" and saved. It opened as a PDF.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The text is cut off</b>: the copy was incomplete. Copy the whole thing again.</li>
+<li><b>Line breaks or spaces are mixed in</b>: remove them before pasting.</li>
+<li><b>Told the file is corrupted</b>: the extension is wrong, or data is missing.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can long strings be pasted?</h3>
+<p>Yes. But very long ones take time.</p>
+<h2>Summary</h2>
+<p>Paste and save with a file name that has an extension. Judge the type from the first characters or documentation.</p>
 <a class="cta" href="/file-base64.html">Use "Convert Files and Base64" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/file-hash.html">Check a File's Hash (SHA-256)</a>: Calculate a file's hash and compare it.</li><li><a href="/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li><li><a href="/zip-maker.html">Make a ZIP File</a>: Pack several files into one ZIP.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

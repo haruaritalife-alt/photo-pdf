@@ -201,12 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>把第一行用作表頭</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>確認</li><li>選擇</li></ul></div>
+<p lang="en">The big fork in converting CSV to JSON is whether to tick "Use the first row as headings". Here is the difference, following the screen of <a href="/tw/csv-json.html">Convert CSV and JSON</a>.</p>
 <h2>步驟</h2>
 <ol>
-<li>確認<a href="/tw/csv-json.html">CSV 與 JSON 互相轉換</a>中的「把第一行用作表頭」。</li>
-<li>勾選後，第 1 行會作為欄位名。</li>
-<li>不勾選時，得到的是行的陣列。</li>
+<li lang="en">For "Direction", choose "CSV → JSON".</li>
+<li lang="en">Paste the CSV into "Before conversion".</li>
+<li lang="en">Decide the tick for "Use the first row as headings (CSV → JSON)".</li>
+<li lang="en">Press "Convert" and check "After conversion".</li>
 </ol>
+<div class="note" lang="en">With the tick, the first row becomes the item names. Without it, you get an array of rows.</div>
+<h2 lang="en">With the tick</h2>
+<p lang="en">The first row becomes item names, and the second row onwards become the values of those items.</p>
+<p lang="en">CSV:</p>
+<p lang="en">name,age</p>
+<p lang="en">Yamada,30</p>
+<p lang="en">Result: data with item names, like "name: Yamada" and "age: 30".</p>
+<p lang="en">When used in a program, values can be retrieved by item name, an easy-to-handle form.</p>
+<h2 lang="en">Without the tick</h2>
+<p lang="en">All rows are treated alike and become a sequence (array) of values per row.</p>
+<p lang="en">Result: a sequence of values without item names, like "Yamada, 30".</p>
+<h2 lang="en">Which to choose</h2>
+<ul>
+<li lang="en"><b>A table with item names in the first row</b> → tick</li>
+<li lang="en"><b>Data with no item names, just a sequence of numbers</b> → no tick</li>
+<li lang="en"><b>If unsure</b> → tick it and check the result</li>
+</ul>
+<h2 lang="en">If you tick for a table without headings</h2>
+<p lang="en">The first row of data becomes the item names and the first row's data is lost. If the result looks wrong, untick.</p>
+<h2 lang="en">When headings have the same name</h2>
+<p lang="en">If the same item name appears more than once, later values may overwrite earlier ones. Fix headings so they don't repeat.</p>
+<h2>適合</h2>
+<ul>
+<li lang="en">Wanting to retrieve data in a program by specifying item names (tick)</li>
+<li lang="en">Making a sequence of numbers for a chart (no tick)</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Converted a table of product name, price and stock to JSON to use as web app data. The first row was headings, so ticked.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>A title row sits above the headings</b>: delete the title row first.</li>
+<li lang="en"><b>Japanese headings</b>: they become item names as they are. Check that the program side can handle them.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I change the tick afterwards?</h3>
+<p lang="en">Yes. Change the tick and press "Convert" again.</p>
+<h2>小結</h2>
+<p lang="en">If the first row is item names, tick. Look at the result and switch if it looks wrong.</p>
 <a class="cta" href="/tw/csv-json.html">使用「CSV 與 JSON 互相轉換」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/line-sort-dedupe.html">刪除重複行並排序</a>：刪除重複的行並排序。</li><li><a href="/tw/zip-maker.html">把檔案打包成 ZIP</a>：把多個檔案打包成一個 ZIP。</li><li><a href="/tw/char-counter.html">文字數統計（用於求職申請表和報告）</a>：統計文字的字數、行數和稿紙張數。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

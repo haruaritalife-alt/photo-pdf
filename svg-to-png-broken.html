@@ -200,12 +200,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまく表示されないとき</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>確かめる</li><li>直す</li></ul></div>
-<h2>手順</h2>
+<p>SVGを変換したのに、文字の字体が違う、図が欠ける、真っ白になる。<a href="/svg-to-png.html">SVGをPNGに変換する</a> の変換結果が、元のSVGと違って見えるときの、原因と対処をまとめます。</p>
+<h2>まず確認すること</h2>
+<ol>
+<li>SVGが、外部の画像やフォントを読み込んでいないか</li>
+<li>SVGのファイル自体が、壊れていないか</li>
+<li>「プレビュー」で、どう見えているか</li>
+</ol>
+<h2>手順（直す）</h2>
 <ol>
 <li>SVGが、外部の画像やフォントを読み込んでいないか、確かめます。</li>
-<li>できれば、文字を図形に変換したSVGを使います。</li>
-<li>もう一度、<a href="/svg-to-png.html">SVGをPNGに変換する</a> で変換します。</li>
+<li>できれば、文字を図形（アウトライン）に変換したSVGを使います。</li>
+<li>もう一度、「SVGファイルを1つ選ぶ」から変換します。</li>
 </ol>
+<div class="note">「PNGにできませんでした。SVGの内容を確かめてください。」と表示されたら、SVGの内容に問題がある可能性があります。</div>
+<h2>よくある症状と原因</h2>
+<ul>
+<li><b>文字の字体が変わる</b>：SVGが、端末にないフォントを使っている。</li>
+<li><b>画像が表示されない</b>：SVGが、外部の画像ファイルを参照している。</li>
+<li><b>真っ白になる</b>：背景が白で、図が白い。または、図形が、描画範囲の外にある。</li>
+<li><b>一部が欠ける</b>：SVGの描画範囲（サイズ）の設定が、図より小さい。</li>
+<li><b>変換できない</b>：SVGの書き方に誤りがある。</li>
+</ul>
+<h2>文字を図形に変換する</h2>
+<p>デザインソフトで、SVGを書き出すときに、「テキストをアウトライン化」「文字を図形に変換」のような設定を選ぶと、フォントに依存しなくなります。</p>
+<h2>外部の画像を埋め込む</h2>
+<p>SVGから別の画像ファイルを参照している場合は、画像をSVGの中に埋め込んで書き出す設定にします。</p>
+<h2>描画範囲の確認</h2>
+<p>SVGの中の、サイズの指定（幅、高さ、表示範囲）が、図全体を含んでいるか確認します。</p>
+<h2>別の方法で確認する</h2>
+<ul>
+<li>ブラウザで、SVGを直接開いて、表示を確認する</li>
+<li>他のソフトで開いて、同じように崩れるか見る</li>
+<li>崩れるなら、SVG自体に問題がある</li>
+</ul>
+<h2>向いている対処</h2>
+<p>SVGをデザインソフトで開いて、保存し直すと、直る場合があります。</p>
+<h2>例</h2>
+<p>手作りのSVGが、PNGにしたら、文字だけ違うフォントになった。デザインソフトで、文字をアウトライン化して書き出し直したところ、見た目が一致した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>サイズが極端に小さい</b>：SVGに、サイズの指定がない。</li>
+<li><b>色が変わる</b>：色の指定方法が特殊。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>元のSVGは、変換で変わりますか？</h3>
+<p>いいえ。新しいPNGができるだけです。</p>
+<h2>まとめ</h2>
+<p>外部のフォント・画像への依存が、主な原因。文字は図形にし、画像は埋め込んでから変換しましょう。</p>
 <a class="cta" href="/svg-to-png.html">SVGをPNGに変換するを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/image-convert.html">画像の形式を変換（JPG・PNG・WebP）</a>：画像をJPG・PNG・WebPに、まとめて変換します。</li><li><a href="/image-resize.html">画像のサイズ（ピクセル）を変える</a>：画像の大きさを、横幅・縦・割合で変えます。</li><li><a href="/favicon-maker.html">ファビコン（サイトのアイコン）を作る</a>：1枚の画像から、ファビコン一式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -217,12 +259,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>When the Image Does Not Look Right</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check</li><li>Fix</li></ul></div>
-<h2>Steps</h2>
+<p>You converted an SVG but the typeface is different, parts are missing or it is blank white. Here are causes and remedies for when <a href="/svg-to-png.html">Convert SVG to PNG</a>'s output looks different from the original SVG.</p>
+<h2>What to check first</h2>
+<ol>
+<li>Whether the SVG loads external images or fonts</li>
+<li>Whether the SVG file itself is broken</li>
+<li>How it looks in "Preview"</li>
+</ol>
+<h2>Steps (fixing)</h2>
 <ol>
 <li>Check whether the SVG loads external images or fonts.</li>
-<li>If possible, use an SVG with text converted to shapes.</li>
-<li>Convert it again with <a href="/svg-to-png.html">Convert SVG to PNG</a>.</li>
+<li>If possible, use an SVG with text converted to shapes (outlines).</li>
+<li>Convert again from "Choose one SVG file".</li>
 </ol>
+<div class="note">If "Could not make a PNG. Check the SVG's contents." appears, there may be a problem with the SVG's content.</div>
+<h2>Common symptoms and causes</h2>
+<ul>
+<li><b>The typeface changes</b>: the SVG uses a font not on the device.</li>
+<li><b>Images don't show</b>: the SVG refers to an external image file.</li>
+<li><b>Blank white</b>: the background is white and the figure is white, or the shapes lie outside the drawing area.</li>
+<li><b>Part is missing</b>: the SVG's drawing area (size) setting is smaller than the figure.</li>
+<li><b>Cannot convert</b>: there is an error in the SVG's syntax.</li>
+</ul>
+<h2>Converting text to shapes</h2>
+<p>When exporting an SVG from design software, choosing a setting like "outline text" or "convert text to shapes" removes dependence on fonts.</p>
+<h2>Embedding external images</h2>
+<p>If the SVG refers to a separate image file, export with the setting that embeds the image inside the SVG.</p>
+<h2>Checking the drawing area</h2>
+<p>Check that the size specification in the SVG (width, height, viewing area) includes the whole figure.</p>
+<h2>Checking another way</h2>
+<ul>
+<li>Open the SVG directly in a browser and check the display</li>
+<li>Open it in other software and see whether it breaks the same way</li>
+<li>If it breaks, the problem is in the SVG itself</li>
+</ul>
+<h2>A useful approach</h2>
+<p>Opening the SVG in design software and saving it again may fix it.</p>
+<h2>Example</h2>
+<p>A handmade SVG became a PNG with only the text in a different font. After outlining the text in design software and exporting again, the appearance matched.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The size is extremely small</b>: the SVG has no size specification.</li>
+<li><b>Colours change</b>: an unusual way of specifying colour.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does conversion change the original SVG?</h3>
+<p>No. A new PNG is merely made.</p>
+<h2>Summary</h2>
+<p>Dependence on external fonts and images is the main cause. Convert text to shapes and embed images before converting.</p>
 <a class="cta" href="/svg-to-png.html">Use "Convert SVG to PNG" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/image-convert.html">Convert Image Format (JPG, PNG, WebP)</a>: Convert images to JPG, PNG or WebP, several at once.</li><li><a href="/image-resize.html">Resize Images by Pixel Size</a>: Resize images by width, height or percentage.</li><li><a href="/favicon-maker.html">Make a Favicon (Site Icon)</a>: Make a complete favicon set from one image.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

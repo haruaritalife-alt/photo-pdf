@@ -201,12 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>巢狀 JSON 的注意事項</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>貼上</li><li>確認</li></ul></div>
+<p lang="en">JSON from APIs and the like often has a "nested" form, where data contains further data. Here are cautions for converting nested JSON to CSV with <a href="/tw/csv-json.html">Convert CSV and JSON</a>.</p>
 <h2>步驟</h2>
 <ol>
-<li>把 JSON 貼上到<a href="/tw/csv-json.html">CSV 與 JSON 互相轉換</a>中。</li>
-<li>巢狀的部分會以文字形式放進一個單元格。</li>
-<li>如有需要，請先把 JSON 展平。</li>
+<li lang="en">For "Direction", choose "JSON → CSV".</li>
+<li lang="en">Paste the JSON into "Before conversion".</li>
+<li lang="en">Press "Convert".</li>
+<li lang="en">Check "After conversion".</li>
 </ol>
+<div class="note" lang="en">Nested parts go into a single cell as text. If needed, flatten the JSON first.</div>
+<h2 lang="en">What nesting is</h2>
+<p lang="en">For example, data like this.</p>
+<ul>
+<li lang="en">Name: Yamada</li>
+<li lang="en">Address: (prefecture: Tokyo, city: Shinjuku)</li>
+</ul>
+<p lang="en">Inside "Address" are further items. That is nesting.</p>
+<h2 lang="en">The result after conversion</h2>
+<p lang="en">CSV is a flat table. Nested parts cannot take a table form, so their content goes into a single cell as text.</p>
+<h2 lang="en">Ways to flatten</h2>
+<ul>
+<li lang="en"><b>Expand the items</b>: bring the contents of the address out as separate items "prefecture" and "city".</li>
+<li lang="en"><b>Fix with a text editor</b>: change the structure with find-and-replace and so on.</li>
+<li lang="en"><b>Extract just the needed parts</b>: make JSON with only the target items.</li>
+</ul>
+<h2 lang="en">How much to fix</h2>
+<ul>
+<li lang="en">The values inside the nesting aren't needed → fine as it is</li>
+<li lang="en">You want to total the values inside the nesting in Excel → flatten before converting</li>
+</ul>
+<h2 lang="en">Nested arrays (lists)</h2>
+<p lang="en">When one item holds several values (a list), it also goes into one cell as text. If you want rows split per list element, reshape first.</p>
+<h2>適合</h2>
+<ul>
+<li lang="en">Converting simply structured JSON (no nesting)</li>
+<li lang="en">When it is enough to see the nested contents as they are</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Converted order data JSON. The "products" item held a list of products and went into one cell as text. To total per product, reshaped it to one row per product first and converted again.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>A cell is full of brackets and symbols</b>: that is the nested part.</li>
+<li lang="en"><b>The number of columns differs by row</b>: data with uneven items.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can nesting be expanded automatically?</h3>
+<p lang="en">This tool does not expand nesting. Reshape first.</p>
+<h2>小結</h2>
+<p lang="en">Nesting goes into one cell as text. If you want to total it, flatten first.</p>
 <a class="cta" href="/tw/csv-json.html">使用「CSV 與 JSON 互相轉換」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/line-sort-dedupe.html">刪除重複行並排序</a>：刪除重複的行並排序。</li><li><a href="/tw/zip-maker.html">把檔案打包成 ZIP</a>：把多個檔案打包成一個 ZIP。</li><li><a href="/tw/char-counter.html">文字數統計（用於求職申請表和報告）</a>：統計文字的字數、行數和稿紙張數。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

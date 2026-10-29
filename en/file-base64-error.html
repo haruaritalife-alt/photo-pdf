@@ -201,12 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>When the Base64 Cannot Be Read</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check</li><li>Fix</li></ul></div>
-<h2>Steps</h2>
+<p>"Could not read as Base64. Check the characters." is shown and you cannot restore the file. Here are causes and fixes for errors in "Base64 → file" of <a href="/en/file-base64.html">Convert Files and Base64</a>.</p>
+<h2>What to check first</h2>
 <ol>
-<li>Check that the text was not cut off.</li>
-<li>Check that no extra characters got mixed in.</li>
-<li>Paste it into <a href="/en/file-base64.html">Convert Files and Base64</a> again.</li>
+<li><b>Is the text cut off?</b>: Did you copy everything from start to end?</li>
+<li><b>Are extra characters mixed in?</b>: Are there explanatory text, quotes or spaces before or after?</li>
+<li><b>Is the direction right?</b>: Have you chosen "Base64 → file"?</li>
 </ol>
+<h2>Steps (fixing)</h2>
+<ol>
+<li>Check that the text isn't cut off.</li>
+<li>Check that no extra characters are mixed in.</li>
+<li>Paste it into "Base64 text" again.</li>
+<li>Enter a "File name to save" and press "Save as file".</li>
+</ol>
+<div class="note">The characters usable in Base64 are upper and lower case letters, digits, "+" and "/", and "=" at the end. If other characters are mixed in, it can't be read.</div>
+<h2>Common causes</h2>
+<ul>
+<li><b>Incomplete copy</b>: only part of a long string was copied.</li>
+<li><b>Quotes attached</b>: quotes remain before and after the string.</li>
+<li><b>The "data:…;base64," part</b>: the data URL prefix may cause problems if left on. Remove it and try again.</li>
+<li><b>Line breaks and spaces</b>: inserted partway. Remove them.</li>
+<li><b>Full-width characters mixed in</b>: full-width letters and digits can't be used.</li>
+<li><b>URL-safe Base64</b>: there is a form using "-" and "_" instead of "+" and "/".</li>
+<li><b>Length doesn't fit</b>: not a multiple of 4. The trailing "=" is missing.</li>
+</ul>
+<h2>Removing the extra parts</h2>
+<ul>
+<li>Delete the quotes or explanatory text before and after</li>
+<li>Delete a leading part like "data:image/png;base64," and keep only the characters after the comma</li>
+<li>Delete line breaks in a text editor</li>
+</ul>
+<h2>When the saved file won't open</h2>
+<p>If the Base64 was read but the file won't open, the extension may be wrong. Save again with a file name (extension) that fits the file type.</p>
+<h2>A useful approach</h2>
+<p>Try with a short string. Pasting just the first few lines and seeing whether it reads shows where the problem lies.</p>
+<h2>Example</h2>
+<p>Pasting an API result gave an error. Quotes were attached before and after; after removing them and pasting, it converted.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Characters go missing partway</b>: cut by the display limit of the browser or app.</li>
+<li><b>A file was made but is corrupted</b>: part of the data is missing.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does it tell me which character is bad?</h3>
+<p>This tool doesn't show the error location. Check the points above in order.</p>
+<h2>Summary</h2>
+<p>Check that you copied everything and that there are no extra characters. Try removing the leading data URL part and quotes.</p>
 <a class="cta" href="/en/file-base64.html">Use "Convert Files and Base64" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/file-hash.html">Check a File's Hash (SHA-256)</a>: Calculate a file's hash and compare it.</li><li><a href="/en/csv-json.html">Convert CSV and JSON</a>: Convert between CSV and JSON instantly.</li><li><a href="/en/zip-maker.html">Make a ZIP File</a>: Pack several files into one ZIP.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

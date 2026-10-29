@@ -201,12 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>নেস্টেড JSON নিয়ে নোট</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>পেস্ট করুন</li><li>যাচাই করুন</li></ul></div>
+<p lang="en">JSON from APIs and the like often has a "nested" form, where data contains further data. Here are cautions for converting nested JSON to CSV with <a href="/bn/csv-json.html">Convert CSV and JSON</a>.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>JSON <a href="/bn/csv-json.html">CSV ও JSON রূপান্তর</a>-এ পেস্ট করুন।</li>
-<li>নেস্টেড অংশ একটি ঘরে টেক্সট হিসেবে রাখা হয়।</li>
-<li>দরকার হলে আগে JSON সমতল করুন।</li>
+<li lang="en">For "Direction", choose "JSON → CSV".</li>
+<li lang="en">Paste the JSON into "Before conversion".</li>
+<li lang="en">Press "Convert".</li>
+<li lang="en">Check "After conversion".</li>
 </ol>
+<div class="note" lang="en">Nested parts go into a single cell as text. If needed, flatten the JSON first.</div>
+<h2 lang="en">What nesting is</h2>
+<p lang="en">For example, data like this.</p>
+<ul>
+<li lang="en">Name: Yamada</li>
+<li lang="en">Address: (prefecture: Tokyo, city: Shinjuku)</li>
+</ul>
+<p lang="en">Inside "Address" are further items. That is nesting.</p>
+<h2 lang="en">The result after conversion</h2>
+<p lang="en">CSV is a flat table. Nested parts cannot take a table form, so their content goes into a single cell as text.</p>
+<h2 lang="en">Ways to flatten</h2>
+<ul>
+<li lang="en"><b>Expand the items</b>: bring the contents of the address out as separate items "prefecture" and "city".</li>
+<li lang="en"><b>Fix with a text editor</b>: change the structure with find-and-replace and so on.</li>
+<li lang="en"><b>Extract just the needed parts</b>: make JSON with only the target items.</li>
+</ul>
+<h2 lang="en">How much to fix</h2>
+<ul>
+<li lang="en">The values inside the nesting aren't needed → fine as it is</li>
+<li lang="en">You want to total the values inside the nesting in Excel → flatten before converting</li>
+</ul>
+<h2 lang="en">Nested arrays (lists)</h2>
+<p lang="en">When one item holds several values (a list), it also goes into one cell as text. If you want rows split per list element, reshape first.</p>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Converting simply structured JSON (no nesting)</li>
+<li lang="en">When it is enough to see the nested contents as they are</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">Converted order data JSON. The "products" item held a list of products and went into one cell as text. To total per product, reshaped it to one row per product first and converted again.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>A cell is full of brackets and symbols</b>: that is the nested part.</li>
+<li lang="en"><b>The number of columns differs by row</b>: data with uneven items.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can nesting be expanded automatically?</h3>
+<p lang="en">This tool does not expand nesting. Reshape first.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">Nesting goes into one cell as text. If you want to total it, flatten first.</p>
 <a class="cta" href="/bn/csv-json.html">“CSV ও JSON রূপান্তর” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/line-sort-dedupe.html">ডুপ্লিকেট লাইন সরান ও তালিকা সাজান</a>: ডুপ্লিকেট লাইন সরিয়ে সাজান।</li><li><a href="/bn/zip-maker.html">ZIP ফাইল তৈরি করুন</a>: একাধিক ফাইল একটি ZIP-এ প্যাক করুন।</li><li><a href="/bn/char-counter.html">অক্ষর গণনা (আবেদন ও রিপোর্টের জন্য)</a>: আপনার টেক্সটের অক্ষর, লাইন ও পাণ্ডুলিপির পাতা গুনুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

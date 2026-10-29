@@ -201,12 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Notes on Nested JSON</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Paste</li><li>Check</li></ul></div>
+<p>JSON from APIs and the like often has a "nested" form, where data contains further data. Here are cautions for converting nested JSON to CSV with <a href="/en/csv-json.html">Convert CSV and JSON</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Paste the JSON into <a href="/en/csv-json.html">Convert CSV and JSON</a>.</li>
-<li>Nested parts are kept as text in a single cell.</li>
-<li>Flatten the JSON first if you need to.</li>
+<li>For "Direction", choose "JSON → CSV".</li>
+<li>Paste the JSON into "Before conversion".</li>
+<li>Press "Convert".</li>
+<li>Check "After conversion".</li>
 </ol>
+<div class="note">Nested parts go into a single cell as text. If needed, flatten the JSON first.</div>
+<h2>What nesting is</h2>
+<p>For example, data like this.</p>
+<ul>
+<li>Name: Yamada</li>
+<li>Address: (prefecture: Tokyo, city: Shinjuku)</li>
+</ul>
+<p>Inside "Address" are further items. That is nesting.</p>
+<h2>The result after conversion</h2>
+<p>CSV is a flat table. Nested parts cannot take a table form, so their content goes into a single cell as text.</p>
+<h2>Ways to flatten</h2>
+<ul>
+<li><b>Expand the items</b>: bring the contents of the address out as separate items "prefecture" and "city".</li>
+<li><b>Fix with a text editor</b>: change the structure with find-and-replace and so on.</li>
+<li><b>Extract just the needed parts</b>: make JSON with only the target items.</li>
+</ul>
+<h2>How much to fix</h2>
+<ul>
+<li>The values inside the nesting aren't needed → fine as it is</li>
+<li>You want to total the values inside the nesting in Excel → flatten before converting</li>
+</ul>
+<h2>Nested arrays (lists)</h2>
+<p>When one item holds several values (a list), it also goes into one cell as text. If you want rows split per list element, reshape first.</p>
+<h2>Good for</h2>
+<ul>
+<li>Converting simply structured JSON (no nesting)</li>
+<li>When it is enough to see the nested contents as they are</li>
+</ul>
+<h2>Example</h2>
+<p>Converted order data JSON. The "products" item held a list of products and went into one cell as text. To total per product, reshaped it to one row per product first and converted again.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>A cell is full of brackets and symbols</b>: that is the nested part.</li>
+<li><b>The number of columns differs by row</b>: data with uneven items.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can nesting be expanded automatically?</h3>
+<p>This tool does not expand nesting. Reshape first.</p>
+<h2>Summary</h2>
+<p>Nesting goes into one cell as text. If you want to total it, flatten first.</p>
 <a class="cta" href="/en/csv-json.html">Use "Convert CSV and JSON" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li><li><a href="/en/zip-maker.html">Make a ZIP File</a>: Pack several files into one ZIP.</li><li><a href="/en/char-counter.html">Character Counter (for Applications and Reports)</a>: Count characters, lines and manuscript sheets of your text.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

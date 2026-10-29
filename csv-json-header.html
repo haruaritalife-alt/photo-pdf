@@ -200,12 +200,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>1行目を見出しにするかどうか</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>確かめる</li><li>選ぶ</li></ul></div>
+<p>CSVをJSONに変換するときの大きな分かれ道が、「1行目を見出しとして使う」にチェックを入れるかどうかです。<a href="/csv-json.html">CSVとJSONを相互変換する</a> の画面で、その違いを説明します。</p>
 <h2>手順</h2>
 <ol>
-<li><a href="/csv-json.html">CSVとJSONを相互変換する</a> で、「1行目を見出しとして使う」を確かめます。</li>
-<li>チェックありだと、1行目が項目名になります。</li>
-<li>チェックなしだと、行の配列になります。</li>
+<li>「変換の向き」で、「CSV → JSON」を選びます。</li>
+<li>「変換前」に、CSVを貼り付けます。</li>
+<li>「1行目を見出しとして使う（CSV → JSON）」の、チェックを決めます。</li>
+<li>「変換する」を押して、「変換後」を確認します。</li>
 </ol>
+<div class="note">チェックありだと、1行目が項目名になります。チェックなしだと、行の配列になります。</div>
+<h2>チェックありの場合</h2>
+<p>1行目が項目名になり、2行目以降が、その項目の値になります。</p>
+<p>CSV：</p>
+<p>名前,年齢</p>
+<p>山田,30</p>
+<p>結果：「名前: 山田」「年齢: 30」のように、項目名のついたデータになります。</p>
+<p>プログラムで使うときは、項目名で取り出せるので、扱いやすい形です。</p>
+<h2>チェックなしの場合</h2>
+<p>すべての行が、同じ扱いになり、行ごとの値の並び（配列）になります。</p>
+<p>結果：「山田, 30」のように、項目名のない値の並びになります。</p>
+<h2>どちらを選ぶか</h2>
+<ul>
+<li><b>1行目に項目名がある表</b> → チェックあり</li>
+<li><b>項目名がない、数値の並びだけのデータ</b> → チェックなし</li>
+<li><b>迷ったら</b> → チェックありにして、結果を確認する</li>
+</ul>
+<h2>見出しがない表にチェックを入れた場合</h2>
+<p>1行目のデータが、項目名になってしまい、最初の行のデータが失われます。結果を見て、おかしければ、チェックを外します。</p>
+<h2>見出しが同じ名前の場合</h2>
+<p>同じ項目名が複数あると、後ろの値が、前の値を上書きしてしまう場合があります。見出しは、重複しないように直します。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>プログラムで、項目名を指定してデータを取り出したい（チェックあり）</li>
+<li>グラフ用の、数値の並びを作りたい（チェックなし）</li>
+</ul>
+<h2>例</h2>
+<p>商品名・価格・在庫の表を、WebアプリのデータにするためにJSONへ変換した。1行目が見出しなので、チェックを入れた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>見出しの前に、タイトル行がある</b>：先に、タイトル行を削除する。</li>
+<li><b>日本語の見出し</b>：そのまま項目名になる。プログラム側で、扱えるか確認する。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>後から、チェックを変えられますか？</h3>
+<p>できます。チェックを変えて、もう一度「変換する」を押します。</p>
+<h2>まとめ</h2>
+<p>1行目が項目名ならチェックあり。結果を見て、おかしければ切り替えましょう。</p>
 <a class="cta" href="/csv-json.html">CSVとJSONを相互変換するを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li><li><a href="/zip-maker.html">ファイルをZIPにまとめる</a>：複数のファイルを、1つのZIPにまとめます。</li><li><a href="/char-counter.html">文字数カウント（エントリーシート・レポート用）</a>：文章の文字数・行数・原稿用紙の枚数などを数えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -217,12 +257,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Using the First Row as Headers</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check</li><li>Choose</li></ul></div>
+<p>The big fork in converting CSV to JSON is whether to tick "Use the first row as headings". Here is the difference, following the screen of <a href="/csv-json.html">Convert CSV and JSON</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Check "Use the first row as headers" in <a href="/csv-json.html">Convert CSV and JSON</a>.</li>
-<li>When ticked, row 1 becomes the field names.</li>
-<li>When off, you get an array of rows.</li>
+<li>For "Direction", choose "CSV → JSON".</li>
+<li>Paste the CSV into "Before conversion".</li>
+<li>Decide the tick for "Use the first row as headings (CSV → JSON)".</li>
+<li>Press "Convert" and check "After conversion".</li>
 </ol>
+<div class="note">With the tick, the first row becomes the item names. Without it, you get an array of rows.</div>
+<h2>With the tick</h2>
+<p>The first row becomes item names, and the second row onwards become the values of those items.</p>
+<p>CSV:</p>
+<p>name,age</p>
+<p>Yamada,30</p>
+<p>Result: data with item names, like "name: Yamada" and "age: 30".</p>
+<p>When used in a program, values can be retrieved by item name, an easy-to-handle form.</p>
+<h2>Without the tick</h2>
+<p>All rows are treated alike and become a sequence (array) of values per row.</p>
+<p>Result: a sequence of values without item names, like "Yamada, 30".</p>
+<h2>Which to choose</h2>
+<ul>
+<li><b>A table with item names in the first row</b> → tick</li>
+<li><b>Data with no item names, just a sequence of numbers</b> → no tick</li>
+<li><b>If unsure</b> → tick it and check the result</li>
+</ul>
+<h2>If you tick for a table without headings</h2>
+<p>The first row of data becomes the item names and the first row's data is lost. If the result looks wrong, untick.</p>
+<h2>When headings have the same name</h2>
+<p>If the same item name appears more than once, later values may overwrite earlier ones. Fix headings so they don't repeat.</p>
+<h2>Good for</h2>
+<ul>
+<li>Wanting to retrieve data in a program by specifying item names (tick)</li>
+<li>Making a sequence of numbers for a chart (no tick)</li>
+</ul>
+<h2>Example</h2>
+<p>Converted a table of product name, price and stock to JSON to use as web app data. The first row was headings, so ticked.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>A title row sits above the headings</b>: delete the title row first.</li>
+<li><b>Japanese headings</b>: they become item names as they are. Check that the program side can handle them.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I change the tick afterwards?</h3>
+<p>Yes. Change the tick and press "Convert" again.</p>
+<h2>Summary</h2>
+<p>If the first row is item names, tick. Look at the result and switch if it looks wrong.</p>
 <a class="cta" href="/csv-json.html">Use "Convert CSV and JSON" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li><li><a href="/zip-maker.html">Make a ZIP File</a>: Pack several files into one ZIP.</li><li><a href="/char-counter.html">Character Counter (for Applications and Reports)</a>: Count characters, lines and manuscript sheets of your text.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

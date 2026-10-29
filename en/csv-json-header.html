@@ -201,12 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Using the First Row as Headers</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check</li><li>Choose</li></ul></div>
+<p>The big fork in converting CSV to JSON is whether to tick "Use the first row as headings". Here is the difference, following the screen of <a href="/en/csv-json.html">Convert CSV and JSON</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Check "Use the first row as headers" in <a href="/en/csv-json.html">Convert CSV and JSON</a>.</li>
-<li>When ticked, row 1 becomes the field names.</li>
-<li>When off, you get an array of rows.</li>
+<li>For "Direction", choose "CSV → JSON".</li>
+<li>Paste the CSV into "Before conversion".</li>
+<li>Decide the tick for "Use the first row as headings (CSV → JSON)".</li>
+<li>Press "Convert" and check "After conversion".</li>
 </ol>
+<div class="note">With the tick, the first row becomes the item names. Without it, you get an array of rows.</div>
+<h2>With the tick</h2>
+<p>The first row becomes item names, and the second row onwards become the values of those items.</p>
+<p>CSV:</p>
+<p>name,age</p>
+<p>Yamada,30</p>
+<p>Result: data with item names, like "name: Yamada" and "age: 30".</p>
+<p>When used in a program, values can be retrieved by item name, an easy-to-handle form.</p>
+<h2>Without the tick</h2>
+<p>All rows are treated alike and become a sequence (array) of values per row.</p>
+<p>Result: a sequence of values without item names, like "Yamada, 30".</p>
+<h2>Which to choose</h2>
+<ul>
+<li><b>A table with item names in the first row</b> → tick</li>
+<li><b>Data with no item names, just a sequence of numbers</b> → no tick</li>
+<li><b>If unsure</b> → tick it and check the result</li>
+</ul>
+<h2>If you tick for a table without headings</h2>
+<p>The first row of data becomes the item names and the first row's data is lost. If the result looks wrong, untick.</p>
+<h2>When headings have the same name</h2>
+<p>If the same item name appears more than once, later values may overwrite earlier ones. Fix headings so they don't repeat.</p>
+<h2>Good for</h2>
+<ul>
+<li>Wanting to retrieve data in a program by specifying item names (tick)</li>
+<li>Making a sequence of numbers for a chart (no tick)</li>
+</ul>
+<h2>Example</h2>
+<p>Converted a table of product name, price and stock to JSON to use as web app data. The first row was headings, so ticked.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>A title row sits above the headings</b>: delete the title row first.</li>
+<li><b>Japanese headings</b>: they become item names as they are. Check that the program side can handle them.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I change the tick afterwards?</h3>
+<p>Yes. Change the tick and press "Convert" again.</p>
+<h2>Summary</h2>
+<p>If the first row is item names, tick. Look at the result and switch if it looks wrong.</p>
 <a class="cta" href="/en/csv-json.html">Use "Convert CSV and JSON" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li><li><a href="/en/zip-maker.html">Make a ZIP File</a>: Pack several files into one ZIP.</li><li><a href="/en/char-counter.html">Character Counter (for Applications and Reports)</a>: Count characters, lines and manuscript sheets of your text.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
