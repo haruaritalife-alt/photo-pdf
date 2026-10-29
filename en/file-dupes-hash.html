@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How Duplicates Are Detected (SHA-256 Fingerprints)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Compare sizes</li><li>Calculate fingerprints</li><li>Group identical ones</li></ul></div>
-<p><a href="/en/file-dupes.html">Find Duplicate Files</a> compares fingerprints of the contents, not names.</p>
-<h2>Steps</h2>
+<p>How does it check whether contents are the same? <a href="/en/file-dupes.html">Find Duplicate Files</a> calculates a value equivalent to a file's "fingerprint" (a SHA-256 hash) and treats files with the same fingerprint as duplicates.</p>
+<h2>What a hash is</h2>
+<p>A long string of characters and digits calculated from a file's contents. It's like the file's "fingerprint".</p>
+<ul>
+<li>Same contents always give the same value</li>
+<li>Even one bit of difference gives a completely different value</li>
+<li>The original file cannot be reproduced from the value</li>
+</ul>
+<h2>Steps (checking with this tool)</h2>
 <ol>
-<li>First compare file sizes</li>
-<li>For files of the same size, calculate a SHA-256 fingerprint</li>
-<li>Group files with the same fingerprint as duplicates</li>
+<li>Choose files with "Choose files".</li>
+<li>The tool calculates each file's fingerprint.</li>
+<li>Files with the same fingerprint are shown as duplicates.</li>
 </ol>
-<div class="note">If the fingerprints match, the contents are in practice identical.</div>
+<div class="note">Names and modified dates don't matter. Judgement is by contents alone.</div>
+<h2>Why not judge by name</h2>
+<p>Many files share a name but differ in contents. Conversely, some files have different names but the same contents. Comparing contents is the reliable way.</p>
+<h2>Safety of SHA-256</h2>
+<p>SHA-256 is widely used, and the chance of different files having the same fingerprint is effectively zero. So it can be used with confidence for judging duplicates.</p>
+<h2>When you want to check a hash yourself</h2>
+<p>The "Check a file's hash (SHA-256)" tool displays one file's fingerprint. Handy for confirming whether two files are the same.</p>
+<h2>Good for</h2>
+<ul>
+<li>Confirming that files are truly the same</li>
+<li>Checking that downloaded files aren't corrupted</li>
+<li>Finding duplicates reliably</li>
+</ul>
+<h2>Example</h2>
+<p>Couldn't tell whether two PDFs were the same. Comparing hashes showed a perfect match, so I deleted one.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Looks identical but is judged different</b>: re-saving etc. made the contents slightly different.</li>
+<li><b>Large files take time</b>: calculation takes time. Wait.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can the file's contents be known from the hash?</h3>
+<p>No. The original file cannot be made from the value.</p>
+<h2>Summary</h2>
+<p>Same fingerprint, same contents. Duplicates are found reliably regardless of name.</p>
 <a class="cta" href="/en/file-dupes.html">Use "Find Duplicate Files" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/file-hash.html">Check a File's Hash (SHA-256)</a>: Calculate a file's hash and compare it.</li><li><a href="/en/zip-maker.html">Make a ZIP File</a>: Pack several files into one ZIP.</li><li><a href="/en/file-rename.html">Rename Many Files at Once (Numbers, Dates)</a>: Rename many files at once with numbers or dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

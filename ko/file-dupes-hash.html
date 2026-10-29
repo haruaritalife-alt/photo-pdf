@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>중복 파일을 찾는 방법 (SHA-256 지문)</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>크기 비교하기</li><li>지문 계산하기</li><li>같은 것끼리 묶기</li></ul></div>
-<p><a href="/ko/file-dupes.html">중복 파일 찾기</a>는 이름이 아니라 내용의 지문을 비교합니다.</p>
-<h2>순서</h2>
+<p lang="en">How does it check whether contents are the same? <a href="/ko/file-dupes.html">Find Duplicate Files</a> calculates a value equivalent to a file's "fingerprint" (a SHA-256 hash) and treats files with the same fingerprint as duplicates.</p>
+<h2 lang="en">What a hash is</h2>
+<p lang="en">A long string of characters and digits calculated from a file's contents. It's like the file's "fingerprint".</p>
+<ul>
+<li lang="en">Same contents always give the same value</li>
+<li lang="en">Even one bit of difference gives a completely different value</li>
+<li lang="en">The original file cannot be reproduced from the value</li>
+</ul>
+<h2 lang="en">Steps (checking with this tool)</h2>
 <ol>
-<li>먼저 파일 크기 비교하기</li>
-<li>크기가 같은 파일은 SHA-256 지문 계산하기</li>
-<li>지문이 같은 파일을 중복 그룹으로 묶기</li>
+<li lang="en">Choose files with "Choose files".</li>
+<li lang="en">The tool calculates each file's fingerprint.</li>
+<li lang="en">Files with the same fingerprint are shown as duplicates.</li>
 </ol>
-<div class="note">지문이 같으면 실질적으로 내용이 완전히 같다고 볼 수 있습니다.</div>
+<div class="note" lang="en">Names and modified dates don't matter. Judgement is by contents alone.</div>
+<h2 lang="en">Why not judge by name</h2>
+<p lang="en">Many files share a name but differ in contents. Conversely, some files have different names but the same contents. Comparing contents is the reliable way.</p>
+<h2 lang="en">Safety of SHA-256</h2>
+<p lang="en">SHA-256 is widely used, and the chance of different files having the same fingerprint is effectively zero. So it can be used with confidence for judging duplicates.</p>
+<h2 lang="en">When you want to check a hash yourself</h2>
+<p lang="en">The "Check a file's hash (SHA-256)" tool displays one file's fingerprint. Handy for confirming whether two files are the same.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Confirming that files are truly the same</li>
+<li lang="en">Checking that downloaded files aren't corrupted</li>
+<li lang="en">Finding duplicates reliably</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Couldn't tell whether two PDFs were the same. Comparing hashes showed a perfect match, so I deleted one.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looks identical but is judged different</b>: re-saving etc. made the contents slightly different.</li>
+<li lang="en"><b>Large files take time</b>: calculation takes time. Wait.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the file's contents be known from the hash?</h3>
+<p lang="en">No. The original file cannot be made from the value.</p>
+<h2>요약</h2>
+<p lang="en">Same fingerprint, same contents. Duplicates are found reliably regardless of name.</p>
 <a class="cta" href="/ko/file-dupes.html">“중복 파일 찾기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/file-hash.html">파일 해시(SHA-256) 확인</a>: 파일의 해시를 계산하고 비교합니다.</li><li><a href="/ko/zip-maker.html">ZIP 파일 만들기</a>: 여러 파일을 하나의 ZIP으로 묶습니다.</li><li><a href="/ko/file-rename.html">여러 파일 이름 한 번에 바꾸기 (번호, 날짜)</a>: 번호나 날짜로 여러 파일 이름을 한 번에 바꿉니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

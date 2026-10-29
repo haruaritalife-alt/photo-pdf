@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>합치기에 실패하거나 글자가 깨질 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>형식 확인</li><li>크기 확인하기</li><li>Excel에서 다시 열기</li></ul></div>
-<p><a href="/ko/xlsx-merge-csv.html">여러 Excel 합치기</a>가 동작하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">The Excel files can't be combined, or the combined CSV is garbled. Here are troubles that commonly occur with <a href="/ko/xlsx-merge-csv.html">Merge Several Excel Files into One CSV</a> and how to handle them.</p>
+<h2 lang="en">Messages shown</h2>
+<ul>
+<li lang="en"><b>"The file is too large (up to 30MB)."</b>: the total size exceeds 30MB.</li>
+<li lang="en"><b>"There was no data to combine."</b>: the chosen sheets contain no data.</li>
+<li lang="en"><b>"Could not process."</b>: the file is broken, or a format other than .xlsx.</li>
+</ul>
+<h2>원인과 해결</h2>
+<ul>
+<li lang="en"><b>Over 30MB</b>: process the files in several rounds.</li>
+<li lang="en"><b>No data</b>: the sheet is empty, or the data is on another sheet. Try "All sheets".</li>
+<li lang="en"><b>.xls files</b>: re-save as .xlsx in Excel.</li>
+<li lang="en"><b>Garbled text</b>: opening the CSV in Excel may garble it. Use the encoding conversion tool to make it UTF-8 with BOM.</li>
+<li lang="en"><b>Data shifts</b>: the column order differs. Align it beforehand.</li>
+<li lang="en"><b>Formulas vanish</b>: only stored values are used. This is by design.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일이 .xlsx인지 확인하기 (오래된 .xls는 먼저 다시 저장)</li>
-<li>30MB를 넘는 파일이 없는지 확인하기</li>
-<li>깨지면 'CSV 열기'에서 UTF-8로 가져오기</li>
+<li lang="en">Check the file format (.xlsx).</li>
+<li lang="en">Check the "Target sheet" setting.</li>
+<li lang="en">Check the total size.</li>
+<li lang="en">Press "Combine and save as CSV" again.</li>
 </ol>
-<div class="note">비밀번호가 걸린 Excel 파일은 비밀번호를 해제한 뒤 사용하세요.</div>
+<div class="note" lang="en">The screen also says, "Suited to combining files with the same column order."</div>
+<h2 lang="en">When values look wrong</h2>
+<ul>
+<li lang="en">If formula-cell values are stale, re-save the original Excel and try again</li>
+<li lang="en">If dates come out as numbers (serial values), set formatting in Excel</li>
+<li lang="en">Numbers with leading zeros may lose the zeros when opened in Excel</li>
+</ul>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Reviewing settings</li>
+</ul>
+<h2>예</h2>
+<p lang="en">The combined CSV was garbled in Excel. Re-saving as UTF-8 with BOM using the encoding conversion tool made it open correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Freezes on a phone</b>: reduce files.</li>
+<li lang="en"><b>Only some sheets</b>: switch to "All sheets".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can formatting (colours, borders) be carried over?</h3>
+<p lang="en">No. Only stored cell values are used.</p>
+<h2>요약</h2>
+<p lang="en">Review size, format and sheet settings. Fix garbling with BOM.</p>
 <a class="cta" href="/ko/xlsx-merge-csv.html">“여러 Excel 파일을 하나의 CSV로 합치기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/xlsx-to-csv.html">Excel을 CSV나 JSON으로 변환</a>: Excel 시트를 CSV, TSV, JSON으로 변환합니다.</li><li><a href="/ko/xlsx-split-sheets.html">Excel 파일을 시트별로 나누기</a>: Excel의 시트를 각각 CSV 또는 TSV로 나눕니다.</li><li><a href="/ko/csv-tools.html">CSV 합치기·나누기·열 고르기</a>: CSV 파일을 합치거나 행 단위로 나누거나 선택한 열만 남깁니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

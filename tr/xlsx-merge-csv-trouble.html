@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Birleştirme başarısız olduğunda veya bozuk göründüğünde ne yapmalı</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>Biçimi kontrol edin</li><li>Boyutu kontrol edin</li><li>Excel'de yeniden açın</li></ul></div>
-<p><a href="/tr/xlsx-merge-csv.html">Birden çok Excel dosyasını birleştir</a> çalışmıyorsa şunları kontrol edin.</p>
-<h2>Adımlar</h2>
+<p lang="en">The Excel files can't be combined, or the combined CSV is garbled. Here are troubles that commonly occur with <a href="/tr/xlsx-merge-csv.html">Merge Several Excel Files into One CSV</a> and how to handle them.</p>
+<h2 lang="en">Messages shown</h2>
+<ul>
+<li lang="en"><b>"The file is too large (up to 30MB)."</b>: the total size exceeds 30MB.</li>
+<li lang="en"><b>"There was no data to combine."</b>: the chosen sheets contain no data.</li>
+<li lang="en"><b>"Could not process."</b>: the file is broken, or a format other than .xlsx.</li>
+</ul>
+<h2>Nedenler ve çözümler</h2>
+<ul>
+<li lang="en"><b>Over 30MB</b>: process the files in several rounds.</li>
+<li lang="en"><b>No data</b>: the sheet is empty, or the data is on another sheet. Try "All sheets".</li>
+<li lang="en"><b>.xls files</b>: re-save as .xlsx in Excel.</li>
+<li lang="en"><b>Garbled text</b>: opening the CSV in Excel may garble it. Use the encoding conversion tool to make it UTF-8 with BOM.</li>
+<li lang="en"><b>Data shifts</b>: the column order differs. Align it beforehand.</li>
+<li lang="en"><b>Formulas vanish</b>: only stored values are used. This is by design.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Dosyaların .xlsx olduğundan emin olun (eski .xls'i önce yeniden kaydedin)</li>
-<li>Hiçbirinin 30 MB'ı aşmadığını kontrol edin</li>
-<li>Bozuksa "CSV aç"tan UTF-8 olarak içe aktarın</li>
+<li lang="en">Check the file format (.xlsx).</li>
+<li lang="en">Check the "Target sheet" setting.</li>
+<li lang="en">Check the total size.</li>
+<li lang="en">Press "Combine and save as CSV" again.</li>
 </ol>
-<div class="note">Korumalı bir Excel dosyasının parolasını kullanmadan önce kaldırın.</div>
+<div class="note" lang="en">The screen also says, "Suited to combining files with the same column order."</div>
+<h2 lang="en">When values look wrong</h2>
+<ul>
+<li lang="en">If formula-cell values are stale, re-save the original Excel and try again</li>
+<li lang="en">If dates come out as numbers (serial values), set formatting in Excel</li>
+<li lang="en">Numbers with leading zeros may lose the zeros when opened in Excel</li>
+</ul>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Reviewing settings</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">The combined CSV was garbled in Excel. Re-saving as UTF-8 with BOM using the encoding conversion tool made it open correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Freezes on a phone</b>: reduce files.</li>
+<li lang="en"><b>Only some sheets</b>: switch to "All sheets".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can formatting (colours, borders) be carried over?</h3>
+<p lang="en">No. Only stored cell values are used.</p>
+<h2>Özet</h2>
+<p lang="en">Review size, format and sheet settings. Fix garbling with BOM.</p>
 <a class="cta" href="/tr/xlsx-merge-csv.html">“Birden çok Excel dosyasını tek CSV'de birleştir” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/xlsx-to-csv.html">Excel'i CSV veya JSON'a Dönüştür</a>: Bir Excel sayfasını CSV, TSV veya JSON'a dönüştürün.</li><li><a href="/tr/xlsx-split-sheets.html">Bir Excel Dosyasını Sayfalara Göre Bölün</a>: Her Excel sayfasını kendi CSV veya TSV dosyasına bölün.</li><li><a href="/tr/csv-tools.html">CSV'yi birleştir, böl ve sütun seç</a>: CSV dosyalarını birleştirin, satırlara göre bölün veya yalnızca seçili sütunları tutun.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

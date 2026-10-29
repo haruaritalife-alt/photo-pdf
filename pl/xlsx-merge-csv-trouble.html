@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Co zrobić, gdy łączenie się nie udaje lub wynik jest zniekształcony</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Sprawdź format</li><li>Sprawdź rozmiar</li><li>Otwórz ponownie w Excelu</li></ul></div>
-<p>Jeśli <a href="/pl/xlsx-merge-csv.html">Połącz kilka plików Excel</a> nie działa, sprawdź poniższe.</p>
-<h2>Kroki</h2>
+<p lang="en">The Excel files can't be combined, or the combined CSV is garbled. Here are troubles that commonly occur with <a href="/pl/xlsx-merge-csv.html">Merge Several Excel Files into One CSV</a> and how to handle them.</p>
+<h2 lang="en">Messages shown</h2>
+<ul>
+<li lang="en"><b>"The file is too large (up to 30MB)."</b>: the total size exceeds 30MB.</li>
+<li lang="en"><b>"There was no data to combine."</b>: the chosen sheets contain no data.</li>
+<li lang="en"><b>"Could not process."</b>: the file is broken, or a format other than .xlsx.</li>
+</ul>
+<h2>Przyczyny i rozwiązania</h2>
+<ul>
+<li lang="en"><b>Over 30MB</b>: process the files in several rounds.</li>
+<li lang="en"><b>No data</b>: the sheet is empty, or the data is on another sheet. Try "All sheets".</li>
+<li lang="en"><b>.xls files</b>: re-save as .xlsx in Excel.</li>
+<li lang="en"><b>Garbled text</b>: opening the CSV in Excel may garble it. Use the encoding conversion tool to make it UTF-8 with BOM.</li>
+<li lang="en"><b>Data shifts</b>: the column order differs. Align it beforehand.</li>
+<li lang="en"><b>Formulas vanish</b>: only stored values are used. This is by design.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Sprawdź, czy pliki to .xlsx (stare .xls najpierw zapisz ponownie)</li>
-<li>Sprawdź, czy żaden nie przekracza 30 MB</li>
-<li>Jeśli jest zniekształcony, zaimportuj jako UTF-8 przez „Otwórz CSV”</li>
+<li lang="en">Check the file format (.xlsx).</li>
+<li lang="en">Check the "Target sheet" setting.</li>
+<li lang="en">Check the total size.</li>
+<li lang="en">Press "Combine and save as CSV" again.</li>
 </ol>
-<div class="note">Przed użyciem usuń hasło z chronionego pliku Excel.</div>
+<div class="note" lang="en">The screen also says, "Suited to combining files with the same column order."</div>
+<h2 lang="en">When values look wrong</h2>
+<ul>
+<li lang="en">If formula-cell values are stale, re-save the original Excel and try again</li>
+<li lang="en">If dates come out as numbers (serial values), set formatting in Excel</li>
+<li lang="en">Numbers with leading zeros may lose the zeros when opened in Excel</li>
+</ul>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Reviewing settings</li>
+</ul>
+<h2>Przykład</h2>
+<p lang="en">The combined CSV was garbled in Excel. Re-saving as UTF-8 with BOM using the encoding conversion tool made it open correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Freezes on a phone</b>: reduce files.</li>
+<li lang="en"><b>Only some sheets</b>: switch to "All sheets".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can formatting (colours, borders) be carried over?</h3>
+<p lang="en">No. Only stored cell values are used.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">Review size, format and sheet settings. Fix garbling with BOM.</p>
 <a class="cta" href="/pl/xlsx-merge-csv.html">Użyj „Scal kilka plików Excel w jeden CSV” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/xlsx-to-csv.html">Konwersja Excela na CSV lub JSON</a>: Zamień arkusz Excela na CSV, TSV lub JSON.</li><li><a href="/pl/xlsx-split-sheets.html">Podział pliku Excela według arkuszy</a>: Podziel każdy arkusz Excela na osobny plik CSV lub TSV.</li><li><a href="/pl/csv-tools.html">Scalaj, dziel i wybieraj kolumny z CSV</a>: Scalaj pliki CSV, dziel według wierszy lub zachowaj tylko wybrane kolumny.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When Merging Fails or Looks Garbled</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the format</li><li>Check the size</li><li>Reopen in Excel</li></ul></div>
-<p>If <a href="/en/xlsx-merge-csv.html">Merge Several Excel Files</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>The Excel files can't be combined, or the combined CSV is garbled. Here are troubles that commonly occur with <a href="/en/xlsx-merge-csv.html">Merge Several Excel Files into One CSV</a> and how to handle them.</p>
+<h2>Messages shown</h2>
+<ul>
+<li><b>"The file is too large (up to 30MB)."</b>: the total size exceeds 30MB.</li>
+<li><b>"There was no data to combine."</b>: the chosen sheets contain no data.</li>
+<li><b>"Could not process."</b>: the file is broken, or a format other than .xlsx.</li>
+</ul>
+<h2>Causes and fixes</h2>
+<ul>
+<li><b>Over 30MB</b>: process the files in several rounds.</li>
+<li><b>No data</b>: the sheet is empty, or the data is on another sheet. Try "All sheets".</li>
+<li><b>.xls files</b>: re-save as .xlsx in Excel.</li>
+<li><b>Garbled text</b>: opening the CSV in Excel may garble it. Use the encoding conversion tool to make it UTF-8 with BOM.</li>
+<li><b>Data shifts</b>: the column order differs. Align it beforehand.</li>
+<li><b>Formulas vanish</b>: only stored values are used. This is by design.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the files are .xlsx (re-save old .xls first)</li>
-<li>Check none is over 30 MB</li>
-<li>If garbled, import as UTF-8 from "Open CSV"</li>
+<li>Check the file format (.xlsx).</li>
+<li>Check the "Target sheet" setting.</li>
+<li>Check the total size.</li>
+<li>Press "Combine and save as CSV" again.</li>
 </ol>
-<div class="note">Remove the password from a protected Excel file before using it.</div>
+<div class="note">The screen also says, "Suited to combining files with the same column order."</div>
+<h2>When values look wrong</h2>
+<ul>
+<li>If formula-cell values are stale, re-save the original Excel and try again</li>
+<li>If dates come out as numbers (serial values), set formatting in Excel</li>
+<li>Numbers with leading zeros may lose the zeros when opened in Excel</li>
+</ul>
+<h2>Uses it suits</h2>
+<ul>
+<li>Pre-checks before trouble</li>
+<li>Reviewing settings</li>
+</ul>
+<h2>Example</h2>
+<p>The combined CSV was garbled in Excel. Re-saving as UTF-8 with BOM using the encoding conversion tool made it open correctly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Freezes on a phone</b>: reduce files.</li>
+<li><b>Only some sheets</b>: switch to "All sheets".</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can formatting (colours, borders) be carried over?</h3>
+<p>No. Only stored cell values are used.</p>
+<h2>Summary</h2>
+<p>Review size, format and sheet settings. Fix garbling with BOM.</p>
 <a class="cta" href="/en/xlsx-merge-csv.html">Use "Merge Several Excel Files into One CSV" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/xlsx-to-csv.html">Convert Excel to CSV or JSON</a>: Convert an Excel sheet to CSV, TSV or JSON.</li><li><a href="/en/xlsx-split-sheets.html">Split an Excel File by Sheet</a>: Split each Excel sheet into its own CSV or TSV.</li><li><a href="/en/csv-tools.html">Merge, Split and Pick Columns from CSV</a>: Merge CSV files, split by rows, or keep only chosen columns.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>重複檔案是如何被檢測的（SHA-256 指紋）</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>比較大小</li><li>計算指紋</li><li>把相同的歸為一組</li></ul></div>
-<p><a href="/tw/file-dupes.html">查詢重複檔案</a>比較的是內容的指紋，而不是名稱。</p>
-<h2>步驟</h2>
+<p lang="en">How does it check whether contents are the same? <a href="/tw/file-dupes.html">Find Duplicate Files</a> calculates a value equivalent to a file's "fingerprint" (a SHA-256 hash) and treats files with the same fingerprint as duplicates.</p>
+<h2 lang="en">What a hash is</h2>
+<p lang="en">A long string of characters and digits calculated from a file's contents. It's like the file's "fingerprint".</p>
+<ul>
+<li lang="en">Same contents always give the same value</li>
+<li lang="en">Even one bit of difference gives a completely different value</li>
+<li lang="en">The original file cannot be reproduced from the value</li>
+</ul>
+<h2 lang="en">Steps (checking with this tool)</h2>
 <ol>
-<li>先比較檔案大小</li>
-<li>對大小相同的檔案，計算 SHA-256 指紋</li>
-<li>把指紋相同的檔案歸為重複組</li>
+<li lang="en">Choose files with "Choose files".</li>
+<li lang="en">The tool calculates each file's fingerprint.</li>
+<li lang="en">Files with the same fingerprint are shown as duplicates.</li>
 </ol>
-<div class="note">指紋一致，就可以認為內容實際上完全相同。</div>
+<div class="note" lang="en">Names and modified dates don't matter. Judgement is by contents alone.</div>
+<h2 lang="en">Why not judge by name</h2>
+<p lang="en">Many files share a name but differ in contents. Conversely, some files have different names but the same contents. Comparing contents is the reliable way.</p>
+<h2 lang="en">Safety of SHA-256</h2>
+<p lang="en">SHA-256 is widely used, and the chance of different files having the same fingerprint is effectively zero. So it can be used with confidence for judging duplicates.</p>
+<h2 lang="en">When you want to check a hash yourself</h2>
+<p lang="en">The "Check a file's hash (SHA-256)" tool displays one file's fingerprint. Handy for confirming whether two files are the same.</p>
+<h2>適合</h2>
+<ul>
+<li lang="en">Confirming that files are truly the same</li>
+<li lang="en">Checking that downloaded files aren't corrupted</li>
+<li lang="en">Finding duplicates reliably</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Couldn't tell whether two PDFs were the same. Comparing hashes showed a perfect match, so I deleted one.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looks identical but is judged different</b>: re-saving etc. made the contents slightly different.</li>
+<li lang="en"><b>Large files take time</b>: calculation takes time. Wait.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the file's contents be known from the hash?</h3>
+<p lang="en">No. The original file cannot be made from the value.</p>
+<h2>小結</h2>
+<p lang="en">Same fingerprint, same contents. Duplicates are found reliably regardless of name.</p>
 <a class="cta" href="/tw/file-dupes.html">使用「查詢重複檔案」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/file-hash.html">檢視檔案的雜湊值（SHA-256）</a>：計算檔案的雜湊值並進行比對。</li><li><a href="/tw/zip-maker.html">把檔案打包成 ZIP</a>：把多個檔案打包成一個 ZIP。</li><li><a href="/tw/file-rename.html">一次性重新命名多個檔案（編號、日期）</a>: 用編號或日期一次性重新命名多個檔案。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

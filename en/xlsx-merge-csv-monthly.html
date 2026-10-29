@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Combining Monthly Excel Files into a Yearly Dataset</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose the 12 monthly files</li><li>Use "First sheet"</li><li>Save the CSV</li></ul></div>
-<p>With <a href="/en/xlsx-merge-csv.html">Merge Several Excel Files</a> you can combine monthly sales sheets into one.</p>
+<p>Sales managed in separate Excel files from January to December. When you want annual totals, copy-pasting one by one is tough. With <a href="/en/xlsx-merge-csv.html">Merge Several Excel Files into One CSV</a> you can combine the 12 Excel files into one CSV at once.</p>
 <h2>Steps</h2>
 <ol>
-<li>Select the monthly Excel files</li>
-<li>Choose "First sheet of each file"</li>
-<li>Add the "source file" column and save</li>
+<li>With "Choose Excel files", choose all 12 months' files.</li>
+<li>Under "Target sheet", choose "First sheet of each file".</li>
+<li>Tick "First row is a header (keep only one)".</li>
+<li>Tick "Add 'Source file' and 'Sheet name' columns".</li>
+<li>Press "Combine and save as CSV" and save.</li>
 </ol>
-<div class="note">Keep the column order the same in every file.</div>
+<div class="note">Adding the "Source file" column lets you tell later which month's file each row came from.</div>
+<h2>Preparation</h2>
+<ul>
+<li>Align the column order of the 12 files</li>
+<li>Name files so the month is clear, like "2026-01.xlsx"</li>
+<li>Make header names consistent</li>
+</ul>
+<h2>Using the result</h2>
+<ol>
+<li>Open the resulting CSV in Excel (if garbled, re-save with BOM).</li>
+<li>Total by month and product with a pivot table.</li>
+<li>Make a chart to see trends.</li>
+</ol>
+<h2>Using the "Source file" column</h2>
+<p>With this column you can extract the month from the file name and total by month. It assumes the month is in the file name.</p>
+<h2>Good for</h2>
+<ul>
+<li>Combining monthly data into annual</li>
+<li>Combining quarterly Excel files into half-year</li>
+<li>Combining multi-year data across fiscal years</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>For formula cells, only the stored values are used</li>
+<li>Formatting (colours, borders) is not carried over</li>
+<li>Empty rows may be included as they are</li>
+</ul>
+<h2>Example</h2>
+<p>Gathered 12 monthly sales Excel files into one annual CSV. A pivot table gave totals by month and product.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Columns differ by month</b>: align the columns beforehand.</li>
+<li><b>Headers overlap</b>: "First row is a header" wasn't ticked.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What order do the files go in?</h3>
+<p>They connect in the order chosen. Choosing in month order gives a month-ordered CSV.</p>
+<h2>Summary</h2>
+<p>Monthly Excel files into one CSV. Adding the file-name column enables monthly totals too.</p>
 <a class="cta" href="/en/xlsx-merge-csv.html">Use "Merge Several Excel Files into One CSV" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/xlsx-to-csv.html">Convert Excel to CSV or JSON</a>: Convert an Excel sheet to CSV, TSV or JSON.</li><li><a href="/en/xlsx-split-sheets.html">Split an Excel File by Sheet</a>: Split each Excel sheet into its own CSV or TSV.</li><li><a href="/en/csv-tools.html">Merge, Split and Pick Columns from CSV</a>: Merge CSV files, split by rows, or keep only chosen columns.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>合并失败或出现乱码时怎么办</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>检查格式</li><li>确认大小</li><li>在 Excel 中重新打开</li></ul></div>
-<p>如果<a href="/zh/xlsx-merge-csv.html">将多个 Excel 合并为一个</a>无法使用，请检查以下几点。</p>
-<h2>步骤</h2>
+<p lang="en">The Excel files can't be combined, or the combined CSV is garbled. Here are troubles that commonly occur with <a href="/zh/xlsx-merge-csv.html">Merge Several Excel Files into One CSV</a> and how to handle them.</p>
+<h2 lang="en">Messages shown</h2>
+<ul>
+<li lang="en"><b>"The file is too large (up to 30MB)."</b>: the total size exceeds 30MB.</li>
+<li lang="en"><b>"There was no data to combine."</b>: the chosen sheets contain no data.</li>
+<li lang="en"><b>"Could not process."</b>: the file is broken, or a format other than .xlsx.</li>
+</ul>
+<h2>原因与解决办法</h2>
+<ul>
+<li lang="en"><b>Over 30MB</b>: process the files in several rounds.</li>
+<li lang="en"><b>No data</b>: the sheet is empty, or the data is on another sheet. Try "All sheets".</li>
+<li lang="en"><b>.xls files</b>: re-save as .xlsx in Excel.</li>
+<li lang="en"><b>Garbled text</b>: opening the CSV in Excel may garble it. Use the encoding conversion tool to make it UTF-8 with BOM.</li>
+<li lang="en"><b>Data shifts</b>: the column order differs. Align it beforehand.</li>
+<li lang="en"><b>Formulas vanish</b>: only stored values are used. This is by design.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>确认文件是 .xlsx（旧的 .xls 请先另存）</li>
-<li>确认没有超过 30 MB 的</li>
-<li>如果出现乱码，请在“打开 CSV”中以 UTF-8 导入</li>
+<li lang="en">Check the file format (.xlsx).</li>
+<li lang="en">Check the "Target sheet" setting.</li>
+<li lang="en">Check the total size.</li>
+<li lang="en">Press "Combine and save as CSV" again.</li>
 </ol>
-<div class="note">有密码保护的 Excel 文件，请先去掉密码再使用。</div>
+<div class="note" lang="en">The screen also says, "Suited to combining files with the same column order."</div>
+<h2 lang="en">When values look wrong</h2>
+<ul>
+<li lang="en">If formula-cell values are stale, re-save the original Excel and try again</li>
+<li lang="en">If dates come out as numbers (serial values), set formatting in Excel</li>
+<li lang="en">Numbers with leading zeros may lose the zeros when opened in Excel</li>
+</ul>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Reviewing settings</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">The combined CSV was garbled in Excel. Re-saving as UTF-8 with BOM using the encoding conversion tool made it open correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Freezes on a phone</b>: reduce files.</li>
+<li lang="en"><b>Only some sheets</b>: switch to "All sheets".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can formatting (colours, borders) be carried over?</h3>
+<p lang="en">No. Only stored cell values are used.</p>
+<h2>小结</h2>
+<p lang="en">Review size, format and sheet settings. Fix garbling with BOM.</p>
 <a class="cta" href="/zh/xlsx-merge-csv.html">使用“将多个 Excel 文件合并为一个 CSV”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/xlsx-to-csv.html">把 Excel 转换成 CSV 或 JSON</a>：把 Excel 工作表转换成 CSV、TSV 或 JSON。</li><li><a href="/zh/xlsx-split-sheets.html">按工作表拆分 Excel 文件</a>: 把 Excel 的每个工作表拆成单独的 CSV 或 TSV。</li><li><a href="/zh/csv-tools.html">合并、拆分 CSV 并选取列</a>: 合并 CSV 文件、按行拆分，或只保留所选列。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

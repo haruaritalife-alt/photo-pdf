@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>合併看起來亂碼的文字</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>檢查每個檔案的開頭</li><li>合併</li><li>亂碼時修正編碼</li></ul></div>
-<p><a href="/tw/txt-merge-split.html">合併和拆分文字檔案</a>會自動檢測 UTF-8 和 Shift_JIS 併合並。</p>
+<p lang="en">After combining garbled texts, they became even less readable. <a href="/tw/txt-merge-split.html">Merge and Split Text Files</a> supports UTF-8 and Shift_JIS, auto-detects the encoding and saves as UTF-8. Here is what to do when garbling persists anyway.</p>
+<h2>工作原理</h2>
+<ul>
+<li lang="en">When reading, it detects the encoding for each file</li>
+<li lang="en">When saving, it aligns to UTF-8</li>
+</ul>
+<p lang="en">So even a mix of UTF-8 and Shift_JIS can be merged.</p>
 <h2>步驟</h2>
 <ol>
-<li>檢視第一個檔案的預覽</li>
-<li>合併並儲存</li>
-<li>如果出現亂碼，請用<a href="/tw/charset-convert.html">轉換文字編碼</a>修正</li>
+<li lang="en">Choose files with "Choose text files".</li>
+<li lang="en">Look at "Beginning of content" and check for garbling.</li>
+<li lang="en">If not garbled, press "Run and save".</li>
+<li lang="en">Open the saved file in an editor that supports UTF-8.</li>
 </ol>
-<div class="note">檢測按檔案逐個進行。</div>
+<div class="note" lang="en">The encoding is auto-detected and saved as UTF-8 (UTF-8 and Shift_JIS are supported).</div>
+<h2 lang="en">If garbled</h2>
+<ul>
+<li lang="en"><b>EUC-JP, UTF-16 and so on</b>: not supported by this tool. First convert to UTF-8 with the encoding conversion tool.</li>
+<li lang="en"><b>The saved file is garbled</b>: the opening app doesn't support UTF-8. Apps that expect Shift_JIS need conversion.</li>
+<li lang="en"><b>Short files</b>: detection can be wrong.</li>
+</ul>
+<h2 lang="en">Steps (fix garbled files before merging)</h2>
+<ol>
+<li lang="en">Convert the garbled file to UTF-8 with the encoding conversion tool.</li>
+<li lang="en">Choose the fixed file together with the others.</li>
+<li lang="en">Merge.</li>
+</ol>
+<h2 lang="en">When garbled in Windows Notepad after merging</h2>
+<p lang="en">Recent Notepad supports UTF-8, but older versions may garble. In that case, use another editor or convert to Shift_JIS.</p>
+<h2>適合</h2>
+<ul>
+<li lang="en">Combining old-system logs (Shift_JIS) with new notes (UTF-8)</li>
+<li lang="en">Gathering texts from different sources</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Wanted to combine an old Shift_JIS log with a new UTF-8 log. Choosing them in this tool auto-detected both and produced one UTF-8 file.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Only part is garbled</b>: that file is in an unsupported encoding.</li>
+<li lang="en"><b>Everything is garbled</b>: check the opening app's settings.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can it save as Shift_JIS?</h3>
+<p lang="en">This tool saves as UTF-8. If you need Shift_JIS, use the encoding conversion tool.</p>
+<h2>小結</h2>
+<p lang="en">UTF-8 and Shift_JIS are auto-detected. For others, convert first and then merge.</p>
 <a class="cta" href="/tw/txt-merge-split.html">使用「合併和拆分文字檔案」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/line-break-remover.html">刪除和整理文字中的換行</a>：整理從 PDF 等處複製的文字中的換行。</li><li><a href="/tw/charset-convert.html">轉換文字編碼（修復亂碼）</a>: 在 Shift_JIS、UTF-8、EUC-JP 等之間轉換文字檔案，修復亂碼。</li><li><a href="/tw/csv-tools.html">合併、拆分 CSV 並選取列</a>: 合併 CSV 檔案、按行拆分，或只保留所選列。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

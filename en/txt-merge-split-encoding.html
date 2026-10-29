@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Merging Text That Looks Garbled</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the start of each file</li><li>Merge</li><li>Fix the encoding if garbled</li></ul></div>
-<p><a href="/en/txt-merge-split.html">Merge and Split Text Files</a> detects UTF-8 and Shift_JIS automatically and merges them.</p>
+<p>After combining garbled texts, they became even less readable. <a href="/en/txt-merge-split.html">Merge and Split Text Files</a> supports UTF-8 and Shift_JIS, auto-detects the encoding and saves as UTF-8. Here is what to do when garbling persists anyway.</p>
+<h2>How it works</h2>
+<ul>
+<li>When reading, it detects the encoding for each file</li>
+<li>When saving, it aligns to UTF-8</li>
+</ul>
+<p>So even a mix of UTF-8 and Shift_JIS can be merged.</p>
 <h2>Steps</h2>
 <ol>
-<li>Check the preview of the first file</li>
-<li>Merge and save</li>
-<li>If garbled, fix it with <a href="/en/charset-convert.html">Convert Text Encoding</a></li>
+<li>Choose files with "Choose text files".</li>
+<li>Look at "Beginning of content" and check for garbling.</li>
+<li>If not garbled, press "Run and save".</li>
+<li>Open the saved file in an editor that supports UTF-8.</li>
 </ol>
-<div class="note">Detection is done per file.</div>
+<div class="note">The encoding is auto-detected and saved as UTF-8 (UTF-8 and Shift_JIS are supported).</div>
+<h2>If garbled</h2>
+<ul>
+<li><b>EUC-JP, UTF-16 and so on</b>: not supported by this tool. First convert to UTF-8 with the encoding conversion tool.</li>
+<li><b>The saved file is garbled</b>: the opening app doesn't support UTF-8. Apps that expect Shift_JIS need conversion.</li>
+<li><b>Short files</b>: detection can be wrong.</li>
+</ul>
+<h2>Steps (fix garbled files before merging)</h2>
+<ol>
+<li>Convert the garbled file to UTF-8 with the encoding conversion tool.</li>
+<li>Choose the fixed file together with the others.</li>
+<li>Merge.</li>
+</ol>
+<h2>When garbled in Windows Notepad after merging</h2>
+<p>Recent Notepad supports UTF-8, but older versions may garble. In that case, use another editor or convert to Shift_JIS.</p>
+<h2>Good for</h2>
+<ul>
+<li>Combining old-system logs (Shift_JIS) with new notes (UTF-8)</li>
+<li>Gathering texts from different sources</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to combine an old Shift_JIS log with a new UTF-8 log. Choosing them in this tool auto-detected both and produced one UTF-8 file.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Only part is garbled</b>: that file is in an unsupported encoding.</li>
+<li><b>Everything is garbled</b>: check the opening app's settings.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can it save as Shift_JIS?</h3>
+<p>This tool saves as UTF-8. If you need Shift_JIS, use the encoding conversion tool.</p>
+<h2>Summary</h2>
+<p>UTF-8 and Shift_JIS are auto-detected. For others, convert first and then merge.</p>
 <a class="cta" href="/en/txt-merge-split.html">Use "Merge and Split Text Files" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/line-break-remover.html">Remove and Tidy Line Breaks in Text</a>: Tidy line breaks in text copied from PDFs and elsewhere.</li><li><a href="/en/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a>: Convert text files between Shift_JIS, UTF-8, EUC-JP and more to fix garbled text.</li><li><a href="/en/csv-tools.html">Merge, Split and Pick Columns from CSV</a>: Merge CSV files, split by rows, or keep only chosen columns.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Cosa fare quando l'unione non riesce o il risultato appare illeggibile</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Controlla il formato</li><li>Controlla la dimensione</li><li>Riapri in Excel</li></ul></div>
-<p>Se <a href="/it/xlsx-merge-csv.html">Unisci più file Excel</a> non funziona, controlla quanto segue.</p>
-<h2>Passaggi</h2>
+<p lang="en">The Excel files can't be combined, or the combined CSV is garbled. Here are troubles that commonly occur with <a href="/it/xlsx-merge-csv.html">Merge Several Excel Files into One CSV</a> and how to handle them.</p>
+<h2 lang="en">Messages shown</h2>
+<ul>
+<li lang="en"><b>"The file is too large (up to 30MB)."</b>: the total size exceeds 30MB.</li>
+<li lang="en"><b>"There was no data to combine."</b>: the chosen sheets contain no data.</li>
+<li lang="en"><b>"Could not process."</b>: the file is broken, or a format other than .xlsx.</li>
+</ul>
+<h2>Cause e soluzioni</h2>
+<ul>
+<li lang="en"><b>Over 30MB</b>: process the files in several rounds.</li>
+<li lang="en"><b>No data</b>: the sheet is empty, or the data is on another sheet. Try "All sheets".</li>
+<li lang="en"><b>.xls files</b>: re-save as .xlsx in Excel.</li>
+<li lang="en"><b>Garbled text</b>: opening the CSV in Excel may garble it. Use the encoding conversion tool to make it UTF-8 with BOM.</li>
+<li lang="en"><b>Data shifts</b>: the column order differs. Align it beforehand.</li>
+<li lang="en"><b>Formulas vanish</b>: only stored values are used. This is by design.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Controlla che i file siano .xlsx (risalva prima i vecchi .xls)</li>
-<li>Controlla che nessuno superi i 30 MB</li>
-<li>Se è illeggibile, importa come UTF-8 da "Apri CSV"</li>
+<li lang="en">Check the file format (.xlsx).</li>
+<li lang="en">Check the "Target sheet" setting.</li>
+<li lang="en">Check the total size.</li>
+<li lang="en">Press "Combine and save as CSV" again.</li>
 </ol>
-<div class="note">Rimuovi la password da un file Excel protetto prima di usarlo.</div>
+<div class="note" lang="en">The screen also says, "Suited to combining files with the same column order."</div>
+<h2 lang="en">When values look wrong</h2>
+<ul>
+<li lang="en">If formula-cell values are stale, re-save the original Excel and try again</li>
+<li lang="en">If dates come out as numbers (serial values), set formatting in Excel</li>
+<li lang="en">Numbers with leading zeros may lose the zeros when opened in Excel</li>
+</ul>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Reviewing settings</li>
+</ul>
+<h2>Esempio</h2>
+<p lang="en">The combined CSV was garbled in Excel. Re-saving as UTF-8 with BOM using the encoding conversion tool made it open correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Freezes on a phone</b>: reduce files.</li>
+<li lang="en"><b>Only some sheets</b>: switch to "All sheets".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can formatting (colours, borders) be carried over?</h3>
+<p lang="en">No. Only stored cell values are used.</p>
+<h2>Riepilogo</h2>
+<p lang="en">Review size, format and sheet settings. Fix garbling with BOM.</p>
 <a class="cta" href="/it/xlsx-merge-csv.html">Usa “Unire più file Excel in un unico CSV” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/xlsx-to-csv.html">Converti Excel in CSV o JSON</a>: Converti un foglio Excel in CSV, TSV o JSON.</li><li><a href="/it/xlsx-split-sheets.html">Dividi un file Excel per foglio</a>: Dividi ogni foglio di Excel nel proprio CSV o TSV.</li><li><a href="/it/csv-tools.html">Unire, dividere e scegliere colonne da CSV</a>: Unisci file CSV, dividili per righe o tieni solo le colonne scelte.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>
