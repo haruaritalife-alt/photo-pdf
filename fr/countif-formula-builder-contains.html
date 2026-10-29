@@ -201,14 +201,38 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Compter les cellules contenant un texte</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Choisissez CONTAINS</li><li>Saisir le texte à rechercher</li><li>Copiez-le</li></ul></div>
-<p>Dans <a href="/fr/countif-formula-builder.html">Créateur de COUNTIF</a>, vous pouvez créer une formule qui compte les cellules contenant le texte.</p>
+<p lang="en">Sometimes you want to count cells that match only in part: addresses containing "Tokyo", or file names with "invoice" in them. With <a href="/fr/countif-formula-builder.html">Build a COUNTIF Formula</a> you can build COUNTIF formulas that use wildcards.</p>
+<h2 lang="en">How wildcards work</h2>
+<p lang="en">In a COUNTIF condition, "*" stands for any run of zero or more characters, and "?" stands for exactly one character.</p>
+<ul>
+<li lang="en"><code>"*Tokyo*"</code>: contains "Tokyo" anywhere</li>
+<li lang="en"><code>"Tokyo*"</code>: starts with "Tokyo"</li>
+<li lang="en"><code>"*Tokyo"</code>: ends with "Tokyo"</li>
+<li lang="en"><code>"Ta?"</code>: "Ta" followed by exactly one character</li>
+</ul>
 <h2>Étapes</h2>
 <ol>
-<li>Choisissez CONTAINS</li>
-<li>Saisir le texte à rechercher</li>
-<li>Copiez-le</li>
+<li lang="en">Enter the range (for example A2:A100).</li>
+<li lang="en">Enter the text to look for (for example Tokyo).</li>
+<li lang="en">Choose contains, starts with or ends with.</li>
+<li lang="en">Copy the formula and paste it.</li>
 </ol>
-<div class="note">Compte la cellule quoi qu'il y ait avant ou après.</div>
+<div class="note" lang="en">If the text is written in another cell, join it with "&amp;", as in <code>"*"&amp;E2&amp;"*"</code>.</div>
+<h2 lang="en">Examples</h2>
+<p lang="en">To count the people in Tokyo in an address column, use <code>=COUNTIF(A2:A500,"Tokyo*")</code>. To count product names containing "limited", use <code>=COUNTIF(B2:B300,"*limited*")</code>.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looking for "*" or "?" itself</b>: put "~" in front, as in <code>"~*"</code>.</li>
+<li lang="en"><b>Numbers may be skipped</b>: wildcards work on text cells. Cells that hold only numbers may not match, so convert them to text if needed.</li>
+<li lang="en"><b>Case is ignored</b>: "Tokyo" and "tokyo" are counted together.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I count cells that contain either of two words?</h3>
+<p lang="en">Add two COUNTIF formulas. If a cell can contain both, subtract the overlap.</p>
+<h3 lang="en">Can I use regular expressions?</h3>
+<p lang="en">Not in COUNTIF. Use another method for complex matching.</p>
+<h2>En résumé</h2>
+<p lang="en">For a partial match, put "*" on both sides of the text. When the text is in another cell, join it with "&amp;".</p>
 <a class="cta" href="/fr/countif-formula-builder.html">Utiliser « Créer une formule COUNTIF » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/sumif-formula-builder.html">Créer une formule SUMIF ou COUNTIF</a>: Créez des formules SUMIF et COUNTIF.</li><li><a href="/fr/unique-formula-builder.html">Créer une formule UNIQUE</a>: Créez des formules de traitement des doublons.</li><li><a href="/fr/cond-format-formula-builder.html">Créer une formule de mise en forme conditionnelle</a>: Créez des formules de mise en forme conditionnelle.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

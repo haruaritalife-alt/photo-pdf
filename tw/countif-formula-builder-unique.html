@@ -201,14 +201,32 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>統計不重複值的個數</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>選擇 UNIQUE</li><li>輸入範圍</li><li>複製</li></ul></div>
-<p>在 <a href="/tw/countif-formula-builder.html">COUNTIF 公式生成器</a> 中，可以生成把相同的值只計一次的公式。</p>
+<p lang="en">In a column where the same value appears again and again, you sometimes want to know how many different values there are, such as how many different customers appear in a column of names. With <a href="/tw/countif-formula-builder.html">Build a COUNTIF Formula</a> you can build formulas that count distinct values.</p>
+<h2 lang="en">The basic formulas</h2>
+<p lang="en">The long-standing classic is <code>=SUMPRODUCT(1/COUNTIF(A2:A100,A2:A100))</code>. Each cell is divided by how many times its value appears, and adding everything up gives the number of distinct values.</p>
+<p lang="en">In Excel 365 and Google Sheets, <code>=COUNTA(UNIQUE(A2:A100))</code> is easier to read and is the one we recommend.</p>
 <h2>步驟</h2>
 <ol>
-<li>選擇 UNIQUE</li>
-<li>輸入範圍</li>
-<li>複製</li>
+<li lang="en">Choose UNIQUE.</li>
+<li lang="en">Enter the range (for example A2:A100).</li>
+<li lang="en">Copy the formula and paste it.</li>
 </ol>
-<div class="note">第二個公式適用於 Google 表格。</div>
+<div class="note" lang="en">If the range contains empty cells, the classic formula returns #DIV/0!. Use a version that skips blanks.</div>
+<h2>示例</h2>
+<p lang="en">If a purchase history has 500 rows of customer names, <code>=COUNTA(UNIQUE(A2:A501))</code> tells you how many different people bought something, not how many purchases were made.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Empty cells mixed in</b>: UNIQUE treats an empty cell as one value. To exclude them, combine it with FILTER.</li>
+<li lang="en"><b>Full-width, half-width and spaces</b>: values that look the same can still count as different. Tidy them up first.</li>
+<li lang="en"><b>UNIQUE is missing in older Excel</b>: use the SUMPRODUCT formula.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I find only the values that repeat?</h3>
+<p lang="en">Use COUNTIF to get the count for each cell and look for 2 or more.</p>
+<h3 lang="en">Does it tell upper and lower case apart?</h3>
+<p lang="en">No. They are counted as the same value.</p>
+<h2>小結</h2>
+<p lang="en">To count distinct values, use UNIQUE in newer apps and the SUMPRODUCT formula in older ones.</p>
 <a class="cta" href="/tw/countif-formula-builder.html">使用「生成 COUNTIF 公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li><li><a href="/tw/unique-formula-builder.html">生成 UNIQUE 公式</a>: 生成處理重複項的公式。</li><li><a href="/tw/cond-format-formula-builder.html">生成條件格式公式</a>: 生成條件格式公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

@@ -201,14 +201,32 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Unterschiedliche Werte zählen</h1>
 <p class="meta">Veröffentlicht: 19.10.2026 | Aktualisiert: 19.10.2026 | <a href="/about.html">Über uns (Japanisch)</a></p>
 <div class="points"><b>Wichtige Punkte</b><ul><li>UNIQUE wählen</li><li>Bereich eingeben</li><li>Kopieren</li></ul></div>
-<p>In <a href="/de/countif-formula-builder.html">COUNTIF-Generator</a> können Sie eine Formel erstellen, die jeden Wert nur einmal zählt.</p>
+<p lang="en">In a column where the same value appears again and again, you sometimes want to know how many different values there are, such as how many different customers appear in a column of names. With <a href="/de/countif-formula-builder.html">Build a COUNTIF Formula</a> you can build formulas that count distinct values.</p>
+<h2 lang="en">The basic formulas</h2>
+<p lang="en">The long-standing classic is <code>=SUMPRODUCT(1/COUNTIF(A2:A100,A2:A100))</code>. Each cell is divided by how many times its value appears, and adding everything up gives the number of distinct values.</p>
+<p lang="en">In Excel 365 and Google Sheets, <code>=COUNTA(UNIQUE(A2:A100))</code> is easier to read and is the one we recommend.</p>
 <h2>Schritte</h2>
 <ol>
-<li>UNIQUE wählen</li>
-<li>Bereich eingeben</li>
-<li>Kopieren</li>
+<li lang="en">Choose UNIQUE.</li>
+<li lang="en">Enter the range (for example A2:A100).</li>
+<li lang="en">Copy the formula and paste it.</li>
 </ol>
-<div class="note">Die zweite Formel ist für Google Tabellen.</div>
+<div class="note" lang="en">If the range contains empty cells, the classic formula returns #DIV/0!. Use a version that skips blanks.</div>
+<h2>Beispiel</h2>
+<p lang="en">If a purchase history has 500 rows of customer names, <code>=COUNTA(UNIQUE(A2:A501))</code> tells you how many different people bought something, not how many purchases were made.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Empty cells mixed in</b>: UNIQUE treats an empty cell as one value. To exclude them, combine it with FILTER.</li>
+<li lang="en"><b>Full-width, half-width and spaces</b>: values that look the same can still count as different. Tidy them up first.</li>
+<li lang="en"><b>UNIQUE is missing in older Excel</b>: use the SUMPRODUCT formula.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I find only the values that repeat?</h3>
+<p lang="en">Use COUNTIF to get the count for each cell and look for 2 or more.</p>
+<h3 lang="en">Does it tell upper and lower case apart?</h3>
+<p lang="en">No. They are counted as the same value.</p>
+<h2>Zusammenfassung</h2>
+<p lang="en">To count distinct values, use UNIQUE in newer apps and the SUMPRODUCT formula in older ones.</p>
 <a class="cta" href="/de/countif-formula-builder.html">„COUNTIF-Formel erstellen“ verwenden (kostenlos)</a>
 <h2>Passende Werkzeuge dazu</h2><ul><li><a href="/de/sumif-formula-builder.html">Eine SUMIF- oder COUNTIF-Formel erstellen</a>: Erstellen Sie SUMIF- und COUNTIF-Formeln.</li><li><a href="/de/unique-formula-builder.html">UNIQUE-Formel erstellen</a>: Formeln zum Umgang mit Duplikaten erstellen.</li><li><a href="/de/cond-format-formula-builder.html">Formel für bedingte Formatierung erstellen</a>: Formeln für bedingte Formatierung erstellen.</li></ul>
 <div class="tip"><p>Wenn Ihnen diese Anleitung geholfen hat, freuen wir uns über ein kleines Trinkgeld.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Trinkgeld senden (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Geschenk senden (Amazon-Wunschliste)</a></div>

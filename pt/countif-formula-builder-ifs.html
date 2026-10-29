@@ -201,14 +201,38 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Contar com duas condições</h1>
 <p class="meta">Publicado em: 19 out 2026 | Atualizado em: 19 out 2026 | <a href="/about.html">Sobre (em japonês)</a></p>
 <div class="points"><b>Pontos principais</b><ul><li>Escolha COUNTIFS</li><li>Digite os dois intervalos e condições</li><li>Copie</li></ul></div>
-<p>No <a href="/pt/countif-formula-builder.html">Gerador de COUNTIF</a> você pode criar uma fórmula que conta as células que atendem às duas condições.</p>
+<p lang="en">When you want to count only the rows that meet every one of several conditions, COUNTIF is not enough. That is the job of COUNTIFS. With <a href="/pt/countif-formula-builder.html">Build a COUNTIF Formula</a> you enter two ranges and two conditions and get a COUNTIFS formula.</p>
+<h2 lang="en">What COUNTIFS is</h2>
+<p lang="en">The shape is <code>=COUNTIFS(range1,condition1,range2,condition2)</code>. Only cells that meet both conditions are counted. For example, to count rows where column A is "Tokyo" and column C in the same row is 100 or more, write <code>=COUNTIFS(A2:A100,"Tokyo",C2:C100,"&gt;=100")</code>.</p>
 <h2>Passos</h2>
 <ol>
-<li>Escolha COUNTIFS</li>
-<li>Digite os dois intervalos e condições</li>
-<li>Copie</li>
+<li lang="en">Choose COUNTIFS.</li>
+<li lang="en">Enter the first range and condition (for example A2:A100 and Tokyo).</li>
+<li lang="en">Enter the second range and condition (for example C2:C100 and &gt;=100).</li>
+<li lang="en">Copy the formula and paste it into the cell where you want the result.</li>
 </ol>
-<div class="note">Deixe os dois intervalos do mesmo tamanho.</div>
+<div class="note" lang="en">Make the two ranges the same number of rows. If they differ, you get #VALUE!.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">In a sales sheet, the number of rows where the person is "Sato" and the amount is 10,000 or more</li>
+<li lang="en">In a roster, the number of people whose address is "Osaka" and whose age is 20 or over</li>
+<li lang="en">In a stock sheet, the number of items in the category "Stationery" with zero stock</li>
+</ul>
+<h2 lang="en">Counting within a date range</h2>
+<p lang="en">To count dates between two limits, use the same column twice: <code>=COUNTIFS(B2:B100,"&gt;="&amp;D1,B2:B100,"&lt;="&amp;D2)</code> counts the dates from D1 to D2.</p>
+<h2>Erros comuns</h2>
+<ul>
+<li lang="en"><b>It is not OR</b>: COUNTIFS means "and". To count "A or B", add two COUNTIF formulas.</li>
+<li lang="en"><b>Ranges of different sizes</b>: if one is A2:A100 and the other is C2:C50, you get an error.</li>
+<li lang="en"><b>Missing quotation marks</b>: text and comparisons go inside <code>"..."</code>.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How many conditions can I use?</h3>
+<p lang="en">Excel allows up to 127 pairs. This tool builds a formula with two pairs.</p>
+<h3 lang="en">Can I put two conditions in one cell?</h3>
+<p lang="en">No. Give each condition its own range-and-condition pair.</p>
+<h2>Resumo</h2>
+<p lang="en">Use COUNTIFS to narrow down with "and". Just remember to keep the ranges the same size.</p>
 <a class="cta" href="/pt/countif-formula-builder.html">Usar “Crie uma fórmula COUNTIF” (grátis)</a>
 <h2>Ferramentas que combinam com esta</h2><ul><li><a href="/pt/sumif-formula-builder.html">Criar uma fórmula SUMIF ou COUNTIF</a>: Crie fórmulas SUMIF e COUNTIF.</li><li><a href="/pt/unique-formula-builder.html">Criar uma fórmula UNIQUE</a>: Crie fórmulas para tratar duplicados.</li><li><a href="/pt/cond-format-formula-builder.html">Criar uma fórmula de formatação condicional</a>: Crie fórmulas de formatação condicional.</li></ul>
 <div class="tip"><p>Se este guia ajudou, uma pequena gorjeta significaria muito.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Enviar uma gorjeta (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar um presente (lista de desejos da Amazon)</a></div>

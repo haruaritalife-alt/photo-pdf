@@ -215,14 +215,32 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>مختلف قدروں کی گنتی</h1>
 <p class="meta">شائع شدہ: 19 اکتوبر 2026 | اپ ڈیٹ: 19 اکتوبر 2026 | <a href="/about.html">تعارف (جاپانی)</a></p>
 <div class="points"><b>اہم نکات</b><ul><li>UNIQUE منتخب کریں</li><li>حد درج کریں</li><li>کاپی کریں</li></ul></div>
-<p><a href="/ur/countif-formula-builder.html">COUNTIF فارمولا بنانے والا</a> میں آپ ایسا فارمولا بنا سکتے ہیں جو ہر قدر کو ایک بار گنتا ہے۔</p>
+<p lang="en">In a column where the same value appears again and again, you sometimes want to know how many different values there are, such as how many different customers appear in a column of names. With <a href="/ur/countif-formula-builder.html">Build a COUNTIF Formula</a> you can build formulas that count distinct values.</p>
+<h2 lang="en">The basic formulas</h2>
+<p lang="en">The long-standing classic is <code>=SUMPRODUCT(1/COUNTIF(A2:A100,A2:A100))</code>. Each cell is divided by how many times its value appears, and adding everything up gives the number of distinct values.</p>
+<p lang="en">In Excel 365 and Google Sheets, <code>=COUNTA(UNIQUE(A2:A100))</code> is easier to read and is the one we recommend.</p>
 <h2>مراحل</h2>
 <ol>
-<li>UNIQUE منتخب کریں</li>
-<li>حد درج کریں</li>
-<li>کاپی کریں</li>
+<li lang="en">Choose UNIQUE.</li>
+<li lang="en">Enter the range (for example A2:A100).</li>
+<li lang="en">Copy the formula and paste it.</li>
 </ol>
-<div class="note">دوسرا فارمولا Google شیٹس کے لیے ہے۔</div>
+<div class="note" lang="en">If the range contains empty cells, the classic formula returns #DIV/0!. Use a version that skips blanks.</div>
+<h2>مثال</h2>
+<p lang="en">If a purchase history has 500 rows of customer names, <code>=COUNTA(UNIQUE(A2:A501))</code> tells you how many different people bought something, not how many purchases were made.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Empty cells mixed in</b>: UNIQUE treats an empty cell as one value. To exclude them, combine it with FILTER.</li>
+<li lang="en"><b>Full-width, half-width and spaces</b>: values that look the same can still count as different. Tidy them up first.</li>
+<li lang="en"><b>UNIQUE is missing in older Excel</b>: use the SUMPRODUCT formula.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I find only the values that repeat?</h3>
+<p lang="en">Use COUNTIF to get the count for each cell and look for 2 or more.</p>
+<h3 lang="en">Does it tell upper and lower case apart?</h3>
+<p lang="en">No. They are counted as the same value.</p>
+<h2>خلاصہ</h2>
+<p lang="en">To count distinct values, use UNIQUE in newer apps and the SUMPRODUCT formula in older ones.</p>
 <a class="cta" href="/ur/countif-formula-builder.html">«COUNTIF فارمولا بنائیں» استعمال کریں (مفت)</a>
 <h2>وہ ٹولز جو اس کے ساتھ اچھے لگتے ہیں</h2><ul><li><a href="/ur/sumif-formula-builder.html">SUMIF یا COUNTIF فارمولا بنانا</a>: SUMIF اور COUNTIF فارمولے بنائیں۔</li><li><a href="/ur/unique-formula-builder.html">UNIQUE فارمولا بنائیں</a>: دہرائی گئی قدروں کو سنبھالنے والے فارمولے بنائیں۔</li><li><a href="/ur/cond-format-formula-builder.html">مشروط فارمیٹنگ کا فارمولا بنائیں</a>: مشروط فارمیٹنگ کے فارمولے بنائیں۔</li></ul>
 <div class="tip"><p>اگر یہ گائیڈ مفید رہی تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ٹپ بھیجیں (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">تحفہ بھیجیں (ایمیزون وش لسٹ)</a></div>

@@ -200,14 +200,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>COUNTIFの書き方（式を自動で作る・無料）</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>範囲と条件を入れる</li><li>種類を選ぶ</li><li>式をコピー</li></ul></div>
-<p><a href="/countif-formula-builder.html">条件に合う数の式の作成</a> は、入力した内容から式を作ります。</p>
+<p><a href="/countif-formula-builder.html">条件に合う数を数える式を作る</a> は、数えたい範囲と条件を入れるだけで、COUNTIF の式を自動で作る無料ツールです。入力した内容はブラウザの中だけで処理され、サーバーには送られません。この解説では、COUNTIF の基本の考え方から、実際の使い方、つまずきやすい点までを順番に説明します。</p>
+<h2>COUNTIFとは何をする関数か</h2>
+<p>COUNTIF は「範囲の中で、条件に合うセルがいくつあるか」を数える関数です。書き方は <code>=COUNTIF(範囲, 条件)</code> の形で、たとえば <code>=COUNTIF(A2:A100,"東京")</code> なら、A2からA100のうち「東京」と書かれたセルの数が返ります。名簿の人数集計、アンケートの回答数、在庫表で「在庫切れ」の件数を調べるときなど、表計算で一番よく使う数え方のひとつです。</p>
 <h2>手順</h2>
 <ol>
-<li>範囲と条件を入れる</li>
-<li>種類を選ぶ</li>
-<li>式をコピー</li>
+<li>「範囲」に、数えたい列のセル範囲を入れます（例：A2:A100）。見出しの行は含めないのがコツです。</li>
+<li>「条件」に、数えたい値や比較を入れます（例：東京、&gt;=100、&lt;&gt;完了）。</li>
+<li>種類から、基本の COUNTIF、空のセル、文字を含むセルなどを選びます。</li>
+<li>表示された式をコピーして、結果を出したいセルに貼り付けます。</li>
 </ol>
-<div class="note">できた式は、そのままセルに貼れます。</div>
+<div class="note">式の先頭の「=」まで含めてコピーされます。貼り付けたあと、セルが数式として動けば成功です。</div>
+<h2>条件の書き方の例</h2>
+<ul>
+<li>完全に一致する文字：<code>"東京"</code></li>
+<li>数字の比較：<code>"&gt;=100"</code>（100以上）、<code>"&lt;50"</code>（50未満）</li>
+<li>等しくない：<code>"&lt;&gt;完了"</code>（「完了」以外）</li>
+<li>別のセルの値を条件にする：<code>A2</code>（セルの中身と同じものを数える）</li>
+<li>比較演算子とセルを組み合わせる：<code>"&gt;="&amp;D1</code>（D1の値以上）</li>
+</ul>
+<h2>具体例：出席表の集計</h2>
+<p>B列に「出席」「欠席」「遅刻」が入った出席表があるとします。出席の人数は <code>=COUNTIF(B2:B50,"出席")</code>、欠席は <code>=COUNTIF(B2:B50,"欠席")</code> で数えられます。条件の文字を別のセルに書いておけば、<code>=COUNTIF(B2:B50,E2)</code> のようにセル参照にでき、条件を変えるたびに式を書き直す必要がなくなります。</p>
+<h2>よくあるつまずき</h2>
+<ul>
+<li><b>範囲がずれる</b>：式をコピーして下のセルに貼ると、範囲も一緒にずれます。固定したいときは <code>$A$2:$A$100</code> のように「$」を付けます。</li>
+<li><b>全角と半角の違い</b>：「ABC」と「ＡＢＣ」は別の文字として扱われ、数えられません。</li>
+<li><b>前後の空白</b>：セルの文字の前後にスペースがあると一致しません。</li>
+<li><b>日付や数字が文字になっている</b>：見た目は数字でも文字として保存されていると、数値の比較に引っかかりません。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>大文字と小文字は区別されますか？</h3>
+<p>区別されません。「abc」と「ABC」は同じ文字として数えられます。</p>
+<h3>複数の条件を同時に使えますか？</h3>
+<p>2つ以上の条件を両方満たすセルを数えるときは COUNTIFS を使います。このツールで作れます。</p>
+<h3>Googleスプレッドシートでも使えますか？</h3>
+<p>はい。COUNTIF の書き方はExcelとスプレッドシートで共通です。</p>
+<h2>まとめ</h2>
+<p>COUNTIF は、範囲と条件の2つが決まれば書ける、わかりやすい関数です。迷ったら、このツールに範囲と条件を入れて式を作り、セルに貼って結果を確かめてください。</p>
 <a class="cta" href="/countif-formula-builder.html">条件に合う数を数える式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/unique-formula-builder.html">UNIQUEの式を作る</a>：重複を扱う式を作ります。</li><li><a href="/cond-format-formula-builder.html">条件付き書式の式を作る</a>：条件付き書式の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +248,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Write COUNTIF (Build It Automatically, Free)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the range and the condition</li><li>Choose the kind</li><li>Copy the formula</li></ul></div>
-<p><a href="/countif-formula-builder.html">COUNTIF Builder</a> builds the formula from what you enter.</p>
+<p><a href="/countif-formula-builder.html">Build a COUNTIF Formula</a> builds a COUNTIF formula from the range and the condition you type in. Everything runs in your browser, and nothing is sent to a server. This guide explains the idea behind COUNTIF, how to use the tool step by step, and the places where people usually get stuck.</p>
+<h2>What COUNTIF does</h2>
+<p>COUNTIF counts how many cells in a range meet a condition. The shape is <code>=COUNTIF(range, condition)</code>. For example, <code>=COUNTIF(A2:A100,"Tokyo")</code> returns how many of the cells from A2 to A100 contain "Tokyo". It is one of the most common counting formulas in a spreadsheet: head counts in a roster, the number of answers in a survey, or how many items in a stock sheet are marked "sold out".</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the range and the condition</li>
-<li>Choose the kind</li>
-<li>Copy the formula</li>
+<li>Enter the cell range you want to count in "Range" (for example A2:A100). Leave the header row out.</li>
+<li>Enter the value or comparison in "Condition" (for example Tokyo, &gt;=100, or &lt;&gt;Done).</li>
+<li>Choose the kind: the basic COUNTIF, empty cells, cells containing text, and so on.</li>
+<li>Copy the formula that appears and paste it into the cell where you want the result.</li>
 </ol>
-<div class="note">The formula can be pasted straight into a cell.</div>
+<div class="note">The leading "=" is copied too. If the cell now shows a number, it worked.</div>
+<h2>Ways to write a condition</h2>
+<ul>
+<li>Exact text: <code>"Tokyo"</code></li>
+<li>Number comparisons: <code>"&gt;=100"</code> (100 or more), <code>"&lt;50"</code> (less than 50)</li>
+<li>Not equal: <code>"&lt;&gt;Done"</code> (anything except "Done")</li>
+<li>A value taken from another cell: <code>A2</code> (counts cells equal to what is in A2)</li>
+<li>A comparison joined to a cell: <code>"&gt;="&amp;D1</code> (D1 or more)</li>
+</ul>
+<h2>Example: an attendance sheet</h2>
+<p>Say column B holds "Present", "Absent" or "Late". You can count the people present with <code>=COUNTIF(B2:B50,"Present")</code> and the absent ones with <code>=COUNTIF(B2:B50,"Absent")</code>. If you write the condition in another cell, you can use a reference such as <code>=COUNTIF(B2:B50,E2)</code>, so you do not have to rewrite the formula each time the condition changes.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The range moves</b>: when you copy the formula to a cell below, the range moves with it. Add "$" signs, as in <code>$A$2:$A$100</code>, to keep it fixed.</li>
+<li><b>Full-width and half-width characters</b>: "ABC" and "ＡＢＣ" are different characters and are not counted together.</li>
+<li><b>Spaces at the ends</b>: a space before or after the text stops it from matching.</li>
+<li><b>Numbers stored as text</b>: a value that looks like a number but is stored as text will not match a numeric comparison.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does it tell upper and lower case apart?</h3>
+<p>No. "abc" and "ABC" are counted as the same text.</p>
+<h3>Can I use more than one condition?</h3>
+<p>To count the cells that meet two or more conditions at once, use COUNTIFS. This tool can build it.</p>
+<h3>Does it work in Google Sheets?</h3>
+<p>Yes. COUNTIF is written the same way in Excel and in Google Sheets.</p>
+<h2>Summary</h2>
+<p>COUNTIF is easy once you know the range and the condition. If you are not sure, enter them in this tool, paste the formula into a cell, and check the result.</p>
 <a class="cta" href="/countif-formula-builder.html">Use "Build a COUNTIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/unique-formula-builder.html">Build a UNIQUE Formula</a>: Build duplicate-handling formulas.</li><li><a href="/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a>: Build conditional formatting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

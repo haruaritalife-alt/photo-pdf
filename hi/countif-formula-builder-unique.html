@@ -201,14 +201,32 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>अलग-अलग मान गिनना</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>UNIQUE चुनें</li><li>रेंज दर्ज करें</li><li>कॉपी करें</li></ul></div>
-<p><a href="/hi/countif-formula-builder.html">COUNTIF सूत्र बनाने वाला टूल</a> में आप ऐसा सूत्र बना सकते हैं जो हर मान को एक बार गिनता है।</p>
+<p lang="en">In a column where the same value appears again and again, you sometimes want to know how many different values there are, such as how many different customers appear in a column of names. With <a href="/hi/countif-formula-builder.html">Build a COUNTIF Formula</a> you can build formulas that count distinct values.</p>
+<h2 lang="en">The basic formulas</h2>
+<p lang="en">The long-standing classic is <code>=SUMPRODUCT(1/COUNTIF(A2:A100,A2:A100))</code>. Each cell is divided by how many times its value appears, and adding everything up gives the number of distinct values.</p>
+<p lang="en">In Excel 365 and Google Sheets, <code>=COUNTA(UNIQUE(A2:A100))</code> is easier to read and is the one we recommend.</p>
 <h2>चरण</h2>
 <ol>
-<li>UNIQUE चुनें</li>
-<li>रेंज दर्ज करें</li>
-<li>कॉपी करें</li>
+<li lang="en">Choose UNIQUE.</li>
+<li lang="en">Enter the range (for example A2:A100).</li>
+<li lang="en">Copy the formula and paste it.</li>
 </ol>
-<div class="note">दूसरा सूत्र Google शीट्स के लिए है।</div>
+<div class="note" lang="en">If the range contains empty cells, the classic formula returns #DIV/0!. Use a version that skips blanks.</div>
+<h2>उदाहरण</h2>
+<p lang="en">If a purchase history has 500 rows of customer names, <code>=COUNTA(UNIQUE(A2:A501))</code> tells you how many different people bought something, not how many purchases were made.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Empty cells mixed in</b>: UNIQUE treats an empty cell as one value. To exclude them, combine it with FILTER.</li>
+<li lang="en"><b>Full-width, half-width and spaces</b>: values that look the same can still count as different. Tidy them up first.</li>
+<li lang="en"><b>UNIQUE is missing in older Excel</b>: use the SUMPRODUCT formula.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I find only the values that repeat?</h3>
+<p lang="en">Use COUNTIF to get the count for each cell and look for 2 or more.</p>
+<h3 lang="en">Does it tell upper and lower case apart?</h3>
+<p lang="en">No. They are counted as the same value.</p>
+<h2>सारांश</h2>
+<p lang="en">To count distinct values, use UNIQUE in newer apps and the SUMPRODUCT formula in older ones.</p>
 <a class="cta" href="/hi/countif-formula-builder.html">“COUNTIF सूत्र बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/sumif-formula-builder.html">SUMIF या COUNTIF फ़ॉर्मूला बनाएँ</a>: SUMIF और COUNTIF फ़ॉर्मूले बनाएँ।</li><li><a href="/hi/unique-formula-builder.html">UNIQUE सूत्र बनाएँ</a>: डुप्लिकेट संभालने वाले सूत्र बनाएँ।</li><li><a href="/hi/cond-format-formula-builder.html">सशर्त फ़ॉर्मेटिंग का सूत्र बनाएँ</a>: सशर्त फ़ॉर्मेटिंग के सूत्र बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>
