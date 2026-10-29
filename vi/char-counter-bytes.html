@@ -201,13 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Ký tự và byte</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Chữ Nhật dùng nhiều byte</li><li>Tính theo UTF-8</li><li>Kiểm tra khi giới hạn tính theo byte</li></ul></div>
+<p lang="en">"Character count" and "byte count" are different things. System input boxes and database limits sometimes use bytes. <a href="/vi/char-counter.html">Character Counter (for Applications and Reports)</a> also shows the byte count in UTF-8.</p>
 <h2>Điểm khác biệt</h2>
 <ul>
-<li>Chữ cái và chữ số mỗi ký tự chiếm 1 byte.</li>
-<li>Mỗi chữ Nhật chiếm 3 byte (UTF-8).</li>
+<li lang="en"><b>Character count</b>: the number of characters. The number of "visible characters" a person counts.</li>
+<li lang="en"><b>Byte count</b>: the unit in which a computer handles data size. The bytes per character depend on the kind of character.</li>
 </ul>
-<p><a href="/vi/char-counter.html">Đếm ký tự (cho đơn xin và báo cáo)</a> cũng hiển thị số byte.</p>
-<div class="note">Hãy kiểm tra khi biểu mẫu giới hạn theo byte.</div>
+<h2 lang="en">Guide to UTF-8 bytes</h2>
+<ul>
+<li lang="en">Half-width letters, digits and symbols: 1 character = 1 byte</li>
+<li lang="en">Hiragana, katakana, kanji and full-width symbols: 1 character = 3 bytes</li>
+<li lang="en">Some emoji and rare kanji: 4 bytes</li>
+</ul>
+<h2>Các bước</h2>
+<ol>
+<li lang="en">Paste text in the "Text" field.</li>
+<li lang="en">Look at the "Bytes (UTF-8)" field.</li>
+<li lang="en">Compare with the byte limit.</li>
+</ol>
+<div class="note" lang="en">The byte count changes with the character encoding. This tool calculates in UTF-8.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">"Hello" → 5 characters, 5 bytes</li>
+<li lang="en">"こんにちは" → 5 characters, 15 bytes</li>
+<li lang="en">"Hello こんにちは" → 11 characters, 21 bytes (5 + 1 + 15)</li>
+</ul>
+<p lang="en">Check the actual value in the tool's display.</p>
+<h2 lang="en">Where bytes are used</h2>
+<ul>
+<li lang="en">Length limits on database fields</li>
+<li lang="en">Input boxes of older systems</li>
+<li lang="en">Length limits of SMS (short messages)</li>
+<li lang="en">Email subjects, limits on strings in programs</li>
+<li lang="en">Length limits on file names</li>
+</ul>
+<h2 lang="en">Full-width counts more</h2>
+<p lang="en">For the same number of characters, Japanese takes about three times the bytes of English. When there is a byte limit, Japanese allows fewer characters.</p>
+<h2>Ví dụ</h2>
+<p lang="en">An input box with "up to 100 bytes". In Japanese, about 33 characters. In letters and digits, 100 characters.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Unsure whether the limit is characters or bytes</b>: check the input box's description.</li>
+<li lang="en"><b>Shift_JIS counts differently</b>: in Shift_JIS, Japanese is 2 bytes per character. This tool uses UTF-8.</li>
+<li lang="en"><b>Emoji increase the count</b>: emoji can be 4 bytes.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are bytes and file size the same?</h3>
+<p lang="en">For a text-only file, nearly the same.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">Characters and bytes are separate. If the limit is in bytes, calculate Japanese at about 3 bytes per character.</p>
 <a class="cta" href="/vi/char-counter.html">Dùng “Đếm ký tự (cho đơn xin và báo cáo)” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/line-break-remover.html">Xóa và dọn dấu xuống dòng trong văn bản</a>: Dọn dấu xuống dòng trong văn bản sao chép từ PDF và nơi khác.</li><li><a href="/vi/zenkaku-hankaku.html">Chuyển đổi chữ toàn chiều rộng, nửa chiều rộng, Hiragana và Katakana</a>: Chuyển đổi chữ toàn chiều rộng/nửa chiều rộng và hiragana/katakana.</li><li><a href="/vi/pdf-to-text.html">Trích xuất chữ từ PDF</a>: Lấy chữ ra khỏi PDF để sao chép hoặc lưu.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>
