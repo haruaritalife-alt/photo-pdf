@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>URL's met %E3%81… weer leesbaar maken</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Plak de URL</li><li>Kies Decoderen</li><li>Lees het resultaat af</li></ul></div>
-<p>Decoderen met <a href="/nl/url-encoder.html">URL coderen</a> zet de %-codes terug naar de oorspronkelijke tekens.</p>
+<p lang="en">A URL that arrived by email or social media was a meaningless string like "https://example.com/%E3%81%82...". It's just Japanese characters encoded. "Decode" in <a href="/nl/url-encoder.html">URL Encode and Decode</a> turns it back into readable characters.</p>
 <h2>Stappen</h2>
 <ol>
-<li>Plak de URL</li>
-<li>Kies Decoderen</li>
-<li>Lees het resultaat af</li>
+<li lang="en">Paste the URL containing "%E3%81..." into the "Before" field.</li>
+<li lang="en">Under "Convert", choose "Decode (%E3… → text)".</li>
+<li lang="en">Check in the "After" field that it became readable.</li>
+<li lang="en">Copy with "Copy result".</li>
 </ol>
-<div class="note">Oudere niet-UTF-8-vormen worden mogelijk niet goed gedecodeerd.</div>
+<div class="note" lang="en">The two digits after "%" represent the character as numbers. Decoding restores the original Japanese.</div>
+<h2 lang="en">Why this happens</h2>
+<p lang="en">URLs can use only half-width alphanumerics and some symbols. When Japanese is included, it's replaced by "%" and a sequence of hexadecimal digits. That's encoding.</p>
+<ul>
+<li lang="en">"あ" → "%E3%81%82"</li>
+<li lang="en">A space → "%20"</li>
+</ul>
+<h2 lang="en">When it can't be decoded</h2>
+<p lang="en">If "Could not decode. Check that what follows '%' is in the correct form." appears, check:</p>
+<ul>
+<li lang="en">Is what follows % two hexadecimal digits (0–9, A–F)?</li>
+<li lang="en">Is % cut off partway?</li>
+<li lang="en">Is it really not just a literal % sign rather than encoded text?</li>
+</ul>
+<h2 lang="en">Common confusions</h2>
+<ul>
+<li lang="en">A string beginning with "%" isn't always encoded (e.g. "50%")</li>
+<li lang="en">If encoded twice, decode twice</li>
+<li lang="en">Depending on the encoding (UTF-8 or Shift_JIS), the result can differ</li>
+</ul>
+<h2>Goed voor</h2>
+<ul>
+<li lang="en">Checking the content of a long URL</li>
+<li lang="en">Reading search terms from a search-result URL</li>
+<li lang="en">Making URLs left in logs readable</li>
+</ul>
+<h2>Voorbeeld</h2>
+<p lang="en">An access log contained a URL like "%E3%81%8A%E5%95%8F...". Decoding showed it was the "Contact us" page.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Garbled text</b>: the original encoding isn't UTF-8.</li>
+<li lang="en"><b>Only part converts</b>: encoded twice. Decode again.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the decoded URL be used as is?</h3>
+<p lang="en">It's for reading. For use in links, the encoded form is safer.</p>
+<h2>Samenvatting</h2>
+<p lang="en">"%E3…" is encoded Japanese. Decoding turns it back into readable characters.</p>
 <a class="cta" href="/nl/url-encoder.html">Gebruik “URL coderen en decoderen” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/json-formatter.html">JSON opmaken en valideren</a>: Maak JSON netjes, minimaliseer en valideer het.</li><li><a href="/nl/text-diff.html">Twee teksten vergelijken (diff)</a>: Toon de verschillen tussen twee teksten regel voor regel.</li><li><a href="/nl/file-base64.html">Bestanden en Base64 omzetten</a>: Zet om tussen bestanden en Base64-tekst.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>

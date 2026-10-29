@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Повернення URL виду %E3%81… до читабельного тексту</h1>
 <p class="meta">Опубліковано: 19 жовт. 2026 | Оновлено: 19 жовт. 2026 | <a href="/about.html">Про нас (японською)</a></p>
 <div class="points"><b>Основне</b><ul><li>Вставте URL</li><li>Виберіть «Декодувати»</li><li>Прочитайте результат</li></ul></div>
-<p>Декодування в <a href="/uk/url-encoder.html">Кодуванні URL</a> повертає коди % до вихідних символів.</p>
+<p lang="en">A URL that arrived by email or social media was a meaningless string like "https://example.com/%E3%81%82...". It's just Japanese characters encoded. "Decode" in <a href="/uk/url-encoder.html">URL Encode and Decode</a> turns it back into readable characters.</p>
 <h2>Кроки</h2>
 <ol>
-<li>Вставте URL</li>
-<li>Виберіть «Декодувати»</li>
-<li>Прочитайте результат</li>
+<li lang="en">Paste the URL containing "%E3%81..." into the "Before" field.</li>
+<li lang="en">Under "Convert", choose "Decode (%E3… → text)".</li>
+<li lang="en">Check in the "After" field that it became readable.</li>
+<li lang="en">Copy with "Copy result".</li>
 </ol>
-<div class="note">Старіші форми не в UTF-8 можуть декодуватися неправильно.</div>
+<div class="note" lang="en">The two digits after "%" represent the character as numbers. Decoding restores the original Japanese.</div>
+<h2 lang="en">Why this happens</h2>
+<p lang="en">URLs can use only half-width alphanumerics and some symbols. When Japanese is included, it's replaced by "%" and a sequence of hexadecimal digits. That's encoding.</p>
+<ul>
+<li lang="en">"あ" → "%E3%81%82"</li>
+<li lang="en">A space → "%20"</li>
+</ul>
+<h2 lang="en">When it can't be decoded</h2>
+<p lang="en">If "Could not decode. Check that what follows '%' is in the correct form." appears, check:</p>
+<ul>
+<li lang="en">Is what follows % two hexadecimal digits (0–9, A–F)?</li>
+<li lang="en">Is % cut off partway?</li>
+<li lang="en">Is it really not just a literal % sign rather than encoded text?</li>
+</ul>
+<h2 lang="en">Common confusions</h2>
+<ul>
+<li lang="en">A string beginning with "%" isn't always encoded (e.g. "50%")</li>
+<li lang="en">If encoded twice, decode twice</li>
+<li lang="en">Depending on the encoding (UTF-8 or Shift_JIS), the result can differ</li>
+</ul>
+<h2>Підходить для</h2>
+<ul>
+<li lang="en">Checking the content of a long URL</li>
+<li lang="en">Reading search terms from a search-result URL</li>
+<li lang="en">Making URLs left in logs readable</li>
+</ul>
+<h2>Приклад</h2>
+<p lang="en">An access log contained a URL like "%E3%81%8A%E5%95%8F...". Decoding showed it was the "Contact us" page.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Garbled text</b>: the original encoding isn't UTF-8.</li>
+<li lang="en"><b>Only part converts</b>: encoded twice. Decode again.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the decoded URL be used as is?</h3>
+<p lang="en">It's for reading. For use in links, the encoded form is safer.</p>
+<h2>Підсумок</h2>
+<p lang="en">"%E3…" is encoded Japanese. Decoding turns it back into readable characters.</p>
 <a class="cta" href="/uk/url-encoder.html">Використати «Кодування й декодування URL» (безкоштовно)</a>
 <h2>Інструменти, що добре поєднуються з цим</h2><ul><li><a href="/uk/json-formatter.html">Форматування й перевірка JSON</a>: Форматуйте, мінімізуйте й перевіряйте JSON.</li><li><a href="/uk/text-diff.html">Порівняння двох текстів (Diff)</a>: Покажіть відмінності між двома текстами рядок за рядком.</li><li><a href="/uk/file-base64.html">Перетворення файлів і Base64</a>: Перетворюйте між файлами й текстом Base64.</li></ul>
 <div class="tip"><p>Якщо цей посібник став у пригоді, невеликі чайові будуть дуже доречні.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Надіслати чайові (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Надіслати подарунок (список бажань Amazon)</a></div>

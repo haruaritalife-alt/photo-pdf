@@ -200,14 +200,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>CSSで使う色の書き方</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>色を入れる</li><li>形式を選ぶ</li><li>CSSに貼る</li></ul></div>
-<p><a href="/color-converter.html">色コード変換</a> の結果は、そのままCSSに貼れる形です。</p>
+<p>CSSで色を指定する方法は、いくつもあります。どれを使えばよいか、迷うことはありませんか。<a href="/color-converter.html">色コード変換（HEX・RGB・HSL）</a> で変換した色コードを、CSSで使うときの書き方を、まとめます。</p>
+<h2>CSSで使える色の書き方</h2>
+<ul>
+<li><b>色の名前</b>：red、blue、whiteなど。</li>
+<li><b>HEX</b>：#FF5733、#F53 など。</li>
+<li><b>RGB</b>：rgb(255, 87, 51)</li>
+<li><b>RGBA</b>：rgba(255, 87, 51, 0.5)（最後が透明度）</li>
+<li><b>HSL</b>：hsl(11, 100%, 60%)</li>
+<li><b>HSLA</b>：hsla(11, 100%, 60%, 0.5)</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>色を入れる</li>
-<li>形式を選ぶ</li>
-<li>CSSに貼る</li>
+<li>「色コード」の欄に、色を入れる。</li>
+<li>「HEX」「RGB」「HSL」の欄から、使いたい形式をコピーする。</li>
+<li>CSSの color や background-color に、貼り付ける。</li>
 </ol>
-<div class="note">どの形式でも、ブラウザでは同じ色に見えます。</div>
+<div class="note">半透明にしたいときは、rgba() か hsla() の、最後の値（0〜1）を足します。</div>
+<h2>CSSの記述例</h2>
+<ul>
+<li>文字の色：color: #FF5733;</li>
+<li>背景の色：background-color: rgb(255, 87, 51);</li>
+<li>枠線の色：border: 1px solid hsl(11, 100%, 60%);</li>
+<li>半透明の背景：background-color: rgba(255, 87, 51, 0.2);</li>
+</ul>
+<h2>書き方の選び方</h2>
+<ul>
+<li><b>HEX</b>：短くて、一般的。デザインツールの色を、そのまま貼れる。</li>
+<li><b>RGB／RGBA</b>：透明度が必要なときに便利。</li>
+<li><b>HSL／HSLA</b>：明るさを調整したいときに便利。</li>
+</ul>
+<h2>CSS変数で色を管理する</h2>
+<p>色が増えてきたら、変数にまとめると、管理しやすくなります。</p>
+<ul>
+<li>:root { --main: #3B82F6; }</li>
+<li>color: var(--main);</li>
+</ul>
+<p>同じ色を何度も書かずに済み、変更も、1か所で済みます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>サイトのデザインの、配色の指定</li>
+<li>色の微調整</li>
+<li>色の統一管理</li>
+</ul>
+<h2>例</h2>
+<p>サイトのメインカラー「#3B82F6」を、ボタンの背景と、見出しの文字色に使った。CSS変数にして、1か所で管理した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>セミコロンを忘れる</b>：CSSでは、各行の最後に「;」が必要。</li>
+<li><b>#がない</b>：HEXは、先頭に「#」が必要。</li>
+<li><b>透明度の範囲</b>：0（透明）〜1（不透明）。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>どの書き方が、一番よいですか？</h3>
+<p>どれでも動きます。チームの慣習や、用途で選びましょう。</p>
+<h2>まとめ</h2>
+<p>CSSの色は、HEX・RGB・HSLのどれでも書ける。用途に合わせて選びましょう。</p>
 <a class="cta" href="/color-converter.html">色コード変換（HEX・RGB・HSL）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/image-filter.html">画像を白黒・セピアなどに加工する</a>：画像を白黒・セピアにしたり、明るさを変えたりします。</li><li><a href="/favicon-maker.html">ファビコン（サイトのアイコン）を作る</a>：1枚の画像から、ファビコン一式を作ります。</li><li><a href="/unit-converter.html">単位を換算する（長さ・重さ・面積・温度など）</a>：長さ・重さ・面積・温度などを、すぐに換算します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +267,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Writing Colors in CSS</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter a color</li><li>Pick a format</li><li>Paste it into CSS</li></ul></div>
-<p>The results from <a href="/color-converter.html">Color Converter</a> can be pasted straight into CSS.</p>
+<p>There are many ways to specify colours in CSS. Do you ever wonder which to use? Here is how to write colour codes converted with <a href="/color-converter.html">Color Code Converter (HEX, RGB, HSL)</a> when using them in CSS.</p>
+<h2>Colour notations usable in CSS</h2>
+<ul>
+<li><b>Colour names</b>: red, blue, white, etc.</li>
+<li><b>HEX</b>: #FF5733, #F53, etc.</li>
+<li><b>RGB</b>: rgb(255, 87, 51)</li>
+<li><b>RGBA</b>: rgba(255, 87, 51, 0.5) (the last is opacity)</li>
+<li><b>HSL</b>: hsl(11, 100%, 60%)</li>
+<li><b>HSLA</b>: hsla(11, 100%, 60%, 0.5)</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter a color</li>
-<li>Pick a format</li>
-<li>Paste it into CSS</li>
+<li>Enter a colour in the "Colour code" field.</li>
+<li>Copy the format you want to use from the "HEX", "RGB" and "HSL" fields.</li>
+<li>Paste it into CSS color or background-color.</li>
 </ol>
-<div class="note">Every format looks the same color in the browser.</div>
+<div class="note">For semi-transparency, add the last value (0–1) in rgba() or hsla().</div>
+<h2>CSS examples</h2>
+<ul>
+<li>Text colour: color: #FF5733;</li>
+<li>Background colour: background-color: rgb(255, 87, 51);</li>
+<li>Border colour: border: 1px solid hsl(11, 100%, 60%);</li>
+<li>Semi-transparent background: background-color: rgba(255, 87, 51, 0.2);</li>
+</ul>
+<h2>Choosing a notation</h2>
+<ul>
+<li><b>HEX</b>: short and common. Colours from design tools can be pasted as they are.</li>
+<li><b>RGB/RGBA</b>: handy when opacity is needed.</li>
+<li><b>HSL/HSLA</b>: handy when you want to adjust lightness.</li>
+</ul>
+<h2>Managing colours with CSS variables</h2>
+<p>As colours multiply, gathering them into variables makes management easier.</p>
+<ul>
+<li>:root { --main: #3B82F6; }</li>
+<li>color: var(--main);</li>
+</ul>
+<p>You avoid writing the same colour repeatedly and changes happen in one place.</p>
+<h2>Good for</h2>
+<ul>
+<li>Specifying the colour scheme of a site's design</li>
+<li>Fine-tuning colours</li>
+<li>Managing colours consistently</li>
+</ul>
+<h2>Example</h2>
+<p>Used the site's main colour "#3B82F6" for a button background and heading text colour. Made it a CSS variable and managed it in one place.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Forgetting the semicolon</b>: CSS needs ";" at the end of each line.</li>
+<li><b>No #</b>: HEX needs "#" at the start.</li>
+<li><b>Opacity range</b>: 0 (transparent) to 1 (opaque).</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Which notation is best?</h3>
+<p>All work. Choose by team convention or purpose.</p>
+<h2>Summary</h2>
+<p>CSS colours can be written in HEX, RGB or HSL. Choose to suit the purpose.</p>
 <a class="cta" href="/color-converter.html">Use "Color Code Converter (HEX, RGB, HSL)" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/image-filter.html">Apply Black-and-White, Sepia and Other Looks</a>: Turn images black and white or sepia, or change brightness.</li><li><a href="/favicon-maker.html">Make a Favicon (Site Icon)</a>: Make a complete favicon set from one image.</li><li><a href="/unit-converter.html">Unit Converter (Length, Weight, Area, Temperature and More)</a>: Convert length, weight, area, temperature and more instantly.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

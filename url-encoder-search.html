@@ -200,14 +200,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>検索語をURLに入れるときのエンコード</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>検索語を入れる</li><li>「文字の一部」を選ぶ</li><li>URLにつなげる</li></ul></div>
-<p><a href="/url-encoder.html">URLエンコード</a> で「文字の一部」を選ぶと、?や&amp;も変換されます。</p>
+<p>検索ページのリンクを、自分で作りたい。「https://example.com/search?q=」のあとに、日本語の検索語を入れるときは、エンコードが必要です。<a href="/url-encoder.html">URLエンコード・デコード</a> なら、検索語を、安全にURLに入れられます。</p>
 <h2>手順</h2>
 <ol>
-<li>検索語を入れる</li>
-<li>「文字の一部」を選ぶ</li>
-<li>URLにつなげる</li>
+<li>「変換前」の欄に、検索語（例：東京 カフェ）を入れる。</li>
+<li>「変換」で「URLエンコード（文字 → %E3…）」を選ぶ。</li>
+<li>「対象」で「文字の一部（?や&amp;なども変換）」を選ぶ。</li>
+<li>「変換後」をコピーして、「?q=」のあとに貼り付ける。</li>
 </ol>
-<div class="note">空白は「%20」になります。</div>
+<div class="note">検索語は「文字の一部」として変換します。そうしないと、検索語の中の「&amp;」や「?」が、URLの区切りと間違われます。</div>
+<h2>組み立て方</h2>
+<p>「（ページのURL）?q=（エンコードした検索語）」</p>
+<ul>
+<li>検索語：東京 カフェ</li>
+<li>エンコード後：%E6%9D%B1%E4%BA%AC%20%E3%82%AB%E3%83%95%E3%82%A7</li>
+<li>完成：https://example.com/search?q=%E6%9D%B1%E4%BA%AC%20%E3%82%AB%E3%83%95%E3%82%A7</li>
+</ul>
+<h2>空白の扱い</h2>
+<p>空白は、「%20」または「+」で表されます。サイトによって、使われる形が違います。このツールは、「%20」に変換します。</p>
+<h2>記号を含む検索語</h2>
+<p>「A&amp;B」や、「100%」のような、記号を含む検索語は、必ず「文字の一部」としてエンコードします。</p>
+<ul>
+<li>「&amp;」→「%26」</li>
+<li>「%」→「%25」</li>
+<li>「?」→「%3F」</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>検索結果へのリンクを、ブログやメールに載せたい</li>
+<li>アプリの設定で、検索URLを登録したい</li>
+<li>ブラウザの、検索エンジン追加で使う</li>
+</ul>
+<h2>注意</h2>
+<ul>
+<li>?q= の「q」の部分は、サイトによって違う（q、query、keywordなど）</li>
+<li>ページのURL自体は、エンコードしない</li>
+</ul>
+<h2>例</h2>
+<p>地図サイトで「渋谷駅 ラーメン」を検索するリンクを作りたかった。検索語をエンコードして、地図サイトの検索URLにつなげると、そのまま検索結果が開いた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>検索結果が出ない</b>：パラメータ名（qなど）が、サイトの仕様と違う。</li>
+<li><b>検索語が途中で切れる</b>：「&amp;」を含む検索語を、エンコードしていない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>英語だけの検索語も、エンコードが必要ですか？</h3>
+<p>空白や記号がなければ、不要です。</p>
+<h2>まとめ</h2>
+<p>検索語は、「文字の一部」としてエンコード。URLにつなげれば、検索リンクの完成です。</p>
 <a class="cta" href="/url-encoder.html">URLエンコード・デコードを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/json-formatter.html">JSONを整える・チェックする</a>：JSONを整形・圧縮し、書き方をチェックします。</li><li><a href="/text-diff.html">2つの文章の違いを調べる</a>：2つの文章の違いを、行ごとに色つきで示します。</li><li><a href="/file-base64.html">ファイルとBase64を相互変換する</a>：ファイルとBase64の文字を相互に変換します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +259,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Encoding Search Words for a URL</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the words</li><li>Choose "A part of a URL"</li><li>Append it to the URL</li></ul></div>
-<p>In <a href="/url-encoder.html">URL Encode</a>, choosing "A part of a URL" also converts ? and &amp;.</p>
+<p>You want to make a search-page link yourself. When putting a Japanese search term after "https://example.com/search?q=", encoding is needed. With <a href="/url-encoder.html">URL Encode and Decode</a> you can put a search term safely into a URL.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the words</li>
-<li>Choose "A part of a URL"</li>
-<li>Append it to the URL</li>
+<li>Enter the search term in the "Before" field (e.g. Tokyo cafe).</li>
+<li>Under "Convert", choose "URL-encode (text → %E3…)".</li>
+<li>Under "Target", choose "Part of a string (also converts ? and &amp;)".</li>
+<li>Copy the "After" and paste it after "?q=".</li>
 </ol>
-<div class="note">A space becomes %20.</div>
+<div class="note">Convert the search term as "part of a string". Otherwise "&amp;" or "?" inside the term would be mistaken for URL separators.</div>
+<h2>How to assemble</h2>
+<p>"(page URL)?q=(encoded search term)"</p>
+<ul>
+<li>Search term: Tokyo cafe (in Japanese)</li>
+<li>After encoding: %E6%9D%B1%E4%BA%AC%20%E3%82%AB%E3%83%95%E3%82%A7</li>
+<li>Result: https://example.com/search?q=%E6%9D%B1%E4%BA%AC%20%E3%82%AB%E3%83%95%E3%82%A7</li>
+</ul>
+<h2>Handling spaces</h2>
+<p>Spaces are written as "%20" or "+". Which form is used differs by site. This tool converts to "%20".</p>
+<h2>Search terms with symbols</h2>
+<p>Search terms containing symbols like "A&amp;B" or "100%" must be encoded as "part of a string".</p>
+<ul>
+<li>"&amp;" → "%26"</li>
+<li>"%" → "%25"</li>
+<li>"?" → "%3F"</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Putting links to search results in blogs or emails</li>
+<li>Registering a search URL in an app's settings</li>
+<li>Adding a search engine in a browser</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>The "q" in ?q= differs by site (q, query, keyword, etc.)</li>
+<li>Don't encode the page URL itself</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to make a link searching "Shibuya Station ramen" on a map site. Encoding the term and joining it to the map site's search URL opened the results directly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>No search results</b>: the parameter name (q etc.) differs from the site's specification.</li>
+<li><b>The term is cut off</b>: a term containing "&amp;" wasn't encoded.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Do English-only search terms need encoding?</h3>
+<p>Not if there are no spaces or symbols.</p>
+<h2>Summary</h2>
+<p>Encode the search term as "part of a string". Join it to the URL and the search link is done.</p>
 <a class="cta" href="/url-encoder.html">Use "URL Encode and Decode" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li><li><a href="/text-diff.html">Compare Two Texts (Diff)</a>: Show the differences between two texts line by line.</li><li><a href="/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

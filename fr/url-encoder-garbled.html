@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Rendre lisibles les URL en %E3%81…</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Collez l'URL</li><li>Choisissez Décoder</li><li>Lisez le résultat</li></ul></div>
-<p>Décoder avec <a href="/fr/url-encoder.html">Encoder une URL</a> retransforme les codes % en caractères d'origine.</p>
+<p lang="en">A URL that arrived by email or social media was a meaningless string like "https://example.com/%E3%81%82...". It's just Japanese characters encoded. "Decode" in <a href="/fr/url-encoder.html">URL Encode and Decode</a> turns it back into readable characters.</p>
 <h2>Étapes</h2>
 <ol>
-<li>Collez l'URL</li>
-<li>Choisissez Décoder</li>
-<li>Lisez le résultat</li>
+<li lang="en">Paste the URL containing "%E3%81..." into the "Before" field.</li>
+<li lang="en">Under "Convert", choose "Decode (%E3… → text)".</li>
+<li lang="en">Check in the "After" field that it became readable.</li>
+<li lang="en">Copy with "Copy result".</li>
 </ol>
-<div class="note">Les anciennes formes non UTF-8 peuvent ne pas se décoder correctement.</div>
+<div class="note" lang="en">The two digits after "%" represent the character as numbers. Decoding restores the original Japanese.</div>
+<h2 lang="en">Why this happens</h2>
+<p lang="en">URLs can use only half-width alphanumerics and some symbols. When Japanese is included, it's replaced by "%" and a sequence of hexadecimal digits. That's encoding.</p>
+<ul>
+<li lang="en">"あ" → "%E3%81%82"</li>
+<li lang="en">A space → "%20"</li>
+</ul>
+<h2 lang="en">When it can't be decoded</h2>
+<p lang="en">If "Could not decode. Check that what follows '%' is in the correct form." appears, check:</p>
+<ul>
+<li lang="en">Is what follows % two hexadecimal digits (0–9, A–F)?</li>
+<li lang="en">Is % cut off partway?</li>
+<li lang="en">Is it really not just a literal % sign rather than encoded text?</li>
+</ul>
+<h2 lang="en">Common confusions</h2>
+<ul>
+<li lang="en">A string beginning with "%" isn't always encoded (e.g. "50%")</li>
+<li lang="en">If encoded twice, decode twice</li>
+<li lang="en">Depending on the encoding (UTF-8 or Shift_JIS), the result can differ</li>
+</ul>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Checking the content of a long URL</li>
+<li lang="en">Reading search terms from a search-result URL</li>
+<li lang="en">Making URLs left in logs readable</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">An access log contained a URL like "%E3%81%8A%E5%95%8F...". Decoding showed it was the "Contact us" page.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Garbled text</b>: the original encoding isn't UTF-8.</li>
+<li lang="en"><b>Only part converts</b>: encoded twice. Decode again.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the decoded URL be used as is?</h3>
+<p lang="en">It's for reading. For use in links, the encoded form is safer.</p>
+<h2>En résumé</h2>
+<p lang="en">"%E3…" is encoded Japanese. Decoding turns it back into readable characters.</p>
 <a class="cta" href="/fr/url-encoder.html">Utiliser « Encoder et décoder une URL » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/json-formatter.html">Formater et valider du JSON</a>: Formatez, minifiez et validez du JSON.</li><li><a href="/fr/text-diff.html">Comparer deux textes (diff)</a>: Affichez les différences entre deux textes ligne par ligne.</li><li><a href="/fr/file-base64.html">Convertir des fichiers et du Base64</a>: Convertissez entre fichiers et texte Base64.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>
