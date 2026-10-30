@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Reading UTC and ISO 8601</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the number</li><li>See the UTC</li><li>Copy the ISO 8601</li></ul></div>
-<p><a href="/en/timestamp-converter.html">Timestamp Converter</a> also shows the date in UTC and ISO 8601.</p>
+<p>Date and time display comes in three notations: "this device's time zone", "UTC" and "ISO 8601". Here is what each means, alongside the screen of <a href="/en/timestamp-converter.html">UNIX Timestamp Converter</a>.</p>
+<h2>This device's time zone</h2>
+<p>The date and time in the time zone set on your device. In Japan it displays in Japan time (UTC+9). You can read it with everyday sense.</p>
+<h2>UTC</h2>
+<p>The worldwide reference time. Subtract 9 hours from Japan time to get UTC. Often used in server logs and international systems.</p>
+<ul>
+<li>Japan time 9:00, 1 January 2026 → UTC 0:00, 1 January 2026</li>
+</ul>
+<h2>ISO 8601</h2>
+<p>An international format that writes date and time like "2026-01-01T00:00:00.000Z".</p>
+<ul>
+<li>Order of year-month-day</li>
+<li>After T, hour:minute:second</li>
+<li>The "Z" at the end means UTC</li>
+</ul>
+<p>Widely used to exchange dates and times in programs and APIs.</p>
+<div class="note">Something ending in "Z" is a UTC time, not Japan time.</div>
 <h2>Steps</h2>
 <ol>
-<li>Enter the number</li>
-<li>See the UTC</li>
-<li>Copy the ISO 8601</li>
+<li>Enter a number in "UNIX time (seconds or milliseconds)".</li>
+<li>Look at "Date and time (UTC)" and "ISO 8601".</li>
+<li>For use in a program, press "Copy ISO 8601".</li>
 </ol>
-<div class="note">Japan Standard Time is 9 hours ahead of UTC.</div>
+<h2>Using the three</h2>
+<ul>
+<li>Reading yourself: this device's time zone</li>
+<li>Cross-checking logs: UTC</li>
+<li>Passing to a program: ISO 8601</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Reading logs from overseas servers</li>
+<li>Checking the date format of an API</li>
+<li>Sharing dates with people in other time zones</li>
+</ul>
+<h2>Example</h2>
+<p>An overseas service's log was recorded in UTC. Entering the number showed both the UTC time and Japan time, and I saw it was that evening in Japan.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Time difference miscalculation</b>: Japan is UTC+9. Regions with daylight saving change by season.</li>
+<li><b>Missing the Z</b>: if Z is attached, it's UTC.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can ISO 8601 also express Japan time?</h3>
+<p>Yes, by adding the offset like "+09:00". This tool's ISO 8601 is shown in UTC (Z).</p>
+<h2>Summary</h2>
+<p>Device time zone for reading, UTC for logs, ISO 8601 for programs. Use them accordingly.</p>
 <a class="cta" href="/en/timestamp-converter.html">Use "UNIX Timestamp Converter" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/en/wareki-converter.html">Convert Between Western Years and Japanese Eras</a>: Convert between AD years and Japanese eras.</li><li><a href="/en/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

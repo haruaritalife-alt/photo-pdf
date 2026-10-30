@@ -200,14 +200,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/regex-tester.html">正規表現テスター</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>正規表現が、思った通りに動かない。<a href="/regex-tester.html">正規表現テスター</a> で起こりやすい困りごとと、対処法をまとめます。</p>
+<h2>よくある困りごと</h2>
+<ul>
+<li><b>「パターンかフラグが正しくありません：」と出る</b>：かっこの閉じ忘れ、存在しないフラグ、不正な書き方。理由の文を読む。</li>
+<li><b>「見つかりませんでした。」と出る</b>：パターンが文章に合っていない。大文字小文字や、全角・半角の違いを疑う。</li>
+<li><b>最初の1つしか出ない</b>：フラグに g を入れる。</li>
+<li><b>大文字小文字が区別される</b>：フラグに i を入れる。</li>
+<li><b>記号が合わない</b>：「.」「(」「?」「*」などは、特別な意味がある。文字として探すときは、前に「\」を付ける。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>パターンを短くして、少しずつ足しながら試す。</li>
+<li>「テストする文章」を短くして、確かめる。</li>
+<li>全角・半角、記号の種類が同じか、確かめる。</li>
+<li>フラグを見直す。</li>
 </ol>
-<div class="note">エラーが出るときは、かっこの閉じ忘れや、フラグの書き間違いを確かめます。</div>
+<div class="note">長いパターンは、いきなり書かず、小さい部分から確かめると、原因が見つけやすくなります。</div>
+<h2>特別な意味を持つ記号</h2>
+<p>. ^ $ * + ? ( ) [ ] { } | \ は、特別な意味があります。文字として探すには、前に「\」を付けます。</p>
+<ul>
+<li>「.」を探す：\.</li>
+<li>「(」を探す：\(</li>
+</ul>
+<h2>「貪欲」な一致</h2>
+<p>.* のようなパターンは、できるだけ長く合います。短く合わせたいときは、.*? のように、「?」を足します。</p>
+<ul>
+<li>文章：「<b>A</b><b>B</b>」</li>
+<li><b>.*</b>：全体が、1つで合う</li>
+<li><b>.*?</b>：「<b>A</b>」「<b>B</b>」が、別々に合う</li>
+</ul>
+<h2>他の言語との違い</h2>
+<p>このテスターは、JavaScriptの正規表現です。PythonやPHPなどでは、書き方や機能に違いがあります。他の言語で使うときは、その言語で、再確認しましょう。</p>
+<h2>向いている使い方</h2>
+<ul>
+<li>トラブルの事前確認</li>
+<li>パターンを作る手順の確認</li>
+</ul>
+<h2>例</h2>
+<p>「<b>A</b><b>B</b>」から、それぞれの中身を取りたかった。<b>.*</b> だと、全体が1つで合った。<b>.*?</b> に直すと、別々に合った。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>全角文字</b>：全角と半角は、別の文字として扱われる。</li>
+<li><b>改行</b>：「.」は、既定では改行に合わない。フラグ s を使う。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>長いパターンが、読めません。</h3>
+<p>小さく区切って、1つずつテスターで確かめるのがおすすめです。</p>
+<h2>まとめ</h2>
+<p>短く区切る・記号をエスケープする・フラグを見直す。それで、たいていの困りごとは解決します。</p>
 <a class="cta" href="/regex-tester.html">正規表現テスターを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/text-diff.html">2つの文章の違いを調べる</a>：2つの文章の違いを、行ごとに色つきで示します。</li><li><a href="/char-counter.html">文字数カウント（エントリーシート・レポート用）</a>：文章の文字数・行数・原稿用紙の枚数などを数えます。</li><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +260,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/regex-tester.html">Regex Tester</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>A regular expression isn't working as expected. Here are troubles that commonly occur with <a href="/regex-tester.html">Regex Tester</a> and how to handle them.</p>
+<h2>Common troubles</h2>
+<ul>
+<li><b>"Pattern or flags are invalid:" appears</b>: an unclosed parenthesis, a non-existent flag, or invalid syntax. Read the reason given.</li>
+<li><b>"Not found." appears</b>: the pattern doesn't match the text. Suspect letter case or full-width/half-width differences.</li>
+<li><b>Only the first appears</b>: add g to the flags.</li>
+<li><b>Letter case is distinguished</b>: add i to the flags.</li>
+<li><b>Symbols don't match</b>: ".", "(", "?", "*" and the like have special meanings. To search for them as characters, put "\" before them.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Shorten the pattern and add to it little by little while trying.</li>
+<li>Shorten the "Text to test" and check.</li>
+<li>Check that full-width/half-width and symbol types are the same.</li>
+<li>Review the flags.</li>
 </ol>
-<div class="note">If an error appears, check for unclosed parentheses or mistyped flags.</div>
+<div class="note">Don't write a long pattern all at once; checking from small parts makes the cause easier to find.</div>
+<h2>Symbols with special meanings</h2>
+<p>. ^ $ * + ? ( ) [ ] { } | \ have special meanings. To search for them as characters, put "\" before them.</p>
+<ul>
+<li>Search for ".": \.</li>
+<li>Search for "(": \(</li>
+</ul>
+<h2>"Greedy" matching</h2>
+<p>Patterns like .* match as long as possible. To match short, add "?" as in .*?.</p>
+<ul>
+<li>Text: "<b>A</b><b>B</b>"</li>
+<li><b>.*</b>: the whole matches as one</li>
+<li><b>.*?</b>: "<b>A</b>" and "<b>B</b>" match separately</li>
+</ul>
+<h2>Differences from other languages</h2>
+<p>This tester uses JavaScript regular expressions. Python, PHP and others differ in syntax and features. When using in another language, recheck in that language.</p>
+<h2>Uses it suits</h2>
+<ul>
+<li>Pre-checks before trouble</li>
+<li>Checking the steps of building a pattern</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted the contents of each in "<b>A</b><b>B</b>". <b>.*</b> matched the whole as one. Changing to <b>.*?</b> matched them separately.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Full-width characters</b>: full-width and half-width are different characters.</li>
+<li><b>Line breaks</b>: "." doesn't match line breaks by default. Use flag s.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I can't read a long pattern.</h3>
+<p>Splitting it into small pieces and checking each in the tester is recommended.</p>
+<h2>Summary</h2>
+<p>Split short, escape symbols and review flags. That solves most troubles.</p>
 <a class="cta" href="/regex-tester.html">Use "Regex Tester" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/text-diff.html">Compare Two Texts (Diff)</a>: Show the differences between two texts line by line.</li><li><a href="/char-counter.html">Character Counter (for Applications and Reports)</a>: Count characters, lines and manuscript sheets of your text.</li><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

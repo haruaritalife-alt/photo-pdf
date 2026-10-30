@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pagkuha ng mga Bahagi gamit ang Panaklong</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Sumulat ng pattern na may panaklong</li><li>Ilagay ang text</li><li>Tingnan ang mga grupo</li></ul></div>
-<p>Ipinapakita ng <a href="/tl/regex-tester.html">Regex Tester</a> ang laman ng mga panaklong para sa bawat tugma.</p>
+<p lang="en">You want to extract just a part of a text, for example only "12345" from "ID: 12345". Use parentheses (groups). The "Group:" in the results of <a href="/tl/regex-tester.html">Regex Tester</a> lets you check the extracted part.</p>
+<h2 lang="en">What a group is</h2>
+<p lang="en">Enclosing part of a pattern in parentheses "( )" extracts the characters matched by that part separately.</p>
+<ul>
+<li lang="en">Pattern: ID: (\d+)</li>
+<li lang="en">Text: "ID: 12345"</li>
+<li lang="en">Whole match: "ID: 12345"</li>
+<li lang="en">Group 1: "12345"</li>
+</ul>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Sumulat ng pattern na may panaklong</li>
-<li>Ilagay ang text</li>
-<li>Tingnan ang mga grupo</li>
+<li lang="en">In "Regular expression pattern", write the part to extract in parentheses.</li>
+<li lang="en">Enter the "Text to test".</li>
+<li lang="en">The extracted characters appear in "Group:" in the results.</li>
 </ol>
-<div class="note">Ang pattern tulad ng "(\d+)-(\d+)" ay kumukuha ng dalawang numero nang magkahiwalay.</div>
+<div class="note" lang="en">With several parentheses, they become group 1, 2, 3… from the left.</div>
+<h2 lang="en">Multiple groups</h2>
+<ul>
+<li lang="en">Pattern: (\d{4})-(\d{2})-(\d{2})</li>
+<li lang="en">Text: "2026-01-05"</li>
+<li lang="en">Group 1: 2026 (year)</li>
+<li lang="en">Group 2: 01 (month)</li>
+<li lang="en">Group 3: 05 (day)</li>
+</ul>
+<h2 lang="en">Using groups in replacement</h2>
+<p lang="en">Writing "$1", "$2" in "Replacement text" recalls the groups.</p>
+<ul>
+<li lang="en">Pattern: (\d{4})-(\d{2})-(\d{2})</li>
+<li lang="en">Replacement: $3/$2/$1</li>
+<li lang="en">Result: 05/01/2026</li>
+</ul>
+<h2 lang="en">When you want to search for parentheses</h2>
+<p lang="en">To search for the parentheses themselves, escape them as "\(" and "\)".</p>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Extracting only IDs or amounts from text</li>
+<li lang="en">Splitting a date into year, month, day</li>
+<li lang="en">Replacements that swap order</li>
+</ul>
+<h2>Halimbawa</h2>
+<p lang="en">Wanted just the number from "Amount: 1,500 yen". With pattern Amount: ([\d,]+) yen, group 1 gave "1,500".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Unclosed parenthesis</b>: "Pattern or flags are invalid:" appears.</li>
+<li lang="en"><b>Unintended groups</b>: watch parentheses where you don't want a group.</li>
+<li lang="en"><b>Empty group</b>: if that part isn't in the text, the group doesn't appear.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How many groups can be used?</h3>
+<p lang="en">As many as practical use needs.</p>
+<h2>Buod</h2>
+<p lang="en">Enclose the part you want to extract in parentheses. Check with the "Group:" result.</p>
 <a class="cta" href="/tl/regex-tester.html">Gamitin ang “Regex Tester” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/text-diff.html">Paghambingin ang Dalawang Text (Diff)</a>: Ipakita ang pagkakaiba ng dalawang text, linya por linya.</li><li><a href="/tl/char-counter.html">Character Counter (para sa Aplikasyon at Ulat)</a>: Bilangin ang mga character, linya at manuscript sheet ng text mo.</li><li><a href="/tl/line-sort-dedupe.html">Alisin ang mga Duplicate na Linya at I-sort ang Listahan</a>: Alisin ang mga duplicate na linya at i-sort ang mga ito.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

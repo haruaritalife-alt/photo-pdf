@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Segundo vs. Millisecond</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Ilagay ang bilang</li><li>Suriin kung paano ito nabasa</li><li>Ayusin ang bilang ng digit kung mali</li></ul></div>
-<p>Nagpapasya ang <a href="/tl/timestamp-converter.html">Timestamp Converter</a> kung segundo o millisecond batay sa laki ng numero.</p>
+<p lang="en">UNIX time comes in two forms: in seconds and in milliseconds. They look similar, so mixing them up gives dates in 1970 or the far future. <a href="/tl/timestamp-converter.html">UNIX Timestamp Converter</a> tells them apart automatically from the digit count.</p>
+<h2>Paano malalaman</h2>
+<ul>
+<li lang="en"><b>Seconds</b>: 10 digits for current dates. Example: 1767225600</li>
+<li lang="en"><b>Milliseconds</b>: 13 digits for current dates. Example: 1767225600000</li>
+</ul>
+<p lang="en">Milliseconds are 1000 times the seconds number.</p>
+<h2 lang="en">How the tool judges</h2>
+<p lang="en">This tool judges by the size of the number. 12 digits or more is read as milliseconds; smaller as seconds. Below the result, "Read as seconds." or "Read as milliseconds." appears.</p>
+<div class="note" lang="en">If the judgement isn't what you expected, multiply or divide the number by 1000 and re-enter it.</div>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Ilagay ang bilang</li>
-<li>Suriin kung paano ito nabasa</li>
-<li>Ayusin ang bilang ng digit kung mali</li>
+<li lang="en">Enter a number in the "UNIX time (seconds or milliseconds)" field.</li>
+<li lang="en">Look at "Read as seconds." or "Read as milliseconds." shown below.</li>
+<li lang="en">Check that the date and time is plausible.</li>
 </ol>
-<div class="note">Millisecond ang oras sa JavaScript; maraming sistema at database ang gumagamit ng segundo.</div>
+<h2 lang="en">Where each is used</h2>
+<ul>
+<li lang="en"><b>Seconds</b>: server logs, databases, many systems</li>
+<li lang="en"><b>Milliseconds</b>: JavaScript's Date.now(), some APIs, browser time</li>
+</ul>
+<h2 lang="en">Symptoms when mixed up</h2>
+<ul>
+<li lang="en">Reading a milliseconds number as seconds gives a far-future date</li>
+<li lang="en">Reading a seconds number as milliseconds gives a date around January 1970</li>
+</ul>
+<p lang="en">When a date looks wrong, suspect a seconds/milliseconds mix-up.</p>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">When the digit count is unclear</li>
+<li lang="en">When you want to check differences between systems</li>
+</ul>
+<h2>Halimbawa</h2>
+<p lang="en">Entering JavaScript output "1767225600000" showed "Read as milliseconds." and gave 1 January 2026. It was 13 digits, so milliseconds.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Digits cut off</b>: check no digits were lost when copying.</li>
+<li lang="en"><b>Microseconds etc.</b>: numbers of 16 digits etc. are outside this tool.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does converting from a date give both seconds and milliseconds?</h3>
+<p lang="en">Yes. Both "UNIX time (seconds)" and "UNIX time (milliseconds)" appear.</p>
+<h2>Buod</h2>
+<p lang="en">10 digits is seconds, 13 digits is milliseconds. When unsure, confirm with the tool's display.</p>
 <a class="cta" href="/tl/timestamp-converter.html">Gamitin ang “UNIX Timestamp Converter” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/date-calculator.html">Kalkulahin ang Edad, Araw sa Pagitan ng mga Petsa at Offset ng Petsa</a>: Kalkulahin ang edad at mga araw sa pagitan ng mga petsa.</li><li><a href="/tl/wareki-converter.html">I-convert ang Taong Kanluranin at Panahong Hapones</a>: Mag-convert sa pagitan ng mga taong AD at mga panahong Hapones.</li><li><a href="/tl/json-formatter.html">I-format at I-validate ang JSON</a>: I-format, i-minify at i-validate ang JSON.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Menangkap Bahagian dengan Kurungan</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Dikemas kini: 19 Okt 2026 | <a href="/about.html">Perihal (Jepun)</a></p>
 <div class="points"><b>Perkara penting</b><ul><li>Tulis corak dengan kurungan</li><li>Masukkan teks</li><li>Lihat kumpulan</li></ul></div>
-<p><a href="/ms/regex-tester.html">Penguji Regex</a> menunjukkan kandungan kurungan bagi setiap padanan.</p>
+<p lang="en">You want to extract just a part of a text, for example only "12345" from "ID: 12345". Use parentheses (groups). The "Group:" in the results of <a href="/ms/regex-tester.html">Regex Tester</a> lets you check the extracted part.</p>
+<h2 lang="en">What a group is</h2>
+<p lang="en">Enclosing part of a pattern in parentheses "( )" extracts the characters matched by that part separately.</p>
+<ul>
+<li lang="en">Pattern: ID: (\d+)</li>
+<li lang="en">Text: "ID: 12345"</li>
+<li lang="en">Whole match: "ID: 12345"</li>
+<li lang="en">Group 1: "12345"</li>
+</ul>
 <h2>Langkah</h2>
 <ol>
-<li>Tulis corak dengan kurungan</li>
-<li>Masukkan teks</li>
-<li>Lihat kumpulan</li>
+<li lang="en">In "Regular expression pattern", write the part to extract in parentheses.</li>
+<li lang="en">Enter the "Text to test".</li>
+<li lang="en">The extracted characters appear in "Group:" in the results.</li>
 </ol>
-<div class="note">Corak seperti "(\d+)-(\d+)" mengeluarkan dua nombor secara berasingan.</div>
+<div class="note" lang="en">With several parentheses, they become group 1, 2, 3… from the left.</div>
+<h2 lang="en">Multiple groups</h2>
+<ul>
+<li lang="en">Pattern: (\d{4})-(\d{2})-(\d{2})</li>
+<li lang="en">Text: "2026-01-05"</li>
+<li lang="en">Group 1: 2026 (year)</li>
+<li lang="en">Group 2: 01 (month)</li>
+<li lang="en">Group 3: 05 (day)</li>
+</ul>
+<h2 lang="en">Using groups in replacement</h2>
+<p lang="en">Writing "$1", "$2" in "Replacement text" recalls the groups.</p>
+<ul>
+<li lang="en">Pattern: (\d{4})-(\d{2})-(\d{2})</li>
+<li lang="en">Replacement: $3/$2/$1</li>
+<li lang="en">Result: 05/01/2026</li>
+</ul>
+<h2 lang="en">When you want to search for parentheses</h2>
+<p lang="en">To search for the parentheses themselves, escape them as "\(" and "\)".</p>
+<h2>Sesuai untuk</h2>
+<ul>
+<li lang="en">Extracting only IDs or amounts from text</li>
+<li lang="en">Splitting a date into year, month, day</li>
+<li lang="en">Replacements that swap order</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">Wanted just the number from "Amount: 1,500 yen". With pattern Amount: ([\d,]+) yen, group 1 gave "1,500".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Unclosed parenthesis</b>: "Pattern or flags are invalid:" appears.</li>
+<li lang="en"><b>Unintended groups</b>: watch parentheses where you don't want a group.</li>
+<li lang="en"><b>Empty group</b>: if that part isn't in the text, the group doesn't appear.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How many groups can be used?</h3>
+<p lang="en">As many as practical use needs.</p>
+<h2>Ringkasan</h2>
+<p lang="en">Enclose the part you want to extract in parentheses. Check with the "Group:" result.</p>
 <a class="cta" href="/ms/regex-tester.html">Guna “Penguji Regex” (percuma)</a>
 <h2>Alat yang sepadan dengan ini</h2><ul><li><a href="/ms/text-diff.html">Bandingkan Dua Teks (Diff)</a>: Tunjukkan perbezaan antara dua teks baris demi baris.</li><li><a href="/ms/char-counter.html">Pengira Aksara (untuk Permohonan dan Laporan)</a>: Kira aksara, baris dan helaian manuskrip teks anda.</li><li><a href="/ms/line-sort-dedupe.html">Buang Baris Pendua dan Isih Senarai</a>: Buang baris pendua dan isihkannya.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil amat dihargai.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Hantar tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hantar hadiah (senarai hajat Amazon)</a></div>

@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/timestamp-converter.html">Timestamp Converter</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>UNIX time conversion isn't working. Here are troubles that commonly occur with <a href="/en/timestamp-converter.html">UNIX Timestamp Converter</a> and how to handle them.</p>
+<h2>Common troubles</h2>
+<ul>
+<li><b>"Enter digits only." appears</b>: non-digits (commas, spaces, letters) are included. Remove them.</li>
+<li><b>"Too large to convert to a date." appears</b>: the number is too large. Check the digit count.</li>
+<li><b>The date comes out around 1970</b>: a milliseconds number may be treated as seconds.</li>
+<li><b>The date comes out in the far future</b>: a seconds number may be displayed as milliseconds.</li>
+<li><b>The time is off by 9 hours</b>: the difference between UTC and Japan time. Look at the display carefully.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Look at the number in the input field and check no non-digits are included.</li>
+<li>Look at the digit count. Guide: 10 digits is seconds, 13 is milliseconds.</li>
+<li>Check "Read as seconds." or "Read as milliseconds." below the result.</li>
+<li>Compare "Date and time (UTC)" with "Date and time (this device's time zone)".</li>
 </ol>
-<div class="note">If conversion fails, check that no characters other than digits are included.</div>
+<div class="note">Enter the number in half-width. Full-width digits may cause an error.</div>
+<h2>Input examples</h2>
+<ul>
+<li>Correct: 1767225600, 1767225600000</li>
+<li>Incorrect: 1,767,225,600 (with commas), １７６７２２５６００ (full-width)</li>
+</ul>
+<h2>Negative numbers</h2>
+<p>Negative numbers express dates before 1970. Rarely used, but can be entered.</p>
+<h2>When there's a decimal point</h2>
+<p>For seconds with a decimal point (like 1767225600.123), enter only the integer part.</p>
+<h2>Checking the device time zone</h2>
+<p>The date display follows the device's time zone setting. If the time zone looks wrong, check the device settings.</p>
+<h2>Uses it suits</h2>
+<ul>
+<li>Pre-checks before trouble</li>
+<li>Checking input</li>
+</ul>
+<h2>Example</h2>
+<p>Entered "1,767,225,600" and got an error. Removing the commas and re-entering converted it correctly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Spaces from copying</b>: remove leading and trailing spaces.</li>
+<li><b>Mistaking another number</b>: numbers like IDs are not UNIX time.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does any number become a date?</h3>
+<p>A number that isn't UNIX time becomes a meaningless date. Check where the number came from.</p>
+<h2>Summary</h2>
+<p>Review digits-only, half-width and digit count. That solves most troubles.</p>
 <a class="cta" href="/en/timestamp-converter.html">Use "UNIX Timestamp Converter" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/en/wareki-converter.html">Convert Between Western Years and Japanese Eras</a>: Convert between AD years and Japanese eras.</li><li><a href="/en/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

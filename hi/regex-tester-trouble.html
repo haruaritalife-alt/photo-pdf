@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>जब यह काम न करे तो क्या करें</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>फ़ाइल जाँचें</li><li>आकार जाँचें</li><li>दूसरा डिवाइस आज़माएँ</li></ul></div>
-<p>यदि <a href="/hi/regex-tester.html">Regex परीक्षक</a> काम नहीं कर रहा, तो ये जाँचें।</p>
-<h2>चरण</h2>
+<p lang="en">A regular expression isn't working as expected. Here are troubles that commonly occur with <a href="/hi/regex-tester.html">Regex Tester</a> and how to handle them.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Pattern or flags are invalid:" appears</b>: an unclosed parenthesis, a non-existent flag, or invalid syntax. Read the reason given.</li>
+<li lang="en"><b>"Not found." appears</b>: the pattern doesn't match the text. Suspect letter case or full-width/half-width differences.</li>
+<li lang="en"><b>Only the first appears</b>: add g to the flags.</li>
+<li lang="en"><b>Letter case is distinguished</b>: add i to the flags.</li>
+<li lang="en"><b>Symbols don't match</b>: ".", "(", "?", "*" and the like have special meanings. To search for them as characters, put "\" before them.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>फ़ाइल जाँचें</li>
-<li>आकार जाँचें</li>
-<li>दूसरा डिवाइस आज़माएँ</li>
+<li lang="en">Shorten the pattern and add to it little by little while trying.</li>
+<li lang="en">Shorten the "Text to test" and check.</li>
+<li lang="en">Check that full-width/half-width and symbol types are the same.</li>
+<li lang="en">Review the flags.</li>
 </ol>
-<div class="note">त्रुटि आए तो बिना बंद कोष्ठक या ग़लत टाइप किए फ़्लैग जाँचें।</div>
+<div class="note" lang="en">Don't write a long pattern all at once; checking from small parts makes the cause easier to find.</div>
+<h2 lang="en">Symbols with special meanings</h2>
+<p lang="en">. ^ $ * + ? ( ) [ ] { } | \ have special meanings. To search for them as characters, put "\" before them.</p>
+<ul>
+<li lang="en">Search for ".": \.</li>
+<li lang="en">Search for "(": \(</li>
+</ul>
+<h2 lang="en">"Greedy" matching</h2>
+<p lang="en">Patterns like .* match as long as possible. To match short, add "?" as in .*?.</p>
+<ul>
+<li lang="en">Text: "<b>A</b><b>B</b>"</li>
+<li lang="en"><b>.*</b>: the whole matches as one</li>
+<li lang="en"><b>.*?</b>: "<b>A</b>" and "<b>B</b>" match separately</li>
+</ul>
+<h2 lang="en">Differences from other languages</h2>
+<p lang="en">This tester uses JavaScript regular expressions. Python, PHP and others differ in syntax and features. When using in another language, recheck in that language.</p>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Checking the steps of building a pattern</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">Wanted the contents of each in "<b>A</b><b>B</b>". <b>.*</b> matched the whole as one. Changing to <b>.*?</b> matched them separately.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width characters</b>: full-width and half-width are different characters.</li>
+<li lang="en"><b>Line breaks</b>: "." doesn't match line breaks by default. Use flag s.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I can't read a long pattern.</h3>
+<p lang="en">Splitting it into small pieces and checking each in the tester is recommended.</p>
+<h2>सारांश</h2>
+<p lang="en">Split short, escape symbols and review flags. That solves most troubles.</p>
 <a class="cta" href="/hi/regex-tester.html">“Regex परीक्षक” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/text-diff.html">दो टेक्स्ट की तुलना करें (Diff)</a>: दो टेक्स्ट के बीच के अंतर पंक्ति-दर-पंक्ति दिखाएँ।</li><li><a href="/hi/char-counter.html">अक्षर गिनें (आवेदन और रिपोर्ट के लिए)</a>: अपने टेक्स्ट के अक्षर, पंक्तियाँ और पांडुलिपि शीट गिनें।</li><li><a href="/hi/line-sort-dedupe.html">दोहराई पंक्तियाँ हटाएँ और सूची को क्रम में लगाएँ</a>: दोहराई गई पंक्तियाँ हटाएँ और उन्हें क्रम में लगाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

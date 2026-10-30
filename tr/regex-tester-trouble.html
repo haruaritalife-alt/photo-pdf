@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Çalışmadığında ne yapmalı</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>Dosyayı kontrol edin</li><li>Boyutu kontrol edin</li><li>Başka bir cihaz deneyin</li></ul></div>
-<p><a href="/tr/regex-tester.html">Regex Test Aracı</a> çalışmıyorsa şunları kontrol edin.</p>
-<h2>Adımlar</h2>
+<p lang="en">A regular expression isn't working as expected. Here are troubles that commonly occur with <a href="/tr/regex-tester.html">Regex Tester</a> and how to handle them.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Pattern or flags are invalid:" appears</b>: an unclosed parenthesis, a non-existent flag, or invalid syntax. Read the reason given.</li>
+<li lang="en"><b>"Not found." appears</b>: the pattern doesn't match the text. Suspect letter case or full-width/half-width differences.</li>
+<li lang="en"><b>Only the first appears</b>: add g to the flags.</li>
+<li lang="en"><b>Letter case is distinguished</b>: add i to the flags.</li>
+<li lang="en"><b>Symbols don't match</b>: ".", "(", "?", "*" and the like have special meanings. To search for them as characters, put "\" before them.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Dosyayı kontrol edin</li>
-<li>Boyutu kontrol edin</li>
-<li>Başka bir cihaz deneyin</li>
+<li lang="en">Shorten the pattern and add to it little by little while trying.</li>
+<li lang="en">Shorten the "Text to test" and check.</li>
+<li lang="en">Check that full-width/half-width and symbol types are the same.</li>
+<li lang="en">Review the flags.</li>
 </ol>
-<div class="note">Hata çıkarsa kapatılmamış parantezleri veya yanlış yazılmış bayrakları kontrol edin.</div>
+<div class="note" lang="en">Don't write a long pattern all at once; checking from small parts makes the cause easier to find.</div>
+<h2 lang="en">Symbols with special meanings</h2>
+<p lang="en">. ^ $ * + ? ( ) [ ] { } | \ have special meanings. To search for them as characters, put "\" before them.</p>
+<ul>
+<li lang="en">Search for ".": \.</li>
+<li lang="en">Search for "(": \(</li>
+</ul>
+<h2 lang="en">"Greedy" matching</h2>
+<p lang="en">Patterns like .* match as long as possible. To match short, add "?" as in .*?.</p>
+<ul>
+<li lang="en">Text: "<b>A</b><b>B</b>"</li>
+<li lang="en"><b>.*</b>: the whole matches as one</li>
+<li lang="en"><b>.*?</b>: "<b>A</b>" and "<b>B</b>" match separately</li>
+</ul>
+<h2 lang="en">Differences from other languages</h2>
+<p lang="en">This tester uses JavaScript regular expressions. Python, PHP and others differ in syntax and features. When using in another language, recheck in that language.</p>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Checking the steps of building a pattern</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">Wanted the contents of each in "<b>A</b><b>B</b>". <b>.*</b> matched the whole as one. Changing to <b>.*?</b> matched them separately.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width characters</b>: full-width and half-width are different characters.</li>
+<li lang="en"><b>Line breaks</b>: "." doesn't match line breaks by default. Use flag s.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I can't read a long pattern.</h3>
+<p lang="en">Splitting it into small pieces and checking each in the tester is recommended.</p>
+<h2>Özet</h2>
+<p lang="en">Split short, escape symbols and review flags. That solves most troubles.</p>
 <a class="cta" href="/tr/regex-tester.html">“Düzenli İfade Test Aracı” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/text-diff.html">İki Metni Karşılaştırın (Diff)</a>: İki metin arasındaki farkları satır satır gösterin.</li><li><a href="/tr/char-counter.html">Karakter Sayacı (başvurular ve raporlar için)</a>: Metninizin karakterlerini, satırlarını ve el yazması sayfalarını sayın.</li><li><a href="/tr/line-sort-dedupe.html">Yinelenen Satırları Kaldırın ve Listeyi Sıralayın</a>: Yinelenen satırları kaldırın ve sıralayın.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

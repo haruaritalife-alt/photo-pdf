@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>标志 g、i、m、s 的含义</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>写一个模式</li><li>输入标志</li><li>查看差异</li></ul></div>
-<p>把字母输入到 <a href="/zh/regex-tester.html">正则表达式测试器</a> 的“标志”栏中。</p>
+<p lang="en">Regular expressions have switches called "flags" that change behaviour. The same pattern gives different results with different flags. Try them in the "Flags (g, i, m, s, u, etc.)" field of <a href="/zh/regex-tester.html">Regex Tester</a>.</p>
+<h2 lang="en">Main flags</h2>
+<ul>
+<li lang="en"><b>g (global)</b>: find all. Without it, only the first.</li>
+<li lang="en"><b>i (ignore case)</b>: don't distinguish upper and lower case.</li>
+<li lang="en"><b>m (multiline)</b>: in multi-line text, treat ^ and $ as the start and end of each line.</li>
+<li lang="en"><b>s (dotAll)</b>: let "." match line breaks too.</li>
+<li lang="en"><b>u (unicode)</b>: handle Unicode characters correctly.</li>
+</ul>
 <h2>步骤</h2>
 <ol>
-<li>写一个模式</li>
-<li>输入标志</li>
-<li>查看差异</li>
+<li lang="en">Enter the pattern and the text to test.</li>
+<li lang="en">Enter the characters in the "Flags" field (example: gi).</li>
+<li lang="en">Watch how the result changes.</li>
 </ol>
-<div class="note">加上 "i" 会忽略大小写的区别。</div>
+<div class="note" lang="en">Flags can be combined. "gi" finds all and ignores case.</div>
+<h2 lang="en">Comparing with an example</h2>
+<p lang="en">Text: "Cat cat CAT", pattern: cat</p>
+<ul>
+<li lang="en">No flags: just one "cat" (the lower-case one)</li>
+<li lang="en">g: all lower-case "cat"</li>
+<li lang="en">gi: all three of "Cat", "cat" and "CAT"</li>
+</ul>
+<h2 lang="en">Example of the m flag</h2>
+<p lang="en">When you want to find the start of each line in multi-line text.</p>
+<ul>
+<li lang="en">Pattern: ^\d+</li>
+<li lang="en">Flags gm: the leading digits of every line match</li>
+<li lang="en">m without g: only the first</li>
+</ul>
+<h2 lang="en">Example of the s flag</h2>
+<p lang="en">With pattern a.b, when there's a line break between a and b, adding s makes it match.</p>
+<h2>适合</h2>
+<ul>
+<li lang="en">Ignoring differences in letter case</li>
+<li lang="en">Examining multi-line text line by line</li>
+<li lang="en">Seeing all matches as a list</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Wanted to find "error" in English text, but "Error" and "ERROR" were mixed in. Specifying flags gi found them all.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Forgetting g</b>: only one appears.</li>
+<li lang="en"><b>Invalid flags</b>: entering a non-existent character shows "Pattern or flags are invalid:".</li>
+<li lang="en"><b>Duplicate flags</b>: don't enter the same character twice.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does the order of flags matter?</h3>
+<p lang="en">No. "gi" and "ig" mean the same.</p>
+<h2>小结</h2>
+<p lang="en">g, i, m, s, u. Switch flags and try the differences in results.</p>
 <a class="cta" href="/zh/regex-tester.html">使用“正则表达式测试器”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/text-diff.html">对比两段文字的差异</a>: 逐行显示两段文字的差异。</li><li><a href="/zh/char-counter.html">文字数统计（用于求职申请表和报告）</a>：统计文字的字数、行数和稿纸张数。</li><li><a href="/zh/line-sort-dedupe.html">删除重复行并排序</a>：删除重复的行并排序。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

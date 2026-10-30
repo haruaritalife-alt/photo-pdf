@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Ý nghĩa của các cờ g, i, m và s</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Viết một mẫu</li><li>Nhập các cờ</li><li>Xem sự khác biệt</li></ul></div>
-<p>Gõ các chữ cái vào ô "Cờ" của <a href="/vi/regex-tester.html">Kiểm tra regex</a>.</p>
+<p lang="en">Regular expressions have switches called "flags" that change behaviour. The same pattern gives different results with different flags. Try them in the "Flags (g, i, m, s, u, etc.)" field of <a href="/vi/regex-tester.html">Regex Tester</a>.</p>
+<h2 lang="en">Main flags</h2>
+<ul>
+<li lang="en"><b>g (global)</b>: find all. Without it, only the first.</li>
+<li lang="en"><b>i (ignore case)</b>: don't distinguish upper and lower case.</li>
+<li lang="en"><b>m (multiline)</b>: in multi-line text, treat ^ and $ as the start and end of each line.</li>
+<li lang="en"><b>s (dotAll)</b>: let "." match line breaks too.</li>
+<li lang="en"><b>u (unicode)</b>: handle Unicode characters correctly.</li>
+</ul>
 <h2>Các bước</h2>
 <ol>
-<li>Viết một mẫu</li>
-<li>Nhập các cờ</li>
-<li>Xem sự khác biệt</li>
+<li lang="en">Enter the pattern and the text to test.</li>
+<li lang="en">Enter the characters in the "Flags" field (example: gi).</li>
+<li lang="en">Watch how the result changes.</li>
 </ol>
-<div class="note">Thêm "i" sẽ bỏ qua sự khác nhau giữa chữ hoa và chữ thường.</div>
+<div class="note" lang="en">Flags can be combined. "gi" finds all and ignores case.</div>
+<h2 lang="en">Comparing with an example</h2>
+<p lang="en">Text: "Cat cat CAT", pattern: cat</p>
+<ul>
+<li lang="en">No flags: just one "cat" (the lower-case one)</li>
+<li lang="en">g: all lower-case "cat"</li>
+<li lang="en">gi: all three of "Cat", "cat" and "CAT"</li>
+</ul>
+<h2 lang="en">Example of the m flag</h2>
+<p lang="en">When you want to find the start of each line in multi-line text.</p>
+<ul>
+<li lang="en">Pattern: ^\d+</li>
+<li lang="en">Flags gm: the leading digits of every line match</li>
+<li lang="en">m without g: only the first</li>
+</ul>
+<h2 lang="en">Example of the s flag</h2>
+<p lang="en">With pattern a.b, when there's a line break between a and b, adding s makes it match.</p>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Ignoring differences in letter case</li>
+<li lang="en">Examining multi-line text line by line</li>
+<li lang="en">Seeing all matches as a list</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">Wanted to find "error" in English text, but "Error" and "ERROR" were mixed in. Specifying flags gi found them all.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Forgetting g</b>: only one appears.</li>
+<li lang="en"><b>Invalid flags</b>: entering a non-existent character shows "Pattern or flags are invalid:".</li>
+<li lang="en"><b>Duplicate flags</b>: don't enter the same character twice.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does the order of flags matter?</h3>
+<p lang="en">No. "gi" and "ig" mean the same.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">g, i, m, s, u. Switch flags and try the differences in results.</p>
 <a class="cta" href="/vi/regex-tester.html">Dùng “Trình kiểm tra biểu thức chính quy” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/text-diff.html">So sánh hai văn bản (Diff)</a>: Hiển thị sự khác biệt giữa hai văn bản theo từng dòng.</li><li><a href="/vi/char-counter.html">Đếm ký tự (cho đơn xin và báo cáo)</a>: Đếm ký tự, dòng và trang bản thảo của văn bản.</li><li><a href="/vi/line-sort-dedupe.html">Xóa dòng trùng lặp và sắp xếp danh sách</a>: Xóa các dòng trùng lặp và sắp xếp chúng.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

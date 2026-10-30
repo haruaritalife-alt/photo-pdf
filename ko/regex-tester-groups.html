@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>괄호로 일부 캡처하기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>괄호가 있는 패턴 쓰기</li><li>글자 입력</li><li>그룹 확인하기</li></ul></div>
-<p><a href="/ko/regex-tester.html">정규식 테스터</a>는 일치할 때마다 괄호 안의 내용을 보여줍니다.</p>
+<p lang="en">You want to extract just a part of a text, for example only "12345" from "ID: 12345". Use parentheses (groups). The "Group:" in the results of <a href="/ko/regex-tester.html">Regex Tester</a> lets you check the extracted part.</p>
+<h2 lang="en">What a group is</h2>
+<p lang="en">Enclosing part of a pattern in parentheses "( )" extracts the characters matched by that part separately.</p>
+<ul>
+<li lang="en">Pattern: ID: (\d+)</li>
+<li lang="en">Text: "ID: 12345"</li>
+<li lang="en">Whole match: "ID: 12345"</li>
+<li lang="en">Group 1: "12345"</li>
+</ul>
 <h2>순서</h2>
 <ol>
-<li>괄호가 있는 패턴 쓰기</li>
-<li>글자 입력</li>
-<li>그룹 확인하기</li>
+<li lang="en">In "Regular expression pattern", write the part to extract in parentheses.</li>
+<li lang="en">Enter the "Text to test".</li>
+<li lang="en">The extracted characters appear in "Group:" in the results.</li>
 </ol>
-<div class="note">"(\d+)-(\d+)" 같은 패턴은 두 숫자를 따로 꺼낼 수 있습니다.</div>
+<div class="note" lang="en">With several parentheses, they become group 1, 2, 3… from the left.</div>
+<h2 lang="en">Multiple groups</h2>
+<ul>
+<li lang="en">Pattern: (\d{4})-(\d{2})-(\d{2})</li>
+<li lang="en">Text: "2026-01-05"</li>
+<li lang="en">Group 1: 2026 (year)</li>
+<li lang="en">Group 2: 01 (month)</li>
+<li lang="en">Group 3: 05 (day)</li>
+</ul>
+<h2 lang="en">Using groups in replacement</h2>
+<p lang="en">Writing "$1", "$2" in "Replacement text" recalls the groups.</p>
+<ul>
+<li lang="en">Pattern: (\d{4})-(\d{2})-(\d{2})</li>
+<li lang="en">Replacement: $3/$2/$1</li>
+<li lang="en">Result: 05/01/2026</li>
+</ul>
+<h2 lang="en">When you want to search for parentheses</h2>
+<p lang="en">To search for the parentheses themselves, escape them as "\(" and "\)".</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Extracting only IDs or amounts from text</li>
+<li lang="en">Splitting a date into year, month, day</li>
+<li lang="en">Replacements that swap order</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted just the number from "Amount: 1,500 yen". With pattern Amount: ([\d,]+) yen, group 1 gave "1,500".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Unclosed parenthesis</b>: "Pattern or flags are invalid:" appears.</li>
+<li lang="en"><b>Unintended groups</b>: watch parentheses where you don't want a group.</li>
+<li lang="en"><b>Empty group</b>: if that part isn't in the text, the group doesn't appear.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How many groups can be used?</h3>
+<p lang="en">As many as practical use needs.</p>
+<h2>요약</h2>
+<p lang="en">Enclose the part you want to extract in parentheses. Check with the "Group:" result.</p>
 <a class="cta" href="/ko/regex-tester.html">“정규식 테스터” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/text-diff.html">두 텍스트 비교 (Diff)</a>: 두 텍스트의 차이를 줄 단위로 보여 줍니다.</li><li><a href="/ko/char-counter.html">글자 수 세기 (지원서·리포트용)</a>: 텍스트의 글자 수, 줄 수, 원고지 매수를 셉니다.</li><li><a href="/ko/line-sort-dedupe.html">중복된 줄 제거 및 목록 정렬</a>: 중복된 줄을 제거하고 정렬합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

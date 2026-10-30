@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>แทนที่ข้อความเป็นชุดด้วย regex</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เขียนรูปแบบ</li><li>ป้อนข้อความที่จะแทนที่</li><li>คัดลอกผลลัพธ์</li></ul></div>
-<p>ช่อง "แทนที่" ใน<a href="/th/regex-tester.html">เครื่องมือทดสอบ Regex</a>เขียนทุกส่วนที่ตรงกันใหม่ในครั้งเดียว</p>
+<p lang="en">You want to replace parts of a text that have a certain form with other characters all at once. Regular expression replacement saves you from fixing each by hand. Check replacement results with <a href="/th/regex-tester.html">Regex Tester</a>.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เขียนรูปแบบ</li>
-<li>ป้อนข้อความที่จะแทนที่</li>
-<li>คัดลอกผลลัพธ์</li>
+<li lang="en">Write the pattern to find in "Regular expression pattern".</li>
+<li lang="en">Enter g in "Flags" (replace all).</li>
+<li lang="en">Enter the original text in "Text to test".</li>
+<li lang="en">Enter the replacement in "Replacement text (optional; $1 etc. can be used)".</li>
+<li lang="en">Look at "Replacement result" and check it's as expected.</li>
+<li lang="en">Copy with "Copy replacement result".</li>
 </ol>
-<div class="note">"$1" คือส่วนแรกในวงเล็บ</div>
+<div class="note" lang="en">Without flag g, only the first match is replaced.</div>
+<h2 lang="en">Simple replacement</h2>
+<ul>
+<li lang="en">Text: "2026/01/05"</li>
+<li lang="en">Pattern: /</li>
+<li lang="en">Replacement: -</li>
+<li lang="en">Result: "2026-01-05" (flag g needed)</li>
+</ul>
+<h2 lang="en">Replacement using groups</h2>
+<p lang="en">Parenthesised parts can be recalled in the replacement as "$1", "$2".</p>
+<ul>
+<li lang="en">Text: "2026/01/05"</li>
+<li lang="en">Pattern: (\d+)/(\d+)/(\d+)</li>
+<li lang="en">Replacement: $3.$2.$1</li>
+<li lang="en">Result: "05.01.2026"</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Changing date notation in bulk</li>
+<li lang="en">Removing extra spaces in bulk</li>
+<li lang="en">Rewording specific terms in text at once</li>
+<li lang="en">Swapping order (such as name order)</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Wanted to swap a roster of "Yamada Taro" to "Taro Yamada". Pattern (\S+) (\S+) with replacement $2 $1 swapped them all.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Handling of "$"</b>: "$1" in the replacement recalls a group. To insert a plain "$", write "$$".</li>
+<li lang="en"><b>Unintended replacement</b>: a loose pattern changes unrelated parts. Check the result carefully.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does the result directly rewrite the original text?</h3>
+<p lang="en">No. It only appears in the "Replacement result" field; the original text is untouched.</p>
+<h2>สรุป</h2>
+<p lang="en">Pattern, replacement and flag g. These three replace in bulk.</p>
 <a class="cta" href="/th/regex-tester.html">ใช้ “เครื่องมือทดสอบ Regex” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/text-diff.html">เปรียบเทียบข้อความสองชุด (Diff)</a>: แสดงความแตกต่างระหว่างข้อความสองชุดทีละบรรทัด</li><li><a href="/th/char-counter.html">นับตัวอักษร (สำหรับใบสมัครและรายงาน)</a>: นับตัวอักษร บรรทัด และแผ่นกระดาษต้นฉบับของข้อความ</li><li><a href="/th/line-sort-dedupe.html">ลบบรรทัดซ้ำและเรียงลำดับรายการ</a>: ลบบรรทัดซ้ำและเรียงลำดับ</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

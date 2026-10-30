@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What the Flags g, i, m and s Mean</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Write a pattern</li><li>Enter flags</li><li>See the difference</li></ul></div>
-<p>Type the letters into the "Flags" field of <a href="/en/regex-tester.html">Regex Tester</a>.</p>
+<p>Regular expressions have switches called "flags" that change behaviour. The same pattern gives different results with different flags. Try them in the "Flags (g, i, m, s, u, etc.)" field of <a href="/en/regex-tester.html">Regex Tester</a>.</p>
+<h2>Main flags</h2>
+<ul>
+<li><b>g (global)</b>: find all. Without it, only the first.</li>
+<li><b>i (ignore case)</b>: don't distinguish upper and lower case.</li>
+<li><b>m (multiline)</b>: in multi-line text, treat ^ and $ as the start and end of each line.</li>
+<li><b>s (dotAll)</b>: let "." match line breaks too.</li>
+<li><b>u (unicode)</b>: handle Unicode characters correctly.</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Write a pattern</li>
-<li>Enter flags</li>
-<li>See the difference</li>
+<li>Enter the pattern and the text to test.</li>
+<li>Enter the characters in the "Flags" field (example: gi).</li>
+<li>Watch how the result changes.</li>
 </ol>
-<div class="note">Adding "i" ignores the difference between upper and lower case.</div>
+<div class="note">Flags can be combined. "gi" finds all and ignores case.</div>
+<h2>Comparing with an example</h2>
+<p>Text: "Cat cat CAT", pattern: cat</p>
+<ul>
+<li>No flags: just one "cat" (the lower-case one)</li>
+<li>g: all lower-case "cat"</li>
+<li>gi: all three of "Cat", "cat" and "CAT"</li>
+</ul>
+<h2>Example of the m flag</h2>
+<p>When you want to find the start of each line in multi-line text.</p>
+<ul>
+<li>Pattern: ^\d+</li>
+<li>Flags gm: the leading digits of every line match</li>
+<li>m without g: only the first</li>
+</ul>
+<h2>Example of the s flag</h2>
+<p>With pattern a.b, when there's a line break between a and b, adding s makes it match.</p>
+<h2>Good for</h2>
+<ul>
+<li>Ignoring differences in letter case</li>
+<li>Examining multi-line text line by line</li>
+<li>Seeing all matches as a list</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to find "error" in English text, but "Error" and "ERROR" were mixed in. Specifying flags gi found them all.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Forgetting g</b>: only one appears.</li>
+<li><b>Invalid flags</b>: entering a non-existent character shows "Pattern or flags are invalid:".</li>
+<li><b>Duplicate flags</b>: don't enter the same character twice.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does the order of flags matter?</h3>
+<p>No. "gi" and "ig" mean the same.</p>
+<h2>Summary</h2>
+<p>g, i, m, s, u. Switch flags and try the differences in results.</p>
 <a class="cta" href="/en/regex-tester.html">Use "Regex Tester" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/text-diff.html">Compare Two Texts (Diff)</a>: Show the differences between two texts line by line.</li><li><a href="/en/char-counter.html">Character Counter (for Applications and Reports)</a>: Count characters, lines and manuscript sheets of your text.</li><li><a href="/en/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

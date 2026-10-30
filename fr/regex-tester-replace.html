@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Remplacer du texte en masse avec une regex</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Écrivez un motif</li><li>Saisissez le remplacement</li><li>Copiez le résultat</li></ul></div>
-<p>Le champ « Remplacement » de <a href="/fr/regex-tester.html">Testeur de regex</a> réécrit d'un coup toutes les parties correspondantes.</p>
+<p lang="en">You want to replace parts of a text that have a certain form with other characters all at once. Regular expression replacement saves you from fixing each by hand. Check replacement results with <a href="/fr/regex-tester.html">Regex Tester</a>.</p>
 <h2>Étapes</h2>
 <ol>
-<li>Écrivez un motif</li>
-<li>Saisissez le remplacement</li>
-<li>Copiez le résultat</li>
+<li lang="en">Write the pattern to find in "Regular expression pattern".</li>
+<li lang="en">Enter g in "Flags" (replace all).</li>
+<li lang="en">Enter the original text in "Text to test".</li>
+<li lang="en">Enter the replacement in "Replacement text (optional; $1 etc. can be used)".</li>
+<li lang="en">Look at "Replacement result" and check it's as expected.</li>
+<li lang="en">Copy with "Copy replacement result".</li>
 </ol>
-<div class="note">« $1 » représente la première partie entre parenthèses.</div>
+<div class="note" lang="en">Without flag g, only the first match is replaced.</div>
+<h2 lang="en">Simple replacement</h2>
+<ul>
+<li lang="en">Text: "2026/01/05"</li>
+<li lang="en">Pattern: /</li>
+<li lang="en">Replacement: -</li>
+<li lang="en">Result: "2026-01-05" (flag g needed)</li>
+</ul>
+<h2 lang="en">Replacement using groups</h2>
+<p lang="en">Parenthesised parts can be recalled in the replacement as "$1", "$2".</p>
+<ul>
+<li lang="en">Text: "2026/01/05"</li>
+<li lang="en">Pattern: (\d+)/(\d+)/(\d+)</li>
+<li lang="en">Replacement: $3.$2.$1</li>
+<li lang="en">Result: "05.01.2026"</li>
+</ul>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Changing date notation in bulk</li>
+<li lang="en">Removing extra spaces in bulk</li>
+<li lang="en">Rewording specific terms in text at once</li>
+<li lang="en">Swapping order (such as name order)</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">Wanted to swap a roster of "Yamada Taro" to "Taro Yamada". Pattern (\S+) (\S+) with replacement $2 $1 swapped them all.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Handling of "$"</b>: "$1" in the replacement recalls a group. To insert a plain "$", write "$$".</li>
+<li lang="en"><b>Unintended replacement</b>: a loose pattern changes unrelated parts. Check the result carefully.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does the result directly rewrite the original text?</h3>
+<p lang="en">No. It only appears in the "Replacement result" field; the original text is untouched.</p>
+<h2>En résumé</h2>
+<p lang="en">Pattern, replacement and flag g. These three replace in bulk.</p>
 <a class="cta" href="/fr/regex-tester.html">Utiliser « Testeur d'expressions régulières » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/text-diff.html">Comparer deux textes (diff)</a>: Affichez les différences entre deux textes ligne par ligne.</li><li><a href="/fr/char-counter.html">Compteur de caractères (candidatures et rapports)</a>: Comptez les caractères, les lignes et les feuilles de manuscrit de votre texte.</li><li><a href="/fr/line-sort-dedupe.html">Supprimer les doublons et trier une liste</a>: Supprimez les lignes en double et triez-les.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

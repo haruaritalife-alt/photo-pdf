@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Posta Kodu ve Telefon Numarası İçin Regex</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>Bir desen yazın</li><li>Metni girin</li><li>Sayıyı kontrol edin</li></ul></div>
-<p><a href="/tr/regex-tester.html">Regex Test Aracı</a>'na "\d{3}-\d{4}" yazmak posta kodu biçimini bulur.</p>
+<p lang="en">You want to find only postal codes or phone numbers in text. Regular expressions are useful for that. Build the pattern while trying it in <a href="/tr/regex-tester.html">Regex Tester</a>.</p>
+<h2 lang="en">Postal code pattern</h2>
+<p lang="en">Japanese postal codes take the form "123-4567".</p>
+<ul>
+<li lang="en">Pattern: \d{3}-\d{4}</li>
+<li lang="en">Meaning: three digits, a hyphen, four digits</li>
+</ul>
+<p lang="en">To also find "1234567" without a hyphen:</p>
+<ul>
+<li lang="en">Pattern: \d{3}-?\d{4}</li>
+<li lang="en">Meaning: the hyphen may or may not be present</li>
+</ul>
+<h2 lang="en">Phone number patterns</h2>
+<ul>
+<li lang="en">Landline example: 0\d{1,4}-\d{1,4}-\d{4}</li>
+<li lang="en">Mobile example: 0[789]0-\d{4}-\d{4}</li>
+</ul>
 <h2>Adımlar</h2>
 <ol>
-<li>Bir desen yazın</li>
-<li>Metni girin</li>
-<li>Sayıyı kontrol edin</li>
+<li lang="en">Write the pattern in "Regular expression pattern".</li>
+<li lang="en">Enter g in "Flags" (find all).</li>
+<li lang="en">Paste real text into "Text to test".</li>
+<li lang="en">Look at the matched parts and positions and check they're as expected.</li>
 </ol>
-<div class="note">"\d" bir rakamdır, "{3}" üç kez demektir.</div>
+<div class="note" lang="en">First try it on a sentence like "The postal code is 123-4567."</div>
+<h2 lang="en">Finding full-width digits</h2>
+<p lang="en">Full-width digits (１２３) may not match the half-width \d. To find full-width too, specify character ranges.</p>
+<ul>
+<li lang="en">Pattern: [0-9０-９]{3}-[0-9０-９]{4}</li>
+</ul>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Extracting numbers from rosters and emails</li>
+<li lang="en">Making patterns for input format checks</li>
+<li lang="en">Finding numbers in text in bulk</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">Numbers were mixed into roster text. \d{3}-\d{4} with flag g showed all postal codes with their matched positions.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Types of hyphen</b>: similar symbols exist ("-", "ー", "－"). Match the symbol in the actual text.</li>
+<li lang="en"><b>Phone digit counts</b>: they differ by area code. Make it loose.</li>
+<li lang="en"><b>Other numbers resembling these</b>: dates and amounts can match.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can this check that a number is correct?</h3>
+<p lang="en">Only whether the form matches. It can't confirm whether the number exists.</p>
+<h2>Özet</h2>
+<p lang="en">Search by form, like \d{3}-\d{4}. Adjust while trying in the tester.</p>
 <a class="cta" href="/tr/regex-tester.html">“Düzenli İfade Test Aracı” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/text-diff.html">İki Metni Karşılaştırın (Diff)</a>: İki metin arasındaki farkları satır satır gösterin.</li><li><a href="/tr/char-counter.html">Karakter Sayacı (başvurular ve raporlar için)</a>: Metninizin karakterlerini, satırlarını ve el yazması sayfalarını sayın.</li><li><a href="/tr/line-sort-dedupe.html">Yinelenen Satırları Kaldırın ve Listeyi Sıralayın</a>: Yinelenen satırları kaldırın ve sıralayın.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

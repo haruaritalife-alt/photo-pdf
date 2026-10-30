@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>플래그 g, i, m, s의 의미</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>패턴 쓰기</li><li>플래그 입력하기</li><li>차이 확인하기</li></ul></div>
-<p><a href="/ko/regex-tester.html">정규식 테스터</a>의 "플래그" 칸에 글자를 입력하세요.</p>
+<p lang="en">Regular expressions have switches called "flags" that change behaviour. The same pattern gives different results with different flags. Try them in the "Flags (g, i, m, s, u, etc.)" field of <a href="/ko/regex-tester.html">Regex Tester</a>.</p>
+<h2 lang="en">Main flags</h2>
+<ul>
+<li lang="en"><b>g (global)</b>: find all. Without it, only the first.</li>
+<li lang="en"><b>i (ignore case)</b>: don't distinguish upper and lower case.</li>
+<li lang="en"><b>m (multiline)</b>: in multi-line text, treat ^ and $ as the start and end of each line.</li>
+<li lang="en"><b>s (dotAll)</b>: let "." match line breaks too.</li>
+<li lang="en"><b>u (unicode)</b>: handle Unicode characters correctly.</li>
+</ul>
 <h2>순서</h2>
 <ol>
-<li>패턴 쓰기</li>
-<li>플래그 입력하기</li>
-<li>차이 확인하기</li>
+<li lang="en">Enter the pattern and the text to test.</li>
+<li lang="en">Enter the characters in the "Flags" field (example: gi).</li>
+<li lang="en">Watch how the result changes.</li>
 </ol>
-<div class="note">"i"를 붙이면 대소문자를 구분하지 않습니다.</div>
+<div class="note" lang="en">Flags can be combined. "gi" finds all and ignores case.</div>
+<h2 lang="en">Comparing with an example</h2>
+<p lang="en">Text: "Cat cat CAT", pattern: cat</p>
+<ul>
+<li lang="en">No flags: just one "cat" (the lower-case one)</li>
+<li lang="en">g: all lower-case "cat"</li>
+<li lang="en">gi: all three of "Cat", "cat" and "CAT"</li>
+</ul>
+<h2 lang="en">Example of the m flag</h2>
+<p lang="en">When you want to find the start of each line in multi-line text.</p>
+<ul>
+<li lang="en">Pattern: ^\d+</li>
+<li lang="en">Flags gm: the leading digits of every line match</li>
+<li lang="en">m without g: only the first</li>
+</ul>
+<h2 lang="en">Example of the s flag</h2>
+<p lang="en">With pattern a.b, when there's a line break between a and b, adding s makes it match.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Ignoring differences in letter case</li>
+<li lang="en">Examining multi-line text line by line</li>
+<li lang="en">Seeing all matches as a list</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted to find "error" in English text, but "Error" and "ERROR" were mixed in. Specifying flags gi found them all.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Forgetting g</b>: only one appears.</li>
+<li lang="en"><b>Invalid flags</b>: entering a non-existent character shows "Pattern or flags are invalid:".</li>
+<li lang="en"><b>Duplicate flags</b>: don't enter the same character twice.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does the order of flags matter?</h3>
+<p lang="en">No. "gi" and "ig" mean the same.</p>
+<h2>요약</h2>
+<p lang="en">g, i, m, s, u. Switch flags and try the differences in results.</p>
 <a class="cta" href="/ko/regex-tester.html">“정규식 테스터” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/text-diff.html">두 텍스트 비교 (Diff)</a>: 두 텍스트의 차이를 줄 단위로 보여 줍니다.</li><li><a href="/ko/char-counter.html">글자 수 세기 (지원서·리포트용)</a>: 텍스트의 글자 수, 줄 수, 원고지 매수를 셉니다.</li><li><a href="/ko/line-sort-dedupe.html">중복된 줄 제거 및 목록 정렬</a>: 중복된 줄을 제거하고 정렬합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

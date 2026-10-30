@@ -200,14 +200,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>日時からUNIX時間を調べる</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>日時を入れる</li><li>秒を見る</li><li>コピーする</li></ul></div>
-<p><a href="/timestamp-converter.html">UNIX時間変換</a> の下の欄に日時を入れると、秒とミリ秒が出ます。</p>
+<p>プログラムに、特定の日時を数字で渡したい。そんなときは、日時からUNIX時間を調べられます。<a href="/timestamp-converter.html">UNIX時間（タイムスタンプ）変換</a> の「日時から変換（この端末の時間帯）」を使いましょう。</p>
 <h2>手順</h2>
 <ol>
-<li>日時を入れる</li>
-<li>秒を見る</li>
-<li>コピーする</li>
+<li>「日時から変換（この端末の時間帯）」の欄に、日時を入れます。</li>
+<li>「UNIX時間（秒）」と「UNIX時間（ミリ秒）」に、結果が出ます。</li>
+<li>必要なほうを、「コピー」で控えます。</li>
 </ol>
-<div class="note">入れた日時は、この端末の時間帯として扱います。</div>
+<div class="note">入れる日時は、この端末の時間帯として扱われます。UTCで入れたいときは、時差を計算して直します。</div>
+<h2>使い分け</h2>
+<ul>
+<li><b>UNIX時間（秒）</b>：多くのシステム、データベース、サーバー</li>
+<li><b>UNIX時間（ミリ秒）</b>：JavaScript、一部のAPI</li>
+</ul>
+<p>連携先が、どちらを求めているか確かめて、選びます。</p>
+<h2>時間帯の注意</h2>
+<p>日本で「2026年1月1日 9時0分」と入れると、UTCでは同日0時なので、UNIX時間は、UTCの0時と同じ値になります。</p>
+<ul>
+<li>日本時間 9時 = UTC 0時 = 同じUNIX時間</li>
+</ul>
+<p>同じ瞬間なら、UNIX時間は、時間帯に関わらず同じ値です。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>期限や開始日時を、数字で設定する</li>
+<li>テストデータに、日時の数字を入れる</li>
+<li>ログの検索範囲を、数字で指定する</li>
+<li>予約や、スケジュールの設定</li>
+</ul>
+<h2>例</h2>
+<p>システムの有効期限を、2026年12月31日 23時59分に設定したかった。日時を入れて、UNIX時間（秒）をコピーし、設定ファイルに貼った。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>時間帯の取り違え</b>：入力は、この端末の時間帯。UTCの値が欲しいときは注意。</li>
+<li><b>秒とミリ秒の間違い</b>：連携先が求める単位を確認する。</li>
+<li><b>日付の入力形式</b>：入力欄の形式に合わせて入れる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>未来の日時でも、変換できますか？</h3>
+<p>できます。</p>
+<h2>まとめ</h2>
+<p>日時を入れるだけで、UNIX時間（秒・ミリ秒）が出ます。設定やテストに便利です。</p>
 <a class="cta" href="/timestamp-converter.html">UNIX時間（タイムスタンプ）変換を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/wareki-converter.html">西暦と和暦を変換する</a>：西暦と和暦を、かんたんに変換します。</li><li><a href="/json-formatter.html">JSONを整える・チェックする</a>：JSONを整形・圧縮し、書き方をチェックします。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +251,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Finding the UNIX Time of a Date</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter a date and time</li><li>See the seconds</li><li>Copy it</li></ul></div>
-<p>Enter a date and time in the lower field of <a href="/timestamp-converter.html">Timestamp Converter</a> to get seconds and milliseconds.</p>
+<p>You want to pass a specific date and time to a program as a number. You can look up UNIX time from a date and time. Use "Convert from date and time (this device's time zone)" in <a href="/timestamp-converter.html">UNIX Timestamp Converter</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter a date and time</li>
-<li>See the seconds</li>
-<li>Copy it</li>
+<li>Enter a date and time in the "Convert from date and time (this device's time zone)" field.</li>
+<li>Results appear in "UNIX time (seconds)" and "UNIX time (milliseconds)".</li>
+<li>Note the one you need with "Copy".</li>
 </ol>
-<div class="note">The date you enter is treated in this device's time zone.</div>
+<div class="note">The date and time you enter is treated as this device's time zone. If you want to enter in UTC, calculate the offset and adjust.</div>
+<h2>Which to use</h2>
+<ul>
+<li><b>UNIX time (seconds)</b>: many systems, databases, servers</li>
+<li><b>UNIX time (milliseconds)</b>: JavaScript, some APIs</li>
+</ul>
+<p>Check which the destination wants and choose.</p>
+<h2>Time zone note</h2>
+<p>Entering "1 January 2026 9:00" in Japan is 0:00 on the same day in UTC, so the UNIX time is the same as UTC 0:00.</p>
+<ul>
+<li>Japan time 9:00 = UTC 0:00 = same UNIX time</li>
+</ul>
+<p>For the same instant, UNIX time is the same value regardless of time zone.</p>
+<h2>Good for</h2>
+<ul>
+<li>Setting deadlines and start times as numbers</li>
+<li>Putting date numbers in test data</li>
+<li>Specifying log search ranges by number</li>
+<li>Reservations and schedule settings</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to set a system's expiry to 23:59 on 31 December 2026. Entered the date and time, copied the UNIX time (seconds) and pasted it in the settings file.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Time zone mix-up</b>: input is this device's time zone. Take care if you want a UTC value.</li>
+<li><b>Seconds vs milliseconds</b>: check the unit the destination wants.</li>
+<li><b>Date input format</b>: enter to match the input field's format.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can future dates be converted?</h3>
+<p>Yes.</p>
+<h2>Summary</h2>
+<p>Just enter a date and time to get UNIX time (seconds and milliseconds). Handy for settings and tests.</p>
 <a class="cta" href="/timestamp-converter.html">Use "UNIX Timestamp Converter" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/wareki-converter.html">Convert Between Western Years and Japanese Eras</a>: Convert between AD years and Japanese eras.</li><li><a href="/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

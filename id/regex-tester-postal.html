@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Regex untuk Kode Pos dan Nomor Telepon</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Tulis pola</li><li>Masukkan teksnya</li><li>Periksa jumlahnya</li></ul></div>
-<p>Memasukkan "\d{3}-\d{4}" di <a href="/id/regex-tester.html">Penguji Regex</a> menemukan bentuk kode pos.</p>
+<p lang="en">You want to find only postal codes or phone numbers in text. Regular expressions are useful for that. Build the pattern while trying it in <a href="/id/regex-tester.html">Regex Tester</a>.</p>
+<h2 lang="en">Postal code pattern</h2>
+<p lang="en">Japanese postal codes take the form "123-4567".</p>
+<ul>
+<li lang="en">Pattern: \d{3}-\d{4}</li>
+<li lang="en">Meaning: three digits, a hyphen, four digits</li>
+</ul>
+<p lang="en">To also find "1234567" without a hyphen:</p>
+<ul>
+<li lang="en">Pattern: \d{3}-?\d{4}</li>
+<li lang="en">Meaning: the hyphen may or may not be present</li>
+</ul>
+<h2 lang="en">Phone number patterns</h2>
+<ul>
+<li lang="en">Landline example: 0\d{1,4}-\d{1,4}-\d{4}</li>
+<li lang="en">Mobile example: 0[789]0-\d{4}-\d{4}</li>
+</ul>
 <h2>Langkah-langkah</h2>
 <ol>
-<li>Tulis pola</li>
-<li>Masukkan teksnya</li>
-<li>Periksa jumlahnya</li>
+<li lang="en">Write the pattern in "Regular expression pattern".</li>
+<li lang="en">Enter g in "Flags" (find all).</li>
+<li lang="en">Paste real text into "Text to test".</li>
+<li lang="en">Look at the matched parts and positions and check they're as expected.</li>
 </ol>
-<div class="note">"\d" adalah satu digit dan "{3}" berarti tiga kali.</div>
+<div class="note" lang="en">First try it on a sentence like "The postal code is 123-4567."</div>
+<h2 lang="en">Finding full-width digits</h2>
+<p lang="en">Full-width digits (１２３) may not match the half-width \d. To find full-width too, specify character ranges.</p>
+<ul>
+<li lang="en">Pattern: [0-9０-９]{3}-[0-9０-９]{4}</li>
+</ul>
+<h2>Cocok untuk</h2>
+<ul>
+<li lang="en">Extracting numbers from rosters and emails</li>
+<li lang="en">Making patterns for input format checks</li>
+<li lang="en">Finding numbers in text in bulk</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">Numbers were mixed into roster text. \d{3}-\d{4} with flag g showed all postal codes with their matched positions.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Types of hyphen</b>: similar symbols exist ("-", "ー", "－"). Match the symbol in the actual text.</li>
+<li lang="en"><b>Phone digit counts</b>: they differ by area code. Make it loose.</li>
+<li lang="en"><b>Other numbers resembling these</b>: dates and amounts can match.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can this check that a number is correct?</h3>
+<p lang="en">Only whether the form matches. It can't confirm whether the number exists.</p>
+<h2>Ringkasan</h2>
+<p lang="en">Search by form, like \d{3}-\d{4}. Adjust while trying in the tester.</p>
 <a class="cta" href="/id/regex-tester.html">Gunakan “Penguji Regex” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/text-diff.html">Bandingkan Dua Teks (Diff)</a>: Tampilkan perbedaan antara dua teks baris demi baris.</li><li><a href="/id/char-counter.html">Penghitung Karakter (untuk Lamaran dan Laporan)</a>: Hitung karakter, baris, dan lembar kertas naskah dari teks Anda.</li><li><a href="/id/line-sort-dedupe.html">Hapus Baris Duplikat dan Urutkan Daftar</a>: Hapus baris duplikat dan urutkan.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>
