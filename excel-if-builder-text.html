@@ -200,14 +200,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>文字を結果にする</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>結果を入れる</li><li>式を見る</li><li>確かめる</li></ul></div>
-<p><a href="/excel-if-builder.html">IF式の作成</a> では、文字の結果が自動で引用符に囲まれます。</p>
+<p>IF関数の結果に、「合格」「不合格」のような文字を入れたいとき、式の中では文字を「"」で囲む必要があります。<a href="/excel-if-builder.html">IF関数の式を作る</a> は、これを自動で付けてくれます。</p>
 <h2>手順</h2>
 <ol>
-<li>結果を入れる</li>
-<li>式を見る</li>
-<li>確かめる</li>
+<li>「条件に合うときの結果」に、「合格」と入れる。</li>
+<li>「合わないときの結果」に、「不合格」と入れる。</li>
+<li>式に、"合格" "不合格" と引用符つきで入っていることを確かめる。</li>
 </ol>
-<div class="note">数字やセルは、そのまま式に入ります。</div>
+<div class="note">自分で「"」を付ける必要はありません。</div>
+<h2>結果の形による扱い</h2>
+<ul>
+<li>文字（合格）：引用符で囲まれる → "合格"</li>
+<li>数字（100）：そのまま → 100</li>
+<li>セル（B2）：そのまま → B2</li>
+<li>すでに引用符つき（"合格"）：そのまま</li>
+<li>空欄：空の文字 → ""</li>
+</ul>
+<h2>例</h2>
+<ul>
+<li>条件に合う：合格、合わない：不合格 → =IF(A2&gt;=60,"合格","不合格")</li>
+<li>条件に合う：B2、合わない：0 → =IF(A2&gt;=60,B2,0)</li>
+<li>条件に合う：合格、合わない：空欄 → =IF(A2&gt;=60,"合格","")</li>
+</ul>
+<h2>文字の中に、引用符を入れたい</h2>
+<p>結果に、引用符そのものを入れたい場合は、ツールが自動で二重にして整えます。</p>
+<h2>数字を文字として出したい</h2>
+<p>「100」を文字として扱いたい場合は、引用符つきで「"100"」と入れます。計算には使えなくなります。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>合否や、判定の結果を表示したい</li>
+<li>「済」「未」などの状態を、表示したい</li>
+<li>「要確認」のような、注意の言葉を出したい</li>
+</ul>
+<h2>例</h2>
+<p>納期の判定で、期限内なら「OK」、超えたら「要確認」と表示したかった。結果の欄に文字を入れるだけで、引用符つきの式ができた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>全角と半角の引用符</b>：式の中の「"」は、半角。ツールが付けるので、手で付けない。</li>
+<li><b>結果に別のセルを入れたい</b>：セルの名前を入れる。文字として出したいときは、引用符つきで入れる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>結果に式を入れられますか？</h3>
+<p>このツールの結果欄は、文字、数字、セルです。式は、作成後に手で書き換えます。</p>
+<h2>まとめ</h2>
+<p>文字の結果は、そのまま入れれば、引用符つきの式になります。</p>
 <a class="cta" href="/excel-if-builder.html">IF関数の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/excel-text-format-builder.html">TEXT関数の式を作る（表示形式）</a>：TEXT関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +255,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Using Text as the Result</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the result</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/excel-if-builder.html">IF Builder</a>, a text result is put in quotes automatically.</p>
+<p>When you want text like "Pass" or "Fail" as an IF result, the formula needs the text enclosed in quotes. <a href="/excel-if-builder.html">Build an IF Formula</a> adds them automatically.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the result</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>Enter "Pass" in "Result if true".</li>
+<li>Enter "Fail" in "Result if false".</li>
+<li>Check the formula has the quoted "Pass" and "Fail".</li>
 </ol>
-<div class="note">Numbers and cells go into the formula as they are.</div>
+<div class="note">You needn't add the quotes yourself.</div>
+<h2>Handling by result form</h2>
+<ul>
+<li>Text (Pass): enclosed in quotes → "Pass"</li>
+<li>Numbers (100): as is → 100</li>
+<li>Cells (B2): as is → B2</li>
+<li>Already quoted ("Pass"): as is</li>
+<li>Blank: empty string → ""</li>
+</ul>
+<h2>Examples</h2>
+<ul>
+<li>True: Pass, False: Fail → =IF(A2&gt;=60,"Pass","Fail")</li>
+<li>True: B2, False: 0 → =IF(A2&gt;=60,B2,0)</li>
+<li>True: Pass, False: blank → =IF(A2&gt;=60,"Pass","")</li>
+</ul>
+<h2>Putting a quote inside the text</h2>
+<p>If the result needs a quote character itself, the tool doubles it up automatically.</p>
+<h2>Showing a number as text</h2>
+<p>To treat "100" as text, enter it quoted as "100". It can then no longer be used in calculation.</p>
+<h2>Good for</h2>
+<ul>
+<li>Showing pass/fail or judgement results</li>
+<li>Showing statuses like "Done" or "Pending"</li>
+<li>Showing warnings like "Check"</li>
+</ul>
+<h2>Example</h2>
+<p>For deadline judgement, wanted "OK" if in time and "Check" if over. Just entering text in the result fields made a quoted formula.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Full-width vs half-width quotes</b>: quotes in formulas are half-width. The tool adds them, so don't add by hand.</li>
+<li><b>Wanting another cell as the result</b>: enter the cell name. To show it as text, enter it quoted.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I put a formula in the result?</h3>
+<p>The result fields take text, numbers and cells. Rewrite formulas by hand after building.</p>
+<h2>Summary</h2>
+<p>Enter text results as is and a quoted formula results.</p>
 <a class="cta" href="/excel-if-builder.html">Use "Build an IF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/excel-text-format-builder.html">Build an Excel TEXT Formula</a>: Build a TEXT formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

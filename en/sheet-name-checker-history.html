@@ -201,14 +201,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>The Name History</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the name</li><li>See the result</li><li>Pick another name</li></ul></div>
-<p><a href="/en/sheet-name-checker.html">Sheet Name Checker</a> reports History as a reserved name.</p>
+<p>A sheet named "History" can't be created in Excel. <a href="/en/sheet-name-checker.html">Check an Excel Sheet Name</a> finds this reserved name and fixes it into a usable one.</p>
+<h2>Why it can't be used</h2>
+<p>"History" is a reserved name Excel uses internally. The change-tracking feature (shared workbook change history) creates a sheet named "History", so the same name can't be used.</p>
+<ul>
+<li>Case isn't distinguished: "history" and "HISTORY" are the same</li>
+<li>With other characters around it, it's fine (History2026 etc.)</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the name</li>
-<li>See the result</li>
-<li>Pick another name</li>
+<li>Enter "History" in "Sheet name".</li>
+<li>"History is a reserved name" is shown.</li>
+<li>"History_" appears in "Fixed sheet name".</li>
 </ol>
-<div class="note">A small change such as History_ makes it usable.</div>
+<div class="note">"_" is added at the end to make "History_". You may use a different name instead.</div>
+<h2>Examples</h2>
+<ul>
+<li>"History" → "History_"</li>
+<li>"history" → "history_"</li>
+<li>"History2" → usable as is</li>
+<li>"Work log" → usable as is</li>
+</ul>
+<h2>Alternative names</h2>
+<ul>
+<li>Log</li>
+<li>Change log</li>
+<li>Records</li>
+<li>History_2026</li>
+<li>Updates</li>
+</ul>
+<h2>Where it often happens</h2>
+<ul>
+<li>Trying to name a history-managing sheet with the plain word</li>
+<li>Moving an English template into another-language version</li>
+<li>A macro trying to create a sheet named "History"</li>
+</ul>
+<h2>Handling in macros</h2>
+<p>In VBA, when setting Name after Sheets.Add, check the name isn't "History".</p>
+<ul>
+<li>Condition: If LCase(name) = "history" Then name = name &amp; "_"</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Making a sheet for history</li>
+<li>Wanting to know why a name can't be used</li>
+</ul>
+<h2>Example</h2>
+<p>Naming an update-log sheet "History" caused an error. I didn't know why, but learning it's reserved, I renamed it "Update log".</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The error message is unclear</b>: it only says the name isn't valid.</li>
+<li><b>Other reserved names</b>: this tool checks only History.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Are other sheet names reserved?</h3>
+<p>In general there are few other special reserved names, but it can vary by Excel environment.</p>
+<h2>Summary</h2>
+<p>"History" can't be a sheet name. Add "_" or choose another name.</p>
 <a class="cta" href="/en/sheet-name-checker.html">Use "Check an Excel Sheet Name" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/en/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a>: Find the cells, rows and columns of a range.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

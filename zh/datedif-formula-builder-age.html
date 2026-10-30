@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>计算年龄</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>输入出生日期和今天的日期</li><li>选择 Y</li><li>复制</li></ul></div>
-<p>在<a href="/zh/datedif-formula-builder.html">DATEDIF生成器</a>中选择 Y,会得到按整年计算年龄的公式。</p>
+<p lang="en">Finding a full-years age from a birth date is DATEDIF's classic use. Choose "Y" in <a href="/zh/datedif-formula-builder.html">Build a DATEDIF Formula</a> to build an age formula.</p>
 <h2>步骤</h2>
 <ol>
-<li>输入出生日期和今天的日期</li>
-<li>选择 Y</li>
-<li>复制</li>
+<li lang="en">Enter the birth-date cell in "Start date cell".</li>
+<li lang="en">Enter the cell of the reference date in "End date cell".</li>
+<li lang="en">Choose "Y" in "Unit".</li>
+<li lang="en">Copy the "DATEDIF formula".</li>
 </ol>
-<div class="note">结束日期也可以使用 TODAY()。</div>
+<div class="note" lang="en">"Y" returns completed years (increases only once the birthday arrives).</div>
+<h2>示例</h2>
+<p lang="en">With a birth date in A2 and a reference date in B2, the age in full years is:</p>
+<ul>
+<li lang="en">=DATEDIF(A2,B2,"Y")</li>
+</ul>
+<h2 lang="en">To get today's age</h2>
+<p lang="en">Make the reference date today. Rewrite the end-date cell in the built formula as TODAY().</p>
+<ul>
+<li lang="en">=DATEDIF(A2,TODAY(),"Y")</li>
+</ul>
+<p lang="en">It updates to that day's age every time you open the file.</p>
+<h2 lang="en">Full-year age vs traditional counting</h2>
+<ul>
+<li lang="en"><b>Full-year age</b>: increases each birthday (the common modern way)</li>
+<li lang="en"><b>Traditional (kazoedoshi)</b>: counts the birth year as 1 and adds one on New Year's Day</li>
+</ul>
+<p lang="en">This tool's formula gives full-year age.</p>
+<h2 lang="en">Showing age and months</h2>
+<p lang="en">To show something like "5 years 3 months", use the tool's second formula.</p>
+<ul>
+<li lang="en">=DATEDIF(A2,B2,"Y")&amp;" years "&amp;DATEDIF(A2,B2,"YM")&amp;" months"</li>
+</ul>
+<h2>适合</h2>
+<ul>
+<li lang="en">Building an age column in a list</li>
+<li lang="en">Checking age eligibility for applications</li>
+<li lang="en">Knowing a child's age in months</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Wanted an age column in an employee list. DATEDIF gave full-year ages from the birth-date column and today's date. It updates daily, so no manual entry is needed.</p>
+<h2 lang="en">Verifying</h2>
+<p lang="en">Someone born April 15, 2000 is 25 on April 14, 2026 (the day before the birthday), and turns 26 on April 15, 2026.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Birth date is text</b>: if not recognised as a date, #VALUE! results.</li>
+<li lang="en"><b>Reference date before birth date</b>: #NUM!.</li>
+<li lang="en"><b>Leap-day birthdays</b>: treatment of Feb 29 births can vary in non-leap years.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can YEARFRAC give age too?</h3>
+<p lang="en">It can, but as a decimal. Truncating with INT gives something close to full-year age. DATEDIF is more reliable.</p>
+<h2>小结</h2>
+<p lang="en">Use DATEDIF "Y" for age. Making the reference date TODAY() updates automatically.</p>
 <a class="cta" href="/zh/datedif-formula-builder.html">使用“生成 DATEDIF 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/excel-serial-date.html">Excel 序列值与日期转换器</a>: 转换 Excel 的序列值和日期。</li><li><a href="/zh/date-calculator.html">计算年龄、日期间隔天数和日期加减</a>：计算年龄和两个日期之间的天数。</li><li><a href="/zh/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

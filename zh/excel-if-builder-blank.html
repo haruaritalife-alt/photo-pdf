@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>返回空白</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>清空结果栏</li><li>查看公式</li><li>复制</li></ul></div>
-<p>在<a href="/zh/excel-if-builder.html">IF公式生成器</a>中清空结果栏,会得到返回空白的公式。</p>
+<p lang="en">With IF, when the condition fails you may want to show nothing. In that case leave the result blank. <a href="/zh/excel-if-builder.html">Build an IF Formula</a> builds a formula returning an empty string ("") just by leaving the result field empty.</p>
 <h2>步骤</h2>
 <ol>
-<li>清空结果栏</li>
-<li>查看公式</li>
-<li>复制</li>
+<li lang="en">Enter the cell, comparison and value.</li>
+<li lang="en">Enter what to show in "Result if true".</li>
+<li lang="en">Leave "Result if false" empty.</li>
+<li lang="en">Check the formula ends with "".</li>
 </ol>
-<div class="note">在公式中写作 ""。</div>
+<div class="note" lang="en">"" is an empty string, meaning "show nothing".</div>
+<h2>示例</h2>
+<p lang="en">Showing "Pass" only when A2 is 60 or more and blank otherwise.</p>
+<ul>
+<li lang="en">=IF(A2&gt;=60,"Pass","")</li>
+</ul>
+<h2 lang="en">Empty string vs 0</h2>
+<ul>
+<li lang="en"><b>"" (empty string)</b>: looks blank, but the cell holds an "empty string".</li>
+<li lang="en"><b>0</b>: the number 0 is displayed.</li>
+<li lang="en"><b>A cell with nothing</b>: truly blank.</li>
+</ul>
+<h2 lang="en">Effect on calculation</h2>
+<p lang="en">Cells returning "" look empty but need care in calculation.</p>
+<ul>
+<li lang="en">SUM and AVERAGE: empty strings are ignored</li>
+<li lang="en">Arithmetic with "+": gives #VALUE!</li>
+<li lang="en">COUNTA: counted (judged not empty)</li>
+<li lang="en">COUNTBLANK: counted (judged empty)</li>
+</ul>
+<h2>适合</h2>
+<ul>
+<li lang="en">Showing only items that meet the condition</li>
+<li lang="en">Making the look cleaner</li>
+<li lang="en">Tidying tables for printing or submission</li>
+</ul>
+<h2 lang="en">When used in calculation</h2>
+<p lang="en">For cells used later in calculation, return 0 rather than "", or think of a method other than IF.</p>
+<ul>
+<li lang="en">Example: =IF(A2&gt;=60,B2,0)</li>
+<li lang="en">Another method hides zeros through the display format</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Wanted to show only passers' names and leave others blank. Making the fail result "" tidied the list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looks blank but isn't</b>: ISBLANK returns FALSE. Test with whether LEN is 0.</li>
+<li lang="en"><b>Affects charts</b>: empty strings may be treated as 0 in charts.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want blank when the condition is true?</h3>
+<p lang="en">Leave the "Result if true" field empty.</p>
+<h2>小结</h2>
+<p lang="en">Leave the result field empty for a blank, and you get a "" formula.</p>
 <a class="cta" href="/zh/excel-if-builder.html">使用“生成 IF 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li><li><a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/zh/excel-text-format-builder.html">生成 Excel 的 TEXT 公式</a>: 生成 TEXT 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

@@ -201,14 +201,60 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>เปรียบเทียบ IF กับ IFS</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>สร้างสูตร</li><li>เปรียบเทียบทั้งสอง</li><li>เลือกหนึ่งรายการ</li></ul></div>
-<p><a href="/th/excel-if-builder.html">ตัวสร้าง IF</a> แสดงสูตร IF และ IFS เคียงข้างกัน</p>
+<p lang="en">When conditions split into three or more branches, stacking IFs gets hard to read. That's where IFS comes in. <a href="/th/excel-if-builder.html">Build an IF Formula</a> outputs IF and IFS formulas side by side.</p>
+<h2 lang="en">IF vs IFS</h2>
+<ul>
+<li lang="en"><b>IF</b>: one condition; two outcomes, "true" and "false".</li>
+<li lang="en"><b>IFS</b>: several conditions written in order; returns the result of the first that holds.</li>
+</ul>
+<h2 lang="en">The form this tool outputs</h2>
+<ul>
+<li lang="en">IF: =IF(A2&gt;=60,"Pass","Fail")</li>
+<li lang="en">IFS: =IFS(A2&gt;=60,"Pass",TRUE,"Fail")</li>
+</ul>
+<p lang="en">The "TRUE" in IFS is how you specify the result "when no condition held".</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>สร้างสูตร</li>
-<li>เปรียบเทียบทั้งสอง</li>
-<li>เลือกหนึ่งรายการ</li>
+<li lang="en">Enter the cell, comparison, value and results.</li>
+<li lang="en">Compare the "IF formula" and "IFS formula".</li>
+<li lang="en">To add conditions, append "condition,result" to the IFS formula.</li>
 </ol>
-<div class="note">IFS เพิ่มเงื่อนไขได้ง่ายกว่า</div>
+<div class="note" lang="en">IFS works in newer Excel (2019 and later) and Google Sheets.</div>
+<h2 lang="en">Adding conditions</h2>
+<p lang="en">Splitting scores into A, B, C.</p>
+<ul>
+<li lang="en">=IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<p lang="en">It checks from the top and returns the first match: A for 80 or more, B for 60 or more, otherwise C.</p>
+<h2 lang="en">Compared with stacked IFs</h2>
+<ul>
+<li lang="en">Stacked IF: =IF(A2&gt;=80,"A",IF(A2&gt;=60,"B","C"))</li>
+<li lang="en">IFS: =IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<p lang="en">The more conditions, the more readable IFS is.</p>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Splitting results into three or more tiers</li>
+<li lang="en">Splitting fee tiers by amount</li>
+<li lang="en">Changing judgement by period</li>
+</ul>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en"><b>Order matters</b>: conditions are checked in the order written. Writing broader ones first gives unintended results.</li>
+<li lang="en"><b>TRUE at the end</b>: put TRUE last for when nothing matches. Without it you get #N/A.</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Writing a five-tier rating with stacked IFs became unreadable with brackets. Rewriting with IFS made it clear.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Not usable in old Excel</b>: IFS doesn't work in Excel 2016 and earlier. Use stacked IFs.</li>
+<li lang="en"><b>#N/A appears</b>: the final TRUE is missing.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are there other functions?</h3>
+<p lang="en">For range-banded judgement, VLOOKUP approximate match and LOOKUP also work.</p>
+<h2>สรุป</h2>
+<p lang="en">IFS for three or more conditions. Don't forget TRUE at the end.</p>
 <a class="cta" href="/th/excel-if-builder.html">ใช้ “สร้างสูตร IF” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/sumif-formula-builder.html">สร้างสูตร SUMIF หรือ COUNTIF</a>: สร้างสูตร SUMIF และ COUNTIF</li><li><a href="/th/vlookup-formula-builder.html">สร้างสูตร VLOOKUP หรือ XLOOKUP</a>: สร้างสูตร VLOOKUP และ XLOOKUP</li><li><a href="/th/excel-text-format-builder.html">สร้างสูตร TEXT ของ Excel</a>: สร้างสูตร TEXT</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

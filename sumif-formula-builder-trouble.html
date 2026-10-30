@@ -200,14 +200,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/sumif-formula-builder.html">SUMIF式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を作ったのに、結果がおかしい。<a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a> で起こりやすい困りごとと対処法をまとめます。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：範囲が「A2:A100」の形でない。または、条件が空。SUMIFとAVERAGEIFでは、合計・平均する範囲も必要。</li>
+</ul>
+<h2>式を貼ったあとの困りごと</h2>
+<ul>
+<li><b>結果が0になる</b>：条件に合うセルがない。全角と半角の違い、余分なスペース、表記ゆれが原因のことが多い。</li>
+<li><b>#VALUE!が出る</b>：範囲の大きさが、そろっていない（SUMIFSなど）。</li>
+<li><b>#DIV/0!が出る</b>：AVERAGEIFで、条件に合うセルがない。</li>
+<li><b>#NAME?が出る</b>：関数名が間違っている。</li>
+<li><b>数字が合計されない</b>：合計する範囲の数字が、文字列になっている。</li>
+<li><b>日付の条件が効かない</b>：日付が文字列になっている。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>条件の文字と、セルの文字が、完全に同じか確かめる。</li>
+<li>全角と半角、余分なスペースを確かめる。</li>
+<li>範囲の大きさが、そろっているか確かめる。</li>
+<li>合計する範囲が、数字になっているか確かめる。</li>
 </ol>
-<div class="note">式が出ないときは、範囲がA2:A100のように書かれているか、条件が入っているか確かめます。</div>
+<div class="note">数字が左揃えで表示されていたら、文字列の可能性があります。</div>
+<h2>数字が文字列のとき</h2>
+<ul>
+<li>セルを選び、緑の三角のマークから「数値に変換」を選ぶ</li>
+<li>または、別の空きセルに1を入れて、コピーし、対象を選んで「形式を選択して貼り付け」の「乗算」を使う</li>
+</ul>
+<h2>条件の特殊な文字</h2>
+<p>「*」と「?」は、ワイルドカードです。文字として検索したいときは、前に「~」を付けます。</p>
+<ul>
+<li>例：「~*」で、「*」という文字を探す</li>
+</ul>
+<h2>例</h2>
+<p>「東京」で合計したのに、0になった。セルが「東京 」（末尾にスペース）だった。スペースを取ると、合計が出た。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>範囲に$がない</b>：式をコピーしたとき、範囲がずれる。$で固定する。</li>
+<li><b>見出しを含めてしまう</b>：範囲に見出し行を含めても、通常は問題ない。ただし、合計の範囲とずれる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>大文字と小文字は区別されますか？</h3>
+<p>区別されません。「A」と「a」は、同じとして扱われます。</p>
+<h2>まとめ</h2>
+<p>文字の一致・範囲の大きさ・数字の形。この3つを確かめましょう。</p>
 <a class="cta" href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/textjoin-formula-builder.html">TEXTJOINの式を作る（セルをまとめてつなぐ）</a>：TEXTJOINの式を作ります。</li><li><a href="/column-stats.html">数字の合計・平均・中央値をまとめて出す</a>：貼った数字の合計や平均を出します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +255,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/sumif-formula-builder.html">SUMIF Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but the result is odd. Here are common troubles with <a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the range isn't in the "A2:A100" form, or the condition is empty. SUMIF and AVERAGEIF also need the sum or average range.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>Result is 0</b>: no cells meet the condition. Often full-width vs half-width differences, extra spaces or notation variation.</li>
+<li><b>#VALUE! appears</b>: range sizes don't match (SUMIFS etc.).</li>
+<li><b>#DIV/0! appears</b>: AVERAGEIF with no matching cells.</li>
+<li><b>#NAME? appears</b>: the function name is wrong.</li>
+<li><b>Numbers aren't summed</b>: the numbers in the sum range are text.</li>
+<li><b>Date conditions don't work</b>: the dates are text.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the condition text and the cell text are exactly the same.</li>
+<li>Check full-width/half-width and extra spaces.</li>
+<li>Check range sizes match.</li>
+<li>Check the sum range holds numbers.</li>
 </ol>
-<div class="note">If no formula appears, check that the ranges are written like A2:A100 and a condition is entered.</div>
+<div class="note">If numbers display left-aligned, they may be text.</div>
+<h2>When numbers are text</h2>
+<ul>
+<li>Select the cells and choose "Convert to Number" from the green triangle mark</li>
+<li>Or enter 1 in a spare cell, copy it, select the targets and use "Paste Special" with "Multiply"</li>
+</ul>
+<h2>Special characters in conditions</h2>
+<p>"*" and "?" are wildcards. To search for them as characters, prefix with "~".</p>
+<ul>
+<li>Example: "~*" searches for the character "*"</li>
+</ul>
+<h2>Example</h2>
+<p>Totalling by "Tokyo" gave 0. The cell was "Tokyo " with a trailing space. Removing it gave the total.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Range lacks $</b>: ranges shift when the formula is copied. Fix with $.</li>
+<li><b>Including the header row</b>: including the header in the range is usually fine, but misaligns with the sum range.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is it case-sensitive?</h3>
+<p>No. "A" and "a" are treated the same.</p>
+<h2>Summary</h2>
+<p>Text matches, range sizes, number form. Check these three.</p>
 <a class="cta" href="/sumif-formula-builder.html">Use "Build a SUMIF or COUNTIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a>: Build a TEXTJOIN formula.</li><li><a href="/column-stats.html">Sum, Average and Median of a Column of Numbers</a>: Get the sum and average of pasted numbers.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

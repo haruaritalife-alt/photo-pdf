@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>글자를 결과로 쓰기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>결과 입력</li><li>수식 보기</li><li>확인하기</li></ul></div>
-<p><a href="/ko/excel-if-builder.html">IF 만들기</a>에서는 글자 결과가 자동으로 따옴표로 묶입니다.</p>
+<p lang="en">When you want text like "Pass" or "Fail" as an IF result, the formula needs the text enclosed in quotes. <a href="/ko/excel-if-builder.html">Build an IF Formula</a> adds them automatically.</p>
 <h2>순서</h2>
 <ol>
-<li>결과 입력</li>
-<li>수식 보기</li>
-<li>확인하기</li>
+<li lang="en">Enter "Pass" in "Result if true".</li>
+<li lang="en">Enter "Fail" in "Result if false".</li>
+<li lang="en">Check the formula has the quoted "Pass" and "Fail".</li>
 </ol>
-<div class="note">숫자와 셀은 수식에 그대로 들어갑니다.</div>
+<div class="note" lang="en">You needn't add the quotes yourself.</div>
+<h2 lang="en">Handling by result form</h2>
+<ul>
+<li lang="en">Text (Pass): enclosed in quotes → "Pass"</li>
+<li lang="en">Numbers (100): as is → 100</li>
+<li lang="en">Cells (B2): as is → B2</li>
+<li lang="en">Already quoted ("Pass"): as is</li>
+<li lang="en">Blank: empty string → ""</li>
+</ul>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">True: Pass, False: Fail → =IF(A2&gt;=60,"Pass","Fail")</li>
+<li lang="en">True: B2, False: 0 → =IF(A2&gt;=60,B2,0)</li>
+<li lang="en">True: Pass, False: blank → =IF(A2&gt;=60,"Pass","")</li>
+</ul>
+<h2 lang="en">Putting a quote inside the text</h2>
+<p lang="en">If the result needs a quote character itself, the tool doubles it up automatically.</p>
+<h2 lang="en">Showing a number as text</h2>
+<p lang="en">To treat "100" as text, enter it quoted as "100". It can then no longer be used in calculation.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Showing pass/fail or judgement results</li>
+<li lang="en">Showing statuses like "Done" or "Pending"</li>
+<li lang="en">Showing warnings like "Check"</li>
+</ul>
+<h2>예</h2>
+<p lang="en">For deadline judgement, wanted "OK" if in time and "Check" if over. Just entering text in the result fields made a quoted formula.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width vs half-width quotes</b>: quotes in formulas are half-width. The tool adds them, so don't add by hand.</li>
+<li lang="en"><b>Wanting another cell as the result</b>: enter the cell name. To show it as text, enter it quoted.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I put a formula in the result?</h3>
+<p lang="en">The result fields take text, numbers and cells. Rewrite formulas by hand after building.</p>
+<h2>요약</h2>
+<p lang="en">Enter text results as is and a quoted formula results.</p>
 <a class="cta" href="/ko/excel-if-builder.html">“IF 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li><li><a href="/ko/vlookup-formula-builder.html">VLOOKUP·XLOOKUP 수식 만들기</a>: VLOOKUP과 XLOOKUP 수식을 만듭니다.</li><li><a href="/ko/excel-text-format-builder.html">엑셀 TEXT 수식 만들기</a>: TEXT 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

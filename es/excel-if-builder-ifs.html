@@ -201,14 +201,60 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>IF e IFS comparados</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
 <div class="points"><b>Puntos clave</b><ul><li>Crea la fórmula</li><li>Compara las dos</li><li>Elige una</li></ul></div>
-<p><a href="/es/excel-if-builder.html">Creador de IF</a> muestra las fórmulas IF e IFS una junto a otra.</p>
+<p lang="en">When conditions split into three or more branches, stacking IFs gets hard to read. That's where IFS comes in. <a href="/es/excel-if-builder.html">Build an IF Formula</a> outputs IF and IFS formulas side by side.</p>
+<h2 lang="en">IF vs IFS</h2>
+<ul>
+<li lang="en"><b>IF</b>: one condition; two outcomes, "true" and "false".</li>
+<li lang="en"><b>IFS</b>: several conditions written in order; returns the result of the first that holds.</li>
+</ul>
+<h2 lang="en">The form this tool outputs</h2>
+<ul>
+<li lang="en">IF: =IF(A2&gt;=60,"Pass","Fail")</li>
+<li lang="en">IFS: =IFS(A2&gt;=60,"Pass",TRUE,"Fail")</li>
+</ul>
+<p lang="en">The "TRUE" in IFS is how you specify the result "when no condition held".</p>
 <h2>Pasos</h2>
 <ol>
-<li>Crea la fórmula</li>
-<li>Compara las dos</li>
-<li>Elige una</li>
+<li lang="en">Enter the cell, comparison, value and results.</li>
+<li lang="en">Compare the "IF formula" and "IFS formula".</li>
+<li lang="en">To add conditions, append "condition,result" to the IFS formula.</li>
 </ol>
-<div class="note">IFS facilita añadir más condiciones.</div>
+<div class="note" lang="en">IFS works in newer Excel (2019 and later) and Google Sheets.</div>
+<h2 lang="en">Adding conditions</h2>
+<p lang="en">Splitting scores into A, B, C.</p>
+<ul>
+<li lang="en">=IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<p lang="en">It checks from the top and returns the first match: A for 80 or more, B for 60 or more, otherwise C.</p>
+<h2 lang="en">Compared with stacked IFs</h2>
+<ul>
+<li lang="en">Stacked IF: =IF(A2&gt;=80,"A",IF(A2&gt;=60,"B","C"))</li>
+<li lang="en">IFS: =IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<p lang="en">The more conditions, the more readable IFS is.</p>
+<h2>Adecuado para</h2>
+<ul>
+<li lang="en">Splitting results into three or more tiers</li>
+<li lang="en">Splitting fee tiers by amount</li>
+<li lang="en">Changing judgement by period</li>
+</ul>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en"><b>Order matters</b>: conditions are checked in the order written. Writing broader ones first gives unintended results.</li>
+<li lang="en"><b>TRUE at the end</b>: put TRUE last for when nothing matches. Without it you get #N/A.</li>
+</ul>
+<h2>Ejemplo</h2>
+<p lang="en">Writing a five-tier rating with stacked IFs became unreadable with brackets. Rewriting with IFS made it clear.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Not usable in old Excel</b>: IFS doesn't work in Excel 2016 and earlier. Use stacked IFs.</li>
+<li lang="en"><b>#N/A appears</b>: the final TRUE is missing.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are there other functions?</h3>
+<p lang="en">For range-banded judgement, VLOOKUP approximate match and LOOKUP also work.</p>
+<h2>Resumen</h2>
+<p lang="en">IFS for three or more conditions. Don't forget TRUE at the end.</p>
 <a class="cta" href="/es/excel-if-builder.html">Usar «Crear una fórmula IF» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/sumif-formula-builder.html">Crear una fórmula SUMIF o COUNTIF</a>: Crea fórmulas SUMIF y COUNTIF.</li><li><a href="/es/vlookup-formula-builder.html">Crear una fórmula VLOOKUP o XLOOKUP</a>: Crea fórmulas VLOOKUP y XLOOKUP.</li><li><a href="/es/excel-text-format-builder.html">Crear una fórmula TEXTO de Excel</a>: Crea una fórmula TEXTO.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

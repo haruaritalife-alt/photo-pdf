@@ -200,14 +200,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>条件付きの平均</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>AVERAGEIFを選ぶ</li><li>範囲を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/sumif-formula-builder.html">SUMIF式の作成</a> でAVERAGEIFを選ぶと、条件に合うセルだけの平均を求める式になります。</p>
+<p>条件に合うセルだけの平均を出したいときは、AVERAGEIFを使います。<a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a> で「AVERAGEIF」を選ぶと、式が作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>AVERAGEIFを選ぶ</li>
-<li>範囲を入れる</li>
-<li>コピーする</li>
+<li>「関数」で「AVERAGEIF」を選ぶ。</li>
+<li>「条件を調べる範囲」と「条件」を入れる。</li>
+<li>「合計・平均する範囲」に、平均を出したい列の範囲を入れる。</li>
+<li>「1つ目をコピー」で、式をコピーする。</li>
 </ol>
-<div class="note">Googleスプレッドシートでも同じように使えます。</div>
+<div class="note">合計・平均する範囲を省くと、条件を調べる範囲そのものの平均になります。</div>
+<h2>例</h2>
+<p>A列が部署、C列が点数のとき、「営業」の平均点を出す場合です。</p>
+<ul>
+<li>1つ目：=AVERAGEIF(A2:A100,"営業",C2:C100)</li>
+<li>2つ目：=AVERAGEIFS(C2:C100,A2:A100,"営業")</li>
+</ul>
+<h2>SUMIFとの関係</h2>
+<p>平均は、合計÷個数です。同じ条件なら、次の式と同じ結果になります。</p>
+<ul>
+<li>=SUMIF(A2:A100,"営業",C2:C100)/COUNTIF(A2:A100,"営業")</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>部署別、クラス別の平均点を出したい</li>
+<li>一定額以上の注文の、平均額を知りたい</li>
+<li>地域ごとの、平均単価を出したい</li>
+</ul>
+<h2>該当がないときのエラー</h2>
+<p>条件に合うセルが1つもないと、#DIV/0! になります。</p>
+<ul>
+<li>対処：=IFERROR(AVERAGEIF(...),"") で、空欄にする。</li>
+</ul>
+<h2>空欄と文字</h2>
+<p>平均の対象は、数字のセルだけです。空欄や、文字のセルは無視されます。</p>
+<h2>例</h2>
+<p>部署別の平均残業時間を出したかった。=AVERAGEIF(A2:A100,"営業",D2:D100) で、営業部の平均が出た。他の部署は、条件を書き換えて出した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>0を含めたくない</b>：条件に「&lt;&gt;0」を使うと、0を除いた平均になる。</li>
+<li><b>範囲の大きさ</b>：条件の範囲と平均の範囲を、同じ行数にそろえる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>中央値を、条件つきで出せますか？</h3>
+<p>AVERAGEIFには中央値の機能がありません。配列数式やMEDIAN関数とIF関数の組み合わせが必要です。</p>
+<h2>まとめ</h2>
+<p>条件つきの平均は、AVERAGEIF。該当がないときのエラーに、備えましょう。</p>
 <a class="cta" href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/textjoin-formula-builder.html">TEXTJOINの式を作る（セルをまとめてつなぐ）</a>：TEXTJOINの式を作ります。</li><li><a href="/column-stats.html">数字の合計・平均・中央値をまとめて出す</a>：貼った数字の合計や平均を出します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +256,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Conditional Averages</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose AVERAGEIF</li><li>Enter the ranges</li><li>Copy it</li></ul></div>
-<p>Choosing AVERAGEIF in <a href="/sumif-formula-builder.html">SUMIF Builder</a> gives a formula that averages only the matching cells.</p>
+<p>To average only the cells that meet a condition, use AVERAGEIF. Choosing "AVERAGEIF" in <a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a> builds the formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose AVERAGEIF</li>
-<li>Enter the ranges</li>
-<li>Copy it</li>
+<li>Choose "AVERAGEIF" in "Function".</li>
+<li>Enter "Range to test" and "Condition".</li>
+<li>In "Range to sum or average", enter the column range to average.</li>
+<li>Copy the formula with "Copy the first".</li>
 </ol>
-<div class="note">It works the same way in Google Sheets.</div>
+<div class="note">Omitting the average range averages the test range itself.</div>
+<h2>Example</h2>
+<p>With departments in column A and scores in column C, the average score for "Sales".</p>
+<ul>
+<li>First: =AVERAGEIF(A2:A100,"Sales",C2:C100)</li>
+<li>Second: =AVERAGEIFS(C2:C100,A2:A100,"Sales")</li>
+</ul>
+<h2>Relation to SUMIF</h2>
+<p>An average is sum ÷ count. For the same condition it matches this formula:</p>
+<ul>
+<li>=SUMIF(A2:A100,"Sales",C2:C100)/COUNTIF(A2:A100,"Sales")</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Average scores by department or class</li>
+<li>The average order amount above a threshold</li>
+<li>Average unit price by region</li>
+</ul>
+<h2>Error when nothing matches</h2>
+<p>If no cells meet the condition, #DIV/0! results.</p>
+<ul>
+<li>Fix: =IFERROR(AVERAGEIF(...),"") for a blank.</li>
+</ul>
+<h2>Blanks and text</h2>
+<p>Only number cells are averaged. Blanks and text cells are ignored.</p>
+<h2>Example</h2>
+<p>Wanted average overtime by department. =AVERAGEIF(A2:A100,"Sales",D2:D100) gave Sales' average; other departments were done by changing the condition.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Excluding 0</b>: a "&lt;&gt;0" condition averages without zeros.</li>
+<li><b>Range sizes</b>: make the criteria and average ranges the same number of rows.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I get a conditional median?</h3>
+<p>AVERAGEIF has no median feature. You'd need an array formula or MEDIAN combined with IF.</p>
+<h2>Summary</h2>
+<p>AVERAGEIF for conditional averages. Prepare for the no-match error.</p>
 <a class="cta" href="/sumif-formula-builder.html">Use "Build a SUMIF or COUNTIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a>: Build a TEXTJOIN formula.</li><li><a href="/column-stats.html">Sum, Average and Median of a Column of Numbers</a>: Get the sum and average of pasted numbers.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

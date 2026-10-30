@@ -200,14 +200,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>#NUM!が出るとき</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>日付を確かめる</li><li>順番を直す</li><li>もう一度試す</li></ul></div>
-<p><a href="/datedif-formula-builder.html">DATEDIF式の作成</a> で作った式で#NUM!が出るのは、開始日が終了日より後のときです。</p>
-<h2>手順</h2>
+<p>DATEDIFで「#NUM!」が出る。多くは、開始日と終了日が、逆になっています。<a href="/datedif-formula-builder.html">DATEDIFの式を作る</a> で式を作ったあとの、エラーの対処法をまとめます。</p>
+<h2>#NUM!の主な原因</h2>
+<ul>
+<li><b>開始日が終了日より後</b>：DATEDIFは、「開始日 ≤ 終了日」でなければならない。</li>
+<li><b>日付ではない値</b>：セルが日付として認識されていない（この場合は #VALUE! のことが多い）。</li>
+</ul>
+<h2>手順（対処）</h2>
 <ol>
-<li>日付を確かめる</li>
-<li>順番を直す</li>
-<li>もう一度試す</li>
+<li>開始日のセルと、終了日のセルを、入れ替えていないか確かめる。</li>
+<li>開始日が終了日より後でもよいときは、MIN関数とMAX関数で順番をそろえる。</li>
+<li>セルが日付かどうか、確かめる。</li>
 </ol>
-<div class="note">2つの日付を入れ替えてみます。</div>
+<div class="note">開始日と終了日が同じ日なら、結果は0で、エラーにはなりません。</div>
+<h2>順番を自動でそろえる式</h2>
+<p>どちらが先か分からないときは、次のように書きます。</p>
+<ul>
+<li>=DATEDIF(MIN(A2,B2),MAX(A2,B2),"D")</li>
+</ul>
+<h2>日付かどうかの確かめ方</h2>
+<ul>
+<li>=ISNUMBER(A2) がTRUEなら、日付（シリアル値）として認識されている。</li>
+<li>左揃えなら、文字列の可能性が高い。</li>
+</ul>
+<h2>文字列の日付を直す</h2>
+<ul>
+<li>DATEVALUE関数：=DATEVALUE("2026/4/15")</li>
+<li>セルの書式を「日付」にして、入力し直す</li>
+<li>「データ」→「区切り位置」で、日付に変換する方法もある</li>
+</ul>
+<h2>他のエラー</h2>
+<ul>
+<li><b>#VALUE!</b>：開始日か終了日が、日付として読めない。または、単位が不正。</li>
+<li><b>#NAME?</b>：関数名の綴りの間違い。</li>
+<li><b>#REF!</b>：参照するセルが、削除された。</li>
+</ul>
+<h2>向いている使い方</h2>
+<ul>
+<li>エラーの原因を、特定したい</li>
+<li>日付の入力ミスを、見つけたい</li>
+</ul>
+<h2>例</h2>
+<p>退職日が空欄の人に、勤続年数を出そうとして #NUM! が出た。空欄は0（1900年1月0日）と扱われ、開始日より前になるため。IF関数で、空欄のときは計算しないようにした。</p>
+<ul>
+<li>=IF(B2="","",DATEDIF(A2,B2,"Y"))</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>未来の日付</b>：開始日が未来でも、終了日がさらに後なら問題ない。</li>
+<li><b>時刻つきの日付</b>：時刻は無視される。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>空欄のときに、エラーを出さない方法は？</h3>
+<p>IF関数で、空欄のときは空の文字を返す式にします。</p>
+<h2>まとめ</h2>
+<p>#NUM!は、日付の順番を疑います。空欄や、文字列の日付にも注意しましょう。</p>
 <a class="cta" href="/datedif-formula-builder.html">DATEDIFの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +266,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>When #NUM! Appears</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the dates</li><li>Fix the order</li><li>Try again</li></ul></div>
-<p>A #NUM! from a formula built in <a href="/datedif-formula-builder.html">DATEDIF Builder</a> means the start date is later than the end date.</p>
-<h2>Steps</h2>
+<p>DATEDIF shows "#NUM!". Mostly the start and end dates are reversed. Here is how to handle errors after building a formula with <a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a>.</p>
+<h2>Main causes of #NUM!</h2>
+<ul>
+<li><b>Start date after end date</b>: DATEDIF requires start ≤ end.</li>
+<li><b>A non-date value</b>: the cell isn't recognised as a date (this more often gives #VALUE!).</li>
+</ul>
+<h2>Steps (handling)</h2>
 <ol>
-<li>Check the dates</li>
-<li>Fix the order</li>
-<li>Try again</li>
+<li>Check you haven't swapped the start and end cells.</li>
+<li>If the start may be after the end, align the order with MIN and MAX.</li>
+<li>Check the cells are dates.</li>
 </ol>
-<div class="note">Try swapping the two dates.</div>
+<div class="note">If start and end are the same day, the result is 0, not an error.</div>
+<h2>A formula that orders them automatically</h2>
+<p>When you don't know which comes first:</p>
+<ul>
+<li>=DATEDIF(MIN(A2,B2),MAX(A2,B2),"D")</li>
+</ul>
+<h2>How to check a date</h2>
+<ul>
+<li>If =ISNUMBER(A2) is TRUE, it's recognised as a date (serial value).</li>
+<li>If left-aligned, it's likely text.</li>
+</ul>
+<h2>Fixing text dates</h2>
+<ul>
+<li>DATEVALUE function: =DATEVALUE("2026/4/15")</li>
+<li>Set the cell format to "Date" and re-enter</li>
+<li>"Data" → "Text to Columns" can convert to dates</li>
+</ul>
+<h2>Other errors</h2>
+<ul>
+<li><b>#VALUE!</b>: the start or end can't be read as a date, or the unit is invalid.</li>
+<li><b>#NAME?</b>: a typo in the function name.</li>
+<li><b>#REF!</b>: a referenced cell was deleted.</li>
+</ul>
+<h2>Uses it suits</h2>
+<ul>
+<li>Identifying the cause of errors</li>
+<li>Finding date entry mistakes</li>
+</ul>
+<h2>Example</h2>
+<p>Computing tenure for someone with a blank retirement date gave #NUM!. A blank counts as 0 (January 0, 1900), which is before the start date. IF was used to skip blanks.</p>
+<ul>
+<li>=IF(B2="","",DATEDIF(A2,B2,"Y"))</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Future dates</b>: a future start is fine if the end is later still.</li>
+<li><b>Dates with times</b>: times are ignored.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How can I avoid errors on blanks?</h3>
+<p>Use IF to return an empty string when blank.</p>
+<h2>Summary</h2>
+<p>For #NUM!, suspect date order. Also watch for blanks and text dates.</p>
 <a class="cta" href="/datedif-formula-builder.html">Use "Build a DATEDIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

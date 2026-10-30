@@ -200,14 +200,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/datedif-formula-builder.html">DATEDIF式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を作ったのに、思ったような結果にならない。<a href="/datedif-formula-builder.html">DATEDIFの式を作る</a> で起こりやすい困りごとと対処法をまとめます。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：開始日か終了日のセルが、「A2」の形でない（半角、列の文字＋行番号）。</li>
+</ul>
+<h2>式を貼ったあとの困りごと</h2>
+<ul>
+<li><b>#NUM!が出る</b>：開始日が終了日より後。</li>
+<li><b>#VALUE!が出る</b>：セルが日付として認識されていない。</li>
+<li><b>#NAME?が出る</b>：古いExcelや、一部の環境でDATEDIFが使えない場合。</li>
+<li><b>年齢が1つずれる</b>：誕生日の前後の判定。基準日を確かめる。</li>
+<li><b>"MD"の結果がおかしい</b>：不具合のある単位。別の式で求める。</li>
+<li><b>候補に出てこない</b>：DATEDIFは、関数の一覧や、入力の補完に出てこない。そのまま入力すれば動く。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>開始日が終了日より前か、確かめる。</li>
+<li>両方のセルが日付か、ISNUMBER関数で確かめる。</li>
+<li>単位が、引用符で囲まれているか確かめる。</li>
 </ol>
-<div class="note">式が出ないときは、日付のセルがA2のように書かれているか確かめます。</div>
+<div class="note">日付を「2026.4.15」のようにドットで入力すると、日付として認識されないことがあります。</div>
+<h2>DATEDIFが、一覧に出ない理由</h2>
+<p>DATEDIFは、古い表計算ソフトとの互換性のために残された関数で、Excelの関数一覧に出ません。ただし、入力すれば使えます。</p>
+<h2>日付の入れ方</h2>
+<ul>
+<li>「2026/4/15」または「2026-4-15」：日付として認識されやすい</li>
+<li>「2026年4月15日」：多くの場合、認識される</li>
+<li>「R8.4.15」：和暦の省略形は、環境によって認識されない場合がある</li>
+</ul>
+<h2>時刻つきのセル</h2>
+<p>時刻がついたセルでも、DATEDIFは日付の部分で計算します。</p>
+<h2>例</h2>
+<p>開始日に「2026.4.15」と入れていて、#VALUE! が出た。「2026/4/15」に直すと、計算できた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>TODAY()の更新</b>：ファイルを開くたびに更新される。固定の日付にしたいときは、日付を入力する。</li>
+<li><b>セル参照のずれ</b>：式を下にコピーしたとき、参照が意図どおりか確かめる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>Googleスプレッドシートでも動きますか？</h3>
+<p>はい。DATEDIFは、Googleスプレッドシートでも使えます。</p>
+<h2>まとめ</h2>
+<p>日付の順番・日付の形・単位の引用符。この3つを確かめましょう。</p>
 <a class="cta" href="/datedif-formula-builder.html">DATEDIFの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +254,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/datedif-formula-builder.html">DATEDIF Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but it isn't giving the expected result. Here are common troubles with <a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the start or end date cell isn't in the "A2" form (half-width, column letters + row number).</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>#NUM! appears</b>: the start date is after the end date.</li>
+<li><b>#VALUE! appears</b>: a cell isn't recognised as a date.</li>
+<li><b>#NAME? appears</b>: DATEDIF may be unavailable in old Excel or some environments.</li>
+<li><b>Age is off by one</b>: the judgement around the birthday. Check the reference date.</li>
+<li><b>"MD" result is odd</b>: a faulty unit. Find it with another formula.</li>
+<li><b>Doesn't appear in suggestions</b>: DATEDIF doesn't show in the function list or autocomplete. It works if typed in full.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the start date is before the end date.</li>
+<li>Check both cells are dates with ISNUMBER.</li>
+<li>Check the unit is enclosed in quotes.</li>
 </ol>
-<div class="note">If no formula appears, check that the date cells are written like A2.</div>
+<div class="note">Entering dates with dots like "2026.4.15" may not be recognised as dates.</div>
+<h2>Why DATEDIF isn't in the list</h2>
+<p>DATEDIF is kept for compatibility with old spreadsheet software and doesn't appear in Excel's function list. Still, it works if you type it.</p>
+<h2>How to enter dates</h2>
+<ul>
+<li>"2026/4/15" or "2026-4-15": usually recognised as dates</li>
+<li>"April 15, 2026": usually recognised depending on the locale</li>
+<li>Era abbreviations like "R8.4.15": may not be recognised in some environments</li>
+</ul>
+<h2>Cells with times</h2>
+<p>Even with times, DATEDIF calculates by the date part.</p>
+<h2>Example</h2>
+<p>The start date was entered as "2026.4.15" and gave #VALUE!. Changing to "2026/4/15" calculated fine.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>TODAY() updates</b>: it updates each time the file opens. For a fixed date, enter the date.</li>
+<li><b>Reference shifts</b>: when copying the formula down, check references are as intended.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does it work in Google Sheets too?</h3>
+<p>Yes. DATEDIF works in Google Sheets.</p>
+<h2>Summary</h2>
+<p>Date order, date form, unit quotes. Check these three.</p>
 <a class="cta" href="/datedif-formula-builder.html">Use "Build a DATEDIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Возврат пустого значения</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Очистите поле результата</li><li>Посмотрите формулу</li><li>Скопируйте его</li></ul></div>
-<p>Если очистить поле результата в <a href="/ru/excel-if-builder.html">Конструктор IF</a>, получится формула, возвращающая пустое значение.</p>
+<p lang="en">With IF, when the condition fails you may want to show nothing. In that case leave the result blank. <a href="/ru/excel-if-builder.html">Build an IF Formula</a> builds a formula returning an empty string ("") just by leaving the result field empty.</p>
 <h2>Шаги</h2>
 <ol>
-<li>Очистите поле результата</li>
-<li>Посмотрите формулу</li>
-<li>Скопируйте его</li>
+<li lang="en">Enter the cell, comparison and value.</li>
+<li lang="en">Enter what to show in "Result if true".</li>
+<li lang="en">Leave "Result if false" empty.</li>
+<li lang="en">Check the formula ends with "".</li>
 </ol>
-<div class="note">В формуле это записывается как "".</div>
+<div class="note" lang="en">"" is an empty string, meaning "show nothing".</div>
+<h2>Пример</h2>
+<p lang="en">Showing "Pass" only when A2 is 60 or more and blank otherwise.</p>
+<ul>
+<li lang="en">=IF(A2&gt;=60,"Pass","")</li>
+</ul>
+<h2 lang="en">Empty string vs 0</h2>
+<ul>
+<li lang="en"><b>"" (empty string)</b>: looks blank, but the cell holds an "empty string".</li>
+<li lang="en"><b>0</b>: the number 0 is displayed.</li>
+<li lang="en"><b>A cell with nothing</b>: truly blank.</li>
+</ul>
+<h2 lang="en">Effect on calculation</h2>
+<p lang="en">Cells returning "" look empty but need care in calculation.</p>
+<ul>
+<li lang="en">SUM and AVERAGE: empty strings are ignored</li>
+<li lang="en">Arithmetic with "+": gives #VALUE!</li>
+<li lang="en">COUNTA: counted (judged not empty)</li>
+<li lang="en">COUNTBLANK: counted (judged empty)</li>
+</ul>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Showing only items that meet the condition</li>
+<li lang="en">Making the look cleaner</li>
+<li lang="en">Tidying tables for printing or submission</li>
+</ul>
+<h2 lang="en">When used in calculation</h2>
+<p lang="en">For cells used later in calculation, return 0 rather than "", or think of a method other than IF.</p>
+<ul>
+<li lang="en">Example: =IF(A2&gt;=60,B2,0)</li>
+<li lang="en">Another method hides zeros through the display format</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">Wanted to show only passers' names and leave others blank. Making the fail result "" tidied the list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looks blank but isn't</b>: ISBLANK returns FALSE. Test with whether LEN is 0.</li>
+<li lang="en"><b>Affects charts</b>: empty strings may be treated as 0 in charts.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want blank when the condition is true?</h3>
+<p lang="en">Leave the "Result if true" field empty.</p>
+<h2>Итог</h2>
+<p lang="en">Leave the result field empty for a blank, and you get a "" formula.</p>
 <a class="cta" href="/ru/excel-if-builder.html">Использовать «Создание формулы IF» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/sumif-formula-builder.html">Создание формулы SUMIF или COUNTIF</a>: Создавайте формулы SUMIF и COUNTIF.</li><li><a href="/ru/vlookup-formula-builder.html">Создание формулы VLOOKUP или XLOOKUP</a>: Создавайте формулы VLOOKUP и XLOOKUP.</li><li><a href="/ru/excel-text-format-builder.html">Создание формулы TEXT для Excel</a>: Создайте формулу TEXT.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

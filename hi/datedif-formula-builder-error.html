@@ -201,14 +201,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>जब #NUM! दिखे</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>तारीख़ें जाँचें</li><li>क्रम ठीक करें</li><li>फिर कोशिश करें</li></ul></div>
-<p><a href="/hi/datedif-formula-builder.html">DATEDIF बनाने वाला टूल</a> से बने फ़ॉर्मूले में #NUM! आने का मतलब है कि शुरुआती तारीख़ अंतिम तारीख़ के बाद है।</p>
-<h2>चरण</h2>
+<p lang="en">DATEDIF shows "#NUM!". Mostly the start and end dates are reversed. Here is how to handle errors after building a formula with <a href="/hi/datedif-formula-builder.html">Build a DATEDIF Formula</a>.</p>
+<h2 lang="en">Main causes of #NUM!</h2>
+<ul>
+<li lang="en"><b>Start date after end date</b>: DATEDIF requires start ≤ end.</li>
+<li lang="en"><b>A non-date value</b>: the cell isn't recognised as a date (this more often gives #VALUE!).</li>
+</ul>
+<h2 lang="en">Steps (handling)</h2>
 <ol>
-<li>तारीख़ें जाँचें</li>
-<li>क्रम ठीक करें</li>
-<li>फिर कोशिश करें</li>
+<li lang="en">Check you haven't swapped the start and end cells.</li>
+<li lang="en">If the start may be after the end, align the order with MIN and MAX.</li>
+<li lang="en">Check the cells are dates.</li>
 </ol>
-<div class="note">दोनों तारीख़ों को आपस में बदलकर देखें।</div>
+<div class="note" lang="en">If start and end are the same day, the result is 0, not an error.</div>
+<h2 lang="en">A formula that orders them automatically</h2>
+<p lang="en">When you don't know which comes first:</p>
+<ul>
+<li lang="en">=DATEDIF(MIN(A2,B2),MAX(A2,B2),"D")</li>
+</ul>
+<h2 lang="en">How to check a date</h2>
+<ul>
+<li lang="en">If =ISNUMBER(A2) is TRUE, it's recognised as a date (serial value).</li>
+<li lang="en">If left-aligned, it's likely text.</li>
+</ul>
+<h2 lang="en">Fixing text dates</h2>
+<ul>
+<li lang="en">DATEVALUE function: =DATEVALUE("2026/4/15")</li>
+<li lang="en">Set the cell format to "Date" and re-enter</li>
+<li lang="en">"Data" → "Text to Columns" can convert to dates</li>
+</ul>
+<h2 lang="en">Other errors</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: the start or end can't be read as a date, or the unit is invalid.</li>
+<li lang="en"><b>#NAME?</b>: a typo in the function name.</li>
+<li lang="en"><b>#REF!</b>: a referenced cell was deleted.</li>
+</ul>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Identifying the cause of errors</li>
+<li lang="en">Finding date entry mistakes</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">Computing tenure for someone with a blank retirement date gave #NUM!. A blank counts as 0 (January 0, 1900), which is before the start date. IF was used to skip blanks.</p>
+<ul>
+<li lang="en">=IF(B2="","",DATEDIF(A2,B2,"Y"))</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Future dates</b>: a future start is fine if the end is later still.</li>
+<li lang="en"><b>Dates with times</b>: times are ignored.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How can I avoid errors on blanks?</h3>
+<p lang="en">Use IF to return an empty string when blank.</p>
+<h2>सारांश</h2>
+<p lang="en">For #NUM!, suspect date order. Also watch for blanks and text dates.</p>
 <a class="cta" href="/hi/datedif-formula-builder.html">“DATEDIF फ़ॉर्मूला बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/excel-serial-date.html">एक्सेल सीरियल मान और तारीख़ कन्वर्टर</a>: एक्सेल सीरियल मान और तारीख़ें बदलें।</li><li><a href="/hi/date-calculator.html">उम्र, दो तारीख़ों के बीच के दिन और तारीख़ का आगे-पीछे होना निकालें</a>: उम्र और दो तारीख़ों के बीच के दिन निकालें।</li><li><a href="/hi/excel-if-builder.html">IF फ़ॉर्मूला बनाएँ</a>: IF फ़ॉर्मूला बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Conditions Like &gt;=80</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the condition</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/en/sumif-formula-builder.html">SUMIF Builder</a> you can enter a comparison such as &gt;=80 as the condition.</p>
+<p>Conditions like "80 or more" or "greater than 0" use comparison operators. You can enter them as they are in the "Condition" field of <a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>.</p>
+<h2>Comparison operators</h2>
+<ul>
+<li>&gt;=80: 80 or more</li>
+<li>&gt;80: greater than 80 (80 not included)</li>
+<li>&lt;=80: 80 or less</li>
+<li>&lt;80: less than 80</li>
+<li>=80: equal to 80 (just writing "80" is the same)</li>
+<li>&lt;&gt;80: not 80</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the condition</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>Enter "Function" and "Range to test".</li>
+<li>Enter the condition with its operator, like "&gt;=80", in "Condition".</li>
+<li>Check the condition part of the formula is enclosed in quotes as "&gt;=80".</li>
 </ol>
-<div class="note">The comparison goes into the formula as text.</div>
+<div class="note">A condition containing a comparison operator must be enclosed in double quotes. The tool adds them automatically.</div>
+<h2>Example</h2>
+<p>Counting people with 80 or more in B2:B100.</p>
+<ul>
+<li>=COUNTIF(B2:B100,"&gt;=80")</li>
+</ul>
+<h2>Comparing with another cell</h2>
+<p>To compare with another cell's value rather than a fixed number, join the operator and the cell with "&amp;".</p>
+<ul>
+<li>Example: =COUNTIF(B2:B100,"&gt;="&amp;E1)</li>
+</ul>
+<p>After building with the tool, rewrite by hand: change "&gt;=80" to "&gt;="&amp;E1.</p>
+<h2>Comparing dates</h2>
+<p>Date comparison is written the same way.</p>
+<ul>
+<li>Example: =COUNTIF(A2:A100,"&gt;="&amp;DATE(2026,4,1))</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Counting people above a passing line</li>
+<li>Totalling only sales above a certain amount</li>
+<li>Counting items past their deadlines</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to total only months with sales of 100,000 or more. Entering "&gt;=100000" as the condition built the SUMIF formula.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"Or more" vs "greater than"</b>: the difference between &gt;= and &gt;. Check whether the boundary is included.</li>
+<li><b>Comparing text</b>: text like "&gt;=B" can be compared too, but by sort order.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I specify a range like "80 or more, under 90"?</h3>
+<p>Yes. Write two conditions in the second SUMIFS or COUNTIFS formula.</p>
+<h2>Summary</h2>
+<p>Enter comparison operators as they are in the condition field and a quoted formula results.</p>
 <a class="cta" href="/en/sumif-formula-builder.html">Use "Build a SUMIF or COUNTIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a>: Build a TEXTJOIN formula.</li><li><a href="/en/column-stats.html">Sum, Average and Median of a Column of Numbers</a>: Get the sum and average of pasted numbers.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

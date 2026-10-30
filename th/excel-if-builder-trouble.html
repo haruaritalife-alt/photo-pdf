@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ต้องทำอย่างไรเมื่อใช้งานไม่ได้</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ตรวจสอบไฟล์</li><li>ตรวจสอบขนาด</li><li>ลองใช้อุปกรณ์อื่น</li></ul></div>
-<p>ถ้า <a href="/th/excel-if-builder.html">ตัวสร้าง IF</a> ไม่ทำงาน ให้ตรวจสิ่งต่อไปนี้</p>
-<h2>ขั้นตอน</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/th/excel-if-builder.html">Build an IF Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the test cell isn't in the "A2" form (half-width, column letters + row number), or the comparison value is empty.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>Always the same result</b>: the compared value is text, or the number cell is text.</li>
+<li lang="en"><b>#NAME? appears</b>: old Excel without IFS, or text lacking quotes.</li>
+<li lang="en"><b>#N/A appears</b>: IFS matched no condition. Put TRUE last.</li>
+<li lang="en"><b>#VALUE! appears</b>: a cell used in calculation holds text.</li>
+<li lang="en"><b>Should be blank but shows 0</b>: 0 was entered in the result field.</li>
+<li lang="en"><b>Not the judgement you expected</b>: &gt;= and &gt; mixed up.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>ตรวจสอบไฟล์</li>
-<li>ตรวจสอบขนาด</li>
-<li>ลองใช้อุปกรณ์อื่น</li>
+<li lang="en">Check whether the test cell's value is a number or text.</li>
+<li lang="en">Check the comparison operator is as intended.</li>
+<li lang="en">Check numbers are unquoted and text is quoted.</li>
 </ol>
-<div class="note">ถ้าสูตรไม่ปรากฏ ให้ตรวจว่าเซลล์เขียนอย่าง A2 และมีค่าที่จะเทียบแล้ว</div>
+<div class="note" lang="en">If numbers display left-aligned, they may be text.</div>
+<h2 lang="en">Telling numbers from text</h2>
+<p lang="en">=ISNUMBER(A2) is TRUE for numbers and FALSE for text (or other forms).</p>
+<h2 lang="en">Full-width and half-width</h2>
+<p lang="en">"Tokyo" and "Tokyo " (with a trailing space) are judged different. Remove extra spaces before comparing.</p>
+<h2 lang="en">Order of judgement</h2>
+<p lang="en">IFS checks from the top and returns the first match. Writing a broad condition first means later ones are never reached.</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">A score of 80 was judged "B" because "60 or more" was written first. Writing "80 or more" first gave "A" correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Comparing with text numbers</b>: "60" and the number 60 differ.</li>
+<li lang="en"><b>Cell format</b>: the look can differ from the real value.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about multiple conditions (A and B)?</h3>
+<p lang="en">Use AND or OR within the condition. Example: IF(AND(A2&gt;=60,B2&gt;=60),"Pass","Fail")</p>
+<h2>สรุป</h2>
+<p lang="en">Value form, operator, order. Check these three in order.</p>
 <a class="cta" href="/th/excel-if-builder.html">ใช้ “สร้างสูตร IF” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/sumif-formula-builder.html">สร้างสูตร SUMIF หรือ COUNTIF</a>: สร้างสูตร SUMIF และ COUNTIF</li><li><a href="/th/vlookup-formula-builder.html">สร้างสูตร VLOOKUP หรือ XLOOKUP</a>: สร้างสูตร VLOOKUP และ XLOOKUP</li><li><a href="/th/excel-text-format-builder.html">สร้างสูตร TEXT ของ Excel</a>: สร้างสูตร TEXT</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

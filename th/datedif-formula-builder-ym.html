@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>แสดงปีและเดือน</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>สร้างสูตร</li><li>ดูอันที่สอง</li><li>คัดลอก</li></ul></div>
-<p><a href="/th/datedif-formula-builder.html">ตัวสร้าง DATEDIF</a> แสดงสูตรที่ต่อปีและเดือนเป็นข้อความด้วย</p>
+<p lang="en">You want years and months side by side, like "3 years 5 months". The "formula showing years and months" in <a href="/th/datedif-formula-builder.html">Build a DATEDIF Formula</a> is for that.</p>
+<h2 lang="en">The formula's form</h2>
+<p lang="en">The formula in the second field has this form:</p>
+<ul>
+<li lang="en">=DATEDIF(A2,B2,"Y")&amp;" years "&amp;DATEDIF(A2,B2,"YM")&amp;" months"</li>
+</ul>
+<h2>วิธีการทำงาน</h2>
+<ol>
+<li lang="en">DATEDIF(A2,B2,"Y"): completed years</li>
+<li lang="en">DATEDIF(A2,B2,"YM"): months excluding years</li>
+<li lang="en">Joined with "&amp;", with the words "years" and "months" between</li>
+</ol>
+<p lang="en">For example, 3 full years and 5 remaining months displays "3 years 5 months".</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>สร้างสูตร</li>
-<li>ดูอันที่สอง</li>
-<li>คัดลอก</li>
+<li>ใส่เซลล์ของวันเริ่มต้นและวันสิ้นสุด</li>
+<li lang="en">Check the "Formula showing years and months".</li>
+<li lang="en">Copy with "Copy the second".</li>
 </ol>
-<div class="note">ผลลัพธ์เป็นข้อความ</div>
+<div class="note" lang="en">The result is text. It can't be used in calculation.</div>
+<h2 lang="en">Changing the display</h2>
+<p lang="en">The " years " and " months" parts inside the formula can be freely rewritten.</p>
+<ul>
+<li lang="en">Change wording to suit, e.g. "yrs" and "mos"</li>
+<li lang="en">Remove the spaces for a tighter look</li>
+</ul>
+<h2 lang="en">Adding days</h2>
+<p lang="en">To show remaining days too, add "MD". But "MD" is faulty, so use caution.</p>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Showing tenure as years and months</li>
+<li lang="en">Showing remaining terms of contracts or warranties</li>
+<li lang="en">Showing a child's age in years and months</li>
+</ul>
+<h2 lang="en">When it's 0 years</h2>
+<p lang="en">Under one year it shows like "0 years 5 months". To omit 0 years, combine with IF.</p>
+<ul>
+<li lang="en">Example: =IF(DATEDIF(A2,B2,"Y")=0,"",DATEDIF(A2,B2,"Y")&amp;" years ")&amp;DATEDIF(A2,B2,"YM")&amp;" months"</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Wanted employees' tenure shown as "3 years 5 months". Copying the second formula into a column lined up everyone's tenure.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Can't sort</b>: it's text, so it won't sort by years. For sorting, prepare separate columns with Y or M values.</li>
+<li lang="en"><b>#NUM!</b>: the start date is after the end date.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want it in another language?</h3>
+<p lang="en">Rewrite the words inside the formula as you like.</p>
+<h2>สรุป</h2>
+<p lang="en">For years and months side by side, use the second formula. The wording is freely editable.</p>
 <a class="cta" href="/th/datedif-formula-builder.html">ใช้ “สร้างสูตร DATEDIF” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/excel-serial-date.html">ตัวแปลงค่าซีเรียลและวันที่ของ Excel</a>: แปลงค่าซีเรียลและวันที่ของ Excel</li><li><a href="/th/date-calculator.html">คำนวณอายุ จำนวนวันระหว่างวันที่ และการเลื่อนวันที่</a>: คำนวณอายุและจำนวนวันระหว่างวันที่</li><li><a href="/th/excel-if-builder.html">สร้างสูตร IF</a>: สร้างสูตร IF</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

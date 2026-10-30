@@ -201,14 +201,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>เมื่อเกิด #NUM!</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ตรวจวันที่</li><li>แก้ลำดับ</li><li>ลองอีกครั้ง</li></ul></div>
-<p>#NUM! ในสูตรที่สร้างด้วย <a href="/th/datedif-formula-builder.html">ตัวสร้าง DATEDIF</a> หมายความว่าวันเริ่มต้นอยู่หลังวันสิ้นสุด</p>
-<h2>ขั้นตอน</h2>
+<p lang="en">DATEDIF shows "#NUM!". Mostly the start and end dates are reversed. Here is how to handle errors after building a formula with <a href="/th/datedif-formula-builder.html">Build a DATEDIF Formula</a>.</p>
+<h2 lang="en">Main causes of #NUM!</h2>
+<ul>
+<li lang="en"><b>Start date after end date</b>: DATEDIF requires start ≤ end.</li>
+<li lang="en"><b>A non-date value</b>: the cell isn't recognised as a date (this more often gives #VALUE!).</li>
+</ul>
+<h2 lang="en">Steps (handling)</h2>
 <ol>
-<li>ตรวจวันที่</li>
-<li>แก้ลำดับ</li>
-<li>ลองอีกครั้ง</li>
+<li lang="en">Check you haven't swapped the start and end cells.</li>
+<li lang="en">If the start may be after the end, align the order with MIN and MAX.</li>
+<li lang="en">Check the cells are dates.</li>
 </ol>
-<div class="note">ลองสลับวันที่ทั้งสอง</div>
+<div class="note" lang="en">If start and end are the same day, the result is 0, not an error.</div>
+<h2 lang="en">A formula that orders them automatically</h2>
+<p lang="en">When you don't know which comes first:</p>
+<ul>
+<li lang="en">=DATEDIF(MIN(A2,B2),MAX(A2,B2),"D")</li>
+</ul>
+<h2 lang="en">How to check a date</h2>
+<ul>
+<li lang="en">If =ISNUMBER(A2) is TRUE, it's recognised as a date (serial value).</li>
+<li lang="en">If left-aligned, it's likely text.</li>
+</ul>
+<h2 lang="en">Fixing text dates</h2>
+<ul>
+<li lang="en">DATEVALUE function: =DATEVALUE("2026/4/15")</li>
+<li lang="en">Set the cell format to "Date" and re-enter</li>
+<li lang="en">"Data" → "Text to Columns" can convert to dates</li>
+</ul>
+<h2 lang="en">Other errors</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: the start or end can't be read as a date, or the unit is invalid.</li>
+<li lang="en"><b>#NAME?</b>: a typo in the function name.</li>
+<li lang="en"><b>#REF!</b>: a referenced cell was deleted.</li>
+</ul>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Identifying the cause of errors</li>
+<li lang="en">Finding date entry mistakes</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Computing tenure for someone with a blank retirement date gave #NUM!. A blank counts as 0 (January 0, 1900), which is before the start date. IF was used to skip blanks.</p>
+<ul>
+<li lang="en">=IF(B2="","",DATEDIF(A2,B2,"Y"))</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Future dates</b>: a future start is fine if the end is later still.</li>
+<li lang="en"><b>Dates with times</b>: times are ignored.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How can I avoid errors on blanks?</h3>
+<p lang="en">Use IF to return an empty string when blank.</p>
+<h2>สรุป</h2>
+<p lang="en">For #NUM!, suspect date order. Also watch for blanks and text dates.</p>
 <a class="cta" href="/th/datedif-formula-builder.html">ใช้ “สร้างสูตร DATEDIF” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/excel-serial-date.html">ตัวแปลงค่าซีเรียลและวันที่ของ Excel</a>: แปลงค่าซีเรียลและวันที่ของ Excel</li><li><a href="/th/date-calculator.html">คำนวณอายุ จำนวนวันระหว่างวันที่ และการเลื่อนวันที่</a>: คำนวณอายุและจำนวนวันระหว่างวันที่</li><li><a href="/th/excel-if-builder.html">สร้างสูตร IF</a>: สร้างสูตร IF</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

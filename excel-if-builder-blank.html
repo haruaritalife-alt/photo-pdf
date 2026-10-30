@@ -200,14 +200,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>結果を空欄にする</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>結果の欄を空にする</li><li>式を見る</li><li>コピーする</li></ul></div>
-<p><a href="/excel-if-builder.html">IF式の作成</a> で結果の欄を空にすると、結果が空欄になる式ができます。</p>
+<p>IF関数で、条件に合わないときは、何も表示したくない。そんなときは、結果を空欄にします。<a href="/excel-if-builder.html">IF関数の式を作る</a> は、結果の欄を空にするだけで、空の文字（""）を返す式を作ります。</p>
 <h2>手順</h2>
 <ol>
-<li>結果の欄を空にする</li>
-<li>式を見る</li>
-<li>コピーする</li>
+<li>セル・比較・値を入れる。</li>
+<li>「条件に合うときの結果」に、表示したい内容を入れる。</li>
+<li>「合わないときの結果」の欄は、空にする。</li>
+<li>式の最後が、"" になっていることを確かめる。</li>
 </ol>
-<div class="note">式では""と書かれます。</div>
+<div class="note">「""」は、「何も表示しない」という意味の、空の文字です。</div>
+<h2>例</h2>
+<p>A2が60以上のときだけ「合格」と表示し、それ以外は空欄にする場合です。</p>
+<ul>
+<li>=IF(A2&gt;=60,"合格","")</li>
+</ul>
+<h2>空の文字と0の違い</h2>
+<ul>
+<li><b>""（空の文字）</b>：見た目は空欄。ただし、セルには「空の文字」が入っている。</li>
+<li><b>0</b>：数字の0が表示される。</li>
+<li><b>何も入っていないセル</b>：本当の空欄。</li>
+</ul>
+<h2>計算への影響</h2>
+<p>「""」を返すセルは、見た目は空でも、計算では注意が必要です。</p>
+<ul>
+<li>SUMやAVERAGE：空の文字は、無視される</li>
+<li>「+」でつなぐ計算：#VALUE!になる</li>
+<li>COUNTA：数えられる（空ではないと判定）</li>
+<li>COUNTBLANK：数えられる（空として判定）</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>条件に合うものだけを、表示したい</li>
+<li>見た目を、すっきりさせたい</li>
+<li>印刷や提出用の、表を整えたい</li>
+</ul>
+<h2>計算に使いたいとき</h2>
+<p>後で計算に使うセルは、「""」ではなく、0を返すか、IF以外の方法を考えます。</p>
+<ul>
+<li>例：=IF(A2&gt;=60,B2,0)</li>
+<li>表示形式で、0を非表示にする方法もある</li>
+</ul>
+<h2>例</h2>
+<p>合格者の名前だけを表示し、それ以外は空欄にしたかった。不合格の結果を「""」にして、一覧がすっきりした。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>空欄に見えるのに、空でない</b>：ISBLANK関数がFALSEを返す。LEN関数が0かで、判定する。</li>
+<li><b>グラフに影響する</b>：空の文字は、グラフでは0として扱われる場合がある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>条件に合うときを空欄にしたいときは？</h3>
+<p>「条件に合うときの結果」の欄を空にします。</p>
+<h2>まとめ</h2>
+<p>空欄にしたい結果の欄は、空にすれば、「""」の式になります。</p>
 <a class="cta" href="/excel-if-builder.html">IF関数の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/excel-text-format-builder.html">TEXT関数の式を作る（表示形式）</a>：TEXT関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +263,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Returning a Blank</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Empty the result field</li><li>See the formula</li><li>Copy it</li></ul></div>
-<p>Emptying a result field in <a href="/excel-if-builder.html">IF Builder</a> gives a formula that returns a blank.</p>
+<p>With IF, when the condition fails you may want to show nothing. In that case leave the result blank. <a href="/excel-if-builder.html">Build an IF Formula</a> builds a formula returning an empty string ("") just by leaving the result field empty.</p>
 <h2>Steps</h2>
 <ol>
-<li>Empty the result field</li>
-<li>See the formula</li>
-<li>Copy it</li>
+<li>Enter the cell, comparison and value.</li>
+<li>Enter what to show in "Result if true".</li>
+<li>Leave "Result if false" empty.</li>
+<li>Check the formula ends with "".</li>
 </ol>
-<div class="note">In the formula it is written as "".</div>
+<div class="note">"" is an empty string, meaning "show nothing".</div>
+<h2>Example</h2>
+<p>Showing "Pass" only when A2 is 60 or more and blank otherwise.</p>
+<ul>
+<li>=IF(A2&gt;=60,"Pass","")</li>
+</ul>
+<h2>Empty string vs 0</h2>
+<ul>
+<li><b>"" (empty string)</b>: looks blank, but the cell holds an "empty string".</li>
+<li><b>0</b>: the number 0 is displayed.</li>
+<li><b>A cell with nothing</b>: truly blank.</li>
+</ul>
+<h2>Effect on calculation</h2>
+<p>Cells returning "" look empty but need care in calculation.</p>
+<ul>
+<li>SUM and AVERAGE: empty strings are ignored</li>
+<li>Arithmetic with "+": gives #VALUE!</li>
+<li>COUNTA: counted (judged not empty)</li>
+<li>COUNTBLANK: counted (judged empty)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Showing only items that meet the condition</li>
+<li>Making the look cleaner</li>
+<li>Tidying tables for printing or submission</li>
+</ul>
+<h2>When used in calculation</h2>
+<p>For cells used later in calculation, return 0 rather than "", or think of a method other than IF.</p>
+<ul>
+<li>Example: =IF(A2&gt;=60,B2,0)</li>
+<li>Another method hides zeros through the display format</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to show only passers' names and leave others blank. Making the fail result "" tidied the list.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Looks blank but isn't</b>: ISBLANK returns FALSE. Test with whether LEN is 0.</li>
+<li><b>Affects charts</b>: empty strings may be treated as 0 in charts.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I want blank when the condition is true?</h3>
+<p>Leave the "Result if true" field empty.</p>
+<h2>Summary</h2>
+<p>Leave the result field empty for a blank, and you get a "" formula.</p>
 <a class="cta" href="/excel-if-builder.html">Use "Build an IF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/excel-text-format-builder.html">Build an Excel TEXT Formula</a>: Build a TEXT formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Counting Cells That Match</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose COUNTIF</li><li>Enter the condition</li><li>Copy it</li></ul></div>
-<p>Choosing COUNTIF in <a href="/en/sumif-formula-builder.html">SUMIF Builder</a> gives a formula that counts the cells matching the condition.</p>
+<p>COUNTIF counts the cells that meet a condition. Choosing "COUNTIF" in <a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a> builds a counting formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose COUNTIF</li>
-<li>Enter the condition</li>
-<li>Copy it</li>
+<li>Choose "COUNTIF" in "Function".</li>
+<li>Enter the column range to count in "Range to test".</li>
+<li>Enter what to count in "Condition".</li>
+<li>Copy the formula with "Copy the first".</li>
 </ol>
-<div class="note">No range to total is needed.</div>
+<div class="note">The sum-range field is disabled for COUNTIF.</div>
+<h2>Example</h2>
+<p>Counting the cells that are "Tokyo" in A2:A100.</p>
+<ul>
+<li>First: =COUNTIF(A2:A100,"Tokyo")</li>
+<li>Second: =COUNTIFS(A2:A100,"Tokyo")</li>
+</ul>
+<h2>Condition examples</h2>
+<ul>
+<li>Tokyo: cells matching "Tokyo"</li>
+<li>&gt;=80: cells 80 or more</li>
+<li>&lt;&gt;Pending: cells other than "Pending"</li>
+<li>Tok*: cells starting with "Tok" (* is any string)</li>
+<li>?ata: one character plus "ata" (? is any single character)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Counting attendees or passers</li>
+<li>Counting statuses like "Done" and "Pending"</li>
+<li>Checking the number of duplicates</li>
+</ul>
+<h2>Counting blanks</h2>
+<ul>
+<li>Number of empty cells: =COUNTBLANK(A2:A100)</li>
+<li>Number of filled cells: =COUNTA(A2:A100)</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to count "Yes" in a survey column. =COUNTIF(B2:B200,"Yes") counted it at once.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Full-width vs half-width</b>: "Ａ" and "A" are counted as different.</li>
+<li><b>Extra spaces</b>: a trailing space in a cell stops it matching.</li>
+<li><b>Numbers vs text</b>: if "80" is text, &gt;=80 won't count it.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What about counting by two conditions?</h3>
+<p>Use the second "COUNTIFS" formula and append more conditions.</p>
+<h2>Summary</h2>
+<p>Enter a range and a condition and the COUNTIF formula is built.</p>
 <a class="cta" href="/en/sumif-formula-builder.html">Use "Build a SUMIF or COUNTIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a>: Build a TEXTJOIN formula.</li><li><a href="/en/column-stats.html">Sum, Average and Median of a Column of Numbers</a>: Get the sum and average of pasted numbers.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

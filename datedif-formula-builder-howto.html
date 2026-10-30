@@ -200,14 +200,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>DATEDIFの書き方（式を自動で作る・無料）</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>セルを入れる</li><li>単位を選ぶ</li><li>式をコピー</li></ul></div>
-<p><a href="/datedif-formula-builder.html">DATEDIF式の作成</a> は、2つの日付のセルからDATEDIFの式を作ります。</p>
+<p>年齢や勤続年数のように、2つの日付の差を、年や月で求めたい。そのための関数が DATEDIF です。ただ、Excelの関数一覧には出てこず、書き方も覚えにくいもの。<a href="/datedif-formula-builder.html">DATEDIFの式を作る</a> は、2つの日付のセルと単位を選ぶだけで、DATEDIFの式を作るツールです。入力は、この端末の中で処理され、外には送られません。</p>
 <h2>手順</h2>
 <ol>
-<li>セルを入れる</li>
-<li>単位を選ぶ</li>
-<li>式をコピー</li>
+<li>「開始日のセル（A2 など）」に、古いほうの日付のセルを入れます。</li>
+<li>「終了日のセル（B2 など）」に、新しいほうの日付のセルを入れます。</li>
+<li>「単位」を選びます（Y、M、D、YM、MD、YD）。</li>
+<li>「DATEDIFの式」と、「年とヶ月で表示する式」が出ます。「1つ目をコピー」か「2つ目をコピー」を押します。</li>
 </ol>
-<div class="note">できた式は、そのままセルに貼れます。</div>
+<div class="note">式は、そのままExcelやGoogleスプレッドシートのセルに貼れます。</div>
+<h2>例</h2>
+<p>A2に生年月日、B2に今日の日付があり、満年齢を求める場合です。</p>
+<ul>
+<li>1つ目：=DATEDIF(A2,B2,"Y")</li>
+<li>2つ目：=DATEDIF(A2,B2,"Y")&amp;" 年 "&amp;DATEDIF(A2,B2,"YM")&amp;" ヶ月"</li>
+</ul>
+<p>2つ目は、「5 年 3 ヶ月」のように、年と月を並べて表示します。</p>
+<h2>DATEDIFの3つの引数</h2>
+<ol>
+<li>開始日</li>
+<li>終了日</li>
+<li>単位（"Y"のように、引用符で囲む）</li>
+</ol>
+<h2>向いている場面</h2>
+<ul>
+<li>年齢を、計算したい</li>
+<li>勤続年数や、契約の経過期間を求めたい</li>
+<li>2つの日付のあいだの、日数や月数を数えたい</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」と出る</b>：セルが「A2」の形でない。</li>
+<li><b>#NUM!が出る</b>：開始日が終了日より後になっている。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>今日の日付を、終了日に使えますか？</h3>
+<p>TODAY() を使います。式を作ったあとで、終了日のセルの部分を TODAY() に書き換えます。</p>
+<h2>まとめ</h2>
+<p>2つの日付と単位を選ぶだけで、DATEDIFの式ができます。</p>
 <a class="cta" href="/datedif-formula-builder.html">DATEDIFの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +249,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Write DATEDIF (Build It Automatically, Free)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the cells</li><li>Choose the unit</li><li>Copy the formula</li></ul></div>
-<p><a href="/datedif-formula-builder.html">DATEDIF Builder</a> builds a DATEDIF formula from two date cells.</p>
+<p>You want the gap between two dates in years or months, like an age or length of service. The function for that is DATEDIF. But it doesn't appear in Excel's function list and its syntax is hard to remember. <a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a> builds a DATEDIF formula from just two date cells and a unit. Input is processed inside this device and not sent outside.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the cells</li>
-<li>Choose the unit</li>
-<li>Copy the formula</li>
+<li>In "Start date cell (such as A2)", enter the cell of the earlier date.</li>
+<li>In "End date cell (such as B2)", enter the cell of the later date.</li>
+<li>Choose a "Unit" (Y, M, D, YM, MD, YD).</li>
+<li>The "DATEDIF formula" and the "Formula showing years and months" appear. Press "Copy the first" or "Copy the second".</li>
 </ol>
-<div class="note">The formula can be pasted straight into a cell.</div>
+<div class="note">The formula can be pasted straight into an Excel or Google Sheets cell.</div>
+<h2>Example</h2>
+<p>With a birth date in A2 and today's date in B2, finding the age in full years.</p>
+<ul>
+<li>First: =DATEDIF(A2,B2,"Y")</li>
+<li>Second: =DATEDIF(A2,B2,"Y")&amp;" years "&amp;DATEDIF(A2,B2,"YM")&amp;" months"</li>
+</ul>
+<p>The second shows years and months together, like "5 years 3 months".</p>
+<h2>DATEDIF's three arguments</h2>
+<ol>
+<li>Start date</li>
+<li>End date</li>
+<li>Unit (enclosed in quotes, like "Y")</li>
+</ol>
+<h2>Good for</h2>
+<ul>
+<li>Calculating ages</li>
+<li>Finding length of service or elapsed contract time</li>
+<li>Counting days or months between two dates</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"The input is not valid." appears</b>: a cell isn't in the "A2" form.</li>
+<li><b>#NUM! appears</b>: the start date is after the end date.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I use today's date as the end date?</h3>
+<p>Use TODAY(). After building, rewrite the end-date cell part as TODAY().</p>
+<h2>Summary</h2>
+<p>Choose two dates and a unit and the DATEDIF formula is built.</p>
 <a class="cta" href="/datedif-formula-builder.html">Use "Build a DATEDIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -200,14 +200,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Historyという名前</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>名前を入れる</li><li>結果を見る</li><li>別の名前にする</li></ul></div>
-<p><a href="/sheet-name-checker.html">シート名の確認</a> では、Historyは予約された名前として知らせます。</p>
+<p>「History」という名前のシートは、Excelでは付けられません。<a href="/sheet-name-checker.html">Excelのシート名を確かめる</a> は、この予約された名前を見つけて、使える名前に直します。</p>
+<h2>なぜ付けられないのか</h2>
+<p>「History」は、Excelが内部で使う予約された名前です。変更履歴の機能（共有ブックの変更履歴）で、「History」という名前のシートが作られるため、同じ名前は使えません。</p>
+<ul>
+<li>大文字と小文字は区別されない：「history」「HISTORY」も同じ</li>
+<li>前後に文字があれば、使える（History2026 など）</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>名前を入れる</li>
-<li>結果を見る</li>
-<li>別の名前にする</li>
+<li>「シート名」に、「History」と入れる。</li>
+<li>「Historyは予約された名前です」と表示される。</li>
+<li>「直したシート名」に、「History_」が出る。</li>
 </ol>
-<div class="note">History_のように少し変えると使えます。</div>
+<div class="note">末尾に「_」を付けて、「History_」とします。別の名前にしてもかまいません。</div>
+<h2>例</h2>
+<ul>
+<li>「History」→「History_」</li>
+<li>「history」→「history_」</li>
+<li>「History2」→ そのまま使える</li>
+<li>「作業履歴」→ そのまま使える</li>
+</ul>
+<h2>代わりの名前の例</h2>
+<ul>
+<li>履歴</li>
+<li>変更履歴</li>
+<li>Log</li>
+<li>History_2026</li>
+<li>Records</li>
+</ul>
+<h2>よく起きる場面</h2>
+<ul>
+<li>履歴を管理するシートに、そのままの名前を付けようとした</li>
+<li>英語版のテンプレートを、日本語版に移した</li>
+<li>マクロで、「History」という名前のシートを作ろうとした</li>
+</ul>
+<h2>マクロでの対処</h2>
+<p>VBAで、Sheets.Add のあとに Name を設定するとき、名前が「History」でないか確かめます。</p>
+<ul>
+<li>条件：If LCase(名前) = "history" Then 名前 = 名前 &amp; "_"</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>履歴用のシートを作りたい</li>
+<li>名前が付けられない理由を、知りたい</li>
+</ul>
+<h2>例</h2>
+<p>更新履歴を残すシートに「History」と付けようとして、エラーになった。理由が分からなかったが、予約された名前と知り、「更新履歴」に変えた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>エラーのメッセージが分かりにくい</b>：「入力した名前は正しくありません」としか出ない。</li>
+<li><b>ほかの予約名</b>：このツールは、Historyだけをチェックする。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>他のシート名も予約されていますか？</h3>
+<p>一般的な制限としては、このほかに特別な予約名は少ないですが、Excelの環境で異なる場合があります。</p>
+<h2>まとめ</h2>
+<p>「History」は、シート名に使えません。「_」を足すか、別の名前にしましょう。</p>
 <a class="cta" href="/sheet-name-checker.html">Excelのシート名を確かめるを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-column-letter.html">Excel 列番号・列文字 変換</a>：Excelの列番号と列文字を変換します。</li><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li><li><a href="/excel-range-info.html">Excelのセル範囲のセル数・行数・列数を調べる</a>：セル範囲のセル数・行数・列数を調べます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +268,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>The Name History</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the name</li><li>See the result</li><li>Pick another name</li></ul></div>
-<p><a href="/sheet-name-checker.html">Sheet Name Checker</a> reports History as a reserved name.</p>
+<p>A sheet named "History" can't be created in Excel. <a href="/sheet-name-checker.html">Check an Excel Sheet Name</a> finds this reserved name and fixes it into a usable one.</p>
+<h2>Why it can't be used</h2>
+<p>"History" is a reserved name Excel uses internally. The change-tracking feature (shared workbook change history) creates a sheet named "History", so the same name can't be used.</p>
+<ul>
+<li>Case isn't distinguished: "history" and "HISTORY" are the same</li>
+<li>With other characters around it, it's fine (History2026 etc.)</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the name</li>
-<li>See the result</li>
-<li>Pick another name</li>
+<li>Enter "History" in "Sheet name".</li>
+<li>"History is a reserved name" is shown.</li>
+<li>"History_" appears in "Fixed sheet name".</li>
 </ol>
-<div class="note">A small change such as History_ makes it usable.</div>
+<div class="note">"_" is added at the end to make "History_". You may use a different name instead.</div>
+<h2>Examples</h2>
+<ul>
+<li>"History" → "History_"</li>
+<li>"history" → "history_"</li>
+<li>"History2" → usable as is</li>
+<li>"Work log" → usable as is</li>
+</ul>
+<h2>Alternative names</h2>
+<ul>
+<li>Log</li>
+<li>Change log</li>
+<li>Records</li>
+<li>History_2026</li>
+<li>Updates</li>
+</ul>
+<h2>Where it often happens</h2>
+<ul>
+<li>Trying to name a history-managing sheet with the plain word</li>
+<li>Moving an English template into another-language version</li>
+<li>A macro trying to create a sheet named "History"</li>
+</ul>
+<h2>Handling in macros</h2>
+<p>In VBA, when setting Name after Sheets.Add, check the name isn't "History".</p>
+<ul>
+<li>Condition: If LCase(name) = "history" Then name = name &amp; "_"</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Making a sheet for history</li>
+<li>Wanting to know why a name can't be used</li>
+</ul>
+<h2>Example</h2>
+<p>Naming an update-log sheet "History" caused an error. I didn't know why, but learning it's reserved, I renamed it "Update log".</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The error message is unclear</b>: it only says the name isn't valid.</li>
+<li><b>Other reserved names</b>: this tool checks only History.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Are other sheet names reserved?</h3>
+<p>In general there are few other special reserved names, but it can vary by Excel environment.</p>
+<h2>Summary</h2>
+<p>"History" can't be a sheet name. Add "_" or choose another name.</p>
 <a class="cta" href="/sheet-name-checker.html">Use "Check an Excel Sheet Name" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a>: Find the cells, rows and columns of a range.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

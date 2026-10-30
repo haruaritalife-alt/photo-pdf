@@ -200,14 +200,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>&gt;=80のような条件</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>条件を入れる</li><li>式を見る</li><li>確かめる</li></ul></div>
-<p><a href="/sumif-formula-builder.html">SUMIF式の作成</a> では、条件に&gt;=80のような比較を入れられます。</p>
+<p>「80点以上」「0より大きい」のような条件は、比較の記号を使って書きます。<a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a> の「条件」の欄に、そのまま入れられます。</p>
+<h2>比較の記号</h2>
+<ul>
+<li>&gt;=80：80以上</li>
+<li>&gt;80：80より大きい（80は含まない）</li>
+<li>&lt;=80：80以下</li>
+<li>&lt;80：80未満</li>
+<li>=80：80と等しい（「80」と書くだけでも同じ）</li>
+<li>&lt;&gt;80：80ではない</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>条件を入れる</li>
-<li>式を見る</li>
-<li>確かめる</li>
+<li>「関数」と「条件を調べる範囲」を入れる。</li>
+<li>「条件」に、「&gt;=80」のように、記号つきで入れる。</li>
+<li>式の条件の部分が、「"&gt;=80"」と引用符で囲まれることを確かめる。</li>
 </ol>
-<div class="note">比較は文字として式に入ります。</div>
+<div class="note">比較の記号を含む条件は、ダブルクォートで囲む必要があります。ツールが自動で付けます。</div>
+<h2>例</h2>
+<p>B2:B100の80点以上の人数を、数える場合です。</p>
+<ul>
+<li>=COUNTIF(B2:B100,"&gt;=80")</li>
+</ul>
+<h2>他のセルの値と比べる</h2>
+<p>条件を、固定の数字ではなく、別のセルの値と比べたいときは、記号と「&amp;」でつなぎます。</p>
+<ul>
+<li>例：=COUNTIF(B2:B100,"&gt;="&amp;E1)</li>
+</ul>
+<p>このツールで作った式のあとに、手で書き換えます。「"&gt;=80"」を「"&gt;="&amp;E1」に直します。</p>
+<h2>日付を比べる</h2>
+<p>日付の比較も、同じ書き方です。</p>
+<ul>
+<li>例：=COUNTIF(A2:A100,"&gt;="&amp;DATE(2026,4,1))</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>合格ラインを超えた人数を、数えたい</li>
+<li>一定額以上の売上だけを、合計したい</li>
+<li>期限を過ぎたものを、数えたい</li>
+</ul>
+<h2>例</h2>
+<p>売上が10万円以上の月だけを合計したかった。条件に「&gt;=100000」を入れて、SUMIFの式を作った。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「以上」と「より大きい」</b>：&gt;= と &gt; の違い。境界の値が含まれるか確かめる。</li>
+<li><b>文字列の比較</b>：「&gt;=B」のように、文字も比べられるが、並び順での比較になる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>「80以上、90未満」のように範囲で指定できますか？</h3>
+<p>できます。2つ目の「SUMIFS」や「COUNTIFS」の式に、条件を2つ書きます。</p>
+<h2>まとめ</h2>
+<p>比較の記号は、条件の欄にそのまま入れれば、引用符つきの式になります。</p>
 <a class="cta" href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/textjoin-formula-builder.html">TEXTJOINの式を作る（セルをまとめてつなぐ）</a>：TEXTJOINの式を作ります。</li><li><a href="/column-stats.html">数字の合計・平均・中央値をまとめて出す</a>：貼った数字の合計や平均を出します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +262,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Conditions Like &gt;=80</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the condition</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/sumif-formula-builder.html">SUMIF Builder</a> you can enter a comparison such as &gt;=80 as the condition.</p>
+<p>Conditions like "80 or more" or "greater than 0" use comparison operators. You can enter them as they are in the "Condition" field of <a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>.</p>
+<h2>Comparison operators</h2>
+<ul>
+<li>&gt;=80: 80 or more</li>
+<li>&gt;80: greater than 80 (80 not included)</li>
+<li>&lt;=80: 80 or less</li>
+<li>&lt;80: less than 80</li>
+<li>=80: equal to 80 (just writing "80" is the same)</li>
+<li>&lt;&gt;80: not 80</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the condition</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>Enter "Function" and "Range to test".</li>
+<li>Enter the condition with its operator, like "&gt;=80", in "Condition".</li>
+<li>Check the condition part of the formula is enclosed in quotes as "&gt;=80".</li>
 </ol>
-<div class="note">The comparison goes into the formula as text.</div>
+<div class="note">A condition containing a comparison operator must be enclosed in double quotes. The tool adds them automatically.</div>
+<h2>Example</h2>
+<p>Counting people with 80 or more in B2:B100.</p>
+<ul>
+<li>=COUNTIF(B2:B100,"&gt;=80")</li>
+</ul>
+<h2>Comparing with another cell</h2>
+<p>To compare with another cell's value rather than a fixed number, join the operator and the cell with "&amp;".</p>
+<ul>
+<li>Example: =COUNTIF(B2:B100,"&gt;="&amp;E1)</li>
+</ul>
+<p>After building with the tool, rewrite by hand: change "&gt;=80" to "&gt;="&amp;E1.</p>
+<h2>Comparing dates</h2>
+<p>Date comparison is written the same way.</p>
+<ul>
+<li>Example: =COUNTIF(A2:A100,"&gt;="&amp;DATE(2026,4,1))</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Counting people above a passing line</li>
+<li>Totalling only sales above a certain amount</li>
+<li>Counting items past their deadlines</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to total only months with sales of 100,000 or more. Entering "&gt;=100000" as the condition built the SUMIF formula.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"Or more" vs "greater than"</b>: the difference between &gt;= and &gt;. Check whether the boundary is included.</li>
+<li><b>Comparing text</b>: text like "&gt;=B" can be compared too, but by sort order.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I specify a range like "80 or more, under 90"?</h3>
+<p>Yes. Write two conditions in the second SUMIFS or COUNTIFS formula.</p>
+<h2>Summary</h2>
+<p>Enter comparison operators as they are in the condition field and a quoted formula results.</p>
 <a class="cta" href="/sumif-formula-builder.html">Use "Build a SUMIF or COUNTIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a>: Build a TEXTJOIN formula.</li><li><a href="/column-stats.html">Sum, Average and Median of a Column of Numbers</a>: Get the sum and average of pasted numbers.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

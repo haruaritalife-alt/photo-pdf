@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>একাধিক শর্তের জন্য SUMIFS</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>ফর্মুলা তৈরি করুন</li><li>দ্বিতীয়টি দেখুন</li><li>শর্ত যোগ করুন</li></ul></div>
-<p><a href="/bn/sumif-formula-builder.html">SUMIF তৈরির টুল</a> একাধিক শর্তের জন্য SUMIFS ধাঁচের সূত্রও দেখায়।</p>
+<p lang="en">When there are two or more conditions, like "Tokyo" and "April", use SUMIFS. <a href="/bn/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a> lists the SUMIFS formula in the second field.</p>
+<h2 lang="en">SUMIF vs SUMIFS</h2>
+<ul>
+<li lang="en"><b>SUMIF</b>: one condition. Argument order is "criteria range, criterion, sum range"</li>
+<li lang="en"><b>SUMIFS</b>: multiple conditions. Argument order is "sum range, criteria range 1, criterion 1, criteria range 2, criterion 2…"</li>
+</ul>
+<p lang="en">Note that <b>the sum range comes first</b>.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>ফর্মুলা তৈরি করুন</li>
-<li>দ্বিতীয়টি দেখুন</li>
-<li>শর্ত যোগ করুন</li>
+<li lang="en">Enter the range and condition.</li>
+<li lang="en">Check the "SUMIFS-type formula usable for multiple conditions".</li>
+<li lang="en">Copy with "Copy the second".</li>
+<li lang="en">To add conditions, append "criteria range, criterion" to the end.</li>
 </ol>
-<div class="note">SUMIFS-এ যোগ করার রেঞ্জ সবার আগে আসে।</div>
+<div class="note" lang="en">SUMIFS targets only cells meeting all conditions (AND).</div>
+<h2>উদাহরণ</h2>
+<p lang="en">Column A is region, B is month, C is sales. The formula to total "Tokyo" sales:</p>
+<ul>
+<li lang="en">=SUMIFS(C2:C100,A2:A100,"Tokyo")</li>
+</ul>
+<p lang="en">Adding an "April" condition:</p>
+<ul>
+<li lang="en">=SUMIFS(C2:C100,A2:A100,"Tokyo",B2:B100,"April")</li>
+</ul>
+<h2 lang="en">"Or" conditions</h2>
+<p lang="en">SUMIFS targets items meeting all conditions (AND). For "either" conditions (OR) like "Tokyo or Osaka", add them:</p>
+<ul>
+<li lang="en">=SUMIFS(C2:C100,A2:A100,"Tokyo")+SUMIFS(C2:C100,A2:A100,"Osaka")</li>
+</ul>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Totalling sales meeting both region and month</li>
+<li lang="en">Totalling over a specified period (date from and to)</li>
+<li lang="en">Counting people by several conditions (COUNTIFS)</li>
+</ul>
+<h2 lang="en">Period example</h2>
+<p lang="en">=SUMIFS(C2:C100,A2:A100,"&gt;="&amp;DATE(2026,4,1),A2:A100,"&lt;="&amp;DATE(2026,4,30))</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Argument order</b>: the sum range's position differs between SUMIF and SUMIFS.</li>
+<li lang="en"><b>Range sizes</b>: make all ranges the same number of rows.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How many conditions can be written?</h3>
+<p lang="en">Up to 127.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">SUMIFS for multiple conditions. Don't forget the sum range comes first.</p>
 <a class="cta" href="/bn/sumif-formula-builder.html">“SUMIF বা COUNTIF সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/vlookup-formula-builder.html">VLOOKUP বা XLOOKUP ফর্মুলা তৈরি করুন</a>: VLOOKUP ও XLOOKUP ফর্মুলা তৈরি করুন।</li><li><a href="/bn/textjoin-formula-builder.html">TEXTJOIN ফর্মুলা তৈরি করুন</a>: TEXTJOIN ফর্মুলা তৈরি করুন।</li><li><a href="/bn/column-stats.html">সংখ্যার কলামের যোগফল, গড় ও মধ্যমা</a>: পেস্ট করা সংখ্যার যোগফল ও গড় বের করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>
