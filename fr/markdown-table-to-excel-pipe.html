@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Barres verticales dans les cellules</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Collez le tableau</li><li>Regardez le résultat</li><li>Le vérifier</li></ul></div>
-<p>Dans <a href="/fr/markdown-table-to-excel.html">Tableau Markdown vers Excel</a>, une barre écrite \| est traitée comme un caractère.</p>
+<p lang="en">In a Markdown table the vertical bar (|) separates columns. So what if you want a vertical bar inside a cell? See how <a href="/fr/markdown-table-to-excel.html">Convert a Markdown Table for Excel</a> handles it.</p>
+<h2 lang="en">How to write a bar inside a cell</h2>
+<p lang="en">Put a backslash before the bar. Writing "\|" treats it as a bar character, not a separator.</p>
+<ul>
+<li lang="en">Separator bar: |</li>
+<li lang="en">Bar as a character: \|</li>
+</ul>
+<h2 lang="en">Handling in conversion</h2>
+<ul>
+<li lang="en">"\|" isn't counted as a separator</li>
+<li lang="en">In the converted cell it appears as "|"</li>
+</ul>
 <h2>Étapes</h2>
 <ol>
-<li>Collez le tableau</li>
-<li>Regardez le résultat</li>
-<li>Le vérifier</li>
+<li lang="en">Paste a Markdown table containing "\|".</li>
+<li lang="en">In "Table for Excel", check the bar remains inside the cell.</li>
+<li lang="en">Check with "Rows × columns" that the column count isn't off.</li>
 </ol>
-<div class="note">C'est ainsi qu'elle se distingue des barres de séparation.</div>
+<div class="note" lang="en">Without the "\" before the bar, columns increase.</div>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Tables with bars, like command descriptions</li>
+<li lang="en">Tables with choices like "A|B"</li>
+<li lang="en">Explanatory tables for regular expressions (| for alternation)</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">Converted a table containing the command "cat file | grep word". It was written "cat file \| grep word", so it fit in one cell.</p>
+<h2 lang="en">Bars at row edges</h2>
+<p lang="en">Bars at the start and end of a row are removed as separators.</p>
+<ul>
+<li lang="en">"| A | B |" and "A | B" give the same result</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Forgot the "\"</b>: columns increase and shift. Fix the source table.</li>
+<li lang="en"><b>Bars inside code</b>: even within backticks, "\|" may be needed.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if there are several bars?</h3>
+<p lang="en">Make each one "\|".</p>
+<h2>En résumé</h2>
+<p lang="en">Write a bar inside a cell as "\|" and it converts correctly.</p>
 <a class="cta" href="/fr/markdown-table-to-excel.html">Utiliser « Convertir un tableau Markdown pour Excel » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/table-paste-convert.html">Tableau Excel vers Markdown, HTML, CSV et JSON</a>: Convertissez un tableau collé en Markdown, HTML, CSV ou JSON.</li><li><a href="/fr/table-transpose.html">Échanger les lignes et colonnes d'un tableau</a>: Échangez les lignes et colonnes d'un tableau collé.</li><li><a href="/fr/markdown-to-html.html">Markdown en HTML</a>: Convertissez du Markdown en HTML.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>순서가 거꾸로 된 범위</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>범위 입력하기</li><li>결과 확인하기</li><li>확인하기</li></ul></div>
-<p><a href="/ko/excel-range-info.html">엑셀 범위 크기</a>에서는 B3:A1처럼 순서가 거꾸로 된 범위도 올바른 범위로 읽습니다.</p>
+<p lang="en">A range is normally written "top-left:bottom-right". But sometimes it's reversed, like "C10:A1". <a href="/ko/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a> counts correctly even when reversed.</p>
+<h2 lang="en">What happens</h2>
+<p lang="en">Excel too puts reversed ranges into proper order.</p>
+<ul>
+<li lang="en">C10:A1 → the same range as A1:C10</li>
+<li lang="en">Result: 30 cells, 3 columns, 10 rows</li>
+</ul>
 <h2>순서</h2>
 <ol>
-<li>범위 입력하기</li>
-<li>결과 확인하기</li>
-<li>확인하기</li>
+<li lang="en">Enter a reversed range (C10:A1) in "Cell range".</li>
+<li lang="en">Check "Cells", "Columns" and "Rows".</li>
+<li lang="en">See that "Absolute" is in proper order ($A$1:$C$10).</li>
 </ol>
-<div class="note">결과는 왼쪽 위에서 오른쪽 아래 방향으로 정리됩니다.</div>
+<div class="note" lang="en">The absolute reference is shown arranged from top-left to bottom-right.</div>
+<h2 lang="en">Partly reversed</h2>
+<ul>
+<li lang="en">A10:C1: columns in order, rows reversed. The range is A1:C10</li>
+<li lang="en">C1:A10: columns reversed, rows in order. The range is A1:C10</li>
+</ul>
+<p lang="en">In every case it is the same range.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Tidying ranges reversed by drag direction</li>
+<li lang="en">Checking ranges output by macros</li>
+<li lang="en">Getting an absolute reference in proper order</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Dragging from bottom-right to top-left put "C10:A1" in a formula. Entering it in the tool gave $A$1:$C$10 in proper order.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Cells outside the range aren't included</b>: only the corners are the basis.</li>
+<li lang="en"><b>Ranges with sheet names</b>: for "Sheet1!A1:C10", enter without the sheet name.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does the formula result differ?</h3>
+<p lang="en">No. It is calculated as the same range.</p>
+<h2>요약</h2>
+<p lang="en">Even a reversed range is counted correctly.</p>
 <a class="cta" href="/ko/excel-range-info.html">“엑셀 범위의 셀·행·열 수 세기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-column-letter.html">엑셀 열 번호·문자 변환기</a>: 엑셀의 열 번호와 열 문자를 변환합니다.</li><li><a href="/ko/excel-serial-date.html">엑셀 일련번호·날짜 변환기</a>: 엑셀의 일련번호와 날짜를 변환합니다.</li><li><a href="/ko/table-paste-convert.html">엑셀 표를 Markdown, HTML, CSV, JSON으로</a>: 붙여 넣은 표를 Markdown, HTML, CSV, JSON으로 바꿉니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

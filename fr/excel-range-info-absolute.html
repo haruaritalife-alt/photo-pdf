@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Transformer une plage en référence absolue</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Saisissez la plage</li><li>Voyez la forme</li><li>Copiez-le</li></ul></div>
-<p><a href="/fr/excel-range-info.html">Taille de plage Excel</a> affiche aussi la plage sous forme de référence absolue avec signes dollar.</p>
+<p lang="en">Copying a formula shifted the range and broke the result. For that, make the range an "absolute reference". The "Absolute" field in <a href="/fr/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a> shows the converted form.</p>
+<h2 lang="en">What an absolute reference is</h2>
+<p lang="en">A reference with "$" before the column and row so it doesn't move when copied.</p>
+<ul>
+<li lang="en">Relative: A1:C10 (shifts when copied)</li>
+<li lang="en">Absolute: $A$1:$C$10 (fixed when copied)</li>
+</ul>
 <h2>Étapes</h2>
 <ol>
-<li>Saisissez la plage</li>
-<li>Voyez la forme</li>
-<li>Copiez-le</li>
+<li lang="en">Enter a range in "Cell range".</li>
+<li lang="en">Check the form shown in "Absolute".</li>
+<li lang="en">Press "Copy absolute reference" and paste into a formula.</li>
 </ol>
-<div class="note">Vous pouvez l'utiliser directement comme plage dans RECHERCHEV et autres.</div>
+<div class="note" lang="en">When "Copied" appears, copying is done.</div>
+<h2 lang="en">Where it's used</h2>
+<ul>
+<li lang="en">Fixing VLOOKUP's lookup range</li>
+<li lang="en">Fixing SUMIF or COUNTIF ranges</li>
+<li lang="en">Keeping the range still when copying down</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">Copying =VLOOKUP(A2,B1:C100,2,0) down shifted the range and gave #N/A. Changing the range to $B$1:$C$100 made every row work.</p>
+<h2 lang="en">Toggling in Excel</h2>
+<p lang="en">Pressing F4 while editing a cell cycles relative and absolute.</p>
+<ul>
+<li lang="en">Once: $A$1 (row and column fixed)</li>
+<li lang="en">Twice: A$1 (row only)</li>
+<li lang="en">Three times: $A1 (column only)</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Already has $</b>: entering returns the same form.</li>
+<li lang="en"><b>Mixed reference needed</b>: to fix only the row or column, add $ by hand.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I turn an absolute reference back to relative?</h3>
+<p lang="en">Remove the $ by hand.</p>
+<h2>En résumé</h2>
+<p lang="en">Fix ranges that mustn't move on copying with absolute references.</p>
 <a class="cta" href="/fr/excel-range-info.html">Utiliser « Compter les cellules, lignes et colonnes d'une plage Excel » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/excel-column-letter.html">Convertisseur de numéro et lettre de colonne Excel</a>: Convertissez des numéros et lettres de colonne Excel.</li><li><a href="/fr/excel-serial-date.html">Convertisseur de valeur série et date Excel</a>: Convertissez des valeurs série et des dates Excel.</li><li><a href="/fr/table-paste-convert.html">Tableau Excel vers Markdown, HTML, CSV et JSON</a>: Convertissez un tableau collé en Markdown, HTML, CSV ou JSON.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

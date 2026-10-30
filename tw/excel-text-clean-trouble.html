@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>無法正常使用時的處理辦法</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>檢查檔案</li><li>確認大小</li><li>換一臺裝置試試</li></ul></div>
-<p>如果<a href="/tw/excel-text-clean.html">Excel文字清理</a>無法使用,請檢查以下幾點。</p>
-<h2>步驟</h2>
+<p lang="en">You cleaned it but Excel still doesn't match. Here are common troubles with <a href="/tw/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a> and fixes.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>Result unchanged</b>: no items are ticked, or the text has no problem.</li>
+<li lang="en"><b>Still not matching</b>: another cause (full-width vs half-width alphanumerics, upper vs lower case).</li>
+<li lang="en"><b>Character count doesn't shrink</b>: the invisible difference is something else.</li>
+<li lang="en"><b>Line breaks vanished</b>: "Remove line breaks" is ticked.</li>
+<li lang="en"><b>Reverts on pasting back</b>: Excel cell formatting or auto-conversion.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>檢查檔案</li>
-<li>確認大小</li>
-<li>換一臺裝置試試</li>
+<li lang="en">Check the needed items among the four are ticked.</li>
+<li lang="en">Check with the "Characters" display whether it shrank.</li>
+<li lang="en">Compare =LEN(cell) in Excel with what you see.</li>
 </ol>
-<div class="note">如果看不出變化,請確認已勾選相應選項,且貼上的文字中確實含有這類字元。</div>
+<div class="note" lang="en">Trying with all items ticked helps isolate the cause.</div>
+<h2 lang="en">Causes other than blanks</h2>
+<ul>
+<li lang="en">Full-width vs half-width alphanumerics: "ＡＢＣ" and "ABC" differ</li>
+<li lang="en">Upper vs lower case: VLOOKUP doesn't distinguish (mind exact-match comparisons)</li>
+<li lang="en">Number vs text: "123" and text "123" differ</li>
+<li lang="en">Hiragana vs katakana</li>
+</ul>
+<h2 lang="en">Notes on pasting back</h2>
+<ul>
+<li lang="en">Check the destination cells' format is "General"</li>
+<li lang="en">Use "Paste values"</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">After cleaning, it still didn't match. One side was full-width "ＡＢＣ１２３". Making them half-width matched.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leading zeros vanish</b>: pasting as numbers drops 0s. Paste as text.</li>
+<li lang="en"><b>Large data</b>: if the browser gets heavy, paste in parts.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Only some rows won't fix.</h3>
+<p lang="en">Those rows may contain a different kind of character. Pull out just those rows to check.</p>
+<h2>小結</h2>
+<p lang="en">Items, character count, other causes. Check these three in order.</p>
 <a class="cta" href="/tw/excel-text-clean.html">使用「去掉 Excel 文字中多餘的空格和看不見的字元」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/zenkaku-hankaku.html">全形、半形、平假名、片假名互相轉換</a>：全形與半形、平假名與片假名互相轉換。</li><li><a href="/tw/line-break-remover.html">刪除和整理文字中的換行</a>：整理從 PDF 等處複製的文字中的換行。</li><li><a href="/tw/line-sort-dedupe.html">刪除重複行並排序</a>：刪除重複的行並排序。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

@@ -200,14 +200,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>見えないスペースの正体</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>文字を貼る</li><li>項目を選ぶ</li><li>文字数を見る</li></ul></div>
-<p><a href="/excel-text-clean.html">Excel文字の整形</a> は、ノーブレークスペースやゼロ幅スペースなどを取り除きます。</p>
+<p>見た目はスペースなのに、TRIM関数でも消えない。その正体は「ノーブレークスペース（NBSP）」かもしれません。<a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a> の「見えない文字を取り除く」で整えられます。</p>
+<h2>NBSPとは</h2>
+<p>Webページで改行されないように使われる、特別なスペースです。文字コードは160番。</p>
+<ul>
+<li>見た目：普通のスペースと同じ</li>
+<li>実際：普通のスペースとは別の文字</li>
+<li>起きる場面：Webページや、PDFからのコピー</li>
+</ul>
+<h2>見えない文字の種類</h2>
+<p>このツールは、次のような文字を、スペースに直します。</p>
+<ul>
+<li>ノーブレークスペース</li>
+<li>幅の違う各種スペース</li>
+<li>ゼロ幅スペースや、BOM（ファイル先頭の印）</li>
+<li>行・段落の区切りの特殊文字</li>
+</ul>
+<p>さらに、改行以外の制御文字は、削除されます。</p>
 <h2>手順</h2>
 <ol>
-<li>文字を貼る</li>
-<li>項目を選ぶ</li>
-<li>文字数を見る</li>
+<li>文字を貼り付ける。</li>
+<li>「見えない文字を取り除く」にチェックを入れる。</li>
+<li>続けて「余分なスペースを減らす」も入れると、連続したスペースが1つになる。</li>
+<li>「文字数」の表示と、「整えた文字」を確かめる。</li>
 </ol>
-<div class="note">整える前後の文字数の違いで、取り除かれた数がわかります。</div>
+<div class="note">取り除いた結果、文字数が減れば、見えない文字があったことになります。</div>
+<h2>向いている場面</h2>
+<ul>
+<li>TRIM関数で消えないスペースがある</li>
+<li>Webの表をコピーして、集計が合わない</li>
+<li>文字数を数えると、見た目より多い</li>
+</ul>
+<h2>例</h2>
+<p>Webの価格表をコピーしたら、並べ替えが乱れた。整えると文字数が減り、NBSPが混ざっていたと分かった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>ゼロ幅の文字は、スペースに直される</b>：単語の間が空く場合がある。余分なスペースの整理もあわせて使う。</li>
+<li><b>削除ではなく置換</b>：NBSPは、削除でなくスペースへの置換。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>Excelの関数でも消せますか？</h3>
+<p>SUBSTITUTE(セル, CHAR(160), " ") で、置き換えられます。</p>
+<h2>まとめ</h2>
+<p>消えないスペースの正体は、見えない文字。まとめて整えましょう。</p>
 <a class="cta" href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/zenkaku-hankaku.html">全角・半角、ひらがな・カタカナを変換する</a>：全角・半角、ひらがな・カタカナを変換します。</li><li><a href="/line-break-remover.html">文章の改行を消す・整える</a>：PDFなどからコピーした文章の改行を整えます。</li><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +254,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What the Invisible Spaces Are</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Paste the text</li><li>Choose the item</li><li>Check the counts</li></ul></div>
-<p><a href="/excel-text-clean.html">Excel Text Cleaner</a> removes no-break spaces, zero-width spaces and the like.</p>
+<p>It looks like a space, but even TRIM won't remove it. It may be a non-breaking space (NBSP). "Remove invisible characters" in <a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a> can tidy it.</p>
+<h2>What NBSP is</h2>
+<p>A special space used on web pages to prevent line breaks. Character code 160.</p>
+<ul>
+<li>Looks: the same as a normal space</li>
+<li>Actually: a different character from a normal space</li>
+<li>Where it occurs: text copied from web pages or PDFs</li>
+</ul>
+<h2>Kinds of invisible characters</h2>
+<p>This tool turns these into spaces:</p>
+<ul>
+<li>Non-breaking spaces</li>
+<li>Spaces of various widths</li>
+<li>Zero-width spaces and the BOM (a file-start marker)</li>
+<li>Special line and paragraph separators</li>
+</ul>
+<p>Control characters other than line breaks are also deleted.</p>
 <h2>Steps</h2>
 <ol>
-<li>Paste the text</li>
-<li>Choose the item</li>
-<li>Check the counts</li>
+<li>Paste the text.</li>
+<li>Tick "Remove invisible characters".</li>
+<li>Also tick "Reduce extra spaces" to collapse runs of spaces into one.</li>
+<li>Check the "Characters" display and "Cleaned text".</li>
 </ol>
-<div class="note">The difference in counts before and after shows how many were removed.</div>
+<div class="note">If the count shrinks, invisible characters were present.</div>
+<h2>Good for</h2>
+<ul>
+<li>Spaces TRIM can't remove</li>
+<li>Aggregation off after copying a web table</li>
+<li>Character count higher than it looks</li>
+</ul>
+<h2>Example</h2>
+<p>Copying a price table from the web scrambled sorting. After cleaning, the count dropped, revealing NBSPs.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Zero-width characters become spaces</b>: gaps may appear between words. Use the extra-space reduction together.</li>
+<li><b>Replacement, not deletion</b>: NBSP is replaced with a space.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can Excel functions remove it?</h3>
+<p>SUBSTITUTE(cell, CHAR(160), " ") replaces it.</p>
+<h2>Summary</h2>
+<p>The spaces that won't go are invisible characters. Tidy them all at once.</p>
 <a class="cta" href="/excel-text-clean.html">Use "Remove Extra Spaces and Invisible Characters from Excel Text" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/zenkaku-hankaku.html">Convert Full-Width, Half-Width, Hiragana and Katakana</a>: Convert full-width/half-width and hiragana/katakana.</li><li><a href="/line-break-remover.html">Remove and Tidy Line Breaks in Text</a>: Tidy line breaks in text copied from PDFs and elsewhere.</li><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

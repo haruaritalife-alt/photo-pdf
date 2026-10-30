@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Czym są niewidoczne spacje</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Wklej tekst</li><li>Wybierz opcję</li><li>Sprawdź wyniki</li></ul></div>
-<p><a href="/pl/excel-text-clean.html">Czyszczenie tekstu Excela</a> usuwa spacje niełamliwe, spacje o zerowej szerokości i podobne znaki.</p>
+<p lang="en">It looks like a space, but even TRIM won't remove it. It may be a non-breaking space (NBSP). "Remove invisible characters" in <a href="/pl/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a> can tidy it.</p>
+<h2 lang="en">What NBSP is</h2>
+<p lang="en">A special space used on web pages to prevent line breaks. Character code 160.</p>
+<ul>
+<li lang="en">Looks: the same as a normal space</li>
+<li lang="en">Actually: a different character from a normal space</li>
+<li lang="en">Where it occurs: text copied from web pages or PDFs</li>
+</ul>
+<h2 lang="en">Kinds of invisible characters</h2>
+<p lang="en">This tool turns these into spaces:</p>
+<ul>
+<li lang="en">Non-breaking spaces</li>
+<li lang="en">Spaces of various widths</li>
+<li lang="en">Zero-width spaces and the BOM (a file-start marker)</li>
+<li lang="en">Special line and paragraph separators</li>
+</ul>
+<p lang="en">Control characters other than line breaks are also deleted.</p>
 <h2>Kroki</h2>
 <ol>
-<li>Wklej tekst</li>
-<li>Wybierz opcję</li>
-<li>Sprawdź wyniki</li>
+<li>Wklej tekst.</li>
+<li lang="en">Tick "Remove invisible characters".</li>
+<li lang="en">Also tick "Reduce extra spaces" to collapse runs of spaces into one.</li>
+<li lang="en">Check the "Characters" display and "Cleaned text".</li>
 </ol>
-<div class="note">Różnica liczb przed i po pokazuje, ile znaków usunięto.</div>
+<div class="note" lang="en">If the count shrinks, invisible characters were present.</div>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">Spaces TRIM can't remove</li>
+<li lang="en">Aggregation off after copying a web table</li>
+<li lang="en">Character count higher than it looks</li>
+</ul>
+<h2>Przykład</h2>
+<p lang="en">Copying a price table from the web scrambled sorting. After cleaning, the count dropped, revealing NBSPs.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Zero-width characters become spaces</b>: gaps may appear between words. Use the extra-space reduction together.</li>
+<li lang="en"><b>Replacement, not deletion</b>: NBSP is replaced with a space.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can Excel functions remove it?</h3>
+<p lang="en">SUBSTITUTE(cell, CHAR(160), " ") replaces it.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">The spaces that won't go are invisible characters. Tidy them all at once.</p>
 <a class="cta" href="/pl/excel-text-clean.html">Użyj „Usuwanie zbędnych spacji i niewidocznych znaków z tekstu Excela” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/zenkaku-hankaku.html">Konwersja znaków pełnej i połowicznej szerokości, hiragany i katakany</a>: Konwertuj znaki pełnej i połowicznej szerokości oraz hiraganę i katakanę.</li><li><a href="/pl/line-break-remover.html">Usuwanie i porządkowanie podziałów wierszy w tekście</a>: Uporządkuj podziały wierszy w tekście skopiowanym z PDF i innych źródeł.</li><li><a href="/pl/line-sort-dedupe.html">Usuwanie duplikatów wierszy i sortowanie listy</a>: Usuń zduplikowane wiersze i posortuj je.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

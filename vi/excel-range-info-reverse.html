@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Vùng bị đảo ngược</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Nhập khoảng</li><li>Xem kết quả</li><li>Kiểm tra lại</li></ul></div>
-<p>Trong <a href="/vi/excel-range-info.html">Kích thước vùng Excel</a>, vùng bị đảo ngược như B3:A1 vẫn được đọc là vùng hợp lệ.</p>
+<p lang="en">A range is normally written "top-left:bottom-right". But sometimes it's reversed, like "C10:A1". <a href="/vi/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a> counts correctly even when reversed.</p>
+<h2 lang="en">What happens</h2>
+<p lang="en">Excel too puts reversed ranges into proper order.</p>
+<ul>
+<li lang="en">C10:A1 → the same range as A1:C10</li>
+<li lang="en">Result: 30 cells, 3 columns, 10 rows</li>
+</ul>
 <h2>Các bước</h2>
 <ol>
-<li>Nhập khoảng</li>
-<li>Xem kết quả</li>
-<li>Kiểm tra lại</li>
+<li lang="en">Enter a reversed range (C10:A1) in "Cell range".</li>
+<li lang="en">Check "Cells", "Columns" and "Rows".</li>
+<li lang="en">See that "Absolute" is in proper order ($A$1:$C$10).</li>
 </ol>
-<div class="note">Kết quả được chuẩn hóa từ góc trên bên trái đến góc dưới bên phải.</div>
+<div class="note" lang="en">The absolute reference is shown arranged from top-left to bottom-right.</div>
+<h2 lang="en">Partly reversed</h2>
+<ul>
+<li lang="en">A10:C1: columns in order, rows reversed. The range is A1:C10</li>
+<li lang="en">C1:A10: columns reversed, rows in order. The range is A1:C10</li>
+</ul>
+<p lang="en">In every case it is the same range.</p>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Tidying ranges reversed by drag direction</li>
+<li lang="en">Checking ranges output by macros</li>
+<li lang="en">Getting an absolute reference in proper order</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">Dragging from bottom-right to top-left put "C10:A1" in a formula. Entering it in the tool gave $A$1:$C$10 in proper order.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Cells outside the range aren't included</b>: only the corners are the basis.</li>
+<li lang="en"><b>Ranges with sheet names</b>: for "Sheet1!A1:C10", enter without the sheet name.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does the formula result differ?</h3>
+<p lang="en">No. It is calculated as the same range.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">Even a reversed range is counted correctly.</p>
 <a class="cta" href="/vi/excel-range-info.html">Dùng “Đếm ô, hàng và cột trong một vùng Excel” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/excel-column-letter.html">Chuyển đổi số và chữ cái cột Excel</a>: Chuyển đổi số và chữ cái cột Excel.</li><li><a href="/vi/excel-serial-date.html">Chuyển đổi giá trị số sê-ri và ngày Excel</a>: Chuyển đổi giá trị số sê-ri và ngày Excel.</li><li><a href="/vi/table-paste-convert.html">Bảng Excel sang Markdown, HTML, CSV và JSON</a>: Chuyển bảng được dán sang Markdown, HTML, CSV hoặc JSON.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

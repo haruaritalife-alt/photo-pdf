@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Превращение диапазона в абсолютную ссылку</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Введите диапазон</li><li>Посмотрите вид</li><li>Скопируйте его</li></ul></div>
-<p><a href="/ru/excel-range-info.html">Размер диапазона Excel</a> также показывает диапазон в виде абсолютной ссылки со знаками доллара.</p>
+<p lang="en">Copying a formula shifted the range and broke the result. For that, make the range an "absolute reference". The "Absolute" field in <a href="/ru/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a> shows the converted form.</p>
+<h2 lang="en">What an absolute reference is</h2>
+<p lang="en">A reference with "$" before the column and row so it doesn't move when copied.</p>
+<ul>
+<li lang="en">Relative: A1:C10 (shifts when copied)</li>
+<li lang="en">Absolute: $A$1:$C$10 (fixed when copied)</li>
+</ul>
 <h2>Шаги</h2>
 <ol>
-<li>Введите диапазон</li>
-<li>Посмотрите вид</li>
-<li>Скопируйте его</li>
+<li lang="en">Enter a range in "Cell range".</li>
+<li lang="en">Check the form shown in "Absolute".</li>
+<li lang="en">Press "Copy absolute reference" and paste into a formula.</li>
 </ol>
-<div class="note">Его можно сразу использовать как диапазон в ВПР и подобных функциях.</div>
+<div class="note" lang="en">When "Copied" appears, copying is done.</div>
+<h2 lang="en">Where it's used</h2>
+<ul>
+<li lang="en">Fixing VLOOKUP's lookup range</li>
+<li lang="en">Fixing SUMIF or COUNTIF ranges</li>
+<li lang="en">Keeping the range still when copying down</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">Copying =VLOOKUP(A2,B1:C100,2,0) down shifted the range and gave #N/A. Changing the range to $B$1:$C$100 made every row work.</p>
+<h2 lang="en">Toggling in Excel</h2>
+<p lang="en">Pressing F4 while editing a cell cycles relative and absolute.</p>
+<ul>
+<li lang="en">Once: $A$1 (row and column fixed)</li>
+<li lang="en">Twice: A$1 (row only)</li>
+<li lang="en">Three times: $A1 (column only)</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Already has $</b>: entering returns the same form.</li>
+<li lang="en"><b>Mixed reference needed</b>: to fix only the row or column, add $ by hand.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I turn an absolute reference back to relative?</h3>
+<p lang="en">Remove the $ by hand.</p>
+<h2>Итог</h2>
+<p lang="en">Fix ranges that mustn't move on copying with absolute references.</p>
 <a class="cta" href="/ru/excel-range-info.html">Использовать «Подсчёт ячеек, строк и столбцов диапазона Excel» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/excel-column-letter.html">Конвертер номера и буквы столбца Excel</a>: Преобразуйте номера и буквы столбцов Excel.</li><li><a href="/ru/excel-serial-date.html">Конвертер серийного значения и даты Excel</a>: Преобразуйте серийные значения и даты Excel.</li><li><a href="/ru/table-paste-convert.html">Таблица Excel в Markdown, HTML, CSV и JSON</a>: Преобразуйте вставленную таблицу в Markdown, HTML, CSV или JSON.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

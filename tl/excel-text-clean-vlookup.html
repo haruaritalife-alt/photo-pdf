@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Kapag hindi tumutugma ang VLOOKUP</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>I-paste ang text</li><li>Linisin ito</li><li>Subukan muli</li></ul></div>
-<p>Ang pag-aalis ng di-nakikitang karakter at sobrang espasyo gamit ang <a href="/tl/excel-text-clean.html">Excel Text Cleaner</a> ay maaaring magpatugma sa mga value.</p>
+<p lang="en">VLOOKUP returns "#N/A" even though the lookup value surely exists. Suspect extra spaces. Clean both the lookup value and the table side with <a href="/tl/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>.</p>
+<h2 lang="en">Why they don't match</h2>
+<p lang="en">VLOOKUP compares text exactly. These differences make it judge them different:</p>
+<ul>
+<li lang="en">A trailing half-width space</li>
+<li lang="en">Full-width spaces</li>
+<li lang="en">Non-breaking spaces (common in text copied from the web)</li>
+<li lang="en">Invisible control characters</li>
+</ul>
 <h2>Mga hakbang</h2>
 <ol>
-<li>I-paste ang text</li>
-<li>Linisin ito</li>
-<li>Subukan muli</li>
+<li lang="en">Copy the text of the lookup column (or the table's first column) and paste.</li>
+<li lang="en">Tick "Reduce extra spaces", "Convert full-width spaces to half-width" and "Remove invisible characters".</li>
+<li lang="en">Copy the "Cleaned text" and paste back into Excel.</li>
+<li lang="en">Redo the VLOOKUP.</li>
 </ol>
-<div class="note">Subukan din ang setting na ginagawang karaniwang espasyo ang mga full-width na espasyo.</div>
+<div class="note" lang="en">If the character count shrinks, there was an invisible difference.</div>
+<h2>Paano suriin</h2>
+<p lang="en">In Excel, =LEN(cell) gives the character count. A cell whose count doesn't match what you see is suspect.</p>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">VLOOKUP, XLOOKUP or MATCH not matching</li>
+<li lang="en">COUNTIF or SUMIF results off</li>
+<li lang="en">Remove Duplicates not working</li>
+</ul>
+<h2>Halimbawa</h2>
+<p lang="en">A product code lookup gave "#N/A". After cleaning, the count dropped from 7 to 6, revealing an invisible trailing character, and the lookup worked.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Cleaning only the table side</b>: the lookup side may have the same problem. Clean both.</li>
+<li lang="en"><b>Full-width vs half-width alphanumerics</b>: other than spaces, make those half-width with a different tool.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can a function fix it?</h3>
+<p lang="en">TRIM and CLEAN fix some, but non-breaking spaces remain. You'd need SUBSTITUTE.</p>
+<h2>Buod</h2>
+<p lang="en">When things don't match, suspect invisible differences and re-search after cleaning.</p>
 <a class="cta" href="/tl/excel-text-clean.html">Gamitin ang “Pag-alis ng sobrang espasyo at di-nakikitang karakter sa teksto ng Excel” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/zenkaku-hankaku.html">I-convert ang Full-Width, Half-Width, Hiragana at Katakana</a>: I-convert ang full-width/half-width at hiragana/katakana.</li><li><a href="/tl/line-break-remover.html">Alisin at Ayusin ang mga Line Break sa Text</a>: Ayusin ang mga line break sa text na kinopya mula sa PDF at iba pa.</li><li><a href="/tl/line-sort-dedupe.html">Alisin ang mga Duplicate na Linya at I-sort ang Listahan</a>: Alisin ang mga duplicate na linya at i-sort ang mga ito.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

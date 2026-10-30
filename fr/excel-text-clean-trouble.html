@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Que faire quand ça ne fonctionne pas</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Vérifier le fichier</li><li>Vérifiez la taille</li><li>Essayez sur un autre appareil</li></ul></div>
-<p>Si <a href="/fr/excel-text-clean.html">Nettoyeur de texte Excel</a> ne fonctionne pas, vérifiez les points suivants.</p>
-<h2>Étapes</h2>
+<p lang="en">You cleaned it but Excel still doesn't match. Here are common troubles with <a href="/fr/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a> and fixes.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>Result unchanged</b>: no items are ticked, or the text has no problem.</li>
+<li lang="en"><b>Still not matching</b>: another cause (full-width vs half-width alphanumerics, upper vs lower case).</li>
+<li lang="en"><b>Character count doesn't shrink</b>: the invisible difference is something else.</li>
+<li lang="en"><b>Line breaks vanished</b>: "Remove line breaks" is ticked.</li>
+<li lang="en"><b>Reverts on pasting back</b>: Excel cell formatting or auto-conversion.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Vérifier le fichier</li>
-<li>Vérifiez la taille</li>
-<li>Essayez sur un autre appareil</li>
+<li lang="en">Check the needed items among the four are ticked.</li>
+<li lang="en">Check with the "Characters" display whether it shrank.</li>
+<li lang="en">Compare =LEN(cell) in Excel with what you see.</li>
 </ol>
-<div class="note">Si rien ne semble changer, vérifiez que les options sont cochées et que le texte collé contient de tels caractères.</div>
+<div class="note" lang="en">Trying with all items ticked helps isolate the cause.</div>
+<h2 lang="en">Causes other than blanks</h2>
+<ul>
+<li lang="en">Full-width vs half-width alphanumerics: "ＡＢＣ" and "ABC" differ</li>
+<li lang="en">Upper vs lower case: VLOOKUP doesn't distinguish (mind exact-match comparisons)</li>
+<li lang="en">Number vs text: "123" and text "123" differ</li>
+<li lang="en">Hiragana vs katakana</li>
+</ul>
+<h2 lang="en">Notes on pasting back</h2>
+<ul>
+<li lang="en">Check the destination cells' format is "General"</li>
+<li lang="en">Use "Paste values"</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">After cleaning, it still didn't match. One side was full-width "ＡＢＣ１２３". Making them half-width matched.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leading zeros vanish</b>: pasting as numbers drops 0s. Paste as text.</li>
+<li lang="en"><b>Large data</b>: if the browser gets heavy, paste in parts.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Only some rows won't fix.</h3>
+<p lang="en">Those rows may contain a different kind of character. Pull out just those rows to check.</p>
+<h2>En résumé</h2>
+<p lang="en">Items, character count, other causes. Check these three in order.</p>
 <a class="cta" href="/fr/excel-text-clean.html">Utiliser « Supprimer les espaces en trop et caractères invisibles d'un texte Excel » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/zenkaku-hankaku.html">Convertir pleine chasse, demi-chasse, hiragana et katakana</a>: Convertissez pleine chasse/demi-chasse et hiragana/katakana.</li><li><a href="/fr/line-break-remover.html">Supprimer et nettoyer les sauts de ligne d'un texte</a>: Nettoyez les sauts de ligne d'un texte copié depuis un PDF ou ailleurs.</li><li><a href="/fr/line-sort-dedupe.html">Supprimer les doublons et trier une liste</a>: Supprimez les lignes en double et triez-les.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

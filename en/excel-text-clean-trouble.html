@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/excel-text-clean.html">Excel Text Cleaner</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You cleaned it but Excel still doesn't match. Here are common troubles with <a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a> and fixes.</p>
+<h2>Common troubles</h2>
+<ul>
+<li><b>Result unchanged</b>: no items are ticked, or the text has no problem.</li>
+<li><b>Still not matching</b>: another cause (full-width vs half-width alphanumerics, upper vs lower case).</li>
+<li><b>Character count doesn't shrink</b>: the invisible difference is something else.</li>
+<li><b>Line breaks vanished</b>: "Remove line breaks" is ticked.</li>
+<li><b>Reverts on pasting back</b>: Excel cell formatting or auto-conversion.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the needed items among the four are ticked.</li>
+<li>Check with the "Characters" display whether it shrank.</li>
+<li>Compare =LEN(cell) in Excel with what you see.</li>
 </ol>
-<div class="note">If nothing seems to change, check that the items are ticked and the pasted text contains such characters.</div>
+<div class="note">Trying with all items ticked helps isolate the cause.</div>
+<h2>Causes other than blanks</h2>
+<ul>
+<li>Full-width vs half-width alphanumerics: "ＡＢＣ" and "ABC" differ</li>
+<li>Upper vs lower case: VLOOKUP doesn't distinguish (mind exact-match comparisons)</li>
+<li>Number vs text: "123" and text "123" differ</li>
+<li>Hiragana vs katakana</li>
+</ul>
+<h2>Notes on pasting back</h2>
+<ul>
+<li>Check the destination cells' format is "General"</li>
+<li>Use "Paste values"</li>
+</ul>
+<h2>Example</h2>
+<p>After cleaning, it still didn't match. One side was full-width "ＡＢＣ１２３". Making them half-width matched.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Leading zeros vanish</b>: pasting as numbers drops 0s. Paste as text.</li>
+<li><b>Large data</b>: if the browser gets heavy, paste in parts.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Only some rows won't fix.</h3>
+<p>Those rows may contain a different kind of character. Pull out just those rows to check.</p>
+<h2>Summary</h2>
+<p>Items, character count, other causes. Check these three in order.</p>
 <a class="cta" href="/en/excel-text-clean.html">Use "Remove Extra Spaces and Invisible Characters from Excel Text" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/zenkaku-hankaku.html">Convert Full-Width, Half-Width, Hiragana and Katakana</a>: Convert full-width/half-width and hiragana/katakana.</li><li><a href="/en/line-break-remover.html">Remove and Tidy Line Breaks in Text</a>: Tidy line breaks in text copied from PDFs and elsewhere.</li><li><a href="/en/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>When VLOOKUP Does Not Match</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Paste the text</li><li>Clean it</li><li>Try again</li></ul></div>
-<p>Removing invisible characters and extra spaces with <a href="/en/excel-text-clean.html">Excel Text Cleaner</a> can make values match.</p>
+<p>VLOOKUP returns "#N/A" even though the lookup value surely exists. Suspect extra spaces. Clean both the lookup value and the table side with <a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>.</p>
+<h2>Why they don't match</h2>
+<p>VLOOKUP compares text exactly. These differences make it judge them different:</p>
+<ul>
+<li>A trailing half-width space</li>
+<li>Full-width spaces</li>
+<li>Non-breaking spaces (common in text copied from the web)</li>
+<li>Invisible control characters</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Paste the text</li>
-<li>Clean it</li>
-<li>Try again</li>
+<li>Copy the text of the lookup column (or the table's first column) and paste.</li>
+<li>Tick "Reduce extra spaces", "Convert full-width spaces to half-width" and "Remove invisible characters".</li>
+<li>Copy the "Cleaned text" and paste back into Excel.</li>
+<li>Redo the VLOOKUP.</li>
 </ol>
-<div class="note">Also try the setting that turns full-width spaces into normal spaces.</div>
+<div class="note">If the character count shrinks, there was an invisible difference.</div>
+<h2>How to check</h2>
+<p>In Excel, =LEN(cell) gives the character count. A cell whose count doesn't match what you see is suspect.</p>
+<h2>Good for</h2>
+<ul>
+<li>VLOOKUP, XLOOKUP or MATCH not matching</li>
+<li>COUNTIF or SUMIF results off</li>
+<li>Remove Duplicates not working</li>
+</ul>
+<h2>Example</h2>
+<p>A product code lookup gave "#N/A". After cleaning, the count dropped from 7 to 6, revealing an invisible trailing character, and the lookup worked.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Cleaning only the table side</b>: the lookup side may have the same problem. Clean both.</li>
+<li><b>Full-width vs half-width alphanumerics</b>: other than spaces, make those half-width with a different tool.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can a function fix it?</h3>
+<p>TRIM and CLEAN fix some, but non-breaking spaces remain. You'd need SUBSTITUTE.</p>
+<h2>Summary</h2>
+<p>When things don't match, suspect invisible differences and re-search after cleaning.</p>
 <a class="cta" href="/en/excel-text-clean.html">Use "Remove Extra Spaces and Invisible Characters from Excel Text" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/zenkaku-hankaku.html">Convert Full-Width, Half-Width, Hiragana and Katakana</a>: Convert full-width/half-width and hiragana/katakana.</li><li><a href="/en/line-break-remover.html">Remove and Tidy Line Breaks in Text</a>: Tidy line breaks in text copied from PDFs and elsewhere.</li><li><a href="/en/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

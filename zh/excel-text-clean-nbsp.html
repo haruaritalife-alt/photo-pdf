@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>看不见的空格究竟是什么</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>粘贴文字</li><li>选择该项</li><li>查看字数</li></ul></div>
-<p><a href="/zh/excel-text-clean.html">Excel文本清理</a>会去掉不换行空格、零宽空格等字符。</p>
+<p lang="en">It looks like a space, but even TRIM won't remove it. It may be a non-breaking space (NBSP). "Remove invisible characters" in <a href="/zh/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a> can tidy it.</p>
+<h2 lang="en">What NBSP is</h2>
+<p lang="en">A special space used on web pages to prevent line breaks. Character code 160.</p>
+<ul>
+<li lang="en">Looks: the same as a normal space</li>
+<li lang="en">Actually: a different character from a normal space</li>
+<li lang="en">Where it occurs: text copied from web pages or PDFs</li>
+</ul>
+<h2 lang="en">Kinds of invisible characters</h2>
+<p lang="en">This tool turns these into spaces:</p>
+<ul>
+<li lang="en">Non-breaking spaces</li>
+<li lang="en">Spaces of various widths</li>
+<li lang="en">Zero-width spaces and the BOM (a file-start marker)</li>
+<li lang="en">Special line and paragraph separators</li>
+</ul>
+<p lang="en">Control characters other than line breaks are also deleted.</p>
 <h2>步骤</h2>
 <ol>
-<li>粘贴文字</li>
-<li>选择该项</li>
-<li>查看字数</li>
+<li>粘贴文字。</li>
+<li lang="en">Tick "Remove invisible characters".</li>
+<li lang="en">Also tick "Reduce extra spaces" to collapse runs of spaces into one.</li>
+<li lang="en">Check the "Characters" display and "Cleaned text".</li>
 </ol>
-<div class="note">清理前后字符数的差,就是被去掉的数量。</div>
+<div class="note" lang="en">If the count shrinks, invisible characters were present.</div>
+<h2>适合</h2>
+<ul>
+<li lang="en">Spaces TRIM can't remove</li>
+<li lang="en">Aggregation off after copying a web table</li>
+<li lang="en">Character count higher than it looks</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Copying a price table from the web scrambled sorting. After cleaning, the count dropped, revealing NBSPs.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Zero-width characters become spaces</b>: gaps may appear between words. Use the extra-space reduction together.</li>
+<li lang="en"><b>Replacement, not deletion</b>: NBSP is replaced with a space.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can Excel functions remove it?</h3>
+<p lang="en">SUBSTITUTE(cell, CHAR(160), " ") replaces it.</p>
+<h2>小结</h2>
+<p lang="en">The spaces that won't go are invisible characters. Tidy them all at once.</p>
 <a class="cta" href="/zh/excel-text-clean.html">使用“去掉 Excel 文字中多余的空格和看不见的字符”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/zenkaku-hankaku.html">全角、半角、平假名、片假名互相转换</a>：全角与半角、平假名与片假名互相转换。</li><li><a href="/zh/line-break-remover.html">删除和整理文字中的换行</a>：整理从 PDF 等处复制的文字中的换行。</li><li><a href="/zh/line-sort-dedupe.html">删除重复行并排序</a>：删除重复的行并排序。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

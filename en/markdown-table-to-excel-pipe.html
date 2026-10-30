@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Vertical Bars Inside Cells</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Paste the table</li><li>See the result</li><li>Check it</li></ul></div>
-<p>In <a href="/en/markdown-table-to-excel.html">Markdown Table to Excel</a>, a bar written as \| is treated as a character.</p>
+<p>In a Markdown table the vertical bar (|) separates columns. So what if you want a vertical bar inside a cell? See how <a href="/en/markdown-table-to-excel.html">Convert a Markdown Table for Excel</a> handles it.</p>
+<h2>How to write a bar inside a cell</h2>
+<p>Put a backslash before the bar. Writing "\|" treats it as a bar character, not a separator.</p>
+<ul>
+<li>Separator bar: |</li>
+<li>Bar as a character: \|</li>
+</ul>
+<h2>Handling in conversion</h2>
+<ul>
+<li>"\|" isn't counted as a separator</li>
+<li>In the converted cell it appears as "|"</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Paste the table</li>
-<li>See the result</li>
-<li>Check it</li>
+<li>Paste a Markdown table containing "\|".</li>
+<li>In "Table for Excel", check the bar remains inside the cell.</li>
+<li>Check with "Rows × columns" that the column count isn't off.</li>
 </ol>
-<div class="note">This is how it is told apart from the separator bars.</div>
+<div class="note">Without the "\" before the bar, columns increase.</div>
+<h2>Good for</h2>
+<ul>
+<li>Tables with bars, like command descriptions</li>
+<li>Tables with choices like "A|B"</li>
+<li>Explanatory tables for regular expressions (| for alternation)</li>
+</ul>
+<h2>Example</h2>
+<p>Converted a table containing the command "cat file | grep word". It was written "cat file \| grep word", so it fit in one cell.</p>
+<h2>Bars at row edges</h2>
+<p>Bars at the start and end of a row are removed as separators.</p>
+<ul>
+<li>"| A | B |" and "A | B" give the same result</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Forgot the "\"</b>: columns increase and shift. Fix the source table.</li>
+<li><b>Bars inside code</b>: even within backticks, "\|" may be needed.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if there are several bars?</h3>
+<p>Make each one "\|".</p>
+<h2>Summary</h2>
+<p>Write a bar inside a cell as "\|" and it converts correctly.</p>
 <a class="cta" href="/en/markdown-table-to-excel.html">Use "Convert a Markdown Table for Excel" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/table-paste-convert.html">Excel Table to Markdown, HTML, CSV and JSON</a>: Convert a pasted table to Markdown, HTML, CSV or JSON.</li><li><a href="/en/table-transpose.html">Swap Rows and Columns of a Table</a>: Swap the rows and columns of a pasted table.</li><li><a href="/en/markdown-to-html.html">Convert Markdown to HTML</a>: Convert Markdown to HTML.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

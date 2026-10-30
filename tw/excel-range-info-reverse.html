@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>順序顛倒的範圍</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>輸入範圍</li><li>檢視結果</li><li>核對一下</li></ul></div>
-<p>在<a href="/tw/excel-range-info.html">Excel範圍大小</a>中,像 B3:A1 這樣順序顛倒的範圍也會被當作有效範圍讀取。</p>
+<p lang="en">A range is normally written "top-left:bottom-right". But sometimes it's reversed, like "C10:A1". <a href="/tw/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a> counts correctly even when reversed.</p>
+<h2 lang="en">What happens</h2>
+<p lang="en">Excel too puts reversed ranges into proper order.</p>
+<ul>
+<li lang="en">C10:A1 → the same range as A1:C10</li>
+<li lang="en">Result: 30 cells, 3 columns, 10 rows</li>
+</ul>
 <h2>步驟</h2>
 <ol>
-<li>輸入範圍</li>
-<li>檢視結果</li>
-<li>核對一下</li>
+<li lang="en">Enter a reversed range (C10:A1) in "Cell range".</li>
+<li lang="en">Check "Cells", "Columns" and "Rows".</li>
+<li lang="en">See that "Absolute" is in proper order ($A$1:$C$10).</li>
 </ol>
-<div class="note">結果會統一為從左上到右下的形式。</div>
+<div class="note" lang="en">The absolute reference is shown arranged from top-left to bottom-right.</div>
+<h2 lang="en">Partly reversed</h2>
+<ul>
+<li lang="en">A10:C1: columns in order, rows reversed. The range is A1:C10</li>
+<li lang="en">C1:A10: columns reversed, rows in order. The range is A1:C10</li>
+</ul>
+<p lang="en">In every case it is the same range.</p>
+<h2>適合</h2>
+<ul>
+<li lang="en">Tidying ranges reversed by drag direction</li>
+<li lang="en">Checking ranges output by macros</li>
+<li lang="en">Getting an absolute reference in proper order</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Dragging from bottom-right to top-left put "C10:A1" in a formula. Entering it in the tool gave $A$1:$C$10 in proper order.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Cells outside the range aren't included</b>: only the corners are the basis.</li>
+<li lang="en"><b>Ranges with sheet names</b>: for "Sheet1!A1:C10", enter without the sheet name.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does the formula result differ?</h3>
+<p lang="en">No. It is calculated as the same range.</p>
+<h2>小結</h2>
+<p lang="en">Even a reversed range is counted correctly.</p>
 <a class="cta" href="/tw/excel-range-info.html">使用「統計 Excel 範圍內的單元格、行和列」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/excel-column-letter.html">Excel 列號與列字母轉換器</a>: 轉換 Excel 的列號和列字母。</li><li><a href="/tw/excel-serial-date.html">Excel 序列值與日期轉換器</a>: 轉換 Excel 的序列值和日期。</li><li><a href="/tw/table-paste-convert.html">Excel 表格轉 Markdown、HTML、CSV 和 JSON</a>: 把貼上的表格轉換成 Markdown、HTML、CSV 或 JSON。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

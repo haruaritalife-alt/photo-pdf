@@ -215,14 +215,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ماذا تفعل إذا لم يعمل</h1>
 <p class="meta">تاريخ النشر: 19 أكتوبر 2026 | آخر تحديث: 19 أكتوبر 2026 | <a href="/about.html">حول (باليابانية)</a></p>
 <div class="points"><b>النقاط الرئيسية</b><ul><li>افحص الملف</li><li>تحقق من الحجم</li><li>جرّب جهازًا آخر</li></ul></div>
-<p>إذا لم يعمل <a href="/ar/text-to-columns.html">نص إلى أعمدة</a>، فتحقق مما يلي.</p>
-<h2>الخطوات</h2>
+<p lang="en">Text doesn't split as expected. Here are common troubles with <a href="/ar/text-to-columns.html">Split Text into Columns by a Delimiter</a> and fixes.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Please enter a delimiter." appears</b>: the delimiter field is empty.</li>
+<li lang="en"><b>Stays one column</b>: the delimiter isn't in the data, or is a different character (like a full-width comma).</li>
+<li lang="en"><b>Splits too much</b>: the same character as the delimiter appears in the data, like "1,000" amounts.</li>
+<li lang="en"><b>Empty columns appear</b>: delimiters repeat. Try "Treat consecutive delimiters as one".</li>
+<li lang="en"><b>Columns shift</b>: item counts differ per row.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>افحص الملف</li>
-<li>تحقق من الحجم</li>
-<li>جرّب جهازًا آخر</li>
+<li lang="en">Check the delimiter matches the character in the data.</li>
+<li lang="en">Compare full-width and half-width.</li>
+<li lang="en">Toggle "Treat consecutive delimiters as one" and compare.</li>
+<li lang="en">Check with "Rows × columns" that the size is as expected.</li>
 </ol>
-<div class="note">إذا لم تظهر نتيجة، فتأكد من إدخال فاصل ومن أن النص الملصق يحتويه.</div>
+<div class="note" lang="en">Tabs and spaces look similar but are different characters.</div>
+<h2 lang="en">Delimiter candidates</h2>
+<ul>
+<li lang="en">Comma (,), full-width comma (，), Japanese comma (、)</li>
+<li lang="en">Semicolon (;)</li>
+<li>علامة جدولة</li>
+<li lang="en">Space, full-width space</li>
+<li lang="en">Vertical bar (|), slash (/)</li>
+</ul>
+<h2 lang="en">Input examples</h2>
+<ul>
+<li lang="en">Correct: delimiter "," for "A,B,C"</li>
+<li lang="en">Mismatch: delimiter "," for "A、B、C" (Japanese commas)</li>
+</ul>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Checks before splitting</li>
+<li lang="en">Finding the cause of shifts</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Entered a comma but it stayed one column. The data's commas were full-width "，". Changing the delimiter to full-width split it correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Cells containing line breaks</b>: processed line by line, so breaks make separate rows.</li>
+<li lang="en"><b>Leading zeros</b>: set the format to "Text" when pasting into Excel.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can commas inside quotes be ignored?</h3>
+<p lang="en">No. Quotes aren't considered. Use Excel's CSV import if needed.</p>
+<h2>الخلاصة</h2>
+<p lang="en">Delimiter character, full-width vs half-width, consecutive setting. Check these three and it's usually solved.</p>
 <a class="cta" href="/ar/text-to-columns.html">استخدم «تقسيم النص إلى أعمدة بفاصل» (مجانًا)</a>
 <h2>أدوات تتكامل مع هذه الأداة</h2><ul><li><a href="/ar/table-paste-convert.html">جدول Excel إلى Markdown وHTML وCSV وJSON</a>: حوّل جدولًا ملصقًا إلى Markdown أو HTML أو CSV أو JSON.</li><li><a href="/ar/excel-text-clean.html">إزالة المسافات الزائدة والأحرف غير المرئية من نص Excel</a>: أزل المسافات الزائدة والأحرف غير المرئية.</li><li><a href="/ar/csv-tools.html">دمج CSV وتقسيمه واختيار الأعمدة</a>: ادمج ملفات CSV أو قسّمها حسب الصفوف أو احتفظ بأعمدة محددة فقط.</li></ul>
 <div class="tip"><p>إذا أفادك هذا الدليل، فإن إكرامية صغيرة تعني لنا الكثير.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">أرسل إكرامية (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">أرسل هدية (قائمة أمنيات Amazon)</a></div>

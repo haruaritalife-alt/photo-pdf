@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What the Invisible Spaces Are</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Paste the text</li><li>Choose the item</li><li>Check the counts</li></ul></div>
-<p><a href="/en/excel-text-clean.html">Excel Text Cleaner</a> removes no-break spaces, zero-width spaces and the like.</p>
+<p>It looks like a space, but even TRIM won't remove it. It may be a non-breaking space (NBSP). "Remove invisible characters" in <a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a> can tidy it.</p>
+<h2>What NBSP is</h2>
+<p>A special space used on web pages to prevent line breaks. Character code 160.</p>
+<ul>
+<li>Looks: the same as a normal space</li>
+<li>Actually: a different character from a normal space</li>
+<li>Where it occurs: text copied from web pages or PDFs</li>
+</ul>
+<h2>Kinds of invisible characters</h2>
+<p>This tool turns these into spaces:</p>
+<ul>
+<li>Non-breaking spaces</li>
+<li>Spaces of various widths</li>
+<li>Zero-width spaces and the BOM (a file-start marker)</li>
+<li>Special line and paragraph separators</li>
+</ul>
+<p>Control characters other than line breaks are also deleted.</p>
 <h2>Steps</h2>
 <ol>
-<li>Paste the text</li>
-<li>Choose the item</li>
-<li>Check the counts</li>
+<li>Paste the text.</li>
+<li>Tick "Remove invisible characters".</li>
+<li>Also tick "Reduce extra spaces" to collapse runs of spaces into one.</li>
+<li>Check the "Characters" display and "Cleaned text".</li>
 </ol>
-<div class="note">The difference in counts before and after shows how many were removed.</div>
+<div class="note">If the count shrinks, invisible characters were present.</div>
+<h2>Good for</h2>
+<ul>
+<li>Spaces TRIM can't remove</li>
+<li>Aggregation off after copying a web table</li>
+<li>Character count higher than it looks</li>
+</ul>
+<h2>Example</h2>
+<p>Copying a price table from the web scrambled sorting. After cleaning, the count dropped, revealing NBSPs.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Zero-width characters become spaces</b>: gaps may appear between words. Use the extra-space reduction together.</li>
+<li><b>Replacement, not deletion</b>: NBSP is replaced with a space.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can Excel functions remove it?</h3>
+<p>SUBSTITUTE(cell, CHAR(160), " ") replaces it.</p>
+<h2>Summary</h2>
+<p>The spaces that won't go are invisible characters. Tidy them all at once.</p>
 <a class="cta" href="/en/excel-text-clean.html">Use "Remove Extra Spaces and Invisible Characters from Excel Text" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/zenkaku-hankaku.html">Convert Full-Width, Half-Width, Hiragana and Katakana</a>: Convert full-width/half-width and hiragana/katakana.</li><li><a href="/en/line-break-remover.html">Remove and Tidy Line Breaks in Text</a>: Tidy line breaks in text copied from PDFs and elsewhere.</li><li><a href="/en/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
