@@ -200,14 +200,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>テストデータ用のIDに使う</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>個数を決める</li><li>つくる</li><li>データに貼る</li></ul></div>
-<p><a href="/uuid-generator.html">UUID生成</a> で作ったUUIDは、テストデータのIDにそのまま使えます。</p>
+<p>システム開発や、動作確認のとき、本物のデータを使うわけにはいきません。テスト用のダミーデータが必要です。<a href="/uuid-generator.html">UUID生成（バージョン4・まとめて作成）</a> で作ったUUIDは、そのIDとして使えます。</p>
+<h2>なぜUUIDが便利か</h2>
+<ul>
+<li>重ならないので、テストデータを増やしても衝突しにくい</li>
+<li>本物のデータと、混ざる心配が少ない</li>
+<li>個人情報を含まない</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>個数を決める</li>
-<li>つくる</li>
-<li>データに貼る</li>
+<li>「個数（1〜100）」に、必要な個数を入れます。</li>
+<li>「つくる」を押します。</li>
+<li>「すべてコピー」でコピーします。</li>
+<li>テストデータの表のID列に、貼り付けます。</li>
 </ol>
-<div class="note">本番のIDには、システムの決まりに従ってください。</div>
+<div class="note">表計算ソフトに貼ると、1行に1つずつ、ID列に入ります。</div>
+<h2>テストデータの作り方の例</h2>
+<ol>
+<li>表計算ソフトに、列を作る（id、名前、メールなど）。</li>
+<li>UUIDを、id列に貼る。</li>
+<li>ほかの列を、ダミーの値で埋める。</li>
+<li>CSVとして保存し、システムに取り込む。</li>
+</ol>
+<h2>使われる場面</h2>
+<ul>
+<li>ユーザー、商品、注文などの、ダミーデータ</li>
+<li>APIのテストで送る、ダミーのID</li>
+<li>データベースの、動作確認用の行</li>
+</ul>
+<h2>テストで気をつけること</h2>
+<ul>
+<li><b>本物のIDと区別する</b>：テスト用のデータは、本番のデータと混ぜない。</li>
+<li><b>後始末</b>：テストが終わったら、テスト用のデータを削除する。</li>
+<li><b>個人情報</b>：テストデータに、本物の個人情報を使わない。</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>開発環境の、データの準備</li>
+<li>負荷テストの、大量データ</li>
+<li>画面の表示確認</li>
+</ul>
+<h2>例</h2>
+<p>ユーザー一覧画面の表示確認のため、ダミーのユーザーを50人用意した。UUIDを50個作ってid列に貼り、名前は「テストユーザー1」「テストユーザー2」と連番にした。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>形式の指定</b>：システムが、UUIDの形式（ハイフンの有無など）を指定している場合がある。</li>
+<li><b>重複チェック</b>：念のため、貼り付けたIDが重複していないか確かめる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>本番のデータにも使えますか？</h3>
+<p>使えます。バージョン4は、本番のIDとして広く使われています。ただし、システムの設計に合わせてください。</p>
+<h2>まとめ</h2>
+<p>テストデータのIDは、UUIDで。ほぼ重ならない、使い捨ての識別子が手に入ります。</p>
 <a class="cta" href="/uuid-generator.html">UUID生成（バージョン4・まとめて作成）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/password-generator.html">安全なパスワードを作る（ランダム生成）</a>：強いランダムなパスワードを、すぐに作ります。</li><li><a href="/random-picker.html">くじ引き・順番決め・グループ分け</a>：名前から、くじ引き・順番決め・グループ分けをします。</li><li><a href="/timestamp-converter.html">UNIX時間（タイムスタンプ）変換</a>：UNIX時間と日時を、相互に変換します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +263,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Using UUIDs as Test Data IDs</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Set how many</li><li>Generate</li><li>Paste into your data</li></ul></div>
-<p>UUIDs from <a href="/uuid-generator.html">UUID Generator</a> can be used as IDs in test data as they are.</p>
+<p>In system development and testing, you can't use real data. You need dummy data for testing. UUIDs made with <a href="/uuid-generator.html">UUID Generator (v4, in bulk)</a> can be used as its IDs.</p>
+<h2>Why UUIDs are convenient</h2>
+<ul>
+<li>They don't collide, so even enlarging test data rarely causes conflicts</li>
+<li>Little worry of mixing with real data</li>
+<li>They contain no personal information</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Set how many</li>
-<li>Generate</li>
-<li>Paste into your data</li>
+<li>Enter the needed count in "Count (1–100)".</li>
+<li>Press "Generate".</li>
+<li>Copy with "Copy all".</li>
+<li>Paste into the ID column of the test data table.</li>
 </ol>
-<div class="note">For production IDs, follow your system's rules.</div>
+<div class="note">Pasting into spreadsheet software puts them one per row in the ID column.</div>
+<h2>Example of making test data</h2>
+<ol>
+<li>In spreadsheet software, make columns (id, name, email, etc.).</li>
+<li>Paste the UUIDs into the id column.</li>
+<li>Fill the other columns with dummy values.</li>
+<li>Save as CSV and import into the system.</li>
+</ol>
+<h2>Where it is used</h2>
+<ul>
+<li>Dummy data for users, products, orders, etc.</li>
+<li>Dummy IDs sent in API tests</li>
+<li>Rows for checking database behaviour</li>
+</ul>
+<h2>Cautions in testing</h2>
+<ul>
+<li><b>Distinguish from real IDs</b>: don't mix test data with production data.</li>
+<li><b>Cleanup</b>: delete test data when testing is finished.</li>
+<li><b>Personal information</b>: don't use real personal information in test data.</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Preparing data in development environments</li>
+<li>Large data for load tests</li>
+<li>Checking screen display</li>
+</ul>
+<h2>Example</h2>
+<p>To check the user list screen, prepared 50 dummy users. Made 50 UUIDs, pasted them into the id column, and numbered names "Test user 1", "Test user 2".</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Format specification</b>: the system may specify the UUID format (hyphens or not, etc.).</li>
+<li><b>Duplicate check</b>: just in case, check the pasted IDs have no duplicates.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can they be used in production data too?</h3>
+<p>Yes. Version 4 is widely used for production IDs. But follow your system's design.</p>
+<h2>Summary</h2>
+<p>Use UUIDs for test-data IDs. You get disposable identifiers that almost never collide.</p>
 <a class="cta" href="/uuid-generator.html">Use "UUID Generator (v4, in bulk)" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/password-generator.html">Generate a Strong Random Password</a>: Generate strong random passwords instantly.</li><li><a href="/random-picker.html">Random Picker, Order and Groups</a>: Draw names, set a random order or split groups.</li><li><a href="/timestamp-converter.html">UNIX Timestamp Converter</a>: Convert between UNIX time and dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

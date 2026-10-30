@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>URL-Safe Base64 with - and _</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the Base64</li><li>Press Decode</li><li>See the result</li></ul></div>
-<p><a href="/en/base64-text.html">Base64 Text Converter</a> also reads Base64 that uses "-" and "_".</p>
-<h2>Steps</h2>
+<p>Base64 contains the symbols "+", "/" and "=". These have special meanings in URLs, so using them as is causes trouble. So there is a variant for use in URLs. Here are the points when handling it with <a href="/en/base64-text.html">Base64 Text Encoder and Decoder</a>.</p>
+<h2>Difference between ordinary and URL-style Base64</h2>
+<ul>
+<li>Ordinary: uses "+" and "/". "=" may be attached at the end.</li>
+<li>URL-style: replaces "+" with "-" and "/" with "_". "=" is often omitted.</li>
+</ul>
+<h2>How this tool reads</h2>
+<p>"Decode to text" can read both ordinary Base64 and the URL style (- and _).</p>
+<div class="note">What's inside JWTs (login tokens) is URL-style Base64. You can paste that part and check its contents.</div>
+<h2>Steps (reading URL-style Base64)</h2>
 <ol>
-<li>Enter the Base64</li>
-<li>Press Decode</li>
-<li>See the result</li>
+<li>Paste the URL-style Base64 in the "String or Base64" field.</li>
+<li>Press "Decode to text".</li>
+<li>Check the "Result".</li>
 </ol>
-<div class="note">URL-safe Base64 uses these two instead of "+" and "/".</div>
+<h2>Steps (making Base64 URL-style)</h2>
+<p>This tool's "Encode to Base64" outputs ordinary Base64. To use in a URL, fix the result by hand as follows.</p>
+<ol>
+<li>Replace "+" with "-"</li>
+<li>Replace "/" with "_"</li>
+<li>Remove the trailing "=" as needed</li>
+</ol>
+<h2>Uses of URL-style Base64</h2>
+<ul>
+<li>Authentication tokens such as JWTs</li>
+<li>Data placed in part of a URL</li>
+<li>IDs used in file names</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Wanting to check a token's contents</li>
+<li>Wanting to put a string for another system in a URL</li>
+</ul>
+<h2>Example</h2>
+<p>Pasting the middle part (payload) of a JWT and pressing "Decode to text" read JSON-form user information.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Presence of "="</b>: in the URL style it is often omitted. The tool can read it as is.</li>
+<li><b>Forms like "%2B"</b>: if URL-encoded "+" or "/" are included, URL-decode first before pasting.</li>
+<li><b>Cut-and-paste mistakes</b>: split the token at its separators (.) and paste the parts separately.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Are JWT contents safe?</h3>
+<p>JWT contents can be read. Don't put information you want secret in them.</p>
+<h2>Summary</h2>
+<p>URL-style Base64 uses "-" and "_". This tool reads it as is.</p>
 <a class="cta" href="/en/base64-text.html">Use "Base64 Text Encoder and Decoder" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li><li><a href="/en/url-encoder.html">URL Encode and Decode</a>: Encode and decode text in URLs.</li><li><a href="/en/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

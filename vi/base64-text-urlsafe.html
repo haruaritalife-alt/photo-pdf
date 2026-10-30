@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Base64 an toàn cho URL với - và _</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Nhập Base64</li><li>Nhấn Giải mã</li><li>Xem kết quả</li></ul></div>
-<p><a href="/vi/base64-text.html">Chuyển đổi văn bản Base64</a> cũng đọc được Base64 dùng "-" và "_".</p>
-<h2>Các bước</h2>
+<p lang="en">Base64 contains the symbols "+", "/" and "=". These have special meanings in URLs, so using them as is causes trouble. So there is a variant for use in URLs. Here are the points when handling it with <a href="/vi/base64-text.html">Base64 Text Encoder and Decoder</a>.</p>
+<h2 lang="en">Difference between ordinary and URL-style Base64</h2>
+<ul>
+<li lang="en">Ordinary: uses "+" and "/". "=" may be attached at the end.</li>
+<li lang="en">URL-style: replaces "+" with "-" and "/" with "_". "=" is often omitted.</li>
+</ul>
+<h2 lang="en">How this tool reads</h2>
+<p lang="en">"Decode to text" can read both ordinary Base64 and the URL style (- and _).</p>
+<div class="note" lang="en">What's inside JWTs (login tokens) is URL-style Base64. You can paste that part and check its contents.</div>
+<h2 lang="en">Steps (reading URL-style Base64)</h2>
 <ol>
-<li>Nhập Base64</li>
-<li>Nhấn Giải mã</li>
-<li>Xem kết quả</li>
+<li lang="en">Paste the URL-style Base64 in the "String or Base64" field.</li>
+<li lang="en">Press "Decode to text".</li>
+<li lang="en">Check the "Result".</li>
 </ol>
-<div class="note">Base64 an toàn cho URL dùng hai ký tự này thay cho "+" và "/".</div>
+<h2 lang="en">Steps (making Base64 URL-style)</h2>
+<p lang="en">This tool's "Encode to Base64" outputs ordinary Base64. To use in a URL, fix the result by hand as follows.</p>
+<ol>
+<li lang="en">Replace "+" with "-"</li>
+<li lang="en">Replace "/" with "_"</li>
+<li lang="en">Remove the trailing "=" as needed</li>
+</ol>
+<h2 lang="en">Uses of URL-style Base64</h2>
+<ul>
+<li lang="en">Authentication tokens such as JWTs</li>
+<li lang="en">Data placed in part of a URL</li>
+<li lang="en">IDs used in file names</li>
+</ul>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Wanting to check a token's contents</li>
+<li lang="en">Wanting to put a string for another system in a URL</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">Pasting the middle part (payload) of a JWT and pressing "Decode to text" read JSON-form user information.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Presence of "="</b>: in the URL style it is often omitted. The tool can read it as is.</li>
+<li lang="en"><b>Forms like "%2B"</b>: if URL-encoded "+" or "/" are included, URL-decode first before pasting.</li>
+<li lang="en"><b>Cut-and-paste mistakes</b>: split the token at its separators (.) and paste the parts separately.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are JWT contents safe?</h3>
+<p lang="en">JWT contents can be read. Don't put information you want secret in them.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">URL-style Base64 uses "-" and "_". This tool reads it as is.</p>
 <a class="cta" href="/vi/base64-text.html">Dùng “Bộ mã hóa và giải mã văn bản Base64” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/file-base64.html">Chuyển đổi tệp và Base64</a>: Chuyển đổi giữa tệp và văn bản Base64.</li><li><a href="/vi/url-encoder.html">Mã hóa và giải mã URL</a>: Mã hóa và giải mã văn bản trong URL.</li><li><a href="/vi/json-formatter.html">Định dạng và kiểm tra JSON</a>: Định dạng, rút gọn và kiểm tra JSON.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

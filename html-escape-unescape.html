@@ -200,14 +200,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>変換後の文字を元に戻す方法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>変換後の文字を入れる</li><li>元に戻すを押す</li><li>結果を見る</li></ul></div>
-<p><a href="/html-escape.html">HTMLエスケープ</a> の「元に戻す」で、読める文字に戻ります。</p>
+<p>ソースコードや、データの中で、「&lt;」「&amp;」のような、意味の分からない文字を見たことはありませんか。これは、エスケープされた文字です。<a href="/html-escape.html">HTMLエスケープ・アンエスケープ</a> の「元に戻す」で、読める形に戻せます。</p>
 <h2>手順</h2>
 <ol>
-<li>変換後の文字を入れる</li>
-<li>元に戻すを押す</li>
-<li>結果を見る</li>
+<li>「文字列またはHTML」の欄に、エスケープされた文字を貼ります。</li>
+<li>「元に戻す」を押します。</li>
+<li>「変換結果」に、元の文字が出ます。</li>
+<li>「結果をコピー」で、コピーします。</li>
 </ol>
-<div class="note">数字で書かれた文字参照にも対応しています。</div>
+<div class="note">例：&lt;p&gt;こんにちは&lt;/p&gt; → <p>こんにちは</p></div>
+<h2>戻せる文字</h2>
+<ul>
+<li>&amp; → &amp;</li>
+<li>&lt; → &lt;</li>
+<li>&gt; → &gt;</li>
+<li>" → "</li>
+<li>' と ' → '</li>
+<li>数字の文字参照（© や © など）：対応する文字</li>
+</ul>
+<p>数字の文字参照は、10進数（©）でも、16進数（©）でも、戻せます。</p>
+<h2>よく出てくる場面</h2>
+<ul>
+<li>Webページのソースを見たとき</li>
+<li>APIのレスポンスに、エスケープされた文字が入っているとき</li>
+<li>RSSやメールの、本文を読むとき</li>
+<li>データベースに、エスケープされた状態で保存されているとき</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>読みにくい文字列を、読める形にしたい</li>
+<li>誤ってエスケープした文字を、元に戻したい</li>
+</ul>
+<h2>例</h2>
+<p>RSSのタイトルが「A &amp; B」と表示されていた。「元に戻す」を押すと、「A &amp; B」になった。</p>
+<h2>戻らないとき</h2>
+<ul>
+<li><b>二重にエスケープされている</b>：「&amp;lt;」のような形。1回戻すと「&lt;」になるので、もう一度戻す。</li>
+<li><b>名前付きの文字参照</b>：「©」「 」などは、このツールでは戻らないことがある。</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>結果をHTMLに貼ると、タグとして動く</b>：戻した結果は、そのままページに貼ると、HTMLとして働く。注意する。</li>
+<li><b>セミコロンの欠落</b>：「&lt;」のように、末尾の「;」が無いと、戻らない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>戻したあと、安全に使えますか？</h3>
+<p>戻した結果には、タグやスクリプトが含まれることがあります。Webページに直接貼るのは、避けてください。</p>
+<h2>まとめ</h2>
+<p>エスケープされた文字は、「元に戻す」で読める形に。ただし、戻したあとの扱いに、注意しましょう。</p>
 <a class="cta" href="/html-escape.html">HTMLエスケープ・アンエスケープを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/url-encoder.html">URLエンコード・デコード</a>：URLの日本語や記号を、エンコード・デコードします。</li><li><a href="/base64-text.html">文字列のBase64変換（エンコード・デコード）</a>：文字列とBase64を、相互に変換します。</li><li><a href="/json-formatter.html">JSONを整える・チェックする</a>：JSONを整形・圧縮し、書き方をチェックします。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +259,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Turning Escaped Characters Back</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the escaped text</li><li>Press Unescape</li><li>See the result</li></ul></div>
-<p>"Unescape" in <a href="/html-escape.html">HTML Escape</a> turns it back into readable characters.</p>
+<p>In source code and data, have you seen incomprehensible characters like "&lt;" and "&amp;"? These are escaped characters. "Unescape" in <a href="/html-escape.html">HTML Escape and Unescape</a> restores them to a readable form.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the escaped text</li>
-<li>Press Unescape</li>
-<li>See the result</li>
+<li>Paste the escaped text in the "String or HTML" field.</li>
+<li>Press "Unescape".</li>
+<li>The original text appears in "Result".</li>
+<li>Copy with "Copy result".</li>
 </ol>
-<div class="note">Numeric references are supported too.</div>
+<div class="note">Example: &lt;p&gt;Hello&lt;/p&gt; → <p>Hello</p></div>
+<h2>Characters it restores</h2>
+<ul>
+<li>&amp; → &amp;</li>
+<li>&lt; → &lt;</li>
+<li>&gt; → &gt;</li>
+<li>" → "</li>
+<li>' and ' → '</li>
+<li>Numeric character references (such as © or ©): the corresponding character</li>
+</ul>
+<p>Numeric references are restored in decimal (©) and hexadecimal (©) alike.</p>
+<h2>Where it often appears</h2>
+<ul>
+<li>Viewing a web page's source</li>
+<li>When an API response contains escaped characters</li>
+<li>Reading the body of RSS or email</li>
+<li>When data is stored escaped in a database</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Making a hard-to-read string readable</li>
+<li>Restoring text that was escaped by mistake</li>
+</ul>
+<h2>Example</h2>
+<p>An RSS title showed as "A &amp; B". Pressing "Unescape" made it "A &amp; B".</p>
+<h2>When it doesn't restore</h2>
+<ul>
+<li><b>Escaped twice</b>: a form like "&amp;lt;". One restoration gives "&lt;", so restore once more.</li>
+<li><b>Named character references</b>: ones like "©" and " " may not be restored by this tool.</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Pasting the result into HTML makes tags work</b>: pasted directly into a page, the restored result acts as HTML. Take care.</li>
+<li><b>Missing semicolon</b>: without the trailing ";" as in "&lt;", it doesn't restore.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is it safe to use after restoring?</h3>
+<p>The restored result may contain tags or scripts. Avoid pasting it directly into a web page.</p>
+<h2>Summary</h2>
+<p>Restore escaped text to a readable form with "Unescape". But take care in handling it afterwards.</p>
 <a class="cta" href="/html-escape.html">Use "HTML Escape and Unescape" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/url-encoder.html">URL Encode and Decode</a>: Encode and decode text in URLs.</li><li><a href="/base64-text.html">Base64 Text Encoder and Decoder</a>: Convert text to and from Base64.</li><li><a href="/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

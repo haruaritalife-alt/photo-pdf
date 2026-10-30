@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Base64가 암호화가 아닌 이유</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>텍스트 입력하기</li><li>인코딩하기</li><li>디코딩해 보기</li></ul></div>
-<p><a href="/ko/base64-text.html">Base64 텍스트 변환기</a>로 디코딩해 보면 누구나 되돌릴 수 있음을 알 수 있습니다.</p>
-<h2>순서</h2>
+<p lang="en">"I made it Base64, so the contents can't be seen." Thinking this is dangerous. Base64 is not encryption. Confirm with <a href="/ko/base64-text.html">Base64 Text Encoder and Decoder</a> that anyone can easily reverse it.</p>
+<h2 lang="en">Difference from encryption</h2>
+<ul>
+<li lang="en"><b>Encryption</b>: can't be reversed without a key (password).</li>
+<li lang="en"><b>Base64</b>: no key needed. Anyone can reverse it.</li>
+</ul>
+<p lang="en">Base64 is merely a "conversion" that rewrites data into another form.</p>
+<h2>해 보기</h2>
 <ol>
-<li>텍스트 입력하기</li>
-<li>인코딩하기</li>
-<li>디코딩해 보기</li>
+<li lang="en">Paste a Base64 string in the "String or Base64" field.</li>
+<li lang="en">Press "Decode to text".</li>
+<li lang="en">The original text appears as is in "Result".</li>
 </ol>
-<div class="note">비밀번호 같은 비밀 정보는 Base64로 바꿔도 보호되지 않습니다.</div>
+<div class="note" lang="en">No key or password is needed. Base64 is a format anyone can read.</div>
+<h2 lang="en">Why it is used</h2>
+<p lang="en">The purpose of Base64 is not secrecy but safe transport.</p>
+<ul>
+<li lang="en">Putting data in places that handle only text, such as email and configuration files</li>
+<li lang="en">Avoiding special symbols and line breaks</li>
+</ul>
+<h2>하면 안 되는 일</h2>
+<ul>
+<li lang="en">Make a password Base64 and think it is "protected"</li>
+<li lang="en">Make personal information Base64 and place it in a public location</li>
+<li lang="en">Make an API key Base64 and write it in source code</li>
+</ul>
+<p lang="en">In all these, the contents are fully exposed.</p>
+<h2 lang="en">To protect secrets</h2>
+<ul>
+<li lang="en">Encrypt information you truly want to protect</li>
+<li lang="en">Store passwords hashed</li>
+<li lang="en">Use HTTPS for communication</li>
+<li lang="en">Don't write secrets in public code</li>
+</ul>
+<p lang="en">This site also has encryption tools. Use them as needed.</p>
+<h2 lang="en">Checks it suits</h2>
+<ul>
+<li lang="en">Checking whether data you were given is merely hidden in Base64</li>
+<li lang="en">Noticing that a setting's value is actually readable text</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Decoded the value of a Basic authentication header. It read as "username:password" as is. I realised that over non-HTTPS communication, eavesdropping would be dangerous.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"Can't tell by looking" is not "safe"</b>: unreadable and protected are different.</li>
+<li lang="en"><b>Long string means safe</b>: length is irrelevant.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is Basic authentication dangerous because of Base64?</h3>
+<p lang="en">Because the contents are effectively plaintext. Combining with HTTPS (encrypted communication) is essential.</p>
+<h2>요약</h2>
+<p lang="en">Base64 is not encryption. Protecting secrets needs a different mechanism.</p>
 <a class="cta" href="/ko/base64-text.html">“Base64 텍스트 인코더·디코더” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/file-base64.html">파일과 Base64 변환</a>: 파일과 Base64 텍스트를 서로 변환합니다.</li><li><a href="/ko/url-encoder.html">URL 인코딩·디코딩</a>: URL 안의 글자를 인코딩하고 디코딩합니다.</li><li><a href="/ko/json-formatter.html">JSON 정리 및 검증</a>: JSON을 정리하고, 압축하고, 검증합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

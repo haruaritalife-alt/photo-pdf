@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Using UUIDs as Test Data IDs</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Set how many</li><li>Generate</li><li>Paste into your data</li></ul></div>
-<p>UUIDs from <a href="/en/uuid-generator.html">UUID Generator</a> can be used as IDs in test data as they are.</p>
+<p>In system development and testing, you can't use real data. You need dummy data for testing. UUIDs made with <a href="/en/uuid-generator.html">UUID Generator (v4, in bulk)</a> can be used as its IDs.</p>
+<h2>Why UUIDs are convenient</h2>
+<ul>
+<li>They don't collide, so even enlarging test data rarely causes conflicts</li>
+<li>Little worry of mixing with real data</li>
+<li>They contain no personal information</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Set how many</li>
-<li>Generate</li>
-<li>Paste into your data</li>
+<li>Enter the needed count in "Count (1–100)".</li>
+<li>Press "Generate".</li>
+<li>Copy with "Copy all".</li>
+<li>Paste into the ID column of the test data table.</li>
 </ol>
-<div class="note">For production IDs, follow your system's rules.</div>
+<div class="note">Pasting into spreadsheet software puts them one per row in the ID column.</div>
+<h2>Example of making test data</h2>
+<ol>
+<li>In spreadsheet software, make columns (id, name, email, etc.).</li>
+<li>Paste the UUIDs into the id column.</li>
+<li>Fill the other columns with dummy values.</li>
+<li>Save as CSV and import into the system.</li>
+</ol>
+<h2>Where it is used</h2>
+<ul>
+<li>Dummy data for users, products, orders, etc.</li>
+<li>Dummy IDs sent in API tests</li>
+<li>Rows for checking database behaviour</li>
+</ul>
+<h2>Cautions in testing</h2>
+<ul>
+<li><b>Distinguish from real IDs</b>: don't mix test data with production data.</li>
+<li><b>Cleanup</b>: delete test data when testing is finished.</li>
+<li><b>Personal information</b>: don't use real personal information in test data.</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Preparing data in development environments</li>
+<li>Large data for load tests</li>
+<li>Checking screen display</li>
+</ul>
+<h2>Example</h2>
+<p>To check the user list screen, prepared 50 dummy users. Made 50 UUIDs, pasted them into the id column, and numbered names "Test user 1", "Test user 2".</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Format specification</b>: the system may specify the UUID format (hyphens or not, etc.).</li>
+<li><b>Duplicate check</b>: just in case, check the pasted IDs have no duplicates.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can they be used in production data too?</h3>
+<p>Yes. Version 4 is widely used for production IDs. But follow your system's design.</p>
+<h2>Summary</h2>
+<p>Use UUIDs for test-data IDs. You get disposable identifiers that almost never collide.</p>
 <a class="cta" href="/en/uuid-generator.html">Use "UUID Generator (v4, in bulk)" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/password-generator.html">Generate a Strong Random Password</a>: Generate strong random passwords instantly.</li><li><a href="/en/random-picker.html">Random Picker, Order and Groups</a>: Draw names, set a random order or split groups.</li><li><a href="/en/timestamp-converter.html">UNIX Timestamp Converter</a>: Convert between UNIX time and dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

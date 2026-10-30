@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/html-escape.html">HTML 이스케이프</a>가 제대로 작동하지 않을 때는 아래를 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">HTML escaping isn't working as expected. Here are troubles that commonly occur with <a href="/ko/html-escape.html">HTML Escape and Unescape</a> and how to handle them.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>Some characters aren't converted</b>: only &amp; &lt; &gt; " ' are converted. Others stay as is.</li>
+<li lang="en"><b>It doesn't restore</b>: named character references like "©" may not be restored. Numeric references and the basic five are restored.</li>
+<li lang="en"><b>It appears as "&amp;lt;"</b>: double escaping. Restore one step at a time with "Unescape".</li>
+<li lang="en"><b>Japanese doesn't change</b>: Japanese isn't a target of escaping.</li>
+<li lang="en"><b>It acts as tags where pasted</b>: you may be pasting the pre-escape text. Paste the converted result.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Check the "String or HTML" contents are what you intended.</li>
+<li lang="en">Check whether you pressed "Escape" or "Unescape".</li>
+<li lang="en">Check the "Result" and copy with "Copy result".</li>
+<li lang="en">Check the display at the paste destination.</li>
 </ol>
-<div class="note">되돌려지지 않을 때는 코드 중간에 불필요한 문자가 끼어 있지 않은지 확인하세요.</div>
+<div class="note" lang="en">If unsure, try a short string (<b>) to see how the conversion behaves.</b></div>
+<h2 lang="en">Notes about the paste destination</h2>
+<ul>
+<li lang="en">A blog's code feature may convert automatically</li>
+<li lang="en">Pasted into spreadsheet software, it goes in as plain text</li>
+<li lang="en">Handling can change in HTML-format email</li>
+</ul>
+<h2 lang="en">Spaces and line breaks</h2>
+<p>Spaces and line breaks are not converted. To display with line breaks preserved, paste inside <pre lang="en">.</pre></p>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Checking how conversion behaves</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Tried to restore " " but nothing changed. This tool supports the basic ones among named character references. I replaced " " with a space by hand.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width symbols</b>: full-width "＜" and "＞" are not converted. Only half-width symbols are targets.</li>
+<li lang="en"><b>Pasting the wrong one</b>: copy the result, not the input field.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can converted text be used anywhere?</h3>
+<p lang="en">It's for use inside HTML. Program strings and JSON need different escaping.</p>
+<h2>요약</h2>
+<p lang="en">Check: the five target symbols, double escaping and automatic conversion at the paste destination.</p>
 <a class="cta" href="/ko/html-escape.html">“HTML 이스케이프·해제” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/url-encoder.html">URL 인코딩·디코딩</a>: URL 안의 글자를 인코딩하고 디코딩합니다.</li><li><a href="/ko/base64-text.html">Base64 텍스트 인코더·디코더</a>: 텍스트와 Base64를 서로 변환합니다.</li><li><a href="/ko/json-formatter.html">JSON 정리 및 검증</a>: JSON을 정리하고, 압축하고, 검증합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

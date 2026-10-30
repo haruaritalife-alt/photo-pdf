@@ -200,14 +200,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Base64は暗号ではない理由</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>文字を入れる</li><li>Base64にする</li><li>戻してみる</li></ul></div>
-<p><a href="/base64-text.html">Base64文字列変換</a> で戻してみると、誰でも元に戻せるとわかります。</p>
-<h2>手順</h2>
+<p>「Base64にしたから、中身は見えない」。そう考えるのは、危険です。Base64は、暗号ではありません。<a href="/base64-text.html">文字列のBase64変換（エンコード・デコード）</a> で、誰でも簡単に元に戻せることを、確かめてみましょう。</p>
+<h2>暗号との違い</h2>
+<ul>
+<li><b>暗号</b>：鍵（パスワード）がないと、元に戻せない。</li>
+<li><b>Base64</b>：鍵が不要。誰でも元に戻せる。</li>
+</ul>
+<p>Base64は、データを別の形に書き換える「変換」にすぎません。</p>
+<h2>試してみる</h2>
 <ol>
-<li>文字を入れる</li>
-<li>Base64にする</li>
-<li>戻してみる</li>
+<li>「文字列またはBase64」の欄に、Base64の文字列を貼ります。</li>
+<li>「文字に戻す」を押します。</li>
+<li>「変換結果」に、元の文字がそのまま出ます。</li>
 </ol>
-<div class="note">パスワードなどの秘密は、Base64にしても守られません。</div>
+<div class="note">鍵もパスワードも要りません。Base64は、誰にでも読める形式です。</div>
+<h2>なぜ使われるのか</h2>
+<p>Base64の目的は、秘密にすることではなく、安全に運ぶことです。</p>
+<ul>
+<li>メールや、設定ファイルなど、文字しか扱えない場所に、データを入れる</li>
+<li>特殊な記号や、改行を、避ける</li>
+</ul>
+<h2>やってはいけないこと</h2>
+<ul>
+<li>パスワードを、Base64にして「保護した」と思う</li>
+<li>個人情報を、Base64にして、公開の場所に置く</li>
+<li>APIキーを、Base64にして、ソースコードに書く</li>
+</ul>
+<p>これらは、中身が丸見えです。</p>
+<h2>秘密を守るには</h2>
+<ul>
+<li>本当に守りたい情報は、暗号化する</li>
+<li>パスワードは、ハッシュ化して保存する</li>
+<li>通信は、HTTPSを使う</li>
+<li>秘密情報は、公開のコードに書かない</li>
+</ul>
+<p>このサイトには、暗号化のツールもあります。必要に応じて、ご利用ください。</p>
+<h2>向いている確認</h2>
+<ul>
+<li>渡されたデータが、Base64で隠されているだけか確かめる</li>
+<li>設定の値が、実は読める文字だと気づく</li>
+</ul>
+<h2>例</h2>
+<p>Basic認証のヘッダーの値を、デコードした。「ユーザー名:パスワード」の形で、そのまま読めた。HTTPSでない通信では、盗み見られると危険だと分かった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「見た目が分からない」＝「安全」ではない</b>：読めないのと、守られているのは違う。</li>
+<li><b>長い文字列だから安心</b>：長さは関係ない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>Basic認証が危険なのは、Base64だからですか？</h3>
+<p>中身が実質的に平文だからです。HTTPS（暗号化された通信）と、併用が必須です。</p>
+<h2>まとめ</h2>
+<p>Base64は、暗号ではない。秘密を守るには、別の仕組みが必要です。</p>
 <a class="cta" href="/base64-text.html">文字列のBase64変換（エンコード・デコード）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/file-base64.html">ファイルとBase64を相互変換する</a>：ファイルとBase64の文字を相互に変換します。</li><li><a href="/url-encoder.html">URLエンコード・デコード</a>：URLの日本語や記号を、エンコード・デコードします。</li><li><a href="/json-formatter.html">JSONを整える・チェックする</a>：JSONを整形・圧縮し、書き方をチェックします。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +263,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Why Base64 Is Not Encryption</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter text</li><li>Encode it</li><li>Try decoding it</li></ul></div>
-<p>Decoding with <a href="/base64-text.html">Base64 Text Converter</a> shows that anyone can reverse it.</p>
-<h2>Steps</h2>
+<p>"I made it Base64, so the contents can't be seen." Thinking this is dangerous. Base64 is not encryption. Confirm with <a href="/base64-text.html">Base64 Text Encoder and Decoder</a> that anyone can easily reverse it.</p>
+<h2>Difference from encryption</h2>
+<ul>
+<li><b>Encryption</b>: can't be reversed without a key (password).</li>
+<li><b>Base64</b>: no key needed. Anyone can reverse it.</li>
+</ul>
+<p>Base64 is merely a "conversion" that rewrites data into another form.</p>
+<h2>Try it</h2>
 <ol>
-<li>Enter text</li>
-<li>Encode it</li>
-<li>Try decoding it</li>
+<li>Paste a Base64 string in the "String or Base64" field.</li>
+<li>Press "Decode to text".</li>
+<li>The original text appears as is in "Result".</li>
 </ol>
-<div class="note">Secrets such as passwords are not protected by Base64.</div>
+<div class="note">No key or password is needed. Base64 is a format anyone can read.</div>
+<h2>Why it is used</h2>
+<p>The purpose of Base64 is not secrecy but safe transport.</p>
+<ul>
+<li>Putting data in places that handle only text, such as email and configuration files</li>
+<li>Avoiding special symbols and line breaks</li>
+</ul>
+<h2>What not to do</h2>
+<ul>
+<li>Make a password Base64 and think it is "protected"</li>
+<li>Make personal information Base64 and place it in a public location</li>
+<li>Make an API key Base64 and write it in source code</li>
+</ul>
+<p>In all these, the contents are fully exposed.</p>
+<h2>To protect secrets</h2>
+<ul>
+<li>Encrypt information you truly want to protect</li>
+<li>Store passwords hashed</li>
+<li>Use HTTPS for communication</li>
+<li>Don't write secrets in public code</li>
+</ul>
+<p>This site also has encryption tools. Use them as needed.</p>
+<h2>Checks it suits</h2>
+<ul>
+<li>Checking whether data you were given is merely hidden in Base64</li>
+<li>Noticing that a setting's value is actually readable text</li>
+</ul>
+<h2>Example</h2>
+<p>Decoded the value of a Basic authentication header. It read as "username:password" as is. I realised that over non-HTTPS communication, eavesdropping would be dangerous.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"Can't tell by looking" is not "safe"</b>: unreadable and protected are different.</li>
+<li><b>Long string means safe</b>: length is irrelevant.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is Basic authentication dangerous because of Base64?</h3>
+<p>Because the contents are effectively plaintext. Combining with HTTPS (encrypted communication) is essential.</p>
+<h2>Summary</h2>
+<p>Base64 is not encryption. Protecting secrets needs a different mechanism.</p>
 <a class="cta" href="/base64-text.html">Use "Base64 Text Encoder and Decoder" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li><li><a href="/url-encoder.html">URL Encode and Decode</a>: Encode and decode text in URLs.</li><li><a href="/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

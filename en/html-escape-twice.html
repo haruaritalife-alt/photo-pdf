@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>When Text Was Escaped Twice</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the text</li><li>Press Unescape</li><li>Press it again</li></ul></div>
-<p>Pressing Unescape twice in <a href="/en/html-escape.html">HTML Escape</a> can fix double escaping.</p>
-<h2>Steps</h2>
+<p>You escaped already-escaped text again, or text that was already escaped got escaped once more. As a result, odd characters like "&lt;" may be displayed. You can fix it with <a href="/en/html-escape.html">HTML Escape and Unescape</a>.</p>
+<h2>What double escaping is</h2>
+<p>First time: &lt; → &lt;</p>
+<p>Second time: &lt; → &lt;</p>
+<p>Because the "&amp;" is converted again into "&amp;".</p>
+<h2>How it looks on screen</h2>
+<p>If escaped correctly, "&lt;" appears on screen. If escaped twice, the characters "&lt;" appear as is on screen.</p>
+<h2>Steps (fixing)</h2>
 <ol>
-<li>Enter the text</li>
-<li>Press Unescape</li>
-<li>Press it again</li>
+<li>Enter the double-escaped text in the "String or HTML" field.</li>
+<li>Press "Unescape".</li>
+<li>The "Result" becomes the once-restored form (such as &lt;).</li>
+<li>If needed, press "Unescape" again to restore further.</li>
+<li>Once it's back to the original form, escape again just the needed number of times.</li>
 </ol>
-<div class="note">If the same code looks stacked, it was escaped twice.</div>
+<div class="note">Work while counting how many times you restored and how many times you'll escape.</div>
+<h2>Causes</h2>
+<ul>
+<li>Pasted a tool-converted result into a blog's code feature as well</li>
+<li>Converted on both the program and the screen sides</li>
+<li>Converted when saving and again when displaying</li>
+</ul>
+<h2>Prevention</h2>
+<ul>
+<li>Decide a single place for conversion</li>
+<li>"Original characters when saving; convert only when displaying"</li>
+<li>Before pasting into a blog etc., check whether it auto-converts there</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Fixing when "&lt;" or "&amp;" appears on screen</li>
+<li>Investigating the cause of double conversion in data</li>
+</ul>
+<h2>Example</h2>
+<p>Code pasted into a blog displayed as "<p>" because the blog had already converted it. Pasting the original code without converting with the tool displayed it correctly.</p></p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Unknown how many times converted</b>: restore step by step and see at which point it's correct.</li>
+<li><b>Restoring too far</b>: restoring too far gives a form that works as tags. Take care.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is double escaping a security problem?</h3>
+<p>It causes display problems but the danger is low. Still, fixing the cause makes things easier to manage.</p>
+<h2>Summary</h2>
+<p>If "&lt;" appears on screen, suspect double escaping. Fix it one step at a time with "Unescape".</p>
 <a class="cta" href="/en/html-escape.html">Use "HTML Escape and Unescape" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/url-encoder.html">URL Encode and Decode</a>: Encode and decode text in URLs.</li><li><a href="/en/base64-text.html">Base64 Text Encoder and Decoder</a>: Convert text to and from Base64.</li><li><a href="/en/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

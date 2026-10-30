@@ -200,14 +200,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>UUID生成を送らずに処理する安心</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>値を入れる</li><li>結果を見る</li><li>コピーする</li></ul></div>
-<p><a href="/uuid-generator.html">UUID生成</a> は、ブラウザの中だけで動きます。入力した内容は、サーバーに送られません。</p>
+<p>開発中のシステムのテストデータや、IDの設計は、社外に出したくないことがあります。<a href="/uuid-generator.html">UUID生成（バージョン4・まとめて作成）</a> は、UUIDを外に送らず、ブラウザの中で作ります。</p>
+<h2>仕組み</h2>
+<ul>
+<li>UUIDは、あなたのブラウザの中だけで生成されます。</li>
+<li>乱数も、端末の中で作られます。</li>
+<li>作ったUUIDは、サーバーに送信されず、保存もされません。</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>値を入れる</li>
-<li>結果を見る</li>
-<li>コピーする</li>
+<li>「個数（1〜100）」を決めます。</li>
+<li>「つくる」を押します。</li>
+<li>「すべてコピー」で、コピーします。</li>
 </ol>
-<div class="note">作ったUUIDも、外に出さずに扱えます。</div>
+<div class="note">UUIDは、この端末の中で作ります。どこにも送られません。</div>
+<h2>確認する方法</h2>
+<ul>
+<li>通信を切った状態（機内モード）でも、使えます。</li>
+<li>ブラウザの開発者ツールで、通信がないことを確認できます。</li>
+</ul>
+<h2>なぜ、外に送らないことが重要か</h2>
+<p>UUIDをサーバーで作るサービスでは、作られたIDを、運営者が知る可能性があります。IDを、認証や、アクセス制御の一部に使う場合、他人に知られると、リスクになります。このツールは、ブラウザの中で作るため、その心配が小さくなります。</p>
+<h2>それでも注意すること</h2>
+<ul>
+<li><b>秘密の値としての利用</b>：UUIDを、パスワードや鍵の代わりにしない。</li>
+<li><b>共用のパソコン</b>：使い終わったら、画面を閉じる。</li>
+<li><b>コピーした結果</b>：クリップボードに残る。</li>
+</ul>
+<h2>向いている使い方</h2>
+<ul>
+<li>開発中システムの、テストデータづくり</li>
+<li>社内システムの、識別子の準備</li>
+<li>個人利用の、整理用の名前づくり</li>
+</ul>
+<h2>例</h2>
+<p>社内システムのテストで使うIDを用意したかった。外部のサービスで作るのは避けたかったが、ブラウザの中で作られるため、安心して使えた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>ページを閉じたら、UUIDが消えた</b>：保存されない仕組み。必要なものは、先にコピーする。</li>
+<li><b>同じUUIDの再現</b>：乱数のため、同じUUIDを再び作ることはできない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>運営者は、作られたUUIDを知っていますか？</h3>
+<p>いいえ。外に送られないため、知りません。</p>
+<h2>まとめ</h2>
+<p>UUIDは、ブラウザの中で作られます。外に送られず、保存もされません。</p>
 <a class="cta" href="/uuid-generator.html">UUID生成（バージョン4・まとめて作成）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/password-generator.html">安全なパスワードを作る（ランダム生成）</a>：強いランダムなパスワードを、すぐに作ります。</li><li><a href="/random-picker.html">くじ引き・順番決め・グループ分け</a>：名前から、くじ引き・順番決め・グループ分けをします。</li><li><a href="/timestamp-converter.html">UNIX時間（タイムスタンプ）変換</a>：UNIX時間と日時を、相互に変換します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +256,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>UUID Generation Without Uploading</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter a value</li><li>See the result</li><li>Copy it</li></ul></div>
-<p><a href="/uuid-generator.html">UUID Generator</a> runs only inside your browser. What you enter is never sent to a server.</p>
+<p>Test data and ID designs for systems under development sometimes shouldn't go outside the company. <a href="/uuid-generator.html">UUID Generator (v4, in bulk)</a> generates UUIDs inside the browser without sending them out.</p>
+<h2>How it works</h2>
+<ul>
+<li>UUIDs are generated only inside your browser.</li>
+<li>The random numbers are also produced on your device.</li>
+<li>Generated UUIDs are not sent to a server or stored.</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter a value</li>
-<li>See the result</li>
-<li>Copy it</li>
+<li>Decide "Count (1–100)".</li>
+<li>Press "Generate".</li>
+<li>Copy with "Copy all".</li>
 </ol>
-<div class="note">The UUIDs you make stay on your device.</div>
+<div class="note">UUIDs are made inside this device. They are sent nowhere.</div>
+<h2>How to confirm</h2>
+<ul>
+<li>It works even with the connection cut (airplane mode).</li>
+<li>Browser developer tools can confirm that there is no network traffic.</li>
+</ul>
+<h2>Why not sending out matters</h2>
+<p>With services that make UUIDs on a server, the operator might learn the IDs made. If IDs are used as part of authentication or access control, others knowing them becomes a risk. This tool makes them in the browser, so that worry is smaller.</p>
+<h2>Still be careful about</h2>
+<ul>
+<li><b>Using as secret values</b>: don't use UUIDs in place of passwords or keys.</li>
+<li><b>Shared computers</b>: when finished, close the screen.</li>
+<li><b>Copied results</b>: they stay on the clipboard.</li>
+</ul>
+<h2>Uses it suits</h2>
+<ul>
+<li>Making test data for systems under development</li>
+<li>Preparing identifiers for internal systems</li>
+<li>Making names for personal organisation</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted IDs for internal system testing. Wanted to avoid making them with an outside service, but since they're made inside the browser, I could use it with peace of mind.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>UUIDs vanished on closing the page</b>: by design nothing is saved. Copy what you need first.</li>
+<li><b>Reproducing the same UUID</b>: being random, the same UUID can't be made again.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does the operator know the UUIDs made?</h3>
+<p>No. They aren't sent outside, so they can't know.</p>
+<h2>Summary</h2>
+<p>UUIDs are made inside the browser. They are not sent outside or stored.</p>
 <a class="cta" href="/uuid-generator.html">Use "UUID Generator (v4, in bulk)" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/password-generator.html">Generate a Strong Random Password</a>: Generate strong random passwords instantly.</li><li><a href="/random-picker.html">Random Picker, Order and Groups</a>: Draw names, set a random order or split groups.</li><li><a href="/timestamp-converter.html">UNIX Timestamp Converter</a>: Convert between UNIX time and dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/html-escape.html">HTML Escape</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>HTML escaping isn't working as expected. Here are troubles that commonly occur with <a href="/en/html-escape.html">HTML Escape and Unescape</a> and how to handle them.</p>
+<h2>Common troubles</h2>
+<ul>
+<li><b>Some characters aren't converted</b>: only &amp; &lt; &gt; " ' are converted. Others stay as is.</li>
+<li><b>It doesn't restore</b>: named character references like "©" may not be restored. Numeric references and the basic five are restored.</li>
+<li><b>It appears as "&amp;lt;"</b>: double escaping. Restore one step at a time with "Unescape".</li>
+<li><b>Japanese doesn't change</b>: Japanese isn't a target of escaping.</li>
+<li><b>It acts as tags where pasted</b>: you may be pasting the pre-escape text. Paste the converted result.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the "String or HTML" contents are what you intended.</li>
+<li>Check whether you pressed "Escape" or "Unescape".</li>
+<li>Check the "Result" and copy with "Copy result".</li>
+<li>Check the display at the paste destination.</li>
 </ol>
-<div class="note">If it won't unescape, check for extra characters in the middle of the code.</div>
+<div class="note">If unsure, try a short string (<b>) to see how the conversion behaves.</b></div>
+<h2>Notes about the paste destination</h2>
+<ul>
+<li>A blog's code feature may convert automatically</li>
+<li>Pasted into spreadsheet software, it goes in as plain text</li>
+<li>Handling can change in HTML-format email</li>
+</ul>
+<h2>Spaces and line breaks</h2>
+<p>Spaces and line breaks are not converted. To display with line breaks preserved, paste inside <pre>.</pre></p>
+<h2>Uses it suits</h2>
+<ul>
+<li>Pre-checks before trouble</li>
+<li>Checking how conversion behaves</li>
+</ul>
+<h2>Example</h2>
+<p>Tried to restore " " but nothing changed. This tool supports the basic ones among named character references. I replaced " " with a space by hand.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Full-width symbols</b>: full-width "＜" and "＞" are not converted. Only half-width symbols are targets.</li>
+<li><b>Pasting the wrong one</b>: copy the result, not the input field.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can converted text be used anywhere?</h3>
+<p>It's for use inside HTML. Program strings and JSON need different escaping.</p>
+<h2>Summary</h2>
+<p>Check: the five target symbols, double escaping and automatic conversion at the paste destination.</p>
 <a class="cta" href="/en/html-escape.html">Use "HTML Escape and Unescape" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/url-encoder.html">URL Encode and Decode</a>: Encode and decode text in URLs.</li><li><a href="/en/base64-text.html">Base64 Text Encoder and Decoder</a>: Convert text to and from Base64.</li><li><a href="/en/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

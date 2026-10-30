@@ -200,14 +200,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>日本語のBase64変換と文字化け</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>日本語を入れる</li><li>Base64にする</li><li>戻して確かめる</li></ul></div>
-<p><a href="/base64-text.html">Base64文字列変換</a> は、日本語をUTF-8として扱います。</p>
+<p>日本語をBase64にしたら、読めなくなった。Base64から戻したら、文字化けした。日本語を扱うときは、文字コードに注意が必要です。<a href="/base64-text.html">文字列のBase64変換（エンコード・デコード）</a> は、UTF-8で変換します。</p>
+<h2>基本の仕組み</h2>
+<p>Base64は、バイト（データ）を変換する方式です。文字をBase64にするには、まず文字を、バイト列に変えます。この「文字をバイトにする決まり」が、文字コードです。</p>
+<ul>
+<li>このツール：UTF-8</li>
+<li>UTF-8の日本語は、1文字が3バイトになる</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>日本語を入れる</li>
-<li>Base64にする</li>
-<li>戻して確かめる</li>
+<li>「文字列またはBase64」に、日本語を入れます。</li>
+<li>「Base64にする」を押します。</li>
+<li>結果を、「結果をコピー」でコピーします。</li>
 </ol>
-<div class="note">他の文字コードで作られたBase64は、文字化けすることがあります。</div>
+<div class="note">戻すときも、UTF-8として読み取ります。UTF-8で作られたBase64なら、日本語が正しく戻ります。</div>
+<h2>日本語の変換例</h2>
+<p>「こんにちは」をBase64にすると、「44GT44KT44Gr44Gh44Gv」になります。英数字だけで、日本語を表せるのが分かります。</p>
+<h2>文字化けする場合</h2>
+<ul>
+<li><b>別の文字コードで作られたBase64</b>：Shift_JISなどで作られたBase64を戻すと、UTF-8として読めずに、エラーや文字化けになる。</li>
+<li><b>バイナリのBase64</b>：画像やファイルのBase64は、文字として読めない。</li>
+</ul>
+<h2>対処法</h2>
+<ul>
+<li>元の文字コードが分かるなら、別の文字コード変換ツールを使う</li>
+<li>文字としてではなく、ファイルとして変換する</li>
+</ul>
+<h2>他のツールとの違い</h2>
+<p>プログラミング言語の標準機能やオンラインツールの中には、日本語を正しく扱えないものがあります。UTF-8を前提にしたこのツールと、結果が違うことがあります。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>日本語を含む設定値の作成</li>
+<li>日本語のBase64の中身の確認</li>
+<li>多言語のテキストの変換</li>
+</ul>
+<h2>例</h2>
+<p>「データ取得エラー」をBase64にして、設定に入れた。別のシステムで読み込むと、日本語が正しく戻った。どちらもUTF-8だったため。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>相手が別の文字コード</b>：やりとりする相手の文字コードを確かめる。</li>
+<li><b>絵文字</b>：UTF-8なら扱える。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>英語だけなら、文字コードを気にしなくてよいですか？</h3>
+<p>英数字は、UTF-8でもShift_JISでも同じバイトになるため、ほぼ問題ありません。</p>
+<h2>まとめ</h2>
+<p>日本語のBase64は、UTF-8が基本。文字化けしたら、元の文字コードを疑いましょう。</p>
 <a class="cta" href="/base64-text.html">文字列のBase64変換（エンコード・デコード）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/file-base64.html">ファイルとBase64を相互変換する</a>：ファイルとBase64の文字を相互に変換します。</li><li><a href="/url-encoder.html">URLエンコード・デコード</a>：URLの日本語や記号を、エンコード・デコードします。</li><li><a href="/json-formatter.html">JSONを整える・チェックする</a>：JSONを整形・圧縮し、書き方をチェックします。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +257,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Base64 with Japanese and Garbled Text</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter Japanese text</li><li>Encode it</li><li>Decode it to check</li></ul></div>
-<p><a href="/base64-text.html">Base64 Text Converter</a> handles Japanese as UTF-8.</p>
+<p>Japanese turned into Base64 became unreadable. After converting back from Base64 it was garbled. When handling Japanese, you need to watch the character encoding. <a href="/base64-text.html">Base64 Text Encoder and Decoder</a> converts using UTF-8.</p>
+<h2>Basic mechanism</h2>
+<p>Base64 converts bytes (data). To make text Base64, you first turn the text into a byte sequence. The rule for "turning characters into bytes" is the character encoding.</p>
+<ul>
+<li>This tool: UTF-8</li>
+<li>In UTF-8, one Japanese character is 3 bytes</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter Japanese text</li>
-<li>Encode it</li>
-<li>Decode it to check</li>
+<li>Enter Japanese in "String or Base64".</li>
+<li>Press "Encode to Base64".</li>
+<li>Copy the result with "Copy result".</li>
 </ol>
-<div class="note">Base64 made with another character encoding may come out garbled.</div>
+<div class="note">When converting back, it is also read as UTF-8. Base64 made from UTF-8 returns the Japanese correctly.</div>
+<h2>Japanese conversion example</h2>
+<p>"こんにちは" in Base64 becomes "44GT44KT44Gr44Gh44Gv". You can see that Japanese can be expressed with letters and digits only.</p>
+<h2>When garbled</h2>
+<ul>
+<li><b>Base64 made with another encoding</b>: decoding Base64 made with Shift_JIS or similar can't be read as UTF-8, giving an error or garbled text.</li>
+<li><b>Base64 of binary</b>: Base64 of images or files can't be read as text.</li>
+</ul>
+<h2>Remedies</h2>
+<ul>
+<li>If you know the original encoding, use a different encoding conversion tool</li>
+<li>Convert as a file, not as text</li>
+</ul>
+<h2>Differences from other tools</h2>
+<p>Some standard programming-language functions and online tools can't handle Japanese correctly. Results may differ from this tool, which assumes UTF-8.</p>
+<h2>Good for</h2>
+<ul>
+<li>Creating settings values containing Japanese</li>
+<li>Checking contents of Japanese Base64</li>
+<li>Converting multilingual text</li>
+</ul>
+<h2>Example</h2>
+<p>Made "データ取得エラー" Base64 and put it in a setting. Loaded in another system, the Japanese came back correctly because both used UTF-8.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The other party uses another encoding</b>: check the encoding of whoever you exchange with.</li>
+<li><b>Emoji</b>: UTF-8 can handle them.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>For English only, can I ignore the encoding?</h3>
+<p>Letters and digits give the same bytes in UTF-8 and Shift_JIS, so there's almost no problem.</p>
+<h2>Summary</h2>
+<p>UTF-8 is the basis for Japanese Base64. If garbled, suspect the original encoding.</p>
 <a class="cta" href="/base64-text.html">Use "Base64 Text Encoder and Decoder" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li><li><a href="/url-encoder.html">URL Encode and Decode</a>: Encode and decode text in URLs.</li><li><a href="/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

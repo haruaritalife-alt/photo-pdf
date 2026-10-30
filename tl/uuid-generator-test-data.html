@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Paggamit ng UUID bilang mga ID ng Test Data</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Itakda kung ilan</li><li>Gumawa</li><li>I-paste sa iyong data</li></ul></div>
-<p>Ang mga UUID mula sa <a href="/tl/uuid-generator.html">UUID Generator</a> ay magagamit nang ganoon bilang mga ID sa test data.</p>
+<p lang="en">In system development and testing, you can't use real data. You need dummy data for testing. UUIDs made with <a href="/tl/uuid-generator.html">UUID Generator (v4, in bulk)</a> can be used as its IDs.</p>
+<h2 lang="en">Why UUIDs are convenient</h2>
+<ul>
+<li lang="en">They don't collide, so even enlarging test data rarely causes conflicts</li>
+<li lang="en">Little worry of mixing with real data</li>
+<li lang="en">They contain no personal information</li>
+</ul>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Itakda kung ilan</li>
-<li>Gumawa</li>
-<li>I-paste sa iyong data</li>
+<li lang="en">Enter the needed count in "Count (1–100)".</li>
+<li>Pindutin ang “Gumawa”.</li>
+<li lang="en">Copy with "Copy all".</li>
+<li lang="en">Paste into the ID column of the test data table.</li>
 </ol>
-<div class="note">Para sa mga ID sa production, sundin ang mga patakaran ng iyong sistema.</div>
+<div class="note" lang="en">Pasting into spreadsheet software puts them one per row in the ID column.</div>
+<h2 lang="en">Example of making test data</h2>
+<ol>
+<li lang="en">In spreadsheet software, make columns (id, name, email, etc.).</li>
+<li lang="en">Paste the UUIDs into the id column.</li>
+<li lang="en">Fill the other columns with dummy values.</li>
+<li lang="en">Save as CSV and import into the system.</li>
+</ol>
+<h2 lang="en">Where it is used</h2>
+<ul>
+<li lang="en">Dummy data for users, products, orders, etc.</li>
+<li lang="en">Dummy IDs sent in API tests</li>
+<li lang="en">Rows for checking database behaviour</li>
+</ul>
+<h2 lang="en">Cautions in testing</h2>
+<ul>
+<li lang="en"><b>Distinguish from real IDs</b>: don't mix test data with production data.</li>
+<li lang="en"><b>Cleanup</b>: delete test data when testing is finished.</li>
+<li lang="en"><b>Personal information</b>: don't use real personal information in test data.</li>
+</ul>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Preparing data in development environments</li>
+<li lang="en">Large data for load tests</li>
+<li lang="en">Checking screen display</li>
+</ul>
+<h2>Halimbawa</h2>
+<p lang="en">To check the user list screen, prepared 50 dummy users. Made 50 UUIDs, pasted them into the id column, and numbered names "Test user 1", "Test user 2".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Format specification</b>: the system may specify the UUID format (hyphens or not, etc.).</li>
+<li lang="en"><b>Duplicate check</b>: just in case, check the pasted IDs have no duplicates.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can they be used in production data too?</h3>
+<p lang="en">Yes. Version 4 is widely used for production IDs. But follow your system's design.</p>
+<h2>Buod</h2>
+<p lang="en">Use UUIDs for test-data IDs. You get disposable identifiers that almost never collide.</p>
 <a class="cta" href="/tl/uuid-generator.html">Gamitin ang “UUID Generator (v4, maramihan)” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/password-generator.html">Gumawa ng Malakas na Random na Password</a>: Agad na gumawa ng malalakas na random na password.</li><li><a href="/tl/random-picker.html">Random Picker, Pagkakasunod-sunod at Mga Grupo</a>: Mag-draw ng mga pangalan, magtakda ng random na pagkakasunod-sunod o hatiin sa mga grupo.</li><li><a href="/tl/timestamp-converter.html">UNIX Timestamp Converter</a>: I-convert sa pagitan ng oras ng UNIX at mga petsa.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>
