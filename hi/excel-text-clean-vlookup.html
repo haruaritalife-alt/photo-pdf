@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>जब VLOOKUP मेल न खाए</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>टेक्स्ट पेस्ट करें</li><li>साफ़ करें</li><li>फिर कोशिश करें</li></ul></div>
-<p><a href="/hi/excel-text-clean.html">एक्सेल टेक्स्ट सफ़ाई</a> से अदृश्य वर्ण और फ़ालतू स्पेस हटाने पर मान मेल खा सकते हैं।</p>
+<p lang="en">VLOOKUP returns "#N/A" even though the lookup value surely exists. Suspect extra spaces. Clean both the lookup value and the table side with <a href="/hi/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>.</p>
+<h2 lang="en">Why they don't match</h2>
+<p lang="en">VLOOKUP compares text exactly. These differences make it judge them different:</p>
+<ul>
+<li lang="en">A trailing half-width space</li>
+<li lang="en">Full-width spaces</li>
+<li lang="en">Non-breaking spaces (common in text copied from the web)</li>
+<li lang="en">Invisible control characters</li>
+</ul>
 <h2>चरण</h2>
 <ol>
-<li>टेक्स्ट पेस्ट करें</li>
-<li>साफ़ करें</li>
-<li>फिर कोशिश करें</li>
+<li lang="en">Copy the text of the lookup column (or the table's first column) and paste.</li>
+<li lang="en">Tick "Reduce extra spaces", "Convert full-width spaces to half-width" and "Remove invisible characters".</li>
+<li lang="en">Copy the "Cleaned text" and paste back into Excel.</li>
+<li lang="en">Redo the VLOOKUP.</li>
 </ol>
-<div class="note">फ़ुल-विड्थ स्पेस को सामान्य स्पेस में बदलने वाली सेटिंग भी आज़माएँ।</div>
+<div class="note" lang="en">If the character count shrinks, there was an invisible difference.</div>
+<h2>कैसे जाँचें</h2>
+<p lang="en">In Excel, =LEN(cell) gives the character count. A cell whose count doesn't match what you see is suspect.</p>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">VLOOKUP, XLOOKUP or MATCH not matching</li>
+<li lang="en">COUNTIF or SUMIF results off</li>
+<li lang="en">Remove Duplicates not working</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">A product code lookup gave "#N/A". After cleaning, the count dropped from 7 to 6, revealing an invisible trailing character, and the lookup worked.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Cleaning only the table side</b>: the lookup side may have the same problem. Clean both.</li>
+<li lang="en"><b>Full-width vs half-width alphanumerics</b>: other than spaces, make those half-width with a different tool.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can a function fix it?</h3>
+<p lang="en">TRIM and CLEAN fix some, but non-breaking spaces remain. You'd need SUBSTITUTE.</p>
+<h2>सारांश</h2>
+<p lang="en">When things don't match, suspect invisible differences and re-search after cleaning.</p>
 <a class="cta" href="/hi/excel-text-clean.html">“एक्सेल पाठ से फ़ालतू स्पेस और अदृश्य वर्ण हटाना” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/zenkaku-hankaku.html">फ़ुल-विड्थ, हाफ़-विड्थ, हिरागाना और काताकाना बदलें</a>: फ़ुल-विड्थ/हाफ़-विड्थ और हिरागाना/काताकाना के बीच बदलें।</li><li><a href="/hi/line-break-remover.html">टेक्स्ट से लाइन ब्रेक हटाएँ और ठीक करें</a>: PDF या अन्य जगह से कॉपी किए टेक्स्ट के लाइन ब्रेक ठीक करें।</li><li><a href="/hi/line-sort-dedupe.html">दोहराई पंक्तियाँ हटाएँ और सूची को क्रम में लगाएँ</a>: दोहराई गई पंक्तियाँ हटाएँ और उन्हें क्रम में लगाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

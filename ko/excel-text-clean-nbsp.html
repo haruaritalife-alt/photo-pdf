@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>보이지 않는 공백의 정체</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>텍스트 붙여넣기</li><li>항목을 선택</li><li>글자 수 확인</li></ul></div>
-<p><a href="/ko/excel-text-clean.html">엑셀 텍스트 정리</a>는 줄바꿈 없는 공백, 폭 없는 공백 등을 없애 줍니다.</p>
+<p lang="en">It looks like a space, but even TRIM won't remove it. It may be a non-breaking space (NBSP). "Remove invisible characters" in <a href="/ko/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a> can tidy it.</p>
+<h2 lang="en">What NBSP is</h2>
+<p lang="en">A special space used on web pages to prevent line breaks. Character code 160.</p>
+<ul>
+<li lang="en">Looks: the same as a normal space</li>
+<li lang="en">Actually: a different character from a normal space</li>
+<li lang="en">Where it occurs: text copied from web pages or PDFs</li>
+</ul>
+<h2 lang="en">Kinds of invisible characters</h2>
+<p lang="en">This tool turns these into spaces:</p>
+<ul>
+<li lang="en">Non-breaking spaces</li>
+<li lang="en">Spaces of various widths</li>
+<li lang="en">Zero-width spaces and the BOM (a file-start marker)</li>
+<li lang="en">Special line and paragraph separators</li>
+</ul>
+<p lang="en">Control characters other than line breaks are also deleted.</p>
 <h2>순서</h2>
 <ol>
-<li>텍스트 붙여넣기</li>
-<li>항목을 선택</li>
-<li>글자 수 확인</li>
+<li>텍스트를 붙여넣으세요.</li>
+<li lang="en">Tick "Remove invisible characters".</li>
+<li lang="en">Also tick "Reduce extra spaces" to collapse runs of spaces into one.</li>
+<li lang="en">Check the "Characters" display and "Cleaned text".</li>
 </ol>
-<div class="note">정리 전후 글자 수의 차이가 없어진 개수입니다.</div>
+<div class="note" lang="en">If the count shrinks, invisible characters were present.</div>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Spaces TRIM can't remove</li>
+<li lang="en">Aggregation off after copying a web table</li>
+<li lang="en">Character count higher than it looks</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Copying a price table from the web scrambled sorting. After cleaning, the count dropped, revealing NBSPs.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Zero-width characters become spaces</b>: gaps may appear between words. Use the extra-space reduction together.</li>
+<li lang="en"><b>Replacement, not deletion</b>: NBSP is replaced with a space.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can Excel functions remove it?</h3>
+<p lang="en">SUBSTITUTE(cell, CHAR(160), " ") replaces it.</p>
+<h2>요약</h2>
+<p lang="en">The spaces that won't go are invisible characters. Tidy them all at once.</p>
 <a class="cta" href="/ko/excel-text-clean.html">“엑셀 글의 불필요한 공백과 보이지 않는 문자 없애기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/zenkaku-hankaku.html">전각·반각·히라가나·가타카나 변환</a>: 전각/반각 및 히라가나/가타카나를 변환합니다.</li><li><a href="/ko/line-break-remover.html">텍스트의 줄바꿈 제거 및 정리</a>: PDF 등에서 복사한 텍스트의 줄바꿈을 정리합니다.</li><li><a href="/ko/line-sort-dedupe.html">중복된 줄 제거 및 목록 정렬</a>: 중복된 줄을 제거하고 정렬합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

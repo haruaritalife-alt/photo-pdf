@@ -200,14 +200,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>行と列の上限</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>範囲を入れる</li><li>結果を見る</li><li>確かめる</li></ul></div>
-<p><a href="/excel-range-info.html">Excel範囲の大きさ</a> は、1048576行・16384列（XFD）までを扱います。</p>
+<p>Excelの範囲には、行と列の上限があります。<a href="/excel-range-info.html">Excelのセル範囲のセル数・行数・列数を調べる</a> は、その上限を超える範囲を入れると、エラーを返します。</p>
+<h2>上限</h2>
+<ul>
+<li>列：16,384列（A〜XFD）</li>
+<li>行：1,048,576行</li>
+<li>最大の範囲：A1:XFD1048576（セル数 約172億）</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>範囲を入れる</li>
-<li>結果を見る</li>
-<li>確かめる</li>
+<li>「セルの範囲」に、大きな範囲を入れる。</li>
+<li>上限を超えると、「範囲の形が正しくありません。」と表示される。</li>
+<li>範囲を小さくして、もう一度入れる。</li>
 </ol>
-<div class="note">これを超える範囲は、正しくない範囲として表示されます。</div>
+<div class="note">列が「XFD」を超える（XFEなど）と、エラーになります。行も、1,048,576を超えるとエラーです。</div>
+<h2>大きな範囲の例</h2>
+<ul>
+<li>A1:Z1000：26,000セル</li>
+<li>A1:XFD1：16,384セル（1行すべて）</li>
+<li>A1:A1048576：1,048,576セル（1列すべて）</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>大きなデータが、シートに収まるか確かめたい</li>
+<li>列全体や行全体の大きさを知りたい</li>
+<li>上限の仕様を確かめたい</li>
+</ul>
+<h2>古い形式との違い</h2>
+<p>古い形式（.xls）では、256列×65,536行まででした。新しい形式（.xlsx）で、大きく広がっています。</p>
+<h2>例</h2>
+<p>CSVのデータが、約100万行あった。上限の1,048,576行に近いことを確かめ、シートを分けて取り込むことにした。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>セル数が大きすぎて重い</b>：範囲が広いほど、計算も重くなる。</li>
+<li><b>必要な範囲だけにする</b>：列全体より、データのある範囲に絞る。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>行全体や列全体の指定はできますか？</h3>
+<p>このツールは、A1:C10の形のみです。全体は、A1:XFD1 などの形で入れます。</p>
+<h2>まとめ</h2>
+<p>範囲の上限を知っておけば、大きなデータでも慌てません。</p>
 <a class="cta" href="/excel-range-info.html">Excelのセル範囲のセル数・行数・列数を調べるを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-column-letter.html">Excel 列番号・列文字 変換</a>：Excelの列番号と列文字を変換します。</li><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li><li><a href="/table-paste-convert.html">Excelの表をMarkdown・HTML・CSV・JSONに変換</a>：貼り付けた表をMarkdown・HTML・CSV・JSONにします。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +251,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>The Row and Column Limits</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the range</li><li>See the result</li><li>Check it</li></ul></div>
-<p><a href="/excel-range-info.html">Excel Range Size</a> handles up to 1048576 rows and 16384 columns (XFD).</p>
+<p>Excel ranges have row and column limits. <a href="/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a> returns an error if you enter a range beyond them.</p>
+<h2>Limits</h2>
+<ul>
+<li>Columns: 16,384 (A–XFD)</li>
+<li>Rows: 1,048,576</li>
+<li>Largest range: A1:XFD1048576 (about 17.2 billion cells)</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the range</li>
-<li>See the result</li>
-<li>Check it</li>
+<li>Enter a large range in "Cell range".</li>
+<li>Beyond the limit, "The range is not valid." is shown.</li>
+<li>Make the range smaller and enter again.</li>
 </ol>
-<div class="note">A range beyond that is shown as not valid.</div>
+<div class="note">Columns beyond "XFD" (like XFE) cause an error, as do rows beyond 1,048,576.</div>
+<h2>Examples of large ranges</h2>
+<ul>
+<li>A1:Z1000: 26,000 cells</li>
+<li>A1:XFD1: 16,384 cells (a whole row)</li>
+<li>A1:A1048576: 1,048,576 cells (a whole column)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Checking whether large data fits a sheet</li>
+<li>Knowing the size of a whole column or row</li>
+<li>Verifying the limit specs</li>
+</ul>
+<h2>Difference from the old format</h2>
+<p>The old format (.xls) allowed only 256 columns × 65,536 rows. The new (.xlsx) widened it greatly.</p>
+<h2>Example</h2>
+<p>CSV data had about a million rows. After confirming it was near the 1,048,576 limit, I decided to split it into sheets.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Too many cells makes it heavy</b>: the wider the range, the heavier calculation.</li>
+<li><b>Use only the needed range</b>: narrow to where data is rather than whole columns.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I specify whole rows or columns?</h3>
+<p>This tool takes only the A1:C10 form. For a whole row, enter something like A1:XFD1.</p>
+<h2>Summary</h2>
+<p>Knowing the range limits keeps you calm with large data.</p>
 <a class="cta" href="/excel-range-info.html">Use "Count Cells, Rows and Columns in an Excel Range" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/table-paste-convert.html">Excel Table to Markdown, HTML, CSV and JSON</a>: Convert a pasted table to Markdown, HTML, CSV or JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

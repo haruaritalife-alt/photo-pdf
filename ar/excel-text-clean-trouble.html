@@ -215,14 +215,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ماذا تفعل إذا لم يعمل</h1>
 <p class="meta">تاريخ النشر: 19 أكتوبر 2026 | آخر تحديث: 19 أكتوبر 2026 | <a href="/about.html">حول (باليابانية)</a></p>
 <div class="points"><b>النقاط الرئيسية</b><ul><li>افحص الملف</li><li>تحقق من الحجم</li><li>جرّب جهازًا آخر</li></ul></div>
-<p>إذا لم يعمل <a href="/ar/excel-text-clean.html">تنظيف نص Excel</a>، فتحقق مما يلي.</p>
-<h2>الخطوات</h2>
+<p lang="en">You cleaned it but Excel still doesn't match. Here are common troubles with <a href="/ar/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a> and fixes.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>Result unchanged</b>: no items are ticked, or the text has no problem.</li>
+<li lang="en"><b>Still not matching</b>: another cause (full-width vs half-width alphanumerics, upper vs lower case).</li>
+<li lang="en"><b>Character count doesn't shrink</b>: the invisible difference is something else.</li>
+<li lang="en"><b>Line breaks vanished</b>: "Remove line breaks" is ticked.</li>
+<li lang="en"><b>Reverts on pasting back</b>: Excel cell formatting or auto-conversion.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>افحص الملف</li>
-<li>تحقق من الحجم</li>
-<li>جرّب جهازًا آخر</li>
+<li lang="en">Check the needed items among the four are ticked.</li>
+<li lang="en">Check with the "Characters" display whether it shrank.</li>
+<li lang="en">Compare =LEN(cell) in Excel with what you see.</li>
 </ol>
-<div class="note">إذا لم يتغير شيء، فتحقق من تفعيل الخيارات ومن أن النص الملصق يحتوي على مثل هذه الأحرف.</div>
+<div class="note" lang="en">Trying with all items ticked helps isolate the cause.</div>
+<h2 lang="en">Causes other than blanks</h2>
+<ul>
+<li lang="en">Full-width vs half-width alphanumerics: "ＡＢＣ" and "ABC" differ</li>
+<li lang="en">Upper vs lower case: VLOOKUP doesn't distinguish (mind exact-match comparisons)</li>
+<li lang="en">Number vs text: "123" and text "123" differ</li>
+<li lang="en">Hiragana vs katakana</li>
+</ul>
+<h2 lang="en">Notes on pasting back</h2>
+<ul>
+<li lang="en">Check the destination cells' format is "General"</li>
+<li lang="en">Use "Paste values"</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">After cleaning, it still didn't match. One side was full-width "ＡＢＣ１２３". Making them half-width matched.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leading zeros vanish</b>: pasting as numbers drops 0s. Paste as text.</li>
+<li lang="en"><b>Large data</b>: if the browser gets heavy, paste in parts.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Only some rows won't fix.</h3>
+<p lang="en">Those rows may contain a different kind of character. Pull out just those rows to check.</p>
+<h2>الخلاصة</h2>
+<p lang="en">Items, character count, other causes. Check these three in order.</p>
 <a class="cta" href="/ar/excel-text-clean.html">استخدم «إزالة المسافات الزائدة والأحرف غير المرئية من نص Excel» (مجانًا)</a>
 <h2>أدوات تتكامل مع هذه الأداة</h2><ul><li><a href="/ar/zenkaku-hankaku.html">تحويل الأحرف كاملة العرض ونصف العرض والهيراغانا والكاتاكانا</a>: حوّل بين الأحرف كاملة العرض ونصف العرض، وبين الهيراغانا والكاتاكانا.</li><li><a href="/ar/line-break-remover.html">إزالة فواصل الأسطر في النص وتنظيفها</a>: رتّب فواصل الأسطر في النص المنسوخ من PDF وغيره.</li><li><a href="/ar/line-sort-dedupe.html">حذف الأسطر المكررة وترتيب القائمة</a>: احذف الأسطر المكررة ورتّبها.</li></ul>
 <div class="tip"><p>إذا أفادك هذا الدليل، فإن إكرامية صغيرة تعني لنا الكثير.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">أرسل إكرامية (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">أرسل هدية (قائمة أمنيات Amazon)</a></div>

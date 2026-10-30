@@ -200,14 +200,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>セルの中の縦線</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>表を貼る</li><li>結果を見る</li><li>確かめる</li></ul></div>
-<p><a href="/markdown-table-to-excel.html">Markdown表をExcelへ</a> では、\|と書かれた縦線は文字として扱います。</p>
+<p>Markdownの表では、縦棒（|）が列の区切りです。では、セルの中に縦棒を入れたいときはどうするのでしょうか。<a href="/markdown-table-to-excel.html">Markdownの表をExcelに貼れる形に変換</a> の扱いを見てみましょう。</p>
+<h2>縦棒をセルの中に入れる書き方</h2>
+<p>縦棒の前に、バックスラッシュを付けます。「\|」と書くと、区切りではなく、文字の縦棒として扱われます。</p>
+<ul>
+<li>区切りの縦棒：|</li>
+<li>文字としての縦棒：\|</li>
+</ul>
+<h2>変換での扱い</h2>
+<ul>
+<li>「\|」は、区切りとして数えない</li>
+<li>変換後のセルには、「|」として入る</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>表を貼る</li>
-<li>結果を見る</li>
-<li>確かめる</li>
+<li>「\|」を含むMarkdownの表を、貼り付ける。</li>
+<li>「Excelに貼れる表」で、セルの中に縦線が残っていることを確かめる。</li>
+<li>「行×列」で、列数がずれていないか確かめる。</li>
 </ol>
-<div class="note">区切りの縦線と区別するための書き方です。</div>
+<div class="note">縦棒の前に「\」が付いていないと、列が増えてしまいます。</div>
+<h2>向いている場面</h2>
+<ul>
+<li>コマンドの説明など、縦棒を含む表</li>
+<li>「A|B」のような選択肢を含む表</li>
+<li>正規表現（|で選択）の解説表</li>
+</ul>
+<h2>例</h2>
+<p>「cat file | grep word」というコマンドを含む表を変換した。書き方が「cat file \| grep word」だったため、1つのセルに収まった。</p>
+<h2>行の端の縦棒</h2>
+<p>行の先頭と末尾の縦棒は、区切りとして取り除かれます。</p>
+<ul>
+<li>「| A | B |」と「A | B」は、同じ結果</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「\」を付け忘れた</b>：列が増えて、ずれる。元の表を直す。</li>
+<li><b>コードの中の縦棒</b>：バッククォートの中でも、「\|」が必要な場合がある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>縦棒が複数ある場合は？</h3>
+<p>すべて「\|」にします。</p>
+<h2>まとめ</h2>
+<p>セルの中の縦棒は「\|」と書けば、正しく変換されます。</p>
 <a class="cta" href="/markdown-table-to-excel.html">Markdownの表をExcelに貼れる形に変換を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/table-paste-convert.html">Excelの表をMarkdown・HTML・CSV・JSONに変換</a>：貼り付けた表をMarkdown・HTML・CSV・JSONにします。</li><li><a href="/table-transpose.html">表の行と列を入れ替える</a>：貼り付けた表の行と列を入れ替えます。</li><li><a href="/markdown-to-html.html">MarkdownをHTMLに変換する</a>：MarkdownをHTMLに変換します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +253,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Vertical Bars Inside Cells</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Paste the table</li><li>See the result</li><li>Check it</li></ul></div>
-<p>In <a href="/markdown-table-to-excel.html">Markdown Table to Excel</a>, a bar written as \| is treated as a character.</p>
+<p>In a Markdown table the vertical bar (|) separates columns. So what if you want a vertical bar inside a cell? See how <a href="/markdown-table-to-excel.html">Convert a Markdown Table for Excel</a> handles it.</p>
+<h2>How to write a bar inside a cell</h2>
+<p>Put a backslash before the bar. Writing "\|" treats it as a bar character, not a separator.</p>
+<ul>
+<li>Separator bar: |</li>
+<li>Bar as a character: \|</li>
+</ul>
+<h2>Handling in conversion</h2>
+<ul>
+<li>"\|" isn't counted as a separator</li>
+<li>In the converted cell it appears as "|"</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Paste the table</li>
-<li>See the result</li>
-<li>Check it</li>
+<li>Paste a Markdown table containing "\|".</li>
+<li>In "Table for Excel", check the bar remains inside the cell.</li>
+<li>Check with "Rows × columns" that the column count isn't off.</li>
 </ol>
-<div class="note">This is how it is told apart from the separator bars.</div>
+<div class="note">Without the "\" before the bar, columns increase.</div>
+<h2>Good for</h2>
+<ul>
+<li>Tables with bars, like command descriptions</li>
+<li>Tables with choices like "A|B"</li>
+<li>Explanatory tables for regular expressions (| for alternation)</li>
+</ul>
+<h2>Example</h2>
+<p>Converted a table containing the command "cat file | grep word". It was written "cat file \| grep word", so it fit in one cell.</p>
+<h2>Bars at row edges</h2>
+<p>Bars at the start and end of a row are removed as separators.</p>
+<ul>
+<li>"| A | B |" and "A | B" give the same result</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Forgot the "\"</b>: columns increase and shift. Fix the source table.</li>
+<li><b>Bars inside code</b>: even within backticks, "\|" may be needed.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if there are several bars?</h3>
+<p>Make each one "\|".</p>
+<h2>Summary</h2>
+<p>Write a bar inside a cell as "\|" and it converts correctly.</p>
 <a class="cta" href="/markdown-table-to-excel.html">Use "Convert a Markdown Table for Excel" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/table-paste-convert.html">Excel Table to Markdown, HTML, CSV and JSON</a>: Convert a pasted table to Markdown, HTML, CSV or JSON.</li><li><a href="/table-transpose.html">Swap Rows and Columns of a Table</a>: Swap the rows and columns of a pasted table.</li><li><a href="/markdown-to-html.html">Convert Markdown to HTML</a>: Convert Markdown to HTML.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

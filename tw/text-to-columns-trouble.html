@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>無法正常使用時的處理辦法</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>檢查檔案</li><li>確認大小</li><li>換一臺裝置試試</li></ul></div>
-<p>如果<a href="/tw/text-to-columns.html">文字分列</a>無法使用,請檢查以下幾點。</p>
-<h2>步驟</h2>
+<p lang="en">Text doesn't split as expected. Here are common troubles with <a href="/tw/text-to-columns.html">Split Text into Columns by a Delimiter</a> and fixes.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Please enter a delimiter." appears</b>: the delimiter field is empty.</li>
+<li lang="en"><b>Stays one column</b>: the delimiter isn't in the data, or is a different character (like a full-width comma).</li>
+<li lang="en"><b>Splits too much</b>: the same character as the delimiter appears in the data, like "1,000" amounts.</li>
+<li lang="en"><b>Empty columns appear</b>: delimiters repeat. Try "Treat consecutive delimiters as one".</li>
+<li lang="en"><b>Columns shift</b>: item counts differ per row.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>檢查檔案</li>
-<li>確認大小</li>
-<li>換一臺裝置試試</li>
+<li lang="en">Check the delimiter matches the character in the data.</li>
+<li lang="en">Compare full-width and half-width.</li>
+<li lang="en">Toggle "Treat consecutive delimiters as one" and compare.</li>
+<li lang="en">Check with "Rows × columns" that the size is as expected.</li>
 </ol>
-<div class="note">如果沒有結果,請確認已輸入分隔符,且貼上的文字中包含它。</div>
+<div class="note" lang="en">Tabs and spaces look similar but are different characters.</div>
+<h2 lang="en">Delimiter candidates</h2>
+<ul>
+<li lang="en">Comma (,), full-width comma (，), Japanese comma (、)</li>
+<li lang="en">Semicolon (;)</li>
+<li>製表符</li>
+<li lang="en">Space, full-width space</li>
+<li lang="en">Vertical bar (|), slash (/)</li>
+</ul>
+<h2 lang="en">Input examples</h2>
+<ul>
+<li lang="en">Correct: delimiter "," for "A,B,C"</li>
+<li lang="en">Mismatch: delimiter "," for "A、B、C" (Japanese commas)</li>
+</ul>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Checks before splitting</li>
+<li lang="en">Finding the cause of shifts</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Entered a comma but it stayed one column. The data's commas were full-width "，". Changing the delimiter to full-width split it correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Cells containing line breaks</b>: processed line by line, so breaks make separate rows.</li>
+<li lang="en"><b>Leading zeros</b>: set the format to "Text" when pasting into Excel.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can commas inside quotes be ignored?</h3>
+<p lang="en">No. Quotes aren't considered. Use Excel's CSV import if needed.</p>
+<h2>小結</h2>
+<p lang="en">Delimiter character, full-width vs half-width, consecutive setting. Check these three and it's usually solved.</p>
 <a class="cta" href="/tw/text-to-columns.html">使用「按分隔符把文字拆成多列」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/table-paste-convert.html">Excel 表格轉 Markdown、HTML、CSV 和 JSON</a>: 把貼上的表格轉換成 Markdown、HTML、CSV 或 JSON。</li><li><a href="/tw/excel-text-clean.html">去掉 Excel 文字中多餘的空格和看不見的字元</a>: 去掉多餘的空格和看不見的字元。</li><li><a href="/tw/csv-tools.html">合併、拆分 CSV 並選取列</a>: 合併 CSV 檔案、按行拆分，或只保留所選列。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

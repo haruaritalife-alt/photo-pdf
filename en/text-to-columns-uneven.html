@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Rows with Different Numbers of Columns</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Paste the text</li><li>See the result</li><li>Check it</li></ul></div>
-<p>In <a href="/en/text-to-columns.html">Text to Columns</a>, rows with fewer delimiters are filled with empty cells.</p>
+<p>When rows have different numbers of delimiters, column counts vary. <a href="/en/text-to-columns.html">Split Text into Columns by a Delimiter</a> aligns to the largest column count and fills gaps with blanks.</p>
+<h2>What happens</h2>
+<ul>
+<li>Row 1: A,80,Tokyo (3 columns)</li>
+<li>Row 2: B,92 (2 columns)</li>
+<li>Result: 2 rows × 3 columns. Row 2's third is blank</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Paste the text</li>
-<li>See the result</li>
-<li>Check it</li>
+<li>Paste text with differing delimiter counts.</li>
+<li>Enter the delimiter.</li>
+<li>Check with "Rows × columns" that columns align to the maximum.</li>
 </ol>
-<div class="note">The rows × columns count is shown so you can check.</div>
+<div class="note">Every row ends up with the same column count, so pasting into Excel doesn't misalign.</div>
+<h2>Good for</h2>
+<ul>
+<li>Data with missing items</li>
+<li>Data with trailing items omitted</li>
+<li>Logs with differing item counts per row</li>
+</ul>
+<h2>Where blanks go</h2>
+<p>Missing parts are added as blanks at the right (end) of the row, not the left.</p>
+<ul>
+<li>If a middle item is missing, later items shift left</li>
+<li>When the middle is missing, check the original data</li>
+</ul>
+<h2>Example</h2>
+<p>Survey answers came with optional items left empty. Differences in delimiting left column counts uneven and misaligned on pasting. Aligning to the maximum with the tool filled blanks and pasted without shifts.</p>
+<h2>When empty items remain</h2>
+<p>With consecutive delimiters like "A,,C", the empty item remains. Turning on "Treat consecutive delimiters as one" closes up empty items.</p>
+<ul>
+<li>To keep blanks: off</li>
+<li>To close up blanks: on (but column positions shift)</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Closing up changes column positions</b>: if item positions matter, keep it off.</li>
+<li><b>Trailing empty line</b>: a trailing empty line in the paste is removed.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I find rows with too few columns?</h3>
+<p>After pasting the result, look for rows with blanks in Excel.</p>
+<h2>Summary</h2>
+<p>Even with differing column counts, it aligns to the maximum and fills with blanks. When positions matter, watch the consecutive option.</p>
 <a class="cta" href="/en/text-to-columns.html">Use "Split Text into Columns by a Delimiter" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/table-paste-convert.html">Excel Table to Markdown, HTML, CSV and JSON</a>: Convert a pasted table to Markdown, HTML, CSV or JSON.</li><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/en/csv-tools.html">Merge, Split and Pick Columns from CSV</a>: Merge CSV files, split by rows, or keep only chosen columns.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

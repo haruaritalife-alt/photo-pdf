@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Apabila VLOOKUP tidak sepadan</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Dikemas kini: 19 Okt 2026 | <a href="/about.html">Perihal (Jepun)</a></p>
 <div class="points"><b>Perkara penting</b><ul><li>Tampal teks</li><li>Bersihkannya</li><li>Cuba lagi</li></ul></div>
-<p>Membuang aksara tidak kelihatan dan ruang berlebihan dengan <a href="/ms/excel-text-clean.html">Pembersih Teks Excel</a> boleh menjadikan nilai sepadan.</p>
+<p lang="en">VLOOKUP returns "#N/A" even though the lookup value surely exists. Suspect extra spaces. Clean both the lookup value and the table side with <a href="/ms/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>.</p>
+<h2 lang="en">Why they don't match</h2>
+<p lang="en">VLOOKUP compares text exactly. These differences make it judge them different:</p>
+<ul>
+<li lang="en">A trailing half-width space</li>
+<li lang="en">Full-width spaces</li>
+<li lang="en">Non-breaking spaces (common in text copied from the web)</li>
+<li lang="en">Invisible control characters</li>
+</ul>
 <h2>Langkah</h2>
 <ol>
-<li>Tampal teks</li>
-<li>Bersihkannya</li>
-<li>Cuba lagi</li>
+<li lang="en">Copy the text of the lookup column (or the table's first column) and paste.</li>
+<li lang="en">Tick "Reduce extra spaces", "Convert full-width spaces to half-width" and "Remove invisible characters".</li>
+<li lang="en">Copy the "Cleaned text" and paste back into Excel.</li>
+<li lang="en">Redo the VLOOKUP.</li>
 </ol>
-<div class="note">Cuba juga tetapan yang menukar ruang lebar penuh kepada ruang biasa.</div>
+<div class="note" lang="en">If the character count shrinks, there was an invisible difference.</div>
+<h2>Cara menyemak</h2>
+<p lang="en">In Excel, =LEN(cell) gives the character count. A cell whose count doesn't match what you see is suspect.</p>
+<h2>Sesuai untuk</h2>
+<ul>
+<li lang="en">VLOOKUP, XLOOKUP or MATCH not matching</li>
+<li lang="en">COUNTIF or SUMIF results off</li>
+<li lang="en">Remove Duplicates not working</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">A product code lookup gave "#N/A". After cleaning, the count dropped from 7 to 6, revealing an invisible trailing character, and the lookup worked.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Cleaning only the table side</b>: the lookup side may have the same problem. Clean both.</li>
+<li lang="en"><b>Full-width vs half-width alphanumerics</b>: other than spaces, make those half-width with a different tool.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can a function fix it?</h3>
+<p lang="en">TRIM and CLEAN fix some, but non-breaking spaces remain. You'd need SUBSTITUTE.</p>
+<h2>Ringkasan</h2>
+<p lang="en">When things don't match, suspect invisible differences and re-search after cleaning.</p>
 <a class="cta" href="/ms/excel-text-clean.html">Guna “Membuang ruang berlebihan dan aksara tidak kelihatan daripada teks Excel” (percuma)</a>
 <h2>Alat yang sepadan dengan ini</h2><ul><li><a href="/ms/zenkaku-hankaku.html">Tukar Lebar Penuh, Separuh Lebar, Hiragana dan Katakana</a>: Tukar lebar penuh/separuh lebar dan hiragana/katakana.</li><li><a href="/ms/line-break-remover.html">Buang dan Kemaskan Pemisah Baris dalam Teks</a>: Kemaskan pemisah baris dalam teks yang disalin daripada PDF dan lain-lain.</li><li><a href="/ms/line-sort-dedupe.html">Buang Baris Pendua dan Isih Senarai</a>: Buang baris pendua dan isihkannya.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil amat dihargai.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Hantar tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hantar hadiah (senarai hajat Amazon)</a></div>

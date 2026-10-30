@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Wenn SVERWEIS nicht passt</h1>
 <p class="meta">Veröffentlicht: 19.10.2026 | Aktualisiert: 19.10.2026 | <a href="/about.html">Über uns (Japanisch)</a></p>
 <div class="points"><b>Wichtige Punkte</b><ul><li>Den Text einfügen</li><li>Bereinigen</li><li>Erneut versuchen</li></ul></div>
-<p>Das Entfernen unsichtbarer Zeichen und überflüssiger Leerzeichen mit <a href="/de/excel-text-clean.html">Excel-Textbereinigung</a> kann dafür sorgen, dass Werte übereinstimmen.</p>
+<p lang="en">VLOOKUP returns "#N/A" even though the lookup value surely exists. Suspect extra spaces. Clean both the lookup value and the table side with <a href="/de/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>.</p>
+<h2 lang="en">Why they don't match</h2>
+<p lang="en">VLOOKUP compares text exactly. These differences make it judge them different:</p>
+<ul>
+<li lang="en">A trailing half-width space</li>
+<li lang="en">Full-width spaces</li>
+<li lang="en">Non-breaking spaces (common in text copied from the web)</li>
+<li lang="en">Invisible control characters</li>
+</ul>
 <h2>Schritte</h2>
 <ol>
-<li>Den Text einfügen</li>
-<li>Bereinigen</li>
-<li>Erneut versuchen</li>
+<li lang="en">Copy the text of the lookup column (or the table's first column) and paste.</li>
+<li lang="en">Tick "Reduce extra spaces", "Convert full-width spaces to half-width" and "Remove invisible characters".</li>
+<li lang="en">Copy the "Cleaned text" and paste back into Excel.</li>
+<li lang="en">Redo the VLOOKUP.</li>
 </ol>
-<div class="note">Probieren Sie auch die Einstellung, die Leerzeichen in voller Breite in normale Leerzeichen umwandelt.</div>
+<div class="note" lang="en">If the character count shrinks, there was an invisible difference.</div>
+<h2>So prüfen Sie es</h2>
+<p lang="en">In Excel, =LEN(cell) gives the character count. A cell whose count doesn't match what you see is suspect.</p>
+<h2>Gut geeignet für</h2>
+<ul>
+<li lang="en">VLOOKUP, XLOOKUP or MATCH not matching</li>
+<li lang="en">COUNTIF or SUMIF results off</li>
+<li lang="en">Remove Duplicates not working</li>
+</ul>
+<h2>Beispiel</h2>
+<p lang="en">A product code lookup gave "#N/A". After cleaning, the count dropped from 7 to 6, revealing an invisible trailing character, and the lookup worked.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Cleaning only the table side</b>: the lookup side may have the same problem. Clean both.</li>
+<li lang="en"><b>Full-width vs half-width alphanumerics</b>: other than spaces, make those half-width with a different tool.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can a function fix it?</h3>
+<p lang="en">TRIM and CLEAN fix some, but non-breaking spaces remain. You'd need SUBSTITUTE.</p>
+<h2>Zusammenfassung</h2>
+<p lang="en">When things don't match, suspect invisible differences and re-search after cleaning.</p>
 <a class="cta" href="/de/excel-text-clean.html">„Überflüssige Leerzeichen und unsichtbare Zeichen aus Excel-Text entfernen“ verwenden (kostenlos)</a>
 <h2>Passende Werkzeuge dazu</h2><ul><li><a href="/de/zenkaku-hankaku.html">Voll- und Halbbreite, Hiragana und Katakana umwandeln</a>: Voll- und Halbbreite sowie Hiragana/Katakana umwandeln.</li><li><a href="/de/line-break-remover.html">Zeilenumbrüche in Text entfernen und bereinigen</a>: Zeilenumbrüche in aus PDFs und anderswo kopiertem Text bereinigen.</li><li><a href="/de/line-sort-dedupe.html">Doppelte Zeilen entfernen und eine Liste sortieren</a>: Doppelte Zeilen entfernen und sortieren.</li></ul>
 <div class="tip"><p>Wenn Ihnen diese Anleitung geholfen hat, freuen wir uns über ein kleines Trinkgeld.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Trinkgeld senden (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Geschenk senden (Amazon-Wunschliste)</a></div>

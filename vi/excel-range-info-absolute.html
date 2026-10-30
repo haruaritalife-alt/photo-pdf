@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Chuyển một vùng thành tham chiếu tuyệt đối</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Nhập khoảng</li><li>Xem dạng</li><li>Sao chép</li></ul></div>
-<p><a href="/vi/excel-range-info.html">Kích thước vùng Excel</a> còn hiển thị vùng dưới dạng tham chiếu tuyệt đối có dấu đô la.</p>
+<p lang="en">Copying a formula shifted the range and broke the result. For that, make the range an "absolute reference". The "Absolute" field in <a href="/vi/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a> shows the converted form.</p>
+<h2 lang="en">What an absolute reference is</h2>
+<p lang="en">A reference with "$" before the column and row so it doesn't move when copied.</p>
+<ul>
+<li lang="en">Relative: A1:C10 (shifts when copied)</li>
+<li lang="en">Absolute: $A$1:$C$10 (fixed when copied)</li>
+</ul>
 <h2>Các bước</h2>
 <ol>
-<li>Nhập khoảng</li>
-<li>Xem dạng</li>
-<li>Sao chép</li>
+<li lang="en">Enter a range in "Cell range".</li>
+<li lang="en">Check the form shown in "Absolute".</li>
+<li lang="en">Press "Copy absolute reference" and paste into a formula.</li>
 </ol>
-<div class="note">Bạn có thể dùng trực tiếp làm vùng trong VLOOKUP và các hàm tương tự.</div>
+<div class="note" lang="en">When "Copied" appears, copying is done.</div>
+<h2 lang="en">Where it's used</h2>
+<ul>
+<li lang="en">Fixing VLOOKUP's lookup range</li>
+<li lang="en">Fixing SUMIF or COUNTIF ranges</li>
+<li lang="en">Keeping the range still when copying down</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">Copying =VLOOKUP(A2,B1:C100,2,0) down shifted the range and gave #N/A. Changing the range to $B$1:$C$100 made every row work.</p>
+<h2 lang="en">Toggling in Excel</h2>
+<p lang="en">Pressing F4 while editing a cell cycles relative and absolute.</p>
+<ul>
+<li lang="en">Once: $A$1 (row and column fixed)</li>
+<li lang="en">Twice: A$1 (row only)</li>
+<li lang="en">Three times: $A1 (column only)</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Already has $</b>: entering returns the same form.</li>
+<li lang="en"><b>Mixed reference needed</b>: to fix only the row or column, add $ by hand.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I turn an absolute reference back to relative?</h3>
+<p lang="en">Remove the $ by hand.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">Fix ranges that mustn't move on copying with absolute references.</p>
 <a class="cta" href="/vi/excel-range-info.html">Dùng “Đếm ô, hàng và cột trong một vùng Excel” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/excel-column-letter.html">Chuyển đổi số và chữ cái cột Excel</a>: Chuyển đổi số và chữ cái cột Excel.</li><li><a href="/vi/excel-serial-date.html">Chuyển đổi giá trị số sê-ri và ngày Excel</a>: Chuyển đổi giá trị số sê-ri và ngày Excel.</li><li><a href="/vi/table-paste-convert.html">Bảng Excel sang Markdown, HTML, CSV và JSON</a>: Chuyển bảng được dán sang Markdown, HTML, CSV hoặc JSON.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

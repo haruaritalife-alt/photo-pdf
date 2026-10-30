@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Cuando BUSCARV no coincide</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
 <div class="points"><b>Puntos clave</b><ul><li>Pega el texto</li><li>Límpialo</li><li>Inténtalo de nuevo</li></ul></div>
-<p>Quitar los caracteres invisibles y los espacios de más con <a href="/es/excel-text-clean.html">Limpiador de texto de Excel</a> puede hacer que los valores coincidan.</p>
+<p lang="en">VLOOKUP returns "#N/A" even though the lookup value surely exists. Suspect extra spaces. Clean both the lookup value and the table side with <a href="/es/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>.</p>
+<h2 lang="en">Why they don't match</h2>
+<p lang="en">VLOOKUP compares text exactly. These differences make it judge them different:</p>
+<ul>
+<li lang="en">A trailing half-width space</li>
+<li lang="en">Full-width spaces</li>
+<li lang="en">Non-breaking spaces (common in text copied from the web)</li>
+<li lang="en">Invisible control characters</li>
+</ul>
 <h2>Pasos</h2>
 <ol>
-<li>Pega el texto</li>
-<li>Límpialo</li>
-<li>Inténtalo de nuevo</li>
+<li lang="en">Copy the text of the lookup column (or the table's first column) and paste.</li>
+<li lang="en">Tick "Reduce extra spaces", "Convert full-width spaces to half-width" and "Remove invisible characters".</li>
+<li lang="en">Copy the "Cleaned text" and paste back into Excel.</li>
+<li lang="en">Redo the VLOOKUP.</li>
 </ol>
-<div class="note">Prueba también la opción que convierte los espacios de ancho completo en espacios normales.</div>
+<div class="note" lang="en">If the character count shrinks, there was an invisible difference.</div>
+<h2>Cómo comprobarlo</h2>
+<p lang="en">In Excel, =LEN(cell) gives the character count. A cell whose count doesn't match what you see is suspect.</p>
+<h2>Adecuado para</h2>
+<ul>
+<li lang="en">VLOOKUP, XLOOKUP or MATCH not matching</li>
+<li lang="en">COUNTIF or SUMIF results off</li>
+<li lang="en">Remove Duplicates not working</li>
+</ul>
+<h2>Ejemplo</h2>
+<p lang="en">A product code lookup gave "#N/A". After cleaning, the count dropped from 7 to 6, revealing an invisible trailing character, and the lookup worked.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Cleaning only the table side</b>: the lookup side may have the same problem. Clean both.</li>
+<li lang="en"><b>Full-width vs half-width alphanumerics</b>: other than spaces, make those half-width with a different tool.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can a function fix it?</h3>
+<p lang="en">TRIM and CLEAN fix some, but non-breaking spaces remain. You'd need SUBSTITUTE.</p>
+<h2>Resumen</h2>
+<p lang="en">When things don't match, suspect invisible differences and re-search after cleaning.</p>
 <a class="cta" href="/es/excel-text-clean.html">Usar «Quitar espacios de más y caracteres invisibles del texto de Excel» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/zenkaku-hankaku.html">Convertir entre ancho completo, medio ancho, hiragana y katakana</a>: Convierte entre ancho completo y medio ancho, y entre hiragana y katakana.</li><li><a href="/es/line-break-remover.html">Quitar y ordenar los saltos de línea de un texto</a>: Ordena los saltos de línea del texto copiado de PDF y otras fuentes.</li><li><a href="/es/line-sort-dedupe.html">Quitar líneas duplicadas y ordenar una lista</a>: Quita las líneas duplicadas y ordénalas.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

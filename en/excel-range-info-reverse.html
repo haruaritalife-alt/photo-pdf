@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>A Reversed Range</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the range</li><li>See the result</li><li>Check it</li></ul></div>
-<p>In <a href="/en/excel-range-info.html">Excel Range Size</a>, a reversed range such as B3:A1 is read as a valid range.</p>
+<p>A range is normally written "top-left:bottom-right". But sometimes it's reversed, like "C10:A1". <a href="/en/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a> counts correctly even when reversed.</p>
+<h2>What happens</h2>
+<p>Excel too puts reversed ranges into proper order.</p>
+<ul>
+<li>C10:A1 → the same range as A1:C10</li>
+<li>Result: 30 cells, 3 columns, 10 rows</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the range</li>
-<li>See the result</li>
-<li>Check it</li>
+<li>Enter a reversed range (C10:A1) in "Cell range".</li>
+<li>Check "Cells", "Columns" and "Rows".</li>
+<li>See that "Absolute" is in proper order ($A$1:$C$10).</li>
 </ol>
-<div class="note">The result is normalized from top-left to bottom-right.</div>
+<div class="note">The absolute reference is shown arranged from top-left to bottom-right.</div>
+<h2>Partly reversed</h2>
+<ul>
+<li>A10:C1: columns in order, rows reversed. The range is A1:C10</li>
+<li>C1:A10: columns reversed, rows in order. The range is A1:C10</li>
+</ul>
+<p>In every case it is the same range.</p>
+<h2>Good for</h2>
+<ul>
+<li>Tidying ranges reversed by drag direction</li>
+<li>Checking ranges output by macros</li>
+<li>Getting an absolute reference in proper order</li>
+</ul>
+<h2>Example</h2>
+<p>Dragging from bottom-right to top-left put "C10:A1" in a formula. Entering it in the tool gave $A$1:$C$10 in proper order.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Cells outside the range aren't included</b>: only the corners are the basis.</li>
+<li><b>Ranges with sheet names</b>: for "Sheet1!A1:C10", enter without the sheet name.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does the formula result differ?</h3>
+<p>No. It is calculated as the same range.</p>
+<h2>Summary</h2>
+<p>Even a reversed range is counted correctly.</p>
 <a class="cta" href="/en/excel-range-info.html">Use "Count Cells, Rows and Columns in an Excel Range" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/en/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/en/table-paste-convert.html">Excel Table to Markdown, HTML, CSV and JSON</a>: Convert a pasted table to Markdown, HTML, CSV or JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Что такое невидимые пробелы</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Вставьте текст</li><li>Выберите пункт</li><li>Проверьте числа</li></ul></div>
-<p><a href="/ru/excel-text-clean.html">Очистка текста Excel</a> убирает неразрывные пробелы, пробелы нулевой ширины и подобные символы.</p>
+<p lang="en">It looks like a space, but even TRIM won't remove it. It may be a non-breaking space (NBSP). "Remove invisible characters" in <a href="/ru/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a> can tidy it.</p>
+<h2 lang="en">What NBSP is</h2>
+<p lang="en">A special space used on web pages to prevent line breaks. Character code 160.</p>
+<ul>
+<li lang="en">Looks: the same as a normal space</li>
+<li lang="en">Actually: a different character from a normal space</li>
+<li lang="en">Where it occurs: text copied from web pages or PDFs</li>
+</ul>
+<h2 lang="en">Kinds of invisible characters</h2>
+<p lang="en">This tool turns these into spaces:</p>
+<ul>
+<li lang="en">Non-breaking spaces</li>
+<li lang="en">Spaces of various widths</li>
+<li lang="en">Zero-width spaces and the BOM (a file-start marker)</li>
+<li lang="en">Special line and paragraph separators</li>
+</ul>
+<p lang="en">Control characters other than line breaks are also deleted.</p>
 <h2>Шаги</h2>
 <ol>
-<li>Вставьте текст</li>
-<li>Выберите пункт</li>
-<li>Проверьте числа</li>
+<li>Вставьте текст.</li>
+<li lang="en">Tick "Remove invisible characters".</li>
+<li lang="en">Also tick "Reduce extra spaces" to collapse runs of spaces into one.</li>
+<li lang="en">Check the "Characters" display and "Cleaned text".</li>
 </ol>
-<div class="note">Разница между числами до и после показывает, сколько символов убрано.</div>
+<div class="note" lang="en">If the count shrinks, invisible characters were present.</div>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Spaces TRIM can't remove</li>
+<li lang="en">Aggregation off after copying a web table</li>
+<li lang="en">Character count higher than it looks</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">Copying a price table from the web scrambled sorting. After cleaning, the count dropped, revealing NBSPs.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Zero-width characters become spaces</b>: gaps may appear between words. Use the extra-space reduction together.</li>
+<li lang="en"><b>Replacement, not deletion</b>: NBSP is replaced with a space.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can Excel functions remove it?</h3>
+<p lang="en">SUBSTITUTE(cell, CHAR(160), " ") replaces it.</p>
+<h2>Итог</h2>
+<p lang="en">The spaces that won't go are invisible characters. Tidy them all at once.</p>
 <a class="cta" href="/ru/excel-text-clean.html">Использовать «Удаление лишних пробелов и невидимых символов из текста Excel» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/zenkaku-hankaku.html">Преобразование полноширинных, полуширинных символов, хираганы и катаканы</a>: Преобразуйте полноширинные/полуширинные символы и хирагану/катакану.</li><li><a href="/ru/line-break-remover.html">Убрать и привести в порядок переводы строк в тексте</a>: Приведите в порядок переводы строк в тексте, скопированном из PDF и других источников.</li><li><a href="/ru/line-sort-dedupe.html">Удалить повторяющиеся строки и отсортировать список</a>: Удалите повторяющиеся строки и отсортируйте их.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

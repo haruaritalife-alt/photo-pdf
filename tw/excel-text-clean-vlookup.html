@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>VLOOKUP 無法匹配時</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>貼上文字</li><li>清理</li><li>再試一次</li></ul></div>
-<p>用<a href="/tw/excel-text-clean.html">Excel文字清理</a>去掉看不見的字元和多餘的空格,有時就能讓數值匹配上。</p>
+<p lang="en">VLOOKUP returns "#N/A" even though the lookup value surely exists. Suspect extra spaces. Clean both the lookup value and the table side with <a href="/tw/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>.</p>
+<h2 lang="en">Why they don't match</h2>
+<p lang="en">VLOOKUP compares text exactly. These differences make it judge them different:</p>
+<ul>
+<li lang="en">A trailing half-width space</li>
+<li lang="en">Full-width spaces</li>
+<li lang="en">Non-breaking spaces (common in text copied from the web)</li>
+<li lang="en">Invisible control characters</li>
+</ul>
 <h2>步驟</h2>
 <ol>
-<li>貼上文字</li>
-<li>清理</li>
-<li>再試一次</li>
+<li lang="en">Copy the text of the lookup column (or the table's first column) and paste.</li>
+<li lang="en">Tick "Reduce extra spaces", "Convert full-width spaces to half-width" and "Remove invisible characters".</li>
+<li lang="en">Copy the "Cleaned text" and paste back into Excel.</li>
+<li lang="en">Redo the VLOOKUP.</li>
 </ol>
-<div class="note">也可以試試把全形空格換成普通空格的選項。</div>
+<div class="note" lang="en">If the character count shrinks, there was an invisible difference.</div>
+<h2>如何確認</h2>
+<p lang="en">In Excel, =LEN(cell) gives the character count. A cell whose count doesn't match what you see is suspect.</p>
+<h2>適合</h2>
+<ul>
+<li lang="en">VLOOKUP, XLOOKUP or MATCH not matching</li>
+<li lang="en">COUNTIF or SUMIF results off</li>
+<li lang="en">Remove Duplicates not working</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">A product code lookup gave "#N/A". After cleaning, the count dropped from 7 to 6, revealing an invisible trailing character, and the lookup worked.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Cleaning only the table side</b>: the lookup side may have the same problem. Clean both.</li>
+<li lang="en"><b>Full-width vs half-width alphanumerics</b>: other than spaces, make those half-width with a different tool.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can a function fix it?</h3>
+<p lang="en">TRIM and CLEAN fix some, but non-breaking spaces remain. You'd need SUBSTITUTE.</p>
+<h2>小結</h2>
+<p lang="en">When things don't match, suspect invisible differences and re-search after cleaning.</p>
 <a class="cta" href="/tw/excel-text-clean.html">使用「去掉 Excel 文字中多餘的空格和看不見的字元」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/zenkaku-hankaku.html">全形、半形、平假名、片假名互相轉換</a>：全形與半形、平假名與片假名互相轉換。</li><li><a href="/tw/line-break-remover.html">刪除和整理文字中的換行</a>：整理從 PDF 等處複製的文字中的換行。</li><li><a href="/tw/line-sort-dedupe.html">刪除重複行並排序</a>：刪除重複的行並排序。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

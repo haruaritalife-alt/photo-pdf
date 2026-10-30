@@ -200,14 +200,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/excel-text-clean.html">Excel文字の整形</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>整えたはずなのに、Excelで一致しない。<a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a> で起こりやすい困りごとと対処法をまとめます。</p>
+<h2>よくある困りごと</h2>
+<ul>
+<li><b>結果が変わらない</b>：チェックが入っていない、または文字に問題がない。</li>
+<li><b>まだ一致しない</b>：ほかの原因（全角と半角の英数字、大文字と小文字）がある。</li>
+<li><b>文字数が減らない</b>：見えない違いは、別の原因。</li>
+<li><b>改行が消えてしまった</b>：「改行を取り除く」にチェックが入っている。</li>
+<li><b>貼り戻すと元に戻る</b>：Excelのセルの書式や、自動変換の影響。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>4つの項目のうち、必要なものにチェックが入っているか確かめる。</li>
+<li>「文字数」の表示で、減ったか確かめる。</li>
+<li>Excelで =LEN(セル) と文字を見比べる。</li>
 </ol>
-<div class="note">変化が見えないときは、整える項目にチェックが入っているか、貼った文字に対象の文字が含まれているか確かめます。</div>
+<div class="note">全項目にチェックを入れて試すと、原因の切り分けになります。</div>
+<h2>空白以外の原因</h2>
+<ul>
+<li>全角と半角の英数字：「ＡＢＣ」と「ABC」は別の文字</li>
+<li>大文字と小文字：VLOOKUPは区別しない（完全一致の比較では注意）</li>
+<li>数字と文字列：「123」と文字列の「123」は別物</li>
+<li>ひらがなとカタカナ</li>
+</ul>
+<h2>貼り戻しの注意</h2>
+<ul>
+<li>貼り付け先のセルの書式が「標準」か確かめる</li>
+<li>「値として貼り付け」を使う</li>
+</ul>
+<h2>例</h2>
+<p>整えたあとも、一致しなかった。調べると、片方が「ＡＢＣ１２３」と全角だった。全角英数字を半角にして、一致した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>先頭のゼロが消える</b>：数字として貼ると、0が消える。文字列で貼る。</li>
+<li><b>大量のデータ</b>：ブラウザが重くなる場合は、分けて貼り付ける。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>一部の行だけ直りません。</h3>
+<p>その行に、別種の文字が入っている可能性があります。その行だけを取り出して、確認します。</p>
+<h2>まとめ</h2>
+<p>項目・文字数・ほかの原因。この3つを順に確かめましょう。</p>
 <a class="cta" href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/zenkaku-hankaku.html">全角・半角、ひらがな・カタカナを変換する</a>：全角・半角、ひらがな・カタカナを変換します。</li><li><a href="/line-break-remover.html">文章の改行を消す・整える</a>：PDFなどからコピーした文章の改行を整えます。</li><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +251,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/excel-text-clean.html">Excel Text Cleaner</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You cleaned it but Excel still doesn't match. Here are common troubles with <a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a> and fixes.</p>
+<h2>Common troubles</h2>
+<ul>
+<li><b>Result unchanged</b>: no items are ticked, or the text has no problem.</li>
+<li><b>Still not matching</b>: another cause (full-width vs half-width alphanumerics, upper vs lower case).</li>
+<li><b>Character count doesn't shrink</b>: the invisible difference is something else.</li>
+<li><b>Line breaks vanished</b>: "Remove line breaks" is ticked.</li>
+<li><b>Reverts on pasting back</b>: Excel cell formatting or auto-conversion.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the needed items among the four are ticked.</li>
+<li>Check with the "Characters" display whether it shrank.</li>
+<li>Compare =LEN(cell) in Excel with what you see.</li>
 </ol>
-<div class="note">If nothing seems to change, check that the items are ticked and the pasted text contains such characters.</div>
+<div class="note">Trying with all items ticked helps isolate the cause.</div>
+<h2>Causes other than blanks</h2>
+<ul>
+<li>Full-width vs half-width alphanumerics: "ＡＢＣ" and "ABC" differ</li>
+<li>Upper vs lower case: VLOOKUP doesn't distinguish (mind exact-match comparisons)</li>
+<li>Number vs text: "123" and text "123" differ</li>
+<li>Hiragana vs katakana</li>
+</ul>
+<h2>Notes on pasting back</h2>
+<ul>
+<li>Check the destination cells' format is "General"</li>
+<li>Use "Paste values"</li>
+</ul>
+<h2>Example</h2>
+<p>After cleaning, it still didn't match. One side was full-width "ＡＢＣ１２３". Making them half-width matched.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Leading zeros vanish</b>: pasting as numbers drops 0s. Paste as text.</li>
+<li><b>Large data</b>: if the browser gets heavy, paste in parts.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Only some rows won't fix.</h3>
+<p>Those rows may contain a different kind of character. Pull out just those rows to check.</p>
+<h2>Summary</h2>
+<p>Items, character count, other causes. Check these three in order.</p>
 <a class="cta" href="/excel-text-clean.html">Use "Remove Extra Spaces and Invisible Characters from Excel Text" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/zenkaku-hankaku.html">Convert Full-Width, Half-Width, Hiragana and Katakana</a>: Convert full-width/half-width and hiragana/katakana.</li><li><a href="/line-break-remover.html">Remove and Tidy Line Breaks in Text</a>: Tidy line breaks in text copied from PDFs and elsewhere.</li><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

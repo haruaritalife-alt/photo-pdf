@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>The Row and Column Limits</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the range</li><li>See the result</li><li>Check it</li></ul></div>
-<p><a href="/en/excel-range-info.html">Excel Range Size</a> handles up to 1048576 rows and 16384 columns (XFD).</p>
+<p>Excel ranges have row and column limits. <a href="/en/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a> returns an error if you enter a range beyond them.</p>
+<h2>Limits</h2>
+<ul>
+<li>Columns: 16,384 (A–XFD)</li>
+<li>Rows: 1,048,576</li>
+<li>Largest range: A1:XFD1048576 (about 17.2 billion cells)</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the range</li>
-<li>See the result</li>
-<li>Check it</li>
+<li>Enter a large range in "Cell range".</li>
+<li>Beyond the limit, "The range is not valid." is shown.</li>
+<li>Make the range smaller and enter again.</li>
 </ol>
-<div class="note">A range beyond that is shown as not valid.</div>
+<div class="note">Columns beyond "XFD" (like XFE) cause an error, as do rows beyond 1,048,576.</div>
+<h2>Examples of large ranges</h2>
+<ul>
+<li>A1:Z1000: 26,000 cells</li>
+<li>A1:XFD1: 16,384 cells (a whole row)</li>
+<li>A1:A1048576: 1,048,576 cells (a whole column)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Checking whether large data fits a sheet</li>
+<li>Knowing the size of a whole column or row</li>
+<li>Verifying the limit specs</li>
+</ul>
+<h2>Difference from the old format</h2>
+<p>The old format (.xls) allowed only 256 columns × 65,536 rows. The new (.xlsx) widened it greatly.</p>
+<h2>Example</h2>
+<p>CSV data had about a million rows. After confirming it was near the 1,048,576 limit, I decided to split it into sheets.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Too many cells makes it heavy</b>: the wider the range, the heavier calculation.</li>
+<li><b>Use only the needed range</b>: narrow to where data is rather than whole columns.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I specify whole rows or columns?</h3>
+<p>This tool takes only the A1:C10 form. For a whole row, enter something like A1:XFD1.</p>
+<h2>Summary</h2>
+<p>Knowing the range limits keeps you calm with large data.</p>
 <a class="cta" href="/en/excel-range-info.html">Use "Count Cells, Rows and Columns in an Excel Range" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/en/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/en/table-paste-convert.html">Excel Table to Markdown, HTML, CSV and JSON</a>: Convert a pasted table to Markdown, HTML, CSV or JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

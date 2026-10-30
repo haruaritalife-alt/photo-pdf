@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/excel-range-info.html">Excel Range Size</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>The range input isn't accepted. Here are common troubles with <a href="/en/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a> and fixes.</p>
+<h2>Common troubles</h2>
+<ul>
+<li><b>"The range is not valid." appears</b>: one of these is the cause.</li>
+<li>Missing colon (:)</li>
+<li>Full-width characters or symbols included</li>
+<li>A sheet name (Sheet1!) attached</li>
+<li>Columns of 4+ letters or beyond XFD</li>
+<li>Row 0 or beyond 1,048,576</li>
+<li><b>Result is blank</b>: the input is empty or an error.</li>
+<li><b>Numbers don't match</b>: an edge of the range is entered off by one.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Make the range half-width "A1:C10".</li>
+<li>Remove any sheet name.</li>
+<li>Check columns are A–XFD and rows 1–1,048,576.</li>
 </ol>
-<div class="note">If no result appears, check that the start and end are joined by a colon, as in A1:C10.</div>
+<div class="note">Lower case (a1:c10) and $ forms ($A$1:$C$10) can be entered as is.</div>
+<h2>Input examples</h2>
+<ul>
+<li>Correct: A1:C10, $A$1:$C$10, a1:c10</li>
+<li>Incorrect: A1, A1-C10, A:C, Sheet1!A1:C10, Ａ１:Ｃ１０</li>
+</ul>
+<h2>Checking counting mistakes</h2>
+<p>Edge cells are included in the count.</p>
+<ul>
+<li>A1:A10: 10 rows (not 9)</li>
+<li>B2:D4: 3 columns × 3 rows = 9 cells</li>
+</ul>
+<h2>Uses it suits</h2>
+<ul>
+<li>Checking formula ranges</li>
+<li>Recounting item numbers</li>
+</ul>
+<h2>Example</h2>
+<p>"A1:C10 " had a trailing full-width space and errored. Removing it counted correctly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The "A:A" form</b>: enter it with row numbers.</li>
+<li><b>Named ranges</b>: enter the actual cell range, not the name.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I count several ranges at once?</h3>
+<p>No. Enter them one by one.</p>
+<h2>Summary</h2>
+<p>Half-width, colon, no sheet name. Check these three and it's usually solved.</p>
 <a class="cta" href="/en/excel-range-info.html">Use "Count Cells, Rows and Columns in an Excel Range" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/en/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/en/table-paste-convert.html">Excel Table to Markdown, HTML, CSV and JSON</a>: Convert a pasted table to Markdown, HTML, CSV or JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

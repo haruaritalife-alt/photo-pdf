@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ต้องทำอย่างไรเมื่อใช้งานไม่ได้</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ตรวจสอบไฟล์</li><li>ตรวจสอบขนาด</li><li>ลองใช้อุปกรณ์อื่น</li></ul></div>
-<p>หาก <a href="/th/text-to-columns.html">แยกข้อความเป็นคอลัมน์</a> ไม่ทำงาน ให้ตรวจสอบสิ่งต่อไปนี้</p>
-<h2>ขั้นตอน</h2>
+<p lang="en">Text doesn't split as expected. Here are common troubles with <a href="/th/text-to-columns.html">Split Text into Columns by a Delimiter</a> and fixes.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Please enter a delimiter." appears</b>: the delimiter field is empty.</li>
+<li lang="en"><b>Stays one column</b>: the delimiter isn't in the data, or is a different character (like a full-width comma).</li>
+<li lang="en"><b>Splits too much</b>: the same character as the delimiter appears in the data, like "1,000" amounts.</li>
+<li lang="en"><b>Empty columns appear</b>: delimiters repeat. Try "Treat consecutive delimiters as one".</li>
+<li lang="en"><b>Columns shift</b>: item counts differ per row.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>ตรวจสอบไฟล์</li>
-<li>ตรวจสอบขนาด</li>
-<li>ลองใช้อุปกรณ์อื่น</li>
+<li lang="en">Check the delimiter matches the character in the data.</li>
+<li lang="en">Compare full-width and half-width.</li>
+<li lang="en">Toggle "Treat consecutive delimiters as one" and compare.</li>
+<li lang="en">Check with "Rows × columns" that the size is as expected.</li>
 </ol>
-<div class="note">หากไม่มีผลลัพธ์ปรากฏ ให้ตรวจสอบว่าป้อนตัวคั่นแล้วและข้อความที่วางมีตัวคั่นนั้น</div>
+<div class="note" lang="en">Tabs and spaces look similar but are different characters.</div>
+<h2 lang="en">Delimiter candidates</h2>
+<ul>
+<li lang="en">Comma (,), full-width comma (，), Japanese comma (、)</li>
+<li lang="en">Semicolon (;)</li>
+<li>แท็บ</li>
+<li lang="en">Space, full-width space</li>
+<li lang="en">Vertical bar (|), slash (/)</li>
+</ul>
+<h2 lang="en">Input examples</h2>
+<ul>
+<li lang="en">Correct: delimiter "," for "A,B,C"</li>
+<li lang="en">Mismatch: delimiter "," for "A、B、C" (Japanese commas)</li>
+</ul>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Checks before splitting</li>
+<li lang="en">Finding the cause of shifts</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Entered a comma but it stayed one column. The data's commas were full-width "，". Changing the delimiter to full-width split it correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Cells containing line breaks</b>: processed line by line, so breaks make separate rows.</li>
+<li lang="en"><b>Leading zeros</b>: set the format to "Text" when pasting into Excel.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can commas inside quotes be ignored?</h3>
+<p lang="en">No. Quotes aren't considered. Use Excel's CSV import if needed.</p>
+<h2>สรุป</h2>
+<p lang="en">Delimiter character, full-width vs half-width, consecutive setting. Check these three and it's usually solved.</p>
 <a class="cta" href="/th/text-to-columns.html">ใช้ “แยกข้อความเป็นคอลัมน์ด้วยตัวคั่น” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/table-paste-convert.html">ตาราง Excel เป็น Markdown, HTML, CSV และ JSON</a>: แปลงตารางที่วางเป็น Markdown, HTML, CSV หรือ JSON</li><li><a href="/th/excel-text-clean.html">ลบช่องว่างส่วนเกินและอักขระที่มองไม่เห็นออกจากข้อความ Excel</a>: ลบช่องว่างส่วนเกินและอักขระที่มองไม่เห็น</li><li><a href="/th/csv-tools.html">รวม แยก และเลือกคอลัมน์จาก CSV</a>: รวมไฟล์ CSV แยกตามแถว หรือเก็บเฉพาะคอลัมน์ที่เลือก</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

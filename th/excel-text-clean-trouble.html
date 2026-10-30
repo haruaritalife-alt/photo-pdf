@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ต้องทำอย่างไรเมื่อใช้งานไม่ได้</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ตรวจสอบไฟล์</li><li>ตรวจสอบขนาด</li><li>ลองใช้อุปกรณ์อื่น</li></ul></div>
-<p>หาก <a href="/th/excel-text-clean.html">ล้างข้อความ Excel</a> ใช้งานไม่ได้ ให้ตรวจสอบสิ่งต่อไปนี้</p>
-<h2>ขั้นตอน</h2>
+<p lang="en">You cleaned it but Excel still doesn't match. Here are common troubles with <a href="/th/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a> and fixes.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>Result unchanged</b>: no items are ticked, or the text has no problem.</li>
+<li lang="en"><b>Still not matching</b>: another cause (full-width vs half-width alphanumerics, upper vs lower case).</li>
+<li lang="en"><b>Character count doesn't shrink</b>: the invisible difference is something else.</li>
+<li lang="en"><b>Line breaks vanished</b>: "Remove line breaks" is ticked.</li>
+<li lang="en"><b>Reverts on pasting back</b>: Excel cell formatting or auto-conversion.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>ตรวจสอบไฟล์</li>
-<li>ตรวจสอบขนาด</li>
-<li>ลองใช้อุปกรณ์อื่น</li>
+<li lang="en">Check the needed items among the four are ticked.</li>
+<li lang="en">Check with the "Characters" display whether it shrank.</li>
+<li lang="en">Compare =LEN(cell) in Excel with what you see.</li>
 </ol>
-<div class="note">หากดูเหมือนไม่มีอะไรเปลี่ยน ให้ตรวจสอบว่าติ๊กตัวเลือกแล้ว และข้อความที่วางมีอักขระเหล่านั้นอยู่</div>
+<div class="note" lang="en">Trying with all items ticked helps isolate the cause.</div>
+<h2 lang="en">Causes other than blanks</h2>
+<ul>
+<li lang="en">Full-width vs half-width alphanumerics: "ＡＢＣ" and "ABC" differ</li>
+<li lang="en">Upper vs lower case: VLOOKUP doesn't distinguish (mind exact-match comparisons)</li>
+<li lang="en">Number vs text: "123" and text "123" differ</li>
+<li lang="en">Hiragana vs katakana</li>
+</ul>
+<h2 lang="en">Notes on pasting back</h2>
+<ul>
+<li lang="en">Check the destination cells' format is "General"</li>
+<li lang="en">Use "Paste values"</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">After cleaning, it still didn't match. One side was full-width "ＡＢＣ１２３". Making them half-width matched.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leading zeros vanish</b>: pasting as numbers drops 0s. Paste as text.</li>
+<li lang="en"><b>Large data</b>: if the browser gets heavy, paste in parts.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Only some rows won't fix.</h3>
+<p lang="en">Those rows may contain a different kind of character. Pull out just those rows to check.</p>
+<h2>สรุป</h2>
+<p lang="en">Items, character count, other causes. Check these three in order.</p>
 <a class="cta" href="/th/excel-text-clean.html">ใช้ “ลบช่องว่างส่วนเกินและอักขระที่มองไม่เห็นออกจากข้อความ Excel” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/zenkaku-hankaku.html">แปลงอักษรเต็มความกว้าง ครึ่งความกว้าง ฮิระงะนะ และคะตะกะนะ</a>: แปลงอักษรเต็มความกว้าง/ครึ่งความกว้าง และฮิระงะนะ/คะตะกะนะ</li><li><a href="/th/line-break-remover.html">ลบและจัดระเบียบการขึ้นบรรทัดใหม่ในข้อความ</a>: จัดระเบียบการขึ้นบรรทัดใหม่ในข้อความที่คัดลอกจาก PDF และที่อื่น ๆ</li><li><a href="/th/line-sort-dedupe.html">ลบบรรทัดซ้ำและเรียงลำดับรายการ</a>: ลบบรรทัดซ้ำและเรียงลำดับ</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

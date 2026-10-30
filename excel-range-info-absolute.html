@@ -200,14 +200,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>範囲を絶対参照にする</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>範囲を入れる</li><li>形を見る</li><li>コピーする</li></ul></div>
-<p><a href="/excel-range-info.html">Excel範囲の大きさ</a> は、範囲に$を付けた絶対参照の形も表示します。</p>
+<p>数式をコピーしたら、範囲がずれて結果がおかしくなった。そんなときは、範囲を「絶対参照」にします。<a href="/excel-range-info.html">Excelのセル範囲のセル数・行数・列数を調べる</a> の「絶対参照」の欄に、変換した形が表示されます。</p>
+<h2>絶対参照とは</h2>
+<p>列や行の前に「$」を付けて、コピーしても動かないようにした参照です。</p>
+<ul>
+<li>相対参照：A1:C10（コピーすると、ずれる）</li>
+<li>絶対参照：$A$1:$C$10（コピーしても、固定）</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>範囲を入れる</li>
-<li>形を見る</li>
-<li>コピーする</li>
+<li>「セルの範囲」に、範囲を入れる。</li>
+<li>「絶対参照」に出た形を確かめる。</li>
+<li>「絶対参照をコピー」を押して、数式に貼る。</li>
 </ol>
-<div class="note">VLOOKUPなどの範囲指定に、そのまま使えます。</div>
+<div class="note">「コピーしました」と表示されれば、コピー完了です。</div>
+<h2>使いどころ</h2>
+<ul>
+<li>VLOOKUPの検索範囲を固定する</li>
+<li>SUMIFやCOUNTIFの範囲を固定する</li>
+<li>下の行にコピーしても、範囲が動かないようにする</li>
+</ul>
+<h2>例</h2>
+<p>=VLOOKUP(A2,B1:C100,2,0) を下にコピーすると、範囲がずれて#N/Aになった。範囲を $B$1:$C$100 に変えると、すべての行で正しく動いた。</p>
+<h2>Excelでの切り替え</h2>
+<p>セルを編集中に F4 キーを押すと、相対と絶対が切り替わります。</p>
+<ul>
+<li>1回：$A$1（行も列も固定）</li>
+<li>2回：A$1（行だけ固定）</li>
+<li>3回：$A1（列だけ固定）</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>すでに$がある</b>：入れても、同じ形で返される。</li>
+<li><b>混合参照が必要</b>：行だけ、列だけ固定したい場合は、手で$を付ける。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>逆に、絶対参照を相対参照に戻せますか？</h3>
+<p>$を手で外します。</p>
+<h2>まとめ</h2>
+<p>コピーしても動かさない範囲は、絶対参照で固定しましょう。</p>
 <a class="cta" href="/excel-range-info.html">Excelのセル範囲のセル数・行数・列数を調べるを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-column-letter.html">Excel 列番号・列文字 変換</a>：Excelの列番号と列文字を変換します。</li><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li><li><a href="/table-paste-convert.html">Excelの表をMarkdown・HTML・CSV・JSONに変換</a>：貼り付けた表をMarkdown・HTML・CSV・JSONにします。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +250,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Turning a Range into an Absolute Reference</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the range</li><li>See the form</li><li>Copy it</li></ul></div>
-<p><a href="/excel-range-info.html">Excel Range Size</a> also shows the range as an absolute reference with dollar signs.</p>
+<p>Copying a formula shifted the range and broke the result. For that, make the range an "absolute reference". The "Absolute" field in <a href="/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a> shows the converted form.</p>
+<h2>What an absolute reference is</h2>
+<p>A reference with "$" before the column and row so it doesn't move when copied.</p>
+<ul>
+<li>Relative: A1:C10 (shifts when copied)</li>
+<li>Absolute: $A$1:$C$10 (fixed when copied)</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the range</li>
-<li>See the form</li>
-<li>Copy it</li>
+<li>Enter a range in "Cell range".</li>
+<li>Check the form shown in "Absolute".</li>
+<li>Press "Copy absolute reference" and paste into a formula.</li>
 </ol>
-<div class="note">You can use it directly as the range in VLOOKUP and the like.</div>
+<div class="note">When "Copied" appears, copying is done.</div>
+<h2>Where it's used</h2>
+<ul>
+<li>Fixing VLOOKUP's lookup range</li>
+<li>Fixing SUMIF or COUNTIF ranges</li>
+<li>Keeping the range still when copying down</li>
+</ul>
+<h2>Example</h2>
+<p>Copying =VLOOKUP(A2,B1:C100,2,0) down shifted the range and gave #N/A. Changing the range to $B$1:$C$100 made every row work.</p>
+<h2>Toggling in Excel</h2>
+<p>Pressing F4 while editing a cell cycles relative and absolute.</p>
+<ul>
+<li>Once: $A$1 (row and column fixed)</li>
+<li>Twice: A$1 (row only)</li>
+<li>Three times: $A1 (column only)</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Already has $</b>: entering returns the same form.</li>
+<li><b>Mixed reference needed</b>: to fix only the row or column, add $ by hand.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I turn an absolute reference back to relative?</h3>
+<p>Remove the $ by hand.</p>
+<h2>Summary</h2>
+<p>Fix ranges that mustn't move on copying with absolute references.</p>
 <a class="cta" href="/excel-range-info.html">Use "Count Cells, Rows and Columns in an Excel Range" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/table-paste-convert.html">Excel Table to Markdown, HTML, CSV and JSON</a>: Convert a pasted table to Markdown, HTML, CSV or JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>উল্টো লেখা রেঞ্জ</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>রেঞ্জ লিখুন</li><li>ফলাফল দেখুন</li><li>এটি যাচাই করুন</li></ul></div>
-<p><a href="/bn/excel-range-info.html">এক্সেল রেঞ্জের আকার</a>-এ B3:A1-এর মতো উল্টো রেঞ্জও বৈধ রেঞ্জ হিসেবে পড়া হয়।</p>
+<p lang="en">A range is normally written "top-left:bottom-right". But sometimes it's reversed, like "C10:A1". <a href="/bn/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a> counts correctly even when reversed.</p>
+<h2 lang="en">What happens</h2>
+<p lang="en">Excel too puts reversed ranges into proper order.</p>
+<ul>
+<li lang="en">C10:A1 → the same range as A1:C10</li>
+<li lang="en">Result: 30 cells, 3 columns, 10 rows</li>
+</ul>
 <h2>ধাপ</h2>
 <ol>
-<li>রেঞ্জ লিখুন</li>
-<li>ফলাফল দেখুন</li>
-<li>এটি যাচাই করুন</li>
+<li lang="en">Enter a reversed range (C10:A1) in "Cell range".</li>
+<li lang="en">Check "Cells", "Columns" and "Rows".</li>
+<li lang="en">See that "Absolute" is in proper order ($A$1:$C$10).</li>
 </ol>
-<div class="note">ফলাফল ওপরের-বাঁ থেকে নিচের-ডান দিকে সাজানো হয়।</div>
+<div class="note" lang="en">The absolute reference is shown arranged from top-left to bottom-right.</div>
+<h2 lang="en">Partly reversed</h2>
+<ul>
+<li lang="en">A10:C1: columns in order, rows reversed. The range is A1:C10</li>
+<li lang="en">C1:A10: columns reversed, rows in order. The range is A1:C10</li>
+</ul>
+<p lang="en">In every case it is the same range.</p>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Tidying ranges reversed by drag direction</li>
+<li lang="en">Checking ranges output by macros</li>
+<li lang="en">Getting an absolute reference in proper order</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">Dragging from bottom-right to top-left put "C10:A1" in a formula. Entering it in the tool gave $A$1:$C$10 in proper order.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Cells outside the range aren't included</b>: only the corners are the basis.</li>
+<li lang="en"><b>Ranges with sheet names</b>: for "Sheet1!A1:C10", enter without the sheet name.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does the formula result differ?</h3>
+<p lang="en">No. It is calculated as the same range.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">Even a reversed range is counted correctly.</p>
 <a class="cta" href="/bn/excel-range-info.html">“এক্সেল রেঞ্জের সেল, সারি ও কলাম গোনা” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/excel-column-letter.html">Excel কলাম নম্বর ও অক্ষর কনভার্টার</a>: Excel-এর কলাম নম্বর ও অক্ষর রূপান্তর করুন।</li><li><a href="/bn/excel-serial-date.html">Excel সিরিয়াল মান ও তারিখ কনভার্টার</a>: Excel-এর সিরিয়াল মান ও তারিখ রূপান্তর করুন।</li><li><a href="/bn/table-paste-convert.html">Excel টেবিল থেকে Markdown, HTML, CSV ও JSON</a>: পেস্ট করা টেবিলকে Markdown, HTML, CSV বা JSON-এ রূপান্তর করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

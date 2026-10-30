@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/excel-text-clean.html">엑셀 텍스트 정리</a>가 동작하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">You cleaned it but Excel still doesn't match. Here are common troubles with <a href="/ko/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a> and fixes.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>Result unchanged</b>: no items are ticked, or the text has no problem.</li>
+<li lang="en"><b>Still not matching</b>: another cause (full-width vs half-width alphanumerics, upper vs lower case).</li>
+<li lang="en"><b>Character count doesn't shrink</b>: the invisible difference is something else.</li>
+<li lang="en"><b>Line breaks vanished</b>: "Remove line breaks" is ticked.</li>
+<li lang="en"><b>Reverts on pasting back</b>: Excel cell formatting or auto-conversion.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Check the needed items among the four are ticked.</li>
+<li lang="en">Check with the "Characters" display whether it shrank.</li>
+<li lang="en">Compare =LEN(cell) in Excel with what you see.</li>
 </ol>
-<div class="note">변화가 보이지 않으면 항목에 체크가 되어 있는지, 붙여 넣은 글에 해당 문자가 있는지 확인하세요.</div>
+<div class="note" lang="en">Trying with all items ticked helps isolate the cause.</div>
+<h2 lang="en">Causes other than blanks</h2>
+<ul>
+<li lang="en">Full-width vs half-width alphanumerics: "ＡＢＣ" and "ABC" differ</li>
+<li lang="en">Upper vs lower case: VLOOKUP doesn't distinguish (mind exact-match comparisons)</li>
+<li lang="en">Number vs text: "123" and text "123" differ</li>
+<li lang="en">Hiragana vs katakana</li>
+</ul>
+<h2 lang="en">Notes on pasting back</h2>
+<ul>
+<li lang="en">Check the destination cells' format is "General"</li>
+<li lang="en">Use "Paste values"</li>
+</ul>
+<h2>예</h2>
+<p lang="en">After cleaning, it still didn't match. One side was full-width "ＡＢＣ１２３". Making them half-width matched.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leading zeros vanish</b>: pasting as numbers drops 0s. Paste as text.</li>
+<li lang="en"><b>Large data</b>: if the browser gets heavy, paste in parts.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Only some rows won't fix.</h3>
+<p lang="en">Those rows may contain a different kind of character. Pull out just those rows to check.</p>
+<h2>요약</h2>
+<p lang="en">Items, character count, other causes. Check these three in order.</p>
 <a class="cta" href="/ko/excel-text-clean.html">“엑셀 글의 불필요한 공백과 보이지 않는 문자 없애기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/zenkaku-hankaku.html">전각·반각·히라가나·가타카나 변환</a>: 전각/반각 및 히라가나/가타카나를 변환합니다.</li><li><a href="/ko/line-break-remover.html">텍스트의 줄바꿈 제거 및 정리</a>: PDF 등에서 복사한 텍스트의 줄바꿈을 정리합니다.</li><li><a href="/ko/line-sort-dedupe.html">중복된 줄 제거 및 목록 정렬</a>: 중복된 줄을 제거하고 정렬합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>
