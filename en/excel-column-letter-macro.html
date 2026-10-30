@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Using Column Numbers in Macros and Formulas</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Pick the column</li><li>Find its number</li><li>Use it in code</li></ul></div>
-<p>A column number found with <a href="/en/excel-column-letter.html">Excel Column Converter</a> can be used directly in macros or formulas.</p>
+<p>When handling columns in macros (VBA) and functions, you sometimes need to convert between number and letters. Sort out how to use them, converting with <a href="/en/excel-column-letter.html">Excel Column Number and Letter Converter</a>.</p>
+<h2>Specifying columns in VBA</h2>
+<p>VBA lets you specify columns by number or by letters.</p>
+<ul>
+<li>Cells(row, column): specify the column by number. Example: Cells(5, 3) is C5</li>
+<li>Range("C5"): specify the cell by letters.</li>
+<li>Columns(3) and Columns("C"): both are column C</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Pick the column</li>
-<li>Find its number</li>
-<li>Use it in code</li>
+<li>Enter a number in "Column number" and check the "Column letters".</li>
+<li>Conversely, enter letters and check the number.</li>
+<li>Reflect it in the code.</li>
 </ol>
-<div class="note">Using a number for the column makes later edits easier.</div>
+<div class="note">"Cells(row, column)" is "row first, column second". The order is easy to mix up, so take care.</div>
+<h2>Moving columns by calculation</h2>
+<p>With numeric column numbers, you can move by addition.</p>
+<ul>
+<li>"Two to the right of the current column" → column number + 2</li>
+<li>With letters (C) as is, finding "E" by calculation is a hassle</li>
+</ul>
+<p>When you want to move columns inside a program, handling them as numbers is the basis.</p>
+<h2>Use in worksheet functions</h2>
+<p>Worksheet functions also use column numbers.</p>
+<ul>
+<li>COLUMN(C1): returns 3</li>
+<li>ADDRESS(5, 3): returns "$C$5"</li>
+<li>INDEX(range, row, column): specifies the column by number</li>
+<li>VLOOKUP's "column index": which column's value to return</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Wanting to loop over columns by number in a macro</li>
+<li>Wanting to check VLOOKUP's "column index"</li>
+<li>Converting column letters to numbers for a program</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to process columns A to Z in order in VBA. Looping over 1 to 26 and using Cells(row, column) made it simple.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>VLOOKUP's column index</b>: the number counted from the left edge of the range, not column C of the whole sheet.</li>
+<li><b>Inserting a column changes numbers</b>: fixed numbers written in code get misaligned.</li>
+<li><b>Order of row and column</b>: don't reverse it as Cells(column, row).</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can a column letter be turned into a number by formula?</h3>
+<p>Yes, like COLUMN(INDIRECT("C1")).</p>
+<h2>Summary</h2>
+<p>Numbers for macros, letters for display. Use this tool to go between them.</p>
 <a class="cta" href="/en/excel-column-letter.html">Use "Excel Column Number and Letter Converter" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/xlsx-to-csv.html">Convert Excel to CSV or JSON</a>: Convert an Excel sheet to CSV, TSV or JSON.</li><li><a href="/en/csv-to-xlsx.html">Convert CSV to Excel (.xlsx)</a>: Convert a CSV to an Excel (.xlsx) file.</li><li><a href="/en/csv-tools.html">Merge, Split and Pick Columns from CSV</a>: Merge CSV files, split by rows, or keep only chosen columns.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

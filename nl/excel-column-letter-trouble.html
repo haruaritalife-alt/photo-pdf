@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Wat te doen als het niet werkt</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Controleer het bestand</li><li>Controleer de grootte</li><li>Probeer een ander apparaat</li></ul></div>
-<p>Als <a href="/nl/excel-column-letter.html">Excel-kolomomzetter</a> niet werkt, controleer dan het volgende.</p>
-<h2>Stappen</h2>
+<p lang="en">Converting column numbers and letters isn't working. Here are troubles that commonly occur with <a href="/nl/excel-column-letter.html">Excel Column Number and Letter Converter</a> and how to handle them.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Please enter a number from 1 to 16384." appears</b>: the number is 0 or less, or 16385 or more. Also check for decimals or letters mixed in.</li>
+<li lang="en"><b>"Please enter letters from A to XFD." appears</b>: 4 or more letters, letters beyond XFD (like XFE), full-width characters or symbols are included.</li>
+<li lang="en"><b>"The cell reference is not valid." appears</b>: the cell reference form is wrong. Follow the column letters with the row number (e.g. C5).</li>
+<li lang="en"><b>The result is blank</b>: the input is empty or an error.</li>
+<li lang="en"><b>A different column from expected</b>: a counting mistake (1-based, not 0-based).</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Controleer het bestand</li>
-<li>Controleer de grootte</li>
-<li>Probeer een ander apparaat</li>
+<li lang="en">Check the input field for full-width characters or extra characters.</li>
+<li lang="en">Check numbers are 1–16384 and letters A–XFD.</li>
+<li lang="en">Check a cell reference is "column letters + row number".</li>
+<li lang="en">Re-enter and check the result.</li>
 </ol>
-<div class="note">Verschijnt er geen resultaat, controleer dan of het nummer tussen 1 en 16384 ligt en of de letters A tot XFD in gewone breedte zijn.</div>
+<div class="note" lang="en">Enter digits in half-width and letters in the alphabet.</div>
+<h2 lang="en">Input examples</h2>
+<ul>
+<li lang="en">Correct: 28, AB, c5, $D$100</li>
+<li lang="en">Incorrect: 0, 16385, XFE, ５, "column C", C, 5C</li>
+</ul>
+<h2 lang="en">Note on zero-based counting</h2>
+<p lang="en">Excel columns start at 1 (A = 1). Some programming languages start at 0 (A = 0). Check the specification of the program you use.</p>
+<ul>
+<li lang="en">Excel, VBA, Google Apps Script: A = 1</li>
+<li lang="en">Python's openpyxl: A = 1</li>
+<li lang="en">Some libraries: A = 0</li>
+</ul>
+<h2 lang="en">Row range</h2>
+<p lang="en">The row of a cell reference is 1 to 1,048,576. Rows beyond that can't be read.</p>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Checking the input form</li>
+</ul>
+<h2>Voorbeeld</h2>
+<p lang="en">Entering "XFE" gave an error because there is no column after XFD. Changing to "XFD" showed 16384.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Spaces included</b>: leading and trailing spaces are removed, but spaces in the middle aren't allowed.</li>
+<li lang="en"><b>Full-width "Ａ"</b>: use half-width "A".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can lower case be converted?</h3>
+<p lang="en">Yes. It is converted after making it upper case.</p>
+<h2>Samenvatting</h2>
+<p lang="en">Range, half-width and form. Check these three and most troubles are solved.</p>
 <a class="cta" href="/nl/excel-column-letter.html">Gebruik “Omzetter voor Excel-kolomnummer en -letter” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/xlsx-to-csv.html">Excel omzetten naar CSV of JSON</a>: Zet een Excel-werkblad om naar CSV, TSV of JSON.</li><li><a href="/nl/csv-to-xlsx.html">CSV omzetten naar Excel (.xlsx)</a>: Zet een CSV om naar een Excel-bestand (.xlsx).</li><li><a href="/nl/csv-tools.html">CSV samenvoegen, splitsen en kolommen kiezen</a>: Voeg CSV-bestanden samen, splits op rijen of houd alleen gekozen kolommen.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>

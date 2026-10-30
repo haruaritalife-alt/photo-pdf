@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/excel-serial-date.html">Excel Serial Date</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>The serial value conversion isn't working. Here are common troubles with <a href="/en/excel-serial-date.html">Excel Serial Number and Date Converter</a> and fixes.</p>
+<h2>Common troubles</h2>
+<ul>
+<li><b>"Please enter a number 0 or greater." appears</b>: a negative or text is included.</li>
+<li><b>"This date cannot be represented in this system." appears</b>: the date is outside what the chosen system handles. Switch systems.</li>
+<li><b>Dates are 4 years off</b>: 1900 and 1904 systems mixed up.</li>
+<li><b>A warning appears for 60</b>: a nonexistent date. By specification.</li>
+<li><b>Result is a day off</b>: the decimal (time) part, or the February 1900 specification.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the input is half-width digits.</li>
+<li>Switch "Date system" and compare.</li>
+<li>Check for decimals.</li>
 </ol>
-<div class="note">If no result appears, check that the serial value is 0 or more and the date can be shown in the chosen system.</div>
+<div class="note">If dates are 4 years off, suspect the system first.</div>
+<h2>Input examples</h2>
+<ul>
+<li>Correct: 45000, 45292.5</li>
+<li>Incorrect: -1, ４５０００, 2023/3/15 (date format goes in the date field)</li>
+</ul>
+<h2>Uses it suits</h2>
+<ul>
+<li>Pre-conversion checks</li>
+<li>Finding the cause of date shifts</li>
+</ul>
+<h2>Example</h2>
+<p>Full-width "４５０００" gave an error. Half-width showed March 15, 2023.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Comma separators</b>: avoid "45,000"; digits only.</li>
+<li><b>Mixing dates and numbers</b>: numbers in the upper field; dates entered as dates.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can time be converted too?</h3>
+<p>The decimal part is time, but this tool focuses on dates.</p>
+<h2>Summary</h2>
+<p>Half-width, range, system. Check these three and it's usually solved.</p>
 <a class="cta" href="/en/excel-serial-date.html">Use "Excel Serial Number and Date Converter" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/en/timestamp-converter.html">UNIX Timestamp Converter</a>: Convert between UNIX time and dates.</li><li><a href="/en/wareki-converter.html">Convert Between Western Years and Japanese Eras</a>: Convert between AD years and Japanese eras.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

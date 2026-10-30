@@ -201,14 +201,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Leer la columna y la fila de una celda</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
 <div class="points"><b>Puntos clave</b><ul><li>Introduce la referencia</li><li>Mira la columna</li><li>Mira la fila</li></ul></div>
-<p><a href="/es/excel-column-letter.html">Conversor de columnas de Excel</a> divide una referencia como C5 en su número de columna y de fila.</p>
+<p lang="en">The cell reference "C5" means "row 5 of column C". Macros sometimes handle columns as numbers, so "C5" must be converted to "column 3, row 5". The "Check a cell too" field in <a href="/es/excel-column-letter.html">Excel Column Number and Letter Converter</a> does that.</p>
 <h2>Pasos</h2>
 <ol>
-<li>Introduce la referencia</li>
-<li>Mira la columna</li>
-<li>Mira la fila</li>
+<li lang="en">Enter a cell reference in "Cell reference (such as C5)".</li>
+<li lang="en">A result like "Cell C5: Column 3, Row 5" is displayed.</li>
 </ol>
-<div class="note">También se leen las referencias absolutas con signos de dólar.</div>
+<div class="note" lang="en">Forms with "$" such as "$C$5" (absolute references) are also read.</div>
+<h2 lang="en">Reading the result</h2>
+<ul>
+<li lang="en"><b>Column</b>: the column number. C = 3.</li>
+<li lang="en"><b>Row</b>: the row number as is.</li>
+</ul>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">C5 → column 3, row 5</li>
+<li lang="en">AB12 → column 28, row 12</li>
+<li lang="en">$D$100 → column 4, row 100</li>
+<li lang="en">XFD1048576 → column 16384, row 1048576 (Excel's last cell)</li>
+</ul>
+<h2 lang="en">Usable range</h2>
+<ul>
+<li lang="en">Columns: A–XFD (1–16384)</li>
+<li lang="en">Rows: 1–1,048,576</li>
+</ul>
+<p lang="en">Out-of-range or malformed input shows "The cell reference is not valid."</p>
+<h2>Adecuado para</h2>
+<ul>
+<li lang="en">Specifying in the form Cells(row, column) in macros (VBA)</li>
+<li lang="en">When another program needs row and column numbers</li>
+<li lang="en">Wanting to know which column and row a range's edge is</li>
+</ul>
+<h2 lang="en">VBA example</h2>
+<p lang="en">In VBA, Cells(5, 3) means "row 5, column 3 (C5)". Note the order is "row, column".</p>
+<ul>
+<li lang="en">C5 → Cells(5, 3)</li>
+</ul>
+<h2 lang="en">When you want to check a range (C5:F20)</h2>
+<p lang="en">Enter the top-left and bottom-right cells separately.</p>
+<ul>
+<li lang="en">C5 → column 3, row 5 (top-left)</li>
+<li lang="en">F20 → column 6, row 20 (bottom-right)</li>
+</ul>
+<h2>Ejemplo</h2>
+<p lang="en">Wanted to specify the last column of range "B2:AB50" by number in a program. Entering "AB50" gave column 28, row 50, which went into the code.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entering a range such as "A1:B2"</b>: only single-cell references. For ranges, check the edge cells separately.</li>
+<li lang="en"><b>A sheet name attached</b>: leave out the sheet name part of "Sheet1!C5".</li>
+<li lang="en"><b>Full-width</b>: enter in half-width.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can lower case be read?</h3>
+<p lang="en">Yes. "c5" is read too.</p>
+<h2>Resumen</h2>
+<p lang="en">Enter a cell reference to see its column and row numbers. Useful for macros and programs.</p>
 <a class="cta" href="/es/excel-column-letter.html">Usar «Conversor de número y letra de columna de Excel» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/xlsx-to-csv.html">Convertir Excel a CSV o JSON</a>: Convierte una hoja de Excel a CSV, TSV o JSON.</li><li><a href="/es/csv-to-xlsx.html">Convertir CSV a Excel (.xlsx)</a>: Convierte un CSV en un archivo de Excel (.xlsx).</li><li><a href="/es/csv-tools.html">Unir, dividir y elegir columnas de CSV</a>: Une archivos CSV, divídelos por filas o conserva solo las columnas elegidas.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

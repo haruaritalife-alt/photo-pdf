@@ -201,14 +201,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>檢視日期是星期幾</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>輸入日期</li><li>檢視星期</li><li>核對一下</li></ul></div>
-<p><a href="/tw/excel-serial-date.html">Excel序列日期</a>在日期之外還會顯示星期。</p>
+<p lang="en">Once you know the date from a serial value, you can find the weekday. Here is how to get the date with <a href="/tw/excel-serial-date.html">Excel Serial Number and Date Converter</a> and work out the weekday.</p>
 <h2>步驟</h2>
 <ol>
-<li>輸入日期</li>
-<li>檢視星期</li>
-<li>核對一下</li>
+<li lang="en">Enter the serial value in "Enter a value or date".</li>
+<li lang="en">Check the weekday of the date shown in "Date" on a calendar.</li>
 </ol>
-<div class="note">序列值除以 7 的餘數也能得出星期。</div>
+<h2 lang="en">Calculating the weekday from a serial</h2>
+<p lang="en">The remainder after dividing by 7 decides the weekday (1900 system).</p>
+<ul>
+<li lang="en">Remainder 1: Sunday</li>
+<li lang="en">Remainder 2: Monday</li>
+<li lang="en">Remainder 3: Tuesday</li>
+<li lang="en">Remainder 4: Wednesday</li>
+<li lang="en">Remainder 5: Thursday</li>
+<li lang="en">Remainder 6: Friday</li>
+<li lang="en">Remainder 0: Saturday</li>
+</ul>
+<div class="note" lang="en">Before March 1, 1900, this may be off because of the 60 issue mentioned earlier.</div>
+<h2 lang="en">Finding it with Excel functions</h2>
+<ul>
+<li lang="en">WEEKDAY(serial): returns 1 (Sun) to 7 (Sat)</li>
+<li lang="en">TEXT(serial, "ddd"): returns a name such as "Mon"</li>
+</ul>
+<h2>適合</h2>
+<ul>
+<li lang="en">Knowing the weekday of a numeric date</li>
+<li lang="en">Calculating excluding weekends</li>
+<li lang="en">Sorting by weekday</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Wanted the weekday of serial 45292. 45292 divided by 7 leaves 2: Monday, matching January 1, 2024 being a Monday.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Remainder mapping</b>: differs by system (1900/1904).</li>
+<li lang="en"><b>WEEKDAY types</b>: the argument switches Sunday-start or Monday-start.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want to count only business days?</h3>
+<p lang="en">The NETWORKDAYS function works.</p>
+<h2>小結</h2>
+<p lang="en">Knowing the date gives the weekday. Even from the raw number, the remainder of 7 works it out.</p>
 <a class="cta" href="/tw/excel-serial-date.html">使用「Excel 序列值與日期轉換器」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/date-calculator.html">計算年齡、日期間隔天數和日期加減</a>：計算年齡和兩個日期之間的天數。</li><li><a href="/tw/timestamp-converter.html">UNIX 時間戳轉換器</a>: 在 UNIX 時間與日期之間互相轉換。</li><li><a href="/tw/wareki-converter.html">西曆與日本年號互相轉換</a>：西曆與日本年號互相轉換。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

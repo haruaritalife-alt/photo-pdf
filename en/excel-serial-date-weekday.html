@@ -201,14 +201,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Finding the Weekday of a Date</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter a date</li><li>See the weekday</li><li>Check it</li></ul></div>
-<p><a href="/en/excel-serial-date.html">Excel Serial Date</a> shows the weekday along with the date.</p>
+<p>Once you know the date from a serial value, you can find the weekday. Here is how to get the date with <a href="/en/excel-serial-date.html">Excel Serial Number and Date Converter</a> and work out the weekday.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter a date</li>
-<li>See the weekday</li>
-<li>Check it</li>
+<li>Enter the serial value in "Enter a value or date".</li>
+<li>Check the weekday of the date shown in "Date" on a calendar.</li>
 </ol>
-<div class="note">The remainder of the serial value divided by 7 also gives the weekday.</div>
+<h2>Calculating the weekday from a serial</h2>
+<p>The remainder after dividing by 7 decides the weekday (1900 system).</p>
+<ul>
+<li>Remainder 1: Sunday</li>
+<li>Remainder 2: Monday</li>
+<li>Remainder 3: Tuesday</li>
+<li>Remainder 4: Wednesday</li>
+<li>Remainder 5: Thursday</li>
+<li>Remainder 6: Friday</li>
+<li>Remainder 0: Saturday</li>
+</ul>
+<div class="note">Before March 1, 1900, this may be off because of the 60 issue mentioned earlier.</div>
+<h2>Finding it with Excel functions</h2>
+<ul>
+<li>WEEKDAY(serial): returns 1 (Sun) to 7 (Sat)</li>
+<li>TEXT(serial, "ddd"): returns a name such as "Mon"</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Knowing the weekday of a numeric date</li>
+<li>Calculating excluding weekends</li>
+<li>Sorting by weekday</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted the weekday of serial 45292. 45292 divided by 7 leaves 2: Monday, matching January 1, 2024 being a Monday.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Remainder mapping</b>: differs by system (1900/1904).</li>
+<li><b>WEEKDAY types</b>: the argument switches Sunday-start or Monday-start.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I want to count only business days?</h3>
+<p>The NETWORKDAYS function works.</p>
+<h2>Summary</h2>
+<p>Knowing the date gives the weekday. Even from the raw number, the remainder of 7 works it out.</p>
 <a class="cta" href="/en/excel-serial-date.html">Use "Excel Serial Number and Date Converter" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/en/timestamp-converter.html">UNIX Timestamp Converter</a>: Convert between UNIX time and dates.</li><li><a href="/en/wareki-converter.html">Convert Between Western Years and Japanese Eras</a>: Convert between AD years and Japanese eras.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

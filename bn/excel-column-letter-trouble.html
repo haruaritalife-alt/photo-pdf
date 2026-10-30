@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>কাজ না করলে কী করবেন</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>ফাইলটি যাচাই করুন</li><li>আকার যাচাই করুন</li><li>অন্য ডিভাইস চেষ্টা করুন</li></ul></div>
-<p><a href="/bn/excel-column-letter.html">Excel কলাম কনভার্টার</a> কাজ না করলে নিচের বিষয়গুলো দেখুন।</p>
-<h2>ধাপ</h2>
+<p lang="en">Converting column numbers and letters isn't working. Here are troubles that commonly occur with <a href="/bn/excel-column-letter.html">Excel Column Number and Letter Converter</a> and how to handle them.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Please enter a number from 1 to 16384." appears</b>: the number is 0 or less, or 16385 or more. Also check for decimals or letters mixed in.</li>
+<li lang="en"><b>"Please enter letters from A to XFD." appears</b>: 4 or more letters, letters beyond XFD (like XFE), full-width characters or symbols are included.</li>
+<li lang="en"><b>"The cell reference is not valid." appears</b>: the cell reference form is wrong. Follow the column letters with the row number (e.g. C5).</li>
+<li lang="en"><b>The result is blank</b>: the input is empty or an error.</li>
+<li lang="en"><b>A different column from expected</b>: a counting mistake (1-based, not 0-based).</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>ফাইলটি যাচাই করুন</li>
-<li>আকার যাচাই করুন</li>
-<li>অন্য ডিভাইস চেষ্টা করুন</li>
+<li lang="en">Check the input field for full-width characters or extra characters.</li>
+<li lang="en">Check numbers are 1–16384 and letters A–XFD.</li>
+<li lang="en">Check a cell reference is "column letters + row number".</li>
+<li lang="en">Re-enter and check the result.</li>
 </ol>
-<div class="note">ফল না এলে দেখুন নম্বরটি ১ থেকে ১৬৩৮৪-এর মধ্যে এবং অক্ষর A থেকে XFD পর্যন্ত সাধারণ প্রস্থের কি না।</div>
+<div class="note" lang="en">Enter digits in half-width and letters in the alphabet.</div>
+<h2 lang="en">Input examples</h2>
+<ul>
+<li lang="en">Correct: 28, AB, c5, $D$100</li>
+<li lang="en">Incorrect: 0, 16385, XFE, ５, "column C", C, 5C</li>
+</ul>
+<h2 lang="en">Note on zero-based counting</h2>
+<p lang="en">Excel columns start at 1 (A = 1). Some programming languages start at 0 (A = 0). Check the specification of the program you use.</p>
+<ul>
+<li lang="en">Excel, VBA, Google Apps Script: A = 1</li>
+<li lang="en">Python's openpyxl: A = 1</li>
+<li lang="en">Some libraries: A = 0</li>
+</ul>
+<h2 lang="en">Row range</h2>
+<p lang="en">The row of a cell reference is 1 to 1,048,576. Rows beyond that can't be read.</p>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Checking the input form</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">Entering "XFE" gave an error because there is no column after XFD. Changing to "XFD" showed 16384.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Spaces included</b>: leading and trailing spaces are removed, but spaces in the middle aren't allowed.</li>
+<li lang="en"><b>Full-width "Ａ"</b>: use half-width "A".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can lower case be converted?</h3>
+<p lang="en">Yes. It is converted after making it upper case.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">Range, half-width and form. Check these three and most troubles are solved.</p>
 <a class="cta" href="/bn/excel-column-letter.html">“Excel কলাম নম্বর ও অক্ষর কনভার্টার” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/xlsx-to-csv.html">এক্সেল থেকে CSV বা JSON রূপান্তর</a>: এক্সেল শিটকে CSV, TSV বা JSON-এ রূপান্তর করুন।</li><li><a href="/bn/csv-to-xlsx.html">CSV থেকে এক্সেল (.xlsx) রূপান্তর</a>: CSV-কে এক্সেল (.xlsx) ফাইলে রূপান্তর করুন।</li><li><a href="/bn/csv-tools.html">CSV মার্জ, স্প্লিট ও কলাম বাছাই করুন</a>: CSV ফাইল মার্জ করুন, সারি অনুযায়ী ভাগ করুন, বা শুধু বেছে নেওয়া কলাম রাখুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

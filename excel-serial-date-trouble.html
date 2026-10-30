@@ -200,14 +200,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/excel-serial-date.html">Excelシリアル値</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>シリアル値の変換がうまくいかない。<a href="/excel-serial-date.html">Excel シリアル値 日付変換</a> で起こりやすい困りごとと対処法をまとめます。</p>
+<h2>よくある困りごと</h2>
+<ul>
+<li><b>「0以上の数字を入れてください。」と出る</b>：マイナスや、文字が入っている。</li>
+<li><b>「この方式では表せない日付です。」と出る</b>：選んだ方式では扱えない範囲の日付。方式を切り替える。</li>
+<li><b>日付が4年ずれる</b>：1900年方式と1904年方式の取り違え。</li>
+<li><b>60で警告が出る</b>：存在しない日付。仕様です。</li>
+<li><b>結果が1日ずれる</b>：小数（時刻）の部分、または1900年2月の仕様。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>入力が半角の数字か確かめる。</li>
+<li>「日付の方式」を切り替えて、見比べる。</li>
+<li>小数が含まれていないか確かめる。</li>
 </ol>
-<div class="note">結果が出ないときは、シリアル値が0以上の数字か、日付が選んだ方式で表せる範囲かを確かめます。</div>
+<div class="note">日付が4年ずれたら、まず方式を疑います。</div>
+<h2>入力の例</h2>
+<ul>
+<li>正しい：45000、45292.5</li>
+<li>正しくない：-1、４５０００、2023/3/15（日付形式は日付欄に）</li>
+</ul>
+<h2>向いている使い方</h2>
+<ul>
+<li>変換前の確認</li>
+<li>日付のずれの原因調べ</li>
+</ul>
+<h2>例</h2>
+<p>入力が全角の「４５０００」で、エラーになった。半角にしたら、2023年3月15日と出た。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>カンマ区切り</b>：「45,000」は避け、数字だけにする。</li>
+<li><b>日付と数字の取り違え</b>：数字は上の欄、日付は日付として入れる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>時刻も変換できますか？</h3>
+<p>小数部分が時刻を表しますが、このツールは日付が中心です。</p>
+<h2>まとめ</h2>
+<p>半角・範囲・方式。この3つを確かめれば、たいてい解決します。</p>
 <a class="cta" href="/excel-serial-date.html">Excel シリアル値 日付変換を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/timestamp-converter.html">UNIX時間（タイムスタンプ）変換</a>：UNIX時間と日時を、相互に変換します。</li><li><a href="/wareki-converter.html">西暦と和暦を変換する</a>：西暦と和暦を、かんたんに変換します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +249,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/excel-serial-date.html">Excel Serial Date</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>The serial value conversion isn't working. Here are common troubles with <a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a> and fixes.</p>
+<h2>Common troubles</h2>
+<ul>
+<li><b>"Please enter a number 0 or greater." appears</b>: a negative or text is included.</li>
+<li><b>"This date cannot be represented in this system." appears</b>: the date is outside what the chosen system handles. Switch systems.</li>
+<li><b>Dates are 4 years off</b>: 1900 and 1904 systems mixed up.</li>
+<li><b>A warning appears for 60</b>: a nonexistent date. By specification.</li>
+<li><b>Result is a day off</b>: the decimal (time) part, or the February 1900 specification.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the input is half-width digits.</li>
+<li>Switch "Date system" and compare.</li>
+<li>Check for decimals.</li>
 </ol>
-<div class="note">If no result appears, check that the serial value is 0 or more and the date can be shown in the chosen system.</div>
+<div class="note">If dates are 4 years off, suspect the system first.</div>
+<h2>Input examples</h2>
+<ul>
+<li>Correct: 45000, 45292.5</li>
+<li>Incorrect: -1, ４５０００, 2023/3/15 (date format goes in the date field)</li>
+</ul>
+<h2>Uses it suits</h2>
+<ul>
+<li>Pre-conversion checks</li>
+<li>Finding the cause of date shifts</li>
+</ul>
+<h2>Example</h2>
+<p>Full-width "４５０００" gave an error. Half-width showed March 15, 2023.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Comma separators</b>: avoid "45,000"; digits only.</li>
+<li><b>Mixing dates and numbers</b>: numbers in the upper field; dates entered as dates.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can time be converted too?</h3>
+<p>The decimal part is time, but this tool focuses on dates.</p>
+<h2>Summary</h2>
+<p>Half-width, range, system. Check these three and it's usually solved.</p>
 <a class="cta" href="/excel-serial-date.html">Use "Excel Serial Number and Date Converter" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/timestamp-converter.html">UNIX Timestamp Converter</a>: Convert between UNIX time and dates.</li><li><a href="/wareki-converter.html">Convert Between Western Years and Japanese Eras</a>: Convert between AD years and Japanese eras.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

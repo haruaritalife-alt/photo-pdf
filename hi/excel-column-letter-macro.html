@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>मैक्रो और फ़ॉर्मूले में कॉलम संख्या इस्तेमाल करना</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>कॉलम चुनें</li><li>इसकी संख्या खोजें</li><li>कोड में इस्तेमाल करें</li></ul></div>
-<p><a href="/hi/excel-column-letter.html">एक्सेल कॉलम कन्वर्टर</a> से मिली कॉलम संख्या को मैक्रो या फ़ॉर्मूले में सीधे इस्तेमाल किया जा सकता है।</p>
+<p lang="en">When handling columns in macros (VBA) and functions, you sometimes need to convert between number and letters. Sort out how to use them, converting with <a href="/hi/excel-column-letter.html">Excel Column Number and Letter Converter</a>.</p>
+<h2 lang="en">Specifying columns in VBA</h2>
+<p lang="en">VBA lets you specify columns by number or by letters.</p>
+<ul>
+<li lang="en">Cells(row, column): specify the column by number. Example: Cells(5, 3) is C5</li>
+<li lang="en">Range("C5"): specify the cell by letters.</li>
+<li lang="en">Columns(3) and Columns("C"): both are column C</li>
+</ul>
 <h2>चरण</h2>
 <ol>
-<li>कॉलम चुनें</li>
-<li>इसकी संख्या खोजें</li>
-<li>कोड में इस्तेमाल करें</li>
+<li lang="en">Enter a number in "Column number" and check the "Column letters".</li>
+<li lang="en">Conversely, enter letters and check the number.</li>
+<li lang="en">Reflect it in the code.</li>
 </ol>
-<div class="note">कॉलम के लिए संख्या इस्तेमाल करने से बाद में बदलाव आसान हो जाते हैं।</div>
+<div class="note" lang="en">"Cells(row, column)" is "row first, column second". The order is easy to mix up, so take care.</div>
+<h2 lang="en">Moving columns by calculation</h2>
+<p lang="en">With numeric column numbers, you can move by addition.</p>
+<ul>
+<li lang="en">"Two to the right of the current column" → column number + 2</li>
+<li lang="en">With letters (C) as is, finding "E" by calculation is a hassle</li>
+</ul>
+<p lang="en">When you want to move columns inside a program, handling them as numbers is the basis.</p>
+<h2 lang="en">Use in worksheet functions</h2>
+<p lang="en">Worksheet functions also use column numbers.</p>
+<ul>
+<li lang="en">COLUMN(C1): returns 3</li>
+<li lang="en">ADDRESS(5, 3): returns "$C$5"</li>
+<li lang="en">INDEX(range, row, column): specifies the column by number</li>
+<li lang="en">VLOOKUP's "column index": which column's value to return</li>
+</ul>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">Wanting to loop over columns by number in a macro</li>
+<li lang="en">Wanting to check VLOOKUP's "column index"</li>
+<li lang="en">Converting column letters to numbers for a program</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">Wanted to process columns A to Z in order in VBA. Looping over 1 to 26 and using Cells(row, column) made it simple.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>VLOOKUP's column index</b>: the number counted from the left edge of the range, not column C of the whole sheet.</li>
+<li lang="en"><b>Inserting a column changes numbers</b>: fixed numbers written in code get misaligned.</li>
+<li lang="en"><b>Order of row and column</b>: don't reverse it as Cells(column, row).</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can a column letter be turned into a number by formula?</h3>
+<p lang="en">Yes, like COLUMN(INDIRECT("C1")).</p>
+<h2>सारांश</h2>
+<p lang="en">Numbers for macros, letters for display. Use this tool to go between them.</p>
 <a class="cta" href="/hi/excel-column-letter.html">“एक्सेल कॉलम संख्या और अक्षर कन्वर्टर” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/xlsx-to-csv.html">Excel को CSV या JSON में बदलें</a>: Excel की एक शीट को CSV, TSV या JSON में बदलें।</li><li><a href="/hi/csv-to-xlsx.html">CSV को Excel (.xlsx) में बदलें</a>: CSV को Excel (.xlsx) फ़ाइल में बदलें।</li><li><a href="/hi/csv-tools.html">CSV को मर्ज, स्प्लिट करें और कॉलम चुनें</a>: CSV फ़ाइलें मर्ज करें, पंक्तियों से बाँटें, या सिर्फ़ चुने हुए कॉलम रखें।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

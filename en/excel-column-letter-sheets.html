@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Is It the Same in Google Sheets</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter a number</li><li>See the letters</li><li>Compare</li></ul></div>
-<p>The column counting in <a href="/en/excel-column-letter.html">Excel Column Converter</a> is the same in Google Sheets.</p>
+<p>In Google Sheets too, columns run "A, B, C… AA, AB…", the same lettering as Excel. Results converted with <a href="/en/excel-column-letter.html">Excel Column Number and Letter Converter</a> can be used as is in Google Sheets.</p>
+<h2>What's the same</h2>
+<ul>
+<li>How column letters are assigned: A–Z, AA–ZZ, AAA… continuing</li>
+<li>Correspondence with numbers: A = 1, Z = 26, AA = 27</li>
+<li>How cell references are written: C5 (row 5 of column C)</li>
+<li>How COLUMN, ADDRESS and INDEX functions are used</li>
+</ul>
+<h2>What differs</h2>
+<ul>
+<li><b>Column limits</b>: Excel goes to 16384 columns (XFD). Google Sheets starts with 26 columns (to Z) by default, and the limit to which you can add is set by things like the total cell count of a spreadsheet (10 million cells).</li>
+<li><b>This tool's range</b>: A–XFD (1–16384). It may not match Google Sheets' limit.</li>
+<li><b>Macros</b>: Excel uses VBA; Google Sheets uses Google Apps Script. How columns are specified differs.</li>
+</ul>
+<h2>Specifying columns in Apps Script</h2>
+<p>Google Apps Script specifies row and column as numbers, like getRange(row, column). The order is the same as Excel VBA's Cells(row, column).</p>
+<ul>
+<li>getRange(5, 3): row 5, column 3 (C5)</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter a number</li>
-<li>See the letters</li>
-<li>Compare</li>
+<li>Enter "Column number" or "Column letters" and convert.</li>
+<li>Use it in Google Sheets functions or Apps Script code.</li>
 </ol>
-<div class="note">The row and column limits may differ between products.</div>
+<div class="note">For the number of columns at the sheet's edge, check Google Sheets' own settings.</div>
+<h2>Good for</h2>
+<ul>
+<li>Specifying columns in Google Sheets' Apps Script</li>
+<li>Matching "Col3" and "C" in the QUERY function</li>
+<li>Work going back and forth between Excel and Google Sheets</li>
+</ul>
+<h2>Column specification in QUERY</h2>
+<p>The QUERY function has a form specifying columns by number as "Col1, Col2, Col3" and one by letters "A, B, C". This tool helps check the correspondence between numbers and letters.</p>
+<h2>Example</h2>
+<p>Wanted to specify column AB in a QUERY function. The tool showed AB = 28, so writing Col28 worked without problems.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Assuming Excel's limit</b>: in Google Sheets, you may need to add columns.</li>
+<li><b>Imported columns</b>: reading with IMPORTRANGE and the like can change column positions.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can Google Sheets use columns up to XFD too?</h3>
+<p>The column limit differs from Excel's. Usable columns follow Google Sheets' specifications.</p>
+<h2>Summary</h2>
+<p>The correspondence between column letters and numbers is the same in Excel and Google Sheets. Just watch the difference in limits.</p>
 <a class="cta" href="/en/excel-column-letter.html">Use "Excel Column Number and Letter Converter" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/xlsx-to-csv.html">Convert Excel to CSV or JSON</a>: Convert an Excel sheet to CSV, TSV or JSON.</li><li><a href="/en/csv-to-xlsx.html">Convert CSV to Excel (.xlsx)</a>: Convert a CSV to an Excel (.xlsx) file.</li><li><a href="/en/csv-tools.html">Merge, Split and Pick Columns from CSV</a>: Merge CSV files, split by rows, or keep only chosen columns.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
