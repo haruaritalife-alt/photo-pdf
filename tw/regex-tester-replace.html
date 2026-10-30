@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>用正規表示式批次替換文字</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>寫一個模式</li><li>輸入替換內容</li><li>複製結果</li></ul></div>
-<p><a href="/tw/regex-tester.html">正規表示式測試器</a> 的「替換內容」欄可以一次改寫所有匹配的部分。</p>
+<p lang="en">You want to replace parts of a text that have a certain form with other characters all at once. Regular expression replacement saves you from fixing each by hand. Check replacement results with <a href="/tw/regex-tester.html">Regex Tester</a>.</p>
 <h2>步驟</h2>
 <ol>
-<li>寫一個模式</li>
-<li>輸入替換內容</li>
-<li>複製結果</li>
+<li lang="en">Write the pattern to find in "Regular expression pattern".</li>
+<li lang="en">Enter g in "Flags" (replace all).</li>
+<li lang="en">Enter the original text in "Text to test".</li>
+<li lang="en">Enter the replacement in "Replacement text (optional; $1 etc. can be used)".</li>
+<li lang="en">Look at "Replacement result" and check it's as expected.</li>
+<li lang="en">Copy with "Copy replacement result".</li>
 </ol>
-<div class="note">"$1" 代表括號中的第一部分。</div>
+<div class="note" lang="en">Without flag g, only the first match is replaced.</div>
+<h2 lang="en">Simple replacement</h2>
+<ul>
+<li lang="en">Text: "2026/01/05"</li>
+<li lang="en">Pattern: /</li>
+<li lang="en">Replacement: -</li>
+<li lang="en">Result: "2026-01-05" (flag g needed)</li>
+</ul>
+<h2 lang="en">Replacement using groups</h2>
+<p lang="en">Parenthesised parts can be recalled in the replacement as "$1", "$2".</p>
+<ul>
+<li lang="en">Text: "2026/01/05"</li>
+<li lang="en">Pattern: (\d+)/(\d+)/(\d+)</li>
+<li lang="en">Replacement: $3.$2.$1</li>
+<li lang="en">Result: "05.01.2026"</li>
+</ul>
+<h2>適合</h2>
+<ul>
+<li lang="en">Changing date notation in bulk</li>
+<li lang="en">Removing extra spaces in bulk</li>
+<li lang="en">Rewording specific terms in text at once</li>
+<li lang="en">Swapping order (such as name order)</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Wanted to swap a roster of "Yamada Taro" to "Taro Yamada". Pattern (\S+) (\S+) with replacement $2 $1 swapped them all.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Handling of "$"</b>: "$1" in the replacement recalls a group. To insert a plain "$", write "$$".</li>
+<li lang="en"><b>Unintended replacement</b>: a loose pattern changes unrelated parts. Check the result carefully.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does the result directly rewrite the original text?</h3>
+<p lang="en">No. It only appears in the "Replacement result" field; the original text is untouched.</p>
+<h2>小結</h2>
+<p lang="en">Pattern, replacement and flag g. These three replace in bulk.</p>
 <a class="cta" href="/tw/regex-tester.html">使用「正規表示式測試器」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/text-diff.html">對比兩段文字的差異</a>: 逐行顯示兩段文字的差異。</li><li><a href="/tw/char-counter.html">文字數統計（用於求職申請表和報告）</a>：統計文字的字數、行數和稿紙張數。</li><li><a href="/tw/line-sort-dedupe.html">刪除重複行並排序</a>：刪除重複的行並排序。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

@@ -200,14 +200,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>かっこ（グループ）で一部だけ取り出す</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>かっこ付きのパターンを書く</li><li>文章を入れる</li><li>グループを見る</li></ul></div>
-<p><a href="/regex-tester.html">正規表現テスター</a> は、一致ごとに、かっこの中身を表示します。</p>
+<p>文章の中から、一部分だけを取り出したい。たとえば、「ID: 12345」の「12345」だけ。そんなときは、かっこ（グループ）を使います。<a href="/regex-tester.html">正規表現テスター</a> の結果の「グループ：」で、取り出した部分を確かめられます。</p>
+<h2>グループとは</h2>
+<p>パターンの一部を、かっこ「( )」で囲むと、その部分に合った文字が、別に取り出されます。</p>
+<ul>
+<li>パターン：ID: (\d+)</li>
+<li>文章：「ID: 12345」</li>
+<li>全体の一致：「ID: 12345」</li>
+<li>グループ1：「12345」</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>かっこ付きのパターンを書く</li>
-<li>文章を入れる</li>
-<li>グループを見る</li>
+<li>「正規表現のパターン」に、取り出したい部分をかっこで囲んで書きます。</li>
+<li>「テストする文章」を入れます。</li>
+<li>結果の「グループ：」に、取り出された文字が出ます。</li>
 </ol>
-<div class="note">「(\d+)年(\d+)月」なら、年と月を別々に取り出せます。</div>
+<div class="note">かっこが複数あれば、左から順に、グループ1・2・3…になります。</div>
+<h2>複数のグループ</h2>
+<ul>
+<li>パターン：(\d{4})-(\d{2})-(\d{2})</li>
+<li>文章：「2026-01-05」</li>
+<li>グループ1：2026（年）</li>
+<li>グループ2：01（月）</li>
+<li>グループ3：05（日）</li>
+</ul>
+<h2>グループを置換で使う</h2>
+<p>「置換後の文字」で、「$1」「$2」と書くと、グループを呼び出せます。</p>
+<ul>
+<li>パターン：(\d{4})-(\d{2})-(\d{2})</li>
+<li>置換後：$1年$2月$3日</li>
+<li>結果：2026年01月05日</li>
+</ul>
+<h2>かっこを探したいとき</h2>
+<p>かっこそのものを探すには、「\(」「\)」と、エスケープします。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>文章から、IDや金額だけを取り出す</li>
+<li>日付を、年・月・日に分ける</li>
+<li>並びを入れ替える置換</li>
+</ul>
+<h2>例</h2>
+<p>「金額: 1,500円」から数字だけを取りたかった。パターン 金額: ([\d,]+)円 で、グループ1に「1,500」が出た。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>かっこの閉じ忘れ</b>：「パターンかフラグが正しくありません：」と出る。</li>
+<li><b>意図しないグループ</b>：グループにしたくない場所の、かっこに注意。</li>
+<li><b>グループが空</b>：その部分が文章に無いと、グループは出ない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>グループは何個まで使えますか？</h3>
+<p>実用上は、困らない数まで使えます。</p>
+<h2>まとめ</h2>
+<p>取り出したい部分を、かっこで囲む。「グループ：」の結果で確かめましょう。</p>
 <a class="cta" href="/regex-tester.html">正規表現テスターを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/text-diff.html">2つの文章の違いを調べる</a>：2つの文章の違いを、行ごとに色つきで示します。</li><li><a href="/char-counter.html">文字数カウント（エントリーシート・レポート用）</a>：文章の文字数・行数・原稿用紙の枚数などを数えます。</li><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +263,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Capturing Parts with Parentheses</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Write a pattern with parentheses</li><li>Enter the text</li><li>See the groups</li></ul></div>
-<p><a href="/regex-tester.html">Regex Tester</a> shows the contents of the parentheses for each match.</p>
+<p>You want to extract just a part of a text, for example only "12345" from "ID: 12345". Use parentheses (groups). The "Group:" in the results of <a href="/regex-tester.html">Regex Tester</a> lets you check the extracted part.</p>
+<h2>What a group is</h2>
+<p>Enclosing part of a pattern in parentheses "( )" extracts the characters matched by that part separately.</p>
+<ul>
+<li>Pattern: ID: (\d+)</li>
+<li>Text: "ID: 12345"</li>
+<li>Whole match: "ID: 12345"</li>
+<li>Group 1: "12345"</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Write a pattern with parentheses</li>
-<li>Enter the text</li>
-<li>See the groups</li>
+<li>In "Regular expression pattern", write the part to extract in parentheses.</li>
+<li>Enter the "Text to test".</li>
+<li>The extracted characters appear in "Group:" in the results.</li>
 </ol>
-<div class="note">A pattern like "(\d+)-(\d+)" pulls out two numbers separately.</div>
+<div class="note">With several parentheses, they become group 1, 2, 3… from the left.</div>
+<h2>Multiple groups</h2>
+<ul>
+<li>Pattern: (\d{4})-(\d{2})-(\d{2})</li>
+<li>Text: "2026-01-05"</li>
+<li>Group 1: 2026 (year)</li>
+<li>Group 2: 01 (month)</li>
+<li>Group 3: 05 (day)</li>
+</ul>
+<h2>Using groups in replacement</h2>
+<p>Writing "$1", "$2" in "Replacement text" recalls the groups.</p>
+<ul>
+<li>Pattern: (\d{4})-(\d{2})-(\d{2})</li>
+<li>Replacement: $3/$2/$1</li>
+<li>Result: 05/01/2026</li>
+</ul>
+<h2>When you want to search for parentheses</h2>
+<p>To search for the parentheses themselves, escape them as "\(" and "\)".</p>
+<h2>Good for</h2>
+<ul>
+<li>Extracting only IDs or amounts from text</li>
+<li>Splitting a date into year, month, day</li>
+<li>Replacements that swap order</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted just the number from "Amount: 1,500 yen". With pattern Amount: ([\d,]+) yen, group 1 gave "1,500".</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Unclosed parenthesis</b>: "Pattern or flags are invalid:" appears.</li>
+<li><b>Unintended groups</b>: watch parentheses where you don't want a group.</li>
+<li><b>Empty group</b>: if that part isn't in the text, the group doesn't appear.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How many groups can be used?</h3>
+<p>As many as practical use needs.</p>
+<h2>Summary</h2>
+<p>Enclose the part you want to extract in parentheses. Check with the "Group:" result.</p>
 <a class="cta" href="/regex-tester.html">Use "Regex Tester" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/text-diff.html">Compare Two Texts (Diff)</a>: Show the differences between two texts line by line.</li><li><a href="/char-counter.html">Character Counter (for Applications and Reports)</a>: Count characters, lines and manuscript sheets of your text.</li><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

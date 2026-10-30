@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>用括號捕獲部分內容</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>寫一個帶括號的模式</li><li>輸入文字</li><li>檢視分組</li></ul></div>
-<p><a href="/tw/regex-tester.html">正規表示式測試器</a> 會為每個匹配顯示括號中的內容。</p>
+<p lang="en">You want to extract just a part of a text, for example only "12345" from "ID: 12345". Use parentheses (groups). The "Group:" in the results of <a href="/tw/regex-tester.html">Regex Tester</a> lets you check the extracted part.</p>
+<h2 lang="en">What a group is</h2>
+<p lang="en">Enclosing part of a pattern in parentheses "( )" extracts the characters matched by that part separately.</p>
+<ul>
+<li lang="en">Pattern: ID: (\d+)</li>
+<li lang="en">Text: "ID: 12345"</li>
+<li lang="en">Whole match: "ID: 12345"</li>
+<li lang="en">Group 1: "12345"</li>
+</ul>
 <h2>步驟</h2>
 <ol>
-<li>寫一個帶括號的模式</li>
-<li>輸入文字</li>
-<li>檢視分組</li>
+<li lang="en">In "Regular expression pattern", write the part to extract in parentheses.</li>
+<li lang="en">Enter the "Text to test".</li>
+<li lang="en">The extracted characters appear in "Group:" in the results.</li>
 </ol>
-<div class="note">像 "(\d+)-(\d+)" 這樣的模式可以分別取出兩個數字。</div>
+<div class="note" lang="en">With several parentheses, they become group 1, 2, 3… from the left.</div>
+<h2 lang="en">Multiple groups</h2>
+<ul>
+<li lang="en">Pattern: (\d{4})-(\d{2})-(\d{2})</li>
+<li lang="en">Text: "2026-01-05"</li>
+<li lang="en">Group 1: 2026 (year)</li>
+<li lang="en">Group 2: 01 (month)</li>
+<li lang="en">Group 3: 05 (day)</li>
+</ul>
+<h2 lang="en">Using groups in replacement</h2>
+<p lang="en">Writing "$1", "$2" in "Replacement text" recalls the groups.</p>
+<ul>
+<li lang="en">Pattern: (\d{4})-(\d{2})-(\d{2})</li>
+<li lang="en">Replacement: $3/$2/$1</li>
+<li lang="en">Result: 05/01/2026</li>
+</ul>
+<h2 lang="en">When you want to search for parentheses</h2>
+<p lang="en">To search for the parentheses themselves, escape them as "\(" and "\)".</p>
+<h2>適合</h2>
+<ul>
+<li lang="en">Extracting only IDs or amounts from text</li>
+<li lang="en">Splitting a date into year, month, day</li>
+<li lang="en">Replacements that swap order</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Wanted just the number from "Amount: 1,500 yen". With pattern Amount: ([\d,]+) yen, group 1 gave "1,500".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Unclosed parenthesis</b>: "Pattern or flags are invalid:" appears.</li>
+<li lang="en"><b>Unintended groups</b>: watch parentheses where you don't want a group.</li>
+<li lang="en"><b>Empty group</b>: if that part isn't in the text, the group doesn't appear.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How many groups can be used?</h3>
+<p lang="en">As many as practical use needs.</p>
+<h2>小結</h2>
+<p lang="en">Enclose the part you want to extract in parentheses. Check with the "Group:" result.</p>
 <a class="cta" href="/tw/regex-tester.html">使用「正規表示式測試器」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/text-diff.html">對比兩段文字的差異</a>: 逐行顯示兩段文字的差異。</li><li><a href="/tw/char-counter.html">文字數統計（用於求職申請表和報告）</a>：統計文字的字數、行數和稿紙張數。</li><li><a href="/tw/line-sort-dedupe.html">刪除重複行並排序</a>：刪除重複的行並排序。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

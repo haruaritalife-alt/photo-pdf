@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>우편번호와 전화번호용 정규식</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>패턴 쓰기</li><li>글자 입력</li><li>글자 수 확인</li></ul></div>
-<p><a href="/ko/regex-tester.html">정규식 테스터</a>에 "\d{3}-\d{4}"를 입력하면 우편번호 형태를 찾을 수 있습니다.</p>
+<p lang="en">You want to find only postal codes or phone numbers in text. Regular expressions are useful for that. Build the pattern while trying it in <a href="/ko/regex-tester.html">Regex Tester</a>.</p>
+<h2 lang="en">Postal code pattern</h2>
+<p lang="en">Japanese postal codes take the form "123-4567".</p>
+<ul>
+<li lang="en">Pattern: \d{3}-\d{4}</li>
+<li lang="en">Meaning: three digits, a hyphen, four digits</li>
+</ul>
+<p lang="en">To also find "1234567" without a hyphen:</p>
+<ul>
+<li lang="en">Pattern: \d{3}-?\d{4}</li>
+<li lang="en">Meaning: the hyphen may or may not be present</li>
+</ul>
+<h2 lang="en">Phone number patterns</h2>
+<ul>
+<li lang="en">Landline example: 0\d{1,4}-\d{1,4}-\d{4}</li>
+<li lang="en">Mobile example: 0[789]0-\d{4}-\d{4}</li>
+</ul>
 <h2>순서</h2>
 <ol>
-<li>패턴 쓰기</li>
-<li>글자 입력</li>
-<li>글자 수 확인</li>
+<li lang="en">Write the pattern in "Regular expression pattern".</li>
+<li lang="en">Enter g in "Flags" (find all).</li>
+<li lang="en">Paste real text into "Text to test".</li>
+<li lang="en">Look at the matched parts and positions and check they're as expected.</li>
 </ol>
-<div class="note">"\d"는 숫자 한 개, "{3}"은 세 번 반복을 뜻합니다.</div>
+<div class="note" lang="en">First try it on a sentence like "The postal code is 123-4567."</div>
+<h2 lang="en">Finding full-width digits</h2>
+<p lang="en">Full-width digits (１２３) may not match the half-width \d. To find full-width too, specify character ranges.</p>
+<ul>
+<li lang="en">Pattern: [0-9０-９]{3}-[0-9０-９]{4}</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Extracting numbers from rosters and emails</li>
+<li lang="en">Making patterns for input format checks</li>
+<li lang="en">Finding numbers in text in bulk</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Numbers were mixed into roster text. \d{3}-\d{4} with flag g showed all postal codes with their matched positions.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Types of hyphen</b>: similar symbols exist ("-", "ー", "－"). Match the symbol in the actual text.</li>
+<li lang="en"><b>Phone digit counts</b>: they differ by area code. Make it loose.</li>
+<li lang="en"><b>Other numbers resembling these</b>: dates and amounts can match.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can this check that a number is correct?</h3>
+<p lang="en">Only whether the form matches. It can't confirm whether the number exists.</p>
+<h2>요약</h2>
+<p lang="en">Search by form, like \d{3}-\d{4}. Adjust while trying in the tester.</p>
 <a class="cta" href="/ko/regex-tester.html">“정규식 테스터” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/text-diff.html">두 텍스트 비교 (Diff)</a>: 두 텍스트의 차이를 줄 단위로 보여 줍니다.</li><li><a href="/ko/char-counter.html">글자 수 세기 (지원서·리포트용)</a>: 텍스트의 글자 수, 줄 수, 원고지 매수를 셉니다.</li><li><a href="/ko/line-sort-dedupe.html">중복된 줄 제거 및 목록 정렬</a>: 중복된 줄을 제거하고 정렬합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

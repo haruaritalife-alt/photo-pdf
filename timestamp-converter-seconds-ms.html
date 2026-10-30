@@ -200,14 +200,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>秒とミリ秒の見分け方</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>数字を入れる</li><li>読み方の表示を見る</li><li>違えば桁を直す</li></ul></div>
-<p><a href="/timestamp-converter.html">UNIX時間変換</a> は、数字の大きさから秒かミリ秒かを自動で判断します。</p>
+<p>UNIX時間には、「秒」で表したものと、「ミリ秒」で表したものがあります。見た目が似ているので、混同すると、1970年や、遠い未来の日付になってしまいます。<a href="/timestamp-converter.html">UNIX時間（タイムスタンプ）変換</a> は、桁数から自動で見分けます。</p>
+<h2>見分け方</h2>
+<ul>
+<li><b>秒</b>：現在の日時で、10桁。例：1767225600</li>
+<li><b>ミリ秒</b>：現在の日時で、13桁。例：1767225600000</li>
+</ul>
+<p>ミリ秒は、秒の1000倍の数字です。</p>
+<h2>ツールの判断</h2>
+<p>このツールは、数字の大きさで判断します。12桁以上ならミリ秒、それより小さければ秒として読みます。結果の下に、「秒として読みました。」か「ミリ秒として読みました。」と出ます。</p>
+<div class="note">判断が思った通りでないときは、数字を1000倍・1000分の1にして、入れ直してください。</div>
 <h2>手順</h2>
 <ol>
-<li>数字を入れる</li>
-<li>読み方の表示を見る</li>
-<li>違えば桁を直す</li>
+<li>「UNIX時間（秒またはミリ秒）」の欄に、数字を入れます。</li>
+<li>下に出る、「秒として読みました。」「ミリ秒として読みました。」を見ます。</li>
+<li>日時が妥当か確かめます。</li>
 </ol>
-<div class="note">JavaScriptの時刻はミリ秒、多くのOSやDBは秒です。</div>
+<h2>使われる場面</h2>
+<ul>
+<li><b>秒</b>：サーバーのログ、データベース、多くのシステム</li>
+<li><b>ミリ秒</b>：JavaScriptの Date.now()、一部のAPI、ブラウザの時刻</li>
+</ul>
+<h2>間違えたときの現象</h2>
+<ul>
+<li>ミリ秒の数字を秒として読むと、遠い未来の日付になる</li>
+<li>秒の数字をミリ秒として読むと、1970年1月ごろの日付になる</li>
+</ul>
+<p>日付がおかしいときは、秒とミリ秒の取り違えを疑いましょう。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>数字の桁数が不明なとき</li>
+<li>システムごとの違いを確認したいとき</li>
+</ul>
+<h2>例</h2>
+<p>JavaScriptの出力「1767225600000」を入れると、「ミリ秒として読みました。」と出て、2026年1月1日が出た。13桁だったので、ミリ秒だった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>桁数が途中で切れている</b>：コピーのとき、数字が欠けていないか確かめる。</li>
+<li><b>マイクロ秒など</b>：16桁などの数字は、このツールの対象外。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>日時から変換すると、秒とミリ秒の両方が出ますか？</h3>
+<p>はい。「UNIX時間（秒）」と「UNIX時間（ミリ秒）」の両方が出ます。</p>
+<h2>まとめ</h2>
+<p>10桁は秒、13桁はミリ秒。迷ったら、ツールの表示で確かめましょう。</p>
 <a class="cta" href="/timestamp-converter.html">UNIX時間（タイムスタンプ）変換を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/wareki-converter.html">西暦と和暦を変換する</a>：西暦と和暦を、かんたんに変換します。</li><li><a href="/json-formatter.html">JSONを整える・チェックする</a>：JSONを整形・圧縮し、書き方をチェックします。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +255,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Seconds vs. Milliseconds</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the number</li><li>Check how it was read</li><li>Fix the digits if wrong</li></ul></div>
-<p><a href="/timestamp-converter.html">Timestamp Converter</a> decides between seconds and milliseconds from the size of the number.</p>
+<p>UNIX time comes in two forms: in seconds and in milliseconds. They look similar, so mixing them up gives dates in 1970 or the far future. <a href="/timestamp-converter.html">UNIX Timestamp Converter</a> tells them apart automatically from the digit count.</p>
+<h2>How to tell</h2>
+<ul>
+<li><b>Seconds</b>: 10 digits for current dates. Example: 1767225600</li>
+<li><b>Milliseconds</b>: 13 digits for current dates. Example: 1767225600000</li>
+</ul>
+<p>Milliseconds are 1000 times the seconds number.</p>
+<h2>How the tool judges</h2>
+<p>This tool judges by the size of the number. 12 digits or more is read as milliseconds; smaller as seconds. Below the result, "Read as seconds." or "Read as milliseconds." appears.</p>
+<div class="note">If the judgement isn't what you expected, multiply or divide the number by 1000 and re-enter it.</div>
 <h2>Steps</h2>
 <ol>
-<li>Enter the number</li>
-<li>Check how it was read</li>
-<li>Fix the digits if wrong</li>
+<li>Enter a number in the "UNIX time (seconds or milliseconds)" field.</li>
+<li>Look at "Read as seconds." or "Read as milliseconds." shown below.</li>
+<li>Check that the date and time is plausible.</li>
 </ol>
-<div class="note">JavaScript time is in milliseconds; many systems and databases use seconds.</div>
+<h2>Where each is used</h2>
+<ul>
+<li><b>Seconds</b>: server logs, databases, many systems</li>
+<li><b>Milliseconds</b>: JavaScript's Date.now(), some APIs, browser time</li>
+</ul>
+<h2>Symptoms when mixed up</h2>
+<ul>
+<li>Reading a milliseconds number as seconds gives a far-future date</li>
+<li>Reading a seconds number as milliseconds gives a date around January 1970</li>
+</ul>
+<p>When a date looks wrong, suspect a seconds/milliseconds mix-up.</p>
+<h2>Good for</h2>
+<ul>
+<li>When the digit count is unclear</li>
+<li>When you want to check differences between systems</li>
+</ul>
+<h2>Example</h2>
+<p>Entering JavaScript output "1767225600000" showed "Read as milliseconds." and gave 1 January 2026. It was 13 digits, so milliseconds.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Digits cut off</b>: check no digits were lost when copying.</li>
+<li><b>Microseconds etc.</b>: numbers of 16 digits etc. are outside this tool.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does converting from a date give both seconds and milliseconds?</h3>
+<p>Yes. Both "UNIX time (seconds)" and "UNIX time (milliseconds)" appear.</p>
+<h2>Summary</h2>
+<p>10 digits is seconds, 13 digits is milliseconds. When unsure, confirm with the tool's display.</p>
 <a class="cta" href="/timestamp-converter.html">Use "UNIX Timestamp Converter" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/wareki-converter.html">Convert Between Western Years and Japanese Eras</a>: Convert between AD years and Japanese eras.</li><li><a href="/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

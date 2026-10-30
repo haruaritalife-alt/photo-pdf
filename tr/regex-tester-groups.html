@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Parantezlerle Parça Yakalama</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>Parantezli bir desen yazın</li><li>Metni girin</li><li>Gruplara bakın</li></ul></div>
-<p><a href="/tr/regex-tester.html">Regex Test Aracı</a> her eşleşme için parantez içeriğini gösterir.</p>
+<p lang="en">You want to extract just a part of a text, for example only "12345" from "ID: 12345". Use parentheses (groups). The "Group:" in the results of <a href="/tr/regex-tester.html">Regex Tester</a> lets you check the extracted part.</p>
+<h2 lang="en">What a group is</h2>
+<p lang="en">Enclosing part of a pattern in parentheses "( )" extracts the characters matched by that part separately.</p>
+<ul>
+<li lang="en">Pattern: ID: (\d+)</li>
+<li lang="en">Text: "ID: 12345"</li>
+<li lang="en">Whole match: "ID: 12345"</li>
+<li lang="en">Group 1: "12345"</li>
+</ul>
 <h2>Adımlar</h2>
 <ol>
-<li>Parantezli bir desen yazın</li>
-<li>Metni girin</li>
-<li>Gruplara bakın</li>
+<li lang="en">In "Regular expression pattern", write the part to extract in parentheses.</li>
+<li lang="en">Enter the "Text to test".</li>
+<li lang="en">The extracted characters appear in "Group:" in the results.</li>
 </ol>
-<div class="note">"(\d+)-(\d+)" gibi bir desen iki sayıyı ayrı ayrı çıkarır.</div>
+<div class="note" lang="en">With several parentheses, they become group 1, 2, 3… from the left.</div>
+<h2 lang="en">Multiple groups</h2>
+<ul>
+<li lang="en">Pattern: (\d{4})-(\d{2})-(\d{2})</li>
+<li lang="en">Text: "2026-01-05"</li>
+<li lang="en">Group 1: 2026 (year)</li>
+<li lang="en">Group 2: 01 (month)</li>
+<li lang="en">Group 3: 05 (day)</li>
+</ul>
+<h2 lang="en">Using groups in replacement</h2>
+<p lang="en">Writing "$1", "$2" in "Replacement text" recalls the groups.</p>
+<ul>
+<li lang="en">Pattern: (\d{4})-(\d{2})-(\d{2})</li>
+<li lang="en">Replacement: $3/$2/$1</li>
+<li lang="en">Result: 05/01/2026</li>
+</ul>
+<h2 lang="en">When you want to search for parentheses</h2>
+<p lang="en">To search for the parentheses themselves, escape them as "\(" and "\)".</p>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Extracting only IDs or amounts from text</li>
+<li lang="en">Splitting a date into year, month, day</li>
+<li lang="en">Replacements that swap order</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">Wanted just the number from "Amount: 1,500 yen". With pattern Amount: ([\d,]+) yen, group 1 gave "1,500".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Unclosed parenthesis</b>: "Pattern or flags are invalid:" appears.</li>
+<li lang="en"><b>Unintended groups</b>: watch parentheses where you don't want a group.</li>
+<li lang="en"><b>Empty group</b>: if that part isn't in the text, the group doesn't appear.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How many groups can be used?</h3>
+<p lang="en">As many as practical use needs.</p>
+<h2>Özet</h2>
+<p lang="en">Enclose the part you want to extract in parentheses. Check with the "Group:" result.</p>
 <a class="cta" href="/tr/regex-tester.html">“Düzenli İfade Test Aracı” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/text-diff.html">İki Metni Karşılaştırın (Diff)</a>: İki metin arasındaki farkları satır satır gösterin.</li><li><a href="/tr/char-counter.html">Karakter Sayacı (başvurular ve raporlar için)</a>: Metninizin karakterlerini, satırlarını ve el yazması sayfalarını sayın.</li><li><a href="/tr/line-sort-dedupe.html">Yinelenen Satırları Kaldırın ve Listeyi Sıralayın</a>: Yinelenen satırları kaldırın ve sıralayın.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

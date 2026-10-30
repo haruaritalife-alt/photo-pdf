@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Масова заміна тексту за допомогою regex</h1>
 <p class="meta">Опубліковано: 19 жовт. 2026 | Оновлено: 19 жовт. 2026 | <a href="/about.html">Про нас (японською)</a></p>
 <div class="points"><b>Основне</b><ul><li>Напишіть шаблон</li><li>Введіть заміну</li><li>Скопіюйте результат</li></ul></div>
-<p>Поле «Заміна» в <a href="/uk/regex-tester.html">Тестері регулярних виразів</a> переписує всі збіги одразу.</p>
+<p lang="en">You want to replace parts of a text that have a certain form with other characters all at once. Regular expression replacement saves you from fixing each by hand. Check replacement results with <a href="/uk/regex-tester.html">Regex Tester</a>.</p>
 <h2>Кроки</h2>
 <ol>
-<li>Напишіть шаблон</li>
-<li>Введіть заміну</li>
-<li>Скопіюйте результат</li>
+<li lang="en">Write the pattern to find in "Regular expression pattern".</li>
+<li lang="en">Enter g in "Flags" (replace all).</li>
+<li lang="en">Enter the original text in "Text to test".</li>
+<li lang="en">Enter the replacement in "Replacement text (optional; $1 etc. can be used)".</li>
+<li lang="en">Look at "Replacement result" and check it's as expected.</li>
+<li lang="en">Copy with "Copy replacement result".</li>
 </ol>
-<div class="note">"$1" позначає першу частину в дужках.</div>
+<div class="note" lang="en">Without flag g, only the first match is replaced.</div>
+<h2 lang="en">Simple replacement</h2>
+<ul>
+<li lang="en">Text: "2026/01/05"</li>
+<li lang="en">Pattern: /</li>
+<li lang="en">Replacement: -</li>
+<li lang="en">Result: "2026-01-05" (flag g needed)</li>
+</ul>
+<h2 lang="en">Replacement using groups</h2>
+<p lang="en">Parenthesised parts can be recalled in the replacement as "$1", "$2".</p>
+<ul>
+<li lang="en">Text: "2026/01/05"</li>
+<li lang="en">Pattern: (\d+)/(\d+)/(\d+)</li>
+<li lang="en">Replacement: $3.$2.$1</li>
+<li lang="en">Result: "05.01.2026"</li>
+</ul>
+<h2>Підходить для</h2>
+<ul>
+<li lang="en">Changing date notation in bulk</li>
+<li lang="en">Removing extra spaces in bulk</li>
+<li lang="en">Rewording specific terms in text at once</li>
+<li lang="en">Swapping order (such as name order)</li>
+</ul>
+<h2>Приклад</h2>
+<p lang="en">Wanted to swap a roster of "Yamada Taro" to "Taro Yamada". Pattern (\S+) (\S+) with replacement $2 $1 swapped them all.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Handling of "$"</b>: "$1" in the replacement recalls a group. To insert a plain "$", write "$$".</li>
+<li lang="en"><b>Unintended replacement</b>: a loose pattern changes unrelated parts. Check the result carefully.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does the result directly rewrite the original text?</h3>
+<p lang="en">No. It only appears in the "Replacement result" field; the original text is untouched.</p>
+<h2>Підсумок</h2>
+<p lang="en">Pattern, replacement and flag g. These three replace in bulk.</p>
 <a class="cta" href="/uk/regex-tester.html">Використати «Тестер регулярних виразів» (безкоштовно)</a>
 <h2>Інструменти, що добре поєднуються з цим</h2><ul><li><a href="/uk/text-diff.html">Порівняння двох текстів (Diff)</a>: Покажіть відмінності між двома текстами рядок за рядком.</li><li><a href="/uk/char-counter.html">Лічильник символів (для заявок і звітів)</a>: Порахуйте символи, рядки й аркуші рукопису вашого тексту.</li><li><a href="/uk/line-sort-dedupe.html">Видалення дублікатів рядків і сортування списку</a>: Видаліть дублікати рядків і відсортуйте їх.</li></ul>
 <div class="tip"><p>Якщо цей посібник став у пригоді, невеликі чайові будуть дуже доречні.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Надіслати чайові (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Надіслати подарунок (список бажань Amazon)</a></div>

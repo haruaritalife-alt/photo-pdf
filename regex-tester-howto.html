@@ -200,14 +200,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>正規表現を試すやり方（無料）</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>パターンを書く</li><li>文章を入れる</li><li>結果を見る</li></ul></div>
-<p><a href="/regex-tester.html">正規表現テスター</a> で、パターンを書くとすぐに結果が出ます。</p>
+<p>「正規表現」は、文字のパターンを表す、特別な書き方です。強力ですが、書いた通りに動くか、不安になるものです。<a href="/regex-tester.html">正規表現テスター</a> は、パターンとテストしたい文章を入れて、どこが合うかをすぐ確かめるツールです。入力は、この端末の中で処理され、外には送られません。</p>
 <h2>手順</h2>
 <ol>
-<li>パターンを書く</li>
-<li>文章を入れる</li>
-<li>結果を見る</li>
+<li>「正規表現のパターン」の欄に、パターンを書きます。</li>
+<li>必要なら、「フラグ（g・i・m・s・uなど）」を入れます。</li>
+<li>「テストする文章」の欄に、試したい文章を入れます。</li>
+<li>結果が表示されます。合った場所と、その位置が分かります。</li>
+<li>置換を試すときは、「置換後の文字」を入れ、「置換結果」を見ます。</li>
 </ol>
-<div class="note">入力するたびに、結果が更新されます。</div>
+<div class="note">パターンやフラグが正しくないときは、「パターンかフラグが正しくありません：」と理由が出ます。</div>
+<h2>結果の見方</h2>
+<ul>
+<li><b>合ったところ</b>：テストする文章の中の、一致した部分</li>
+<li><b>位置</b>：何文字目から合っているか</li>
+<li><b>グループ</b>：かっこで囲んだ部分に合った文字</li>
+<li><b>見つかりませんでした。</b>：どこにも合わなかった</li>
+</ul>
+<h2>基本のパターン</h2>
+<ul>
+<li>\d：数字1文字</li>
+<li>\d+：数字の連続</li>
+<li>[a-z]：小文字の英字1文字</li>
+<li>.：任意の1文字</li>
+<li>^ と $：行の先頭と末尾</li>
+</ul>
+<h2>例</h2>
+<p>サンプルの「郵便番号は 123-4567 です。」に、\d{3}-\d{4} を試すと、「123-4567」が合った。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>記号のエスケープ</b>：「.」や「(」などの記号を文字として探すときは、前に「\」を付ける。</li>
+<li><b>大文字小文字</b>：区別される。区別しないなら、フラグに i を入れる。</li>
+<li><b>最初の1つしか出ない</b>：すべて探すなら、フラグに g を入れる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>どの言語の正規表現ですか？</h3>
+<p>ブラウザ（JavaScript）の正規表現です。他の言語とは、細かい違いがあります。</p>
+<h2>まとめ</h2>
+<p>パターンと文章を入れるだけで、合った場所が分かります。正規表現の確認に便利です。</p>
 <a class="cta" href="/regex-tester.html">正規表現テスターを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/text-diff.html">2つの文章の違いを調べる</a>：2つの文章の違いを、行ごとに色つきで示します。</li><li><a href="/char-counter.html">文字数カウント（エントリーシート・レポート用）</a>：文章の文字数・行数・原稿用紙の枚数などを数えます。</li><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +249,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Test a Regular Expression (Free)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Write a pattern</li><li>Enter the text</li><li>See the result</li></ul></div>
-<p>With <a href="/regex-tester.html">Regex Tester</a>, results appear as soon as you write a pattern.</p>
+<p>A "regular expression" is a special notation for expressing patterns of characters. It's powerful, but it's worrying whether it works as written. <a href="/regex-tester.html">Regex Tester</a> lets you enter a pattern and the text to test and immediately see where it matches. Input is processed inside this device and not sent outside.</p>
 <h2>Steps</h2>
 <ol>
-<li>Write a pattern</li>
-<li>Enter the text</li>
-<li>See the result</li>
+<li>Write a pattern in the "Regular expression pattern" field.</li>
+<li>If needed, enter "Flags (g, i, m, s, u, etc.)".</li>
+<li>Enter the text to try in the "Text to test" field.</li>
+<li>Results are displayed. You see the matched places and their positions.</li>
+<li>To try replacing, enter "Replacement text" and look at "Replacement result".</li>
 </ol>
-<div class="note">Results update as you type.</div>
+<div class="note">If the pattern or flags are invalid, "Pattern or flags are invalid:" appears with the reason.</div>
+<h2>Reading results</h2>
+<ul>
+<li><b>Matched part</b>: the part of the test text that matched</li>
+<li><b>Position</b>: from which character it matches</li>
+<li><b>Group</b>: the characters matched by the parenthesised part</li>
+<li><b>Not found.</b>: nothing matched</li>
+</ul>
+<h2>Basic patterns</h2>
+<ul>
+<li>\d: one digit</li>
+<li>\d+: a run of digits</li>
+<li>[a-z]: one lower-case letter</li>
+<li>.: any one character</li>
+<li>^ and $: start and end of line</li>
+</ul>
+<h2>Example</h2>
+<p>With the sample "The postal code is 123-4567.", trying \d{3}-\d{4} matched "123-4567".</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Escaping symbols</b>: to search symbols like "." or "(" as characters, put "\" before them.</li>
+<li><b>Letter case</b>: it's distinguished. To ignore case, add i to the flags.</li>
+<li><b>Only the first appears</b>: to find all, add g to the flags.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Which language's regular expressions?</h3>
+<p>Browser (JavaScript) regular expressions. There are fine differences from other languages.</p>
+<h2>Summary</h2>
+<p>Just enter a pattern and text to see where it matched. Handy for checking regular expressions.</p>
 <a class="cta" href="/regex-tester.html">Use "Regex Tester" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/text-diff.html">Compare Two Texts (Diff)</a>: Show the differences between two texts line by line.</li><li><a href="/char-counter.html">Character Counter (for Applications and Reports)</a>: Count characters, lines and manuscript sheets of your text.</li><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

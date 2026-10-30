@@ -215,14 +215,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>تعبير نمطي للرموز البريدية وأرقام الهاتف</h1>
 <p class="meta">تاريخ النشر: 19 أكتوبر 2026 | آخر تحديث: 19 أكتوبر 2026 | <a href="/about.html">حول (باليابانية)</a></p>
 <div class="points"><b>النقاط الرئيسية</b><ul><li>اكتب نمطًا</li><li>أدخل النص</li><li>تحقّق من العدد</li></ul></div>
-<p>إدخال "\d{3}-\d{4}" في <a href="/ar/regex-tester.html">أداة اختبار التعبيرات النمطية</a> يجد شكل الرمز البريدي.</p>
+<p lang="en">You want to find only postal codes or phone numbers in text. Regular expressions are useful for that. Build the pattern while trying it in <a href="/ar/regex-tester.html">Regex Tester</a>.</p>
+<h2 lang="en">Postal code pattern</h2>
+<p lang="en">Japanese postal codes take the form "123-4567".</p>
+<ul>
+<li lang="en">Pattern: \d{3}-\d{4}</li>
+<li lang="en">Meaning: three digits, a hyphen, four digits</li>
+</ul>
+<p lang="en">To also find "1234567" without a hyphen:</p>
+<ul>
+<li lang="en">Pattern: \d{3}-?\d{4}</li>
+<li lang="en">Meaning: the hyphen may or may not be present</li>
+</ul>
+<h2 lang="en">Phone number patterns</h2>
+<ul>
+<li lang="en">Landline example: 0\d{1,4}-\d{1,4}-\d{4}</li>
+<li lang="en">Mobile example: 0[789]0-\d{4}-\d{4}</li>
+</ul>
 <h2>الخطوات</h2>
 <ol>
-<li>اكتب نمطًا</li>
-<li>أدخل النص</li>
-<li>تحقّق من العدد</li>
+<li lang="en">Write the pattern in "Regular expression pattern".</li>
+<li lang="en">Enter g in "Flags" (find all).</li>
+<li lang="en">Paste real text into "Text to test".</li>
+<li lang="en">Look at the matched parts and positions and check they're as expected.</li>
 </ol>
-<div class="note">"\d" رقم واحد و"{3}" تعني ثلاث مرات.</div>
+<div class="note" lang="en">First try it on a sentence like "The postal code is 123-4567."</div>
+<h2 lang="en">Finding full-width digits</h2>
+<p lang="en">Full-width digits (１２３) may not match the half-width \d. To find full-width too, specify character ranges.</p>
+<ul>
+<li lang="en">Pattern: [0-9０-９]{3}-[0-9０-９]{4}</li>
+</ul>
+<h2>مناسب لـ</h2>
+<ul>
+<li lang="en">Extracting numbers from rosters and emails</li>
+<li lang="en">Making patterns for input format checks</li>
+<li lang="en">Finding numbers in text in bulk</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Numbers were mixed into roster text. \d{3}-\d{4} with flag g showed all postal codes with their matched positions.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Types of hyphen</b>: similar symbols exist ("-", "ー", "－"). Match the symbol in the actual text.</li>
+<li lang="en"><b>Phone digit counts</b>: they differ by area code. Make it loose.</li>
+<li lang="en"><b>Other numbers resembling these</b>: dates and amounts can match.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can this check that a number is correct?</h3>
+<p lang="en">Only whether the form matches. It can't confirm whether the number exists.</p>
+<h2>الخلاصة</h2>
+<p lang="en">Search by form, like \d{3}-\d{4}. Adjust while trying in the tester.</p>
 <a class="cta" href="/ar/regex-tester.html">استخدم «أداة اختبار التعبيرات النمطية» (مجانًا)</a>
 <h2>أدوات تتكامل مع هذه الأداة</h2><ul><li><a href="/ar/text-diff.html">مقارنة نصين (Diff)</a>: اعرض الفروق بين نصين سطرًا بسطر.</li><li><a href="/ar/char-counter.html">عدّاد الأحرف (للطلبات والتقارير)</a>: عدّ أحرف نصك وأسطره وأوراق المخطوطة.</li><li><a href="/ar/line-sort-dedupe.html">حذف الأسطر المكررة وترتيب القائمة</a>: احذف الأسطر المكررة ورتّبها.</li></ul>
 <div class="tip"><p>إذا أفادك هذا الدليل، فإن إكرامية صغيرة تعني لنا الكثير.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">أرسل إكرامية (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">أرسل هدية (قائمة أمنيات Amazon)</a></div>

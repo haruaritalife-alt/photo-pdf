@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Sekundy a milisekundy</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Wpisz liczbę</li><li>Sprawdź, jak zostało odczytane</li><li>Popraw liczbę cyfr, jeśli jest błędna</li></ul></div>
-<p><a href="/pl/timestamp-converter.html">Konwerter znacznika czasu</a> wybiera między sekundami a milisekundami według wielkości liczby.</p>
+<p lang="en">UNIX time comes in two forms: in seconds and in milliseconds. They look similar, so mixing them up gives dates in 1970 or the far future. <a href="/pl/timestamp-converter.html">UNIX Timestamp Converter</a> tells them apart automatically from the digit count.</p>
+<h2>Jak to rozpoznać</h2>
+<ul>
+<li lang="en"><b>Seconds</b>: 10 digits for current dates. Example: 1767225600</li>
+<li lang="en"><b>Milliseconds</b>: 13 digits for current dates. Example: 1767225600000</li>
+</ul>
+<p lang="en">Milliseconds are 1000 times the seconds number.</p>
+<h2 lang="en">How the tool judges</h2>
+<p lang="en">This tool judges by the size of the number. 12 digits or more is read as milliseconds; smaller as seconds. Below the result, "Read as seconds." or "Read as milliseconds." appears.</p>
+<div class="note" lang="en">If the judgement isn't what you expected, multiply or divide the number by 1000 and re-enter it.</div>
 <h2>Kroki</h2>
 <ol>
-<li>Wpisz liczbę</li>
-<li>Sprawdź, jak zostało odczytane</li>
-<li>Popraw liczbę cyfr, jeśli jest błędna</li>
+<li lang="en">Enter a number in the "UNIX time (seconds or milliseconds)" field.</li>
+<li lang="en">Look at "Read as seconds." or "Read as milliseconds." shown below.</li>
+<li lang="en">Check that the date and time is plausible.</li>
 </ol>
-<div class="note">Czas w JavaScript jest w milisekundach; wiele systemów i baz danych używa sekund.</div>
+<h2 lang="en">Where each is used</h2>
+<ul>
+<li lang="en"><b>Seconds</b>: server logs, databases, many systems</li>
+<li lang="en"><b>Milliseconds</b>: JavaScript's Date.now(), some APIs, browser time</li>
+</ul>
+<h2 lang="en">Symptoms when mixed up</h2>
+<ul>
+<li lang="en">Reading a milliseconds number as seconds gives a far-future date</li>
+<li lang="en">Reading a seconds number as milliseconds gives a date around January 1970</li>
+</ul>
+<p lang="en">When a date looks wrong, suspect a seconds/milliseconds mix-up.</p>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">When the digit count is unclear</li>
+<li lang="en">When you want to check differences between systems</li>
+</ul>
+<h2>Przykład</h2>
+<p lang="en">Entering JavaScript output "1767225600000" showed "Read as milliseconds." and gave 1 January 2026. It was 13 digits, so milliseconds.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Digits cut off</b>: check no digits were lost when copying.</li>
+<li lang="en"><b>Microseconds etc.</b>: numbers of 16 digits etc. are outside this tool.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does converting from a date give both seconds and milliseconds?</h3>
+<p lang="en">Yes. Both "UNIX time (seconds)" and "UNIX time (milliseconds)" appear.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">10 digits is seconds, 13 digits is milliseconds. When unsure, confirm with the tool's display.</p>
 <a class="cta" href="/pl/timestamp-converter.html">Użyj „Konwerter znacznika czasu UNIX” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/date-calculator.html">Obliczanie wieku, liczby dni między datami i przesunięć dat</a>: Oblicz wiek i liczbę dni między datami.</li><li><a href="/pl/wareki-converter.html">Zamiana lat gregoriańskich na japońskie ery i odwrotnie</a>: Zamieniaj lata gregoriańskie na japońskie ery i odwrotnie.</li><li><a href="/pl/json-formatter.html">Formatowanie i walidacja JSON</a>: Formatuj, minifikuj i waliduj JSON.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

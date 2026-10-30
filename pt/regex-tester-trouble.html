@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>O que fazer quando não funciona</h1>
 <p class="meta">Publicado em: 19 out 2026 | Atualizado em: 19 out 2026 | <a href="/about.html">Sobre (em japonês)</a></p>
 <div class="points"><b>Pontos principais</b><ul><li>Confira o arquivo</li><li>Confira o tamanho</li><li>Tente em outro dispositivo</li></ul></div>
-<p>Se o <a href="/pt/regex-tester.html">Testador de regex</a> não estiver funcionando, verifique o seguinte.</p>
-<h2>Passos</h2>
+<p lang="en">A regular expression isn't working as expected. Here are troubles that commonly occur with <a href="/pt/regex-tester.html">Regex Tester</a> and how to handle them.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Pattern or flags are invalid:" appears</b>: an unclosed parenthesis, a non-existent flag, or invalid syntax. Read the reason given.</li>
+<li lang="en"><b>"Not found." appears</b>: the pattern doesn't match the text. Suspect letter case or full-width/half-width differences.</li>
+<li lang="en"><b>Only the first appears</b>: add g to the flags.</li>
+<li lang="en"><b>Letter case is distinguished</b>: add i to the flags.</li>
+<li lang="en"><b>Symbols don't match</b>: ".", "(", "?", "*" and the like have special meanings. To search for them as characters, put "\" before them.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Confira o arquivo</li>
-<li>Confira o tamanho</li>
-<li>Tente em outro dispositivo</li>
+<li lang="en">Shorten the pattern and add to it little by little while trying.</li>
+<li lang="en">Shorten the "Text to test" and check.</li>
+<li lang="en">Check that full-width/half-width and symbol types are the same.</li>
+<li lang="en">Review the flags.</li>
 </ol>
-<div class="note">Se aparecer um erro, verifique parênteses não fechados ou flags digitadas incorretamente.</div>
+<div class="note" lang="en">Don't write a long pattern all at once; checking from small parts makes the cause easier to find.</div>
+<h2 lang="en">Symbols with special meanings</h2>
+<p lang="en">. ^ $ * + ? ( ) [ ] { } | \ have special meanings. To search for them as characters, put "\" before them.</p>
+<ul>
+<li lang="en">Search for ".": \.</li>
+<li lang="en">Search for "(": \(</li>
+</ul>
+<h2 lang="en">"Greedy" matching</h2>
+<p lang="en">Patterns like .* match as long as possible. To match short, add "?" as in .*?.</p>
+<ul>
+<li lang="en">Text: "<b>A</b><b>B</b>"</li>
+<li lang="en"><b>.*</b>: the whole matches as one</li>
+<li lang="en"><b>.*?</b>: "<b>A</b>" and "<b>B</b>" match separately</li>
+</ul>
+<h2 lang="en">Differences from other languages</h2>
+<p lang="en">This tester uses JavaScript regular expressions. Python, PHP and others differ in syntax and features. When using in another language, recheck in that language.</p>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Checking the steps of building a pattern</li>
+</ul>
+<h2>Exemplo</h2>
+<p lang="en">Wanted the contents of each in "<b>A</b><b>B</b>". <b>.*</b> matched the whole as one. Changing to <b>.*?</b> matched them separately.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width characters</b>: full-width and half-width are different characters.</li>
+<li lang="en"><b>Line breaks</b>: "." doesn't match line breaks by default. Use flag s.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I can't read a long pattern.</h3>
+<p lang="en">Splitting it into small pieces and checking each in the tester is recommended.</p>
+<h2>Resumo</h2>
+<p lang="en">Split short, escape symbols and review flags. That solves most troubles.</p>
 <a class="cta" href="/pt/regex-tester.html">Usar “Testador de regex” (grátis)</a>
 <h2>Ferramentas que combinam com esta</h2><ul><li><a href="/pt/text-diff.html">Comparar dois textos (diff)</a>: Mostre as diferenças entre dois textos, linha a linha.</li><li><a href="/pt/char-counter.html">Contador de Caracteres (para Candidaturas e Trabalhos)</a>: Conte caracteres, linhas e folhas de manuscrito do seu texto.</li><li><a href="/pt/line-sort-dedupe.html">Remover linhas duplicadas e ordenar uma lista</a>: Remova linhas duplicadas e ordene.</li></ul>
 <div class="tip"><p>Se este guia ajudou, uma pequena gorjeta significaria muito.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Enviar uma gorjeta (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar um presente (lista de desejos da Amazon)</a></div>

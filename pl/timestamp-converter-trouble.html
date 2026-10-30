@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Co zrobić, gdy nie działa</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Sprawdź plik</li><li>Sprawdź rozmiar</li><li>Spróbuj na innym urządzeniu</li></ul></div>
-<p>Jeśli <a href="/pl/timestamp-converter.html">Konwerter znacznika czasu</a> nie działa, sprawdź poniższe.</p>
-<h2>Kroki</h2>
+<p lang="en">UNIX time conversion isn't working. Here are troubles that commonly occur with <a href="/pl/timestamp-converter.html">UNIX Timestamp Converter</a> and how to handle them.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Enter digits only." appears</b>: non-digits (commas, spaces, letters) are included. Remove them.</li>
+<li lang="en"><b>"Too large to convert to a date." appears</b>: the number is too large. Check the digit count.</li>
+<li lang="en"><b>The date comes out around 1970</b>: a milliseconds number may be treated as seconds.</li>
+<li lang="en"><b>The date comes out in the far future</b>: a seconds number may be displayed as milliseconds.</li>
+<li lang="en"><b>The time is off by 9 hours</b>: the difference between UTC and Japan time. Look at the display carefully.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Sprawdź plik</li>
-<li>Sprawdź rozmiar</li>
-<li>Spróbuj na innym urządzeniu</li>
+<li lang="en">Look at the number in the input field and check no non-digits are included.</li>
+<li lang="en">Look at the digit count. Guide: 10 digits is seconds, 13 is milliseconds.</li>
+<li lang="en">Check "Read as seconds." or "Read as milliseconds." below the result.</li>
+<li lang="en">Compare "Date and time (UTC)" with "Date and time (this device's time zone)".</li>
 </ol>
-<div class="note">Jeśli konwersja się nie udaje, sprawdź, czy nie ma znaków innych niż cyfry.</div>
+<div class="note" lang="en">Enter the number in half-width. Full-width digits may cause an error.</div>
+<h2 lang="en">Input examples</h2>
+<ul>
+<li lang="en">Correct: 1767225600, 1767225600000</li>
+<li lang="en">Incorrect: 1,767,225,600 (with commas), １７６７２２５６００ (full-width)</li>
+</ul>
+<h2 lang="en">Negative numbers</h2>
+<p lang="en">Negative numbers express dates before 1970. Rarely used, but can be entered.</p>
+<h2 lang="en">When there's a decimal point</h2>
+<p lang="en">For seconds with a decimal point (like 1767225600.123), enter only the integer part.</p>
+<h2 lang="en">Checking the device time zone</h2>
+<p lang="en">The date display follows the device's time zone setting. If the time zone looks wrong, check the device settings.</p>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Checking input</li>
+</ul>
+<h2>Przykład</h2>
+<p lang="en">Entered "1,767,225,600" and got an error. Removing the commas and re-entering converted it correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Spaces from copying</b>: remove leading and trailing spaces.</li>
+<li lang="en"><b>Mistaking another number</b>: numbers like IDs are not UNIX time.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does any number become a date?</h3>
+<p lang="en">A number that isn't UNIX time becomes a meaningless date. Check where the number came from.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">Review digits-only, half-width and digit count. That solves most troubles.</p>
 <a class="cta" href="/pl/timestamp-converter.html">Użyj „Konwerter znacznika czasu UNIX” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/date-calculator.html">Obliczanie wieku, liczby dni między datami i przesunięć dat</a>: Oblicz wiek i liczbę dni między datami.</li><li><a href="/pl/wareki-converter.html">Zamiana lat gregoriańskich na japońskie ery i odwrotnie</a>: Zamieniaj lata gregoriańskie na japońskie ery i odwrotnie.</li><li><a href="/pl/json-formatter.html">Formatowanie i walidacja JSON</a>: Formatuj, minifikuj i waliduj JSON.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

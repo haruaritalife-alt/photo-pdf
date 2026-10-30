@@ -200,14 +200,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/timestamp-converter.html">UNIX時間変換</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>UNIX時間の変換が、うまくいかない。<a href="/timestamp-converter.html">UNIX時間（タイムスタンプ）変換</a> で起こりやすい困りごとと、対処法をまとめます。</p>
+<h2>よくある困りごと</h2>
+<ul>
+<li><b>「数字だけを入れてください。」と出る</b>：数字以外（カンマ、空白、文字）が入っている。取り除く。</li>
+<li><b>「日時に直せない大きさです。」と出る</b>：数字が大き過ぎる。桁数を確かめる。</li>
+<li><b>日付が1970年ごろになる</b>：ミリ秒の数字を、秒の単位で扱っている可能性。</li>
+<li><b>日付が遠い未来になる</b>：秒の数字が、ミリ秒の表示になっている可能性。</li>
+<li><b>時刻が9時間ずれる</b>：UTCと日本時間の違い。表示をよく見る。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>入力欄の数字を見て、数字以外が入っていないか確かめる。</li>
+<li>桁数を見る。10桁は秒、13桁はミリ秒が目安。</li>
+<li>結果の下の「秒として読みました。」「ミリ秒として読みました。」を確かめる。</li>
+<li>「日時（UTC）」と「日時（この端末の時間帯）」を、見比べる。</li>
 </ol>
-<div class="note">変換できないときは、数字以外の文字が入っていないか確かめます。</div>
+<div class="note">数字は、半角で入れます。全角の数字は、エラーになることがあります。</div>
+<h2>入力の例</h2>
+<ul>
+<li>正しい：1767225600、1767225600000</li>
+<li>正しくない：1,767,225,600（カンマ入り）、１７６７２２５６００（全角）</li>
+</ul>
+<h2>負の数字</h2>
+<p>負の数字は、1970年より前の日時を表します。使うことは少ないですが、入力できます。</p>
+<h2>小数点があるとき</h2>
+<p>秒に小数点がある数字（1767225600.123など）は、整数部分だけを入れましょう。</p>
+<h2>端末の時間帯の確認</h2>
+<p>日時の表示は、端末の時間帯設定に従います。時間帯が違って見えるときは、端末の設定を確かめましょう。</p>
+<h2>向いている使い方</h2>
+<ul>
+<li>トラブルの事前確認</li>
+<li>入力のチェック</li>
+</ul>
+<h2>例</h2>
+<p>「1,767,225,600」と入れて、エラーが出た。カンマを取って入れ直すと、正しく変換された。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>コピーで空白が入る</b>：前後の空白を取る。</li>
+<li><b>別の数字との取り違え</b>：IDなどの数字は、UNIX時間ではない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>どんな数字でも、日時になりますか？</h3>
+<p>UNIX時間ではない数字は、意味のない日時になります。数字の出どころを確かめましょう。</p>
+<h2>まとめ</h2>
+<p>数字だけ・半角・桁数を見直す。それで、たいていの困りごとは解決します。</p>
 <a class="cta" href="/timestamp-converter.html">UNIX時間（タイムスタンプ）変換を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/wareki-converter.html">西暦と和暦を変換する</a>：西暦と和暦を、かんたんに変換します。</li><li><a href="/json-formatter.html">JSONを整える・チェックする</a>：JSONを整形・圧縮し、書き方をチェックします。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +256,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/timestamp-converter.html">Timestamp Converter</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>UNIX time conversion isn't working. Here are troubles that commonly occur with <a href="/timestamp-converter.html">UNIX Timestamp Converter</a> and how to handle them.</p>
+<h2>Common troubles</h2>
+<ul>
+<li><b>"Enter digits only." appears</b>: non-digits (commas, spaces, letters) are included. Remove them.</li>
+<li><b>"Too large to convert to a date." appears</b>: the number is too large. Check the digit count.</li>
+<li><b>The date comes out around 1970</b>: a milliseconds number may be treated as seconds.</li>
+<li><b>The date comes out in the far future</b>: a seconds number may be displayed as milliseconds.</li>
+<li><b>The time is off by 9 hours</b>: the difference between UTC and Japan time. Look at the display carefully.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Look at the number in the input field and check no non-digits are included.</li>
+<li>Look at the digit count. Guide: 10 digits is seconds, 13 is milliseconds.</li>
+<li>Check "Read as seconds." or "Read as milliseconds." below the result.</li>
+<li>Compare "Date and time (UTC)" with "Date and time (this device's time zone)".</li>
 </ol>
-<div class="note">If conversion fails, check that no characters other than digits are included.</div>
+<div class="note">Enter the number in half-width. Full-width digits may cause an error.</div>
+<h2>Input examples</h2>
+<ul>
+<li>Correct: 1767225600, 1767225600000</li>
+<li>Incorrect: 1,767,225,600 (with commas), １７６７２２５６００ (full-width)</li>
+</ul>
+<h2>Negative numbers</h2>
+<p>Negative numbers express dates before 1970. Rarely used, but can be entered.</p>
+<h2>When there's a decimal point</h2>
+<p>For seconds with a decimal point (like 1767225600.123), enter only the integer part.</p>
+<h2>Checking the device time zone</h2>
+<p>The date display follows the device's time zone setting. If the time zone looks wrong, check the device settings.</p>
+<h2>Uses it suits</h2>
+<ul>
+<li>Pre-checks before trouble</li>
+<li>Checking input</li>
+</ul>
+<h2>Example</h2>
+<p>Entered "1,767,225,600" and got an error. Removing the commas and re-entering converted it correctly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Spaces from copying</b>: remove leading and trailing spaces.</li>
+<li><b>Mistaking another number</b>: numbers like IDs are not UNIX time.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does any number become a date?</h3>
+<p>A number that isn't UNIX time becomes a meaningless date. Check where the number came from.</p>
+<h2>Summary</h2>
+<p>Review digits-only, half-width and digit count. That solves most troubles.</p>
 <a class="cta" href="/timestamp-converter.html">Use "UNIX Timestamp Converter" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/wareki-converter.html">Convert Between Western Years and Japanese Eras</a>: Convert between AD years and Japanese eras.</li><li><a href="/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

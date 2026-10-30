@@ -200,14 +200,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>正規表現で文章をまとめて置換する</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>パターンを書く</li><li>置換後の文字を入れる</li><li>結果をコピー</li></ul></div>
-<p><a href="/regex-tester.html">正規表現テスター</a> の「置換後の文字」を使うと、一致した部分をまとめて書き換えられます。</p>
+<p>文章の中の、決まった形の部分を、まとめて別の文字に置き換えたい。正規表現の置換を使うと、1つ1つ直さなくて済みます。<a href="/regex-tester.html">正規表現テスター</a> で、置換結果を確かめましょう。</p>
 <h2>手順</h2>
 <ol>
-<li>パターンを書く</li>
-<li>置換後の文字を入れる</li>
-<li>結果をコピー</li>
+<li>「正規表現のパターン」に、探したいパターンを書きます。</li>
+<li>「フラグ」に g を入れます（すべて置き換える）。</li>
+<li>「テストする文章」に、元の文章を入れます。</li>
+<li>「置換後の文字（任意。$1などが使えます）」に、置き換えたい文字を入れます。</li>
+<li>「置換結果」を見て、思った通りか確かめます。</li>
+<li>「置換結果をコピー」で、コピーします。</li>
 </ol>
-<div class="note">「$1」は、かっこで囲んだ1番目の部分です。</div>
+<div class="note">フラグ g が無いと、最初に合った1か所だけが置き換わります。</div>
+<h2>単純な置換</h2>
+<ul>
+<li>文章：「2026/01/05」</li>
+<li>パターン：/</li>
+<li>置換後：-</li>
+<li>結果：「2026-01-05」（フラグ g が必要）</li>
+</ul>
+<h2>グループを使った置換</h2>
+<p>かっこで囲んだ部分は、置換後の文字で「$1」「$2」と呼び出せます。</p>
+<ul>
+<li>文章：「2026/01/05」</li>
+<li>パターン：(\d+)/(\d+)/(\d+)</li>
+<li>置換後：$1年$2月$3日</li>
+<li>結果：「2026年01月05日」</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>日付の書き方を、まとめて変える</li>
+<li>余分な空白を、まとめて消す</li>
+<li>文章中の特定の語を、一括で言い換える</li>
+<li>並びを入れ替える（姓名の順序など）</li>
+</ul>
+<h2>例</h2>
+<p>「山田 太郎」という名簿を、「太郎 山田」に入れ替えたかった。パターン (\S+) (\S+)、置換後 $2 $1 で、すべて入れ替わった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「$」の扱い</b>：置換後の「$1」は、グループの呼び出し。普通の「$」を入れたいときは、「$$」と書く。</li>
+<li><b>意図しない置換</b>：パターンがゆるすぎて、関係ない部分も変わる。結果をよく確認する。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>置換結果は、元の文章を直接書き換えますか？</h3>
+<p>いいえ。「置換結果」の欄に出るだけで、元の文章はそのままです。</p>
+<h2>まとめ</h2>
+<p>パターン・置換後の文字・フラグ g。この3つで、まとめて置換できます。</p>
 <a class="cta" href="/regex-tester.html">正規表現テスターを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/text-diff.html">2つの文章の違いを調べる</a>：2つの文章の違いを、行ごとに色つきで示します。</li><li><a href="/char-counter.html">文字数カウント（エントリーシート・レポート用）</a>：文章の文字数・行数・原稿用紙の枚数などを数えます。</li><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +256,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Replacing Text in Bulk with Regex</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Write a pattern</li><li>Enter the replacement</li><li>Copy the result</li></ul></div>
-<p>The "Replacement" field in <a href="/regex-tester.html">Regex Tester</a> rewrites all matched parts at once.</p>
+<p>You want to replace parts of a text that have a certain form with other characters all at once. Regular expression replacement saves you from fixing each by hand. Check replacement results with <a href="/regex-tester.html">Regex Tester</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Write a pattern</li>
-<li>Enter the replacement</li>
-<li>Copy the result</li>
+<li>Write the pattern to find in "Regular expression pattern".</li>
+<li>Enter g in "Flags" (replace all).</li>
+<li>Enter the original text in "Text to test".</li>
+<li>Enter the replacement in "Replacement text (optional; $1 etc. can be used)".</li>
+<li>Look at "Replacement result" and check it's as expected.</li>
+<li>Copy with "Copy replacement result".</li>
 </ol>
-<div class="note">"$1" stands for the first parenthesized part.</div>
+<div class="note">Without flag g, only the first match is replaced.</div>
+<h2>Simple replacement</h2>
+<ul>
+<li>Text: "2026/01/05"</li>
+<li>Pattern: /</li>
+<li>Replacement: -</li>
+<li>Result: "2026-01-05" (flag g needed)</li>
+</ul>
+<h2>Replacement using groups</h2>
+<p>Parenthesised parts can be recalled in the replacement as "$1", "$2".</p>
+<ul>
+<li>Text: "2026/01/05"</li>
+<li>Pattern: (\d+)/(\d+)/(\d+)</li>
+<li>Replacement: $3.$2.$1</li>
+<li>Result: "05.01.2026"</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Changing date notation in bulk</li>
+<li>Removing extra spaces in bulk</li>
+<li>Rewording specific terms in text at once</li>
+<li>Swapping order (such as name order)</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to swap a roster of "Yamada Taro" to "Taro Yamada". Pattern (\S+) (\S+) with replacement $2 $1 swapped them all.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Handling of "$"</b>: "$1" in the replacement recalls a group. To insert a plain "$", write "$$".</li>
+<li><b>Unintended replacement</b>: a loose pattern changes unrelated parts. Check the result carefully.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does the result directly rewrite the original text?</h3>
+<p>No. It only appears in the "Replacement result" field; the original text is untouched.</p>
+<h2>Summary</h2>
+<p>Pattern, replacement and flag g. These three replace in bulk.</p>
 <a class="cta" href="/regex-tester.html">Use "Regex Tester" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/text-diff.html">Compare Two Texts (Diff)</a>: Show the differences between two texts line by line.</li><li><a href="/char-counter.html">Character Counter (for Applications and Reports)</a>: Count characters, lines and manuscript sheets of your text.</li><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ความหมายของแฟลก g, i, m และ s</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เขียนรูปแบบ</li><li>ป้อนแฟลก</li><li>ดูความแตกต่าง</li></ul></div>
-<p>พิมพ์ตัวอักษรลงในช่อง "แฟลก" ของ<a href="/th/regex-tester.html">เครื่องมือทดสอบ Regex</a></p>
+<p lang="en">Regular expressions have switches called "flags" that change behaviour. The same pattern gives different results with different flags. Try them in the "Flags (g, i, m, s, u, etc.)" field of <a href="/th/regex-tester.html">Regex Tester</a>.</p>
+<h2 lang="en">Main flags</h2>
+<ul>
+<li lang="en"><b>g (global)</b>: find all. Without it, only the first.</li>
+<li lang="en"><b>i (ignore case)</b>: don't distinguish upper and lower case.</li>
+<li lang="en"><b>m (multiline)</b>: in multi-line text, treat ^ and $ as the start and end of each line.</li>
+<li lang="en"><b>s (dotAll)</b>: let "." match line breaks too.</li>
+<li lang="en"><b>u (unicode)</b>: handle Unicode characters correctly.</li>
+</ul>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เขียนรูปแบบ</li>
-<li>ป้อนแฟลก</li>
-<li>ดูความแตกต่าง</li>
+<li lang="en">Enter the pattern and the text to test.</li>
+<li lang="en">Enter the characters in the "Flags" field (example: gi).</li>
+<li lang="en">Watch how the result changes.</li>
 </ol>
-<div class="note">การเติม "i" จะไม่สนใจความต่างระหว่างตัวพิมพ์ใหญ่และเล็ก</div>
+<div class="note" lang="en">Flags can be combined. "gi" finds all and ignores case.</div>
+<h2 lang="en">Comparing with an example</h2>
+<p lang="en">Text: "Cat cat CAT", pattern: cat</p>
+<ul>
+<li lang="en">No flags: just one "cat" (the lower-case one)</li>
+<li lang="en">g: all lower-case "cat"</li>
+<li lang="en">gi: all three of "Cat", "cat" and "CAT"</li>
+</ul>
+<h2 lang="en">Example of the m flag</h2>
+<p lang="en">When you want to find the start of each line in multi-line text.</p>
+<ul>
+<li lang="en">Pattern: ^\d+</li>
+<li lang="en">Flags gm: the leading digits of every line match</li>
+<li lang="en">m without g: only the first</li>
+</ul>
+<h2 lang="en">Example of the s flag</h2>
+<p lang="en">With pattern a.b, when there's a line break between a and b, adding s makes it match.</p>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Ignoring differences in letter case</li>
+<li lang="en">Examining multi-line text line by line</li>
+<li lang="en">Seeing all matches as a list</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Wanted to find "error" in English text, but "Error" and "ERROR" were mixed in. Specifying flags gi found them all.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Forgetting g</b>: only one appears.</li>
+<li lang="en"><b>Invalid flags</b>: entering a non-existent character shows "Pattern or flags are invalid:".</li>
+<li lang="en"><b>Duplicate flags</b>: don't enter the same character twice.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does the order of flags matter?</h3>
+<p lang="en">No. "gi" and "ig" mean the same.</p>
+<h2>สรุป</h2>
+<p lang="en">g, i, m, s, u. Switch flags and try the differences in results.</p>
 <a class="cta" href="/th/regex-tester.html">ใช้ “เครื่องมือทดสอบ Regex” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/text-diff.html">เปรียบเทียบข้อความสองชุด (Diff)</a>: แสดงความแตกต่างระหว่างข้อความสองชุดทีละบรรทัด</li><li><a href="/th/char-counter.html">นับตัวอักษร (สำหรับใบสมัครและรายงาน)</a>: นับตัวอักษร บรรทัด และแผ่นกระดาษต้นฉบับของข้อความ</li><li><a href="/th/line-sort-dedupe.html">ลบบรรทัดซ้ำและเรียงลำดับรายการ</a>: ลบบรรทัดซ้ำและเรียงลำดับ</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

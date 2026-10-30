@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>초와 밀리초</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>인원수 입력하기</li><li>읽은 방식 확인하기</li><li>틀리면 자릿수 고치기</li></ul></div>
-<p><a href="/ko/timestamp-converter.html">타임스탬프 변환</a>은 숫자 크기로 초인지 밀리초인지 판단합니다.</p>
+<p lang="en">UNIX time comes in two forms: in seconds and in milliseconds. They look similar, so mixing them up gives dates in 1970 or the far future. <a href="/ko/timestamp-converter.html">UNIX Timestamp Converter</a> tells them apart automatically from the digit count.</p>
+<h2>구별하는 방법</h2>
+<ul>
+<li lang="en"><b>Seconds</b>: 10 digits for current dates. Example: 1767225600</li>
+<li lang="en"><b>Milliseconds</b>: 13 digits for current dates. Example: 1767225600000</li>
+</ul>
+<p lang="en">Milliseconds are 1000 times the seconds number.</p>
+<h2 lang="en">How the tool judges</h2>
+<p lang="en">This tool judges by the size of the number. 12 digits or more is read as milliseconds; smaller as seconds. Below the result, "Read as seconds." or "Read as milliseconds." appears.</p>
+<div class="note" lang="en">If the judgement isn't what you expected, multiply or divide the number by 1000 and re-enter it.</div>
 <h2>순서</h2>
 <ol>
-<li>인원수 입력하기</li>
-<li>읽은 방식 확인하기</li>
-<li>틀리면 자릿수 고치기</li>
+<li lang="en">Enter a number in the "UNIX time (seconds or milliseconds)" field.</li>
+<li lang="en">Look at "Read as seconds." or "Read as milliseconds." shown below.</li>
+<li lang="en">Check that the date and time is plausible.</li>
 </ol>
-<div class="note">JavaScript의 시간은 밀리초 단위이고, 많은 시스템과 데이터베이스는 초를 씁니다.</div>
+<h2 lang="en">Where each is used</h2>
+<ul>
+<li lang="en"><b>Seconds</b>: server logs, databases, many systems</li>
+<li lang="en"><b>Milliseconds</b>: JavaScript's Date.now(), some APIs, browser time</li>
+</ul>
+<h2 lang="en">Symptoms when mixed up</h2>
+<ul>
+<li lang="en">Reading a milliseconds number as seconds gives a far-future date</li>
+<li lang="en">Reading a seconds number as milliseconds gives a date around January 1970</li>
+</ul>
+<p lang="en">When a date looks wrong, suspect a seconds/milliseconds mix-up.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">When the digit count is unclear</li>
+<li lang="en">When you want to check differences between systems</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Entering JavaScript output "1767225600000" showed "Read as milliseconds." and gave 1 January 2026. It was 13 digits, so milliseconds.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Digits cut off</b>: check no digits were lost when copying.</li>
+<li lang="en"><b>Microseconds etc.</b>: numbers of 16 digits etc. are outside this tool.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does converting from a date give both seconds and milliseconds?</h3>
+<p lang="en">Yes. Both "UNIX time (seconds)" and "UNIX time (milliseconds)" appear.</p>
+<h2>요약</h2>
+<p lang="en">10 digits is seconds, 13 digits is milliseconds. When unsure, confirm with the tool's display.</p>
 <a class="cta" href="/ko/timestamp-converter.html">“UNIX 타임스탬프 변환기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/date-calculator.html">나이, 날짜 간 일수, 날짜 가감 계산</a>: 나이와 날짜 간 일수를 계산합니다.</li><li><a href="/ko/wareki-converter.html">서기 연도와 일본 연호 변환</a>: 서기 연도와 일본 연호를 서로 변환합니다.</li><li><a href="/ko/json-formatter.html">JSON 정리 및 검증</a>: JSON을 정리하고, 압축하고, 검증합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

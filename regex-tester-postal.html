@@ -200,14 +200,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>郵便番号や電話番号を見つける正規表現</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>パターンを書く</li><li>文章を入れる</li><li>件数を見る</li></ul></div>
-<p><a href="/regex-tester.html">正規表現テスター</a> に「\d{3}-\d{4}」と入れると、郵便番号の形を探せます。</p>
+<p>文章の中から、郵便番号や電話番号だけを探し出したい。そんなときに、正規表現が活躍します。<a href="/regex-tester.html">正規表現テスター</a> で、パターンを試しながら作りましょう。</p>
+<h2>郵便番号のパターン</h2>
+<p>日本の郵便番号は「123-4567」の形です。</p>
+<ul>
+<li>パターン：\d{3}-\d{4}</li>
+<li>意味：数字3つ、ハイフン、数字4つ</li>
+</ul>
+<p>ハイフンなしの「1234567」も探すときは、次のようにします。</p>
+<ul>
+<li>パターン：\d{3}-?\d{4}</li>
+<li>意味：ハイフンは、あってもなくてもよい</li>
+</ul>
+<h2>電話番号のパターン</h2>
+<ul>
+<li>固定電話の例：0\d{1,4}-\d{1,4}-\d{4}</li>
+<li>携帯電話の例：0[789]0-\d{4}-\d{4}</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>パターンを書く</li>
-<li>文章を入れる</li>
-<li>件数を見る</li>
+<li>「正規表現のパターン」に、パターンを書きます。</li>
+<li>「フラグ」に g を入れます（すべて探す）。</li>
+<li>「テストする文章」に、実際の文章を貼ります。</li>
+<li>合った部分と位置を見て、思った通りか確かめます。</li>
 </ol>
-<div class="note">「\d」は数字1文字、「{3}」は3回の繰り返しです。</div>
+<div class="note">「郵便番号は 123-4567 です。」のような文で、まず試してみましょう。</div>
+<h2>全角の数字を探す</h2>
+<p>全角の数字（１２３）は、半角の \d では合わないことがあります。全角も探すときは、文字の範囲を指定します。</p>
+<ul>
+<li>パターン：[0-9０-９]{3}-[0-9０-９]{4}</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>名簿やメールから、番号を抜き出す</li>
+<li>入力欄の、形式チェックのパターンを作る</li>
+<li>文章中の番号を、まとめて見つける</li>
+</ul>
+<h2>例</h2>
+<p>名簿のテキストに、番号が混ざっていた。\d{3}-\d{4} にフラグ g を付けると、郵便番号が、すべて合った位置とともに表示された。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>ハイフンの種類</b>：「-」「ー」「－」など、似た記号がある。実際の文章の記号に合わせる。</li>
+<li><b>電話番号の桁数</b>：市外局番によって、桁数が違う。ゆるめに作る。</li>
+<li><b>番号に似た別の数字</b>：日付や金額が、合ってしまうことがある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>この正規表現で、番号の正しさまで確認できますか？</h3>
+<p>形が合うかだけです。実在の番号かどうかは、確認できません。</p>
+<h2>まとめ</h2>
+<p>\d{3}-\d{4} のように、形で探す。テスターで試しながら、調整しましょう。</p>
 <a class="cta" href="/regex-tester.html">正規表現テスターを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/text-diff.html">2つの文章の違いを調べる</a>：2つの文章の違いを、行ごとに色つきで示します。</li><li><a href="/char-counter.html">文字数カウント（エントリーシート・レポート用）</a>：文章の文字数・行数・原稿用紙の枚数などを数えます。</li><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +260,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Regex for Postal and Phone Numbers</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Write a pattern</li><li>Enter the text</li><li>Check the count</li></ul></div>
-<p>Entering "\d{3}-\d{4}" in <a href="/regex-tester.html">Regex Tester</a> finds the shape of a postal code.</p>
+<p>You want to find only postal codes or phone numbers in text. Regular expressions are useful for that. Build the pattern while trying it in <a href="/regex-tester.html">Regex Tester</a>.</p>
+<h2>Postal code pattern</h2>
+<p>Japanese postal codes take the form "123-4567".</p>
+<ul>
+<li>Pattern: \d{3}-\d{4}</li>
+<li>Meaning: three digits, a hyphen, four digits</li>
+</ul>
+<p>To also find "1234567" without a hyphen:</p>
+<ul>
+<li>Pattern: \d{3}-?\d{4}</li>
+<li>Meaning: the hyphen may or may not be present</li>
+</ul>
+<h2>Phone number patterns</h2>
+<ul>
+<li>Landline example: 0\d{1,4}-\d{1,4}-\d{4}</li>
+<li>Mobile example: 0[789]0-\d{4}-\d{4}</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Write a pattern</li>
-<li>Enter the text</li>
-<li>Check the count</li>
+<li>Write the pattern in "Regular expression pattern".</li>
+<li>Enter g in "Flags" (find all).</li>
+<li>Paste real text into "Text to test".</li>
+<li>Look at the matched parts and positions and check they're as expected.</li>
 </ol>
-<div class="note">"\d" is one digit and "{3}" means three times.</div>
+<div class="note">First try it on a sentence like "The postal code is 123-4567."</div>
+<h2>Finding full-width digits</h2>
+<p>Full-width digits (１２３) may not match the half-width \d. To find full-width too, specify character ranges.</p>
+<ul>
+<li>Pattern: [0-9０-９]{3}-[0-9０-９]{4}</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Extracting numbers from rosters and emails</li>
+<li>Making patterns for input format checks</li>
+<li>Finding numbers in text in bulk</li>
+</ul>
+<h2>Example</h2>
+<p>Numbers were mixed into roster text. \d{3}-\d{4} with flag g showed all postal codes with their matched positions.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Types of hyphen</b>: similar symbols exist ("-", "ー", "－"). Match the symbol in the actual text.</li>
+<li><b>Phone digit counts</b>: they differ by area code. Make it loose.</li>
+<li><b>Other numbers resembling these</b>: dates and amounts can match.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can this check that a number is correct?</h3>
+<p>Only whether the form matches. It can't confirm whether the number exists.</p>
+<h2>Summary</h2>
+<p>Search by form, like \d{3}-\d{4}. Adjust while trying in the tester.</p>
 <a class="cta" href="/regex-tester.html">Use "Regex Tester" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/text-diff.html">Compare Two Texts (Diff)</a>: Show the differences between two texts line by line.</li><li><a href="/char-counter.html">Character Counter (for Applications and Reports)</a>: Count characters, lines and manuscript sheets of your text.</li><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

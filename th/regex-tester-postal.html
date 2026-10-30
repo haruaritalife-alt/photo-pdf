@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Regex สำหรับรหัสไปรษณีย์และหมายเลขโทรศัพท์</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เขียนรูปแบบ</li><li>ป้อนข้อความ</li><li>ตรวจสอบจำนวน</li></ul></div>
-<p>การป้อน "\d{3}-\d{4}" ใน<a href="/th/regex-tester.html">เครื่องมือทดสอบ Regex</a>จะหารูปแบบของรหัสไปรษณีย์</p>
+<p lang="en">You want to find only postal codes or phone numbers in text. Regular expressions are useful for that. Build the pattern while trying it in <a href="/th/regex-tester.html">Regex Tester</a>.</p>
+<h2 lang="en">Postal code pattern</h2>
+<p lang="en">Japanese postal codes take the form "123-4567".</p>
+<ul>
+<li lang="en">Pattern: \d{3}-\d{4}</li>
+<li lang="en">Meaning: three digits, a hyphen, four digits</li>
+</ul>
+<p lang="en">To also find "1234567" without a hyphen:</p>
+<ul>
+<li lang="en">Pattern: \d{3}-?\d{4}</li>
+<li lang="en">Meaning: the hyphen may or may not be present</li>
+</ul>
+<h2 lang="en">Phone number patterns</h2>
+<ul>
+<li lang="en">Landline example: 0\d{1,4}-\d{1,4}-\d{4}</li>
+<li lang="en">Mobile example: 0[789]0-\d{4}-\d{4}</li>
+</ul>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เขียนรูปแบบ</li>
-<li>ป้อนข้อความ</li>
-<li>ตรวจสอบจำนวน</li>
+<li lang="en">Write the pattern in "Regular expression pattern".</li>
+<li lang="en">Enter g in "Flags" (find all).</li>
+<li lang="en">Paste real text into "Text to test".</li>
+<li lang="en">Look at the matched parts and positions and check they're as expected.</li>
 </ol>
-<div class="note">"\d" คือตัวเลขหนึ่งตัว และ "{3}" หมายถึงสามครั้ง</div>
+<div class="note" lang="en">First try it on a sentence like "The postal code is 123-4567."</div>
+<h2 lang="en">Finding full-width digits</h2>
+<p lang="en">Full-width digits (１２３) may not match the half-width \d. To find full-width too, specify character ranges.</p>
+<ul>
+<li lang="en">Pattern: [0-9０-９]{3}-[0-9０-９]{4}</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Extracting numbers from rosters and emails</li>
+<li lang="en">Making patterns for input format checks</li>
+<li lang="en">Finding numbers in text in bulk</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Numbers were mixed into roster text. \d{3}-\d{4} with flag g showed all postal codes with their matched positions.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Types of hyphen</b>: similar symbols exist ("-", "ー", "－"). Match the symbol in the actual text.</li>
+<li lang="en"><b>Phone digit counts</b>: they differ by area code. Make it loose.</li>
+<li lang="en"><b>Other numbers resembling these</b>: dates and amounts can match.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can this check that a number is correct?</h3>
+<p lang="en">Only whether the form matches. It can't confirm whether the number exists.</p>
+<h2>สรุป</h2>
+<p lang="en">Search by form, like \d{3}-\d{4}. Adjust while trying in the tester.</p>
 <a class="cta" href="/th/regex-tester.html">ใช้ “เครื่องมือทดสอบ Regex” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/text-diff.html">เปรียบเทียบข้อความสองชุด (Diff)</a>: แสดงความแตกต่างระหว่างข้อความสองชุดทีละบรรทัด</li><li><a href="/th/char-counter.html">นับตัวอักษร (สำหรับใบสมัครและรายงาน)</a>: นับตัวอักษร บรรทัด และแผ่นกระดาษต้นฉบับของข้อความ</li><li><a href="/th/line-sort-dedupe.html">ลบบรรทัดซ้ำและเรียงลำดับรายการ</a>: ลบบรรทัดซ้ำและเรียงลำดับ</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

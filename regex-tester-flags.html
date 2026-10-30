@@ -200,14 +200,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>フラグ（g・i・m・s）の意味</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>パターンを書く</li><li>フラグを入れる</li><li>違いを見る</li></ul></div>
-<p><a href="/regex-tester.html">正規表現テスター</a> の「フラグ」欄に、文字を並べて入れます。</p>
+<p>正規表現には、「フラグ」という、動作を切り替えるスイッチがあります。同じパターンでも、フラグによって、結果が変わります。<a href="/regex-tester.html">正規表現テスター</a> の「フラグ（g・i・m・s・uなど）」の欄で、試してみましょう。</p>
+<h2>主なフラグ</h2>
+<ul>
+<li><b>g（global）</b>：すべて探す。無いと、最初の1つだけ。</li>
+<li><b>i（ignore case）</b>：大文字小文字を区別しない。</li>
+<li><b>m（multiline）</b>：複数行で、^ と $ を各行の先頭・末尾として扱う。</li>
+<li><b>s（dotAll）</b>：「.」が、改行にも合うようにする。</li>
+<li><b>u（unicode）</b>：Unicodeの文字を、正しく扱う。</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>パターンを書く</li>
-<li>フラグを入れる</li>
-<li>違いを見る</li>
+<li>パターンと、テストする文章を入れる。</li>
+<li>「フラグ」の欄に、文字を並べて入れる（例：gi）。</li>
+<li>結果の変化を見る。</li>
 </ol>
-<div class="note">「i」を付けると、大文字と小文字を区別しません。</div>
+<div class="note">フラグは、組み合わせられます。「gi」なら、すべて探し、大文字小文字を区別しません。</div>
+<h2>例で比べる</h2>
+<p>文章：「Cat cat CAT」、パターン：cat</p>
+<ul>
+<li>フラグなし：「cat」の1つだけ（小文字の部分）</li>
+<li>g：小文字の「cat」を、すべて</li>
+<li>gi：「Cat」「cat」「CAT」の3つすべて</li>
+</ul>
+<h2>mフラグの例</h2>
+<p>複数行の文章で、各行の先頭を探したいとき。</p>
+<ul>
+<li>パターン：^\d+</li>
+<li>フラグ gm：各行の、先頭の数字がすべて合う</li>
+<li>gなし m：最初の1つだけ</li>
+</ul>
+<h2>sフラグの例</h2>
+<p>パターン a.b で、a と b の間に改行があるとき、s を付けると合うようになります。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>大文字小文字の違いを、無視したい</li>
+<li>複数行の文章を、行ごとに調べたい</li>
+<li>すべての該当を、一覧で見たい</li>
+</ul>
+<h2>例</h2>
+<p>英文の「error」を探したかったが、「Error」「ERROR」も混ざっていた。フラグ gi を指定すると、すべて見つかった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>gを忘れる</b>：1つしか出ない。</li>
+<li><b>無効なフラグ</b>：存在しない文字を入れると、「パターンかフラグが正しくありません：」と出る。</li>
+<li><b>フラグの重複</b>：同じ文字を2回入れない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>フラグの順番は関係ありますか？</h3>
+<p>関係ありません。「gi」も「ig」も同じ意味です。</p>
+<h2>まとめて</h2>
+<p>g・i・m・s・u。フラグを切り替えて、結果の違いを試しましょう。</p>
 <a class="cta" href="/regex-tester.html">正規表現テスターを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/text-diff.html">2つの文章の違いを調べる</a>：2つの文章の違いを、行ごとに色つきで示します。</li><li><a href="/char-counter.html">文字数カウント（エントリーシート・レポート用）</a>：文章の文字数・行数・原稿用紙の枚数などを数えます。</li><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +262,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What the Flags g, i, m and s Mean</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Write a pattern</li><li>Enter flags</li><li>See the difference</li></ul></div>
-<p>Type the letters into the "Flags" field of <a href="/regex-tester.html">Regex Tester</a>.</p>
+<p>Regular expressions have switches called "flags" that change behaviour. The same pattern gives different results with different flags. Try them in the "Flags (g, i, m, s, u, etc.)" field of <a href="/regex-tester.html">Regex Tester</a>.</p>
+<h2>Main flags</h2>
+<ul>
+<li><b>g (global)</b>: find all. Without it, only the first.</li>
+<li><b>i (ignore case)</b>: don't distinguish upper and lower case.</li>
+<li><b>m (multiline)</b>: in multi-line text, treat ^ and $ as the start and end of each line.</li>
+<li><b>s (dotAll)</b>: let "." match line breaks too.</li>
+<li><b>u (unicode)</b>: handle Unicode characters correctly.</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Write a pattern</li>
-<li>Enter flags</li>
-<li>See the difference</li>
+<li>Enter the pattern and the text to test.</li>
+<li>Enter the characters in the "Flags" field (example: gi).</li>
+<li>Watch how the result changes.</li>
 </ol>
-<div class="note">Adding "i" ignores the difference between upper and lower case.</div>
+<div class="note">Flags can be combined. "gi" finds all and ignores case.</div>
+<h2>Comparing with an example</h2>
+<p>Text: "Cat cat CAT", pattern: cat</p>
+<ul>
+<li>No flags: just one "cat" (the lower-case one)</li>
+<li>g: all lower-case "cat"</li>
+<li>gi: all three of "Cat", "cat" and "CAT"</li>
+</ul>
+<h2>Example of the m flag</h2>
+<p>When you want to find the start of each line in multi-line text.</p>
+<ul>
+<li>Pattern: ^\d+</li>
+<li>Flags gm: the leading digits of every line match</li>
+<li>m without g: only the first</li>
+</ul>
+<h2>Example of the s flag</h2>
+<p>With pattern a.b, when there's a line break between a and b, adding s makes it match.</p>
+<h2>Good for</h2>
+<ul>
+<li>Ignoring differences in letter case</li>
+<li>Examining multi-line text line by line</li>
+<li>Seeing all matches as a list</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to find "error" in English text, but "Error" and "ERROR" were mixed in. Specifying flags gi found them all.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Forgetting g</b>: only one appears.</li>
+<li><b>Invalid flags</b>: entering a non-existent character shows "Pattern or flags are invalid:".</li>
+<li><b>Duplicate flags</b>: don't enter the same character twice.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does the order of flags matter?</h3>
+<p>No. "gi" and "ig" mean the same.</p>
+<h2>Summary</h2>
+<p>g, i, m, s, u. Switch flags and try the differences in results.</p>
 <a class="cta" href="/regex-tester.html">Use "Regex Tester" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/text-diff.html">Compare Two Texts (Diff)</a>: Show the differences between two texts line by line.</li><li><a href="/char-counter.html">Character Counter (for Applications and Reports)</a>: Count characters, lines and manuscript sheets of your text.</li><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

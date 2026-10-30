@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>정규식으로 글을 한꺼번에 치환하기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>패턴 쓰기</li><li>치환할 글자 입력하기</li><li>결과 복사</li></ul></div>
-<p><a href="/ko/regex-tester.html">정규식 테스터</a>의 "치환 글자" 칸은 일치한 부분을 한꺼번에 바꿉니다.</p>
+<p lang="en">You want to replace parts of a text that have a certain form with other characters all at once. Regular expression replacement saves you from fixing each by hand. Check replacement results with <a href="/ko/regex-tester.html">Regex Tester</a>.</p>
 <h2>순서</h2>
 <ol>
-<li>패턴 쓰기</li>
-<li>치환할 글자 입력하기</li>
-<li>결과 복사</li>
+<li lang="en">Write the pattern to find in "Regular expression pattern".</li>
+<li lang="en">Enter g in "Flags" (replace all).</li>
+<li lang="en">Enter the original text in "Text to test".</li>
+<li lang="en">Enter the replacement in "Replacement text (optional; $1 etc. can be used)".</li>
+<li lang="en">Look at "Replacement result" and check it's as expected.</li>
+<li lang="en">Copy with "Copy replacement result".</li>
 </ol>
-<div class="note">"$1"은 괄호로 묶은 첫 번째 부분을 뜻합니다.</div>
+<div class="note" lang="en">Without flag g, only the first match is replaced.</div>
+<h2 lang="en">Simple replacement</h2>
+<ul>
+<li lang="en">Text: "2026/01/05"</li>
+<li lang="en">Pattern: /</li>
+<li lang="en">Replacement: -</li>
+<li lang="en">Result: "2026-01-05" (flag g needed)</li>
+</ul>
+<h2 lang="en">Replacement using groups</h2>
+<p lang="en">Parenthesised parts can be recalled in the replacement as "$1", "$2".</p>
+<ul>
+<li lang="en">Text: "2026/01/05"</li>
+<li lang="en">Pattern: (\d+)/(\d+)/(\d+)</li>
+<li lang="en">Replacement: $3.$2.$1</li>
+<li lang="en">Result: "05.01.2026"</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Changing date notation in bulk</li>
+<li lang="en">Removing extra spaces in bulk</li>
+<li lang="en">Rewording specific terms in text at once</li>
+<li lang="en">Swapping order (such as name order)</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted to swap a roster of "Yamada Taro" to "Taro Yamada". Pattern (\S+) (\S+) with replacement $2 $1 swapped them all.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Handling of "$"</b>: "$1" in the replacement recalls a group. To insert a plain "$", write "$$".</li>
+<li lang="en"><b>Unintended replacement</b>: a loose pattern changes unrelated parts. Check the result carefully.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does the result directly rewrite the original text?</h3>
+<p lang="en">No. It only appears in the "Replacement result" field; the original text is untouched.</p>
+<h2>요약</h2>
+<p lang="en">Pattern, replacement and flag g. These three replace in bulk.</p>
 <a class="cta" href="/ko/regex-tester.html">“정규식 테스터” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/text-diff.html">두 텍스트 비교 (Diff)</a>: 두 텍스트의 차이를 줄 단위로 보여 줍니다.</li><li><a href="/ko/char-counter.html">글자 수 세기 (지원서·리포트용)</a>: 텍스트의 글자 수, 줄 수, 원고지 매수를 셉니다.</li><li><a href="/ko/line-sort-dedupe.html">중복된 줄 제거 및 목록 정렬</a>: 중복된 줄을 제거하고 정렬합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

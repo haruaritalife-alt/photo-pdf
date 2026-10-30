@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Giây và mili giây</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Nhập số lượng</li><li>Kiểm tra cách nó được đọc</li><li>Sửa số chữ số nếu sai</li></ul></div>
-<p><a href="/vi/timestamp-converter.html">Chuyển đổi dấu thời gian</a> quyết định giây hay mili giây dựa vào độ lớn của con số.</p>
+<p lang="en">UNIX time comes in two forms: in seconds and in milliseconds. They look similar, so mixing them up gives dates in 1970 or the far future. <a href="/vi/timestamp-converter.html">UNIX Timestamp Converter</a> tells them apart automatically from the digit count.</p>
+<h2>Cách nhận biết</h2>
+<ul>
+<li lang="en"><b>Seconds</b>: 10 digits for current dates. Example: 1767225600</li>
+<li lang="en"><b>Milliseconds</b>: 13 digits for current dates. Example: 1767225600000</li>
+</ul>
+<p lang="en">Milliseconds are 1000 times the seconds number.</p>
+<h2 lang="en">How the tool judges</h2>
+<p lang="en">This tool judges by the size of the number. 12 digits or more is read as milliseconds; smaller as seconds. Below the result, "Read as seconds." or "Read as milliseconds." appears.</p>
+<div class="note" lang="en">If the judgement isn't what you expected, multiply or divide the number by 1000 and re-enter it.</div>
 <h2>Các bước</h2>
 <ol>
-<li>Nhập số lượng</li>
-<li>Kiểm tra cách nó được đọc</li>
-<li>Sửa số chữ số nếu sai</li>
+<li lang="en">Enter a number in the "UNIX time (seconds or milliseconds)" field.</li>
+<li lang="en">Look at "Read as seconds." or "Read as milliseconds." shown below.</li>
+<li lang="en">Check that the date and time is plausible.</li>
 </ol>
-<div class="note">Thời gian JavaScript tính bằng mili giây; nhiều hệ thống và cơ sở dữ liệu dùng giây.</div>
+<h2 lang="en">Where each is used</h2>
+<ul>
+<li lang="en"><b>Seconds</b>: server logs, databases, many systems</li>
+<li lang="en"><b>Milliseconds</b>: JavaScript's Date.now(), some APIs, browser time</li>
+</ul>
+<h2 lang="en">Symptoms when mixed up</h2>
+<ul>
+<li lang="en">Reading a milliseconds number as seconds gives a far-future date</li>
+<li lang="en">Reading a seconds number as milliseconds gives a date around January 1970</li>
+</ul>
+<p lang="en">When a date looks wrong, suspect a seconds/milliseconds mix-up.</p>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">When the digit count is unclear</li>
+<li lang="en">When you want to check differences between systems</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">Entering JavaScript output "1767225600000" showed "Read as milliseconds." and gave 1 January 2026. It was 13 digits, so milliseconds.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Digits cut off</b>: check no digits were lost when copying.</li>
+<li lang="en"><b>Microseconds etc.</b>: numbers of 16 digits etc. are outside this tool.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does converting from a date give both seconds and milliseconds?</h3>
+<p lang="en">Yes. Both "UNIX time (seconds)" and "UNIX time (milliseconds)" appear.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">10 digits is seconds, 13 digits is milliseconds. When unsure, confirm with the tool's display.</p>
 <a class="cta" href="/vi/timestamp-converter.html">Dùng “Chuyển đổi dấu thời gian UNIX” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/date-calculator.html">Tính tuổi, số ngày giữa hai ngày và ngày cộng/trừ</a>: Tính tuổi và số ngày giữa hai ngày.</li><li><a href="/vi/wareki-converter.html">Chuyển đổi giữa năm dương lịch và niên hiệu Nhật Bản</a>: Chuyển đổi giữa năm dương lịch và niên hiệu Nhật Bản.</li><li><a href="/vi/json-formatter.html">Định dạng và kiểm tra JSON</a>: Định dạng, rút gọn và kiểm tra JSON.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>
