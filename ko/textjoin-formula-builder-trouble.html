@@ -201,14 +201,42 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/textjoin-formula-builder.html">TEXTJOIN 만들기</a>가 동작하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/ko/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: enter a range with column letters and row numbers like "A2:A10". A single cell or a whole column (A:A) isn't allowed.</li>
+<li lang="en"><b>"The &amp; formula is limited to 30 cells."</b>: the &amp; formula handles up to 30 cells. The TEXTJOIN formula can be used as is.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#NAME? appears</b>: old Excel without TEXTJOIN. Use the "&amp; formula".</li>
+<li lang="en"><b>#VALUE! appears</b>: the result is too long (a cell's limit is 32,767 characters).</li>
+<li lang="en"><b>Extra separators line up</b>: "Skip blank cells" is off, or there are space-only cells.</li>
+<li lang="en"><b>Numbers or dates display wrongly</b>: numbers and dates join as their raw values without display formats. Tidy with TEXT.</li>
+<li lang="en"><b>No line breaks</b>: turn on "Wrap text" in the cell format.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Check the range is entered with row numbers.</li>
+<li lang="en">Review the "Skip blank cells" setting.</li>
+<li lang="en">Check the Excel version (TEXTJOIN is 2019 and later).</li>
 </ol>
-<div class="note">수식이 나오지 않으면 범위가 A2:A10처럼 쓰여 있는지 확인하세요.</div>
+<div class="note" lang="en">When joining dates or amounts, tidy them first with TEXT.</div>
+<h2 lang="en">Tidying dates example</h2>
+<p lang="en">=TEXTJOIN(", ",TRUE,TEXT(A2:A5,"yyyy/mm/dd"))</p>
+<p lang="en">Written this way, dates join in the "2026/10/25" form.</p>
+<h2>예</h2>
+<p lang="en">Joining dates gave numbers like "46320, 46321". Tidying with TEXT joined them in date form.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>An error value in the range</b>: any error value makes the whole an error.</li>
+<li lang="en"><b>Ranges on other sheets</b>: rewrite with the sheet name (Sheet2!A2:A10).</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Numbers became text.</h3>
+<p lang="en">A joined result is text. To calculate, use the original cells.</p>
+<h2>요약</h2>
+<p lang="en">Range, version, blank setting, display format. Check these four in order.</p>
 <a class="cta" href="/ko/textjoin-formula-builder.html">“TEXTJOIN 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/vlookup-formula-builder.html">VLOOKUP·XLOOKUP 수식 만들기</a>: VLOOKUP과 XLOOKUP 수식을 만듭니다.</li><li><a href="/ko/excel-range-info.html">엑셀 범위의 셀·행·열 수 세기</a>: 범위의 셀, 행, 열을 확인합니다.</li><li><a href="/ko/excel-text-clean.html">엑셀 글의 불필요한 공백과 보이지 않는 문자 없애기</a>: 불필요한 공백과 보이지 않는 문자를 없앱니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

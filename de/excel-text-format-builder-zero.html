@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Mit führenden Nullen auffüllen</h1>
 <p class="meta">Veröffentlicht: 19.10.2026 | Aktualisiert: 19.10.2026 | <a href="/about.html">Über uns (Japanisch)</a></p>
 <div class="points"><b>Wichtige Punkte</b><ul><li>Zelle eingeben</li><li>000000 wählen</li><li>Kopieren</li></ul></div>
-<p>Wenn Sie in <a href="/de/excel-text-format-builder.html">TEXT-Generator</a> 000000 wählen, wird eine Zahl auf sechs Stellen aufgefüllt.</p>
+<p lang="en">You want to align digits of employee numbers or product codes, turning "1" into "000001". Choose "000000" in <a href="/de/excel-text-format-builder.html">Build an Excel TEXT Formula</a> to build a zero-padding TEXT formula.</p>
 <h2>Schritte</h2>
 <ol>
-<li>Zelle eingeben</li>
-<li>000000 wählen</li>
-<li>Kopieren</li>
+<li lang="en">Enter the number cell in "Cell to convert".</li>
+<li lang="en">Choose "000000" from "Common formats".</li>
+<li lang="en">To change the digit count, add or remove zeros.</li>
+<li lang="en">Copy the "TEXT formula".</li>
 </ol>
-<div class="note">Die Stellenzahl richtet sich nach der Anzahl der Nullen im Format.</div>
+<div class="note" lang="en">The number of "0"s is the digit count. Six digits is "000000", four is "0000".</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">=TEXT(A2,"000000")</li>
+<li lang="en">A2 is 1 → 000001</li>
+<li lang="en">A2 is 123 → 000123</li>
+<li lang="en">A2 is 1234567 → 1234567 (digits suffice, so unchanged)</li>
+</ul>
+<h2 lang="en">Number of zeros and results</h2>
+<ul>
+<li lang="en">Format "0000": 1 → 0001, 25 → 0025</li>
+<li lang="en">Format "00000": 1 → 00001</li>
+<li lang="en">Format "00": 5 → 05 (2-digit alignment for months and days)</li>
+</ul>
+<h2>Gut geeignet für</h2>
+<ul>
+<li lang="en">Aligning digits of employee or member numbers</li>
+<li lang="en">Making sorting follow number order</li>
+<li lang="en">Passing fixed-width numbers to a system</li>
+</ul>
+<h2 lang="en">Other ways</h2>
+<p lang="en">Besides TEXT, zero-padding can also be done like this:</p>
+<ul>
+<li lang="en">RIGHT function: =RIGHT("000000"&amp;A2,6)</li>
+<li lang="en">Cell format: "Custom" format "000000" (changes only the look)</li>
+</ul>
+<h2 lang="en">TEXT vs cell format</h2>
+<ul>
+<li lang="en"><b>TEXT function</b>: the content becomes the text "000001"; zeros stay when copied.</li>
+<li lang="en"><b>Cell format</b>: only the look is "000001"; the content stays 1.</li>
+</ul>
+<h2>Beispiel</h2>
+<p lang="en">Member numbers like "1", "25", "300" sorted oddly. Zero-padding to six digits made ordering consistent.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Longer numbers aren't cut</b>: numbers longer than the digit count display as is.</li>
+<li lang="en"><b>The result is text</b>: use the original number for calculation.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I export to CSV without dropping leading zeros?</h3>
+<p lang="en">Making it text with TEXT helps keep the zeros. But reopening in Excel may drop them.</p>
+<h2>Zusammenfassung</h2>
+<p lang="en">To align digits, set the digit count by the number of zeros.</p>
 <a class="cta" href="/de/excel-text-format-builder.html">„Eine Excel-TEXT-Formel erstellen“ verwenden (kostenlos)</a>
 <h2>Passende Werkzeuge dazu</h2><ul><li><a href="/de/excel-serial-date.html">Umrechner für Excel-Seriennummernwert und Datum</a>: Excel-Seriennummernwerte und Daten umrechnen.</li><li><a href="/de/vlookup-formula-builder.html">VLOOKUP- oder XLOOKUP-Formel erstellen</a>: Erstellen Sie VLOOKUP- und XLOOKUP-Formeln.</li><li><a href="/de/excel-text-clean.html">Überflüssige Leerzeichen und unsichtbare Zeichen aus Excel-Text entfernen</a>: Entfernen Sie überflüssige Leerzeichen und unsichtbare Zeichen.</li></ul>
 <div class="tip"><p>Wenn Ihnen diese Anleitung geholfen hat, freuen wir uns über ein kleines Trinkgeld.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Trinkgeld senden (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Geschenk senden (Amazon-Wunschliste)</a></div>

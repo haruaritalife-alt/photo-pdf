@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Boş Hücreleri Atlama</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>Aralığı girin</li><li>Kutuyu işaretleyin</li><li>Kopyalayın</li></ul></div>
-<p><a href="/tr/textjoin-formula-builder.html">TEXTJOIN Oluşturucu</a>'ndaki atlama ayarıyla, hücrelerin boş olduğu yerlerde ayırıcılar üst üste binmez.</p>
+<p lang="en">If the range has empty cells, extra separators line up in the joined text. "Skip blank cells" in <a href="/tr/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> prevents this.</p>
+<h2>Fark</h2>
+<p lang="en">With A2:A5 holding "Tanaka", (empty), "Suzuki", "Sato" and separator ", ":</p>
+<ul>
+<li lang="en">Skip (TRUE): Tanaka, Suzuki, Sato</li>
+<li lang="en">Don't skip (FALSE): Tanaka, , Suzuki, Sato</li>
+</ul>
 <h2>Adımlar</h2>
 <ol>
-<li>Aralığı girin</li>
-<li>Kutuyu işaretleyin</li>
-<li>Kopyalayın</li>
+<li lang="en">Enter the range and separator.</li>
+<li lang="en">Ticking "Skip blank cells" makes the second argument TRUE.</li>
+<li lang="en">Unticking makes it FALSE.</li>
 </ol>
-<div class="note">Ayar TRUE ile FALSE arasında geçiş yapar.</div>
+<div class="note" lang="en">Normally, leave it ticked.</div>
+<h2 lang="en">As formulas</h2>
+<ul>
+<li lang="en">Skip: =TEXTJOIN(", ",TRUE,A2:A5)</li>
+<li lang="en">Don't skip: =TEXTJOIN(", ",FALSE,A2:A5)</li>
+</ul>
+<h2 lang="en">When not skipping is better</h2>
+<ul>
+<li lang="en">You want empty positions marked by separators</li>
+<li lang="en">Fixed orderings where item position matters</li>
+</ul>
+<p lang="en">For example, among "name, phone, email", showing the phone is empty suits not skipping.</p>
+<h2 lang="en">What counts as "empty"</h2>
+<ul>
+<li lang="en">Cells with nothing: empty</li>
+<li lang="en">Cells returning "" from a formula: empty strings; TEXTJOIN treats them as empty</li>
+<li lang="en">Cells with only spaces: not empty; spaces line up</li>
+</ul>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Joining a list with blank rows neatly</li>
+<li lang="en">Showing only items that meet a condition</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">A participant list had gaps in the middle. Setting "skip" joined it cleanly with no extra ", ".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Space-only cells</b>: not empty, so not skipped. Remove extra spaces.</li>
+<li lang="en"><b>Removing spaces</b>: the "Clean extra spaces and invisible characters from Excel text" tool helps.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does an empty cell cause an error?</h3>
+<p lang="en">No. Neither setting causes an error.</p>
+<h2>Özet</h2>
+<p lang="en">Usually choose "skip". Only choose not to when you want positions shown.</p>
 <a class="cta" href="/tr/textjoin-formula-builder.html">“TEXTJOIN Formülü Oluşturma” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/vlookup-formula-builder.html">VLOOKUP veya XLOOKUP Formülü Oluşturma</a>: VLOOKUP ve XLOOKUP formülleri oluşturun.</li><li><a href="/tr/excel-range-info.html">Bir Excel aralığındaki hücre, satır ve sütunları sayma</a>: Bir aralığın hücre, satır ve sütunlarını bulun.</li><li><a href="/tr/excel-text-clean.html">Excel metnindeki fazla boşlukları ve görünmez karakterleri kaldırma</a>: Fazla boşlukları ve görünmez karakterleri kaldırın.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

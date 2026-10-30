@@ -200,14 +200,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>3桁区切りにする</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>セルを入れる</li><li>#,##0を選ぶ</li><li>コピーする</li></ul></div>
-<p><a href="/excel-text-format-builder.html">TEXT関数の式</a> の#,##0を選ぶと、3桁ごとにカンマが入ります。</p>
+<p>金額や数量に、3桁ごとのカンマを付けたい。<a href="/excel-text-format-builder.html">TEXT関数の式を作る（表示形式）</a> の「#,##0」を選ぶと、3桁区切りのTEXT関数の式ができます。</p>
 <h2>手順</h2>
 <ol>
-<li>セルを入れる</li>
-<li>#,##0を選ぶ</li>
-<li>コピーする</li>
+<li>「変換するセル」に、数字のセルを入れる。</li>
+<li>「よく使う表示形式」から「#,##0」を選ぶ。</li>
+<li>「TEXT関数の式」を、コピーする。</li>
 </ol>
-<div class="note">結果は文字になります。</div>
+<div class="note">「#,##0」の「,」が3桁区切り、「0」が最低1桁は表示する、という意味です。</div>
+<h2>例</h2>
+<ul>
+<li>=TEXT(A2,"#,##0")</li>
+<li>1234567 → 1,234,567</li>
+<li>1000 → 1,000</li>
+<li>0 → 0</li>
+</ul>
+<h2>小数も表示するには</h2>
+<ul>
+<li>「#,##0.00」：小数2桁（1,234,567.89）</li>
+<li>「#,##0.0」：小数1桁</li>
+<li>「0.00」：カンマなしの小数2桁</li>
+</ul>
+<h2>円マークなどを付ける</h2>
+<ul>
+<li>「¥#,##0」：¥1,234,567</li>
+<li>「#,##0"円"」：1,234,567円</li>
+<li>「#,##0"個"」：1,234個</li>
+</ul>
+<p>文字を付けるときは、ダブルクォートで囲みます。式の中では、クォートが二重になります。ツールが自動で整えるので、そのまま使えます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>文章の中に、金額を入れたい（例：「合計は」&amp;TEXT(A2,"#,##0")&amp;"円"）</li>
+<li>帳票の金額を、文字として整えたい</li>
+<li>メールの定型文に、金額を入れたい</li>
+</ul>
+<h2>例</h2>
+<p>「ご請求額は1234567円です」を、「1,234,567円」と書きたかった。TEXT関数で3桁区切りにして、文章に組み込んだ。</p>
+<h2>他の方法との違い</h2>
+<p>セルの書式で「桁区切り」を付けると、見た目だけが変わります。文章に組み込む場合は、TEXT関数で文字にします。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>負の数</b>：「-1,234」になる。「▲」などで表示したいときは、書式を工夫する。</li>
+<li><b>文字になるので計算できない</b>：計算には、元のセルを使う。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>千の位ごとではなく、万の位ごとに区切れますか？</h3>
+<p>日本式の万の位の区切りは、TEXT関数の表示形式では作れません。</p>
+<h2>まとめ</h2>
+<p>金額を文章に入れるときは、TEXT関数で3桁区切りにしましょう。</p>
 <a class="cta" href="/excel-text-format-builder.html">TEXT関数の式を作る（表示形式）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +259,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Adding a Thousands Separator</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the cell</li><li>Choose #,##0</li><li>Copy it</li></ul></div>
-<p>Choosing #,##0 in <a href="/excel-text-format-builder.html">TEXT Formula Builder</a> adds a comma every three digits.</p>
+<p>You want thousands separators on amounts or quantities. Choose "#,##0" in <a href="/excel-text-format-builder.html">Build an Excel TEXT Formula</a> to build a thousands-separator TEXT formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the cell</li>
-<li>Choose #,##0</li>
-<li>Copy it</li>
+<li>Enter the number cell in "Cell to convert".</li>
+<li>Choose "#,##0" from "Common formats".</li>
+<li>Copy the "TEXT formula".</li>
 </ol>
-<div class="note">The result becomes text.</div>
+<div class="note">In "#,##0", "," is the thousands separator and "0" means show at least one digit.</div>
+<h2>Examples</h2>
+<ul>
+<li>=TEXT(A2,"#,##0")</li>
+<li>1234567 → 1,234,567</li>
+<li>1000 → 1,000</li>
+<li>0 → 0</li>
+</ul>
+<h2>Showing decimals</h2>
+<ul>
+<li>"#,##0.00": two decimals (1,234,567.89)</li>
+<li>"#,##0.0": one decimal</li>
+<li>"0.00": two decimals without commas</li>
+</ul>
+<h2>Adding currency or units</h2>
+<ul>
+<li>"$#,##0": $1,234,567</li>
+<li>Format code with a unit after the number: 1,234,567 units</li>
+</ul>
+<p>When adding text, enclose it in double quotes. In the formula the quotes double up. The tool tidies this automatically so you can use it as is.</p>
+<h2>Good for</h2>
+<ul>
+<li>Putting amounts in sentences (e.g. "Total is "&amp;TEXT(A2,"#,##0"))</li>
+<li>Tidying invoice amounts as text</li>
+<li>Putting amounts in email templates</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted "The invoice is 1234567 yen" to read "1,234,567 yen". Using TEXT for separators and embedding it in the sentence did it.</p>
+<h2>Difference from other methods</h2>
+<p>Adding "thousands separator" in cell formatting changes only the look. To embed in a sentence, make it text with TEXT.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Negative numbers</b>: appear as "-1,234". To show with marks like "▲", adjust the format.</li>
+<li><b>It's text, so can't calculate</b>: use the original cell for calculation.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I separate by ten-thousands (the Japanese style)?</h3>
+<p>The Japanese ten-thousands grouping can't be made with TEXT format codes.</p>
+<h2>Summary</h2>
+<p>When putting amounts in sentences, use TEXT for thousands separators.</p>
 <a class="cta" href="/excel-text-format-builder.html">Use "Build an Excel TEXT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

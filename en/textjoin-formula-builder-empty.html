@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Skipping Empty Cells</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the range</li><li>Tick the check</li><li>Copy it</li></ul></div>
-<p>With the skip setting in <a href="/en/textjoin-formula-builder.html">TEXTJOIN Builder</a>, separators do not pile up where cells are empty.</p>
+<p>If the range has empty cells, extra separators line up in the joined text. "Skip blank cells" in <a href="/en/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> prevents this.</p>
+<h2>The difference</h2>
+<p>With A2:A5 holding "Tanaka", (empty), "Suzuki", "Sato" and separator ", ":</p>
+<ul>
+<li>Skip (TRUE): Tanaka, Suzuki, Sato</li>
+<li>Don't skip (FALSE): Tanaka, , Suzuki, Sato</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the range</li>
-<li>Tick the check</li>
-<li>Copy it</li>
+<li>Enter the range and separator.</li>
+<li>Ticking "Skip blank cells" makes the second argument TRUE.</li>
+<li>Unticking makes it FALSE.</li>
 </ol>
-<div class="note">The setting switches between TRUE and FALSE.</div>
+<div class="note">Normally, leave it ticked.</div>
+<h2>As formulas</h2>
+<ul>
+<li>Skip: =TEXTJOIN(", ",TRUE,A2:A5)</li>
+<li>Don't skip: =TEXTJOIN(", ",FALSE,A2:A5)</li>
+</ul>
+<h2>When not skipping is better</h2>
+<ul>
+<li>You want empty positions marked by separators</li>
+<li>Fixed orderings where item position matters</li>
+</ul>
+<p>For example, among "name, phone, email", showing the phone is empty suits not skipping.</p>
+<h2>What counts as "empty"</h2>
+<ul>
+<li>Cells with nothing: empty</li>
+<li>Cells returning "" from a formula: empty strings; TEXTJOIN treats them as empty</li>
+<li>Cells with only spaces: not empty; spaces line up</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Joining a list with blank rows neatly</li>
+<li>Showing only items that meet a condition</li>
+</ul>
+<h2>Example</h2>
+<p>A participant list had gaps in the middle. Setting "skip" joined it cleanly with no extra ", ".</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Space-only cells</b>: not empty, so not skipped. Remove extra spaces.</li>
+<li><b>Removing spaces</b>: the "Clean extra spaces and invisible characters from Excel text" tool helps.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does an empty cell cause an error?</h3>
+<p>No. Neither setting causes an error.</p>
+<h2>Summary</h2>
+<p>Usually choose "skip". Only choose not to when you want positions shown.</p>
 <a class="cta" href="/en/textjoin-formula-builder.html">Use "Build a TEXTJOIN Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a>: Find the cells, rows and columns of a range.</li><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

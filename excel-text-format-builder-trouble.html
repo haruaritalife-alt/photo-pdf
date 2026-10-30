@@ -200,14 +200,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/excel-text-format-builder.html">TEXT関数の式</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を作ったのに、結果がおかしい。<a href="/excel-text-format-builder.html">TEXT関数の式を作る（表示形式）</a> で起こりやすい困りごとと対処法をまとめます。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：セルが「A2」の形でない（半角、列の文字＋行番号）。または、表示形式の欄が空。</li>
+</ul>
+<h2>式を貼ったあとの困りごと</h2>
+<ul>
+<li><b>#VALUE!が出る</b>：元のセルが文字列で、数字や日付として読めない。</li>
+<li><b>日付が数字のまま</b>：表示形式の記号が、地域の設定に合っていない。</li>
+<li><b>「yyyy」がそのまま出る</b>：英語以外の地域設定では、記号が異なる（例：ドイツ語版は「JJJJ」）。</li>
+<li><b>0が表示されない</b>：表示形式に「0」を使っていない。「#」では、0が省かれる。</li>
+<li><b>丸められる</b>：小数の桁を超える部分が、四捨五入される。</li>
+<li><b>計算できない</b>：結果が文字になっている。元のセルを使う。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>元のセルが、日付や数字になっているか確かめる。</li>
+<li>表示形式の記号が、正しいか確かめる。</li>
+<li>ダブルクォートが正しく閉じているか確かめる。</li>
 </ol>
-<div class="note">式が出ないときは、セルがA2のように書かれているか、表示形式が入っているか確かめます。</div>
+<div class="note">表示形式の欄は、ツール上で書き換えて試せます。</div>
+<h2>「#」と「0」の違い</h2>
+<ul>
+<li>0：その桁が空でも、0を表示する（000 → 007）</li>
+<li>#：その桁が空なら、何も表示しない（### → 7）</li>
+</ul>
+<h2>文字を含める</h2>
+<p>表示形式に文字を含めるときは、ダブルクォートで囲みます。</p>
+<ul>
+<li>例：#,##0"円"</li>
+<li>一部の記号（-、/、:、スペース）は、囲まなくても使える</li>
+</ul>
+<h2>例</h2>
+<p>「yyyy年m月d日」の式が、地域設定の違うパソコンで「yyyy年...」と出た。記号が違う地域のため、そのPCに合わせた記号に直して解決した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>文字の日付</b>：「2026/10/25」が文字だと、変換されない。DATEVALUEで日付にする。</li>
+<li><b>シリアル値</b>：日付の元のセルの値が、シリアル値かを確かめる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>日付がずれて表示されます。</h3>
+<p>1900年方式と1904年方式の違いの可能性があります。</p>
+<h2>まとめ</h2>
+<p>元のセル・記号・クォート。この3つを順に確かめましょう。</p>
 <a class="cta" href="/excel-text-format-builder.html">TEXT関数の式を作る（表示形式）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +255,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/excel-text-format-builder.html">TEXT Formula Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but the result is odd. Here are common troubles with <a href="/excel-text-format-builder.html">Build an Excel TEXT Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the cell isn't in the "A2" form (half-width, column letters + row number), or the format field is empty.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>#VALUE! appears</b>: the source cell is text and can't be read as a number or date.</li>
+<li><b>Dates stay as numbers</b>: the format symbols don't match the regional settings.</li>
+<li><b>"yyyy" shows literally</b>: in non-English regional settings the symbols differ (e.g. German uses "JJJJ").</li>
+<li><b>Zeros aren't shown</b>: the format doesn't use "0". "#" omits zeros.</li>
+<li><b>Values are rounded</b>: parts beyond the decimal digits are rounded.</li>
+<li><b>Can't calculate</b>: the result is text. Use the original cell.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the source cell is a date or number.</li>
+<li>Check the format symbols are correct.</li>
+<li>Check double quotes are properly closed.</li>
 </ol>
-<div class="note">If no formula appears, check that the cell is written like A2 and a format is entered.</div>
+<div class="note">You can rewrite the format field in the tool and try.</div>
+<h2>Difference between "#" and "0"</h2>
+<ul>
+<li>0: shows 0 even when the digit is empty (000 → 007)</li>
+<li>#: shows nothing when the digit is empty (### → 7)</li>
+</ul>
+<h2>Including text</h2>
+<p>When including text in a format, enclose it in double quotes.</p>
+<ul>
+<li>Example: #,##0"units"</li>
+<li>Some symbols (-, /, :, space) work without quotes</li>
+</ul>
+<h2>Example</h2>
+<p>A "yyyy年m月d日" formula showed "yyyy年..." on a PC with different regional settings. The symbols differ there, so fixing them for that PC solved it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Text dates</b>: if "2026/10/25" is text, it isn't converted. Make it a date with DATEVALUE.</li>
+<li><b>Serial values</b>: check the source date cell holds a serial value.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Dates display shifted.</h3>
+<p>It may be the 1900 vs 1904 date system difference.</p>
+<h2>Summary</h2>
+<p>Source cell, symbols, quotes. Check these three in order.</p>
 <a class="cta" href="/excel-text-format-builder.html">Use "Build an Excel TEXT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

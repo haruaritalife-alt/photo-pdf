@@ -201,14 +201,42 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Що робити, якщо не працює</h1>
 <p class="meta">Опубліковано: 19 жовт. 2026 | Оновлено: 19 жовт. 2026 | <a href="/about.html">Про нас (японською)</a></p>
 <div class="points"><b>Основне</b><ul><li>Перевірте файл</li><li>Перевірте розмір</li><li>Спробуйте інший пристрій</li></ul></div>
-<p>Якщо <a href="/uk/textjoin-formula-builder.html">Конструктор TEXTJOIN</a> не працює, перевірте наступне.</p>
-<h2>Кроки</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/uk/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: enter a range with column letters and row numbers like "A2:A10". A single cell or a whole column (A:A) isn't allowed.</li>
+<li lang="en"><b>"The &amp; formula is limited to 30 cells."</b>: the &amp; formula handles up to 30 cells. The TEXTJOIN formula can be used as is.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#NAME? appears</b>: old Excel without TEXTJOIN. Use the "&amp; formula".</li>
+<li lang="en"><b>#VALUE! appears</b>: the result is too long (a cell's limit is 32,767 characters).</li>
+<li lang="en"><b>Extra separators line up</b>: "Skip blank cells" is off, or there are space-only cells.</li>
+<li lang="en"><b>Numbers or dates display wrongly</b>: numbers and dates join as their raw values without display formats. Tidy with TEXT.</li>
+<li lang="en"><b>No line breaks</b>: turn on "Wrap text" in the cell format.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Перевірте файл</li>
-<li>Перевірте розмір</li>
-<li>Спробуйте інший пристрій</li>
+<li lang="en">Check the range is entered with row numbers.</li>
+<li lang="en">Review the "Skip blank cells" setting.</li>
+<li lang="en">Check the Excel version (TEXTJOIN is 2019 and later).</li>
 </ol>
-<div class="note">Якщо формула не з'явилася, перевірте, що діапазон записано як A2:A10.</div>
+<div class="note" lang="en">When joining dates or amounts, tidy them first with TEXT.</div>
+<h2 lang="en">Tidying dates example</h2>
+<p lang="en">=TEXTJOIN(", ",TRUE,TEXT(A2:A5,"yyyy/mm/dd"))</p>
+<p lang="en">Written this way, dates join in the "2026/10/25" form.</p>
+<h2>Приклад</h2>
+<p lang="en">Joining dates gave numbers like "46320, 46321". Tidying with TEXT joined them in date form.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>An error value in the range</b>: any error value makes the whole an error.</li>
+<li lang="en"><b>Ranges on other sheets</b>: rewrite with the sheet name (Sheet2!A2:A10).</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Numbers became text.</h3>
+<p lang="en">A joined result is text. To calculate, use the original cells.</p>
+<h2>Підсумок</h2>
+<p lang="en">Range, version, blank setting, display format. Check these four in order.</p>
 <a class="cta" href="/uk/textjoin-formula-builder.html">Використати «Створення формули TEXTJOIN» (безкоштовно)</a>
 <h2>Інструменти, що добре поєднуються з цим</h2><ul><li><a href="/uk/vlookup-formula-builder.html">Створення формули VLOOKUP або XLOOKUP</a>: Створюйте формули VLOOKUP і XLOOKUP.</li><li><a href="/uk/excel-range-info.html">Підрахунок клітинок, рядків і стовпців діапазону Excel</a>: Дізнайтеся клітинки, рядки та стовпці діапазону.</li><li><a href="/uk/excel-text-clean.html">Видалення зайвих пробілів і невидимих символів із тексту Excel</a>: Приберіть зайві пробіли та невидимі символи.</li></ul>
 <div class="tip"><p>Якщо цей посібник став у пригоді, невеликі чайові будуть дуже доречні.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Надіслати чайові (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Надіслати подарунок (список бажань Amazon)</a></div>

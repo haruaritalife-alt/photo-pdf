@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Afficher un vide en cas d'erreur</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Créez la formule</li><li>Cochez la case</li><li>Copiez-le</li></ul></div>
-<p>Activer l'option de vide dans <a href="/fr/vlookup-formula-builder.html">Générateur VLOOKUP</a> enveloppe la formule dans IFERROR.</p>
+<p lang="en">When VLOOKUP can't find the value, "#N/A" appears. It makes the table ugly and affects totals. "Blank on error" in <a href="/fr/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> builds a formula wrapped in IFERROR.</p>
 <h2>Étapes</h2>
 <ol>
-<li>Créez la formule</li>
-<li>Cochez la case</li>
-<li>Copiez-le</li>
+<li lang="en">Enter the value, range and column number.</li>
+<li lang="en">Tick "Blank on error".</li>
+<li lang="en">The formula is wrapped in IFERROR.</li>
 </ol>
-<div class="note">Quand rien n'est trouvé, un vide s'affiche à la place d'une erreur.</div>
+<div class="note" lang="en">Example: =IFERROR(VLOOKUP(A2,$D$2:$F$100,2,FALSE),"")</div>
+<h2 lang="en">How the formula works</h2>
+<p lang="en">The form is IFERROR(formula, value on error).</p>
+<ul>
+<li lang="en">If the formula is fine, its result is returned</li>
+<li lang="en">If it errors, the second value (here an empty string) is returned</li>
+</ul>
+<h2 lang="en">For XLOOKUP</h2>
+<p lang="en">XLOOKUP's fourth argument specifies the value when nothing is found. In this tool, ticking sets an empty string.</p>
+<ul>
+<li lang="en">Example: =XLOOKUP(A2,$D$2:$D$100,$E$2:$E$100,"")</li>
+</ul>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Making unfound rows blank for readability</li>
+<li lang="en">"#N/A" getting in the way of totals</li>
+<li lang="en">Presenting invoices or lists neatly</li>
+</ul>
+<h2 lang="en">Showing something other than blank</h2>
+<p lang="en">After building, rewrite the "" part.</p>
+<ul>
+<li lang="en">"Unregistered": shows "Unregistered" when not found</li>
+<li lang="en">"-": shows a hyphen</li>
+<li lang="en">0: returns the number 0 (when you want it in totals)</li>
+</ul>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en"><b>All errors get hidden</b>: IFERROR also hides errors other than #N/A (like #REF!). Formula mistakes become harder to notice.</li>
+<li lang="en"><b>Check first</b>: build the formula without IFERROR first, confirm it works, then add it.</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">An invoice list had unregistered product codes lined up as "#N/A". Adding IFERROR made them blank and tidied the look.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Blanks affect calculation</b>: an empty string is text. SUM ignores it, but "+" arithmetic errors.</li>
+<li lang="en"><b>Hiding only #N/A</b>: use the IFNA function.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How is it different from IFNA?</h3>
+<p lang="en">IFNA replaces only #N/A. Other errors are shown as they are.</p>
+<h2>En résumé</h2>
+<p lang="en">Blank when not found. But confirm the formula is correct before adding it.</p>
 <a class="cta" href="/fr/vlookup-formula-builder.html">Utiliser « Créer une formule VLOOKUP ou XLOOKUP » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/excel-range-info.html">Compter les cellules, lignes et colonnes d'une plage Excel</a>: Trouvez les cellules, lignes et colonnes d'une plage.</li><li><a href="/fr/excel-column-letter.html">Convertisseur de numéro et lettre de colonne Excel</a>: Convertissez des numéros et lettres de colonne Excel.</li><li><a href="/fr/excel-text-clean.html">Supprimer les espaces en trop et caractères invisibles d'un texte Excel</a>: Supprimez les espaces en trop et les caractères invisibles.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

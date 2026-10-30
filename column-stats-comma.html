@@ -200,14 +200,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>桁区切りのカンマの扱い</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>数字を貼る</li><li>結果を見る</li><li>確かめる</li></ul></div>
-<p><a href="/column-stats.html">数字の集計</a> では、1,200のような桁区切りも1つの数字として読みます。</p>
+<p>「1,200」のように、桁区切りのカンマが付いた数字は、カンマで区切られた数字と見分けがつきません。<a href="/column-stats.html">数字の合計・平均・中央値をまとめて出す</a> は、この2つを次のように見分けます。</p>
+<h2>見分け方</h2>
+<ul>
+<li>「1,200」「1,234,567」のように、3桁ごとにカンマが入った数字：ひとつの数字として扱う（1200、1234567）</li>
+<li>「80,92,75」のように、カンマで区切られた数字：別々の数字として扱う</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>数字を貼る</li>
-<li>結果を見る</li>
-<li>確かめる</li>
+<li>数字を貼り付ける。</li>
+<li>「個数」で、想定どおりの数になっているか確かめる。</li>
 </ol>
-<div class="note">カンマで区切った数字の並びも読み取れます。</div>
+<div class="note">個数が合わないときは、カンマの扱いが想定と違う可能性があります。</div>
+<h2>例</h2>
+<ul>
+<li>「1,200」→ 1つの数字（1200）</li>
+<li>「80,92,75」→ 3つの数字</li>
+<li>「1,200 80」→ 2つの数字（1200と80）</li>
+</ul>
+<h2>迷いやすい例</h2>
+<ul>
+<li>「1,000,2,000」：区切りか桁区切りか、見分けにくい。スペースや改行で区切ると確実。</li>
+<li>「100,200」：3桁ごとの形なので、「100,200」→ 100200 ではなく、3桁の並びに見えても、前が3桁以下で後ろがちょうど3桁なら、ひとつの数字（100200）として扱われる。</li>
+</ul>
+<p>区切り方に迷う貼り付けは、改行かスペースで区切るのが、最も確実です。</p>
+<h2>通貨や記号</h2>
+<ul>
+<li>先頭の「$」「¥」は、取り除かれる</li>
+<li>末尾の「%」は、取り除かれる（「50%」は50として扱われる）</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>金額のカンマ付きの一覧を、そのまま集計したい</li>
+<li>システムから出力された、カンマ付きの数字を扱いたい</li>
+</ul>
+<h2>例</h2>
+<p>「1,200」「3,450」「980」を貼ると、1200、3450、980の3つとして集計され、合計は5630になった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>全角のカンマ</b>：「，」や「、」は、桁区切りと見なされない。</li>
+<li><b>小数のカンマ（ヨーロッパ式）</b>：「1,5」を1.5とは読まない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>カンマ区切りのCSVの1行も貼れますか？</h3>
+<p>はい。「80,92,75」のような行は、3つの数字として読み取れます。</p>
+<h2>まとめ</h2>
+<p>迷う貼り付けは、改行かスペースで区切ると、確実です。</p>
 <a class="cta" href="/column-stats.html">数字の合計・平均・中央値をまとめて出すを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/percent-calculator.html">割合・割引・増減（%）を計算する</a>：割合・割引・増減の%を、すぐに計算します。</li><li><a href="/excel-column-letter.html">Excel 列番号・列文字 変換</a>：Excelの列番号と列文字を変換します。</li><li><a href="/table-transpose.html">表の行と列を入れ替える</a>：貼り付けた表の行と列を入れ替えます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +257,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Thousands Separators</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Paste the numbers</li><li>See the result</li><li>Check it</li></ul></div>
-<p><a href="/column-stats.html">Column Statistics</a> reads a thousands separator such as 1,200 as one number.</p>
+<p>A number with thousands separators like "1,200" looks the same as numbers separated by commas. <a href="/column-stats.html">Sum, Average and Median of a Column of Numbers</a> tells them apart like this.</p>
+<h2>How it tells them apart</h2>
+<ul>
+<li>Numbers with commas every 3 digits, like "1,200" or "1,234,567": treated as one number (1200, 1234567)</li>
+<li>Numbers separated by commas, like "80,92,75": treated as separate numbers</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Paste the numbers</li>
-<li>See the result</li>
-<li>Check it</li>
+<li>Paste the numbers.</li>
+<li>Check that "Count" is what you expect.</li>
 </ol>
-<div class="note">Comma-separated lists of numbers are read too.</div>
+<div class="note">If the count is off, the comma handling may differ from what you expect.</div>
+<h2>Examples</h2>
+<ul>
+<li>"1,200" → one number (1200)</li>
+<li>"80,92,75" → three numbers</li>
+<li>"1,200 80" → two numbers (1200 and 80)</li>
+</ul>
+<h2>Easily confusing cases</h2>
+<ul>
+<li>"1,000,2,000": hard to tell separators from grouping. Separating with spaces or line breaks is reliable.</li>
+<li>"100,200": has a 3-digit group form, so it is read as the single number 100200 rather than two numbers.</li>
+</ul>
+<p>For pastes where you're unsure, separating with line breaks or spaces is the most reliable.</p>
+<h2>Currency and symbols</h2>
+<ul>
+<li>A leading "$" or "¥" is removed</li>
+<li>A trailing "%" is removed ("50%" is treated as 50)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Summarising lists of amounts with commas as they are</li>
+<li>Handling comma-formatted numbers output by systems</li>
+</ul>
+<h2>Example</h2>
+<p>Pasting "1,200", "3,450" and "980" summed as 1200, 3450 and 980, for a total of 5630.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Full-width commas</b>: "，" and "、" aren't treated as thousands separators.</li>
+<li><b>European decimal commas</b>: "1,5" isn't read as 1.5.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I paste a line of a comma-separated CSV?</h3>
+<p>Yes. A line like "80,92,75" is read as three numbers.</p>
+<h2>Summary</h2>
+<p>For unclear pastes, separate with line breaks or spaces to be sure.</p>
 <a class="cta" href="/column-stats.html">Use "Sum, Average and Median of a Column of Numbers" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/table-transpose.html">Swap Rows and Columns of a Table</a>: Swap the rows and columns of a pasted table.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

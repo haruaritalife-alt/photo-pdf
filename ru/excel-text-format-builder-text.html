@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Результат TEXT — это текст</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Составьте формулу</li><li>Вставьте его</li><li>Проверьте</li></ul></div>
-<p>Результат формулы, созданной в <a href="/ru/excel-text-format-builder.html">Конструктор TEXT</a>, — текст, поэтому его нельзя просто сложить.</p>
-<h2>Шаги</h2>
+<p lang="en">The result of TEXT is "text" even if it looks like a number or date. Not knowing this causes surprising failures. Here's what to know before building a formula with <a href="/ru/excel-text-format-builder.html">Build an Excel TEXT Formula</a>.</p>
+<h2 lang="en">The result is text</h2>
+<p lang="en">Even if =TEXT(A2,"#,##0") shows 1,234,567, it is text, not a number.</p>
+<ul>
+<li lang="en">Often displayed left-aligned</li>
+<li lang="en">Can't be used in addition or averages</li>
+<li lang="en">Sorts as text</li>
+</ul>
+<h2 lang="en">Steps (how to check)</h2>
 <ol>
-<li>Составьте формулу</li>
-<li>Вставьте его</li>
-<li>Проверьте</li>
+<li lang="en">Select the cell with the TEXT function.</li>
+<li lang="en">Use =ISTEXT(cell) to check whether it's text. TRUE means text.</li>
+<li lang="en">Make calculation cells the original number cells.</li>
 </ol>
-<div class="note">Для вычислений используйте исходную ячейку.</div>
+<div class="note" lang="en">Use the original cell for calculation and TEXT for display.</div>
+<h2 lang="en">Uses that suit it</h2>
+<ul>
+<li lang="en">Embedding in sentences ("Total is "&amp;TEXT(A2,"#,##0"))</li>
+<li lang="en">Building file names or heading text</li>
+<li lang="en">Passing as text to other systems</li>
+</ul>
+<h2 lang="en">Uses that don't suit it</h2>
+<ul>
+<li lang="en">Totals, averages and other calculations</li>
+<li lang="en">Chart source data</li>
+<li lang="en">Sorting dates or subtracting dates</li>
+</ul>
+<h2 lang="en">Turning text back into numbers</h2>
+<ul>
+<li lang="en">VALUE function: =VALUE(TEXT(...)). But using the original cell is more reliable.</li>
+<li lang="en">For dates: the DATEVALUE function</li>
+</ul>
+<h2 lang="en">Sorting differences</h2>
+<p lang="en">Sorting "2026/10/5" and "2026/10/25" as text may put "2026/10/25" first. For date sorting, use the original date cell. With zero-padding (yyyy/mm/dd), text also sorts in date order.</p>
+<h2>Пример</h2>
+<p lang="en">Summing a column of amounts made with TEXT gave 0. They were text, so not calculated. Summing the original number column gave the right result.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Left alignment goes unnoticed</b>: it looks like a number, so it's hard to notice it's text.</li>
+<li lang="en"><b>Zero-padded numbers</b>: they're text, so sorting follows text order.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I only want to change the look?</h3>
+<p lang="en">Cell formatting (custom) changes only the look while the content stays a number.</p>
+<h2>Итог</h2>
+<p lang="en">TEXT makes text. Keep it separate from cells used in calculation.</p>
 <a class="cta" href="/ru/excel-text-format-builder.html">Использовать «Создание формулы TEXT для Excel» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/excel-serial-date.html">Конвертер серийного значения и даты Excel</a>: Преобразуйте серийные значения и даты Excel.</li><li><a href="/ru/vlookup-formula-builder.html">Создание формулы VLOOKUP или XLOOKUP</a>: Создавайте формулы VLOOKUP и XLOOKUP.</li><li><a href="/ru/excel-text-clean.html">Удаление лишних пробелов и невидимых символов из текста Excel</a>: Уберите лишние пробелы и невидимые символы.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

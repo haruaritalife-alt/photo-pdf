@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Using It in Google Sheets</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>Copy it</li><li>Paste into Sheets</li></ul></div>
-<p>The formulas from <a href="/en/textjoin-formula-builder.html">TEXTJOIN Builder</a> can be pasted straight into Google Sheets too.</p>
+<p>Google Sheets also has TEXTJOIN. Formulas built with <a href="/en/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> work as is in Sheets.</p>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>Copy it</li>
-<li>Paste into Sheets</li>
+<li>Enter the range and separator.</li>
+<li>Press "Copy TEXTJOIN".</li>
+<li>Paste into a spreadsheet cell.</li>
 </ol>
-<div class="note">Select the target cell before pasting.</div>
+<div class="note">The syntax is the same as Excel's. =TEXTJOIN(", ",TRUE,A2:A10)</div>
+<h2>What's the same</h2>
+<ul>
+<li>The three arguments (separator, ignore empty, range)</li>
+<li>The shape of the result</li>
+</ul>
+<h2>What differs</h2>
+<ul>
+<li><b>Multiple ranges</b>: both allow several ranges.</li>
+<li><b>Combining with arrays</b>: in Sheets, combining with ARRAYFORMULA to join only matching items is common.</li>
+<li><b>Arrays as separators</b>: in Sheets the separator is treated as a single text.</li>
+</ul>
+<h2>Joining only matching items</h2>
+<p>Combine TEXTJOIN and IF.</p>
+<ul>
+<li>Example: =TEXTJOIN(", ",TRUE,IF(B2:B10="Done",A2:A10,""))</li>
+</ul>
+<p>This joins the names in column A only for rows where column B is "Done".</p>
+<ul>
+<li>Excel (2019): may need entering as an array formula (Ctrl + Shift + Enter)</li>
+<li>Microsoft 365: works with normal entry</li>
+<li>Google Sheets: wrap in ARRAYFORMULA</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Gathering participants into one cell in a shared spreadsheet</li>
+<li>Lining up form responses in one cell</li>
+<li>Making conditional lists</li>
+</ul>
+<h2>Example</h2>
+<p>In a team task sheet, lined up each person's completed tasks in one cell. TEXTJOIN with IF updated each person's list automatically.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Large ranges</b>: exceeding the cell's character limit (50,000) causes an error.</li>
+<li><b>Forgetting ARRAYFORMULA</b>: needed in the conditional form.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Are results the same in Excel and Google Sheets?</h3>
+<p>Basically yes. Fine behavior varies by version.</p>
+<h2>Summary</h2>
+<p>Built formulas work as is. Only mind ARRAYFORMULA for conditional use.</p>
 <a class="cta" href="/en/textjoin-formula-builder.html">Use "Build a TEXTJOIN Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a>: Find the cells, rows and columns of a range.</li><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

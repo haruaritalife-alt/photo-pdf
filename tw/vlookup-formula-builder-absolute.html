@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>為什麼要給範圍加美元符號</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>生成公式</li><li>加上美元符號</li><li>複製</li></ul></div>
-<p><a href="/tw/vlookup-formula-builder.html">VLOOKUP公式生成器</a>可以加上美元符號,這樣公式向下複製時範圍不會偏移。</p>
+<p lang="en">Copying a VLOOKUP formula down made results wrong. Most often the range lacks "$". "Add $ to the range" in <a href="/tw/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> builds a fixed formula.</p>
+<h2 lang="en">Why it shifts</h2>
+<p lang="en">Writing the range as "D2:F100" shifts it to "D3:F101" when the formula is copied one row down. The search table moves and nothing is found.</p>
+<ul>
+<li lang="en">Relative: D2:F100 (shifts when copied)</li>
+<li lang="en">Absolute: $D$2:$F$100 (stays when copied)</li>
+</ul>
 <h2>步驟</h2>
 <ol>
-<li>生成公式</li>
-<li>加上美元符號</li>
-<li>複製</li>
+<li lang="en">Enter the value, range and column number.</li>
+<li lang="en">Tick "Add $ to the range".</li>
+<li lang="en">Copy the formula whose range is now $D$2:$F$100.</li>
 </ol>
-<div class="note">取消勾選後,公式就不帶美元符號。</div>
+<div class="note" lang="en">Don't add $ to the lookup cell (A2); it should change per row.</div>
+<h2 lang="en">Concrete example</h2>
+<ul>
+<li lang="en">Shifting formula: =VLOOKUP(A2,D2:F100,2,FALSE)</li>
+<li lang="en">Fixed formula: =VLOOKUP(A2,$D$2:$F$100,2,FALSE)</li>
+</ul>
+<p lang="en">Copied down, A2 becomes A3, A4…, while the range stays put.</p>
+<h2>適合</h2>
+<ul>
+<li lang="en">Copying a formula down hundreds of rows</li>
+<li lang="en">Copying produced #N/A everywhere</li>
+<li lang="en">Checking the range hasn't shifted</li>
+</ul>
+<h2 lang="en">When to untick</h2>
+<p lang="en">For a formula used in a single cell and not copied, no $ is fine.</p>
+<h2 lang="en">How to spot it</h2>
+<p lang="en">Select a copied cell and look at the range in the formula. If rows advance like D3:F101, it has shifted.</p>
+<h2>示例</h2>
+<p lang="en">Copying a product-name formula to 100 rows gave #N/A from around row 10, as the range crept off the table. Adding $ fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Fixing only the column or row</b>: write mixed references (like $D2:$F100) by hand.</li>
+<li lang="en"><b>Adding rows to the table</b>: rows beyond the range's end aren't included. Specify wider.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can F4 add them?</h3>
+<p lang="en">Yes. Pressing F4 while editing the formula adds $.</p>
+<h2>小結</h2>
+<p lang="en">Fix the search range with $; leave the lookup cell as is.</p>
 <a class="cta" href="/tw/vlookup-formula-builder.html">使用「生成 VLOOKUP 或 XLOOKUP 公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/excel-range-info.html">統計 Excel 範圍內的單元格、行和列</a>: 檢視範圍內的單元格、行和列。</li><li><a href="/tw/excel-column-letter.html">Excel 列號與列字母轉換器</a>: 轉換 Excel 的列號和列字母。</li><li><a href="/tw/excel-text-clean.html">去掉 Excel 文字中多餘的空格和看不見的字元</a>: 去掉多餘的空格和看不見的字元。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

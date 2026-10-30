@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Exact and Approximate Match</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>Choose the match</li><li>Check it</li></ul></div>
-<p>In <a href="/en/vlookup-formula-builder.html">VLOOKUP Builder</a> the exact match check switches between FALSE and TRUE.</p>
+<p>VLOOKUP's last argument decides "exact match" or "approximate match". Getting it wrong shifts results. "Exact match" in <a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> toggles it.</p>
+<h2>The two differences</h2>
+<ul>
+<li><b>Exact match (FALSE)</b>: looks for exactly the same value. If not found, #N/A.</li>
+<li><b>Approximate match (TRUE)</b>: finds the closest value at or below the one searched. The leftmost column must be sorted ascending.</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>Choose the match</li>
-<li>Check it</li>
+<li>Enter the value, range and column number.</li>
+<li>Ticking "Exact match" makes the last argument FALSE.</li>
+<li>Unticking it makes it TRUE.</li>
 </ol>
-<div class="note">Normally you use exact match, FALSE.</div>
+<div class="note">For product codes or employee numbers that must match exactly, use exact match (FALSE).</div>
+<h2>When to use exact match</h2>
+<ul>
+<li>Looking up by product code, employee number or ID</li>
+<li>Looking up by name</li>
+</ul>
+<h2>When to use approximate match</h2>
+<ul>
+<li>Deciding a grade (A, B, C) from a score</li>
+<li>Deciding a commission rate from sales</li>
+<li>Deciding a fee tier from a date</li>
+</ul>
+<p>In such "range-banded tables", sort the leftmost column ascending (small to large).</p>
+<h2>Approximate-match example</h2>
+<p>In a score band table (0 = D, 60 = C, 70 = B, 80 = A), searching 75 returns "B" from the "70" row, the closest at or below.</p>
+<h2>Good for</h2>
+<ul>
+<li>Seeing the exact/approximate difference in a formula</li>
+<li>Checking when building approximate-match tables</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Approximate match without sorting</b>: wrong results return without an error.</li>
+<li><b>Meant exact but got approximate</b>: omitting the last argument gives approximate (TRUE).</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I omit the last argument?</h3>
+<p>It's treated as TRUE (approximate). Always write FALSE for exact.</p>
+<h2>Summary</h2>
+<p>FALSE for exact match, TRUE for range-banded. When unsure, FALSE.</p>
 <a class="cta" href="/en/vlookup-formula-builder.html">Use "Build a VLOOKUP or XLOOKUP Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a>: Find the cells, rows and columns of a range.</li><li><a href="/en/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -200,14 +200,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>日付をyyyy/mm/ddの文字にする</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>セルを入れる</li><li>日付の形式を選ぶ</li><li>コピーする</li></ul></div>
-<p><a href="/excel-text-format-builder.html">TEXT関数の式</a> で日付の形式を選ぶと、決まった書き方の文字にできます。</p>
+<p>日付を、決まった書き方の文字にしたい。<a href="/excel-text-format-builder.html">TEXT関数の式を作る（表示形式）</a> で「yyyy/mm/dd」などを選ぶと、TEXT関数の式ができます。</p>
 <h2>手順</h2>
 <ol>
-<li>セルを入れる</li>
-<li>日付の形式を選ぶ</li>
-<li>コピーする</li>
+<li>「変換するセル」に、日付のセルを入れる。</li>
+<li>「よく使う表示形式」から、日付の形を選ぶ。</li>
+<li>「TEXT関数の式」を、コピーする。</li>
 </ol>
-<div class="note">年月日の入った書き方も選べます。</div>
+<div class="note">「yyyy」は年、「mm」は月、「dd」は日です。</div>
+<h2>日付の記号</h2>
+<ul>
+<li>yyyy：4桁の年（2026）</li>
+<li>yy：2桁の年（26）</li>
+<li>m：月（1〜12）</li>
+<li>mm：月を2桁で（01〜12）</li>
+<li>d：日（1〜31）</li>
+<li>dd：日を2桁で（01〜31）</li>
+<li>aaa：曜日（日）</li>
+<li>dddd：曜日（Sunday）</li>
+</ul>
+<h2>書き方の例</h2>
+<p>2026年10月25日の日付に対して、次のようになります。</p>
+<ul>
+<li>yyyy/mm/dd：2026/10/25</li>
+<li>yyyy-mm-dd：2026-10-25</li>
+<li>yyyy年m月d日：2026年10月25日</li>
+<li>m/d：10/25</li>
+<li>m月d日(aaa)：10月25日(日)</li>
+</ul>
+<h2>手順の例</h2>
+<p>曜日つきの日付にしたい場合は、表示形式の欄を「m月d日(aaa)」に書き換えます。</p>
+<ul>
+<li>=TEXT(A2,"m月d日(aaa)")</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>帳票やメールの文章に、日付を入れたい</li>
+<li>ファイル名に、日付を付けたい（例：2026-10-25）</li>
+<li>他のシステムが求める、日付の書き方にそろえたい</li>
+</ul>
+<h2>例</h2>
+<p>CSVに書き出す日付を、「yyyy-mm-dd」にそろえたかった。TEXT関数で変換し、システムに取り込めた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>日付が文字になる</b>：結果は文字なので、日付の計算には使えない。</li>
+<li><b>元のセルが日付でない</b>：文字列の日付は、変換されない。シリアル値かを確かめる。</li>
+<li><b>英語版のExcel</b>：表示形式の記号が、地域によって異なる場合がある（例：年は「y」、月は「m」）。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>西暦ではなく、和暦にできますか？</h3>
+<p>「ggge年m月d日」のような書き方で、和暦にできます。</p>
+<h2>まとめ</h2>
+<p>日付の記号を覚えなくても、選ぶだけで式が作れます。</p>
 <a class="cta" href="/excel-text-format-builder.html">TEXT関数の式を作る（表示形式）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +263,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Turning a Date into yyyy/mm/dd Text</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the cell</li><li>Choose a date format</li><li>Copy it</li></ul></div>
-<p>Choosing a date format in <a href="/excel-text-format-builder.html">TEXT Formula Builder</a> gives text in a fixed style.</p>
+<p>You want a date as text in a fixed style. In <a href="/excel-text-format-builder.html">Build an Excel TEXT Formula</a>, choose "yyyy/mm/dd" and the like to build a TEXT formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the cell</li>
-<li>Choose a date format</li>
-<li>Copy it</li>
+<li>Enter the date cell in "Cell to convert".</li>
+<li>Choose a date form from "Common formats".</li>
+<li>Copy the "TEXT formula".</li>
 </ol>
-<div class="note">A style with year, month and day characters is available too.</div>
+<div class="note">"yyyy" is year, "mm" month, "dd" day.</div>
+<h2>Date symbols</h2>
+<ul>
+<li>yyyy: 4-digit year (2026)</li>
+<li>yy: 2-digit year (26)</li>
+<li>m: month (1–12)</li>
+<li>mm: month in 2 digits (01–12)</li>
+<li>d: day (1–31)</li>
+<li>dd: day in 2 digits (01–31)</li>
+<li>aaa: weekday in Japanese</li>
+<li>dddd: weekday in English (Sunday)</li>
+</ul>
+<h2>Writing examples</h2>
+<p>For the date October 25, 2026:</p>
+<ul>
+<li>yyyy/mm/dd: 2026/10/25</li>
+<li>yyyy-mm-dd: 2026-10-25</li>
+<li>m/d: 10/25</li>
+<li>m/d (dddd): 10/25 (Sunday)</li>
+</ul>
+<h2>Procedure example</h2>
+<p>For a date with weekday, rewrite the format field as "m/d (dddd)".</p>
+<ul>
+<li>=TEXT(A2,"m/d (dddd)")</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Putting dates in documents or email text</li>
+<li>Adding dates to file names (e.g. 2026-10-25)</li>
+<li>Matching the date style another system requires</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted dates exported to CSV in "yyyy-mm-dd". Converting with TEXT let the system import them.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The date becomes text</b>: the result is text, so it can't be used in date calculations.</li>
+<li><b>Source cell isn't a date</b>: text dates aren't converted. Check it's a serial value.</li>
+<li><b>Non-Japanese Excel</b>: format symbols can differ by region (e.g. year may be "y", month "m").</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can it give Japanese-era years instead of Western ones?</h3>
+<p>A form like "ggge年m月d日" gives Japanese-era years.</p>
+<h2>Summary</h2>
+<p>No need to memorise date symbols; choose and the formula is built.</p>
 <a class="cta" href="/excel-text-format-builder.html">Use "Build an Excel TEXT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

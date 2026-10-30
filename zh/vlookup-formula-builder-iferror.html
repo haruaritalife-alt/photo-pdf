@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>出错时显示空白</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>生成公式</li><li>勾选选项</li><li>复制</li></ul></div>
-<p>在<a href="/zh/vlookup-formula-builder.html">VLOOKUP公式生成器</a>中打开“出错时显示空白”设置,公式会被 IFERROR 包起来。</p>
+<p lang="en">When VLOOKUP can't find the value, "#N/A" appears. It makes the table ugly and affects totals. "Blank on error" in <a href="/zh/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> builds a formula wrapped in IFERROR.</p>
 <h2>步骤</h2>
 <ol>
-<li>生成公式</li>
-<li>勾选选项</li>
-<li>复制</li>
+<li lang="en">Enter the value, range and column number.</li>
+<li lang="en">Tick "Blank on error".</li>
+<li lang="en">The formula is wrapped in IFERROR.</li>
 </ol>
-<div class="note">找不到时,会显示空白而不是错误。</div>
+<div class="note" lang="en">Example: =IFERROR(VLOOKUP(A2,$D$2:$F$100,2,FALSE),"")</div>
+<h2 lang="en">How the formula works</h2>
+<p lang="en">The form is IFERROR(formula, value on error).</p>
+<ul>
+<li lang="en">If the formula is fine, its result is returned</li>
+<li lang="en">If it errors, the second value (here an empty string) is returned</li>
+</ul>
+<h2 lang="en">For XLOOKUP</h2>
+<p lang="en">XLOOKUP's fourth argument specifies the value when nothing is found. In this tool, ticking sets an empty string.</p>
+<ul>
+<li lang="en">Example: =XLOOKUP(A2,$D$2:$D$100,$E$2:$E$100,"")</li>
+</ul>
+<h2>适合</h2>
+<ul>
+<li lang="en">Making unfound rows blank for readability</li>
+<li lang="en">"#N/A" getting in the way of totals</li>
+<li lang="en">Presenting invoices or lists neatly</li>
+</ul>
+<h2 lang="en">Showing something other than blank</h2>
+<p lang="en">After building, rewrite the "" part.</p>
+<ul>
+<li lang="en">"Unregistered": shows "Unregistered" when not found</li>
+<li lang="en">"-": shows a hyphen</li>
+<li lang="en">0: returns the number 0 (when you want it in totals)</li>
+</ul>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en"><b>All errors get hidden</b>: IFERROR also hides errors other than #N/A (like #REF!). Formula mistakes become harder to notice.</li>
+<li lang="en"><b>Check first</b>: build the formula without IFERROR first, confirm it works, then add it.</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">An invoice list had unregistered product codes lined up as "#N/A". Adding IFERROR made them blank and tidied the look.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Blanks affect calculation</b>: an empty string is text. SUM ignores it, but "+" arithmetic errors.</li>
+<li lang="en"><b>Hiding only #N/A</b>: use the IFNA function.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How is it different from IFNA?</h3>
+<p lang="en">IFNA replaces only #N/A. Other errors are shown as they are.</p>
+<h2>小结</h2>
+<p lang="en">Blank when not found. But confirm the formula is correct before adding it.</p>
 <a class="cta" href="/zh/vlookup-formula-builder.html">使用“生成 VLOOKUP 或 XLOOKUP 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/excel-range-info.html">统计 Excel 范围内的单元格、行和列</a>: 查看范围内的单元格、行和列。</li><li><a href="/zh/excel-column-letter.html">Excel 列号与列字母转换器</a>: 转换 Excel 的列号和列字母。</li><li><a href="/zh/excel-text-clean.html">去掉 Excel 文字中多余的空格和看不见的字符</a>: 去掉多余的空格和看不见的字符。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

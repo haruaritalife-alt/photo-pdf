@@ -200,14 +200,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>エラーのとき空欄にする</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>式を作る</li><li>チェックを入れる</li><li>コピーする</li></ul></div>
-<p><a href="/vlookup-formula-builder.html">VLOOKUP式の作成</a> で空欄の設定を入れると、IFERRORで式が包まれます。</p>
+<p>VLOOKUPで探す値が見つからないと、「#N/A」が表示されます。表が見苦しくなり、合計の計算にも影響します。<a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a> の「エラーのとき空欄にする」で、IFERRORを付けた式が作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>式を作る</li>
-<li>チェックを入れる</li>
-<li>コピーする</li>
+<li>値・範囲・列番号を入れる。</li>
+<li>「エラーのとき空欄にする」にチェックを入れる。</li>
+<li>式が、IFERROR で包まれる。</li>
 </ol>
-<div class="note">見つからないときに、エラーの代わりに空欄が表示されます。</div>
+<div class="note">例：=IFERROR(VLOOKUP(A2,$D$2:$F$100,2,FALSE),"")</div>
+<h2>式のしくみ</h2>
+<p>IFERROR(式, エラーのときの値) の形です。</p>
+<ul>
+<li>式が正常なら、その結果を返す</li>
+<li>式がエラーなら、2つ目の値（ここでは空の文字）を返す</li>
+</ul>
+<h2>XLOOKUPの場合</h2>
+<p>XLOOKUPは、4つ目の引数で「見つからなかったときの値」を指定できます。このツールでは、チェックを入れると、空の文字が指定されます。</p>
+<ul>
+<li>例：=XLOOKUP(A2,$D$2:$D$100,$E$2:$E$100,"")</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>見つからない行を、空欄にして見やすくしたい</li>
+<li>「#N/A」が、合計の計算を邪魔している</li>
+<li>請求書や一覧表を、整えて見せたい</li>
+</ul>
+<h2>空欄ではなく、別の表示にしたい</h2>
+<p>式ができたあとで、"" の部分を書き換えます。</p>
+<ul>
+<li>"未登録"：見つからないと「未登録」と表示</li>
+<li>"-"：ハイフンを表示</li>
+<li>0：数字の0を返す（合計に含めたいとき）</li>
+</ul>
+<h2>注意すること</h2>
+<ul>
+<li><b>すべてのエラーが隠れる</b>：IFERRORは、#N/A以外のエラー（#REF!など）も隠す。式の間違いに気づきにくくなる。</li>
+<li><b>まず確認してから</b>：最初はIFERRORなしで式を作り、正しく動くか確かめてから付ける。</li>
+</ul>
+<h2>例</h2>
+<p>請求書の一覧で、未登録の商品コードが「#N/A」と並んでいた。IFERRORを付けると、空欄になり、見た目が整った。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>空欄が計算に影響する</b>：空の文字は、文字として扱われる。SUMでは無視されるが、「+」の計算ではエラーになる。</li>
+<li><b>#N/Aだけ隠したい</b>：IFNA関数を使う。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>IFNAとの違いは？</h3>
+<p>IFNAは、#N/Aだけを置き換えます。他のエラーは、そのまま表示されます。</p>
+<h2>まとめ</h2>
+<p>見つからないときは空欄に。ただし、式が正しいことを確かめてから付けましょう。</p>
 <a class="cta" href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-range-info.html">Excelのセル範囲のセル数・行数・列数を調べる</a>：セル範囲のセル数・行数・列数を調べます。</li><li><a href="/excel-column-letter.html">Excel 列番号・列文字 変換</a>：Excelの列番号と列文字を変換します。</li><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +260,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Showing a Blank on Error</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>Tick the check</li><li>Copy it</li></ul></div>
-<p>Turning on the blank setting in <a href="/vlookup-formula-builder.html">VLOOKUP Builder</a> wraps the formula in IFERROR.</p>
+<p>When VLOOKUP can't find the value, "#N/A" appears. It makes the table ugly and affects totals. "Blank on error" in <a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> builds a formula wrapped in IFERROR.</p>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>Tick the check</li>
-<li>Copy it</li>
+<li>Enter the value, range and column number.</li>
+<li>Tick "Blank on error".</li>
+<li>The formula is wrapped in IFERROR.</li>
 </ol>
-<div class="note">When nothing is found, a blank appears instead of an error.</div>
+<div class="note">Example: =IFERROR(VLOOKUP(A2,$D$2:$F$100,2,FALSE),"")</div>
+<h2>How the formula works</h2>
+<p>The form is IFERROR(formula, value on error).</p>
+<ul>
+<li>If the formula is fine, its result is returned</li>
+<li>If it errors, the second value (here an empty string) is returned</li>
+</ul>
+<h2>For XLOOKUP</h2>
+<p>XLOOKUP's fourth argument specifies the value when nothing is found. In this tool, ticking sets an empty string.</p>
+<ul>
+<li>Example: =XLOOKUP(A2,$D$2:$D$100,$E$2:$E$100,"")</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Making unfound rows blank for readability</li>
+<li>"#N/A" getting in the way of totals</li>
+<li>Presenting invoices or lists neatly</li>
+</ul>
+<h2>Showing something other than blank</h2>
+<p>After building, rewrite the "" part.</p>
+<ul>
+<li>"Unregistered": shows "Unregistered" when not found</li>
+<li>"-": shows a hyphen</li>
+<li>0: returns the number 0 (when you want it in totals)</li>
+</ul>
+<h2>Cautions</h2>
+<ul>
+<li><b>All errors get hidden</b>: IFERROR also hides errors other than #N/A (like #REF!). Formula mistakes become harder to notice.</li>
+<li><b>Check first</b>: build the formula without IFERROR first, confirm it works, then add it.</li>
+</ul>
+<h2>Example</h2>
+<p>An invoice list had unregistered product codes lined up as "#N/A". Adding IFERROR made them blank and tidied the look.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Blanks affect calculation</b>: an empty string is text. SUM ignores it, but "+" arithmetic errors.</li>
+<li><b>Hiding only #N/A</b>: use the IFNA function.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How is it different from IFNA?</h3>
+<p>IFNA replaces only #N/A. Other errors are shown as they are.</p>
+<h2>Summary</h2>
+<p>Blank when not found. But confirm the formula is correct before adding it.</p>
 <a class="cta" href="/vlookup-formula-builder.html">Use "Build a VLOOKUP or XLOOKUP Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a>: Find the cells, rows and columns of a range.</li><li><a href="/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

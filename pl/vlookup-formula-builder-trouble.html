@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Co zrobić, gdy nie działa</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Sprawdź plik</li><li>Sprawdź rozmiar</li><li>Spróbuj na innym urządzeniu</li></ul></div>
-<p>Jeśli <a href="/pl/vlookup-formula-builder.html">Kreator VLOOKUP</a> nie działa, sprawdź poniższe.</p>
-<h2>Kroki</h2>
+<p lang="en">You built the formula but get no result. Here are common troubles with <a href="/pl/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell or range is written wrongly. Use half-width like "A2" and "D2:F100".</li>
+<li lang="en"><b>"The column number is larger than the number of columns in the range."</b>: the range D–F has 3 columns but you specified 4 or more.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#N/A appears</b>: the value isn't in the range's leftmost column, or there's an invisible difference (like extra spaces).</li>
+<li lang="en"><b>#REF! appears</b>: the column number exceeds the range's columns.</li>
+<li lang="en"><b>#VALUE! appears</b>: the column number is below 1 or not a number.</li>
+<li lang="en"><b>#NAME? appears</b>: old Excel without XLOOKUP.</li>
+<li lang="en"><b>A different value returns</b>: it's approximate match (TRUE), or there are duplicates.</li>
+<li lang="en"><b>Only lower rows fail</b>: the range lacks $.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Sprawdź plik</li>
-<li>Sprawdź rozmiar</li>
-<li>Spróbuj na innym urządzeniu</li>
+<li lang="en">Check the value is in the range's leftmost column.</li>
+<li lang="en">Make it exact match (FALSE).</li>
+<li lang="en">Add $ to the range.</li>
+<li lang="en">Check for extra spaces with functions like LEN.</li>
 </ol>
-<div class="note">Jeśli formuła się nie pojawia, sprawdź, czy zakres jest zapisany jak D2:F100, a numer kolumny mieści się w zakresie.</div>
+<div class="note" lang="en">When the value is a number, a text-form number on one side won't match. Make both the same form.</div>
+<h2 lang="en">Suspect invisible differences</h2>
+<ul>
+<li lang="en">Trailing spaces</li>
+<li lang="en">Full-width vs half-width</li>
+<li lang="en">Number vs text</li>
+</ul>
+<p lang="en">The "Clean extra spaces and invisible characters from Excel text" tool helps with tidying text.</p>
+<h2 lang="en">Duplicates</h2>
+<p lang="en">VLOOKUP returns the value from the first matching row. With several identical codes, the second onward aren't returned.</p>
+<h2>Przykład</h2>
+<p lang="en">A product code seemed not to match, but one side had a trailing space. Removing it cleared the #N/A.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Range too short</b>: the table's last row isn't in the range.</li>
+<li lang="en"><b>References to other sheets</b>: forgot to add the sheet name.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">They're numbers but won't match.</h3>
+<p lang="en">One side may be a text-form number. Align forms with VALUE or cell formatting.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">Leftmost column, exact match, $, invisible differences. Check these four in order.</p>
 <a class="cta" href="/pl/vlookup-formula-builder.html">Użyj „Tworzenie formuły VLOOKUP lub XLOOKUP” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/excel-range-info.html">Liczenie komórek, wierszy i kolumn w zakresie Excela</a>: Sprawdź komórki, wiersze i kolumny zakresu.</li><li><a href="/pl/excel-column-letter.html">Konwerter numeru i litery kolumny Excela</a>: Przeliczaj numery i litery kolumn Excela.</li><li><a href="/pl/excel-text-clean.html">Usuwanie zbędnych spacji i niewidocznych znaków z tekstu Excela</a>: Usuń zbędne spacje i niewidoczne znaki.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

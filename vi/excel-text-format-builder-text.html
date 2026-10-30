@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Kết quả của TEXT là văn bản</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Tạo công thức</li><li>Dán</li><li>Kiểm tra lại</li></ul></div>
-<p>Kết quả của công thức tạo bằng <a href="/vi/excel-text-format-builder.html">Tạo công thức TEXT</a> là văn bản nên không thể cộng trực tiếp.</p>
-<h2>Các bước</h2>
+<p lang="en">The result of TEXT is "text" even if it looks like a number or date. Not knowing this causes surprising failures. Here's what to know before building a formula with <a href="/vi/excel-text-format-builder.html">Build an Excel TEXT Formula</a>.</p>
+<h2 lang="en">The result is text</h2>
+<p lang="en">Even if =TEXT(A2,"#,##0") shows 1,234,567, it is text, not a number.</p>
+<ul>
+<li lang="en">Often displayed left-aligned</li>
+<li lang="en">Can't be used in addition or averages</li>
+<li lang="en">Sorts as text</li>
+</ul>
+<h2 lang="en">Steps (how to check)</h2>
 <ol>
-<li>Tạo công thức</li>
-<li>Dán</li>
-<li>Kiểm tra lại</li>
+<li lang="en">Select the cell with the TEXT function.</li>
+<li lang="en">Use =ISTEXT(cell) to check whether it's text. TRUE means text.</li>
+<li lang="en">Make calculation cells the original number cells.</li>
 </ol>
-<div class="note">Để tính toán, hãy dùng ô gốc.</div>
+<div class="note" lang="en">Use the original cell for calculation and TEXT for display.</div>
+<h2 lang="en">Uses that suit it</h2>
+<ul>
+<li lang="en">Embedding in sentences ("Total is "&amp;TEXT(A2,"#,##0"))</li>
+<li lang="en">Building file names or heading text</li>
+<li lang="en">Passing as text to other systems</li>
+</ul>
+<h2 lang="en">Uses that don't suit it</h2>
+<ul>
+<li lang="en">Totals, averages and other calculations</li>
+<li lang="en">Chart source data</li>
+<li lang="en">Sorting dates or subtracting dates</li>
+</ul>
+<h2 lang="en">Turning text back into numbers</h2>
+<ul>
+<li lang="en">VALUE function: =VALUE(TEXT(...)). But using the original cell is more reliable.</li>
+<li lang="en">For dates: the DATEVALUE function</li>
+</ul>
+<h2 lang="en">Sorting differences</h2>
+<p lang="en">Sorting "2026/10/5" and "2026/10/25" as text may put "2026/10/25" first. For date sorting, use the original date cell. With zero-padding (yyyy/mm/dd), text also sorts in date order.</p>
+<h2>Ví dụ</h2>
+<p lang="en">Summing a column of amounts made with TEXT gave 0. They were text, so not calculated. Summing the original number column gave the right result.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Left alignment goes unnoticed</b>: it looks like a number, so it's hard to notice it's text.</li>
+<li lang="en"><b>Zero-padded numbers</b>: they're text, so sorting follows text order.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I only want to change the look?</h3>
+<p lang="en">Cell formatting (custom) changes only the look while the content stays a number.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">TEXT makes text. Keep it separate from cells used in calculation.</p>
 <a class="cta" href="/vi/excel-text-format-builder.html">Dùng “Tạo công thức TEXT cho Excel” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/excel-serial-date.html">Chuyển đổi giá trị số sê-ri và ngày Excel</a>: Chuyển đổi giá trị số sê-ri và ngày Excel.</li><li><a href="/vi/vlookup-formula-builder.html">Tạo công thức VLOOKUP hoặc XLOOKUP</a>: Tạo công thức VLOOKUP và XLOOKUP.</li><li><a href="/vi/excel-text-clean.html">Loại bỏ khoảng trắng thừa và ký tự vô hình khỏi văn bản Excel</a>: Loại bỏ khoảng trắng thừa và ký tự vô hình.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

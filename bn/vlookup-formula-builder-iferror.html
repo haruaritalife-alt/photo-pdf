@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ত্রুটিতে ফাঁকা দেখানো</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>ফর্মুলা তৈরি করুন</li><li>টিক দিন</li><li>কপি করুন</li></ul></div>
-<p><a href="/bn/vlookup-formula-builder.html">VLOOKUP ফর্মুলা তৈরি</a>-এ ফাঁকা সেটিং চালু করলে ফর্মুলা IFERROR দিয়ে মোড়া হয়।</p>
+<p lang="en">When VLOOKUP can't find the value, "#N/A" appears. It makes the table ugly and affects totals. "Blank on error" in <a href="/bn/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> builds a formula wrapped in IFERROR.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>ফর্মুলা তৈরি করুন</li>
-<li>টিক দিন</li>
-<li>কপি করুন</li>
+<li lang="en">Enter the value, range and column number.</li>
+<li lang="en">Tick "Blank on error".</li>
+<li lang="en">The formula is wrapped in IFERROR.</li>
 </ol>
-<div class="note">কিছু না পাওয়া গেলে ত্রুটির বদলে ফাঁকা দেখা যায়।</div>
+<div class="note" lang="en">Example: =IFERROR(VLOOKUP(A2,$D$2:$F$100,2,FALSE),"")</div>
+<h2 lang="en">How the formula works</h2>
+<p lang="en">The form is IFERROR(formula, value on error).</p>
+<ul>
+<li lang="en">If the formula is fine, its result is returned</li>
+<li lang="en">If it errors, the second value (here an empty string) is returned</li>
+</ul>
+<h2 lang="en">For XLOOKUP</h2>
+<p lang="en">XLOOKUP's fourth argument specifies the value when nothing is found. In this tool, ticking sets an empty string.</p>
+<ul>
+<li lang="en">Example: =XLOOKUP(A2,$D$2:$D$100,$E$2:$E$100,"")</li>
+</ul>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Making unfound rows blank for readability</li>
+<li lang="en">"#N/A" getting in the way of totals</li>
+<li lang="en">Presenting invoices or lists neatly</li>
+</ul>
+<h2 lang="en">Showing something other than blank</h2>
+<p lang="en">After building, rewrite the "" part.</p>
+<ul>
+<li lang="en">"Unregistered": shows "Unregistered" when not found</li>
+<li lang="en">"-": shows a hyphen</li>
+<li lang="en">0: returns the number 0 (when you want it in totals)</li>
+</ul>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en"><b>All errors get hidden</b>: IFERROR also hides errors other than #N/A (like #REF!). Formula mistakes become harder to notice.</li>
+<li lang="en"><b>Check first</b>: build the formula without IFERROR first, confirm it works, then add it.</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">An invoice list had unregistered product codes lined up as "#N/A". Adding IFERROR made them blank and tidied the look.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Blanks affect calculation</b>: an empty string is text. SUM ignores it, but "+" arithmetic errors.</li>
+<li lang="en"><b>Hiding only #N/A</b>: use the IFNA function.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How is it different from IFNA?</h3>
+<p lang="en">IFNA replaces only #N/A. Other errors are shown as they are.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">Blank when not found. But confirm the formula is correct before adding it.</p>
 <a class="cta" href="/bn/vlookup-formula-builder.html">“VLOOKUP বা XLOOKUP ফর্মুলা তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/excel-range-info.html">এক্সেল রেঞ্জের সেল, সারি ও কলাম গোনা</a>: একটি রেঞ্জের সেল, সারি ও কলাম জানুন।</li><li><a href="/bn/excel-column-letter.html">Excel কলাম নম্বর ও অক্ষর কনভার্টার</a>: Excel-এর কলাম নম্বর ও অক্ষর রূপান্তর করুন।</li><li><a href="/bn/excel-text-clean.html">এক্সেলের লেখা থেকে বাড়তি স্পেস ও অদৃশ্য অক্ষর সরানো</a>: বাড়তি স্পেস ও অদৃশ্য অক্ষর সরান।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Relier avec des virgules</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Saisissez la plage</li><li>Saisissez le séparateur</li><li>Copiez-le</li></ul></div>
-<p>Dans <a href="/fr/textjoin-formula-builder.html">Générateur TEXTJOIN</a>, vous pouvez mettre n'importe quels caractères dans le champ du séparateur.</p>
+<p lang="en">The separator for joining depends on the purpose. "Separator (such as , or 、)" in <a href="/fr/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> lets you choose freely.</p>
+<h2 lang="en">Common separators</h2>
+<ul>
+<li lang="en">Comma (,): English lists, CSV-like sequences</li>
+<li lang="en">Japanese comma (、): Japanese text</li>
+<li lang="en">Semicolon (;): separating mail recipients (some mail software)</li>
+<li lang="en">Slash (/): item sequences</li>
+<li lang="en">Line break: in-cell breaks (see below)</li>
+<li lang="en">Space: full names, etc.</li>
+</ul>
 <h2>Étapes</h2>
 <ol>
-<li>Saisissez la plage</li>
-<li>Saisissez le séparateur</li>
-<li>Copiez-le</li>
+<li>Saisissez la plage.</li>
+<li lang="en">Enter the separator in "Separator". Example: ", "</li>
+<li lang="en">Check the formula's first argument is that character.</li>
 </ol>
-<div class="note">Avec un séparateur vide, les cellules sont reliées directement.</div>
+<div class="note" lang="en">The separator is enclosed in quotes within the formula.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">Comma + space: =TEXTJOIN(", ",TRUE,A2:A10)</li>
+<li lang="en">Japanese comma: =TEXTJOIN("、",TRUE,A2:A10)</li>
+<li lang="en">No separator: =TEXTJOIN("",TRUE,A2:A10)</li>
+</ul>
+<h2 lang="en">Separating with line breaks</h2>
+<p lang="en">For a line break separator, use CHAR(10). After building with the tool, rewrite the "..." in the first argument as CHAR(10).</p>
+<ul>
+<li lang="en">Example: =TEXTJOIN(CHAR(10),TRUE,A2:A10)</li>
+<li lang="en">To display breaks, turn on "Wrap text" in the cell format</li>
+</ul>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Listing participants' names on one line with Japanese commas</li>
+<li lang="en">Joining email addresses with commas or semicolons</li>
+<li lang="en">Showing items separated by slashes</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">To paste into a mail To field, joined addresses in A2:A20 with commas. One formula joined them at once.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width vs half-width</b>: "," and "，" are different characters. Choose deliberately.</li>
+<li lang="en"><b>Spaces around the separator</b>: a separator like ", " with a space looks tidier.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the separator be several characters?</h3>
+<p lang="en">Yes. Multiple characters like " / " or " → " work.</p>
+<h2>En résumé</h2>
+<p lang="en">The separator is freely chosen. Pick it to suit the purpose.</p>
 <a class="cta" href="/fr/textjoin-formula-builder.html">Utiliser « Créer une formule TEXTJOIN » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/vlookup-formula-builder.html">Créer une formule VLOOKUP ou XLOOKUP</a>: Créez des formules VLOOKUP et XLOOKUP.</li><li><a href="/fr/excel-range-info.html">Compter les cellules, lignes et colonnes d'une plage Excel</a>: Trouvez les cellules, lignes et colonnes d'une plage.</li><li><a href="/fr/excel-text-clean.html">Supprimer les espaces en trop et caractères invisibles d'un texte Excel</a>: Supprimez les espaces en trop et les caractères invisibles.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

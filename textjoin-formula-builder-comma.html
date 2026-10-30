@@ -200,14 +200,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>カンマや読点でつなぐ</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>範囲を入れる</li><li>区切りを入れる</li><li>コピーする</li></ul></div>
-<p><a href="/textjoin-formula-builder.html">TEXTJOIN式の作成</a> では、区切りの欄に好きな文字を入れられます。</p>
+<p>つなぐときの区切りは、用途によって変わります。<a href="/textjoin-formula-builder.html">TEXTJOINの式を作る（セルをまとめてつなぐ）</a> の「区切る文字（, や 、 など）」で、自由に決められます。</p>
+<h2>よく使う区切り</h2>
+<ul>
+<li>カンマ（,）：英語の一覧や、CSV風の並び</li>
+<li>読点（、）：日本語の文章</li>
+<li>セミコロン（;）：メールの宛先の区切り（一部のメールソフト）</li>
+<li>スラッシュ（/）：項目の並び</li>
+<li>改行：セル内の改行（下の説明を参照）</li>
+<li>スペース：氏名など</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>範囲を入れる</li>
-<li>区切りを入れる</li>
-<li>コピーする</li>
+<li>範囲を入れる。</li>
+<li>「区切る文字」に、区切りを入れる。例：「、」</li>
+<li>式の第1引数が、その文字になっていることを確かめる。</li>
 </ol>
-<div class="note">区切りを空にすると、そのままつながります。</div>
+<div class="note">区切りの文字は、式の中で「"」で囲まれて入ります。</div>
+<h2>例</h2>
+<ul>
+<li>カンマ＋スペース：=TEXTJOIN(", ",TRUE,A2:A10)</li>
+<li>読点：=TEXTJOIN("、",TRUE,A2:A10)</li>
+<li>区切りなし：=TEXTJOIN("",TRUE,A2:A10)</li>
+</ul>
+<h2>改行で区切るには</h2>
+<p>区切りに改行を入れるには、CHAR(10) を使います。ツールで式を作ったあと、第1引数の "..." の部分を CHAR(10) に書き換えます。</p>
+<ul>
+<li>例：=TEXTJOIN(CHAR(10),TRUE,A2:A10)</li>
+<li>改行を表示するには、セルの書式で「折り返して全体を表示する」をオンにする</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>参加者の名前を、読点で1行に並べたい</li>
+<li>メールアドレスを、カンマやセミコロンでつなぎたい</li>
+<li>項目をスラッシュで区切って表示したい</li>
+</ul>
+<h2>例</h2>
+<p>メールの宛先欄に貼るため、A2:A20のアドレスを、カンマでつないだ。1つの式で、すぐにつながった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>全角と半角</b>：「,」と「，」は別の文字。使い分ける。</li>
+<li><b>区切りの前後のスペース</b>：「, 」のようにスペースを入れると、見た目が整う。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>区切りに複数の文字を使えますか？</h3>
+<p>はい。「 / 」や「 → 」のような、複数文字も使えます。</p>
+<h2>まとめ</h2>
+<p>区切りは自由に決められます。用途に合わせて選びましょう。</p>
 <a class="cta" href="/textjoin-formula-builder.html">TEXTJOINの式を作る（セルをまとめてつなぐ）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/excel-range-info.html">Excelのセル範囲のセル数・行数・列数を調べる</a>：セル範囲のセル数・行数・列数を調べます。</li><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +258,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Joining with Commas</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the range</li><li>Enter the separator</li><li>Copy it</li></ul></div>
-<p>In <a href="/textjoin-formula-builder.html">TEXTJOIN Builder</a> you can put any characters in the separator field.</p>
+<p>The separator for joining depends on the purpose. "Separator (such as , or 、)" in <a href="/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> lets you choose freely.</p>
+<h2>Common separators</h2>
+<ul>
+<li>Comma (,): English lists, CSV-like sequences</li>
+<li>Japanese comma (、): Japanese text</li>
+<li>Semicolon (;): separating mail recipients (some mail software)</li>
+<li>Slash (/): item sequences</li>
+<li>Line break: in-cell breaks (see below)</li>
+<li>Space: full names, etc.</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the range</li>
-<li>Enter the separator</li>
-<li>Copy it</li>
+<li>Enter the range.</li>
+<li>Enter the separator in "Separator". Example: ", "</li>
+<li>Check the formula's first argument is that character.</li>
 </ol>
-<div class="note">With an empty separator the cells are joined directly.</div>
+<div class="note">The separator is enclosed in quotes within the formula.</div>
+<h2>Examples</h2>
+<ul>
+<li>Comma + space: =TEXTJOIN(", ",TRUE,A2:A10)</li>
+<li>Japanese comma: =TEXTJOIN("、",TRUE,A2:A10)</li>
+<li>No separator: =TEXTJOIN("",TRUE,A2:A10)</li>
+</ul>
+<h2>Separating with line breaks</h2>
+<p>For a line break separator, use CHAR(10). After building with the tool, rewrite the "..." in the first argument as CHAR(10).</p>
+<ul>
+<li>Example: =TEXTJOIN(CHAR(10),TRUE,A2:A10)</li>
+<li>To display breaks, turn on "Wrap text" in the cell format</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Listing participants' names on one line with Japanese commas</li>
+<li>Joining email addresses with commas or semicolons</li>
+<li>Showing items separated by slashes</li>
+</ul>
+<h2>Example</h2>
+<p>To paste into a mail To field, joined addresses in A2:A20 with commas. One formula joined them at once.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Full-width vs half-width</b>: "," and "，" are different characters. Choose deliberately.</li>
+<li><b>Spaces around the separator</b>: a separator like ", " with a space looks tidier.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can the separator be several characters?</h3>
+<p>Yes. Multiple characters like " / " or " → " work.</p>
+<h2>Summary</h2>
+<p>The separator is freely chosen. Pick it to suit the purpose.</p>
 <a class="cta" href="/textjoin-formula-builder.html">Use "Build a TEXTJOIN Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a>: Find the cells, rows and columns of a range.</li><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

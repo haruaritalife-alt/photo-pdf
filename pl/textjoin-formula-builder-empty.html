@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pomijanie pustych komórek</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Wpisz zakres</li><li>Zaznacz pole</li><li>Skopiuj</li></ul></div>
-<p>Dzięki ustawieniu pomijania w <a href="/pl/textjoin-formula-builder.html">Kreator TEXTJOIN</a> separatory nie nakładają się tam, gdzie komórki są puste.</p>
+<p lang="en">If the range has empty cells, extra separators line up in the joined text. "Skip blank cells" in <a href="/pl/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> prevents this.</p>
+<h2>Różnica</h2>
+<p lang="en">With A2:A5 holding "Tanaka", (empty), "Suzuki", "Sato" and separator ", ":</p>
+<ul>
+<li lang="en">Skip (TRUE): Tanaka, Suzuki, Sato</li>
+<li lang="en">Don't skip (FALSE): Tanaka, , Suzuki, Sato</li>
+</ul>
 <h2>Kroki</h2>
 <ol>
-<li>Wpisz zakres</li>
-<li>Zaznacz pole</li>
-<li>Skopiuj</li>
+<li lang="en">Enter the range and separator.</li>
+<li lang="en">Ticking "Skip blank cells" makes the second argument TRUE.</li>
+<li lang="en">Unticking makes it FALSE.</li>
 </ol>
-<div class="note">Ustawienie przełącza między TRUE a FALSE.</div>
+<div class="note" lang="en">Normally, leave it ticked.</div>
+<h2 lang="en">As formulas</h2>
+<ul>
+<li lang="en">Skip: =TEXTJOIN(", ",TRUE,A2:A5)</li>
+<li lang="en">Don't skip: =TEXTJOIN(", ",FALSE,A2:A5)</li>
+</ul>
+<h2 lang="en">When not skipping is better</h2>
+<ul>
+<li lang="en">You want empty positions marked by separators</li>
+<li lang="en">Fixed orderings where item position matters</li>
+</ul>
+<p lang="en">For example, among "name, phone, email", showing the phone is empty suits not skipping.</p>
+<h2 lang="en">What counts as "empty"</h2>
+<ul>
+<li lang="en">Cells with nothing: empty</li>
+<li lang="en">Cells returning "" from a formula: empty strings; TEXTJOIN treats them as empty</li>
+<li lang="en">Cells with only spaces: not empty; spaces line up</li>
+</ul>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">Joining a list with blank rows neatly</li>
+<li lang="en">Showing only items that meet a condition</li>
+</ul>
+<h2>Przykład</h2>
+<p lang="en">A participant list had gaps in the middle. Setting "skip" joined it cleanly with no extra ", ".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Space-only cells</b>: not empty, so not skipped. Remove extra spaces.</li>
+<li lang="en"><b>Removing spaces</b>: the "Clean extra spaces and invisible characters from Excel text" tool helps.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does an empty cell cause an error?</h3>
+<p lang="en">No. Neither setting causes an error.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">Usually choose "skip". Only choose not to when you want positions shown.</p>
 <a class="cta" href="/pl/textjoin-formula-builder.html">Użyj „Tworzenie formuły TEXTJOIN” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/vlookup-formula-builder.html">Tworzenie formuły VLOOKUP lub XLOOKUP</a>: Twórz formuły VLOOKUP i XLOOKUP.</li><li><a href="/pl/excel-range-info.html">Liczenie komórek, wierszy i kolumn w zakresie Excela</a>: Sprawdź komórki, wiersze i kolumny zakresu.</li><li><a href="/pl/excel-text-clean.html">Usuwanie zbędnych spacji i niewidocznych znaków z tekstu Excela</a>: Usuń zbędne spacje i niewidoczne znaki.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>When Non-numbers Are Mixed In</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Paste the numbers</li><li>See the result</li><li>Check the count</li></ul></div>
-<p><a href="/en/column-stats.html">Column Statistics</a> skips anything that is not a number when totaling.</p>
+<p>What happens if non-numeric text is mixed in the paste? <a href="/en/column-stats.html">Sum, Average and Median of a Column of Numbers</a> reads only numbers and skips the rest.</p>
+<h2>How skipping works</h2>
+<ul>
+<li>Parts that read as numbers: used in the summary</li>
+<li>Parts that can't be read (text, etc.): skipped</li>
+<li>The skipped count is shown, like "Non-numbers were skipped. (3)"</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Paste the numbers</li>
-<li>See the result</li>
-<li>Check the count</li>
+<li>Paste a number list with text mixed in.</li>
+<li>Check the result and the skip notice.</li>
+<li>Check the skipped count matches what you expect.</li>
 </ol>
-<div class="note">The number skipped is shown so you can check.</div>
+<div class="note">If many were skipped, review the form of the paste source.</div>
+<h2>Example</h2>
+<p>With space-separated "Sales 100", "200", "Total", "300", the words "Sales" and "Total" are text and skipped, and 100, 200, 300 are summarised. Two skipped are shown.</p>
+<h2>Forms that can be read</h2>
+<ul>
+<li>Integers, decimals, negatives (-5)</li>
+<li>A leading "+" or "-"</li>
+<li>A leading "$" or "¥" (removed)</li>
+<li>A trailing "%" (removed)</li>
+<li>Comma groupings (1,200)</li>
+<li>Full-width digits (１２３)</li>
+</ul>
+<h2>Forms that are skipped</h2>
+<ul>
+<li>Numbers followed by text, like "100yen"</li>
+<li>Dates (2026/10/25)</li>
+<li>Text-qualified forms like "about 100"</li>
+<li>Blanks</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Pasting tables with headings or units mixed in as they are</li>
+<li>Summarising without deleting every non-number</li>
+</ul>
+<h2>Caution</h2>
+<p>Check the skipped count so you don't skip something that was actually an important number. For numbers with units like "yen" or "pcs", removing the unit before pasting is the surest.</p>
+<h2>Example</h2>
+<p>Pasted "1200yen" and "800yen" and no numbers were found. Removing the units and pasting again summarised correctly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Numbers with units</b>: skipped. Remove the unit.</li>
+<li><b>Dates and times</b>: not read as numbers.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Removing units is a hassle.</h3>
+<p>Excel's Replace can delete a unit in bulk, as can tools for cleaning text.</p>
+<h2>Summary</h2>
+<p>Non-numbers are skipped. Always check the skipped count.</p>
 <a class="cta" href="/en/column-stats.html">Use "Sum, Average and Median of a Column of Numbers" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/en/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/en/table-transpose.html">Swap Rows and Columns of a Table</a>: Swap the rows and columns of a pasted table.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

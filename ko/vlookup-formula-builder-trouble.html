@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/vlookup-formula-builder.html">VLOOKUP 만들기</a>가 동작하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">You built the formula but get no result. Here are common troubles with <a href="/ko/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell or range is written wrongly. Use half-width like "A2" and "D2:F100".</li>
+<li lang="en"><b>"The column number is larger than the number of columns in the range."</b>: the range D–F has 3 columns but you specified 4 or more.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#N/A appears</b>: the value isn't in the range's leftmost column, or there's an invisible difference (like extra spaces).</li>
+<li lang="en"><b>#REF! appears</b>: the column number exceeds the range's columns.</li>
+<li lang="en"><b>#VALUE! appears</b>: the column number is below 1 or not a number.</li>
+<li lang="en"><b>#NAME? appears</b>: old Excel without XLOOKUP.</li>
+<li lang="en"><b>A different value returns</b>: it's approximate match (TRUE), or there are duplicates.</li>
+<li lang="en"><b>Only lower rows fail</b>: the range lacks $.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Check the value is in the range's leftmost column.</li>
+<li lang="en">Make it exact match (FALSE).</li>
+<li lang="en">Add $ to the range.</li>
+<li lang="en">Check for extra spaces with functions like LEN.</li>
 </ol>
-<div class="note">수식이 나오지 않으면 범위가 D2:F100처럼 쓰여 있는지, 열 번호가 범위 안에 있는지 확인하세요.</div>
+<div class="note" lang="en">When the value is a number, a text-form number on one side won't match. Make both the same form.</div>
+<h2 lang="en">Suspect invisible differences</h2>
+<ul>
+<li lang="en">Trailing spaces</li>
+<li lang="en">Full-width vs half-width</li>
+<li lang="en">Number vs text</li>
+</ul>
+<p lang="en">The "Clean extra spaces and invisible characters from Excel text" tool helps with tidying text.</p>
+<h2 lang="en">Duplicates</h2>
+<p lang="en">VLOOKUP returns the value from the first matching row. With several identical codes, the second onward aren't returned.</p>
+<h2>예</h2>
+<p lang="en">A product code seemed not to match, but one side had a trailing space. Removing it cleared the #N/A.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Range too short</b>: the table's last row isn't in the range.</li>
+<li lang="en"><b>References to other sheets</b>: forgot to add the sheet name.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">They're numbers but won't match.</h3>
+<p lang="en">One side may be a text-form number. Align forms with VALUE or cell formatting.</p>
+<h2>요약</h2>
+<p lang="en">Leftmost column, exact match, $, invisible differences. Check these four in order.</p>
 <a class="cta" href="/ko/vlookup-formula-builder.html">“VLOOKUP·XLOOKUP 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-range-info.html">엑셀 범위의 셀·행·열 수 세기</a>: 범위의 셀, 행, 열을 확인합니다.</li><li><a href="/ko/excel-column-letter.html">엑셀 열 번호·문자 변환기</a>: 엑셀의 열 번호와 열 문자를 변환합니다.</li><li><a href="/ko/excel-text-clean.html">엑셀 글의 불필요한 공백과 보이지 않는 문자 없애기</a>: 불필요한 공백과 보이지 않는 문자를 없앱니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

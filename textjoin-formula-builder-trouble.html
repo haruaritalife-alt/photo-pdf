@@ -200,14 +200,42 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/textjoin-formula-builder.html">TEXTJOIN式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を作ったのに、結果がおかしい。<a href="/textjoin-formula-builder.html">TEXTJOINの式を作る（セルをまとめてつなぐ）</a> で起こりやすい困りごとと対処法をまとめます。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：範囲は「A2:A10」のように、列の文字と行番号を入れる。1つのセルだけや、列全体（A:A）は不可。</li>
+<li><b>「&amp;の式は30セルまでです。」</b>：&amp;でつなぐ式は、30セルまで。TEXTJOINの式は、そのまま使える。</li>
+</ul>
+<h2>式を貼ったあとの困りごと</h2>
+<ul>
+<li><b>#NAME?が出る</b>：古いExcelで、TEXTJOINが使えない。「&amp;でつなぐ式」を使う。</li>
+<li><b>#VALUE!が出る</b>：結果が長すぎる（セルの文字数の上限は32,767字）。</li>
+<li><b>余計な区切りが並ぶ</b>：「空白のセルを飛ばす」をオフにしている。または、スペースだけのセルがある。</li>
+<li><b>数字や日付の表示が崩れる</b>：数値や日付は、表示形式が反映されず、元の値でつながる。TEXT関数で整える。</li>
+<li><b>改行されない</b>：セルの書式で「折り返して全体を表示する」をオンにする。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>範囲が、行番号つきで入っているか確かめる。</li>
+<li>「空白のセルを飛ばす」の設定を見直す。</li>
+<li>Excelのバージョンを確かめる（TEXTJOINは2019以降）。</li>
 </ol>
-<div class="note">式が出ないときは、範囲がA2:A10のように書かれているか確かめます。</div>
+<div class="note">日付や金額をつなぐときは、あらかじめTEXT関数で整えます。</div>
+<h2>日付を整える例</h2>
+<p>=TEXTJOIN("、",TRUE,TEXT(A2:A5,"yyyy/mm/dd"))</p>
+<p>このように書けば、日付が「2026/10/25」の形でつながります。</p>
+<h2>例</h2>
+<p>日付をつないだら、「46320、46321」と数字が並んだ。TEXT関数で整えると、日付の形でつながった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>範囲の途中にエラー値</b>：エラー値が含まれると、全体がエラーになる。</li>
+<li><b>別シートの範囲</b>：シート名（Sheet2!A2:A10）を付けた形に、書き換える。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>数字が文字になってしまいます。</h3>
+<p>つないだ結果は、文字です。計算に使いたい場合は、元のセルを使います。</p>
+<h2>まとめ</h2>
+<p>範囲・バージョン・空白の設定・表示形式。この4つを順に確かめましょう。</p>
 <a class="cta" href="/textjoin-formula-builder.html">TEXTJOINの式を作る（セルをまとめてつなぐ）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/excel-range-info.html">Excelのセル範囲のセル数・行数・列数を調べる</a>：セル範囲のセル数・行数・列数を調べます。</li><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +247,42 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/textjoin-formula-builder.html">TEXTJOIN Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but the result is odd. Here are common troubles with <a href="/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: enter a range with column letters and row numbers like "A2:A10". A single cell or a whole column (A:A) isn't allowed.</li>
+<li><b>"The &amp; formula is limited to 30 cells."</b>: the &amp; formula handles up to 30 cells. The TEXTJOIN formula can be used as is.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>#NAME? appears</b>: old Excel without TEXTJOIN. Use the "&amp; formula".</li>
+<li><b>#VALUE! appears</b>: the result is too long (a cell's limit is 32,767 characters).</li>
+<li><b>Extra separators line up</b>: "Skip blank cells" is off, or there are space-only cells.</li>
+<li><b>Numbers or dates display wrongly</b>: numbers and dates join as their raw values without display formats. Tidy with TEXT.</li>
+<li><b>No line breaks</b>: turn on "Wrap text" in the cell format.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the range is entered with row numbers.</li>
+<li>Review the "Skip blank cells" setting.</li>
+<li>Check the Excel version (TEXTJOIN is 2019 and later).</li>
 </ol>
-<div class="note">If no formula appears, check that the range is written like A2:A10.</div>
+<div class="note">When joining dates or amounts, tidy them first with TEXT.</div>
+<h2>Tidying dates example</h2>
+<p>=TEXTJOIN(", ",TRUE,TEXT(A2:A5,"yyyy/mm/dd"))</p>
+<p>Written this way, dates join in the "2026/10/25" form.</p>
+<h2>Example</h2>
+<p>Joining dates gave numbers like "46320, 46321". Tidying with TEXT joined them in date form.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>An error value in the range</b>: any error value makes the whole an error.</li>
+<li><b>Ranges on other sheets</b>: rewrite with the sheet name (Sheet2!A2:A10).</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Numbers became text.</h3>
+<p>A joined result is text. To calculate, use the original cells.</p>
+<h2>Summary</h2>
+<p>Range, version, blank setting, display format. Check these four in order.</p>
 <a class="cta" href="/textjoin-formula-builder.html">Use "Build a TEXTJOIN Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a>: Find the cells, rows and columns of a range.</li><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

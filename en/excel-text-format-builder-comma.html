@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Adding a Thousands Separator</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the cell</li><li>Choose #,##0</li><li>Copy it</li></ul></div>
-<p>Choosing #,##0 in <a href="/en/excel-text-format-builder.html">TEXT Formula Builder</a> adds a comma every three digits.</p>
+<p>You want thousands separators on amounts or quantities. Choose "#,##0" in <a href="/en/excel-text-format-builder.html">Build an Excel TEXT Formula</a> to build a thousands-separator TEXT formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the cell</li>
-<li>Choose #,##0</li>
-<li>Copy it</li>
+<li>Enter the number cell in "Cell to convert".</li>
+<li>Choose "#,##0" from "Common formats".</li>
+<li>Copy the "TEXT formula".</li>
 </ol>
-<div class="note">The result becomes text.</div>
+<div class="note">In "#,##0", "," is the thousands separator and "0" means show at least one digit.</div>
+<h2>Examples</h2>
+<ul>
+<li>=TEXT(A2,"#,##0")</li>
+<li>1234567 → 1,234,567</li>
+<li>1000 → 1,000</li>
+<li>0 → 0</li>
+</ul>
+<h2>Showing decimals</h2>
+<ul>
+<li>"#,##0.00": two decimals (1,234,567.89)</li>
+<li>"#,##0.0": one decimal</li>
+<li>"0.00": two decimals without commas</li>
+</ul>
+<h2>Adding currency or units</h2>
+<ul>
+<li>"$#,##0": $1,234,567</li>
+<li>Format code with a unit after the number: 1,234,567 units</li>
+</ul>
+<p>When adding text, enclose it in double quotes. In the formula the quotes double up. The tool tidies this automatically so you can use it as is.</p>
+<h2>Good for</h2>
+<ul>
+<li>Putting amounts in sentences (e.g. "Total is "&amp;TEXT(A2,"#,##0"))</li>
+<li>Tidying invoice amounts as text</li>
+<li>Putting amounts in email templates</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted "The invoice is 1234567 yen" to read "1,234,567 yen". Using TEXT for separators and embedding it in the sentence did it.</p>
+<h2>Difference from other methods</h2>
+<p>Adding "thousands separator" in cell formatting changes only the look. To embed in a sentence, make it text with TEXT.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Negative numbers</b>: appear as "-1,234". To show with marks like "▲", adjust the format.</li>
+<li><b>It's text, so can't calculate</b>: use the original cell for calculation.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I separate by ten-thousands (the Japanese style)?</h3>
+<p>The Japanese ten-thousands grouping can't be made with TEXT format codes.</p>
+<h2>Summary</h2>
+<p>When putting amounts in sentences, use TEXT for thousands separators.</p>
 <a class="cta" href="/en/excel-text-format-builder.html">Use "Build an Excel TEXT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Використання в Google Таблицях</h1>
 <p class="meta">Опубліковано: 19 жовт. 2026 | Оновлено: 19 жовт. 2026 | <a href="/about.html">Про нас (японською)</a></p>
 <div class="points"><b>Основне</b><ul><li>Складіть формулу</li><li>Скопіюйте</li><li>Вставте в Таблиці</li></ul></div>
-<p>Формули з <a href="/uk/textjoin-formula-builder.html">Конструктор TEXTJOIN</a> можна вставити прямо й у Google Таблиці.</p>
+<p lang="en">Google Sheets also has TEXTJOIN. Formulas built with <a href="/uk/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> work as is in Sheets.</p>
 <h2>Кроки</h2>
 <ol>
-<li>Складіть формулу</li>
-<li>Скопіюйте</li>
-<li>Вставте в Таблиці</li>
+<li lang="en">Enter the range and separator.</li>
+<li lang="en">Press "Copy TEXTJOIN".</li>
+<li lang="en">Paste into a spreadsheet cell.</li>
 </ol>
-<div class="note">Перед вставленням виберіть цільову клітинку.</div>
+<div class="note" lang="en">The syntax is the same as Excel's. =TEXTJOIN(", ",TRUE,A2:A10)</div>
+<h2 lang="en">What's the same</h2>
+<ul>
+<li lang="en">The three arguments (separator, ignore empty, range)</li>
+<li lang="en">The shape of the result</li>
+</ul>
+<h2 lang="en">What differs</h2>
+<ul>
+<li lang="en"><b>Multiple ranges</b>: both allow several ranges.</li>
+<li lang="en"><b>Combining with arrays</b>: in Sheets, combining with ARRAYFORMULA to join only matching items is common.</li>
+<li lang="en"><b>Arrays as separators</b>: in Sheets the separator is treated as a single text.</li>
+</ul>
+<h2 lang="en">Joining only matching items</h2>
+<p lang="en">Combine TEXTJOIN and IF.</p>
+<ul>
+<li lang="en">Example: =TEXTJOIN(", ",TRUE,IF(B2:B10="Done",A2:A10,""))</li>
+</ul>
+<p lang="en">This joins the names in column A only for rows where column B is "Done".</p>
+<ul>
+<li lang="en">Excel (2019): may need entering as an array formula (Ctrl + Shift + Enter)</li>
+<li lang="en">Microsoft 365: works with normal entry</li>
+<li lang="en">Google Sheets: wrap in ARRAYFORMULA</li>
+</ul>
+<h2>Підходить для</h2>
+<ul>
+<li lang="en">Gathering participants into one cell in a shared spreadsheet</li>
+<li lang="en">Lining up form responses in one cell</li>
+<li lang="en">Making conditional lists</li>
+</ul>
+<h2>Приклад</h2>
+<p lang="en">In a team task sheet, lined up each person's completed tasks in one cell. TEXTJOIN with IF updated each person's list automatically.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Large ranges</b>: exceeding the cell's character limit (50,000) causes an error.</li>
+<li lang="en"><b>Forgetting ARRAYFORMULA</b>: needed in the conditional form.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are results the same in Excel and Google Sheets?</h3>
+<p lang="en">Basically yes. Fine behavior varies by version.</p>
+<h2>Підсумок</h2>
+<p lang="en">Built formulas work as is. Only mind ARRAYFORMULA for conditional use.</p>
 <a class="cta" href="/uk/textjoin-formula-builder.html">Використати «Створення формули TEXTJOIN» (безкоштовно)</a>
 <h2>Інструменти, що добре поєднуються з цим</h2><ul><li><a href="/uk/vlookup-formula-builder.html">Створення формули VLOOKUP або XLOOKUP</a>: Створюйте формули VLOOKUP і XLOOKUP.</li><li><a href="/uk/excel-range-info.html">Підрахунок клітинок, рядків і стовпців діапазону Excel</a>: Дізнайтеся клітинки, рядки та стовпці діапазону.</li><li><a href="/uk/excel-text-clean.html">Видалення зайвих пробілів і невидимих символів із тексту Excel</a>: Приберіть зайві пробіли та невидимі символи.</li></ul>
 <div class="tip"><p>Якщо цей посібник став у пригоді, невеликі чайові будуть дуже доречні.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Надіслати чайові (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Надіслати подарунок (список бажань Amazon)</a></div>
