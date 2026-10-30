@@ -200,14 +200,68 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>条件の比較</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>比較を選ぶ</li><li>値を入れる</li><li>確かめる</li></ul></div>
-<p><a href="/filter-formula-builder.html">FILTER式の作成</a> では、以上・より大きい・等しいなどの比較を選べます。</p>
+<p>FILTERの条件は、「B2:B100&gt;=80」のように、比較の記号で書きます。<a href="/filter-formula-builder.html">FILTERの式を作る</a> の「比較」で選べる6つの記号を、整理します。</p>
+<h2>6つの比較の記号</h2>
+<ul>
+<li><b>&gt;=</b>：以上</li>
+<li><b>&gt;</b>：より大きい</li>
+<li><b>&lt;=</b>：以下</li>
+<li><b>&lt;</b>：未満</li>
+<li><b>=</b>：等しい</li>
+<li><b>&lt;&gt;</b>：等しくない</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>比較を選ぶ</li>
-<li>値を入れる</li>
-<li>確かめる</li>
+<li>「条件を調べる列」に、判定する列の範囲を入れる。</li>
+<li>「比較」で記号を選ぶ。</li>
+<li>「比べる値」を入れる。</li>
+<li>式の「B2:B100&gt;=80」の部分を確かめる。</li>
 </ol>
-<div class="note">等しくないときは&lt;&gt;を使います。</div>
+<div class="note">SUMIFのように条件を引用符で囲む必要はありません。FILTERは、比較の式をそのまま書きます。</div>
+<h2>例</h2>
+<ul>
+<li>80以上：=FILTER(A2:C100,B2:B100&gt;=80)</li>
+<li>「東京」と等しい：=FILTER(A2:C100,B2:B100="東京")</li>
+<li>「東京」でない：=FILTER(A2:C100,B2:B100&lt;&gt;"東京")</li>
+</ul>
+<h2>比べる値の形</h2>
+<ul>
+<li>数字：80 と入れると、そのまま</li>
+<li>文字：東京 と入れると、自動で引用符が付く</li>
+<li>他のセル：E1 と入れると、そのセルの値と比べる</li>
+</ul>
+<h2>SUMIFとの違い</h2>
+<ul>
+<li>SUMIF：条件を「"&gt;=80"」のように、文字として書く</li>
+<li>FILTER：条件を「B2:B100&gt;=80」のように、比較の式として書く</li>
+</ul>
+<h2>複数の条件</h2>
+<p>FILTERの条件を、かけ算で組み合わせると、すべてを満たす行（AND）になります。</p>
+<ul>
+<li>例：=FILTER(A2:C100,(B2:B100&gt;=80)*(C2:C100="東京"))</li>
+</ul>
+<p>足し算で組み合わせると、どちらかを満たす行（OR）になります。</p>
+<ul>
+<li>例：=FILTER(A2:C100,(B2:B100&gt;=80)+(C2:C100="東京"))</li>
+</ul>
+<p>このツールで作った式の条件の部分を、手で書き換えます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>条件に合う行を、取り出したい</li>
+<li>条件を、複数に増やしたい</li>
+</ul>
+<h2>例</h2>
+<p>点数が80以上で、地域が東京の人だけを取り出したかった。ツールの式の条件を、かけ算の形に書き換えて、2つの条件を満たす行だけが出た。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>かっこの付け忘れ</b>：複数条件では、条件ごとにかっこで囲む。</li>
+<li><b>範囲の行数</b>：すべての条件の範囲を、同じ行数にそろえる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>文字の部分一致で絞れますか？</h3>
+<p>SEARCH関数やISNUMBER関数を組み合わせます。例：ISNUMBER(SEARCH("東",C2:C100))</p>
+<h2>まとめ</h2>
+<p>比較の式をそのまま書く。複数条件は、かけ算と足し算で組み合わせます。</p>
 <a class="cta" href="/filter-formula-builder.html">FILTERの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +273,68 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Comparison in the Condition</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose the comparison</li><li>Enter the value</li><li>Check it</li></ul></div>
-<p>In <a href="/filter-formula-builder.html">FILTER Builder</a> you can choose a comparison such as at least, greater than or equal to.</p>
+<p>FILTER conditions are written with comparison operators, like "B2:B100&gt;=80". Here is the six operators selectable in "Comparison" in <a href="/filter-formula-builder.html">Build a FILTER Formula</a>.</p>
+<h2>The six operators</h2>
+<ul>
+<li><b>&gt;=</b>: or more</li>
+<li><b>&gt;</b>: greater than</li>
+<li><b>&lt;=</b>: or less</li>
+<li><b>&lt;</b>: less than</li>
+<li><b>=</b>: equal</li>
+<li><b>&lt;&gt;</b>: not equal</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Choose the comparison</li>
-<li>Enter the value</li>
-<li>Check it</li>
+<li>Enter the range of the column to judge in "Column to test".</li>
+<li>Choose an operator in "Comparison".</li>
+<li>Enter "Value to compare".</li>
+<li>Check the "B2:B100&gt;=80" part of the formula.</li>
 </ol>
-<div class="note">Use &lt;&gt; for not equal.</div>
+<div class="note">Unlike SUMIF, you needn't enclose the condition in quotes. FILTER takes the comparison expression as written.</div>
+<h2>Examples</h2>
+<ul>
+<li>80 or more: =FILTER(A2:C100,B2:B100&gt;=80)</li>
+<li>Equal to "Tokyo": =FILTER(A2:C100,B2:B100="Tokyo")</li>
+<li>Not "Tokyo": =FILTER(A2:C100,B2:B100&lt;&gt;"Tokyo")</li>
+</ul>
+<h2>Forms of the compared value</h2>
+<ul>
+<li>Numbers: entering 80 keeps it as is</li>
+<li>Text: entering Tokyo adds quotes automatically</li>
+<li>Other cells: entering E1 compares with that cell's value</li>
+</ul>
+<h2>Difference from SUMIF</h2>
+<ul>
+<li>SUMIF: writes the condition as text like "&gt;=80"</li>
+<li>FILTER: writes the condition as a comparison expression like "B2:B100&gt;=80"</li>
+</ul>
+<h2>Multiple conditions</h2>
+<p>Combining FILTER conditions by multiplication gives rows meeting all (AND).</p>
+<ul>
+<li>Example: =FILTER(A2:C100,(B2:B100&gt;=80)*(C2:C100="Tokyo"))</li>
+</ul>
+<p>Combining by addition gives rows meeting either (OR).</p>
+<ul>
+<li>Example: =FILTER(A2:C100,(B2:B100&gt;=80)+(C2:C100="Tokyo"))</li>
+</ul>
+<p>Rewrite the condition part of the tool's formula by hand.</p>
+<h2>Good for</h2>
+<ul>
+<li>Extracting rows meeting a condition</li>
+<li>Increasing to several conditions</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted only people with a score of 80+ and region Tokyo. Rewriting the tool's condition into the multiplication form output only rows meeting both.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Forgetting brackets</b>: with several conditions, enclose each in brackets.</li>
+<li><b>Range rows</b>: make all condition ranges the same number of rows.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I filter by partial text match?</h3>
+<p>Combine SEARCH and ISNUMBER. Example: ISNUMBER(SEARCH("Tok",C2:C100))</p>
+<h2>Summary</h2>
+<p>Write the comparison expression as is. Combine multiple conditions with multiplication and addition.</p>
 <a class="cta" href="/filter-formula-builder.html">Use "Build a FILTER Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

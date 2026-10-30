@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Nombres de hoja con espacios</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
 <div class="points"><b>Puntos clave</b><ul><li>Escribe el nombre de la hoja</li><li>Mira la fórmula</li><li>Comprobarlo</li></ul></div>
-<p>En <a href="/es/importrange-builder.html">Creador de IMPORTRANGE</a>, un nombre de hoja con espacios se pone entre comillas automáticamente.</p>
+<p lang="en">When a sheet name contains spaces or symbols, IMPORTRANGE's syntax changes slightly. <a href="/es/importrange-builder.html">Build an IMPORTRANGE Formula</a> adjusts this automatically.</p>
+<h2 lang="en">Rules applied</h2>
+<ul>
+<li lang="en">Names of only alphanumerics and underscores: as is (e.g. Sheet1)</li>
+<li lang="en">Others (with spaces, Japanese or symbols): enclosed in single quotes (e.g. 'Sales 2026')</li>
+<li lang="en">Names containing a single quote: doubled (Tom's → Tom''s)</li>
+</ul>
 <h2>Pasos</h2>
 <ol>
-<li>Escribe el nombre de la hoja</li>
-<li>Mira la fórmula</li>
-<li>Comprobarlo</li>
+<li lang="en">Enter the original sheet name in "Sheet name".</li>
+<li lang="en">Check the "SheetName!Range" part of the formula.</li>
+<li lang="en">If it contains spaces or Japanese, check it is enclosed in quotes.</li>
 </ol>
-<div class="note">Otra herramienta resulta útil para comprobar nombres de hoja.</div>
+<div class="note" lang="en">Don't add "!" to the sheet name; the tool adds it between name and range.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">Sheet "Sheet1": Sheet1!A1:C10</li>
+<li lang="en">Sheet "Sales 2026": 'Sales 2026'!A1:C10</li>
+<li lang="en">Sheet "Tom's list": 'Tom''s list'!A1:C10</li>
+</ul>
+<h2 lang="en">How it looks in the formula</h2>
+<p lang="en">Single quotes sit inside the formula's double quotes.</p>
+<ul>
+<li lang="en">=IMPORTRANGE("https://docs.google.com/spreadsheets/d/(ID)","'Sales 2026'!A1:C10")</li>
+</ul>
+<h2 lang="en">How to check the sheet name</h2>
+<ul>
+<li lang="en">Look at the tabs at the bottom of the source spreadsheet</li>
+<li lang="en">Check there are no invisible spaces (such as trailing ones)</li>
+<li lang="en">Match case and full-/half-width to the tab</li>
+</ul>
+<h2>Adecuado para</h2>
+<ul>
+<li lang="en">Japanese or space-containing sheet names</li>
+<li lang="en">Names other than "Sheet1"</li>
+<li lang="en">When #REF! might be caused by the sheet name</li>
+</ul>
+<h2>Ejemplo</h2>
+<p lang="en">The sheet was "FY2026 Sales". As is, it gave #REF!, but the tool's formula added single quotes and imported correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Renamed the tab</b>: rewrite the name inside the formula too.</li>
+<li lang="en"><b>Trailing space in the name</b>: invisible, hard to notice. Check the tab name.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the sheet name be omitted?</h3>
+<p lang="en">Omitting it targets the spreadsheet's first sheet. This tool is built to take a sheet name.</p>
+<h2>Resumen</h2>
+<p lang="en">Names with spaces or Japanese need quotes. The tool adds them automatically.</p>
 <a class="cta" href="/es/importrange-builder.html">Usar «Crear una fórmula IMPORTRANGE» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/sumif-formula-builder.html">Crear una fórmula SUMIF o COUNTIF</a>: Crea fórmulas SUMIF y COUNTIF.</li><li><a href="/es/sheet-name-checker.html">Comprobar el nombre de una hoja de Excel</a>: Comprueba si se permite el nombre de una hoja.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

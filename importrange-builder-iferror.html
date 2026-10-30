@@ -200,14 +200,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>エラーを空欄にする</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>式を作る</li><li>2つ目を見る</li><li>コピーする</li></ul></div>
-<p><a href="/importrange-builder.html">IMPORTRANGE式の作成</a> は、エラーのときに空欄にするIFERROR付きの式も表示します。</p>
+<p>IMPORTRANGEは、読み込み中や、アクセス未許可のとき、エラーを表示します。見た目が気になるときは、IFERRORで包みます。<a href="/importrange-builder.html">IMPORTRANGEの式を作る</a> の2つ目の式が、その形です。</p>
+<h2>2つ目の式</h2>
+<ul>
+<li>=IFERROR(IMPORTRANGE("https://docs.google.com/spreadsheets/d/(ID)","Sheet1!A1:C10"),"")</li>
+</ul>
+<p>エラーのとき、エラーの代わりに、空の文字が表示されます。</p>
 <h2>手順</h2>
 <ol>
-<li>式を作る</li>
-<li>2つ目を見る</li>
-<li>コピーする</li>
+<li>URL・シート名・範囲を入れる。</li>
+<li>「エラーのとき空欄にする式」を確かめる。</li>
+<li>「2つ目をコピー」で、コピーする。</li>
 </ol>
-<div class="note">許可前のエラーも空欄になるので注意します。</div>
+<div class="note">使う前に、まず1つ目の式で、正しく取り込めることを確かめましょう。</div>
+<h2>IFERRORを付けるとき、付けないとき</h2>
+<ul>
+<li><b>付ける</b>：完成した表で、エラーを見せたくない</li>
+<li><b>付けない</b>：設定中。エラーから、原因を探りたい</li>
+</ul>
+<h2>注意すること</h2>
+<p>IFERRORは、すべてのエラーを隠します。アクセスの許可を求める「#REF!」も隠れるため、許可のボタンが出なくなる場合があります。</p>
+<ul>
+<li>初めて使うときは、1つ目の式で許可する</li>
+<li>許可したあとに、2つ目の式に置き換える</li>
+</ul>
+<h2>空のデータとの違い</h2>
+<p>元のデータが空の場合も、何も表示されません。エラーなのか、データが空なのか、見分けがつかなくなります。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>共有する集計表を、見た目よく整えたい</li>
+<li>他の関数に渡すとき、エラーの伝わりを防ぎたい</li>
+<li>取り込み元が一時的に使えなくても、表が崩れないようにしたい</li>
+</ul>
+<h2>別の表示にしたい</h2>
+<p>式の最後の "" を書き換えます。</p>
+<ul>
+<li>"取得できません"：エラーの理由を示す言葉</li>
+<li>"-"：ハイフン</li>
+</ul>
+<h2>例</h2>
+<p>月次の集計表で、取り込み元が更新中のとき、一時的に#REF!が出て、合計もエラーになった。IFERRORで包むと、空欄になり、合計の式が動くようになった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>許可のボタンが出ない</b>：IFERRORが、エラーを隠している。1つ目の式で試す。</li>
+<li><b>本当のエラーに気づけない</b>：定期的に、元のデータを確かめる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>空欄ではなく、前の値を残せますか？</h3>
+<p>関数だけでは難しいです。スクリプトなどが必要になります。</p>
+<h2>まとめ</h2>
+<p>完成した表にはIFERROR、設定中は付けない。使い分けましょう。</p>
 <a class="cta" href="/importrange-builder.html">IMPORTRANGEの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/sheet-name-checker.html">Excelのシート名を確かめる</a>：シート名が使えるか確かめます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +261,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Showing a Blank on Error</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>See the second one</li><li>Copy it</li></ul></div>
-<p><a href="/importrange-builder.html">IMPORTRANGE Builder</a> also shows a formula wrapped in IFERROR that shows a blank on error.</p>
+<p>IMPORTRANGE shows errors while loading or before access is allowed. If the look bothers you, wrap it in IFERROR. The second formula of <a href="/importrange-builder.html">Build an IMPORTRANGE Formula</a> has that form.</p>
+<h2>The second formula</h2>
+<ul>
+<li>=IFERROR(IMPORTRANGE("https://docs.google.com/spreadsheets/d/(ID)","Sheet1!A1:C10"),"")</li>
+</ul>
+<p>On error, an empty string is shown instead.</p>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>See the second one</li>
-<li>Copy it</li>
+<li>Enter URL, sheet name and range.</li>
+<li>Check the "formula that blanks on error".</li>
+<li>Copy with "Copy the second".</li>
 </ol>
-<div class="note">Note that the error before access is allowed is also hidden.</div>
+<div class="note">Before using it, first confirm with the first formula that it imports correctly.</div>
+<h2>When to wrap and when not</h2>
+<ul>
+<li><b>Wrap</b>: in a finished table where you don't want errors shown</li>
+<li><b>Don't wrap</b>: while setting up, to trace the cause from errors</li>
+</ul>
+<h2>Caution</h2>
+<p>IFERROR hides all errors. The "#REF!" asking for permission is hidden too, so the allow button may not appear.</p>
+<ul>
+<li>On first use, allow with the first formula</li>
+<li>After allowing, replace with the second</li>
+</ul>
+<h2>Difference from empty data</h2>
+<p>If the source data is empty, nothing is shown either. You can't tell an error from empty data.</p>
+<h2>Good for</h2>
+<ul>
+<li>Making a shared summary look tidy</li>
+<li>Preventing error propagation when feeding other functions</li>
+<li>Keeping tables from breaking even if the source is temporarily unavailable</li>
+</ul>
+<h2>Showing something else</h2>
+<p>Rewrite the final "" in the formula.</p>
+<ul>
+<li>"Unavailable": words indicating the error</li>
+<li>"-": a hyphen</li>
+</ul>
+<h2>Example</h2>
+<p>In a monthly summary, while the source was updating, a temporary #REF! made totals error too. Wrapping in IFERROR produced blanks and kept the total formula working.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>No allow button</b>: IFERROR is hiding the error. Try the first formula.</li>
+<li><b>Missing real errors</b>: check the source data regularly.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can the previous value be kept instead of blank?</h3>
+<p>Hard with functions alone. A script or similar is needed.</p>
+<h2>Summary</h2>
+<p>IFERROR for finished tables, not while setting up. Use them accordingly.</p>
 <a class="cta" href="/importrange-builder.html">Use "Build an IMPORTRANGE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/sheet-name-checker.html">Check an Excel Sheet Name</a>: Check whether a sheet name is allowed.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

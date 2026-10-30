@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>QUERY कैसे लिखें (अपने आप बनता है, मुफ़्त)</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>रेंज दर्ज करें</li><li>कॉलम और शर्त डालें</li><li>फ़ॉर्मूला कॉपी करें</li></ul></div>
-<p><a href="/hi/query-formula-builder.html">QUERY बनाने वाला टूल</a> रेंज, निकालने वाले कॉलम आदि से QUERY सूत्र बनाता है।</p>
+<p lang="en">You want filtering, aggregation and sorting all in one formula. Google Sheets' QUERY function does that. But its SQL-like syntax is hard until you're used to it. <a href="/hi/query-formula-builder.html">Build a QUERY Formula</a> assembles a QUERY formula from just its parts. Input is processed inside this device and not sent outside.</p>
 <h2>चरण</h2>
 <ol>
-<li>रेंज दर्ज करें</li>
-<li>कॉलम और शर्त डालें</li>
-<li>फ़ॉर्मूला कॉपी करें</li>
+<li lang="en">In "Data range (such as A1:D100)", enter the whole table range.</li>
+<li lang="en">In "Columns to return (such as A, SUM(C))", enter the columns or aggregations to return.</li>
+<li lang="en">If needed, enter "Condition (such as B = 'Tokyo')", "Group by column" and "Sort column (such as A desc)".</li>
+<li lang="en">If needed, enter the number of header rows.</li>
+<li lang="en">Press "Copy result".</li>
 </ol>
-<div class="note">फ़ॉर्मूला सीधे किसी सेल में चिपकाया जा सकता है।</div>
+<div class="note" lang="en">Condition, group and sort may be empty. Only the parts you enter go into the formula.</div>
+<h2>उदाहरण</h2>
+<p lang="en">With regions in column A and sales in column C, showing total sales per region, highest first.</p>
+<ul>
+<li lang="en">=QUERY(A1:D100,"select A, SUM(C) group by A order by SUM(C) desc",1)</li>
+</ul>
+<h2 lang="en">The query-string part</h2>
+<p lang="en">The statement inside the quotes is written in this order:</p>
+<ol>
+<li lang="en">select (columns to return)</li>
+<li lang="en">where (condition)</li>
+<li lang="en">group by (grouping)</li>
+<li lang="en">order by (sorting)</li>
+</ol>
+<p lang="en">This tool assembles in that order.</p>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">Aggregating by region or person</li>
+<li lang="en">Filtering by condition and sorting in one formula</li>
+<li lang="en">Aggregating with a formula instead of a PivotTable</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"The input is not valid." appears</b>: the range isn't in the "A1:D100" form, the return columns are empty, or the header rows isn't a number.</li>
+<li lang="en"><b>Specifying columns</b>: write columns as the symbols A, B, C…</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does it work in Excel?</h3>
+<p lang="en">No. QUERY is a Google Sheets function.</p>
+<h2>सारांश</h2>
+<p lang="en">Enter the parts and a formula results without memorising QUERY's special syntax.</p>
 <a class="cta" href="/hi/query-formula-builder.html">“QUERY सूत्र बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/filter-formula-builder.html">FILTER फ़ॉर्मूला बनाएँ</a>: FILTER फ़ॉर्मूला बनाएँ।</li><li><a href="/hi/importrange-builder.html">IMPORTRANGE फ़ॉर्मूला बनाएँ</a>: IMPORTRANGE फ़ॉर्मूला बनाएँ।</li><li><a href="/hi/sumif-formula-builder.html">SUMIF या COUNTIF फ़ॉर्मूला बनाएँ</a>: SUMIF और COUNTIF फ़ॉर्मूले बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

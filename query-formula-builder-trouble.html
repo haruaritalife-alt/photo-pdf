@@ -200,14 +200,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/query-formula-builder.html">QUERY式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を作ったのに、エラーが出る。<a href="/query-formula-builder.html">QUERYの式を作る</a> で起こりやすい困りごとと対処法をまとめます。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：データの範囲が「A1:D100」の形でない。取り出す列が空。見出しの行数が、数字でない。</li>
+</ul>
+<h2>式を貼ったあとの困りごと</h2>
+<ul>
+<li><b>「クエリを解析できません」</b>：query文の書き方が違う。引用符、列の記号、句の順番を確かめる。</li>
+<li><b>「不明な列」</b>：存在しない列の記号を書いている。範囲の外の列は使えない。</li>
+<li><b>#VALUE!</b>：集計と、グループ化していない列を同時に選んでいる。</li>
+<li><b>結果が空</b>：条件に合う行がない。または、条件の文字が一致していない。</li>
+<li><b>見出しがおかしい</b>：見出しの行数の指定。</li>
+<li><b>#NAME?</b>：Excelでは、QUERYが使えない。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>範囲と、取り出す列が、範囲の内側にあるか確かめる。</li>
+<li>句の順番（select、where、group by、order by）を確かめる。</li>
+<li>文字を、シングルクォートで囲んでいるか確かめる。</li>
 </ol>
-<div class="note">式が出ないときは、範囲がA1:D100のように書かれているか、取り出す列が入っているか確かめます。</div>
+<div class="note">条件を空にして、まず「select A」だけで動くか試すと、原因を切り分けられます。</div>
+<h2>句の順番</h2>
+<p>次の順番を守らないと、エラーになります。</p>
+<ol>
+<li>select</li>
+<li>where</li>
+<li>group by</li>
+<li>order by</li>
+<li>limit</li>
+<li>label</li>
+</ol>
+<h2>列の記号</h2>
+<p>範囲の列は、A、B、C…の記号で指定します。範囲の外の記号を使うと、エラーになります。範囲がA列から始まらない場合は、列の記号が期待どおりか、結果を見て確かめます。</p>
+<h2>データ形式の混在</h2>
+<p>1つの列に、数字と文字が混ざっていると、片方が無視されることがあります。列のデータ形式をそろえます。</p>
+<h2>例</h2>
+<p>「クエリを解析できません」と出た。条件の文字を、ダブルクォートで囲んでいた。シングルクォートに直すと、動いた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>日本語の列名</b>：列の見出しではなく、記号で指定する。</li>
+<li><b>日付の比較</b>：dateを付けて、年-月-日の形で書く。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>見出しの名前で、列を指定できますか？</h3>
+<p>できません。列は、記号（A、B…）か、Col1、Col2…の形で指定します。</p>
+<h2>まとめ</h2>
+<p>範囲・句の順番・引用符。この3つを順に確かめましょう。</p>
 <a class="cta" href="/query-formula-builder.html">QUERYの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/importrange-builder.html">IMPORTRANGEの式を作る</a>：IMPORTRANGEの式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +258,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/query-formula-builder.html">QUERY Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but get an error. Here are common troubles with <a href="/query-formula-builder.html">Build a QUERY Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the data range isn't in the "A1:D100" form, the return columns are empty, or the header rows isn't a number.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>"Unable to parse query"</b>: the query string is written wrongly. Check quotes, column symbols and clause order.</li>
+<li><b>"Unknown column"</b>: a column symbol that doesn't exist. Columns outside the range can't be used.</li>
+<li><b>#VALUE!</b>: selecting an aggregate together with an ungrouped column.</li>
+<li><b>Empty result</b>: no rows match, or the condition text doesn't match.</li>
+<li><b>Header looks wrong</b>: the header rows specification.</li>
+<li><b>#NAME?</b>: QUERY isn't available in Excel.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the range and return columns are inside the range.</li>
+<li>Check clause order (select, where, group by, order by).</li>
+<li>Check text is enclosed in single quotes.</li>
 </ol>
-<div class="note">If no formula appears, check that the range is written like A1:D100 and the columns to select are entered.</div>
+<div class="note">Emptying the condition and trying just "select A" first helps isolate the cause.</div>
+<h2>Clause order</h2>
+<p>Not keeping this order causes errors.</p>
+<ol>
+<li>select</li>
+<li>where</li>
+<li>group by</li>
+<li>order by</li>
+<li>limit</li>
+<li>label</li>
+</ol>
+<h2>Column symbols</h2>
+<p>Columns in the range are specified with symbols A, B, C…. Symbols outside the range error. If the range doesn't start at column A, check the result to see the symbols are as expected.</p>
+<h2>Mixed data types</h2>
+<p>If a column mixes numbers and text, one kind can be ignored. Unify the column's data type.</p>
+<h2>Example</h2>
+<p>"Unable to parse query" appeared. Condition text was in double quotes. Changing to single quotes made it work.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Column names in Japanese</b>: specify by symbol, not by header text.</li>
+<li><b>Date comparison</b>: add date and write year-month-day.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can columns be specified by header name?</h3>
+<p>No. Specify them by symbol (A, B…) or as Col1, Col2….</p>
+<h2>Summary</h2>
+<p>Range, clause order, quotes. Check these three in order.</p>
 <a class="cta" href="/query-formula-builder.html">Use "Build a QUERY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

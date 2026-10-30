@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What the Digits Mean</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the digits</li><li>Check with a sample</li><li>Check it</li></ul></div>
-<p>In <a href="/en/round-formula-builder.html">Rounding Builder</a> you enter digits such as 0 or 2.</p>
+<p>The second argument of ROUND-family functions is the "digits". Its meaning is confusing, so sort it out checking with the "Sample value" in <a href="/en/round-formula-builder.html">Build a Rounding Formula</a>.</p>
+<h2>What digits means</h2>
+<ul>
+<li>Positive: number of decimal places</li>
+<li>0: integer (no decimals)</li>
+<li>Negative: places in the integer part (tens, hundreds…)</li>
+</ul>
+<h2>Examples (ROUND on 1234.5678)</h2>
+<ul>
+<li>2: 1234.57 (two decimals)</li>
+<li>1: 1234.6 (one decimal)</li>
+<li>0: 1235 (integer)</li>
+<li>-1: 1230 (to tens)</li>
+<li>-2: 1200 (to hundreds)</li>
+<li>-3: 1000 (to thousands)</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the digits</li>
-<li>Check with a sample</li>
-<li>Check it</li>
+<li>Choose "ROUND" in "Function".</li>
+<li>Enter a number in "Digits".</li>
+<li>Enter something like 1234.5678 in "Sample value" and check the result.</li>
 </ol>
-<div class="note">A negative number of digits rounds to the tens place and so on.</div>
+<div class="note">Think of digits as "how many decimal places to keep" for clarity.</div>
+<h2>Which to use</h2>
+<ul>
+<li>Handling fractions below one yen: 0</li>
+<li>Two decimals (percentages etc.): 2</li>
+<li>Rounding to thousands: -3</li>
+<li>Rounding to ten-thousands: -4</li>
+</ul>
+<h2>Formula examples</h2>
+<ul>
+<li>Round below one yen: =ROUND(A2,0)</li>
+<li>Round to thousands: =ROUND(A2,-3)</li>
+<li>Truncate to two decimals: =ROUNDDOWN(A2,2)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Showing amounts in thousands or tens of thousands</li>
+<li>Aligning ratios to one decimal place</li>
+<li>Producing rough figures</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted 12,345,678 in sales as a ten-thousand-level approximation. =ROUND(A2,-4) gave 12,350,000.</p>
+<h2>Non-integer digits</h2>
+<p>The tool accepts a decimal like 1.5, but Excel truncates it to an integer. Specifying integers is the norm.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Confusing negative digits</b>: -3 means "to the thousands place", not "keep 3 digits".</li>
+<li><b>When you only want to change the look</b>: use cell formatting, not ROUND.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I just want to display in thousands?</h3>
+<p>The cell format "#,##0," shows thousands. The value doesn't change.</p>
+<h2>Summary</h2>
+<p>Digits are based on the decimal point: right is positive, left is negative. Check with the sample value.</p>
 <a class="cta" href="/en/round-formula-builder.html">Use "Build a Rounding Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/en/tax-calculator.html">Calculate Consumption Tax (Incl. / Excl. Tax)</a>: Calculate prices incl. and excl. tax.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

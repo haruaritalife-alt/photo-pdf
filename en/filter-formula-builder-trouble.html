@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/filter-formula-builder.html">FILTER Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but get no result. Here are common troubles with <a href="/en/filter-formula-builder.html">Build a FILTER Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the data range or condition range isn't in the "A2:C100" form, or the compared value is empty.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>#N/A (nothing matched)</b>: no rows meet the condition. Add a nothing-found display.</li>
+<li><b>#VALUE!</b>: the data range and condition range have different row counts.</li>
+<li><b>"Result was not expanded"</b>: values already exist where the result spreads.</li>
+<li><b>#NAME?</b>: FILTER isn't available in old Excel.</li>
+<li><b>Some rows missing</b>: notation variation in the condition (full-/half-width, extra spaces).</li>
+<li><b>Numbers don't meet the condition</b>: the numbers are text.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the data range and condition range have the same number of rows.</li>
+<li>Check the area the result spreads into is empty.</li>
+<li>Check the condition value and the cell values match exactly.</li>
 </ol>
-<div class="note">If no formula appears, check that the ranges are written like A2:C100 and a value to compare is entered.</div>
+<div class="note">With different row counts, conditions don't map and #VALUE! results.</div>
+<h2>Checking range row counts</h2>
+<ul>
+<li>Data range: A2:C100 (99 rows)</li>
+<li>Condition range: B2:B100 (99 rows)</li>
+</ul>
+<p>If the start and end row numbers are the same, the row counts are the same.</p>
+<h2>Full-width, half-width and spaces</h2>
+<p>"Tokyo" and "Tokyo " (trailing space) are judged different. Align the condition value and cell values.</p>
+<h2>When numbers are text</h2>
+<p>If number cells display left-aligned, they may be text. Convert to numbers before comparing.</p>
+<h2>Where the result goes</h2>
+<p>FILTER's result spreads over several rows and columns. Check there are no cells with values or formats below and right of the formula.</p>
+<h2>Example</h2>
+<p>Pasting a FILTER formula showed "Result was not expanded". A few rows below the formula cell held notes from earlier work. Deleting them let the result spread.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Condition doesn't match</b>: quoting the condition like "&gt;=80". Unnecessary in FILTER.</li>
+<li><b>Header in the range</b>: the header is judged as data too.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can the result include the header?</h3>
+<p>Include the header row in the range and make the condition suit it, or prepare the header separately by hand.</p>
+<h2>Summary</h2>
+<p>Row counts, spreading area, notation variation. Check these three in order.</p>
 <a class="cta" href="/en/filter-formula-builder.html">Use "Build a FILTER Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

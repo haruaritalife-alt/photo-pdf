@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Yang harus dilakukan bila tidak berfungsi</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Periksa berkasnya</li><li>Periksa ukurannya</li><li>Coba perangkat lain</li></ul></div>
-<p>Jika <a href="/id/query-formula-builder.html">Pembuat QUERY</a> tidak berfungsi, periksa hal berikut.</p>
-<h2>Langkah-langkah</h2>
+<p lang="en">You built the formula but get an error. Here are common troubles with <a href="/id/query-formula-builder.html">Build a QUERY Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the data range isn't in the "A1:D100" form, the return columns are empty, or the header rows isn't a number.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>"Unable to parse query"</b>: the query string is written wrongly. Check quotes, column symbols and clause order.</li>
+<li lang="en"><b>"Unknown column"</b>: a column symbol that doesn't exist. Columns outside the range can't be used.</li>
+<li lang="en"><b>#VALUE!</b>: selecting an aggregate together with an ungrouped column.</li>
+<li lang="en"><b>Empty result</b>: no rows match, or the condition text doesn't match.</li>
+<li lang="en"><b>Header looks wrong</b>: the header rows specification.</li>
+<li lang="en"><b>#NAME?</b>: QUERY isn't available in Excel.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Periksa berkasnya</li>
-<li>Periksa ukurannya</li>
-<li>Coba perangkat lain</li>
+<li lang="en">Check the range and return columns are inside the range.</li>
+<li lang="en">Check clause order (select, where, group by, order by).</li>
+<li lang="en">Check text is enclosed in single quotes.</li>
 </ol>
-<div class="note">Jika tidak ada rumus yang muncul, pastikan rentang ditulis seperti A1:D100 dan kolom yang dipilih sudah diisi.</div>
+<div class="note" lang="en">Emptying the condition and trying just "select A" first helps isolate the cause.</div>
+<h2 lang="en">Clause order</h2>
+<p lang="en">Not keeping this order causes errors.</p>
+<ol>
+<li lang="en">select</li>
+<li lang="en">where</li>
+<li lang="en">group by</li>
+<li lang="en">order by</li>
+<li lang="en">limit</li>
+<li lang="en">label</li>
+</ol>
+<h2 lang="en">Column symbols</h2>
+<p lang="en">Columns in the range are specified with symbols A, B, C…. Symbols outside the range error. If the range doesn't start at column A, check the result to see the symbols are as expected.</p>
+<h2 lang="en">Mixed data types</h2>
+<p lang="en">If a column mixes numbers and text, one kind can be ignored. Unify the column's data type.</p>
+<h2>Contoh</h2>
+<p lang="en">"Unable to parse query" appeared. Condition text was in double quotes. Changing to single quotes made it work.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Column names in Japanese</b>: specify by symbol, not by header text.</li>
+<li lang="en"><b>Date comparison</b>: add date and write year-month-day.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can columns be specified by header name?</h3>
+<p lang="en">No. Specify them by symbol (A, B…) or as Col1, Col2….</p>
+<h2>Ringkasan</h2>
+<p lang="en">Range, clause order, quotes. Check these three in order.</p>
 <a class="cta" href="/id/query-formula-builder.html">Gunakan “Buat rumus QUERY” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/filter-formula-builder.html">Buat rumus FILTER</a>: Buat rumus FILTER.</li><li><a href="/id/importrange-builder.html">Buat rumus IMPORTRANGE</a>: Buat rumus IMPORTRANGE.</li><li><a href="/id/sumif-formula-builder.html">Buat rumus SUMIF atau COUNTIF</a>: Buat rumus SUMIF dan COUNTIF.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>

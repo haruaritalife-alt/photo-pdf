@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Koşul nasıl yazılır</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>Koşulu yazın</li><li>Formüle bakın</li><li>Kontrol edin</li></ul></div>
-<p><a href="/tr/query-formula-builder.html">QUERY Oluşturucu</a>'da B = 'Tokyo' gibi bir koşul girebilirsiniz.</p>
+<p lang="en">To extract only rows meeting a condition in QUERY, use the where clause. Write the condition in the "Condition" field of <a href="/tr/query-formula-builder.html">Build a QUERY Formula</a>.</p>
+<h2 lang="en">How to write conditions</h2>
+<ul>
+<li lang="en">B = 'Tokyo': column B equals "Tokyo"</li>
+<li lang="en">C &gt;= 80: column C is 80 or more</li>
+<li lang="en">B != 'Tokyo': column B isn't "Tokyo"</li>
+<li lang="en">B contains 'Tok': column B contains "Tok"</li>
+<li lang="en">B starts with 'Tok': column B starts with "Tok"</li>
+</ul>
 <h2>Adımlar</h2>
 <ol>
-<li>Koşulu yazın</li>
-<li>Formüle bakın</li>
-<li>Kontrol edin</li>
+<li lang="en">Enter "Data range" and "Columns to return".</li>
+<li lang="en">Write the condition in "Condition".</li>
+<li lang="en">Check the formula contains "where ...".</li>
 </ol>
-<div class="note">Metni tek tırnak içine alın.</div>
+<div class="note" lang="en">Enclose text in single quotes ('). Don't enclose numbers.</div>
+<h2>Örnek</h2>
+<p lang="en">Extracting columns A and C for rows where column B is "Tokyo".</p>
+<ul>
+<li lang="en">=QUERY(A1:D100,"select A, C where B = 'Tokyo'",1)</li>
+</ul>
+<h2 lang="en">Multiple conditions</h2>
+<ul>
+<li lang="en">and: all must hold. Example: C &gt;= 80 and B = 'Tokyo'</li>
+<li lang="en">or: either holds. Example: B = 'Tokyo' or B = 'Osaka'</li>
+<li lang="en">not: negation. Example: not B = 'Tokyo'</li>
+</ul>
+<h2 lang="en">Date conditions</h2>
+<p lang="en">Dates are written with "date" in year-month-day form.</p>
+<ul>
+<li lang="en">Example: A &gt;= date '2026-04-01'</li>
+</ul>
+<h2 lang="en">Using another cell's value</h2>
+<p lang="en">To put another cell's value in the condition, join strings in the formula. Rewrite after the tool builds it.</p>
+<ul>
+<li lang="en">Example: …"select A where B = '"&amp;E1&amp;"'"…</li>
+</ul>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Extracting only rows meeting a condition</li>
+<li lang="en">Combining several conditions</li>
+<li lang="en">Filtering by date range</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">Wanted only rows with score 80+ and region Tokyo. Entering "C &gt;= 80 and B = 'Tokyo'" in the condition field produced the formula.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Not enclosing text</b>: writing Tokyo is read as a column name and errors.</li>
+<li lang="en"><b>Double quotes</b>: the whole statement is in double quotes, so use single quotes inside conditions.</li>
+<li lang="en"><b>Comparing text with a numeric column</b>: mixed data types in a column give surprising results.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is case distinguished?</h3>
+<p lang="en">With =, != yes. To ignore case use lower().</p>
+<h2>Özet</h2>
+<p lang="en">Enclose condition text in single quotes. Use and/or for multiple conditions.</p>
 <a class="cta" href="/tr/query-formula-builder.html">“QUERY formülü oluştur” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/filter-formula-builder.html">FILTER formülü oluşturma</a>: FILTER formülü oluşturun.</li><li><a href="/tr/importrange-builder.html">IMPORTRANGE formülü oluşturma</a>: IMPORTRANGE formülü oluşturun.</li><li><a href="/tr/sumif-formula-builder.html">SUMIF veya COUNTIF formülü oluşturma</a>: SUMIF ve COUNTIF formülleri oluşturun.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

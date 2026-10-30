@@ -200,14 +200,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>条件の書き方</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>条件を入れる</li><li>式を見る</li><li>確かめる</li></ul></div>
-<p><a href="/query-formula-builder.html">QUERY式の作成</a> では、B = 'Tokyo'のような条件を入れられます。</p>
+<p>QUERYで、条件に合う行だけを取り出すには、where句を使います。<a href="/query-formula-builder.html">QUERYの式を作る</a> の「条件」の欄に、条件を書きます。</p>
+<h2>条件の書き方</h2>
+<ul>
+<li>B = 'Tokyo'：B列が「Tokyo」と等しい</li>
+<li>C &gt;= 80：C列が80以上</li>
+<li>B != 'Tokyo'：B列が「Tokyo」でない</li>
+<li>B contains '東'：B列に「東」を含む</li>
+<li>B starts with '東'：B列が「東」で始まる</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>条件を入れる</li>
-<li>式を見る</li>
-<li>確かめる</li>
+<li>「データの範囲」と「取り出す列」を入れる。</li>
+<li>「条件」に、条件を書く。</li>
+<li>式の中に、「where ...」が入っていることを確かめる。</li>
 </ol>
-<div class="note">文字は一重引用符で囲みます。</div>
+<div class="note">文字は、シングルクォート（'）で囲みます。数字は、囲みません。</div>
+<h2>例</h2>
+<p>B列が「Tokyo」の行の、A列とC列を取り出す場合です。</p>
+<ul>
+<li>=QUERY(A1:D100,"select A, C where B = 'Tokyo'",1)</li>
+</ul>
+<h2>複数の条件</h2>
+<ul>
+<li>and：すべてを満たす。例：C &gt;= 80 and B = 'Tokyo'</li>
+<li>or：どちらかを満たす。例：B = 'Tokyo' or B = 'Osaka'</li>
+<li>not：否定。例：not B = 'Tokyo'</li>
+</ul>
+<h2>日付の条件</h2>
+<p>日付は、「date」を付けて、年-月-日の形で書きます。</p>
+<ul>
+<li>例：A &gt;= date '2026-04-01'</li>
+</ul>
+<h2>他のセルの値を使う</h2>
+<p>条件に、他のセルの値を入れるには、式を文字でつなぎます。ツールの式のあとで、書き換えます。</p>
+<ul>
+<li>例：…"select A where B = '"&amp;E1&amp;"'"…</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>条件に合う行だけを、取り出したい</li>
+<li>条件を複数組み合わせたい</li>
+<li>日付の範囲で絞りたい</li>
+</ul>
+<h2>例</h2>
+<p>点数が80以上で、地域が東京の行だけを取り出したかった。条件の欄に「C &gt;= 80 and B = 'Tokyo'」と入れて、式ができた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>文字を囲まない</b>：Tokyo と書くと、列名と判定されてエラーになる。</li>
+<li><b>ダブルクォート</b>：式全体がダブルクォートなので、条件の文字には、シングルクォートを使う。</li>
+<li><b>数字の列に文字を比べる</b>：列のデータ形式が混在していると、思わぬ結果になる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>大文字と小文字は区別されますか？</h3>
+<p>=、!= では区別されます。区別したくないときは、lower() を使います。</p>
+<h2>まとめ</h2>
+<p>条件の文字は、シングルクォートで囲みます。複数条件は、and、or で。</p>
 <a class="cta" href="/query-formula-builder.html">QUERYの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/importrange-builder.html">IMPORTRANGEの式を作る</a>：IMPORTRANGEの式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +267,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Writing the Condition</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the condition</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/query-formula-builder.html">QUERY Builder</a> you can enter a condition such as B = 'Tokyo'.</p>
+<p>To extract only rows meeting a condition in QUERY, use the where clause. Write the condition in the "Condition" field of <a href="/query-formula-builder.html">Build a QUERY Formula</a>.</p>
+<h2>How to write conditions</h2>
+<ul>
+<li>B = 'Tokyo': column B equals "Tokyo"</li>
+<li>C &gt;= 80: column C is 80 or more</li>
+<li>B != 'Tokyo': column B isn't "Tokyo"</li>
+<li>B contains 'Tok': column B contains "Tok"</li>
+<li>B starts with 'Tok': column B starts with "Tok"</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the condition</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>Enter "Data range" and "Columns to return".</li>
+<li>Write the condition in "Condition".</li>
+<li>Check the formula contains "where ...".</li>
 </ol>
-<div class="note">Put text in single quotes.</div>
+<div class="note">Enclose text in single quotes ('). Don't enclose numbers.</div>
+<h2>Example</h2>
+<p>Extracting columns A and C for rows where column B is "Tokyo".</p>
+<ul>
+<li>=QUERY(A1:D100,"select A, C where B = 'Tokyo'",1)</li>
+</ul>
+<h2>Multiple conditions</h2>
+<ul>
+<li>and: all must hold. Example: C &gt;= 80 and B = 'Tokyo'</li>
+<li>or: either holds. Example: B = 'Tokyo' or B = 'Osaka'</li>
+<li>not: negation. Example: not B = 'Tokyo'</li>
+</ul>
+<h2>Date conditions</h2>
+<p>Dates are written with "date" in year-month-day form.</p>
+<ul>
+<li>Example: A &gt;= date '2026-04-01'</li>
+</ul>
+<h2>Using another cell's value</h2>
+<p>To put another cell's value in the condition, join strings in the formula. Rewrite after the tool builds it.</p>
+<ul>
+<li>Example: …"select A where B = '"&amp;E1&amp;"'"…</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Extracting only rows meeting a condition</li>
+<li>Combining several conditions</li>
+<li>Filtering by date range</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted only rows with score 80+ and region Tokyo. Entering "C &gt;= 80 and B = 'Tokyo'" in the condition field produced the formula.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Not enclosing text</b>: writing Tokyo is read as a column name and errors.</li>
+<li><b>Double quotes</b>: the whole statement is in double quotes, so use single quotes inside conditions.</li>
+<li><b>Comparing text with a numeric column</b>: mixed data types in a column give surprising results.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is case distinguished?</h3>
+<p>With =, != yes. To ignore case use lower().</p>
+<h2>Summary</h2>
+<p>Enclose condition text in single quotes. Use and/or for multiple conditions.</p>
 <a class="cta" href="/query-formula-builder.html">Use "Build a QUERY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

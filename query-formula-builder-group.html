@@ -200,14 +200,64 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>グループ化して集計</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>列を入れる</li><li>グループ化を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/query-formula-builder.html">QUERY式の作成</a> では、A, SUM(C)のような列とgroup byを組み合わせて集計できます。</p>
+<p>地域ごと、担当者ごとの合計や件数を出したい。QUERYでは、group by句で、グループ化して集計できます。<a href="/query-formula-builder.html">QUERYの式を作る</a> の「グループ化する列」に、基準の列を入れます。</p>
 <h2>手順</h2>
 <ol>
-<li>列を入れる</li>
-<li>グループ化を入れる</li>
-<li>コピーする</li>
+<li>「取り出す列」に、「A, SUM(C)」のように、グループの列と、集計を入れる。</li>
+<li>「グループ化する列」に、「A」と入れる。</li>
+<li>式の中に、「group by A」が入っていることを確かめる。</li>
 </ol>
-<div class="note">グループ化の列は、取り出す列にも入れます。</div>
+<div class="note">group byを使うとき、select に入れる列は、グループの列か、集計関数だけにします。</div>
+<h2>例</h2>
+<p>A列が地域、C列が売上のとき、地域ごとの売上合計を出す場合です。</p>
+<ul>
+<li>=QUERY(A1:D100,"select A, SUM(C) group by A",1)</li>
+</ul>
+<h2>使える集計関数</h2>
+<ul>
+<li>SUM：合計</li>
+<li>COUNT：個数</li>
+<li>AVG：平均</li>
+<li>MAX：最大</li>
+<li>MIN：最小</li>
+</ul>
+<h2>組み合わせの例</h2>
+<ul>
+<li>地域ごとの人数：select A, COUNT(B) group by A</li>
+<li>地域ごとの平均点：select A, AVG(C) group by A</li>
+<li>地域ごとの最高点：select A, MAX(C) group by A</li>
+</ul>
+<h2>複数の列でグループ化</h2>
+<p>グループ化する列に、「A, B」のように、複数の列を入れられます。</p>
+<ul>
+<li>例：select A, B, SUM(C) group by A, B</li>
+</ul>
+<h2>条件や並べ替えとの組み合わせ</h2>
+<ul>
+<li>条件：where の後に、group by を書く</li>
+<li>並べ替え：group by の後に、order by を書く</li>
+</ul>
+<p>ツールは、この順序に整えて組み立てます。</p>
+<h2>集計結果の見出し</h2>
+<p>集計の列の見出しは、自動で「sum 売上」のように付きます。見出しを変えたいときは、label句を使います。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>地域別、担当別、月別の集計を出したい</li>
+<li>ピボットテーブルを使わずに、式で集計したい</li>
+<li>結果を、他の関数に渡したい</li>
+</ul>
+<h2>例</h2>
+<p>商品ごとの売上合計を、売上の多い順に並べたかった。「取り出す列」に「A, SUM(C)」、グループ化に「A」、並べ替えに「SUM(C) desc」を入れて、式ができた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>selectの列が合わない</b>：グループ化していない列を、集計関数なしで入れると、エラーになる。</li>
+<li><b>見出し行の数</b>：見出しの行数を、正しく指定する。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>ピボットテーブルとの違いは？</h3>
+<p>QUERYは、式なので、元データが変わると自動で更新されます。ピボットテーブルは、操作で作る表です。</p>
+<h2>まとめ</h2>
+<p>グループ化は、selectの列とあわせて指定。集計関数を使いましょう。</p>
 <a class="cta" href="/query-formula-builder.html">QUERYの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/importrange-builder.html">IMPORTRANGEの式を作る</a>：IMPORTRANGEの式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +269,64 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Grouping and Totaling</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the columns</li><li>Enter the grouping</li><li>Copy it</li></ul></div>
-<p>In <a href="/query-formula-builder.html">QUERY Builder</a> you can combine columns such as A, SUM(C) with group by to total.</p>
+<p>You want totals or counts by region or person. In QUERY, the group by clause aggregates by group. Enter the key column in "Group by column" in <a href="/query-formula-builder.html">Build a QUERY Formula</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the columns</li>
-<li>Enter the grouping</li>
-<li>Copy it</li>
+<li>In "Columns to return", enter the group column and the aggregation, like "A, SUM(C)".</li>
+<li>Enter "A" in "Group by column".</li>
+<li>Check the formula contains "group by A".</li>
 </ol>
-<div class="note">Include the grouping column in the columns to select.</div>
+<div class="note">When using group by, put only the group columns or aggregate functions in select.</div>
+<h2>Example</h2>
+<p>With regions in column A and sales in column C, total sales per region.</p>
+<ul>
+<li>=QUERY(A1:D100,"select A, SUM(C) group by A",1)</li>
+</ul>
+<h2>Usable aggregate functions</h2>
+<ul>
+<li>SUM: total</li>
+<li>COUNT: count</li>
+<li>AVG: average</li>
+<li>MAX: maximum</li>
+<li>MIN: minimum</li>
+</ul>
+<h2>Combination examples</h2>
+<ul>
+<li>People per region: select A, COUNT(B) group by A</li>
+<li>Average score per region: select A, AVG(C) group by A</li>
+<li>Top score per region: select A, MAX(C) group by A</li>
+</ul>
+<h2>Grouping by several columns</h2>
+<p>You can enter several columns like "A, B".</p>
+<ul>
+<li>Example: select A, B, SUM(C) group by A, B</li>
+</ul>
+<h2>Combining with conditions and sorting</h2>
+<ul>
+<li>Conditions: write group by after where</li>
+<li>Sorting: write order by after group by</li>
+</ul>
+<p>The tool assembles in this order.</p>
+<h2>Headers of aggregated results</h2>
+<p>Aggregate columns get automatic headers like "sum Sales". To change headers use the label clause.</p>
+<h2>Good for</h2>
+<ul>
+<li>Aggregating by region, person or month</li>
+<li>Aggregating by formula without a PivotTable</li>
+<li>Passing results to other functions</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted total sales per product, highest first. Entering "A, SUM(C)" in return columns, "A" in group by and "SUM(C) desc" in sort made the formula.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Select columns don't fit</b>: putting an ungrouped column without an aggregate function errors.</li>
+<li><b>Header row count</b>: specify it correctly.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How does it differ from a PivotTable?</h3>
+<p>QUERY is a formula, so it updates automatically when the source changes. A PivotTable is a table built by operations.</p>
+<h2>Summary</h2>
+<p>Specify grouping together with select columns, and use aggregate functions.</p>
 <a class="cta" href="/query-formula-builder.html">Use "Build a QUERY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

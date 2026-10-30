@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/round-formula-builder.html">반올림 수식 만들기</a>가 동작하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/ko/round-formula-builder.html">Build a Rounding Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell to round isn't in the "A2" form, or digits/unit isn't a number.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#VALUE! appears</b>: the cell to round is text.</li>
+<li lang="en"><b>#NUM! appears</b>: MROUND with different signs for number and unit.</li>
+<li lang="en"><b>#DIV/0! appears</b>: FLOOR with a unit of 0.</li>
+<li lang="en"><b>#NAME? appears</b>: a typo in the function name.</li>
+<li lang="en"><b>Smaller (larger) than expected</b>: digits and unit mixed up.</li>
+<li lang="en"><b>Totals don't match</b>: look-only rounding mixed with function rounding.</li>
+<li lang="en"><b>Display still shows decimals</b>: the cell format's digits hide the result.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Check the cell to round holds a number.</li>
+<li lang="en">Check the function type and the meaning of its second argument.</li>
+<li lang="en">Compare the tool's sample result with the actual result.</li>
 </ol>
-<div class="note">수식이 나오지 않으면 셀이 A2처럼 쓰여 있는지, 자릿수가 숫자인지 확인하세요.</div>
+<div class="note" lang="en">If numbers display left-aligned, they may be text.</div>
+<h2 lang="en">Displayed digits</h2>
+<p lang="en">A result showing 3.1 rather than 3.10 is a format matter. The value is 3.1; the trailing 0 just isn't shown.</p>
+<ul>
+<li lang="en">Fix: align decimal places in the cell format</li>
+</ul>
+<h2 lang="en">When totals don't match</h2>
+<p lang="en">If line amounts are rounded only by format, the total is computed from the originals and can differ by one from the visible sum.</p>
+<ul>
+<li lang="en">Fix: round line items with ROUND, then total</li>
+</ul>
+<h2 lang="en">Negative behavior</h2>
+<p lang="en">ROUNDUP and ROUNDDOWN go "away from / toward" zero. Take care not to confuse this with magnitude direction.</p>
+<h2>예</h2>
+<p lang="en">Expected 200 from rounding up but got 100. The function was ROUNDDOWN. Checking it solved the problem.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Version differences</b>: CEILING and FLOOR handle negatives differently by version.</li>
+<li lang="en"><b>Floating-point error</b>: multiples of 0.1 can show tiny errors.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">ROUND's result differs from my calculator.</h3>
+<p lang="en">Calculators may hold more internal digits. Excel's ROUND rounds 5 up.</p>
+<h2>요약</h2>
+<p lang="en">Cell form, function type, digits vs unit. Check these three in order.</p>
 <a class="cta" href="/ko/round-formula-builder.html">“반올림 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/percent-calculator.html">퍼센트, 할인, 증감률 계산</a>: 퍼센트, 할인, 증감률을 바로 계산합니다.</li><li><a href="/ko/tax-calculator.html">소비세 계산 (세금 포함 / 세금 별도)</a>: 세금 포함 가격과 세금 별도 가격을 계산합니다.</li><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

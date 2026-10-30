@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>如何寫 IMPORTRANGE(自動生成,免費)</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>貼上網址</li><li>輸入範圍</li><li>複製公式</li></ul></div>
-<p><a href="/tw/importrange-builder.html">IMPORTRANGE生成器</a>會根據網址、工作表名稱和範圍生成 IMPORTRANGE 公式。</p>
+<p lang="en">You want to bring data from another Google spreadsheet into the current one. The function for that is IMPORTRANGE. <a href="/tw/importrange-builder.html">Build an IMPORTRANGE Formula</a> builds that formula from just the spreadsheet URL, sheet name and range. Input is processed inside this device and not sent outside.</p>
 <h2>步驟</h2>
 <ol>
-<li>貼上網址</li>
-<li>輸入範圍</li>
-<li>複製公式</li>
+<li lang="en">Paste the source spreadsheet's URL in "Spreadsheet URL".</li>
+<li lang="en">Enter the source sheet's name in "Sheet name".</li>
+<li lang="en">Enter the range to import in "Range (such as A1:C10)".</li>
+<li lang="en">The "IMPORTRANGE formula" and the "formula that blanks on error" appear. Press "Copy the first" or "Copy the second".</li>
 </ol>
-<div class="note">生成的公式可以直接貼上到單元格中。</div>
+<div class="note" lang="en">Only the spreadsheet ID is extracted from the URL automatically.</div>
+<h2>示例</h2>
+<p lang="en">Importing A1:C10 of the source sheet "Sales".</p>
+<ul>
+<li lang="en">First: =IMPORTRANGE("https://docs.google.com/spreadsheets/d/(ID)","Sales!A1:C10")</li>
+<li lang="en">Second: =IFERROR(IMPORTRANGE(...),"")</li>
+</ul>
+<h2 lang="en">IMPORTRANGE's two arguments</h2>
+<ol>
+<li lang="en">The spreadsheet URL (or ID)</li>
+<li lang="en">Text in the form "SheetName!Range"</li>
+</ol>
+<h2>適合</h2>
+<ul>
+<li lang="en">Gathering per-department spreadsheets in one place</li>
+<li lang="en">Using another file's data in summaries</li>
+<li lang="en">Always using shared source data in its latest form</li>
+</ul>
+<h2 lang="en">First use</h2>
+<p lang="en">After pasting, "#REF!" appears with an "Allow access" button. Allowing it displays the data.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"The input is not valid." appears</b>: no ID is found in the URL, the sheet name or range is empty, or the range form is wrong.</li>
+<li lang="en"><b>#REF! appears</b>: access isn't allowed yet, or the source sheet name or range is wrong.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Do changes to the source data carry over?</h3>
+<p lang="en">Yes. When the source updates, it reflects automatically.</p>
+<h2>小結</h2>
+<p lang="en">Enter URL, sheet name and range and the IMPORTRANGE formula is built.</p>
 <a class="cta" href="/tw/importrange-builder.html">使用「生成 IMPORTRANGE 公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li><li><a href="/tw/sheet-name-checker.html">檢查 Excel 工作表名稱</a>: 檢查工作表名稱是否可用。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

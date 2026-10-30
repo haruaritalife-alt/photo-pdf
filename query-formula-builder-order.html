@@ -200,14 +200,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>並べ替え</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>並べ替えを入れる</li><li>式を見る</li><li>コピーする</li></ul></div>
-<p><a href="/query-formula-builder.html">QUERY式の作成</a> では、A descのように並べ替えを指定できます。</p>
+<p>QUERYの結果を、並べ替えて表示したい。order by句を使います。<a href="/query-formula-builder.html">QUERYの式を作る</a> の「並べ替える列」に、列と順序を入れます。</p>
 <h2>手順</h2>
 <ol>
-<li>並べ替えを入れる</li>
-<li>式を見る</li>
-<li>コピーする</li>
+<li>範囲と、取り出す列を入れる。</li>
+<li>「並べ替える列（A desc など）」に、列と順序を入れる。</li>
+<li>式の中に、「order by ...」が入っていることを確かめる。</li>
 </ol>
-<div class="note">descは大きい順、省略すると小さい順です。</div>
+<div class="note">順序を省くと、昇順になります。</div>
+<h2>書き方</h2>
+<ul>
+<li>A：A列の昇順（小さい順）</li>
+<li>A asc：A列の昇順（ascは省略可）</li>
+<li>A desc：A列の降順（大きい順）</li>
+<li>SUM(C) desc：集計結果の降順</li>
+<li>A, C desc：A列の昇順、同じ値ならC列の降順</li>
+</ul>
+<h2>例</h2>
+<p>売上の多い順に、地域別の合計を出す場合です。</p>
+<ul>
+<li>=QUERY(A1:D100,"select A, SUM(C) group by A order by SUM(C) desc",1)</li>
+</ul>
+<h2>上位だけを取り出す</h2>
+<p>上位3件などに絞るときは、limit句を付けます。ツールの式のあとで、書き足します。</p>
+<ul>
+<li>例：…order by SUM(C) desc limit 3</li>
+</ul>
+<h2>日付や文字の並べ替え</h2>
+<ul>
+<li>日付：日付順に並ぶ</li>
+<li>文字：文字コード順に並ぶ（日本語は、五十音順とは限らない）</li>
+<li>数字：数の大小順</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>ランキング表を作りたい</li>
+<li>新しい順、古い順に並べたい</li>
+<li>売上の多い順の一覧を作りたい</li>
+</ul>
+<h2>例</h2>
+<p>売上上位5地域のランキングが欲しかった。並べ替えに「SUM(C) desc」を入れ、式の最後に「limit 5」を書き足して、上位5件だけが出た。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>日本語の並び順</b>：読み仮名の順になるとは限らない。</li>
+<li><b>文字列の数字</b>：数字が文字列だと、「10」が「2」より前に来る。</li>
+<li><b>集計との組み合わせ</b>：group byを使う場合は、並べ替えにも、集計の列か、グループの列を使う。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>複数の列で並べ替えられますか？</h3>
+<p>はい。「A, C desc」のように、カンマで区切って指定します。</p>
+<h2>まとめ</h2>
+<p>並べ替えは、列と順序（ascかdesc）。上位だけなら、limitを足します。</p>
 <a class="cta" href="/query-formula-builder.html">QUERYの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/importrange-builder.html">IMPORTRANGEの式を作る</a>：IMPORTRANGEの式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +262,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Ordering</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the ordering</li><li>See the formula</li><li>Copy it</li></ul></div>
-<p>In <a href="/query-formula-builder.html">QUERY Builder</a> you can set an ordering such as A desc.</p>
+<p>You want QUERY's result displayed sorted. Use the order by clause. Enter the column and direction in "Sort column" in <a href="/query-formula-builder.html">Build a QUERY Formula</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the ordering</li>
-<li>See the formula</li>
-<li>Copy it</li>
+<li>Enter the range and return columns.</li>
+<li>Enter column and direction in "Sort column (such as A desc)".</li>
+<li>Check the formula contains "order by ...".</li>
 </ol>
-<div class="note">desc means largest first; leaving it out means smallest first.</div>
+<div class="note">Omitting the direction sorts ascending.</div>
+<h2>How to write</h2>
+<ul>
+<li>A: column A ascending (small to large)</li>
+<li>A asc: column A ascending (asc may be omitted)</li>
+<li>A desc: column A descending (large to small)</li>
+<li>SUM(C) desc: aggregate result descending</li>
+<li>A, C desc: column A ascending, ties by column C descending</li>
+</ul>
+<h2>Example</h2>
+<p>Total per region, highest sales first.</p>
+<ul>
+<li>=QUERY(A1:D100,"select A, SUM(C) group by A order by SUM(C) desc",1)</li>
+</ul>
+<h2>Taking only the top</h2>
+<p>To limit to the top 3 and so on, add a limit clause. Append it after the tool builds the formula.</p>
+<ul>
+<li>Example: …order by SUM(C) desc limit 3</li>
+</ul>
+<h2>Sorting dates and text</h2>
+<ul>
+<li>Dates: in date order</li>
+<li>Text: in character-code order (Japanese isn't always in kana order)</li>
+<li>Numbers: by size</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Making ranking tables</li>
+<li>Newest-first or oldest-first ordering</li>
+<li>Lists by highest sales</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted a top-5 region ranking by sales. Entering "SUM(C) desc" in sort and appending "limit 5" at the end output only the top five.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Japanese ordering</b>: not necessarily reading order.</li>
+<li><b>Numbers as text</b>: if numbers are text, "10" comes before "2".</li>
+<li><b>With aggregation</b>: when using group by, sort by aggregate or group columns.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I sort by several columns?</h3>
+<p>Yes. Specify them separated by commas, like "A, C desc".</p>
+<h2>Summary</h2>
+<p>Sorting is column plus direction (asc or desc). For only the top, add limit.</p>
 <a class="cta" href="/query-formula-builder.html">Use "Build a QUERY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -200,14 +200,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/filter-formula-builder.html">FILTER式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を作ったのに、結果が出ない。<a href="/filter-formula-builder.html">FILTERの式を作る</a> で起こりやすい困りごとと対処法をまとめます。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：データの範囲や条件の範囲が「A2:C100」の形でない。条件の値が空。</li>
+</ul>
+<h2>式を貼ったあとの困りごと</h2>
+<ul>
+<li><b>#N/A（該当なし）</b>：条件に合う行がない。「見つからないときの表示」を入れる。</li>
+<li><b>#VALUE!</b>：データの範囲と、条件の範囲の、行数が合っていない。</li>
+<li><b>「結果が展開できません」</b>：結果が広がる先に、すでに値がある。</li>
+<li><b>#NAME?</b>：古いExcelで、FILTERが使えない。</li>
+<li><b>一部の行が出ない</b>：条件の表記ゆれ（全角と半角、余分なスペース）。</li>
+<li><b>数字が条件に合わない</b>：数字が、文字列になっている。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>データの範囲と、条件の範囲の行数が同じか確かめる。</li>
+<li>結果が広がる先が、空いているか確かめる。</li>
+<li>条件の値と、セルの値が、完全に同じか確かめる。</li>
 </ol>
-<div class="note">式が出ないときは、範囲がA2:C100のように書かれているか、比べる値が入っているか確かめます。</div>
+<div class="note">行数が違うと、条件がうまく対応せず、#VALUE!になります。</div>
+<h2>範囲の行数を確かめる</h2>
+<ul>
+<li>データの範囲：A2:C100（99行）</li>
+<li>条件の範囲：B2:B100（99行）</li>
+</ul>
+<p>開始と終了の行番号が同じなら、行数も同じです。</p>
+<h2>全角と半角、スペース</h2>
+<p>「東京」と「東京 」（末尾にスペース）は、別の文字として判定されます。条件の値や、セルの値を、そろえます。</p>
+<h2>数字が文字列のとき</h2>
+<p>数字のセルが、左揃えで表示されていたら、文字列の可能性があります。数値に変換してから、比べます。</p>
+<h2>結果の出力先</h2>
+<p>FILTERの結果は、複数の行・列に広がります。式の下と右に、値や書式つきのセルがないことを確かめます。</p>
+<h2>例</h2>
+<p>FILTERの式を貼ったら、「結果が展開できません」と出た。式のセルの下の数行に、前の作業のメモが残っていた。消すと、結果が広がった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>条件が合わない</b>：「&gt;=80」のように、条件に引用符をつけてしまう。FILTERでは、不要。</li>
+<li><b>範囲に見出しを含めた</b>：見出しも、データとして判定される。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>結果の見出しも、一緒に出せますか？</h3>
+<p>範囲に見出し行を含めて、条件に見出し行も合うようにするか、別途、見出しを手で用意します。</p>
+<h2>まとめ</h2>
+<p>行数・広がる先・表記ゆれ。この3つを順に確かめましょう。</p>
 <a class="cta" href="/filter-formula-builder.html">FILTERの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +256,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/filter-formula-builder.html">FILTER Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but get no result. Here are common troubles with <a href="/filter-formula-builder.html">Build a FILTER Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the data range or condition range isn't in the "A2:C100" form, or the compared value is empty.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>#N/A (nothing matched)</b>: no rows meet the condition. Add a nothing-found display.</li>
+<li><b>#VALUE!</b>: the data range and condition range have different row counts.</li>
+<li><b>"Result was not expanded"</b>: values already exist where the result spreads.</li>
+<li><b>#NAME?</b>: FILTER isn't available in old Excel.</li>
+<li><b>Some rows missing</b>: notation variation in the condition (full-/half-width, extra spaces).</li>
+<li><b>Numbers don't meet the condition</b>: the numbers are text.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the data range and condition range have the same number of rows.</li>
+<li>Check the area the result spreads into is empty.</li>
+<li>Check the condition value and the cell values match exactly.</li>
 </ol>
-<div class="note">If no formula appears, check that the ranges are written like A2:C100 and a value to compare is entered.</div>
+<div class="note">With different row counts, conditions don't map and #VALUE! results.</div>
+<h2>Checking range row counts</h2>
+<ul>
+<li>Data range: A2:C100 (99 rows)</li>
+<li>Condition range: B2:B100 (99 rows)</li>
+</ul>
+<p>If the start and end row numbers are the same, the row counts are the same.</p>
+<h2>Full-width, half-width and spaces</h2>
+<p>"Tokyo" and "Tokyo " (trailing space) are judged different. Align the condition value and cell values.</p>
+<h2>When numbers are text</h2>
+<p>If number cells display left-aligned, they may be text. Convert to numbers before comparing.</p>
+<h2>Where the result goes</h2>
+<p>FILTER's result spreads over several rows and columns. Check there are no cells with values or formats below and right of the formula.</p>
+<h2>Example</h2>
+<p>Pasting a FILTER formula showed "Result was not expanded". A few rows below the formula cell held notes from earlier work. Deleting them let the result spread.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Condition doesn't match</b>: quoting the condition like "&gt;=80". Unnecessary in FILTER.</li>
+<li><b>Header in the range</b>: the header is judged as data too.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can the result include the header?</h3>
+<p>Include the header row in the range and make the condition suit it, or prepare the header separately by hand.</p>
+<h2>Summary</h2>
+<p>Row counts, spreading area, notation variation. Check these three in order.</p>
 <a class="cta" href="/filter-formula-builder.html">Use "Build a FILTER Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

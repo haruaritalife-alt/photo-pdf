@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Arrotondare a un'unità</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Scegli CEILING o simili</li><li>Inserisci l'unità</li><li>Copialo</li></ul></div>
-<p>In <a href="/it/round-formula-builder.html">Generatore di arrotondamento</a>, CEILING, FLOOR e MROUND arrotondano a un'unità come 10 o 0.5.</p>
+<p lang="en">For rounding to a set unit, like "round up to 100 yen" or "round down to 5 minutes", use CEILING, FLOOR or MROUND. In <a href="/it/round-formula-builder.html">Build a Rounding Formula</a>, choosing these makes the second argument a "unit".</p>
+<h2 lang="en">The three functions</h2>
+<ul>
+<li lang="en"><b>CEILING</b>: round up to a multiple of the unit</li>
+<li lang="en"><b>FLOOR</b>: round down to a multiple of the unit</li>
+<li lang="en"><b>MROUND</b>: round to the nearest multiple of the unit</li>
+</ul>
 <h2>Passaggi</h2>
 <ol>
-<li>Scegli CEILING o simili</li>
-<li>Inserisci l'unità</li>
-<li>Copialo</li>
+<li lang="en">In "Function", choose CEILING, FLOOR or MROUND.</li>
+<li lang="en">Enter the unit (such as 100) in "Digits or unit".</li>
+<li lang="en">Enter a "Sample value" and check the result.</li>
 </ol>
-<div class="note">MROUND arrotonda all'unità più vicina.</div>
+<div class="note" lang="en">This field means "digits" for the ROUND family and "unit" for these three.</div>
+<h2 lang="en">Examples (unit 100)</h2>
+<ul>
+<li lang="en">At 1234: CEILING→1300, FLOOR→1200, MROUND→1200</li>
+<li lang="en">At 1250: CEILING→1300, FLOOR→1200, MROUND→1300</li>
+<li lang="en">At 1251: CEILING→1300, FLOOR→1200, MROUND→1300</li>
+</ul>
+<h2 lang="en">Formula examples</h2>
+<ul>
+<li lang="en">Round up to 100: =CEILING(A2,100)</li>
+<li lang="en">Round down to 5: =FLOOR(A2,5)</li>
+<li lang="en">Round to 0.5: =MROUND(A2,0.5)</li>
+</ul>
+<h2 lang="en">Rounding time</h2>
+<p lang="en">Time is a fraction of a day, so units need care. Rounding up to 15 minutes:</p>
+<ul>
+<li lang="en">=CEILING(A2,"0:15")</li>
+<li lang="en">or =CEILING(A2,15/1440)</li>
+</ul>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Making invoice amounts in 100, 500 or 1000 yen units</li>
+<li lang="en">Rounding work time to 15- or 30-minute units</li>
+<li lang="en">Aligning quantities to a case-pack multiple</li>
+</ul>
+<h2>Esempio</h2>
+<p lang="en">Wanted order quantities rounded up to multiples of a 12-piece case. =CEILING(A2,12) turned 25 into 36.</p>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en"><b>MROUND</b>: errors (#NUM!) if number and unit have different signs</li>
+<li lang="en"><b>Unit of 0</b>: CEILING returns 0; FLOOR gives #DIV/0!</li>
+<li lang="en"><b>Version differences</b>: handling of negatives varies by version</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Mistaking unit for digits</b>: 100 means a unit of 100, not 100 digits.</li>
+<li lang="en"><b>Decimal error</b>: units like 0.1 can show floating-point error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How does CEILING differ from ROUNDUP?</h3>
+<p lang="en">ROUNDUP rounds up by digits; CEILING rounds up to a multiple of a unit.</p>
+<h2>Riepilogo</h2>
+<p lang="en">CEILING, FLOOR and MROUND round to a set unit. Mind the meaning of the unit.</p>
 <a class="cta" href="/it/round-formula-builder.html">Usa “Crea una formula di arrotondamento” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/percent-calculator.html">Calcola percentuali, sconti e variazioni %</a>: Calcola percentuali, sconti e variazioni % all'istante.</li><li><a href="/it/tax-calculator.html">Calcola l'imposta sui consumi (IVA inclusa / esclusa)</a>: Calcola i prezzi con e senza imposta.</li><li><a href="/it/sumif-formula-builder.html">Creare una formula SUMIF o COUNTIF</a>: Crea formule SUMIF e COUNTIF.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>

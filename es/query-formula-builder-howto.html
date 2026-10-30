@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Cómo escribir QUERY (se crea automáticamente, gratis)</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
 <div class="points"><b>Puntos clave</b><ul><li>Introduce el intervalo</li><li>Escribe las columnas y la condición</li><li>Copia la fórmula</li></ul></div>
-<p><a href="/es/query-formula-builder.html">Creador de QUERY</a> crea una fórmula QUERY a partir de un rango, las columnas que seleccionar y más.</p>
+<p lang="en">You want filtering, aggregation and sorting all in one formula. Google Sheets' QUERY function does that. But its SQL-like syntax is hard until you're used to it. <a href="/es/query-formula-builder.html">Build a QUERY Formula</a> assembles a QUERY formula from just its parts. Input is processed inside this device and not sent outside.</p>
 <h2>Pasos</h2>
 <ol>
-<li>Introduce el intervalo</li>
-<li>Escribe las columnas y la condición</li>
-<li>Copia la fórmula</li>
+<li lang="en">In "Data range (such as A1:D100)", enter the whole table range.</li>
+<li lang="en">In "Columns to return (such as A, SUM(C))", enter the columns or aggregations to return.</li>
+<li lang="en">If needed, enter "Condition (such as B = 'Tokyo')", "Group by column" and "Sort column (such as A desc)".</li>
+<li lang="en">If needed, enter the number of header rows.</li>
+<li lang="en">Press "Copy result".</li>
 </ol>
-<div class="note">La fórmula se puede pegar directamente en una celda.</div>
+<div class="note" lang="en">Condition, group and sort may be empty. Only the parts you enter go into the formula.</div>
+<h2>Ejemplo</h2>
+<p lang="en">With regions in column A and sales in column C, showing total sales per region, highest first.</p>
+<ul>
+<li lang="en">=QUERY(A1:D100,"select A, SUM(C) group by A order by SUM(C) desc",1)</li>
+</ul>
+<h2 lang="en">The query-string part</h2>
+<p lang="en">The statement inside the quotes is written in this order:</p>
+<ol>
+<li lang="en">select (columns to return)</li>
+<li lang="en">where (condition)</li>
+<li lang="en">group by (grouping)</li>
+<li lang="en">order by (sorting)</li>
+</ol>
+<p lang="en">This tool assembles in that order.</p>
+<h2>Adecuado para</h2>
+<ul>
+<li lang="en">Aggregating by region or person</li>
+<li lang="en">Filtering by condition and sorting in one formula</li>
+<li lang="en">Aggregating with a formula instead of a PivotTable</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"The input is not valid." appears</b>: the range isn't in the "A1:D100" form, the return columns are empty, or the header rows isn't a number.</li>
+<li lang="en"><b>Specifying columns</b>: write columns as the symbols A, B, C…</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does it work in Excel?</h3>
+<p lang="en">No. QUERY is a Google Sheets function.</p>
+<h2>Resumen</h2>
+<p lang="en">Enter the parts and a formula results without memorising QUERY's special syntax.</p>
 <a class="cta" href="/es/query-formula-builder.html">Usar «Crear una fórmula QUERY» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/filter-formula-builder.html">Crear una fórmula FILTER</a>: Crea una fórmula FILTER.</li><li><a href="/es/importrange-builder.html">Crear una fórmula IMPORTRANGE</a>: Crea una fórmula IMPORTRANGE.</li><li><a href="/es/sumif-formula-builder.html">Crear una fórmula SUMIF o COUNTIF</a>: Crea fórmulas SUMIF y COUNTIF.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

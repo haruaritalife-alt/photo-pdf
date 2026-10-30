@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Tri</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Saisissez le tri</li><li>Voir la formule</li><li>Copiez-le</li></ul></div>
-<p>Dans <a href="/fr/query-formula-builder.html">Créateur de QUERY</a>, vous pouvez définir un tri comme A desc.</p>
+<p lang="en">You want QUERY's result displayed sorted. Use the order by clause. Enter the column and direction in "Sort column" in <a href="/fr/query-formula-builder.html">Build a QUERY Formula</a>.</p>
 <h2>Étapes</h2>
 <ol>
-<li>Saisissez le tri</li>
-<li>Voir la formule</li>
-<li>Copiez-le</li>
+<li lang="en">Enter the range and return columns.</li>
+<li lang="en">Enter column and direction in "Sort column (such as A desc)".</li>
+<li lang="en">Check the formula contains "order by ...".</li>
 </ol>
-<div class="note">desc signifie du plus grand au plus petit ; sans lui, du plus petit au plus grand.</div>
+<div class="note" lang="en">Omitting the direction sorts ascending.</div>
+<h2 lang="en">How to write</h2>
+<ul>
+<li lang="en">A: column A ascending (small to large)</li>
+<li lang="en">A asc: column A ascending (asc may be omitted)</li>
+<li lang="en">A desc: column A descending (large to small)</li>
+<li lang="en">SUM(C) desc: aggregate result descending</li>
+<li lang="en">A, C desc: column A ascending, ties by column C descending</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">Total per region, highest sales first.</p>
+<ul>
+<li lang="en">=QUERY(A1:D100,"select A, SUM(C) group by A order by SUM(C) desc",1)</li>
+</ul>
+<h2 lang="en">Taking only the top</h2>
+<p lang="en">To limit to the top 3 and so on, add a limit clause. Append it after the tool builds the formula.</p>
+<ul>
+<li lang="en">Example: …order by SUM(C) desc limit 3</li>
+</ul>
+<h2 lang="en">Sorting dates and text</h2>
+<ul>
+<li lang="en">Dates: in date order</li>
+<li lang="en">Text: in character-code order (Japanese isn't always in kana order)</li>
+<li lang="en">Numbers: by size</li>
+</ul>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Making ranking tables</li>
+<li lang="en">Newest-first or oldest-first ordering</li>
+<li lang="en">Lists by highest sales</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">Wanted a top-5 region ranking by sales. Entering "SUM(C) desc" in sort and appending "limit 5" at the end output only the top five.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Japanese ordering</b>: not necessarily reading order.</li>
+<li lang="en"><b>Numbers as text</b>: if numbers are text, "10" comes before "2".</li>
+<li lang="en"><b>With aggregation</b>: when using group by, sort by aggregate or group columns.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I sort by several columns?</h3>
+<p lang="en">Yes. Specify them separated by commas, like "A, C desc".</p>
+<h2>En résumé</h2>
+<p lang="en">Sorting is column plus direction (asc or desc). For only the top, add limit.</p>
 <a class="cta" href="/fr/query-formula-builder.html">Utiliser « Créer une formule QUERY » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/filter-formula-builder.html">Créer une formule FILTER</a>: Créez une formule FILTER.</li><li><a href="/fr/importrange-builder.html">Créer une formule IMPORTRANGE</a>: Créez une formule IMPORTRANGE.</li><li><a href="/fr/sumif-formula-builder.html">Créer une formule SUMIF ou COUNTIF</a>: Créez des formules SUMIF et COUNTIF.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

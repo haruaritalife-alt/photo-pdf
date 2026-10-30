@@ -201,14 +201,68 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Comparison in the Condition</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose the comparison</li><li>Enter the value</li><li>Check it</li></ul></div>
-<p>In <a href="/en/filter-formula-builder.html">FILTER Builder</a> you can choose a comparison such as at least, greater than or equal to.</p>
+<p>FILTER conditions are written with comparison operators, like "B2:B100&gt;=80". Here is the six operators selectable in "Comparison" in <a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>.</p>
+<h2>The six operators</h2>
+<ul>
+<li><b>&gt;=</b>: or more</li>
+<li><b>&gt;</b>: greater than</li>
+<li><b>&lt;=</b>: or less</li>
+<li><b>&lt;</b>: less than</li>
+<li><b>=</b>: equal</li>
+<li><b>&lt;&gt;</b>: not equal</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Choose the comparison</li>
-<li>Enter the value</li>
-<li>Check it</li>
+<li>Enter the range of the column to judge in "Column to test".</li>
+<li>Choose an operator in "Comparison".</li>
+<li>Enter "Value to compare".</li>
+<li>Check the "B2:B100&gt;=80" part of the formula.</li>
 </ol>
-<div class="note">Use &lt;&gt; for not equal.</div>
+<div class="note">Unlike SUMIF, you needn't enclose the condition in quotes. FILTER takes the comparison expression as written.</div>
+<h2>Examples</h2>
+<ul>
+<li>80 or more: =FILTER(A2:C100,B2:B100&gt;=80)</li>
+<li>Equal to "Tokyo": =FILTER(A2:C100,B2:B100="Tokyo")</li>
+<li>Not "Tokyo": =FILTER(A2:C100,B2:B100&lt;&gt;"Tokyo")</li>
+</ul>
+<h2>Forms of the compared value</h2>
+<ul>
+<li>Numbers: entering 80 keeps it as is</li>
+<li>Text: entering Tokyo adds quotes automatically</li>
+<li>Other cells: entering E1 compares with that cell's value</li>
+</ul>
+<h2>Difference from SUMIF</h2>
+<ul>
+<li>SUMIF: writes the condition as text like "&gt;=80"</li>
+<li>FILTER: writes the condition as a comparison expression like "B2:B100&gt;=80"</li>
+</ul>
+<h2>Multiple conditions</h2>
+<p>Combining FILTER conditions by multiplication gives rows meeting all (AND).</p>
+<ul>
+<li>Example: =FILTER(A2:C100,(B2:B100&gt;=80)*(C2:C100="Tokyo"))</li>
+</ul>
+<p>Combining by addition gives rows meeting either (OR).</p>
+<ul>
+<li>Example: =FILTER(A2:C100,(B2:B100&gt;=80)+(C2:C100="Tokyo"))</li>
+</ul>
+<p>Rewrite the condition part of the tool's formula by hand.</p>
+<h2>Good for</h2>
+<ul>
+<li>Extracting rows meeting a condition</li>
+<li>Increasing to several conditions</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted only people with a score of 80+ and region Tokyo. Rewriting the tool's condition into the multiplication form output only rows meeting both.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Forgetting brackets</b>: with several conditions, enclose each in brackets.</li>
+<li><b>Range rows</b>: make all condition ranges the same number of rows.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I filter by partial text match?</h3>
+<p>Combine SEARCH and ISNUMBER. Example: ISNUMBER(SEARCH("Tok",C2:C100))</p>
+<h2>Summary</h2>
+<p>Write the comparison expression as is. Combine multiple conditions with multiplication and addition.</p>
 <a class="cta" href="/en/filter-formula-builder.html">Use "Build a FILTER Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

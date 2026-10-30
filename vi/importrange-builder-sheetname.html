@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Tên trang tính có dấu cách</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Nhập tên trang tính</li><li>Xem công thức</li><li>Kiểm tra lại</li></ul></div>
-<p>Trong <a href="/vi/importrange-builder.html">Trình tạo IMPORTRANGE</a>, tên trang tính có dấu cách tự động được đặt trong dấu ngoặc kép.</p>
+<p lang="en">When a sheet name contains spaces or symbols, IMPORTRANGE's syntax changes slightly. <a href="/vi/importrange-builder.html">Build an IMPORTRANGE Formula</a> adjusts this automatically.</p>
+<h2 lang="en">Rules applied</h2>
+<ul>
+<li lang="en">Names of only alphanumerics and underscores: as is (e.g. Sheet1)</li>
+<li lang="en">Others (with spaces, Japanese or symbols): enclosed in single quotes (e.g. 'Sales 2026')</li>
+<li lang="en">Names containing a single quote: doubled (Tom's → Tom''s)</li>
+</ul>
 <h2>Các bước</h2>
 <ol>
-<li>Nhập tên trang tính</li>
-<li>Xem công thức</li>
-<li>Kiểm tra lại</li>
+<li lang="en">Enter the original sheet name in "Sheet name".</li>
+<li lang="en">Check the "SheetName!Range" part of the formula.</li>
+<li lang="en">If it contains spaces or Japanese, check it is enclosed in quotes.</li>
 </ol>
-<div class="note">Một công cụ khác rất tiện để kiểm tra tên trang tính.</div>
+<div class="note" lang="en">Don't add "!" to the sheet name; the tool adds it between name and range.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">Sheet "Sheet1": Sheet1!A1:C10</li>
+<li lang="en">Sheet "Sales 2026": 'Sales 2026'!A1:C10</li>
+<li lang="en">Sheet "Tom's list": 'Tom''s list'!A1:C10</li>
+</ul>
+<h2 lang="en">How it looks in the formula</h2>
+<p lang="en">Single quotes sit inside the formula's double quotes.</p>
+<ul>
+<li lang="en">=IMPORTRANGE("https://docs.google.com/spreadsheets/d/(ID)","'Sales 2026'!A1:C10")</li>
+</ul>
+<h2 lang="en">How to check the sheet name</h2>
+<ul>
+<li lang="en">Look at the tabs at the bottom of the source spreadsheet</li>
+<li lang="en">Check there are no invisible spaces (such as trailing ones)</li>
+<li lang="en">Match case and full-/half-width to the tab</li>
+</ul>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Japanese or space-containing sheet names</li>
+<li lang="en">Names other than "Sheet1"</li>
+<li lang="en">When #REF! might be caused by the sheet name</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">The sheet was "FY2026 Sales". As is, it gave #REF!, but the tool's formula added single quotes and imported correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Renamed the tab</b>: rewrite the name inside the formula too.</li>
+<li lang="en"><b>Trailing space in the name</b>: invisible, hard to notice. Check the tab name.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the sheet name be omitted?</h3>
+<p lang="en">Omitting it targets the spreadsheet's first sheet. This tool is built to take a sheet name.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">Names with spaces or Japanese need quotes. The tool adds them automatically.</p>
 <a class="cta" href="/vi/importrange-builder.html">Dùng “Tạo công thức IMPORTRANGE” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/sumif-formula-builder.html">Tạo công thức SUMIF hoặc COUNTIF</a>: Tạo công thức SUMIF và COUNTIF.</li><li><a href="/vi/sheet-name-checker.html">Kiểm tra tên trang tính Excel</a>: Kiểm tra xem tên trang tính có được phép không.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

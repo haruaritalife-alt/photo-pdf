@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Aggiungi l'ordinamento</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Crea la formula</li><li>Guarda la seconda</li><li>Copialo</li></ul></div>
-<p><a href="/it/filter-formula-builder.html">Creatore di FILTER</a> mostra anche una formula con SORT aggiunto.</p>
+<p lang="en">You want FILTER's extracted result displayed sorted. The second formula of <a href="/it/filter-formula-builder.html">Build a FILTER Formula</a> wraps it in SORT to add sorting.</p>
+<h2 lang="en">The second formula</h2>
+<ul>
+<li lang="en">=SORT(FILTER(A2:C100,B2:B100&gt;=80),1,TRUE)</li>
+</ul>
+<p lang="en">It sorts FILTER's result ascending (small to large) by the first column.</p>
+<h2 lang="en">SORT's arguments</h2>
+<ol>
+<li lang="en">The data to sort (here FILTER's result)</li>
+<li lang="en">The column number to sort by (1 = first column)</li>
+<li lang="en">Ascending or not (TRUE = ascending, FALSE = descending)</li>
+</ol>
 <h2>Passaggi</h2>
 <ol>
-<li>Crea la formula</li>
-<li>Guarda la seconda</li>
-<li>Copialo</li>
+<li lang="en">Enter the range and condition.</li>
+<li lang="en">Check the "Formula with sorting too".</li>
+<li lang="en">Copy with "Copy the second".</li>
+<li lang="en">To change the sort column or order, rewrite the "1,TRUE" part.</li>
 </ol>
-<div class="note">Ordina in senso crescente in base alla prima colonna.</div>
+<div class="note" lang="en">The column number means the position from the left within the extracted table.</div>
+<h2 lang="en">Rewriting examples</h2>
+<ul>
+<li lang="en">Column 2 descending: =SORT(FILTER(...),2,FALSE)</li>
+<li lang="en">Column 3 ascending: =SORT(FILTER(...),3,TRUE)</li>
+</ul>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Listing matching rows by highest sales</li>
+<li lang="en">Making lists in date or name order</li>
+<li lang="en">Making ranking tables</li>
+</ul>
+<h2 lang="en">Sorting by several keys</h2>
+<p lang="en">SORT accepts more keys.</p>
+<ul>
+<li lang="en">Example: =SORT(FILTER(...),2,FALSE,1,TRUE)</li>
+</ul>
+<p lang="en">Sorts by column 2 descending, then column 1 ascending for ties.</p>
+<h2 lang="en">Note for Excel</h2>
+<p lang="en">SORT works in Microsoft 365 and Excel 2021 and later, not in older Excel.</p>
+<h2>Esempio</h2>
+<p lang="en">Wanted passers listed from highest score. Rewriting the tool's "1,TRUE" as "2,FALSE" gave a descending order by the score column.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Counting column numbers</b>: it's the number within the table extracted by FILTER, not the original table's column.</li>
+<li lang="en"><b>Empty result</b>: if FILTER finds nothing, SORT also gives #N/A. Add a nothing-found display.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can SORT be used without FILTER?</h3>
+<p lang="en">Yes. =SORT(A2:C100,2,FALSE) sorts a whole table.</p>
+<h2>Riepilogo</h2>
+<p lang="en">Filtering and sorting combine in one formula by wrapping FILTER in SORT.</p>
 <a class="cta" href="/it/filter-formula-builder.html">Usa “Creare una formula FILTER” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/sumif-formula-builder.html">Creare una formula SUMIF o COUNTIF</a>: Crea formule SUMIF e COUNTIF.</li><li><a href="/it/excel-if-builder.html">Creare una formula IF</a>: Crea una formula IF.</li><li><a href="/it/vlookup-formula-builder.html">Creare una formula VLOOKUP o XLOOKUP</a>: Crea formule VLOOKUP e XLOOKUP.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>

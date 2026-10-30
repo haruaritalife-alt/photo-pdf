@@ -200,14 +200,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>見出しの行数</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>行数を入れる</li><li>式を見る</li><li>確かめる</li></ul></div>
-<p><a href="/query-formula-builder.html">QUERY式の作成</a> では、範囲の先頭にある見出しの行数を指定します。</p>
+<p>QUERYの最後の引数は、見出しの行数です。ここを間違えると、見出しが結果に混ざったり、消えたりします。<a href="/query-formula-builder.html">QUERYの式を作る</a> の「見出しの行数」で指定できます。</p>
+<h2>見出しの行数とは</h2>
+<p>範囲の先頭から、何行が見出しかを示す数字です。</p>
+<ul>
+<li>1：先頭の1行が、見出し</li>
+<li>0：見出しなし</li>
+<li>省略：Googleスプレッドシートが、自動で判断する</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>行数を入れる</li>
-<li>式を見る</li>
-<li>確かめる</li>
+<li>範囲を入れる。</li>
+<li>「見出しの行数」に、1 や 0 を入れる。</li>
+<li>式の最後に、「,1」のように入っていることを確かめる。</li>
 </ol>
-<div class="note">見出しがないときは0にします。</div>
+<div class="note">欄を空にすると、第3引数は付きません。その場合、見出しの有無は自動で判断されます。</div>
+<h2>例</h2>
+<ul>
+<li>見出しが1行：=QUERY(A1:D100,"select A, C",1)</li>
+<li>見出しなし：=QUERY(A2:D100,"select A, C",0)</li>
+</ul>
+<h2>自動判断の落とし穴</h2>
+<p>省略すると、先頭の行が見出しかどうかを、自動で判断します。データの内容によって、判断が変わる場合があります。</p>
+<ul>
+<li>先頭の行が全部文字で、その下に数字がある → 見出しと判断される</li>
+<li>先頭から数字が始まる → 見出しなしと判断される</li>
+</ul>
+<p>結果が安定しないため、見出しの行数は、はっきり指定するのが安全です。</p>
+<h2>見出しが2行あるとき</h2>
+<p>結合された見出しなど、見出しが2行ある場合は、2を指定します。</p>
+<ul>
+<li>例：=QUERY(A1:D100,"select A, C",2)</li>
+</ul>
+<h2>見出しを含めずに範囲を取る</h2>
+<p>見出しを範囲から外し、0を指定する方法もあります。</p>
+<ul>
+<li>例：=QUERY(A2:D100,"select A, C",0)</li>
+</ul>
+<p>この場合、結果に見出しは付きません。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>結果の1行目に、見出しを出したい</li>
+<li>見出しが二重になってしまう</li>
+<li>見出しが消えてしまう</li>
+</ul>
+<h2>例</h2>
+<p>結果の1行目が、見出しではなく、データの1行目になっていた。見出しの行数を1と指定すると、見出しとして扱われ、正しく表示された。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>見出しが二重</b>：見出しの行数が足りず、見出しもデータとして扱われた。</li>
+<li><b>データが1行消える</b>：見出しの行数が多すぎ、データの1行目が見出し扱いになった。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>見出しを自分で付けたいときは？</h3>
+<p>label句で付けられます。例：label SUM(C) '売上合計'</p>
+<h2>まとめ</h2>
+<p>見出しの行数は、はっきり指定しておくと、結果が安定します。</p>
 <a class="cta" href="/query-formula-builder.html">QUERYの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/importrange-builder.html">IMPORTRANGEの式を作る</a>：IMPORTRANGEの式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +267,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Number of Header Rows</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the number</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/query-formula-builder.html">QUERY Builder</a> you set how many header rows are at the top of the range.</p>
+<p>QUERY's last argument is the number of header rows. Getting it wrong mixes headers into the result or makes them vanish. Specify it in "Header rows" in <a href="/query-formula-builder.html">Build a QUERY Formula</a>.</p>
+<h2>What header rows means</h2>
+<p>A number showing how many rows from the top of the range are headers.</p>
+<ul>
+<li>1: the top row is the header</li>
+<li>0: no header</li>
+<li>Omitted: Google Sheets decides automatically</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the number</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>Enter the range.</li>
+<li>Enter 1 or 0 in "Header rows".</li>
+<li>Check the formula ends with something like ",1".</li>
 </ol>
-<div class="note">Use 0 when there is no header.</div>
+<div class="note">Leaving the field empty omits the third argument. Header presence is then judged automatically.</div>
+<h2>Examples</h2>
+<ul>
+<li>One header row: =QUERY(A1:D100,"select A, C",1)</li>
+<li>No header: =QUERY(A2:D100,"select A, C",0)</li>
+</ul>
+<h2>The auto-judgement pitfall</h2>
+<p>When omitted, it judges automatically whether the top row is a header. The judgement can change with the data.</p>
+<ul>
+<li>Top row all text with numbers beneath → judged a header</li>
+<li>Numbers start from the top → judged no header</li>
+</ul>
+<p>Results can be unstable, so specifying header rows explicitly is safer.</p>
+<h2>When there are two header rows</h2>
+<p>For merged headers and the like, specify 2.</p>
+<ul>
+<li>Example: =QUERY(A1:D100,"select A, C",2)</li>
+</ul>
+<h2>Excluding the header from the range</h2>
+<p>You can also leave the header out of the range and specify 0.</p>
+<ul>
+<li>Example: =QUERY(A2:D100,"select A, C",0)</li>
+</ul>
+<p>Then the result has no header.</p>
+<h2>Good for</h2>
+<ul>
+<li>Wanting a header on the result's first row</li>
+<li>Headers appearing twice</li>
+<li>Headers disappearing</li>
+</ul>
+<h2>Example</h2>
+<p>The result's first row was the data's first row, not a header. Specifying header rows as 1 treated it as a header and showed correctly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Doubled headers</b>: header rows too low, so the header was treated as data.</li>
+<li><b>A data row vanishes</b>: header rows too high, so the first data row was treated as a header.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I want to set my own header?</h3>
+<p>The label clause can. Example: label SUM(C) 'Total sales'</p>
+<h2>Summary</h2>
+<p>Specify header rows explicitly and results stay stable.</p>
 <a class="cta" href="/query-formula-builder.html">Use "Build a QUERY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -200,14 +200,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>空白を含むシート名</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>シート名を入れる</li><li>式を見る</li><li>確かめる</li></ul></div>
-<p><a href="/importrange-builder.html">IMPORTRANGE式の作成</a> では、シート名に空白があると自動で引用符に囲みます。</p>
+<p>シート名に空白や記号が含まれると、IMPORTRANGEの書き方が少し変わります。<a href="/importrange-builder.html">IMPORTRANGEの式を作る</a> は、これを自動で整えます。</p>
+<h2>自動で整える規則</h2>
+<ul>
+<li>英数字とアンダースコアだけの名前：そのまま（例：Sheet1）</li>
+<li>それ以外（空白、日本語、記号を含む）：シングルクォートで囲む（例：'売上 2026'）</li>
+<li>名前にシングルクォートが含まれる：2つ重ねる（Tom's → Tom''s）</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>シート名を入れる</li>
-<li>式を見る</li>
-<li>確かめる</li>
+<li>「シート名」に、元のシート名を入れる。</li>
+<li>式の中の「シート名!範囲」の部分を確かめる。</li>
+<li>空白や日本語が含まれる場合は、引用符で囲まれていることを確かめる。</li>
 </ol>
-<div class="note">シート名の確認には別のツールが便利です。</div>
+<div class="note">シート名に「!」は付けません。ツールが範囲との間に付けます。</div>
+<h2>例</h2>
+<ul>
+<li>シート名「Sheet1」：Sheet1!A1:C10</li>
+<li>シート名「売上 2026」：'売上 2026'!A1:C10</li>
+<li>シート名「Tom's list」：'Tom''s list'!A1:C10</li>
+</ul>
+<h2>式の中での見え方</h2>
+<p>式のダブルクォートの中に、シングルクォートが入る形になります。</p>
+<ul>
+<li>=IMPORTRANGE("https://docs.google.com/spreadsheets/d/(ID)","'売上 2026'!A1:C10")</li>
+</ul>
+<h2>シート名の確かめ方</h2>
+<ul>
+<li>取り込み元のスプレッドシートの、下のタブを見る</li>
+<li>見えない空白が付いていないか確かめる（末尾のスペースなど）</li>
+<li>大文字と小文字、全角と半角も、タブと同じにする</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>日本語や、空白つきのシート名のとき</li>
+<li>「Sheet1」以外の名前を使うとき</li>
+<li>#REF!の原因が、シート名かもしれないとき</li>
+</ul>
+<h2>例</h2>
+<p>シート名が「2026年度 売上」だった。そのままでは#REF!になったが、ツールで整えた式では、シングルクォートが付き、正しく取り込めた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>タブの名前を変えた</b>：式の中の名前も、書き換える。</li>
+<li><b>シート名の末尾のスペース</b>：見えないため、気づきにくい。タブの名前を確かめる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>シート名を省けますか？</h3>
+<p>省くと、そのスプレッドシートの最初のシートが、対象になります。このツールでは、シート名を入れる形にしています。</p>
+<h2>まとめ</h2>
+<p>空白や日本語を含むシート名は、引用符が必要。ツールが自動で付けます。</p>
 <a class="cta" href="/importrange-builder.html">IMPORTRANGEの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/sheet-name-checker.html">Excelのシート名を確かめる</a>：シート名が使えるか確かめます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +260,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Sheet Names With Spaces</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the sheet name</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/importrange-builder.html">IMPORTRANGE Builder</a> a sheet name with spaces is put in quotes automatically.</p>
+<p>When a sheet name contains spaces or symbols, IMPORTRANGE's syntax changes slightly. <a href="/importrange-builder.html">Build an IMPORTRANGE Formula</a> adjusts this automatically.</p>
+<h2>Rules applied</h2>
+<ul>
+<li>Names of only alphanumerics and underscores: as is (e.g. Sheet1)</li>
+<li>Others (with spaces, Japanese or symbols): enclosed in single quotes (e.g. 'Sales 2026')</li>
+<li>Names containing a single quote: doubled (Tom's → Tom''s)</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the sheet name</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>Enter the original sheet name in "Sheet name".</li>
+<li>Check the "SheetName!Range" part of the formula.</li>
+<li>If it contains spaces or Japanese, check it is enclosed in quotes.</li>
 </ol>
-<div class="note">Another tool is handy for checking sheet names.</div>
+<div class="note">Don't add "!" to the sheet name; the tool adds it between name and range.</div>
+<h2>Examples</h2>
+<ul>
+<li>Sheet "Sheet1": Sheet1!A1:C10</li>
+<li>Sheet "Sales 2026": 'Sales 2026'!A1:C10</li>
+<li>Sheet "Tom's list": 'Tom''s list'!A1:C10</li>
+</ul>
+<h2>How it looks in the formula</h2>
+<p>Single quotes sit inside the formula's double quotes.</p>
+<ul>
+<li>=IMPORTRANGE("https://docs.google.com/spreadsheets/d/(ID)","'Sales 2026'!A1:C10")</li>
+</ul>
+<h2>How to check the sheet name</h2>
+<ul>
+<li>Look at the tabs at the bottom of the source spreadsheet</li>
+<li>Check there are no invisible spaces (such as trailing ones)</li>
+<li>Match case and full-/half-width to the tab</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Japanese or space-containing sheet names</li>
+<li>Names other than "Sheet1"</li>
+<li>When #REF! might be caused by the sheet name</li>
+</ul>
+<h2>Example</h2>
+<p>The sheet was "FY2026 Sales". As is, it gave #REF!, but the tool's formula added single quotes and imported correctly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Renamed the tab</b>: rewrite the name inside the formula too.</li>
+<li><b>Trailing space in the name</b>: invisible, hard to notice. Check the tab name.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can the sheet name be omitted?</h3>
+<p>Omitting it targets the spreadsheet's first sheet. This tool is built to take a sheet name.</p>
+<h2>Summary</h2>
+<p>Names with spaces or Japanese need quotes. The tool adds them automatically.</p>
 <a class="cta" href="/importrange-builder.html">Use "Build an IMPORTRANGE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/sheet-name-checker.html">Check an Excel Sheet Name</a>: Check whether a sheet name is allowed.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

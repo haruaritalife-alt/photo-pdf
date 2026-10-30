@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Nombre de lignes d'en-tête</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Saisissez le nombre</li><li>Voir la formule</li><li>Le vérifier</li></ul></div>
-<p>Dans <a href="/fr/query-formula-builder.html">Créateur de QUERY</a>, vous indiquez combien de lignes d'en-tête figurent en haut de la plage.</p>
+<p lang="en">QUERY's last argument is the number of header rows. Getting it wrong mixes headers into the result or makes them vanish. Specify it in "Header rows" in <a href="/fr/query-formula-builder.html">Build a QUERY Formula</a>.</p>
+<h2 lang="en">What header rows means</h2>
+<p lang="en">A number showing how many rows from the top of the range are headers.</p>
+<ul>
+<li lang="en">1: the top row is the header</li>
+<li lang="en">0: no header</li>
+<li lang="en">Omitted: Google Sheets decides automatically</li>
+</ul>
 <h2>Étapes</h2>
 <ol>
-<li>Saisissez le nombre</li>
-<li>Voir la formule</li>
-<li>Le vérifier</li>
+<li>Saisissez la plage.</li>
+<li lang="en">Enter 1 or 0 in "Header rows".</li>
+<li lang="en">Check the formula ends with something like ",1".</li>
 </ol>
-<div class="note">Utilisez 0 s'il n'y a pas d'en-tête.</div>
+<div class="note" lang="en">Leaving the field empty omits the third argument. Header presence is then judged automatically.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">One header row: =QUERY(A1:D100,"select A, C",1)</li>
+<li lang="en">No header: =QUERY(A2:D100,"select A, C",0)</li>
+</ul>
+<h2 lang="en">The auto-judgement pitfall</h2>
+<p lang="en">When omitted, it judges automatically whether the top row is a header. The judgement can change with the data.</p>
+<ul>
+<li lang="en">Top row all text with numbers beneath → judged a header</li>
+<li lang="en">Numbers start from the top → judged no header</li>
+</ul>
+<p lang="en">Results can be unstable, so specifying header rows explicitly is safer.</p>
+<h2 lang="en">When there are two header rows</h2>
+<p lang="en">For merged headers and the like, specify 2.</p>
+<ul>
+<li lang="en">Example: =QUERY(A1:D100,"select A, C",2)</li>
+</ul>
+<h2 lang="en">Excluding the header from the range</h2>
+<p lang="en">You can also leave the header out of the range and specify 0.</p>
+<ul>
+<li lang="en">Example: =QUERY(A2:D100,"select A, C",0)</li>
+</ul>
+<p lang="en">Then the result has no header.</p>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Wanting a header on the result's first row</li>
+<li lang="en">Headers appearing twice</li>
+<li lang="en">Headers disappearing</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">The result's first row was the data's first row, not a header. Specifying header rows as 1 treated it as a header and showed correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Doubled headers</b>: header rows too low, so the header was treated as data.</li>
+<li lang="en"><b>A data row vanishes</b>: header rows too high, so the first data row was treated as a header.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want to set my own header?</h3>
+<p lang="en">The label clause can. Example: label SUM(C) 'Total sales'</p>
+<h2>En résumé</h2>
+<p lang="en">Specify header rows explicitly and results stay stable.</p>
 <a class="cta" href="/fr/query-formula-builder.html">Utiliser « Créer une formule QUERY » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/filter-formula-builder.html">Créer une formule FILTER</a>: Créez une formule FILTER.</li><li><a href="/fr/importrange-builder.html">Créer une formule IMPORTRANGE</a>: Créez une formule IMPORTRANGE.</li><li><a href="/fr/sumif-formula-builder.html">Créer une formule SUMIF ou COUNTIF</a>: Créez des formules SUMIF et COUNTIF.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

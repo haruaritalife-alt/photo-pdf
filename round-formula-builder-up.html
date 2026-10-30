@@ -200,14 +200,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>切り上げと切り捨て</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>関数を選ぶ</li><li>桁数を入れる</li><li>結果を見る</li></ul></div>
-<p><a href="/round-formula-builder.html">丸め式の作成</a> では、ROUNDUPとROUNDDOWNも選べます。</p>
+<p>金額の端数処理では、「切り上げ」「切り捨て」「四捨五入」を使い分けます。<a href="/round-formula-builder.html">丸めの式を作る</a> で、関数を切り替えて、結果を比べましょう。</p>
+<h2>3つの方法</h2>
+<ul>
+<li><b>ROUND</b>：四捨五入。5以上で切り上げ、4以下で切り捨て</li>
+<li><b>ROUNDUP</b>：常に切り上げ。0から遠ざかる方向</li>
+<li><b>ROUNDDOWN</b>：常に切り捨て。0に近づく方向</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>関数を選ぶ</li>
-<li>桁数を入れる</li>
-<li>結果を見る</li>
+<li>「丸めるセル」を入れる。</li>
+<li>「関数」を切り替えながら、「試しの数値」の結果を見比べる。</li>
+<li>目的に合う関数を選び、式をコピーする。</li>
 </ol>
-<div class="note">マイナスの数は、0から離れる向きに切り上げます。</div>
+<div class="note">試しの数値に 2.5 や -2.5 を入れて、符号による違いも確かめてみましょう。</div>
+<h2>試しの結果（桁数0の場合）</h2>
+<ul>
+<li>2.4：ROUND→2、ROUNDUP→3、ROUNDDOWN→2</li>
+<li>2.5：ROUND→3、ROUNDUP→3、ROUNDDOWN→2</li>
+<li>2.6：ROUND→3、ROUNDUP→3、ROUNDDOWN→2</li>
+<li>-2.5：ROUND→-3、ROUNDUP→-3、ROUNDDOWN→-2</li>
+</ul>
+<h2>負の数の扱い</h2>
+<ul>
+<li>ROUNDUP：-2.1 → -3（0から遠ざかる）</li>
+<li>ROUNDDOWN：-2.9 → -2（0に近づく）</li>
+</ul>
+<p>「切り上げ」が、数の大きさの方向であり、負の数では小さい値になる点に、注意します。</p>
+<h2>使い分けの目安</h2>
+<ul>
+<li><b>消費税の計算</b>：会社の方針による。切り捨てが多いが、四捨五入や切り上げの会社もある</li>
+<li><b>請求額</b>：切り上げ（顧客に不利にならないよう、切り捨てにする場合もある）</li>
+<li><b>平均点の表示</b>：四捨五入</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>消費税の端数処理を決めたい</li>
+<li>割引後の金額の端数を、処理したい</li>
+<li>人数や個数を、切り上げたい（例：必要な箱の数）</li>
+</ul>
+<h2>例</h2>
+<p>税込み価格を求める際、端数を切り捨てたかった。=ROUNDDOWN(A2*1.1,0) で、円未満が切り捨てられた。</p>
+<h2>表示形式との違い</h2>
+<p>セルの書式で桁数を減らすと、見た目だけが丸まり、中身の値は元のままです。ROUND系の関数は、値そのものを変えます。合計の誤差を防ぐには、関数で丸めます。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>見た目と値の違い</b>：書式での丸めは、合計が合わなくなる原因になる。</li>
+<li><b>ROUNDの5の扱い</b>：ExcelのROUNDは、5を常に切り上げる（銀行丸めではない）。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>銀行丸め（偶数丸め）はできますか？</h3>
+<p>ROUND関数にはありません。別の式を組み立てる必要があります。</p>
+<h2>まとめ</h2>
+<p>切り上げ・切り捨て・四捨五入は、目的に合わせて関数を選びましょう。</p>
 <a class="cta" href="/round-formula-builder.html">丸めの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/percent-calculator.html">割合・割引・増減（%）を計算する</a>：割合・割引・増減の%を、すぐに計算します。</li><li><a href="/tax-calculator.html">消費税を計算する（税込・税抜）</a>：税込・税抜の金額を、すぐに計算します。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +264,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Rounding Up and Down</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose the function</li><li>Enter the digits</li><li>See the result</li></ul></div>
-<p>In <a href="/round-formula-builder.html">Rounding Builder</a> you can also choose ROUNDUP and ROUNDDOWN.</p>
+<p>In handling fractions of amounts, you choose between round up, round down and standard rounding. Switch functions in <a href="/round-formula-builder.html">Build a Rounding Formula</a> and compare results.</p>
+<h2>The three methods</h2>
+<ul>
+<li><b>ROUND</b>: standard rounding. 5 and up rounds up; 4 and down rounds down</li>
+<li><b>ROUNDUP</b>: always up, away from zero</li>
+<li><b>ROUNDDOWN</b>: always down, toward zero</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Choose the function</li>
-<li>Enter the digits</li>
-<li>See the result</li>
+<li>Enter the "Cell to round".</li>
+<li>Switch "Function" and compare the "Sample value" results.</li>
+<li>Choose the function that fits your purpose and copy the formula.</li>
 </ol>
-<div class="note">Negative numbers round up away from zero.</div>
+<div class="note">Try 2.5 and -2.5 as samples to see the difference by sign as well.</div>
+<h2>Sample results (0 digits)</h2>
+<ul>
+<li>2.4: ROUND→2, ROUNDUP→3, ROUNDDOWN→2</li>
+<li>2.5: ROUND→3, ROUNDUP→3, ROUNDDOWN→2</li>
+<li>2.6: ROUND→3, ROUNDUP→3, ROUNDDOWN→2</li>
+<li>-2.5: ROUND→-3, ROUNDUP→-3, ROUNDDOWN→-2</li>
+</ul>
+<h2>Handling negatives</h2>
+<ul>
+<li>ROUNDUP: -2.1 → -3 (away from zero)</li>
+<li>ROUNDDOWN: -2.9 → -2 (toward zero)</li>
+</ul>
+<p>Note "up" refers to magnitude, so negatives become smaller values.</p>
+<h2>Which to use</h2>
+<ul>
+<li><b>Consumption tax</b>: depends on company policy. Rounding down is common, but some use standard rounding or up</li>
+<li><b>Invoice amounts</b>: round up (or down so as not to disadvantage customers)</li>
+<li><b>Displaying average scores</b>: standard rounding</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Deciding tax fraction handling</li>
+<li>Handling fractions of discounted amounts</li>
+<li>Rounding up counts (e.g. number of boxes needed)</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted tax-inclusive prices with fractions dropped. =ROUNDDOWN(A2*1.1,0) dropped amounts below one yen.</p>
+<h2>Versus display format</h2>
+<p>Reducing digits in cell formatting only rounds the look; the stored value stays the same. ROUND-family functions change the value itself. To avoid total discrepancies, round with functions.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Look vs value</b>: rounding by format can make totals not match.</li>
+<li><b>ROUND's handling of 5</b>: Excel's ROUND always rounds 5 up (not banker's rounding).</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I do banker's rounding?</h3>
+<p>ROUND doesn't. You'd build another formula.</p>
+<h2>Summary</h2>
+<p>Choose among round up, down and standard by purpose.</p>
 <a class="cta" href="/round-formula-builder.html">Use "Build a Rounding Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/tax-calculator.html">Calculate Consumption Tax (Incl. / Excl. Tax)</a>: Calculate prices incl. and excl. tax.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

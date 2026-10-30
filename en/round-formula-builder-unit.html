@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Rounding to a Unit</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose CEILING or similar</li><li>Enter the unit</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/round-formula-builder.html">Rounding Builder</a>, CEILING, FLOOR and MROUND round to a unit such as 10 or 0.5.</p>
+<p>For rounding to a set unit, like "round up to 100 yen" or "round down to 5 minutes", use CEILING, FLOOR or MROUND. In <a href="/en/round-formula-builder.html">Build a Rounding Formula</a>, choosing these makes the second argument a "unit".</p>
+<h2>The three functions</h2>
+<ul>
+<li><b>CEILING</b>: round up to a multiple of the unit</li>
+<li><b>FLOOR</b>: round down to a multiple of the unit</li>
+<li><b>MROUND</b>: round to the nearest multiple of the unit</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Choose CEILING or similar</li>
-<li>Enter the unit</li>
-<li>Copy it</li>
+<li>In "Function", choose CEILING, FLOOR or MROUND.</li>
+<li>Enter the unit (such as 100) in "Digits or unit".</li>
+<li>Enter a "Sample value" and check the result.</li>
 </ol>
-<div class="note">MROUND rounds to the nearest unit.</div>
+<div class="note">This field means "digits" for the ROUND family and "unit" for these three.</div>
+<h2>Examples (unit 100)</h2>
+<ul>
+<li>At 1234: CEILING→1300, FLOOR→1200, MROUND→1200</li>
+<li>At 1250: CEILING→1300, FLOOR→1200, MROUND→1300</li>
+<li>At 1251: CEILING→1300, FLOOR→1200, MROUND→1300</li>
+</ul>
+<h2>Formula examples</h2>
+<ul>
+<li>Round up to 100: =CEILING(A2,100)</li>
+<li>Round down to 5: =FLOOR(A2,5)</li>
+<li>Round to 0.5: =MROUND(A2,0.5)</li>
+</ul>
+<h2>Rounding time</h2>
+<p>Time is a fraction of a day, so units need care. Rounding up to 15 minutes:</p>
+<ul>
+<li>=CEILING(A2,"0:15")</li>
+<li>or =CEILING(A2,15/1440)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Making invoice amounts in 100, 500 or 1000 yen units</li>
+<li>Rounding work time to 15- or 30-minute units</li>
+<li>Aligning quantities to a case-pack multiple</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted order quantities rounded up to multiples of a 12-piece case. =CEILING(A2,12) turned 25 into 36.</p>
+<h2>Cautions</h2>
+<ul>
+<li><b>MROUND</b>: errors (#NUM!) if number and unit have different signs</li>
+<li><b>Unit of 0</b>: CEILING returns 0; FLOOR gives #DIV/0!</li>
+<li><b>Version differences</b>: handling of negatives varies by version</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Mistaking unit for digits</b>: 100 means a unit of 100, not 100 digits.</li>
+<li><b>Decimal error</b>: units like 0.1 can show floating-point error.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How does CEILING differ from ROUNDUP?</h3>
+<p>ROUNDUP rounds up by digits; CEILING rounds up to a multiple of a unit.</p>
+<h2>Summary</h2>
+<p>CEILING, FLOOR and MROUND round to a set unit. Mind the meaning of the unit.</p>
 <a class="cta" href="/en/round-formula-builder.html">Use "Build a Rounding Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/en/tax-calculator.html">Calculate Consumption Tax (Incl. / Excl. Tax)</a>: Calculate prices incl. and excl. tax.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

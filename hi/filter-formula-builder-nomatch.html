@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>मेल न खाने पर नतीजा</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>नतीजे लिखें</li><li>फ़ॉर्मूला देखें</li><li>कॉपी करें</li></ul></div>
-<p><a href="/hi/filter-formula-builder.html">FILTER बनाने वाला टूल</a> में आप वह टेक्स्ट तय कर सकते हैं जो कोई पंक्ति मेल न खाने पर दिखे।</p>
+<p lang="en">In FILTER, if no rows meet the condition, a "#N/A" error appears. "Display when nothing found" in <a href="/hi/filter-formula-builder.html">Build a FILTER Formula</a> prevents this.</p>
 <h2>चरण</h2>
 <ol>
-<li>नतीजे लिखें</li>
-<li>फ़ॉर्मूला देखें</li>
-<li>कॉपी करें</li>
+<li lang="en">Enter the range and condition.</li>
+<li lang="en">Enter the words to show in "Display when nothing found" (e.g. None found).</li>
+<li lang="en">Check the formula ends with those words.</li>
 </ol>
-<div class="note">टेक्स्ट अपने आप उद्धरण चिह्नों में आ जाता है।</div>
+<div class="note" lang="en">Leaving it empty omits the third argument, and with no match you get #N/A.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">With a display: =FILTER(A2:C100,B2:B100&gt;=80,"None found")</li>
+<li lang="en">Without: =FILTER(A2:C100,B2:B100&gt;=80)</li>
+</ul>
+<p lang="en">With no matching rows, the former shows "None found" and the latter "#N/A".</p>
+<h2 lang="en">How to write the display</h2>
+<ul>
+<li lang="en">Text: entering "None found" adds quotes automatically</li>
+<li lang="en">If you want it blank: enter two half-width quotes ("")</li>
+<li lang="en">Numbers: enter 0 and the like as is</li>
+</ul>
+<h2 lang="en">For blank</h2>
+<p lang="en">Enter "" in "Display when nothing found". Nothing visible is shown.</p>
+<ul>
+<li lang="en">=FILTER(A2:C100,B2:B100&gt;=80,"")</li>
+</ul>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">Avoiding errors when conditions change</li>
+<li lang="en">Lists that may become empty</li>
+<li lang="en">Avoiding errors when feeding other functions</li>
+</ul>
+<h2 lang="en">Difference from IFERROR</h2>
+<p lang="en">IFERROR(FILTER(...),"") also blanks errors. But IFERROR hides FILTER's other error causes too. The third argument narrows it to "nothing found" only.</p>
+<h2>उदाहरण</h2>
+<p lang="en">Built an unprocessed-items list per person. On days everything was done, #N/A looked ugly. Adding "None found" displayed it cleanly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Expecting numeric results</b>: returning text makes later calculations treat it as text.</li>
+<li lang="en"><b>Table shape</b>: the nothing-found display goes in a single cell; it doesn't spread to the table width.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does it show across several columns?</h3>
+<p lang="en">No. It shows only in the top-left cell.</p>
+<h2>सारांश</h2>
+<p lang="en">Putting a nothing-found display in keeps it safe even when conditions change.</p>
 <a class="cta" href="/hi/filter-formula-builder.html">“FILTER फ़ॉर्मूला बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/sumif-formula-builder.html">SUMIF या COUNTIF फ़ॉर्मूला बनाएँ</a>: SUMIF और COUNTIF फ़ॉर्मूले बनाएँ।</li><li><a href="/hi/excel-if-builder.html">IF फ़ॉर्मूला बनाएँ</a>: IF फ़ॉर्मूला बनाएँ।</li><li><a href="/hi/vlookup-formula-builder.html">VLOOKUP या XLOOKUP फ़ॉर्मूला बनाएँ</a>: VLOOKUP और XLOOKUP फ़ॉर्मूले बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

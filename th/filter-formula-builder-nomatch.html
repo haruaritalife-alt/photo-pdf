@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ผลลัพธ์เมื่อไม่มีอะไรตรงเงื่อนไข</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>พิมพ์ผลลัพธ์</li><li>ดูสูตร</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/filter-formula-builder.html">ตัวสร้าง FILTER</a> คุณกำหนดข้อความที่จะแสดงเมื่อไม่มีแถวใดตรงเงื่อนไขได้</p>
+<p lang="en">In FILTER, if no rows meet the condition, a "#N/A" error appears. "Display when nothing found" in <a href="/th/filter-formula-builder.html">Build a FILTER Formula</a> prevents this.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>พิมพ์ผลลัพธ์</li>
-<li>ดูสูตร</li>
-<li>คัดลอก</li>
+<li lang="en">Enter the range and condition.</li>
+<li lang="en">Enter the words to show in "Display when nothing found" (e.g. None found).</li>
+<li lang="en">Check the formula ends with those words.</li>
 </ol>
-<div class="note">ข้อความจะถูกใส่เครื่องหมายคำพูดให้อัตโนมัติ</div>
+<div class="note" lang="en">Leaving it empty omits the third argument, and with no match you get #N/A.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">With a display: =FILTER(A2:C100,B2:B100&gt;=80,"None found")</li>
+<li lang="en">Without: =FILTER(A2:C100,B2:B100&gt;=80)</li>
+</ul>
+<p lang="en">With no matching rows, the former shows "None found" and the latter "#N/A".</p>
+<h2 lang="en">How to write the display</h2>
+<ul>
+<li lang="en">Text: entering "None found" adds quotes automatically</li>
+<li lang="en">If you want it blank: enter two half-width quotes ("")</li>
+<li lang="en">Numbers: enter 0 and the like as is</li>
+</ul>
+<h2 lang="en">For blank</h2>
+<p lang="en">Enter "" in "Display when nothing found". Nothing visible is shown.</p>
+<ul>
+<li lang="en">=FILTER(A2:C100,B2:B100&gt;=80,"")</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Avoiding errors when conditions change</li>
+<li lang="en">Lists that may become empty</li>
+<li lang="en">Avoiding errors when feeding other functions</li>
+</ul>
+<h2 lang="en">Difference from IFERROR</h2>
+<p lang="en">IFERROR(FILTER(...),"") also blanks errors. But IFERROR hides FILTER's other error causes too. The third argument narrows it to "nothing found" only.</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Built an unprocessed-items list per person. On days everything was done, #N/A looked ugly. Adding "None found" displayed it cleanly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Expecting numeric results</b>: returning text makes later calculations treat it as text.</li>
+<li lang="en"><b>Table shape</b>: the nothing-found display goes in a single cell; it doesn't spread to the table width.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does it show across several columns?</h3>
+<p lang="en">No. It shows only in the top-left cell.</p>
+<h2>สรุป</h2>
+<p lang="en">Putting a nothing-found display in keeps it safe even when conditions change.</p>
 <a class="cta" href="/th/filter-formula-builder.html">ใช้ “สร้างสูตร FILTER” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/sumif-formula-builder.html">สร้างสูตร SUMIF หรือ COUNTIF</a>: สร้างสูตร SUMIF และ COUNTIF</li><li><a href="/th/excel-if-builder.html">สร้างสูตร IF</a>: สร้างสูตร IF</li><li><a href="/th/vlookup-formula-builder.html">สร้างสูตร VLOOKUP หรือ XLOOKUP</a>: สร้างสูตร VLOOKUP และ XLOOKUP</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

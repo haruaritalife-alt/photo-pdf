@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>O que significam as casas decimais</h1>
 <p class="meta">Publicado em: 19 out 2026 | Atualizado em: 19 out 2026 | <a href="/about.html">Sobre (em japonês)</a></p>
 <div class="points"><b>Pontos principais</b><ul><li>Digite as casas decimais</li><li>Verifique com um exemplo</li><li>Conferir</li></ul></div>
-<p>Em <a href="/pt/round-formula-builder.html">Gerador de arredondamento</a> você digita casas decimais como 0 ou 2.</p>
+<p lang="en">The second argument of ROUND-family functions is the "digits". Its meaning is confusing, so sort it out checking with the "Sample value" in <a href="/pt/round-formula-builder.html">Build a Rounding Formula</a>.</p>
+<h2 lang="en">What digits means</h2>
+<ul>
+<li lang="en">Positive: number of decimal places</li>
+<li lang="en">0: integer (no decimals)</li>
+<li lang="en">Negative: places in the integer part (tens, hundreds…)</li>
+</ul>
+<h2 lang="en">Examples (ROUND on 1234.5678)</h2>
+<ul>
+<li lang="en">2: 1234.57 (two decimals)</li>
+<li lang="en">1: 1234.6 (one decimal)</li>
+<li lang="en">0: 1235 (integer)</li>
+<li lang="en">-1: 1230 (to tens)</li>
+<li lang="en">-2: 1200 (to hundreds)</li>
+<li lang="en">-3: 1000 (to thousands)</li>
+</ul>
 <h2>Passos</h2>
 <ol>
-<li>Digite as casas decimais</li>
-<li>Verifique com um exemplo</li>
-<li>Conferir</li>
+<li lang="en">Choose "ROUND" in "Function".</li>
+<li lang="en">Enter a number in "Digits".</li>
+<li lang="en">Enter something like 1234.5678 in "Sample value" and check the result.</li>
 </ol>
-<div class="note">Um número negativo de casas decimais arredonda para as dezenas e assim por diante.</div>
+<div class="note" lang="en">Think of digits as "how many decimal places to keep" for clarity.</div>
+<h2>Qual usar</h2>
+<ul>
+<li lang="en">Handling fractions below one yen: 0</li>
+<li lang="en">Two decimals (percentages etc.): 2</li>
+<li lang="en">Rounding to thousands: -3</li>
+<li lang="en">Rounding to ten-thousands: -4</li>
+</ul>
+<h2 lang="en">Formula examples</h2>
+<ul>
+<li lang="en">Round below one yen: =ROUND(A2,0)</li>
+<li lang="en">Round to thousands: =ROUND(A2,-3)</li>
+<li lang="en">Truncate to two decimals: =ROUNDDOWN(A2,2)</li>
+</ul>
+<h2>Bom para</h2>
+<ul>
+<li lang="en">Showing amounts in thousands or tens of thousands</li>
+<li lang="en">Aligning ratios to one decimal place</li>
+<li lang="en">Producing rough figures</li>
+</ul>
+<h2>Exemplo</h2>
+<p lang="en">Wanted 12,345,678 in sales as a ten-thousand-level approximation. =ROUND(A2,-4) gave 12,350,000.</p>
+<h2 lang="en">Non-integer digits</h2>
+<p lang="en">The tool accepts a decimal like 1.5, but Excel truncates it to an integer. Specifying integers is the norm.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Confusing negative digits</b>: -3 means "to the thousands place", not "keep 3 digits".</li>
+<li lang="en"><b>When you only want to change the look</b>: use cell formatting, not ROUND.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I just want to display in thousands?</h3>
+<p lang="en">The cell format "#,##0," shows thousands. The value doesn't change.</p>
+<h2>Resumo</h2>
+<p lang="en">Digits are based on the decimal point: right is positive, left is negative. Check with the sample value.</p>
 <a class="cta" href="/pt/round-formula-builder.html">Usar “Criar uma fórmula de arredondamento” (grátis)</a>
 <h2>Ferramentas que combinam com esta</h2><ul><li><a href="/pt/percent-calculator.html">Calcular porcentagens, descontos e variação percentual</a>: Calcule porcentagens, descontos e variação percentual na hora.</li><li><a href="/pt/tax-calculator.html">Calcular imposto sobre consumo (com e sem imposto)</a>: Calcule preços com e sem imposto.</li><li><a href="/pt/sumif-formula-builder.html">Criar uma fórmula SUMIF ou COUNTIF</a>: Crie fórmulas SUMIF e COUNTIF.</li></ul>
 <div class="tip"><p>Se este guia ajudou, uma pequena gorjeta significaria muito.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Enviar uma gorjeta (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar um presente (lista de desejos da Amazon)</a></div>

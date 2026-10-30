@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Resulta kapag walang tumutugma</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>I-type ang mga resulta</li><li>Tingnan ang formula</li><li>Kopyahin</li></ul></div>
-<p>Sa <a href="/tl/filter-formula-builder.html">FILTER Maker</a>, maaari mong itakda ang tekstong ipapakita kapag walang tumutugmang hilera.</p>
+<p lang="en">In FILTER, if no rows meet the condition, a "#N/A" error appears. "Display when nothing found" in <a href="/tl/filter-formula-builder.html">Build a FILTER Formula</a> prevents this.</p>
 <h2>Mga hakbang</h2>
 <ol>
-<li>I-type ang mga resulta</li>
-<li>Tingnan ang formula</li>
-<li>Kopyahin</li>
+<li lang="en">Enter the range and condition.</li>
+<li lang="en">Enter the words to show in "Display when nothing found" (e.g. None found).</li>
+<li lang="en">Check the formula ends with those words.</li>
 </ol>
-<div class="note">Awtomatikong nilalagyan ng panipi ang teksto.</div>
+<div class="note" lang="en">Leaving it empty omits the third argument, and with no match you get #N/A.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">With a display: =FILTER(A2:C100,B2:B100&gt;=80,"None found")</li>
+<li lang="en">Without: =FILTER(A2:C100,B2:B100&gt;=80)</li>
+</ul>
+<p lang="en">With no matching rows, the former shows "None found" and the latter "#N/A".</p>
+<h2 lang="en">How to write the display</h2>
+<ul>
+<li lang="en">Text: entering "None found" adds quotes automatically</li>
+<li lang="en">If you want it blank: enter two half-width quotes ("")</li>
+<li lang="en">Numbers: enter 0 and the like as is</li>
+</ul>
+<h2 lang="en">For blank</h2>
+<p lang="en">Enter "" in "Display when nothing found". Nothing visible is shown.</p>
+<ul>
+<li lang="en">=FILTER(A2:C100,B2:B100&gt;=80,"")</li>
+</ul>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Avoiding errors when conditions change</li>
+<li lang="en">Lists that may become empty</li>
+<li lang="en">Avoiding errors when feeding other functions</li>
+</ul>
+<h2 lang="en">Difference from IFERROR</h2>
+<p lang="en">IFERROR(FILTER(...),"") also blanks errors. But IFERROR hides FILTER's other error causes too. The third argument narrows it to "nothing found" only.</p>
+<h2>Halimbawa</h2>
+<p lang="en">Built an unprocessed-items list per person. On days everything was done, #N/A looked ugly. Adding "None found" displayed it cleanly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Expecting numeric results</b>: returning text makes later calculations treat it as text.</li>
+<li lang="en"><b>Table shape</b>: the nothing-found display goes in a single cell; it doesn't spread to the table width.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does it show across several columns?</h3>
+<p lang="en">No. It shows only in the top-left cell.</p>
+<h2>Buod</h2>
+<p lang="en">Putting a nothing-found display in keeps it safe even when conditions change.</p>
 <a class="cta" href="/tl/filter-formula-builder.html">Gamitin ang “Gumawa ng FILTER formula” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/sumif-formula-builder.html">Gumawa ng SUMIF o COUNTIF formula</a>: Gumawa ng mga formulang SUMIF at COUNTIF.</li><li><a href="/tl/excel-if-builder.html">Gumawa ng IF formula</a>: Gumawa ng IF formula.</li><li><a href="/tl/vlookup-formula-builder.html">Gumawa ng VLOOKUP o XLOOKUP Formula</a>: Gumawa ng mga formula ng VLOOKUP at XLOOKUP.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

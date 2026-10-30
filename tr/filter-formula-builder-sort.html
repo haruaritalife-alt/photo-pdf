@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Sıralama ekleme</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>Formülü oluşturun</li><li>İkincisine bakın</li><li>Kopyalayın</li></ul></div>
-<p><a href="/tr/filter-formula-builder.html">FILTER Oluşturucu</a> SORT eklenmiş bir formülü de gösterir.</p>
+<p lang="en">You want FILTER's extracted result displayed sorted. The second formula of <a href="/tr/filter-formula-builder.html">Build a FILTER Formula</a> wraps it in SORT to add sorting.</p>
+<h2 lang="en">The second formula</h2>
+<ul>
+<li lang="en">=SORT(FILTER(A2:C100,B2:B100&gt;=80),1,TRUE)</li>
+</ul>
+<p lang="en">It sorts FILTER's result ascending (small to large) by the first column.</p>
+<h2 lang="en">SORT's arguments</h2>
+<ol>
+<li lang="en">The data to sort (here FILTER's result)</li>
+<li lang="en">The column number to sort by (1 = first column)</li>
+<li lang="en">Ascending or not (TRUE = ascending, FALSE = descending)</li>
+</ol>
 <h2>Adımlar</h2>
 <ol>
-<li>Formülü oluşturun</li>
-<li>İkincisine bakın</li>
-<li>Kopyalayın</li>
+<li lang="en">Enter the range and condition.</li>
+<li lang="en">Check the "Formula with sorting too".</li>
+<li lang="en">Copy with "Copy the second".</li>
+<li lang="en">To change the sort column or order, rewrite the "1,TRUE" part.</li>
 </ol>
-<div class="note">İlk sütuna göre artan sırada sıralar.</div>
+<div class="note" lang="en">The column number means the position from the left within the extracted table.</div>
+<h2 lang="en">Rewriting examples</h2>
+<ul>
+<li lang="en">Column 2 descending: =SORT(FILTER(...),2,FALSE)</li>
+<li lang="en">Column 3 ascending: =SORT(FILTER(...),3,TRUE)</li>
+</ul>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Listing matching rows by highest sales</li>
+<li lang="en">Making lists in date or name order</li>
+<li lang="en">Making ranking tables</li>
+</ul>
+<h2 lang="en">Sorting by several keys</h2>
+<p lang="en">SORT accepts more keys.</p>
+<ul>
+<li lang="en">Example: =SORT(FILTER(...),2,FALSE,1,TRUE)</li>
+</ul>
+<p lang="en">Sorts by column 2 descending, then column 1 ascending for ties.</p>
+<h2 lang="en">Note for Excel</h2>
+<p lang="en">SORT works in Microsoft 365 and Excel 2021 and later, not in older Excel.</p>
+<h2>Örnek</h2>
+<p lang="en">Wanted passers listed from highest score. Rewriting the tool's "1,TRUE" as "2,FALSE" gave a descending order by the score column.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Counting column numbers</b>: it's the number within the table extracted by FILTER, not the original table's column.</li>
+<li lang="en"><b>Empty result</b>: if FILTER finds nothing, SORT also gives #N/A. Add a nothing-found display.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can SORT be used without FILTER?</h3>
+<p lang="en">Yes. =SORT(A2:C100,2,FALSE) sorts a whole table.</p>
+<h2>Özet</h2>
+<p lang="en">Filtering and sorting combine in one formula by wrapping FILTER in SORT.</p>
 <a class="cta" href="/tr/filter-formula-builder.html">“FILTER formülü oluşturma” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/sumif-formula-builder.html">SUMIF veya COUNTIF formülü oluşturma</a>: SUMIF ve COUNTIF formülleri oluşturun.</li><li><a href="/tr/excel-if-builder.html">IF formülü oluşturma</a>: IF formülü oluşturun.</li><li><a href="/tr/vlookup-formula-builder.html">VLOOKUP veya XLOOKUP Formülü Oluşturma</a>: VLOOKUP ve XLOOKUP formülleri oluşturun.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>
