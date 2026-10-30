@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>O que fazer quando não funciona</h1>
 <p class="meta">Publicado em: 19 out 2026 | Atualizado em: 19 out 2026 | <a href="/about.html">Sobre (em japonês)</a></p>
 <div class="points"><b>Pontos principais</b><ul><li>Confira o arquivo</li><li>Confira o tamanho</li><li>Tente em outro dispositivo</li></ul></div>
-<p>Se <a href="/pt/excel-column-letter.html">Conversor de colunas do Excel</a> não funcionar, verifique o seguinte.</p>
-<h2>Passos</h2>
+<p lang="en">Converting column numbers and letters isn't working. Here are troubles that commonly occur with <a href="/pt/excel-column-letter.html">Excel Column Number and Letter Converter</a> and how to handle them.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Please enter a number from 1 to 16384." appears</b>: the number is 0 or less, or 16385 or more. Also check for decimals or letters mixed in.</li>
+<li lang="en"><b>"Please enter letters from A to XFD." appears</b>: 4 or more letters, letters beyond XFD (like XFE), full-width characters or symbols are included.</li>
+<li lang="en"><b>"The cell reference is not valid." appears</b>: the cell reference form is wrong. Follow the column letters with the row number (e.g. C5).</li>
+<li lang="en"><b>The result is blank</b>: the input is empty or an error.</li>
+<li lang="en"><b>A different column from expected</b>: a counting mistake (1-based, not 0-based).</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Confira o arquivo</li>
-<li>Confira o tamanho</li>
-<li>Tente em outro dispositivo</li>
+<li lang="en">Check the input field for full-width characters or extra characters.</li>
+<li lang="en">Check numbers are 1–16384 and letters A–XFD.</li>
+<li lang="en">Check a cell reference is "column letters + row number".</li>
+<li lang="en">Re-enter and check the result.</li>
 </ol>
-<div class="note">Se nenhum resultado aparecer, confira se o número está entre 1 e 16384 e se as letras são A a XFD em largura normal.</div>
+<div class="note" lang="en">Enter digits in half-width and letters in the alphabet.</div>
+<h2 lang="en">Input examples</h2>
+<ul>
+<li lang="en">Correct: 28, AB, c5, $D$100</li>
+<li lang="en">Incorrect: 0, 16385, XFE, ５, "column C", C, 5C</li>
+</ul>
+<h2 lang="en">Note on zero-based counting</h2>
+<p lang="en">Excel columns start at 1 (A = 1). Some programming languages start at 0 (A = 0). Check the specification of the program you use.</p>
+<ul>
+<li lang="en">Excel, VBA, Google Apps Script: A = 1</li>
+<li lang="en">Python's openpyxl: A = 1</li>
+<li lang="en">Some libraries: A = 0</li>
+</ul>
+<h2 lang="en">Row range</h2>
+<p lang="en">The row of a cell reference is 1 to 1,048,576. Rows beyond that can't be read.</p>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Checking the input form</li>
+</ul>
+<h2>Exemplo</h2>
+<p lang="en">Entering "XFE" gave an error because there is no column after XFD. Changing to "XFD" showed 16384.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Spaces included</b>: leading and trailing spaces are removed, but spaces in the middle aren't allowed.</li>
+<li lang="en"><b>Full-width "Ａ"</b>: use half-width "A".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can lower case be converted?</h3>
+<p lang="en">Yes. It is converted after making it upper case.</p>
+<h2>Resumo</h2>
+<p lang="en">Range, half-width and form. Check these three and most troubles are solved.</p>
 <a class="cta" href="/pt/excel-column-letter.html">Usar “Conversor de número e letra de coluna do Excel” (grátis)</a>
 <h2>Ferramentas que combinam com esta</h2><ul><li><a href="/pt/xlsx-to-csv.html">Converter Excel em CSV ou JSON</a>: Converta uma planilha do Excel em CSV, TSV ou JSON.</li><li><a href="/pt/csv-to-xlsx.html">Converter CSV em Excel (.xlsx)</a>: Converta um CSV em um arquivo Excel (.xlsx).</li><li><a href="/pt/csv-tools.html">Unir, dividir e escolher colunas de CSV</a>: Una arquivos CSV, divida por linhas ou mantenha só as colunas escolhidas.</li></ul>
 <div class="tip"><p>Se este guia ajudou, uma pequena gorjeta significaria muito.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Enviar uma gorjeta (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar um presente (lista de desejos da Amazon)</a></div>

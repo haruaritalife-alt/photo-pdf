@@ -201,14 +201,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Reading the Column and Row of a Cell</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the reference</li><li>See the column</li><li>See the row</li></ul></div>
-<p><a href="/en/excel-column-letter.html">Excel Column Converter</a> splits a reference like C5 into its column and row numbers.</p>
+<p>The cell reference "C5" means "row 5 of column C". Macros sometimes handle columns as numbers, so "C5" must be converted to "column 3, row 5". The "Check a cell too" field in <a href="/en/excel-column-letter.html">Excel Column Number and Letter Converter</a> does that.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the reference</li>
-<li>See the column</li>
-<li>See the row</li>
+<li>Enter a cell reference in "Cell reference (such as C5)".</li>
+<li>A result like "Cell C5: Column 3, Row 5" is displayed.</li>
 </ol>
-<div class="note">Absolute references with dollar signs are read too.</div>
+<div class="note">Forms with "$" such as "$C$5" (absolute references) are also read.</div>
+<h2>Reading the result</h2>
+<ul>
+<li><b>Column</b>: the column number. C = 3.</li>
+<li><b>Row</b>: the row number as is.</li>
+</ul>
+<h2>Examples</h2>
+<ul>
+<li>C5 → column 3, row 5</li>
+<li>AB12 → column 28, row 12</li>
+<li>$D$100 → column 4, row 100</li>
+<li>XFD1048576 → column 16384, row 1048576 (Excel's last cell)</li>
+</ul>
+<h2>Usable range</h2>
+<ul>
+<li>Columns: A–XFD (1–16384)</li>
+<li>Rows: 1–1,048,576</li>
+</ul>
+<p>Out-of-range or malformed input shows "The cell reference is not valid."</p>
+<h2>Good for</h2>
+<ul>
+<li>Specifying in the form Cells(row, column) in macros (VBA)</li>
+<li>When another program needs row and column numbers</li>
+<li>Wanting to know which column and row a range's edge is</li>
+</ul>
+<h2>VBA example</h2>
+<p>In VBA, Cells(5, 3) means "row 5, column 3 (C5)". Note the order is "row, column".</p>
+<ul>
+<li>C5 → Cells(5, 3)</li>
+</ul>
+<h2>When you want to check a range (C5:F20)</h2>
+<p>Enter the top-left and bottom-right cells separately.</p>
+<ul>
+<li>C5 → column 3, row 5 (top-left)</li>
+<li>F20 → column 6, row 20 (bottom-right)</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to specify the last column of range "B2:AB50" by number in a program. Entering "AB50" gave column 28, row 50, which went into the code.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Entering a range such as "A1:B2"</b>: only single-cell references. For ranges, check the edge cells separately.</li>
+<li><b>A sheet name attached</b>: leave out the sheet name part of "Sheet1!C5".</li>
+<li><b>Full-width</b>: enter in half-width.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can lower case be read?</h3>
+<p>Yes. "c5" is read too.</p>
+<h2>Summary</h2>
+<p>Enter a cell reference to see its column and row numbers. Useful for macros and programs.</p>
 <a class="cta" href="/en/excel-column-letter.html">Use "Excel Column Number and Letter Converter" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/xlsx-to-csv.html">Convert Excel to CSV or JSON</a>: Convert an Excel sheet to CSV, TSV or JSON.</li><li><a href="/en/csv-to-xlsx.html">Convert CSV to Excel (.xlsx)</a>: Convert a CSV to an Excel (.xlsx) file.</li><li><a href="/en/csv-tools.html">Merge, Split and Pick Columns from CSV</a>: Merge CSV files, split by rows, or keep only chosen columns.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

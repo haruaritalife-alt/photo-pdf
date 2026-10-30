@@ -200,14 +200,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>マクロや関数で列番号を使う</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>列を決める</li><li>番号を調べる</li><li>コードに使う</li></ul></div>
-<p><a href="/excel-column-letter.html">Excel列変換</a> で調べた列番号は、マクロや関数の引数にそのまま使えます。</p>
+<p>マクロ（VBA）や関数で、列を扱うとき、番号と文字の変換が必要になることがあります。<a href="/excel-column-letter.html">Excel 列番号・列文字 変換</a> で変換しながら、使い方を整理しましょう。</p>
+<h2>VBAでの、列の指定方法</h2>
+<p>VBAでは、列を数字でも、文字でも指定できます。</p>
+<ul>
+<li>Cells(行, 列)：列を数字で指定する。例：Cells(5, 3) はC5</li>
+<li>Range("C5")：セルを文字で指定する。</li>
+<li>Columns(3) と Columns("C")：どちらもC列</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>列を決める</li>
-<li>番号を調べる</li>
-<li>コードに使う</li>
+<li>「列の番号」に数字を入れて、「列の文字」を確かめる。</li>
+<li>逆に、「列の文字」を入れて、番号を確かめる。</li>
+<li>コードに反映する。</li>
 </ol>
-<div class="note">列の指定を番号にしておくと、列を足したときにも直しやすくなります。</div>
+<div class="note">「Cells(行, 列)」は、「行が先、列が後」です。順番を間違えやすいので注意します。</div>
+<h2>計算で列を動かす</h2>
+<p>数字の列番号なら、足し算で動かせます。</p>
+<ul>
+<li>「いまの列の、2つ右」→ 列番号 + 2</li>
+<li>文字（C）のままだと、「E」を求める計算が面倒</li>
+</ul>
+<p>プログラムの中で、列を動かしたいときは、数字で扱うのが基本です。</p>
+<h2>ワークシート関数での使い方</h2>
+<p>ワークシートの関数にも、列の番号を使うものがあります。</p>
+<ul>
+<li>COLUMN(C1)：3を返す</li>
+<li>ADDRESS(5, 3)：「$C$5」を返す</li>
+<li>INDEX(範囲, 行, 列)：列を数字で指定する</li>
+<li>VLOOKUP の「列番号」：何列目の値を返すか</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>マクロで、列を数字でループしたい</li>
+<li>VLOOKUPの「列番号」を、確かめたい</li>
+<li>列の文字を、プログラムの数字に直したい</li>
+</ul>
+<h2>例</h2>
+<p>VBAで、A列からZ列までを順に処理したかった。数字の1〜26でループすれば、Cells(行, 列)で簡単に処理できると分かった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>VLOOKUPの列番号</b>：範囲の左端から数えた番号。シート全体のC列ではない。</li>
+<li><b>列を挿入すると、番号が変わる</b>：固定の数字をコードに書くと、ずれる。</li>
+<li><b>行と列の順序</b>：Cells(列, 行) と逆にしない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>列の文字を、数式で数字にできますか？</h3>
+<p>COLUMN(INDIRECT("C1")) のように、数字にできます。</p>
+<h2>まとめ</h2>
+<p>マクロでは数字、見た目では文字。このツールで、行き来しながら使い分けましょう。</p>
 <a class="cta" href="/excel-column-letter.html">Excel 列番号・列文字 変換を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/xlsx-to-csv.html">ExcelをCSV・JSONに変換する</a>：Excelのシートを、CSV・TSV・JSONに変換します。</li><li><a href="/csv-to-xlsx.html">CSVをExcelファイルにする</a>：CSVを、Excelで開ける .xlsx ファイルにします。</li><li><a href="/csv-tools.html">CSVを結合・分割・列抜き出し</a>：CSVの結合・行数での分割・列の取り出しをします。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +260,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Using Column Numbers in Macros and Formulas</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Pick the column</li><li>Find its number</li><li>Use it in code</li></ul></div>
-<p>A column number found with <a href="/excel-column-letter.html">Excel Column Converter</a> can be used directly in macros or formulas.</p>
+<p>When handling columns in macros (VBA) and functions, you sometimes need to convert between number and letters. Sort out how to use them, converting with <a href="/excel-column-letter.html">Excel Column Number and Letter Converter</a>.</p>
+<h2>Specifying columns in VBA</h2>
+<p>VBA lets you specify columns by number or by letters.</p>
+<ul>
+<li>Cells(row, column): specify the column by number. Example: Cells(5, 3) is C5</li>
+<li>Range("C5"): specify the cell by letters.</li>
+<li>Columns(3) and Columns("C"): both are column C</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Pick the column</li>
-<li>Find its number</li>
-<li>Use it in code</li>
+<li>Enter a number in "Column number" and check the "Column letters".</li>
+<li>Conversely, enter letters and check the number.</li>
+<li>Reflect it in the code.</li>
 </ol>
-<div class="note">Using a number for the column makes later edits easier.</div>
+<div class="note">"Cells(row, column)" is "row first, column second". The order is easy to mix up, so take care.</div>
+<h2>Moving columns by calculation</h2>
+<p>With numeric column numbers, you can move by addition.</p>
+<ul>
+<li>"Two to the right of the current column" → column number + 2</li>
+<li>With letters (C) as is, finding "E" by calculation is a hassle</li>
+</ul>
+<p>When you want to move columns inside a program, handling them as numbers is the basis.</p>
+<h2>Use in worksheet functions</h2>
+<p>Worksheet functions also use column numbers.</p>
+<ul>
+<li>COLUMN(C1): returns 3</li>
+<li>ADDRESS(5, 3): returns "$C$5"</li>
+<li>INDEX(range, row, column): specifies the column by number</li>
+<li>VLOOKUP's "column index": which column's value to return</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Wanting to loop over columns by number in a macro</li>
+<li>Wanting to check VLOOKUP's "column index"</li>
+<li>Converting column letters to numbers for a program</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to process columns A to Z in order in VBA. Looping over 1 to 26 and using Cells(row, column) made it simple.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>VLOOKUP's column index</b>: the number counted from the left edge of the range, not column C of the whole sheet.</li>
+<li><b>Inserting a column changes numbers</b>: fixed numbers written in code get misaligned.</li>
+<li><b>Order of row and column</b>: don't reverse it as Cells(column, row).</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can a column letter be turned into a number by formula?</h3>
+<p>Yes, like COLUMN(INDIRECT("C1")).</p>
+<h2>Summary</h2>
+<p>Numbers for macros, letters for display. Use this tool to go between them.</p>
 <a class="cta" href="/excel-column-letter.html">Use "Excel Column Number and Letter Converter" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/xlsx-to-csv.html">Convert Excel to CSV or JSON</a>: Convert an Excel sheet to CSV, TSV or JSON.</li><li><a href="/csv-to-xlsx.html">Convert CSV to Excel (.xlsx)</a>: Convert a CSV to an Excel (.xlsx) file.</li><li><a href="/csv-tools.html">Merge, Split and Pick Columns from CSV</a>: Merge CSV files, split by rows, or keep only chosen columns.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

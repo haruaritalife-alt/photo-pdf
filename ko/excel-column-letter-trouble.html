@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/excel-column-letter.html">엑셀 열 변환기</a>가 작동하지 않으면 아래를 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">Converting column numbers and letters isn't working. Here are troubles that commonly occur with <a href="/ko/excel-column-letter.html">Excel Column Number and Letter Converter</a> and how to handle them.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Please enter a number from 1 to 16384." appears</b>: the number is 0 or less, or 16385 or more. Also check for decimals or letters mixed in.</li>
+<li lang="en"><b>"Please enter letters from A to XFD." appears</b>: 4 or more letters, letters beyond XFD (like XFE), full-width characters or symbols are included.</li>
+<li lang="en"><b>"The cell reference is not valid." appears</b>: the cell reference form is wrong. Follow the column letters with the row number (e.g. C5).</li>
+<li lang="en"><b>The result is blank</b>: the input is empty or an error.</li>
+<li lang="en"><b>A different column from expected</b>: a counting mistake (1-based, not 0-based).</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Check the input field for full-width characters or extra characters.</li>
+<li lang="en">Check numbers are 1–16384 and letters A–XFD.</li>
+<li lang="en">Check a cell reference is "column letters + row number".</li>
+<li lang="en">Re-enter and check the result.</li>
 </ol>
-<div class="note">결과가 나오지 않으면 번호가 1~16384인지, 문자가 반각 A~XFD인지 확인하세요.</div>
+<div class="note" lang="en">Enter digits in half-width and letters in the alphabet.</div>
+<h2 lang="en">Input examples</h2>
+<ul>
+<li lang="en">Correct: 28, AB, c5, $D$100</li>
+<li lang="en">Incorrect: 0, 16385, XFE, ５, "column C", C, 5C</li>
+</ul>
+<h2 lang="en">Note on zero-based counting</h2>
+<p lang="en">Excel columns start at 1 (A = 1). Some programming languages start at 0 (A = 0). Check the specification of the program you use.</p>
+<ul>
+<li lang="en">Excel, VBA, Google Apps Script: A = 1</li>
+<li lang="en">Python's openpyxl: A = 1</li>
+<li lang="en">Some libraries: A = 0</li>
+</ul>
+<h2 lang="en">Row range</h2>
+<p lang="en">The row of a cell reference is 1 to 1,048,576. Rows beyond that can't be read.</p>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Checking the input form</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Entering "XFE" gave an error because there is no column after XFD. Changing to "XFD" showed 16384.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Spaces included</b>: leading and trailing spaces are removed, but spaces in the middle aren't allowed.</li>
+<li lang="en"><b>Full-width "Ａ"</b>: use half-width "A".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can lower case be converted?</h3>
+<p lang="en">Yes. It is converted after making it upper case.</p>
+<h2>요약</h2>
+<p lang="en">Range, half-width and form. Check these three and most troubles are solved.</p>
 <a class="cta" href="/ko/excel-column-letter.html">“엑셀 열 번호·문자 변환기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/xlsx-to-csv.html">Excel을 CSV나 JSON으로 변환</a>: Excel 시트를 CSV, TSV, JSON으로 변환합니다.</li><li><a href="/ko/csv-to-xlsx.html">CSV를 Excel(.xlsx)로 변환</a>: CSV를 Excel(.xlsx) 파일로 변환합니다.</li><li><a href="/ko/csv-tools.html">CSV 합치기·나누기·열 고르기</a>: CSV 파일을 합치거나 행 단위로 나누거나 선택한 열만 남깁니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

@@ -201,14 +201,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Membaca lajur dan baris sesebuah sel</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Dikemas kini: 19 Okt 2026 | <a href="/about.html">Perihal (Jepun)</a></p>
 <div class="points"><b>Perkara penting</b><ul><li>Masukkan rujukan</li><li>Lihat lajur</li><li>Lihat baris</li></ul></div>
-<p><a href="/ms/excel-column-letter.html">Penukar Lajur Excel</a> memecahkan rujukan seperti C5 kepada nombor lajur dan nombor baris.</p>
+<p lang="en">The cell reference "C5" means "row 5 of column C". Macros sometimes handle columns as numbers, so "C5" must be converted to "column 3, row 5". The "Check a cell too" field in <a href="/ms/excel-column-letter.html">Excel Column Number and Letter Converter</a> does that.</p>
 <h2>Langkah</h2>
 <ol>
-<li>Masukkan rujukan</li>
-<li>Lihat lajur</li>
-<li>Lihat baris</li>
+<li lang="en">Enter a cell reference in "Cell reference (such as C5)".</li>
+<li lang="en">A result like "Cell C5: Column 3, Row 5" is displayed.</li>
 </ol>
-<div class="note">Rujukan mutlak dengan tanda dolar juga dibaca.</div>
+<div class="note" lang="en">Forms with "$" such as "$C$5" (absolute references) are also read.</div>
+<h2 lang="en">Reading the result</h2>
+<ul>
+<li lang="en"><b>Column</b>: the column number. C = 3.</li>
+<li lang="en"><b>Row</b>: the row number as is.</li>
+</ul>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">C5 → column 3, row 5</li>
+<li lang="en">AB12 → column 28, row 12</li>
+<li lang="en">$D$100 → column 4, row 100</li>
+<li lang="en">XFD1048576 → column 16384, row 1048576 (Excel's last cell)</li>
+</ul>
+<h2 lang="en">Usable range</h2>
+<ul>
+<li lang="en">Columns: A–XFD (1–16384)</li>
+<li lang="en">Rows: 1–1,048,576</li>
+</ul>
+<p lang="en">Out-of-range or malformed input shows "The cell reference is not valid."</p>
+<h2>Sesuai untuk</h2>
+<ul>
+<li lang="en">Specifying in the form Cells(row, column) in macros (VBA)</li>
+<li lang="en">When another program needs row and column numbers</li>
+<li lang="en">Wanting to know which column and row a range's edge is</li>
+</ul>
+<h2 lang="en">VBA example</h2>
+<p lang="en">In VBA, Cells(5, 3) means "row 5, column 3 (C5)". Note the order is "row, column".</p>
+<ul>
+<li lang="en">C5 → Cells(5, 3)</li>
+</ul>
+<h2 lang="en">When you want to check a range (C5:F20)</h2>
+<p lang="en">Enter the top-left and bottom-right cells separately.</p>
+<ul>
+<li lang="en">C5 → column 3, row 5 (top-left)</li>
+<li lang="en">F20 → column 6, row 20 (bottom-right)</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">Wanted to specify the last column of range "B2:AB50" by number in a program. Entering "AB50" gave column 28, row 50, which went into the code.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entering a range such as "A1:B2"</b>: only single-cell references. For ranges, check the edge cells separately.</li>
+<li lang="en"><b>A sheet name attached</b>: leave out the sheet name part of "Sheet1!C5".</li>
+<li lang="en"><b>Full-width</b>: enter in half-width.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can lower case be read?</h3>
+<p lang="en">Yes. "c5" is read too.</p>
+<h2>Ringkasan</h2>
+<p lang="en">Enter a cell reference to see its column and row numbers. Useful for macros and programs.</p>
 <a class="cta" href="/ms/excel-column-letter.html">Guna “Penukar Nombor dan Huruf Lajur Excel” (percuma)</a>
 <h2>Alat yang sepadan dengan ini</h2><ul><li><a href="/ms/xlsx-to-csv.html">Tukar Excel kepada CSV atau JSON</a>: Tukar helaian Excel kepada CSV, TSV atau JSON.</li><li><a href="/ms/csv-to-xlsx.html">Tukar CSV kepada Excel (.xlsx)</a>: Tukar CSV kepada fail Excel (.xlsx).</li><li><a href="/ms/csv-tools.html">Gabung, Pisah dan Pilih Lajur daripada CSV</a>: Gabung fail CSV, pisah mengikut baris, atau kekalkan lajur pilihan sahaja.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil amat dihargai.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Hantar tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hantar hadiah (senarai hajat Amazon)</a></div>

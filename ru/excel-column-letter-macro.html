@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Использование номеров столбцов в макросах и формулах</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Выберите столбец</li><li>Найдите его номер</li><li>Используйте в коде</li></ul></div>
-<p>Номер столбца, найденный с помощью <a href="/ru/excel-column-letter.html">Конвертер столбцов Excel</a>, можно сразу использовать в макросах или формулах.</p>
+<p lang="en">When handling columns in macros (VBA) and functions, you sometimes need to convert between number and letters. Sort out how to use them, converting with <a href="/ru/excel-column-letter.html">Excel Column Number and Letter Converter</a>.</p>
+<h2 lang="en">Specifying columns in VBA</h2>
+<p lang="en">VBA lets you specify columns by number or by letters.</p>
+<ul>
+<li lang="en">Cells(row, column): specify the column by number. Example: Cells(5, 3) is C5</li>
+<li lang="en">Range("C5"): specify the cell by letters.</li>
+<li lang="en">Columns(3) and Columns("C"): both are column C</li>
+</ul>
 <h2>Шаги</h2>
 <ol>
-<li>Выберите столбец</li>
-<li>Найдите его номер</li>
-<li>Используйте в коде</li>
+<li lang="en">Enter a number in "Column number" and check the "Column letters".</li>
+<li lang="en">Conversely, enter letters and check the number.</li>
+<li lang="en">Reflect it in the code.</li>
 </ol>
-<div class="note">Использование числа для столбца упрощает последующие изменения.</div>
+<div class="note" lang="en">"Cells(row, column)" is "row first, column second". The order is easy to mix up, so take care.</div>
+<h2 lang="en">Moving columns by calculation</h2>
+<p lang="en">With numeric column numbers, you can move by addition.</p>
+<ul>
+<li lang="en">"Two to the right of the current column" → column number + 2</li>
+<li lang="en">With letters (C) as is, finding "E" by calculation is a hassle</li>
+</ul>
+<p lang="en">When you want to move columns inside a program, handling them as numbers is the basis.</p>
+<h2 lang="en">Use in worksheet functions</h2>
+<p lang="en">Worksheet functions also use column numbers.</p>
+<ul>
+<li lang="en">COLUMN(C1): returns 3</li>
+<li lang="en">ADDRESS(5, 3): returns "$C$5"</li>
+<li lang="en">INDEX(range, row, column): specifies the column by number</li>
+<li lang="en">VLOOKUP's "column index": which column's value to return</li>
+</ul>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Wanting to loop over columns by number in a macro</li>
+<li lang="en">Wanting to check VLOOKUP's "column index"</li>
+<li lang="en">Converting column letters to numbers for a program</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">Wanted to process columns A to Z in order in VBA. Looping over 1 to 26 and using Cells(row, column) made it simple.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>VLOOKUP's column index</b>: the number counted from the left edge of the range, not column C of the whole sheet.</li>
+<li lang="en"><b>Inserting a column changes numbers</b>: fixed numbers written in code get misaligned.</li>
+<li lang="en"><b>Order of row and column</b>: don't reverse it as Cells(column, row).</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can a column letter be turned into a number by formula?</h3>
+<p lang="en">Yes, like COLUMN(INDIRECT("C1")).</p>
+<h2>Итог</h2>
+<p lang="en">Numbers for macros, letters for display. Use this tool to go between them.</p>
 <a class="cta" href="/ru/excel-column-letter.html">Использовать «Конвертер номера и буквы столбца Excel» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/xlsx-to-csv.html">Преобразовать Excel в CSV или JSON</a>: Преобразуйте лист Excel в CSV, TSV или JSON.</li><li><a href="/ru/csv-to-xlsx.html">Преобразовать CSV в Excel (.xlsx)</a>: Преобразуйте CSV в файл Excel (.xlsx).</li><li><a href="/ru/csv-tools.html">Объединить, разделить и выбрать столбцы из CSV</a>: Объединяйте CSV-файлы, делите по строкам или оставляйте только выбранные столбцы.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

@@ -201,14 +201,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>셀의 열과 행 읽기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>참조 입력</li><li>열 확인</li><li>행 확인</li></ul></div>
-<p><a href="/ko/excel-column-letter.html">엑셀 열 변환기</a>는 C5 같은 참조를 열 번호와 행 번호로 나눠 보여 줍니다.</p>
+<p lang="en">The cell reference "C5" means "row 5 of column C". Macros sometimes handle columns as numbers, so "C5" must be converted to "column 3, row 5". The "Check a cell too" field in <a href="/ko/excel-column-letter.html">Excel Column Number and Letter Converter</a> does that.</p>
 <h2>순서</h2>
 <ol>
-<li>참조 입력</li>
-<li>열 확인</li>
-<li>행 확인</li>
+<li lang="en">Enter a cell reference in "Cell reference (such as C5)".</li>
+<li lang="en">A result like "Cell C5: Column 3, Row 5" is displayed.</li>
 </ol>
-<div class="note">달러 기호가 붙은 절대 참조도 읽을 수 있습니다.</div>
+<div class="note" lang="en">Forms with "$" such as "$C$5" (absolute references) are also read.</div>
+<h2 lang="en">Reading the result</h2>
+<ul>
+<li lang="en"><b>Column</b>: the column number. C = 3.</li>
+<li lang="en"><b>Row</b>: the row number as is.</li>
+</ul>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">C5 → column 3, row 5</li>
+<li lang="en">AB12 → column 28, row 12</li>
+<li lang="en">$D$100 → column 4, row 100</li>
+<li lang="en">XFD1048576 → column 16384, row 1048576 (Excel's last cell)</li>
+</ul>
+<h2 lang="en">Usable range</h2>
+<ul>
+<li lang="en">Columns: A–XFD (1–16384)</li>
+<li lang="en">Rows: 1–1,048,576</li>
+</ul>
+<p lang="en">Out-of-range or malformed input shows "The cell reference is not valid."</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Specifying in the form Cells(row, column) in macros (VBA)</li>
+<li lang="en">When another program needs row and column numbers</li>
+<li lang="en">Wanting to know which column and row a range's edge is</li>
+</ul>
+<h2 lang="en">VBA example</h2>
+<p lang="en">In VBA, Cells(5, 3) means "row 5, column 3 (C5)". Note the order is "row, column".</p>
+<ul>
+<li lang="en">C5 → Cells(5, 3)</li>
+</ul>
+<h2 lang="en">When you want to check a range (C5:F20)</h2>
+<p lang="en">Enter the top-left and bottom-right cells separately.</p>
+<ul>
+<li lang="en">C5 → column 3, row 5 (top-left)</li>
+<li lang="en">F20 → column 6, row 20 (bottom-right)</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted to specify the last column of range "B2:AB50" by number in a program. Entering "AB50" gave column 28, row 50, which went into the code.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entering a range such as "A1:B2"</b>: only single-cell references. For ranges, check the edge cells separately.</li>
+<li lang="en"><b>A sheet name attached</b>: leave out the sheet name part of "Sheet1!C5".</li>
+<li lang="en"><b>Full-width</b>: enter in half-width.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can lower case be read?</h3>
+<p lang="en">Yes. "c5" is read too.</p>
+<h2>요약</h2>
+<p lang="en">Enter a cell reference to see its column and row numbers. Useful for macros and programs.</p>
 <a class="cta" href="/ko/excel-column-letter.html">“엑셀 열 번호·문자 변환기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/xlsx-to-csv.html">Excel을 CSV나 JSON으로 변환</a>: Excel 시트를 CSV, TSV, JSON으로 변환합니다.</li><li><a href="/ko/csv-to-xlsx.html">CSV를 Excel(.xlsx)로 변환</a>: CSV를 Excel(.xlsx) 파일로 변환합니다.</li><li><a href="/ko/csv-tools.html">CSV 합치기·나누기·열 고르기</a>: CSV 파일을 합치거나 행 단위로 나누거나 선택한 열만 남깁니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

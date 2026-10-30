@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>无法正常使用时的处理办法</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>检查文件</li><li>确认大小</li><li>换一台设备试试</li></ul></div>
-<p>如果<a href="/zh/excel-column-letter.html">Excel列转换器</a>无法使用,请检查以下几点。</p>
-<h2>步骤</h2>
+<p lang="en">Converting column numbers and letters isn't working. Here are troubles that commonly occur with <a href="/zh/excel-column-letter.html">Excel Column Number and Letter Converter</a> and how to handle them.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Please enter a number from 1 to 16384." appears</b>: the number is 0 or less, or 16385 or more. Also check for decimals or letters mixed in.</li>
+<li lang="en"><b>"Please enter letters from A to XFD." appears</b>: 4 or more letters, letters beyond XFD (like XFE), full-width characters or symbols are included.</li>
+<li lang="en"><b>"The cell reference is not valid." appears</b>: the cell reference form is wrong. Follow the column letters with the row number (e.g. C5).</li>
+<li lang="en"><b>The result is blank</b>: the input is empty or an error.</li>
+<li lang="en"><b>A different column from expected</b>: a counting mistake (1-based, not 0-based).</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>检查文件</li>
-<li>确认大小</li>
-<li>换一台设备试试</li>
+<li lang="en">Check the input field for full-width characters or extra characters.</li>
+<li lang="en">Check numbers are 1–16384 and letters A–XFD.</li>
+<li lang="en">Check a cell reference is "column letters + row number".</li>
+<li lang="en">Re-enter and check the result.</li>
 </ol>
-<div class="note">如果没有结果,请检查数字是否在 1 到 16384 之间,字母是否为半角的 A 到 XFD。</div>
+<div class="note" lang="en">Enter digits in half-width and letters in the alphabet.</div>
+<h2 lang="en">Input examples</h2>
+<ul>
+<li lang="en">Correct: 28, AB, c5, $D$100</li>
+<li lang="en">Incorrect: 0, 16385, XFE, ５, "column C", C, 5C</li>
+</ul>
+<h2 lang="en">Note on zero-based counting</h2>
+<p lang="en">Excel columns start at 1 (A = 1). Some programming languages start at 0 (A = 0). Check the specification of the program you use.</p>
+<ul>
+<li lang="en">Excel, VBA, Google Apps Script: A = 1</li>
+<li lang="en">Python's openpyxl: A = 1</li>
+<li lang="en">Some libraries: A = 0</li>
+</ul>
+<h2 lang="en">Row range</h2>
+<p lang="en">The row of a cell reference is 1 to 1,048,576. Rows beyond that can't be read.</p>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Checking the input form</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Entering "XFE" gave an error because there is no column after XFD. Changing to "XFD" showed 16384.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Spaces included</b>: leading and trailing spaces are removed, but spaces in the middle aren't allowed.</li>
+<li lang="en"><b>Full-width "Ａ"</b>: use half-width "A".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can lower case be converted?</h3>
+<p lang="en">Yes. It is converted after making it upper case.</p>
+<h2>小结</h2>
+<p lang="en">Range, half-width and form. Check these three and most troubles are solved.</p>
 <a class="cta" href="/zh/excel-column-letter.html">使用“Excel 列号与列字母转换器”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/xlsx-to-csv.html">把 Excel 转换成 CSV 或 JSON</a>：把 Excel 工作表转换成 CSV、TSV 或 JSON。</li><li><a href="/zh/csv-to-xlsx.html">把 CSV 转换成 Excel（.xlsx）</a>：把 CSV 转换成 Excel（.xlsx）文件。</li><li><a href="/zh/csv-tools.html">合并、拆分 CSV 并选取列</a>: 合并 CSV 文件、按行拆分，或只保留所选列。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

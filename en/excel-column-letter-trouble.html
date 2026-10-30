@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/excel-column-letter.html">Excel Column Converter</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>Converting column numbers and letters isn't working. Here are troubles that commonly occur with <a href="/en/excel-column-letter.html">Excel Column Number and Letter Converter</a> and how to handle them.</p>
+<h2>Common troubles</h2>
+<ul>
+<li><b>"Please enter a number from 1 to 16384." appears</b>: the number is 0 or less, or 16385 or more. Also check for decimals or letters mixed in.</li>
+<li><b>"Please enter letters from A to XFD." appears</b>: 4 or more letters, letters beyond XFD (like XFE), full-width characters or symbols are included.</li>
+<li><b>"The cell reference is not valid." appears</b>: the cell reference form is wrong. Follow the column letters with the row number (e.g. C5).</li>
+<li><b>The result is blank</b>: the input is empty or an error.</li>
+<li><b>A different column from expected</b>: a counting mistake (1-based, not 0-based).</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the input field for full-width characters or extra characters.</li>
+<li>Check numbers are 1–16384 and letters A–XFD.</li>
+<li>Check a cell reference is "column letters + row number".</li>
+<li>Re-enter and check the result.</li>
 </ol>
-<div class="note">If no result appears, check that the number is from 1 to 16384 and the letters are single-byte A to XFD.</div>
+<div class="note">Enter digits in half-width and letters in the alphabet.</div>
+<h2>Input examples</h2>
+<ul>
+<li>Correct: 28, AB, c5, $D$100</li>
+<li>Incorrect: 0, 16385, XFE, ５, "column C", C, 5C</li>
+</ul>
+<h2>Note on zero-based counting</h2>
+<p>Excel columns start at 1 (A = 1). Some programming languages start at 0 (A = 0). Check the specification of the program you use.</p>
+<ul>
+<li>Excel, VBA, Google Apps Script: A = 1</li>
+<li>Python's openpyxl: A = 1</li>
+<li>Some libraries: A = 0</li>
+</ul>
+<h2>Row range</h2>
+<p>The row of a cell reference is 1 to 1,048,576. Rows beyond that can't be read.</p>
+<h2>Uses it suits</h2>
+<ul>
+<li>Pre-checks before trouble</li>
+<li>Checking the input form</li>
+</ul>
+<h2>Example</h2>
+<p>Entering "XFE" gave an error because there is no column after XFD. Changing to "XFD" showed 16384.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Spaces included</b>: leading and trailing spaces are removed, but spaces in the middle aren't allowed.</li>
+<li><b>Full-width "Ａ"</b>: use half-width "A".</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can lower case be converted?</h3>
+<p>Yes. It is converted after making it upper case.</p>
+<h2>Summary</h2>
+<p>Range, half-width and form. Check these three and most troubles are solved.</p>
 <a class="cta" href="/en/excel-column-letter.html">Use "Excel Column Number and Letter Converter" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/xlsx-to-csv.html">Convert Excel to CSV or JSON</a>: Convert an Excel sheet to CSV, TSV or JSON.</li><li><a href="/en/csv-to-xlsx.html">Convert CSV to Excel (.xlsx)</a>: Convert a CSV to an Excel (.xlsx) file.</li><li><a href="/en/csv-tools.html">Merge, Split and Pick Columns from CSV</a>: Merge CSV files, split by rows, or keep only chosen columns.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

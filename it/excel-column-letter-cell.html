@@ -201,14 +201,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Leggere colonna e riga di una cella</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Inserisci il riferimento</li><li>Guarda la colonna</li><li>Guarda la riga</li></ul></div>
-<p><a href="/it/excel-column-letter.html">Convertitore colonne Excel</a> scompone un riferimento come C5 in numero di colonna e di riga.</p>
+<p lang="en">The cell reference "C5" means "row 5 of column C". Macros sometimes handle columns as numbers, so "C5" must be converted to "column 3, row 5". The "Check a cell too" field in <a href="/it/excel-column-letter.html">Excel Column Number and Letter Converter</a> does that.</p>
 <h2>Passaggi</h2>
 <ol>
-<li>Inserisci il riferimento</li>
-<li>Guarda la colonna</li>
-<li>Guarda la riga</li>
+<li lang="en">Enter a cell reference in "Cell reference (such as C5)".</li>
+<li lang="en">A result like "Cell C5: Column 3, Row 5" is displayed.</li>
 </ol>
-<div class="note">Vengono letti anche i riferimenti assoluti con il segno del dollaro.</div>
+<div class="note" lang="en">Forms with "$" such as "$C$5" (absolute references) are also read.</div>
+<h2 lang="en">Reading the result</h2>
+<ul>
+<li lang="en"><b>Column</b>: the column number. C = 3.</li>
+<li lang="en"><b>Row</b>: the row number as is.</li>
+</ul>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">C5 → column 3, row 5</li>
+<li lang="en">AB12 → column 28, row 12</li>
+<li lang="en">$D$100 → column 4, row 100</li>
+<li lang="en">XFD1048576 → column 16384, row 1048576 (Excel's last cell)</li>
+</ul>
+<h2 lang="en">Usable range</h2>
+<ul>
+<li lang="en">Columns: A–XFD (1–16384)</li>
+<li lang="en">Rows: 1–1,048,576</li>
+</ul>
+<p lang="en">Out-of-range or malformed input shows "The cell reference is not valid."</p>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Specifying in the form Cells(row, column) in macros (VBA)</li>
+<li lang="en">When another program needs row and column numbers</li>
+<li lang="en">Wanting to know which column and row a range's edge is</li>
+</ul>
+<h2 lang="en">VBA example</h2>
+<p lang="en">In VBA, Cells(5, 3) means "row 5, column 3 (C5)". Note the order is "row, column".</p>
+<ul>
+<li lang="en">C5 → Cells(5, 3)</li>
+</ul>
+<h2 lang="en">When you want to check a range (C5:F20)</h2>
+<p lang="en">Enter the top-left and bottom-right cells separately.</p>
+<ul>
+<li lang="en">C5 → column 3, row 5 (top-left)</li>
+<li lang="en">F20 → column 6, row 20 (bottom-right)</li>
+</ul>
+<h2>Esempio</h2>
+<p lang="en">Wanted to specify the last column of range "B2:AB50" by number in a program. Entering "AB50" gave column 28, row 50, which went into the code.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entering a range such as "A1:B2"</b>: only single-cell references. For ranges, check the edge cells separately.</li>
+<li lang="en"><b>A sheet name attached</b>: leave out the sheet name part of "Sheet1!C5".</li>
+<li lang="en"><b>Full-width</b>: enter in half-width.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can lower case be read?</h3>
+<p lang="en">Yes. "c5" is read too.</p>
+<h2>Riepilogo</h2>
+<p lang="en">Enter a cell reference to see its column and row numbers. Useful for macros and programs.</p>
 <a class="cta" href="/it/excel-column-letter.html">Usa “Convertitore di numero e lettera di colonna Excel” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/xlsx-to-csv.html">Converti Excel in CSV o JSON</a>: Converti un foglio Excel in CSV, TSV o JSON.</li><li><a href="/it/csv-to-xlsx.html">Converti CSV in Excel (.xlsx)</a>: Converti un CSV in un file Excel (.xlsx).</li><li><a href="/it/csv-tools.html">Unire, dividere e scegliere colonne da CSV</a>: Unisci file CSV, dividili per righe o tieni solo le colonne scelte.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>
