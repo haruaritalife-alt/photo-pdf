@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Cosa significano le unità</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Scegli l'unità</li><li>Guarda la formula</li><li>Controllalo</li></ul></div>
-<p>In <a href="/it/datedif-formula-builder.html">Creatore di DATEDIF</a> puoi scegliere le unità Y, M, D, YM, MD e YD.</p>
+<p lang="en">DATEDIF's third argument, the unit, has six kinds. You can choose them in "Unit" in <a href="/it/datedif-formula-builder.html">Build a DATEDIF Formula</a>. Here are the differences.</p>
+<h2 lang="en">The six units</h2>
+<ul>
+<li lang="en"><b>"Y"</b>: completed years</li>
+<li lang="en"><b>"M"</b>: completed months (total)</li>
+<li lang="en"><b>"D"</b>: days</li>
+<li lang="en"><b>"YM"</b>: months excluding years (0–11)</li>
+<li lang="en"><b>"MD"</b>: days excluding years and months</li>
+<li lang="en"><b>"YD"</b>: days excluding years</li>
+</ul>
+<h2>Esempio</h2>
+<p lang="en">From January 15, 2024 to April 20, 2026:</p>
+<ul>
+<li lang="en">"Y": 2 (2 full years)</li>
+<li lang="en">"M": 27 (2 years 3 months = 27 months)</li>
+<li lang="en">"D": 826 (days)</li>
+<li lang="en">"YM": 3 (remaining months after 2 years)</li>
+<li lang="en">"MD": 5 (remaining days after months)</li>
+<li lang="en">"YD": 95 (remaining days after years)</li>
+</ul>
 <h2>Passaggi</h2>
 <ol>
-<li>Scegli l'unità</li>
-<li>Guarda la formula</li>
-<li>Controllalo</li>
+<li>Inserisci le celle delle date di inizio e fine.</li>
+<li lang="en">Choose a "Unit".</li>
+<li lang="en">Check the last argument of the formula is the chosen unit.</li>
 </ol>
-<div class="note">YM sono i mesi esclusi gli anni.</div>
+<div class="note" lang="en">The unit is enclosed in quotes in the formula, like "Y".</div>
+<h2>Quale usare</h2>
+<ul>
+<li lang="en">Age or service years: Y</li>
+<li lang="en">Total months (such as contract length): M</li>
+<li lang="en">Elapsed days: D</li>
+<li lang="en">The "months" part of "years and months": YM</li>
+</ul>
+<h2 lang="en">Combining years and months</h2>
+<p lang="en">To show "2 years 3 months", combine Y and YM. The tool's second formula takes this form.</p>
+<h2 lang="en">For days only</h2>
+<p lang="en">The day difference between two dates is just subtraction: =B2-A2</p>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Finding a period's length in years, months or days</li>
+<li lang="en">Judging renewal timing from elapsed months</li>
+<li lang="en">Showing "years and months" of tenure</li>
+</ul>
+<h2>Esempio</h2>
+<p lang="en">Wanted elapsed months from a contract start to today. With unit "M", =DATEDIF(A2,TODAY(),"M") gave 27 months.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"MD" is faulty</b>: across month boundaries it can return wrong values. Microsoft doesn't recommend this unit either.</li>
+<li lang="en"><b>Mixing "Y" and "YM"</b>: Y is the total years; YM is the remaining months.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What replaces "MD"?</h3>
+<p lang="en">Remaining days are more reliably found with a separate formula combined with DATE.</p>
+<h2>Riepilogo</h2>
+<p lang="en">Y for years, M for months, D for days; YM, MD, YD for remainders. Learn when to use each.</p>
 <a class="cta" href="/it/datedif-formula-builder.html">Usa “Creare una formula DATEDIF” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/excel-serial-date.html">Convertitore di valore seriale e data Excel</a>: Converti valori seriali e date di Excel.</li><li><a href="/it/date-calculator.html">Calcola l'età, i giorni tra due date e gli scostamenti di data</a>: Calcola l'età e i giorni tra due date.</li><li><a href="/it/excel-if-builder.html">Creare una formula IF</a>: Crea una formula IF.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>

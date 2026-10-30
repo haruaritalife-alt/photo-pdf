@@ -201,14 +201,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>名称 History</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>输入名称</li><li>查看结果</li><li>换一个名称</li></ul></div>
-<p><a href="/zh/sheet-name-checker.html">工作表名称检查</a>会提示 History 是保留名称。</p>
+<p lang="en">A sheet named "History" can't be created in Excel. <a href="/zh/sheet-name-checker.html">Check an Excel Sheet Name</a> finds this reserved name and fixes it into a usable one.</p>
+<h2 lang="en">Why it can't be used</h2>
+<p lang="en">"History" is a reserved name Excel uses internally. The change-tracking feature (shared workbook change history) creates a sheet named "History", so the same name can't be used.</p>
+<ul>
+<li lang="en">Case isn't distinguished: "history" and "HISTORY" are the same</li>
+<li lang="en">With other characters around it, it's fine (History2026 etc.)</li>
+</ul>
 <h2>步骤</h2>
 <ol>
-<li>输入名称</li>
-<li>查看结果</li>
-<li>换一个名称</li>
+<li lang="en">Enter "History" in "Sheet name".</li>
+<li lang="en">"History is a reserved name" is shown.</li>
+<li lang="en">"History_" appears in "Fixed sheet name".</li>
 </ol>
-<div class="note">稍作改动,比如 History_,就能使用。</div>
+<div class="note" lang="en">"_" is added at the end to make "History_". You may use a different name instead.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">"History" → "History_"</li>
+<li lang="en">"history" → "history_"</li>
+<li lang="en">"History2" → usable as is</li>
+<li lang="en">"Work log" → usable as is</li>
+</ul>
+<h2 lang="en">Alternative names</h2>
+<ul>
+<li lang="en">Log</li>
+<li lang="en">Change log</li>
+<li lang="en">Records</li>
+<li lang="en">History_2026</li>
+<li lang="en">Updates</li>
+</ul>
+<h2 lang="en">Where it often happens</h2>
+<ul>
+<li lang="en">Trying to name a history-managing sheet with the plain word</li>
+<li lang="en">Moving an English template into another-language version</li>
+<li lang="en">A macro trying to create a sheet named "History"</li>
+</ul>
+<h2 lang="en">Handling in macros</h2>
+<p lang="en">In VBA, when setting Name after Sheets.Add, check the name isn't "History".</p>
+<ul>
+<li lang="en">Condition: If LCase(name) = "history" Then name = name &amp; "_"</li>
+</ul>
+<h2>适合</h2>
+<ul>
+<li lang="en">Making a sheet for history</li>
+<li lang="en">Wanting to know why a name can't be used</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Naming an update-log sheet "History" caused an error. I didn't know why, but learning it's reserved, I renamed it "Update log".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The error message is unclear</b>: it only says the name isn't valid.</li>
+<li lang="en"><b>Other reserved names</b>: this tool checks only History.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are other sheet names reserved?</h3>
+<p lang="en">In general there are few other special reserved names, but it can vary by Excel environment.</p>
+<h2>小结</h2>
+<p lang="en">"History" can't be a sheet name. Add "_" or choose another name.</p>
 <a class="cta" href="/zh/sheet-name-checker.html">使用“检查 Excel 工作表名称”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/excel-column-letter.html">Excel 列号与列字母转换器</a>: 转换 Excel 的列号和列字母。</li><li><a href="/zh/excel-text-clean.html">去掉 Excel 文字中多余的空格和看不见的字符</a>: 去掉多余的空格和看不见的字符。</li><li><a href="/zh/excel-range-info.html">统计 Excel 范围内的单元格、行和列</a>: 查看范围内的单元格、行和列。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

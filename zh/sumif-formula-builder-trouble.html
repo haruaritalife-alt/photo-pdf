@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>无法正常使用时的处理办法</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>检查文件</li><li>确认大小</li><li>换一台设备试试</li></ul></div>
-<p>如果<a href="/zh/sumif-formula-builder.html">SUMIF公式生成器</a>无法使用,请检查以下几点。</p>
-<h2>步骤</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/zh/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the range isn't in the "A2:A100" form, or the condition is empty. SUMIF and AVERAGEIF also need the sum or average range.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>Result is 0</b>: no cells meet the condition. Often full-width vs half-width differences, extra spaces or notation variation.</li>
+<li lang="en"><b>#VALUE! appears</b>: range sizes don't match (SUMIFS etc.).</li>
+<li lang="en"><b>#DIV/0! appears</b>: AVERAGEIF with no matching cells.</li>
+<li lang="en"><b>#NAME? appears</b>: the function name is wrong.</li>
+<li lang="en"><b>Numbers aren't summed</b>: the numbers in the sum range are text.</li>
+<li lang="en"><b>Date conditions don't work</b>: the dates are text.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>检查文件</li>
-<li>确认大小</li>
-<li>换一台设备试试</li>
+<li lang="en">Check the condition text and the cell text are exactly the same.</li>
+<li lang="en">Check full-width/half-width and extra spaces.</li>
+<li lang="en">Check range sizes match.</li>
+<li lang="en">Check the sum range holds numbers.</li>
 </ol>
-<div class="note">如果没有出现公式,请确认范围写成 A2:A100 这样的形式,并且已填入条件。</div>
+<div class="note" lang="en">If numbers display left-aligned, they may be text.</div>
+<h2 lang="en">When numbers are text</h2>
+<ul>
+<li lang="en">Select the cells and choose "Convert to Number" from the green triangle mark</li>
+<li lang="en">Or enter 1 in a spare cell, copy it, select the targets and use "Paste Special" with "Multiply"</li>
+</ul>
+<h2 lang="en">Special characters in conditions</h2>
+<p lang="en">"*" and "?" are wildcards. To search for them as characters, prefix with "~".</p>
+<ul>
+<li lang="en">Example: "~*" searches for the character "*"</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Totalling by "Tokyo" gave 0. The cell was "Tokyo " with a trailing space. Removing it gave the total.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Range lacks $</b>: ranges shift when the formula is copied. Fix with $.</li>
+<li lang="en"><b>Including the header row</b>: including the header in the range is usually fine, but misaligns with the sum range.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is it case-sensitive?</h3>
+<p lang="en">No. "A" and "a" are treated the same.</p>
+<h2>小结</h2>
+<p lang="en">Text matches, range sizes, number form. Check these three.</p>
 <a class="cta" href="/zh/sumif-formula-builder.html">使用“生成 SUMIF 或 COUNTIF 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/zh/textjoin-formula-builder.html">生成 TEXTJOIN 公式</a>: 生成 TEXTJOIN 公式。</li><li><a href="/zh/column-stats.html">一列数字的合计、平均值和中位数</a>: 算出所粘贴数字的合计和平均值。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

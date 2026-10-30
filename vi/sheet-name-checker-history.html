@@ -201,14 +201,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Tên History</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Nhập tên</li><li>Xem kết quả</li><li>Chọn tên khác</li></ul></div>
-<p><a href="/vi/sheet-name-checker.html">Kiểm tra tên trang tính</a> cho biết History là tên được dành riêng.</p>
+<p lang="en">A sheet named "History" can't be created in Excel. <a href="/vi/sheet-name-checker.html">Check an Excel Sheet Name</a> finds this reserved name and fixes it into a usable one.</p>
+<h2 lang="en">Why it can't be used</h2>
+<p lang="en">"History" is a reserved name Excel uses internally. The change-tracking feature (shared workbook change history) creates a sheet named "History", so the same name can't be used.</p>
+<ul>
+<li lang="en">Case isn't distinguished: "history" and "HISTORY" are the same</li>
+<li lang="en">With other characters around it, it's fine (History2026 etc.)</li>
+</ul>
 <h2>Các bước</h2>
 <ol>
-<li>Nhập tên</li>
-<li>Xem kết quả</li>
-<li>Chọn tên khác</li>
+<li lang="en">Enter "History" in "Sheet name".</li>
+<li lang="en">"History is a reserved name" is shown.</li>
+<li lang="en">"History_" appears in "Fixed sheet name".</li>
 </ol>
-<div class="note">Một thay đổi nhỏ như History_ là dùng được.</div>
+<div class="note" lang="en">"_" is added at the end to make "History_". You may use a different name instead.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">"History" → "History_"</li>
+<li lang="en">"history" → "history_"</li>
+<li lang="en">"History2" → usable as is</li>
+<li lang="en">"Work log" → usable as is</li>
+</ul>
+<h2 lang="en">Alternative names</h2>
+<ul>
+<li lang="en">Log</li>
+<li lang="en">Change log</li>
+<li lang="en">Records</li>
+<li lang="en">History_2026</li>
+<li lang="en">Updates</li>
+</ul>
+<h2 lang="en">Where it often happens</h2>
+<ul>
+<li lang="en">Trying to name a history-managing sheet with the plain word</li>
+<li lang="en">Moving an English template into another-language version</li>
+<li lang="en">A macro trying to create a sheet named "History"</li>
+</ul>
+<h2 lang="en">Handling in macros</h2>
+<p lang="en">In VBA, when setting Name after Sheets.Add, check the name isn't "History".</p>
+<ul>
+<li lang="en">Condition: If LCase(name) = "history" Then name = name &amp; "_"</li>
+</ul>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Making a sheet for history</li>
+<li lang="en">Wanting to know why a name can't be used</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">Naming an update-log sheet "History" caused an error. I didn't know why, but learning it's reserved, I renamed it "Update log".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The error message is unclear</b>: it only says the name isn't valid.</li>
+<li lang="en"><b>Other reserved names</b>: this tool checks only History.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are other sheet names reserved?</h3>
+<p lang="en">In general there are few other special reserved names, but it can vary by Excel environment.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">"History" can't be a sheet name. Add "_" or choose another name.</p>
 <a class="cta" href="/vi/sheet-name-checker.html">Dùng “Kiểm tra tên trang tính Excel” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/excel-column-letter.html">Chuyển đổi số và chữ cái cột Excel</a>: Chuyển đổi số và chữ cái cột Excel.</li><li><a href="/vi/excel-text-clean.html">Loại bỏ khoảng trắng thừa và ký tự vô hình khỏi văn bản Excel</a>: Loại bỏ khoảng trắng thừa và ký tự vô hình.</li><li><a href="/vi/excel-range-info.html">Đếm ô, hàng và cột trong một vùng Excel</a>: Tìm số ô, hàng và cột của một vùng.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

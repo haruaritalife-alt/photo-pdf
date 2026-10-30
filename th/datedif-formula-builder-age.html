@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>คำนวณอายุ</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>พิมพ์วันเกิดและวันนี้</li><li>เลือก Y</li><li>คัดลอก</li></ul></div>
-<p>การเลือก Y ใน <a href="/th/datedif-formula-builder.html">ตัวสร้าง DATEDIF</a> จะได้สูตรอายุเป็นปีเต็ม</p>
+<p lang="en">Finding a full-years age from a birth date is DATEDIF's classic use. Choose "Y" in <a href="/th/datedif-formula-builder.html">Build a DATEDIF Formula</a> to build an age formula.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>พิมพ์วันเกิดและวันนี้</li>
-<li>เลือก Y</li>
-<li>คัดลอก</li>
+<li lang="en">Enter the birth-date cell in "Start date cell".</li>
+<li lang="en">Enter the cell of the reference date in "End date cell".</li>
+<li lang="en">Choose "Y" in "Unit".</li>
+<li lang="en">Copy the "DATEDIF formula".</li>
 </ol>
-<div class="note">จะใช้ TODAY() เป็นวันสิ้นสุดก็ได้</div>
+<div class="note" lang="en">"Y" returns completed years (increases only once the birthday arrives).</div>
+<h2>ตัวอย่าง</h2>
+<p lang="en">With a birth date in A2 and a reference date in B2, the age in full years is:</p>
+<ul>
+<li lang="en">=DATEDIF(A2,B2,"Y")</li>
+</ul>
+<h2 lang="en">To get today's age</h2>
+<p lang="en">Make the reference date today. Rewrite the end-date cell in the built formula as TODAY().</p>
+<ul>
+<li lang="en">=DATEDIF(A2,TODAY(),"Y")</li>
+</ul>
+<p lang="en">It updates to that day's age every time you open the file.</p>
+<h2 lang="en">Full-year age vs traditional counting</h2>
+<ul>
+<li lang="en"><b>Full-year age</b>: increases each birthday (the common modern way)</li>
+<li lang="en"><b>Traditional (kazoedoshi)</b>: counts the birth year as 1 and adds one on New Year's Day</li>
+</ul>
+<p lang="en">This tool's formula gives full-year age.</p>
+<h2 lang="en">Showing age and months</h2>
+<p lang="en">To show something like "5 years 3 months", use the tool's second formula.</p>
+<ul>
+<li lang="en">=DATEDIF(A2,B2,"Y")&amp;" years "&amp;DATEDIF(A2,B2,"YM")&amp;" months"</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Building an age column in a list</li>
+<li lang="en">Checking age eligibility for applications</li>
+<li lang="en">Knowing a child's age in months</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Wanted an age column in an employee list. DATEDIF gave full-year ages from the birth-date column and today's date. It updates daily, so no manual entry is needed.</p>
+<h2 lang="en">Verifying</h2>
+<p lang="en">Someone born April 15, 2000 is 25 on April 14, 2026 (the day before the birthday), and turns 26 on April 15, 2026.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Birth date is text</b>: if not recognised as a date, #VALUE! results.</li>
+<li lang="en"><b>Reference date before birth date</b>: #NUM!.</li>
+<li lang="en"><b>Leap-day birthdays</b>: treatment of Feb 29 births can vary in non-leap years.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can YEARFRAC give age too?</h3>
+<p lang="en">It can, but as a decimal. Truncating with INT gives something close to full-year age. DATEDIF is more reliable.</p>
+<h2>สรุป</h2>
+<p lang="en">Use DATEDIF "Y" for age. Making the reference date TODAY() updates automatically.</p>
 <a class="cta" href="/th/datedif-formula-builder.html">ใช้ “สร้างสูตร DATEDIF” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/excel-serial-date.html">ตัวแปลงค่าซีเรียลและวันที่ของ Excel</a>: แปลงค่าซีเรียลและวันที่ของ Excel</li><li><a href="/th/date-calculator.html">คำนวณอายุ จำนวนวันระหว่างวันที่ และการเลื่อนวันที่</a>: คำนวณอายุและจำนวนวันระหว่างวันที่</li><li><a href="/th/excel-if-builder.html">สร้างสูตร IF</a>: สร้างสูตร IF</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

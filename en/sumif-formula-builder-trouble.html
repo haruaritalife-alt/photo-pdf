@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/sumif-formula-builder.html">SUMIF Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but the result is odd. Here are common troubles with <a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the range isn't in the "A2:A100" form, or the condition is empty. SUMIF and AVERAGEIF also need the sum or average range.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>Result is 0</b>: no cells meet the condition. Often full-width vs half-width differences, extra spaces or notation variation.</li>
+<li><b>#VALUE! appears</b>: range sizes don't match (SUMIFS etc.).</li>
+<li><b>#DIV/0! appears</b>: AVERAGEIF with no matching cells.</li>
+<li><b>#NAME? appears</b>: the function name is wrong.</li>
+<li><b>Numbers aren't summed</b>: the numbers in the sum range are text.</li>
+<li><b>Date conditions don't work</b>: the dates are text.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the condition text and the cell text are exactly the same.</li>
+<li>Check full-width/half-width and extra spaces.</li>
+<li>Check range sizes match.</li>
+<li>Check the sum range holds numbers.</li>
 </ol>
-<div class="note">If no formula appears, check that the ranges are written like A2:A100 and a condition is entered.</div>
+<div class="note">If numbers display left-aligned, they may be text.</div>
+<h2>When numbers are text</h2>
+<ul>
+<li>Select the cells and choose "Convert to Number" from the green triangle mark</li>
+<li>Or enter 1 in a spare cell, copy it, select the targets and use "Paste Special" with "Multiply"</li>
+</ul>
+<h2>Special characters in conditions</h2>
+<p>"*" and "?" are wildcards. To search for them as characters, prefix with "~".</p>
+<ul>
+<li>Example: "~*" searches for the character "*"</li>
+</ul>
+<h2>Example</h2>
+<p>Totalling by "Tokyo" gave 0. The cell was "Tokyo " with a trailing space. Removing it gave the total.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Range lacks $</b>: ranges shift when the formula is copied. Fix with $.</li>
+<li><b>Including the header row</b>: including the header in the range is usually fine, but misaligns with the sum range.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is it case-sensitive?</h3>
+<p>No. "A" and "a" are treated the same.</p>
+<h2>Summary</h2>
+<p>Text matches, range sizes, number form. Check these three.</p>
 <a class="cta" href="/en/sumif-formula-builder.html">Use "Build a SUMIF or COUNTIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a>: Build a TEXTJOIN formula.</li><li><a href="/en/column-stats.html">Sum, Average and Median of a Column of Numbers</a>: Get the sum and average of pasted numbers.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

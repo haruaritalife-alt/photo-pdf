@@ -201,14 +201,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Quando aparece #NUM!</h1>
 <p class="meta">Publicado em: 19 out 2026 | Atualizado em: 19 out 2026 | <a href="/about.html">Sobre (em japonês)</a></p>
 <div class="points"><b>Pontos principais</b><ul><li>Verifique as datas</li><li>Corrija a ordem</li><li>Tente novamente</li></ul></div>
-<p>Um #NUM! em uma fórmula criada em <a href="/pt/datedif-formula-builder.html">Gerador de DATEDIF</a> significa que a data inicial é posterior à data final.</p>
-<h2>Passos</h2>
+<p lang="en">DATEDIF shows "#NUM!". Mostly the start and end dates are reversed. Here is how to handle errors after building a formula with <a href="/pt/datedif-formula-builder.html">Build a DATEDIF Formula</a>.</p>
+<h2 lang="en">Main causes of #NUM!</h2>
+<ul>
+<li lang="en"><b>Start date after end date</b>: DATEDIF requires start ≤ end.</li>
+<li lang="en"><b>A non-date value</b>: the cell isn't recognised as a date (this more often gives #VALUE!).</li>
+</ul>
+<h2 lang="en">Steps (handling)</h2>
 <ol>
-<li>Verifique as datas</li>
-<li>Corrija a ordem</li>
-<li>Tente novamente</li>
+<li lang="en">Check you haven't swapped the start and end cells.</li>
+<li lang="en">If the start may be after the end, align the order with MIN and MAX.</li>
+<li lang="en">Check the cells are dates.</li>
 </ol>
-<div class="note">Tente trocar as duas datas.</div>
+<div class="note" lang="en">If start and end are the same day, the result is 0, not an error.</div>
+<h2 lang="en">A formula that orders them automatically</h2>
+<p lang="en">When you don't know which comes first:</p>
+<ul>
+<li lang="en">=DATEDIF(MIN(A2,B2),MAX(A2,B2),"D")</li>
+</ul>
+<h2 lang="en">How to check a date</h2>
+<ul>
+<li lang="en">If =ISNUMBER(A2) is TRUE, it's recognised as a date (serial value).</li>
+<li lang="en">If left-aligned, it's likely text.</li>
+</ul>
+<h2 lang="en">Fixing text dates</h2>
+<ul>
+<li lang="en">DATEVALUE function: =DATEVALUE("2026/4/15")</li>
+<li lang="en">Set the cell format to "Date" and re-enter</li>
+<li lang="en">"Data" → "Text to Columns" can convert to dates</li>
+</ul>
+<h2 lang="en">Other errors</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: the start or end can't be read as a date, or the unit is invalid.</li>
+<li lang="en"><b>#NAME?</b>: a typo in the function name.</li>
+<li lang="en"><b>#REF!</b>: a referenced cell was deleted.</li>
+</ul>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Identifying the cause of errors</li>
+<li lang="en">Finding date entry mistakes</li>
+</ul>
+<h2>Exemplo</h2>
+<p lang="en">Computing tenure for someone with a blank retirement date gave #NUM!. A blank counts as 0 (January 0, 1900), which is before the start date. IF was used to skip blanks.</p>
+<ul>
+<li lang="en">=IF(B2="","",DATEDIF(A2,B2,"Y"))</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Future dates</b>: a future start is fine if the end is later still.</li>
+<li lang="en"><b>Dates with times</b>: times are ignored.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How can I avoid errors on blanks?</h3>
+<p lang="en">Use IF to return an empty string when blank.</p>
+<h2>Resumo</h2>
+<p lang="en">For #NUM!, suspect date order. Also watch for blanks and text dates.</p>
 <a class="cta" href="/pt/datedif-formula-builder.html">Usar “Criar uma fórmula DATEDIF” (grátis)</a>
 <h2>Ferramentas que combinam com esta</h2><ul><li><a href="/pt/excel-serial-date.html">Conversor de valor serial e data do Excel</a>: Converta valores seriais e datas do Excel.</li><li><a href="/pt/date-calculator.html">Calcular idade, dias entre datas e deslocamentos de datas</a>: Calcule idade e dias entre datas.</li><li><a href="/pt/excel-if-builder.html">Criar uma fórmula IF</a>: Crie uma fórmula IF.</li></ul>
 <div class="tip"><p>Se este guia ajudou, uma pequena gorjeta significaria muito.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Enviar uma gorjeta (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar um presente (lista de desejos da Amazon)</a></div>

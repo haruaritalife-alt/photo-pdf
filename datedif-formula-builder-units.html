@@ -200,14 +200,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>単位の違い</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>単位を選ぶ</li><li>式を見る</li><li>確かめる</li></ul></div>
-<p><a href="/datedif-formula-builder.html">DATEDIF式の作成</a> では、Y・M・D・YM・MD・YDの単位を選べます。</p>
+<p>DATEDIFの3つ目の引数「単位」には、6種類があります。<a href="/datedif-formula-builder.html">DATEDIFの式を作る</a> の「単位」で選べます。違いを整理します。</p>
+<h2>6つの単位</h2>
+<ul>
+<li><b>"Y"</b>：満の年数</li>
+<li><b>"M"</b>：満の月数（全体の月数）</li>
+<li><b>"D"</b>：日数</li>
+<li><b>"YM"</b>：年を除いた月数（0〜11）</li>
+<li><b>"MD"</b>：年と月を除いた日数</li>
+<li><b>"YD"</b>：年を除いた日数</li>
+</ul>
+<h2>例</h2>
+<p>2024年1月15日から2026年4月20日までの場合です。</p>
+<ul>
+<li>"Y"：2（満2年）</li>
+<li>"M"：27（2年3か月 = 27か月）</li>
+<li>"D"：826（日数）</li>
+<li>"YM"：3（2年のあとの、余りの月数）</li>
+<li>"MD"：5（月のあとの、余りの日数）</li>
+<li>"YD"：95（年のあとの、余りの日数）</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>単位を選ぶ</li>
-<li>式を見る</li>
-<li>確かめる</li>
+<li>開始日と終了日のセルを入れる。</li>
+<li>「単位」を選ぶ。</li>
+<li>式の最後の引数が、選んだ単位になっていることを確かめる。</li>
 </ol>
-<div class="note">YMは年を除いた月数です。</div>
+<div class="note">単位は、式の中で「"Y"」のように、引用符で囲まれます。</div>
+<h2>使い分けの目安</h2>
+<ul>
+<li>年齢、勤続年数（年）：Y</li>
+<li>全体の月数（契約期間など）：M</li>
+<li>経過日数：D</li>
+<li>「何年何か月」の「か月」の部分：YM</li>
+</ul>
+<h2>「年と月」の組み合わせ</h2>
+<p>「2年3か月」のように表示するときは、YとYMを組み合わせます。ツールの2つ目の式が、この形です。</p>
+<h2>日数だけなら</h2>
+<p>2つの日付の日数の差は、引き算だけで求められます。=B2-A2</p>
+<h2>向いている場面</h2>
+<ul>
+<li>期間の長さを、年・月・日で求めたい</li>
+<li>経過月数から、更新時期を判断したい</li>
+<li>在籍期間の「何年何か月」を表示したい</li>
+</ul>
+<h2>例</h2>
+<p>契約開始日から今日までの経過月数を知りたかった。単位を「M」にして、=DATEDIF(A2,TODAY(),"M") で、27か月と出た。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>"MD"に不具合がある</b>：月をまたぐと、正しくない値が返る場合がある。Microsoftも、この単位の使用は推奨していない。</li>
+<li><b>"Y"と"YM"の混同</b>：Yは全体の年数、YMは余りの月数。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>"MD"の代わりは？</h3>
+<p>日数の余りは、DATE関数と組み合わせた別の式で求めるほうが、確実です。</p>
+<h2>まとめ</h2>
+<p>年はY、月はM、日はD。「余り」はYM・MD・YD。使い分けを覚えましょう。</p>
 <a class="cta" href="/datedif-formula-builder.html">DATEDIFの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +267,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What the Units Mean</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose the unit</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/datedif-formula-builder.html">DATEDIF Builder</a> you can choose the units Y, M, D, YM, MD and YD.</p>
+<p>DATEDIF's third argument, the unit, has six kinds. You can choose them in "Unit" in <a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a>. Here are the differences.</p>
+<h2>The six units</h2>
+<ul>
+<li><b>"Y"</b>: completed years</li>
+<li><b>"M"</b>: completed months (total)</li>
+<li><b>"D"</b>: days</li>
+<li><b>"YM"</b>: months excluding years (0–11)</li>
+<li><b>"MD"</b>: days excluding years and months</li>
+<li><b>"YD"</b>: days excluding years</li>
+</ul>
+<h2>Example</h2>
+<p>From January 15, 2024 to April 20, 2026:</p>
+<ul>
+<li>"Y": 2 (2 full years)</li>
+<li>"M": 27 (2 years 3 months = 27 months)</li>
+<li>"D": 826 (days)</li>
+<li>"YM": 3 (remaining months after 2 years)</li>
+<li>"MD": 5 (remaining days after months)</li>
+<li>"YD": 95 (remaining days after years)</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Choose the unit</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>Enter the start and end date cells.</li>
+<li>Choose a "Unit".</li>
+<li>Check the last argument of the formula is the chosen unit.</li>
 </ol>
-<div class="note">YM is the months excluding years.</div>
+<div class="note">The unit is enclosed in quotes in the formula, like "Y".</div>
+<h2>Which to use</h2>
+<ul>
+<li>Age or service years: Y</li>
+<li>Total months (such as contract length): M</li>
+<li>Elapsed days: D</li>
+<li>The "months" part of "years and months": YM</li>
+</ul>
+<h2>Combining years and months</h2>
+<p>To show "2 years 3 months", combine Y and YM. The tool's second formula takes this form.</p>
+<h2>For days only</h2>
+<p>The day difference between two dates is just subtraction: =B2-A2</p>
+<h2>Good for</h2>
+<ul>
+<li>Finding a period's length in years, months or days</li>
+<li>Judging renewal timing from elapsed months</li>
+<li>Showing "years and months" of tenure</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted elapsed months from a contract start to today. With unit "M", =DATEDIF(A2,TODAY(),"M") gave 27 months.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"MD" is faulty</b>: across month boundaries it can return wrong values. Microsoft doesn't recommend this unit either.</li>
+<li><b>Mixing "Y" and "YM"</b>: Y is the total years; YM is the remaining months.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What replaces "MD"?</h3>
+<p>Remaining days are more reliably found with a separate formula combined with DATE.</p>
+<h2>Summary</h2>
+<p>Y for years, M for months, D for days; YM, MD, YD for remainders. Learn when to use each.</p>
 <a class="cta" href="/datedif-formula-builder.html">Use "Build a DATEDIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

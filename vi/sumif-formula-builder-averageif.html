@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Trung bình có điều kiện</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Chọn AVERAGEIF</li><li>Nhập các vùng</li><li>Sao chép</li></ul></div>
-<p>Chọn AVERAGEIF trong <a href="/vi/sumif-formula-builder.html">Trình tạo SUMIF</a> sẽ cho công thức chỉ tính trung bình các ô khớp.</p>
+<p lang="en">To average only the cells that meet a condition, use AVERAGEIF. Choosing "AVERAGEIF" in <a href="/vi/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a> builds the formula.</p>
 <h2>Các bước</h2>
 <ol>
-<li>Chọn AVERAGEIF</li>
-<li>Nhập các vùng</li>
-<li>Sao chép</li>
+<li lang="en">Choose "AVERAGEIF" in "Function".</li>
+<li lang="en">Enter "Range to test" and "Condition".</li>
+<li lang="en">In "Range to sum or average", enter the column range to average.</li>
+<li lang="en">Copy the formula with "Copy the first".</li>
 </ol>
-<div class="note">Dùng được theo cách tương tự trong Google Trang tính.</div>
+<div class="note" lang="en">Omitting the average range averages the test range itself.</div>
+<h2>Ví dụ</h2>
+<p lang="en">With departments in column A and scores in column C, the average score for "Sales".</p>
+<ul>
+<li lang="en">First: =AVERAGEIF(A2:A100,"Sales",C2:C100)</li>
+<li lang="en">Second: =AVERAGEIFS(C2:C100,A2:A100,"Sales")</li>
+</ul>
+<h2 lang="en">Relation to SUMIF</h2>
+<p lang="en">An average is sum ÷ count. For the same condition it matches this formula:</p>
+<ul>
+<li lang="en">=SUMIF(A2:A100,"Sales",C2:C100)/COUNTIF(A2:A100,"Sales")</li>
+</ul>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Average scores by department or class</li>
+<li lang="en">The average order amount above a threshold</li>
+<li lang="en">Average unit price by region</li>
+</ul>
+<h2 lang="en">Error when nothing matches</h2>
+<p lang="en">If no cells meet the condition, #DIV/0! results.</p>
+<ul>
+<li lang="en">Fix: =IFERROR(AVERAGEIF(...),"") for a blank.</li>
+</ul>
+<h2 lang="en">Blanks and text</h2>
+<p lang="en">Only number cells are averaged. Blanks and text cells are ignored.</p>
+<h2>Ví dụ</h2>
+<p lang="en">Wanted average overtime by department. =AVERAGEIF(A2:A100,"Sales",D2:D100) gave Sales' average; other departments were done by changing the condition.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Excluding 0</b>: a "&lt;&gt;0" condition averages without zeros.</li>
+<li lang="en"><b>Range sizes</b>: make the criteria and average ranges the same number of rows.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I get a conditional median?</h3>
+<p lang="en">AVERAGEIF has no median feature. You'd need an array formula or MEDIAN combined with IF.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">AVERAGEIF for conditional averages. Prepare for the no-match error.</p>
 <a class="cta" href="/vi/sumif-formula-builder.html">Dùng “Tạo công thức SUMIF hoặc COUNTIF” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/vlookup-formula-builder.html">Tạo công thức VLOOKUP hoặc XLOOKUP</a>: Tạo công thức VLOOKUP và XLOOKUP.</li><li><a href="/vi/textjoin-formula-builder.html">Tạo công thức TEXTJOIN</a>: Tạo công thức TEXTJOIN.</li><li><a href="/vi/column-stats.html">Tổng, trung bình và trung vị của một cột số</a>: Lấy tổng và trung bình của các số đã dán.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

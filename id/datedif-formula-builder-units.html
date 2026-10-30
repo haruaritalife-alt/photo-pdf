@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Arti satuan</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Pilih satuannya</li><li>Lihat rumusnya</li><li>Periksa</li></ul></div>
-<p>Di <a href="/id/datedif-formula-builder.html">Pembuat DATEDIF</a>, Anda dapat memilih satuan Y, M, D, YM, MD, dan YD.</p>
+<p lang="en">DATEDIF's third argument, the unit, has six kinds. You can choose them in "Unit" in <a href="/id/datedif-formula-builder.html">Build a DATEDIF Formula</a>. Here are the differences.</p>
+<h2 lang="en">The six units</h2>
+<ul>
+<li lang="en"><b>"Y"</b>: completed years</li>
+<li lang="en"><b>"M"</b>: completed months (total)</li>
+<li lang="en"><b>"D"</b>: days</li>
+<li lang="en"><b>"YM"</b>: months excluding years (0–11)</li>
+<li lang="en"><b>"MD"</b>: days excluding years and months</li>
+<li lang="en"><b>"YD"</b>: days excluding years</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">From January 15, 2024 to April 20, 2026:</p>
+<ul>
+<li lang="en">"Y": 2 (2 full years)</li>
+<li lang="en">"M": 27 (2 years 3 months = 27 months)</li>
+<li lang="en">"D": 826 (days)</li>
+<li lang="en">"YM": 3 (remaining months after 2 years)</li>
+<li lang="en">"MD": 5 (remaining days after months)</li>
+<li lang="en">"YD": 95 (remaining days after years)</li>
+</ul>
 <h2>Langkah-langkah</h2>
 <ol>
-<li>Pilih satuannya</li>
-<li>Lihat rumusnya</li>
-<li>Periksa</li>
+<li>Isi sel tanggal awal dan akhir.</li>
+<li lang="en">Choose a "Unit".</li>
+<li lang="en">Check the last argument of the formula is the chosen unit.</li>
 </ol>
-<div class="note">YM adalah bulan tanpa menghitung tahun.</div>
+<div class="note" lang="en">The unit is enclosed in quotes in the formula, like "Y".</div>
+<h2>Mana yang dipakai</h2>
+<ul>
+<li lang="en">Age or service years: Y</li>
+<li lang="en">Total months (such as contract length): M</li>
+<li lang="en">Elapsed days: D</li>
+<li lang="en">The "months" part of "years and months": YM</li>
+</ul>
+<h2 lang="en">Combining years and months</h2>
+<p lang="en">To show "2 years 3 months", combine Y and YM. The tool's second formula takes this form.</p>
+<h2 lang="en">For days only</h2>
+<p lang="en">The day difference between two dates is just subtraction: =B2-A2</p>
+<h2>Cocok untuk</h2>
+<ul>
+<li lang="en">Finding a period's length in years, months or days</li>
+<li lang="en">Judging renewal timing from elapsed months</li>
+<li lang="en">Showing "years and months" of tenure</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">Wanted elapsed months from a contract start to today. With unit "M", =DATEDIF(A2,TODAY(),"M") gave 27 months.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"MD" is faulty</b>: across month boundaries it can return wrong values. Microsoft doesn't recommend this unit either.</li>
+<li lang="en"><b>Mixing "Y" and "YM"</b>: Y is the total years; YM is the remaining months.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What replaces "MD"?</h3>
+<p lang="en">Remaining days are more reliably found with a separate formula combined with DATE.</p>
+<h2>Ringkasan</h2>
+<p lang="en">Y for years, M for months, D for days; YM, MD, YD for remainders. Learn when to use each.</p>
 <a class="cta" href="/id/datedif-formula-builder.html">Gunakan “Buat rumus DATEDIF” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/excel-serial-date.html">Konverter Nilai Serial dan Tanggal Excel</a>: Ubah nilai serial dan tanggal Excel.</li><li><a href="/id/date-calculator.html">Hitung Usia, Selisih Hari, dan Pergeseran Tanggal</a>: Hitung usia dan selisih hari antar tanggal.</li><li><a href="/id/excel-if-builder.html">Buat rumus IF</a>: Buat rumus IF.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>

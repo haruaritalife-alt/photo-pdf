@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What the Units Mean</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose the unit</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/en/datedif-formula-builder.html">DATEDIF Builder</a> you can choose the units Y, M, D, YM, MD and YD.</p>
+<p>DATEDIF's third argument, the unit, has six kinds. You can choose them in "Unit" in <a href="/en/datedif-formula-builder.html">Build a DATEDIF Formula</a>. Here are the differences.</p>
+<h2>The six units</h2>
+<ul>
+<li><b>"Y"</b>: completed years</li>
+<li><b>"M"</b>: completed months (total)</li>
+<li><b>"D"</b>: days</li>
+<li><b>"YM"</b>: months excluding years (0–11)</li>
+<li><b>"MD"</b>: days excluding years and months</li>
+<li><b>"YD"</b>: days excluding years</li>
+</ul>
+<h2>Example</h2>
+<p>From January 15, 2024 to April 20, 2026:</p>
+<ul>
+<li>"Y": 2 (2 full years)</li>
+<li>"M": 27 (2 years 3 months = 27 months)</li>
+<li>"D": 826 (days)</li>
+<li>"YM": 3 (remaining months after 2 years)</li>
+<li>"MD": 5 (remaining days after months)</li>
+<li>"YD": 95 (remaining days after years)</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Choose the unit</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>Enter the start and end date cells.</li>
+<li>Choose a "Unit".</li>
+<li>Check the last argument of the formula is the chosen unit.</li>
 </ol>
-<div class="note">YM is the months excluding years.</div>
+<div class="note">The unit is enclosed in quotes in the formula, like "Y".</div>
+<h2>Which to use</h2>
+<ul>
+<li>Age or service years: Y</li>
+<li>Total months (such as contract length): M</li>
+<li>Elapsed days: D</li>
+<li>The "months" part of "years and months": YM</li>
+</ul>
+<h2>Combining years and months</h2>
+<p>To show "2 years 3 months", combine Y and YM. The tool's second formula takes this form.</p>
+<h2>For days only</h2>
+<p>The day difference between two dates is just subtraction: =B2-A2</p>
+<h2>Good for</h2>
+<ul>
+<li>Finding a period's length in years, months or days</li>
+<li>Judging renewal timing from elapsed months</li>
+<li>Showing "years and months" of tenure</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted elapsed months from a contract start to today. With unit "M", =DATEDIF(A2,TODAY(),"M") gave 27 months.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"MD" is faulty</b>: across month boundaries it can return wrong values. Microsoft doesn't recommend this unit either.</li>
+<li><b>Mixing "Y" and "YM"</b>: Y is the total years; YM is the remaining months.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What replaces "MD"?</h3>
+<p>Remaining days are more reliably found with a separate formula combined with DATE.</p>
+<h2>Summary</h2>
+<p>Y for years, M for months, D for days; YM, MD, YD for remainders. Learn when to use each.</p>
 <a class="cta" href="/en/datedif-formula-builder.html">Use "Build a DATEDIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/en/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

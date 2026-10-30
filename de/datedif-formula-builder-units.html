@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Was die Einheiten bedeuten</h1>
 <p class="meta">Veröffentlicht: 19.10.2026 | Aktualisiert: 19.10.2026 | <a href="/about.html">Über uns (Japanisch)</a></p>
 <div class="points"><b>Wichtige Punkte</b><ul><li>Einheit wählen</li><li>Die Formel ansehen</li><li>Prüfen</li></ul></div>
-<p>Im <a href="/de/datedif-formula-builder.html">DATEDIF-Generator</a> können Sie die Einheiten Y, M, D, YM, MD und YD wählen.</p>
+<p lang="en">DATEDIF's third argument, the unit, has six kinds. You can choose them in "Unit" in <a href="/de/datedif-formula-builder.html">Build a DATEDIF Formula</a>. Here are the differences.</p>
+<h2 lang="en">The six units</h2>
+<ul>
+<li lang="en"><b>"Y"</b>: completed years</li>
+<li lang="en"><b>"M"</b>: completed months (total)</li>
+<li lang="en"><b>"D"</b>: days</li>
+<li lang="en"><b>"YM"</b>: months excluding years (0–11)</li>
+<li lang="en"><b>"MD"</b>: days excluding years and months</li>
+<li lang="en"><b>"YD"</b>: days excluding years</li>
+</ul>
+<h2>Beispiel</h2>
+<p lang="en">From January 15, 2024 to April 20, 2026:</p>
+<ul>
+<li lang="en">"Y": 2 (2 full years)</li>
+<li lang="en">"M": 27 (2 years 3 months = 27 months)</li>
+<li lang="en">"D": 826 (days)</li>
+<li lang="en">"YM": 3 (remaining months after 2 years)</li>
+<li lang="en">"MD": 5 (remaining days after months)</li>
+<li lang="en">"YD": 95 (remaining days after years)</li>
+</ul>
 <h2>Schritte</h2>
 <ol>
-<li>Einheit wählen</li>
-<li>Die Formel ansehen</li>
-<li>Prüfen</li>
+<li>Die Zellen für Start- und Enddatum eingeben.</li>
+<li lang="en">Choose a "Unit".</li>
+<li lang="en">Check the last argument of the formula is the chosen unit.</li>
 </ol>
-<div class="note">YM sind die Monate ohne Jahre.</div>
+<div class="note" lang="en">The unit is enclosed in quotes in the formula, like "Y".</div>
+<h2>Was Sie verwenden sollten</h2>
+<ul>
+<li lang="en">Age or service years: Y</li>
+<li lang="en">Total months (such as contract length): M</li>
+<li lang="en">Elapsed days: D</li>
+<li lang="en">The "months" part of "years and months": YM</li>
+</ul>
+<h2 lang="en">Combining years and months</h2>
+<p lang="en">To show "2 years 3 months", combine Y and YM. The tool's second formula takes this form.</p>
+<h2 lang="en">For days only</h2>
+<p lang="en">The day difference between two dates is just subtraction: =B2-A2</p>
+<h2>Gut geeignet für</h2>
+<ul>
+<li lang="en">Finding a period's length in years, months or days</li>
+<li lang="en">Judging renewal timing from elapsed months</li>
+<li lang="en">Showing "years and months" of tenure</li>
+</ul>
+<h2>Beispiel</h2>
+<p lang="en">Wanted elapsed months from a contract start to today. With unit "M", =DATEDIF(A2,TODAY(),"M") gave 27 months.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"MD" is faulty</b>: across month boundaries it can return wrong values. Microsoft doesn't recommend this unit either.</li>
+<li lang="en"><b>Mixing "Y" and "YM"</b>: Y is the total years; YM is the remaining months.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What replaces "MD"?</h3>
+<p lang="en">Remaining days are more reliably found with a separate formula combined with DATE.</p>
+<h2>Zusammenfassung</h2>
+<p lang="en">Y for years, M for months, D for days; YM, MD, YD for remainders. Learn when to use each.</p>
 <a class="cta" href="/de/datedif-formula-builder.html">„Eine DATEDIF-Formel erstellen“ verwenden (kostenlos)</a>
 <h2>Passende Werkzeuge dazu</h2><ul><li><a href="/de/excel-serial-date.html">Umrechner für Excel-Seriennummernwert und Datum</a>: Excel-Seriennummernwerte und Daten umrechnen.</li><li><a href="/de/date-calculator.html">Alter, Tage zwischen Daten und Datumsverschiebungen berechnen</a>: Alter und Tage zwischen zwei Daten berechnen.</li><li><a href="/de/excel-if-builder.html">Eine IF-Formel erstellen</a>: Erstellen Sie eine IF-Formel.</li></ul>
 <div class="tip"><p>Wenn Ihnen diese Anleitung geholfen hat, freuen wir uns über ein kleines Trinkgeld.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Trinkgeld senden (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Geschenk senden (Amazon-Wunschliste)</a></div>

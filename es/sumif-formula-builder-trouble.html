@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Qué hacer cuando no funciona</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
 <div class="points"><b>Puntos clave</b><ul><li>Comprueba el archivo</li><li>Comprueba el tamaño</li><li>Prueba en otro dispositivo</li></ul></div>
-<p>Si <a href="/es/sumif-formula-builder.html">Creador de SUMIF</a> no funciona, revisa lo siguiente.</p>
-<h2>Pasos</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/es/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the range isn't in the "A2:A100" form, or the condition is empty. SUMIF and AVERAGEIF also need the sum or average range.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>Result is 0</b>: no cells meet the condition. Often full-width vs half-width differences, extra spaces or notation variation.</li>
+<li lang="en"><b>#VALUE! appears</b>: range sizes don't match (SUMIFS etc.).</li>
+<li lang="en"><b>#DIV/0! appears</b>: AVERAGEIF with no matching cells.</li>
+<li lang="en"><b>#NAME? appears</b>: the function name is wrong.</li>
+<li lang="en"><b>Numbers aren't summed</b>: the numbers in the sum range are text.</li>
+<li lang="en"><b>Date conditions don't work</b>: the dates are text.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Comprueba el archivo</li>
-<li>Comprueba el tamaño</li>
-<li>Prueba en otro dispositivo</li>
+<li lang="en">Check the condition text and the cell text are exactly the same.</li>
+<li lang="en">Check full-width/half-width and extra spaces.</li>
+<li lang="en">Check range sizes match.</li>
+<li lang="en">Check the sum range holds numbers.</li>
 </ol>
-<div class="note">Si no aparece ninguna fórmula, comprueba que los rangos estén escritos como A2:A100 y que haya una condición.</div>
+<div class="note" lang="en">If numbers display left-aligned, they may be text.</div>
+<h2 lang="en">When numbers are text</h2>
+<ul>
+<li lang="en">Select the cells and choose "Convert to Number" from the green triangle mark</li>
+<li lang="en">Or enter 1 in a spare cell, copy it, select the targets and use "Paste Special" with "Multiply"</li>
+</ul>
+<h2 lang="en">Special characters in conditions</h2>
+<p lang="en">"*" and "?" are wildcards. To search for them as characters, prefix with "~".</p>
+<ul>
+<li lang="en">Example: "~*" searches for the character "*"</li>
+</ul>
+<h2>Ejemplo</h2>
+<p lang="en">Totalling by "Tokyo" gave 0. The cell was "Tokyo " with a trailing space. Removing it gave the total.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Range lacks $</b>: ranges shift when the formula is copied. Fix with $.</li>
+<li lang="en"><b>Including the header row</b>: including the header in the range is usually fine, but misaligns with the sum range.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is it case-sensitive?</h3>
+<p lang="en">No. "A" and "a" are treated the same.</p>
+<h2>Resumen</h2>
+<p lang="en">Text matches, range sizes, number form. Check these three.</p>
 <a class="cta" href="/es/sumif-formula-builder.html">Usar «Crear una fórmula SUMIF o COUNTIF» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/vlookup-formula-builder.html">Crear una fórmula VLOOKUP o XLOOKUP</a>: Crea fórmulas VLOOKUP y XLOOKUP.</li><li><a href="/es/textjoin-formula-builder.html">Crear una fórmula TEXTJOIN</a>: Crea una fórmula TEXTJOIN.</li><li><a href="/es/column-stats.html">Suma, promedio y mediana de una columna de números</a>: Obtén la suma y el promedio de los números pegados.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

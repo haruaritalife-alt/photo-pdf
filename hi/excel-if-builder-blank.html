@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>खाली मान लौटाना</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>नतीजे वाला खाना खाली करें</li><li>फ़ॉर्मूला देखें</li><li>कॉपी करें</li></ul></div>
-<p><a href="/hi/excel-if-builder.html">IF बनाने वाला टूल</a> में नतीजे का खाना खाली करने पर ऐसा फ़ॉर्मूला मिलता है जो खाली मान लौटाता है।</p>
+<p lang="en">With IF, when the condition fails you may want to show nothing. In that case leave the result blank. <a href="/hi/excel-if-builder.html">Build an IF Formula</a> builds a formula returning an empty string ("") just by leaving the result field empty.</p>
 <h2>चरण</h2>
 <ol>
-<li>नतीजे वाला खाना खाली करें</li>
-<li>फ़ॉर्मूला देखें</li>
-<li>कॉपी करें</li>
+<li lang="en">Enter the cell, comparison and value.</li>
+<li lang="en">Enter what to show in "Result if true".</li>
+<li lang="en">Leave "Result if false" empty.</li>
+<li lang="en">Check the formula ends with "".</li>
 </ol>
-<div class="note">फ़ॉर्मूले में इसे "" लिखा जाता है।</div>
+<div class="note" lang="en">"" is an empty string, meaning "show nothing".</div>
+<h2>उदाहरण</h2>
+<p lang="en">Showing "Pass" only when A2 is 60 or more and blank otherwise.</p>
+<ul>
+<li lang="en">=IF(A2&gt;=60,"Pass","")</li>
+</ul>
+<h2 lang="en">Empty string vs 0</h2>
+<ul>
+<li lang="en"><b>"" (empty string)</b>: looks blank, but the cell holds an "empty string".</li>
+<li lang="en"><b>0</b>: the number 0 is displayed.</li>
+<li lang="en"><b>A cell with nothing</b>: truly blank.</li>
+</ul>
+<h2 lang="en">Effect on calculation</h2>
+<p lang="en">Cells returning "" look empty but need care in calculation.</p>
+<ul>
+<li lang="en">SUM and AVERAGE: empty strings are ignored</li>
+<li lang="en">Arithmetic with "+": gives #VALUE!</li>
+<li lang="en">COUNTA: counted (judged not empty)</li>
+<li lang="en">COUNTBLANK: counted (judged empty)</li>
+</ul>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">Showing only items that meet the condition</li>
+<li lang="en">Making the look cleaner</li>
+<li lang="en">Tidying tables for printing or submission</li>
+</ul>
+<h2 lang="en">When used in calculation</h2>
+<p lang="en">For cells used later in calculation, return 0 rather than "", or think of a method other than IF.</p>
+<ul>
+<li lang="en">Example: =IF(A2&gt;=60,B2,0)</li>
+<li lang="en">Another method hides zeros through the display format</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">Wanted to show only passers' names and leave others blank. Making the fail result "" tidied the list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looks blank but isn't</b>: ISBLANK returns FALSE. Test with whether LEN is 0.</li>
+<li lang="en"><b>Affects charts</b>: empty strings may be treated as 0 in charts.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want blank when the condition is true?</h3>
+<p lang="en">Leave the "Result if true" field empty.</p>
+<h2>सारांश</h2>
+<p lang="en">Leave the result field empty for a blank, and you get a "" formula.</p>
 <a class="cta" href="/hi/excel-if-builder.html">“IF फ़ॉर्मूला बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/sumif-formula-builder.html">SUMIF या COUNTIF फ़ॉर्मूला बनाएँ</a>: SUMIF और COUNTIF फ़ॉर्मूले बनाएँ।</li><li><a href="/hi/vlookup-formula-builder.html">VLOOKUP या XLOOKUP फ़ॉर्मूला बनाएँ</a>: VLOOKUP और XLOOKUP फ़ॉर्मूले बनाएँ।</li><li><a href="/hi/excel-text-format-builder.html">Excel का TEXT फ़ॉर्मूला बनाएँ</a>: TEXT फ़ॉर्मूला बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

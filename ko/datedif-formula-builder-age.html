@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>나이 계산하기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>생년월일과 오늘 날짜 입력</li><li>Y 선택</li><li>복사</li></ul></div>
-<p><a href="/ko/datedif-formula-builder.html">DATEDIF 만들기</a>에서 Y를 고르면 만 나이를 구하는 수식이 됩니다.</p>
+<p lang="en">Finding a full-years age from a birth date is DATEDIF's classic use. Choose "Y" in <a href="/ko/datedif-formula-builder.html">Build a DATEDIF Formula</a> to build an age formula.</p>
 <h2>순서</h2>
 <ol>
-<li>생년월일과 오늘 날짜 입력</li>
-<li>Y 선택</li>
-<li>복사</li>
+<li lang="en">Enter the birth-date cell in "Start date cell".</li>
+<li lang="en">Enter the cell of the reference date in "End date cell".</li>
+<li lang="en">Choose "Y" in "Unit".</li>
+<li lang="en">Copy the "DATEDIF formula".</li>
 </ol>
-<div class="note">종료일에 TODAY()를 쓰는 방법도 있습니다.</div>
+<div class="note" lang="en">"Y" returns completed years (increases only once the birthday arrives).</div>
+<h2>예</h2>
+<p lang="en">With a birth date in A2 and a reference date in B2, the age in full years is:</p>
+<ul>
+<li lang="en">=DATEDIF(A2,B2,"Y")</li>
+</ul>
+<h2 lang="en">To get today's age</h2>
+<p lang="en">Make the reference date today. Rewrite the end-date cell in the built formula as TODAY().</p>
+<ul>
+<li lang="en">=DATEDIF(A2,TODAY(),"Y")</li>
+</ul>
+<p lang="en">It updates to that day's age every time you open the file.</p>
+<h2 lang="en">Full-year age vs traditional counting</h2>
+<ul>
+<li lang="en"><b>Full-year age</b>: increases each birthday (the common modern way)</li>
+<li lang="en"><b>Traditional (kazoedoshi)</b>: counts the birth year as 1 and adds one on New Year's Day</li>
+</ul>
+<p lang="en">This tool's formula gives full-year age.</p>
+<h2 lang="en">Showing age and months</h2>
+<p lang="en">To show something like "5 years 3 months", use the tool's second formula.</p>
+<ul>
+<li lang="en">=DATEDIF(A2,B2,"Y")&amp;" years "&amp;DATEDIF(A2,B2,"YM")&amp;" months"</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Building an age column in a list</li>
+<li lang="en">Checking age eligibility for applications</li>
+<li lang="en">Knowing a child's age in months</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted an age column in an employee list. DATEDIF gave full-year ages from the birth-date column and today's date. It updates daily, so no manual entry is needed.</p>
+<h2 lang="en">Verifying</h2>
+<p lang="en">Someone born April 15, 2000 is 25 on April 14, 2026 (the day before the birthday), and turns 26 on April 15, 2026.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Birth date is text</b>: if not recognised as a date, #VALUE! results.</li>
+<li lang="en"><b>Reference date before birth date</b>: #NUM!.</li>
+<li lang="en"><b>Leap-day birthdays</b>: treatment of Feb 29 births can vary in non-leap years.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can YEARFRAC give age too?</h3>
+<p lang="en">It can, but as a decimal. Truncating with INT gives something close to full-year age. DATEDIF is more reliable.</p>
+<h2>요약</h2>
+<p lang="en">Use DATEDIF "Y" for age. Making the reference date TODAY() updates automatically.</p>
 <a class="cta" href="/ko/datedif-formula-builder.html">“DATEDIF 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-serial-date.html">엑셀 일련번호·날짜 변환기</a>: 엑셀의 일련번호와 날짜를 변환합니다.</li><li><a href="/ko/date-calculator.html">나이, 날짜 간 일수, 날짜 가감 계산</a>: 나이와 날짜 간 일수를 계산합니다.</li><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

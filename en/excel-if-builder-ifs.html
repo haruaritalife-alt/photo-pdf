@@ -201,14 +201,60 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>IF and IFS Compared</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>Compare the two</li><li>Pick one</li></ul></div>
-<p><a href="/en/excel-if-builder.html">IF Builder</a> shows the IF and IFS formulas side by side.</p>
+<p>When conditions split into three or more branches, stacking IFs gets hard to read. That's where IFS comes in. <a href="/en/excel-if-builder.html">Build an IF Formula</a> outputs IF and IFS formulas side by side.</p>
+<h2>IF vs IFS</h2>
+<ul>
+<li><b>IF</b>: one condition; two outcomes, "true" and "false".</li>
+<li><b>IFS</b>: several conditions written in order; returns the result of the first that holds.</li>
+</ul>
+<h2>The form this tool outputs</h2>
+<ul>
+<li>IF: =IF(A2&gt;=60,"Pass","Fail")</li>
+<li>IFS: =IFS(A2&gt;=60,"Pass",TRUE,"Fail")</li>
+</ul>
+<p>The "TRUE" in IFS is how you specify the result "when no condition held".</p>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>Compare the two</li>
-<li>Pick one</li>
+<li>Enter the cell, comparison, value and results.</li>
+<li>Compare the "IF formula" and "IFS formula".</li>
+<li>To add conditions, append "condition,result" to the IFS formula.</li>
 </ol>
-<div class="note">IFS makes it easier to add more conditions.</div>
+<div class="note">IFS works in newer Excel (2019 and later) and Google Sheets.</div>
+<h2>Adding conditions</h2>
+<p>Splitting scores into A, B, C.</p>
+<ul>
+<li>=IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<p>It checks from the top and returns the first match: A for 80 or more, B for 60 or more, otherwise C.</p>
+<h2>Compared with stacked IFs</h2>
+<ul>
+<li>Stacked IF: =IF(A2&gt;=80,"A",IF(A2&gt;=60,"B","C"))</li>
+<li>IFS: =IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<p>The more conditions, the more readable IFS is.</p>
+<h2>Good for</h2>
+<ul>
+<li>Splitting results into three or more tiers</li>
+<li>Splitting fee tiers by amount</li>
+<li>Changing judgement by period</li>
+</ul>
+<h2>Cautions</h2>
+<ul>
+<li><b>Order matters</b>: conditions are checked in the order written. Writing broader ones first gives unintended results.</li>
+<li><b>TRUE at the end</b>: put TRUE last for when nothing matches. Without it you get #N/A.</li>
+</ul>
+<h2>Example</h2>
+<p>Writing a five-tier rating with stacked IFs became unreadable with brackets. Rewriting with IFS made it clear.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Not usable in old Excel</b>: IFS doesn't work in Excel 2016 and earlier. Use stacked IFs.</li>
+<li><b>#N/A appears</b>: the final TRUE is missing.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Are there other functions?</h3>
+<p>For range-banded judgement, VLOOKUP approximate match and LOOKUP also work.</p>
+<h2>Summary</h2>
+<p>IFS for three or more conditions. Don't forget TRUE at the end.</p>
 <a class="cta" href="/en/excel-if-builder.html">Use "Build an IF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/excel-text-format-builder.html">Build an Excel TEXT Formula</a>: Build a TEXT formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

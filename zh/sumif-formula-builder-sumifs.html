@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>用于多个条件的 SUMIFS</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>生成公式</li><li>查看第二个</li><li>添加条件</li></ul></div>
-<p><a href="/zh/sumif-formula-builder.html">SUMIF公式生成器</a>还会显示可用于多个条件的 SUMIFS 类公式。</p>
+<p lang="en">When there are two or more conditions, like "Tokyo" and "April", use SUMIFS. <a href="/zh/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a> lists the SUMIFS formula in the second field.</p>
+<h2 lang="en">SUMIF vs SUMIFS</h2>
+<ul>
+<li lang="en"><b>SUMIF</b>: one condition. Argument order is "criteria range, criterion, sum range"</li>
+<li lang="en"><b>SUMIFS</b>: multiple conditions. Argument order is "sum range, criteria range 1, criterion 1, criteria range 2, criterion 2…"</li>
+</ul>
+<p lang="en">Note that <b>the sum range comes first</b>.</p>
 <h2>步骤</h2>
 <ol>
-<li>生成公式</li>
-<li>查看第二个</li>
-<li>添加条件</li>
+<li lang="en">Enter the range and condition.</li>
+<li lang="en">Check the "SUMIFS-type formula usable for multiple conditions".</li>
+<li lang="en">Copy with "Copy the second".</li>
+<li lang="en">To add conditions, append "criteria range, criterion" to the end.</li>
 </ol>
-<div class="note">在 SUMIFS 中,求和范围放在最前面。</div>
+<div class="note" lang="en">SUMIFS targets only cells meeting all conditions (AND).</div>
+<h2>示例</h2>
+<p lang="en">Column A is region, B is month, C is sales. The formula to total "Tokyo" sales:</p>
+<ul>
+<li lang="en">=SUMIFS(C2:C100,A2:A100,"Tokyo")</li>
+</ul>
+<p lang="en">Adding an "April" condition:</p>
+<ul>
+<li lang="en">=SUMIFS(C2:C100,A2:A100,"Tokyo",B2:B100,"April")</li>
+</ul>
+<h2 lang="en">"Or" conditions</h2>
+<p lang="en">SUMIFS targets items meeting all conditions (AND). For "either" conditions (OR) like "Tokyo or Osaka", add them:</p>
+<ul>
+<li lang="en">=SUMIFS(C2:C100,A2:A100,"Tokyo")+SUMIFS(C2:C100,A2:A100,"Osaka")</li>
+</ul>
+<h2>适合</h2>
+<ul>
+<li lang="en">Totalling sales meeting both region and month</li>
+<li lang="en">Totalling over a specified period (date from and to)</li>
+<li lang="en">Counting people by several conditions (COUNTIFS)</li>
+</ul>
+<h2 lang="en">Period example</h2>
+<p lang="en">=SUMIFS(C2:C100,A2:A100,"&gt;="&amp;DATE(2026,4,1),A2:A100,"&lt;="&amp;DATE(2026,4,30))</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Argument order</b>: the sum range's position differs between SUMIF and SUMIFS.</li>
+<li lang="en"><b>Range sizes</b>: make all ranges the same number of rows.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How many conditions can be written?</h3>
+<p lang="en">Up to 127.</p>
+<h2>小结</h2>
+<p lang="en">SUMIFS for multiple conditions. Don't forget the sum range comes first.</p>
 <a class="cta" href="/zh/sumif-formula-builder.html">使用“生成 SUMIF 或 COUNTIF 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/zh/textjoin-formula-builder.html">生成 TEXTJOIN 公式</a>: 生成 TEXTJOIN 公式。</li><li><a href="/zh/column-stats.html">一列数字的合计、平均值和中位数</a>: 算出所粘贴数字的合计和平均值。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

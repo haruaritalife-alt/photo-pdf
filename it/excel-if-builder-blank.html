@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Restituire un valore vuoto</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Svuota il campo del risultato</li><li>Guarda la formula</li><li>Copialo</li></ul></div>
-<p>Svuotando un campo del risultato in <a href="/it/excel-if-builder.html">Creatore di IF</a> si ottiene una formula che restituisce un valore vuoto.</p>
+<p lang="en">With IF, when the condition fails you may want to show nothing. In that case leave the result blank. <a href="/it/excel-if-builder.html">Build an IF Formula</a> builds a formula returning an empty string ("") just by leaving the result field empty.</p>
 <h2>Passaggi</h2>
 <ol>
-<li>Svuota il campo del risultato</li>
-<li>Guarda la formula</li>
-<li>Copialo</li>
+<li lang="en">Enter the cell, comparison and value.</li>
+<li lang="en">Enter what to show in "Result if true".</li>
+<li lang="en">Leave "Result if false" empty.</li>
+<li lang="en">Check the formula ends with "".</li>
 </ol>
-<div class="note">Nella formula si scrive "".</div>
+<div class="note" lang="en">"" is an empty string, meaning "show nothing".</div>
+<h2>Esempio</h2>
+<p lang="en">Showing "Pass" only when A2 is 60 or more and blank otherwise.</p>
+<ul>
+<li lang="en">=IF(A2&gt;=60,"Pass","")</li>
+</ul>
+<h2 lang="en">Empty string vs 0</h2>
+<ul>
+<li lang="en"><b>"" (empty string)</b>: looks blank, but the cell holds an "empty string".</li>
+<li lang="en"><b>0</b>: the number 0 is displayed.</li>
+<li lang="en"><b>A cell with nothing</b>: truly blank.</li>
+</ul>
+<h2 lang="en">Effect on calculation</h2>
+<p lang="en">Cells returning "" look empty but need care in calculation.</p>
+<ul>
+<li lang="en">SUM and AVERAGE: empty strings are ignored</li>
+<li lang="en">Arithmetic with "+": gives #VALUE!</li>
+<li lang="en">COUNTA: counted (judged not empty)</li>
+<li lang="en">COUNTBLANK: counted (judged empty)</li>
+</ul>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Showing only items that meet the condition</li>
+<li lang="en">Making the look cleaner</li>
+<li lang="en">Tidying tables for printing or submission</li>
+</ul>
+<h2 lang="en">When used in calculation</h2>
+<p lang="en">For cells used later in calculation, return 0 rather than "", or think of a method other than IF.</p>
+<ul>
+<li lang="en">Example: =IF(A2&gt;=60,B2,0)</li>
+<li lang="en">Another method hides zeros through the display format</li>
+</ul>
+<h2>Esempio</h2>
+<p lang="en">Wanted to show only passers' names and leave others blank. Making the fail result "" tidied the list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looks blank but isn't</b>: ISBLANK returns FALSE. Test with whether LEN is 0.</li>
+<li lang="en"><b>Affects charts</b>: empty strings may be treated as 0 in charts.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want blank when the condition is true?</h3>
+<p lang="en">Leave the "Result if true" field empty.</p>
+<h2>Riepilogo</h2>
+<p lang="en">Leave the result field empty for a blank, and you get a "" formula.</p>
 <a class="cta" href="/it/excel-if-builder.html">Usa “Creare una formula IF” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/sumif-formula-builder.html">Creare una formula SUMIF o COUNTIF</a>: Crea formule SUMIF e COUNTIF.</li><li><a href="/it/vlookup-formula-builder.html">Creare una formula VLOOKUP o XLOOKUP</a>: Crea formule VLOOKUP e XLOOKUP.</li><li><a href="/it/excel-text-format-builder.html">Creare una formula TEXT di Excel</a>: Crea una formula TEXT.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>

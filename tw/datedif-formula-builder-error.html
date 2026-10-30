@@ -201,14 +201,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>出現 #NUM! 時</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>檢查日期</li><li>調整順序</li><li>再試一次</li></ul></div>
-<p>在<a href="/tw/datedif-formula-builder.html">DATEDIF生成器</a>生成的公式中出現 #NUM!,表示開始日期晚於結束日期。</p>
-<h2>步驟</h2>
+<p lang="en">DATEDIF shows "#NUM!". Mostly the start and end dates are reversed. Here is how to handle errors after building a formula with <a href="/tw/datedif-formula-builder.html">Build a DATEDIF Formula</a>.</p>
+<h2 lang="en">Main causes of #NUM!</h2>
+<ul>
+<li lang="en"><b>Start date after end date</b>: DATEDIF requires start ≤ end.</li>
+<li lang="en"><b>A non-date value</b>: the cell isn't recognised as a date (this more often gives #VALUE!).</li>
+</ul>
+<h2 lang="en">Steps (handling)</h2>
 <ol>
-<li>檢查日期</li>
-<li>調整順序</li>
-<li>再試一次</li>
+<li lang="en">Check you haven't swapped the start and end cells.</li>
+<li lang="en">If the start may be after the end, align the order with MIN and MAX.</li>
+<li lang="en">Check the cells are dates.</li>
 </ol>
-<div class="note">試著交換這兩個日期。</div>
+<div class="note" lang="en">If start and end are the same day, the result is 0, not an error.</div>
+<h2 lang="en">A formula that orders them automatically</h2>
+<p lang="en">When you don't know which comes first:</p>
+<ul>
+<li lang="en">=DATEDIF(MIN(A2,B2),MAX(A2,B2),"D")</li>
+</ul>
+<h2 lang="en">How to check a date</h2>
+<ul>
+<li lang="en">If =ISNUMBER(A2) is TRUE, it's recognised as a date (serial value).</li>
+<li lang="en">If left-aligned, it's likely text.</li>
+</ul>
+<h2 lang="en">Fixing text dates</h2>
+<ul>
+<li lang="en">DATEVALUE function: =DATEVALUE("2026/4/15")</li>
+<li lang="en">Set the cell format to "Date" and re-enter</li>
+<li lang="en">"Data" → "Text to Columns" can convert to dates</li>
+</ul>
+<h2 lang="en">Other errors</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: the start or end can't be read as a date, or the unit is invalid.</li>
+<li lang="en"><b>#NAME?</b>: a typo in the function name.</li>
+<li lang="en"><b>#REF!</b>: a referenced cell was deleted.</li>
+</ul>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Identifying the cause of errors</li>
+<li lang="en">Finding date entry mistakes</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Computing tenure for someone with a blank retirement date gave #NUM!. A blank counts as 0 (January 0, 1900), which is before the start date. IF was used to skip blanks.</p>
+<ul>
+<li lang="en">=IF(B2="","",DATEDIF(A2,B2,"Y"))</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Future dates</b>: a future start is fine if the end is later still.</li>
+<li lang="en"><b>Dates with times</b>: times are ignored.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How can I avoid errors on blanks?</h3>
+<p lang="en">Use IF to return an empty string when blank.</p>
+<h2>小結</h2>
+<p lang="en">For #NUM!, suspect date order. Also watch for blanks and text dates.</p>
 <a class="cta" href="/tw/datedif-formula-builder.html">使用「生成 DATEDIF 公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/excel-serial-date.html">Excel 序列值與日期轉換器</a>: 轉換 Excel 的序列值和日期。</li><li><a href="/tw/date-calculator.html">計算年齡、日期間隔天數和日期加減</a>：計算年齡和兩個日期之間的天數。</li><li><a href="/tw/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

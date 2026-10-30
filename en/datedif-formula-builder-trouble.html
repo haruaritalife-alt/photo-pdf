@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/datedif-formula-builder.html">DATEDIF Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but it isn't giving the expected result. Here are common troubles with <a href="/en/datedif-formula-builder.html">Build a DATEDIF Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the start or end date cell isn't in the "A2" form (half-width, column letters + row number).</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>#NUM! appears</b>: the start date is after the end date.</li>
+<li><b>#VALUE! appears</b>: a cell isn't recognised as a date.</li>
+<li><b>#NAME? appears</b>: DATEDIF may be unavailable in old Excel or some environments.</li>
+<li><b>Age is off by one</b>: the judgement around the birthday. Check the reference date.</li>
+<li><b>"MD" result is odd</b>: a faulty unit. Find it with another formula.</li>
+<li><b>Doesn't appear in suggestions</b>: DATEDIF doesn't show in the function list or autocomplete. It works if typed in full.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the start date is before the end date.</li>
+<li>Check both cells are dates with ISNUMBER.</li>
+<li>Check the unit is enclosed in quotes.</li>
 </ol>
-<div class="note">If no formula appears, check that the date cells are written like A2.</div>
+<div class="note">Entering dates with dots like "2026.4.15" may not be recognised as dates.</div>
+<h2>Why DATEDIF isn't in the list</h2>
+<p>DATEDIF is kept for compatibility with old spreadsheet software and doesn't appear in Excel's function list. Still, it works if you type it.</p>
+<h2>How to enter dates</h2>
+<ul>
+<li>"2026/4/15" or "2026-4-15": usually recognised as dates</li>
+<li>"April 15, 2026": usually recognised depending on the locale</li>
+<li>Era abbreviations like "R8.4.15": may not be recognised in some environments</li>
+</ul>
+<h2>Cells with times</h2>
+<p>Even with times, DATEDIF calculates by the date part.</p>
+<h2>Example</h2>
+<p>The start date was entered as "2026.4.15" and gave #VALUE!. Changing to "2026/4/15" calculated fine.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>TODAY() updates</b>: it updates each time the file opens. For a fixed date, enter the date.</li>
+<li><b>Reference shifts</b>: when copying the formula down, check references are as intended.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does it work in Google Sheets too?</h3>
+<p>Yes. DATEDIF works in Google Sheets.</p>
+<h2>Summary</h2>
+<p>Date order, date form, unit quotes. Check these three.</p>
 <a class="cta" href="/en/datedif-formula-builder.html">Use "Build a DATEDIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/en/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

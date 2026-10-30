@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>無法正常使用時的處理辦法</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>檢查檔案</li><li>確認大小</li><li>換一臺裝置試試</li></ul></div>
-<p>如果<a href="/tw/datedif-formula-builder.html">DATEDIF生成器</a>無法使用,請檢查以下幾點。</p>
-<h2>步驟</h2>
+<p lang="en">You built the formula but it isn't giving the expected result. Here are common troubles with <a href="/tw/datedif-formula-builder.html">Build a DATEDIF Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the start or end date cell isn't in the "A2" form (half-width, column letters + row number).</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#NUM! appears</b>: the start date is after the end date.</li>
+<li lang="en"><b>#VALUE! appears</b>: a cell isn't recognised as a date.</li>
+<li lang="en"><b>#NAME? appears</b>: DATEDIF may be unavailable in old Excel or some environments.</li>
+<li lang="en"><b>Age is off by one</b>: the judgement around the birthday. Check the reference date.</li>
+<li lang="en"><b>"MD" result is odd</b>: a faulty unit. Find it with another formula.</li>
+<li lang="en"><b>Doesn't appear in suggestions</b>: DATEDIF doesn't show in the function list or autocomplete. It works if typed in full.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>檢查檔案</li>
-<li>確認大小</li>
-<li>換一臺裝置試試</li>
+<li lang="en">Check the start date is before the end date.</li>
+<li lang="en">Check both cells are dates with ISNUMBER.</li>
+<li lang="en">Check the unit is enclosed in quotes.</li>
 </ol>
-<div class="note">如果沒有出現公式,請確認日期單元格寫成 A2 這樣的形式。</div>
+<div class="note" lang="en">Entering dates with dots like "2026.4.15" may not be recognised as dates.</div>
+<h2 lang="en">Why DATEDIF isn't in the list</h2>
+<p lang="en">DATEDIF is kept for compatibility with old spreadsheet software and doesn't appear in Excel's function list. Still, it works if you type it.</p>
+<h2 lang="en">How to enter dates</h2>
+<ul>
+<li lang="en">"2026/4/15" or "2026-4-15": usually recognised as dates</li>
+<li lang="en">"April 15, 2026": usually recognised depending on the locale</li>
+<li lang="en">Era abbreviations like "R8.4.15": may not be recognised in some environments</li>
+</ul>
+<h2 lang="en">Cells with times</h2>
+<p lang="en">Even with times, DATEDIF calculates by the date part.</p>
+<h2>示例</h2>
+<p lang="en">The start date was entered as "2026.4.15" and gave #VALUE!. Changing to "2026/4/15" calculated fine.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>TODAY() updates</b>: it updates each time the file opens. For a fixed date, enter the date.</li>
+<li lang="en"><b>Reference shifts</b>: when copying the formula down, check references are as intended.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does it work in Google Sheets too?</h3>
+<p lang="en">Yes. DATEDIF works in Google Sheets.</p>
+<h2>小結</h2>
+<p lang="en">Date order, date form, unit quotes. Check these three.</p>
 <a class="cta" href="/tw/datedif-formula-builder.html">使用「生成 DATEDIF 公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/excel-serial-date.html">Excel 序列值與日期轉換器</a>: 轉換 Excel 的序列值和日期。</li><li><a href="/tw/date-calculator.html">計算年齡、日期間隔天數和日期加減</a>：計算年齡和兩個日期之間的天數。</li><li><a href="/tw/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

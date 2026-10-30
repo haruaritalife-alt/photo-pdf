@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>연과 월로 표시하기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>수식 만들기</li><li>두 번째 보기</li><li>복사</li></ul></div>
-<p><a href="/ko/datedif-formula-builder.html">DATEDIF 만들기</a>는 연과 월을 글자로 이은 수식도 함께 보여 줍니다.</p>
+<p lang="en">You want years and months side by side, like "3 years 5 months". The "formula showing years and months" in <a href="/ko/datedif-formula-builder.html">Build a DATEDIF Formula</a> is for that.</p>
+<h2 lang="en">The formula's form</h2>
+<p lang="en">The formula in the second field has this form:</p>
+<ul>
+<li lang="en">=DATEDIF(A2,B2,"Y")&amp;" years "&amp;DATEDIF(A2,B2,"YM")&amp;" months"</li>
+</ul>
+<h2>작동 방식</h2>
+<ol>
+<li lang="en">DATEDIF(A2,B2,"Y"): completed years</li>
+<li lang="en">DATEDIF(A2,B2,"YM"): months excluding years</li>
+<li lang="en">Joined with "&amp;", with the words "years" and "months" between</li>
+</ol>
+<p lang="en">For example, 3 full years and 5 remaining months displays "3 years 5 months".</p>
 <h2>순서</h2>
 <ol>
-<li>수식 만들기</li>
-<li>두 번째 보기</li>
-<li>복사</li>
+<li>시작일과 종료일 셀을 입력합니다.</li>
+<li lang="en">Check the "Formula showing years and months".</li>
+<li lang="en">Copy with "Copy the second".</li>
 </ol>
-<div class="note">결과는 글자입니다.</div>
+<div class="note" lang="en">The result is text. It can't be used in calculation.</div>
+<h2 lang="en">Changing the display</h2>
+<p lang="en">The " years " and " months" parts inside the formula can be freely rewritten.</p>
+<ul>
+<li lang="en">Change wording to suit, e.g. "yrs" and "mos"</li>
+<li lang="en">Remove the spaces for a tighter look</li>
+</ul>
+<h2 lang="en">Adding days</h2>
+<p lang="en">To show remaining days too, add "MD". But "MD" is faulty, so use caution.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Showing tenure as years and months</li>
+<li lang="en">Showing remaining terms of contracts or warranties</li>
+<li lang="en">Showing a child's age in years and months</li>
+</ul>
+<h2 lang="en">When it's 0 years</h2>
+<p lang="en">Under one year it shows like "0 years 5 months". To omit 0 years, combine with IF.</p>
+<ul>
+<li lang="en">Example: =IF(DATEDIF(A2,B2,"Y")=0,"",DATEDIF(A2,B2,"Y")&amp;" years ")&amp;DATEDIF(A2,B2,"YM")&amp;" months"</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted employees' tenure shown as "3 years 5 months". Copying the second formula into a column lined up everyone's tenure.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Can't sort</b>: it's text, so it won't sort by years. For sorting, prepare separate columns with Y or M values.</li>
+<li lang="en"><b>#NUM!</b>: the start date is after the end date.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want it in another language?</h3>
+<p lang="en">Rewrite the words inside the formula as you like.</p>
+<h2>요약</h2>
+<p lang="en">For years and months side by side, use the second formula. The wording is freely editable.</p>
 <a class="cta" href="/ko/datedif-formula-builder.html">“DATEDIF 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-serial-date.html">엑셀 일련번호·날짜 변환기</a>: 엑셀의 일련번호와 날짜를 변환합니다.</li><li><a href="/ko/date-calculator.html">나이, 날짜 간 일수, 날짜 가감 계산</a>: 나이와 날짜 간 일수를 계산합니다.</li><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

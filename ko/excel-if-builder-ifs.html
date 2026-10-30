@@ -201,14 +201,60 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>IF와 IFS 비교</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>수식 만들기</li><li>둘을 비교하기</li><li>하나 고르기</li></ul></div>
-<p><a href="/ko/excel-if-builder.html">IF 만들기</a>는 IF와 IFS 수식을 나란히 보여 줍니다.</p>
+<p lang="en">When conditions split into three or more branches, stacking IFs gets hard to read. That's where IFS comes in. <a href="/ko/excel-if-builder.html">Build an IF Formula</a> outputs IF and IFS formulas side by side.</p>
+<h2 lang="en">IF vs IFS</h2>
+<ul>
+<li lang="en"><b>IF</b>: one condition; two outcomes, "true" and "false".</li>
+<li lang="en"><b>IFS</b>: several conditions written in order; returns the result of the first that holds.</li>
+</ul>
+<h2 lang="en">The form this tool outputs</h2>
+<ul>
+<li lang="en">IF: =IF(A2&gt;=60,"Pass","Fail")</li>
+<li lang="en">IFS: =IFS(A2&gt;=60,"Pass",TRUE,"Fail")</li>
+</ul>
+<p lang="en">The "TRUE" in IFS is how you specify the result "when no condition held".</p>
 <h2>순서</h2>
 <ol>
-<li>수식 만들기</li>
-<li>둘을 비교하기</li>
-<li>하나 고르기</li>
+<li lang="en">Enter the cell, comparison, value and results.</li>
+<li lang="en">Compare the "IF formula" and "IFS formula".</li>
+<li lang="en">To add conditions, append "condition,result" to the IFS formula.</li>
 </ol>
-<div class="note">IFS는 조건을 늘리기 쉬운 방식입니다.</div>
+<div class="note" lang="en">IFS works in newer Excel (2019 and later) and Google Sheets.</div>
+<h2 lang="en">Adding conditions</h2>
+<p lang="en">Splitting scores into A, B, C.</p>
+<ul>
+<li lang="en">=IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<p lang="en">It checks from the top and returns the first match: A for 80 or more, B for 60 or more, otherwise C.</p>
+<h2 lang="en">Compared with stacked IFs</h2>
+<ul>
+<li lang="en">Stacked IF: =IF(A2&gt;=80,"A",IF(A2&gt;=60,"B","C"))</li>
+<li lang="en">IFS: =IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<p lang="en">The more conditions, the more readable IFS is.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Splitting results into three or more tiers</li>
+<li lang="en">Splitting fee tiers by amount</li>
+<li lang="en">Changing judgement by period</li>
+</ul>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en"><b>Order matters</b>: conditions are checked in the order written. Writing broader ones first gives unintended results.</li>
+<li lang="en"><b>TRUE at the end</b>: put TRUE last for when nothing matches. Without it you get #N/A.</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Writing a five-tier rating with stacked IFs became unreadable with brackets. Rewriting with IFS made it clear.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Not usable in old Excel</b>: IFS doesn't work in Excel 2016 and earlier. Use stacked IFs.</li>
+<li lang="en"><b>#N/A appears</b>: the final TRUE is missing.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are there other functions?</h3>
+<p lang="en">For range-banded judgement, VLOOKUP approximate match and LOOKUP also work.</p>
+<h2>요약</h2>
+<p lang="en">IFS for three or more conditions. Don't forget TRUE at the end.</p>
 <a class="cta" href="/ko/excel-if-builder.html">“IF 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li><li><a href="/ko/vlookup-formula-builder.html">VLOOKUP·XLOOKUP 수식 만들기</a>: VLOOKUP과 XLOOKUP 수식을 만듭니다.</li><li><a href="/ko/excel-text-format-builder.html">엑셀 TEXT 수식 만들기</a>: TEXT 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

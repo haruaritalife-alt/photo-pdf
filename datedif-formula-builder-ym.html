@@ -200,14 +200,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>年とヶ月で表示</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>式を作る</li><li>2つ目を見る</li><li>コピーする</li></ul></div>
-<p><a href="/datedif-formula-builder.html">DATEDIF式の作成</a> は、年とヶ月を文字でつなぐ式も表示します。</p>
+<p>「3年5か月」のように、年と月を並べて表示したい。<a href="/datedif-formula-builder.html">DATEDIFの式を作る</a> の「年とヶ月で表示する式」が、そのための式です。</p>
+<h2>式の形</h2>
+<p>2つ目の欄に出る式は、次の形です。</p>
+<ul>
+<li>=DATEDIF(A2,B2,"Y")&amp;" 年 "&amp;DATEDIF(A2,B2,"YM")&amp;" ヶ月"</li>
+</ul>
+<h2>しくみ</h2>
+<ol>
+<li>DATEDIF(A2,B2,"Y")：満の年数</li>
+<li>DATEDIF(A2,B2,"YM")：年を除いた月数</li>
+<li>「&amp;」でつなぎ、間に「年」「ヶ月」の文字を挟む</li>
+</ol>
+<p>たとえば、満3年と余り5か月なら、「3 年 5 ヶ月」と表示されます。</p>
 <h2>手順</h2>
 <ol>
-<li>式を作る</li>
-<li>2つ目を見る</li>
-<li>コピーする</li>
+<li>開始日と終了日のセルを入れる。</li>
+<li>「年とヶ月で表示する式」を確かめる。</li>
+<li>「2つ目をコピー」で、コピーする。</li>
 </ol>
-<div class="note">結果は文字になります。</div>
+<div class="note">結果は文字です。計算には使えません。</div>
+<h2>表示を変えたいとき</h2>
+<p>式の中の「 年 」「 ヶ月」の部分は、自由に書き換えられます。</p>
+<ul>
+<li>「年」→「歳」：年齢の表示に</li>
+<li>「 ヶ月」→「か月」：表記をそろえたいとき</li>
+<li>スペースを取る：「3年5ヶ月」</li>
+</ul>
+<h2>日も加えたい</h2>
+<p>日数の余りまで表示したいときは、"MD" を足します。ただし、"MD" には不具合があるため、注意が必要です。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>勤続年数を「何年何か月」で表示したい</li>
+<li>契約や保証の、残り期間を示したい</li>
+<li>子どもの年齢を、年と月で表示したい</li>
+</ul>
+<h2>0年のとき</h2>
+<p>1年未満のときは、「0 年 5 ヶ月」のように、0年と表示されます。0年を省くには、IF関数と組み合わせます。</p>
+<ul>
+<li>例：=IF(DATEDIF(A2,B2,"Y")=0,"",DATEDIF(A2,B2,"Y")&amp;" 年 ")&amp;DATEDIF(A2,B2,"YM")&amp;" ヶ月"</li>
+</ul>
+<h2>例</h2>
+<p>従業員の勤続年数を「3 年 5 ヶ月」と表示したかった。2つ目の式をコピーして、列に貼り付けるだけで、すべての人の勤続年数が並んだ。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>並べ替えができない</b>：文字なので、年数の順に並べ替えられない。並べ替えには、別の列にYの値やMの値を用意する。</li>
+<li><b>#NUM!</b>：開始日が終了日より後。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>英語で表示したいときは？</h3>
+<p>英語版のツールでは、「years」「months」の文字が入った式になります。</p>
+<h2>まとめ</h2>
+<p>年とヶ月を並べたいときは、2つ目の式。表示の文字は、自由に直せます。</p>
 <a class="cta" href="/datedif-formula-builder.html">DATEDIFの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +263,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Showing Years and Months</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>See the second one</li><li>Copy it</li></ul></div>
-<p><a href="/datedif-formula-builder.html">DATEDIF Builder</a> also shows a formula that joins years and months as text.</p>
+<p>You want years and months side by side, like "3 years 5 months". The "formula showing years and months" in <a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a> is for that.</p>
+<h2>The formula's form</h2>
+<p>The formula in the second field has this form:</p>
+<ul>
+<li>=DATEDIF(A2,B2,"Y")&amp;" years "&amp;DATEDIF(A2,B2,"YM")&amp;" months"</li>
+</ul>
+<h2>How it works</h2>
+<ol>
+<li>DATEDIF(A2,B2,"Y"): completed years</li>
+<li>DATEDIF(A2,B2,"YM"): months excluding years</li>
+<li>Joined with "&amp;", with the words "years" and "months" between</li>
+</ol>
+<p>For example, 3 full years and 5 remaining months displays "3 years 5 months".</p>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>See the second one</li>
-<li>Copy it</li>
+<li>Enter the start and end date cells.</li>
+<li>Check the "Formula showing years and months".</li>
+<li>Copy with "Copy the second".</li>
 </ol>
-<div class="note">The result is text.</div>
+<div class="note">The result is text. It can't be used in calculation.</div>
+<h2>Changing the display</h2>
+<p>The " years " and " months" parts inside the formula can be freely rewritten.</p>
+<ul>
+<li>Change wording to suit, e.g. "yrs" and "mos"</li>
+<li>Remove the spaces for a tighter look</li>
+</ul>
+<h2>Adding days</h2>
+<p>To show remaining days too, add "MD". But "MD" is faulty, so use caution.</p>
+<h2>Good for</h2>
+<ul>
+<li>Showing tenure as years and months</li>
+<li>Showing remaining terms of contracts or warranties</li>
+<li>Showing a child's age in years and months</li>
+</ul>
+<h2>When it's 0 years</h2>
+<p>Under one year it shows like "0 years 5 months". To omit 0 years, combine with IF.</p>
+<ul>
+<li>Example: =IF(DATEDIF(A2,B2,"Y")=0,"",DATEDIF(A2,B2,"Y")&amp;" years ")&amp;DATEDIF(A2,B2,"YM")&amp;" months"</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted employees' tenure shown as "3 years 5 months". Copying the second formula into a column lined up everyone's tenure.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Can't sort</b>: it's text, so it won't sort by years. For sorting, prepare separate columns with Y or M values.</li>
+<li><b>#NUM!</b>: the start date is after the end date.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I want it in another language?</h3>
+<p>Rewrite the words inside the formula as you like.</p>
+<h2>Summary</h2>
+<p>For years and months side by side, use the second formula. The wording is freely editable.</p>
 <a class="cta" href="/datedif-formula-builder.html">Use "Build a DATEDIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

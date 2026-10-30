@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Using Text as the Result</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the result</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/en/excel-if-builder.html">IF Builder</a>, a text result is put in quotes automatically.</p>
+<p>When you want text like "Pass" or "Fail" as an IF result, the formula needs the text enclosed in quotes. <a href="/en/excel-if-builder.html">Build an IF Formula</a> adds them automatically.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the result</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>Enter "Pass" in "Result if true".</li>
+<li>Enter "Fail" in "Result if false".</li>
+<li>Check the formula has the quoted "Pass" and "Fail".</li>
 </ol>
-<div class="note">Numbers and cells go into the formula as they are.</div>
+<div class="note">You needn't add the quotes yourself.</div>
+<h2>Handling by result form</h2>
+<ul>
+<li>Text (Pass): enclosed in quotes → "Pass"</li>
+<li>Numbers (100): as is → 100</li>
+<li>Cells (B2): as is → B2</li>
+<li>Already quoted ("Pass"): as is</li>
+<li>Blank: empty string → ""</li>
+</ul>
+<h2>Examples</h2>
+<ul>
+<li>True: Pass, False: Fail → =IF(A2&gt;=60,"Pass","Fail")</li>
+<li>True: B2, False: 0 → =IF(A2&gt;=60,B2,0)</li>
+<li>True: Pass, False: blank → =IF(A2&gt;=60,"Pass","")</li>
+</ul>
+<h2>Putting a quote inside the text</h2>
+<p>If the result needs a quote character itself, the tool doubles it up automatically.</p>
+<h2>Showing a number as text</h2>
+<p>To treat "100" as text, enter it quoted as "100". It can then no longer be used in calculation.</p>
+<h2>Good for</h2>
+<ul>
+<li>Showing pass/fail or judgement results</li>
+<li>Showing statuses like "Done" or "Pending"</li>
+<li>Showing warnings like "Check"</li>
+</ul>
+<h2>Example</h2>
+<p>For deadline judgement, wanted "OK" if in time and "Check" if over. Just entering text in the result fields made a quoted formula.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Full-width vs half-width quotes</b>: quotes in formulas are half-width. The tool adds them, so don't add by hand.</li>
+<li><b>Wanting another cell as the result</b>: enter the cell name. To show it as text, enter it quoted.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I put a formula in the result?</h3>
+<p>The result fields take text, numbers and cells. Rewrite formulas by hand after building.</p>
+<h2>Summary</h2>
+<p>Enter text results as is and a quoted formula results.</p>
 <a class="cta" href="/en/excel-if-builder.html">Use "Build an IF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/excel-text-format-builder.html">Build an Excel TEXT Formula</a>: Build a TEXT formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Kembalikan nilai kosong</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Kosongkan kolom hasil</li><li>Lihat rumusnya</li><li>Salin</li></ul></div>
-<p>Mengosongkan kolom hasil di <a href="/id/excel-if-builder.html">Pembuat IF</a> menghasilkan rumus yang mengembalikan nilai kosong.</p>
+<p lang="en">With IF, when the condition fails you may want to show nothing. In that case leave the result blank. <a href="/id/excel-if-builder.html">Build an IF Formula</a> builds a formula returning an empty string ("") just by leaving the result field empty.</p>
 <h2>Langkah-langkah</h2>
 <ol>
-<li>Kosongkan kolom hasil</li>
-<li>Lihat rumusnya</li>
-<li>Salin</li>
+<li lang="en">Enter the cell, comparison and value.</li>
+<li lang="en">Enter what to show in "Result if true".</li>
+<li lang="en">Leave "Result if false" empty.</li>
+<li lang="en">Check the formula ends with "".</li>
 </ol>
-<div class="note">Dalam rumus, ini ditulis sebagai "".</div>
+<div class="note" lang="en">"" is an empty string, meaning "show nothing".</div>
+<h2>Contoh</h2>
+<p lang="en">Showing "Pass" only when A2 is 60 or more and blank otherwise.</p>
+<ul>
+<li lang="en">=IF(A2&gt;=60,"Pass","")</li>
+</ul>
+<h2 lang="en">Empty string vs 0</h2>
+<ul>
+<li lang="en"><b>"" (empty string)</b>: looks blank, but the cell holds an "empty string".</li>
+<li lang="en"><b>0</b>: the number 0 is displayed.</li>
+<li lang="en"><b>A cell with nothing</b>: truly blank.</li>
+</ul>
+<h2 lang="en">Effect on calculation</h2>
+<p lang="en">Cells returning "" look empty but need care in calculation.</p>
+<ul>
+<li lang="en">SUM and AVERAGE: empty strings are ignored</li>
+<li lang="en">Arithmetic with "+": gives #VALUE!</li>
+<li lang="en">COUNTA: counted (judged not empty)</li>
+<li lang="en">COUNTBLANK: counted (judged empty)</li>
+</ul>
+<h2>Cocok untuk</h2>
+<ul>
+<li lang="en">Showing only items that meet the condition</li>
+<li lang="en">Making the look cleaner</li>
+<li lang="en">Tidying tables for printing or submission</li>
+</ul>
+<h2 lang="en">When used in calculation</h2>
+<p lang="en">For cells used later in calculation, return 0 rather than "", or think of a method other than IF.</p>
+<ul>
+<li lang="en">Example: =IF(A2&gt;=60,B2,0)</li>
+<li lang="en">Another method hides zeros through the display format</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">Wanted to show only passers' names and leave others blank. Making the fail result "" tidied the list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looks blank but isn't</b>: ISBLANK returns FALSE. Test with whether LEN is 0.</li>
+<li lang="en"><b>Affects charts</b>: empty strings may be treated as 0 in charts.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want blank when the condition is true?</h3>
+<p lang="en">Leave the "Result if true" field empty.</p>
+<h2>Ringkasan</h2>
+<p lang="en">Leave the result field empty for a blank, and you get a "" formula.</p>
 <a class="cta" href="/id/excel-if-builder.html">Gunakan “Buat rumus IF” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/sumif-formula-builder.html">Buat rumus SUMIF atau COUNTIF</a>: Buat rumus SUMIF dan COUNTIF.</li><li><a href="/id/vlookup-formula-builder.html">Buat Rumus VLOOKUP atau XLOOKUP</a>: Buat rumus VLOOKUP dan XLOOKUP.</li><li><a href="/id/excel-text-format-builder.html">Buat Rumus TEXT Excel</a>: Buat rumus TEXT.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>

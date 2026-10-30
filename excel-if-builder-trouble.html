@@ -200,14 +200,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/excel-if-builder.html">IF式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を作ったのに、結果がおかしい。<a href="/excel-if-builder.html">IF関数の式を作る</a> で起こりやすい困りごとと対処法をまとめます。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：調べるセルが「A2」の形でない（半角、列の文字＋行番号）。または、比べる値の欄が空。</li>
+</ul>
+<h2>式を貼ったあとの困りごと</h2>
+<ul>
+<li><b>常に同じ結果になる</b>：比べる値が、文字列になっている。または、数字のセルが文字列になっている。</li>
+<li><b>#NAME?が出る</b>：IFSが使えない古いExcel。または、文字に引用符がない。</li>
+<li><b>#N/Aが出る</b>：IFSで、どの条件にも合わなかった。最後にTRUEを置く。</li>
+<li><b>#VALUE!が出る</b>：計算に使うセルに、文字が入っている。</li>
+<li><b>空欄のはずが、0になる</b>：結果の欄に、0を入れている。</li>
+<li><b>期待した判定にならない</b>：&gt;= と &gt; を取り違えている。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>調べるセルの値が、数字か文字かを確かめる。</li>
+<li>比較の記号が、意図どおりか確かめる。</li>
+<li>比べる値が、数字なら引用符なし、文字なら引用符ありになっているか確かめる。</li>
 </ol>
-<div class="note">式が出ないときは、調べるセルがA2のように書かれているか、比べる値が入っているか確かめます。</div>
+<div class="note">数字が左揃えで表示されていたら、文字列の可能性があります。</div>
+<h2>数字と文字の見分け方</h2>
+<p>=ISNUMBER(A2) がTRUEなら数字、FALSEなら文字（または別の形）です。</p>
+<h2>全角と半角</h2>
+<p>「東京」と「東京 」（末尾にスペース）は、別の文字として判定されます。余分なスペースを取ってから、比べます。</p>
+<h2>判定の順序</h2>
+<p>IFSでは、上から順に調べ、最初に合ったものを返します。範囲の大きい条件を先に書くと、後ろの条件に到達しません。</p>
+<h2>例</h2>
+<p>点数が80点でも「B」と判定された。条件の順序が、「60以上」を先に書いていたため。「80以上」を先に書くと、正しく「A」になった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>文字列の数字との比較</b>：「60」と数字の60は、別。</li>
+<li><b>セルの書式</b>：見た目と、実際の値が違うことがある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>条件が複数（AとB）のときは？</h3>
+<p>AND関数やOR関数を、条件の中で使います。例：IF(AND(A2&gt;=60,B2&gt;=60),"合格","不合格")</p>
+<h2>まとめ</h2>
+<p>値の形・記号・順序。この3つを順に確かめましょう。</p>
 <a class="cta" href="/excel-if-builder.html">IF関数の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/excel-text-format-builder.html">TEXT関数の式を作る（表示形式）</a>：TEXT関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +250,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/excel-if-builder.html">IF Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but the result is odd. Here are common troubles with <a href="/excel-if-builder.html">Build an IF Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the test cell isn't in the "A2" form (half-width, column letters + row number), or the comparison value is empty.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>Always the same result</b>: the compared value is text, or the number cell is text.</li>
+<li><b>#NAME? appears</b>: old Excel without IFS, or text lacking quotes.</li>
+<li><b>#N/A appears</b>: IFS matched no condition. Put TRUE last.</li>
+<li><b>#VALUE! appears</b>: a cell used in calculation holds text.</li>
+<li><b>Should be blank but shows 0</b>: 0 was entered in the result field.</li>
+<li><b>Not the judgement you expected</b>: &gt;= and &gt; mixed up.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check whether the test cell's value is a number or text.</li>
+<li>Check the comparison operator is as intended.</li>
+<li>Check numbers are unquoted and text is quoted.</li>
 </ol>
-<div class="note">If no formula appears, check that the cell is written like A2 and a value to compare is entered.</div>
+<div class="note">If numbers display left-aligned, they may be text.</div>
+<h2>Telling numbers from text</h2>
+<p>=ISNUMBER(A2) is TRUE for numbers and FALSE for text (or other forms).</p>
+<h2>Full-width and half-width</h2>
+<p>"Tokyo" and "Tokyo " (with a trailing space) are judged different. Remove extra spaces before comparing.</p>
+<h2>Order of judgement</h2>
+<p>IFS checks from the top and returns the first match. Writing a broad condition first means later ones are never reached.</p>
+<h2>Example</h2>
+<p>A score of 80 was judged "B" because "60 or more" was written first. Writing "80 or more" first gave "A" correctly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Comparing with text numbers</b>: "60" and the number 60 differ.</li>
+<li><b>Cell format</b>: the look can differ from the real value.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What about multiple conditions (A and B)?</h3>
+<p>Use AND or OR within the condition. Example: IF(AND(A2&gt;=60,B2&gt;=60),"Pass","Fail")</p>
+<h2>Summary</h2>
+<p>Value form, operator, order. Check these three in order.</p>
 <a class="cta" href="/excel-if-builder.html">Use "Build an IF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/excel-text-format-builder.html">Build an Excel TEXT Formula</a>: Build a TEXT formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

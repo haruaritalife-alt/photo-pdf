@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Conditional Averages</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose AVERAGEIF</li><li>Enter the ranges</li><li>Copy it</li></ul></div>
-<p>Choosing AVERAGEIF in <a href="/en/sumif-formula-builder.html">SUMIF Builder</a> gives a formula that averages only the matching cells.</p>
+<p>To average only the cells that meet a condition, use AVERAGEIF. Choosing "AVERAGEIF" in <a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a> builds the formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose AVERAGEIF</li>
-<li>Enter the ranges</li>
-<li>Copy it</li>
+<li>Choose "AVERAGEIF" in "Function".</li>
+<li>Enter "Range to test" and "Condition".</li>
+<li>In "Range to sum or average", enter the column range to average.</li>
+<li>Copy the formula with "Copy the first".</li>
 </ol>
-<div class="note">It works the same way in Google Sheets.</div>
+<div class="note">Omitting the average range averages the test range itself.</div>
+<h2>Example</h2>
+<p>With departments in column A and scores in column C, the average score for "Sales".</p>
+<ul>
+<li>First: =AVERAGEIF(A2:A100,"Sales",C2:C100)</li>
+<li>Second: =AVERAGEIFS(C2:C100,A2:A100,"Sales")</li>
+</ul>
+<h2>Relation to SUMIF</h2>
+<p>An average is sum ÷ count. For the same condition it matches this formula:</p>
+<ul>
+<li>=SUMIF(A2:A100,"Sales",C2:C100)/COUNTIF(A2:A100,"Sales")</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Average scores by department or class</li>
+<li>The average order amount above a threshold</li>
+<li>Average unit price by region</li>
+</ul>
+<h2>Error when nothing matches</h2>
+<p>If no cells meet the condition, #DIV/0! results.</p>
+<ul>
+<li>Fix: =IFERROR(AVERAGEIF(...),"") for a blank.</li>
+</ul>
+<h2>Blanks and text</h2>
+<p>Only number cells are averaged. Blanks and text cells are ignored.</p>
+<h2>Example</h2>
+<p>Wanted average overtime by department. =AVERAGEIF(A2:A100,"Sales",D2:D100) gave Sales' average; other departments were done by changing the condition.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Excluding 0</b>: a "&lt;&gt;0" condition averages without zeros.</li>
+<li><b>Range sizes</b>: make the criteria and average ranges the same number of rows.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I get a conditional median?</h3>
+<p>AVERAGEIF has no median feature. You'd need an array formula or MEDIAN combined with IF.</p>
+<h2>Summary</h2>
+<p>AVERAGEIF for conditional averages. Prepare for the no-match error.</p>
 <a class="cta" href="/en/sumif-formula-builder.html">Use "Build a SUMIF or COUNTIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a>: Build a TEXTJOIN formula.</li><li><a href="/en/column-stats.html">Sum, Average and Median of a Column of Numbers</a>: Get the sum and average of pasted numbers.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

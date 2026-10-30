@@ -215,14 +215,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>میانگین‌های شرطی</h1>
 <p class="meta">منتشرشده: 19 اکتبر 2026 | به‌روزرسانی: 19 اکتبر 2026 | <a href="/about.html">دربارهٔ ما (ژاپنی)</a></p>
 <div class="points"><b>نکات کلیدی</b><ul><li>AVERAGEIF را انتخاب کنید</li><li>محدوده‌ها را بنویسید</li><li>کپی کنید</li></ul></div>
-<p>انتخاب AVERAGEIF در <a href="/fa/sumif-formula-builder.html">سازنده SUMIF</a> فرمولی می‌دهد که فقط میانگین سلول‌های منطبق را حساب می‌کند.</p>
+<p lang="en">To average only the cells that meet a condition, use AVERAGEIF. Choosing "AVERAGEIF" in <a href="/fa/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a> builds the formula.</p>
 <h2>مراحل</h2>
 <ol>
-<li>AVERAGEIF را انتخاب کنید</li>
-<li>محدوده‌ها را بنویسید</li>
-<li>کپی کنید</li>
+<li lang="en">Choose "AVERAGEIF" in "Function".</li>
+<li lang="en">Enter "Range to test" and "Condition".</li>
+<li lang="en">In "Range to sum or average", enter the column range to average.</li>
+<li lang="en">Copy the formula with "Copy the first".</li>
 </ol>
-<div class="note">در Google Sheets هم همین‌طور کار می‌کند.</div>
+<div class="note" lang="en">Omitting the average range averages the test range itself.</div>
+<h2>مثال</h2>
+<p lang="en">With departments in column A and scores in column C, the average score for "Sales".</p>
+<ul>
+<li lang="en">First: =AVERAGEIF(A2:A100,"Sales",C2:C100)</li>
+<li lang="en">Second: =AVERAGEIFS(C2:C100,A2:A100,"Sales")</li>
+</ul>
+<h2 lang="en">Relation to SUMIF</h2>
+<p lang="en">An average is sum ÷ count. For the same condition it matches this formula:</p>
+<ul>
+<li lang="en">=SUMIF(A2:A100,"Sales",C2:C100)/COUNTIF(A2:A100,"Sales")</li>
+</ul>
+<h2>مناسب برای</h2>
+<ul>
+<li lang="en">Average scores by department or class</li>
+<li lang="en">The average order amount above a threshold</li>
+<li lang="en">Average unit price by region</li>
+</ul>
+<h2 lang="en">Error when nothing matches</h2>
+<p lang="en">If no cells meet the condition, #DIV/0! results.</p>
+<ul>
+<li lang="en">Fix: =IFERROR(AVERAGEIF(...),"") for a blank.</li>
+</ul>
+<h2 lang="en">Blanks and text</h2>
+<p lang="en">Only number cells are averaged. Blanks and text cells are ignored.</p>
+<h2>مثال</h2>
+<p lang="en">Wanted average overtime by department. =AVERAGEIF(A2:A100,"Sales",D2:D100) gave Sales' average; other departments were done by changing the condition.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Excluding 0</b>: a "&lt;&gt;0" condition averages without zeros.</li>
+<li lang="en"><b>Range sizes</b>: make the criteria and average ranges the same number of rows.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I get a conditional median?</h3>
+<p lang="en">AVERAGEIF has no median feature. You'd need an array formula or MEDIAN combined with IF.</p>
+<h2>خلاصه</h2>
+<p lang="en">AVERAGEIF for conditional averages. Prepare for the no-match error.</p>
 <a class="cta" href="/fa/sumif-formula-builder.html">استفاده از «ساخت فرمول SUMIF یا COUNTIF» (رایگان)</a>
 <h2>ابزارهایی که با این ابزار خوب هماهنگ‌اند</h2><ul><li><a href="/fa/vlookup-formula-builder.html">ساخت فرمول VLOOKUP یا XLOOKUP</a>: فرمول‌های VLOOKUP و XLOOKUP بسازید.</li><li><a href="/fa/textjoin-formula-builder.html">ساخت فرمول TEXTJOIN</a>: فرمول TEXTJOIN را بسازید.</li><li><a href="/fa/column-stats.html">مجموع، میانگین و میانه یک ستون عدد</a>: مجموع و میانگین اعداد چسبانده‌شده را به دست آورید.</li></ul>
 <div class="tip"><p>اگر این راهنما مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ارسال انعام (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ارسال هدیه (فهرست آرزوهای آمازون)</a></div>

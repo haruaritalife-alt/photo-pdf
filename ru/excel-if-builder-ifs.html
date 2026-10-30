@@ -201,14 +201,60 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Сравнение IF и IFS</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Составьте формулу</li><li>Сравните обе</li><li>Выберите один</li></ul></div>
-<p><a href="/ru/excel-if-builder.html">Конструктор IF</a> показывает формулы IF и IFS рядом.</p>
+<p lang="en">When conditions split into three or more branches, stacking IFs gets hard to read. That's where IFS comes in. <a href="/ru/excel-if-builder.html">Build an IF Formula</a> outputs IF and IFS formulas side by side.</p>
+<h2 lang="en">IF vs IFS</h2>
+<ul>
+<li lang="en"><b>IF</b>: one condition; two outcomes, "true" and "false".</li>
+<li lang="en"><b>IFS</b>: several conditions written in order; returns the result of the first that holds.</li>
+</ul>
+<h2 lang="en">The form this tool outputs</h2>
+<ul>
+<li lang="en">IF: =IF(A2&gt;=60,"Pass","Fail")</li>
+<li lang="en">IFS: =IFS(A2&gt;=60,"Pass",TRUE,"Fail")</li>
+</ul>
+<p lang="en">The "TRUE" in IFS is how you specify the result "when no condition held".</p>
 <h2>Шаги</h2>
 <ol>
-<li>Составьте формулу</li>
-<li>Сравните обе</li>
-<li>Выберите один</li>
+<li lang="en">Enter the cell, comparison, value and results.</li>
+<li lang="en">Compare the "IF formula" and "IFS formula".</li>
+<li lang="en">To add conditions, append "condition,result" to the IFS formula.</li>
 </ol>
-<div class="note">С IFS проще добавлять условия.</div>
+<div class="note" lang="en">IFS works in newer Excel (2019 and later) and Google Sheets.</div>
+<h2 lang="en">Adding conditions</h2>
+<p lang="en">Splitting scores into A, B, C.</p>
+<ul>
+<li lang="en">=IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<p lang="en">It checks from the top and returns the first match: A for 80 or more, B for 60 or more, otherwise C.</p>
+<h2 lang="en">Compared with stacked IFs</h2>
+<ul>
+<li lang="en">Stacked IF: =IF(A2&gt;=80,"A",IF(A2&gt;=60,"B","C"))</li>
+<li lang="en">IFS: =IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<p lang="en">The more conditions, the more readable IFS is.</p>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Splitting results into three or more tiers</li>
+<li lang="en">Splitting fee tiers by amount</li>
+<li lang="en">Changing judgement by period</li>
+</ul>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en"><b>Order matters</b>: conditions are checked in the order written. Writing broader ones first gives unintended results.</li>
+<li lang="en"><b>TRUE at the end</b>: put TRUE last for when nothing matches. Without it you get #N/A.</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">Writing a five-tier rating with stacked IFs became unreadable with brackets. Rewriting with IFS made it clear.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Not usable in old Excel</b>: IFS doesn't work in Excel 2016 and earlier. Use stacked IFs.</li>
+<li lang="en"><b>#N/A appears</b>: the final TRUE is missing.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are there other functions?</h3>
+<p lang="en">For range-banded judgement, VLOOKUP approximate match and LOOKUP also work.</p>
+<h2>Итог</h2>
+<p lang="en">IFS for three or more conditions. Don't forget TRUE at the end.</p>
 <a class="cta" href="/ru/excel-if-builder.html">Использовать «Создание формулы IF» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/sumif-formula-builder.html">Создание формулы SUMIF или COUNTIF</a>: Создавайте формулы SUMIF и COUNTIF.</li><li><a href="/ru/vlookup-formula-builder.html">Создание формулы VLOOKUP или XLOOKUP</a>: Создавайте формулы VLOOKUP и XLOOKUP.</li><li><a href="/ru/excel-text-format-builder.html">Создание формулы TEXT для Excel</a>: Создайте формулу TEXT.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

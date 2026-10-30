@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>단위의 의미</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>단위 고르기</li><li>수식 보기</li><li>확인하기</li></ul></div>
-<p><a href="/ko/datedif-formula-builder.html">DATEDIF 만들기</a>에서는 Y, M, D, YM, MD, YD 단위를 고를 수 있습니다.</p>
+<p lang="en">DATEDIF's third argument, the unit, has six kinds. You can choose them in "Unit" in <a href="/ko/datedif-formula-builder.html">Build a DATEDIF Formula</a>. Here are the differences.</p>
+<h2 lang="en">The six units</h2>
+<ul>
+<li lang="en"><b>"Y"</b>: completed years</li>
+<li lang="en"><b>"M"</b>: completed months (total)</li>
+<li lang="en"><b>"D"</b>: days</li>
+<li lang="en"><b>"YM"</b>: months excluding years (0–11)</li>
+<li lang="en"><b>"MD"</b>: days excluding years and months</li>
+<li lang="en"><b>"YD"</b>: days excluding years</li>
+</ul>
+<h2>예</h2>
+<p lang="en">From January 15, 2024 to April 20, 2026:</p>
+<ul>
+<li lang="en">"Y": 2 (2 full years)</li>
+<li lang="en">"M": 27 (2 years 3 months = 27 months)</li>
+<li lang="en">"D": 826 (days)</li>
+<li lang="en">"YM": 3 (remaining months after 2 years)</li>
+<li lang="en">"MD": 5 (remaining days after months)</li>
+<li lang="en">"YD": 95 (remaining days after years)</li>
+</ul>
 <h2>순서</h2>
 <ol>
-<li>단위 고르기</li>
-<li>수식 보기</li>
-<li>확인하기</li>
+<li>시작일과 종료일 셀을 입력합니다.</li>
+<li lang="en">Choose a "Unit".</li>
+<li lang="en">Check the last argument of the formula is the chosen unit.</li>
 </ol>
-<div class="note">YM은 연을 뺀 월수입니다.</div>
+<div class="note" lang="en">The unit is enclosed in quotes in the formula, like "Y".</div>
+<h2>어느 쪽을 쓸까</h2>
+<ul>
+<li lang="en">Age or service years: Y</li>
+<li lang="en">Total months (such as contract length): M</li>
+<li lang="en">Elapsed days: D</li>
+<li lang="en">The "months" part of "years and months": YM</li>
+</ul>
+<h2 lang="en">Combining years and months</h2>
+<p lang="en">To show "2 years 3 months", combine Y and YM. The tool's second formula takes this form.</p>
+<h2 lang="en">For days only</h2>
+<p lang="en">The day difference between two dates is just subtraction: =B2-A2</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Finding a period's length in years, months or days</li>
+<li lang="en">Judging renewal timing from elapsed months</li>
+<li lang="en">Showing "years and months" of tenure</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted elapsed months from a contract start to today. With unit "M", =DATEDIF(A2,TODAY(),"M") gave 27 months.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"MD" is faulty</b>: across month boundaries it can return wrong values. Microsoft doesn't recommend this unit either.</li>
+<li lang="en"><b>Mixing "Y" and "YM"</b>: Y is the total years; YM is the remaining months.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What replaces "MD"?</h3>
+<p lang="en">Remaining days are more reliably found with a separate formula combined with DATE.</p>
+<h2>요약</h2>
+<p lang="en">Y for years, M for months, D for days; YM, MD, YD for remainders. Learn when to use each.</p>
 <a class="cta" href="/ko/datedif-formula-builder.html">“DATEDIF 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-serial-date.html">엑셀 일련번호·날짜 변환기</a>: 엑셀의 일련번호와 날짜를 변환합니다.</li><li><a href="/ko/date-calculator.html">나이, 날짜 간 일수, 날짜 가감 계산</a>: 나이와 날짜 간 일수를 계산합니다.</li><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

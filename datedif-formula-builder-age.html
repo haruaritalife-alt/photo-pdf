@@ -200,14 +200,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>年齢の計算</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>生年月日と今日を入れる</li><li>Yを選ぶ</li><li>コピーする</li></ul></div>
-<p><a href="/datedif-formula-builder.html">DATEDIF式の作成</a> でYを選ぶと、満年齢を求める式になります。</p>
+<p>生年月日から、満年齢を求める。DATEDIFの代表的な使い方です。<a href="/datedif-formula-builder.html">DATEDIFの式を作る</a> で「Y」を選べば、満年齢の式が作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>生年月日と今日を入れる</li>
-<li>Yを選ぶ</li>
-<li>コピーする</li>
+<li>「開始日のセル」に、生年月日のセルを入れる。</li>
+<li>「終了日のセル」に、基準になる日付のセルを入れる。</li>
+<li>「単位」で「Y」を選ぶ。</li>
+<li>「DATEDIFの式」を、コピーする。</li>
 </ol>
-<div class="note">終了日にはTODAY()を使う方法もあります。</div>
+<div class="note">「Y」は、満の年数（誕生日が来て、はじめて1つ増える）を返します。</div>
+<h2>例</h2>
+<p>A2が生年月日、B2が基準日のとき、満年齢は次の式です。</p>
+<ul>
+<li>=DATEDIF(A2,B2,"Y")</li>
+</ul>
+<h2>今日の年齢にしたいとき</h2>
+<p>基準日を、今日にします。ツールで作った式の、終了日のセルを TODAY() に書き換えます。</p>
+<ul>
+<li>=DATEDIF(A2,TODAY(),"Y")</li>
+</ul>
+<p>開くたびに、その日の年齢に更新されます。</p>
+<h2>満年齢と数え年の違い</h2>
+<ul>
+<li><b>満年齢</b>：誕生日が来るたびに1つ増える（現在の一般的な数え方）</li>
+<li><b>数え年</b>：生まれた年を1歳とし、元日に1つ増える</li>
+</ul>
+<p>このツールの式は、満年齢です。</p>
+<h2>「年齢と月齢」を表示する</h2>
+<p>「5 年 3 ヶ月」のように表示したいときは、ツールの2つ目の式を使います。</p>
+<ul>
+<li>=DATEDIF(A2,B2,"Y")&amp;" 年 "&amp;DATEDIF(A2,B2,"YM")&amp;" ヶ月"</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>名簿の年齢の列を、作りたい</li>
+<li>応募資格の年齢を、確かめたい</li>
+<li>子どもの月齢を、知りたい</li>
+</ul>
+<h2>例</h2>
+<p>従業員名簿に年齢の列を作りたかった。生年月日の列と今日の日付から、DATEDIFで満年齢を出した。毎日自動で更新されるため、手入力が不要になった。</p>
+<h2>計算の確認</h2>
+<p>2000年4月15日生まれで、2026年4月14日の時点では、25歳です（誕生日の前日）。2026年4月15日には、26歳になります。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>生年月日が文字列</b>：日付として認識されないと、#VALUE!になる。</li>
+<li><b>基準日が生年月日より前</b>：#NUM!になる。</li>
+<li><b>うるう日生まれ</b>：2月29日生まれの扱いは、非うるう年で変わる場合がある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>YEARFRAC関数でも、年齢を出せますか？</h3>
+<p>出せますが、小数になります。INT関数で切り捨てれば、満年齢に近い値になります。DATEDIFのほうが、確実です。</p>
+<h2>まとめ</h2>
+<p>年齢は、DATEDIFの「Y」。基準日を TODAY() にすると、自動で更新されます。</p>
 <a class="cta" href="/datedif-formula-builder.html">DATEDIFの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +263,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Calculating Age</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter birth date and today</li><li>Choose Y</li><li>Copy it</li></ul></div>
-<p>Choosing Y in <a href="/datedif-formula-builder.html">DATEDIF Builder</a> gives a formula for age in full years.</p>
+<p>Finding a full-years age from a birth date is DATEDIF's classic use. Choose "Y" in <a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a> to build an age formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter birth date and today</li>
-<li>Choose Y</li>
-<li>Copy it</li>
+<li>Enter the birth-date cell in "Start date cell".</li>
+<li>Enter the cell of the reference date in "End date cell".</li>
+<li>Choose "Y" in "Unit".</li>
+<li>Copy the "DATEDIF formula".</li>
 </ol>
-<div class="note">You can also use TODAY() for the end date.</div>
+<div class="note">"Y" returns completed years (increases only once the birthday arrives).</div>
+<h2>Example</h2>
+<p>With a birth date in A2 and a reference date in B2, the age in full years is:</p>
+<ul>
+<li>=DATEDIF(A2,B2,"Y")</li>
+</ul>
+<h2>To get today's age</h2>
+<p>Make the reference date today. Rewrite the end-date cell in the built formula as TODAY().</p>
+<ul>
+<li>=DATEDIF(A2,TODAY(),"Y")</li>
+</ul>
+<p>It updates to that day's age every time you open the file.</p>
+<h2>Full-year age vs traditional counting</h2>
+<ul>
+<li><b>Full-year age</b>: increases each birthday (the common modern way)</li>
+<li><b>Traditional (kazoedoshi)</b>: counts the birth year as 1 and adds one on New Year's Day</li>
+</ul>
+<p>This tool's formula gives full-year age.</p>
+<h2>Showing age and months</h2>
+<p>To show something like "5 years 3 months", use the tool's second formula.</p>
+<ul>
+<li>=DATEDIF(A2,B2,"Y")&amp;" years "&amp;DATEDIF(A2,B2,"YM")&amp;" months"</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Building an age column in a list</li>
+<li>Checking age eligibility for applications</li>
+<li>Knowing a child's age in months</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted an age column in an employee list. DATEDIF gave full-year ages from the birth-date column and today's date. It updates daily, so no manual entry is needed.</p>
+<h2>Verifying</h2>
+<p>Someone born April 15, 2000 is 25 on April 14, 2026 (the day before the birthday), and turns 26 on April 15, 2026.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Birth date is text</b>: if not recognised as a date, #VALUE! results.</li>
+<li><b>Reference date before birth date</b>: #NUM!.</li>
+<li><b>Leap-day birthdays</b>: treatment of Feb 29 births can vary in non-leap years.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can YEARFRAC give age too?</h3>
+<p>It can, but as a decimal. Truncating with INT gives something close to full-year age. DATEDIF is more reliable.</p>
+<h2>Summary</h2>
+<p>Use DATEDIF "Y" for age. Making the reference date TODAY() updates automatically.</p>
 <a class="cta" href="/datedif-formula-builder.html">Use "Build a DATEDIF Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
