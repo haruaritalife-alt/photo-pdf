@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Que faire quand ça ne fonctionne pas</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Vérifier le fichier</li><li>Vérifiez la taille</li><li>Essayez sur un autre appareil</li></ul></div>
-<p>Si <a href="/fr/base64-text.html">Convertisseur de texte Base64</a> ne fonctionne pas, vérifiez les points suivants.</p>
-<h2>Étapes</h2>
+<p lang="en">Base64 conversion isn't working. Here are troubles that commonly occur with <a href="/fr/base64-text.html">Base64 Text Encoder and Decoder</a> and how to handle them.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Could not read this as Base64." appears</b>: characters are missing, it isn't a Base64 string, or it is non-text data.</li>
+<li lang="en"><b>Japanese is garbled</b>: the original Base64 may have been made with an encoding other than UTF-8.</li>
+<li lang="en"><b>The result is meaningless symbols</b>: the Base64 contents are binary, such as an image or file, not text.</li>
+<li lang="en"><b>"=" appears at the end of the result</b>: normal. Padding to even out the length.</li>
+<li lang="en"><b>The converted-back result differs from the original</b>: the source may have used another encoding.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Vérifier le fichier</li>
-<li>Vérifiez la taille</li>
-<li>Essayez sur un autre appareil</li>
+<li lang="en">Check the pasted string has no extra characters (quotation marks, prefixes like "Basic ").</li>
+<li lang="en">Check the string was copied to the very end.</li>
+<li lang="en">Check no symbols other than "+", "/", "=", "-", "_" are mixed in.</li>
+<li lang="en">Try another part.</li>
 </ol>
-<div class="note">Si la chaîne n'est pas lisible, vérifiez qu'elle ne contient pas de caractères autres que Base64 et qu'elle n'a pas été coupée.</div>
+<div class="note" lang="en">For something like "Authorization: Basic xxxx", paste only the "xxxx" part.</div>
+<h2 lang="en">Pasting notes</h2>
+<ul>
+<li lang="en">Leading and trailing spaces and line breaks are removed when reading</li>
+<li lang="en">Don't include quotation marks (") or commas</li>
+<li lang="en">Strings broken across lines can be pasted</li>
+</ul>
+<h2 lang="en">Base64 of binary</h2>
+<p lang="en">Base64 of an image or PDF can't be read even when decoded to text. Use the tool that converts between files and Base64.</p>
+<h2 lang="en">Long strings</h2>
+<p lang="en">Very long Base64 can take time to paste and process. If the browser is heavy, try a little at a time.</p>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Checking the pasted content</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">Pasted "Basic dXNlcjpwYXNz" as is and got an error. With only "dXNlcjpwYXNz" it read as "user:pass".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width characters</b>: mixed-in full-width characters can't be read.</li>
+<li lang="en"><b>Look-alike characters</b>: beware "l" vs "1" and "O" vs "0".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How can I check when I don't know the original string?</h3>
+<p lang="en">Check the format in the documentation of the source (API, configuration file, etc.).</p>
+<h2>En résumé</h2>
+<p lang="en">Remove prefixes, copy to the end and avoid full-width characters. That solves most troubles.</p>
 <a class="cta" href="/fr/base64-text.html">Utiliser « Encodeur et décodeur de texte Base64 » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/file-base64.html">Convertir des fichiers et du Base64</a>: Convertissez entre fichiers et texte Base64.</li><li><a href="/fr/url-encoder.html">Encoder et décoder une URL</a>: Encodez et décodez le texte des URL.</li><li><a href="/fr/json-formatter.html">Formater et valider du JSON</a>: Formatez, minifiez et validez du JSON.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

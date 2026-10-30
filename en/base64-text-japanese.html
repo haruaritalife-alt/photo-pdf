@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Base64 with Japanese and Garbled Text</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter Japanese text</li><li>Encode it</li><li>Decode it to check</li></ul></div>
-<p><a href="/en/base64-text.html">Base64 Text Converter</a> handles Japanese as UTF-8.</p>
+<p>Japanese turned into Base64 became unreadable. After converting back from Base64 it was garbled. When handling Japanese, you need to watch the character encoding. <a href="/en/base64-text.html">Base64 Text Encoder and Decoder</a> converts using UTF-8.</p>
+<h2>Basic mechanism</h2>
+<p>Base64 converts bytes (data). To make text Base64, you first turn the text into a byte sequence. The rule for "turning characters into bytes" is the character encoding.</p>
+<ul>
+<li>This tool: UTF-8</li>
+<li>In UTF-8, one Japanese character is 3 bytes</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter Japanese text</li>
-<li>Encode it</li>
-<li>Decode it to check</li>
+<li>Enter Japanese in "String or Base64".</li>
+<li>Press "Encode to Base64".</li>
+<li>Copy the result with "Copy result".</li>
 </ol>
-<div class="note">Base64 made with another character encoding may come out garbled.</div>
+<div class="note">When converting back, it is also read as UTF-8. Base64 made from UTF-8 returns the Japanese correctly.</div>
+<h2>Japanese conversion example</h2>
+<p>"こんにちは" in Base64 becomes "44GT44KT44Gr44Gh44Gv". You can see that Japanese can be expressed with letters and digits only.</p>
+<h2>When garbled</h2>
+<ul>
+<li><b>Base64 made with another encoding</b>: decoding Base64 made with Shift_JIS or similar can't be read as UTF-8, giving an error or garbled text.</li>
+<li><b>Base64 of binary</b>: Base64 of images or files can't be read as text.</li>
+</ul>
+<h2>Remedies</h2>
+<ul>
+<li>If you know the original encoding, use a different encoding conversion tool</li>
+<li>Convert as a file, not as text</li>
+</ul>
+<h2>Differences from other tools</h2>
+<p>Some standard programming-language functions and online tools can't handle Japanese correctly. Results may differ from this tool, which assumes UTF-8.</p>
+<h2>Good for</h2>
+<ul>
+<li>Creating settings values containing Japanese</li>
+<li>Checking contents of Japanese Base64</li>
+<li>Converting multilingual text</li>
+</ul>
+<h2>Example</h2>
+<p>Made "データ取得エラー" Base64 and put it in a setting. Loaded in another system, the Japanese came back correctly because both used UTF-8.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The other party uses another encoding</b>: check the encoding of whoever you exchange with.</li>
+<li><b>Emoji</b>: UTF-8 can handle them.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>For English only, can I ignore the encoding?</h3>
+<p>Letters and digits give the same bytes in UTF-8 and Shift_JIS, so there's almost no problem.</p>
+<h2>Summary</h2>
+<p>UTF-8 is the basis for Japanese Base64. If garbled, suspect the original encoding.</p>
 <a class="cta" href="/en/base64-text.html">Use "Base64 Text Encoder and Decoder" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li><li><a href="/en/url-encoder.html">URL Encode and Decode</a>: Encode and decode text in URLs.</li><li><a href="/en/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

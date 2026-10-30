@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Base64 compatible URL avec - et _</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Saisissez le Base64</li><li>Appuyez sur Décoder</li><li>Regardez le résultat</li></ul></div>
-<p><a href="/fr/base64-text.html">Convertisseur de texte Base64</a> lit aussi le Base64 qui utilise « - » et « _ ».</p>
-<h2>Étapes</h2>
+<p lang="en">Base64 contains the symbols "+", "/" and "=". These have special meanings in URLs, so using them as is causes trouble. So there is a variant for use in URLs. Here are the points when handling it with <a href="/fr/base64-text.html">Base64 Text Encoder and Decoder</a>.</p>
+<h2 lang="en">Difference between ordinary and URL-style Base64</h2>
+<ul>
+<li lang="en">Ordinary: uses "+" and "/". "=" may be attached at the end.</li>
+<li lang="en">URL-style: replaces "+" with "-" and "/" with "_". "=" is often omitted.</li>
+</ul>
+<h2 lang="en">How this tool reads</h2>
+<p lang="en">"Decode to text" can read both ordinary Base64 and the URL style (- and _).</p>
+<div class="note" lang="en">What's inside JWTs (login tokens) is URL-style Base64. You can paste that part and check its contents.</div>
+<h2 lang="en">Steps (reading URL-style Base64)</h2>
 <ol>
-<li>Saisissez le Base64</li>
-<li>Appuyez sur Décoder</li>
-<li>Regardez le résultat</li>
+<li lang="en">Paste the URL-style Base64 in the "String or Base64" field.</li>
+<li lang="en">Press "Decode to text".</li>
+<li lang="en">Check the "Result".</li>
 </ol>
-<div class="note">Le Base64 compatible URL utilise ces deux caractères à la place de « + » et « / ».</div>
+<h2 lang="en">Steps (making Base64 URL-style)</h2>
+<p lang="en">This tool's "Encode to Base64" outputs ordinary Base64. To use in a URL, fix the result by hand as follows.</p>
+<ol>
+<li lang="en">Replace "+" with "-"</li>
+<li lang="en">Replace "/" with "_"</li>
+<li lang="en">Remove the trailing "=" as needed</li>
+</ol>
+<h2 lang="en">Uses of URL-style Base64</h2>
+<ul>
+<li lang="en">Authentication tokens such as JWTs</li>
+<li lang="en">Data placed in part of a URL</li>
+<li lang="en">IDs used in file names</li>
+</ul>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Wanting to check a token's contents</li>
+<li lang="en">Wanting to put a string for another system in a URL</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">Pasting the middle part (payload) of a JWT and pressing "Decode to text" read JSON-form user information.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Presence of "="</b>: in the URL style it is often omitted. The tool can read it as is.</li>
+<li lang="en"><b>Forms like "%2B"</b>: if URL-encoded "+" or "/" are included, URL-decode first before pasting.</li>
+<li lang="en"><b>Cut-and-paste mistakes</b>: split the token at its separators (.) and paste the parts separately.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are JWT contents safe?</h3>
+<p lang="en">JWT contents can be read. Don't put information you want secret in them.</p>
+<h2>En résumé</h2>
+<p lang="en">URL-style Base64 uses "-" and "_". This tool reads it as is.</p>
 <a class="cta" href="/fr/base64-text.html">Utiliser « Encodeur et décodeur de texte Base64 » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/file-base64.html">Convertir des fichiers et du Base64</a>: Convertissez entre fichiers et texte Base64.</li><li><a href="/fr/url-encoder.html">Encoder et décoder une URL</a>: Encodez et décodez le texte des URL.</li><li><a href="/fr/json-formatter.html">Formater et valider du JSON</a>: Formatez, minifiez et validez du JSON.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

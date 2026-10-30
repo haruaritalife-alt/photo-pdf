@@ -200,14 +200,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>UUIDとは？バージョン4の意味</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>つくる</li><li>形を見る</li><li>使う</li></ul></div>
-<p><a href="/uuid-generator.html">UUID生成</a> で作るのは、バージョン4（乱数で作る形式）です。</p>
+<p>「UUID」という言葉は、聞いたことがあっても、中身を知らない人が多いかもしれません。<a href="/uuid-generator.html">UUID生成（バージョン4・まとめて作成）</a> で作れる「バージョン4」とは、どんなものでしょうか。</p>
+<h2>UUIDとは</h2>
+<p>Universally Unique Identifier（世界で一意な識別子）の略です。128ビットの数字で、32桁の16進数を、ハイフンで区切って表します。</p>
+<ul>
+<li>例：550e8400-e29b-41d4-a716-446655440000</li>
+<li>区切り：8-4-4-4-12桁</li>
+</ul>
+<h2>バージョンとは</h2>
+<p>UUIDには、作り方の違いで、いくつかのバージョンがあります。</p>
+<ul>
+<li><b>バージョン1</b>：日時と機器の情報から作る</li>
+<li><b>バージョン4</b>：乱数から作る</li>
+<li><b>バージョン5</b>：名前から作る（同じ名前なら同じ値）</li>
+</ul>
+<p>このツールは、バージョン4です。</p>
+<div class="note">バージョン4では、3つ目のかたまりの先頭が「4」になります。例：xxxxxxxx-xxxx-4xxx-xxxx-xxxxxxxxxxxx</div>
+<h2>バージョン4の特徴</h2>
+<ul>
+<li>乱数で作られるため、機器や日時の情報が含まれない</li>
+<li>作る場所が違っても、ほぼ重ならない</li>
+<li>中央のサーバーに問い合わせずに、その場で作れる</li>
+</ul>
+<h2>なぜ重ならないのか</h2>
+<p>可能な値の数は、非常に大きい（約5×10の36乗）ため、2つが偶然同じになる確率は、現実にはほぼゼロです。</p>
 <h2>手順</h2>
 <ol>
-<li>つくる</li>
-<li>形を見る</li>
-<li>使う</li>
+<li>「個数（1〜100）」を決めます。</li>
+<li>「つくる」を押します。</li>
+<li>「つくったUUID」の、3つ目のかたまりの先頭が「4」であることを確かめます。</li>
 </ol>
-<div class="note">「8-4-4-4-12」の文字数で、5つに区切られています。</div>
+<h2>向いている場面</h2>
+<ul>
+<li>データベースの、主キー</li>
+<li>分散システムでの、ID発行</li>
+<li>ファイルやリソースの、一意な名前</li>
+</ul>
+<h2>例</h2>
+<p>複数のアプリが、それぞれ新しいデータにIDを付ける仕組みで、UUIDを使った。連番の調整が不要で、衝突も起きなかった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>順番に並ばない</b>：UUIDは、ランダム。作成順の並び替えには使えない。</li>
+<li><b>長い</b>：連番より長い。表示や入力が大変なことがある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>UUIDは、秘密にできますか？</h3>
+<p>推測されにくい値ですが、認証用の秘密の鍵としては、用途に合った仕組みを使いましょう。</p>
+<h2>まとめ</h2>
+<p>UUIDバージョン4は、乱数で作る識別子。ほぼ重ならず、その場で作れます。</p>
 <a class="cta" href="/uuid-generator.html">UUID生成（バージョン4・まとめて作成）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/password-generator.html">安全なパスワードを作る（ランダム生成）</a>：強いランダムなパスワードを、すぐに作ります。</li><li><a href="/random-picker.html">くじ引き・順番決め・グループ分け</a>：名前から、くじ引き・順番決め・グループ分けをします。</li><li><a href="/timestamp-converter.html">UNIX時間（タイムスタンプ）変換</a>：UNIX時間と日時を、相互に変換します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +259,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What Is a UUID? Version 4 Explained</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Generate</li><li>Look at the format</li><li>Use it</li></ul></div>
-<p><a href="/uuid-generator.html">UUID Generator</a> makes version 4 (random) UUIDs.</p>
+<p>You may have heard the term "UUID" but not know what's inside. What is the "version 4" that <a href="/uuid-generator.html">UUID Generator (v4, in bulk)</a> makes?</p>
+<h2>What a UUID is</h2>
+<p>Short for Universally Unique Identifier. A 128-bit number written as 32 hexadecimal digits separated by hyphens.</p>
+<ul>
+<li>Example: 550e8400-e29b-41d4-a716-446655440000</li>
+<li>Grouping: 8-4-4-4-12 digits</li>
+</ul>
+<h2>What versions are</h2>
+<p>UUIDs have several versions differing in how they are made.</p>
+<ul>
+<li><b>Version 1</b>: made from date/time and device information</li>
+<li><b>Version 4</b>: made from random numbers</li>
+<li><b>Version 5</b>: made from a name (same name gives the same value)</li>
+</ul>
+<p>This tool makes version 4.</p>
+<div class="note">In version 4, the third group begins with "4". Example: xxxxxxxx-xxxx-4xxx-xxxx-xxxxxxxxxxxx</div>
+<h2>Features of version 4</h2>
+<ul>
+<li>Made from random numbers, so it carries no device or date information</li>
+<li>Almost never collides even if made in different places</li>
+<li>Can be made on the spot without asking a central server</li>
+</ul>
+<h2>Why they don't collide</h2>
+<p>The number of possible values is enormous (about 5 × 10^36), so the chance of two being the same by accident is practically zero.</p>
 <h2>Steps</h2>
 <ol>
-<li>Generate</li>
-<li>Look at the format</li>
-<li>Use it</li>
+<li>Decide "Count (1–100)".</li>
+<li>Press "Generate".</li>
+<li>Check that the third group in "Generated UUIDs" begins with "4".</li>
 </ol>
-<div class="note">They are split into five groups of 8-4-4-4-12 characters.</div>
+<h2>Good for</h2>
+<ul>
+<li>Primary keys in databases</li>
+<li>Issuing IDs in distributed systems</li>
+<li>Unique names for files and resources</li>
+</ul>
+<h2>Example</h2>
+<p>Used UUIDs in a setup where multiple apps each assign IDs to new data. No sequence coordination was needed and no collisions occurred.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Not in order</b>: UUIDs are random. They can't be used to sort by creation order.</li>
+<li><b>Long</b>: longer than sequence numbers. Display and entry can be cumbersome.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can a UUID be kept secret?</h3>
+<p>It's a hard-to-guess value, but for authentication secrets use a mechanism suited to the purpose.</p>
+<h2>Summary</h2>
+<p>UUID version 4 is an identifier made from random numbers. It almost never collides and can be made on the spot.</p>
 <a class="cta" href="/uuid-generator.html">Use "UUID Generator (v4, in bulk)" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/password-generator.html">Generate a Strong Random Password</a>: Generate strong random passwords instantly.</li><li><a href="/random-picker.html">Random Picker, Order and Groups</a>: Draw names, set a random order or split groups.</li><li><a href="/timestamp-converter.html">UNIX Timestamp Converter</a>: Convert between UNIX time and dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

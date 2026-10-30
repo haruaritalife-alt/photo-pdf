@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Base64 為什麼不是加密</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>輸入文字</li><li>進行編碼</li><li>試著解碼</li></ul></div>
-<p>用<a href="/tw/base64-text.html">Base64 文字轉換器</a>解碼就能看出，任何人都可以還原。</p>
-<h2>步驟</h2>
+<p lang="en">"I made it Base64, so the contents can't be seen." Thinking this is dangerous. Base64 is not encryption. Confirm with <a href="/tw/base64-text.html">Base64 Text Encoder and Decoder</a> that anyone can easily reverse it.</p>
+<h2 lang="en">Difference from encryption</h2>
+<ul>
+<li lang="en"><b>Encryption</b>: can't be reversed without a key (password).</li>
+<li lang="en"><b>Base64</b>: no key needed. Anyone can reverse it.</li>
+</ul>
+<p lang="en">Base64 is merely a "conversion" that rewrites data into another form.</p>
+<h2>試一試</h2>
 <ol>
-<li>輸入文字</li>
-<li>進行編碼</li>
-<li>試著解碼</li>
+<li lang="en">Paste a Base64 string in the "String or Base64" field.</li>
+<li lang="en">Press "Decode to text".</li>
+<li lang="en">The original text appears as is in "Result".</li>
 </ol>
-<div class="note">密碼等機密資訊不會因為轉成 Base64 而得到保護。</div>
+<div class="note" lang="en">No key or password is needed. Base64 is a format anyone can read.</div>
+<h2 lang="en">Why it is used</h2>
+<p lang="en">The purpose of Base64 is not secrecy but safe transport.</p>
+<ul>
+<li lang="en">Putting data in places that handle only text, such as email and configuration files</li>
+<li lang="en">Avoiding special symbols and line breaks</li>
+</ul>
+<h2>不要這樣做</h2>
+<ul>
+<li lang="en">Make a password Base64 and think it is "protected"</li>
+<li lang="en">Make personal information Base64 and place it in a public location</li>
+<li lang="en">Make an API key Base64 and write it in source code</li>
+</ul>
+<p lang="en">In all these, the contents are fully exposed.</p>
+<h2 lang="en">To protect secrets</h2>
+<ul>
+<li lang="en">Encrypt information you truly want to protect</li>
+<li lang="en">Store passwords hashed</li>
+<li lang="en">Use HTTPS for communication</li>
+<li lang="en">Don't write secrets in public code</li>
+</ul>
+<p lang="en">This site also has encryption tools. Use them as needed.</p>
+<h2 lang="en">Checks it suits</h2>
+<ul>
+<li lang="en">Checking whether data you were given is merely hidden in Base64</li>
+<li lang="en">Noticing that a setting's value is actually readable text</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Decoded the value of a Basic authentication header. It read as "username:password" as is. I realised that over non-HTTPS communication, eavesdropping would be dangerous.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"Can't tell by looking" is not "safe"</b>: unreadable and protected are different.</li>
+<li lang="en"><b>Long string means safe</b>: length is irrelevant.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is Basic authentication dangerous because of Base64?</h3>
+<p lang="en">Because the contents are effectively plaintext. Combining with HTTPS (encrypted communication) is essential.</p>
+<h2>小結</h2>
+<p lang="en">Base64 is not encryption. Protecting secrets needs a different mechanism.</p>
 <a class="cta" href="/tw/base64-text.html">使用「Base64 文字編碼與解碼」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/file-base64.html">檔案與 Base64 互相轉換</a>：在檔案和 Base64 文字之間互相轉換。</li><li><a href="/tw/url-encoder.html">URL 編碼與解碼</a>: 對網址中的文字進行編碼和解碼。</li><li><a href="/tw/json-formatter.html">整理並檢查 JSON</a>: 整理、壓縮並檢查 JSON。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

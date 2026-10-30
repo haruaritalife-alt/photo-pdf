@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Base64 с японским и «кракозябрами»</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Введите японский текст</li><li>Закодируйте</li><li>Декодируйте для проверки</li></ul></div>
-<p><a href="/ru/base64-text.html">Конвертер текста Base64</a> обрабатывает японский в UTF-8.</p>
+<p lang="en">Japanese turned into Base64 became unreadable. After converting back from Base64 it was garbled. When handling Japanese, you need to watch the character encoding. <a href="/ru/base64-text.html">Base64 Text Encoder and Decoder</a> converts using UTF-8.</p>
+<h2 lang="en">Basic mechanism</h2>
+<p lang="en">Base64 converts bytes (data). To make text Base64, you first turn the text into a byte sequence. The rule for "turning characters into bytes" is the character encoding.</p>
+<ul>
+<li lang="en">This tool: UTF-8</li>
+<li lang="en">In UTF-8, one Japanese character is 3 bytes</li>
+</ul>
 <h2>Шаги</h2>
 <ol>
-<li>Введите японский текст</li>
-<li>Закодируйте</li>
-<li>Декодируйте для проверки</li>
+<li lang="en">Enter Japanese in "String or Base64".</li>
+<li lang="en">Press "Encode to Base64".</li>
+<li>Скопируйте результат кнопкой «Скопировать результат».</li>
 </ol>
-<div class="note">Base64, созданный в другой кодировке символов, может отображаться «кракозябрами».</div>
+<div class="note" lang="en">When converting back, it is also read as UTF-8. Base64 made from UTF-8 returns the Japanese correctly.</div>
+<h2 lang="en">Japanese conversion example</h2>
+<p lang="en">"こんにちは" in Base64 becomes "44GT44KT44Gr44Gh44Gv". You can see that Japanese can be expressed with letters and digits only.</p>
+<h2 lang="en">When garbled</h2>
+<ul>
+<li lang="en"><b>Base64 made with another encoding</b>: decoding Base64 made with Shift_JIS or similar can't be read as UTF-8, giving an error or garbled text.</li>
+<li lang="en"><b>Base64 of binary</b>: Base64 of images or files can't be read as text.</li>
+</ul>
+<h2 lang="en">Remedies</h2>
+<ul>
+<li lang="en">If you know the original encoding, use a different encoding conversion tool</li>
+<li lang="en">Convert as a file, not as text</li>
+</ul>
+<h2 lang="en">Differences from other tools</h2>
+<p lang="en">Some standard programming-language functions and online tools can't handle Japanese correctly. Results may differ from this tool, which assumes UTF-8.</p>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Creating settings values containing Japanese</li>
+<li lang="en">Checking contents of Japanese Base64</li>
+<li lang="en">Converting multilingual text</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">Made "データ取得エラー" Base64 and put it in a setting. Loaded in another system, the Japanese came back correctly because both used UTF-8.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The other party uses another encoding</b>: check the encoding of whoever you exchange with.</li>
+<li lang="en"><b>Emoji</b>: UTF-8 can handle them.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">For English only, can I ignore the encoding?</h3>
+<p lang="en">Letters and digits give the same bytes in UTF-8 and Shift_JIS, so there's almost no problem.</p>
+<h2>Итог</h2>
+<p lang="en">UTF-8 is the basis for Japanese Base64. If garbled, suspect the original encoding.</p>
 <a class="cta" href="/ru/base64-text.html">Использовать «Кодировщик и декодировщик текста Base64» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/file-base64.html">Преобразование файлов и Base64</a>: Преобразуйте между файлами и текстом Base64.</li><li><a href="/ru/url-encoder.html">Кодирование и декодирование URL</a>: Кодируйте и декодируйте текст в URL.</li><li><a href="/ru/json-formatter.html">Форматировать и проверить JSON</a>: Форматирование, минификация и проверка JSON.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

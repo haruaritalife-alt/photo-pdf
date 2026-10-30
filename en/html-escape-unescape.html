@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Turning Escaped Characters Back</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the escaped text</li><li>Press Unescape</li><li>See the result</li></ul></div>
-<p>"Unescape" in <a href="/en/html-escape.html">HTML Escape</a> turns it back into readable characters.</p>
+<p>In source code and data, have you seen incomprehensible characters like "&lt;" and "&amp;"? These are escaped characters. "Unescape" in <a href="/en/html-escape.html">HTML Escape and Unescape</a> restores them to a readable form.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the escaped text</li>
-<li>Press Unescape</li>
-<li>See the result</li>
+<li>Paste the escaped text in the "String or HTML" field.</li>
+<li>Press "Unescape".</li>
+<li>The original text appears in "Result".</li>
+<li>Copy with "Copy result".</li>
 </ol>
-<div class="note">Numeric references are supported too.</div>
+<div class="note">Example: &lt;p&gt;Hello&lt;/p&gt; → <p>Hello</p></div>
+<h2>Characters it restores</h2>
+<ul>
+<li>&amp; → &amp;</li>
+<li>&lt; → &lt;</li>
+<li>&gt; → &gt;</li>
+<li>" → "</li>
+<li>' and ' → '</li>
+<li>Numeric character references (such as © or ©): the corresponding character</li>
+</ul>
+<p>Numeric references are restored in decimal (©) and hexadecimal (©) alike.</p>
+<h2>Where it often appears</h2>
+<ul>
+<li>Viewing a web page's source</li>
+<li>When an API response contains escaped characters</li>
+<li>Reading the body of RSS or email</li>
+<li>When data is stored escaped in a database</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Making a hard-to-read string readable</li>
+<li>Restoring text that was escaped by mistake</li>
+</ul>
+<h2>Example</h2>
+<p>An RSS title showed as "A &amp; B". Pressing "Unescape" made it "A &amp; B".</p>
+<h2>When it doesn't restore</h2>
+<ul>
+<li><b>Escaped twice</b>: a form like "&lt;". One restoration gives "&lt;", so restore once more.</li>
+<li><b>Named character references</b>: ones like "©" and " " may not be restored by this tool.</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Pasting the result into HTML makes tags work</b>: pasted directly into a page, the restored result acts as HTML. Take care.</li>
+<li><b>Missing semicolon</b>: without the trailing ";" as in "&lt;", it doesn't restore.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is it safe to use after restoring?</h3>
+<p>The restored result may contain tags or scripts. Avoid pasting it directly into a web page.</p>
+<h2>Summary</h2>
+<p>Restore escaped text to a readable form with "Unescape". But take care in handling it afterwards.</p>
 <a class="cta" href="/en/html-escape.html">Use "HTML Escape and Unescape" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/url-encoder.html">URL Encode and Decode</a>: Encode and decode text in URLs.</li><li><a href="/en/base64-text.html">Base64 Text Encoder and Decoder</a>: Convert text to and from Base64.</li><li><a href="/en/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

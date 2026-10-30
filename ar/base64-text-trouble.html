@@ -215,14 +215,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ماذا تفعل إذا لم يعمل</h1>
 <p class="meta">تاريخ النشر: 19 أكتوبر 2026 | آخر تحديث: 19 أكتوبر 2026 | <a href="/about.html">حول (باليابانية)</a></p>
 <div class="points"><b>النقاط الرئيسية</b><ul><li>افحص الملف</li><li>تحقق من الحجم</li><li>جرّب جهازًا آخر</li></ul></div>
-<p>إذا لم يعمل <a href="/ar/base64-text.html">محوّل نص Base64</a>، فتحقق مما يلي.</p>
-<h2>الخطوات</h2>
+<p lang="en">Base64 conversion isn't working. Here are troubles that commonly occur with <a href="/ar/base64-text.html">Base64 Text Encoder and Decoder</a> and how to handle them.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Could not read this as Base64." appears</b>: characters are missing, it isn't a Base64 string, or it is non-text data.</li>
+<li lang="en"><b>Japanese is garbled</b>: the original Base64 may have been made with an encoding other than UTF-8.</li>
+<li lang="en"><b>The result is meaningless symbols</b>: the Base64 contents are binary, such as an image or file, not text.</li>
+<li lang="en"><b>"=" appears at the end of the result</b>: normal. Padding to even out the length.</li>
+<li lang="en"><b>The converted-back result differs from the original</b>: the source may have used another encoding.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>افحص الملف</li>
-<li>تحقق من الحجم</li>
-<li>جرّب جهازًا آخر</li>
+<li lang="en">Check the pasted string has no extra characters (quotation marks, prefixes like "Basic ").</li>
+<li lang="en">Check the string was copied to the very end.</li>
+<li lang="en">Check no symbols other than "+", "/", "=", "-", "_" are mixed in.</li>
+<li lang="en">Try another part.</li>
 </ol>
-<div class="note">إذا تعذّرت القراءة، فتحقق من وجود أحرف ليست من Base64 أو سلسلة مقطوعة.</div>
+<div class="note" lang="en">For something like "Authorization: Basic xxxx", paste only the "xxxx" part.</div>
+<h2 lang="en">Pasting notes</h2>
+<ul>
+<li lang="en">Leading and trailing spaces and line breaks are removed when reading</li>
+<li lang="en">Don't include quotation marks (") or commas</li>
+<li lang="en">Strings broken across lines can be pasted</li>
+</ul>
+<h2 lang="en">Base64 of binary</h2>
+<p lang="en">Base64 of an image or PDF can't be read even when decoded to text. Use the tool that converts between files and Base64.</p>
+<h2 lang="en">Long strings</h2>
+<p lang="en">Very long Base64 can take time to paste and process. If the browser is heavy, try a little at a time.</p>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Checking the pasted content</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Pasted "Basic dXNlcjpwYXNz" as is and got an error. With only "dXNlcjpwYXNz" it read as "user:pass".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width characters</b>: mixed-in full-width characters can't be read.</li>
+<li lang="en"><b>Look-alike characters</b>: beware "l" vs "1" and "O" vs "0".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How can I check when I don't know the original string?</h3>
+<p lang="en">Check the format in the documentation of the source (API, configuration file, etc.).</p>
+<h2>الخلاصة</h2>
+<p lang="en">Remove prefixes, copy to the end and avoid full-width characters. That solves most troubles.</p>
 <a class="cta" href="/ar/base64-text.html">استخدم «مشفّر ومفكّك نص Base64» (مجانًا)</a>
 <h2>أدوات تتكامل مع هذه الأداة</h2><ul><li><a href="/ar/file-base64.html">تحويل الملفات وBase64</a>: حوّل بين الملفات ونص Base64.</li><li><a href="/ar/url-encoder.html">ترميز URL وفك ترميزه</a>: ترميز النص في عناوين URL وفك ترميزه.</li><li><a href="/ar/json-formatter.html">تنسيق JSON والتحقق منه</a>: تنسيق JSON وتصغيره والتحقق منه.</li></ul>
 <div class="tip"><p>إذا أفادك هذا الدليل، فإن إكرامية صغيرة تعني لنا الكثير.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">أرسل إكرامية (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">أرسل هدية (قائمة أمنيات Amazon)</a></div>

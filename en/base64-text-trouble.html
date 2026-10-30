@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/base64-text.html">Base64 Text Converter</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>Base64 conversion isn't working. Here are troubles that commonly occur with <a href="/en/base64-text.html">Base64 Text Encoder and Decoder</a> and how to handle them.</p>
+<h2>Common troubles</h2>
+<ul>
+<li><b>"Could not read this as Base64." appears</b>: characters are missing, it isn't a Base64 string, or it is non-text data.</li>
+<li><b>Japanese is garbled</b>: the original Base64 may have been made with an encoding other than UTF-8.</li>
+<li><b>The result is meaningless symbols</b>: the Base64 contents are binary, such as an image or file, not text.</li>
+<li><b>"=" appears at the end of the result</b>: normal. Padding to even out the length.</li>
+<li><b>The converted-back result differs from the original</b>: the source may have used another encoding.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the pasted string has no extra characters (quotation marks, prefixes like "Basic ").</li>
+<li>Check the string was copied to the very end.</li>
+<li>Check no symbols other than "+", "/", "=", "-", "_" are mixed in.</li>
+<li>Try another part.</li>
 </ol>
-<div class="note">If it can't be read, check for characters that aren't Base64 or a string that was cut off.</div>
+<div class="note">For something like "Authorization: Basic xxxx", paste only the "xxxx" part.</div>
+<h2>Pasting notes</h2>
+<ul>
+<li>Leading and trailing spaces and line breaks are removed when reading</li>
+<li>Don't include quotation marks (") or commas</li>
+<li>Strings broken across lines can be pasted</li>
+</ul>
+<h2>Base64 of binary</h2>
+<p>Base64 of an image or PDF can't be read even when decoded to text. Use the tool that converts between files and Base64.</p>
+<h2>Long strings</h2>
+<p>Very long Base64 can take time to paste and process. If the browser is heavy, try a little at a time.</p>
+<h2>Uses it suits</h2>
+<ul>
+<li>Pre-checks before trouble</li>
+<li>Checking the pasted content</li>
+</ul>
+<h2>Example</h2>
+<p>Pasted "Basic dXNlcjpwYXNz" as is and got an error. With only "dXNlcjpwYXNz" it read as "user:pass".</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Full-width characters</b>: mixed-in full-width characters can't be read.</li>
+<li><b>Look-alike characters</b>: beware "l" vs "1" and "O" vs "0".</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How can I check when I don't know the original string?</h3>
+<p>Check the format in the documentation of the source (API, configuration file, etc.).</p>
+<h2>Summary</h2>
+<p>Remove prefixes, copy to the end and avoid full-width characters. That solves most troubles.</p>
 <a class="cta" href="/en/base64-text.html">Use "Base64 Text Encoder and Decoder" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li><li><a href="/en/url-encoder.html">URL Encode and Decode</a>: Encode and decode text in URLs.</li><li><a href="/en/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

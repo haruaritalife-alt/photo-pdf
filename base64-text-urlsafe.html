@@ -200,14 +200,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>URLで使うBase64（-と_）</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>Base64を入れる</li><li>文字に戻すを押す</li><li>結果を見る</li></ul></div>
-<p><a href="/base64-text.html">Base64文字列変換</a> は、「-」と「_」を使ったBase64も読み取ります。</p>
-<h2>手順</h2>
+<p>Base64には、「+」「/」「=」という記号が含まれます。これらはURLの中で特別な意味を持つため、そのまま使うと、トラブルになります。そこで、URLで使うための変形が、あります。<a href="/base64-text.html">文字列のBase64変換（エンコード・デコード）</a> で扱うときのポイントを、まとめます。</p>
+<h2>通常のBase64と、URL用の違い</h2>
+<ul>
+<li>通常：「+」「/」を使う。末尾に「=」が付くことがある。</li>
+<li>URL用：「+」を「-」、「/」を「_」に置き換える。「=」を省くことが多い。</li>
+</ul>
+<h2>このツールの読み取り</h2>
+<p>「文字に戻す」では、通常のBase64も、URL用（- と _）も、読み取れます。</p>
+<div class="note">JWT（ログインのトークン）などに含まれるのは、URL用のBase64です。その部分を貼って、中身を確かめられます。</div>
+<h2>手順（URL用のBase64を読む）</h2>
 <ol>
-<li>Base64を入れる</li>
-<li>文字に戻すを押す</li>
-<li>結果を見る</li>
+<li>「文字列またはBase64」の欄に、URL用のBase64を貼ります。</li>
+<li>「文字に戻す」を押します。</li>
+<li>「変換結果」を確かめます。</li>
 </ol>
-<div class="note">URL向けのBase64は、「+」「/」の代わりにこの2つを使います。</div>
+<h2>手順（Base64をURL用にする）</h2>
+<p>このツールの「Base64にする」は、通常のBase64で出力します。URLに使うときは、結果を、次のように手で直します。</p>
+<ol>
+<li>「+」を「-」に置き換える</li>
+<li>「/」を「_」に置き換える</li>
+<li>末尾の「=」を、必要に応じて取る</li>
+</ol>
+<h2>URL用のBase64の使い道</h2>
+<ul>
+<li>JWTなどの、認証トークン</li>
+<li>URLの一部に入れるデータ</li>
+<li>ファイル名に使うID</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>トークンの中身を確かめたい</li>
+<li>他システムへ渡す文字列を、URLに載せたい</li>
+</ul>
+<h2>例</h2>
+<p>JWTの真ん中の部分（ペイロード）を貼って、「文字に戻す」を押すと、JSON形式のユーザー情報が読めた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「=」の有無</b>：URL用では、省かれていることが多い。ツールは、そのまま読み取れる。</li>
+<li><b>「%2B」などの形</b>：URLエンコードされた「+」や「/」が入っている場合は、先にURLデコードしてから貼る。</li>
+<li><b>切り貼りミス</b>：トークンの区切り（.）で、部分を分けて貼る。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>JWTの中身は、安全ですか？</h3>
+<p>JWTの中身は、読むことができます。秘密にしたい情報は、入れてはいけません。</p>
+<h2>まとめ</h2>
+<p>URL用のBase64は、「-」「_」を使う形。このツールで、そのまま読み取れます。</p>
 <a class="cta" href="/base64-text.html">文字列のBase64変換（エンコード・デコード）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/file-base64.html">ファイルとBase64を相互変換する</a>：ファイルとBase64の文字を相互に変換します。</li><li><a href="/url-encoder.html">URLエンコード・デコード</a>：URLの日本語や記号を、エンコード・デコードします。</li><li><a href="/json-formatter.html">JSONを整える・チェックする</a>：JSONを整形・圧縮し、書き方をチェックします。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +257,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>URL-Safe Base64 with - and _</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the Base64</li><li>Press Decode</li><li>See the result</li></ul></div>
-<p><a href="/base64-text.html">Base64 Text Converter</a> also reads Base64 that uses "-" and "_".</p>
-<h2>Steps</h2>
+<p>Base64 contains the symbols "+", "/" and "=". These have special meanings in URLs, so using them as is causes trouble. So there is a variant for use in URLs. Here are the points when handling it with <a href="/base64-text.html">Base64 Text Encoder and Decoder</a>.</p>
+<h2>Difference between ordinary and URL-style Base64</h2>
+<ul>
+<li>Ordinary: uses "+" and "/". "=" may be attached at the end.</li>
+<li>URL-style: replaces "+" with "-" and "/" with "_". "=" is often omitted.</li>
+</ul>
+<h2>How this tool reads</h2>
+<p>"Decode to text" can read both ordinary Base64 and the URL style (- and _).</p>
+<div class="note">What's inside JWTs (login tokens) is URL-style Base64. You can paste that part and check its contents.</div>
+<h2>Steps (reading URL-style Base64)</h2>
 <ol>
-<li>Enter the Base64</li>
-<li>Press Decode</li>
-<li>See the result</li>
+<li>Paste the URL-style Base64 in the "String or Base64" field.</li>
+<li>Press "Decode to text".</li>
+<li>Check the "Result".</li>
 </ol>
-<div class="note">URL-safe Base64 uses these two instead of "+" and "/".</div>
+<h2>Steps (making Base64 URL-style)</h2>
+<p>This tool's "Encode to Base64" outputs ordinary Base64. To use in a URL, fix the result by hand as follows.</p>
+<ol>
+<li>Replace "+" with "-"</li>
+<li>Replace "/" with "_"</li>
+<li>Remove the trailing "=" as needed</li>
+</ol>
+<h2>Uses of URL-style Base64</h2>
+<ul>
+<li>Authentication tokens such as JWTs</li>
+<li>Data placed in part of a URL</li>
+<li>IDs used in file names</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Wanting to check a token's contents</li>
+<li>Wanting to put a string for another system in a URL</li>
+</ul>
+<h2>Example</h2>
+<p>Pasting the middle part (payload) of a JWT and pressing "Decode to text" read JSON-form user information.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Presence of "="</b>: in the URL style it is often omitted. The tool can read it as is.</li>
+<li><b>Forms like "%2B"</b>: if URL-encoded "+" or "/" are included, URL-decode first before pasting.</li>
+<li><b>Cut-and-paste mistakes</b>: split the token at its separators (.) and paste the parts separately.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Are JWT contents safe?</h3>
+<p>JWT contents can be read. Don't put information you want secret in them.</p>
+<h2>Summary</h2>
+<p>URL-style Base64 uses "-" and "_". This tool reads it as is.</p>
 <a class="cta" href="/base64-text.html">Use "Base64 Text Encoder and Decoder" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li><li><a href="/url-encoder.html">URL Encode and Decode</a>: Encode and decode text in URLs.</li><li><a href="/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

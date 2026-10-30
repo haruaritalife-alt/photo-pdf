@@ -200,14 +200,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Base64を文字に戻すやり方</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>Base64を入れる</li><li>文字に戻すを押す</li><li>結果を見る</li></ul></div>
-<p><a href="/base64-text.html">Base64文字列変換</a> の「文字に戻す」で、Base64の中身が読めます。</p>
+<p>設定ファイルやAPIの結果に、意味の分からない英数字の羅列が入っている。それがBase64なら、<a href="/base64-text.html">文字列のBase64変換（エンコード・デコード）</a> で、中身を読めます。</p>
 <h2>手順</h2>
 <ol>
-<li>Base64を入れる</li>
-<li>文字に戻すを押す</li>
-<li>結果を見る</li>
+<li>「文字列またはBase64」の欄に、Base64の文字列を貼ります。</li>
+<li>「文字に戻す」を押します。</li>
+<li>「変換結果」に、元の文字が出ます。</li>
+<li>必要なら「結果をコピー」でコピーします。</li>
 </ol>
-<div class="note">改行や空白が入っていても読み取れます。</div>
+<div class="note">途中に改行や空白があっても、取り除いて読み取ります。メールなどで折り返された文字列も、そのまま貼れます。</div>
+<h2>Base64かどうかの見分け方</h2>
+<ul>
+<li>英大文字・小文字・数字だけで、できている</li>
+<li>「+」「/」が混ざる（または「-」「_」）</li>
+<li>末尾に「=」が付くことがある</li>
+<li>長さが、4の倍数になる</li>
+</ul>
+<h2>読み取れる形式</h2>
+<ul>
+<li>通常のBase64（+ と /）</li>
+<li>URLなどで使う形式（- と _）も、読み取れます。</li>
+</ul>
+<h2>読めないとき</h2>
+<ul>
+<li><b>「Base64として読み取れませんでした。」</b>：文字の一部が欠けている、別の形式、文字以外のデータ（画像など）の可能性。</li>
+<li>文字化けする：元のデータが、文字ではなく、画像やファイルの可能性。</li>
+</ul>
+<h2>ファイルのBase64</h2>
+<p>画像やPDFなどのファイルが、Base64になっている場合は、文字としては読めません。ファイルとBase64を相互変換する、別のツールをご利用ください。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>認証ヘッダー（Basic認証など）の中身の確認</li>
+<li>設定ファイルの値の確認</li>
+<li>メールのヘッダーの中身の確認</li>
+</ul>
+<h2>例</h2>
+<p>設定ファイルの値「44GT44KT44Gr44Gh44Gv」を、貼って「文字に戻す」を押すと、「こんにちは」と読めた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>コピーで末尾が欠ける</b>：「=」の部分まで、コピーできているか確かめる。</li>
+<li><b>別の形式の文字列</b>：16進数や、ほかの形式の文字列を、貼っていないか確かめる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>パスワードがBase64になっていたら、安全ですか？</h3>
+<p>いいえ。Base64は誰でも元に戻せる形式で、暗号ではありません。</p>
+<h2>まとめ</h2>
+<p>Base64は、貼って「文字に戻す」だけ。ただし、秘密の保護にはなりません。</p>
 <a class="cta" href="/base64-text.html">文字列のBase64変換（エンコード・デコード）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/file-base64.html">ファイルとBase64を相互変換する</a>：ファイルとBase64の文字を相互に変換します。</li><li><a href="/url-encoder.html">URLエンコード・デコード</a>：URLの日本語や記号を、エンコード・デコードします。</li><li><a href="/json-formatter.html">JSONを整える・チェックする</a>：JSONを整形・圧縮し、書き方をチェックします。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +257,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Decode Base64 Back to Text</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the Base64</li><li>Press Decode</li><li>See the result</li></ul></div>
-<p>The "Decode to text" button in <a href="/base64-text.html">Base64 Text Converter</a> lets you read a Base64 string.</p>
+<p>A configuration file or API result contains a string of letters and digits you can't make sense of. If it's Base64, you can read its contents with <a href="/base64-text.html">Base64 Text Encoder and Decoder</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the Base64</li>
-<li>Press Decode</li>
-<li>See the result</li>
+<li>Paste the Base64 string in the "String or Base64" field.</li>
+<li>Press "Decode to text".</li>
+<li>The original text appears in "Result".</li>
+<li>Copy with "Copy result" if needed.</li>
 </ol>
-<div class="note">It reads the string even if it contains line breaks or spaces.</div>
+<div class="note">Line breaks and spaces within it are removed when reading. Strings wrapped in emails can be pasted as they are.</div>
+<h2>Telling whether it is Base64</h2>
+<ul>
+<li>Made only of upper/lower-case letters and digits</li>
+<li>"+" and "/" mixed in (or "-" and "_")</li>
+<li>"=" may be attached at the end</li>
+<li>The length is a multiple of 4</li>
+</ul>
+<h2>Readable formats</h2>
+<ul>
+<li>Ordinary Base64 (+ and /)</li>
+<li>The URL-style form (- and _) is also readable.</li>
+</ul>
+<h2>When it can't be read</h2>
+<ul>
+<li><b>"Could not read this as Base64."</b>: some characters may be missing, it may be another format, or non-text data (such as an image).</li>
+<li>Garbled output: the original data may be an image or file, not text.</li>
+</ul>
+<h2>Base64 of files</h2>
+<p>If a file such as an image or PDF has been made Base64, it can't be read as text. Use the other tool that converts between files and Base64.</p>
+<h2>Good for</h2>
+<ul>
+<li>Checking the contents of authentication headers (such as Basic authentication)</li>
+<li>Checking values in configuration files</li>
+<li>Checking email header contents</li>
+</ul>
+<h2>Example</h2>
+<p>Pasting the configuration value "44GT44KT44Gr44Gh44Gv" and pressing "Decode to text" read as "こんにちは".</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Ending lost when copying</b>: check the "=" part was copied too.</li>
+<li><b>A string in another format</b>: check you haven't pasted a hexadecimal or other string.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is it safe if a password is in Base64?</h3>
+<p>No. Base64 is a format anyone can reverse and is not encryption.</p>
+<h2>Summary</h2>
+<p>For Base64, just paste and press "Decode to text". But it does not protect secrets.</p>
 <a class="cta" href="/base64-text.html">Use "Base64 Text Encoder and Decoder" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/file-base64.html">Convert Files and Base64</a>: Convert between files and Base64 text.</li><li><a href="/url-encoder.html">URL Encode and Decode</a>: Encode and decode text in URLs.</li><li><a href="/json-formatter.html">Format and Validate JSON</a>: Format, minify and validate JSON.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

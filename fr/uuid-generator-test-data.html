@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Utiliser des UUID comme identifiants de données de test</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Indiquez le nombre</li><li>Générer</li><li>Collez dans vos données</li></ul></div>
-<p>Les UUID de <a href="/fr/uuid-generator.html">Générateur d'UUID</a> peuvent servir tels quels d'identifiants dans des données de test.</p>
+<p lang="en">In system development and testing, you can't use real data. You need dummy data for testing. UUIDs made with <a href="/fr/uuid-generator.html">UUID Generator (v4, in bulk)</a> can be used as its IDs.</p>
+<h2 lang="en">Why UUIDs are convenient</h2>
+<ul>
+<li lang="en">They don't collide, so even enlarging test data rarely causes conflicts</li>
+<li lang="en">Little worry of mixing with real data</li>
+<li lang="en">They contain no personal information</li>
+</ul>
 <h2>Étapes</h2>
 <ol>
-<li>Indiquez le nombre</li>
-<li>Générer</li>
-<li>Collez dans vos données</li>
+<li lang="en">Enter the needed count in "Count (1–100)".</li>
+<li>Appuyez sur « Générer ».</li>
+<li lang="en">Copy with "Copy all".</li>
+<li lang="en">Paste into the ID column of the test data table.</li>
 </ol>
-<div class="note">Pour les identifiants de production, suivez les règles de votre système.</div>
+<div class="note" lang="en">Pasting into spreadsheet software puts them one per row in the ID column.</div>
+<h2 lang="en">Example of making test data</h2>
+<ol>
+<li lang="en">In spreadsheet software, make columns (id, name, email, etc.).</li>
+<li lang="en">Paste the UUIDs into the id column.</li>
+<li lang="en">Fill the other columns with dummy values.</li>
+<li lang="en">Save as CSV and import into the system.</li>
+</ol>
+<h2 lang="en">Where it is used</h2>
+<ul>
+<li lang="en">Dummy data for users, products, orders, etc.</li>
+<li lang="en">Dummy IDs sent in API tests</li>
+<li lang="en">Rows for checking database behaviour</li>
+</ul>
+<h2 lang="en">Cautions in testing</h2>
+<ul>
+<li lang="en"><b>Distinguish from real IDs</b>: don't mix test data with production data.</li>
+<li lang="en"><b>Cleanup</b>: delete test data when testing is finished.</li>
+<li lang="en"><b>Personal information</b>: don't use real personal information in test data.</li>
+</ul>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Preparing data in development environments</li>
+<li lang="en">Large data for load tests</li>
+<li lang="en">Checking screen display</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">To check the user list screen, prepared 50 dummy users. Made 50 UUIDs, pasted them into the id column, and numbered names "Test user 1", "Test user 2".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Format specification</b>: the system may specify the UUID format (hyphens or not, etc.).</li>
+<li lang="en"><b>Duplicate check</b>: just in case, check the pasted IDs have no duplicates.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can they be used in production data too?</h3>
+<p lang="en">Yes. Version 4 is widely used for production IDs. But follow your system's design.</p>
+<h2>En résumé</h2>
+<p lang="en">Use UUIDs for test-data IDs. You get disposable identifiers that almost never collide.</p>
 <a class="cta" href="/fr/uuid-generator.html">Utiliser « Générateur d'UUID (v4, en lot) » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/password-generator.html">Générer un mot de passe aléatoire robuste</a>: Générez instantanément des mots de passe aléatoires robustes.</li><li><a href="/fr/random-picker.html">Tirage au sort, ordre et groupes</a>: Tirez des noms au sort, fixez un ordre aléatoire ou répartissez en groupes.</li><li><a href="/fr/timestamp-converter.html">Convertisseur d'horodatage UNIX</a>: Convertissez entre heure UNIX et dates.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

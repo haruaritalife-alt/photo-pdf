@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/base64-text.html">Base64 텍스트 변환기</a>가 작동하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">Base64 conversion isn't working. Here are troubles that commonly occur with <a href="/ko/base64-text.html">Base64 Text Encoder and Decoder</a> and how to handle them.</p>
+<h2 lang="en">Common troubles</h2>
+<ul>
+<li lang="en"><b>"Could not read this as Base64." appears</b>: characters are missing, it isn't a Base64 string, or it is non-text data.</li>
+<li lang="en"><b>Japanese is garbled</b>: the original Base64 may have been made with an encoding other than UTF-8.</li>
+<li lang="en"><b>The result is meaningless symbols</b>: the Base64 contents are binary, such as an image or file, not text.</li>
+<li lang="en"><b>"=" appears at the end of the result</b>: normal. Padding to even out the length.</li>
+<li lang="en"><b>The converted-back result differs from the original</b>: the source may have used another encoding.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Check the pasted string has no extra characters (quotation marks, prefixes like "Basic ").</li>
+<li lang="en">Check the string was copied to the very end.</li>
+<li lang="en">Check no symbols other than "+", "/", "=", "-", "_" are mixed in.</li>
+<li lang="en">Try another part.</li>
 </ol>
-<div class="note">읽을 수 없으면 Base64가 아닌 문자가 섞였거나 문자열이 잘리지 않았는지 확인하세요.</div>
+<div class="note" lang="en">For something like "Authorization: Basic xxxx", paste only the "xxxx" part.</div>
+<h2 lang="en">Pasting notes</h2>
+<ul>
+<li lang="en">Leading and trailing spaces and line breaks are removed when reading</li>
+<li lang="en">Don't include quotation marks (") or commas</li>
+<li lang="en">Strings broken across lines can be pasted</li>
+</ul>
+<h2 lang="en">Base64 of binary</h2>
+<p lang="en">Base64 of an image or PDF can't be read even when decoded to text. Use the tool that converts between files and Base64.</p>
+<h2 lang="en">Long strings</h2>
+<p lang="en">Very long Base64 can take time to paste and process. If the browser is heavy, try a little at a time.</p>
+<h2 lang="en">Uses it suits</h2>
+<ul>
+<li lang="en">Pre-checks before trouble</li>
+<li lang="en">Checking the pasted content</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Pasted "Basic dXNlcjpwYXNz" as is and got an error. With only "dXNlcjpwYXNz" it read as "user:pass".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width characters</b>: mixed-in full-width characters can't be read.</li>
+<li lang="en"><b>Look-alike characters</b>: beware "l" vs "1" and "O" vs "0".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How can I check when I don't know the original string?</h3>
+<p lang="en">Check the format in the documentation of the source (API, configuration file, etc.).</p>
+<h2>요약</h2>
+<p lang="en">Remove prefixes, copy to the end and avoid full-width characters. That solves most troubles.</p>
 <a class="cta" href="/ko/base64-text.html">“Base64 텍스트 인코더·디코더” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/file-base64.html">파일과 Base64 변환</a>: 파일과 Base64 텍스트를 서로 변환합니다.</li><li><a href="/ko/url-encoder.html">URL 인코딩·디코딩</a>: URL 안의 글자를 인코딩하고 디코딩합니다.</li><li><a href="/ko/json-formatter.html">JSON 정리 및 검증</a>: JSON을 정리하고, 압축하고, 검증합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>
