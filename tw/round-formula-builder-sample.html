@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>用試算數值檢查</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>輸入數字</li><li>檢視結果</li><li>調整</li></ul></div>
-<p>輸入試算數值後,<a href="/tw/round-formula-builder.html">舍入公式生成器</a>會顯示結果示例。</p>
+<p lang="en">You want to check the result before building the formula. Entering a value in "Sample value" in <a href="/tw/round-formula-builder.html">Build a Rounding Formula</a> shows the rounding result beforehand.</p>
 <h2>步驟</h2>
 <ol>
-<li>輸入數字</li>
-<li>檢視結果</li>
-<li>調整</li>
+<li lang="en">Enter "Cell to round", "Function" and "Digits or unit".</li>
+<li lang="en">Enter a realistic number in "Sample value".</li>
+<li lang="en">Check "Sample result: original → rounded".</li>
 </ol>
-<div class="note">貼到單元格之前就能檢查。</div>
+<div class="note" lang="en">The sample value isn't included in the formula. The field is only for checking the result.</div>
+<h2>示例</h2>
+<p lang="en">With ROUND and 2 digits, entering 3.14159 as the sample shows:</p>
+<ul>
+<li lang="en">Sample result: 3.14159 → 3.14</li>
+</ul>
+<h2 lang="en">Try boundary values</h2>
+<p lang="en">Entering values at the boundary where results switch is effective.</p>
+<ul>
+<li lang="en">ROUND, 0 digits: 2.4, 2.5, 2.6</li>
+<li lang="en">ROUND, -2 digits: 149, 150, 151</li>
+<li lang="en">CEILING, unit 100: 100, 101</li>
+</ul>
+<h2 lang="en">Try negatives too</h2>
+<ul>
+<li lang="en">ROUND, 0 digits: -2.5 → -3</li>
+<li lang="en">ROUNDUP, 0 digits: -2.1 → -3</li>
+<li lang="en">ROUNDDOWN, 0 digits: -2.9 → -2</li>
+</ul>
+<h2>適合</h2>
+<ul>
+<li lang="en">Torn between round up and standard rounding</li>
+<li lang="en">Checking beforehand that the result is as intended</li>
+<li lang="en">Checking behavior with negatives</li>
+</ul>
+<h2 lang="en">How it's calculated</h2>
+<p lang="en">The sample result is calculated inside the tool. The ROUND family normalises to 14 significant digits before rounding to curb decimal error. It's designed to match Excel's results.</p>
+<h2>示例</h2>
+<p lang="en">Wanted to know whether =ROUND(A2,-2) turns 150 into 100 or 200. Entering 150 as the sample gave 200, confirming 5 rounds up.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>No sample result</b>: the sample is empty or not a number.</li>
+<li lang="en"><b>Unit of 0</b>: with CEILING, FLOOR or MROUND and unit 0, the result shows 0.</li>
+<li lang="en"><b>Decimal differences from Excel</b>: very rarely floating-point differences appear. Check in actual cells.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I test several numbers at once?</h3>
+<p lang="en">One at a time. Enter boundary values in turn.</p>
+<h2>小結</h2>
+<p lang="en">Checking with a sample value before pasting the formula gives peace of mind.</p>
 <a class="cta" href="/tw/round-formula-builder.html">使用「生成舍入公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/percent-calculator.html">計算百分比、折扣和增減率</a>：立即計算百分比、折扣和增減率。</li><li><a href="/tw/tax-calculator.html">計算消費稅（含稅／不含稅）</a>：立即計算含稅和不含稅金額。</li><li><a href="/tw/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

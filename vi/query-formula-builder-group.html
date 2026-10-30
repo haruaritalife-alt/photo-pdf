@@ -201,14 +201,64 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Nhóm và tính tổng</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Nhập các cột</li><li>Nhập cách nhóm</li><li>Sao chép</li></ul></div>
-<p>Trong <a href="/vi/query-formula-builder.html">Trình tạo QUERY</a>, bạn có thể kết hợp các cột như A, SUM(C) với group by để tính tổng.</p>
+<p lang="en">You want totals or counts by region or person. In QUERY, the group by clause aggregates by group. Enter the key column in "Group by column" in <a href="/vi/query-formula-builder.html">Build a QUERY Formula</a>.</p>
 <h2>Các bước</h2>
 <ol>
-<li>Nhập các cột</li>
-<li>Nhập cách nhóm</li>
-<li>Sao chép</li>
+<li lang="en">In "Columns to return", enter the group column and the aggregation, like "A, SUM(C)".</li>
+<li lang="en">Enter "A" in "Group by column".</li>
+<li lang="en">Check the formula contains "group by A".</li>
 </ol>
-<div class="note">Hãy đưa cột dùng để nhóm vào các cột cần lấy.</div>
+<div class="note" lang="en">When using group by, put only the group columns or aggregate functions in select.</div>
+<h2>Ví dụ</h2>
+<p lang="en">With regions in column A and sales in column C, total sales per region.</p>
+<ul>
+<li lang="en">=QUERY(A1:D100,"select A, SUM(C) group by A",1)</li>
+</ul>
+<h2 lang="en">Usable aggregate functions</h2>
+<ul>
+<li lang="en">SUM: total</li>
+<li lang="en">COUNT: count</li>
+<li lang="en">AVG: average</li>
+<li lang="en">MAX: maximum</li>
+<li lang="en">MIN: minimum</li>
+</ul>
+<h2 lang="en">Combination examples</h2>
+<ul>
+<li lang="en">People per region: select A, COUNT(B) group by A</li>
+<li lang="en">Average score per region: select A, AVG(C) group by A</li>
+<li lang="en">Top score per region: select A, MAX(C) group by A</li>
+</ul>
+<h2 lang="en">Grouping by several columns</h2>
+<p lang="en">You can enter several columns like "A, B".</p>
+<ul>
+<li lang="en">Example: select A, B, SUM(C) group by A, B</li>
+</ul>
+<h2 lang="en">Combining with conditions and sorting</h2>
+<ul>
+<li lang="en">Conditions: write group by after where</li>
+<li lang="en">Sorting: write order by after group by</li>
+</ul>
+<p lang="en">The tool assembles in this order.</p>
+<h2 lang="en">Headers of aggregated results</h2>
+<p lang="en">Aggregate columns get automatic headers like "sum Sales". To change headers use the label clause.</p>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Aggregating by region, person or month</li>
+<li lang="en">Aggregating by formula without a PivotTable</li>
+<li lang="en">Passing results to other functions</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">Wanted total sales per product, highest first. Entering "A, SUM(C)" in return columns, "A" in group by and "SUM(C) desc" in sort made the formula.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Select columns don't fit</b>: putting an ungrouped column without an aggregate function errors.</li>
+<li lang="en"><b>Header row count</b>: specify it correctly.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How does it differ from a PivotTable?</h3>
+<p lang="en">QUERY is a formula, so it updates automatically when the source changes. A PivotTable is a table built by operations.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">Specify grouping together with select columns, and use aggregate functions.</p>
 <a class="cta" href="/vi/query-formula-builder.html">Dùng “Tạo công thức QUERY” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/filter-formula-builder.html">Tạo công thức FILTER</a>: Tạo công thức FILTER.</li><li><a href="/vi/importrange-builder.html">Tạo công thức IMPORTRANGE</a>: Tạo công thức IMPORTRANGE.</li><li><a href="/vi/sumif-formula-builder.html">Tạo công thức SUMIF hoặc COUNTIF</a>: Tạo công thức SUMIF và COUNTIF.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

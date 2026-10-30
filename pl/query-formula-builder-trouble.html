@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Co zrobić, gdy nie działa</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Sprawdź plik</li><li>Sprawdź rozmiar</li><li>Spróbuj na innym urządzeniu</li></ul></div>
-<p>Jeśli <a href="/pl/query-formula-builder.html">Kreator QUERY</a> nie działa, sprawdź poniższe punkty.</p>
-<h2>Kroki</h2>
+<p lang="en">You built the formula but get an error. Here are common troubles with <a href="/pl/query-formula-builder.html">Build a QUERY Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the data range isn't in the "A1:D100" form, the return columns are empty, or the header rows isn't a number.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>"Unable to parse query"</b>: the query string is written wrongly. Check quotes, column symbols and clause order.</li>
+<li lang="en"><b>"Unknown column"</b>: a column symbol that doesn't exist. Columns outside the range can't be used.</li>
+<li lang="en"><b>#VALUE!</b>: selecting an aggregate together with an ungrouped column.</li>
+<li lang="en"><b>Empty result</b>: no rows match, or the condition text doesn't match.</li>
+<li lang="en"><b>Header looks wrong</b>: the header rows specification.</li>
+<li lang="en"><b>#NAME?</b>: QUERY isn't available in Excel.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Sprawdź plik</li>
-<li>Sprawdź rozmiar</li>
-<li>Spróbuj na innym urządzeniu</li>
+<li lang="en">Check the range and return columns are inside the range.</li>
+<li lang="en">Check clause order (select, where, group by, order by).</li>
+<li lang="en">Check text is enclosed in single quotes.</li>
 </ol>
-<div class="note">Jeśli formuła się nie pojawia, sprawdź, czy zakres jest zapisany jak A1:D100 i czy wpisano kolumny do wybrania.</div>
+<div class="note" lang="en">Emptying the condition and trying just "select A" first helps isolate the cause.</div>
+<h2 lang="en">Clause order</h2>
+<p lang="en">Not keeping this order causes errors.</p>
+<ol>
+<li lang="en">select</li>
+<li lang="en">where</li>
+<li lang="en">group by</li>
+<li lang="en">order by</li>
+<li lang="en">limit</li>
+<li lang="en">label</li>
+</ol>
+<h2 lang="en">Column symbols</h2>
+<p lang="en">Columns in the range are specified with symbols A, B, C…. Symbols outside the range error. If the range doesn't start at column A, check the result to see the symbols are as expected.</p>
+<h2 lang="en">Mixed data types</h2>
+<p lang="en">If a column mixes numbers and text, one kind can be ignored. Unify the column's data type.</p>
+<h2>Przykład</h2>
+<p lang="en">"Unable to parse query" appeared. Condition text was in double quotes. Changing to single quotes made it work.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Column names in Japanese</b>: specify by symbol, not by header text.</li>
+<li lang="en"><b>Date comparison</b>: add date and write year-month-day.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can columns be specified by header name?</h3>
+<p lang="en">No. Specify them by symbol (A, B…) or as Col1, Col2….</p>
+<h2>Podsumowanie</h2>
+<p lang="en">Range, clause order, quotes. Check these three in order.</p>
 <a class="cta" href="/pl/query-formula-builder.html">Użyj „Utwórz formułę QUERY” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/filter-formula-builder.html">Tworzenie formuły FILTER</a>: Utwórz formułę FILTER.</li><li><a href="/pl/importrange-builder.html">Tworzenie formuły IMPORTRANGE</a>: Utwórz formułę IMPORTRANGE.</li><li><a href="/pl/sumif-formula-builder.html">Tworzenie formuły SUMIF lub COUNTIF</a>: Twórz formuły SUMIF i COUNTIF.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

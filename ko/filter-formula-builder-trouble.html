@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/filter-formula-builder.html">FILTER 만들기</a>가 동작하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">You built the formula but get no result. Here are common troubles with <a href="/ko/filter-formula-builder.html">Build a FILTER Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the data range or condition range isn't in the "A2:C100" form, or the compared value is empty.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#N/A (nothing matched)</b>: no rows meet the condition. Add a nothing-found display.</li>
+<li lang="en"><b>#VALUE!</b>: the data range and condition range have different row counts.</li>
+<li lang="en"><b>"Result was not expanded"</b>: values already exist where the result spreads.</li>
+<li lang="en"><b>#NAME?</b>: FILTER isn't available in old Excel.</li>
+<li lang="en"><b>Some rows missing</b>: notation variation in the condition (full-/half-width, extra spaces).</li>
+<li lang="en"><b>Numbers don't meet the condition</b>: the numbers are text.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Check the data range and condition range have the same number of rows.</li>
+<li lang="en">Check the area the result spreads into is empty.</li>
+<li lang="en">Check the condition value and the cell values match exactly.</li>
 </ol>
-<div class="note">수식이 나오지 않으면 범위가 A2:C100처럼 쓰여 있는지, 비교할 값이 들어 있는지 확인하세요.</div>
+<div class="note" lang="en">With different row counts, conditions don't map and #VALUE! results.</div>
+<h2 lang="en">Checking range row counts</h2>
+<ul>
+<li lang="en">Data range: A2:C100 (99 rows)</li>
+<li lang="en">Condition range: B2:B100 (99 rows)</li>
+</ul>
+<p lang="en">If the start and end row numbers are the same, the row counts are the same.</p>
+<h2 lang="en">Full-width, half-width and spaces</h2>
+<p lang="en">"Tokyo" and "Tokyo " (trailing space) are judged different. Align the condition value and cell values.</p>
+<h2 lang="en">When numbers are text</h2>
+<p lang="en">If number cells display left-aligned, they may be text. Convert to numbers before comparing.</p>
+<h2 lang="en">Where the result goes</h2>
+<p lang="en">FILTER's result spreads over several rows and columns. Check there are no cells with values or formats below and right of the formula.</p>
+<h2>예</h2>
+<p lang="en">Pasting a FILTER formula showed "Result was not expanded". A few rows below the formula cell held notes from earlier work. Deleting them let the result spread.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Condition doesn't match</b>: quoting the condition like "&gt;=80". Unnecessary in FILTER.</li>
+<li lang="en"><b>Header in the range</b>: the header is judged as data too.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the result include the header?</h3>
+<p lang="en">Include the header row in the range and make the condition suit it, or prepare the header separately by hand.</p>
+<h2>요약</h2>
+<p lang="en">Row counts, spreading area, notation variation. Check these three in order.</p>
 <a class="cta" href="/ko/filter-formula-builder.html">“FILTER 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li><li><a href="/ko/vlookup-formula-builder.html">VLOOKUP·XLOOKUP 수식 만들기</a>: VLOOKUP과 XLOOKUP 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

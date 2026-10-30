@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>오류일 때 빈칸으로 표시하기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>수식 만들기</li><li>두 번째 보기</li><li>복사</li></ul></div>
-<p><a href="/ko/importrange-builder.html">IMPORTRANGE 만들기</a>는 IFERROR로 감싸 오류일 때 빈칸을 보여 주는 수식도 함께 보여 줍니다.</p>
+<p lang="en">IMPORTRANGE shows errors while loading or before access is allowed. If the look bothers you, wrap it in IFERROR. The second formula of <a href="/ko/importrange-builder.html">Build an IMPORTRANGE Formula</a> has that form.</p>
+<h2 lang="en">The second formula</h2>
+<ul>
+<li lang="en">=IFERROR(IMPORTRANGE("https://docs.google.com/spreadsheets/d/(ID)","Sheet1!A1:C10"),"")</li>
+</ul>
+<p lang="en">On error, an empty string is shown instead.</p>
 <h2>순서</h2>
 <ol>
-<li>수식 만들기</li>
-<li>두 번째 보기</li>
-<li>복사</li>
+<li lang="en">Enter URL, sheet name and range.</li>
+<li lang="en">Check the "formula that blanks on error".</li>
+<li lang="en">Copy with "Copy the second".</li>
 </ol>
-<div class="note">접근을 허용하기 전의 오류도 가려지니 주의하세요.</div>
+<div class="note" lang="en">Before using it, first confirm with the first formula that it imports correctly.</div>
+<h2 lang="en">When to wrap and when not</h2>
+<ul>
+<li lang="en"><b>Wrap</b>: in a finished table where you don't want errors shown</li>
+<li lang="en"><b>Don't wrap</b>: while setting up, to trace the cause from errors</li>
+</ul>
+<h2>주의</h2>
+<p lang="en">IFERROR hides all errors. The "#REF!" asking for permission is hidden too, so the allow button may not appear.</p>
+<ul>
+<li lang="en">On first use, allow with the first formula</li>
+<li lang="en">After allowing, replace with the second</li>
+</ul>
+<h2 lang="en">Difference from empty data</h2>
+<p lang="en">If the source data is empty, nothing is shown either. You can't tell an error from empty data.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Making a shared summary look tidy</li>
+<li lang="en">Preventing error propagation when feeding other functions</li>
+<li lang="en">Keeping tables from breaking even if the source is temporarily unavailable</li>
+</ul>
+<h2 lang="en">Showing something else</h2>
+<p lang="en">Rewrite the final "" in the formula.</p>
+<ul>
+<li lang="en">"Unavailable": words indicating the error</li>
+<li lang="en">"-": a hyphen</li>
+</ul>
+<h2>예</h2>
+<p lang="en">In a monthly summary, while the source was updating, a temporary #REF! made totals error too. Wrapping in IFERROR produced blanks and kept the total formula working.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>No allow button</b>: IFERROR is hiding the error. Try the first formula.</li>
+<li lang="en"><b>Missing real errors</b>: check the source data regularly.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the previous value be kept instead of blank?</h3>
+<p lang="en">Hard with functions alone. A script or similar is needed.</p>
+<h2>요약</h2>
+<p lang="en">IFERROR for finished tables, not while setting up. Use them accordingly.</p>
 <a class="cta" href="/ko/importrange-builder.html">“IMPORTRANGE 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li><li><a href="/ko/sheet-name-checker.html">엑셀 시트 이름 확인하기</a>: 시트 이름을 쓸 수 있는지 확인합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

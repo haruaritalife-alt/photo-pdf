@@ -201,14 +201,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Rounding Up and Down</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose the function</li><li>Enter the digits</li><li>See the result</li></ul></div>
-<p>In <a href="/en/round-formula-builder.html">Rounding Builder</a> you can also choose ROUNDUP and ROUNDDOWN.</p>
+<p>In handling fractions of amounts, you choose between round up, round down and standard rounding. Switch functions in <a href="/en/round-formula-builder.html">Build a Rounding Formula</a> and compare results.</p>
+<h2>The three methods</h2>
+<ul>
+<li><b>ROUND</b>: standard rounding. 5 and up rounds up; 4 and down rounds down</li>
+<li><b>ROUNDUP</b>: always up, away from zero</li>
+<li><b>ROUNDDOWN</b>: always down, toward zero</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Choose the function</li>
-<li>Enter the digits</li>
-<li>See the result</li>
+<li>Enter the "Cell to round".</li>
+<li>Switch "Function" and compare the "Sample value" results.</li>
+<li>Choose the function that fits your purpose and copy the formula.</li>
 </ol>
-<div class="note">Negative numbers round up away from zero.</div>
+<div class="note">Try 2.5 and -2.5 as samples to see the difference by sign as well.</div>
+<h2>Sample results (0 digits)</h2>
+<ul>
+<li>2.4: ROUND→2, ROUNDUP→3, ROUNDDOWN→2</li>
+<li>2.5: ROUND→3, ROUNDUP→3, ROUNDDOWN→2</li>
+<li>2.6: ROUND→3, ROUNDUP→3, ROUNDDOWN→2</li>
+<li>-2.5: ROUND→-3, ROUNDUP→-3, ROUNDDOWN→-2</li>
+</ul>
+<h2>Handling negatives</h2>
+<ul>
+<li>ROUNDUP: -2.1 → -3 (away from zero)</li>
+<li>ROUNDDOWN: -2.9 → -2 (toward zero)</li>
+</ul>
+<p>Note "up" refers to magnitude, so negatives become smaller values.</p>
+<h2>Which to use</h2>
+<ul>
+<li><b>Consumption tax</b>: depends on company policy. Rounding down is common, but some use standard rounding or up</li>
+<li><b>Invoice amounts</b>: round up (or down so as not to disadvantage customers)</li>
+<li><b>Displaying average scores</b>: standard rounding</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Deciding tax fraction handling</li>
+<li>Handling fractions of discounted amounts</li>
+<li>Rounding up counts (e.g. number of boxes needed)</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted tax-inclusive prices with fractions dropped. =ROUNDDOWN(A2*1.1,0) dropped amounts below one yen.</p>
+<h2>Versus display format</h2>
+<p>Reducing digits in cell formatting only rounds the look; the stored value stays the same. ROUND-family functions change the value itself. To avoid total discrepancies, round with functions.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Look vs value</b>: rounding by format can make totals not match.</li>
+<li><b>ROUND's handling of 5</b>: Excel's ROUND always rounds 5 up (not banker's rounding).</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I do banker's rounding?</h3>
+<p>ROUND doesn't. You'd build another formula.</p>
+<h2>Summary</h2>
+<p>Choose among round up, down and standard by purpose.</p>
 <a class="cta" href="/en/round-formula-builder.html">Use "Build a Rounding Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/en/tax-calculator.html">Calculate Consumption Tax (Incl. / Excl. Tax)</a>: Calculate prices incl. and excl. tax.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

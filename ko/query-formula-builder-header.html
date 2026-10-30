@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>머리글 행 수</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>인원수 입력하기</li><li>수식 보기</li><li>확인하기</li></ul></div>
-<p><a href="/ko/query-formula-builder.html">QUERY 만들기</a>에서는 범위 맨 위에 머리글이 몇 행 있는지 지정합니다.</p>
+<p lang="en">QUERY's last argument is the number of header rows. Getting it wrong mixes headers into the result or makes them vanish. Specify it in "Header rows" in <a href="/ko/query-formula-builder.html">Build a QUERY Formula</a>.</p>
+<h2 lang="en">What header rows means</h2>
+<p lang="en">A number showing how many rows from the top of the range are headers.</p>
+<ul>
+<li lang="en">1: the top row is the header</li>
+<li lang="en">0: no header</li>
+<li lang="en">Omitted: Google Sheets decides automatically</li>
+</ul>
 <h2>순서</h2>
 <ol>
-<li>인원수 입력하기</li>
-<li>수식 보기</li>
-<li>확인하기</li>
+<li>범위를 입력합니다.</li>
+<li lang="en">Enter 1 or 0 in "Header rows".</li>
+<li lang="en">Check the formula ends with something like ",1".</li>
 </ol>
-<div class="note">머리글이 없으면 0으로 합니다.</div>
+<div class="note" lang="en">Leaving the field empty omits the third argument. Header presence is then judged automatically.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">One header row: =QUERY(A1:D100,"select A, C",1)</li>
+<li lang="en">No header: =QUERY(A2:D100,"select A, C",0)</li>
+</ul>
+<h2 lang="en">The auto-judgement pitfall</h2>
+<p lang="en">When omitted, it judges automatically whether the top row is a header. The judgement can change with the data.</p>
+<ul>
+<li lang="en">Top row all text with numbers beneath → judged a header</li>
+<li lang="en">Numbers start from the top → judged no header</li>
+</ul>
+<p lang="en">Results can be unstable, so specifying header rows explicitly is safer.</p>
+<h2 lang="en">When there are two header rows</h2>
+<p lang="en">For merged headers and the like, specify 2.</p>
+<ul>
+<li lang="en">Example: =QUERY(A1:D100,"select A, C",2)</li>
+</ul>
+<h2 lang="en">Excluding the header from the range</h2>
+<p lang="en">You can also leave the header out of the range and specify 0.</p>
+<ul>
+<li lang="en">Example: =QUERY(A2:D100,"select A, C",0)</li>
+</ul>
+<p lang="en">Then the result has no header.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Wanting a header on the result's first row</li>
+<li lang="en">Headers appearing twice</li>
+<li lang="en">Headers disappearing</li>
+</ul>
+<h2>예</h2>
+<p lang="en">The result's first row was the data's first row, not a header. Specifying header rows as 1 treated it as a header and showed correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Doubled headers</b>: header rows too low, so the header was treated as data.</li>
+<li lang="en"><b>A data row vanishes</b>: header rows too high, so the first data row was treated as a header.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want to set my own header?</h3>
+<p lang="en">The label clause can. Example: label SUM(C) 'Total sales'</p>
+<h2>요약</h2>
+<p lang="en">Specify header rows explicitly and results stay stable.</p>
 <a class="cta" href="/ko/query-formula-builder.html">“QUERY 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/filter-formula-builder.html">FILTER 수식 만들기</a>: FILTER 수식을 만듭니다.</li><li><a href="/ko/importrange-builder.html">IMPORTRANGE 수식 만들기</a>: IMPORTRANGE 수식을 만듭니다.</li><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

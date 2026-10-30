@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Result When Nothing Matches</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the result</li><li>See the formula</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/filter-formula-builder.html">FILTER Builder</a> you can set the text shown when no row matches.</p>
+<p>In FILTER, if no rows meet the condition, a "#N/A" error appears. "Display when nothing found" in <a href="/en/filter-formula-builder.html">Build a FILTER Formula</a> prevents this.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the result</li>
-<li>See the formula</li>
-<li>Copy it</li>
+<li>Enter the range and condition.</li>
+<li>Enter the words to show in "Display when nothing found" (e.g. None found).</li>
+<li>Check the formula ends with those words.</li>
 </ol>
-<div class="note">Text is put in quotes automatically.</div>
+<div class="note">Leaving it empty omits the third argument, and with no match you get #N/A.</div>
+<h2>Examples</h2>
+<ul>
+<li>With a display: =FILTER(A2:C100,B2:B100&gt;=80,"None found")</li>
+<li>Without: =FILTER(A2:C100,B2:B100&gt;=80)</li>
+</ul>
+<p>With no matching rows, the former shows "None found" and the latter "#N/A".</p>
+<h2>How to write the display</h2>
+<ul>
+<li>Text: entering "None found" adds quotes automatically</li>
+<li>If you want it blank: enter two half-width quotes ("")</li>
+<li>Numbers: enter 0 and the like as is</li>
+</ul>
+<h2>For blank</h2>
+<p>Enter "" in "Display when nothing found". Nothing visible is shown.</p>
+<ul>
+<li>=FILTER(A2:C100,B2:B100&gt;=80,"")</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Avoiding errors when conditions change</li>
+<li>Lists that may become empty</li>
+<li>Avoiding errors when feeding other functions</li>
+</ul>
+<h2>Difference from IFERROR</h2>
+<p>IFERROR(FILTER(...),"") also blanks errors. But IFERROR hides FILTER's other error causes too. The third argument narrows it to "nothing found" only.</p>
+<h2>Example</h2>
+<p>Built an unprocessed-items list per person. On days everything was done, #N/A looked ugly. Adding "None found" displayed it cleanly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Expecting numeric results</b>: returning text makes later calculations treat it as text.</li>
+<li><b>Table shape</b>: the nothing-found display goes in a single cell; it doesn't spread to the table width.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does it show across several columns?</h3>
+<p>No. It shows only in the top-left cell.</p>
+<h2>Summary</h2>
+<p>Putting a nothing-found display in keeps it safe even when conditions change.</p>
 <a class="cta" href="/en/filter-formula-builder.html">Use "Build a FILTER Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

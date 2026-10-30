@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Writing the Condition</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the condition</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/en/query-formula-builder.html">QUERY Builder</a> you can enter a condition such as B = 'Tokyo'.</p>
+<p>To extract only rows meeting a condition in QUERY, use the where clause. Write the condition in the "Condition" field of <a href="/en/query-formula-builder.html">Build a QUERY Formula</a>.</p>
+<h2>How to write conditions</h2>
+<ul>
+<li>B = 'Tokyo': column B equals "Tokyo"</li>
+<li>C &gt;= 80: column C is 80 or more</li>
+<li>B != 'Tokyo': column B isn't "Tokyo"</li>
+<li>B contains 'Tok': column B contains "Tok"</li>
+<li>B starts with 'Tok': column B starts with "Tok"</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the condition</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>Enter "Data range" and "Columns to return".</li>
+<li>Write the condition in "Condition".</li>
+<li>Check the formula contains "where ...".</li>
 </ol>
-<div class="note">Put text in single quotes.</div>
+<div class="note">Enclose text in single quotes ('). Don't enclose numbers.</div>
+<h2>Example</h2>
+<p>Extracting columns A and C for rows where column B is "Tokyo".</p>
+<ul>
+<li>=QUERY(A1:D100,"select A, C where B = 'Tokyo'",1)</li>
+</ul>
+<h2>Multiple conditions</h2>
+<ul>
+<li>and: all must hold. Example: C &gt;= 80 and B = 'Tokyo'</li>
+<li>or: either holds. Example: B = 'Tokyo' or B = 'Osaka'</li>
+<li>not: negation. Example: not B = 'Tokyo'</li>
+</ul>
+<h2>Date conditions</h2>
+<p>Dates are written with "date" in year-month-day form.</p>
+<ul>
+<li>Example: A &gt;= date '2026-04-01'</li>
+</ul>
+<h2>Using another cell's value</h2>
+<p>To put another cell's value in the condition, join strings in the formula. Rewrite after the tool builds it.</p>
+<ul>
+<li>Example: …"select A where B = '"&amp;E1&amp;"'"…</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Extracting only rows meeting a condition</li>
+<li>Combining several conditions</li>
+<li>Filtering by date range</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted only rows with score 80+ and region Tokyo. Entering "C &gt;= 80 and B = 'Tokyo'" in the condition field produced the formula.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Not enclosing text</b>: writing Tokyo is read as a column name and errors.</li>
+<li><b>Double quotes</b>: the whole statement is in double quotes, so use single quotes inside conditions.</li>
+<li><b>Comparing text with a numeric column</b>: mixed data types in a column give surprising results.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is case distinguished?</h3>
+<p>With =, != yes. To ignore case use lower().</p>
+<h2>Summary</h2>
+<p>Enclose condition text in single quotes. Use and/or for multiple conditions.</p>
 <a class="cta" href="/en/query-formula-builder.html">Use "Build a QUERY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

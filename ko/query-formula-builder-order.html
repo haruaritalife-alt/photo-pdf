@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>정렬</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>정렬 입력</li><li>수식 보기</li><li>복사</li></ul></div>
-<p><a href="/ko/query-formula-builder.html">QUERY 만들기</a>에서는 A desc 같은 정렬을 지정할 수 있습니다.</p>
+<p lang="en">You want QUERY's result displayed sorted. Use the order by clause. Enter the column and direction in "Sort column" in <a href="/ko/query-formula-builder.html">Build a QUERY Formula</a>.</p>
 <h2>순서</h2>
 <ol>
-<li>정렬 입력</li>
-<li>수식 보기</li>
-<li>복사</li>
+<li lang="en">Enter the range and return columns.</li>
+<li lang="en">Enter column and direction in "Sort column (such as A desc)".</li>
+<li lang="en">Check the formula contains "order by ...".</li>
 </ol>
-<div class="note">desc는 큰 순서이고, 생략하면 작은 순서입니다.</div>
+<div class="note" lang="en">Omitting the direction sorts ascending.</div>
+<h2 lang="en">How to write</h2>
+<ul>
+<li lang="en">A: column A ascending (small to large)</li>
+<li lang="en">A asc: column A ascending (asc may be omitted)</li>
+<li lang="en">A desc: column A descending (large to small)</li>
+<li lang="en">SUM(C) desc: aggregate result descending</li>
+<li lang="en">A, C desc: column A ascending, ties by column C descending</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Total per region, highest sales first.</p>
+<ul>
+<li lang="en">=QUERY(A1:D100,"select A, SUM(C) group by A order by SUM(C) desc",1)</li>
+</ul>
+<h2 lang="en">Taking only the top</h2>
+<p lang="en">To limit to the top 3 and so on, add a limit clause. Append it after the tool builds the formula.</p>
+<ul>
+<li lang="en">Example: …order by SUM(C) desc limit 3</li>
+</ul>
+<h2 lang="en">Sorting dates and text</h2>
+<ul>
+<li lang="en">Dates: in date order</li>
+<li lang="en">Text: in character-code order (Japanese isn't always in kana order)</li>
+<li lang="en">Numbers: by size</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Making ranking tables</li>
+<li lang="en">Newest-first or oldest-first ordering</li>
+<li lang="en">Lists by highest sales</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted a top-5 region ranking by sales. Entering "SUM(C) desc" in sort and appending "limit 5" at the end output only the top five.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Japanese ordering</b>: not necessarily reading order.</li>
+<li lang="en"><b>Numbers as text</b>: if numbers are text, "10" comes before "2".</li>
+<li lang="en"><b>With aggregation</b>: when using group by, sort by aggregate or group columns.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I sort by several columns?</h3>
+<p lang="en">Yes. Specify them separated by commas, like "A, C desc".</p>
+<h2>요약</h2>
+<p lang="en">Sorting is column plus direction (asc or desc). For only the top, add limit.</p>
 <a class="cta" href="/ko/query-formula-builder.html">“QUERY 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/filter-formula-builder.html">FILTER 수식 만들기</a>: FILTER 수식을 만듭니다.</li><li><a href="/ko/importrange-builder.html">IMPORTRANGE 수식 만들기</a>: IMPORTRANGE 수식을 만듭니다.</li><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

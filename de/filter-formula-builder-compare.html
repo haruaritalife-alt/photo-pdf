@@ -201,14 +201,68 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Der Vergleich in der Bedingung</h1>
 <p class="meta">Veröffentlicht: 19.10.2026 | Aktualisiert: 19.10.2026 | <a href="/about.html">Über uns (Japanisch)</a></p>
 <div class="points"><b>Wichtige Punkte</b><ul><li>Den Vergleich wählen</li><li>Wert eingeben</li><li>Prüfen</li></ul></div>
-<p>Im <a href="/de/filter-formula-builder.html">FILTER-Generator</a> können Sie einen Vergleich wie „mindestens“ oder „größer oder gleich“ wählen.</p>
+<p lang="en">FILTER conditions are written with comparison operators, like "B2:B100&gt;=80". Here is the six operators selectable in "Comparison" in <a href="/de/filter-formula-builder.html">Build a FILTER Formula</a>.</p>
+<h2 lang="en">The six operators</h2>
+<ul>
+<li lang="en"><b>&gt;=</b>: or more</li>
+<li lang="en"><b>&gt;</b>: greater than</li>
+<li lang="en"><b>&lt;=</b>: or less</li>
+<li lang="en"><b>&lt;</b>: less than</li>
+<li lang="en"><b>=</b>: equal</li>
+<li lang="en"><b>&lt;&gt;</b>: not equal</li>
+</ul>
 <h2>Schritte</h2>
 <ol>
-<li>Den Vergleich wählen</li>
-<li>Wert eingeben</li>
-<li>Prüfen</li>
+<li lang="en">Enter the range of the column to judge in "Column to test".</li>
+<li lang="en">Choose an operator in "Comparison".</li>
+<li lang="en">Enter "Value to compare".</li>
+<li lang="en">Check the "B2:B100&gt;=80" part of the formula.</li>
 </ol>
-<div class="note">Verwenden Sie &lt;&gt; für „ungleich“.</div>
+<div class="note" lang="en">Unlike SUMIF, you needn't enclose the condition in quotes. FILTER takes the comparison expression as written.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">80 or more: =FILTER(A2:C100,B2:B100&gt;=80)</li>
+<li lang="en">Equal to "Tokyo": =FILTER(A2:C100,B2:B100="Tokyo")</li>
+<li lang="en">Not "Tokyo": =FILTER(A2:C100,B2:B100&lt;&gt;"Tokyo")</li>
+</ul>
+<h2 lang="en">Forms of the compared value</h2>
+<ul>
+<li lang="en">Numbers: entering 80 keeps it as is</li>
+<li lang="en">Text: entering Tokyo adds quotes automatically</li>
+<li lang="en">Other cells: entering E1 compares with that cell's value</li>
+</ul>
+<h2 lang="en">Difference from SUMIF</h2>
+<ul>
+<li lang="en">SUMIF: writes the condition as text like "&gt;=80"</li>
+<li lang="en">FILTER: writes the condition as a comparison expression like "B2:B100&gt;=80"</li>
+</ul>
+<h2 lang="en">Multiple conditions</h2>
+<p lang="en">Combining FILTER conditions by multiplication gives rows meeting all (AND).</p>
+<ul>
+<li lang="en">Example: =FILTER(A2:C100,(B2:B100&gt;=80)*(C2:C100="Tokyo"))</li>
+</ul>
+<p lang="en">Combining by addition gives rows meeting either (OR).</p>
+<ul>
+<li lang="en">Example: =FILTER(A2:C100,(B2:B100&gt;=80)+(C2:C100="Tokyo"))</li>
+</ul>
+<p lang="en">Rewrite the condition part of the tool's formula by hand.</p>
+<h2>Gut geeignet für</h2>
+<ul>
+<li lang="en">Extracting rows meeting a condition</li>
+<li lang="en">Increasing to several conditions</li>
+</ul>
+<h2>Beispiel</h2>
+<p lang="en">Wanted only people with a score of 80+ and region Tokyo. Rewriting the tool's condition into the multiplication form output only rows meeting both.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Forgetting brackets</b>: with several conditions, enclose each in brackets.</li>
+<li lang="en"><b>Range rows</b>: make all condition ranges the same number of rows.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I filter by partial text match?</h3>
+<p lang="en">Combine SEARCH and ISNUMBER. Example: ISNUMBER(SEARCH("Tok",C2:C100))</p>
+<h2>Zusammenfassung</h2>
+<p lang="en">Write the comparison expression as is. Combine multiple conditions with multiplication and addition.</p>
 <a class="cta" href="/de/filter-formula-builder.html">„Eine FILTER-Formel erstellen“ verwenden (kostenlos)</a>
 <h2>Passende Werkzeuge dazu</h2><ul><li><a href="/de/sumif-formula-builder.html">Eine SUMIF- oder COUNTIF-Formel erstellen</a>: Erstellen Sie SUMIF- und COUNTIF-Formeln.</li><li><a href="/de/excel-if-builder.html">Eine IF-Formel erstellen</a>: Erstellen Sie eine IF-Formel.</li><li><a href="/de/vlookup-formula-builder.html">VLOOKUP- oder XLOOKUP-Formel erstellen</a>: Erstellen Sie VLOOKUP- und XLOOKUP-Formeln.</li></ul>
 <div class="tip"><p>Wenn Ihnen diese Anleitung geholfen hat, freuen wir uns über ein kleines Trinkgeld.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Trinkgeld senden (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Geschenk senden (Amazon-Wunschliste)</a></div>

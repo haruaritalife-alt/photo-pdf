@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Showing a Blank on Error</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>See the second one</li><li>Copy it</li></ul></div>
-<p><a href="/en/importrange-builder.html">IMPORTRANGE Builder</a> also shows a formula wrapped in IFERROR that shows a blank on error.</p>
+<p>IMPORTRANGE shows errors while loading or before access is allowed. If the look bothers you, wrap it in IFERROR. The second formula of <a href="/en/importrange-builder.html">Build an IMPORTRANGE Formula</a> has that form.</p>
+<h2>The second formula</h2>
+<ul>
+<li>=IFERROR(IMPORTRANGE("https://docs.google.com/spreadsheets/d/(ID)","Sheet1!A1:C10"),"")</li>
+</ul>
+<p>On error, an empty string is shown instead.</p>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>See the second one</li>
-<li>Copy it</li>
+<li>Enter URL, sheet name and range.</li>
+<li>Check the "formula that blanks on error".</li>
+<li>Copy with "Copy the second".</li>
 </ol>
-<div class="note">Note that the error before access is allowed is also hidden.</div>
+<div class="note">Before using it, first confirm with the first formula that it imports correctly.</div>
+<h2>When to wrap and when not</h2>
+<ul>
+<li><b>Wrap</b>: in a finished table where you don't want errors shown</li>
+<li><b>Don't wrap</b>: while setting up, to trace the cause from errors</li>
+</ul>
+<h2>Caution</h2>
+<p>IFERROR hides all errors. The "#REF!" asking for permission is hidden too, so the allow button may not appear.</p>
+<ul>
+<li>On first use, allow with the first formula</li>
+<li>After allowing, replace with the second</li>
+</ul>
+<h2>Difference from empty data</h2>
+<p>If the source data is empty, nothing is shown either. You can't tell an error from empty data.</p>
+<h2>Good for</h2>
+<ul>
+<li>Making a shared summary look tidy</li>
+<li>Preventing error propagation when feeding other functions</li>
+<li>Keeping tables from breaking even if the source is temporarily unavailable</li>
+</ul>
+<h2>Showing something else</h2>
+<p>Rewrite the final "" in the formula.</p>
+<ul>
+<li>"Unavailable": words indicating the error</li>
+<li>"-": a hyphen</li>
+</ul>
+<h2>Example</h2>
+<p>In a monthly summary, while the source was updating, a temporary #REF! made totals error too. Wrapping in IFERROR produced blanks and kept the total formula working.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>No allow button</b>: IFERROR is hiding the error. Try the first formula.</li>
+<li><b>Missing real errors</b>: check the source data regularly.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can the previous value be kept instead of blank?</h3>
+<p>Hard with functions alone. A script or similar is needed.</p>
+<h2>Summary</h2>
+<p>IFERROR for finished tables, not while setting up. Use them accordingly.</p>
 <a class="cta" href="/en/importrange-builder.html">Use "Build an IMPORTRANGE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/sheet-name-checker.html">Check an Excel Sheet Name</a>: Check whether a sheet name is allowed.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/importrange-builder.html">IMPORTRANGE 만들기</a>가 동작하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">You built the formula but data won't import. Here are common troubles with <a href="/ko/importrange-builder.html">Build an IMPORTRANGE Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: no ID found in the URL, the sheet name is empty, or the range isn't in a form like "A1:C10", "A:C" or "A1".</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#REF! (access permission)</b>: first use needs allowing. Hover over the cell and press "Allow access".</li>
+<li lang="en"><b>#REF! (sheet not found)</b>: wrong sheet name or range. Check the tab name.</li>
+<li lang="en"><b>"Loading" persists</b>: a large range or heavy source. Reduce the range.</li>
+<li lang="en"><b>#VALUE!</b>: the output area already has values (the result can't expand).</li>
+<li lang="en"><b>Some columns empty</b>: the source cells are empty or have a format issue.</li>
+<li lang="en"><b>Numbers become text</b>: depends on the source format. Tidy with VALUE.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Check the source spreadsheet's URL opens in a browser.</li>
+<li lang="en">Compare the source tab's name with the name in the formula.</li>
+<li lang="en">Try with a smaller range.</li>
 </ol>
-<div class="note">수식이 나오지 않으면 URL에 /spreadsheets/d/가 들어 있는지, 범위가 A1:C10처럼 쓰여 있는지 확인하세요.</div>
+<div class="note" lang="en">The "result can't expand" error is caused by values below or right of the paste location.</div>
+<h2 lang="en">When the result can't expand</h2>
+<p lang="en">IMPORTRANGE spreads results over several cells. If values already exist where it expands, it errors.</p>
+<ul>
+<li lang="en">Fix: empty the cells it would expand into</li>
+</ul>
+<h2 lang="en">Checking permissions</h2>
+<ul>
+<li lang="en">You have view permission on the source</li>
+<li lang="en">The source hasn't been deleted</li>
+<li lang="en">Your organization's settings don't restrict external imports</li>
+</ul>
+<h2 lang="en">Limits within one file</h2>
+<p lang="en">Many IMPORTRANGEs slow loading. Use only needed ranges.</p>
+<h2>예</h2>
+<p lang="en">After pasting, "Result was not expanded" appeared. A note sat below the formula cell. Deleting it let the data spread.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Opened with another account</b>: allowing is tied to the account.</li>
+<li lang="en"><b>Rows or columns deleted in the source</b>: the range shifts.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does it work in Excel?</h3>
+<p lang="en">No. IMPORTRANGE is a Google Sheets function.</p>
+<h2>요약</h2>
+<p lang="en">Permission, names, free space to expand. Check these three in order.</p>
 <a class="cta" href="/ko/importrange-builder.html">“IMPORTRANGE 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li><li><a href="/ko/sheet-name-checker.html">엑셀 시트 이름 확인하기</a>: 시트 이름을 쓸 수 있는지 확인합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

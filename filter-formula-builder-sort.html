@@ -200,14 +200,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>並べ替えも付ける</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>式を作る</li><li>2つ目を見る</li><li>コピーする</li></ul></div>
-<p><a href="/filter-formula-builder.html">FILTER式の作成</a> は、SORTを付けた式も並べて表示します。</p>
+<p>FILTERで取り出した結果を、並べ替えて表示したい。<a href="/filter-formula-builder.html">FILTERの式を作る</a> の2つ目の式は、SORT関数で包んで、並べ替えも付けた形です。</p>
+<h2>2つ目の式</h2>
+<ul>
+<li>=SORT(FILTER(A2:C100,B2:B100&gt;=80),1,TRUE)</li>
+</ul>
+<p>FILTERで取り出した結果を、1列目を基準に、昇順（小さい順）で並べ替えます。</p>
+<h2>SORTの引数</h2>
+<ol>
+<li>並べ替えたいデータ（ここではFILTERの結果）</li>
+<li>並べ替えの基準にする列の番号（1＝1列目）</li>
+<li>昇順にするか（TRUE＝昇順、FALSE＝降順）</li>
+</ol>
 <h2>手順</h2>
 <ol>
-<li>式を作る</li>
-<li>2つ目を見る</li>
-<li>コピーする</li>
+<li>範囲と条件を入れる。</li>
+<li>「並べ替えも付けた式」を確かめる。</li>
+<li>「2つ目をコピー」で、コピーする。</li>
+<li>基準の列や順序を変えたいときは、式の「1,TRUE」の部分を書き換える。</li>
 </ol>
-<div class="note">1列目の小さい順に並びます。</div>
+<div class="note">列の番号は、取り出した表の中での、左から何列目かを表します。</div>
+<h2>書き換えの例</h2>
+<ul>
+<li>2列目の降順：=SORT(FILTER(...),2,FALSE)</li>
+<li>3列目の昇順：=SORT(FILTER(...),3,TRUE)</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>売上の高い順に、条件に合う行を並べたい</li>
+<li>日付順や、名前順の一覧を作りたい</li>
+<li>ランキング表を、作りたい</li>
+</ul>
+<h2>複数の基準で並べ替える</h2>
+<p>SORTは、基準を増やして書けます。</p>
+<ul>
+<li>例：=SORT(FILTER(...),2,FALSE,1,TRUE)</li>
+</ul>
+<p>2列目の降順で並べ、同じ値のときは、1列目の昇順にします。</p>
+<h2>Excelでの注意</h2>
+<p>SORT関数は、Microsoft 365とExcel 2021以降で使えます。古いExcelでは使えません。</p>
+<h2>例</h2>
+<p>合格者の一覧を、点数の高い順に並べたかった。ツールの式の「1,TRUE」を「2,FALSE」に書き換えて、点数の列の降順にできた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>列番号の数え方</b>：元の表の列ではなく、FILTERで取り出した表の中の番号。</li>
+<li><b>結果が空</b>：FILTERが該当なしのとき、SORTも#N/Aになる。見つからないときの表示を入れる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>FILTERなしで、SORTだけも使えますか？</h3>
+<p>はい。=SORT(A2:C100,2,FALSE) のように、表全体を並べ替えられます。</p>
+<h2>まとめ</h2>
+<p>絞り込みと並べ替えは、FILTERをSORTで包む形で、1つの式にまとめられます。</p>
 <a class="cta" href="/filter-formula-builder.html">FILTERの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +262,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Adding Sorting</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>See the second one</li><li>Copy it</li></ul></div>
-<p><a href="/filter-formula-builder.html">FILTER Builder</a> also shows a formula with SORT added.</p>
+<p>You want FILTER's extracted result displayed sorted. The second formula of <a href="/filter-formula-builder.html">Build a FILTER Formula</a> wraps it in SORT to add sorting.</p>
+<h2>The second formula</h2>
+<ul>
+<li>=SORT(FILTER(A2:C100,B2:B100&gt;=80),1,TRUE)</li>
+</ul>
+<p>It sorts FILTER's result ascending (small to large) by the first column.</p>
+<h2>SORT's arguments</h2>
+<ol>
+<li>The data to sort (here FILTER's result)</li>
+<li>The column number to sort by (1 = first column)</li>
+<li>Ascending or not (TRUE = ascending, FALSE = descending)</li>
+</ol>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>See the second one</li>
-<li>Copy it</li>
+<li>Enter the range and condition.</li>
+<li>Check the "Formula with sorting too".</li>
+<li>Copy with "Copy the second".</li>
+<li>To change the sort column or order, rewrite the "1,TRUE" part.</li>
 </ol>
-<div class="note">It sorts by the first column in ascending order.</div>
+<div class="note">The column number means the position from the left within the extracted table.</div>
+<h2>Rewriting examples</h2>
+<ul>
+<li>Column 2 descending: =SORT(FILTER(...),2,FALSE)</li>
+<li>Column 3 ascending: =SORT(FILTER(...),3,TRUE)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Listing matching rows by highest sales</li>
+<li>Making lists in date or name order</li>
+<li>Making ranking tables</li>
+</ul>
+<h2>Sorting by several keys</h2>
+<p>SORT accepts more keys.</p>
+<ul>
+<li>Example: =SORT(FILTER(...),2,FALSE,1,TRUE)</li>
+</ul>
+<p>Sorts by column 2 descending, then column 1 ascending for ties.</p>
+<h2>Note for Excel</h2>
+<p>SORT works in Microsoft 365 and Excel 2021 and later, not in older Excel.</p>
+<h2>Example</h2>
+<p>Wanted passers listed from highest score. Rewriting the tool's "1,TRUE" as "2,FALSE" gave a descending order by the score column.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Counting column numbers</b>: it's the number within the table extracted by FILTER, not the original table's column.</li>
+<li><b>Empty result</b>: if FILTER finds nothing, SORT also gives #N/A. Add a nothing-found display.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can SORT be used without FILTER?</h3>
+<p>Yes. =SORT(A2:C100,2,FALSE) sorts a whole table.</p>
+<h2>Summary</h2>
+<p>Filtering and sorting combine in one formula by wrapping FILTER in SORT.</p>
 <a class="cta" href="/filter-formula-builder.html">Use "Build a FILTER Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

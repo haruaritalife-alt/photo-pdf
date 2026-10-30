@@ -200,14 +200,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>単位で丸める</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>CEILINGなどを選ぶ</li><li>単位を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/round-formula-builder.html">丸め式の作成</a> では、CEILING・FLOOR・MROUNDで10や0.5のような単位に丸められます。</p>
+<p>「100円単位に切り上げ」「5分単位に切り捨て」のように、決まった単位で丸めたいときは、CEILING・FLOOR・MROUNDを使います。<a href="/round-formula-builder.html">丸めの式を作る</a> では、これらを選ぶと、第2引数が「単位」になります。</p>
+<h2>3つの関数</h2>
+<ul>
+<li><b>CEILING</b>：単位の倍数に、切り上げ</li>
+<li><b>FLOOR</b>：単位の倍数に、切り捨て</li>
+<li><b>MROUND</b>：単位の倍数のうち、最も近い値に丸める</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>CEILINGなどを選ぶ</li>
-<li>単位を入れる</li>
-<li>コピーする</li>
+<li>「関数」で、CEILING・FLOOR・MROUNDのいずれかを選ぶ。</li>
+<li>「桁数または単位」に、単位（100 など）を入れる。</li>
+<li>「試しの数値」を入れて、結果を確かめる。</li>
 </ol>
-<div class="note">MROUNDは、いちばん近い単位に丸めます。</div>
+<div class="note">この欄は、ROUND系では「桁数」、この3つでは「単位」の意味になります。</div>
+<h2>例（単位100）</h2>
+<ul>
+<li>1234のとき：CEILING→1300、FLOOR→1200、MROUND→1200</li>
+<li>1250のとき：CEILING→1300、FLOOR→1200、MROUND→1300</li>
+<li>1251のとき：CEILING→1300、FLOOR→1200、MROUND→1300</li>
+</ul>
+<h2>式の例</h2>
+<ul>
+<li>100円単位に切り上げ：=CEILING(A2,100)</li>
+<li>5分単位に切り捨て：=FLOOR(A2,5)</li>
+<li>0.5単位に丸める：=MROUND(A2,0.5)</li>
+</ul>
+<h2>時間の丸め</h2>
+<p>時間は、日の小数で表されるため、単位の書き方に工夫がいります。15分単位に切り上げる場合は、次のとおりです。</p>
+<ul>
+<li>=CEILING(A2,"0:15")</li>
+<li>または =CEILING(A2,15/1440)</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>100円、500円、1000円単位の請求額にしたい</li>
+<li>15分単位、30分単位で、勤務時間を丸めたい</li>
+<li>箱の入り数の倍数に、数量をそろえたい</li>
+</ul>
+<h2>例</h2>
+<p>発注数を、1箱12個の倍数に切り上げたかった。=CEILING(A2,12) で、25個が36個に切り上がった。</p>
+<h2>注意すること</h2>
+<ul>
+<li><b>MROUND</b>：数字と単位の符号が違うとエラー（#NUM!）になる</li>
+<li><b>単位が0</b>：CEILINGは0を返す。FLOORは#DIV/0!になる</li>
+<li><b>古いバージョンの違い</b>：負の数の扱いは、バージョンで異なる</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>単位を桁数と取り違える</b>：100は、100単位であって、100桁ではない。</li>
+<li><b>小数の誤差</b>：0.1単位などは、浮動小数の誤差が出る場合がある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>CEILINGとROUNDUPの違いは？</h3>
+<p>ROUNDUPは桁で切り上げ、CEILINGは単位の倍数で切り上げます。</p>
+<h2>まとめ</h2>
+<p>決まった単位での丸めは、CEILING・FLOOR・MROUND。単位の意味に注意しましょう。</p>
 <a class="cta" href="/round-formula-builder.html">丸めの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/percent-calculator.html">割合・割引・増減（%）を計算する</a>：割合・割引・増減の%を、すぐに計算します。</li><li><a href="/tax-calculator.html">消費税を計算する（税込・税抜）</a>：税込・税抜の金額を、すぐに計算します。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +267,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Rounding to a Unit</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose CEILING or similar</li><li>Enter the unit</li><li>Copy it</li></ul></div>
-<p>In <a href="/round-formula-builder.html">Rounding Builder</a>, CEILING, FLOOR and MROUND round to a unit such as 10 or 0.5.</p>
+<p>For rounding to a set unit, like "round up to 100 yen" or "round down to 5 minutes", use CEILING, FLOOR or MROUND. In <a href="/round-formula-builder.html">Build a Rounding Formula</a>, choosing these makes the second argument a "unit".</p>
+<h2>The three functions</h2>
+<ul>
+<li><b>CEILING</b>: round up to a multiple of the unit</li>
+<li><b>FLOOR</b>: round down to a multiple of the unit</li>
+<li><b>MROUND</b>: round to the nearest multiple of the unit</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Choose CEILING or similar</li>
-<li>Enter the unit</li>
-<li>Copy it</li>
+<li>In "Function", choose CEILING, FLOOR or MROUND.</li>
+<li>Enter the unit (such as 100) in "Digits or unit".</li>
+<li>Enter a "Sample value" and check the result.</li>
 </ol>
-<div class="note">MROUND rounds to the nearest unit.</div>
+<div class="note">This field means "digits" for the ROUND family and "unit" for these three.</div>
+<h2>Examples (unit 100)</h2>
+<ul>
+<li>At 1234: CEILING→1300, FLOOR→1200, MROUND→1200</li>
+<li>At 1250: CEILING→1300, FLOOR→1200, MROUND→1300</li>
+<li>At 1251: CEILING→1300, FLOOR→1200, MROUND→1300</li>
+</ul>
+<h2>Formula examples</h2>
+<ul>
+<li>Round up to 100: =CEILING(A2,100)</li>
+<li>Round down to 5: =FLOOR(A2,5)</li>
+<li>Round to 0.5: =MROUND(A2,0.5)</li>
+</ul>
+<h2>Rounding time</h2>
+<p>Time is a fraction of a day, so units need care. Rounding up to 15 minutes:</p>
+<ul>
+<li>=CEILING(A2,"0:15")</li>
+<li>or =CEILING(A2,15/1440)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Making invoice amounts in 100, 500 or 1000 yen units</li>
+<li>Rounding work time to 15- or 30-minute units</li>
+<li>Aligning quantities to a case-pack multiple</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted order quantities rounded up to multiples of a 12-piece case. =CEILING(A2,12) turned 25 into 36.</p>
+<h2>Cautions</h2>
+<ul>
+<li><b>MROUND</b>: errors (#NUM!) if number and unit have different signs</li>
+<li><b>Unit of 0</b>: CEILING returns 0; FLOOR gives #DIV/0!</li>
+<li><b>Version differences</b>: handling of negatives varies by version</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Mistaking unit for digits</b>: 100 means a unit of 100, not 100 digits.</li>
+<li><b>Decimal error</b>: units like 0.1 can show floating-point error.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How does CEILING differ from ROUNDUP?</h3>
+<p>ROUNDUP rounds up by digits; CEILING rounds up to a multiple of a unit.</p>
+<h2>Summary</h2>
+<p>CEILING, FLOOR and MROUND round to a set unit. Mind the meaning of the unit.</p>
 <a class="cta" href="/round-formula-builder.html">Use "Build a Rounding Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/tax-calculator.html">Calculate Consumption Tax (Incl. / Excl. Tax)</a>: Calculate prices incl. and excl. tax.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

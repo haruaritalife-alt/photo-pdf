@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>The ID Taken from the URL</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Paste the URL</li><li>See the formula</li><li>Check it</li></ul></div>
-<p><a href="/en/importrange-builder.html">IMPORTRANGE Builder</a> takes the ID that comes after /d/ in the URL.</p>
+<p>IMPORTRANGE needs the spreadsheet URL. But which part of the long URL matters? <a href="/en/importrange-builder.html">Build an IMPORTRANGE Formula</a> extracts the ID from the URL automatically.</p>
+<h2>URL structure</h2>
+<p>A spreadsheet URL has this form:</p>
+<ul>
+<li>https://docs.google.com/spreadsheets/d/(ID)/edit#gid=0</li>
+</ul>
+<p>The alphanumeric part between "/d/" and "/edit" is that spreadsheet's ID.</p>
 <h2>Steps</h2>
 <ol>
-<li>Paste the URL</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>Open the source spreadsheet.</li>
+<li>Copy the URL from the browser's address bar.</li>
+<li>Paste into "Spreadsheet URL".</li>
+<li>Check the formula contains a URL with the ID.</li>
 </ol>
-<div class="note">You can also paste just the ID.</div>
+<div class="note">The "/edit#gid=0" part is removed automatically and doesn't go into the formula.</div>
+<h2>You can enter the ID alone</h2>
+<p>Instead of the URL, pasting just the ID (20 or more alphanumerics, hyphens or underscores) also builds the formula.</p>
+<h2>The URL form in the formula</h2>
+<p>Whatever URL you paste, the formula is normalised to:</p>
+<ul>
+<li>https://docs.google.com/spreadsheets/d/(ID)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Building formulas straight from a shared URL</li>
+<li>Avoiding trimming extra URL parts by hand</li>
+<li>Building formulas for several files together</li>
+</ul>
+<h2>Example</h2>
+<p>A shared URL ended with "/edit?usp=sharing". Pasting it as is extracted just the ID and shaped it for IMPORTRANGE.</p>
+<h2>When no ID is found</h2>
+<p>"The input is not valid." appears. Check:</p>
+<ul>
+<li>The URL is for a spreadsheet (documents and slides aren't valid)</li>
+<li>The URL isn't cut off</li>
+<li>The share link isn't for a folder</li>
+</ul>
+<h2>Cautions</h2>
+<p>The ID identifies that spreadsheet. If you share the formula, the ID is visible. Check who you share with.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Opened an Excel file preview</b>: Excel files on Drive must be converted to a spreadsheet before IMPORTRANGE can use them.</li>
+<li><b>Shortened URLs</b>: expand before pasting.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is it safe if others see the ID?</h3>
+<p>The ID alone doesn't reveal contents; access permission is required. Still, check the sharing scope.</p>
+<h2>Summary</h2>
+<p>Paste the URL as is and the ID is extracted automatically.</p>
 <a class="cta" href="/en/importrange-builder.html">Use "Build an IMPORTRANGE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/sheet-name-checker.html">Check an Excel Sheet Name</a>: Check whether a sheet name is allowed.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

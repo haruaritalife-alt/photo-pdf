@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Write IMPORTRANGE (Build It Automatically, Free)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Paste the URL</li><li>Enter the range</li><li>Copy the formula</li></ul></div>
-<p><a href="/en/importrange-builder.html">IMPORTRANGE Builder</a> builds an IMPORTRANGE formula from a URL, a sheet name and a range.</p>
+<p>You want to bring data from another Google spreadsheet into the current one. The function for that is IMPORTRANGE. <a href="/en/importrange-builder.html">Build an IMPORTRANGE Formula</a> builds that formula from just the spreadsheet URL, sheet name and range. Input is processed inside this device and not sent outside.</p>
 <h2>Steps</h2>
 <ol>
-<li>Paste the URL</li>
-<li>Enter the range</li>
-<li>Copy the formula</li>
+<li>Paste the source spreadsheet's URL in "Spreadsheet URL".</li>
+<li>Enter the source sheet's name in "Sheet name".</li>
+<li>Enter the range to import in "Range (such as A1:C10)".</li>
+<li>The "IMPORTRANGE formula" and the "formula that blanks on error" appear. Press "Copy the first" or "Copy the second".</li>
 </ol>
-<div class="note">The formula can be pasted straight into a cell.</div>
+<div class="note">Only the spreadsheet ID is extracted from the URL automatically.</div>
+<h2>Example</h2>
+<p>Importing A1:C10 of the source sheet "Sales".</p>
+<ul>
+<li>First: =IMPORTRANGE("https://docs.google.com/spreadsheets/d/(ID)","Sales!A1:C10")</li>
+<li>Second: =IFERROR(IMPORTRANGE(...),"")</li>
+</ul>
+<h2>IMPORTRANGE's two arguments</h2>
+<ol>
+<li>The spreadsheet URL (or ID)</li>
+<li>Text in the form "SheetName!Range"</li>
+</ol>
+<h2>Good for</h2>
+<ul>
+<li>Gathering per-department spreadsheets in one place</li>
+<li>Using another file's data in summaries</li>
+<li>Always using shared source data in its latest form</li>
+</ul>
+<h2>First use</h2>
+<p>After pasting, "#REF!" appears with an "Allow access" button. Allowing it displays the data.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"The input is not valid." appears</b>: no ID is found in the URL, the sheet name or range is empty, or the range form is wrong.</li>
+<li><b>#REF! appears</b>: access isn't allowed yet, or the source sheet name or range is wrong.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Do changes to the source data carry over?</h3>
+<p>Yes. When the source updates, it reflects automatically.</p>
+<h2>Summary</h2>
+<p>Enter URL, sheet name and range and the IMPORTRANGE formula is built.</p>
 <a class="cta" href="/en/importrange-builder.html">Use "Build an IMPORTRANGE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/sheet-name-checker.html">Check an Excel Sheet Name</a>: Check whether a sheet name is allowed.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

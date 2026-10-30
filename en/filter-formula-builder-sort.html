@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Adding Sorting</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>See the second one</li><li>Copy it</li></ul></div>
-<p><a href="/en/filter-formula-builder.html">FILTER Builder</a> also shows a formula with SORT added.</p>
+<p>You want FILTER's extracted result displayed sorted. The second formula of <a href="/en/filter-formula-builder.html">Build a FILTER Formula</a> wraps it in SORT to add sorting.</p>
+<h2>The second formula</h2>
+<ul>
+<li>=SORT(FILTER(A2:C100,B2:B100&gt;=80),1,TRUE)</li>
+</ul>
+<p>It sorts FILTER's result ascending (small to large) by the first column.</p>
+<h2>SORT's arguments</h2>
+<ol>
+<li>The data to sort (here FILTER's result)</li>
+<li>The column number to sort by (1 = first column)</li>
+<li>Ascending or not (TRUE = ascending, FALSE = descending)</li>
+</ol>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>See the second one</li>
-<li>Copy it</li>
+<li>Enter the range and condition.</li>
+<li>Check the "Formula with sorting too".</li>
+<li>Copy with "Copy the second".</li>
+<li>To change the sort column or order, rewrite the "1,TRUE" part.</li>
 </ol>
-<div class="note">It sorts by the first column in ascending order.</div>
+<div class="note">The column number means the position from the left within the extracted table.</div>
+<h2>Rewriting examples</h2>
+<ul>
+<li>Column 2 descending: =SORT(FILTER(...),2,FALSE)</li>
+<li>Column 3 ascending: =SORT(FILTER(...),3,TRUE)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Listing matching rows by highest sales</li>
+<li>Making lists in date or name order</li>
+<li>Making ranking tables</li>
+</ul>
+<h2>Sorting by several keys</h2>
+<p>SORT accepts more keys.</p>
+<ul>
+<li>Example: =SORT(FILTER(...),2,FALSE,1,TRUE)</li>
+</ul>
+<p>Sorts by column 2 descending, then column 1 ascending for ties.</p>
+<h2>Note for Excel</h2>
+<p>SORT works in Microsoft 365 and Excel 2021 and later, not in older Excel.</p>
+<h2>Example</h2>
+<p>Wanted passers listed from highest score. Rewriting the tool's "1,TRUE" as "2,FALSE" gave a descending order by the score column.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Counting column numbers</b>: it's the number within the table extracted by FILTER, not the original table's column.</li>
+<li><b>Empty result</b>: if FILTER finds nothing, SORT also gives #N/A. Add a nothing-found display.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can SORT be used without FILTER?</h3>
+<p>Yes. =SORT(A2:C100,2,FALSE) sorts a whole table.</p>
+<h2>Summary</h2>
+<p>Filtering and sorting combine in one formula by wrapping FILTER in SORT.</p>
 <a class="cta" href="/en/filter-formula-builder.html">Use "Build a FILTER Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

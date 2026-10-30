@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Number of Header Rows</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the number</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/en/query-formula-builder.html">QUERY Builder</a> you set how many header rows are at the top of the range.</p>
+<p>QUERY's last argument is the number of header rows. Getting it wrong mixes headers into the result or makes them vanish. Specify it in "Header rows" in <a href="/en/query-formula-builder.html">Build a QUERY Formula</a>.</p>
+<h2>What header rows means</h2>
+<p>A number showing how many rows from the top of the range are headers.</p>
+<ul>
+<li>1: the top row is the header</li>
+<li>0: no header</li>
+<li>Omitted: Google Sheets decides automatically</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the number</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>Enter the range.</li>
+<li>Enter 1 or 0 in "Header rows".</li>
+<li>Check the formula ends with something like ",1".</li>
 </ol>
-<div class="note">Use 0 when there is no header.</div>
+<div class="note">Leaving the field empty omits the third argument. Header presence is then judged automatically.</div>
+<h2>Examples</h2>
+<ul>
+<li>One header row: =QUERY(A1:D100,"select A, C",1)</li>
+<li>No header: =QUERY(A2:D100,"select A, C",0)</li>
+</ul>
+<h2>The auto-judgement pitfall</h2>
+<p>When omitted, it judges automatically whether the top row is a header. The judgement can change with the data.</p>
+<ul>
+<li>Top row all text with numbers beneath → judged a header</li>
+<li>Numbers start from the top → judged no header</li>
+</ul>
+<p>Results can be unstable, so specifying header rows explicitly is safer.</p>
+<h2>When there are two header rows</h2>
+<p>For merged headers and the like, specify 2.</p>
+<ul>
+<li>Example: =QUERY(A1:D100,"select A, C",2)</li>
+</ul>
+<h2>Excluding the header from the range</h2>
+<p>You can also leave the header out of the range and specify 0.</p>
+<ul>
+<li>Example: =QUERY(A2:D100,"select A, C",0)</li>
+</ul>
+<p>Then the result has no header.</p>
+<h2>Good for</h2>
+<ul>
+<li>Wanting a header on the result's first row</li>
+<li>Headers appearing twice</li>
+<li>Headers disappearing</li>
+</ul>
+<h2>Example</h2>
+<p>The result's first row was the data's first row, not a header. Specifying header rows as 1 treated it as a header and showed correctly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Doubled headers</b>: header rows too low, so the header was treated as data.</li>
+<li><b>A data row vanishes</b>: header rows too high, so the first data row was treated as a header.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I want to set my own header?</h3>
+<p>The label clause can. Example: label SUM(C) 'Total sales'</p>
+<h2>Summary</h2>
+<p>Specify header rows explicitly and results stay stable.</p>
 <a class="cta" href="/en/query-formula-builder.html">Use "Build a QUERY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

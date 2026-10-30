@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>시험용 숫자로 확인하기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>숫자 입력</li><li>결과 확인하기</li><li>조정하기</li></ul></div>
-<p>시험용 숫자를 넣으면 <a href="/ko/round-formula-builder.html">반올림 수식 만들기</a>가 결과 예시를 보여 줍니다.</p>
+<p lang="en">You want to check the result before building the formula. Entering a value in "Sample value" in <a href="/ko/round-formula-builder.html">Build a Rounding Formula</a> shows the rounding result beforehand.</p>
 <h2>순서</h2>
 <ol>
-<li>숫자 입력</li>
-<li>결과 확인하기</li>
-<li>조정하기</li>
+<li lang="en">Enter "Cell to round", "Function" and "Digits or unit".</li>
+<li lang="en">Enter a realistic number in "Sample value".</li>
+<li lang="en">Check "Sample result: original → rounded".</li>
 </ol>
-<div class="note">수식을 셀에 붙여 넣기 전에 확인할 수 있습니다.</div>
+<div class="note" lang="en">The sample value isn't included in the formula. The field is only for checking the result.</div>
+<h2>예</h2>
+<p lang="en">With ROUND and 2 digits, entering 3.14159 as the sample shows:</p>
+<ul>
+<li lang="en">Sample result: 3.14159 → 3.14</li>
+</ul>
+<h2 lang="en">Try boundary values</h2>
+<p lang="en">Entering values at the boundary where results switch is effective.</p>
+<ul>
+<li lang="en">ROUND, 0 digits: 2.4, 2.5, 2.6</li>
+<li lang="en">ROUND, -2 digits: 149, 150, 151</li>
+<li lang="en">CEILING, unit 100: 100, 101</li>
+</ul>
+<h2 lang="en">Try negatives too</h2>
+<ul>
+<li lang="en">ROUND, 0 digits: -2.5 → -3</li>
+<li lang="en">ROUNDUP, 0 digits: -2.1 → -3</li>
+<li lang="en">ROUNDDOWN, 0 digits: -2.9 → -2</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Torn between round up and standard rounding</li>
+<li lang="en">Checking beforehand that the result is as intended</li>
+<li lang="en">Checking behavior with negatives</li>
+</ul>
+<h2 lang="en">How it's calculated</h2>
+<p lang="en">The sample result is calculated inside the tool. The ROUND family normalises to 14 significant digits before rounding to curb decimal error. It's designed to match Excel's results.</p>
+<h2>예</h2>
+<p lang="en">Wanted to know whether =ROUND(A2,-2) turns 150 into 100 or 200. Entering 150 as the sample gave 200, confirming 5 rounds up.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>No sample result</b>: the sample is empty or not a number.</li>
+<li lang="en"><b>Unit of 0</b>: with CEILING, FLOOR or MROUND and unit 0, the result shows 0.</li>
+<li lang="en"><b>Decimal differences from Excel</b>: very rarely floating-point differences appear. Check in actual cells.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I test several numbers at once?</h3>
+<p lang="en">One at a time. Enter boundary values in turn.</p>
+<h2>요약</h2>
+<p lang="en">Checking with a sample value before pasting the formula gives peace of mind.</p>
 <a class="cta" href="/ko/round-formula-builder.html">“반올림 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/percent-calculator.html">퍼센트, 할인, 증감률 계산</a>: 퍼센트, 할인, 증감률을 바로 계산합니다.</li><li><a href="/ko/tax-calculator.html">소비세 계산 (세금 포함 / 세금 별도)</a>: 세금 포함 가격과 세금 별도 가격을 계산합니다.</li><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

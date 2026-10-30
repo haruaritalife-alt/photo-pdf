@@ -201,14 +201,64 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Agrupar y totalizar</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
 <div class="points"><b>Puntos clave</b><ul><li>Escribe las columnas</li><li>Escribe la agrupación</li><li>Cópialo</li></ul></div>
-<p>En <a href="/es/query-formula-builder.html">Creador de QUERY</a> puedes combinar columnas como A, SUM(C) con group by para totalizar.</p>
+<p lang="en">You want totals or counts by region or person. In QUERY, the group by clause aggregates by group. Enter the key column in "Group by column" in <a href="/es/query-formula-builder.html">Build a QUERY Formula</a>.</p>
 <h2>Pasos</h2>
 <ol>
-<li>Escribe las columnas</li>
-<li>Escribe la agrupación</li>
-<li>Cópialo</li>
+<li lang="en">In "Columns to return", enter the group column and the aggregation, like "A, SUM(C)".</li>
+<li lang="en">Enter "A" in "Group by column".</li>
+<li lang="en">Check the formula contains "group by A".</li>
 </ol>
-<div class="note">Incluye la columna de agrupación en las columnas que seleccionar.</div>
+<div class="note" lang="en">When using group by, put only the group columns or aggregate functions in select.</div>
+<h2>Ejemplo</h2>
+<p lang="en">With regions in column A and sales in column C, total sales per region.</p>
+<ul>
+<li lang="en">=QUERY(A1:D100,"select A, SUM(C) group by A",1)</li>
+</ul>
+<h2 lang="en">Usable aggregate functions</h2>
+<ul>
+<li lang="en">SUM: total</li>
+<li lang="en">COUNT: count</li>
+<li lang="en">AVG: average</li>
+<li lang="en">MAX: maximum</li>
+<li lang="en">MIN: minimum</li>
+</ul>
+<h2 lang="en">Combination examples</h2>
+<ul>
+<li lang="en">People per region: select A, COUNT(B) group by A</li>
+<li lang="en">Average score per region: select A, AVG(C) group by A</li>
+<li lang="en">Top score per region: select A, MAX(C) group by A</li>
+</ul>
+<h2 lang="en">Grouping by several columns</h2>
+<p lang="en">You can enter several columns like "A, B".</p>
+<ul>
+<li lang="en">Example: select A, B, SUM(C) group by A, B</li>
+</ul>
+<h2 lang="en">Combining with conditions and sorting</h2>
+<ul>
+<li lang="en">Conditions: write group by after where</li>
+<li lang="en">Sorting: write order by after group by</li>
+</ul>
+<p lang="en">The tool assembles in this order.</p>
+<h2 lang="en">Headers of aggregated results</h2>
+<p lang="en">Aggregate columns get automatic headers like "sum Sales". To change headers use the label clause.</p>
+<h2>Adecuado para</h2>
+<ul>
+<li lang="en">Aggregating by region, person or month</li>
+<li lang="en">Aggregating by formula without a PivotTable</li>
+<li lang="en">Passing results to other functions</li>
+</ul>
+<h2>Ejemplo</h2>
+<p lang="en">Wanted total sales per product, highest first. Entering "A, SUM(C)" in return columns, "A" in group by and "SUM(C) desc" in sort made the formula.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Select columns don't fit</b>: putting an ungrouped column without an aggregate function errors.</li>
+<li lang="en"><b>Header row count</b>: specify it correctly.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How does it differ from a PivotTable?</h3>
+<p lang="en">QUERY is a formula, so it updates automatically when the source changes. A PivotTable is a table built by operations.</p>
+<h2>Resumen</h2>
+<p lang="en">Specify grouping together with select columns, and use aggregate functions.</p>
 <a class="cta" href="/es/query-formula-builder.html">Usar «Crear una fórmula QUERY» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/filter-formula-builder.html">Crear una fórmula FILTER</a>: Crea una fórmula FILTER.</li><li><a href="/es/importrange-builder.html">Crear una fórmula IMPORTRANGE</a>: Crea una fórmula IMPORTRANGE.</li><li><a href="/es/sumif-formula-builder.html">Crear una fórmula SUMIF o COUNTIF</a>: Crea fórmulas SUMIF y COUNTIF.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

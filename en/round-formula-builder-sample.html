@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Checking With a Sample Number</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter a number</li><li>See the result</li><li>Adjust</li></ul></div>
-<p><a href="/en/round-formula-builder.html">Rounding Builder</a> shows an example result when you enter a sample number.</p>
+<p>You want to check the result before building the formula. Entering a value in "Sample value" in <a href="/en/round-formula-builder.html">Build a Rounding Formula</a> shows the rounding result beforehand.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter a number</li>
-<li>See the result</li>
-<li>Adjust</li>
+<li>Enter "Cell to round", "Function" and "Digits or unit".</li>
+<li>Enter a realistic number in "Sample value".</li>
+<li>Check "Sample result: original → rounded".</li>
 </ol>
-<div class="note">You can check before pasting the formula into a cell.</div>
+<div class="note">The sample value isn't included in the formula. The field is only for checking the result.</div>
+<h2>Example</h2>
+<p>With ROUND and 2 digits, entering 3.14159 as the sample shows:</p>
+<ul>
+<li>Sample result: 3.14159 → 3.14</li>
+</ul>
+<h2>Try boundary values</h2>
+<p>Entering values at the boundary where results switch is effective.</p>
+<ul>
+<li>ROUND, 0 digits: 2.4, 2.5, 2.6</li>
+<li>ROUND, -2 digits: 149, 150, 151</li>
+<li>CEILING, unit 100: 100, 101</li>
+</ul>
+<h2>Try negatives too</h2>
+<ul>
+<li>ROUND, 0 digits: -2.5 → -3</li>
+<li>ROUNDUP, 0 digits: -2.1 → -3</li>
+<li>ROUNDDOWN, 0 digits: -2.9 → -2</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Torn between round up and standard rounding</li>
+<li>Checking beforehand that the result is as intended</li>
+<li>Checking behavior with negatives</li>
+</ul>
+<h2>How it's calculated</h2>
+<p>The sample result is calculated inside the tool. The ROUND family normalises to 14 significant digits before rounding to curb decimal error. It's designed to match Excel's results.</p>
+<h2>Example</h2>
+<p>Wanted to know whether =ROUND(A2,-2) turns 150 into 100 or 200. Entering 150 as the sample gave 200, confirming 5 rounds up.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>No sample result</b>: the sample is empty or not a number.</li>
+<li><b>Unit of 0</b>: with CEILING, FLOOR or MROUND and unit 0, the result shows 0.</li>
+<li><b>Decimal differences from Excel</b>: very rarely floating-point differences appear. Check in actual cells.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I test several numbers at once?</h3>
+<p>One at a time. Enter boundary values in turn.</p>
+<h2>Summary</h2>
+<p>Checking with a sample value before pasting the formula gives peace of mind.</p>
 <a class="cta" href="/en/round-formula-builder.html">Use "Build a Rounding Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/en/tax-calculator.html">Calculate Consumption Tax (Incl. / Excl. Tax)</a>: Calculate prices incl. and excl. tax.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

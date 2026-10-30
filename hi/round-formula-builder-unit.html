@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>इकाई तक पूर्णांकन</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>CEILING या ऐसा कुछ चुनें</li><li>इकाई डालें</li><li>कॉपी करें</li></ul></div>
-<p><a href="/hi/round-formula-builder.html">पूर्णांकन सूत्र बनाने वाला टूल</a> में CEILING, FLOOR और MROUND 10 या 0.5 जैसी इकाई तक पूर्णांकित करते हैं।</p>
+<p lang="en">For rounding to a set unit, like "round up to 100 yen" or "round down to 5 minutes", use CEILING, FLOOR or MROUND. In <a href="/hi/round-formula-builder.html">Build a Rounding Formula</a>, choosing these makes the second argument a "unit".</p>
+<h2 lang="en">The three functions</h2>
+<ul>
+<li lang="en"><b>CEILING</b>: round up to a multiple of the unit</li>
+<li lang="en"><b>FLOOR</b>: round down to a multiple of the unit</li>
+<li lang="en"><b>MROUND</b>: round to the nearest multiple of the unit</li>
+</ul>
 <h2>चरण</h2>
 <ol>
-<li>CEILING या ऐसा कुछ चुनें</li>
-<li>इकाई डालें</li>
-<li>कॉपी करें</li>
+<li lang="en">In "Function", choose CEILING, FLOOR or MROUND.</li>
+<li lang="en">Enter the unit (such as 100) in "Digits or unit".</li>
+<li lang="en">Enter a "Sample value" and check the result.</li>
 </ol>
-<div class="note">MROUND निकटतम इकाई तक पूर्णांकित करता है।</div>
+<div class="note" lang="en">This field means "digits" for the ROUND family and "unit" for these three.</div>
+<h2 lang="en">Examples (unit 100)</h2>
+<ul>
+<li lang="en">At 1234: CEILING→1300, FLOOR→1200, MROUND→1200</li>
+<li lang="en">At 1250: CEILING→1300, FLOOR→1200, MROUND→1300</li>
+<li lang="en">At 1251: CEILING→1300, FLOOR→1200, MROUND→1300</li>
+</ul>
+<h2 lang="en">Formula examples</h2>
+<ul>
+<li lang="en">Round up to 100: =CEILING(A2,100)</li>
+<li lang="en">Round down to 5: =FLOOR(A2,5)</li>
+<li lang="en">Round to 0.5: =MROUND(A2,0.5)</li>
+</ul>
+<h2 lang="en">Rounding time</h2>
+<p lang="en">Time is a fraction of a day, so units need care. Rounding up to 15 minutes:</p>
+<ul>
+<li lang="en">=CEILING(A2,"0:15")</li>
+<li lang="en">or =CEILING(A2,15/1440)</li>
+</ul>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">Making invoice amounts in 100, 500 or 1000 yen units</li>
+<li lang="en">Rounding work time to 15- or 30-minute units</li>
+<li lang="en">Aligning quantities to a case-pack multiple</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">Wanted order quantities rounded up to multiples of a 12-piece case. =CEILING(A2,12) turned 25 into 36.</p>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en"><b>MROUND</b>: errors (#NUM!) if number and unit have different signs</li>
+<li lang="en"><b>Unit of 0</b>: CEILING returns 0; FLOOR gives #DIV/0!</li>
+<li lang="en"><b>Version differences</b>: handling of negatives varies by version</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Mistaking unit for digits</b>: 100 means a unit of 100, not 100 digits.</li>
+<li lang="en"><b>Decimal error</b>: units like 0.1 can show floating-point error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How does CEILING differ from ROUNDUP?</h3>
+<p lang="en">ROUNDUP rounds up by digits; CEILING rounds up to a multiple of a unit.</p>
+<h2>सारांश</h2>
+<p lang="en">CEILING, FLOOR and MROUND round to a set unit. Mind the meaning of the unit.</p>
 <a class="cta" href="/hi/round-formula-builder.html">“पूर्णांकन सूत्र बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/percent-calculator.html">प्रतिशत, छूट और % बदलाव निकालें</a>: प्रतिशत, छूट और % बदलाव तुरंत निकालें।</li><li><a href="/hi/tax-calculator.html">उपभोग कर निकालें (टैक्स सहित / रहित)</a>: टैक्स सहित और टैक्स रहित कीमतें निकालें।</li><li><a href="/hi/sumif-formula-builder.html">SUMIF या COUNTIF फ़ॉर्मूला बनाएँ</a>: SUMIF और COUNTIF फ़ॉर्मूले बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

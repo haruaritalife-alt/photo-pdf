@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Что значит число знаков после запятой</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Введите число знаков после запятой</li><li>Проверить на примере</li><li>Проверьте</li></ul></div>
-<p>В <a href="/ru/round-formula-builder.html">Конструктор округления</a> число знаков вводится, например, как 0 или 2.</p>
+<p lang="en">The second argument of ROUND-family functions is the "digits". Its meaning is confusing, so sort it out checking with the "Sample value" in <a href="/ru/round-formula-builder.html">Build a Rounding Formula</a>.</p>
+<h2 lang="en">What digits means</h2>
+<ul>
+<li lang="en">Positive: number of decimal places</li>
+<li lang="en">0: integer (no decimals)</li>
+<li lang="en">Negative: places in the integer part (tens, hundreds…)</li>
+</ul>
+<h2 lang="en">Examples (ROUND on 1234.5678)</h2>
+<ul>
+<li lang="en">2: 1234.57 (two decimals)</li>
+<li lang="en">1: 1234.6 (one decimal)</li>
+<li lang="en">0: 1235 (integer)</li>
+<li lang="en">-1: 1230 (to tens)</li>
+<li lang="en">-2: 1200 (to hundreds)</li>
+<li lang="en">-3: 1000 (to thousands)</li>
+</ul>
 <h2>Шаги</h2>
 <ol>
-<li>Введите число знаков после запятой</li>
-<li>Проверить на примере</li>
-<li>Проверьте</li>
+<li lang="en">Choose "ROUND" in "Function".</li>
+<li lang="en">Enter a number in "Digits".</li>
+<li lang="en">Enter something like 1234.5678 in "Sample value" and check the result.</li>
 </ol>
-<div class="note">Отрицательное число знаков округляет до десятков и так далее.</div>
+<div class="note" lang="en">Think of digits as "how many decimal places to keep" for clarity.</div>
+<h2>Что выбрать</h2>
+<ul>
+<li lang="en">Handling fractions below one yen: 0</li>
+<li lang="en">Two decimals (percentages etc.): 2</li>
+<li lang="en">Rounding to thousands: -3</li>
+<li lang="en">Rounding to ten-thousands: -4</li>
+</ul>
+<h2 lang="en">Formula examples</h2>
+<ul>
+<li lang="en">Round below one yen: =ROUND(A2,0)</li>
+<li lang="en">Round to thousands: =ROUND(A2,-3)</li>
+<li lang="en">Truncate to two decimals: =ROUNDDOWN(A2,2)</li>
+</ul>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Showing amounts in thousands or tens of thousands</li>
+<li lang="en">Aligning ratios to one decimal place</li>
+<li lang="en">Producing rough figures</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">Wanted 12,345,678 in sales as a ten-thousand-level approximation. =ROUND(A2,-4) gave 12,350,000.</p>
+<h2 lang="en">Non-integer digits</h2>
+<p lang="en">The tool accepts a decimal like 1.5, but Excel truncates it to an integer. Specifying integers is the norm.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Confusing negative digits</b>: -3 means "to the thousands place", not "keep 3 digits".</li>
+<li lang="en"><b>When you only want to change the look</b>: use cell formatting, not ROUND.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I just want to display in thousands?</h3>
+<p lang="en">The cell format "#,##0," shows thousands. The value doesn't change.</p>
+<h2>Итог</h2>
+<p lang="en">Digits are based on the decimal point: right is positive, left is negative. Check with the sample value.</p>
 <a class="cta" href="/ru/round-formula-builder.html">Использовать «Создать формулу округления» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/percent-calculator.html">Рассчитать проценты, скидки и изменение в %</a>: Мгновенно рассчитывайте проценты, скидки и изменения в %.</li><li><a href="/ru/tax-calculator.html">Рассчитать потребительский налог (с налогом / без налога)</a>: Рассчитайте цены с налогом и без налога.</li><li><a href="/ru/sumif-formula-builder.html">Создание формулы SUMIF или COUNTIF</a>: Создавайте формулы SUMIF и COUNTIF.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

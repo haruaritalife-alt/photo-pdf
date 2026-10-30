@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>공백이 있는 시트 이름</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>시트 이름 입력</li><li>수식 보기</li><li>확인하기</li></ul></div>
-<p><a href="/ko/importrange-builder.html">IMPORTRANGE 만들기</a>에서는 공백이 있는 시트 이름이 자동으로 따옴표로 묶입니다.</p>
+<p lang="en">When a sheet name contains spaces or symbols, IMPORTRANGE's syntax changes slightly. <a href="/ko/importrange-builder.html">Build an IMPORTRANGE Formula</a> adjusts this automatically.</p>
+<h2 lang="en">Rules applied</h2>
+<ul>
+<li lang="en">Names of only alphanumerics and underscores: as is (e.g. Sheet1)</li>
+<li lang="en">Others (with spaces, Japanese or symbols): enclosed in single quotes (e.g. 'Sales 2026')</li>
+<li lang="en">Names containing a single quote: doubled (Tom's → Tom''s)</li>
+</ul>
 <h2>순서</h2>
 <ol>
-<li>시트 이름 입력</li>
-<li>수식 보기</li>
-<li>확인하기</li>
+<li lang="en">Enter the original sheet name in "Sheet name".</li>
+<li lang="en">Check the "SheetName!Range" part of the formula.</li>
+<li lang="en">If it contains spaces or Japanese, check it is enclosed in quotes.</li>
 </ol>
-<div class="note">시트 이름을 확인할 때는 다른 도구가 편리합니다.</div>
+<div class="note" lang="en">Don't add "!" to the sheet name; the tool adds it between name and range.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">Sheet "Sheet1": Sheet1!A1:C10</li>
+<li lang="en">Sheet "Sales 2026": 'Sales 2026'!A1:C10</li>
+<li lang="en">Sheet "Tom's list": 'Tom''s list'!A1:C10</li>
+</ul>
+<h2 lang="en">How it looks in the formula</h2>
+<p lang="en">Single quotes sit inside the formula's double quotes.</p>
+<ul>
+<li lang="en">=IMPORTRANGE("https://docs.google.com/spreadsheets/d/(ID)","'Sales 2026'!A1:C10")</li>
+</ul>
+<h2 lang="en">How to check the sheet name</h2>
+<ul>
+<li lang="en">Look at the tabs at the bottom of the source spreadsheet</li>
+<li lang="en">Check there are no invisible spaces (such as trailing ones)</li>
+<li lang="en">Match case and full-/half-width to the tab</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Japanese or space-containing sheet names</li>
+<li lang="en">Names other than "Sheet1"</li>
+<li lang="en">When #REF! might be caused by the sheet name</li>
+</ul>
+<h2>예</h2>
+<p lang="en">The sheet was "FY2026 Sales". As is, it gave #REF!, but the tool's formula added single quotes and imported correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Renamed the tab</b>: rewrite the name inside the formula too.</li>
+<li lang="en"><b>Trailing space in the name</b>: invisible, hard to notice. Check the tab name.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the sheet name be omitted?</h3>
+<p lang="en">Omitting it targets the spreadsheet's first sheet. This tool is built to take a sheet name.</p>
+<h2>요약</h2>
+<p lang="en">Names with spaces or Japanese need quotes. The tool adds them automatically.</p>
 <a class="cta" href="/ko/importrange-builder.html">“IMPORTRANGE 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li><li><a href="/ko/sheet-name-checker.html">엑셀 시트 이름 확인하기</a>: 시트 이름을 쓸 수 있는지 확인합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

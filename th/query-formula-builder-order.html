@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>การเรียงลำดับ</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ใส่การเรียงลำดับ</li><li>ดูสูตร</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/query-formula-builder.html">ตัวสร้างสูตร QUERY</a> คุณกำหนดการเรียงลำดับ เช่น A desc ได้</p>
+<p lang="en">You want QUERY's result displayed sorted. Use the order by clause. Enter the column and direction in "Sort column" in <a href="/th/query-formula-builder.html">Build a QUERY Formula</a>.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>ใส่การเรียงลำดับ</li>
-<li>ดูสูตร</li>
-<li>คัดลอก</li>
+<li lang="en">Enter the range and return columns.</li>
+<li lang="en">Enter column and direction in "Sort column (such as A desc)".</li>
+<li lang="en">Check the formula contains "order by ...".</li>
 </ol>
-<div class="note">desc หมายถึงเรียงจากมากไปน้อย ถ้าไม่ใส่จะเรียงจากน้อยไปมาก</div>
+<div class="note" lang="en">Omitting the direction sorts ascending.</div>
+<h2 lang="en">How to write</h2>
+<ul>
+<li lang="en">A: column A ascending (small to large)</li>
+<li lang="en">A asc: column A ascending (asc may be omitted)</li>
+<li lang="en">A desc: column A descending (large to small)</li>
+<li lang="en">SUM(C) desc: aggregate result descending</li>
+<li lang="en">A, C desc: column A ascending, ties by column C descending</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Total per region, highest sales first.</p>
+<ul>
+<li lang="en">=QUERY(A1:D100,"select A, SUM(C) group by A order by SUM(C) desc",1)</li>
+</ul>
+<h2 lang="en">Taking only the top</h2>
+<p lang="en">To limit to the top 3 and so on, add a limit clause. Append it after the tool builds the formula.</p>
+<ul>
+<li lang="en">Example: …order by SUM(C) desc limit 3</li>
+</ul>
+<h2 lang="en">Sorting dates and text</h2>
+<ul>
+<li lang="en">Dates: in date order</li>
+<li lang="en">Text: in character-code order (Japanese isn't always in kana order)</li>
+<li lang="en">Numbers: by size</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Making ranking tables</li>
+<li lang="en">Newest-first or oldest-first ordering</li>
+<li lang="en">Lists by highest sales</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Wanted a top-5 region ranking by sales. Entering "SUM(C) desc" in sort and appending "limit 5" at the end output only the top five.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Japanese ordering</b>: not necessarily reading order.</li>
+<li lang="en"><b>Numbers as text</b>: if numbers are text, "10" comes before "2".</li>
+<li lang="en"><b>With aggregation</b>: when using group by, sort by aggregate or group columns.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I sort by several columns?</h3>
+<p lang="en">Yes. Specify them separated by commas, like "A, C desc".</p>
+<h2>สรุป</h2>
+<p lang="en">Sorting is column plus direction (asc or desc). For only the top, add limit.</p>
 <a class="cta" href="/th/query-formula-builder.html">ใช้ “สร้างสูตร QUERY” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/filter-formula-builder.html">สร้างสูตร FILTER</a>: สร้างสูตร FILTER</li><li><a href="/th/importrange-builder.html">สร้างสูตร IMPORTRANGE</a>: สร้างสูตร IMPORTRANGE</li><li><a href="/th/sumif-formula-builder.html">สร้างสูตร SUMIF หรือ COUNTIF</a>: สร้างสูตร SUMIF และ COUNTIF</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

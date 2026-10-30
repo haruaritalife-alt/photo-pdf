@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Ordering</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the ordering</li><li>See the formula</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/query-formula-builder.html">QUERY Builder</a> you can set an ordering such as A desc.</p>
+<p>You want QUERY's result displayed sorted. Use the order by clause. Enter the column and direction in "Sort column" in <a href="/en/query-formula-builder.html">Build a QUERY Formula</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the ordering</li>
-<li>See the formula</li>
-<li>Copy it</li>
+<li>Enter the range and return columns.</li>
+<li>Enter column and direction in "Sort column (such as A desc)".</li>
+<li>Check the formula contains "order by ...".</li>
 </ol>
-<div class="note">desc means largest first; leaving it out means smallest first.</div>
+<div class="note">Omitting the direction sorts ascending.</div>
+<h2>How to write</h2>
+<ul>
+<li>A: column A ascending (small to large)</li>
+<li>A asc: column A ascending (asc may be omitted)</li>
+<li>A desc: column A descending (large to small)</li>
+<li>SUM(C) desc: aggregate result descending</li>
+<li>A, C desc: column A ascending, ties by column C descending</li>
+</ul>
+<h2>Example</h2>
+<p>Total per region, highest sales first.</p>
+<ul>
+<li>=QUERY(A1:D100,"select A, SUM(C) group by A order by SUM(C) desc",1)</li>
+</ul>
+<h2>Taking only the top</h2>
+<p>To limit to the top 3 and so on, add a limit clause. Append it after the tool builds the formula.</p>
+<ul>
+<li>Example: …order by SUM(C) desc limit 3</li>
+</ul>
+<h2>Sorting dates and text</h2>
+<ul>
+<li>Dates: in date order</li>
+<li>Text: in character-code order (Japanese isn't always in kana order)</li>
+<li>Numbers: by size</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Making ranking tables</li>
+<li>Newest-first or oldest-first ordering</li>
+<li>Lists by highest sales</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted a top-5 region ranking by sales. Entering "SUM(C) desc" in sort and appending "limit 5" at the end output only the top five.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Japanese ordering</b>: not necessarily reading order.</li>
+<li><b>Numbers as text</b>: if numbers are text, "10" comes before "2".</li>
+<li><b>With aggregation</b>: when using group by, sort by aggregate or group columns.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I sort by several columns?</h3>
+<p>Yes. Specify them separated by commas, like "A, C desc".</p>
+<h2>Summary</h2>
+<p>Sorting is column plus direction (asc or desc). For only the top, add limit.</p>
 <a class="cta" href="/en/query-formula-builder.html">Use "Build a QUERY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

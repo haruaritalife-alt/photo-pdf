@@ -215,14 +215,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ماذا تفعل إذا لم يعمل</h1>
 <p class="meta">تاريخ النشر: 19 أكتوبر 2026 | آخر تحديث: 19 أكتوبر 2026 | <a href="/about.html">حول (باليابانية)</a></p>
 <div class="points"><b>النقاط الرئيسية</b><ul><li>افحص الملف</li><li>تحقق من الحجم</li><li>جرّب جهازًا آخر</li></ul></div>
-<p>إذا لم يعمل <a href="/ar/round-formula-builder.html">منشئ التقريب</a>، فتحقق مما يلي.</p>
-<h2>الخطوات</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/ar/round-formula-builder.html">Build a Rounding Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell to round isn't in the "A2" form, or digits/unit isn't a number.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#VALUE! appears</b>: the cell to round is text.</li>
+<li lang="en"><b>#NUM! appears</b>: MROUND with different signs for number and unit.</li>
+<li lang="en"><b>#DIV/0! appears</b>: FLOOR with a unit of 0.</li>
+<li lang="en"><b>#NAME? appears</b>: a typo in the function name.</li>
+<li lang="en"><b>Smaller (larger) than expected</b>: digits and unit mixed up.</li>
+<li lang="en"><b>Totals don't match</b>: look-only rounding mixed with function rounding.</li>
+<li lang="en"><b>Display still shows decimals</b>: the cell format's digits hide the result.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>افحص الملف</li>
-<li>تحقق من الحجم</li>
-<li>جرّب جهازًا آخر</li>
+<li lang="en">Check the cell to round holds a number.</li>
+<li lang="en">Check the function type and the meaning of its second argument.</li>
+<li lang="en">Compare the tool's sample result with the actual result.</li>
 </ol>
-<div class="note">إذا لم تظهر أي صيغة، فتأكد من كتابة الخلية مثل A2 وأن عدد المنازل العشرية رقم.</div>
+<div class="note" lang="en">If numbers display left-aligned, they may be text.</div>
+<h2 lang="en">Displayed digits</h2>
+<p lang="en">A result showing 3.1 rather than 3.10 is a format matter. The value is 3.1; the trailing 0 just isn't shown.</p>
+<ul>
+<li lang="en">Fix: align decimal places in the cell format</li>
+</ul>
+<h2 lang="en">When totals don't match</h2>
+<p lang="en">If line amounts are rounded only by format, the total is computed from the originals and can differ by one from the visible sum.</p>
+<ul>
+<li lang="en">Fix: round line items with ROUND, then total</li>
+</ul>
+<h2 lang="en">Negative behavior</h2>
+<p lang="en">ROUNDUP and ROUNDDOWN go "away from / toward" zero. Take care not to confuse this with magnitude direction.</p>
+<h2>مثال</h2>
+<p lang="en">Expected 200 from rounding up but got 100. The function was ROUNDDOWN. Checking it solved the problem.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Version differences</b>: CEILING and FLOOR handle negatives differently by version.</li>
+<li lang="en"><b>Floating-point error</b>: multiples of 0.1 can show tiny errors.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">ROUND's result differs from my calculator.</h3>
+<p lang="en">Calculators may hold more internal digits. Excel's ROUND rounds 5 up.</p>
+<h2>الخلاصة</h2>
+<p lang="en">Cell form, function type, digits vs unit. Check these three in order.</p>
 <a class="cta" href="/ar/round-formula-builder.html">استخدم «إنشاء صيغة تقريب» (مجانًا)</a>
 <h2>أدوات تتكامل مع هذه الأداة</h2><ul><li><a href="/ar/percent-calculator.html">حساب النسب المئوية والخصومات والتغير بالنسبة المئوية</a>: احسب النسب المئوية والخصومات والتغير بالنسبة المئوية فورًا.</li><li><a href="/ar/tax-calculator.html">حساب ضريبة الاستهلاك (شاملة / غير شاملة)</a>: احسب الأسعار شاملة الضريبة وغير شاملة لها.</li><li><a href="/ar/sumif-formula-builder.html">إنشاء صيغة SUMIF أو COUNTIF</a>: أنشئ صيغ SUMIF وCOUNTIF.</li></ul>
 <div class="tip"><p>إذا أفادك هذا الدليل، فإن إكرامية صغيرة تعني لنا الكثير.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">أرسل إكرامية (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">أرسل هدية (قائمة أمنيات Amazon)</a></div>

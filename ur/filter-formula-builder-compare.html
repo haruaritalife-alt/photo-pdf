@@ -215,14 +215,68 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>شرط میں موازنہ</h1>
 <p class="meta">شائع شدہ: 19 اکتوبر 2026 | اپ ڈیٹ: 19 اکتوبر 2026 | <a href="/about.html">تعارف (جاپانی)</a></p>
 <div class="points"><b>اہم نکات</b><ul><li>موازنہ منتخب کریں</li><li>ویلیو درج کریں</li><li>اسے چیک کریں</li></ul></div>
-<p><a href="/ur/filter-formula-builder.html">FILTER بنانے والا</a> میں آپ کم از کم یا بڑا یا برابر جیسا موازنہ منتخب کر سکتے ہیں۔</p>
+<p lang="en">FILTER conditions are written with comparison operators, like "B2:B100&gt;=80". Here is the six operators selectable in "Comparison" in <a href="/ur/filter-formula-builder.html">Build a FILTER Formula</a>.</p>
+<h2 lang="en">The six operators</h2>
+<ul>
+<li lang="en"><b>&gt;=</b>: or more</li>
+<li lang="en"><b>&gt;</b>: greater than</li>
+<li lang="en"><b>&lt;=</b>: or less</li>
+<li lang="en"><b>&lt;</b>: less than</li>
+<li lang="en"><b>=</b>: equal</li>
+<li lang="en"><b>&lt;&gt;</b>: not equal</li>
+</ul>
 <h2>مراحل</h2>
 <ol>
-<li>موازنہ منتخب کریں</li>
-<li>ویلیو درج کریں</li>
-<li>اسے چیک کریں</li>
+<li lang="en">Enter the range of the column to judge in "Column to test".</li>
+<li lang="en">Choose an operator in "Comparison".</li>
+<li lang="en">Enter "Value to compare".</li>
+<li lang="en">Check the "B2:B100&gt;=80" part of the formula.</li>
 </ol>
-<div class="note">«برابر نہیں» کے لیے &lt;&gt; استعمال کریں۔</div>
+<div class="note" lang="en">Unlike SUMIF, you needn't enclose the condition in quotes. FILTER takes the comparison expression as written.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">80 or more: =FILTER(A2:C100,B2:B100&gt;=80)</li>
+<li lang="en">Equal to "Tokyo": =FILTER(A2:C100,B2:B100="Tokyo")</li>
+<li lang="en">Not "Tokyo": =FILTER(A2:C100,B2:B100&lt;&gt;"Tokyo")</li>
+</ul>
+<h2 lang="en">Forms of the compared value</h2>
+<ul>
+<li lang="en">Numbers: entering 80 keeps it as is</li>
+<li lang="en">Text: entering Tokyo adds quotes automatically</li>
+<li lang="en">Other cells: entering E1 compares with that cell's value</li>
+</ul>
+<h2 lang="en">Difference from SUMIF</h2>
+<ul>
+<li lang="en">SUMIF: writes the condition as text like "&gt;=80"</li>
+<li lang="en">FILTER: writes the condition as a comparison expression like "B2:B100&gt;=80"</li>
+</ul>
+<h2 lang="en">Multiple conditions</h2>
+<p lang="en">Combining FILTER conditions by multiplication gives rows meeting all (AND).</p>
+<ul>
+<li lang="en">Example: =FILTER(A2:C100,(B2:B100&gt;=80)*(C2:C100="Tokyo"))</li>
+</ul>
+<p lang="en">Combining by addition gives rows meeting either (OR).</p>
+<ul>
+<li lang="en">Example: =FILTER(A2:C100,(B2:B100&gt;=80)+(C2:C100="Tokyo"))</li>
+</ul>
+<p lang="en">Rewrite the condition part of the tool's formula by hand.</p>
+<h2>ان کے لیے موزوں</h2>
+<ul>
+<li lang="en">Extracting rows meeting a condition</li>
+<li lang="en">Increasing to several conditions</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Wanted only people with a score of 80+ and region Tokyo. Rewriting the tool's condition into the multiplication form output only rows meeting both.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Forgetting brackets</b>: with several conditions, enclose each in brackets.</li>
+<li lang="en"><b>Range rows</b>: make all condition ranges the same number of rows.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I filter by partial text match?</h3>
+<p lang="en">Combine SEARCH and ISNUMBER. Example: ISNUMBER(SEARCH("Tok",C2:C100))</p>
+<h2>خلاصہ</h2>
+<p lang="en">Write the comparison expression as is. Combine multiple conditions with multiplication and addition.</p>
 <a class="cta" href="/ur/filter-formula-builder.html">«FILTER فارمولا بنانا» استعمال کریں (مفت)</a>
 <h2>وہ ٹولز جو اس کے ساتھ اچھے لگتے ہیں</h2><ul><li><a href="/ur/sumif-formula-builder.html">SUMIF یا COUNTIF فارمولا بنانا</a>: SUMIF اور COUNTIF فارمولے بنائیں۔</li><li><a href="/ur/excel-if-builder.html">IF فارمولا بنانا</a>: IF فارمولا بنائیں۔</li><li><a href="/ur/vlookup-formula-builder.html">VLOOKUP یا XLOOKUP فارمولا بنانا</a>: VLOOKUP اور XLOOKUP کے فارمولے بنائیں۔</li></ul>
 <div class="tip"><p>اگر یہ گائیڈ مفید رہی تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ٹپ بھیجیں (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">تحفہ بھیجیں (ایمیزون وش لسٹ)</a></div>

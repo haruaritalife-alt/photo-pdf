@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/query-formula-builder.html">QUERY Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but get an error. Here are common troubles with <a href="/en/query-formula-builder.html">Build a QUERY Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the data range isn't in the "A1:D100" form, the return columns are empty, or the header rows isn't a number.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>"Unable to parse query"</b>: the query string is written wrongly. Check quotes, column symbols and clause order.</li>
+<li><b>"Unknown column"</b>: a column symbol that doesn't exist. Columns outside the range can't be used.</li>
+<li><b>#VALUE!</b>: selecting an aggregate together with an ungrouped column.</li>
+<li><b>Empty result</b>: no rows match, or the condition text doesn't match.</li>
+<li><b>Header looks wrong</b>: the header rows specification.</li>
+<li><b>#NAME?</b>: QUERY isn't available in Excel.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the range and return columns are inside the range.</li>
+<li>Check clause order (select, where, group by, order by).</li>
+<li>Check text is enclosed in single quotes.</li>
 </ol>
-<div class="note">If no formula appears, check that the range is written like A1:D100 and the columns to select are entered.</div>
+<div class="note">Emptying the condition and trying just "select A" first helps isolate the cause.</div>
+<h2>Clause order</h2>
+<p>Not keeping this order causes errors.</p>
+<ol>
+<li>select</li>
+<li>where</li>
+<li>group by</li>
+<li>order by</li>
+<li>limit</li>
+<li>label</li>
+</ol>
+<h2>Column symbols</h2>
+<p>Columns in the range are specified with symbols A, B, C…. Symbols outside the range error. If the range doesn't start at column A, check the result to see the symbols are as expected.</p>
+<h2>Mixed data types</h2>
+<p>If a column mixes numbers and text, one kind can be ignored. Unify the column's data type.</p>
+<h2>Example</h2>
+<p>"Unable to parse query" appeared. Condition text was in double quotes. Changing to single quotes made it work.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Column names in Japanese</b>: specify by symbol, not by header text.</li>
+<li><b>Date comparison</b>: add date and write year-month-day.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can columns be specified by header name?</h3>
+<p>No. Specify them by symbol (A, B…) or as Col1, Col2….</p>
+<h2>Summary</h2>
+<p>Range, clause order, quotes. Check these three in order.</p>
 <a class="cta" href="/en/query-formula-builder.html">Use "Build a QUERY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

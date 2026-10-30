@@ -200,14 +200,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/round-formula-builder.html">丸め式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を作ったのに、結果がおかしい。<a href="/round-formula-builder.html">丸めの式を作る</a> で起こりやすい困りごとと対処法をまとめます。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：丸めるセルが「A2」の形でない。または、桁数や単位が数字でない。</li>
+</ul>
+<h2>式を貼ったあとの困りごと</h2>
+<ul>
+<li><b>#VALUE!が出る</b>：丸めるセルが、文字列になっている。</li>
+<li><b>#NUM!が出る</b>：MROUNDで、数字と単位の符号が違う。</li>
+<li><b>#DIV/0!が出る</b>：FLOORで、単位が0。</li>
+<li><b>#NAME?が出る</b>：関数名の綴りの間違い。</li>
+<li><b>思ったより小さい（大きい）</b>：桁数と単位を取り違えている。</li>
+<li><b>合計が合わない</b>：見た目だけの丸めと、関数での丸めの混在。</li>
+<li><b>表示が小数のまま</b>：セルの書式の桁数が、結果を隠している。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>丸めるセルが、数字かどうか確かめる。</li>
+<li>関数の種類と、第2引数の意味を確かめる。</li>
+<li>試しの数値で、ツールの結果と、実際の結果を見比べる。</li>
 </ol>
-<div class="note">式が出ないときは、セルがA2のように書かれているか、桁数が数字になっているか確かめます。</div>
+<div class="note">数字が左揃えで表示されていたら、文字列の可能性があります。</div>
+<h2>見た目の桁数</h2>
+<p>式の結果が、3.10 でなく 3.1 と表示されるのは、書式の問題です。値は3.1のままで、末尾の0が表示されないだけです。</p>
+<ul>
+<li>対処：セルの書式で、小数点以下の桁数をそろえる</li>
+</ul>
+<h2>合計が合わないとき</h2>
+<p>明細の金額を、書式で見た目だけ丸めている場合、合計は元の値で計算され、見た目の合計と、1円ずれることがあります。</p>
+<ul>
+<li>対処：明細を、ROUNDで丸めてから合計する</li>
+</ul>
+<h2>負の数の挙動</h2>
+<p>ROUNDUPとROUNDDOWNは、0を基準にした「遠ざかる／近づく」の挙動です。大小の方向と取り違えないよう、注意します。</p>
+<h2>例</h2>
+<p>切り上げで200になるはずが、100と出た。関数がROUNDDOWNになっていた。関数を確かめると、解決した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>バージョンによる違い</b>：CEILING、FLOORは、負の数の扱いがバージョンで異なる。</li>
+<li><b>浮動小数の誤差</b>：0.1の倍数などで、ごくわずかな誤差が出る場合がある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>「ROUND」の結果が、電卓と違います。</h3>
+<p>電卓は、内部の桁が多いことがあります。ExcelのROUNDは、5を切り上げます。</p>
+<h2>まとめ</h2>
+<p>セルの形・関数の種類・桁数と単位。この3つを順に確かめましょう。</p>
 <a class="cta" href="/round-formula-builder.html">丸めの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/percent-calculator.html">割合・割引・増減（%）を計算する</a>：割合・割引・増減の%を、すぐに計算します。</li><li><a href="/tax-calculator.html">消費税を計算する（税込・税抜）</a>：税込・税抜の金額を、すぐに計算します。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +257,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/round-formula-builder.html">Rounding Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but the result is odd. Here are common troubles with <a href="/round-formula-builder.html">Build a Rounding Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the cell to round isn't in the "A2" form, or digits/unit isn't a number.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>#VALUE! appears</b>: the cell to round is text.</li>
+<li><b>#NUM! appears</b>: MROUND with different signs for number and unit.</li>
+<li><b>#DIV/0! appears</b>: FLOOR with a unit of 0.</li>
+<li><b>#NAME? appears</b>: a typo in the function name.</li>
+<li><b>Smaller (larger) than expected</b>: digits and unit mixed up.</li>
+<li><b>Totals don't match</b>: look-only rounding mixed with function rounding.</li>
+<li><b>Display still shows decimals</b>: the cell format's digits hide the result.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the cell to round holds a number.</li>
+<li>Check the function type and the meaning of its second argument.</li>
+<li>Compare the tool's sample result with the actual result.</li>
 </ol>
-<div class="note">If no formula appears, check that the cell is written like A2 and the digits is a number.</div>
+<div class="note">If numbers display left-aligned, they may be text.</div>
+<h2>Displayed digits</h2>
+<p>A result showing 3.1 rather than 3.10 is a format matter. The value is 3.1; the trailing 0 just isn't shown.</p>
+<ul>
+<li>Fix: align decimal places in the cell format</li>
+</ul>
+<h2>When totals don't match</h2>
+<p>If line amounts are rounded only by format, the total is computed from the originals and can differ by one from the visible sum.</p>
+<ul>
+<li>Fix: round line items with ROUND, then total</li>
+</ul>
+<h2>Negative behavior</h2>
+<p>ROUNDUP and ROUNDDOWN go "away from / toward" zero. Take care not to confuse this with magnitude direction.</p>
+<h2>Example</h2>
+<p>Expected 200 from rounding up but got 100. The function was ROUNDDOWN. Checking it solved the problem.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Version differences</b>: CEILING and FLOOR handle negatives differently by version.</li>
+<li><b>Floating-point error</b>: multiples of 0.1 can show tiny errors.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>ROUND's result differs from my calculator.</h3>
+<p>Calculators may hold more internal digits. Excel's ROUND rounds 5 up.</p>
+<h2>Summary</h2>
+<p>Cell form, function type, digits vs unit. Check these three in order.</p>
 <a class="cta" href="/round-formula-builder.html">Use "Build a Rounding Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/tax-calculator.html">Calculate Consumption Tax (Incl. / Excl. Tax)</a>: Calculate prices incl. and excl. tax.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
