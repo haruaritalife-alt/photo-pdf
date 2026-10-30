@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>त्रुटि पर खाली दिखाना</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>फ़ॉर्मूला बनाएँ</li><li>विकल्प पर टिक लगाएँ</li><li>कॉपी करें</li></ul></div>
-<p><a href="/hi/vlookup-formula-builder.html">VLOOKUP फ़ॉर्मूला बनाएँ</a> में खाली वाली सेटिंग चालू करने पर फ़ॉर्मूला IFERROR में लिपट जाता है।</p>
+<p lang="en">When VLOOKUP can't find the value, "#N/A" appears. It makes the table ugly and affects totals. "Blank on error" in <a href="/hi/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> builds a formula wrapped in IFERROR.</p>
 <h2>चरण</h2>
 <ol>
-<li>फ़ॉर्मूला बनाएँ</li>
-<li>विकल्प पर टिक लगाएँ</li>
-<li>कॉपी करें</li>
+<li lang="en">Enter the value, range and column number.</li>
+<li lang="en">Tick "Blank on error".</li>
+<li lang="en">The formula is wrapped in IFERROR.</li>
 </ol>
-<div class="note">कुछ न मिलने पर त्रुटि की जगह खाली दिखता है।</div>
+<div class="note" lang="en">Example: =IFERROR(VLOOKUP(A2,$D$2:$F$100,2,FALSE),"")</div>
+<h2 lang="en">How the formula works</h2>
+<p lang="en">The form is IFERROR(formula, value on error).</p>
+<ul>
+<li lang="en">If the formula is fine, its result is returned</li>
+<li lang="en">If it errors, the second value (here an empty string) is returned</li>
+</ul>
+<h2 lang="en">For XLOOKUP</h2>
+<p lang="en">XLOOKUP's fourth argument specifies the value when nothing is found. In this tool, ticking sets an empty string.</p>
+<ul>
+<li lang="en">Example: =XLOOKUP(A2,$D$2:$D$100,$E$2:$E$100,"")</li>
+</ul>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">Making unfound rows blank for readability</li>
+<li lang="en">"#N/A" getting in the way of totals</li>
+<li lang="en">Presenting invoices or lists neatly</li>
+</ul>
+<h2 lang="en">Showing something other than blank</h2>
+<p lang="en">After building, rewrite the "" part.</p>
+<ul>
+<li lang="en">"Unregistered": shows "Unregistered" when not found</li>
+<li lang="en">"-": shows a hyphen</li>
+<li lang="en">0: returns the number 0 (when you want it in totals)</li>
+</ul>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en"><b>All errors get hidden</b>: IFERROR also hides errors other than #N/A (like #REF!). Formula mistakes become harder to notice.</li>
+<li lang="en"><b>Check first</b>: build the formula without IFERROR first, confirm it works, then add it.</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">An invoice list had unregistered product codes lined up as "#N/A". Adding IFERROR made them blank and tidied the look.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Blanks affect calculation</b>: an empty string is text. SUM ignores it, but "+" arithmetic errors.</li>
+<li lang="en"><b>Hiding only #N/A</b>: use the IFNA function.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How is it different from IFNA?</h3>
+<p lang="en">IFNA replaces only #N/A. Other errors are shown as they are.</p>
+<h2>सारांश</h2>
+<p lang="en">Blank when not found. But confirm the formula is correct before adding it.</p>
 <a class="cta" href="/hi/vlookup-formula-builder.html">“VLOOKUP या XLOOKUP फ़ॉर्मूला बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/excel-range-info.html">एक्सेल रेंज की सेल, पंक्तियाँ और कॉलम गिनना</a>: रेंज की सेल, पंक्तियाँ और कॉलम पता करें।</li><li><a href="/hi/excel-column-letter.html">एक्सेल कॉलम संख्या और अक्षर कन्वर्टर</a>: एक्सेल कॉलम संख्या और अक्षर बदलें।</li><li><a href="/hi/excel-text-clean.html">एक्सेल पाठ से फ़ालतू स्पेस और अदृश्य वर्ण हटाना</a>: फ़ालतू स्पेस और अदृश्य वर्ण हटाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

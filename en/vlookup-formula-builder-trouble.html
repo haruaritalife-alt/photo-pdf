@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/vlookup-formula-builder.html">VLOOKUP Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but get no result. Here are common troubles with <a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the cell or range is written wrongly. Use half-width like "A2" and "D2:F100".</li>
+<li><b>"The column number is larger than the number of columns in the range."</b>: the range D–F has 3 columns but you specified 4 or more.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>#N/A appears</b>: the value isn't in the range's leftmost column, or there's an invisible difference (like extra spaces).</li>
+<li><b>#REF! appears</b>: the column number exceeds the range's columns.</li>
+<li><b>#VALUE! appears</b>: the column number is below 1 or not a number.</li>
+<li><b>#NAME? appears</b>: old Excel without XLOOKUP.</li>
+<li><b>A different value returns</b>: it's approximate match (TRUE), or there are duplicates.</li>
+<li><b>Only lower rows fail</b>: the range lacks $.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the value is in the range's leftmost column.</li>
+<li>Make it exact match (FALSE).</li>
+<li>Add $ to the range.</li>
+<li>Check for extra spaces with functions like LEN.</li>
 </ol>
-<div class="note">If no formula appears, check that the range is written like D2:F100 and the column number is within the range.</div>
+<div class="note">When the value is a number, a text-form number on one side won't match. Make both the same form.</div>
+<h2>Suspect invisible differences</h2>
+<ul>
+<li>Trailing spaces</li>
+<li>Full-width vs half-width</li>
+<li>Number vs text</li>
+</ul>
+<p>The "Clean extra spaces and invisible characters from Excel text" tool helps with tidying text.</p>
+<h2>Duplicates</h2>
+<p>VLOOKUP returns the value from the first matching row. With several identical codes, the second onward aren't returned.</p>
+<h2>Example</h2>
+<p>A product code seemed not to match, but one side had a trailing space. Removing it cleared the #N/A.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Range too short</b>: the table's last row isn't in the range.</li>
+<li><b>References to other sheets</b>: forgot to add the sheet name.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>They're numbers but won't match.</h3>
+<p>One side may be a text-form number. Align forms with VALUE or cell formatting.</p>
+<h2>Summary</h2>
+<p>Leftmost column, exact match, $, invisible differences. Check these four in order.</p>
 <a class="cta" href="/en/vlookup-formula-builder.html">Use "Build a VLOOKUP or XLOOKUP Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a>: Find the cells, rows and columns of a range.</li><li><a href="/en/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

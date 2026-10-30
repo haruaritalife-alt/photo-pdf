@@ -200,14 +200,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>範囲に$を付ける理由</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>式を作る</li><li>$を付ける</li><li>コピーする</li></ul></div>
-<p><a href="/vlookup-formula-builder.html">VLOOKUP式の作成</a> は、範囲に$を付けて、式を下にコピーしても範囲がずれないようにできます。</p>
+<p>VLOOKUPの式を下の行にコピーしたら、結果がおかしくなった。原因の多くは、範囲に「$」が付いていないことです。<a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a> の「範囲に$を付ける」で、固定した式が作れます。</p>
+<h2>なぜずれるのか</h2>
+<p>範囲を「D2:F100」と書くと、式を1行下にコピーしたとき、「D3:F101」にずれます。探す表がずれて、見つからなくなります。</p>
+<ul>
+<li>相対参照：D2:F100（コピーでずれる）</li>
+<li>絶対参照：$D$2:$F$100（コピーしても動かない）</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>式を作る</li>
-<li>$を付ける</li>
-<li>コピーする</li>
+<li>値・範囲・列番号を入れる。</li>
+<li>「範囲に$を付ける」にチェックを入れる。</li>
+<li>範囲が $D$2:$F$100 の形になった式を、コピーする。</li>
 </ol>
-<div class="note">チェックを外すと、$なしの式になります。</div>
+<div class="note">探す値のセル（A2）には、$を付けません。行ごとに変わってほしいためです。</div>
+<h2>具体例</h2>
+<ul>
+<li>ずれる式：=VLOOKUP(A2,D2:F100,2,FALSE)</li>
+<li>固定した式：=VLOOKUP(A2,$D$2:$F$100,2,FALSE)</li>
+</ul>
+<p>下にコピーしたとき、A2はA3、A4と変わり、範囲は動かないままです。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>式を、何百行にもコピーしたい</li>
+<li>コピーしたら、#N/Aだらけになった</li>
+<li>範囲がずれていないか、確かめたい</li>
+</ul>
+<h2>チェックを外すのは</h2>
+<p>1つのセルだけに使う式で、コピーしない場合は、$がなくても困りません。</p>
+<h2>見分け方</h2>
+<p>コピーした先のセルを選んで、式の範囲を見ます。D3:F101 のように、行が1つずつ進んでいたら、ずれています。</p>
+<h2>例</h2>
+<p>商品名を引く式を、100行にコピーしたところ、10行目あたりから #N/A になった。範囲が少しずつずれて、表から外れたためだった。$を付けて直した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>列だけ、行だけ固定したい</b>：混合参照（$D2:$F100 など）は、手で書き換える。</li>
+<li><b>表に行を追加する</b>：範囲の末尾を超える行は、含まれない。広めに指定する。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>F4キーで付けられますか？</h3>
+<p>はい。式を編集中にF4キーを押すと、$が付きます。</p>
+<h2>まとめ</h2>
+<p>探す範囲は、$で固定。探す値のセルは、そのままにしましょう。</p>
 <a class="cta" href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-range-info.html">Excelのセル範囲のセル数・行数・列数を調べる</a>：セル範囲のセル数・行数・列数を調べます。</li><li><a href="/excel-column-letter.html">Excel 列番号・列文字 変換</a>：Excelの列番号と列文字を変換します。</li><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +253,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Why Dollar Signs on the Range</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>Add dollar signs</li><li>Copy it</li></ul></div>
-<p><a href="/vlookup-formula-builder.html">VLOOKUP Builder</a> can add dollar signs so the range does not shift when the formula is copied down.</p>
+<p>Copying a VLOOKUP formula down made results wrong. Most often the range lacks "$". "Add $ to the range" in <a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> builds a fixed formula.</p>
+<h2>Why it shifts</h2>
+<p>Writing the range as "D2:F100" shifts it to "D3:F101" when the formula is copied one row down. The search table moves and nothing is found.</p>
+<ul>
+<li>Relative: D2:F100 (shifts when copied)</li>
+<li>Absolute: $D$2:$F$100 (stays when copied)</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>Add dollar signs</li>
-<li>Copy it</li>
+<li>Enter the value, range and column number.</li>
+<li>Tick "Add $ to the range".</li>
+<li>Copy the formula whose range is now $D$2:$F$100.</li>
 </ol>
-<div class="note">Unticking it gives a formula without dollar signs.</div>
+<div class="note">Don't add $ to the lookup cell (A2); it should change per row.</div>
+<h2>Concrete example</h2>
+<ul>
+<li>Shifting formula: =VLOOKUP(A2,D2:F100,2,FALSE)</li>
+<li>Fixed formula: =VLOOKUP(A2,$D$2:$F$100,2,FALSE)</li>
+</ul>
+<p>Copied down, A2 becomes A3, A4…, while the range stays put.</p>
+<h2>Good for</h2>
+<ul>
+<li>Copying a formula down hundreds of rows</li>
+<li>Copying produced #N/A everywhere</li>
+<li>Checking the range hasn't shifted</li>
+</ul>
+<h2>When to untick</h2>
+<p>For a formula used in a single cell and not copied, no $ is fine.</p>
+<h2>How to spot it</h2>
+<p>Select a copied cell and look at the range in the formula. If rows advance like D3:F101, it has shifted.</p>
+<h2>Example</h2>
+<p>Copying a product-name formula to 100 rows gave #N/A from around row 10, as the range crept off the table. Adding $ fixed it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Fixing only the column or row</b>: write mixed references (like $D2:$F100) by hand.</li>
+<li><b>Adding rows to the table</b>: rows beyond the range's end aren't included. Specify wider.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can F4 add them?</h3>
+<p>Yes. Pressing F4 while editing the formula adds $.</p>
+<h2>Summary</h2>
+<p>Fix the search range with $; leave the lookup cell as is.</p>
 <a class="cta" href="/vlookup-formula-builder.html">Use "Build a VLOOKUP or XLOOKUP Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a>: Find the cells, rows and columns of a range.</li><li><a href="/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

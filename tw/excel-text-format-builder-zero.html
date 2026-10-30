@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>用前導零補齊位數</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>輸入單元格</li><li>選擇 000000</li><li>複製</li></ul></div>
-<p>在<a href="/tw/excel-text-format-builder.html">TEXT公式生成器</a>中選擇 000000,數字會補零到 6 位。</p>
+<p lang="en">You want to align digits of employee numbers or product codes, turning "1" into "000001". Choose "000000" in <a href="/tw/excel-text-format-builder.html">Build an Excel TEXT Formula</a> to build a zero-padding TEXT formula.</p>
 <h2>步驟</h2>
 <ol>
-<li>輸入單元格</li>
-<li>選擇 000000</li>
-<li>複製</li>
+<li lang="en">Enter the number cell in "Cell to convert".</li>
+<li lang="en">Choose "000000" from "Common formats".</li>
+<li lang="en">To change the digit count, add or remove zeros.</li>
+<li lang="en">Copy the "TEXT formula".</li>
 </ol>
-<div class="note">位數取決於格式中 0 的個數。</div>
+<div class="note" lang="en">The number of "0"s is the digit count. Six digits is "000000", four is "0000".</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">=TEXT(A2,"000000")</li>
+<li lang="en">A2 is 1 → 000001</li>
+<li lang="en">A2 is 123 → 000123</li>
+<li lang="en">A2 is 1234567 → 1234567 (digits suffice, so unchanged)</li>
+</ul>
+<h2 lang="en">Number of zeros and results</h2>
+<ul>
+<li lang="en">Format "0000": 1 → 0001, 25 → 0025</li>
+<li lang="en">Format "00000": 1 → 00001</li>
+<li lang="en">Format "00": 5 → 05 (2-digit alignment for months and days)</li>
+</ul>
+<h2>適合</h2>
+<ul>
+<li lang="en">Aligning digits of employee or member numbers</li>
+<li lang="en">Making sorting follow number order</li>
+<li lang="en">Passing fixed-width numbers to a system</li>
+</ul>
+<h2 lang="en">Other ways</h2>
+<p lang="en">Besides TEXT, zero-padding can also be done like this:</p>
+<ul>
+<li lang="en">RIGHT function: =RIGHT("000000"&amp;A2,6)</li>
+<li lang="en">Cell format: "Custom" format "000000" (changes only the look)</li>
+</ul>
+<h2 lang="en">TEXT vs cell format</h2>
+<ul>
+<li lang="en"><b>TEXT function</b>: the content becomes the text "000001"; zeros stay when copied.</li>
+<li lang="en"><b>Cell format</b>: only the look is "000001"; the content stays 1.</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Member numbers like "1", "25", "300" sorted oddly. Zero-padding to six digits made ordering consistent.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Longer numbers aren't cut</b>: numbers longer than the digit count display as is.</li>
+<li lang="en"><b>The result is text</b>: use the original number for calculation.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I export to CSV without dropping leading zeros?</h3>
+<p lang="en">Making it text with TEXT helps keep the zeros. But reopening in Excel may drop them.</p>
+<h2>小結</h2>
+<p lang="en">To align digits, set the digit count by the number of zeros.</p>
 <a class="cta" href="/tw/excel-text-format-builder.html">使用「生成 Excel 的 TEXT 公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/excel-serial-date.html">Excel 序列值與日期轉換器</a>: 轉換 Excel 的序列值和日期。</li><li><a href="/tw/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/tw/excel-text-clean.html">去掉 Excel 文字中多餘的空格和看不見的字元</a>: 去掉多餘的空格和看不見的字元。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>TEXT의 결과는 글자입니다</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>수식 만들기</li><li>붙여넣기</li><li>확인하기</li></ul></div>
-<p><a href="/ko/excel-text-format-builder.html">TEXT 수식 만들기</a>로 만든 수식의 결과는 글자라서 그대로 더할 수 없습니다.</p>
-<h2>순서</h2>
+<p lang="en">The result of TEXT is "text" even if it looks like a number or date. Not knowing this causes surprising failures. Here's what to know before building a formula with <a href="/ko/excel-text-format-builder.html">Build an Excel TEXT Formula</a>.</p>
+<h2 lang="en">The result is text</h2>
+<p lang="en">Even if =TEXT(A2,"#,##0") shows 1,234,567, it is text, not a number.</p>
+<ul>
+<li lang="en">Often displayed left-aligned</li>
+<li lang="en">Can't be used in addition or averages</li>
+<li lang="en">Sorts as text</li>
+</ul>
+<h2 lang="en">Steps (how to check)</h2>
 <ol>
-<li>수식 만들기</li>
-<li>붙여넣기</li>
-<li>확인하기</li>
+<li lang="en">Select the cell with the TEXT function.</li>
+<li lang="en">Use =ISTEXT(cell) to check whether it's text. TRUE means text.</li>
+<li lang="en">Make calculation cells the original number cells.</li>
 </ol>
-<div class="note">계산에 쓸 때는 원래 셀을 사용하세요.</div>
+<div class="note" lang="en">Use the original cell for calculation and TEXT for display.</div>
+<h2 lang="en">Uses that suit it</h2>
+<ul>
+<li lang="en">Embedding in sentences ("Total is "&amp;TEXT(A2,"#,##0"))</li>
+<li lang="en">Building file names or heading text</li>
+<li lang="en">Passing as text to other systems</li>
+</ul>
+<h2 lang="en">Uses that don't suit it</h2>
+<ul>
+<li lang="en">Totals, averages and other calculations</li>
+<li lang="en">Chart source data</li>
+<li lang="en">Sorting dates or subtracting dates</li>
+</ul>
+<h2 lang="en">Turning text back into numbers</h2>
+<ul>
+<li lang="en">VALUE function: =VALUE(TEXT(...)). But using the original cell is more reliable.</li>
+<li lang="en">For dates: the DATEVALUE function</li>
+</ul>
+<h2 lang="en">Sorting differences</h2>
+<p lang="en">Sorting "2026/10/5" and "2026/10/25" as text may put "2026/10/25" first. For date sorting, use the original date cell. With zero-padding (yyyy/mm/dd), text also sorts in date order.</p>
+<h2>예</h2>
+<p lang="en">Summing a column of amounts made with TEXT gave 0. They were text, so not calculated. Summing the original number column gave the right result.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Left alignment goes unnoticed</b>: it looks like a number, so it's hard to notice it's text.</li>
+<li lang="en"><b>Zero-padded numbers</b>: they're text, so sorting follows text order.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I only want to change the look?</h3>
+<p lang="en">Cell formatting (custom) changes only the look while the content stays a number.</p>
+<h2>요약</h2>
+<p lang="en">TEXT makes text. Keep it separate from cells used in calculation.</p>
 <a class="cta" href="/ko/excel-text-format-builder.html">“엑셀 TEXT 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-serial-date.html">엑셀 일련번호·날짜 변환기</a>: 엑셀의 일련번호와 날짜를 변환합니다.</li><li><a href="/ko/vlookup-formula-builder.html">VLOOKUP·XLOOKUP 수식 만들기</a>: VLOOKUP과 XLOOKUP 수식을 만듭니다.</li><li><a href="/ko/excel-text-clean.html">엑셀 글의 불필요한 공백과 보이지 않는 문자 없애기</a>: 불필요한 공백과 보이지 않는 문자를 없앱니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

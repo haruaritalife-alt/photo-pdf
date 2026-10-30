@@ -201,14 +201,42 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Yang harus dilakukan bila tidak berfungsi</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Periksa berkasnya</li><li>Periksa ukurannya</li><li>Coba perangkat lain</li></ul></div>
-<p>Jika <a href="/id/textjoin-formula-builder.html">Pembuat TEXTJOIN</a> tidak berfungsi, periksa hal-hal berikut.</p>
-<h2>Langkah-langkah</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/id/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: enter a range with column letters and row numbers like "A2:A10". A single cell or a whole column (A:A) isn't allowed.</li>
+<li lang="en"><b>"The &amp; formula is limited to 30 cells."</b>: the &amp; formula handles up to 30 cells. The TEXTJOIN formula can be used as is.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#NAME? appears</b>: old Excel without TEXTJOIN. Use the "&amp; formula".</li>
+<li lang="en"><b>#VALUE! appears</b>: the result is too long (a cell's limit is 32,767 characters).</li>
+<li lang="en"><b>Extra separators line up</b>: "Skip blank cells" is off, or there are space-only cells.</li>
+<li lang="en"><b>Numbers or dates display wrongly</b>: numbers and dates join as their raw values without display formats. Tidy with TEXT.</li>
+<li lang="en"><b>No line breaks</b>: turn on "Wrap text" in the cell format.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Periksa berkasnya</li>
-<li>Periksa ukurannya</li>
-<li>Coba perangkat lain</li>
+<li lang="en">Check the range is entered with row numbers.</li>
+<li lang="en">Review the "Skip blank cells" setting.</li>
+<li lang="en">Check the Excel version (TEXTJOIN is 2019 and later).</li>
 </ol>
-<div class="note">Jika tidak ada rumus yang muncul, pastikan rentang ditulis seperti A2:A10.</div>
+<div class="note" lang="en">When joining dates or amounts, tidy them first with TEXT.</div>
+<h2 lang="en">Tidying dates example</h2>
+<p lang="en">=TEXTJOIN(", ",TRUE,TEXT(A2:A5,"yyyy/mm/dd"))</p>
+<p lang="en">Written this way, dates join in the "2026/10/25" form.</p>
+<h2>Contoh</h2>
+<p lang="en">Joining dates gave numbers like "46320, 46321". Tidying with TEXT joined them in date form.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>An error value in the range</b>: any error value makes the whole an error.</li>
+<li lang="en"><b>Ranges on other sheets</b>: rewrite with the sheet name (Sheet2!A2:A10).</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Numbers became text.</h3>
+<p lang="en">A joined result is text. To calculate, use the original cells.</p>
+<h2>Ringkasan</h2>
+<p lang="en">Range, version, blank setting, display format. Check these four in order.</p>
 <a class="cta" href="/id/textjoin-formula-builder.html">Gunakan “Buat Rumus TEXTJOIN” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/vlookup-formula-builder.html">Buat Rumus VLOOKUP atau XLOOKUP</a>: Buat rumus VLOOKUP dan XLOOKUP.</li><li><a href="/id/excel-range-info.html">Menghitung sel, baris, dan kolom dalam rentang Excel</a>: Temukan sel, baris, dan kolom dari sebuah rentang.</li><li><a href="/id/excel-text-clean.html">Menghapus spasi berlebih dan karakter tak terlihat dari teks Excel</a>: Hapus spasi berlebih dan karakter tak terlihat.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>

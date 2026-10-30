@@ -200,14 +200,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>空白のセルを飛ばす</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>範囲を入れる</li><li>チェックを入れる</li><li>コピーする</li></ul></div>
-<p><a href="/textjoin-formula-builder.html">TEXTJOIN式の作成</a> で空白を飛ばす設定にすると、区切りが重ならずにつながります。</p>
+<p>範囲の中に空のセルがあると、つなげた文字に、余計な区切りが並んでしまいます。<a href="/textjoin-formula-builder.html">TEXTJOINの式を作る（セルをまとめてつなぐ）</a> の「空白のセルを飛ばす」で、これを防げます。</p>
+<h2>違い</h2>
+<p>A2:A5に「田中」「（空）」「鈴木」「佐藤」が入っているとき、区切りを「、」にすると、結果は次のとおりです。</p>
+<ul>
+<li>飛ばす（TRUE）：田中、鈴木、佐藤</li>
+<li>飛ばさない（FALSE）：田中、、鈴木、佐藤</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>範囲を入れる</li>
-<li>チェックを入れる</li>
-<li>コピーする</li>
+<li>範囲と区切りを入れる。</li>
+<li>「空白のセルを飛ばす」にチェックを入れると、第2引数が TRUE になる。</li>
+<li>外すと、FALSE になる。</li>
 </ol>
-<div class="note">設定はTRUEとFALSEで切り替わります。</div>
+<div class="note">通常は、チェックを入れたままで使います。</div>
+<h2>式で見る</h2>
+<ul>
+<li>飛ばす：=TEXTJOIN("、",TRUE,A2:A5)</li>
+<li>飛ばさない：=TEXTJOIN("、",FALSE,A2:A5)</li>
+</ul>
+<h2>飛ばさないほうがよい場面</h2>
+<ul>
+<li>空の位置も、区切りで示したい</li>
+<li>項目の位置が大切な、固定の並び</li>
+</ul>
+<p>たとえば、「名前、電話、メール」の3項目のうち、電話が空であることを示したいときは、飛ばさないほうが向いています。</p>
+<h2>「空」の範囲</h2>
+<ul>
+<li>何も入っていないセル：空</li>
+<li>式で「""」を返しているセル：空の文字。TEXTJOINでは、空として扱われる</li>
+<li>スペースだけが入ったセル：空ではない。スペースが並ぶ</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>空の行が混ざっている名簿を、きれいにつなぎたい</li>
+<li>条件に合う項目だけを、表示したい</li>
+</ul>
+<h2>例</h2>
+<p>参加者の名簿の途中が空欄だった。「飛ばす」にしたところ、余計な「、」がなく、すっきりつながった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>スペースだけのセル</b>：空ではないので、飛ばされない。余分なスペースを取る。</li>
+<li><b>スペースを取る</b>：「Excelの文字の余分なスペース・見えない文字を取る」ツールが便利。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>空のセルがあっても、エラーになりませんか？</h3>
+<p>なりません。どちらの設定でも、エラーにはなりません。</p>
+<h2>まとめ</h2>
+<p>たいていは「飛ばす」を選びます。位置を示したいときだけ、飛ばさないにしましょう。</p>
 <a class="cta" href="/textjoin-formula-builder.html">TEXTJOINの式を作る（セルをまとめてつなぐ）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/excel-range-info.html">Excelのセル範囲のセル数・行数・列数を調べる</a>：セル範囲のセル数・行数・列数を調べます。</li><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +259,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Skipping Empty Cells</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the range</li><li>Tick the check</li><li>Copy it</li></ul></div>
-<p>With the skip setting in <a href="/textjoin-formula-builder.html">TEXTJOIN Builder</a>, separators do not pile up where cells are empty.</p>
+<p>If the range has empty cells, extra separators line up in the joined text. "Skip blank cells" in <a href="/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> prevents this.</p>
+<h2>The difference</h2>
+<p>With A2:A5 holding "Tanaka", (empty), "Suzuki", "Sato" and separator ", ":</p>
+<ul>
+<li>Skip (TRUE): Tanaka, Suzuki, Sato</li>
+<li>Don't skip (FALSE): Tanaka, , Suzuki, Sato</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the range</li>
-<li>Tick the check</li>
-<li>Copy it</li>
+<li>Enter the range and separator.</li>
+<li>Ticking "Skip blank cells" makes the second argument TRUE.</li>
+<li>Unticking makes it FALSE.</li>
 </ol>
-<div class="note">The setting switches between TRUE and FALSE.</div>
+<div class="note">Normally, leave it ticked.</div>
+<h2>As formulas</h2>
+<ul>
+<li>Skip: =TEXTJOIN(", ",TRUE,A2:A5)</li>
+<li>Don't skip: =TEXTJOIN(", ",FALSE,A2:A5)</li>
+</ul>
+<h2>When not skipping is better</h2>
+<ul>
+<li>You want empty positions marked by separators</li>
+<li>Fixed orderings where item position matters</li>
+</ul>
+<p>For example, among "name, phone, email", showing the phone is empty suits not skipping.</p>
+<h2>What counts as "empty"</h2>
+<ul>
+<li>Cells with nothing: empty</li>
+<li>Cells returning "" from a formula: empty strings; TEXTJOIN treats them as empty</li>
+<li>Cells with only spaces: not empty; spaces line up</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Joining a list with blank rows neatly</li>
+<li>Showing only items that meet a condition</li>
+</ul>
+<h2>Example</h2>
+<p>A participant list had gaps in the middle. Setting "skip" joined it cleanly with no extra ", ".</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Space-only cells</b>: not empty, so not skipped. Remove extra spaces.</li>
+<li><b>Removing spaces</b>: the "Clean extra spaces and invisible characters from Excel text" tool helps.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does an empty cell cause an error?</h3>
+<p>No. Neither setting causes an error.</p>
+<h2>Summary</h2>
+<p>Usually choose "skip". Only choose not to when you want positions shown.</p>
 <a class="cta" href="/textjoin-formula-builder.html">Use "Build a TEXTJOIN Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a>: Find the cells, rows and columns of a range.</li><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

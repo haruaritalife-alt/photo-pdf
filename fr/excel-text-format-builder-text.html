@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Le résultat de TEXT est du texte</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Créez la formule</li><li>Collez-le</li><li>Le vérifier</li></ul></div>
-<p>Le résultat d'une formule créée avec <a href="/fr/excel-text-format-builder.html">Générateur TEXT</a> est du texte, il ne peut donc pas être additionné tel quel.</p>
-<h2>Étapes</h2>
+<p lang="en">The result of TEXT is "text" even if it looks like a number or date. Not knowing this causes surprising failures. Here's what to know before building a formula with <a href="/fr/excel-text-format-builder.html">Build an Excel TEXT Formula</a>.</p>
+<h2 lang="en">The result is text</h2>
+<p lang="en">Even if =TEXT(A2,"#,##0") shows 1,234,567, it is text, not a number.</p>
+<ul>
+<li lang="en">Often displayed left-aligned</li>
+<li lang="en">Can't be used in addition or averages</li>
+<li lang="en">Sorts as text</li>
+</ul>
+<h2 lang="en">Steps (how to check)</h2>
 <ol>
-<li>Créez la formule</li>
-<li>Collez-le</li>
-<li>Le vérifier</li>
+<li lang="en">Select the cell with the TEXT function.</li>
+<li lang="en">Use =ISTEXT(cell) to check whether it's text. TRUE means text.</li>
+<li lang="en">Make calculation cells the original number cells.</li>
 </ol>
-<div class="note">Pour les calculs, utilisez la cellule d'origine.</div>
+<div class="note" lang="en">Use the original cell for calculation and TEXT for display.</div>
+<h2 lang="en">Uses that suit it</h2>
+<ul>
+<li lang="en">Embedding in sentences ("Total is "&amp;TEXT(A2,"#,##0"))</li>
+<li lang="en">Building file names or heading text</li>
+<li lang="en">Passing as text to other systems</li>
+</ul>
+<h2 lang="en">Uses that don't suit it</h2>
+<ul>
+<li lang="en">Totals, averages and other calculations</li>
+<li lang="en">Chart source data</li>
+<li lang="en">Sorting dates or subtracting dates</li>
+</ul>
+<h2 lang="en">Turning text back into numbers</h2>
+<ul>
+<li lang="en">VALUE function: =VALUE(TEXT(...)). But using the original cell is more reliable.</li>
+<li lang="en">For dates: the DATEVALUE function</li>
+</ul>
+<h2 lang="en">Sorting differences</h2>
+<p lang="en">Sorting "2026/10/5" and "2026/10/25" as text may put "2026/10/25" first. For date sorting, use the original date cell. With zero-padding (yyyy/mm/dd), text also sorts in date order.</p>
+<h2>Exemple</h2>
+<p lang="en">Summing a column of amounts made with TEXT gave 0. They were text, so not calculated. Summing the original number column gave the right result.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Left alignment goes unnoticed</b>: it looks like a number, so it's hard to notice it's text.</li>
+<li lang="en"><b>Zero-padded numbers</b>: they're text, so sorting follows text order.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I only want to change the look?</h3>
+<p lang="en">Cell formatting (custom) changes only the look while the content stays a number.</p>
+<h2>En résumé</h2>
+<p lang="en">TEXT makes text. Keep it separate from cells used in calculation.</p>
 <a class="cta" href="/fr/excel-text-format-builder.html">Utiliser « Créer une formule TEXT pour Excel » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/excel-serial-date.html">Convertisseur de valeur série et date Excel</a>: Convertissez des valeurs série et des dates Excel.</li><li><a href="/fr/vlookup-formula-builder.html">Créer une formule VLOOKUP ou XLOOKUP</a>: Créez des formules VLOOKUP et XLOOKUP.</li><li><a href="/fr/excel-text-clean.html">Supprimer les espaces en trop et caractères invisibles d'un texte Excel</a>: Supprimez les espaces en trop et les caractères invisibles.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

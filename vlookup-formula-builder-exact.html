@@ -200,14 +200,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>完全一致と近似一致</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>式を作る</li><li>一致を選ぶ</li><li>確かめる</li></ul></div>
-<p><a href="/vlookup-formula-builder.html">VLOOKUP式の作成</a> では、完全一致のチェックでFALSEとTRUEが切り替わります。</p>
+<p>VLOOKUPの最後の引数は、「完全一致」か「近似一致」かを決めます。ここを間違えると、結果がずれます。<a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a> の「完全一致で探す」で、切り替えられます。</p>
+<h2>2つの違い</h2>
+<ul>
+<li><b>完全一致（FALSE）</b>：探す値と、まったく同じ値を探す。見つからなければ、#N/A。</li>
+<li><b>近似一致（TRUE）</b>：探す値以下で、いちばん近い値を探す。範囲の左端の列は、昇順に並んでいる必要がある。</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>式を作る</li>
-<li>一致を選ぶ</li>
-<li>確かめる</li>
+<li>値・範囲・列番号を入れる。</li>
+<li>「完全一致で探す」にチェックを入れると、最後が FALSE の式になる。</li>
+<li>チェックを外すと、TRUE の式になる。</li>
 </ol>
-<div class="note">通常は、完全一致のFALSEを使います。</div>
+<div class="note">商品コードや社員番号など、ぴったり一致させたいときは、完全一致（FALSE）です。</div>
+<h2>完全一致を使う場面</h2>
+<ul>
+<li>商品コード、社員番号、IDなどで引く</li>
+<li>名前で引く</li>
+</ul>
+<h2>近似一致を使う場面</h2>
+<ul>
+<li>点数から、成績の段階（A、B、C）を決める</li>
+<li>売上額から、手数料率を決める</li>
+<li>日付から、料金の区分を決める</li>
+</ul>
+<p>こうした「範囲で区切る表」では、左端の列を昇順（小さい順）に並べておきます。</p>
+<h2>近似一致の例</h2>
+<p>点数の区分表（0＝D、60＝C、70＝B、80＝A）で、75点を探すと、70以下で最も近い「70」の行の「B」が返ります。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>完全一致と近似一致の違いを、式で確認したい</li>
+<li>近似一致の表を、作るときの確認</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>近似一致なのに、並べ替えていない</b>：誤った結果が、エラーなく返る。</li>
+<li><b>完全一致のつもりが、近似一致</b>：最後の引数を省略すると、近似一致（TRUE）になる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>最後の引数を省略するとどうなりますか？</h3>
+<p>TRUE（近似一致）として扱われます。完全一致にしたいときは、必ずFALSEを書きます。</p>
+<h2>まとめ</h2>
+<p>ぴったり一致は FALSE、範囲で決めるなら TRUE。迷ったら FALSE です。</p>
 <a class="cta" href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-range-info.html">Excelのセル範囲のセル数・行数・列数を調べる</a>：セル範囲のセル数・行数・列数を調べます。</li><li><a href="/excel-column-letter.html">Excel 列番号・列文字 変換</a>：Excelの列番号と列文字を変換します。</li><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +253,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Exact and Approximate Match</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>Choose the match</li><li>Check it</li></ul></div>
-<p>In <a href="/vlookup-formula-builder.html">VLOOKUP Builder</a> the exact match check switches between FALSE and TRUE.</p>
+<p>VLOOKUP's last argument decides "exact match" or "approximate match". Getting it wrong shifts results. "Exact match" in <a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> toggles it.</p>
+<h2>The two differences</h2>
+<ul>
+<li><b>Exact match (FALSE)</b>: looks for exactly the same value. If not found, #N/A.</li>
+<li><b>Approximate match (TRUE)</b>: finds the closest value at or below the one searched. The leftmost column must be sorted ascending.</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>Choose the match</li>
-<li>Check it</li>
+<li>Enter the value, range and column number.</li>
+<li>Ticking "Exact match" makes the last argument FALSE.</li>
+<li>Unticking it makes it TRUE.</li>
 </ol>
-<div class="note">Normally you use exact match, FALSE.</div>
+<div class="note">For product codes or employee numbers that must match exactly, use exact match (FALSE).</div>
+<h2>When to use exact match</h2>
+<ul>
+<li>Looking up by product code, employee number or ID</li>
+<li>Looking up by name</li>
+</ul>
+<h2>When to use approximate match</h2>
+<ul>
+<li>Deciding a grade (A, B, C) from a score</li>
+<li>Deciding a commission rate from sales</li>
+<li>Deciding a fee tier from a date</li>
+</ul>
+<p>In such "range-banded tables", sort the leftmost column ascending (small to large).</p>
+<h2>Approximate-match example</h2>
+<p>In a score band table (0 = D, 60 = C, 70 = B, 80 = A), searching 75 returns "B" from the "70" row, the closest at or below.</p>
+<h2>Good for</h2>
+<ul>
+<li>Seeing the exact/approximate difference in a formula</li>
+<li>Checking when building approximate-match tables</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Approximate match without sorting</b>: wrong results return without an error.</li>
+<li><b>Meant exact but got approximate</b>: omitting the last argument gives approximate (TRUE).</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I omit the last argument?</h3>
+<p>It's treated as TRUE (approximate). Always write FALSE for exact.</p>
+<h2>Summary</h2>
+<p>FALSE for exact match, TRUE for range-banded. When unsure, FALSE.</p>
 <a class="cta" href="/vlookup-formula-builder.html">Use "Build a VLOOKUP or XLOOKUP Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a>: Find the cells, rows and columns of a range.</li><li><a href="/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/excel-text-format-builder.html">TEXT Formula Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but the result is odd. Here are common troubles with <a href="/en/excel-text-format-builder.html">Build an Excel TEXT Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the cell isn't in the "A2" form (half-width, column letters + row number), or the format field is empty.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>#VALUE! appears</b>: the source cell is text and can't be read as a number or date.</li>
+<li><b>Dates stay as numbers</b>: the format symbols don't match the regional settings.</li>
+<li><b>"yyyy" shows literally</b>: in non-English regional settings the symbols differ (e.g. German uses "JJJJ").</li>
+<li><b>Zeros aren't shown</b>: the format doesn't use "0". "#" omits zeros.</li>
+<li><b>Values are rounded</b>: parts beyond the decimal digits are rounded.</li>
+<li><b>Can't calculate</b>: the result is text. Use the original cell.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the source cell is a date or number.</li>
+<li>Check the format symbols are correct.</li>
+<li>Check double quotes are properly closed.</li>
 </ol>
-<div class="note">If no formula appears, check that the cell is written like A2 and a format is entered.</div>
+<div class="note">You can rewrite the format field in the tool and try.</div>
+<h2>Difference between "#" and "0"</h2>
+<ul>
+<li>0: shows 0 even when the digit is empty (000 → 007)</li>
+<li>#: shows nothing when the digit is empty (### → 7)</li>
+</ul>
+<h2>Including text</h2>
+<p>When including text in a format, enclose it in double quotes.</p>
+<ul>
+<li>Example: #,##0"units"</li>
+<li>Some symbols (-, /, :, space) work without quotes</li>
+</ul>
+<h2>Example</h2>
+<p>A "yyyy年m月d日" formula showed "yyyy年..." on a PC with different regional settings. The symbols differ there, so fixing them for that PC solved it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Text dates</b>: if "2026/10/25" is text, it isn't converted. Make it a date with DATEVALUE.</li>
+<li><b>Serial values</b>: check the source date cell holds a serial value.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Dates display shifted.</h3>
+<p>It may be the 1900 vs 1904 date system difference.</p>
+<h2>Summary</h2>
+<p>Source cell, symbols, quotes. Check these three in order.</p>
 <a class="cta" href="/en/excel-text-format-builder.html">Use "Build an Excel TEXT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

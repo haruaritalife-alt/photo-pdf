@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>0으로 자릿수 맞추기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>셀 입력</li><li>000000 선택</li><li>복사</li></ul></div>
-<p><a href="/ko/excel-text-format-builder.html">TEXT 수식 만들기</a>에서 000000을 고르면 숫자가 6자리로 0 채워집니다.</p>
+<p lang="en">You want to align digits of employee numbers or product codes, turning "1" into "000001". Choose "000000" in <a href="/ko/excel-text-format-builder.html">Build an Excel TEXT Formula</a> to build a zero-padding TEXT formula.</p>
 <h2>순서</h2>
 <ol>
-<li>셀 입력</li>
-<li>000000 선택</li>
-<li>복사</li>
+<li lang="en">Enter the number cell in "Cell to convert".</li>
+<li lang="en">Choose "000000" from "Common formats".</li>
+<li lang="en">To change the digit count, add or remove zeros.</li>
+<li lang="en">Copy the "TEXT formula".</li>
 </ol>
-<div class="note">자릿수는 표시 형식에 들어 있는 0의 개수로 정해집니다.</div>
+<div class="note" lang="en">The number of "0"s is the digit count. Six digits is "000000", four is "0000".</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">=TEXT(A2,"000000")</li>
+<li lang="en">A2 is 1 → 000001</li>
+<li lang="en">A2 is 123 → 000123</li>
+<li lang="en">A2 is 1234567 → 1234567 (digits suffice, so unchanged)</li>
+</ul>
+<h2 lang="en">Number of zeros and results</h2>
+<ul>
+<li lang="en">Format "0000": 1 → 0001, 25 → 0025</li>
+<li lang="en">Format "00000": 1 → 00001</li>
+<li lang="en">Format "00": 5 → 05 (2-digit alignment for months and days)</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Aligning digits of employee or member numbers</li>
+<li lang="en">Making sorting follow number order</li>
+<li lang="en">Passing fixed-width numbers to a system</li>
+</ul>
+<h2 lang="en">Other ways</h2>
+<p lang="en">Besides TEXT, zero-padding can also be done like this:</p>
+<ul>
+<li lang="en">RIGHT function: =RIGHT("000000"&amp;A2,6)</li>
+<li lang="en">Cell format: "Custom" format "000000" (changes only the look)</li>
+</ul>
+<h2 lang="en">TEXT vs cell format</h2>
+<ul>
+<li lang="en"><b>TEXT function</b>: the content becomes the text "000001"; zeros stay when copied.</li>
+<li lang="en"><b>Cell format</b>: only the look is "000001"; the content stays 1.</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Member numbers like "1", "25", "300" sorted oddly. Zero-padding to six digits made ordering consistent.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Longer numbers aren't cut</b>: numbers longer than the digit count display as is.</li>
+<li lang="en"><b>The result is text</b>: use the original number for calculation.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I export to CSV without dropping leading zeros?</h3>
+<p lang="en">Making it text with TEXT helps keep the zeros. But reopening in Excel may drop them.</p>
+<h2>요약</h2>
+<p lang="en">To align digits, set the digit count by the number of zeros.</p>
 <a class="cta" href="/ko/excel-text-format-builder.html">“엑셀 TEXT 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-serial-date.html">엑셀 일련번호·날짜 변환기</a>: 엑셀의 일련번호와 날짜를 변환합니다.</li><li><a href="/ko/vlookup-formula-builder.html">VLOOKUP·XLOOKUP 수식 만들기</a>: VLOOKUP과 XLOOKUP 수식을 만듭니다.</li><li><a href="/ko/excel-text-clean.html">엑셀 글의 불필요한 공백과 보이지 않는 문자 없애기</a>: 불필요한 공백과 보이지 않는 문자를 없앱니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

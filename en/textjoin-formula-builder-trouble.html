@@ -201,14 +201,42 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/textjoin-formula-builder.html">TEXTJOIN Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but the result is odd. Here are common troubles with <a href="/en/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: enter a range with column letters and row numbers like "A2:A10". A single cell or a whole column (A:A) isn't allowed.</li>
+<li><b>"The &amp; formula is limited to 30 cells."</b>: the &amp; formula handles up to 30 cells. The TEXTJOIN formula can be used as is.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>#NAME? appears</b>: old Excel without TEXTJOIN. Use the "&amp; formula".</li>
+<li><b>#VALUE! appears</b>: the result is too long (a cell's limit is 32,767 characters).</li>
+<li><b>Extra separators line up</b>: "Skip blank cells" is off, or there are space-only cells.</li>
+<li><b>Numbers or dates display wrongly</b>: numbers and dates join as their raw values without display formats. Tidy with TEXT.</li>
+<li><b>No line breaks</b>: turn on "Wrap text" in the cell format.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the range is entered with row numbers.</li>
+<li>Review the "Skip blank cells" setting.</li>
+<li>Check the Excel version (TEXTJOIN is 2019 and later).</li>
 </ol>
-<div class="note">If no formula appears, check that the range is written like A2:A10.</div>
+<div class="note">When joining dates or amounts, tidy them first with TEXT.</div>
+<h2>Tidying dates example</h2>
+<p>=TEXTJOIN(", ",TRUE,TEXT(A2:A5,"yyyy/mm/dd"))</p>
+<p>Written this way, dates join in the "2026/10/25" form.</p>
+<h2>Example</h2>
+<p>Joining dates gave numbers like "46320, 46321". Tidying with TEXT joined them in date form.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>An error value in the range</b>: any error value makes the whole an error.</li>
+<li><b>Ranges on other sheets</b>: rewrite with the sheet name (Sheet2!A2:A10).</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Numbers became text.</h3>
+<p>A joined result is text. To calculate, use the original cells.</p>
+<h2>Summary</h2>
+<p>Range, version, blank setting, display format. Check these four in order.</p>
 <a class="cta" href="/en/textjoin-formula-builder.html">Use "Build a TEXTJOIN Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a>: Find the cells, rows and columns of a range.</li><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

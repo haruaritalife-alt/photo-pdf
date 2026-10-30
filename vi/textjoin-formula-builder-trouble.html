@@ -201,14 +201,42 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Việc cần làm khi không hoạt động</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Kiểm tra tệp</li><li>Kiểm tra dung lượng</li><li>Thử thiết bị khác</li></ul></div>
-<p>Nếu <a href="/vi/textjoin-formula-builder.html">Tạo công thức TEXTJOIN</a> không hoạt động, hãy kiểm tra các điểm sau.</p>
-<h2>Các bước</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/vi/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: enter a range with column letters and row numbers like "A2:A10". A single cell or a whole column (A:A) isn't allowed.</li>
+<li lang="en"><b>"The &amp; formula is limited to 30 cells."</b>: the &amp; formula handles up to 30 cells. The TEXTJOIN formula can be used as is.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#NAME? appears</b>: old Excel without TEXTJOIN. Use the "&amp; formula".</li>
+<li lang="en"><b>#VALUE! appears</b>: the result is too long (a cell's limit is 32,767 characters).</li>
+<li lang="en"><b>Extra separators line up</b>: "Skip blank cells" is off, or there are space-only cells.</li>
+<li lang="en"><b>Numbers or dates display wrongly</b>: numbers and dates join as their raw values without display formats. Tidy with TEXT.</li>
+<li lang="en"><b>No line breaks</b>: turn on "Wrap text" in the cell format.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Kiểm tra tệp</li>
-<li>Kiểm tra dung lượng</li>
-<li>Thử thiết bị khác</li>
+<li lang="en">Check the range is entered with row numbers.</li>
+<li lang="en">Review the "Skip blank cells" setting.</li>
+<li lang="en">Check the Excel version (TEXTJOIN is 2019 and later).</li>
 </ol>
-<div class="note">Nếu không có công thức nào xuất hiện, hãy kiểm tra vùng được viết dạng A2:A10.</div>
+<div class="note" lang="en">When joining dates or amounts, tidy them first with TEXT.</div>
+<h2 lang="en">Tidying dates example</h2>
+<p lang="en">=TEXTJOIN(", ",TRUE,TEXT(A2:A5,"yyyy/mm/dd"))</p>
+<p lang="en">Written this way, dates join in the "2026/10/25" form.</p>
+<h2>Ví dụ</h2>
+<p lang="en">Joining dates gave numbers like "46320, 46321". Tidying with TEXT joined them in date form.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>An error value in the range</b>: any error value makes the whole an error.</li>
+<li lang="en"><b>Ranges on other sheets</b>: rewrite with the sheet name (Sheet2!A2:A10).</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Numbers became text.</h3>
+<p lang="en">A joined result is text. To calculate, use the original cells.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">Range, version, blank setting, display format. Check these four in order.</p>
 <a class="cta" href="/vi/textjoin-formula-builder.html">Dùng “Tạo công thức TEXTJOIN” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/vlookup-formula-builder.html">Tạo công thức VLOOKUP hoặc XLOOKUP</a>: Tạo công thức VLOOKUP và XLOOKUP.</li><li><a href="/vi/excel-range-info.html">Đếm ô, hàng và cột trong một vùng Excel</a>: Tìm số ô, hàng và cột của một vùng.</li><li><a href="/vi/excel-text-clean.html">Loại bỏ khoảng trắng thừa và ký tự vô hình khỏi văn bản Excel</a>: Loại bỏ khoảng trắng thừa và ký tự vô hình.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

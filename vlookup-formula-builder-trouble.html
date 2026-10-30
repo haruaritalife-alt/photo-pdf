@@ -200,14 +200,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/vlookup-formula-builder.html">VLOOKUP式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を作ったのに、結果が出ない。<a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a> で起こりやすい困りごとと対処法をまとめます。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：セルや範囲の書き方が違う。「A2」「D2:F100」のように、半角で入れる。</li>
+<li><b>「列番号が範囲の列数を超えています。」</b>：範囲がD〜Fの3列なのに、4以上を指定している。</li>
+</ul>
+<h2>式を貼ったあとの困りごと</h2>
+<ul>
+<li><b>#N/Aが出る</b>：探す値が、範囲の左端の列にない。または、見えない違い（余分なスペースなど）がある。</li>
+<li><b>#REF!が出る</b>：列番号が範囲の列数を超えている。</li>
+<li><b>#VALUE!が出る</b>：列番号が1未満、または数字でない。</li>
+<li><b>#NAME?が出る</b>：XLOOKUPが使えない古いExcel。</li>
+<li><b>違う値が返る</b>：近似一致（TRUE）になっている。または、重複する値がある。</li>
+<li><b>下の行だけ失敗する</b>：範囲に$が付いていない。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>探す値が、範囲の左端の列にあるか確かめる。</li>
+<li>完全一致（FALSE）にする。</li>
+<li>範囲に$を付ける。</li>
+<li>余分なスペースがないか、LEN関数などで確かめる。</li>
 </ol>
-<div class="note">式が出ないときは、範囲がD2:F100のように書かれているか、列番号が範囲の列数以内か確かめます。</div>
+<div class="note">探す値が数字のとき、片方が文字列だと一致しません。両方の形をそろえます。</div>
+<h2>見えない違いを疑う</h2>
+<ul>
+<li>末尾のスペース</li>
+<li>全角と半角の違い</li>
+<li>数字と文字列の違い</li>
+</ul>
+<p>文字の整形には、「Excelの文字の余分なスペース・見えない文字を取る」ツールが便利です。</p>
+<h2>重複する値</h2>
+<p>VLOOKUPは、最初に見つかった行の値を返します。同じコードが複数あると、2つ目以降は返りません。</p>
+<h2>例</h2>
+<p>商品コードが一致しないと思ったら、片方に末尾のスペースがあった。取り除くと、#N/Aが消えた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>範囲が足りない</b>：表の最後の行が、範囲に入っていない。</li>
+<li><b>ほかのシートの参照</b>：シート名を付け忘れている。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>数字なのに一致しません。</h3>
+<p>片方が「文字列の数字」の可能性があります。VALUE関数や、セルの書式で形をそろえます。</p>
+<h2>まとめ</h2>
+<p>左端の列・完全一致・$・見えない違い。この4つを順に確かめましょう。</p>
 <a class="cta" href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-range-info.html">Excelのセル範囲のセル数・行数・列数を調べる</a>：セル範囲のセル数・行数・列数を調べます。</li><li><a href="/excel-column-letter.html">Excel 列番号・列文字 変換</a>：Excelの列番号と列文字を変換します。</li><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +255,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/vlookup-formula-builder.html">VLOOKUP Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but get no result. Here are common troubles with <a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the cell or range is written wrongly. Use half-width like "A2" and "D2:F100".</li>
+<li><b>"The column number is larger than the number of columns in the range."</b>: the range D–F has 3 columns but you specified 4 or more.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>#N/A appears</b>: the value isn't in the range's leftmost column, or there's an invisible difference (like extra spaces).</li>
+<li><b>#REF! appears</b>: the column number exceeds the range's columns.</li>
+<li><b>#VALUE! appears</b>: the column number is below 1 or not a number.</li>
+<li><b>#NAME? appears</b>: old Excel without XLOOKUP.</li>
+<li><b>A different value returns</b>: it's approximate match (TRUE), or there are duplicates.</li>
+<li><b>Only lower rows fail</b>: the range lacks $.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the value is in the range's leftmost column.</li>
+<li>Make it exact match (FALSE).</li>
+<li>Add $ to the range.</li>
+<li>Check for extra spaces with functions like LEN.</li>
 </ol>
-<div class="note">If no formula appears, check that the range is written like D2:F100 and the column number is within the range.</div>
+<div class="note">When the value is a number, a text-form number on one side won't match. Make both the same form.</div>
+<h2>Suspect invisible differences</h2>
+<ul>
+<li>Trailing spaces</li>
+<li>Full-width vs half-width</li>
+<li>Number vs text</li>
+</ul>
+<p>The "Clean extra spaces and invisible characters from Excel text" tool helps with tidying text.</p>
+<h2>Duplicates</h2>
+<p>VLOOKUP returns the value from the first matching row. With several identical codes, the second onward aren't returned.</p>
+<h2>Example</h2>
+<p>A product code seemed not to match, but one side had a trailing space. Removing it cleared the #N/A.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Range too short</b>: the table's last row isn't in the range.</li>
+<li><b>References to other sheets</b>: forgot to add the sheet name.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>They're numbers but won't match.</h3>
+<p>One side may be a text-form number. Align forms with VALUE or cell formatting.</p>
+<h2>Summary</h2>
+<p>Leftmost column, exact match, $, invisible differences. Check these four in order.</p>
 <a class="cta" href="/vlookup-formula-builder.html">Use "Build a VLOOKUP or XLOOKUP Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-range-info.html">Count Cells, Rows and Columns in an Excel Range</a>: Find the cells, rows and columns of a range.</li><li><a href="/excel-column-letter.html">Excel Column Number and Letter Converter</a>: Convert Excel column numbers and letters.</li><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

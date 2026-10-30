@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Waarom dollartekens in het bereik</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Bouw de formule</li><li>Voeg dollartekens toe</li><li>Kopieer</li></ul></div>
-<p><a href="/nl/vlookup-formula-builder.html">VLOOKUP-bouwer</a> kan dollartekens toevoegen, zodat het bereik niet opschuift als de formule naar beneden wordt gekopieerd.</p>
+<p lang="en">Copying a VLOOKUP formula down made results wrong. Most often the range lacks "$". "Add $ to the range" in <a href="/nl/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> builds a fixed formula.</p>
+<h2 lang="en">Why it shifts</h2>
+<p lang="en">Writing the range as "D2:F100" shifts it to "D3:F101" when the formula is copied one row down. The search table moves and nothing is found.</p>
+<ul>
+<li lang="en">Relative: D2:F100 (shifts when copied)</li>
+<li lang="en">Absolute: $D$2:$F$100 (stays when copied)</li>
+</ul>
 <h2>Stappen</h2>
 <ol>
-<li>Bouw de formule</li>
-<li>Voeg dollartekens toe</li>
-<li>Kopieer</li>
+<li lang="en">Enter the value, range and column number.</li>
+<li lang="en">Tick "Add $ to the range".</li>
+<li lang="en">Copy the formula whose range is now $D$2:$F$100.</li>
 </ol>
-<div class="note">Als je het uitvinkt, krijg je een formule zonder dollartekens.</div>
+<div class="note" lang="en">Don't add $ to the lookup cell (A2); it should change per row.</div>
+<h2 lang="en">Concrete example</h2>
+<ul>
+<li lang="en">Shifting formula: =VLOOKUP(A2,D2:F100,2,FALSE)</li>
+<li lang="en">Fixed formula: =VLOOKUP(A2,$D$2:$F$100,2,FALSE)</li>
+</ul>
+<p lang="en">Copied down, A2 becomes A3, A4…, while the range stays put.</p>
+<h2>Goed voor</h2>
+<ul>
+<li lang="en">Copying a formula down hundreds of rows</li>
+<li lang="en">Copying produced #N/A everywhere</li>
+<li lang="en">Checking the range hasn't shifted</li>
+</ul>
+<h2 lang="en">When to untick</h2>
+<p lang="en">For a formula used in a single cell and not copied, no $ is fine.</p>
+<h2 lang="en">How to spot it</h2>
+<p lang="en">Select a copied cell and look at the range in the formula. If rows advance like D3:F101, it has shifted.</p>
+<h2>Voorbeeld</h2>
+<p lang="en">Copying a product-name formula to 100 rows gave #N/A from around row 10, as the range crept off the table. Adding $ fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Fixing only the column or row</b>: write mixed references (like $D2:$F100) by hand.</li>
+<li lang="en"><b>Adding rows to the table</b>: rows beyond the range's end aren't included. Specify wider.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can F4 add them?</h3>
+<p lang="en">Yes. Pressing F4 while editing the formula adds $.</p>
+<h2>Samenvatting</h2>
+<p lang="en">Fix the search range with $; leave the lookup cell as is.</p>
 <a class="cta" href="/nl/vlookup-formula-builder.html">Gebruik “Een VLOOKUP- of XLOOKUP-formule maken” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/excel-range-info.html">Cellen, rijen en kolommen in een Excel-bereik tellen</a>: Zoek de cellen, rijen en kolommen van een bereik.</li><li><a href="/nl/excel-column-letter.html">Omzetter voor Excel-kolomnummer en -letter</a>: Reken Excel-kolomnummers en -letters om.</li><li><a href="/nl/excel-text-clean.html">Overbodige spaties en onzichtbare tekens uit Excel-tekst verwijderen</a>: Verwijder overbodige spaties en onzichtbare tekens.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>

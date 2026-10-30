@@ -201,14 +201,42 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>जब यह काम न करे तो क्या करें</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>फ़ाइल जाँचें</li><li>आकार जाँचें</li><li>दूसरा डिवाइस आज़माएँ</li></ul></div>
-<p>यदि <a href="/hi/textjoin-formula-builder.html">TEXTJOIN फ़ॉर्मूला बनाएँ</a> काम नहीं कर रहा है, तो यह जाँचें।</p>
-<h2>चरण</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/hi/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: enter a range with column letters and row numbers like "A2:A10". A single cell or a whole column (A:A) isn't allowed.</li>
+<li lang="en"><b>"The &amp; formula is limited to 30 cells."</b>: the &amp; formula handles up to 30 cells. The TEXTJOIN formula can be used as is.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#NAME? appears</b>: old Excel without TEXTJOIN. Use the "&amp; formula".</li>
+<li lang="en"><b>#VALUE! appears</b>: the result is too long (a cell's limit is 32,767 characters).</li>
+<li lang="en"><b>Extra separators line up</b>: "Skip blank cells" is off, or there are space-only cells.</li>
+<li lang="en"><b>Numbers or dates display wrongly</b>: numbers and dates join as their raw values without display formats. Tidy with TEXT.</li>
+<li lang="en"><b>No line breaks</b>: turn on "Wrap text" in the cell format.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>फ़ाइल जाँचें</li>
-<li>आकार जाँचें</li>
-<li>दूसरा डिवाइस आज़माएँ</li>
+<li lang="en">Check the range is entered with row numbers.</li>
+<li lang="en">Review the "Skip blank cells" setting.</li>
+<li lang="en">Check the Excel version (TEXTJOIN is 2019 and later).</li>
 </ol>
-<div class="note">यदि कोई फ़ॉर्मूला नहीं दिखता, तो जाँचें कि रेंज A2:A10 जैसी लिखी है।</div>
+<div class="note" lang="en">When joining dates or amounts, tidy them first with TEXT.</div>
+<h2 lang="en">Tidying dates example</h2>
+<p lang="en">=TEXTJOIN(", ",TRUE,TEXT(A2:A5,"yyyy/mm/dd"))</p>
+<p lang="en">Written this way, dates join in the "2026/10/25" form.</p>
+<h2>उदाहरण</h2>
+<p lang="en">Joining dates gave numbers like "46320, 46321". Tidying with TEXT joined them in date form.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>An error value in the range</b>: any error value makes the whole an error.</li>
+<li lang="en"><b>Ranges on other sheets</b>: rewrite with the sheet name (Sheet2!A2:A10).</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Numbers became text.</h3>
+<p lang="en">A joined result is text. To calculate, use the original cells.</p>
+<h2>सारांश</h2>
+<p lang="en">Range, version, blank setting, display format. Check these four in order.</p>
 <a class="cta" href="/hi/textjoin-formula-builder.html">“TEXTJOIN फ़ॉर्मूला बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/vlookup-formula-builder.html">VLOOKUP या XLOOKUP फ़ॉर्मूला बनाएँ</a>: VLOOKUP और XLOOKUP फ़ॉर्मूले बनाएँ।</li><li><a href="/hi/excel-range-info.html">एक्सेल रेंज की सेल, पंक्तियाँ और कॉलम गिनना</a>: रेंज की सेल, पंक्तियाँ और कॉलम पता करें।</li><li><a href="/hi/excel-text-clean.html">एक्सेल पाठ से फ़ालतू स्पेस और अदृश्य वर्ण हटाना</a>: फ़ालतू स्पेस और अदृश्य वर्ण हटाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

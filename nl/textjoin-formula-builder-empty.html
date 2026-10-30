@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Lege cellen overslaan</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Voer het bereik in</li><li>Vink het vakje aan</li><li>Kopieer</li></ul></div>
-<p>Met de overslaan-instelling in <a href="/nl/textjoin-formula-builder.html">TEXTJOIN-bouwer</a> stapelen scheidingstekens zich niet op waar cellen leeg zijn.</p>
+<p lang="en">If the range has empty cells, extra separators line up in the joined text. "Skip blank cells" in <a href="/nl/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> prevents this.</p>
+<h2>Het verschil</h2>
+<p lang="en">With A2:A5 holding "Tanaka", (empty), "Suzuki", "Sato" and separator ", ":</p>
+<ul>
+<li lang="en">Skip (TRUE): Tanaka, Suzuki, Sato</li>
+<li lang="en">Don't skip (FALSE): Tanaka, , Suzuki, Sato</li>
+</ul>
 <h2>Stappen</h2>
 <ol>
-<li>Voer het bereik in</li>
-<li>Vink het vakje aan</li>
-<li>Kopieer</li>
+<li lang="en">Enter the range and separator.</li>
+<li lang="en">Ticking "Skip blank cells" makes the second argument TRUE.</li>
+<li lang="en">Unticking makes it FALSE.</li>
 </ol>
-<div class="note">De instelling schakelt tussen TRUE en FALSE.</div>
+<div class="note" lang="en">Normally, leave it ticked.</div>
+<h2 lang="en">As formulas</h2>
+<ul>
+<li lang="en">Skip: =TEXTJOIN(", ",TRUE,A2:A5)</li>
+<li lang="en">Don't skip: =TEXTJOIN(", ",FALSE,A2:A5)</li>
+</ul>
+<h2 lang="en">When not skipping is better</h2>
+<ul>
+<li lang="en">You want empty positions marked by separators</li>
+<li lang="en">Fixed orderings where item position matters</li>
+</ul>
+<p lang="en">For example, among "name, phone, email", showing the phone is empty suits not skipping.</p>
+<h2 lang="en">What counts as "empty"</h2>
+<ul>
+<li lang="en">Cells with nothing: empty</li>
+<li lang="en">Cells returning "" from a formula: empty strings; TEXTJOIN treats them as empty</li>
+<li lang="en">Cells with only spaces: not empty; spaces line up</li>
+</ul>
+<h2>Goed voor</h2>
+<ul>
+<li lang="en">Joining a list with blank rows neatly</li>
+<li lang="en">Showing only items that meet a condition</li>
+</ul>
+<h2>Voorbeeld</h2>
+<p lang="en">A participant list had gaps in the middle. Setting "skip" joined it cleanly with no extra ", ".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Space-only cells</b>: not empty, so not skipped. Remove extra spaces.</li>
+<li lang="en"><b>Removing spaces</b>: the "Clean extra spaces and invisible characters from Excel text" tool helps.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does an empty cell cause an error?</h3>
+<p lang="en">No. Neither setting causes an error.</p>
+<h2>Samenvatting</h2>
+<p lang="en">Usually choose "skip". Only choose not to when you want positions shown.</p>
 <a class="cta" href="/nl/textjoin-formula-builder.html">Gebruik “Een TEXTJOIN-formule maken” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/vlookup-formula-builder.html">Een VLOOKUP- of XLOOKUP-formule maken</a>: Bouw VLOOKUP- en XLOOKUP-formules.</li><li><a href="/nl/excel-range-info.html">Cellen, rijen en kolommen in een Excel-bereik tellen</a>: Zoek de cellen, rijen en kolommen van een bereik.</li><li><a href="/nl/excel-text-clean.html">Overbodige spaties en onzichtbare tekens uit Excel-tekst verwijderen</a>: Verwijder overbodige spaties en onzichtbare tekens.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>

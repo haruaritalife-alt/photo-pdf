@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ต่อด้วยเครื่องหมายจุลภาค</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ป้อนช่วงเวลา</li><li>ป้อนตัวคั่น</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/textjoin-formula-builder.html">สร้างสูตร TEXTJOIN</a> คุณใส่อักขระใดก็ได้ในช่องตัวคั่น</p>
+<p lang="en">The separator for joining depends on the purpose. "Separator (such as , or 、)" in <a href="/th/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> lets you choose freely.</p>
+<h2 lang="en">Common separators</h2>
+<ul>
+<li lang="en">Comma (,): English lists, CSV-like sequences</li>
+<li lang="en">Japanese comma (、): Japanese text</li>
+<li lang="en">Semicolon (;): separating mail recipients (some mail software)</li>
+<li lang="en">Slash (/): item sequences</li>
+<li lang="en">Line break: in-cell breaks (see below)</li>
+<li lang="en">Space: full names, etc.</li>
+</ul>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>ป้อนช่วงเวลา</li>
-<li>ป้อนตัวคั่น</li>
-<li>คัดลอก</li>
+<li>กรอกช่วง</li>
+<li lang="en">Enter the separator in "Separator". Example: ", "</li>
+<li lang="en">Check the formula's first argument is that character.</li>
 </ol>
-<div class="note">หากตัวคั่นว่าง เซลล์จะถูกต่อกันโดยตรง</div>
+<div class="note" lang="en">The separator is enclosed in quotes within the formula.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">Comma + space: =TEXTJOIN(", ",TRUE,A2:A10)</li>
+<li lang="en">Japanese comma: =TEXTJOIN("、",TRUE,A2:A10)</li>
+<li lang="en">No separator: =TEXTJOIN("",TRUE,A2:A10)</li>
+</ul>
+<h2 lang="en">Separating with line breaks</h2>
+<p lang="en">For a line break separator, use CHAR(10). After building with the tool, rewrite the "..." in the first argument as CHAR(10).</p>
+<ul>
+<li lang="en">Example: =TEXTJOIN(CHAR(10),TRUE,A2:A10)</li>
+<li lang="en">To display breaks, turn on "Wrap text" in the cell format</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Listing participants' names on one line with Japanese commas</li>
+<li lang="en">Joining email addresses with commas or semicolons</li>
+<li lang="en">Showing items separated by slashes</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">To paste into a mail To field, joined addresses in A2:A20 with commas. One formula joined them at once.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width vs half-width</b>: "," and "，" are different characters. Choose deliberately.</li>
+<li lang="en"><b>Spaces around the separator</b>: a separator like ", " with a space looks tidier.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the separator be several characters?</h3>
+<p lang="en">Yes. Multiple characters like " / " or " → " work.</p>
+<h2>สรุป</h2>
+<p lang="en">The separator is freely chosen. Pick it to suit the purpose.</p>
 <a class="cta" href="/th/textjoin-formula-builder.html">ใช้ “สร้างสูตร TEXTJOIN” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/vlookup-formula-builder.html">สร้างสูตร VLOOKUP หรือ XLOOKUP</a>: สร้างสูตร VLOOKUP และ XLOOKUP</li><li><a href="/th/excel-range-info.html">นับเซลล์ แถว และคอลัมน์ในช่วงของ Excel</a>: ดูเซลล์ แถว และคอลัมน์ของช่วง</li><li><a href="/th/excel-text-clean.html">ลบช่องว่างส่วนเกินและอักขระที่มองไม่เห็นออกจากข้อความ Excel</a>: ลบช่องว่างส่วนเกินและอักขระที่มองไม่เห็น</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

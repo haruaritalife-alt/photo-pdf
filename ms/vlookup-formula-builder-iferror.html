@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Memaparkan Kosong Semasa Ralat</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Dikemas kini: 19 Okt 2026 | <a href="/about.html">Perihal (Jepun)</a></p>
 <div class="points"><b>Perkara penting</b><ul><li>Bina formula</li><li>Tandakan kotak</li><li>Salin</li></ul></div>
-<p>Menghidupkan tetapan kosong dalam <a href="/ms/vlookup-formula-builder.html">Pembina VLOOKUP</a> membalut formula dengan IFERROR.</p>
+<p lang="en">When VLOOKUP can't find the value, "#N/A" appears. It makes the table ugly and affects totals. "Blank on error" in <a href="/ms/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> builds a formula wrapped in IFERROR.</p>
 <h2>Langkah</h2>
 <ol>
-<li>Bina formula</li>
-<li>Tandakan kotak</li>
-<li>Salin</li>
+<li lang="en">Enter the value, range and column number.</li>
+<li lang="en">Tick "Blank on error".</li>
+<li lang="en">The formula is wrapped in IFERROR.</li>
 </ol>
-<div class="note">Apabila tiada yang ditemui, kosong muncul dan bukannya ralat.</div>
+<div class="note" lang="en">Example: =IFERROR(VLOOKUP(A2,$D$2:$F$100,2,FALSE),"")</div>
+<h2 lang="en">How the formula works</h2>
+<p lang="en">The form is IFERROR(formula, value on error).</p>
+<ul>
+<li lang="en">If the formula is fine, its result is returned</li>
+<li lang="en">If it errors, the second value (here an empty string) is returned</li>
+</ul>
+<h2 lang="en">For XLOOKUP</h2>
+<p lang="en">XLOOKUP's fourth argument specifies the value when nothing is found. In this tool, ticking sets an empty string.</p>
+<ul>
+<li lang="en">Example: =XLOOKUP(A2,$D$2:$D$100,$E$2:$E$100,"")</li>
+</ul>
+<h2>Sesuai untuk</h2>
+<ul>
+<li lang="en">Making unfound rows blank for readability</li>
+<li lang="en">"#N/A" getting in the way of totals</li>
+<li lang="en">Presenting invoices or lists neatly</li>
+</ul>
+<h2 lang="en">Showing something other than blank</h2>
+<p lang="en">After building, rewrite the "" part.</p>
+<ul>
+<li lang="en">"Unregistered": shows "Unregistered" when not found</li>
+<li lang="en">"-": shows a hyphen</li>
+<li lang="en">0: returns the number 0 (when you want it in totals)</li>
+</ul>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en"><b>All errors get hidden</b>: IFERROR also hides errors other than #N/A (like #REF!). Formula mistakes become harder to notice.</li>
+<li lang="en"><b>Check first</b>: build the formula without IFERROR first, confirm it works, then add it.</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">An invoice list had unregistered product codes lined up as "#N/A". Adding IFERROR made them blank and tidied the look.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Blanks affect calculation</b>: an empty string is text. SUM ignores it, but "+" arithmetic errors.</li>
+<li lang="en"><b>Hiding only #N/A</b>: use the IFNA function.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How is it different from IFNA?</h3>
+<p lang="en">IFNA replaces only #N/A. Other errors are shown as they are.</p>
+<h2>Ringkasan</h2>
+<p lang="en">Blank when not found. But confirm the formula is correct before adding it.</p>
 <a class="cta" href="/ms/vlookup-formula-builder.html">Guna “Bina Formula VLOOKUP atau XLOOKUP” (percuma)</a>
 <h2>Alat yang sepadan dengan ini</h2><ul><li><a href="/ms/excel-range-info.html">Mengira sel, baris dan lajur dalam julat Excel</a>: Ketahui sel, baris dan lajur sesuatu julat.</li><li><a href="/ms/excel-column-letter.html">Penukar Nombor dan Huruf Lajur Excel</a>: Tukar nombor dan huruf lajur Excel.</li><li><a href="/ms/excel-text-clean.html">Membuang ruang berlebihan dan aksara tidak kelihatan daripada teks Excel</a>: Buang ruang berlebihan dan aksara tidak kelihatan.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil amat dihargai.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Hantar tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hantar hadiah (senarai hajat Amazon)</a></div>

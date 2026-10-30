@@ -200,14 +200,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>0埋めで桁をそろえる</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>セルを入れる</li><li>000000を選ぶ</li><li>コピーする</li></ul></div>
-<p><a href="/excel-text-format-builder.html">TEXT関数の式</a> の000000を選ぶと、数字を6桁の0埋めにできます。</p>
+<p>社員番号や商品コードの桁をそろえたい。「1」を「000001」にしたい。<a href="/excel-text-format-builder.html">TEXT関数の式を作る（表示形式）</a> の「000000」を選ぶと、0埋めのTEXT関数の式ができます。</p>
 <h2>手順</h2>
 <ol>
-<li>セルを入れる</li>
-<li>000000を選ぶ</li>
-<li>コピーする</li>
+<li>「変換するセル」に、数字のセルを入れる。</li>
+<li>「よく使う表示形式」から「000000」を選ぶ。</li>
+<li>桁数を変えたいときは、0の数を増減させる。</li>
+<li>「TEXT関数の式」を、コピーする。</li>
 </ol>
-<div class="note">桁数は、表示形式の0の数で決まります。</div>
+<div class="note">「0」の数が、桁数になります。6桁なら「000000」、4桁なら「0000」です。</div>
+<h2>例</h2>
+<ul>
+<li>=TEXT(A2,"000000")</li>
+<li>A2が 1 のとき → 000001</li>
+<li>A2が 123 のとき → 000123</li>
+<li>A2が 1234567 のとき → 1234567（桁が足りているので、そのまま）</li>
+</ul>
+<h2>0の数と結果</h2>
+<ul>
+<li>表示形式「0000」：1 → 0001、25 → 0025</li>
+<li>表示形式「00000」：1 → 00001</li>
+<li>表示形式「00」：5 → 05（月や日の2桁そろえ）</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>社員番号や会員番号の桁をそろえたい</li>
+<li>並べ替えが、番号どおりになってほしい</li>
+<li>システムに、固定桁の番号を渡したい</li>
+</ul>
+<h2>他の書き方</h2>
+<p>TEXT関数のほかに、次の方法でも0埋めできます。</p>
+<ul>
+<li>RIGHT関数：=RIGHT("000000"&amp;A2,6)</li>
+<li>セルの書式：書式設定の「ユーザー定義」で「000000」を指定（見た目だけ変える方法）</li>
+</ul>
+<h2>TEXT関数と、セルの書式の違い</h2>
+<ul>
+<li><b>TEXT関数</b>：中身が、文字の「000001」になる。コピーしても、0が残る。</li>
+<li><b>セルの書式</b>：見た目だけが「000001」。中身は 1 のまま。</li>
+</ul>
+<h2>例</h2>
+<p>会員番号が「1」「25」「300」とばらばらで、並べ替えがおかしかった。6桁に0埋めして、並びがそろった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>桁が足りないと切れない</b>：桁数より長い数字は、そのまま表示される。</li>
+<li><b>結果が文字になる</b>：計算には、元の数字を使う。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>先頭の0を消さずに、CSVに書き出せますか？</h3>
+<p>TEXT関数で文字にしておくと、0が残りやすくなります。ただし、Excelで開き直すと消える場合があります。</p>
+<h2>まとめ</h2>
+<p>桁をそろえたいときは、0の数で桁数を決めます。</p>
 <a class="cta" href="/excel-text-format-builder.html">TEXT関数の式を作る（表示形式）を使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +262,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Padding with Leading Zeros</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the cell</li><li>Choose 000000</li><li>Copy it</li></ul></div>
-<p>Choosing 000000 in <a href="/excel-text-format-builder.html">TEXT Formula Builder</a> pads a number to six digits.</p>
+<p>You want to align digits of employee numbers or product codes, turning "1" into "000001". Choose "000000" in <a href="/excel-text-format-builder.html">Build an Excel TEXT Formula</a> to build a zero-padding TEXT formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the cell</li>
-<li>Choose 000000</li>
-<li>Copy it</li>
+<li>Enter the number cell in "Cell to convert".</li>
+<li>Choose "000000" from "Common formats".</li>
+<li>To change the digit count, add or remove zeros.</li>
+<li>Copy the "TEXT formula".</li>
 </ol>
-<div class="note">The number of digits follows the number of zeros in the format.</div>
+<div class="note">The number of "0"s is the digit count. Six digits is "000000", four is "0000".</div>
+<h2>Examples</h2>
+<ul>
+<li>=TEXT(A2,"000000")</li>
+<li>A2 is 1 → 000001</li>
+<li>A2 is 123 → 000123</li>
+<li>A2 is 1234567 → 1234567 (digits suffice, so unchanged)</li>
+</ul>
+<h2>Number of zeros and results</h2>
+<ul>
+<li>Format "0000": 1 → 0001, 25 → 0025</li>
+<li>Format "00000": 1 → 00001</li>
+<li>Format "00": 5 → 05 (2-digit alignment for months and days)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Aligning digits of employee or member numbers</li>
+<li>Making sorting follow number order</li>
+<li>Passing fixed-width numbers to a system</li>
+</ul>
+<h2>Other ways</h2>
+<p>Besides TEXT, zero-padding can also be done like this:</p>
+<ul>
+<li>RIGHT function: =RIGHT("000000"&amp;A2,6)</li>
+<li>Cell format: "Custom" format "000000" (changes only the look)</li>
+</ul>
+<h2>TEXT vs cell format</h2>
+<ul>
+<li><b>TEXT function</b>: the content becomes the text "000001"; zeros stay when copied.</li>
+<li><b>Cell format</b>: only the look is "000001"; the content stays 1.</li>
+</ul>
+<h2>Example</h2>
+<p>Member numbers like "1", "25", "300" sorted oddly. Zero-padding to six digits made ordering consistent.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Longer numbers aren't cut</b>: numbers longer than the digit count display as is.</li>
+<li><b>The result is text</b>: use the original number for calculation.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I export to CSV without dropping leading zeros?</h3>
+<p>Making it text with TEXT helps keep the zeros. But reopening in Excel may drop them.</p>
+<h2>Summary</h2>
+<p>To align digits, set the digit count by the number of zeros.</p>
 <a class="cta" href="/excel-text-format-builder.html">Use "Build an Excel TEXT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

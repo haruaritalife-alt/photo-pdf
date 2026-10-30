@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Mengapa Tanda Dolar pada Rentang</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Buat rumusnya</li><li>Tambahkan tanda dolar</li><li>Salin</li></ul></div>
-<p><a href="/id/vlookup-formula-builder.html">Pembuat VLOOKUP</a> dapat menambahkan tanda dolar agar rentang tidak bergeser saat rumus disalin ke bawah.</p>
+<p lang="en">Copying a VLOOKUP formula down made results wrong. Most often the range lacks "$". "Add $ to the range" in <a href="/id/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> builds a fixed formula.</p>
+<h2 lang="en">Why it shifts</h2>
+<p lang="en">Writing the range as "D2:F100" shifts it to "D3:F101" when the formula is copied one row down. The search table moves and nothing is found.</p>
+<ul>
+<li lang="en">Relative: D2:F100 (shifts when copied)</li>
+<li lang="en">Absolute: $D$2:$F$100 (stays when copied)</li>
+</ul>
 <h2>Langkah-langkah</h2>
 <ol>
-<li>Buat rumusnya</li>
-<li>Tambahkan tanda dolar</li>
-<li>Salin</li>
+<li lang="en">Enter the value, range and column number.</li>
+<li lang="en">Tick "Add $ to the range".</li>
+<li lang="en">Copy the formula whose range is now $D$2:$F$100.</li>
 </ol>
-<div class="note">Jika centangnya dilepas, rumus dibuat tanpa tanda dolar.</div>
+<div class="note" lang="en">Don't add $ to the lookup cell (A2); it should change per row.</div>
+<h2 lang="en">Concrete example</h2>
+<ul>
+<li lang="en">Shifting formula: =VLOOKUP(A2,D2:F100,2,FALSE)</li>
+<li lang="en">Fixed formula: =VLOOKUP(A2,$D$2:$F$100,2,FALSE)</li>
+</ul>
+<p lang="en">Copied down, A2 becomes A3, A4…, while the range stays put.</p>
+<h2>Cocok untuk</h2>
+<ul>
+<li lang="en">Copying a formula down hundreds of rows</li>
+<li lang="en">Copying produced #N/A everywhere</li>
+<li lang="en">Checking the range hasn't shifted</li>
+</ul>
+<h2 lang="en">When to untick</h2>
+<p lang="en">For a formula used in a single cell and not copied, no $ is fine.</p>
+<h2 lang="en">How to spot it</h2>
+<p lang="en">Select a copied cell and look at the range in the formula. If rows advance like D3:F101, it has shifted.</p>
+<h2>Contoh</h2>
+<p lang="en">Copying a product-name formula to 100 rows gave #N/A from around row 10, as the range crept off the table. Adding $ fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Fixing only the column or row</b>: write mixed references (like $D2:$F100) by hand.</li>
+<li lang="en"><b>Adding rows to the table</b>: rows beyond the range's end aren't included. Specify wider.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can F4 add them?</h3>
+<p lang="en">Yes. Pressing F4 while editing the formula adds $.</p>
+<h2>Ringkasan</h2>
+<p lang="en">Fix the search range with $; leave the lookup cell as is.</p>
 <a class="cta" href="/id/vlookup-formula-builder.html">Gunakan “Buat Rumus VLOOKUP atau XLOOKUP” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/excel-range-info.html">Menghitung sel, baris, dan kolom dalam rentang Excel</a>: Temukan sel, baris, dan kolom dari sebuah rentang.</li><li><a href="/id/excel-column-letter.html">Konverter Nomor dan Huruf Kolom Excel</a>: Ubah nomor dan huruf kolom Excel.</li><li><a href="/id/excel-text-clean.html">Menghapus spasi berlebih dan karakter tak terlihat dari teks Excel</a>: Hapus spasi berlebih dan karakter tak terlihat.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>

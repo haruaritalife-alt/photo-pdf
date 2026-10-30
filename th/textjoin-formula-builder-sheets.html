@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ใช้ใน Google ชีต</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>สร้างสูตร</li><li>คัดลอก</li><li>วางลงในชีต</li></ul></div>
-<p>สูตรจาก <a href="/th/textjoin-formula-builder.html">สร้างสูตร TEXTJOIN</a> วางลงใน Google ชีตได้โดยตรงเช่นกัน</p>
+<p lang="en">Google Sheets also has TEXTJOIN. Formulas built with <a href="/th/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> work as is in Sheets.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>สร้างสูตร</li>
-<li>คัดลอก</li>
-<li>วางลงในชีต</li>
+<li lang="en">Enter the range and separator.</li>
+<li lang="en">Press "Copy TEXTJOIN".</li>
+<li lang="en">Paste into a spreadsheet cell.</li>
 </ol>
-<div class="note">เลือกเซลล์ปลายทางก่อนวาง</div>
+<div class="note" lang="en">The syntax is the same as Excel's. =TEXTJOIN(", ",TRUE,A2:A10)</div>
+<h2 lang="en">What's the same</h2>
+<ul>
+<li lang="en">The three arguments (separator, ignore empty, range)</li>
+<li lang="en">The shape of the result</li>
+</ul>
+<h2 lang="en">What differs</h2>
+<ul>
+<li lang="en"><b>Multiple ranges</b>: both allow several ranges.</li>
+<li lang="en"><b>Combining with arrays</b>: in Sheets, combining with ARRAYFORMULA to join only matching items is common.</li>
+<li lang="en"><b>Arrays as separators</b>: in Sheets the separator is treated as a single text.</li>
+</ul>
+<h2 lang="en">Joining only matching items</h2>
+<p lang="en">Combine TEXTJOIN and IF.</p>
+<ul>
+<li lang="en">Example: =TEXTJOIN(", ",TRUE,IF(B2:B10="Done",A2:A10,""))</li>
+</ul>
+<p lang="en">This joins the names in column A only for rows where column B is "Done".</p>
+<ul>
+<li lang="en">Excel (2019): may need entering as an array formula (Ctrl + Shift + Enter)</li>
+<li lang="en">Microsoft 365: works with normal entry</li>
+<li lang="en">Google Sheets: wrap in ARRAYFORMULA</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Gathering participants into one cell in a shared spreadsheet</li>
+<li lang="en">Lining up form responses in one cell</li>
+<li lang="en">Making conditional lists</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">In a team task sheet, lined up each person's completed tasks in one cell. TEXTJOIN with IF updated each person's list automatically.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Large ranges</b>: exceeding the cell's character limit (50,000) causes an error.</li>
+<li lang="en"><b>Forgetting ARRAYFORMULA</b>: needed in the conditional form.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are results the same in Excel and Google Sheets?</h3>
+<p lang="en">Basically yes. Fine behavior varies by version.</p>
+<h2>สรุป</h2>
+<p lang="en">Built formulas work as is. Only mind ARRAYFORMULA for conditional use.</p>
 <a class="cta" href="/th/textjoin-formula-builder.html">ใช้ “สร้างสูตร TEXTJOIN” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/vlookup-formula-builder.html">สร้างสูตร VLOOKUP หรือ XLOOKUP</a>: สร้างสูตร VLOOKUP และ XLOOKUP</li><li><a href="/th/excel-range-info.html">นับเซลล์ แถว และคอลัมน์ในช่วงของ Excel</a>: ดูเซลล์ แถว และคอลัมน์ของช่วง</li><li><a href="/th/excel-text-clean.html">ลบช่องว่างส่วนเกินและอักขระที่มองไม่เห็นออกจากข้อความ Excel</a>: ลบช่องว่างส่วนเกินและอักขระที่มองไม่เห็น</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

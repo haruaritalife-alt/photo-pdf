@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>用逗号连接</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>输入范围</li><li>输入分隔符</li><li>复制</li></ul></div>
-<p>在<a href="/zh/textjoin-formula-builder.html">TEXTJOIN公式生成器</a>中,分隔符栏里可以填入任意字符。</p>
+<p lang="en">The separator for joining depends on the purpose. "Separator (such as , or 、)" in <a href="/zh/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> lets you choose freely.</p>
+<h2 lang="en">Common separators</h2>
+<ul>
+<li lang="en">Comma (,): English lists, CSV-like sequences</li>
+<li lang="en">Japanese comma (、): Japanese text</li>
+<li lang="en">Semicolon (;): separating mail recipients (some mail software)</li>
+<li lang="en">Slash (/): item sequences</li>
+<li lang="en">Line break: in-cell breaks (see below)</li>
+<li lang="en">Space: full names, etc.</li>
+</ul>
 <h2>步骤</h2>
 <ol>
-<li>输入范围</li>
-<li>输入分隔符</li>
-<li>复制</li>
+<li>输入区域。</li>
+<li lang="en">Enter the separator in "Separator". Example: ", "</li>
+<li lang="en">Check the formula's first argument is that character.</li>
 </ol>
-<div class="note">分隔符为空时,各单元格会直接连在一起。</div>
+<div class="note" lang="en">The separator is enclosed in quotes within the formula.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">Comma + space: =TEXTJOIN(", ",TRUE,A2:A10)</li>
+<li lang="en">Japanese comma: =TEXTJOIN("、",TRUE,A2:A10)</li>
+<li lang="en">No separator: =TEXTJOIN("",TRUE,A2:A10)</li>
+</ul>
+<h2 lang="en">Separating with line breaks</h2>
+<p lang="en">For a line break separator, use CHAR(10). After building with the tool, rewrite the "..." in the first argument as CHAR(10).</p>
+<ul>
+<li lang="en">Example: =TEXTJOIN(CHAR(10),TRUE,A2:A10)</li>
+<li lang="en">To display breaks, turn on "Wrap text" in the cell format</li>
+</ul>
+<h2>适合</h2>
+<ul>
+<li lang="en">Listing participants' names on one line with Japanese commas</li>
+<li lang="en">Joining email addresses with commas or semicolons</li>
+<li lang="en">Showing items separated by slashes</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">To paste into a mail To field, joined addresses in A2:A20 with commas. One formula joined them at once.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width vs half-width</b>: "," and "，" are different characters. Choose deliberately.</li>
+<li lang="en"><b>Spaces around the separator</b>: a separator like ", " with a space looks tidier.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the separator be several characters?</h3>
+<p lang="en">Yes. Multiple characters like " / " or " → " work.</p>
+<h2>小结</h2>
+<p lang="en">The separator is freely chosen. Pick it to suit the purpose.</p>
 <a class="cta" href="/zh/textjoin-formula-builder.html">使用“生成 TEXTJOIN 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/zh/excel-range-info.html">统计 Excel 范围内的单元格、行和列</a>: 查看范围内的单元格、行和列。</li><li><a href="/zh/excel-text-clean.html">去掉 Excel 文字中多余的空格和看不见的字符</a>: 去掉多余的空格和看不见的字符。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

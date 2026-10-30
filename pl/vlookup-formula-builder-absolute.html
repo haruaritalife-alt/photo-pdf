@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Dlaczego znaki dolara w zakresie</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Zbuduj formułę</li><li>Dodaj znaki dolara</li><li>Skopiuj</li></ul></div>
-<p><a href="/pl/vlookup-formula-builder.html">Kreator VLOOKUP</a> może dodać znaki dolara, aby zakres nie przesuwał się po skopiowaniu formuły w dół.</p>
+<p lang="en">Copying a VLOOKUP formula down made results wrong. Most often the range lacks "$". "Add $ to the range" in <a href="/pl/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> builds a fixed formula.</p>
+<h2 lang="en">Why it shifts</h2>
+<p lang="en">Writing the range as "D2:F100" shifts it to "D3:F101" when the formula is copied one row down. The search table moves and nothing is found.</p>
+<ul>
+<li lang="en">Relative: D2:F100 (shifts when copied)</li>
+<li lang="en">Absolute: $D$2:$F$100 (stays when copied)</li>
+</ul>
 <h2>Kroki</h2>
 <ol>
-<li>Zbuduj formułę</li>
-<li>Dodaj znaki dolara</li>
-<li>Skopiuj</li>
+<li lang="en">Enter the value, range and column number.</li>
+<li lang="en">Tick "Add $ to the range".</li>
+<li lang="en">Copy the formula whose range is now $D$2:$F$100.</li>
 </ol>
-<div class="note">Po odznaczeniu otrzymasz formułę bez znaków dolara.</div>
+<div class="note" lang="en">Don't add $ to the lookup cell (A2); it should change per row.</div>
+<h2 lang="en">Concrete example</h2>
+<ul>
+<li lang="en">Shifting formula: =VLOOKUP(A2,D2:F100,2,FALSE)</li>
+<li lang="en">Fixed formula: =VLOOKUP(A2,$D$2:$F$100,2,FALSE)</li>
+</ul>
+<p lang="en">Copied down, A2 becomes A3, A4…, while the range stays put.</p>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">Copying a formula down hundreds of rows</li>
+<li lang="en">Copying produced #N/A everywhere</li>
+<li lang="en">Checking the range hasn't shifted</li>
+</ul>
+<h2 lang="en">When to untick</h2>
+<p lang="en">For a formula used in a single cell and not copied, no $ is fine.</p>
+<h2 lang="en">How to spot it</h2>
+<p lang="en">Select a copied cell and look at the range in the formula. If rows advance like D3:F101, it has shifted.</p>
+<h2>Przykład</h2>
+<p lang="en">Copying a product-name formula to 100 rows gave #N/A from around row 10, as the range crept off the table. Adding $ fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Fixing only the column or row</b>: write mixed references (like $D2:$F100) by hand.</li>
+<li lang="en"><b>Adding rows to the table</b>: rows beyond the range's end aren't included. Specify wider.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can F4 add them?</h3>
+<p lang="en">Yes. Pressing F4 while editing the formula adds $.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">Fix the search range with $; leave the lookup cell as is.</p>
 <a class="cta" href="/pl/vlookup-formula-builder.html">Użyj „Tworzenie formuły VLOOKUP lub XLOOKUP” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/excel-range-info.html">Liczenie komórek, wierszy i kolumn w zakresie Excela</a>: Sprawdź komórki, wiersze i kolumny zakresu.</li><li><a href="/pl/excel-column-letter.html">Konwerter numeru i litery kolumny Excela</a>: Przeliczaj numery i litery kolumn Excela.</li><li><a href="/pl/excel-text-clean.html">Usuwanie zbędnych spacji i niewidocznych znaków z tekstu Excela</a>: Usuń zbędne spacje i niewidoczne znaki.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

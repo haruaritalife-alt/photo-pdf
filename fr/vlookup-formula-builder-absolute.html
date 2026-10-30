@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pourquoi des signes dollar sur la plage</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Créez la formule</li><li>Ajouter des signes dollar</li><li>Copiez-le</li></ul></div>
-<p><a href="/fr/vlookup-formula-builder.html">Générateur VLOOKUP</a> peut ajouter des signes dollar pour que la plage ne se décale pas quand la formule est copiée vers le bas.</p>
+<p lang="en">Copying a VLOOKUP formula down made results wrong. Most often the range lacks "$". "Add $ to the range" in <a href="/fr/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> builds a fixed formula.</p>
+<h2 lang="en">Why it shifts</h2>
+<p lang="en">Writing the range as "D2:F100" shifts it to "D3:F101" when the formula is copied one row down. The search table moves and nothing is found.</p>
+<ul>
+<li lang="en">Relative: D2:F100 (shifts when copied)</li>
+<li lang="en">Absolute: $D$2:$F$100 (stays when copied)</li>
+</ul>
 <h2>Étapes</h2>
 <ol>
-<li>Créez la formule</li>
-<li>Ajouter des signes dollar</li>
-<li>Copiez-le</li>
+<li lang="en">Enter the value, range and column number.</li>
+<li lang="en">Tick "Add $ to the range".</li>
+<li lang="en">Copy the formula whose range is now $D$2:$F$100.</li>
 </ol>
-<div class="note">En la décochant, on obtient une formule sans signes dollar.</div>
+<div class="note" lang="en">Don't add $ to the lookup cell (A2); it should change per row.</div>
+<h2 lang="en">Concrete example</h2>
+<ul>
+<li lang="en">Shifting formula: =VLOOKUP(A2,D2:F100,2,FALSE)</li>
+<li lang="en">Fixed formula: =VLOOKUP(A2,$D$2:$F$100,2,FALSE)</li>
+</ul>
+<p lang="en">Copied down, A2 becomes A3, A4…, while the range stays put.</p>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Copying a formula down hundreds of rows</li>
+<li lang="en">Copying produced #N/A everywhere</li>
+<li lang="en">Checking the range hasn't shifted</li>
+</ul>
+<h2 lang="en">When to untick</h2>
+<p lang="en">For a formula used in a single cell and not copied, no $ is fine.</p>
+<h2 lang="en">How to spot it</h2>
+<p lang="en">Select a copied cell and look at the range in the formula. If rows advance like D3:F101, it has shifted.</p>
+<h2>Exemple</h2>
+<p lang="en">Copying a product-name formula to 100 rows gave #N/A from around row 10, as the range crept off the table. Adding $ fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Fixing only the column or row</b>: write mixed references (like $D2:$F100) by hand.</li>
+<li lang="en"><b>Adding rows to the table</b>: rows beyond the range's end aren't included. Specify wider.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can F4 add them?</h3>
+<p lang="en">Yes. Pressing F4 while editing the formula adds $.</p>
+<h2>En résumé</h2>
+<p lang="en">Fix the search range with $; leave the lookup cell as is.</p>
 <a class="cta" href="/fr/vlookup-formula-builder.html">Utiliser « Créer une formule VLOOKUP ou XLOOKUP » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/excel-range-info.html">Compter les cellules, lignes et colonnes d'une plage Excel</a>: Trouvez les cellules, lignes et colonnes d'une plage.</li><li><a href="/fr/excel-column-letter.html">Convertisseur de numéro et lettre de colonne Excel</a>: Convertissez des numéros et lettres de colonne Excel.</li><li><a href="/fr/excel-text-clean.html">Supprimer les espaces en trop et caractères invisibles d'un texte Excel</a>: Supprimez les espaces en trop et les caractères invisibles.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>
