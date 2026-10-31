@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>연이율을 기간당 이율로 바꾸기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>이율을 입력합니다</li><li>납입 횟수를 고릅니다</li><li>수식 보기</li></ul></div>
-<p><a href="/ko/pmt-formula-builder.html">PMT 수식 만들기</a>에서는 연이율이 수식 안에서 연간 납입 횟수로 나뉩니다.</p>
+<p lang="en">The easiest thing to get wrong in PMT is how the annual rate and term are handled. The annual rate is converted to a "monthly rate" and the years to "number of months" before passing them to the function. <a href="/ko/pmt-formula-builder.html">Build a PMT Formula</a> does that automatically.</p>
 <h2>순서</h2>
 <ol>
-<li>이율을 입력합니다</li>
-<li>납입 횟수를 고릅니다</li>
-<li>수식 보기</li>
+<li lang="en">In "Annual rate", enter the yearly rate (such as 1.5).</li>
+<li lang="en">In "Term (years)", enter the number of years.</li>
+<li lang="en">Choose the "Payments per year".</li>
+<li lang="en">Copy the formula.</li>
 </ol>
-<div class="note">매월 납입이면 연이율을 12로 나눕니다.</div>
+<div class="note" lang="en">The annual rate is divided by the payments per year. The term is multiplied by it.</div>
+<h2>예</h2>
+<p lang="en">Annual rate 1.5%, 10 years, monthly payments:</p>
+<ul>
+<li lang="en">=-PMT(1.5%/12,10*12,3000000)</li>
+</ul>
+<p lang="en">1.5%/12 is the monthly rate and 10*12 is the number of payments (120).</p>
+<h2 lang="en">Changing payments per year</h2>
+<ul>
+<li lang="en">12: monthly</li>
+<li lang="en">4: quarterly</li>
+<li lang="en">2: semiannual</li>
+<li lang="en">1: yearly</li>
+</ul>
+<p lang="en">For 4 a year, divide the rate by 4 and multiply the years by 4. The tool builds that.</p>
+<h2>자주 하는 실수</h2>
+<ul>
+<li lang="en">Passing the annual rate as is: =PMT(1.5%,10,…) becomes a yearly-payment calculation</li>
+<li lang="en">Passing years as is: too few periods, so each payment is large</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Monthly loans</li>
+<li lang="en">Twice-yearly payments in bonus months (a rough guide)</li>
+<li lang="en">Quarterly payments</li>
+</ul>
+<h2 lang="en">About effective annual rate</h2>
+<p lang="en">Rates quoted by lenders are often annual. But actual payments vary with fees and repayment method.</p>
+<h2>예</h2>
+<p lang="en">Wanted the payment for 1.2% annual, 20 years, monthly. Entering 1.2, 20 and choosing 12 handled the monthly rate and count automatically.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entering 0.015 for the rate</b>: enter it in percent. 0.015 means 0.015%.</li>
+<li lang="en"><b>Entering the term in months</b>: enter years.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I know the monthly rate first?</h3>
+<p lang="en">Enter 12 times the monthly rate as the annual rate.</p>
+<h2>요약</h2>
+<p lang="en">Divide the annual rate by payments per year and multiply the years.</p>
 <a class="cta" href="/ko/pmt-formula-builder.html">“PMT 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/percent-calculator.html">퍼센트, 할인, 증감률 계산</a>: 퍼센트, 할인, 증감률을 바로 계산합니다.</li><li><a href="/ko/rank-formula-builder.html">순위 수식 만들기</a>: 순위 수식을 만듭니다.</li><li><a href="/ko/sumproduct-formula-builder.html">SUMPRODUCT 수식 만들기</a>: SUMPRODUCT 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

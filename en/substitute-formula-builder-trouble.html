@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/substitute-formula-builder.html">Substitute Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted the formula but the result is odd. Here are common troubles with <a href="/en/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the text cell isn't in the "A2" form; the text to find is empty; the occurrence isn't an integer of 1 or more; the start position isn't an integer of 1 or more; the length isn't an integer.</li>
+</ul>
+<h2>After pasting into the sheet</h2>
+<ul>
+<li><b>Nothing is replaced</b>: the text to find differs in full-width/half-width or case.</li>
+<li><b>Leading 0 disappears</b>: the result was made a number. Keep it as text.</li>
+<li><b>Numbers are treated as text</b>: SUBSTITUTE's result is text. Convert with VALUE.</li>
+<li><b>Text just appended at the end</b>: when REPLACE's start position exceeds the length, it is added at the end.</li>
+<li><b>Invisible characters remain</b>: line breaks or special spaces. Remove with CHAR or CLEAN.</li>
+<li><b>Only some are not replaced</b>: similar-looking different characters are mixed in.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Paste an actual cell's text into the sample text and view the result.</li>
+<li>Copy the text to find from the cell and paste it.</li>
+<li>Count characters with LEN to find invisible ones.</li>
 </ol>
-<div class="note">If no formula appears, check that the cell is written like A2 and the text to find is entered.</div>
+<div class="note">Even if they look alike, a full-width hyphen "－", a half-width "-" and the long vowel mark "ー" are different characters. Copying the text to find from the cell is the safe way.</div>
+<h2>Examples of look-alikes</h2>
+<ul>
+<li>Hyphens: "-" "－" "−" "‐" "ー"</li>
+<li>Spaces: half-width space, full-width space, line break</li>
+<li>Tildes: "~" "～"</li>
+</ul>
+<h2>Example</h2>
+<p>A hyphen-removal formula didn't work on some cells. Long hyphens were mixed in. Copying the cell's character as the text to find removed them.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>SUBSTITUTE is case-sensitive</b>: for case-insensitive use UPPER or similar.</li>
+<li><b>No wildcards</b>: * and ? are treated as literal characters.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to replace several characters at once</h3>
+<p>Nest SUBSTITUTEs, or use REGEXREPLACE (Google Sheets).</p>
+<h2>Summary</h2>
+<p>Check look-alike characters, invisible characters and types.</p>
 <a class="cta" href="/en/substitute-formula-builder.html">Use "Build a SUBSTITUTE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/en/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a>: Build text extraction formulas.</li><li><a href="/en/text-to-columns.html">Split Text into Columns by a Delimiter</a>: Split text into columns by a delimiter.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

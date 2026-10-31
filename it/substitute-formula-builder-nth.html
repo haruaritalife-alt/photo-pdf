@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Sostituire solo l'N-esimo</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Scegli SUBSTITUTE-N</li><li>Inserisci il numero</li><li>Controllalo</li></ul></div>
-<p>In <a href="/it/substitute-formula-builder.html">Generatore di sostituzioni</a> puoi sostituire solo l'N-esimo di più caratteri identici.</p>
+<p lang="en">Among repeated characters, you want to change only "the second hyphen" to something else. "SUBSTITUTE-N" in <a href="/it/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> builds it.</p>
 <h2>Passaggi</h2>
 <ol>
-<li>Scegli SUBSTITUTE-N</li>
-<li>Inserisci il numero</li>
-<li>Controllalo</li>
+<li lang="en">Choose "SUBSTITUTE-N" in "Method".</li>
+<li lang="en">Enter the "Text cell", "Text to find" and "Replacement text".</li>
+<li lang="en">Enter a number in "Which occurrence".</li>
+<li lang="en">Check the result with a "Sample text".</li>
 </ol>
-<div class="note">Puoi controllare il risultato con un testo di prova.</div>
+<div class="note" lang="en">"Which occurrence" is an integer of 1 or more. If there are fewer occurrences, nothing is replaced.</div>
+<h2>Esempio</h2>
+<p lang="en">A formula changing A2's second hyphen to a slash:</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,"-","/",2)</li>
+</ul>
+<p lang="en">"2026-11-01" becomes "2026-11/01".</p>
+<h2 lang="en">Difference from replacing all</h2>
+<ul>
+<li lang="en">Without the 4th argument: replaces all</li>
+<li lang="en">With the 4th argument: replaces only that Nth</li>
+</ul>
+<h2 lang="en">Only the last one</h2>
+<p lang="en">Replacing just the last is a bit complex. Count the occurrences and use that number.</p>
+<ul>
+<li lang="en">Example: =SUBSTITUTE(A2,"-","/",LEN(A2)-LEN(SUBSTITUTE(A2,"-","")))</li>
+</ul>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Changing only some date separators</li>
+<li lang="en">Replacing a specific separator in a file path</li>
+<li lang="en">Inserting a line break at the second delimiter</li>
+</ul>
+<h2 lang="en">Inserting a line break at a delimiter</h2>
+<ul>
+<li lang="en">Example: =SUBSTITUTE(A2,",",CHAR(10),2)</li>
+</ul>
+<p lang="en">The second comma becomes a line break.</p>
+<h2>Esempio</h2>
+<p lang="en">In text like "Tokyo-Minato-Akasaka", I wanted only the second hyphen turned into another symbol. Entering 2 for the occurrence changed only that one.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entering 0 or a decimal</b>: errors. Use an integer of 1 or more.</li>
+<li lang="en"><b>Not enough occurrences</b>: no replacement; the text stays as is.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to replace only the first</h3>
+<p lang="en">Enter 1 for the occurrence.</p>
+<h2>Riepilogo</h2>
+<p lang="en">For only the Nth, use SUBSTITUTE's 4th argument.</p>
 <a class="cta" href="/it/substitute-formula-builder.html">Usa “Crea una formula SUBSTITUTE” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/excel-text-clean.html">Rimuovere spazi superflui e caratteri invisibili dal testo di Excel</a>: Rimuovi gli spazi superflui e i caratteri invisibili.</li><li><a href="/it/excel-left-mid-builder.html">Crea una formula LEFT, MID o RIGHT</a>: Crea formule per estrarre testo.</li><li><a href="/it/text-to-columns.html">Dividere il testo in colonne con un delimitatore</a>: Dividi il testo in colonne con un delimitatore.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>

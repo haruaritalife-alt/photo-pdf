@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Cosa fare quando non funziona</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Controlla il file</li><li>Controlla la dimensione</li><li>Prova su un altro dispositivo</li></ul></div>
-<p>Se <a href="/it/pmt-formula-builder.html">Generatore di PMT</a> non funziona, controlla quanto segue.</p>
-<h2>Passaggi</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/it/pmt-formula-builder.html">Build a PMT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: amount, rate or term isn't a number; the amount or term is 0; a negative number was entered.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Result far too large or small</b>: the rate was entered like 0.015. Enter it in percent, like 1.5.</li>
+<li lang="en"><b>Result is negative</b>: the leading "-" was deleted.</li>
+<li lang="en"><b>#NUM!</b>: impossible values in term or rate.</li>
+<li lang="en"><b>#VALUE!</b>: the amount cell is text.</li>
+<li lang="en"><b>Doesn't match actual payments</b>: fees, bonus payments and variable rates aren't included.</li>
+<li lang="en"><b>First-period interest looks small</b>: the second formula is the interest for just the first payment.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Controlla il file</li>
-<li>Controlla la dimensione</li>
-<li>Prova su un altro dispositivo</li>
+<li lang="en">Check how the rate is entered (in percent).</li>
+<li lang="en">Check the term is in years.</li>
+<li lang="en">Check the payments per year match the repayment terms.</li>
 </ol>
-<div class="note">Se non compare alcuna formula, controlla che importo, tasso e durata siano numeri.</div>
+<div class="note" lang="en">Results may differ slightly from a lender's simulation, because of rounding and payment-date differences. Use the tool's values as a guide.</div>
+<h2 lang="en">First-period interest</h2>
+<p lang="en">The second formula gives the first payment's interest with IPMT.</p>
+<ul>
+<li lang="en">Example: =-IPMT(1.5%/12,1,10*12,3000000)</li>
+</ul>
+<p lang="en">That's about 3,750 yen, from a 0.125% monthly rate on 3,000,000.</p>
+<h2>Esempio</h2>
+<p lang="en">It differed from the bank's quote by a few hundred yen, due to rounding and daily proration. I used the tool as a guide and confirmed exact amounts in the lender's documents.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Bonus-combined payments</b>: need a separate calculation.</li>
+<li lang="en"><b>Equal-principal repayment</b>: PMT can't compute it.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if the rate changes partway?</h3>
+<p lang="en">You'd need to split the term and calculate each part. This tool handles a constant rate only.</p>
+<h2>Riepilogo</h2>
+<p lang="en">Check how the rate is entered, the term's unit and the sign.</p>
 <a class="cta" href="/it/pmt-formula-builder.html">Usa “Crea una formula PMT” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/percent-calculator.html">Calcola percentuali, sconti e variazioni %</a>: Calcola percentuali, sconti e variazioni % all'istante.</li><li><a href="/it/rank-formula-builder.html">Crea una formula di classifica</a>: Crea formule di classifica.</li><li><a href="/it/sumproduct-formula-builder.html">Crea una formula SUMPRODUCT</a>: Crea formule SUMPRODUCT.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>

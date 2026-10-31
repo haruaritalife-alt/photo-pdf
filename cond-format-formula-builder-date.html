@@ -200,14 +200,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>土日と期限切れ</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>WEEKENDかEXPIREDを選ぶ</li><li>列を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/cond-format-formula-builder.html">条件付き書式式の作成</a> では、土日や、今日より前の日付に色を付けられます。</p>
+<p>土曜と日曜の行を薄く、期限切れの行を赤く。日付に応じた色分けの式です。<a href="/cond-format-formula-builder.html">条件付き書式の式を作る</a> の「WEEKEND」と「EXPIRED」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>WEEKENDかEXPIREDを選ぶ</li>
-<li>列を入れる</li>
-<li>コピーする</li>
+<li>「種類」で「WEEKEND」か「EXPIRED」を選ぶ。</li>
+<li>「見る列」（日付の列）と「範囲の最初の行」を入れる。</li>
+<li>式をコピーして、書式の範囲に貼る。</li>
 </ol>
-<div class="note">日付がセルの日付として入っている必要があります。</div>
+<div class="note">日付の列は、本当の日付（シリアル値）である必要があります。文字の日付では、判定できません。</div>
+<h2>例</h2>
+<p>土曜・日曜の日付に色を付ける式です。</p>
+<ul>
+<li>=WEEKDAY($B2,2)&gt;5</li>
+</ul>
+<p>WEEKDAYの2は、月曜を1とする指定で、6が土曜、7が日曜です。</p>
+<p>期限が今日より前の日付に色を付ける式です。</p>
+<ul>
+<li>=$B2&lt;TODAY()</li>
+</ul>
+<h2>期限切れだけに色を付ける</h2>
+<p>空のセルを、期限切れと判定しないよう、条件を足します。</p>
+<ul>
+<li>例：=AND($B2&lt;&gt;"",$B2&lt;TODAY())</li>
+</ul>
+<h2>今日の行を目立たせる</h2>
+<ul>
+<li>例：=$B2=TODAY()</li>
+</ul>
+<h2>1週間以内の期限</h2>
+<ul>
+<li>例：=AND($B2&gt;=TODAY(),$B2&lt;=TODAY()+7)</li>
+</ul>
+<h2>祝日は別の方法</h2>
+<p>祝日は、祝日の一覧を別に用意して、COUNTIFで判定します。</p>
+<ul>
+<li>例：=COUNTIF(祝日の範囲,$B2)&gt;0</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>スケジュール表の、土日の色分け</li>
+<li>タスクの、期限切れの赤</li>
+<li>今週の予定の強調</li>
+</ul>
+<h2>例</h2>
+<p>スケジュール表の土日を、灰色にしたかった。WEEKENDの式を、行全体に貼ると、土日の行だけが灰色になった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>文字の日付</b>：色が付かない。日付の値に直す。</li>
+<li><b>TODAYは毎日変わる</b>：開くたびに、判定が更新される。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>完了したタスクは、期限切れにしたくない</h3>
+<p>別の列の「完了」を条件に加えます。</p>
+<ul>
+<li>例：=AND($B2&lt;TODAY(),$C2&lt;&gt;"完了")</li>
+</ul>
+<h2>まとめ</h2>
+<p>日付の色分けは、WEEKDAYとTODAY。</p>
 <a class="cta" href="/cond-format-formula-builder.html">条件付き書式の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/networkdays-formula-builder.html">営業日数の式を作る</a>：営業日数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +268,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Weekends and Expired Dates</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose WEEKEND or EXPIRED</li><li>Enter the column</li><li>Copy it</li></ul></div>
-<p>In <a href="/cond-format-formula-builder.html">Conditional Format Builder</a> you can color weekends and dates before today.</p>
+<p>Fade weekend rows, redden overdue rows. These are formulas for date-based coloring. "WEEKEND" and "EXPIRED" in <a href="/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a> build them.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose WEEKEND or EXPIRED</li>
-<li>Enter the column</li>
-<li>Copy it</li>
+<li>Choose "WEEKEND" or "EXPIRED" in "Type".</li>
+<li>Enter the "Column to look at" (the date column) and "First row of the range".</li>
+<li>Copy the formula and paste it into the formatting range.</li>
 </ol>
-<div class="note">The cells must hold real dates.</div>
+<div class="note">The date column must hold real dates (serial values). Text dates can't be judged.</div>
+<h2>Example</h2>
+<p>A formula coloring Saturday and Sunday dates:</p>
+<ul>
+<li>=WEEKDAY($B2,2)&gt;5</li>
+</ul>
+<p>WEEKDAY's 2 numbers Monday as 1, so 6 is Saturday and 7 is Sunday.</p>
+<p>A formula coloring dates earlier than today:</p>
+<ul>
+<li>=$B2&lt;TODAY()</li>
+</ul>
+<h2>Coloring only overdue</h2>
+<p>Add a condition so empty cells aren't judged overdue.</p>
+<ul>
+<li>Example: =AND($B2&lt;&gt;"",$B2&lt;TODAY())</li>
+</ul>
+<h2>Highlighting today's row</h2>
+<ul>
+<li>Example: =$B2=TODAY()</li>
+</ul>
+<h2>Due within a week</h2>
+<ul>
+<li>Example: =AND($B2&gt;=TODAY(),$B2&lt;=TODAY()+7)</li>
+</ul>
+<h2>Holidays are a different method</h2>
+<p>Prepare a holiday list separately and judge with COUNTIF.</p>
+<ul>
+<li>Example: =COUNTIF(holiday range,$B2)&gt;0</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Weekend coloring in a schedule table</li>
+<li>Red for overdue tasks</li>
+<li>Emphasizing this week's plans</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted weekends grayed out in a schedule table. Pasting the WEEKEND formula over whole rows grayed only weekend rows.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Text dates</b>: no color appears. Convert to date values.</li>
+<li><b>TODAY changes daily</b>: the judgment refreshes each time you open the file.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I don't want completed tasks flagged overdue</h3>
+<p>Add another column's "Done" to the condition.</p>
+<ul>
+<li>Example: =AND($B2&lt;TODAY(),$C2&lt;&gt;"Done")</li>
+</ul>
+<h2>Summary</h2>
+<p>For date-based coloring, use WEEKDAY and TODAY.</p>
 <a class="cta" href="/cond-format-formula-builder.html">Use "Build a Conditional Formatting Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a>: Build working-day formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

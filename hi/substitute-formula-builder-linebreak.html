@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>पंक्ति-विराम बदलना</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>LINEBREAK चुनें</li><li>टेक्स्ट दर्ज करें</li><li>कॉपी करें</li></ul></div>
-<p><a href="/hi/substitute-formula-builder.html">बदलने का सूत्र बनाने वाला टूल</a> में आप सेल की पंक्ति-विरामों को दूसरे टेक्स्ट से बदल सकते हैं।</p>
+<p lang="en">A cell holds line breaks, and you want them as spaces or commas, or conversely you want delimiters as line breaks. "LINEBREAK" in <a href="/hi/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> builds it.</p>
 <h2>चरण</h2>
 <ol>
-<li>LINEBREAK चुनें</li>
-<li>टेक्स्ट दर्ज करें</li>
-<li>कॉपी करें</li>
+<li lang="en">Choose "LINEBREAK" in "Method".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">In "Replacement text", enter what should replace the line break.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">पंक्ति-विराम CHAR(10) के रूप में लिखा जाता है।</div>
+<div class="note" lang="en">A line break is represented by CHAR(10). An in-cell break (Alt+Enter) on Windows is also CHAR(10).</div>
+<h2>उदाहरण</h2>
+<p lang="en">A formula turning line breaks into ", ":</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,CHAR(10),", ")</li>
+</ul>
+<p lang="en">A formula removing line breaks (leave the replacement empty):</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,CHAR(10),"")</li>
+</ul>
+<h2 lang="en">Delimiters to line breaks</h2>
+<p lang="en">Conversely, a formula turning commas into line breaks:</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,",",CHAR(10))</li>
+</ul>
+<p lang="en">In that case turn on the cell's "Wrap text".</p>
+<h2 lang="en">Another way to remove breaks</h2>
+<p lang="en">CLEAN removes control characters such as line breaks. But it can't replace.</p>
+<ul>
+<li lang="en">Example: =CLEAN(A2)</li>
+</ul>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">Making addresses or notes with line breaks a single line</li>
+<li lang="en">Turning a line-break list into a comma list</li>
+<li lang="en">Tidying before exporting to CSV</li>
+</ul>
+<h2 lang="en">Line breaks looking garbled</h2>
+<p lang="en">Imported data may have different break codes. A break may be CHAR(10) or CHAR(13). To remove both, nest them.</p>
+<ul>
+<li lang="en">Example: =SUBSTITUTE(SUBSTITUTE(A2,CHAR(13),""),CHAR(10)," ")</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">An address cell held line breaks and I wanted one line. The LINEBREAK formula replacing breaks with spaces made one line.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Breaks remain</b>: CHAR(13) is mixed in. Handle both.</li>
+<li lang="en"><b>Made breaks but looks like one line</b>: Wrap text is off.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I put line breaks in the sample text?</h3>
+<p lang="en">Paste text including line breaks into the input to try it.</p>
+<h2>सारांश</h2>
+<p lang="en">To replace line breaks, SUBSTITUTE on CHAR(10).</p>
 <a class="cta" href="/hi/substitute-formula-builder.html">“SUBSTITUTE सूत्र बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/excel-text-clean.html">एक्सेल पाठ से फ़ालतू स्पेस और अदृश्य वर्ण हटाना</a>: फ़ालतू स्पेस और अदृश्य वर्ण हटाएँ।</li><li><a href="/hi/excel-left-mid-builder.html">LEFT, MID या RIGHT सूत्र बनाएँ</a>: पाठ निकालने वाले सूत्र बनाएँ।</li><li><a href="/hi/text-to-columns.html">विभाजक से टेक्स्ट को कॉलमों में बाँटें</a>: विभाजक से टेक्स्ट को कॉलमों में बाँटें।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

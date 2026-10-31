@@ -200,14 +200,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>行全体に色を付ける</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ROWMATCHを選ぶ</li><li>列と値を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/cond-format-formula-builder.html">条件付き書式式の作成</a> では、ある列が値と同じ行の全体に色を付ける式を作れます。</p>
+<p>「完了」の行を灰色に、「至急」の行を赤く。1つのセルでなく、行全体に色を付けたいときの式です。<a href="/cond-format-formula-builder.html">条件付き書式の式を作る</a> の「ROWMATCH」「OVER」「BLANK」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>ROWMATCHを選ぶ</li>
-<li>列と値を入れる</li>
-<li>コピーする</li>
+<li>「種類」を選ぶ（ROWMATCH、OVER、BLANK）。</li>
+<li>「見る列」と「範囲の最初の行」を入れる。</li>
+<li>ROWMATCHやOVERなら、「比べる値」を入れる。</li>
+<li>式をコピーする。</li>
+<li>書式を付ける範囲を、行全体（A2:F100など）にして、貼る。</li>
 </ol>
-<div class="note">列の前に$が付き、行はそのまま動きます。</div>
+<div class="note">行全体に色を付けるコツは、書式を付ける範囲を横に広く選び、式の列にだけ$を付けることです。</div>
+<h2>例</h2>
+<p>B列が「完了」の行に色を付ける。</p>
+<ul>
+<li>=$B2="完了"</li>
+</ul>
+<p>C列が100より大きい行に色を付ける。</p>
+<ul>
+<li>=$C2&gt;100</li>
+</ul>
+<p>D列が空の行に色を付ける。</p>
+<ul>
+<li>=$D2=""</li>
+</ul>
+<h2>範囲の選び方</h2>
+<p>式は、範囲の左上のセルを基準に書かれます。A2から始まる範囲なら、2行目を基準にします。範囲がA1から始まるなら、1行目の基準で作り直します。</p>
+<h2>複数の条件</h2>
+<p>複数の条件は、別々のルールとして追加します。上のルールが、優先されます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>タスク管理表の、完了した行</li>
+<li>売上が目標を超えた行</li>
+<li>必須項目が空の行</li>
+</ul>
+<h2>色の使い分け</h2>
+<ul>
+<li>完了：灰色</li>
+<li>要確認：黄色</li>
+<li>至急：赤</li>
+</ul>
+<h2>例</h2>
+<p>タスク一覧の、状態の列が「完了」の行を灰色にしたかった。ROWMATCHの式を、行全体の範囲に貼ると、完了した行だけが灰色になった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>セル1つにしか色が付かない</b>：範囲が、1列だけになっている。</li>
+<li><b>文字の一致</b>：全角と半角、空白の違いで、一致しない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>一部の文字を含む行に、色を付けたい</h3>
+<p>SEARCHやFINDを使います。この種類では、完全一致のみです。</p>
+<h2>まとめ</h2>
+<p>行全体に色を付けるなら、範囲を広く、列に$。</p>
 <a class="cta" href="/cond-format-formula-builder.html">条件付き書式の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/networkdays-formula-builder.html">営業日数の式を作る</a>：営業日数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +262,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Coloring Whole Rows</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose ROWMATCH</li><li>Enter column and value</li><li>Copy it</li></ul></div>
-<p>In <a href="/cond-format-formula-builder.html">Conditional Format Builder</a> you can build a formula that colors the whole row where a column matches a value.</p>
+<p>Gray out "Done" rows, redden "Urgent" rows. This is the formula for coloring whole rows rather than one cell. "ROWMATCH", "OVER" and "BLANK" in <a href="/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a> build it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose ROWMATCH</li>
-<li>Enter column and value</li>
-<li>Copy it</li>
+<li>Choose a "Type" (ROWMATCH, OVER, BLANK).</li>
+<li>Enter the "Column to look at" and "First row of the range".</li>
+<li>For ROWMATCH or OVER, enter the "Value to compare".</li>
+<li>Copy the formula.</li>
+<li>Set the formatting range to whole rows (such as A2:F100) and paste.</li>
 </ol>
-<div class="note">The $ before the column fixes it while the row moves.</div>
+<div class="note">The trick to coloring whole rows: select a wide range horizontally and put $ only on the formula's column.</div>
+<h2>Example</h2>
+<p>Color rows where column B is "Done":</p>
+<ul>
+<li>=$B2="Done"</li>
+</ul>
+<p>Color rows where column C is over 100:</p>
+<ul>
+<li>=$C2&gt;100</li>
+</ul>
+<p>Color rows where column D is empty:</p>
+<ul>
+<li>=$D2=""</li>
+</ul>
+<h2>Choosing the range</h2>
+<p>The formula is written relative to the range's top-left cell. For a range starting at A2, use row 2 as the base. If the range starts at A1, rebuild with row 1.</p>
+<h2>Multiple conditions</h2>
+<p>Add multiple conditions as separate rules. Upper rules take priority.</p>
+<h2>Good for</h2>
+<ul>
+<li>Completed rows in a task table</li>
+<li>Rows where sales beat the target</li>
+<li>Rows with empty required fields</li>
+</ul>
+<h2>Using colors</h2>
+<ul>
+<li>Done: gray</li>
+<li>Needs checking: yellow</li>
+<li>Urgent: red</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted rows with "Done" in the status column grayed out. Pasting the ROWMATCH formula over whole-row range grayed only completed rows.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Only one cell gets color</b>: the range is a single column.</li>
+<li><b>Text matching</b>: full-width/half-width or spaces prevent matches.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want rows containing certain text</h3>
+<p>Use SEARCH or FIND. This type is exact match only.</p>
+<h2>Summary</h2>
+<p>To color whole rows: wide range, $ on the column.</p>
 <a class="cta" href="/cond-format-formula-builder.html">Use "Build a Conditional Formatting Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a>: Build working-day formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

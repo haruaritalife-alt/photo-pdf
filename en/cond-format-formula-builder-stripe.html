@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Striped Rows</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose EVENROW</li><li>Copy the formula</li><li>Paste it</li></ul></div>
-<p>In <a href="/en/cond-format-formula-builder.html">Conditional Format Builder</a>, ISEVEN builds a formula that colors every other row.</p>
+<p>In tables with many rows, coloring every other row makes it easier to follow across. That's the stripe formula. "EVENROW" in <a href="/en/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose EVENROW</li>
-<li>Copy the formula</li>
-<li>Paste it</li>
+<li>Choose "EVENROW" in "Type".</li>
+<li>The formula (=ISEVEN(ROW())) is shown.</li>
+<li>Copy the formula and paste it into the formatting range.</li>
 </ol>
-<div class="note">No column or row is needed.</div>
+<div class="note">This type needs no column or row input. Just select a range and paste.</div>
+<h2>Example</h2>
+<ul>
+<li>=ISEVEN(ROW())</li>
+</ul>
+<p>Even rows get colored. To color odd rows, change to ISODD.</p>
+<ul>
+<li>Example: =ISODD(ROW())</li>
+</ul>
+<h2>Excluding the header</h2>
+<p>To exclude the header, start the formatting range at row 2. Stripe position is decided by row number, so ISEVEN colors row 2. To leave row 2 plain and color from row 3, change to ISODD.</p>
+<h2>Every third row</h2>
+<ul>
+<li>Example: =MOD(ROW(),3)=0</li>
+</ul>
+<h2>Skipping empty rows</h2>
+<p>A formula striping only rows with data:</p>
+<ul>
+<li>Example: =AND($A2&lt;&gt;"",ISEVEN(ROW()))</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Readability of a long list</li>
+<li>Telling rows apart in printed tables</li>
+<li>Guiding the eye along a list</li>
+</ul>
+<h2>Difference from the "Table" feature</h2>
+<p>Excel's "Table" or Sheets' "alternating colors" can also stripe. With conditional formatting the stripes don't break when you sort.</p>
+<h2>Example</h2>
+<p>Wanted to keep stripes in a list that gets sorted repeatedly. With the EVENROW formula, stripes held after sorting.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>No color appears</b>: the formatting range isn't selected.</li>
+<li><b>Text and background colors too close</b>: hard to read. Use a pale color.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Do stripes break when I insert rows?</h3>
+<p>They're decided by row number, so they realign automatically.</p>
+<h2>Summary</h2>
+<p>Stripes: ISEVEN(ROW()).</p>
 <a class="cta" href="/en/cond-format-formula-builder.html">Use "Build a Conditional Formatting Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a>: Build working-day formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Что делать, если не работает</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Проверьте файл</li><li>Проверьте размер</li><li>Попробуйте другое устройство</li></ul></div>
-<p>Если <a href="/ru/substitute-formula-builder.html">Конструктор замены</a> не работает, проверьте следующее.</p>
-<h2>Шаги</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/ru/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the text cell isn't in the "A2" form; the text to find is empty; the occurrence isn't an integer of 1 or more; the start position isn't an integer of 1 or more; the length isn't an integer.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Nothing is replaced</b>: the text to find differs in full-width/half-width or case.</li>
+<li lang="en"><b>Leading 0 disappears</b>: the result was made a number. Keep it as text.</li>
+<li lang="en"><b>Numbers are treated as text</b>: SUBSTITUTE's result is text. Convert with VALUE.</li>
+<li lang="en"><b>Text just appended at the end</b>: when REPLACE's start position exceeds the length, it is added at the end.</li>
+<li lang="en"><b>Invisible characters remain</b>: line breaks or special spaces. Remove with CHAR or CLEAN.</li>
+<li lang="en"><b>Only some are not replaced</b>: similar-looking different characters are mixed in.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Проверьте файл</li>
-<li>Проверьте размер</li>
-<li>Попробуйте другое устройство</li>
+<li lang="en">Paste an actual cell's text into the sample text and view the result.</li>
+<li lang="en">Copy the text to find from the cell and paste it.</li>
+<li lang="en">Count characters with LEN to find invisible ones.</li>
 </ol>
-<div class="note">Если формула не появляется, проверьте, что ячейка записана как A2 и введён искомый текст.</div>
+<div class="note" lang="en">Even if they look alike, a full-width hyphen "－", a half-width "-" and the long vowel mark "ー" are different characters. Copying the text to find from the cell is the safe way.</div>
+<h2 lang="en">Examples of look-alikes</h2>
+<ul>
+<li lang="en">Hyphens: "-" "－" "−" "‐" "ー"</li>
+<li lang="en">Spaces: half-width space, full-width space, line break</li>
+<li lang="en">Tildes: "~" "～"</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">A hyphen-removal formula didn't work on some cells. Long hyphens were mixed in. Copying the cell's character as the text to find removed them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>SUBSTITUTE is case-sensitive</b>: for case-insensitive use UPPER or similar.</li>
+<li lang="en"><b>No wildcards</b>: * and ? are treated as literal characters.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to replace several characters at once</h3>
+<p lang="en">Nest SUBSTITUTEs, or use REGEXREPLACE (Google Sheets).</p>
+<h2>Итог</h2>
+<p lang="en">Check look-alike characters, invisible characters and types.</p>
 <a class="cta" href="/ru/substitute-formula-builder.html">Использовать «Создать формулу SUBSTITUTE» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/excel-text-clean.html">Удаление лишних пробелов и невидимых символов из текста Excel</a>: Уберите лишние пробелы и невидимые символы.</li><li><a href="/ru/excel-left-mid-builder.html">Создать формулу LEFT, MID или RIGHT</a>: Создавайте формулы для извлечения текста.</li><li><a href="/ru/text-to-columns.html">Разбиение текста на столбцы по разделителю</a>: Разбивайте текст на столбцы по разделителю.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

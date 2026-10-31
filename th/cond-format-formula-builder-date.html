@@ -201,14 +201,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>วันสุดสัปดาห์และวันที่หมดอายุ</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก WEEKEND หรือ EXPIRED</li><li>ใส่คอลัมน์</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/cond-format-formula-builder.html">ตัวสร้างสูตรการจัดรูปแบบตามเงื่อนไข</a> คุณใส่สีวันสุดสัปดาห์และวันที่ก่อนวันนี้ได้</p>
+<p lang="en">Fade weekend rows, redden overdue rows. These are formulas for date-based coloring. "WEEKEND" and "EXPIRED" in <a href="/th/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a> build them.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือก WEEKEND หรือ EXPIRED</li>
-<li>ใส่คอลัมน์</li>
-<li>คัดลอก</li>
+<li lang="en">Choose "WEEKEND" or "EXPIRED" in "Type".</li>
+<li lang="en">Enter the "Column to look at" (the date column) and "First row of the range".</li>
+<li lang="en">Copy the formula and paste it into the formatting range.</li>
 </ol>
-<div class="note">เซลล์ต้องมีวันที่จริง</div>
+<div class="note" lang="en">The date column must hold real dates (serial values). Text dates can't be judged.</div>
+<h2>ตัวอย่าง</h2>
+<p lang="en">A formula coloring Saturday and Sunday dates:</p>
+<ul>
+<li lang="en">=WEEKDAY($B2,2)&gt;5</li>
+</ul>
+<p lang="en">WEEKDAY's 2 numbers Monday as 1, so 6 is Saturday and 7 is Sunday.</p>
+<p lang="en">A formula coloring dates earlier than today:</p>
+<ul>
+<li lang="en">=$B2</li>
+</ul>
+<h2 lang="en">Coloring only overdue</h2>
+<p lang="en">Add a condition so empty cells aren't judged overdue.</p>
+<ul>
+<li lang="en">Example: =AND($B2&lt;&gt;"",$B2</li>
+</ul>
+<h2 lang="en">Highlighting today's row</h2>
+<ul>
+<li lang="en">Example: =$B2=TODAY()</li>
+</ul>
+<h2 lang="en">Due within a week</h2>
+<ul>
+<li lang="en">Example: =AND($B2&gt;=TODAY(),$B2&lt;=TODAY()+7)</li>
+</ul>
+<h2 lang="en">Holidays are a different method</h2>
+<p lang="en">Prepare a holiday list separately and judge with COUNTIF.</p>
+<ul>
+<li lang="en">Example: =COUNTIF(holiday range,$B2)&gt;0</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Weekend coloring in a schedule table</li>
+<li lang="en">Red for overdue tasks</li>
+<li lang="en">Emphasizing this week's plans</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Wanted weekends grayed out in a schedule table. Pasting the WEEKEND formula over whole rows grayed only weekend rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Text dates</b>: no color appears. Convert to date values.</li>
+<li lang="en"><b>TODAY changes daily</b>: the judgment refreshes each time you open the file.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I don't want completed tasks flagged overdue</h3>
+<p lang="en">Add another column's "Done" to the condition.</p>
+<ul>
+<li lang="en">Example: =AND($B2<today(),$c2<>"Done")</today(),$c2<></li>
+</ul>
+<h2>สรุป</h2>
+<p lang="en">For date-based coloring, use WEEKDAY and TODAY.</p>
 <a class="cta" href="/th/cond-format-formula-builder.html">ใช้ “สร้างสูตรการจัดรูปแบบตามเงื่อนไข” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/excel-if-builder.html">สร้างสูตร IF</a>: สร้างสูตร IF</li><li><a href="/th/sumif-formula-builder.html">สร้างสูตร SUMIF หรือ COUNTIF</a>: สร้างสูตร SUMIF และ COUNTIF</li><li><a href="/th/networkdays-formula-builder.html">สร้างสูตร NETWORKDAYS</a>: สร้างสูตรวันทำงาน</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

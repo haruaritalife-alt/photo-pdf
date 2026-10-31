@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Replacing by Position</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose REPLACE</li><li>Enter position and length</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/substitute-formula-builder.html">Substitute Builder</a>, REPLACE replaces by a start position and a length.</p>
+<p>Sometimes you want to replace by position, not by content, such as "2 characters from the 3rd character". That's REPLACE. "REPLACE" in <a href="/en/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose REPLACE</li>
-<li>Enter position and length</li>
-<li>Copy it</li>
+<li>Choose "REPLACE" in "Method".</li>
+<li>Enter the "Text cell".</li>
+<li>Enter numbers for "Start position" and "Length".</li>
+<li>Enter the "Replacement text".</li>
+<li>Check the result with a "Sample text".</li>
 </ol>
-<div class="note">A length of 0 inserts text.</div>
+<div class="note">"Start position" counts the first character as 1. A "Length" of 0 inserts at that position.</div>
+<h2>Example</h2>
+<p>A formula turning 4 characters from the 4th of A2 into "****":</p>
+<ul>
+<li>=REPLACE(A2,4,4,"****")</li>
+</ul>
+<p>For "090-1234-5678", the 4 characters "-123" from the 4th are replaced.</p>
+<h2>Inserting text</h2>
+<p>With a length of 0, it inserts instead of replacing.</p>
+<ul>
+<li>Example: =REPLACE(A2,4,0,"-")</li>
+</ul>
+<h2>Masking part</h2>
+<p>Use it to mask part of a card or phone number with "*".</p>
+<ul>
+<li>Example: =REPLACE(A2,5,8,"<b>*</b>***")</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Masking part of a number</li>
+<li>Inserting a separator at a fixed position</li>
+<li>Changing characters at a fixed position</li>
+</ul>
+<h2>Strong for fixed-position data</h2>
+<p>Good for fixed-length data, like turning postal code "1234567" into "123-4567".</p>
+<ul>
+<li>Example: =REPLACE(A2,4,0,"-")</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted a hyphen in 7-digit postal codes. Inserting "-" at the 4th position with length 0 gave "123-4567".</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Uneven digit counts</b>: positions shift. Check lengths first.</li>
+<li><b>Miscounting</b>: full-width characters count as one.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Which should I use, this or SUBSTITUTE?</h3>
+<p>Use SUBSTITUTE to find by content; REPLACE when the position is fixed.</p>
+<h2>Summary</h2>
+<p>To replace by position, use REPLACE.</p>
 <a class="cta" href="/en/substitute-formula-builder.html">Use "Build a SUBSTITUTE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/en/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a>: Build text extraction formulas.</li><li><a href="/en/text-to-columns.html">Split Text into Columns by a Delimiter</a>: Split text into columns by a delimiter.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

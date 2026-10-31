@@ -201,14 +201,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>주말과 기한 지난 날짜</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>WEEKEND 또는 EXPIRED 선택</li><li>열 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/cond-format-formula-builder.html">조건부 서식 수식 만들기</a>에서는 주말과 오늘 이전 날짜를 색칠할 수 있습니다.</p>
+<p lang="en">Fade weekend rows, redden overdue rows. These are formulas for date-based coloring. "WEEKEND" and "EXPIRED" in <a href="/ko/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a> build them.</p>
 <h2>순서</h2>
 <ol>
-<li>WEEKEND 또는 EXPIRED 선택</li>
-<li>열 입력</li>
-<li>복사</li>
+<li lang="en">Choose "WEEKEND" or "EXPIRED" in "Type".</li>
+<li lang="en">Enter the "Column to look at" (the date column) and "First row of the range".</li>
+<li lang="en">Copy the formula and paste it into the formatting range.</li>
 </ol>
-<div class="note">셀에 실제 날짜가 들어 있어야 합니다.</div>
+<div class="note" lang="en">The date column must hold real dates (serial values). Text dates can't be judged.</div>
+<h2>예</h2>
+<p lang="en">A formula coloring Saturday and Sunday dates:</p>
+<ul>
+<li lang="en">=WEEKDAY($B2,2)&gt;5</li>
+</ul>
+<p lang="en">WEEKDAY's 2 numbers Monday as 1, so 6 is Saturday and 7 is Sunday.</p>
+<p lang="en">A formula coloring dates earlier than today:</p>
+<ul>
+<li lang="en">=$B2</li>
+</ul>
+<h2 lang="en">Coloring only overdue</h2>
+<p lang="en">Add a condition so empty cells aren't judged overdue.</p>
+<ul>
+<li lang="en">Example: =AND($B2&lt;&gt;"",$B2</li>
+</ul>
+<h2 lang="en">Highlighting today's row</h2>
+<ul>
+<li lang="en">Example: =$B2=TODAY()</li>
+</ul>
+<h2 lang="en">Due within a week</h2>
+<ul>
+<li lang="en">Example: =AND($B2&gt;=TODAY(),$B2&lt;=TODAY()+7)</li>
+</ul>
+<h2 lang="en">Holidays are a different method</h2>
+<p lang="en">Prepare a holiday list separately and judge with COUNTIF.</p>
+<ul>
+<li lang="en">Example: =COUNTIF(holiday range,$B2)&gt;0</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Weekend coloring in a schedule table</li>
+<li lang="en">Red for overdue tasks</li>
+<li lang="en">Emphasizing this week's plans</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted weekends grayed out in a schedule table. Pasting the WEEKEND formula over whole rows grayed only weekend rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Text dates</b>: no color appears. Convert to date values.</li>
+<li lang="en"><b>TODAY changes daily</b>: the judgment refreshes each time you open the file.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I don't want completed tasks flagged overdue</h3>
+<p lang="en">Add another column's "Done" to the condition.</p>
+<ul>
+<li lang="en">Example: =AND($B2<today(),$c2<>"Done")</today(),$c2<></li>
+</ul>
+<h2>요약</h2>
+<p lang="en">For date-based coloring, use WEEKDAY and TODAY.</p>
 <a class="cta" href="/ko/cond-format-formula-builder.html">“조건부 서식 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li><li><a href="/ko/networkdays-formula-builder.html">NETWORKDAYS 수식 만들기</a>: 영업일 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

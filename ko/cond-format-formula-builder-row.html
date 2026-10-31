@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>행 전체 색칠</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>ROWMATCH 선택</li><li>열과 값 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/cond-format-formula-builder.html">조건부 서식 수식 만들기</a>에서는 어떤 열이 값과 일치하는 행 전체를 색칠하는 수식을 만들 수 있습니다.</p>
+<p lang="en">Gray out "Done" rows, redden "Urgent" rows. This is the formula for coloring whole rows rather than one cell. "ROWMATCH", "OVER" and "BLANK" in <a href="/ko/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a> build it.</p>
 <h2>순서</h2>
 <ol>
-<li>ROWMATCH 선택</li>
-<li>열과 값 입력</li>
-<li>복사</li>
+<li lang="en">Choose a "Type" (ROWMATCH, OVER, BLANK).</li>
+<li lang="en">Enter the "Column to look at" and "First row of the range".</li>
+<li lang="en">For ROWMATCH or OVER, enter the "Value to compare".</li>
+<li lang="en">Copy the formula.</li>
+<li lang="en">Set the formatting range to whole rows (such as A2:F100) and paste.</li>
 </ol>
-<div class="note">열 앞의 $는 행이 움직여도 열을 고정합니다.</div>
+<div class="note" lang="en">The trick to coloring whole rows: select a wide range horizontally and put $ only on the formula's column.</div>
+<h2>예</h2>
+<p lang="en">Color rows where column B is "Done":</p>
+<ul>
+<li lang="en">=$B2="Done"</li>
+</ul>
+<p lang="en">Color rows where column C is over 100:</p>
+<ul>
+<li lang="en">=$C2&gt;100</li>
+</ul>
+<p lang="en">Color rows where column D is empty:</p>
+<ul>
+<li lang="en">=$D2=""</li>
+</ul>
+<h2 lang="en">Choosing the range</h2>
+<p lang="en">The formula is written relative to the range's top-left cell. For a range starting at A2, use row 2 as the base. If the range starts at A1, rebuild with row 1.</p>
+<h2 lang="en">Multiple conditions</h2>
+<p lang="en">Add multiple conditions as separate rules. Upper rules take priority.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Completed rows in a task table</li>
+<li lang="en">Rows where sales beat the target</li>
+<li lang="en">Rows with empty required fields</li>
+</ul>
+<h2 lang="en">Using colors</h2>
+<ul>
+<li lang="en">Done: gray</li>
+<li lang="en">Needs checking: yellow</li>
+<li lang="en">Urgent: red</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted rows with "Done" in the status column grayed out. Pasting the ROWMATCH formula over whole-row range grayed only completed rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Only one cell gets color</b>: the range is a single column.</li>
+<li lang="en"><b>Text matching</b>: full-width/half-width or spaces prevent matches.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want rows containing certain text</h3>
+<p lang="en">Use SEARCH or FIND. This type is exact match only.</p>
+<h2>요약</h2>
+<p lang="en">To color whole rows: wide range, $ on the column.</p>
 <a class="cta" href="/ko/cond-format-formula-builder.html">“조건부 서식 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li><li><a href="/ko/networkdays-formula-builder.html">NETWORKDAYS 수식 만들기</a>: 영업일 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

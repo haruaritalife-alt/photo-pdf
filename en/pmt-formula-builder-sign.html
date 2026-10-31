@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Why the Sign Is Negative</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose PMT</li><li>See the formula</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/pmt-formula-builder.html">PMT Builder</a> a minus sign is placed in front so the payment comes out positive.</p>
+<p>PMT's result comes out negative. The sign means "money going out". The formula in <a href="/en/pmt-formula-builder.html">Build a PMT Formula</a> puts a "-" in front so it shows as positive.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose PMT</li>
-<li>See the formula</li>
-<li>Copy it</li>
+<li>Enter the amount, annual rate and term.</li>
+<li>Choose "PMT" in "Type".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">PMT returns payments as negative numbers.</div>
+<div class="note">The leading "-" in the formula flips the result's sign. Don't delete it.</div>
+<h2>Example</h2>
+<ul>
+<li>=-PMT(1.5%/12,10*12,3000000): about 26,900 (positive)</li>
+<li>=PMT(1.5%/12,10*12,3000000): about -26,900 (negative)</li>
+</ul>
+<h2>Why negative</h2>
+<p>Excel's financial functions sign by the direction of money flow.</p>
+<ul>
+<li>Money coming in: positive (the amount borrowed)</li>
+<li>Money going out: negative (repayment)</li>
+</ul>
+<p>Pass the loan amount as positive and the payment returns negative.</p>
+<h2>To see it positive</h2>
+<ul>
+<li>Put "-" in front (the tool's formula)</li>
+<li>Wrap in ABS: =ABS(PMT(…))</li>
+</ul>
+<p>Either gives a positive value.</p>
+<h2>Passing the loan as negative</h2>
+<p>Passing the loan as negative makes the result positive. But the logic gets harder to follow, so the tool adjusts with the leading "-".</p>
+<h2>Good for</h2>
+<ul>
+<li>Listing payments as positive numbers</li>
+<li>Using the payment in other calculations</li>
+<li>Displaying clearly in reports</li>
+</ul>
+<h2>Example</h2>
+<p>PMT's result came out negative and confused me. I learned the sign means money going out, and the leading "-" let me see it positive.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Deleting the leading "-"</b>: the result returns to negative.</li>
+<li><b>FV's sign</b>: the contribution is passed as negative so the future amount comes back positive.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does total interest also come out positive?</h3>
+<p>The tool's TOTALINT formula comes out positive.</p>
+<h2>Summary</h2>
+<p>Negative means money going out. The leading "-" makes it positive.</p>
 <a class="cta" href="/en/pmt-formula-builder.html">Use "Build a PMT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/en/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/en/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a>: Build SUMPRODUCT formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -215,14 +215,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>اگر کام نہ کرے تو کیا کریں</h1>
 <p class="meta">شائع شدہ: 19 اکتوبر 2026 | اپ ڈیٹ: 19 اکتوبر 2026 | <a href="/about.html">تعارف (جاپانی)</a></p>
 <div class="points"><b>اہم نکات</b><ul><li>فائل جانچیں</li><li>سائز جانچیں</li><li>دوسری ڈیوائس آزمائیں</li></ul></div>
-<p>اگر <a href="/ur/substitute-formula-builder.html">متبادل فارمولا بنانے والا</a> کام نہ کرے تو درج ذیل چیزیں دیکھیں۔</p>
-<h2>مراحل</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/ur/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the text cell isn't in the "A2" form; the text to find is empty; the occurrence isn't an integer of 1 or more; the start position isn't an integer of 1 or more; the length isn't an integer.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Nothing is replaced</b>: the text to find differs in full-width/half-width or case.</li>
+<li lang="en"><b>Leading 0 disappears</b>: the result was made a number. Keep it as text.</li>
+<li lang="en"><b>Numbers are treated as text</b>: SUBSTITUTE's result is text. Convert with VALUE.</li>
+<li lang="en"><b>Text just appended at the end</b>: when REPLACE's start position exceeds the length, it is added at the end.</li>
+<li lang="en"><b>Invisible characters remain</b>: line breaks or special spaces. Remove with CHAR or CLEAN.</li>
+<li lang="en"><b>Only some are not replaced</b>: similar-looking different characters are mixed in.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>فائل جانچیں</li>
-<li>سائز جانچیں</li>
-<li>دوسری ڈیوائس آزمائیں</li>
+<li lang="en">Paste an actual cell's text into the sample text and view the result.</li>
+<li lang="en">Copy the text to find from the cell and paste it.</li>
+<li lang="en">Count characters with LEN to find invisible ones.</li>
 </ol>
-<div class="note">اگر فارمولا ظاہر نہ ہو تو دیکھیں کہ سیل A2 جیسا لکھا ہے اور تلاش کا متن درج ہے۔</div>
+<div class="note" lang="en">Even if they look alike, a full-width hyphen "－", a half-width "-" and the long vowel mark "ー" are different characters. Copying the text to find from the cell is the safe way.</div>
+<h2 lang="en">Examples of look-alikes</h2>
+<ul>
+<li lang="en">Hyphens: "-" "－" "−" "‐" "ー"</li>
+<li lang="en">Spaces: half-width space, full-width space, line break</li>
+<li lang="en">Tildes: "~" "～"</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">A hyphen-removal formula didn't work on some cells. Long hyphens were mixed in. Copying the cell's character as the text to find removed them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>SUBSTITUTE is case-sensitive</b>: for case-insensitive use UPPER or similar.</li>
+<li lang="en"><b>No wildcards</b>: * and ? are treated as literal characters.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to replace several characters at once</h3>
+<p lang="en">Nest SUBSTITUTEs, or use REGEXREPLACE (Google Sheets).</p>
+<h2>خلاصہ</h2>
+<p lang="en">Check look-alike characters, invisible characters and types.</p>
 <a class="cta" href="/ur/substitute-formula-builder.html">«SUBSTITUTE فارمولا بنائیں» استعمال کریں (مفت)</a>
 <h2>وہ ٹولز جو اس کے ساتھ اچھے لگتے ہیں</h2><ul><li><a href="/ur/excel-text-clean.html">ایکسل کے متن سے فالتو اسپیس اور نظر نہ آنے والے حروف ہٹانا</a>: فالتو اسپیس اور نظر نہ آنے والے حروف ہٹائیں۔</li><li><a href="/ur/excel-left-mid-builder.html">LEFT، MID یا RIGHT فارمولا بنائیں</a>: متن نکالنے کے فارمولے بنائیں۔</li><li><a href="/ur/text-to-columns.html">ڈیلیمیٹر سے ٹیکسٹ کو کالموں میں تقسیم کریں</a>: ڈیلیمیٹر سے ٹیکسٹ کو کالموں میں تقسیم کریں۔</li></ul>
 <div class="tip"><p>اگر یہ گائیڈ مفید رہی تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ٹپ بھیجیں (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">تحفہ بھیجیں (ایمیزون وش لسٹ)</a></div>

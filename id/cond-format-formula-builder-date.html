@@ -201,14 +201,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Akhir pekan dan tanggal kedaluwarsa</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Pilih WEEKEND atau EXPIRED</li><li>Isi kolom</li><li>Salin</li></ul></div>
-<p>Di <a href="/id/cond-format-formula-builder.html">Pembuat format bersyarat</a> Anda bisa mewarnai akhir pekan dan tanggal sebelum hari ini.</p>
+<p lang="en">Fade weekend rows, redden overdue rows. These are formulas for date-based coloring. "WEEKEND" and "EXPIRED" in <a href="/id/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a> build them.</p>
 <h2>Langkah-langkah</h2>
 <ol>
-<li>Pilih WEEKEND atau EXPIRED</li>
-<li>Isi kolom</li>
-<li>Salin</li>
+<li lang="en">Choose "WEEKEND" or "EXPIRED" in "Type".</li>
+<li lang="en">Enter the "Column to look at" (the date column) and "First row of the range".</li>
+<li lang="en">Copy the formula and paste it into the formatting range.</li>
 </ol>
-<div class="note">Sel harus berisi tanggal yang sebenarnya.</div>
+<div class="note" lang="en">The date column must hold real dates (serial values). Text dates can't be judged.</div>
+<h2>Contoh</h2>
+<p lang="en">A formula coloring Saturday and Sunday dates:</p>
+<ul>
+<li lang="en">=WEEKDAY($B2,2)&gt;5</li>
+</ul>
+<p lang="en">WEEKDAY's 2 numbers Monday as 1, so 6 is Saturday and 7 is Sunday.</p>
+<p lang="en">A formula coloring dates earlier than today:</p>
+<ul>
+<li lang="en">=$B2</li>
+</ul>
+<h2 lang="en">Coloring only overdue</h2>
+<p lang="en">Add a condition so empty cells aren't judged overdue.</p>
+<ul>
+<li lang="en">Example: =AND($B2&lt;&gt;"",$B2</li>
+</ul>
+<h2 lang="en">Highlighting today's row</h2>
+<ul>
+<li lang="en">Example: =$B2=TODAY()</li>
+</ul>
+<h2 lang="en">Due within a week</h2>
+<ul>
+<li lang="en">Example: =AND($B2&gt;=TODAY(),$B2&lt;=TODAY()+7)</li>
+</ul>
+<h2 lang="en">Holidays are a different method</h2>
+<p lang="en">Prepare a holiday list separately and judge with COUNTIF.</p>
+<ul>
+<li lang="en">Example: =COUNTIF(holiday range,$B2)&gt;0</li>
+</ul>
+<h2>Cocok untuk</h2>
+<ul>
+<li lang="en">Weekend coloring in a schedule table</li>
+<li lang="en">Red for overdue tasks</li>
+<li lang="en">Emphasizing this week's plans</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">Wanted weekends grayed out in a schedule table. Pasting the WEEKEND formula over whole rows grayed only weekend rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Text dates</b>: no color appears. Convert to date values.</li>
+<li lang="en"><b>TODAY changes daily</b>: the judgment refreshes each time you open the file.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I don't want completed tasks flagged overdue</h3>
+<p lang="en">Add another column's "Done" to the condition.</p>
+<ul>
+<li lang="en">Example: =AND($B2<today(),$c2<>"Done")</today(),$c2<></li>
+</ul>
+<h2>Ringkasan</h2>
+<p lang="en">For date-based coloring, use WEEKDAY and TODAY.</p>
 <a class="cta" href="/id/cond-format-formula-builder.html">Gunakan “Buat Rumus Format Bersyarat” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/excel-if-builder.html">Buat rumus IF</a>: Buat rumus IF.</li><li><a href="/id/sumif-formula-builder.html">Buat rumus SUMIF atau COUNTIF</a>: Buat rumus SUMIF dan COUNTIF.</li><li><a href="/id/networkdays-formula-builder.html">Buat Rumus NETWORKDAYS</a>: Buat rumus hari kerja.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>

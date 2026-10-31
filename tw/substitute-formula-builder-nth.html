@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>只替換第 N 個</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>選擇 SUBSTITUTE-N</li><li>輸入人數</li><li>核對一下</li></ul></div>
-<p>在<a href="/tw/substitute-formula-builder.html">替換公式生成器</a>中,可以只替換多個相同字元中的第 N 個。</p>
+<p lang="en">Among repeated characters, you want to change only "the second hyphen" to something else. "SUBSTITUTE-N" in <a href="/tw/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> builds it.</p>
 <h2>步驟</h2>
 <ol>
-<li>選擇 SUBSTITUTE-N</li>
-<li>輸入人數</li>
-<li>核對一下</li>
+<li lang="en">Choose "SUBSTITUTE-N" in "Method".</li>
+<li lang="en">Enter the "Text cell", "Text to find" and "Replacement text".</li>
+<li lang="en">Enter a number in "Which occurrence".</li>
+<li lang="en">Check the result with a "Sample text".</li>
 </ol>
-<div class="note">可以用示例文字檢查結果。</div>
+<div class="note" lang="en">"Which occurrence" is an integer of 1 or more. If there are fewer occurrences, nothing is replaced.</div>
+<h2>示例</h2>
+<p lang="en">A formula changing A2's second hyphen to a slash:</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,"-","/",2)</li>
+</ul>
+<p lang="en">"2026-11-01" becomes "2026-11/01".</p>
+<h2 lang="en">Difference from replacing all</h2>
+<ul>
+<li lang="en">Without the 4th argument: replaces all</li>
+<li lang="en">With the 4th argument: replaces only that Nth</li>
+</ul>
+<h2 lang="en">Only the last one</h2>
+<p lang="en">Replacing just the last is a bit complex. Count the occurrences and use that number.</p>
+<ul>
+<li lang="en">Example: =SUBSTITUTE(A2,"-","/",LEN(A2)-LEN(SUBSTITUTE(A2,"-","")))</li>
+</ul>
+<h2>適合</h2>
+<ul>
+<li lang="en">Changing only some date separators</li>
+<li lang="en">Replacing a specific separator in a file path</li>
+<li lang="en">Inserting a line break at the second delimiter</li>
+</ul>
+<h2 lang="en">Inserting a line break at a delimiter</h2>
+<ul>
+<li lang="en">Example: =SUBSTITUTE(A2,",",CHAR(10),2)</li>
+</ul>
+<p lang="en">The second comma becomes a line break.</p>
+<h2>示例</h2>
+<p lang="en">In text like "Tokyo-Minato-Akasaka", I wanted only the second hyphen turned into another symbol. Entering 2 for the occurrence changed only that one.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entering 0 or a decimal</b>: errors. Use an integer of 1 or more.</li>
+<li lang="en"><b>Not enough occurrences</b>: no replacement; the text stays as is.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to replace only the first</h3>
+<p lang="en">Enter 1 for the occurrence.</p>
+<h2>小結</h2>
+<p lang="en">For only the Nth, use SUBSTITUTE's 4th argument.</p>
 <a class="cta" href="/tw/substitute-formula-builder.html">使用「生成 SUBSTITUTE 公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/excel-text-clean.html">去掉 Excel 文字中多餘的空格和看不見的字元</a>: 去掉多餘的空格和看不見的字元。</li><li><a href="/tw/excel-left-mid-builder.html">生成 LEFT、MID 或 RIGHT 公式</a>: 生成取出文字的公式。</li><li><a href="/tw/text-to-columns.html">按分隔符把文字拆成多列</a>: 按分隔符把文字拆成多列。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

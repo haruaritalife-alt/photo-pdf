@@ -200,14 +200,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/pmt-formula-builder.html">PMT式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を貼ったのに、結果がおかしい。<a href="/pmt-formula-builder.html">ローン返済額の式を作る</a> で起こりやすい困りごとと対処法です。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：金額・年利・期間が、数字でない。金額か期間が0。マイナスの数を入れた。</li>
+</ul>
+<h2>スプレッドシートに貼ったあと</h2>
+<ul>
+<li><b>結果が大きすぎる・小さすぎる</b>：年利を0.015のように入れた。1.5のように、%の数字で入れる。</li>
+<li><b>結果がマイナス</b>：先頭の「-」を消した。</li>
+<li><b>#NUM!</b>：期間や金利に、あり得ない値が入っている。</li>
+<li><b>#VALUE!</b>：金額のセルが、文字になっている。</li>
+<li><b>実際の返済額と合わない</b>：手数料、ボーナス払い、変動金利が含まれない。</li>
+<li><b>最初の回の利息が、小さい</b>：2つ目の式は、最初の1回だけの利息。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>年利の入れ方（%の数字）を確かめる。</li>
+<li>期間が年数か、確かめる。</li>
+<li>支払い回数が、返済の条件に合っているか確かめる。</li>
 </ol>
-<div class="note">式が出ないときは、金額・年利・期間が数字になっているか確かめます。</div>
+<div class="note">金融機関の返済シミュレーションと、少し違う結果になることがあります。端数の処理や、返済日の違いが原因です。ツールの値は、目安として使います。</div>
+<h2>最初の回の利息</h2>
+<p>2つ目の式は、IPMTで、最初の1回の利息を出します。</p>
+<ul>
+<li>例：=-IPMT(1.5%/12,1,10*12,3000000)</li>
+</ul>
+<p>3,000,000円の月利0.125%に当たる、約3,750円になります。</p>
+<h2>例</h2>
+<p>銀行の見積もりと、数百円違った。端数の処理や、日割りの違いが原因だった。ツールの値は、目安として使い、正確な金額は、金融機関の資料で確かめた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>ボーナス併用払い</b>：別の計算が必要。</li>
+<li><b>元金均等返済</b>：PMTでは計算できない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>金利が途中で変わる場合は？</h3>
+<p>期間を分けて、それぞれ計算する必要があります。このツールでは、一定の金利のみです。</p>
+<h2>まとめ</h2>
+<p>年利の入れ方、期間の単位、符号。この3つを確かめましょう。</p>
 <a class="cta" href="/pmt-formula-builder.html">ローン返済額の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/percent-calculator.html">割合・割引・増減（%）を計算する</a>：割合・割引・増減の%を、すぐに計算します。</li><li><a href="/rank-formula-builder.html">順位の式を作る</a>：順位の式を作ります。</li><li><a href="/sumproduct-formula-builder.html">SUMPRODUCTの式を作る</a>：SUMPRODUCTの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +250,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/pmt-formula-builder.html">PMT Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted the formula but the result is odd. Here are common troubles with <a href="/pmt-formula-builder.html">Build a PMT Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: amount, rate or term isn't a number; the amount or term is 0; a negative number was entered.</li>
+</ul>
+<h2>After pasting into the sheet</h2>
+<ul>
+<li><b>Result far too large or small</b>: the rate was entered like 0.015. Enter it in percent, like 1.5.</li>
+<li><b>Result is negative</b>: the leading "-" was deleted.</li>
+<li><b>#NUM!</b>: impossible values in term or rate.</li>
+<li><b>#VALUE!</b>: the amount cell is text.</li>
+<li><b>Doesn't match actual payments</b>: fees, bonus payments and variable rates aren't included.</li>
+<li><b>First-period interest looks small</b>: the second formula is the interest for just the first payment.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check how the rate is entered (in percent).</li>
+<li>Check the term is in years.</li>
+<li>Check the payments per year match the repayment terms.</li>
 </ol>
-<div class="note">If no formula appears, check that the amount, rate and term are numbers.</div>
+<div class="note">Results may differ slightly from a lender's simulation, because of rounding and payment-date differences. Use the tool's values as a guide.</div>
+<h2>First-period interest</h2>
+<p>The second formula gives the first payment's interest with IPMT.</p>
+<ul>
+<li>Example: =-IPMT(1.5%/12,1,10*12,3000000)</li>
+</ul>
+<p>That's about 3,750 yen, from a 0.125% monthly rate on 3,000,000.</p>
+<h2>Example</h2>
+<p>It differed from the bank's quote by a few hundred yen, due to rounding and daily proration. I used the tool as a guide and confirmed exact amounts in the lender's documents.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Bonus-combined payments</b>: need a separate calculation.</li>
+<li><b>Equal-principal repayment</b>: PMT can't compute it.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if the rate changes partway?</h3>
+<p>You'd need to split the term and calculate each part. This tool handles a constant rate only.</p>
+<h2>Summary</h2>
+<p>Check how the rate is entered, the term's unit and the sign.</p>
 <a class="cta" href="/pmt-formula-builder.html">Use "Build a PMT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a>: Build SUMPRODUCT formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

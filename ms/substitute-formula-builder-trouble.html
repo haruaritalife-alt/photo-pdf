@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Apa yang Perlu Dilakukan Jika Tidak Berfungsi</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Dikemas kini: 19 Okt 2026 | <a href="/about.html">Perihal (Jepun)</a></p>
 <div class="points"><b>Perkara penting</b><ul><li>Semak fail</li><li>Semak saiz</li><li>Cuba peranti lain</li></ul></div>
-<p>Jika <a href="/ms/substitute-formula-builder.html">Pembina Gantian</a> tidak berfungsi, semak perkara berikut.</p>
-<h2>Langkah</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/ms/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the text cell isn't in the "A2" form; the text to find is empty; the occurrence isn't an integer of 1 or more; the start position isn't an integer of 1 or more; the length isn't an integer.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Nothing is replaced</b>: the text to find differs in full-width/half-width or case.</li>
+<li lang="en"><b>Leading 0 disappears</b>: the result was made a number. Keep it as text.</li>
+<li lang="en"><b>Numbers are treated as text</b>: SUBSTITUTE's result is text. Convert with VALUE.</li>
+<li lang="en"><b>Text just appended at the end</b>: when REPLACE's start position exceeds the length, it is added at the end.</li>
+<li lang="en"><b>Invisible characters remain</b>: line breaks or special spaces. Remove with CHAR or CLEAN.</li>
+<li lang="en"><b>Only some are not replaced</b>: similar-looking different characters are mixed in.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Semak fail</li>
-<li>Semak saiz</li>
-<li>Cuba peranti lain</li>
+<li lang="en">Paste an actual cell's text into the sample text and view the result.</li>
+<li lang="en">Copy the text to find from the cell and paste it.</li>
+<li lang="en">Count characters with LEN to find invisible ones.</li>
 </ol>
-<div class="note">Jika tiada formula muncul, semak sel ditulis seperti A2 dan teks untuk dicari telah dimasukkan.</div>
+<div class="note" lang="en">Even if they look alike, a full-width hyphen "－", a half-width "-" and the long vowel mark "ー" are different characters. Copying the text to find from the cell is the safe way.</div>
+<h2 lang="en">Examples of look-alikes</h2>
+<ul>
+<li lang="en">Hyphens: "-" "－" "−" "‐" "ー"</li>
+<li lang="en">Spaces: half-width space, full-width space, line break</li>
+<li lang="en">Tildes: "~" "～"</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">A hyphen-removal formula didn't work on some cells. Long hyphens were mixed in. Copying the cell's character as the text to find removed them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>SUBSTITUTE is case-sensitive</b>: for case-insensitive use UPPER or similar.</li>
+<li lang="en"><b>No wildcards</b>: * and ? are treated as literal characters.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to replace several characters at once</h3>
+<p lang="en">Nest SUBSTITUTEs, or use REGEXREPLACE (Google Sheets).</p>
+<h2>Ringkasan</h2>
+<p lang="en">Check look-alike characters, invisible characters and types.</p>
 <a class="cta" href="/ms/substitute-formula-builder.html">Guna “Bina Formula SUBSTITUTE” (percuma)</a>
 <h2>Alat yang sepadan dengan ini</h2><ul><li><a href="/ms/excel-text-clean.html">Membuang ruang berlebihan dan aksara tidak kelihatan daripada teks Excel</a>: Buang ruang berlebihan dan aksara tidak kelihatan.</li><li><a href="/ms/excel-left-mid-builder.html">Bina formula LEFT, MID atau RIGHT</a>: Bina formula untuk mengambil teks.</li><li><a href="/ms/text-to-columns.html">Bahagikan Teks kepada Lajur dengan Pembatas</a>: Bahagikan teks kepada lajur dengan pembatas.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil amat dihargai.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Hantar tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hantar hadiah (senarai hajat Amazon)</a></div>

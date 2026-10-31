@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>শুধু N-তমটি বদলানো</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>SUBSTITUTE-N বেছে নিন</li><li>সংখ্যা লিখুন</li><li>এটি যাচাই করুন</li></ul></div>
-<p><a href="/bn/substitute-formula-builder.html">প্রতিস্থাপন সূত্র নির্মাতা</a>-তে একই রকম কয়েকটি অক্ষরের মধ্যে শুধু N-তমটি বদলাতে পারেন।</p>
+<p lang="en">Among repeated characters, you want to change only "the second hyphen" to something else. "SUBSTITUTE-N" in <a href="/bn/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> builds it.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>SUBSTITUTE-N বেছে নিন</li>
-<li>সংখ্যা লিখুন</li>
-<li>এটি যাচাই করুন</li>
+<li lang="en">Choose "SUBSTITUTE-N" in "Method".</li>
+<li lang="en">Enter the "Text cell", "Text to find" and "Replacement text".</li>
+<li lang="en">Enter a number in "Which occurrence".</li>
+<li lang="en">Check the result with a "Sample text".</li>
 </ol>
-<div class="note">নমুনা টেক্সট দিয়ে ফলাফল যাচাই করতে পারেন।</div>
+<div class="note" lang="en">"Which occurrence" is an integer of 1 or more. If there are fewer occurrences, nothing is replaced.</div>
+<h2>উদাহরণ</h2>
+<p lang="en">A formula changing A2's second hyphen to a slash:</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,"-","/",2)</li>
+</ul>
+<p lang="en">"2026-11-01" becomes "2026-11/01".</p>
+<h2 lang="en">Difference from replacing all</h2>
+<ul>
+<li lang="en">Without the 4th argument: replaces all</li>
+<li lang="en">With the 4th argument: replaces only that Nth</li>
+</ul>
+<h2 lang="en">Only the last one</h2>
+<p lang="en">Replacing just the last is a bit complex. Count the occurrences and use that number.</p>
+<ul>
+<li lang="en">Example: =SUBSTITUTE(A2,"-","/",LEN(A2)-LEN(SUBSTITUTE(A2,"-","")))</li>
+</ul>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Changing only some date separators</li>
+<li lang="en">Replacing a specific separator in a file path</li>
+<li lang="en">Inserting a line break at the second delimiter</li>
+</ul>
+<h2 lang="en">Inserting a line break at a delimiter</h2>
+<ul>
+<li lang="en">Example: =SUBSTITUTE(A2,",",CHAR(10),2)</li>
+</ul>
+<p lang="en">The second comma becomes a line break.</p>
+<h2>উদাহরণ</h2>
+<p lang="en">In text like "Tokyo-Minato-Akasaka", I wanted only the second hyphen turned into another symbol. Entering 2 for the occurrence changed only that one.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entering 0 or a decimal</b>: errors. Use an integer of 1 or more.</li>
+<li lang="en"><b>Not enough occurrences</b>: no replacement; the text stays as is.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to replace only the first</h3>
+<p lang="en">Enter 1 for the occurrence.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">For only the Nth, use SUBSTITUTE's 4th argument.</p>
 <a class="cta" href="/bn/substitute-formula-builder.html">“SUBSTITUTE সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/excel-text-clean.html">এক্সেলের লেখা থেকে বাড়তি স্পেস ও অদৃশ্য অক্ষর সরানো</a>: বাড়তি স্পেস ও অদৃশ্য অক্ষর সরান।</li><li><a href="/bn/excel-left-mid-builder.html">LEFT, MID বা RIGHT সূত্র তৈরি করুন</a>: লেখা বের করার সূত্র তৈরি করুন।</li><li><a href="/bn/text-to-columns.html">বিভাজক দিয়ে টেক্সট কলামে ভাগ করুন</a>: বিভাজক দিয়ে টেক্সট কলামে ভাগ করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>
