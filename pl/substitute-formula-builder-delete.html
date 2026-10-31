@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Usuwanie tekstu</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Wybierz DELETE</li><li>Wpisz tekst</li><li>Skopiuj</li></ul></div>
-<p>W <a href="/pl/substitute-formula-builder.html">Kreator zamiany</a> możesz utworzyć formułę usuwającą znaki, takie jak myślniki.</p>
+<p lang="en">Hyphens, spaces, commas, yen signs. These are formulas to remove unwanted symbols from numbers or text. "DELETE" in <a href="/pl/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> builds it.</p>
 <h2>Kroki</h2>
 <ol>
-<li>Wybierz DELETE</li>
-<li>Wpisz tekst</li>
-<li>Skopiuj</li>
+<li lang="en">Choose "DELETE" in "Method".</li>
+<li lang="en">Enter the "Text cell" and "Text to find".</li>
+<li lang="en">Enter a "Sample text" and check the result.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">To zamiana na pusty tekst.</div>
+<div class="note" lang="en">"Replacement text" isn't used by DELETE. The found text is always removed.</div>
+<h2>Przykład</h2>
+<p lang="en">Remove hyphens:</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,"-","")</li>
+</ul>
+<p lang="en">Remove commas:</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,",","")</li>
+</ul>
+<p lang="en">Remove "円":</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,"円","")</li>
+</ul>
+<h2 lang="en">Removing several characters</h2>
+<p lang="en">Nest SUBSTITUTEs.</p>
+<ul>
+<li lang="en">Example: =SUBSTITUTE(SUBSTITUTE(A2,"-","")," ","")</li>
+</ul>
+<p lang="en">It removes both hyphens and half-width spaces.</p>
+<h2 lang="en">The type after removal</h2>
+<p lang="en">The result is text. To use it as a number, wrap it in VALUE.</p>
+<ul>
+<li lang="en">Example: =VALUE(SUBSTITUTE(A2,",",""))</li>
+</ul>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">Removing hyphens from phone and postal numbers</li>
+<li lang="en">Stripping "," or "円" from amounts to make numbers</li>
+<li lang="en">Removing stray spaces</li>
+</ul>
+<h2 lang="en">Removing full-width spaces</h2>
+<ul>
+<li lang="en">Example: =SUBSTITUTE(A2," ","")</li>
+</ul>
+<p lang="en">Half-width TRIM doesn't remove full-width spaces.</p>
+<h2>Przykład</h2>
+<p lang="en">Wanted all hyphens removed from a phone-number column. A sample "03-1234-5678" showed "0312345678". I copied the formula and pasted down the column.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leading 0 disappears</b>: converting to a number drops it. Keep it as text.</li>
+<li lang="en"><b>Invisible spaces remain</b>: line breaks and special spaces need another method.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to remove only spaces in the middle</h3>
+<p lang="en">TRIM collapses runs of spaces into one. To remove them completely, use SUBSTITUTE.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">To remove text, replace it with empty via SUBSTITUTE.</p>
 <a class="cta" href="/pl/substitute-formula-builder.html">Użyj „Utwórz formułę SUBSTITUTE” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/excel-text-clean.html">Usuwanie zbędnych spacji i niewidocznych znaków z tekstu Excela</a>: Usuń zbędne spacje i niewidoczne znaki.</li><li><a href="/pl/excel-left-mid-builder.html">Utwórz formułę LEFT, MID lub RIGHT</a>: Twórz formuły do wyciągania tekstu.</li><li><a href="/pl/text-to-columns.html">Podziel tekst na kolumny według separatora</a>: Podziel tekst na kolumny według separatora.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

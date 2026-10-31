@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>条纹行</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>选择 EVENROW</li><li>复制公式</li><li>粘贴</li></ul></div>
-<p>在<a href="/zh/cond-format-formula-builder.html">条件格式公式生成器</a>中,ISEVEN 可以生成隔行上色的公式。</p>
+<p lang="en">In tables with many rows, coloring every other row makes it easier to follow across. That's the stripe formula. "EVENROW" in <a href="/zh/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a> builds it.</p>
 <h2>步骤</h2>
 <ol>
-<li>选择 EVENROW</li>
-<li>复制公式</li>
-<li>粘贴</li>
+<li lang="en">Choose "EVENROW" in "Type".</li>
+<li lang="en">The formula (=ISEVEN(ROW())) is shown.</li>
+<li lang="en">Copy the formula and paste it into the formatting range.</li>
 </ol>
-<div class="note">不需要列或行。</div>
+<div class="note" lang="en">This type needs no column or row input. Just select a range and paste.</div>
+<h2>示例</h2>
+<ul>
+<li lang="en">=ISEVEN(ROW())</li>
+</ul>
+<p lang="en">Even rows get colored. To color odd rows, change to ISODD.</p>
+<ul>
+<li lang="en">Example: =ISODD(ROW())</li>
+</ul>
+<h2 lang="en">Excluding the header</h2>
+<p lang="en">To exclude the header, start the formatting range at row 2. Stripe position is decided by row number, so ISEVEN colors row 2. To leave row 2 plain and color from row 3, change to ISODD.</p>
+<h2 lang="en">Every third row</h2>
+<ul>
+<li lang="en">Example: =MOD(ROW(),3)=0</li>
+</ul>
+<h2 lang="en">Skipping empty rows</h2>
+<p lang="en">A formula striping only rows with data:</p>
+<ul>
+<li lang="en">Example: =AND($A2&lt;&gt;"",ISEVEN(ROW()))</li>
+</ul>
+<h2>适合</h2>
+<ul>
+<li lang="en">Readability of a long list</li>
+<li lang="en">Telling rows apart in printed tables</li>
+<li lang="en">Guiding the eye along a list</li>
+</ul>
+<h2 lang="en">Difference from the "Table" feature</h2>
+<p lang="en">Excel's "Table" or Sheets' "alternating colors" can also stripe. With conditional formatting the stripes don't break when you sort.</p>
+<h2>示例</h2>
+<p lang="en">Wanted to keep stripes in a list that gets sorted repeatedly. With the EVENROW formula, stripes held after sorting.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>No color appears</b>: the formatting range isn't selected.</li>
+<li lang="en"><b>Text and background colors too close</b>: hard to read. Use a pale color.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Do stripes break when I insert rows?</h3>
+<p lang="en">They're decided by row number, so they realign automatically.</p>
+<h2>小结</h2>
+<p lang="en">Stripes: ISEVEN(ROW()).</p>
 <a class="cta" href="/zh/cond-format-formula-builder.html">使用“生成条件格式公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li><li><a href="/zh/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li><li><a href="/zh/networkdays-formula-builder.html">生成 NETWORKDAYS 公式</a>: 生成工作日公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

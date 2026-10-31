@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>टेक्स्ट हटाना</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>DELETE चुनें</li><li>टेक्स्ट दर्ज करें</li><li>कॉपी करें</li></ul></div>
-<p><a href="/hi/substitute-formula-builder.html">बदलने का सूत्र बनाने वाला टूल</a> में आप हाइफ़न जैसे अक्षर हटाने वाला सूत्र बना सकते हैं।</p>
+<p lang="en">Hyphens, spaces, commas, yen signs. These are formulas to remove unwanted symbols from numbers or text. "DELETE" in <a href="/hi/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> builds it.</p>
 <h2>चरण</h2>
 <ol>
-<li>DELETE चुनें</li>
-<li>टेक्स्ट दर्ज करें</li>
-<li>कॉपी करें</li>
+<li lang="en">Choose "DELETE" in "Method".</li>
+<li lang="en">Enter the "Text cell" and "Text to find".</li>
+<li lang="en">Enter a "Sample text" and check the result.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">यह खाली टेक्स्ट से बदलना है।</div>
+<div class="note" lang="en">"Replacement text" isn't used by DELETE. The found text is always removed.</div>
+<h2>उदाहरण</h2>
+<p lang="en">Remove hyphens:</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,"-","")</li>
+</ul>
+<p lang="en">Remove commas:</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,",","")</li>
+</ul>
+<p lang="en">Remove "円":</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,"円","")</li>
+</ul>
+<h2 lang="en">Removing several characters</h2>
+<p lang="en">Nest SUBSTITUTEs.</p>
+<ul>
+<li lang="en">Example: =SUBSTITUTE(SUBSTITUTE(A2,"-","")," ","")</li>
+</ul>
+<p lang="en">It removes both hyphens and half-width spaces.</p>
+<h2 lang="en">The type after removal</h2>
+<p lang="en">The result is text. To use it as a number, wrap it in VALUE.</p>
+<ul>
+<li lang="en">Example: =VALUE(SUBSTITUTE(A2,",",""))</li>
+</ul>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">Removing hyphens from phone and postal numbers</li>
+<li lang="en">Stripping "," or "円" from amounts to make numbers</li>
+<li lang="en">Removing stray spaces</li>
+</ul>
+<h2 lang="en">Removing full-width spaces</h2>
+<ul>
+<li lang="en">Example: =SUBSTITUTE(A2," ","")</li>
+</ul>
+<p lang="en">Half-width TRIM doesn't remove full-width spaces.</p>
+<h2>उदाहरण</h2>
+<p lang="en">Wanted all hyphens removed from a phone-number column. A sample "03-1234-5678" showed "0312345678". I copied the formula and pasted down the column.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leading 0 disappears</b>: converting to a number drops it. Keep it as text.</li>
+<li lang="en"><b>Invisible spaces remain</b>: line breaks and special spaces need another method.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to remove only spaces in the middle</h3>
+<p lang="en">TRIM collapses runs of spaces into one. To remove them completely, use SUBSTITUTE.</p>
+<h2>सारांश</h2>
+<p lang="en">To remove text, replace it with empty via SUBSTITUTE.</p>
 <a class="cta" href="/hi/substitute-formula-builder.html">“SUBSTITUTE सूत्र बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/excel-text-clean.html">एक्सेल पाठ से फ़ालतू स्पेस और अदृश्य वर्ण हटाना</a>: फ़ालतू स्पेस और अदृश्य वर्ण हटाएँ।</li><li><a href="/hi/excel-left-mid-builder.html">LEFT, MID या RIGHT सूत्र बनाएँ</a>: पाठ निकालने वाले सूत्र बनाएँ।</li><li><a href="/hi/text-to-columns.html">विभाजक से टेक्स्ट को कॉलमों में बाँटें</a>: विभाजक से टेक्स्ट को कॉलमों में बाँटें।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

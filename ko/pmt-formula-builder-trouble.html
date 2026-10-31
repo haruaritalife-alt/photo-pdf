@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/pmt-formula-builder.html">PMT 수식 만들기</a>가 작동하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/ko/pmt-formula-builder.html">Build a PMT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: amount, rate or term isn't a number; the amount or term is 0; a negative number was entered.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Result far too large or small</b>: the rate was entered like 0.015. Enter it in percent, like 1.5.</li>
+<li lang="en"><b>Result is negative</b>: the leading "-" was deleted.</li>
+<li lang="en"><b>#NUM!</b>: impossible values in term or rate.</li>
+<li lang="en"><b>#VALUE!</b>: the amount cell is text.</li>
+<li lang="en"><b>Doesn't match actual payments</b>: fees, bonus payments and variable rates aren't included.</li>
+<li lang="en"><b>First-period interest looks small</b>: the second formula is the interest for just the first payment.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Check how the rate is entered (in percent).</li>
+<li lang="en">Check the term is in years.</li>
+<li lang="en">Check the payments per year match the repayment terms.</li>
 </ol>
-<div class="note">수식이 나오지 않으면 금액, 이율, 기간이 숫자인지 확인하세요.</div>
+<div class="note" lang="en">Results may differ slightly from a lender's simulation, because of rounding and payment-date differences. Use the tool's values as a guide.</div>
+<h2 lang="en">First-period interest</h2>
+<p lang="en">The second formula gives the first payment's interest with IPMT.</p>
+<ul>
+<li lang="en">Example: =-IPMT(1.5%/12,1,10*12,3000000)</li>
+</ul>
+<p lang="en">That's about 3,750 yen, from a 0.125% monthly rate on 3,000,000.</p>
+<h2>예</h2>
+<p lang="en">It differed from the bank's quote by a few hundred yen, due to rounding and daily proration. I used the tool as a guide and confirmed exact amounts in the lender's documents.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Bonus-combined payments</b>: need a separate calculation.</li>
+<li lang="en"><b>Equal-principal repayment</b>: PMT can't compute it.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if the rate changes partway?</h3>
+<p lang="en">You'd need to split the term and calculate each part. This tool handles a constant rate only.</p>
+<h2>요약</h2>
+<p lang="en">Check how the rate is entered, the term's unit and the sign.</p>
 <a class="cta" href="/ko/pmt-formula-builder.html">“PMT 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/percent-calculator.html">퍼센트, 할인, 증감률 계산</a>: 퍼센트, 할인, 증감률을 바로 계산합니다.</li><li><a href="/ko/rank-formula-builder.html">순위 수식 만들기</a>: 순위 수식을 만듭니다.</li><li><a href="/ko/sumproduct-formula-builder.html">SUMPRODUCT 수식 만들기</a>: SUMPRODUCT 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

@@ -200,14 +200,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/cond-format-formula-builder.html">条件付き書式式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を貼ったのに、色が付かない。<a href="/cond-format-formula-builder.html">条件付き書式の式を作る</a> で起こりやすい困りごとと対処法です。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：列が英字（B）でない。行が数字でない。OVERで比べる値が数字でない。DUPLICATEで最後の行が数字でない。ROWMATCHで比べる値が空。</li>
+</ul>
+<h2>スプレッドシートに貼ったあと</h2>
+<ul>
+<li><b>色が付かない</b>：式の基準の行が、範囲の最初の行とずれている。</li>
+<li><b>1つのセルにだけ色が付く</b>：範囲が1列だけになっている。</li>
+<li><b>全部の行に色が付く</b>：式が、常にTRUEになっている。列の$が足りない。</li>
+<li><b>ずれた行に色が付く</b>：基準の行が、1行ずれている。</li>
+<li><b>日付で色が付かない</b>：文字の日付になっている。</li>
+<li><b>文字が一致しない</b>：全角と半角、空白の違い。</li>
+<li><b>古い設定が残る</b>：以前のルールが、上にある。優先順位を確かめる。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>範囲の左上のセルが、式の基準のセルか確かめる。</li>
+<li>式を、そのセルに=で入れて、TRUEかFALSEか確かめる。</li>
+<li>条件付き書式のルールの一覧で、順番と範囲を確かめる。</li>
 </ol>
-<div class="note">式が出ないときは、列がBのように、最初の行が2のような数字で入っているか確かめます。</div>
+<div class="note">式を、普通のセルに入れて試すと、TRUEかFALSEかが分かります。判定が正しいかを確かめる近道です。</div>
+<h2>$の付け方</h2>
+<ul>
+<li>$B2：列を固定、行は動く（行ごとの判定）</li>
+<li>B$2：行を固定、列は動く</li>
+<li>$B$2：すべて固定</li>
+</ul>
+<p>行ごとに色を付ける式は、$B2の形です。</p>
+<h2>例</h2>
+<p>式を貼っても、色が付かなかった。範囲がA1から始まっていて、式は2行目が基準だった。範囲をA2からにすると、色が付いた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>他のルールが優先</b>：上のルールの色が、勝つ。</li>
+<li><b>「ユーザー設定の式」を選び忘れる</b>：別の条件を選んでいる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>式の先頭の「=」は必要ですか？</h3>
+<p>必要です。ツールの式には付いています。</p>
+<h2>まとめ</h2>
+<p>基準の行、$の位置、ルールの順番。この3つを確かめましょう。</p>
 <a class="cta" href="/cond-format-formula-builder.html">条件付き書式の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/networkdays-formula-builder.html">営業日数の式を作る</a>：営業日数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +252,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/cond-format-formula-builder.html">Conditional Format Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted the formula but no color appears. Here are common troubles with <a href="/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the column isn't letters (B); the row isn't digits; OVER's compare value isn't a number; DUPLICATE's last row isn't a number; ROWMATCH's compare value is empty.</li>
+</ul>
+<h2>After pasting into the sheet</h2>
+<ul>
+<li><b>No color appears</b>: the formula's base row doesn't match the range's first row.</li>
+<li><b>Only one cell is colored</b>: the range is a single column.</li>
+<li><b>Every row is colored</b>: the formula is always TRUE; the column's $ is missing.</li>
+<li><b>A shifted row is colored</b>: the base row is off by one.</li>
+<li><b>No color for dates</b>: they are text dates.</li>
+<li><b>Text doesn't match</b>: full-width/half-width or spaces differ.</li>
+<li><b>Old settings remain</b>: an earlier rule sits above. Check priority.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the range's top-left cell is the formula's base cell.</li>
+<li>Put the formula in that cell with = and check TRUE or FALSE.</li>
+<li>In the conditional formatting rule list, check order and range.</li>
 </ol>
-<div class="note">If no formula appears, check that the column is like B and the first row is a number like 2.</div>
+<div class="note">Trying the formula in an ordinary cell shows TRUE or FALSE. It's a shortcut to checking the judgment.</div>
+<h2>Placing the $</h2>
+<ul>
+<li>$B2: column fixed, row moves (per-row judgment)</li>
+<li>B$2: row fixed, column moves</li>
+<li>$B$2: all fixed</li>
+</ul>
+<p>A formula coloring per row has the $B2 form.</p>
+<h2>Example</h2>
+<p>Pasting the formula gave no color. The range started at A1 while the formula was based on row 2. Starting the range at A2 made color appear.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Another rule has priority</b>: the upper rule's color wins.</li>
+<li><b>Forgetting to choose "Custom formula"</b>: another condition type is selected.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is the leading "=" needed?</h3>
+<p>Yes. The tool's formula includes it.</p>
+<h2>Summary</h2>
+<p>Check the base row, $ placement and rule order.</p>
 <a class="cta" href="/cond-format-formula-builder.html">Use "Build a Conditional Formatting Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a>: Build working-day formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

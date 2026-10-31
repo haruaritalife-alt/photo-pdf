@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Qué hacer cuando no funciona</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
 <div class="points"><b>Puntos clave</b><ul><li>Comprueba el archivo</li><li>Comprueba el tamaño</li><li>Prueba en otro dispositivo</li></ul></div>
-<p>Si <a href="/es/substitute-formula-builder.html">Creador de sustituciones</a> no funciona, revisa lo siguiente.</p>
-<h2>Pasos</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/es/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the text cell isn't in the "A2" form; the text to find is empty; the occurrence isn't an integer of 1 or more; the start position isn't an integer of 1 or more; the length isn't an integer.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Nothing is replaced</b>: the text to find differs in full-width/half-width or case.</li>
+<li lang="en"><b>Leading 0 disappears</b>: the result was made a number. Keep it as text.</li>
+<li lang="en"><b>Numbers are treated as text</b>: SUBSTITUTE's result is text. Convert with VALUE.</li>
+<li lang="en"><b>Text just appended at the end</b>: when REPLACE's start position exceeds the length, it is added at the end.</li>
+<li lang="en"><b>Invisible characters remain</b>: line breaks or special spaces. Remove with CHAR or CLEAN.</li>
+<li lang="en"><b>Only some are not replaced</b>: similar-looking different characters are mixed in.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Comprueba el archivo</li>
-<li>Comprueba el tamaño</li>
-<li>Prueba en otro dispositivo</li>
+<li lang="en">Paste an actual cell's text into the sample text and view the result.</li>
+<li lang="en">Copy the text to find from the cell and paste it.</li>
+<li lang="en">Count characters with LEN to find invisible ones.</li>
 </ol>
-<div class="note">Si no aparece ninguna fórmula, comprueba que la celda esté escrita como A2 y que hayas escrito el texto que se busca.</div>
+<div class="note" lang="en">Even if they look alike, a full-width hyphen "－", a half-width "-" and the long vowel mark "ー" are different characters. Copying the text to find from the cell is the safe way.</div>
+<h2 lang="en">Examples of look-alikes</h2>
+<ul>
+<li lang="en">Hyphens: "-" "－" "−" "‐" "ー"</li>
+<li lang="en">Spaces: half-width space, full-width space, line break</li>
+<li lang="en">Tildes: "~" "～"</li>
+</ul>
+<h2>Ejemplo</h2>
+<p lang="en">A hyphen-removal formula didn't work on some cells. Long hyphens were mixed in. Copying the cell's character as the text to find removed them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>SUBSTITUTE is case-sensitive</b>: for case-insensitive use UPPER or similar.</li>
+<li lang="en"><b>No wildcards</b>: * and ? are treated as literal characters.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to replace several characters at once</h3>
+<p lang="en">Nest SUBSTITUTEs, or use REGEXREPLACE (Google Sheets).</p>
+<h2>Resumen</h2>
+<p lang="en">Check look-alike characters, invisible characters and types.</p>
 <a class="cta" href="/es/substitute-formula-builder.html">Usar «Crear una fórmula SUBSTITUTE» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/excel-text-clean.html">Quitar espacios de más y caracteres invisibles del texto de Excel</a>: Quita espacios de más y caracteres invisibles.</li><li><a href="/es/excel-left-mid-builder.html">Crear una fórmula LEFT, MID o RIGHT</a>: Crea fórmulas para extraer texto.</li><li><a href="/es/text-to-columns.html">Dividir texto en columnas con un delimitador</a>: Divide el texto en columnas con un delimitador.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

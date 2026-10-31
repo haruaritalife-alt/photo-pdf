@@ -201,14 +201,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/cond-format-formula-builder.html">Conditional Format Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted the formula but no color appears. Here are common troubles with <a href="/en/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the column isn't letters (B); the row isn't digits; OVER's compare value isn't a number; DUPLICATE's last row isn't a number; ROWMATCH's compare value is empty.</li>
+</ul>
+<h2>After pasting into the sheet</h2>
+<ul>
+<li><b>No color appears</b>: the formula's base row doesn't match the range's first row.</li>
+<li><b>Only one cell is colored</b>: the range is a single column.</li>
+<li><b>Every row is colored</b>: the formula is always TRUE; the column's $ is missing.</li>
+<li><b>A shifted row is colored</b>: the base row is off by one.</li>
+<li><b>No color for dates</b>: they are text dates.</li>
+<li><b>Text doesn't match</b>: full-width/half-width or spaces differ.</li>
+<li><b>Old settings remain</b>: an earlier rule sits above. Check priority.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the range's top-left cell is the formula's base cell.</li>
+<li>Put the formula in that cell with = and check TRUE or FALSE.</li>
+<li>In the conditional formatting rule list, check order and range.</li>
 </ol>
-<div class="note">If no formula appears, check that the column is like B and the first row is a number like 2.</div>
+<div class="note">Trying the formula in an ordinary cell shows TRUE or FALSE. It's a shortcut to checking the judgment.</div>
+<h2>Placing the $</h2>
+<ul>
+<li>$B2: column fixed, row moves (per-row judgment)</li>
+<li>B$2: row fixed, column moves</li>
+<li>$B$2: all fixed</li>
+</ul>
+<p>A formula coloring per row has the $B2 form.</p>
+<h2>Example</h2>
+<p>Pasting the formula gave no color. The range started at A1 while the formula was based on row 2. Starting the range at A2 made color appear.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Another rule has priority</b>: the upper rule's color wins.</li>
+<li><b>Forgetting to choose "Custom formula"</b>: another condition type is selected.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is the leading "=" needed?</h3>
+<p>Yes. The tool's formula includes it.</p>
+<h2>Summary</h2>
+<p>Check the base row, $ placement and rule order.</p>
 <a class="cta" href="/en/cond-format-formula-builder.html">Use "Build a Conditional Formatting Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a>: Build working-day formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ต้องทำอย่างไรเมื่อใช้งานไม่ได้</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ตรวจสอบไฟล์</li><li>ตรวจสอบขนาด</li><li>ลองใช้อุปกรณ์อื่น</li></ul></div>
-<p>หาก <a href="/th/pmt-formula-builder.html">ตัวสร้างสูตร PMT</a> ไม่ทำงาน ให้ตรวจสอบสิ่งต่อไปนี้</p>
-<h2>ขั้นตอน</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/th/pmt-formula-builder.html">Build a PMT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: amount, rate or term isn't a number; the amount or term is 0; a negative number was entered.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Result far too large or small</b>: the rate was entered like 0.015. Enter it in percent, like 1.5.</li>
+<li lang="en"><b>Result is negative</b>: the leading "-" was deleted.</li>
+<li lang="en"><b>#NUM!</b>: impossible values in term or rate.</li>
+<li lang="en"><b>#VALUE!</b>: the amount cell is text.</li>
+<li lang="en"><b>Doesn't match actual payments</b>: fees, bonus payments and variable rates aren't included.</li>
+<li lang="en"><b>First-period interest looks small</b>: the second formula is the interest for just the first payment.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>ตรวจสอบไฟล์</li>
-<li>ตรวจสอบขนาด</li>
-<li>ลองใช้อุปกรณ์อื่น</li>
+<li lang="en">Check how the rate is entered (in percent).</li>
+<li lang="en">Check the term is in years.</li>
+<li lang="en">Check the payments per year match the repayment terms.</li>
 </ol>
-<div class="note">หากไม่มีสูตรปรากฏ ให้ตรวจว่าจำนวนเงิน อัตราดอกเบี้ย และระยะเวลาเป็นตัวเลข</div>
+<div class="note" lang="en">Results may differ slightly from a lender's simulation, because of rounding and payment-date differences. Use the tool's values as a guide.</div>
+<h2 lang="en">First-period interest</h2>
+<p lang="en">The second formula gives the first payment's interest with IPMT.</p>
+<ul>
+<li lang="en">Example: =-IPMT(1.5%/12,1,10*12,3000000)</li>
+</ul>
+<p lang="en">That's about 3,750 yen, from a 0.125% monthly rate on 3,000,000.</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">It differed from the bank's quote by a few hundred yen, due to rounding and daily proration. I used the tool as a guide and confirmed exact amounts in the lender's documents.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Bonus-combined payments</b>: need a separate calculation.</li>
+<li lang="en"><b>Equal-principal repayment</b>: PMT can't compute it.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if the rate changes partway?</h3>
+<p lang="en">You'd need to split the term and calculate each part. This tool handles a constant rate only.</p>
+<h2>สรุป</h2>
+<p lang="en">Check how the rate is entered, the term's unit and the sign.</p>
 <a class="cta" href="/th/pmt-formula-builder.html">ใช้ “สร้างสูตร PMT” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/percent-calculator.html">คำนวณเปอร์เซ็นต์ ส่วนลด และการเปลี่ยนแปลงเป็น %</a>: คำนวณเปอร์เซ็นต์ ส่วนลด และการเปลี่ยนแปลงเป็น % ได้ทันที</li><li><a href="/th/rank-formula-builder.html">สร้างสูตรอันดับ</a>: สร้างสูตรอันดับ</li><li><a href="/th/sumproduct-formula-builder.html">สร้างสูตร SUMPRODUCT</a>: สร้างสูตร SUMPRODUCT</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

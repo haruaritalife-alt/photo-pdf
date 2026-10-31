@@ -201,14 +201,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>सप्ताहांत और बीत चुकी तारीख़ें</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>WEEKEND या EXPIRED चुनें</li><li>कॉलम डालें</li><li>कॉपी करें</li></ul></div>
-<p><a href="/hi/cond-format-formula-builder.html">सशर्त फ़ॉर्मेटिंग सूत्र बनाने वाला टूल</a> में आप सप्ताहांत और आज से पहले की तारीख़ों को रंग सकते हैं।</p>
+<p lang="en">Fade weekend rows, redden overdue rows. These are formulas for date-based coloring. "WEEKEND" and "EXPIRED" in <a href="/hi/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a> build them.</p>
 <h2>चरण</h2>
 <ol>
-<li>WEEKEND या EXPIRED चुनें</li>
-<li>कॉलम डालें</li>
-<li>कॉपी करें</li>
+<li lang="en">Choose "WEEKEND" or "EXPIRED" in "Type".</li>
+<li lang="en">Enter the "Column to look at" (the date column) and "First row of the range".</li>
+<li lang="en">Copy the formula and paste it into the formatting range.</li>
 </ol>
-<div class="note">सेल में असली तारीख़ें होनी चाहिए।</div>
+<div class="note" lang="en">The date column must hold real dates (serial values). Text dates can't be judged.</div>
+<h2>उदाहरण</h2>
+<p lang="en">A formula coloring Saturday and Sunday dates:</p>
+<ul>
+<li lang="en">=WEEKDAY($B2,2)&gt;5</li>
+</ul>
+<p lang="en">WEEKDAY's 2 numbers Monday as 1, so 6 is Saturday and 7 is Sunday.</p>
+<p lang="en">A formula coloring dates earlier than today:</p>
+<ul>
+<li lang="en">=$B2</li>
+</ul>
+<h2 lang="en">Coloring only overdue</h2>
+<p lang="en">Add a condition so empty cells aren't judged overdue.</p>
+<ul>
+<li lang="en">Example: =AND($B2&lt;&gt;"",$B2</li>
+</ul>
+<h2 lang="en">Highlighting today's row</h2>
+<ul>
+<li lang="en">Example: =$B2=TODAY()</li>
+</ul>
+<h2 lang="en">Due within a week</h2>
+<ul>
+<li lang="en">Example: =AND($B2&gt;=TODAY(),$B2&lt;=TODAY()+7)</li>
+</ul>
+<h2 lang="en">Holidays are a different method</h2>
+<p lang="en">Prepare a holiday list separately and judge with COUNTIF.</p>
+<ul>
+<li lang="en">Example: =COUNTIF(holiday range,$B2)&gt;0</li>
+</ul>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">Weekend coloring in a schedule table</li>
+<li lang="en">Red for overdue tasks</li>
+<li lang="en">Emphasizing this week's plans</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">Wanted weekends grayed out in a schedule table. Pasting the WEEKEND formula over whole rows grayed only weekend rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Text dates</b>: no color appears. Convert to date values.</li>
+<li lang="en"><b>TODAY changes daily</b>: the judgment refreshes each time you open the file.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I don't want completed tasks flagged overdue</h3>
+<p lang="en">Add another column's "Done" to the condition.</p>
+<ul>
+<li lang="en">Example: =AND($B2<today(),$c2<>"Done")</today(),$c2<></li>
+</ul>
+<h2>सारांश</h2>
+<p lang="en">For date-based coloring, use WEEKDAY and TODAY.</p>
 <a class="cta" href="/hi/cond-format-formula-builder.html">“सशर्त फ़ॉर्मेटिंग का सूत्र बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/excel-if-builder.html">IF फ़ॉर्मूला बनाएँ</a>: IF फ़ॉर्मूला बनाएँ।</li><li><a href="/hi/sumif-formula-builder.html">SUMIF या COUNTIF फ़ॉर्मूला बनाएँ</a>: SUMIF और COUNTIF फ़ॉर्मूले बनाएँ।</li><li><a href="/hi/networkdays-formula-builder.html">NETWORKDAYS सूत्र बनाएँ</a>: कार्य-दिवस के सूत्र बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

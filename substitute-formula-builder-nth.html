@@ -200,14 +200,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>何番目だけ置き換える</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>SUBSTITUTE-Nを選ぶ</li><li>番号を入れる</li><li>確かめる</li></ul></div>
-<p><a href="/substitute-formula-builder.html">置き換え式の作成</a> では、同じ文字が複数あるときに、何番目だけを置き換えられます。</p>
+<p>同じ文字が何度も出てくる中で、「2番目のハイフンだけ」を別の文字に変えたい。<a href="/substitute-formula-builder.html">SUBSTITUTE・REPLACEの式を作る</a> の「SUBSTITUTE-N」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>SUBSTITUTE-Nを選ぶ</li>
-<li>番号を入れる</li>
-<li>確かめる</li>
+<li>「方法」で「SUBSTITUTE-N」を選ぶ。</li>
+<li>「文字のセル」「探す文字」「置き換える文字」を入れる。</li>
+<li>「何番目か」に、数字を入れる。</li>
+<li>「試しの文字」で、結果を確かめる。</li>
 </ol>
-<div class="note">試しの文字で結果を確かめられます。</div>
+<div class="note">「何番目か」は、1以上の整数です。探す文字が、その数より少なければ、置き換わりません。</div>
+<h2>例</h2>
+<p>A2の2番目のハイフンを、スラッシュに変える式です。</p>
+<ul>
+<li>=SUBSTITUTE(A2,"-","/",2)</li>
+</ul>
+<p>「2026-11-01」は、「2026-11/01」になります。</p>
+<h2>すべてを置き換える場合との違い</h2>
+<ul>
+<li>4つ目の引数なし：すべて置き換える</li>
+<li>4つ目の引数あり：そのN番目だけ置き換える</li>
+</ul>
+<h2>最後の1つだけ</h2>
+<p>最後の1つだけを置き換えるのは、少し複雑です。出現回数を数えて、その番号を使います。</p>
+<ul>
+<li>例：=SUBSTITUTE(A2,"-","/",LEN(A2)-LEN(SUBSTITUTE(A2,"-","")))</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>日付の区切りの、一部だけを変える</li>
+<li>ファイルのパスの、特定の区切りの置き換え</li>
+<li>区切り文字の、2番目で改行を入れる</li>
+</ul>
+<h2>区切りに改行を入れる</h2>
+<ul>
+<li>例：=SUBSTITUTE(A2,",",CHAR(10),2)</li>
+</ul>
+<p>2番目のカンマを、改行にします。</p>
+<h2>例</h2>
+<p>「東京都-港区-赤坂」のような文字で、2番目のハイフンだけを、別の記号にしたかった。何番目かに2を入れると、そこだけが変わった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>0や小数を入れる</b>：エラーになる。1以上の整数。</li>
+<li><b>探す文字が足りない</b>：置き換えは起こらず、元の文字のまま。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>1番目だけ置き換えたい</h3>
+<p>何番目かに1を入れます。</p>
+<h2>まとめ</h2>
+<p>N番目だけなら、SUBSTITUTEの4つ目の引数。</p>
 <a class="cta" href="/substitute-formula-builder.html">SUBSTITUTE・REPLACEの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li><li><a href="/excel-left-mid-builder.html">文字を取り出す式を作る</a>：文字を取り出す式を作ります。</li><li><a href="/text-to-columns.html">文字を区切り文字で列に分ける</a>：文字を区切り文字で列に分けます。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +259,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Replacing Only the Nth</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose SUBSTITUTE-N</li><li>Enter the number</li><li>Check it</li></ul></div>
-<p>In <a href="/substitute-formula-builder.html">Substitute Builder</a> you can replace only the Nth of several identical characters.</p>
+<p>Among repeated characters, you want to change only "the second hyphen" to something else. "SUBSTITUTE-N" in <a href="/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose SUBSTITUTE-N</li>
-<li>Enter the number</li>
-<li>Check it</li>
+<li>Choose "SUBSTITUTE-N" in "Method".</li>
+<li>Enter the "Text cell", "Text to find" and "Replacement text".</li>
+<li>Enter a number in "Which occurrence".</li>
+<li>Check the result with a "Sample text".</li>
 </ol>
-<div class="note">You can check the result with sample text.</div>
+<div class="note">"Which occurrence" is an integer of 1 or more. If there are fewer occurrences, nothing is replaced.</div>
+<h2>Example</h2>
+<p>A formula changing A2's second hyphen to a slash:</p>
+<ul>
+<li>=SUBSTITUTE(A2,"-","/",2)</li>
+</ul>
+<p>"2026-11-01" becomes "2026-11/01".</p>
+<h2>Difference from replacing all</h2>
+<ul>
+<li>Without the 4th argument: replaces all</li>
+<li>With the 4th argument: replaces only that Nth</li>
+</ul>
+<h2>Only the last one</h2>
+<p>Replacing just the last is a bit complex. Count the occurrences and use that number.</p>
+<ul>
+<li>Example: =SUBSTITUTE(A2,"-","/",LEN(A2)-LEN(SUBSTITUTE(A2,"-","")))</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Changing only some date separators</li>
+<li>Replacing a specific separator in a file path</li>
+<li>Inserting a line break at the second delimiter</li>
+</ul>
+<h2>Inserting a line break at a delimiter</h2>
+<ul>
+<li>Example: =SUBSTITUTE(A2,",",CHAR(10),2)</li>
+</ul>
+<p>The second comma becomes a line break.</p>
+<h2>Example</h2>
+<p>In text like "Tokyo-Minato-Akasaka", I wanted only the second hyphen turned into another symbol. Entering 2 for the occurrence changed only that one.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Entering 0 or a decimal</b>: errors. Use an integer of 1 or more.</li>
+<li><b>Not enough occurrences</b>: no replacement; the text stays as is.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to replace only the first</h3>
+<p>Enter 1 for the occurrence.</p>
+<h2>Summary</h2>
+<p>For only the Nth, use SUBSTITUTE's 4th argument.</p>
 <a class="cta" href="/substitute-formula-builder.html">Use "Build a SUBSTITUTE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a>: Build text extraction formulas.</li><li><a href="/text-to-columns.html">Split Text into Columns by a Delimiter</a>: Split text into columns by a delimiter.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Coloring Duplicates</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose DUPLICATE</li><li>Enter the last row</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/cond-format-formula-builder.html">Conditional Format Builder</a>, COUNTIF lets you color duplicated values.</p>
+<p>Does a column of names or codes hold the same value twice? This is the formula to find and color duplicates. "DUPLICATE" in <a href="/en/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose DUPLICATE</li>
-<li>Enter the last row</li>
-<li>Copy it</li>
+<li>Choose "DUPLICATE" in "Type".</li>
+<li>Enter the "Column to look at", "First row of the range" and "Last row of the range".</li>
+<li>Copy the formula.</li>
+<li>Set the formatting range to that column and paste.</li>
 </ol>
-<div class="note">Enter a last row a little beyond your data.</div>
+<div class="note">Always enter the "Last row of the range". If data will grow, give it some headroom.</div>
+<h2>Example</h2>
+<p>A formula coloring duplicated values in B2 to B100:</p>
+<ul>
+<li>=COUNTIF($B$2:$B$100,$B2)&gt;1</li>
+</ul>
+<p>If a value appears twice or more, every occurrence is colored.</p>
+<h2>Coloring only the second and later</h2>
+<p>To keep the first and color only the second onward, make the range expand (edit by hand).</p>
+<ul>
+<li>Example: =COUNTIF($B$2:$B2,$B2)&gt;1</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Finding duplicated employee numbers or product codes</li>
+<li>Double registrations of email addresses</li>
+<li>Checking duplicate applications</li>
+</ul>
+<h2>Excluding empty cells</h2>
+<p>Add a condition so empty cells aren't judged duplicates.</p>
+<ul>
+<li>Example: =AND($B2&lt;&gt;"",COUNTIF($B$2:$B$100,$B2)&gt;1)</li>
+</ul>
+<h2>To delete duplicates</h2>
+<p>After coloring and checking, use the data feature "Remove duplicates". Make a copy before deleting.</p>
+<h2>Example</h2>
+<p>Wanted to check whether anyone applied twice in an application list. Coloring with the DUPLICATE formula showed duplicates at once.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Full-width/half-width, case</b>: may be treated as different values.</li>
+<li><b>Heavy with many rows</b>: thousands of COUNTIFs slow things down.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want duplicates across a combination of columns</h3>
+<p>Use COUNTIFS. This type handles one column only.</p>
+<h2>Summary</h2>
+<p>To find duplicates, use DUPLICATE.</p>
 <a class="cta" href="/en/cond-format-formula-builder.html">Use "Build a Conditional Formatting Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a>: Build working-day formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

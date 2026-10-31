@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Mengganti pemisah baris</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Pilih LINEBREAK</li><li>Masukkan teksnya</li><li>Salin</li></ul></div>
-<p>Di <a href="/id/substitute-formula-builder.html">Pembuat penggantian</a> Anda bisa mengganti pemisah baris dalam sel dengan teks lain.</p>
+<p lang="en">A cell holds line breaks, and you want them as spaces or commas, or conversely you want delimiters as line breaks. "LINEBREAK" in <a href="/id/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> builds it.</p>
 <h2>Langkah-langkah</h2>
 <ol>
-<li>Pilih LINEBREAK</li>
-<li>Masukkan teksnya</li>
-<li>Salin</li>
+<li lang="en">Choose "LINEBREAK" in "Method".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">In "Replacement text", enter what should replace the line break.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Pemisah baris ditulis sebagai CHAR(10).</div>
+<div class="note" lang="en">A line break is represented by CHAR(10). An in-cell break (Alt+Enter) on Windows is also CHAR(10).</div>
+<h2>Contoh</h2>
+<p lang="en">A formula turning line breaks into ", ":</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,CHAR(10),", ")</li>
+</ul>
+<p lang="en">A formula removing line breaks (leave the replacement empty):</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,CHAR(10),"")</li>
+</ul>
+<h2 lang="en">Delimiters to line breaks</h2>
+<p lang="en">Conversely, a formula turning commas into line breaks:</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,",",CHAR(10))</li>
+</ul>
+<p lang="en">In that case turn on the cell's "Wrap text".</p>
+<h2 lang="en">Another way to remove breaks</h2>
+<p lang="en">CLEAN removes control characters such as line breaks. But it can't replace.</p>
+<ul>
+<li lang="en">Example: =CLEAN(A2)</li>
+</ul>
+<h2>Cocok untuk</h2>
+<ul>
+<li lang="en">Making addresses or notes with line breaks a single line</li>
+<li lang="en">Turning a line-break list into a comma list</li>
+<li lang="en">Tidying before exporting to CSV</li>
+</ul>
+<h2 lang="en">Line breaks looking garbled</h2>
+<p lang="en">Imported data may have different break codes. A break may be CHAR(10) or CHAR(13). To remove both, nest them.</p>
+<ul>
+<li lang="en">Example: =SUBSTITUTE(SUBSTITUTE(A2,CHAR(13),""),CHAR(10)," ")</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">An address cell held line breaks and I wanted one line. The LINEBREAK formula replacing breaks with spaces made one line.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Breaks remain</b>: CHAR(13) is mixed in. Handle both.</li>
+<li lang="en"><b>Made breaks but looks like one line</b>: Wrap text is off.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I put line breaks in the sample text?</h3>
+<p lang="en">Paste text including line breaks into the input to try it.</p>
+<h2>Ringkasan</h2>
+<p lang="en">To replace line breaks, SUBSTITUTE on CHAR(10).</p>
 <a class="cta" href="/id/substitute-formula-builder.html">Gunakan “Buat Rumus SUBSTITUTE” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/excel-text-clean.html">Menghapus spasi berlebih dan karakter tak terlihat dari teks Excel</a>: Hapus spasi berlebih dan karakter tak terlihat.</li><li><a href="/id/excel-left-mid-builder.html">Buat rumus LEFT, MID, atau RIGHT</a>: Buat rumus untuk mengambil teks.</li><li><a href="/id/text-to-columns.html">Bagi Teks menjadi Kolom dengan Pemisah</a>: Bagi teks menjadi kolom dengan pemisah.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>

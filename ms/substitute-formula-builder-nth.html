@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Menggantikan Hanya yang ke-N</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Dikemas kini: 19 Okt 2026 | <a href="/about.html">Perihal (Jepun)</a></p>
 <div class="points"><b>Perkara penting</b><ul><li>Pilih SUBSTITUTE-N</li><li>Masukkan bilangan</li><li>Semak ini</li></ul></div>
-<p>Dalam <a href="/ms/substitute-formula-builder.html">Pembina Gantian</a> anda boleh menggantikan hanya yang ke-N daripada beberapa aksara yang serupa.</p>
+<p lang="en">Among repeated characters, you want to change only "the second hyphen" to something else. "SUBSTITUTE-N" in <a href="/ms/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> builds it.</p>
 <h2>Langkah</h2>
 <ol>
-<li>Pilih SUBSTITUTE-N</li>
-<li>Masukkan bilangan</li>
-<li>Semak ini</li>
+<li lang="en">Choose "SUBSTITUTE-N" in "Method".</li>
+<li lang="en">Enter the "Text cell", "Text to find" and "Replacement text".</li>
+<li lang="en">Enter a number in "Which occurrence".</li>
+<li lang="en">Check the result with a "Sample text".</li>
 </ol>
-<div class="note">Anda boleh menyemak hasil dengan teks sampel.</div>
+<div class="note" lang="en">"Which occurrence" is an integer of 1 or more. If there are fewer occurrences, nothing is replaced.</div>
+<h2>Contoh</h2>
+<p lang="en">A formula changing A2's second hyphen to a slash:</p>
+<ul>
+<li lang="en">=SUBSTITUTE(A2,"-","/",2)</li>
+</ul>
+<p lang="en">"2026-11-01" becomes "2026-11/01".</p>
+<h2 lang="en">Difference from replacing all</h2>
+<ul>
+<li lang="en">Without the 4th argument: replaces all</li>
+<li lang="en">With the 4th argument: replaces only that Nth</li>
+</ul>
+<h2 lang="en">Only the last one</h2>
+<p lang="en">Replacing just the last is a bit complex. Count the occurrences and use that number.</p>
+<ul>
+<li lang="en">Example: =SUBSTITUTE(A2,"-","/",LEN(A2)-LEN(SUBSTITUTE(A2,"-","")))</li>
+</ul>
+<h2>Sesuai untuk</h2>
+<ul>
+<li lang="en">Changing only some date separators</li>
+<li lang="en">Replacing a specific separator in a file path</li>
+<li lang="en">Inserting a line break at the second delimiter</li>
+</ul>
+<h2 lang="en">Inserting a line break at a delimiter</h2>
+<ul>
+<li lang="en">Example: =SUBSTITUTE(A2,",",CHAR(10),2)</li>
+</ul>
+<p lang="en">The second comma becomes a line break.</p>
+<h2>Contoh</h2>
+<p lang="en">In text like "Tokyo-Minato-Akasaka", I wanted only the second hyphen turned into another symbol. Entering 2 for the occurrence changed only that one.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entering 0 or a decimal</b>: errors. Use an integer of 1 or more.</li>
+<li lang="en"><b>Not enough occurrences</b>: no replacement; the text stays as is.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to replace only the first</h3>
+<p lang="en">Enter 1 for the occurrence.</p>
+<h2>Ringkasan</h2>
+<p lang="en">For only the Nth, use SUBSTITUTE's 4th argument.</p>
 <a class="cta" href="/ms/substitute-formula-builder.html">Guna “Bina Formula SUBSTITUTE” (percuma)</a>
 <h2>Alat yang sepadan dengan ini</h2><ul><li><a href="/ms/excel-text-clean.html">Membuang ruang berlebihan dan aksara tidak kelihatan daripada teks Excel</a>: Buang ruang berlebihan dan aksara tidak kelihatan.</li><li><a href="/ms/excel-left-mid-builder.html">Bina formula LEFT, MID atau RIGHT</a>: Bina formula untuk mengambil teks.</li><li><a href="/ms/text-to-columns.html">Bahagikan Teks kepada Lajur dengan Pembatas</a>: Bahagikan teks kepada lajur dengan pembatas.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil amat dihargai.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Hantar tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hantar hadiah (senarai hajat Amazon)</a></div>

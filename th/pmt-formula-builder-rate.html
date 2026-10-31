@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>การแปลงอัตราต่อปีเป็นอัตราต่องวด</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>กรอกอัตรา</li><li>เลือกการจ่ายเงิน</li><li>ดูสูตร</li></ul></div>
-<p>ใน <a href="/th/pmt-formula-builder.html">ตัวสร้างสูตร PMT</a> อัตราต่อปีจะถูกหารในสูตรด้วยจำนวนครั้งที่จ่ายต่อปี</p>
+<p lang="en">The easiest thing to get wrong in PMT is how the annual rate and term are handled. The annual rate is converted to a "monthly rate" and the years to "number of months" before passing them to the function. <a href="/th/pmt-formula-builder.html">Build a PMT Formula</a> does that automatically.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>กรอกอัตรา</li>
-<li>เลือกการจ่ายเงิน</li>
-<li>ดูสูตร</li>
+<li lang="en">In "Annual rate", enter the yearly rate (such as 1.5).</li>
+<li lang="en">In "Term (years)", enter the number of years.</li>
+<li lang="en">Choose the "Payments per year".</li>
+<li lang="en">Copy the formula.</li>
 </ol>
-<div class="note">หากจ่ายรายเดือน อัตราต่อปีจะถูกหารด้วย 12</div>
+<div class="note" lang="en">The annual rate is divided by the payments per year. The term is multiplied by it.</div>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Annual rate 1.5%, 10 years, monthly payments:</p>
+<ul>
+<li lang="en">=-PMT(1.5%/12,10*12,3000000)</li>
+</ul>
+<p lang="en">1.5%/12 is the monthly rate and 10*12 is the number of payments (120).</p>
+<h2 lang="en">Changing payments per year</h2>
+<ul>
+<li lang="en">12: monthly</li>
+<li lang="en">4: quarterly</li>
+<li lang="en">2: semiannual</li>
+<li lang="en">1: yearly</li>
+</ul>
+<p lang="en">For 4 a year, divide the rate by 4 and multiply the years by 4. The tool builds that.</p>
+<h2>ข้อผิดพลาดที่พบบ่อย</h2>
+<ul>
+<li lang="en">Passing the annual rate as is: =PMT(1.5%,10,…) becomes a yearly-payment calculation</li>
+<li lang="en">Passing years as is: too few periods, so each payment is large</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Monthly loans</li>
+<li lang="en">Twice-yearly payments in bonus months (a rough guide)</li>
+<li lang="en">Quarterly payments</li>
+</ul>
+<h2 lang="en">About effective annual rate</h2>
+<p lang="en">Rates quoted by lenders are often annual. But actual payments vary with fees and repayment method.</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Wanted the payment for 1.2% annual, 20 years, monthly. Entering 1.2, 20 and choosing 12 handled the monthly rate and count automatically.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entering 0.015 for the rate</b>: enter it in percent. 0.015 means 0.015%.</li>
+<li lang="en"><b>Entering the term in months</b>: enter years.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I know the monthly rate first?</h3>
+<p lang="en">Enter 12 times the monthly rate as the annual rate.</p>
+<h2>สรุป</h2>
+<p lang="en">Divide the annual rate by payments per year and multiply the years.</p>
 <a class="cta" href="/th/pmt-formula-builder.html">ใช้ “สร้างสูตร PMT” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/percent-calculator.html">คำนวณเปอร์เซ็นต์ ส่วนลด และการเปลี่ยนแปลงเป็น %</a>: คำนวณเปอร์เซ็นต์ ส่วนลด และการเปลี่ยนแปลงเป็น % ได้ทันที</li><li><a href="/th/rank-formula-builder.html">สร้างสูตรอันดับ</a>: สร้างสูตรอันดับ</li><li><a href="/th/sumproduct-formula-builder.html">สร้างสูตร SUMPRODUCT</a>: สร้างสูตร SUMPRODUCT</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

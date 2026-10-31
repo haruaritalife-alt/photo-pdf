@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Replacing Line Breaks</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose LINEBREAK</li><li>Enter the text</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/substitute-formula-builder.html">Substitute Builder</a> you can replace line breaks in a cell with other text.</p>
+<p>A cell holds line breaks, and you want them as spaces or commas, or conversely you want delimiters as line breaks. "LINEBREAK" in <a href="/en/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose LINEBREAK</li>
-<li>Enter the text</li>
-<li>Copy it</li>
+<li>Choose "LINEBREAK" in "Method".</li>
+<li>Enter the "Text cell".</li>
+<li>In "Replacement text", enter what should replace the line break.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">A line break is written as CHAR(10).</div>
+<div class="note">A line break is represented by CHAR(10). An in-cell break (Alt+Enter) on Windows is also CHAR(10).</div>
+<h2>Example</h2>
+<p>A formula turning line breaks into ", ":</p>
+<ul>
+<li>=SUBSTITUTE(A2,CHAR(10),", ")</li>
+</ul>
+<p>A formula removing line breaks (leave the replacement empty):</p>
+<ul>
+<li>=SUBSTITUTE(A2,CHAR(10),"")</li>
+</ul>
+<h2>Delimiters to line breaks</h2>
+<p>Conversely, a formula turning commas into line breaks:</p>
+<ul>
+<li>=SUBSTITUTE(A2,",",CHAR(10))</li>
+</ul>
+<p>In that case turn on the cell's "Wrap text".</p>
+<h2>Another way to remove breaks</h2>
+<p>CLEAN removes control characters such as line breaks. But it can't replace.</p>
+<ul>
+<li>Example: =CLEAN(A2)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Making addresses or notes with line breaks a single line</li>
+<li>Turning a line-break list into a comma list</li>
+<li>Tidying before exporting to CSV</li>
+</ul>
+<h2>Line breaks looking garbled</h2>
+<p>Imported data may have different break codes. A break may be CHAR(10) or CHAR(13). To remove both, nest them.</p>
+<ul>
+<li>Example: =SUBSTITUTE(SUBSTITUTE(A2,CHAR(13),""),CHAR(10)," ")</li>
+</ul>
+<h2>Example</h2>
+<p>An address cell held line breaks and I wanted one line. The LINEBREAK formula replacing breaks with spaces made one line.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Breaks remain</b>: CHAR(13) is mixed in. Handle both.</li>
+<li><b>Made breaks but looks like one line</b>: Wrap text is off.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I put line breaks in the sample text?</h3>
+<p>Paste text including line breaks into the input to try it.</p>
+<h2>Summary</h2>
+<p>To replace line breaks, SUBSTITUTE on CHAR(10).</p>
 <a class="cta" href="/en/substitute-formula-builder.html">Use "Build a SUBSTITUTE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/en/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a>: Build text extraction formulas.</li><li><a href="/en/text-to-columns.html">Split Text into Columns by a Delimiter</a>: Split text into columns by a delimiter.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

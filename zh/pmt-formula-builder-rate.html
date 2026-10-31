@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>把年利率换算成每期利率</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>输入利率</li><li>选择还款次数</li><li>查看公式</li></ul></div>
-<p>在<a href="/zh/pmt-formula-builder.html">PMT 公式生成器</a>中，年利率会在公式里除以每年的还款次数。</p>
+<p lang="en">The easiest thing to get wrong in PMT is how the annual rate and term are handled. The annual rate is converted to a "monthly rate" and the years to "number of months" before passing them to the function. <a href="/zh/pmt-formula-builder.html">Build a PMT Formula</a> does that automatically.</p>
 <h2>步骤</h2>
 <ol>
-<li>输入利率</li>
-<li>选择还款次数</li>
-<li>查看公式</li>
+<li lang="en">In "Annual rate", enter the yearly rate (such as 1.5).</li>
+<li lang="en">In "Term (years)", enter the number of years.</li>
+<li lang="en">Choose the "Payments per year".</li>
+<li lang="en">Copy the formula.</li>
 </ol>
-<div class="note">按月还款时，年利率除以 12。</div>
+<div class="note" lang="en">The annual rate is divided by the payments per year. The term is multiplied by it.</div>
+<h2>示例</h2>
+<p lang="en">Annual rate 1.5%, 10 years, monthly payments:</p>
+<ul>
+<li lang="en">=-PMT(1.5%/12,10*12,3000000)</li>
+</ul>
+<p lang="en">1.5%/12 is the monthly rate and 10*12 is the number of payments (120).</p>
+<h2 lang="en">Changing payments per year</h2>
+<ul>
+<li lang="en">12: monthly</li>
+<li lang="en">4: quarterly</li>
+<li lang="en">2: semiannual</li>
+<li lang="en">1: yearly</li>
+</ul>
+<p lang="en">For 4 a year, divide the rate by 4 and multiply the years by 4. The tool builds that.</p>
+<h2>常见错误</h2>
+<ul>
+<li lang="en">Passing the annual rate as is: =PMT(1.5%,10,…) becomes a yearly-payment calculation</li>
+<li lang="en">Passing years as is: too few periods, so each payment is large</li>
+</ul>
+<h2>适合</h2>
+<ul>
+<li lang="en">Monthly loans</li>
+<li lang="en">Twice-yearly payments in bonus months (a rough guide)</li>
+<li lang="en">Quarterly payments</li>
+</ul>
+<h2 lang="en">About effective annual rate</h2>
+<p lang="en">Rates quoted by lenders are often annual. But actual payments vary with fees and repayment method.</p>
+<h2>示例</h2>
+<p lang="en">Wanted the payment for 1.2% annual, 20 years, monthly. Entering 1.2, 20 and choosing 12 handled the monthly rate and count automatically.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entering 0.015 for the rate</b>: enter it in percent. 0.015 means 0.015%.</li>
+<li lang="en"><b>Entering the term in months</b>: enter years.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I know the monthly rate first?</h3>
+<p lang="en">Enter 12 times the monthly rate as the annual rate.</p>
+<h2>小结</h2>
+<p lang="en">Divide the annual rate by payments per year and multiply the years.</p>
 <a class="cta" href="/zh/pmt-formula-builder.html">使用“生成 PMT 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/percent-calculator.html">计算百分比、折扣和增减率</a>：立即计算百分比、折扣和增减率。</li><li><a href="/zh/rank-formula-builder.html">生成排名公式</a>: 生成排名公式。</li><li><a href="/zh/sumproduct-formula-builder.html">生成 SUMPRODUCT 公式</a>: 生成 SUMPRODUCT 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>
