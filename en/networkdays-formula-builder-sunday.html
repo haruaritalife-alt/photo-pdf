@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Sunday Only</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose NETWORKDAYS-SUN</li><li>Enter the dates</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/networkdays-formula-builder.html">NETWORKDAYS Builder</a>, NETWORKDAYS.INTL counts with Sunday as the only day off.</p>
+<p>Saturdays are working days and only Sunday is off. For such workplaces NETWORKDAYS won't do. Use NETWORKDAYS.INTL. "NETWORKDAYS-SUN" in <a href="/en/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose NETWORKDAYS-SUN</li>
-<li>Enter the dates</li>
-<li>Copy it</li>
+<li>Choose "NETWORKDAYS-SUN" in "Method".</li>
+<li>Enter the start and end date cells.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">It suits workplaces that work on Saturdays.</div>
+<div class="note">The "11" in the formula is the specification that makes only Sunday a day off.</div>
+<h2>Example</h2>
+<ul>
+<li>=NETWORKDAYS.INTL(A2,B2,11)</li>
+</ul>
+<p>Saturdays are counted; only Sundays are excluded.</p>
+<h2>Weekend codes</h2>
+<p>The INTL version sets days off with a number.</p>
+<ul>
+<li>1: Saturday and Sunday (standard)</li>
+<li>2: Sunday and Monday</li>
+<li>11: Sunday only</li>
+<li>12: Monday only</li>
+<li>7: Friday and Saturday</li>
+</ul>
+<p>The tool uses "11". For other days off, edit by hand.</p>
+<h2>Excluding holidays too</h2>
+<p>If you enter a holiday range, it's added at the end of the formula.</p>
+<ul>
+<li>Example: =NETWORKDAYS.INTL(A2,B2,11,E2:E20)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Shops and factories open Saturdays</li>
+<li>Workplaces with one day off a week</li>
+<li>School events where only Sunday is off</li>
+</ul>
+<h2>Example</h2>
+<p>For a shop closed only on Sundays, counted business days from 2026-10-01 to 2026-10-07. The sample result excluded Sunday.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Older Excel</b>: NETWORKDAYS.INTL needs Excel 2010 or later.</li>
+<li><b>Different days off</b>: change to a number other than 11.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I specify any weekdays?</h3>
+<p>A 7-character string (e.g., "0000011") also works; 1 marks a day off.</p>
+<h2>Summary</h2>
+<p>For Sunday-only closures, use NETWORKDAYS.INTL with 11.</p>
 <a class="cta" href="/en/networkdays-formula-builder.html">Use "Build a NETWORKDAYS Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li><li><a href="/en/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/en/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

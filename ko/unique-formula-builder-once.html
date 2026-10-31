@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>한 번만 나오는 값</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>ONCE 선택</li><li>범위 입력하기</li><li>확인하기</li></ul></div>
-<p><a href="/ko/unique-formula-builder.html">UNIQUE 수식 만들기</a>에서는 중복되지 않은 값만 돌려받을 수 있습니다.</p>
+<p lang="en">You want values that appear only once, such as customers who bought just once. Use UNIQUE's third argument. "ONCE" in <a href="/ko/unique-formula-builder.html">Build a UNIQUE Formula</a> builds it.</p>
 <h2>순서</h2>
 <ol>
-<li>ONCE 선택</li>
-<li>범위 입력하기</li>
-<li>확인하기</li>
+<li lang="en">Choose "ONCE" in "Method".</li>
+<li lang="en">Enter the "Data range".</li>
+<li lang="en">Check the result with "Sample data".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">UNIQUE의 세 번째 인수로 TRUE를 사용합니다.</div>
+<div class="note" lang="en">The form is =UNIQUE(range,FALSE,TRUE). With the third argument TRUE you get once-only values.</div>
+<h2>예</h2>
+<ul>
+<li lang="en">=UNIQUE(A2:A100,FALSE,TRUE)</li>
+</ul>
+<p lang="en">With "apple,orange,apple,grape" as sample data, it shows "orange, grape". "apple" appears twice, so it's dropped.</p>
+<h2 lang="en">Difference from plain UNIQUE</h2>
+<ul>
+<li lang="en">UNIQUE: keeps one of each (apple, orange, grape)</li>
+<li lang="en">ONCE: removes everything appearing twice or more (orange, grape)</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Finding customers who bought only once</li>
+<li lang="en">Finding one-of-a-kind values</li>
+<li lang="en">Spotting possible typos (values matching nothing else)</li>
+</ul>
+<h2>예</h2>
+<p lang="en">In a member-number list, I checked numbers appearing once. It helped find typos that had become different numbers through notation differences.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>If everything is duplicated the result is empty</b>: with no result you get an error or blank.</li>
+<li lang="en"><b>Notation variants</b>: full-width "ＡＢＣ" and "ABC" are different values.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want only values appearing twice or more</h3>
+<p lang="en">Combine FILTER and COUNTIF.</p>
+<ul>
+<li lang="en">Example: =UNIQUE(FILTER(A2:A100,COUNTIF(A2:A100,A2:A100)&gt;1))</li>
+</ul>
+<h2>요약</h2>
+<p lang="en">For once-only values, set UNIQUE's third argument to TRUE.</p>
 <a class="cta" href="/ko/unique-formula-builder.html">“UNIQUE 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/line-sort-dedupe.html">중복된 줄 제거 및 목록 정렬</a>: 중복된 줄을 제거하고 정렬합니다.</li><li><a href="/ko/filter-formula-builder.html">FILTER 수식 만들기</a>: FILTER 수식을 만듭니다.</li><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

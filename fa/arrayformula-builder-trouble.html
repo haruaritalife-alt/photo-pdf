@@ -215,14 +215,40 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>اگر کار نکرد چه باید کرد</h1>
 <p class="meta">منتشرشده: 19 اکتبر 2026 | به‌روزرسانی: 19 اکتبر 2026 | <a href="/about.html">دربارهٔ ما (ژاپنی)</a></p>
 <div class="points"><b>نکات کلیدی</b><ul><li>فایل را بررسی کنید</li><li>اندازه را بررسی کنید</li><li>دستگاه دیگری را امتحان کنید</li></ul></div>
-<p>اگر <a href="/fa/arrayformula-builder.html">سازندهٔ ARRAYFORMULA</a> کار نمی‌کند، موارد زیر را بررسی کنید.</p>
-<h2>مراحل</h2>
+<p lang="en">You pasted the formula but it won't spread. Here are common troubles with <a href="/fa/arrayformula-builder.html">Build an ARRAYFORMULA</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the formula has no cell (like B2); contains a double quote; or in ARRAY-HEADER the heading is empty.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF! "Array result was not expanded because it would overwrite data"</b>: values already exist in the spill range. Clear those cells.</li>
+<li lang="en"><b>Only one row of result</b>: the pasted formula isn't range-based (B2:B).</li>
+<li lang="en"><b>#VALUE!</b>: text that can't be calculated is in the range.</li>
+<li lang="en"><b>0s fill rows</b>: to blank empty rows, use ARRAY-BLANK.</li>
+<li lang="en"><b>No heading</b>: the ARRAY-HEADER formula was pasted outside row 1.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>فایل را بررسی کنید</li>
-<li>اندازه را بررسی کنید</li>
-<li>دستگاه دیگری را امتحان کنید</li>
+<li lang="en">Check the cells below the pasted cell are empty.</li>
+<li lang="en">Check the formula starts with "=ARRAYFORMULA(".</li>
+<li lang="en">Check range start rows are aligned.</li>
 </ol>
-<div class="note">اگر فرمولی ظاهر نشد، بررسی کنید که فرمول ردیف اول سلول‌هایی مثل B2 داشته باشد و گیومه نداشته باشد.</div>
+<div class="note" lang="en">When adding IF text tests, don't use full-width quotes.</div>
+<h2 lang="en">Some functions don't spread</h2>
+<p lang="en">VLOOKUP and a few others may not spread as expected inside ARRAYFORMULA. Replace them with other functions.</p>
+<h2>مثال</h2>
+<p lang="en">Pasting gave #REF!. An old formula remained in a cell below. Clearing it let it spread.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entered a formula in every cell</b>: put it in only one cell.</li>
+<li lang="en"><b>Sorting and filtering</b>: can affect the spill range.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I fix the formula later?</h3>
+<p lang="en">Select the pasted cell and edit directly.</p>
+<h2>خلاصه</h2>
+<p lang="en">Check that the spill range is empty, the range shape, and the start row.</p>
 <a class="cta" href="/fa/arrayformula-builder.html">استفاده از «ساخت ARRAYFORMULA» (رایگان)</a>
 <h2>ابزارهایی که با این ابزار خوب هماهنگ‌اند</h2><ul><li><a href="/fa/query-formula-builder.html">ساخت فرمول QUERY</a>: فرمول QUERY بسازید.</li><li><a href="/fa/filter-formula-builder.html">ساخت فرمول FILTER</a>: یک فرمول FILTER بسازید.</li><li><a href="/fa/excel-if-builder.html">ساخت فرمول IF</a>: یک فرمول IF بسازید.</li></ul>
 <div class="tip"><p>اگر این راهنما مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ارسال انعام (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ارسال هدیه (فهرست آرزوهای آمازون)</a></div>

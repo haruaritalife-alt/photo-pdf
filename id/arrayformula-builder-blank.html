@@ -201,14 +201,38 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Menjaga baris kosong tetap kosong</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Pilih ARRAY-BLANK</li><li>Isi rumus</li><li>Salin</li></ul></div>
-<p>Di <a href="/id/arrayformula-builder.html">Pembuat ARRAYFORMULA</a> Anda bisa membuat rumus yang membiarkan baris tanpa data tetap kosong.</p>
+<p lang="en">Used as is, ARRAYFORMULA fills rows with no data with 0s or errors. "ARRAY-BLANK" avoids that. <a href="/id/arrayformula-builder.html">Build an ARRAYFORMULA</a> builds it.</p>
 <h2>Langkah-langkah</h2>
 <ol>
-<li>Pilih ARRAY-BLANK</li>
-<li>Isi rumus</li>
-<li>Salin</li>
+<li lang="en">Choose "ARRAY-BLANK" in "Method".</li>
+<li lang="en">Enter the "First-row formula" (e.g., B2*C2).</li>
+<li lang="en">Copy the formula and paste into row 1.</li>
 </ol>
-<div class="note">IF memeriksa apakah kolom pertama kosong.</div>
+<div class="note" lang="en">Rows where the first cell to appear (B2 here) is blank give a blank result.</div>
+<h2>Contoh</h2>
+<ul>
+<li lang="en">=ARRAYFORMULA(IF(B2:B="","",B2:B*C2:C))</li>
+</ul>
+<p lang="en">Rows with blank B stay empty; only filled rows are calculated.</p>
+<h2>Cocok untuk</h2>
+<ul>
+<li lang="en">Sheets with spare rows below where you don't want 0s</li>
+<li lang="en">Keeping a growing sheet tidy</li>
+</ul>
+<h2 lang="en">The cell used for the test</h2>
+<p lang="en">Blankness is judged by the first cell appearing in the formula. Writing the cell you want to test first gives the intended behavior.</p>
+<h2>Contoh</h2>
+<p lang="en">Wanted amount = price (B) × quantity (C). With quantity written first, only rows with blank quantity stayed empty. I wrote the column to test first.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>0 remains</b>: the tested cell holds 0, not blank.</li>
+<li lang="en"><b>Whitespace</b>: cells with invisible spaces aren't treated as blank.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want blank only when several columns are empty</h3>
+<p lang="en">Widen the IF condition with OR or AND. Edit by hand after pasting.</p>
+<h2>Ringkasan</h2>
+<p lang="en">To blank out empty rows, use ARRAY-BLANK.</p>
 <a class="cta" href="/id/arrayformula-builder.html">Gunakan “Buat ARRAYFORMULA” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/query-formula-builder.html">Buat rumus QUERY</a>: Buat rumus QUERY.</li><li><a href="/id/filter-formula-builder.html">Buat rumus FILTER</a>: Buat rumus FILTER.</li><li><a href="/id/excel-if-builder.html">Buat rumus IF</a>: Buat rumus IF.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>

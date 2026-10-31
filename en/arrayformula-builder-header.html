@@ -201,14 +201,38 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>With a Header</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose ARRAY-HEADER</li><li>Enter the header</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/arrayformula-builder.html">ARRAYFORMULA Builder</a> you can show a header in row 1 and fill results below it.</p>
+<p>You want the ARRAYFORMULA column to include its heading too. That's "ARRAY-HEADER". <a href="/en/arrayformula-builder.html">Build an ARRAYFORMULA</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose ARRAY-HEADER</li>
-<li>Enter the header</li>
-<li>Copy it</li>
+<li>Choose "ARRAY-HEADER" in "Method".</li>
+<li>In "Heading text (for ARRAY-HEADER)", enter the heading (e.g., Amount).</li>
+<li>Enter the "First-row formula" and paste the formula into the row-1 cell.</li>
 </ol>
-<div class="note">Pasted into the header cell, one formula completes the column.</div>
+<div class="note">An empty heading gives "The input is not valid."</div>
+<h2>Example</h2>
+<ul>
+<li>=ARRAYFORMULA(IF(ROW(B:B)=1,"Amount",B2:B*C2:C))</li>
+</ul>
+<p>With the cell in row 1, row 1 shows the heading and rows 2 onward the results.</p>
+<h2>Good for</h2>
+<ul>
+<li>Managing headings by formula too</li>
+<li>Combining heading and body in one cell</li>
+</ul>
+<h2>Note</h2>
+<p>Paste into row 1 (A1, D1, etc.), because ROW is used to detect row 1.</p>
+<h2>Example</h2>
+<p>Pasted in D1, D1 showed "Amount" and D2 onward the products. Adding columns needed the same formula.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>No heading appears</b>: the pasted cell isn't in row 1.</li>
+<li><b>Quotes</b>: double quotes in the heading are doubled automatically.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if the table starts on row 2?</h3>
+<p>Rewrite the ROW test by hand.</p>
+<h2>Summary</h2>
+<p>Heading and body in one formula. Paste into row 1.</p>
 <a class="cta" href="/en/arrayformula-builder.html">Use "Build an ARRAYFORMULA" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/query-formula-builder.html">Build a QUERY Formula</a>: Build a QUERY formula.</li><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

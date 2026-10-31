@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/split-formula-builder.html">SPLIT 수식 만들기</a>가 동작하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">You pasted the formula but it doesn't split. Here are common troubles with <a href="/ko/split-formula-builder.html">Build a SPLIT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell to split isn't in the "A2" form; the delimiter is empty; or in Nth mode the number isn't an integer of 1 or more.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Doesn't split</b>: the delimiter doesn't match the data (full-width vs half-width, etc.).</li>
+<li lang="en"><b>#REF!</b>: the number exceeds the item count, or cells to the right hold values.</li>
+<li lang="en"><b>#SPILL! (Excel)</b>: values sit in the spill range.</li>
+<li lang="en"><b>#NAME? (Excel)</b>: a version without TEXTSPLIT.</li>
+<li lang="en"><b>Spaces remain around items</b>: tidy with TRIM.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Look closely at the source text: is the delimiter full-width or half-width?</li>
+<li lang="en">Paste it into "Sample text" and view the tool's result.</li>
+<li lang="en">Check the cells to the right are empty.</li>
 </ol>
-<div class="note">수식이 나오지 않으면 셀이 A2처럼 쓰여 있는지, 구분 기호가 입력되어 있는지 확인하세요.</div>
+<div class="note" lang="en">The delimiter may be an invisible character (line break, tab).</div>
+<h2 lang="en">Splitting on line breaks</h2>
+<p lang="en">A line break is CHAR(10). It can't be typed in the delimiter field directly, so edit the formula by hand.</p>
+<ul>
+<li lang="en">Example: =SPLIT(A2,CHAR(10))</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Names didn't split because the delimiter was a tab. Editing the formula by hand fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Numbers become dates</b>: values like "1-2" may turn into dates. Set the format to text.</li>
+<li lang="en"><b>Leading zeros vanish</b>: keep as text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Split numbers remain text</h3>
+<p lang="en">Convert with VALUE.</p>
+<h2>요약</h2>
+<p lang="en">Check the delimiter, the empty cells to the right, and the supported version.</p>
 <a class="cta" href="/ko/split-formula-builder.html">“SPLIT 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/text-to-columns.html">구분 문자로 글을 열로 나누기</a>: 구분 문자로 글을 열로 나눕니다.</li><li><a href="/ko/excel-left-mid-builder.html">LEFT·MID·RIGHT 수식 만들기</a>: 글자를 꺼내는 수식을 만듭니다.</li><li><a href="/ko/textjoin-formula-builder.html">TEXTJOIN 수식 만들기</a>: TEXTJOIN 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

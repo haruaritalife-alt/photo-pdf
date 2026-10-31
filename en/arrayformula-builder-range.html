@@ -201,14 +201,40 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How Ranges Change</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the formula</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/en/arrayformula-builder.html">ARRAYFORMULA Builder</a>, B2 becomes a whole-column range like B2:B.</p>
-<h2>Steps</h2>
-<ol>
-<li>Enter the formula</li>
-<li>See the formula</li>
-<li>Check it</li>
-</ol>
-<div class="note">Each cell reference becomes its own whole column.</div>
+<p>In ARRAYFORMULA, "B2" becomes "B2:B". Knowing how ranges change lets you tweak formulas. <a href="/en/arrayformula-builder.html">Build an ARRAYFORMULA</a> does this conversion automatically.</p>
+<h2>Conversion rules</h2>
+<ul>
+<li>B2 → B2:B (from B2 to the end of column B)</li>
+<li>C2 → C2:C</li>
+<li>Multiple cells are all converted.</li>
+</ul>
+<div class="note">Only column-letter plus row-number (A1 style) references are converted. Plain numbers are left alone.</div>
+<h2>Example</h2>
+<ul>
+<li>Input: B2*C2+100</li>
+<li>Result: =ARRAYFORMULA(B2:B*C2:C+100)</li>
+</ul>
+<h2>Limiting the range</h2>
+<p>If you don't need all rows, edit by hand to something like "B2:B100".</p>
+<h2>Good for</h2>
+<ul>
+<li>Choosing which rows to calculate</li>
+<li>Matching the length of other columns</li>
+</ul>
+<h2>Matching range lengths</h2>
+<p>Mismatched range lengths in a formula can cause errors. Start them all from the same row.</p>
+<h2>Example</h2>
+<p>Mixing B2:B and C3:C shifted results. Aligning the start row fixed it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Rows not aligned</b>: differing start rows such as B2 and C3 cause offsets.</li>
+<li><b>Absolute references</b>: "$" is removed automatically.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What about cells on other sheets?</h3>
+<p>Sheet-qualified cells aren't handled. Fix by hand.</p>
+<h2>Summary</h2>
+<p>Cells become ranges to the column end. Align the start rows.</p>
 <a class="cta" href="/en/arrayformula-builder.html">Use "Build an ARRAYFORMULA" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/query-formula-builder.html">Build a QUERY Formula</a>: Build a QUERY formula.</li><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -200,14 +200,38 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>空の行を空にする</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ARRAY-BLANKを選ぶ</li><li>式を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/arrayformula-builder.html">ARRAYFORMULA式の作成</a> では、データのない行を空のままにする式を作れます。</p>
+<p>ARRAYFORMULAをそのまま使うと、データのない行にも、0やエラーが並びます。それを避けるのが「ARRAY-BLANK」です。<a href="/arrayformula-builder.html">ARRAYFORMULAの式を作る</a> で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>ARRAY-BLANKを選ぶ</li>
-<li>式を入れる</li>
-<li>コピーする</li>
+<li>「方法」で「ARRAY-BLANK」を選ぶ。</li>
+<li>「1行目の式」を入れる（例：B2*C2）。</li>
+<li>式をコピーして、1行目に貼る。</li>
 </ol>
-<div class="note">IFで最初の列が空かどうかを調べます。</div>
+<div class="note">最初に出てくるセル（この例ではB2）が空の行は、結果も空になります。</div>
+<h2>例</h2>
+<ul>
+<li>=ARRAYFORMULA(IF(B2:B="","",B2:B*C2:C))</li>
+</ul>
+<p>B列が空の行は空欄に、入力のある行だけ計算されます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>下に余白がある表で、0を並べたくない</li>
+<li>行が増える表を、見やすく保ちたい</li>
+</ul>
+<h2>判定に使うセル</h2>
+<p>空かどうかは、式の中で最初に出てくるセルで判定されます。判定したいセルを先頭に書くと、意図どおりになります。</p>
+<h2>例</h2>
+<p>単価（B）×数量（C）で金額を出したかった。数量が先頭にあると、数量が空の行だけ空欄になった。判定したい列を、先頭に書いた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>0が残る</b>：判定のセルが、空でなく0になっている。</li>
+<li><b>空白文字</b>：見えない空白が入ったセルは、空と判定されない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>複数の列が空のときだけ空にしたい</h3>
+<p>IFの条件を、ORやANDで広げます。ツールの式を貼ったあとで、手で直します。</p>
+<h2>まとめ</h2>
+<p>空の行を空にしたいときは、ARRAY-BLANK。</p>
 <a class="cta" href="/arrayformula-builder.html">ARRAYFORMULAの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/query-formula-builder.html">QUERYの式を作る</a>：QUERY関数の式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +243,38 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Keeping Blank Rows Empty</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose ARRAY-BLANK</li><li>Enter the formula</li><li>Copy it</li></ul></div>
-<p>In <a href="/arrayformula-builder.html">ARRAYFORMULA Builder</a> you can build a formula that leaves rows without data empty.</p>
+<p>Used as is, ARRAYFORMULA fills rows with no data with 0s or errors. "ARRAY-BLANK" avoids that. <a href="/arrayformula-builder.html">Build an ARRAYFORMULA</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose ARRAY-BLANK</li>
-<li>Enter the formula</li>
-<li>Copy it</li>
+<li>Choose "ARRAY-BLANK" in "Method".</li>
+<li>Enter the "First-row formula" (e.g., B2*C2).</li>
+<li>Copy the formula and paste into row 1.</li>
 </ol>
-<div class="note">IF checks whether the first column is empty.</div>
+<div class="note">Rows where the first cell to appear (B2 here) is blank give a blank result.</div>
+<h2>Example</h2>
+<ul>
+<li>=ARRAYFORMULA(IF(B2:B="","",B2:B*C2:C))</li>
+</ul>
+<p>Rows with blank B stay empty; only filled rows are calculated.</p>
+<h2>Good for</h2>
+<ul>
+<li>Sheets with spare rows below where you don't want 0s</li>
+<li>Keeping a growing sheet tidy</li>
+</ul>
+<h2>The cell used for the test</h2>
+<p>Blankness is judged by the first cell appearing in the formula. Writing the cell you want to test first gives the intended behavior.</p>
+<h2>Example</h2>
+<p>Wanted amount = price (B) × quantity (C). With quantity written first, only rows with blank quantity stayed empty. I wrote the column to test first.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>0 remains</b>: the tested cell holds 0, not blank.</li>
+<li><b>Whitespace</b>: cells with invisible spaces aren't treated as blank.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want blank only when several columns are empty</h3>
+<p>Widen the IF condition with OR or AND. Edit by hand after pasting.</p>
+<h2>Summary</h2>
+<p>To blank out empty rows, use ARRAY-BLANK.</p>
 <a class="cta" href="/arrayformula-builder.html">Use "Build an ARRAYFORMULA" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/query-formula-builder.html">Build a QUERY Formula</a>: Build a QUERY formula.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

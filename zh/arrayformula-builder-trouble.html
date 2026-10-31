@@ -201,14 +201,40 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>无法正常使用时的处理办法</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>检查文件</li><li>确认大小</li><li>换一台设备试试</li></ul></div>
-<p>如果<a href="/zh/arrayformula-builder.html">ARRAYFORMULA 公式生成器</a>无法使用,请检查以下几点。</p>
-<h2>步骤</h2>
+<p lang="en">You pasted the formula but it won't spread. Here are common troubles with <a href="/zh/arrayformula-builder.html">Build an ARRAYFORMULA</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the formula has no cell (like B2); contains a double quote; or in ARRAY-HEADER the heading is empty.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF! "Array result was not expanded because it would overwrite data"</b>: values already exist in the spill range. Clear those cells.</li>
+<li lang="en"><b>Only one row of result</b>: the pasted formula isn't range-based (B2:B).</li>
+<li lang="en"><b>#VALUE!</b>: text that can't be calculated is in the range.</li>
+<li lang="en"><b>0s fill rows</b>: to blank empty rows, use ARRAY-BLANK.</li>
+<li lang="en"><b>No heading</b>: the ARRAY-HEADER formula was pasted outside row 1.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>检查文件</li>
-<li>确认大小</li>
-<li>换一台设备试试</li>
+<li lang="en">Check the cells below the pasted cell are empty.</li>
+<li lang="en">Check the formula starts with "=ARRAYFORMULA(".</li>
+<li lang="en">Check range start rows are aligned.</li>
 </ol>
-<div class="note">如果没有出现公式,请检查第一行的公式中是否有 B2 这样的单元格,并且没有引号。</div>
+<div class="note" lang="en">When adding IF text tests, don't use full-width quotes.</div>
+<h2 lang="en">Some functions don't spread</h2>
+<p lang="en">VLOOKUP and a few others may not spread as expected inside ARRAYFORMULA. Replace them with other functions.</p>
+<h2>示例</h2>
+<p lang="en">Pasting gave #REF!. An old formula remained in a cell below. Clearing it let it spread.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entered a formula in every cell</b>: put it in only one cell.</li>
+<li lang="en"><b>Sorting and filtering</b>: can affect the spill range.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I fix the formula later?</h3>
+<p lang="en">Select the pasted cell and edit directly.</p>
+<h2>小结</h2>
+<p lang="en">Check that the spill range is empty, the range shape, and the start row.</p>
 <a class="cta" href="/zh/arrayformula-builder.html">使用“生成 ARRAYFORMULA”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/query-formula-builder.html">生成 QUERY 公式</a>: 生成 QUERY 公式。</li><li><a href="/zh/filter-formula-builder.html">生成 FILTER 公式</a>: 生成 FILTER 公式。</li><li><a href="/zh/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

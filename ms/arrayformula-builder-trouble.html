@@ -201,14 +201,40 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Apa yang Perlu Dilakukan Jika Tidak Berfungsi</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Dikemas kini: 19 Okt 2026 | <a href="/about.html">Perihal (Jepun)</a></p>
 <div class="points"><b>Perkara penting</b><ul><li>Semak fail</li><li>Semak saiz</li><li>Cuba peranti lain</li></ul></div>
-<p>Jika <a href="/ms/arrayformula-builder.html">Pembina ARRAYFORMULA</a> tidak berfungsi, semak perkara berikut.</p>
-<h2>Langkah</h2>
+<p lang="en">You pasted the formula but it won't spread. Here are common troubles with <a href="/ms/arrayformula-builder.html">Build an ARRAYFORMULA</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the formula has no cell (like B2); contains a double quote; or in ARRAY-HEADER the heading is empty.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF! "Array result was not expanded because it would overwrite data"</b>: values already exist in the spill range. Clear those cells.</li>
+<li lang="en"><b>Only one row of result</b>: the pasted formula isn't range-based (B2:B).</li>
+<li lang="en"><b>#VALUE!</b>: text that can't be calculated is in the range.</li>
+<li lang="en"><b>0s fill rows</b>: to blank empty rows, use ARRAY-BLANK.</li>
+<li lang="en"><b>No heading</b>: the ARRAY-HEADER formula was pasted outside row 1.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Semak fail</li>
-<li>Semak saiz</li>
-<li>Cuba peranti lain</li>
+<li lang="en">Check the cells below the pasted cell are empty.</li>
+<li lang="en">Check the formula starts with "=ARRAYFORMULA(".</li>
+<li lang="en">Check range start rows are aligned.</li>
 </ol>
-<div class="note">Jika tiada formula muncul, semak formula baris pertama mempunyai sel seperti B2 dan tiada tanda petikan.</div>
+<div class="note" lang="en">When adding IF text tests, don't use full-width quotes.</div>
+<h2 lang="en">Some functions don't spread</h2>
+<p lang="en">VLOOKUP and a few others may not spread as expected inside ARRAYFORMULA. Replace them with other functions.</p>
+<h2>Contoh</h2>
+<p lang="en">Pasting gave #REF!. An old formula remained in a cell below. Clearing it let it spread.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entered a formula in every cell</b>: put it in only one cell.</li>
+<li lang="en"><b>Sorting and filtering</b>: can affect the spill range.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I fix the formula later?</h3>
+<p lang="en">Select the pasted cell and edit directly.</p>
+<h2>Ringkasan</h2>
+<p lang="en">Check that the spill range is empty, the range shape, and the start row.</p>
 <a class="cta" href="/ms/arrayformula-builder.html">Guna “Bina ARRAYFORMULA” (percuma)</a>
 <h2>Alat yang sepadan dengan ini</h2><ul><li><a href="/ms/query-formula-builder.html">Bina formula QUERY</a>: Bina formula QUERY.</li><li><a href="/ms/filter-formula-builder.html">Cipta formula FILTER</a>: Cipta formula FILTER.</li><li><a href="/ms/excel-if-builder.html">Cipta formula IF</a>: Cipta formula IF.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil amat dihargai.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Hantar tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hantar hadiah (senarai hajat Amazon)</a></div>

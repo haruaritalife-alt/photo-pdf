@@ -201,14 +201,40 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Що робити, якщо не працює</h1>
 <p class="meta">Опубліковано: 19 жовт. 2026 | Оновлено: 19 жовт. 2026 | <a href="/about.html">Про нас (японською)</a></p>
 <div class="points"><b>Основне</b><ul><li>Перевірте файл</li><li>Перевірте розмір</li><li>Спробуйте інший пристрій</li></ul></div>
-<p>Якщо <a href="/uk/arrayformula-builder.html">Конструктор ARRAYFORMULA</a> не працює, перевірте таке.</p>
-<h2>Кроки</h2>
+<p lang="en">You pasted the formula but it won't spread. Here are common troubles with <a href="/uk/arrayformula-builder.html">Build an ARRAYFORMULA</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the formula has no cell (like B2); contains a double quote; or in ARRAY-HEADER the heading is empty.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF! "Array result was not expanded because it would overwrite data"</b>: values already exist in the spill range. Clear those cells.</li>
+<li lang="en"><b>Only one row of result</b>: the pasted formula isn't range-based (B2:B).</li>
+<li lang="en"><b>#VALUE!</b>: text that can't be calculated is in the range.</li>
+<li lang="en"><b>0s fill rows</b>: to blank empty rows, use ARRAY-BLANK.</li>
+<li lang="en"><b>No heading</b>: the ARRAY-HEADER formula was pasted outside row 1.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Перевірте файл</li>
-<li>Перевірте розмір</li>
-<li>Спробуйте інший пристрій</li>
+<li lang="en">Check the cells below the pasted cell are empty.</li>
+<li lang="en">Check the formula starts with "=ARRAYFORMULA(".</li>
+<li lang="en">Check range start rows are aligned.</li>
 </ol>
-<div class="note">Якщо формула не з'являється, перевірте, чи у формулі першого рядка є клітинки на кшталт B2 і немає лапок.</div>
+<div class="note" lang="en">When adding IF text tests, don't use full-width quotes.</div>
+<h2 lang="en">Some functions don't spread</h2>
+<p lang="en">VLOOKUP and a few others may not spread as expected inside ARRAYFORMULA. Replace them with other functions.</p>
+<h2>Приклад</h2>
+<p lang="en">Pasting gave #REF!. An old formula remained in a cell below. Clearing it let it spread.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Entered a formula in every cell</b>: put it in only one cell.</li>
+<li lang="en"><b>Sorting and filtering</b>: can affect the spill range.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I fix the formula later?</h3>
+<p lang="en">Select the pasted cell and edit directly.</p>
+<h2>Підсумок</h2>
+<p lang="en">Check that the spill range is empty, the range shape, and the start row.</p>
 <a class="cta" href="/uk/arrayformula-builder.html">Використати «Створити ARRAYFORMULA» (безкоштовно)</a>
 <h2>Інструменти, що добре поєднуються з цим</h2><ul><li><a href="/uk/query-formula-builder.html">Створити формулу QUERY</a>: Створіть формулу QUERY.</li><li><a href="/uk/filter-formula-builder.html">Створення формули FILTER</a>: Створіть формулу FILTER.</li><li><a href="/uk/excel-if-builder.html">Створення формули IF</a>: Створіть формулу IF.</li></ul>
 <div class="tip"><p>Якщо цей посібник став у пригоді, невеликі чайові будуть дуже доречні.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Надіслати чайові (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Надіслати подарунок (список бажань Amazon)</a></div>

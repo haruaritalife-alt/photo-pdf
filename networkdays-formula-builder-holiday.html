@@ -200,14 +200,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>祝日を除く</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>祝日の範囲を入れる</li><li>式を見る</li><li>コピーする</li></ul></div>
-<p><a href="/networkdays-formula-builder.html">営業日数式の作成</a> では、祝日の範囲を入れると、祝日も除いて数えられます。</p>
+<p>土日だけでなく、祝日や会社の休みも除きたい。NETWORKDAYSは、祝日の一覧を指定できます。<a href="/networkdays-formula-builder.html">営業日数の式を作る</a> の「祝日の範囲」に入れます。</p>
 <h2>手順</h2>
 <ol>
-<li>祝日の範囲を入れる</li>
-<li>式を見る</li>
-<li>コピーする</li>
+<li>シートのどこかに、祝日の日付を縦に並べる（例：E2:E20）。</li>
+<li>「祝日の範囲（空でもOK）」に、その範囲を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">祝日の一覧を、別のセルに書いておきます。</div>
+<div class="note">祝日の範囲は、日付として認識されているセルにします。文字列の日付は、除かれません。</div>
+<h2>例</h2>
+<ul>
+<li>=NETWORKDAYS(A2,B2,E2:E20)</li>
+</ul>
+<p>土日に加えて、E2:E20の日付も除かれます。</p>
+<h2>試しの結果について</h2>
+<p>ツールの試しの結果は、土日だけを除いた数です。祝日は含めて計算していません。画面には、その旨が表示されます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>祝日を除いた、納期までの営業日数</li>
+<li>会社の休業日を除いた作業日数</li>
+<li>年末年始の休みを除いた日数</li>
+</ul>
+<h2>祝日の一覧を作る</h2>
+<ul>
+<li>内閣府の、国民の祝日の一覧を参考にする</li>
+<li>会社の休みも、同じ列に足す</li>
+<li>年が変わったら、更新する</li>
+</ul>
+<h2>範囲を絶対参照にする</h2>
+<p>下にコピーするとき、祝日の範囲がずれないよう、「$E$2:$E$20」にします。</p>
+<h2>例</h2>
+<p>納期を決めるのに、祝日を除いた営業日数が必要だった。祝日の一覧を別のシートに置き、範囲を指定して、日数を求めた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>祝日が除かれない</b>：セルが文字列。日付形式にする。</li>
+<li><b>範囲がずれる</b>：$を付けていない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>振替休日は？</h3>
+<p>一覧に、実際の休みの日付を入れます。</p>
+<h2>まとめ</h2>
+<p>祝日の一覧を作り、範囲を指定すれば、除かれます。</p>
 <a class="cta" href="/networkdays-formula-builder.html">営業日数の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-offset-formula-builder.html">日付の足し引きの式を作る</a>：日付の足し引きの式を作ります。</li><li><a href="/datedif-formula-builder.html">DATEDIFの式を作る</a>：DATEDIFの式を作ります。</li><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +252,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Excluding Holidays</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the holiday range</li><li>See the formula</li><li>Copy it</li></ul></div>
-<p>In <a href="/networkdays-formula-builder.html">NETWORKDAYS Builder</a>, entering a holiday range also excludes holidays.</p>
+<p>Besides weekends, you want to exclude holidays and company days off. NETWORKDAYS accepts a holiday list. Enter it in "Holiday range" in <a href="/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the holiday range</li>
-<li>See the formula</li>
-<li>Copy it</li>
+<li>Put holiday dates in a column somewhere in the sheet (e.g., E2:E20).</li>
+<li>Enter that range in "Holiday range (may be empty)".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">Keep a list of holidays in some cells.</div>
+<div class="note">The holiday range must hold cells recognized as dates. Text dates aren't excluded.</div>
+<h2>Example</h2>
+<ul>
+<li>=NETWORKDAYS(A2,B2,E2:E20)</li>
+</ul>
+<p>In addition to weekends, the dates in E2:E20 are excluded.</p>
+<h2>About the sample result</h2>
+<p>The tool's sample result excludes only weekends. Holidays aren't factored in, and the screen says so.</p>
+<h2>Good for</h2>
+<ul>
+<li>Business days to a deadline excluding holidays</li>
+<li>Work days excluding company closures</li>
+<li>Days excluding year-end and New Year breaks</li>
+</ul>
+<h2>Making a holiday list</h2>
+<ul>
+<li>Refer to an official list of public holidays</li>
+<li>Add company days off in the same column</li>
+<li>Update when the year changes</li>
+</ul>
+<h2>Making the range absolute</h2>
+<p>When copying down, use "$E$2:$E$20" so the holiday range doesn't shift.</p>
+<h2>Example</h2>
+<p>Needed business days excluding holidays to set a deadline. Put the holiday list on another sheet, specified the range, and got the count.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Holidays aren't excluded</b>: the cells are text. Make them date format.</li>
+<li><b>Range shifts</b>: $ missing.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What about substitute holidays?</h3>
+<p>Put the actual days off in the list.</p>
+<h2>Summary</h2>
+<p>Make a holiday list and specify its range to exclude them.</p>
 <a class="cta" href="/networkdays-formula-builder.html">Use "Build a NETWORKDAYS Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li><li><a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

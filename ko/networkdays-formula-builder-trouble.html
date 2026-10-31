@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/networkdays-formula-builder.html">영업일 수식 만들기</a>가 동작하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/ko/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the start or end date cell isn't in the "A2" form; the holiday range isn't in the "E2:E20" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: the date cell isn't recognized as a date (it's text).</li>
+<li lang="en"><b>#NAME?</b>: older Excel lacks newer functions (like DAYS).</li>
+<li lang="en"><b>Result is 1 too large</b>: NETWORKDAYS counts both the start and end dates.</li>
+<li lang="en"><b>Negative</b>: the end date is before the start.</li>
+<li lang="en"><b>Holidays aren't excluded</b>: the holiday cells are text.</li>
+<li lang="en"><b>Looks like a date</b>: set the result cell to a Number display format.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Check date cells display right-aligned (left-aligned may be text).</li>
+<li lang="en">Check the start and end cell references aren't swapped.</li>
+<li lang="en">Compare the tool's result with the real result using sample dates.</li>
 </ol>
-<div class="note">수식이 나오지 않으면 시작 셀과 끝 셀이 A2, B2처럼 쓰여 있는지 확인하세요.</div>
+<div class="note" lang="en">Check that dates don't use dots or full-width separators.</div>
+<h2 lang="en">Fixing text dates</h2>
+<ul>
+<li lang="en">Convert with DATEVALUE</li>
+<li lang="en">Unify separators to "/" or "-"</li>
+</ul>
+<h2>예</h2>
+<p lang="en">The day count gave #VALUE!. Dates were like "2026.10.01", i.e. text. Replacing with "/" made it calculate.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Holiday range shifts</b>: fix it with $.</li>
+<li lang="en"><b>Weekend codes in Google</b>: NETWORKDAYS.INTL weekend codes also work in Google.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to add business days to get a date</h3>
+<p lang="en">Use WORKDAY. The "date offset formula" tool can help.</p>
+<h2>요약</h2>
+<p lang="en">Check the date format, cell order and holiday format.</p>
 <a class="cta" href="/ko/networkdays-formula-builder.html">“NETWORKDAYS 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/date-offset-formula-builder.html">날짜 계산 수식 만들기</a>: 날짜 계산 수식을 만듭니다.</li><li><a href="/ko/datedif-formula-builder.html">DATEDIF 수식 만들기</a>: DATEDIF 수식을 만듭니다.</li><li><a href="/ko/date-calculator.html">나이, 날짜 간 일수, 날짜 가감 계산</a>: 나이와 날짜 간 일수를 계산합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

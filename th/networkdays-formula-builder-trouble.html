@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ต้องทำอย่างไรเมื่อใช้งานไม่ได้</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ตรวจสอบไฟล์</li><li>ตรวจสอบขนาด</li><li>ลองใช้อุปกรณ์อื่น</li></ul></div>
-<p>ถ้า <a href="/th/networkdays-formula-builder.html">ตัวสร้างสูตร NETWORKDAYS</a> ใช้งานไม่ได้ ให้ตรวจสอบสิ่งต่อไปนี้</p>
-<h2>ขั้นตอน</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/th/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the start or end date cell isn't in the "A2" form; the holiday range isn't in the "E2:E20" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: the date cell isn't recognized as a date (it's text).</li>
+<li lang="en"><b>#NAME?</b>: older Excel lacks newer functions (like DAYS).</li>
+<li lang="en"><b>Result is 1 too large</b>: NETWORKDAYS counts both the start and end dates.</li>
+<li lang="en"><b>Negative</b>: the end date is before the start.</li>
+<li lang="en"><b>Holidays aren't excluded</b>: the holiday cells are text.</li>
+<li lang="en"><b>Looks like a date</b>: set the result cell to a Number display format.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>ตรวจสอบไฟล์</li>
-<li>ตรวจสอบขนาด</li>
-<li>ลองใช้อุปกรณ์อื่น</li>
+<li lang="en">Check date cells display right-aligned (left-aligned may be text).</li>
+<li lang="en">Check the start and end cell references aren't swapped.</li>
+<li lang="en">Compare the tool's result with the real result using sample dates.</li>
 </ol>
-<div class="note">ถ้าไม่มีสูตรปรากฏ ให้ตรวจสอบว่าเซลล์เริ่มต้นและเซลล์สิ้นสุดเขียนเป็น A2 และ B2</div>
+<div class="note" lang="en">Check that dates don't use dots or full-width separators.</div>
+<h2 lang="en">Fixing text dates</h2>
+<ul>
+<li lang="en">Convert with DATEVALUE</li>
+<li lang="en">Unify separators to "/" or "-"</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">The day count gave #VALUE!. Dates were like "2026.10.01", i.e. text. Replacing with "/" made it calculate.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Holiday range shifts</b>: fix it with $.</li>
+<li lang="en"><b>Weekend codes in Google</b>: NETWORKDAYS.INTL weekend codes also work in Google.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to add business days to get a date</h3>
+<p lang="en">Use WORKDAY. The "date offset formula" tool can help.</p>
+<h2>สรุป</h2>
+<p lang="en">Check the date format, cell order and holiday format.</p>
 <a class="cta" href="/th/networkdays-formula-builder.html">ใช้ “สร้างสูตร NETWORKDAYS” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/date-offset-formula-builder.html">สร้างสูตรเลื่อนวันที่</a>: สร้างสูตรเลื่อนวันที่</li><li><a href="/th/datedif-formula-builder.html">สร้างสูตร DATEDIF</a>: สร้างสูตร DATEDIF</li><li><a href="/th/date-calculator.html">คำนวณอายุ จำนวนวันระหว่างวันที่ และการเลื่อนวันที่</a>: คำนวณอายุและจำนวนวันระหว่างวันที่</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

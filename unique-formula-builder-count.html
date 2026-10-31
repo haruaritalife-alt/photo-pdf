@@ -200,14 +200,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>種類の数を数える</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>COUNTを選ぶ</li><li>範囲を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/unique-formula-builder.html">UNIQUE式の作成</a> では、COUNTAとUNIQUEで重複を除いた件数を数えられます。</p>
+<p>「お客様は何社か」「商品は何種類か」。重複を除いた数を知りたいときは、COUNTAとUNIQUEを組み合わせます。<a href="/unique-formula-builder.html">UNIQUEの式を作る</a> の「COUNT」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>COUNTを選ぶ</li>
-<li>範囲を入れる</li>
-<li>コピーする</li>
+<li>「方法」で「COUNT」を選ぶ。</li>
+<li>「データの範囲」を入れる。</li>
+<li>「試しのデータ」で、数を確かめる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">試しのデータで数を確かめられます。</div>
+<div class="note">式は、=COUNTA(UNIQUE(範囲)) の形です。</div>
+<h2>例</h2>
+<ul>
+<li>=COUNTA(UNIQUE(A2:A100))</li>
+</ul>
+<p>試しのデータに「りんご,みかん,りんご,ぶどう」を入れると、「3」と表示されます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>取引先の数を数えたい</li>
+<li>アンケートの回答の種類を数えたい</li>
+<li>購入した人の数（重複を除く）を知りたい</li>
+</ul>
+<h2>空のセルに注意</h2>
+<p>範囲に空のセルがあると、数に含まれる場合があります。範囲を、データのある行に絞りましょう。</p>
+<h2>古いExcelの代わり</h2>
+<p>UNIQUEがない版では、次のSUMPRODUCTの式があります。</p>
+<ul>
+<li>=SUMPRODUCT(1/COUNTIF(A2:A100,A2:A100))</li>
+</ul>
+<p>空のセルがあると、エラーになります。</p>
+<h2>例</h2>
+<p>注文一覧の顧客名から、何社が注文したかを数えたかった。顧客名の列にCOUNTAとUNIQUEを使い、社数が分かった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>大文字と小文字</b>：英字は、区別されない場合がある。</li>
+<li><b>前後の空白</b>：「りんご」と「りんご 」は別の値。TRIMで整える。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>条件つきの種類数は？</h3>
+<p>FILTERで絞ってから、UNIQUEで数えます。</p>
+<h2>まとめ</h2>
+<p>種類の数は、COUNTAとUNIQUEの組み合わせです。</p>
 <a class="cta" href="/unique-formula-builder.html">UNIQUEの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +251,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Counting Distinct Values</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose COUNT</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/unique-formula-builder.html">UNIQUE Builder</a>, COUNTA with UNIQUE counts values without duplicates.</p>
+<p>"How many customers?" "How many kinds of products?" To count distinct values, combine COUNTA and UNIQUE. "COUNT" in <a href="/unique-formula-builder.html">Build a UNIQUE Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose COUNT</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>Choose "COUNT" in "Method".</li>
+<li>Enter the "Data range".</li>
+<li>Check the count with "Sample data".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">You can check the count with sample data.</div>
+<div class="note">The form is =COUNTA(UNIQUE(range)).</div>
+<h2>Example</h2>
+<ul>
+<li>=COUNTA(UNIQUE(A2:A100))</li>
+</ul>
+<p>With "apple,orange,apple,grape" as sample data, it shows "3".</p>
+<h2>Good for</h2>
+<ul>
+<li>Counting the number of clients</li>
+<li>Counting the kinds of survey answers</li>
+<li>Knowing the number of buyers (excluding duplicates)</li>
+</ul>
+<h2>Beware blank cells</h2>
+<p>Blank cells in the range may be counted. Narrow the range to rows with data.</p>
+<h2>Substitute for old Excel</h2>
+<p>Where UNIQUE isn't available, there's a SUMPRODUCT formula.</p>
+<ul>
+<li>=SUMPRODUCT(1/COUNTIF(A2:A100,A2:A100))</li>
+</ul>
+<p>It errors if there are blanks.</p>
+<h2>Example</h2>
+<p>Wanted to count how many companies ordered, from the customer column of an order list. COUNTA with UNIQUE on that column gave the number.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Upper and lower case</b>: letters may not be distinguished.</li>
+<li><b>Surrounding spaces</b>: "apple" and "apple " are different values. Tidy with TRIM.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Distinct count with a condition?</h3>
+<p>Narrow with FILTER first, then UNIQUE and count.</p>
+<h2>Summary</h2>
+<p>Distinct counts are COUNTA combined with UNIQUE.</p>
 <a class="cta" href="/unique-formula-builder.html">Use "Build a UNIQUE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

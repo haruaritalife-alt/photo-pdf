@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/networkdays-formula-builder.html">NETWORKDAYS Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted the formula but the result is odd. Here are common troubles with <a href="/en/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the start or end date cell isn't in the "A2" form; the holiday range isn't in the "E2:E20" form.</li>
+</ul>
+<h2>After pasting into the sheet</h2>
+<ul>
+<li><b>#VALUE!</b>: the date cell isn't recognized as a date (it's text).</li>
+<li><b>#NAME?</b>: older Excel lacks newer functions (like DAYS).</li>
+<li><b>Result is 1 too large</b>: NETWORKDAYS counts both the start and end dates.</li>
+<li><b>Negative</b>: the end date is before the start.</li>
+<li><b>Holidays aren't excluded</b>: the holiday cells are text.</li>
+<li><b>Looks like a date</b>: set the result cell to a Number display format.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check date cells display right-aligned (left-aligned may be text).</li>
+<li>Check the start and end cell references aren't swapped.</li>
+<li>Compare the tool's result with the real result using sample dates.</li>
 </ol>
-<div class="note">If no formula appears, check that the start and end cells are written like A2 and B2.</div>
+<div class="note">Check that dates don't use dots or full-width separators.</div>
+<h2>Fixing text dates</h2>
+<ul>
+<li>Convert with DATEVALUE</li>
+<li>Unify separators to "/" or "-"</li>
+</ul>
+<h2>Example</h2>
+<p>The day count gave #VALUE!. Dates were like "2026.10.01", i.e. text. Replacing with "/" made it calculate.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Holiday range shifts</b>: fix it with $.</li>
+<li><b>Weekend codes in Google</b>: NETWORKDAYS.INTL weekend codes also work in Google.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to add business days to get a date</h3>
+<p>Use WORKDAY. The "date offset formula" tool can help.</p>
+<h2>Summary</h2>
+<p>Check the date format, cell order and holiday format.</p>
 <a class="cta" href="/en/networkdays-formula-builder.html">Use "Build a NETWORKDAYS Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li><li><a href="/en/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/en/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

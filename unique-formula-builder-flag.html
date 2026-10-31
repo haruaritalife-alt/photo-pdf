@@ -200,14 +200,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>重複の判定</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>FLAGを選ぶ</li><li>範囲を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/unique-formula-builder.html">UNIQUE式の作成</a> では、COUNTIFで重複している行をTRUEにする式を作れます。</p>
+<p>一覧の中で、どの行が重複しているのかを、行ごとに知りたい。それには COUNTIF を使います。<a href="/unique-formula-builder.html">UNIQUEの式を作る</a> の「重複の判定」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>FLAGを選ぶ</li>
-<li>範囲を入れる</li>
-<li>コピーする</li>
+<li>「方法」で「重複の判定」を選ぶ。</li>
+<li>「データの範囲」を入れる。</li>
+<li>「試しのデータ」で、TRUE・FALSEを確かめる。</li>
+<li>式を、範囲の隣の列に貼って、下にコピーする。</li>
 </ol>
-<div class="note">式は最初のセルに貼って、下にコピーします。</div>
+<div class="note">式は、=COUNTIF($A$2:$A$100,A2)&gt;1 の形です。範囲は固定され、判定するセルは、範囲の最初のセルになります。</div>
+<h2>例</h2>
+<ul>
+<li>=COUNTIF($A$2:$A$100,A2)&gt;1</li>
+</ul>
+<p>試しのデータに「りんご,みかん,りんご,ぶどう」を入れると、「TRUE, FALSE, TRUE, FALSE」と表示されます。</p>
+<h2>使い道</h2>
+<ul>
+<li>重複した行に、色をつける（条件付き書式）</li>
+<li>フィルタで、重複行だけを表示する</li>
+<li>重複を数える</li>
+</ul>
+<h2>条件付き書式で色をつける</h2>
+<ol>
+<li>範囲を選ぶ。</li>
+<li>「条件付き書式」→「カスタム数式」。</li>
+<li>同じ式を入れる。</li>
+</ol>
+<h2>向いている場面</h2>
+<ul>
+<li>名簿の二重登録を探したい</li>
+<li>請求書の番号の重複を探したい</li>
+</ul>
+<h2>例</h2>
+<p>名簿の氏名に、二重登録がないか調べた。TRUEの行をフィルタで集めると、重複している人が分かった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>2回目以降だけ印をつけたい</b>：範囲の始まりを固定し、終わりを相対にする。</li>
+<li>例：=COUNTIF($A$2:A2,A2)&gt;1</li>
+<li><b>表記ゆれ</b>：全角と半角は、別の値。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>重複した行を、削除したい</h3>
+<p>Googleは「データ」→「データクリーンアップ」→「重複を削除」。Excelは「データ」→「重複の削除」。</p>
+<h2>まとめ</h2>
+<p>行ごとの重複は、COUNTIFで判定します。</p>
 <a class="cta" href="/unique-formula-builder.html">UNIQUEの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +255,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Flagging Duplicates</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose FLAG</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/unique-formula-builder.html">UNIQUE Builder</a>, COUNTIF builds a formula that gives TRUE for duplicated rows.</p>
+<p>You want to know, row by row, which rows in a list are duplicates. Use COUNTIF. The "duplicate flag" in <a href="/unique-formula-builder.html">Build a UNIQUE Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose FLAG</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>Choose "duplicate flag" in "Method".</li>
+<li>Enter the "Data range".</li>
+<li>Check TRUE/FALSE with "Sample data".</li>
+<li>Paste the formula into the column next to the range and copy it down.</li>
 </ol>
-<div class="note">Paste it in the first cell and copy it down.</div>
+<div class="note">The form is =COUNTIF($A$2:$A$100,A2)&gt;1. The range is fixed and the tested cell is the range's first cell.</div>
+<h2>Example</h2>
+<ul>
+<li>=COUNTIF($A$2:$A$100,A2)&gt;1</li>
+</ul>
+<p>With "apple,orange,apple,grape" as sample data, it shows "TRUE, FALSE, TRUE, FALSE".</p>
+<h2>Uses</h2>
+<ul>
+<li>Coloring duplicate rows (conditional formatting)</li>
+<li>Filtering to show only duplicate rows</li>
+<li>Counting duplicates</li>
+</ul>
+<h2>Coloring with conditional formatting</h2>
+<ol>
+<li>Select the range.</li>
+<li>"Conditional formatting" → "Custom formula".</li>
+<li>Enter the same formula.</li>
+</ol>
+<h2>Good for</h2>
+<ul>
+<li>Finding double registrations in a roster</li>
+<li>Finding duplicate invoice numbers</li>
+</ul>
+<h2>Example</h2>
+<p>Checked a roster for double registrations. Filtering the TRUE rows showed who was duplicated.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Marking only the second and later</b>: fix the range start and keep the end relative.</li>
+<li>Example: =COUNTIF($A$2:A2,A2)&gt;1</li>
+<li><b>Notation variants</b>: full-width and half-width are different values.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to delete duplicate rows</h3>
+<p>Google: Data → Data cleanup → Remove duplicates. Excel: Data → Remove Duplicates.</p>
+<h2>Summary</h2>
+<p>Row-by-row duplicate detection is done with COUNTIF.</p>
 <a class="cta" href="/unique-formula-builder.html">Use "Build a UNIQUE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
