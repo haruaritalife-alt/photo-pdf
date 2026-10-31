@@ -201,14 +201,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Comprobar si hay texto</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
 <div class="points"><b>Puntos clave</b><ul><li>Elige CONTAINS</li><li>Escribe el texto</li><li>Cópialo</li></ul></div>
-<p>En <a href="/es/find-formula-builder.html">Creador de FIND</a> puedes comprobar con TRUE o FALSE si una celda incluye el texto.</p>
+<p lang="en">You want TRUE or FALSE for whether a cell contains a certain word. That's "CONTAINS". <a href="/es/find-formula-builder.html">Build a FIND Formula</a> builds it.</p>
 <h2>Pasos</h2>
 <ol>
-<li>Elige CONTAINS</li>
-<li>Escribe el texto</li>
-<li>Cópialo</li>
+<li lang="en">Choose "CONTAINS" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Character to find".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">La segunda fórmula da 1 o 0.</div>
+<div class="note" lang="en">The second formula returns 1 or 0, handy for calculations.</div>
+<h2>Ejemplo</h2>
+<ul>
+<li lang="en">=ISNUMBER(SEARCH("Tokyo",A2))</li>
+</ul>
+<p lang="en">TRUE if A2 contains "Tokyo", otherwise FALSE.</p>
+<ul>
+<li lang="en">Second: =IF(ISNUMBER(SEARCH("Tokyo",A2)),1,0)</li>
+</ul>
+<h2>Cómo funciona</h2>
+<p lang="en">SEARCH returns a position number if found and an error if not. ISNUMBER returns TRUE for numbers. So it tells whether it was found.</p>
+<h2 lang="en">Combining with IF</h2>
+<ul>
+<li lang="en">Example: =IF(ISNUMBER(SEARCH("Tokyo",A2)),"Tokyo case","Other")</li>
+</ul>
+<h2 lang="en">Using in conditional formatting</h2>
+<p lang="en">Color rows containing a particular word.</p>
+<ul>
+<li lang="en">Example: =ISNUMBER(SEARCH("urgent",$A2))</li>
+</ul>
+<h2 lang="en">Counting</h2>
+<p lang="en">Count rows containing a word with SUMPRODUCT.</p>
+<ul>
+<li lang="en">Example: =SUMPRODUCT(--ISNUMBER(SEARCH("Tokyo",A2:A100)))</li>
+</ul>
+<h2 lang="en">COUNTIF wildcards also work</h2>
+<ul>
+<li lang="en">Example: =COUNTIF(A2:A100,"*Tokyo*")</li>
+</ul>
+<p lang="en">For simple counting this is shorter.</p>
+<h2>Adecuado para</h2>
+<ul>
+<li lang="en">Finding rows whose notes contain "urgent"</li>
+<li lang="en">Judging whether an address contains a particular prefecture</li>
+<li lang="en">Classifying email subjects</li>
+</ul>
+<h2>Ejemplo</h2>
+<p lang="en">Wanted only the rows containing "return" from an inquiry list. Using the CONTAINS formula as FILTER's condition made the list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width vs half-width</b>: treated as different characters.</li>
+<li lang="en"><b>Wildcard characters</b>: if the word contains "?" or "*", behavior differs from intent.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to test for any of several words</h3>
+<p lang="en">Add the SEARCH results together, or use REGEXMATCH.</p>
+<h2>Resumen</h2>
+<p lang="en">Test for containment with ISNUMBER and SEARCH.</p>
 <a class="cta" href="/es/find-formula-builder.html">Usar «Crear una fórmula FIND» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/excel-left-mid-builder.html">Crear una fórmula LEFT, MID o RIGHT</a>: Crea fórmulas para extraer texto.</li><li><a href="/es/substitute-formula-builder.html">Crear una fórmula SUBSTITUTE</a>: Crea fórmulas para reemplazar texto.</li><li><a href="/es/split-formula-builder.html">Crear una fórmula SPLIT</a>: Crea fórmulas para dividir texto.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

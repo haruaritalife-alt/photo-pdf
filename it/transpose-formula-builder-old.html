@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Sostituire in un Excel più vecchio</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Scegli TRANSPOSE</li><li>Inserisci l'intervallo</li><li>Copia la formula a destra e in basso</li></ul></div>
-<p><a href="/it/transpose-formula-builder.html">Generatore di TRANSPOSE</a> mostra una formula con INDEX che funziona anche nelle versioni di Excel più vecchie.</p>
+<p lang="en">In old Excel, TRANSPOSE was a slightly tricky function because it had to be entered as an array formula. The "Excel formula" in <a href="/it/transpose-formula-builder.html">Build a TRANSPOSE Formula</a> uses INDEX, so it works in old Excel one cell at a time.</p>
+<h2 lang="en">The two formulas</h2>
+<ul>
+<li lang="en">Google: =TRANSPOSE(A1:C5)</li>
+<li lang="en">Excel (any version): =INDEX($A$1:$C$5,COLUMN(A1),ROW(A1))</li>
+</ul>
+<p lang="en">"Copy the second" copies the Excel formula.</p>
+<div class="note" lang="en">Copy the Excel formula across the whole range where results should go. Each cell yields one value.</div>
 <h2>Passaggi</h2>
 <ol>
-<li>Scegli TRANSPOSE</li>
-<li>Inserisci l'intervallo</li>
-<li>Copia la formula a destra e in basso</li>
+<li lang="en">Paste the Excel formula into the top-left cell of the result.</li>
+<li lang="en">Copy that cell right and down for the size of the result.</li>
+<li lang="en">If the source is 5 rows × 3 columns, the result is 3 rows × 5 columns.</li>
 </ol>
-<div class="note">L'intervallo viene fissato con $.</div>
+<h2>Come funziona</h2>
+<p lang="en">It takes the result's row and column numbers with ROW and COLUMN and applies them to the source table's column and row.</p>
+<ul>
+<li lang="en">COLUMN(A1): result column number (increases rightward)</li>
+<li lang="en">ROW(A1): result row number (increases downward)</li>
+<li lang="en">INDEX(range,row,column): the value at that row and column of the source</li>
+</ul>
+<h2 lang="en">In new Excel</h2>
+<p lang="en">In Excel 365 and 2021, TRANSPOSE spills automatically.</p>
+<ul>
+<li lang="en">Example: =TRANSPOSE(A1:C5)</li>
+</ul>
+<h2 lang="en">Using TRANSPOSE in old Excel</h2>
+<ol>
+<li lang="en">Select the result range (3 rows × 5 columns) first.</li>
+<li lang="en">Enter the formula.</li>
+<li lang="en">Confirm with Ctrl+Shift+Enter.</li>
+</ol>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Handing the file to someone using old Excel</li>
+<li lang="en">Small ranges to swap</li>
+</ul>
+<h2>Esempio</h2>
+<p lang="en">In old Excel, entering TRANSPOSE gave a single value. Copying the INDEX formula over the result range swapped the table.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Range not absolute</b>: copying shifts the source range. The tool's formula has $.</li>
+<li lang="en"><b>When the source changes</b>: the result changes too.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I delete the original table?</h3>
+<p lang="en">The result refers to the original. Before deleting, paste as values.</p>
+<h2>Riepilogo</h2>
+<p lang="en">In old Excel, copy the INDEX formula across the result.</p>
 <a class="cta" href="/it/transpose-formula-builder.html">Usa “Crea una formula TRANSPOSE” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/table-transpose.html">Scambiare righe e colonne di una tabella</a>: Scambia le righe e le colonne di una tabella incollata.</li><li><a href="/it/filter-formula-builder.html">Creare una formula FILTER</a>: Crea una formula FILTER.</li><li><a href="/it/arrayformula-builder.html">Crea una ARRAYFORMULA</a>: Crea formule ARRAYFORMULA.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>

@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>특수 공백</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>NBSP를 고릅니다</li><li>셀 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/text-case-formula-builder.html">대소문자·공백 수식 만들기</a>에서는 웹 페이지에서 복사한 특수 공백도 지울 수 있습니다.</p>
+<p lang="en">TRIM didn't remove the space. The cause may be a character that looks like a space but isn't one (a non-breaking space). "NBSP" in <a href="/ko/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> tidies it.</p>
 <h2>순서</h2>
 <ol>
-<li>NBSP를 고릅니다</li>
-<li>셀 입력</li>
-<li>복사</li>
+<li lang="en">Choose "NBSP" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">TRIM만으로 지워지지 않는 공백에 사용합니다.</div>
+<div class="note" lang="en">The form is TRIM(SUBSTITUTE(cell,CHAR(160)," ")).</div>
+<h2>예</h2>
+<ul>
+<li lang="en">=TRIM(SUBSTITUTE(A2,CHAR(160)," "))</li>
+</ul>
+<p lang="en">CHAR(160) is the non-breaking space. It's converted to a normal space and then tidied with TRIM.</p>
+<h2 lang="en">What a non-breaking space is</h2>
+<p lang="en">A special space found in text copied from web pages or output by some systems. It looks normal but TRIM doesn't remove it.</p>
+<h2 lang="en">How to spot it</h2>
+<ul>
+<li lang="en">Count characters with LEN and compare with the visible count</li>
+<li lang="en">If it's larger than it looks, there are invisible characters</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Tidying data copied from the web</li>
+<li lang="en">Investigating why VLOOKUP doesn't match</li>
+<li lang="en">Tidying data exported from accounting software</li>
+</ul>
+<h2 lang="en">Other special characters</h2>
+<ul>
+<li lang="en">Line breaks: removable with CLEAN</li>
+<li lang="en">Tabs: replace with SUBSTITUTE, CHAR(9)</li>
+<li lang="en">Zero-width spaces: another code such as UNICHAR(8203)</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Copying a web price table, numbers wouldn't calculate. Non-breaking spaces were in them. After tidying with NBSP and converting with VALUE, totals worked.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>CHAR(160) differs by Excel environment</b>: works on Windows but may differ on Mac. Try UNICHAR(160).</li>
+<li lang="en"><b>TRIM alone doesn't remove it</b>: you need to replace CHAR(160).</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to remove special spaces in bulk</h3>
+<p lang="en">The site's "Remove extra spaces and invisible characters from Excel text" tool removes them from pasted text in one go.</p>
+<h2>요약</h2>
+<p lang="en">For spaces TRIM can't remove, replace CHAR(160).</p>
 <a class="cta" href="/ko/text-case-formula-builder.html">“대소문자·공백 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-text-clean.html">엑셀 글의 불필요한 공백과 보이지 않는 문자 없애기</a>: 불필요한 공백과 보이지 않는 문자를 없앱니다.</li><li><a href="/ko/text-case-converter.html">영문 대소문자 변환기 (camelCase, snake_case)</a>: 텍스트의 대소문자와 이름 짓기 형식을 변환합니다.</li><li><a href="/ko/excel-left-mid-builder.html">LEFT·MID·RIGHT 수식 만들기</a>: 글자를 꺼내는 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

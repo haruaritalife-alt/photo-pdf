@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pag-aayos sa Isang Hilera</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Piliin ang TOROW</li><li>Ilagay ang saklaw</li><li>Kopyahin</li></ul></div>
-<p>Sa <a href="/tl/transpose-formula-builder.html">TRANSPOSE Builder</a>, makakagawa ka ng formulang nag-aayos ng talahanayan sa isang hilera.</p>
+<p lang="en">You want data over several rows and columns lined up in one horizontal row: a heading row, or one long list. Use the "ROW" type. <a href="/tl/transpose-formula-builder.html">Build a TRANSPOSE Formula</a> builds it.</p>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Piliin ang TOROW</li>
-<li>Ilagay ang saklaw</li>
-<li>Kopyahin</li>
+<li lang="en">Choose "ROW" in "Type".</li>
+<li lang="en">Enter the "Range".</li>
+<li lang="en">Copy the "Google Sheets formula" or "Excel formula" and paste.</li>
 </ol>
-<div class="note">Pinagsasama ng Google Sheets ang TRANSPOSE at FLATTEN.</div>
+<div class="note" lang="en">Google combines TRANSPOSE and FLATTEN; Excel uses TOROW (Excel 365).</div>
+<h2>Halimbawa</h2>
+<p lang="en">Making A1:C5 into one row:</p>
+<ul>
+<li lang="en">Google: =TRANSPOSE(FLATTEN(A1:C5))</li>
+<li lang="en">Excel: =TOROW(A1:C5)</li>
+</ul>
+<h2>Paano ito gumagana</h2>
+<p lang="en">In Google, FLATTEN makes one column and TRANSPOSE turns it horizontal.</p>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Making vertically listed names a heading row</li>
+<li lang="en">Making values from several columns a single-row list</li>
+<li lang="en">Joining into text with a delimiter (with TEXTJOIN)</li>
+<li lang="en">Example: =TEXTJOIN(",",TRUE,A1:C5)</li>
+</ul>
+<h2 lang="en">If you just want vertical to horizontal</h2>
+<p lang="en">For turning one column into one row, TRANSPOSE is enough.</p>
+<ul>
+<li lang="en">Example: =TRANSPOSE(A1:A10)</li>
+</ul>
+<h2 lang="en">The result size</h2>
+<p lang="en">If the source is A1:C5 (15 cells), the result is 1 row × 15 columns. Check the 15 columns in the spill range are empty.</p>
+<h2>Halimbawa</h2>
+<p lang="en">Wanted twelve vertically listed month names as horizontal headings. TRANSPOSE converted them to one row for the heading row.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>TOROW unavailable</b>: old Excel lacks it.</li>
+<li lang="en"><b>Spreads too far right</b>: beyond the sheet's right edge it errors.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to exclude empty cells</h3>
+<p lang="en">Excel's TOROW can exclude empties with the second argument.</p>
+<ul>
+<li lang="en">Example: =TOROW(A1:C5,1)</li>
+</ul>
+<h2>Buod</h2>
+<p lang="en">To gather into one row: Google uses TRANSPOSE with FLATTEN; Excel uses TOROW.</p>
 <a class="cta" href="/tl/transpose-formula-builder.html">Gamitin ang “Gumawa ng formula ng TRANSPOSE” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/table-transpose.html">Pagpapalit ng mga row at column ng table</a>: Magpalit ng mga row at column ng idinikit na table.</li><li><a href="/tl/filter-formula-builder.html">Gumawa ng FILTER formula</a>: Gumawa ng FILTER formula.</li><li><a href="/tl/arrayformula-builder.html">Gumawa ng ARRAYFORMULA</a>: Gumawa ng mga ARRAYFORMULA formula.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

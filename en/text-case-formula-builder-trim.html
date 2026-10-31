@@ -201,14 +201,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Removing Extra Spaces</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose TRIM</li><li>Enter the cell</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/text-case-formula-builder.html">Text Case Builder</a> you can build a formula that removes leading, trailing and doubled spaces.</p>
+<p>Spaces around a name, double spaces between words. Hard to see, but they cause mismatches in duplicate checks and lookups. "TRIM" in <a href="/en/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> removes them.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose TRIM</li>
-<li>Enter the cell</li>
-<li>Copy it</li>
+<li>Choose "TRIM" in "Type".</li>
+<li>Enter the "Text cell".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">One space stays between words.</div>
+<div class="note">To apply to a whole column, use the second formula (ARRAYFORMULA).</div>
+<h2>Example</h2>
+<ul>
+<li>=TRIM(A2)</li>
+</ul>
+<p>" Yamada Taro " becomes "Yamada Taro".</p>
+<h2>What TRIM does</h2>
+<ul>
+<li>Removes leading and trailing spaces</li>
+<li>Collapses repeated spaces between words into one</li>
+</ul>
+<h2>What TRIM doesn't remove</h2>
+<ul>
+<li>Full-width spaces (Japanese spaces) may remain</li>
+<li>Non-breaking spaces (special spaces) remain</li>
+<li>Line breaks and tabs remain</li>
+</ul>
+<p>Handle those another way.</p>
+<h2>Removing full-width spaces</h2>
+<ul>
+<li>Example: =TRIM(SUBSTITUTE(A2," "," "))</li>
+</ul>
+<p>Converts full-width spaces to half-width, then applies TRIM.</p>
+<h2>Removing non-printing characters</h2>
+<p>"CLEAN" removes control characters like line breaks. Layer it with TRIM.</p>
+<ul>
+<li>Example: =TRIM(CLEAN(A2))</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Tidying an imported roster</li>
+<li>Fixing why VLOOKUP doesn't match</li>
+<li>Pre-processing for duplicate checks</li>
+</ul>
+<h2>Example</h2>
+<p>Some rows didn't match in VLOOKUP. The lookup values had trailing spaces. Applying TRIM made them match.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Looks unchanged</b>: invisible characters are the cause. Check the length with LEN.</li>
+<li><b>Result is still a formula</b>: to use as values, paste values only.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How does it differ from the site's "invisible characters" tool?</h3>
+<p>That tool tidies pasted text in bulk. This one is for when you want to build a formula.</p>
+<h2>Summary</h2>
+<p>TRIM removes leading, trailing and repeated spaces.</p>
 <a class="cta" href="/en/text-case-formula-builder.html">Use "Build a Text Case and Trim Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/en/text-case-converter.html">Text Case Converter (camelCase, snake_case)</a>: Convert text case and naming styles.</li><li><a href="/en/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a>: Build text extraction formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

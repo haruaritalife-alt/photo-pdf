@@ -200,14 +200,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>余分な空白を消す</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>TRIMを選ぶ</li><li>セルを入れる</li><li>コピーする</li></ul></div>
-<p><a href="/text-case-formula-builder.html">大文字小文字式の作成</a> では、前後と重なった空白を消す式を作れます。</p>
+<p>名前の前後に空白がある。単語の間に、空白が2つ入っている。見た目ではわかりにくいですが、重複の判定や検索で、一致しない原因になります。<a href="/text-case-formula-builder.html">大文字小文字・空白の式を作る</a> の「TRIM」で消せます。</p>
 <h2>手順</h2>
 <ol>
-<li>TRIMを選ぶ</li>
-<li>セルを入れる</li>
-<li>コピーする</li>
+<li>「種類」で「TRIM」を選ぶ。</li>
+<li>「文字のセル」を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">単語の間の空白は、1つ残ります。</div>
+<div class="note">列全体にかけたいときは、2つ目の式（ARRAYFORMULA）を使います。</div>
+<h2>例</h2>
+<ul>
+<li>=TRIM(A2)</li>
+</ul>
+<p>「 山田  太郎 」が、「山田 太郎」になります。</p>
+<h2>TRIMがすること</h2>
+<ul>
+<li>先頭と末尾の空白を消す</li>
+<li>単語の間の連続した空白を、1つにする</li>
+</ul>
+<h2>TRIMで消えないもの</h2>
+<ul>
+<li>全角スペース（日本語の空白）は、消えない場合がある</li>
+<li>ノーブレークスペース（特殊な空白）は、消えない</li>
+<li>改行やタブは、消えない</li>
+</ul>
+<p>これらは、別の方法で整えます。</p>
+<h2>全角スペースを消す</h2>
+<ul>
+<li>例：=TRIM(SUBSTITUTE(A2,"　"," "))</li>
+</ul>
+<p>全角スペースを半角に直したうえで、TRIMをかけます。</p>
+<h2>印字されない文字を消す</h2>
+<p>「CLEAN」は、改行などの制御文字を消します。TRIMと重ねて使います。</p>
+<ul>
+<li>例：=TRIM(CLEAN(A2))</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>取り込んだ名簿の整理</li>
+<li>VLOOKUPが一致しない原因の解消</li>
+<li>重複チェックの前処理</li>
+</ul>
+<h2>例</h2>
+<p>VLOOKUPで一致しない行があった。検索値の最後に空白がついていた。TRIMをかけると、一致した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>見た目が変わらない</b>：見えない文字が原因。LENで文字数を確かめる。</li>
+<li><b>結果が式のまま</b>：値として使うなら、値のみ貼り付け。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>Excelの「見えない文字」のツールとの違いは？</h3>
+<p>このサイトの「Excelの文字の余分なスペース・見えない文字を取る」ツールは、貼り付けた文字をまとめて整えます。式を作りたいときは、こちらです。</p>
+<h2>まとめ</h2>
+<p>前後や連続した空白は、TRIMで消せます。</p>
 <a class="cta" href="/text-case-formula-builder.html">大文字小文字・空白の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li><li><a href="/text-case-converter.html">英字の大文字・小文字変換（camelCase・snake_case）</a>：英文の大文字小文字や命名形式を変換します。</li><li><a href="/excel-left-mid-builder.html">文字を取り出す式を作る</a>：文字を取り出す式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +264,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Removing Extra Spaces</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose TRIM</li><li>Enter the cell</li><li>Copy it</li></ul></div>
-<p>In <a href="/text-case-formula-builder.html">Text Case Builder</a> you can build a formula that removes leading, trailing and doubled spaces.</p>
+<p>Spaces around a name, double spaces between words. Hard to see, but they cause mismatches in duplicate checks and lookups. "TRIM" in <a href="/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> removes them.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose TRIM</li>
-<li>Enter the cell</li>
-<li>Copy it</li>
+<li>Choose "TRIM" in "Type".</li>
+<li>Enter the "Text cell".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">One space stays between words.</div>
+<div class="note">To apply to a whole column, use the second formula (ARRAYFORMULA).</div>
+<h2>Example</h2>
+<ul>
+<li>=TRIM(A2)</li>
+</ul>
+<p>" Yamada  Taro " becomes "Yamada Taro".</p>
+<h2>What TRIM does</h2>
+<ul>
+<li>Removes leading and trailing spaces</li>
+<li>Collapses repeated spaces between words into one</li>
+</ul>
+<h2>What TRIM doesn't remove</h2>
+<ul>
+<li>Full-width spaces (Japanese spaces) may remain</li>
+<li>Non-breaking spaces (special spaces) remain</li>
+<li>Line breaks and tabs remain</li>
+</ul>
+<p>Handle those another way.</p>
+<h2>Removing full-width spaces</h2>
+<ul>
+<li>Example: =TRIM(SUBSTITUTE(A2,"　"," "))</li>
+</ul>
+<p>Converts full-width spaces to half-width, then applies TRIM.</p>
+<h2>Removing non-printing characters</h2>
+<p>"CLEAN" removes control characters like line breaks. Layer it with TRIM.</p>
+<ul>
+<li>Example: =TRIM(CLEAN(A2))</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Tidying an imported roster</li>
+<li>Fixing why VLOOKUP doesn't match</li>
+<li>Pre-processing for duplicate checks</li>
+</ul>
+<h2>Example</h2>
+<p>Some rows didn't match in VLOOKUP. The lookup values had trailing spaces. Applying TRIM made them match.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Looks unchanged</b>: invisible characters are the cause. Check the length with LEN.</li>
+<li><b>Result is still a formula</b>: to use as values, paste values only.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How does it differ from the site's "invisible characters" tool?</h3>
+<p>That tool tidies pasted text in bulk. This one is for when you want to build a formula.</p>
+<h2>Summary</h2>
+<p>TRIM removes leading, trailing and repeated spaces.</p>
 <a class="cta" href="/text-case-formula-builder.html">Use "Build a Text Case and Trim Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/text-case-converter.html">Text Case Converter (camelCase, snake_case)</a>: Convert text case and naming styles.</li><li><a href="/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a>: Build text extraction formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

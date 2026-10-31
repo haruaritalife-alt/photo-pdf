@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Weekday Names</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose NAME</li><li>Enter the cell</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/weekday-formula-builder.html">WEEKDAY Builder</a> you can build a formula that gives the weekday name.</p>
+<p>Next to a date you want the weekday name, like "木" or "Thursday". "NAME", "FULLNAME" and "JA" in <a href="/en/weekday-formula-builder.html">Build a WEEKDAY Formula</a> build these.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose NAME</li>
-<li>Enter the cell</li>
-<li>Copy it</li>
+<li>Choose "NAME", "FULLNAME" or "JA" in "Type".</li>
+<li>Enter the "Date cell".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">FULLNAME gives the long name.</div>
+<div class="note">The weekday name is set by the TEXT function's format.</div>
+<h2>The three types with examples</h2>
+<p>For 2026-10-01 (Thursday):</p>
+<ul>
+<li>NAME: =TEXT(A2,"ddd") → Thu</li>
+<li>FULLNAME: =TEXT(A2,"dddd") → Thursday</li>
+<li>JA: =TEXT(A2,"aaa") → 木</li>
+</ul>
+<h2>Showing date and weekday together</h2>
+<ul>
+<li>Example: =TEXT(A2,"yyyy/m/d(aaa)")</li>
+</ul>
+<p>It gives "2026/10/1(木)".</p>
+<h2>Using cell format instead</h2>
+<p>You can show the weekday without a formula via the cell's display format. Enter "aaa" or "ddd" in a custom format. The value stays a date, so it's usable in calculations.</p>
+<h2>Good for</h2>
+<ul>
+<li>Weekday columns in schedules and rotas</li>
+<li>Showing date and weekday in one cell</li>
+<li>Weekday notation in English documents</li>
+</ul>
+<h2>In Google Sheets</h2>
+<p>Google Sheets' TEXT may not support "aaa". Build Japanese weekdays with CHOOSE and WEEKDAY.</p>
+<ul>
+<li>Example: =CHOOSE(WEEKDAY(A2),"日","月","火","水","木","金","土")</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted the weekday beside dates in a shift table. Copying the JA formula down lined up "月", "火"…</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The result is text</b>: the weekday name is text and not for calculation.</li>
+<li><b>Environment language</b>: English weekday spelling may vary with the software's language setting.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>The weekday shows in English</h3>
+<p>Use the JA formula, or line up Japanese weekdays with CHOOSE.</p>
+<h2>Summary</h2>
+<p>The weekday name is determined by the TEXT format.</p>
 <a class="cta" href="/en/weekday-formula-builder.html">Use "Build a WEEKDAY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li><li><a href="/en/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/en/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a>: Build working-day formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

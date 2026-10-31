@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Spasi Khusus</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Pilih NBSP</li><li>Masukkan sel</li><li>Salin</li></ul></div>
-<p>Di <a href="/id/text-case-formula-builder.html">Pembuat huruf besar dan spasi</a> Anda juga dapat menghapus spasi khusus yang disalin dari halaman web.</p>
+<p lang="en">TRIM didn't remove the space. The cause may be a character that looks like a space but isn't one (a non-breaking space). "NBSP" in <a href="/id/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> tidies it.</p>
 <h2>Langkah-langkah</h2>
 <ol>
-<li>Pilih NBSP</li>
-<li>Masukkan sel</li>
-<li>Salin</li>
+<li lang="en">Choose "NBSP" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Gunakan untuk spasi yang tidak hilang hanya dengan TRIM.</div>
+<div class="note" lang="en">The form is TRIM(SUBSTITUTE(cell,CHAR(160)," ")).</div>
+<h2>Contoh</h2>
+<ul>
+<li lang="en">=TRIM(SUBSTITUTE(A2,CHAR(160)," "))</li>
+</ul>
+<p lang="en">CHAR(160) is the non-breaking space. It's converted to a normal space and then tidied with TRIM.</p>
+<h2 lang="en">What a non-breaking space is</h2>
+<p lang="en">A special space found in text copied from web pages or output by some systems. It looks normal but TRIM doesn't remove it.</p>
+<h2 lang="en">How to spot it</h2>
+<ul>
+<li lang="en">Count characters with LEN and compare with the visible count</li>
+<li lang="en">If it's larger than it looks, there are invisible characters</li>
+</ul>
+<h2>Cocok untuk</h2>
+<ul>
+<li lang="en">Tidying data copied from the web</li>
+<li lang="en">Investigating why VLOOKUP doesn't match</li>
+<li lang="en">Tidying data exported from accounting software</li>
+</ul>
+<h2 lang="en">Other special characters</h2>
+<ul>
+<li lang="en">Line breaks: removable with CLEAN</li>
+<li lang="en">Tabs: replace with SUBSTITUTE, CHAR(9)</li>
+<li lang="en">Zero-width spaces: another code such as UNICHAR(8203)</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">Copying a web price table, numbers wouldn't calculate. Non-breaking spaces were in them. After tidying with NBSP and converting with VALUE, totals worked.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>CHAR(160) differs by Excel environment</b>: works on Windows but may differ on Mac. Try UNICHAR(160).</li>
+<li lang="en"><b>TRIM alone doesn't remove it</b>: you need to replace CHAR(160).</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to remove special spaces in bulk</h3>
+<p lang="en">The site's "Remove extra spaces and invisible characters from Excel text" tool removes them from pasted text in one go.</p>
+<h2>Ringkasan</h2>
+<p lang="en">For spaces TRIM can't remove, replace CHAR(160).</p>
 <a class="cta" href="/id/text-case-formula-builder.html">Gunakan “Buat Rumus Huruf Besar dan Spasi” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/excel-text-clean.html">Menghapus spasi berlebih dan karakter tak terlihat dari teks Excel</a>: Hapus spasi berlebih dan karakter tak terlihat.</li><li><a href="/id/text-case-converter.html">Pengubah Huruf Besar/Kecil (camelCase, snake_case)</a>: Ubah huruf besar/kecil dan gaya penamaan teks.</li><li><a href="/id/excel-left-mid-builder.html">Buat rumus LEFT, MID, atau RIGHT</a>: Buat rumus untuk mengambil teks.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>

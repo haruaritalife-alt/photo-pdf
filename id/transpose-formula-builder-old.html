@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Menukar di Excel Versi Lama</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Pilih TRANSPOSE</li><li>Masukkan rentang</li><li>Salin rumus ke kanan dan ke bawah</li></ul></div>
-<p><a href="/id/transpose-formula-builder.html">Pembuat TRANSPOSE</a> menampilkan rumus dengan INDEX yang berfungsi di Excel versi lama.</p>
+<p lang="en">In old Excel, TRANSPOSE was a slightly tricky function because it had to be entered as an array formula. The "Excel formula" in <a href="/id/transpose-formula-builder.html">Build a TRANSPOSE Formula</a> uses INDEX, so it works in old Excel one cell at a time.</p>
+<h2 lang="en">The two formulas</h2>
+<ul>
+<li lang="en">Google: =TRANSPOSE(A1:C5)</li>
+<li lang="en">Excel (any version): =INDEX($A$1:$C$5,COLUMN(A1),ROW(A1))</li>
+</ul>
+<p lang="en">"Copy the second" copies the Excel formula.</p>
+<div class="note" lang="en">Copy the Excel formula across the whole range where results should go. Each cell yields one value.</div>
 <h2>Langkah-langkah</h2>
 <ol>
-<li>Pilih TRANSPOSE</li>
-<li>Masukkan rentang</li>
-<li>Salin rumus ke kanan dan ke bawah</li>
+<li lang="en">Paste the Excel formula into the top-left cell of the result.</li>
+<li lang="en">Copy that cell right and down for the size of the result.</li>
+<li lang="en">If the source is 5 rows × 3 columns, the result is 3 rows × 5 columns.</li>
 </ol>
-<div class="note">Rentang dikunci dengan $.</div>
+<h2>Cara kerjanya</h2>
+<p lang="en">It takes the result's row and column numbers with ROW and COLUMN and applies them to the source table's column and row.</p>
+<ul>
+<li lang="en">COLUMN(A1): result column number (increases rightward)</li>
+<li lang="en">ROW(A1): result row number (increases downward)</li>
+<li lang="en">INDEX(range,row,column): the value at that row and column of the source</li>
+</ul>
+<h2 lang="en">In new Excel</h2>
+<p lang="en">In Excel 365 and 2021, TRANSPOSE spills automatically.</p>
+<ul>
+<li lang="en">Example: =TRANSPOSE(A1:C5)</li>
+</ul>
+<h2 lang="en">Using TRANSPOSE in old Excel</h2>
+<ol>
+<li lang="en">Select the result range (3 rows × 5 columns) first.</li>
+<li lang="en">Enter the formula.</li>
+<li lang="en">Confirm with Ctrl+Shift+Enter.</li>
+</ol>
+<h2>Cocok untuk</h2>
+<ul>
+<li lang="en">Handing the file to someone using old Excel</li>
+<li lang="en">Small ranges to swap</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">In old Excel, entering TRANSPOSE gave a single value. Copying the INDEX formula over the result range swapped the table.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Range not absolute</b>: copying shifts the source range. The tool's formula has $.</li>
+<li lang="en"><b>When the source changes</b>: the result changes too.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I delete the original table?</h3>
+<p lang="en">The result refers to the original. Before deleting, paste as values.</p>
+<h2>Ringkasan</h2>
+<p lang="en">In old Excel, copy the INDEX formula across the result.</p>
 <a class="cta" href="/id/transpose-formula-builder.html">Gunakan “Buat Rumus TRANSPOSE” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/table-transpose.html">Menukar baris dan kolom tabel</a>: Tukar baris dan kolom tabel yang ditempel.</li><li><a href="/id/filter-formula-builder.html">Buat rumus FILTER</a>: Buat rumus FILTER.</li><li><a href="/id/arrayformula-builder.html">Buat ARRAYFORMULA</a>: Buat rumus ARRAYFORMULA.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>

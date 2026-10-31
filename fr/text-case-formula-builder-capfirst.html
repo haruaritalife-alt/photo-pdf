@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Seulement la première lettre</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Choisissez CAPFIRST</li><li>Saisissez la cellule</li><li>Copiez-le</li></ul></div>
-<p>Dans <a href="/fr/text-case-formula-builder.html">Créateur de casse et d'espaces</a>, vous pouvez mettre en majuscule uniquement la première lettre du texte.</p>
+<p lang="en">You want only the first character of a sentence capitalized and the rest lowercase: "hello WORLD" to "Hello world". That's "CAPFIRST". <a href="/fr/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> builds it.</p>
 <h2>Étapes</h2>
 <ol>
-<li>Choisissez CAPFIRST</li>
-<li>Saisissez la cellule</li>
-<li>Copiez-le</li>
+<li lang="en">Choose "CAPFIRST" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Les autres lettres passent en minuscules.</div>
+<div class="note" lang="en">There's no dedicated function, so it combines LEFT, MID, UPPER and LOWER.</div>
+<h2>Exemple</h2>
+<ul>
+<li lang="en">=UPPER(LEFT(A2,1))&amp;LOWER(MID(A2,2,LEN(A2)))</li>
+</ul>
+<p lang="en">"hello WORLD" becomes "Hello world".</p>
+<h2 lang="en">Reading the formula</h2>
+<ul>
+<li lang="en">UPPER(LEFT(A2,1)): the first character in uppercase</li>
+<li lang="en">LOWER(MID(A2,2,LEN(A2))): the rest in lowercase</li>
+<li lang="en">&amp;: joins the two</li>
+</ul>
+<h2 lang="en">Difference from PROPER</h2>
+<ul>
+<li lang="en">PROPER: every word capitalized (Hello World)</li>
+<li lang="en">CAPFIRST: only the start capitalized (Hello world)</li>
+</ul>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Tidying a sentence so only its start is capitalized</li>
+<li lang="en">Unifying heading notation</li>
+<li lang="en">Making all-caps sentences more readable</li>
+</ul>
+<h2>Attention</h2>
+<p lang="en">Proper nouns mid-sentence also become lowercase. Fix "I" or names by hand.</p>
+<h2 lang="en">For empty cells</h2>
+<p lang="en">An empty cell doesn't error; it stays empty.</p>
+<h2>Exemple</h2>
+<p lang="en">Product descriptions were entered in all caps. CAPFIRST capitalized just the start and made them readable.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leading space</b>: the character after the space isn't capitalized. Apply TRIM first.</li>
+<li lang="en"><b>Sentences starting in Japanese</b>: no effect.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to use it with TRIM</h3>
+<p lang="en">Replace A2 with TRIM(A2). Edit by hand.</p>
+<h2>En résumé</h2>
+<p lang="en">To capitalize only the start, use CAPFIRST.</p>
 <a class="cta" href="/fr/text-case-formula-builder.html">Utiliser « Créer une formule de casse et d'espaces » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/excel-text-clean.html">Supprimer les espaces en trop et caractères invisibles d'un texte Excel</a>: Supprimez les espaces en trop et les caractères invisibles.</li><li><a href="/fr/text-case-converter.html">Convertisseur de casse (camelCase, snake_case)</a>: Convertissez la casse et les styles de nommage d'un texte.</li><li><a href="/fr/excel-left-mid-builder.html">Créer une formule LEFT, MID ou RIGHT</a>: Créez des formules pour extraire du texte.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

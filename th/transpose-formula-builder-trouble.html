@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ต้องทำอย่างไรเมื่อใช้งานไม่ได้</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ตรวจสอบไฟล์</li><li>ตรวจสอบขนาด</li><li>ลองใช้อุปกรณ์อื่น</li></ul></div>
-<p>หาก <a href="/th/transpose-formula-builder.html">ตัวสร้างสูตร TRANSPOSE</a> ไม่ทำงาน ให้ตรวจสอบสิ่งต่อไปนี้</p>
-<h2>ขั้นตอน</h2>
+<p lang="en">You pasted the formula but it doesn't swap properly. Here are common troubles with <a href="/th/transpose-formula-builder.html">Build a TRANSPOSE Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the range isn't in the "A1:C5" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF! (Google) / #SPILL! (Excel)</b>: values sit in the spill range. Clear those cells.</li>
+<li lang="en"><b>#NAME? (Excel)</b>: an older version without TOCOL or TOROW.</li>
+<li lang="en"><b>Only one value</b>: in old Excel, the INDEX formula was entered in just one cell. Copy it across the whole result range.</li>
+<li lang="en"><b>Result shows 0</b>: the source cell is blank. INDEX returns blanks as 0.</li>
+<li lang="en"><b>Only the headings don't swap</b>: the range doesn't include the headings.</li>
+<li lang="en"><b>Values aren't current</b>: the calculation setting is manual.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>ตรวจสอบไฟล์</li>
-<li>ตรวจสอบขนาด</li>
-<li>ลองใช้อุปกรณ์อื่น</li>
+<li lang="en">Check the range covers the whole table including headings.</li>
+<li lang="en">Check the spill range is empty.</li>
+<li lang="en">Check the Excel version.</li>
 </ol>
-<div class="note">หากไม่มีสูตรปรากฏ ให้ตรวจว่าช่วงเขียนแบบ A1:C5</div>
+<div class="note" lang="en">You can't edit just some cells of the result. Fix the formula cell.</div>
+<h2 lang="en">Formatting isn't swapped</h2>
+<p lang="en">TRANSPOSE and similar swap only values. Formats like column width, color and borders aren't copied. Copy the formatting separately if needed.</p>
+<h2 lang="en">With merged cells</h2>
+<p lang="en">Ranges containing merged cells may not swap well. Unmerge before using.</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">After swapping, empty cells showed 0, because the INDEX formula returns blanks as 0. To hide that, test for blanks with IF.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Forgot Ctrl+Shift+Enter in old Excel</b>: TRANSPOSE doesn't work correctly.</li>
+<li lang="en"><b>Range too large</b>: calculation gets heavy.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want formatting swapped too</h3>
+<p lang="en">Use Paste Special → Transpose, which swaps with formats.</p>
+<h2>สรุป</h2>
+<p lang="en">Check the spill range, the Excel version and merged cells.</p>
 <a class="cta" href="/th/transpose-formula-builder.html">ใช้ “สร้างสูตร TRANSPOSE” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/table-transpose.html">สลับแถวและคอลัมน์ของตาราง</a>: สลับแถวและคอลัมน์ของตารางที่วาง</li><li><a href="/th/filter-formula-builder.html">สร้างสูตร FILTER</a>: สร้างสูตร FILTER</li><li><a href="/th/arrayformula-builder.html">สร้าง ARRAYFORMULA</a>: สร้างสูตร ARRAYFORMULA</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

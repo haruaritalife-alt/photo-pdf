@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Alinear en una fila</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
 <div class="points"><b>Puntos clave</b><ul><li>Elige TOROW</li><li>Introduce el intervalo</li><li>Cópialo</li></ul></div>
-<p>En <a href="/es/transpose-formula-builder.html">Creador de TRANSPOSE</a> puedes crear una fórmula que alinea una tabla en una fila.</p>
+<p lang="en">You want data over several rows and columns lined up in one horizontal row: a heading row, or one long list. Use the "ROW" type. <a href="/es/transpose-formula-builder.html">Build a TRANSPOSE Formula</a> builds it.</p>
 <h2>Pasos</h2>
 <ol>
-<li>Elige TOROW</li>
-<li>Introduce el intervalo</li>
-<li>Cópialo</li>
+<li lang="en">Choose "ROW" in "Type".</li>
+<li lang="en">Enter the "Range".</li>
+<li lang="en">Copy the "Google Sheets formula" or "Excel formula" and paste.</li>
 </ol>
-<div class="note">Google Sheets combina TRANSPOSE y FLATTEN.</div>
+<div class="note" lang="en">Google combines TRANSPOSE and FLATTEN; Excel uses TOROW (Excel 365).</div>
+<h2>Ejemplo</h2>
+<p lang="en">Making A1:C5 into one row:</p>
+<ul>
+<li lang="en">Google: =TRANSPOSE(FLATTEN(A1:C5))</li>
+<li lang="en">Excel: =TOROW(A1:C5)</li>
+</ul>
+<h2>Cómo funciona</h2>
+<p lang="en">In Google, FLATTEN makes one column and TRANSPOSE turns it horizontal.</p>
+<h2>Adecuado para</h2>
+<ul>
+<li lang="en">Making vertically listed names a heading row</li>
+<li lang="en">Making values from several columns a single-row list</li>
+<li lang="en">Joining into text with a delimiter (with TEXTJOIN)</li>
+<li lang="en">Example: =TEXTJOIN(",",TRUE,A1:C5)</li>
+</ul>
+<h2 lang="en">If you just want vertical to horizontal</h2>
+<p lang="en">For turning one column into one row, TRANSPOSE is enough.</p>
+<ul>
+<li lang="en">Example: =TRANSPOSE(A1:A10)</li>
+</ul>
+<h2 lang="en">The result size</h2>
+<p lang="en">If the source is A1:C5 (15 cells), the result is 1 row × 15 columns. Check the 15 columns in the spill range are empty.</p>
+<h2>Ejemplo</h2>
+<p lang="en">Wanted twelve vertically listed month names as horizontal headings. TRANSPOSE converted them to one row for the heading row.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>TOROW unavailable</b>: old Excel lacks it.</li>
+<li lang="en"><b>Spreads too far right</b>: beyond the sheet's right edge it errors.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to exclude empty cells</h3>
+<p lang="en">Excel's TOROW can exclude empties with the second argument.</p>
+<ul>
+<li lang="en">Example: =TOROW(A1:C5,1)</li>
+</ul>
+<h2>Resumen</h2>
+<p lang="en">To gather into one row: Google uses TRANSPOSE with FLATTEN; Excel uses TOROW.</p>
 <a class="cta" href="/es/transpose-formula-builder.html">Usar «Crear una fórmula TRANSPOSE» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/table-transpose.html">Intercambiar las filas y columnas de una tabla</a>: Intercambia las filas y columnas de una tabla pegada.</li><li><a href="/es/filter-formula-builder.html">Crear una fórmula FILTER</a>: Crea una fórmula FILTER.</li><li><a href="/es/arrayformula-builder.html">Crear un ARRAYFORMULA</a>: Crea fórmulas ARRAYFORMULA.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

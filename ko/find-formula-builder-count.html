@@ -201,14 +201,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>등장 횟수 세기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>COUNTCHAR를 고릅니다</li><li>글자 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/find-formula-builder.html">FIND 수식 만들기</a>에서는 문자가 몇 번 나오는지 셀 수 있습니다.</p>
+<p lang="en">You want to count how many times a character appears, for example to learn the item count from the number of commas. There's no dedicated function, so combine LEN and SUBSTITUTE. "COUNTCHAR" in <a href="/ko/find-formula-builder.html">Build a FIND Formula</a> builds it.</p>
 <h2>순서</h2>
 <ol>
-<li>COUNTCHAR를 고릅니다</li>
-<li>글자 입력</li>
-<li>복사</li>
+<li lang="en">Choose "COUNTCHAR" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Character to find".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">문자 길이로 나누기 때문에 여러 글자에도 쓸 수 있습니다.</div>
+<div class="note" lang="en">The second formula counts case-insensitively. Copy it with "Copy the second".</div>
+<h2>예</h2>
+<p lang="en">The number of commas in A2:</p>
+<ul>
+<li lang="en">=(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))/LEN(",")</li>
+</ul>
+<p lang="en">For "Tokyo,Osaka,Nagoya" it returns 2.</p>
+<h2 lang="en">Reading the formula</h2>
+<ol>
+<li lang="en">LEN(A2): original length</li>
+<li lang="en">LEN(SUBSTITUTE(A2,",","")): length after removing commas</li>
+<li lang="en">The difference divided by the target's length: the number of commas</li>
+</ol>
+<h2 lang="en">Knowing the item count</h2>
+<p lang="en">Add 1 to the comma count to get the item count.</p>
+<ul>
+<li lang="en">Example: =(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))+1</li>
+</ul>
+<h2 lang="en">Multi-character words work too</h2>
+<p lang="en">Even with several characters to find, dividing by the length at the end lets it count.</p>
+<ul>
+<li lang="en">Example: how many times "apple" appears</li>
+</ul>
+<h2>대소문자</h2>
+<ul>
+<li lang="en">First formula: case-sensitive</li>
+<li lang="en">Second formula: uppercases first and counts; case-insensitive</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Knowing item counts from delimiter counts</li>
+<li lang="en">How many times a word appears in text</li>
+<li lang="en">Counting spaces (word count)</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted the number of tags in cells holding comma-separated tags. Adding 1 to the comma count gave the tag count.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Empty cells</b>: the result is 0. The item count would become 1, so judge empty cells separately.</li>
+<li lang="en"><b>Overlapping characters</b>: "aa" inside "aaa" counts as one.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to count across a whole range</h3>
+<p lang="en">Combine with SUMPRODUCT. Build the formula by hand.</p>
+<h2>요약</h2>
+<p lang="en">Character counts come from the LEN difference with SUBSTITUTE.</p>
 <a class="cta" href="/ko/find-formula-builder.html">“FIND 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-left-mid-builder.html">LEFT·MID·RIGHT 수식 만들기</a>: 글자를 꺼내는 수식을 만듭니다.</li><li><a href="/ko/substitute-formula-builder.html">SUBSTITUTE 수식 만들기</a>: 문자 바꾸기 수식을 만듭니다.</li><li><a href="/ko/split-formula-builder.html">SPLIT 수식 만들기</a>: 문자 나누기 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

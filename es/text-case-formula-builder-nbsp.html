@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Espacios especiales</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
 <div class="points"><b>Puntos clave</b><ul><li>Elige NBSP</li><li>Escribe la celda</li><li>Cópialo</li></ul></div>
-<p>En <a href="/es/text-case-formula-builder.html">Creador de mayúsculas y espacios</a> también puedes quitar los espacios especiales copiados de páginas web.</p>
+<p lang="en">TRIM didn't remove the space. The cause may be a character that looks like a space but isn't one (a non-breaking space). "NBSP" in <a href="/es/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> tidies it.</p>
 <h2>Pasos</h2>
 <ol>
-<li>Elige NBSP</li>
-<li>Escribe la celda</li>
-<li>Cópialo</li>
+<li lang="en">Choose "NBSP" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Úsalo para espacios que TRIM no quita por sí solo.</div>
+<div class="note" lang="en">The form is TRIM(SUBSTITUTE(cell,CHAR(160)," ")).</div>
+<h2>Ejemplo</h2>
+<ul>
+<li lang="en">=TRIM(SUBSTITUTE(A2,CHAR(160)," "))</li>
+</ul>
+<p lang="en">CHAR(160) is the non-breaking space. It's converted to a normal space and then tidied with TRIM.</p>
+<h2 lang="en">What a non-breaking space is</h2>
+<p lang="en">A special space found in text copied from web pages or output by some systems. It looks normal but TRIM doesn't remove it.</p>
+<h2 lang="en">How to spot it</h2>
+<ul>
+<li lang="en">Count characters with LEN and compare with the visible count</li>
+<li lang="en">If it's larger than it looks, there are invisible characters</li>
+</ul>
+<h2>Adecuado para</h2>
+<ul>
+<li lang="en">Tidying data copied from the web</li>
+<li lang="en">Investigating why VLOOKUP doesn't match</li>
+<li lang="en">Tidying data exported from accounting software</li>
+</ul>
+<h2 lang="en">Other special characters</h2>
+<ul>
+<li lang="en">Line breaks: removable with CLEAN</li>
+<li lang="en">Tabs: replace with SUBSTITUTE, CHAR(9)</li>
+<li lang="en">Zero-width spaces: another code such as UNICHAR(8203)</li>
+</ul>
+<h2>Ejemplo</h2>
+<p lang="en">Copying a web price table, numbers wouldn't calculate. Non-breaking spaces were in them. After tidying with NBSP and converting with VALUE, totals worked.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>CHAR(160) differs by Excel environment</b>: works on Windows but may differ on Mac. Try UNICHAR(160).</li>
+<li lang="en"><b>TRIM alone doesn't remove it</b>: you need to replace CHAR(160).</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to remove special spaces in bulk</h3>
+<p lang="en">The site's "Remove extra spaces and invisible characters from Excel text" tool removes them from pasted text in one go.</p>
+<h2>Resumen</h2>
+<p lang="en">For spaces TRIM can't remove, replace CHAR(160).</p>
 <a class="cta" href="/es/text-case-formula-builder.html">Usar «Crear una fórmula de mayúsculas y espacios» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/excel-text-clean.html">Quitar espacios de más y caracteres invisibles del texto de Excel</a>: Quita espacios de más y caracteres invisibles.</li><li><a href="/es/text-case-converter.html">Conversor de mayúsculas y minúsculas (camelCase, snake_case)</a>: Convierte las mayúsculas y los estilos de nombre del texto.</li><li><a href="/es/excel-left-mid-builder.html">Crear una fórmula LEFT, MID o RIGHT</a>: Crea fórmulas para extraer texto.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

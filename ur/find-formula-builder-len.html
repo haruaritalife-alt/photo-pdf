@@ -215,14 +215,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>لمبائی گننا</h1>
 <p class="meta">شائع شدہ: 19 اکتوبر 2026 | اپ ڈیٹ: 19 اکتوبر 2026 | <a href="/about.html">تعارف (جاپانی)</a></p>
 <div class="points"><b>اہم نکات</b><ul><li>LEN منتخب کریں</li><li>سیل درج کریں</li><li>کاپی کریں</li></ul></div>
-<p><a href="/ur/find-formula-builder.html">FIND فارمولا بنانے والا</a> میں آپ حروف کی تعداد اور بائٹس کی تعداد کے فارمولے بنا سکتے ہیں۔</p>
+<p lang="en">You want to check character counts: whether text fits an input limit, whether a postal code has 7 digits, and so on. "LEN" in <a href="/ur/find-formula-builder.html">Build a FIND Formula</a> builds it.</p>
 <h2>مراحل</h2>
 <ol>
-<li>LEN منتخب کریں</li>
-<li>سیل درج کریں</li>
-<li>کاپی کریں</li>
+<li lang="en">Choose "LEN" in "Type".</li>
+<li lang="en">Enter the "Text cell" (no character to find needed).</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">ایک مکمل چوڑائی والا حرف 2 بائٹ شمار ہوتا ہے۔</div>
+<div class="note" lang="en">The second formula is LENB (byte count). In environments where full-width counts as 2 and half-width as 1.</div>
+<h2>مثال</h2>
+<ul>
+<li lang="en">=LEN(A2)</li>
+</ul>
+<p lang="en">"東京都" gives 3 and "Tokyo" gives 5.</p>
+<ul>
+<li lang="en">Second: =LENB(A2)</li>
+</ul>
+<h2 lang="en">LEN vs LENB</h2>
+<ul>
+<li lang="en">LEN: number of characters</li>
+<li lang="en">LENB: byte count (in Japanese environments, full-width is 2 and half-width is 1)</li>
+</ul>
+<p lang="en">In Google Sheets, LENB may not behave as expected.</p>
+<h2 lang="en">Using for checks</h2>
+<ul>
+<li lang="en">Is the postal code 7 digits: =LEN(SUBSTITUTE(A2,"-",""))=7</li>
+<li lang="en">Within 100 characters: =LEN(A2)&lt;=100</li>
+</ul>
+<h2 lang="en">Spaces count too</h2>
+<p lang="en">LEN counts spaces as characters. If the count exceeds what you see, leading or trailing spaces or invisible characters may be present.</p>
+<h2>ان کے لیے موزوں</h2>
+<ul>
+<li lang="en">Checking entries with length limits</li>
+<li lang="en">Digit checks (phone numbers, ID numbers)</li>
+<li lang="en">Finding invisible spaces</li>
+</ul>
+<h2 lang="en">Line breaks count too</h2>
+<p lang="en">A line break counts as one character.</p>
+<h2>مثال</h2>
+<p lang="en">A web form's description had a 100-character limit. LEN counted characters, and conditional formatting colored rows over the limit.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Numeric cells</b>: digit counts work, but decimal points and formats affect them.</li>
+<li lang="en"><b>Emoji</b>: one may count as two characters.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about length without spaces?</h3>
+<p lang="en">Remove spaces with SUBSTITUTE, then count with LEN.</p>
+<ul>
+<li lang="en">Example: =LEN(SUBSTITUTE(A2," ",""))</li>
+</ul>
+<h2>خلاصہ</h2>
+<p lang="en">LEN for character count; LENB for bytes.</p>
 <a class="cta" href="/ur/find-formula-builder.html">«FIND فارمولا بنائیں» استعمال کریں (مفت)</a>
 <h2>وہ ٹولز جو اس کے ساتھ اچھے لگتے ہیں</h2><ul><li><a href="/ur/excel-left-mid-builder.html">LEFT، MID یا RIGHT فارمولا بنائیں</a>: متن نکالنے کے فارمولے بنائیں۔</li><li><a href="/ur/substitute-formula-builder.html">SUBSTITUTE فارمولا بنائیں</a>: متن تبدیل کرنے کے فارمولے بنائیں۔</li><li><a href="/ur/split-formula-builder.html">SPLIT فارمولا بنائیں</a>: متن تقسیم کرنے کے فارمولے بنائیں۔</li></ul>
 <div class="tip"><p>اگر یہ گائیڈ مفید رہی تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ٹپ بھیجیں (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">تحفہ بھیجیں (ایمیزون وش لسٹ)</a></div>

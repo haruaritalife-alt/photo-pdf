@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>বিশেষ স্পেস</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>NBSP বেছে নিন</li><li>সেল লিখুন</li><li>কপি করুন</li></ul></div>
-<p><a href="/bn/text-case-formula-builder.html">বড় ছোট হাতের অক্ষর ও স্পেস সূত্র নির্মাতা</a>-এ আপনি ওয়েব পেজ থেকে কপি করা বিশেষ স্পেসও মুছতে পারেন।</p>
+<p lang="en">TRIM didn't remove the space. The cause may be a character that looks like a space but isn't one (a non-breaking space). "NBSP" in <a href="/bn/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> tidies it.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>NBSP বেছে নিন</li>
-<li>সেল লিখুন</li>
-<li>কপি করুন</li>
+<li lang="en">Choose "NBSP" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">শুধু সেই স্পেসের জন্য ব্যবহার করুন যা TRIM মুছতে পারে না।</div>
+<div class="note" lang="en">The form is TRIM(SUBSTITUTE(cell,CHAR(160)," ")).</div>
+<h2>উদাহরণ</h2>
+<ul>
+<li lang="en">=TRIM(SUBSTITUTE(A2,CHAR(160)," "))</li>
+</ul>
+<p lang="en">CHAR(160) is the non-breaking space. It's converted to a normal space and then tidied with TRIM.</p>
+<h2 lang="en">What a non-breaking space is</h2>
+<p lang="en">A special space found in text copied from web pages or output by some systems. It looks normal but TRIM doesn't remove it.</p>
+<h2 lang="en">How to spot it</h2>
+<ul>
+<li lang="en">Count characters with LEN and compare with the visible count</li>
+<li lang="en">If it's larger than it looks, there are invisible characters</li>
+</ul>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Tidying data copied from the web</li>
+<li lang="en">Investigating why VLOOKUP doesn't match</li>
+<li lang="en">Tidying data exported from accounting software</li>
+</ul>
+<h2 lang="en">Other special characters</h2>
+<ul>
+<li lang="en">Line breaks: removable with CLEAN</li>
+<li lang="en">Tabs: replace with SUBSTITUTE, CHAR(9)</li>
+<li lang="en">Zero-width spaces: another code such as UNICHAR(8203)</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">Copying a web price table, numbers wouldn't calculate. Non-breaking spaces were in them. After tidying with NBSP and converting with VALUE, totals worked.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>CHAR(160) differs by Excel environment</b>: works on Windows but may differ on Mac. Try UNICHAR(160).</li>
+<li lang="en"><b>TRIM alone doesn't remove it</b>: you need to replace CHAR(160).</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to remove special spaces in bulk</h3>
+<p lang="en">The site's "Remove extra spaces and invisible characters from Excel text" tool removes them from pasted text in one go.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">For spaces TRIM can't remove, replace CHAR(160).</p>
 <a class="cta" href="/bn/text-case-formula-builder.html">“বড় ছোট হাতের অক্ষর ও স্পেসের সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/excel-text-clean.html">এক্সেলের লেখা থেকে বাড়তি স্পেস ও অদৃশ্য অক্ষর সরানো</a>: বাড়তি স্পেস ও অদৃশ্য অক্ষর সরান।</li><li><a href="/bn/text-case-converter.html">অক্ষরের ছাঁদ কনভার্টার (camelCase, snake_case)</a>: টেক্সটের অক্ষরের ছাঁদ ও নামকরণ রীতি রূপান্তর করুন।</li><li><a href="/bn/excel-left-mid-builder.html">LEFT, MID বা RIGHT সূত্র তৈরি করুন</a>: লেখা বের করার সূত্র তৈরি করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

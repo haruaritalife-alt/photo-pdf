@@ -200,14 +200,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>週番号</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>WEEKNUMを選ぶ</li><li>週の始まりを選ぶ</li><li>コピーする</li></ul></div>
-<p><a href="/weekday-formula-builder.html">曜日式の作成</a> では、その年の何週目かを出す式を作れます。</p>
+<p>「今年の何週目か」を知りたい。週ごとに集計したい。それには WEEKNUM を使います。<a href="/weekday-formula-builder.html">曜日・週番号の式を作る</a> の「WEEKNUM」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>WEEKNUMを選ぶ</li>
-<li>週の始まりを選ぶ</li>
-<li>コピーする</li>
+<li>「種類」で「WEEKNUM」を選ぶ。</li>
+<li>「日付のセル」を入れる。</li>
+<li>「週の始まり」を選ぶ。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">ISOを選ぶと、国際規格の週番号になります。</div>
+<div class="note">週の始まりによって、同じ日でも週番号が変わる場合があります。</div>
+<h2>例</h2>
+<ul>
+<li>日曜始まり：=WEEKNUM(A2,1)</li>
+<li>月曜始まり：=WEEKNUM(A2,2)</li>
+<li>ISO週番号：=ISOWEEKNUM(A2)</li>
+</ul>
+<h2>週番号の考え方</h2>
+<ul>
+<li>WEEKNUM：1月1日を含む週を、第1週とする</li>
+<li>ISOWEEKNUM：その週の木曜日が属する年で、週を数える（国際規格）</li>
+</ul>
+<h2>ずれが出る理由</h2>
+<p>年末や年始は、同じ日でも、数え方で週番号が異なります。たとえば、1月1日が金曜日の年は、ISOでは前年の第53週になることがあります。</p>
+<h2>週ごとに集計する</h2>
+<p>WEEKNUMの列を作り、SUMIFで合計します。</p>
+<ul>
+<li>例：=SUMIF(C2:C100,10,B2:B100)</li>
+</ul>
+<p>第10週の売上の合計です。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>週次の売上や作業量の集計</li>
+<li>週番号で管理するスケジュール</li>
+<li>週報のまとめ</li>
+</ul>
+<h2>例</h2>
+<p>週ごとの売上を集計したかった。日付の隣に週番号を出し、SUMIFで週ごとに合計した。月曜始まりにそろえたので、社内の週と合った。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>年をまたぐ</b>：2年分のデータでは、同じ週番号が2回出る。年も条件にする。</li>
+<li><b>ISOWEEKNUMが使えない</b>：古いExcelでは、使えない場合がある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>月内の第何週かを知りたい</h3>
+<p>月の週は、日付の日にちから計算します。式を手で組み立てます。</p>
+<h2>まとめ</h2>
+<p>週の始まりをそろえて、WEEKNUMかISOWEEKNUMで数えましょう。</p>
 <a class="cta" href="/weekday-formula-builder.html">曜日・週番号の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-offset-formula-builder.html">日付の足し引きの式を作る</a>：日付の足し引きの式を作ります。</li><li><a href="/datedif-formula-builder.html">DATEDIFの式を作る</a>：DATEDIFの式を作ります。</li><li><a href="/networkdays-formula-builder.html">営業日数の式を作る</a>：営業日数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +257,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Week Numbers</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose WEEKNUM</li><li>Choose the week start</li><li>Copy it</li></ul></div>
-<p>In <a href="/weekday-formula-builder.html">WEEKDAY Builder</a> you can build a formula for the week of the year.</p>
+<p>You want to know which week of the year it is, or to total by week. Use WEEKNUM. "WEEKNUM" in <a href="/weekday-formula-builder.html">Build a WEEKDAY Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose WEEKNUM</li>
-<li>Choose the week start</li>
-<li>Copy it</li>
+<li>Choose "WEEKNUM" in "Type".</li>
+<li>Enter the "Date cell".</li>
+<li>Choose the "Week start".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">ISO gives the international standard week number.</div>
+<div class="note">Depending on the week start, the same date can have a different week number.</div>
+<h2>Examples</h2>
+<ul>
+<li>Sunday start: =WEEKNUM(A2,1)</li>
+<li>Monday start: =WEEKNUM(A2,2)</li>
+<li>ISO week number: =ISOWEEKNUM(A2)</li>
+</ul>
+<h2>How week numbers work</h2>
+<ul>
+<li>WEEKNUM: the week containing January 1 is week 1</li>
+<li>ISOWEEKNUM: counts by the year the week's Thursday belongs to (international standard)</li>
+</ul>
+<h2>Why they differ</h2>
+<p>Around year-end and year-start, the same date can have different week numbers by method. For example, in a year where January 1 is a Friday, ISO may call it week 53 of the previous year.</p>
+<h2>Totaling by week</h2>
+<p>Make a WEEKNUM column and total with SUMIF.</p>
+<ul>
+<li>Example: =SUMIF(C2:C100,10,B2:B100)</li>
+</ul>
+<p>The total of week 10's sales.</p>
+<h2>Good for</h2>
+<ul>
+<li>Weekly sales or workload totals</li>
+<li>Schedules managed by week number</li>
+<li>Weekly report summaries</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted weekly sales totals. Showing week numbers beside dates and summing with SUMIF worked. Aligning to Monday start matched the company's weeks.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Crossing years</b>: with two years of data the same week number appears twice. Make the year a condition too.</li>
+<li><b>ISOWEEKNUM unavailable</b>: may not work in old Excel.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want the week within the month</h3>
+<p>Week-of-month is computed from the day of the month. Build the formula by hand.</p>
+<h2>Summary</h2>
+<p>Align the week start and count with WEEKNUM or ISOWEEKNUM.</p>
 <a class="cta" href="/weekday-formula-builder.html">Use "Build a WEEKDAY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li><li><a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a>: Build working-day formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

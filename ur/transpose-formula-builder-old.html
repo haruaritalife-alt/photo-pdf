@@ -215,14 +215,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>پرانے Excel میں تبدیل کرنا</h1>
 <p class="meta">شائع شدہ: 19 اکتوبر 2026 | اپ ڈیٹ: 19 اکتوبر 2026 | <a href="/about.html">تعارف (جاپانی)</a></p>
 <div class="points"><b>اہم نکات</b><ul><li>TRANSPOSE منتخب کریں</li><li>حد درج کریں</li><li>فارمولا دائیں اور نیچے کاپی کریں</li></ul></div>
-<p><a href="/ur/transpose-formula-builder.html">TRANSPOSE فارمولا بنانے والا</a> INDEX والا ایک فارمولا دکھاتا ہے جو پرانے Excel میں بھی چلتا ہے۔</p>
+<p lang="en">In old Excel, TRANSPOSE was a slightly tricky function because it had to be entered as an array formula. The "Excel formula" in <a href="/ur/transpose-formula-builder.html">Build a TRANSPOSE Formula</a> uses INDEX, so it works in old Excel one cell at a time.</p>
+<h2 lang="en">The two formulas</h2>
+<ul>
+<li lang="en">Google: =TRANSPOSE(A1:C5)</li>
+<li lang="en">Excel (any version): =INDEX($A$1:$C$5,COLUMN(A1),ROW(A1))</li>
+</ul>
+<p lang="en">"Copy the second" copies the Excel formula.</p>
+<div class="note" lang="en">Copy the Excel formula across the whole range where results should go. Each cell yields one value.</div>
 <h2>مراحل</h2>
 <ol>
-<li>TRANSPOSE منتخب کریں</li>
-<li>حد درج کریں</li>
-<li>فارمولا دائیں اور نیچے کاپی کریں</li>
+<li lang="en">Paste the Excel formula into the top-left cell of the result.</li>
+<li lang="en">Copy that cell right and down for the size of the result.</li>
+<li lang="en">If the source is 5 rows × 3 columns, the result is 3 rows × 5 columns.</li>
 </ol>
-<div class="note">رینج کو $ سے مقرر کیا جاتا ہے۔</div>
+<h2>یہ کیسے کام کرتا ہے</h2>
+<p lang="en">It takes the result's row and column numbers with ROW and COLUMN and applies them to the source table's column and row.</p>
+<ul>
+<li lang="en">COLUMN(A1): result column number (increases rightward)</li>
+<li lang="en">ROW(A1): result row number (increases downward)</li>
+<li lang="en">INDEX(range,row,column): the value at that row and column of the source</li>
+</ul>
+<h2 lang="en">In new Excel</h2>
+<p lang="en">In Excel 365 and 2021, TRANSPOSE spills automatically.</p>
+<ul>
+<li lang="en">Example: =TRANSPOSE(A1:C5)</li>
+</ul>
+<h2 lang="en">Using TRANSPOSE in old Excel</h2>
+<ol>
+<li lang="en">Select the result range (3 rows × 5 columns) first.</li>
+<li lang="en">Enter the formula.</li>
+<li lang="en">Confirm with Ctrl+Shift+Enter.</li>
+</ol>
+<h2>ان کے لیے موزوں</h2>
+<ul>
+<li lang="en">Handing the file to someone using old Excel</li>
+<li lang="en">Small ranges to swap</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">In old Excel, entering TRANSPOSE gave a single value. Copying the INDEX formula over the result range swapped the table.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Range not absolute</b>: copying shifts the source range. The tool's formula has $.</li>
+<li lang="en"><b>When the source changes</b>: the result changes too.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I delete the original table?</h3>
+<p lang="en">The result refers to the original. Before deleting, paste as values.</p>
+<h2>خلاصہ</h2>
+<p lang="en">In old Excel, copy the INDEX formula across the result.</p>
 <a class="cta" href="/ur/transpose-formula-builder.html">«TRANSPOSE فارمولا بنائیں» استعمال کریں (مفت)</a>
 <h2>وہ ٹولز جو اس کے ساتھ اچھے لگتے ہیں</h2><ul><li><a href="/ur/table-transpose.html">ٹیبل کی قطاروں اور کالموں کی جگہ بدلنا</a>: پیسٹ کی گئی ٹیبل کی قطاروں اور کالموں کی جگہ بدلیں۔</li><li><a href="/ur/filter-formula-builder.html">FILTER فارمولا بنانا</a>: FILTER فارمولا بنائیں۔</li><li><a href="/ur/arrayformula-builder.html">ARRAYFORMULA بنائیں</a>: ARRAYFORMULA فارمولے بنائیں۔</li></ul>
 <div class="tip"><p>اگر یہ گائیڈ مفید رہی تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ٹپ بھیجیں (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">تحفہ بھیجیں (ایمیزون وش لسٹ)</a></div>

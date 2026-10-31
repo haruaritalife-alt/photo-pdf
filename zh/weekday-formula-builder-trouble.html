@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>无法正常使用时的处理办法</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>检查文件</li><li>确认大小</li><li>换一台设备试试</li></ul></div>
-<p>如果<a href="/zh/weekday-formula-builder.html">WEEKDAY 公式生成器</a>不能用，请检查以下几点。</p>
-<h2>步骤</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/zh/weekday-formula-builder.html">Build a WEEKDAY Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the date cell isn't in the "A2" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: the date cell is text.</li>
+<li lang="en"><b>No Japanese weekday</b>: Google Sheets' TEXT may not support "aaa". Build with CHOOSE and WEEKDAY.</li>
+<li lang="en"><b>Weekdays are off</b>: the week-start setting differs from what you expect.</li>
+<li lang="en"><b>Week numbers don't match</b>: WEEKNUM and ISOWEEKNUM count differently.</li>
+<li lang="en"><b>#NAME?</b>: an older version without ISOWEEKNUM.</li>
+<li lang="en"><b>Only one result</b>: for a whole column, use the second formula (ARRAYFORMULA).</li>
+<li lang="en"><b>A number (like 46296) appears</b>: set the cell's display format to date.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>检查文件</li>
-<li>确认大小</li>
-<li>换一台设备试试</li>
+<li lang="en">Check the date cell displays right-aligned.</li>
+<li lang="en">Unify the date format, like "2026/10/1".</li>
+<li lang="en">Check the week start.</li>
 </ol>
-<div class="note">如果没有出现公式，请检查日期单元格是否写成 A2 这样，并且里面是真正的日期。</div>
+<div class="note" lang="en">If dates are left-aligned, they're likely text.</div>
+<h2 lang="en">Fixing text dates</h2>
+<ul>
+<li lang="en">Convert with DATEVALUE</li>
+<li lang="en">Unify separators to "/" or "-"</li>
+<li lang="en">Specify the date format via Data → Text to Columns</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">The weekday gave #VALUE!. Dates were like "2026.10.01", i.e. text. Replacing with "/" made the weekday appear.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Dates with times</b>: times are ignored, but the value must be recognized as a date.</li>
+<li lang="en"><b>Before 1900</b>: Excel can't handle some dates.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want weekdays in Japanese, not English</h3>
+<p lang="en">Excel: use "aaa". Google: use CHOOSE with WEEKDAY.</p>
+<h2>小结</h2>
+<p lang="en">Check the date is truly a date, the week start and language settings.</p>
 <a class="cta" href="/zh/weekday-formula-builder.html">使用“生成 WEEKDAY 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/date-offset-formula-builder.html">生成日期加减公式</a>: 生成日期加减公式。</li><li><a href="/zh/datedif-formula-builder.html">生成 DATEDIF 公式</a>: 生成 DATEDIF 公式。</li><li><a href="/zh/networkdays-formula-builder.html">生成 NETWORKDAYS 公式</a>: 生成工作日公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

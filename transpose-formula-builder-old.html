@@ -200,14 +200,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>古いExcelでの入れ替え</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>TRANSPOSEを選ぶ</li><li>範囲を入れる</li><li>式を右と下にコピーする</li></ul></div>
-<p><a href="/transpose-formula-builder.html">行列入れ替え式の作成</a> では、INDEXを使った古いExcelでも使える式が出ます。</p>
+<p>TRANSPOSE関数は、古いExcelでは、使い方が少し難しい関数でした。配列数式として入力する必要があったからです。<a href="/transpose-formula-builder.html">行列入れ替えの式を作る</a> の「Excelの式」は、INDEXを使うので、古いExcelでも、1つのセルずつ入れられます。</p>
+<h2>2つの式</h2>
+<ul>
+<li>Google：=TRANSPOSE(A1:C5)</li>
+<li>Excel（どの版でも）：=INDEX($A$1:$C$5,COLUMN(A1),ROW(A1))</li>
+</ul>
+<p>「2つ目をコピー」で、Excel用の式がコピーできます。</p>
+<div class="note">Excel用の式は、結果を出したい範囲の全体に、コピーして使います。1つのセルには、1つの値が出ます。</div>
 <h2>手順</h2>
 <ol>
-<li>TRANSPOSEを選ぶ</li>
-<li>範囲を入れる</li>
-<li>式を右と下にコピーする</li>
+<li>結果の左上のセルに、Excelの式を貼る。</li>
+<li>そのセルを、右と下に、結果の大きさだけコピーする。</li>
+<li>元の表が5行3列なら、結果は3行5列。</li>
 </ol>
-<div class="note">範囲は$で固定されます。</div>
+<h2>仕組み</h2>
+<p>結果の行番号と列番号を、ROWとCOLUMNで取り、元の表の列と行に当てはめています。</p>
+<ul>
+<li>COLUMN(A1)：結果の列番号（右へ増える）</li>
+<li>ROW(A1)：結果の行番号（下へ増える）</li>
+<li>INDEX(範囲,行,列)：元の表の、行と列の位置の値</li>
+</ul>
+<h2>新しいExcelなら</h2>
+<p>Excel 365・2021では、TRANSPOSEが自動で広がります。</p>
+<ul>
+<li>例：=TRANSPOSE(A1:C5)</li>
+</ul>
+<h2>古いExcelでTRANSPOSEを使うには</h2>
+<ol>
+<li>結果の範囲（3行5列）を、先に選ぶ。</li>
+<li>式を入れる。</li>
+<li>Ctrl+Shift+Enterで確定する。</li>
+</ol>
+<h2>向いている場面</h2>
+<ul>
+<li>古いExcelを使う相手に、ファイルを渡す</li>
+<li>入れ替えたい範囲が、小さい</li>
+</ul>
+<h2>例</h2>
+<p>古いExcelで、TRANSPOSEを入れたら、1つの値しか出なかった。INDEXの式を結果の範囲にコピーすると、表が入れ替わった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>範囲を絶対参照にしていない</b>：コピーしたとき、元の範囲がずれる。ツールの式は、$が付いている。</li>
+<li><b>元の表が変わると</b>：結果も変わる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>元の表を消してもいいですか？</h3>
+<p>式の結果は、元の表を参照しています。消すなら、先に値として貼り付けます。</p>
+<h2>まとめ</h2>
+<p>古いExcelでは、INDEXの式をコピーして使います。</p>
 <a class="cta" href="/transpose-formula-builder.html">行列入れ替えの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/table-transpose.html">表の行と列を入れ替える</a>：貼り付けた表の行と列を入れ替えます。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/arrayformula-builder.html">ARRAYFORMULAの式を作る</a>：ARRAYFORMULAの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +260,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Swapping in Older Excel</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose TRANSPOSE</li><li>Enter the range</li><li>Copy the formula right and down</li></ul></div>
-<p><a href="/transpose-formula-builder.html">TRANSPOSE Builder</a> shows a formula using INDEX that works in older Excel.</p>
+<p>In old Excel, TRANSPOSE was a slightly tricky function because it had to be entered as an array formula. The "Excel formula" in <a href="/transpose-formula-builder.html">Build a TRANSPOSE Formula</a> uses INDEX, so it works in old Excel one cell at a time.</p>
+<h2>The two formulas</h2>
+<ul>
+<li>Google: =TRANSPOSE(A1:C5)</li>
+<li>Excel (any version): =INDEX($A$1:$C$5,COLUMN(A1),ROW(A1))</li>
+</ul>
+<p>"Copy the second" copies the Excel formula.</p>
+<div class="note">Copy the Excel formula across the whole range where results should go. Each cell yields one value.</div>
 <h2>Steps</h2>
 <ol>
-<li>Choose TRANSPOSE</li>
-<li>Enter the range</li>
-<li>Copy the formula right and down</li>
+<li>Paste the Excel formula into the top-left cell of the result.</li>
+<li>Copy that cell right and down for the size of the result.</li>
+<li>If the source is 5 rows × 3 columns, the result is 3 rows × 5 columns.</li>
 </ol>
-<div class="note">The range is fixed with $.</div>
+<h2>How it works</h2>
+<p>It takes the result's row and column numbers with ROW and COLUMN and applies them to the source table's column and row.</p>
+<ul>
+<li>COLUMN(A1): result column number (increases rightward)</li>
+<li>ROW(A1): result row number (increases downward)</li>
+<li>INDEX(range,row,column): the value at that row and column of the source</li>
+</ul>
+<h2>In new Excel</h2>
+<p>In Excel 365 and 2021, TRANSPOSE spills automatically.</p>
+<ul>
+<li>Example: =TRANSPOSE(A1:C5)</li>
+</ul>
+<h2>Using TRANSPOSE in old Excel</h2>
+<ol>
+<li>Select the result range (3 rows × 5 columns) first.</li>
+<li>Enter the formula.</li>
+<li>Confirm with Ctrl+Shift+Enter.</li>
+</ol>
+<h2>Good for</h2>
+<ul>
+<li>Handing the file to someone using old Excel</li>
+<li>Small ranges to swap</li>
+</ul>
+<h2>Example</h2>
+<p>In old Excel, entering TRANSPOSE gave a single value. Copying the INDEX formula over the result range swapped the table.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Range not absolute</b>: copying shifts the source range. The tool's formula has $.</li>
+<li><b>When the source changes</b>: the result changes too.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I delete the original table?</h3>
+<p>The result refers to the original. Before deleting, paste as values.</p>
+<h2>Summary</h2>
+<p>In old Excel, copy the INDEX formula across the result.</p>
 <a class="cta" href="/transpose-formula-builder.html">Use "Build a TRANSPOSE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/table-transpose.html">Swap Rows and Columns of a Table</a>: Swap the rows and columns of a pasted table.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/arrayformula-builder.html">Build an ARRAYFORMULA</a>: Build ARRAYFORMULA formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

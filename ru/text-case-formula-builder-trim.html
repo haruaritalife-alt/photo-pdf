@@ -201,14 +201,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Удаление лишних пробелов</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Выберите TRIM</li><li>Введите ячейку</li><li>Скопируйте его</li></ul></div>
-<p>В <a href="/ru/text-case-formula-builder.html">Конструктор регистра и пробелов</a> можно создать формулу, которая удаляет пробелы в начале, в конце и двойные пробелы.</p>
+<p lang="en">Spaces around a name, double spaces between words. Hard to see, but they cause mismatches in duplicate checks and lookups. "TRIM" in <a href="/ru/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> removes them.</p>
 <h2>Шаги</h2>
 <ol>
-<li>Выберите TRIM</li>
-<li>Введите ячейку</li>
-<li>Скопируйте его</li>
+<li lang="en">Choose "TRIM" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Между словами остаётся один пробел.</div>
+<div class="note" lang="en">To apply to a whole column, use the second formula (ARRAYFORMULA).</div>
+<h2>Пример</h2>
+<ul>
+<li lang="en">=TRIM(A2)</li>
+</ul>
+<p lang="en">" Yamada Taro " becomes "Yamada Taro".</p>
+<h2 lang="en">What TRIM does</h2>
+<ul>
+<li lang="en">Removes leading and trailing spaces</li>
+<li lang="en">Collapses repeated spaces between words into one</li>
+</ul>
+<h2 lang="en">What TRIM doesn't remove</h2>
+<ul>
+<li lang="en">Full-width spaces (Japanese spaces) may remain</li>
+<li lang="en">Non-breaking spaces (special spaces) remain</li>
+<li lang="en">Line breaks and tabs remain</li>
+</ul>
+<p lang="en">Handle those another way.</p>
+<h2 lang="en">Removing full-width spaces</h2>
+<ul>
+<li lang="en">Example: =TRIM(SUBSTITUTE(A2," "," "))</li>
+</ul>
+<p lang="en">Converts full-width spaces to half-width, then applies TRIM.</p>
+<h2 lang="en">Removing non-printing characters</h2>
+<p lang="en">"CLEAN" removes control characters like line breaks. Layer it with TRIM.</p>
+<ul>
+<li lang="en">Example: =TRIM(CLEAN(A2))</li>
+</ul>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Tidying an imported roster</li>
+<li lang="en">Fixing why VLOOKUP doesn't match</li>
+<li lang="en">Pre-processing for duplicate checks</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">Some rows didn't match in VLOOKUP. The lookup values had trailing spaces. Applying TRIM made them match.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looks unchanged</b>: invisible characters are the cause. Check the length with LEN.</li>
+<li lang="en"><b>Result is still a formula</b>: to use as values, paste values only.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How does it differ from the site's "invisible characters" tool?</h3>
+<p lang="en">That tool tidies pasted text in bulk. This one is for when you want to build a formula.</p>
+<h2>Итог</h2>
+<p lang="en">TRIM removes leading, trailing and repeated spaces.</p>
 <a class="cta" href="/ru/text-case-formula-builder.html">Использовать «Создайте формулу для регистра и пробелов» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/excel-text-clean.html">Удаление лишних пробелов и невидимых символов из текста Excel</a>: Уберите лишние пробелы и невидимые символы.</li><li><a href="/ru/text-case-converter.html">Конвертер регистра (camelCase, snake_case)</a>: Преобразуйте регистр и стили именования текста.</li><li><a href="/ru/excel-left-mid-builder.html">Создать формулу LEFT, MID или RIGHT</a>: Создавайте формулы для извлечения текста.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

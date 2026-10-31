@@ -200,14 +200,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>出てくる回数</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>COUNTCHARを選ぶ</li><li>探す文字を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/find-formula-builder.html">FIND式の作成</a> では、探す文字が何回出てくるかを数えられます。</p>
+<p>文字が「何個」あるかを数えたい。たとえば、カンマの数から、項目の数を知りたいときです。専用の関数はないので、LENとSUBSTITUTEを組み合わせます。<a href="/find-formula-builder.html">文字を探す式を作る</a> の「COUNTCHAR」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>COUNTCHARを選ぶ</li>
-<li>探す文字を入れる</li>
-<li>コピーする</li>
+<li>「種類」で「COUNTCHAR」を選ぶ。</li>
+<li>「文字のセル」と「探す文字」を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">文字の長さで割るので、複数の文字でも数えられます。</div>
+<div class="note">2つ目の式は、大文字小文字を区別せずに数える式です。「2つ目をコピー」でコピーできます。</div>
+<h2>例</h2>
+<p>A2の中の、カンマの個数です。</p>
+<ul>
+<li>=(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))/LEN(",")</li>
+</ul>
+<p>「東京,大阪,名古屋」なら、2が返ります。</p>
+<h2>式の読み方</h2>
+<ol>
+<li>LEN(A2)：元の文字数</li>
+<li>LEN(SUBSTITUTE(A2,",",""))：カンマを消した後の文字数</li>
+<li>差を、探す文字の長さで割る：カンマの個数</li>
+</ol>
+<h2>項目の数を知る</h2>
+<p>カンマの数に1を足すと、項目の数になります。</p>
+<ul>
+<li>例：=(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))+1</li>
+</ul>
+<h2>2文字以上の言葉も数えられる</h2>
+<p>探す文字が複数の文字でも、最後に長さで割るので、数えられます。</p>
+<ul>
+<li>例：「りんご」が何回出るか</li>
+</ul>
+<h2>大文字小文字</h2>
+<ul>
+<li>1つ目の式：区別する</li>
+<li>2つ目の式：UPPERで大文字にそろえて数える。区別しない</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>区切りの数から、項目数を知る</li>
+<li>文章に、特定の言葉が何回出るか</li>
+<li>スペースの数（単語の数）を調べる</li>
+</ul>
+<h2>例</h2>
+<p>タグがカンマ区切りで入っているセルから、タグの数を数えたかった。カンマの数に1を足して、タグの個数が出た。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>空のセル</b>：結果は0。項目数は1になってしまうので、空のセルは別に判定する。</li>
+<li><b>重なる文字</b>：「aa」の中の「aa」は、1回と数える。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>範囲全体で、数えたい</h3>
+<p>SUMPRODUCTと組み合わせます。式を手で組み立てます。</p>
+<h2>まとめ</h2>
+<p>文字の個数は、LENとSUBSTITUTEの差で数えます。</p>
 <a class="cta" href="/find-formula-builder.html">文字を探す式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-left-mid-builder.html">文字を取り出す式を作る</a>：文字を取り出す式を作ります。</li><li><a href="/substitute-formula-builder.html">SUBSTITUTE・REPLACEの式を作る</a>：文字を置き換える式を作ります。</li><li><a href="/split-formula-builder.html">SPLITの式を作る</a>：文字を分ける式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +264,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Counting Occurrences</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose COUNTCHAR</li><li>Enter the text</li><li>Copy it</li></ul></div>
-<p>In <a href="/find-formula-builder.html">FIND Builder</a> you can count how many times the text appears.</p>
+<p>You want to count how many times a character appears, for example to learn the item count from the number of commas. There's no dedicated function, so combine LEN and SUBSTITUTE. "COUNTCHAR" in <a href="/find-formula-builder.html">Build a FIND Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose COUNTCHAR</li>
-<li>Enter the text</li>
-<li>Copy it</li>
+<li>Choose "COUNTCHAR" in "Type".</li>
+<li>Enter the "Text cell" and "Character to find".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">It divides by the text length, so it works for several characters.</div>
+<div class="note">The second formula counts case-insensitively. Copy it with "Copy the second".</div>
+<h2>Example</h2>
+<p>The number of commas in A2:</p>
+<ul>
+<li>=(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))/LEN(",")</li>
+</ul>
+<p>For "Tokyo,Osaka,Nagoya" it returns 2.</p>
+<h2>Reading the formula</h2>
+<ol>
+<li>LEN(A2): original length</li>
+<li>LEN(SUBSTITUTE(A2,",","")): length after removing commas</li>
+<li>The difference divided by the target's length: the number of commas</li>
+</ol>
+<h2>Knowing the item count</h2>
+<p>Add 1 to the comma count to get the item count.</p>
+<ul>
+<li>Example: =(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))+1</li>
+</ul>
+<h2>Multi-character words work too</h2>
+<p>Even with several characters to find, dividing by the length at the end lets it count.</p>
+<ul>
+<li>Example: how many times "apple" appears</li>
+</ul>
+<h2>Case</h2>
+<ul>
+<li>First formula: case-sensitive</li>
+<li>Second formula: uppercases first and counts; case-insensitive</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Knowing item counts from delimiter counts</li>
+<li>How many times a word appears in text</li>
+<li>Counting spaces (word count)</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted the number of tags in cells holding comma-separated tags. Adding 1 to the comma count gave the tag count.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Empty cells</b>: the result is 0. The item count would become 1, so judge empty cells separately.</li>
+<li><b>Overlapping characters</b>: "aa" inside "aaa" counts as one.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to count across a whole range</h3>
+<p>Combine with SUMPRODUCT. Build the formula by hand.</p>
+<h2>Summary</h2>
+<p>Character counts come from the LEN difference with SUBSTITUTE.</p>
 <a class="cta" href="/find-formula-builder.html">Use "Build a FIND Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a>: Build text extraction formulas.</li><li><a href="/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a>: Build text replacement formulas.</li><li><a href="/split-formula-builder.html">Build a SPLIT Formula</a>: Build text splitting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

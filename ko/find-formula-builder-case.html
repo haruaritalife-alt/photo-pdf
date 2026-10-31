@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>대문자와 소문자</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>FIND 또는 SEARCH를 고릅니다</li><li>글자 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/find-formula-builder.html">FIND 수식 만들기</a>에서는 대소문자를 구분하는 FIND와 구분하지 않는 SEARCH 중에서 고를 수 있습니다.</p>
+<p lang="en">Do you want "ABC" and "abc" treated as the same character or different? That's the difference between FIND and SEARCH. "FIND" and "SEARCH" in <a href="/ko/find-formula-builder.html">Build a FIND Formula</a> build them.</p>
+<h2>차이점</h2>
+<ul>
+<li lang="en"><b>FIND</b>: case-sensitive; no wildcards</li>
+<li lang="en"><b>SEARCH</b>: case-insensitive; wildcards (? and *) work</li>
+</ul>
+<h2>예</h2>
+<p lang="en">With "Apple" in A2:</p>
+<ul>
+<li lang="en">=FIND("a",A2) → #VALUE! (no lowercase a)</li>
+<li lang="en">=SEARCH("a",A2) → 1 (treated like A)</li>
+</ul>
 <h2>순서</h2>
 <ol>
-<li>FIND 또는 SEARCH를 고릅니다</li>
-<li>글자 입력</li>
-<li>복사</li>
+<li lang="en">Choose "FIND" or "SEARCH" in "Type".</li>
+<li lang="en">Enter the cell and the character to find.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">찾지 못하면 오류가 나오므로 0을 돌려주는 버전도 함께 보여 줍니다.</div>
+<div class="note" lang="en">Japanese characters have no case, so either gives the same result.</div>
+<h2 lang="en">Choosing</h2>
+<ul>
+<li lang="en">IDs or codes where case matters: FIND</li>
+<li lang="en">English keywords without notation variants: SEARCH</li>
+</ul>
+<h2 lang="en">Wildcards</h2>
+<p lang="en">SEARCH accepts these:</p>
+<ul>
+<li lang="en">?: any single character</li>
+<li lang="en">*: any string</li>
+<li lang="en">~: the symbol itself (~? finds "?" itself)</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">The position of "@" in an email</li>
+<li lang="en">The position of a file extension</li>
+<li lang="en">Finding a particular word in English text</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted the position of "A-" in product codes, case-sensitively, so used FIND. The lowercase "a-" wasn't found, so it distinguished correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width vs half-width are different</b>: "A" and "Ａ" don't match.</li>
+<li lang="en"><b>Unintended wildcard behavior</b>: when searching for "?" or "*", put "~" before.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I choose where to start searching?</h3>
+<p lang="en">Yes, with the third argument of FIND and SEARCH. Add by hand.</p>
+<ul>
+<li lang="en">Example: =FIND("-",A2,5)</li>
+</ul>
+<h2>요약</h2>
+<p lang="en">FIND to distinguish case, SEARCH not to.</p>
 <a class="cta" href="/ko/find-formula-builder.html">“FIND 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-left-mid-builder.html">LEFT·MID·RIGHT 수식 만들기</a>: 글자를 꺼내는 수식을 만듭니다.</li><li><a href="/ko/substitute-formula-builder.html">SUBSTITUTE 수식 만들기</a>: 문자 바꾸기 수식을 만듭니다.</li><li><a href="/ko/split-formula-builder.html">SPLIT 수식 만들기</a>: 문자 나누기 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

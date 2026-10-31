@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Co zrobić, gdy nie działa</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Sprawdź plik</li><li>Sprawdź rozmiar</li><li>Spróbuj na innym urządzeniu</li></ul></div>
-<p>Jeśli <a href="/pl/text-case-formula-builder.html">Kreator wielkości liter i spacji</a> nie działa, sprawdź poniższe rzeczy.</p>
-<h2>Kroki</h2>
+<p lang="en">You pasted the formula but the text isn't tidy. Here are common troubles with <a href="/pl/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the text cell isn't in the "A2" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Looks unchanged</b>: invisible characters (such as non-breaking spaces) are the cause. Try NBSP.</li>
+<li lang="en"><b>Japanese unchanged</b>: case only applies to English letters.</li>
+<li lang="en"><b>#NAME?</b>: the function name is wrong.</li>
+<li lang="en"><b>Only one result</b>: to apply to a column, use the second formula (ARRAYFORMULA).</li>
+<li lang="en"><b>PROPER is off</b>: small words and brand names also get capitalized.</li>
+<li lang="en"><b>Full-width spaces remain</b>: TRIM may not remove full-width spaces.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Sprawdź plik</li>
-<li>Sprawdź rozmiar</li>
-<li>Spróbuj na innym urządzeniu</li>
+<li lang="en">Check the length with LEN. If it's larger than it looks, invisible characters exist.</li>
+<li lang="en">Try the NBSP formula.</li>
+<li lang="en">If full-width spaces exist, convert them to half-width with SUBSTITUTE.</li>
 </ol>
-<div class="note">Jeśli nie pojawia się żadna formuła, sprawdź, czy komórka jest zapisana jak A2.</div>
+<div class="note" lang="en">A formula's result lives apart from the original cell. To tidy the original table, paste as values.</div>
+<h2 lang="en">Combining</h2>
+<p lang="en">Several tidy-ups can be layered.</p>
+<ul>
+<li lang="en">Example: =PROPER(TRIM(CLEAN(A2)))</li>
+</ul>
+<p lang="en">From the inside: remove non-printing characters, tidy spaces, capitalize the start.</p>
+<h2>Przykład</h2>
+<p lang="en">Even after TRIM, sorting was off. A full-width space was at the start. Converting it to half-width with SUBSTITUTE and then applying TRIM aligned them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Can't be used as numbers</b>: TRIM's result is text. Use VALUE.</li>
+<li lang="en"><b>ARRAYFORMULA doesn't spread</b>: values below cause an error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to fix the original cells directly</h3>
+<p lang="en">Copy the formula's result and "Paste values only" into the original cells.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">Check invisible characters, how Japanese is handled, and formula combinations.</p>
 <a class="cta" href="/pl/text-case-formula-builder.html">Użyj „Utwórz formułę do wielkości liter i spacji” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/excel-text-clean.html">Usuwanie zbędnych spacji i niewidocznych znaków z tekstu Excela</a>: Usuń zbędne spacje i niewidoczne znaki.</li><li><a href="/pl/text-case-converter.html">Konwerter wielkości liter (camelCase, snake_case)</a>: Zamieniaj wielkość liter i style nazewnictwa tekstu.</li><li><a href="/pl/excel-left-mid-builder.html">Utwórz formułę LEFT, MID lub RIGHT</a>: Twórz formuły do wyciągania tekstu.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

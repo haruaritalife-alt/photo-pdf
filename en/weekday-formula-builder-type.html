@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Week Start</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose the week start</li><li>Choose the kind</li><li>Check it</li></ul></div>
-<p>In <a href="/en/weekday-formula-builder.html">WEEKDAY Builder</a> you can choose a week that starts on Monday or Sunday.</p>
+<p>"Week start" changes weekday and week numbers depending on whether weeks start on Sunday or Monday. Choose it in "Week start" in <a href="/en/weekday-formula-builder.html">Build a WEEKDAY Formula</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose the week start</li>
-<li>Choose the kind</li>
-<li>Check it</li>
+<li>In "Week start", choose Sunday start, Monday start or ISO.</li>
+<li>Copy the formula and paste.</li>
+<li>Check the result against a real calendar.</li>
 </ol>
-<div class="note">With Monday first, Monday is 1.</div>
+<div class="note">ISO is the international standard for week numbers. It only matters for the WEEKNUM type.</div>
+<h2>The three choices</h2>
+<ul>
+<li><b>Sunday start (SUN-START)</b>: Sunday is 1, Saturday is 7</li>
+<li><b>Monday start (MON-START)</b>: Monday is 1, Sunday is 7</li>
+<li><b>ISO</b>: Monday start, with ISO rules for numbering weeks</li>
+</ul>
+<h2>Weekday number examples</h2>
+<p>WEEKDAY's second argument:</p>
+<ul>
+<li>1: Sunday=1, Monday=2, …, Saturday=7</li>
+<li>2: Monday=1, Tuesday=2, …, Sunday=7</li>
+</ul>
+<h2>How it's used in Japan</h2>
+<ul>
+<li>Calendars and schedules: Sunday start is common</li>
+<li>Business weeks: Monday start is common</li>
+<li>International documents and European companies: ISO is common</li>
+</ul>
+<h2>How to choose</h2>
+<ul>
+<li>Match internal practice</li>
+<li>Keep it consistent within one file</li>
+<li>Consider ISO when exchanging with other companies</li>
+</ul>
+<h2>Formula differences</h2>
+<ul>
+<li>Sunday-start weekday number: =WEEKDAY(A2,1)</li>
+<li>Monday-start weekday number: =WEEKDAY(A2,2)</li>
+<li>Sunday-start week number: =WEEKNUM(A2,1)</li>
+<li>ISO week number: =ISOWEEKNUM(A2)</li>
+</ul>
+<h2>Example</h2>
+<p>Began sharing weekly reports with an overseas site. Week numbers didn't match; aligning to ISO made them agree.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Doesn't affect weekday names (NAME, JA)</b>: the week start is irrelevant to names.</li>
+<li><b>WEEKEND test</b>: fixed to Monday start in the tool.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want a Saturday start</h3>
+<p>Specify 16 as WEEKNUM's second argument. WEEKDAY's second argument also allows Saturday start. Edit by hand.</p>
+<h2>Summary</h2>
+<p>Choose the week start to match practice and keep it consistent within the file.</p>
 <a class="cta" href="/en/weekday-formula-builder.html">Use "Build a WEEKDAY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li><li><a href="/en/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/en/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a>: Build working-day formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

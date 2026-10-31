@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Was tun, wenn es nicht funktioniert</h1>
 <p class="meta">Veröffentlicht: 19.10.2026 | Aktualisiert: 19.10.2026 | <a href="/about.html">Über uns (Japanisch)</a></p>
 <div class="points"><b>Wichtige Punkte</b><ul><li>Die Datei prüfen</li><li>Größe prüfen</li><li>Auf einem anderen Gerät versuchen</li></ul></div>
-<p>Wenn <a href="/de/text-case-formula-builder.html">Groß-Kleinschreibung-Generator</a> nicht funktioniert, prüfen Sie Folgendes.</p>
-<h2>Schritte</h2>
+<p lang="en">You pasted the formula but the text isn't tidy. Here are common troubles with <a href="/de/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the text cell isn't in the "A2" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Looks unchanged</b>: invisible characters (such as non-breaking spaces) are the cause. Try NBSP.</li>
+<li lang="en"><b>Japanese unchanged</b>: case only applies to English letters.</li>
+<li lang="en"><b>#NAME?</b>: the function name is wrong.</li>
+<li lang="en"><b>Only one result</b>: to apply to a column, use the second formula (ARRAYFORMULA).</li>
+<li lang="en"><b>PROPER is off</b>: small words and brand names also get capitalized.</li>
+<li lang="en"><b>Full-width spaces remain</b>: TRIM may not remove full-width spaces.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Die Datei prüfen</li>
-<li>Größe prüfen</li>
-<li>Auf einem anderen Gerät versuchen</li>
+<li lang="en">Check the length with LEN. If it's larger than it looks, invisible characters exist.</li>
+<li lang="en">Try the NBSP formula.</li>
+<li lang="en">If full-width spaces exist, convert them to half-width with SUBSTITUTE.</li>
 </ol>
-<div class="note">Wenn keine Formel erscheint, prüfen Sie, ob die Zelle wie A2 geschrieben ist.</div>
+<div class="note" lang="en">A formula's result lives apart from the original cell. To tidy the original table, paste as values.</div>
+<h2 lang="en">Combining</h2>
+<p lang="en">Several tidy-ups can be layered.</p>
+<ul>
+<li lang="en">Example: =PROPER(TRIM(CLEAN(A2)))</li>
+</ul>
+<p lang="en">From the inside: remove non-printing characters, tidy spaces, capitalize the start.</p>
+<h2>Beispiel</h2>
+<p lang="en">Even after TRIM, sorting was off. A full-width space was at the start. Converting it to half-width with SUBSTITUTE and then applying TRIM aligned them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Can't be used as numbers</b>: TRIM's result is text. Use VALUE.</li>
+<li lang="en"><b>ARRAYFORMULA doesn't spread</b>: values below cause an error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to fix the original cells directly</h3>
+<p lang="en">Copy the formula's result and "Paste values only" into the original cells.</p>
+<h2>Zusammenfassung</h2>
+<p lang="en">Check invisible characters, how Japanese is handled, and formula combinations.</p>
 <a class="cta" href="/de/text-case-formula-builder.html">„Formel für Groß-/Kleinschreibung und Leerzeichen erstellen“ verwenden (kostenlos)</a>
 <h2>Passende Werkzeuge dazu</h2><ul><li><a href="/de/excel-text-clean.html">Überflüssige Leerzeichen und unsichtbare Zeichen aus Excel-Text entfernen</a>: Entfernen Sie überflüssige Leerzeichen und unsichtbare Zeichen.</li><li><a href="/de/text-case-converter.html">Groß-/Kleinschreibung umwandeln (camelCase, snake_case)</a>: Groß-/Kleinschreibung und Benennungsstile von Text umwandeln.</li><li><a href="/de/excel-left-mid-builder.html">Eine LEFT-, MID- oder RIGHT-Formel erstellen</a>: Erstellen Sie Formeln zum Extrahieren von Text.</li></ul>
 <div class="tip"><p>Wenn Ihnen diese Anleitung geholfen hat, freuen wir uns über ein kleines Trinkgeld.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Trinkgeld senden (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Geschenk senden (Amazon-Wunschliste)</a></div>
