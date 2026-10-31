@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>แปลงเลขแปดหลักเป็นวันที่</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก YMD8</li><li>ป้อนเซลล์</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/text-date-formula-builder.html">ตัวสร้างสูตรแปลงข้อความเป็นวันที่</a> คุณสร้างสูตรที่แปลงเลขแปดหลัก เช่น 20261001 เป็นวันที่ได้</p>
+<p lang="en">Year, month and day are strung together as eight digits like "20261001". As is, it won't calculate as a date. "YMD8" in <a href="/th/text-date-formula-builder.html">Build a Text to Date Formula</a> converts it.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือก YMD8</li>
-<li>ป้อนเซลล์</li>
-<li>คัดลอก</li>
+<li lang="en">Choose "YMD8" in "Type".</li>
+<li lang="en">Enter the "Cell to convert".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">การตั้งรูปแบบเซลล์เป็นวันที่ทำให้อ่านง่ายขึ้น</div>
+<div class="note" lang="en">The eight digits are 4 for the year, 2 for the month and 2 for the day.</div>
+<h2>ตัวอย่าง</h2>
+<ul>
+<li lang="en">=DATE(LEFT(A2,4),MID(A2,5,2),RIGHT(A2,2))</li>
+</ul>
+<p lang="en">"20261001" becomes the date October 1, 2026.</p>
+<h2>วิธีการทำงาน</h2>
+<ul>
+<li lang="en">LEFT(A2,4): the first four digits (year)</li>
+<li lang="en">MID(A2,5,2): two digits from the 5th (month)</li>
+<li lang="en">RIGHT(A2,2): the last two digits (day)</li>
+</ul>
+<p lang="en">DATE then assembles them into a date.</p>
+<h2 lang="en">Six-digit year-month</h2>
+<p lang="en">For six digits like "202610" (year-month only), use "YM6".</p>
+<ul>
+<li lang="en">=DATE(LEFT(A2,4),RIGHT(A2,2),1)</li>
+</ul>
+<p lang="en">It gives the first of that month.</p>
+<h2 lang="en">When stored as a number</h2>
+<p lang="en">If the eight digits are numeric (right-aligned), LEFT and the like treat them as text and still work. The result is a date value.</p>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Eight-digit dates exported from core systems</li>
+<li lang="en">Dates embedded in file names</li>
+<li lang="en">A date column for forms without dates</li>
+</ul>
+<h2 lang="en">Tidying the display format</h2>
+<p lang="en">If the result shows a number like 46296, set the cell format to "Date".</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">A system-exported CSV had dates as eight-digit numbers. The YMD8 formula made them dates, enabling sorting and monthly totals.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Different digit counts</b>: seven digits, or numbers missing a leading 0, won't convert correctly.</li>
+<li lang="en"><b>Nonexistent dates</b>: values like 20261332 give odd dates.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about text like "2026/10/01"?</h3>
+<p lang="en">Use "DATEVALUE".</p>
+<h2>สรุป</h2>
+<p lang="en">Convert eight-digit dates to date values with YMD8.</p>
 <a class="cta" href="/th/text-date-formula-builder.html">ใช้ “สร้างสูตรแปลงข้อความเป็นวันที่” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/date-calculator.html">คำนวณอายุ จำนวนวันระหว่างวันที่ และการเลื่อนวันที่</a>: คำนวณอายุและจำนวนวันระหว่างวันที่</li><li><a href="/th/excel-text-format-builder.html">สร้างสูตร TEXT ของ Excel</a>: สร้างสูตร TEXT</li><li><a href="/th/date-offset-formula-builder.html">สร้างสูตรเลื่อนวันที่</a>: สร้างสูตรเลื่อนวันที่</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

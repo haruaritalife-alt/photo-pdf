@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Bỏ qua số 0</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Chọn NO-ZERO làm phương án thay thế</li><li>Nhập khoảng</li><li>Sao chép</li></ul></div>
-<p>Trong <a href="/vi/stat-formula-builder.html">Trình tạo trung bình và trung vị</a>, bạn cũng có thể tạo công thức trung bình và nhỏ nhất bỏ qua số 0.</p>
+<p lang="en">Unentered cells hold 0. Averaging with those zeros gives lower than reality. To exclude zeros, use "NO-ZERO". Choose it in "Alternative form" in <a href="/vi/stat-formula-builder.html">Build an AVERAGE and MEDIAN Formula</a>.</p>
 <h2>Các bước</h2>
 <ol>
-<li>Chọn NO-ZERO làm phương án thay thế</li>
-<li>Nhập khoảng</li>
-<li>Sao chép</li>
+<li lang="en">In "Alternative form", choose "NO-ZERO".</li>
+<li lang="en">Enter the "Type" and "Numeric range".</li>
+<li lang="en">Copy the "Alternative formula" with "Copy the second" and paste.</li>
 </ol>
-<div class="note">Dùng để bỏ các số 0 đại diện cho mục nhập thiếu.</div>
+<div class="note" lang="en">The formula's shape changes by type. The tool switches automatically.</div>
+<h2 lang="en">Examples</h2>
+<p lang="en">Zero-excluding formulas by type:</p>
+<ul>
+<li lang="en">AVERAGE: =AVERAGEIF(B2:B100,"&lt;&gt;0")</li>
+<li lang="en">MIN: =MINIFS(B2:B100,B2:B100,"&lt;&gt;0")</li>
+<li lang="en">MAX: =MAXIFS(B2:B100,B2:B100,"&lt;&gt;0")</li>
+<li lang="en">COUNT: =COUNTIF(B2:B100,"&lt;&gt;0")</li>
+<li lang="en">MEDIAN, MODE, STDEV: =MEDIAN(FILTER(B2:B100,B2:B100&lt;&gt;0))</li>
+<li lang="en">SUM: unchanged, since adding 0 changes nothing</li>
+</ul>
+<h2 lang="en">How excluding zeros changes things</h2>
+<p lang="en">For 5, 0, 10, 0, 15:</p>
+<ul>
+<li lang="en">AVERAGE: 6 (zeros included)</li>
+<li lang="en">NO-ZERO AVERAGE: 10 (zeros excluded)</li>
+</ul>
+<h2 lang="en">Key to choosing</h2>
+<ul>
+<li lang="en">If 0 means "not entered", exclude it</li>
+<li lang="en">If 0 really means zero (zero sales), don't exclude</li>
+</ul>
+<p lang="en">Check what the data means before choosing.</p>
+<h2 lang="en">Leaving cells blank</h2>
+<p lang="en">If unentered cells are kept truly blank, AVERAGE ignores them. You needn't enter 0.</p>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Attendance data where absent days are 0</li>
+<li lang="en">Sales tables where unentered months are 0</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">In monthly sales, months not yet entered were 0. AVERAGE gave a low annual mean. NO-ZERO showed the average of entered months.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>MINIFS/MAXIFS unavailable in old Excel</b>: Excel 2019 or later.</li>
+<li lang="en"><b>FILTER unavailable</b>: Excel 365 and 2021 or later.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if there are no zeros?</h3>
+<p lang="en">The result is the same.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">To exclude unentered zeros, use NO-ZERO.</p>
 <a class="cta" href="/vi/stat-formula-builder.html">Dùng “Tạo công thức trung bình và trung vị” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/sumif-formula-builder.html">Tạo công thức SUMIF hoặc COUNTIF</a>: Tạo công thức SUMIF và COUNTIF.</li><li><a href="/vi/rank-formula-builder.html">Tạo công thức xếp hạng</a>: Tạo công thức xếp hạng.</li><li><a href="/vi/large-small-formula-builder.html">Tạo công thức LARGE và SMALL</a>: Tạo công thức cho giá trị lớn nhất hoặc nhỏ nhất thứ N.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

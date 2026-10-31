@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>出現錯誤時</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>生成公式</li><li>使用結果為空的公式</li><li>檢查原始文字</li></ul></div>
-<p>在 <a href="/tw/text-date-formula-builder.html">文字轉日期公式生成器</a> 中，也會生成出現錯誤時顯示為空的公式。</p>
+<p lang="en">DATEVALUE or VALUE gives #VALUE!. That happens when unconvertible text is mixed in. The second formula, "Formula that blanks on error", in <a href="/tw/text-date-formula-builder.html">Build a Text to Date Formula</a> tidies the look.</p>
 <h2>步驟</h2>
 <ol>
-<li>生成公式</li>
-<li>使用結果為空的公式</li>
-<li>檢查原始文字</li>
+<li lang="en">Build the first formula.</li>
+<li lang="en">Check the second "Formula that blanks on error".</li>
+<li lang="en">Copy it with "Copy the second" and paste.</li>
 </ol>
-<div class="note">日期如何被識別取決於區域設定。</div>
+<div class="note" lang="en">Its form is =IFERROR(formula,""). The cell is empty when conversion fails.</div>
+<h2>示例</h2>
+<ul>
+<li lang="en">=IFERROR(DATEVALUE(A2),"")</li>
+</ul>
+<h2 lang="en">Main causes of errors</h2>
+<ul>
+<li lang="en">The date form isn't recognized ("2026.10.01", Japanese era dates, etc.)</li>
+<li lang="en">Text is mixed in ("around 10/1")</li>
+<li lang="en">Numbers have units ("1,200円")</li>
+<li lang="en">An empty cell was converted</li>
+</ul>
+<h2 lang="en">Fixes by cause</h2>
+<ul>
+<li lang="en">"." separators: replace with "/" via SUBSTITUTE</li>
+<li lang="en">Japanese era dates: convert another way (the site's era-date tool)</li>
+<li lang="en">With units: strip with SUBSTITUTE</li>
+</ul>
+<h2 lang="en">Is blanking enough?</h2>
+<p lang="en">Blanking errors makes unconverted rows easy to miss. To find error rows, keep the first formula and test with ISERROR.</p>
+<ul>
+<li lang="en">Example: =ISERROR(DATEVALUE(A2))</li>
+</ul>
+<h2>適合</h2>
+<ul>
+<li lang="en">Imported data with uneven dates</li>
+<li lang="en">Cells feeding summary tables</li>
+<li lang="en">Finding unconverted rows later</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Some imported dates read "TBD". IFERROR blanked them and totals stopped breaking. ISERROR could also find the blanked rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Everything is blank</b>: the conversion type doesn't match the data's shape.</li>
+<li lang="en"><b>Hiding too much</b>: mere format differences get missed.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want other text instead of the error</h3>
+<p lang="en">Rewrite IFERROR's "" as something like "check".</p>
+<h2>小結</h2>
+<p lang="en">For unconvertible rows, blank the errors or test to find them.</p>
 <a class="cta" href="/tw/text-date-formula-builder.html">使用「生成文字轉日期公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/date-calculator.html">計算年齡、日期間隔天數和日期加減</a>：計算年齡和兩個日期之間的天數。</li><li><a href="/tw/excel-text-format-builder.html">生成 Excel 的 TEXT 公式</a>: 生成 TEXT 公式。</li><li><a href="/tw/date-offset-formula-builder.html">生成日期加減公式</a>: 生成日期加減公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

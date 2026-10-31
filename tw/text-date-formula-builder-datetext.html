@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>把日期轉換為文字</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>選擇 DATETEXT</li><li>輸入單元格</li><li>複製</li></ul></div>
-<p>在 <a href="/tw/text-date-formula-builder.html">文字轉日期公式生成器</a> 中，可以生成把日期轉換為 2026-10-01 這樣的文字的公式。</p>
+<p lang="en">You want a date as text like "2026-10-01": for file names, handing to other systems, or keeping digit widths. Convert with TEXT. "DATETEXT" and "TEXTNUM" in <a href="/tw/text-date-formula-builder.html">Build a Text to Date Formula</a> build these.</p>
 <h2>步驟</h2>
 <ol>
-<li>選擇 DATETEXT</li>
-<li>輸入單元格</li>
-<li>複製</li>
+<li lang="en">Choose "DATETEXT" or "TEXTNUM" in "Type".</li>
+<li lang="en">Enter the "Cell to convert".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">與其他文字連線時很方便。</div>
+<div class="note" lang="en">The result is text, so it can't be calculated as a date as is.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">DATETEXT: =TEXT(A2,"yyyy-mm-dd") → 2026-10-01</li>
+<li lang="en">TEXTNUM: =TEXT(A2,"0") → a number as text with fixed digits</li>
+</ul>
+<h2 lang="en">Format examples</h2>
+<p lang="en">Rewriting TEXT's second argument gives various shapes.</p>
+<ul>
+<li lang="en">"yyyy/m/d": 2026/10/1</li>
+<li lang="en">"yyyymmdd": 20261001</li>
+<li lang="en">"yyyy年m月d日": 2026年10月1日</li>
+<li lang="en">"m/d": 10/1</li>
+<li lang="en">"00000": zero-padded to 5 digits</li>
+</ul>
+<h2 lang="en">Keeping leading zeros</h2>
+<p lang="en">Leading zeros in postal codes or employee numbers vanish if left numeric. Make them text with TEXTNUM.</p>
+<ul>
+<li lang="en">Example: =TEXT(A2,"0000000")</li>
+</ul>
+<h2>適合</h2>
+<ul>
+<li lang="en">File names and IDs containing dates</li>
+<li lang="en">Data formats handed to other systems</li>
+<li lang="en">Joining text ("Due: " plus a date)</li>
+</ul>
+<h2 lang="en">Putting dates in sentences</h2>
+<p lang="en">A date in a sentence turns into a number (46296). Wrap with TEXT.</p>
+<ul>
+<li lang="en">Example: ="Due: " &amp; TEXT(A2,"yyyy/m/d")</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Wanted dated file names like "2026-10-01_report" built from a table. DATETEXT made the date text, then "_report" was appended.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Format letters vary by environment</b>: language settings may turn "yyyy" into "jjjj" and the like.</li>
+<li lang="en"><b>Google Sheets</b>: format letters are broadly the same.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the text date back as a date</h3>
+<p lang="en">Use "DATEVALUE".</p>
+<h2>小結</h2>
+<p lang="en">To make dates text, set the shape with TEXT's format.</p>
 <a class="cta" href="/tw/text-date-formula-builder.html">使用「生成文字轉日期公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/date-calculator.html">計算年齡、日期間隔天數和日期加減</a>：計算年齡和兩個日期之間的天數。</li><li><a href="/tw/excel-text-format-builder.html">生成 Excel 的 TEXT 公式</a>: 生成 TEXT 公式。</li><li><a href="/tw/date-offset-formula-builder.html">生成日期加減公式</a>: 生成日期加減公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

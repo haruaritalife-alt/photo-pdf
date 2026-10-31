@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Mengubah delapan digit menjadi tanggal</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Pilih YMD8</li><li>Masukkan sel</li><li>Salin</li></ul></div>
-<p>Di <a href="/id/text-date-formula-builder.html">Pembuat teks ke tanggal</a> Anda dapat membuat rumus yang mengubah delapan digit seperti 20261001 menjadi tanggal.</p>
+<p lang="en">Year, month and day are strung together as eight digits like "20261001". As is, it won't calculate as a date. "YMD8" in <a href="/id/text-date-formula-builder.html">Build a Text to Date Formula</a> converts it.</p>
 <h2>Langkah-langkah</h2>
 <ol>
-<li>Pilih YMD8</li>
-<li>Masukkan sel</li>
-<li>Salin</li>
+<li lang="en">Choose "YMD8" in "Type".</li>
+<li lang="en">Enter the "Cell to convert".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Mengatur format sel menjadi tanggal membuatnya lebih mudah dibaca.</div>
+<div class="note" lang="en">The eight digits are 4 for the year, 2 for the month and 2 for the day.</div>
+<h2>Contoh</h2>
+<ul>
+<li lang="en">=DATE(LEFT(A2,4),MID(A2,5,2),RIGHT(A2,2))</li>
+</ul>
+<p lang="en">"20261001" becomes the date October 1, 2026.</p>
+<h2>Cara kerjanya</h2>
+<ul>
+<li lang="en">LEFT(A2,4): the first four digits (year)</li>
+<li lang="en">MID(A2,5,2): two digits from the 5th (month)</li>
+<li lang="en">RIGHT(A2,2): the last two digits (day)</li>
+</ul>
+<p lang="en">DATE then assembles them into a date.</p>
+<h2 lang="en">Six-digit year-month</h2>
+<p lang="en">For six digits like "202610" (year-month only), use "YM6".</p>
+<ul>
+<li lang="en">=DATE(LEFT(A2,4),RIGHT(A2,2),1)</li>
+</ul>
+<p lang="en">It gives the first of that month.</p>
+<h2 lang="en">When stored as a number</h2>
+<p lang="en">If the eight digits are numeric (right-aligned), LEFT and the like treat them as text and still work. The result is a date value.</p>
+<h2>Cocok untuk</h2>
+<ul>
+<li lang="en">Eight-digit dates exported from core systems</li>
+<li lang="en">Dates embedded in file names</li>
+<li lang="en">A date column for forms without dates</li>
+</ul>
+<h2 lang="en">Tidying the display format</h2>
+<p lang="en">If the result shows a number like 46296, set the cell format to "Date".</p>
+<h2>Contoh</h2>
+<p lang="en">A system-exported CSV had dates as eight-digit numbers. The YMD8 formula made them dates, enabling sorting and monthly totals.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Different digit counts</b>: seven digits, or numbers missing a leading 0, won't convert correctly.</li>
+<li lang="en"><b>Nonexistent dates</b>: values like 20261332 give odd dates.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about text like "2026/10/01"?</h3>
+<p lang="en">Use "DATEVALUE".</p>
+<h2>Ringkasan</h2>
+<p lang="en">Convert eight-digit dates to date values with YMD8.</p>
 <a class="cta" href="/id/text-date-formula-builder.html">Gunakan “Buat rumus teks ke tanggal” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/date-calculator.html">Hitung Usia, Selisih Hari, dan Pergeseran Tanggal</a>: Hitung usia dan selisih hari antar tanggal.</li><li><a href="/id/excel-text-format-builder.html">Buat Rumus TEXT Excel</a>: Buat rumus TEXT.</li><li><a href="/id/date-offset-formula-builder.html">Buat rumus pergeseran tanggal</a>: Buat rumus pergeseran tanggal.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>

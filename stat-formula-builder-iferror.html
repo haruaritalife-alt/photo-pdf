@@ -200,14 +200,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>エラーを空にする</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>別の書き方でIF-ERRORを選ぶ</li><li>範囲を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/stat-formula-builder.html">平均・中央値の式の作成</a> では、エラーのときに空になる式を作れます。</p>
+<p>範囲の中に、エラー値（#DIV/0!や#N/Aなど）が混ざっていると、集計の結果もエラーになります。それを、空にして見た目を整えるのが、「IF-ERROR」です。<a href="/stat-formula-builder.html">平均・中央値などの式を作る</a> の「別の書き方」で選べます。</p>
 <h2>手順</h2>
 <ol>
-<li>別の書き方でIF-ERRORを選ぶ</li>
-<li>範囲を入れる</li>
-<li>コピーする</li>
+<li>「別の書き方」で「IF-ERROR」を選ぶ。</li>
+<li>「種類」と「数字の範囲」を入れる。</li>
+<li>「別の書き方の式」を、「2つ目をコピー」でコピーして貼る。</li>
 </ol>
-<div class="note">範囲に数字がないときも、エラーを避けられます。</div>
+<div class="note">形は、=IFERROR(式,"") です。集計そのものがエラーになったとき、空になります。</div>
+<h2>例</h2>
+<ul>
+<li>=IFERROR(AVERAGE(B2:B100),"")</li>
+</ul>
+<p>範囲に数字が1つもないと、AVERAGEは#DIV/0!になりますが、空で表示されます。</p>
+<h2>注意：範囲の中のエラーは消えない</h2>
+<p>IFERRORは、集計の結果がエラーのときに働きます。範囲の中にエラー値があると、集計もエラーになります。その場合は、範囲のエラーを除く式が必要です。</p>
+<ul>
+<li>例：=AGGREGATE(1,6,B2:B100)</li>
+</ul>
+<p>AGGREGATEは、エラー値を無視して集計します。1は平均、6はエラーを無視する指定です。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>入力前の空の表で、エラーを見せたくない</li>
+<li>他の式の元になる集計のセル</li>
+<li>報告用の表の、見た目の整理</li>
+</ul>
+<h2>隠しすぎない</h2>
+<p>エラーを隠すと、データの問題にも気づきにくくなります。最初は基本の式で確かめましょう。</p>
+<h2>例</h2>
+<p>月初にデータがなく、平均のセルが#DIV/0!だらけだった。IFERRORで包むと、空で表示され、報告用の表がすっきりした。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>0を返したい</b>：IFERRORの""を、0に書き換える。</li>
+<li><b>空の文字</b>：結果が""だと、後の計算で文字として扱われる場合がある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>ROUNDと一緒に使えますか？</h3>
+<p>式を重ねられます。手で組み立てます。</p>
+<ul>
+<li>例：=IFERROR(ROUND(AVERAGE(B2:B100),2),"")</li>
+</ul>
+<h2>まとめ</h2>
+<p>エラーを隠したいときは、IF-ERROR。</p>
 <a class="cta" href="/stat-formula-builder.html">平均・中央値などの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/rank-formula-builder.html">順位の式を作る</a>：順位の式を作ります。</li><li><a href="/large-small-formula-builder.html">N番目の値の式を作る</a>：N番目に大きい・小さい値の式を作る。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +253,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Blanking Out Errors</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose IF-ERROR as the alternative</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/stat-formula-builder.html">AVERAGE and MEDIAN Builder</a> you can build a formula that goes blank on an error.</p>
+<p>If error values (#DIV/0!, #N/A, etc.) are mixed in the range, the aggregate errors too. "IF-ERROR" blanks that to tidy the look. Choose it in "Alternative form" in <a href="/stat-formula-builder.html">Build an AVERAGE and MEDIAN Formula</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose IF-ERROR as the alternative</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>In "Alternative form", choose "IF-ERROR".</li>
+<li>Enter the "Type" and "Numeric range".</li>
+<li>Copy the "Alternative formula" with "Copy the second" and paste.</li>
 </ol>
-<div class="note">It also avoids an error when the range has no numbers.</div>
+<div class="note">Its form is =IFERROR(formula,""). It's blank when the aggregate itself errors.</div>
+<h2>Example</h2>
+<ul>
+<li>=IFERROR(AVERAGE(B2:B100),"")</li>
+</ul>
+<p>If the range holds no numbers, AVERAGE would be #DIV/0! but shows blank.</p>
+<h2>Note: errors inside the range remain</h2>
+<p>IFERROR works when the aggregate result is an error. If the range contains error values, the aggregate errors too. Then you need a formula that skips range errors.</p>
+<ul>
+<li>Example: =AGGREGATE(1,6,B2:B100)</li>
+</ul>
+<p>AGGREGATE aggregates ignoring error values. 1 means average and 6 means ignore errors.</p>
+<h2>Good for</h2>
+<ul>
+<li>Empty tables before entry where errors shouldn't show</li>
+<li>Aggregate cells feeding other formulas</li>
+<li>Tidying report tables</li>
+</ul>
+<h2>Don't hide too much</h2>
+<p>Hiding errors makes data problems harder to notice. Check with the basic formula first.</p>
+<h2>Example</h2>
+<p>At the start of the month there was no data and the average cell was full of #DIV/0!. Wrapping in IFERROR showed blanks and cleaned up the report table.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Want to return 0</b>: rewrite IFERROR's "" as 0.</li>
+<li><b>Empty string</b>: a result of "" may be treated as text in later calculations.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I use it with ROUND?</h3>
+<p>You can layer formulas. Build by hand.</p>
+<ul>
+<li>Example: =IFERROR(ROUND(AVERAGE(B2:B100),2),"")</li>
+</ul>
+<h2>Summary</h2>
+<p>To hide errors, use IF-ERROR.</p>
 <a class="cta" href="/stat-formula-builder.html">Use "Build an AVERAGE and MEDIAN Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a>: Build formulas for the Nth largest or smallest value.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>無法正常使用時的處理辦法</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>檢查檔案</li><li>確認大小</li><li>換一臺裝置試試</li></ul></div>
-<p>如果 <a href="/tw/xlookup-formula-builder.html">XLOOKUP 公式生成器</a> 無法正常使用，請檢查以下幾點。</p>
-<h2>步驟</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/tw/xlookup-formula-builder.html">Build an XLOOKUP Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the value to find isn't in the "E2" form; the lookup or return column isn't in the "A2:A100" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: the value isn't in the lookup column.</li>
+<li lang="en"><b>#NAME?</b>: old Excel can't use XLOOKUP. Use the second formula.</li>
+<li lang="en"><b>#VALUE!</b>: the lookup and return columns have different row counts.</li>
+<li lang="en"><b>A different row's value returns</b>: several rows share the value and the first is returned.</li>
+<li lang="en"><b>#N/A though it should be found</b>: full-width/half-width, surrounding spaces, or text vs number.</li>
+<li lang="en"><b>Ranges shift when copied down</b>: the ranges lack $.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>檢查檔案</li>
-<li>確認大小</li>
-<li>換一臺裝置試試</li>
+<li lang="en">Compare the value to find with the lookup column's values.</li>
+<li lang="en">Remove surrounding spaces with TRIM.</li>
+<li lang="en">Fix the ranges with $.</li>
 </ol>
-<div class="note">如果沒有顯示公式，請檢查查詢值是否寫成 E2、列是否寫成 A2:A100 的形式。</div>
+<div class="note" lang="en">Even if they look alike, a text number and a numeric number don't match.</div>
+<h2 lang="en">Text vs number</h2>
+<p lang="en">If "1001" is text on one side and numeric on the other, they don't match. Align them.</p>
+<ul>
+<li lang="en">To text: TEXT(E2,"0")</li>
+<li lang="en">To number: VALUE(E2)</li>
+</ul>
+<h2 lang="en">Fixing the range</h2>
+<p lang="en">If you'll copy down, add $ to the ranges.</p>
+<ul>
+<li lang="en">Example: =XLOOKUP(E2,$A$2:$A$100,$B$2:$B$100)</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Looking up by product code gave #N/A. The lookup column's codes were numbers while the value was text. Converting with VALUE made it found.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Ranges on other sheets</b>: add the sheet name.</li>
+<li lang="en"><b>Wildcards</b>: XLOOKUP defaults to exact match. Partial matching needs another specification.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want blank when not found</h3>
+<p lang="en">Leave "When not found" empty and you get an empty string. You can also enter other text.</p>
+<h2>小結</h2>
+<p lang="en">Check text vs number, surrounding spaces and fixed ranges.</p>
 <a class="cta" href="/tw/xlookup-formula-builder.html">使用「生成 XLOOKUP 公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/tw/index-match-builder.html">生成 INDEX 和 MATCH 公式</a>: 生成 INDEX 和 MATCH 公式。</li><li><a href="/tw/filter-formula-builder.html">生成 FILTER 公式</a>: 生成 FILTER 公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

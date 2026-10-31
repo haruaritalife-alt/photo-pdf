@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>오류가 날 때</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>수식 만들기</li><li>오류를 빈칸으로 만드는 수식 사용</li><li>원본 텍스트 확인</li></ul></div>
-<p><a href="/ko/text-date-formula-builder.html">텍스트→날짜 수식 만들기</a>에서는 오류가 나면 빈칸이 되는 수식도 함께 만들어 줍니다.</p>
+<p lang="en">DATEVALUE or VALUE gives #VALUE!. That happens when unconvertible text is mixed in. The second formula, "Formula that blanks on error", in <a href="/ko/text-date-formula-builder.html">Build a Text to Date Formula</a> tidies the look.</p>
 <h2>순서</h2>
 <ol>
-<li>수식 만들기</li>
-<li>오류를 빈칸으로 만드는 수식 사용</li>
-<li>원본 텍스트 확인</li>
+<li lang="en">Build the first formula.</li>
+<li lang="en">Check the second "Formula that blanks on error".</li>
+<li lang="en">Copy it with "Copy the second" and paste.</li>
 </ol>
-<div class="note">날짜를 읽는 방식은 지역 설정에 따라 달라집니다.</div>
+<div class="note" lang="en">Its form is =IFERROR(formula,""). The cell is empty when conversion fails.</div>
+<h2>예</h2>
+<ul>
+<li lang="en">=IFERROR(DATEVALUE(A2),"")</li>
+</ul>
+<h2 lang="en">Main causes of errors</h2>
+<ul>
+<li lang="en">The date form isn't recognized ("2026.10.01", Japanese era dates, etc.)</li>
+<li lang="en">Text is mixed in ("around 10/1")</li>
+<li lang="en">Numbers have units ("1,200円")</li>
+<li lang="en">An empty cell was converted</li>
+</ul>
+<h2 lang="en">Fixes by cause</h2>
+<ul>
+<li lang="en">"." separators: replace with "/" via SUBSTITUTE</li>
+<li lang="en">Japanese era dates: convert another way (the site's era-date tool)</li>
+<li lang="en">With units: strip with SUBSTITUTE</li>
+</ul>
+<h2 lang="en">Is blanking enough?</h2>
+<p lang="en">Blanking errors makes unconverted rows easy to miss. To find error rows, keep the first formula and test with ISERROR.</p>
+<ul>
+<li lang="en">Example: =ISERROR(DATEVALUE(A2))</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Imported data with uneven dates</li>
+<li lang="en">Cells feeding summary tables</li>
+<li lang="en">Finding unconverted rows later</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Some imported dates read "TBD". IFERROR blanked them and totals stopped breaking. ISERROR could also find the blanked rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Everything is blank</b>: the conversion type doesn't match the data's shape.</li>
+<li lang="en"><b>Hiding too much</b>: mere format differences get missed.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want other text instead of the error</h3>
+<p lang="en">Rewrite IFERROR's "" as something like "check".</p>
+<h2>요약</h2>
+<p lang="en">For unconvertible rows, blank the errors or test to find them.</p>
 <a class="cta" href="/ko/text-date-formula-builder.html">“텍스트→날짜 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/date-calculator.html">나이, 날짜 간 일수, 날짜 가감 계산</a>: 나이와 날짜 간 일수를 계산합니다.</li><li><a href="/ko/excel-text-format-builder.html">엑셀 TEXT 수식 만들기</a>: TEXT 수식을 만듭니다.</li><li><a href="/ko/date-offset-formula-builder.html">날짜 계산 수식 만들기</a>: 날짜 계산 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

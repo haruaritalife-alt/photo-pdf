@@ -200,14 +200,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>日付を文字にする</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>DATETEXTを選ぶ</li><li>セルを入れる</li><li>コピーする</li></ul></div>
-<p><a href="/text-date-formula-builder.html">文字を日付に変える式の作成</a> では、日付を2026-10-01のような文字にする式を作れます。</p>
+<p>日付を、「2026-10-01」のような文字にしたい。ファイル名に使う、他のシステムに渡す、数字の桁を保つ。そんなときは、TEXT関数で文字にします。<a href="/text-date-formula-builder.html">文字を日付や数に変える式を作る</a> の「DATETEXT」と「TEXTNUM」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>DATETEXTを選ぶ</li>
-<li>セルを入れる</li>
-<li>コピーする</li>
+<li>「種類」で「DATETEXT」か「TEXTNUM」を選ぶ。</li>
+<li>「変えるセル」を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">ほかの文字とつなぐときに便利です。</div>
+<div class="note">結果は文字になるため、そのままでは日付として計算できません。</div>
+<h2>例</h2>
+<ul>
+<li>DATETEXT：=TEXT(A2,"yyyy-mm-dd")　→ 2026-10-01</li>
+<li>TEXTNUM：=TEXT(A2,"0")　→ 数値を、桁の揃った文字に</li>
+</ul>
+<h2>書式の例</h2>
+<p>TEXT関数の、2つ目の引数を書き換えると、いろいろな形になります。</p>
+<ul>
+<li>"yyyy/m/d"：2026/10/1</li>
+<li>"yyyymmdd"：20261001</li>
+<li>"yyyy年m月d日"：2026年10月1日</li>
+<li>"m/d"：10/1</li>
+<li>"00000"：5桁に、先頭を0で埋める</li>
+</ul>
+<h2>先頭の0を保つ</h2>
+<p>郵便番号や、社員番号の先頭の0は、数値のままだと消えます。TEXTNUMで、文字にしておきます。</p>
+<ul>
+<li>例：=TEXT(A2,"0000000")</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>日付を含むファイル名や、ID</li>
+<li>他のシステムに渡すデータの形式</li>
+<li>文字のつなぎ（「期限：」と日付を、つなぐ）</li>
+</ul>
+<h2>文章に日付を入れる</h2>
+<p>文章の中に日付を入れると、数字（46296）になってしまいます。TEXTで包みます。</p>
+<ul>
+<li>例：="期限：" &amp; TEXT(A2,"yyyy/m/d")</li>
+</ul>
+<h2>例</h2>
+<p>「2026-10-01_報告書」のような、日付付きのファイル名を、表から作りたかった。DATETEXTで日付を文字にして、「_報告書」をつなげた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>書式の文字は環境で違う</b>：言語設定により、「yyyy」が「jjjj」などになる場合がある。</li>
+<li><b>Googleスプレッドシート</b>：書式の文字は、概ね同じ。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>文字にした日付を、日付に戻したい</h3>
+<p>「DATEVALUE」を使います。</p>
+<h2>まとめ</h2>
+<p>日付を文字にするなら、TEXT関数の書式で形を決めます。</p>
 <a class="cta" href="/text-date-formula-builder.html">文字を日付や数に変える式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/excel-text-format-builder.html">TEXT関数の式を作る（表示形式）</a>：TEXT関数の式を作ります。</li><li><a href="/date-offset-formula-builder.html">日付の足し引きの式を作る</a>：日付の足し引きの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +261,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Turning a Date into Text</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose DATETEXT</li><li>Enter the cell</li><li>Copy it</li></ul></div>
-<p>In <a href="/text-date-formula-builder.html">Text to Date Builder</a> you can build a formula that turns a date into text such as 2026-10-01.</p>
+<p>You want a date as text like "2026-10-01": for file names, handing to other systems, or keeping digit widths. Convert with TEXT. "DATETEXT" and "TEXTNUM" in <a href="/text-date-formula-builder.html">Build a Text to Date Formula</a> build these.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose DATETEXT</li>
-<li>Enter the cell</li>
-<li>Copy it</li>
+<li>Choose "DATETEXT" or "TEXTNUM" in "Type".</li>
+<li>Enter the "Cell to convert".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">It is handy when joining with other text.</div>
+<div class="note">The result is text, so it can't be calculated as a date as is.</div>
+<h2>Examples</h2>
+<ul>
+<li>DATETEXT: =TEXT(A2,"yyyy-mm-dd")  → 2026-10-01</li>
+<li>TEXTNUM: =TEXT(A2,"0")  → a number as text with fixed digits</li>
+</ul>
+<h2>Format examples</h2>
+<p>Rewriting TEXT's second argument gives various shapes.</p>
+<ul>
+<li>"yyyy/m/d": 2026/10/1</li>
+<li>"yyyymmdd": 20261001</li>
+<li>"yyyy年m月d日": 2026年10月1日</li>
+<li>"m/d": 10/1</li>
+<li>"00000": zero-padded to 5 digits</li>
+</ul>
+<h2>Keeping leading zeros</h2>
+<p>Leading zeros in postal codes or employee numbers vanish if left numeric. Make them text with TEXTNUM.</p>
+<ul>
+<li>Example: =TEXT(A2,"0000000")</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>File names and IDs containing dates</li>
+<li>Data formats handed to other systems</li>
+<li>Joining text ("Due: " plus a date)</li>
+</ul>
+<h2>Putting dates in sentences</h2>
+<p>A date in a sentence turns into a number (46296). Wrap with TEXT.</p>
+<ul>
+<li>Example: ="Due: " &amp; TEXT(A2,"yyyy/m/d")</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted dated file names like "2026-10-01_report" built from a table. DATETEXT made the date text, then "_report" was appended.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Format letters vary by environment</b>: language settings may turn "yyyy" into "jjjj" and the like.</li>
+<li><b>Google Sheets</b>: format letters are broadly the same.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want the text date back as a date</h3>
+<p>Use "DATEVALUE".</p>
+<h2>Summary</h2>
+<p>To make dates text, set the shape with TEXT's format.</p>
 <a class="cta" href="/text-date-formula-builder.html">Use "Build a Text to Date Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/excel-text-format-builder.html">Build an Excel TEXT Formula</a>: Build a TEXT formula.</li><li><a href="/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

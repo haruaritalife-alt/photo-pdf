@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Çalışmadığında ne yapmalı</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>Dosyayı kontrol edin</li><li>Boyutu kontrol edin</li><li>Başka bir cihaz deneyin</li></ul></div>
-<p><a href="/tr/stat-formula-builder.html">Ortalama ve Medyan Oluşturucu</a> çalışmıyorsa aşağıdakileri kontrol edin.</p>
-<h2>Adımlar</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/tr/stat-formula-builder.html">Build an AVERAGE and MEDIAN Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the range isn't in the "B2:B100" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#DIV/0!</b>: the range has no numbers (AVERAGE, MEDIAN, etc.).</li>
+<li lang="en"><b>#N/A</b>: in MODE, no value appears twice or more.</li>
+<li lang="en"><b>#VALUE!</b>: the range contains error values.</li>
+<li lang="en"><b>Result is small</b>: text numbers aren't being counted.</li>
+<li lang="en"><b>Average is low</b>: unentered zeros are included. Use NO-ZERO.</li>
+<li lang="en"><b>#NAME?</b>: old Excel lacks MINIFS, MAXIFS or FILTER.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Dosyayı kontrol edin</li>
-<li>Boyutu kontrol edin</li>
-<li>Başka bir cihaz deneyin</li>
+<li lang="en">Check the numbers in the range are right-aligned numeric values.</li>
+<li lang="en">Check the range doesn't include header or total rows.</li>
+<li lang="en">Check what 0 means (not entered, or a real zero).</li>
 </ol>
-<div class="note">Formül görünmüyorsa aralığın B2:B100 gibi yazıldığını kontrol edin.</div>
+<div class="note" lang="en">Including a total row in the range distorts averages and maximums.</div>
+<h2 lang="en">Fixing text numbers</h2>
+<p lang="en">Convert to numbers with Data → Text to Columns or VALUE.</p>
+<h2 lang="en">About COUNT</h2>
+<p lang="en">COUNT counts only numbers. To count text too, use COUNTA.</p>
+<ul>
+<li lang="en">Count of non-empty cells: =COUNTA(B2:B100)</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">The average was lower than imagined. A total row was included at the end of the range. Limiting the range to data rows gave the right value.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Ranges on other sheets</b>: add the sheet name.</li>
+<li lang="en"><b>Kinds of STDEV</b>: sample (STDEV.S) and population (STDEV.P). The tool's formula uses STDEV.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the population standard deviation</h3>
+<p lang="en">Use STDEV.P. Edit the formula by hand.</p>
+<h2>Özet</h2>
+<p lang="en">Check text numbers, what the range includes, and the meaning of 0.</p>
 <a class="cta" href="/tr/stat-formula-builder.html">“Ortalama ve medyan formülü oluştur” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/sumif-formula-builder.html">SUMIF veya COUNTIF formülü oluşturma</a>: SUMIF ve COUNTIF formülleri oluşturun.</li><li><a href="/tr/rank-formula-builder.html">Sıralama formülü oluştur</a>: Sıralama formülleri oluşturun.</li><li><a href="/tr/large-small-formula-builder.html">LARGE ve SMALL formülü oluşturun</a>: N'inci en büyük veya en küçük değer için formüller oluşturun.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

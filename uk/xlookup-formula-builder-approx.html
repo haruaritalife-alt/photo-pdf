@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Пошук найближчого значення</h1>
 <p class="meta">Опубліковано: 19 жовт. 2026 | Оновлено: 19 жовт. 2026 | <a href="/about.html">Про нас (японською)</a></p>
 <div class="points"><b>Основне</b><ul><li>Виберіть APPROX</li><li>Введіть стовпці</li><li>Скопіюйте</li></ul></div>
-<p>У <a href="/uk/xlookup-formula-builder.html">Конструктор XLOOKUP</a> можна створити формулу, яка повертає рядок наступного меншого значення, якщо точного збігу немає.</p>
+<p lang="en">Instead of an exact match, you want the nearest value: determine a grade (A/B/C) from a score, or a fee tier from an amount. That's approximate lookup. "APPROX" in <a href="/uk/xlookup-formula-builder.html">Build an XLOOKUP Formula</a> builds it.</p>
 <h2>Кроки</h2>
 <ol>
-<li>Виберіть APPROX</li>
-<li>Введіть стовпці</li>
-<li>Скопіюйте</li>
+<li lang="en">Choose "APPROX" in "Type".</li>
+<li lang="en">Enter the "Value to find", "Lookup column" and "Return column".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Для формули старого Excel відсортуйте стовпець пошуку від меншого до більшого.</div>
+<div class="note" lang="en">The trailing "-1" means "if not found, use the next smaller value".</div>
+<h2>Приклад</h2>
+<ul>
+<li lang="en">=XLOOKUP(E2,A2:A100,B2:B100,"",-1)</li>
+</ul>
+<p lang="en">In a table with score lower bounds in column A (0, 60, 80) and grades in column B (C, B, A), a score of 75 returns the 60 row's "B".</p>
+<h2 lang="en">Building the table</h2>
+<p lang="en">Put each tier's lower bound in the lookup column.</p>
+<ul>
+<li lang="en">0 → C</li>
+<li lang="en">60 → B</li>
+<li lang="en">80 → A</li>
+</ul>
+<p lang="en">75 is at least 60 and under 80, so "B".</p>
+<h2 lang="en">In old Excel</h2>
+<p lang="en">The second formula uses MATCH's approximate search.</p>
+<ul>
+<li lang="en">=IFERROR(INDEX(B2:B100,MATCH(E2,A2:A100,1)),"")</li>
+</ul>
+<p lang="en">With MATCH's third argument 1, it finds the largest value at or below in an ascending column.</p>
+<h2 lang="en">Note: order</h2>
+<p lang="en">The second formula needs the lookup column sorted smallest first. XLOOKUP's "-1" doesn't require sorting, but sorting reduces mistakes.</p>
+<h2>Підходить для</h2>
+<ul>
+<li lang="en">Grades from scores</li>
+<li lang="en">Fee-rate tiers from sales</li>
+<li lang="en">Age brackets from age</li>
+<li lang="en">Shipping tiers (a fee table by weight)</li>
+</ul>
+<h2 lang="en">To find the next larger value</h2>
+<p lang="en">Change "-1" to "1" (edit by hand).</p>
+<h2>Приклад</h2>
+<p lang="en">Built a table setting commission rates from sales amounts. With tier lower bounds and rates in a table, XLOOKUP's approximate mode avoided stacking IFs.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Value below the lowest bound</b>: not found, so the specified value (empty) appears. Include a 0 row.</li>
+<li lang="en"><b>Decimal bounds</b>: mind rounding error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want exact matches only</h3>
+<p lang="en">Use the "XLOOKUP" type.</p>
+<h2>Підсумок</h2>
+<p lang="en">Tier-based values can be pulled with approximate lookup.</p>
 <a class="cta" href="/uk/xlookup-formula-builder.html">Використати «Створити формулу XLOOKUP» (безкоштовно)</a>
 <h2>Інструменти, що добре поєднуються з цим</h2><ul><li><a href="/uk/vlookup-formula-builder.html">Створення формули VLOOKUP або XLOOKUP</a>: Створюйте формули VLOOKUP і XLOOKUP.</li><li><a href="/uk/index-match-builder.html">Створити формулу INDEX і MATCH</a>: Створюйте формули INDEX і MATCH.</li><li><a href="/uk/filter-formula-builder.html">Створення формули FILTER</a>: Створіть формулу FILTER.</li></ul>
 <div class="tip"><p>Якщо цей посібник став у пригоді, невеликі чайові будуть дуже доречні.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Надіслати чайові (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Надіслати подарунок (список бажань Amazon)</a></div>

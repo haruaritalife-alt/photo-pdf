@@ -200,14 +200,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>最も多い値</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>MODEを選ぶ</li><li>範囲を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/stat-formula-builder.html">平均・中央値の式の作成</a> では、最も多く出てくる値を出す式を作れます。</p>
+<p>最もよく出てくる値、つまり最頻値を知りたい。靴のサイズで、いちばん売れたサイズ。アンケートで、いちばん多かった回答の番号。それが MODE です。<a href="/stat-formula-builder.html">平均・中央値などの式を作る</a> の「MODE」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>MODEを選ぶ</li>
-<li>範囲を入れる</li>
-<li>コピーする</li>
+<li>「種類」で「MODE」を選ぶ。</li>
+<li>「数字の範囲」を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">同じ回数の値が並ぶときは、先に出てくる方が選ばれます。</div>
+<div class="note">数値のみが対象です。文字（りんご、みかん）の最頻値は、別の式が必要です。</div>
+<h2>例</h2>
+<ul>
+<li>=MODE(B2:B100)</li>
+</ul>
+<p>24、25、25、26、25、27なら、25が返ります。</p>
+<h2>最頻値が複数あるとき</h2>
+<p>同じ回数で出てくる値が複数あっても、MODEは、最初に出てきた値だけを返します。</p>
+<ul>
+<li>例：1、2、2、3、3なら、2が返る</li>
+</ul>
+<p>すべてを出したいときは、MODE.MULTを使います。</p>
+<ul>
+<li>例：=MODE.MULT(B2:B100)</li>
+</ul>
+<h2>最頻値がないとき</h2>
+<p>すべての値が1回ずつだと、#N/Aになります。IFERRORで空にできます。</p>
+<h2>文字の最頻値</h2>
+<p>文字の中で、最も多い値を出す式です。</p>
+<ul>
+<li>例：=INDEX(A2:A100,MODE(MATCH(A2:A100,A2:A100,0)))</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>売れ筋のサイズや色</li>
+<li>アンケートで、最も多い回答</li>
+<li>典型的な値（点数、サイズ）</li>
+</ul>
+<h2>例</h2>
+<p>アンケートの回答が1〜5の数字だった。MODEで、最も多かった回答が分かった。平均より、実態に近い答えだった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>小数のずれ</b>：小数は、見た目が同じでも、わずかな差で別の値になる。丸めてから使う。</li>
+<li><b>#N/A</b>：同じ値が2回以上ない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>平均・中央値との使い分けは？</h3>
+<p>カテゴリーに近い数値（サイズ、段階）は最頻値、連続した数値は平均や中央値が向きます。</p>
+<h2>まとめ</h2>
+<p>最もよく出る値は、MODE。</p>
 <a class="cta" href="/stat-formula-builder.html">平均・中央値などの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/rank-formula-builder.html">順位の式を作る</a>：順位の式を作ります。</li><li><a href="/large-small-formula-builder.html">N番目の値の式を作る</a>：N番目に大きい・小さい値の式を作る。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +258,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>The Most Frequent Value</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose MODE</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/stat-formula-builder.html">AVERAGE and MEDIAN Builder</a> you can build a formula that gives the most frequent value.</p>
+<p>You want the most frequent value, the mode: the best-selling shoe size, or the most common survey answer. That's MODE. "MODE" in <a href="/stat-formula-builder.html">Build an AVERAGE and MEDIAN Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose MODE</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>Choose "MODE" in "Type".</li>
+<li>Enter the "Numeric range".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">If values tie, the one that comes first is chosen.</div>
+<div class="note">It only handles numbers. The mode of text (apple, orange) needs another formula.</div>
+<h2>Example</h2>
+<ul>
+<li>=MODE(B2:B100)</li>
+</ul>
+<p>For 24, 25, 25, 26, 25, 27, it returns 25.</p>
+<h2>With multiple modes</h2>
+<p>Even if several values appear equally often, MODE returns only the first one that appeared.</p>
+<ul>
+<li>Example: for 1, 2, 2, 3, 3 it returns 2</li>
+</ul>
+<p>To list all, use MODE.MULT.</p>
+<ul>
+<li>Example: =MODE.MULT(B2:B100)</li>
+</ul>
+<h2>When there's no mode</h2>
+<p>If every value appears once, you get #N/A. IFERROR can blank it.</p>
+<h2>The mode of text</h2>
+<p>A formula for the most frequent among text values:</p>
+<ul>
+<li>Example: =INDEX(A2:A100,MODE(MATCH(A2:A100,A2:A100,0)))</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Best-selling sizes and colors</li>
+<li>The most common survey answer</li>
+<li>Typical values (scores, sizes)</li>
+</ul>
+<h2>Example</h2>
+<p>Survey answers were numbers 1 to 5. MODE showed the most common answer, closer to reality than the mean.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Decimal differences</b>: decimals that look the same can differ slightly. Round before using.</li>
+<li><b>#N/A</b>: no value appears twice or more.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How do I choose among mean, median and mode?</h3>
+<p>For category-like numbers (sizes, levels) use the mode; for continuous numbers the mean or median suits.</p>
+<h2>Summary</h2>
+<p>For the most frequent value, use MODE.</p>
 <a class="cta" href="/stat-formula-builder.html">Use "Build an AVERAGE and MEDIAN Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a>: Build formulas for the Nth largest or smallest value.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -200,14 +200,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>古いExcelでの探し方</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>XLOOKUPを選ぶ</li><li>式を作る</li><li>2つ目の式をコピーする</li></ul></div>
-<p><a href="/xlookup-formula-builder.html">XLOOKUPの式の作成</a> は、XLOOKUPがない古いExcel用の式も同時に作ります。</p>
-<h2>手順</h2>
+<p>XLOOKUPは、Excel 365・2021以降の関数です。古いExcelでは、#NAME?になります。<a href="/xlookup-formula-builder.html">XLOOKUPの式を作る</a> は、古いExcelでも使える式を、同時に作ります。</p>
+<h2>2つの式</h2>
+<ul>
+<li>XLOOKUP：=XLOOKUP(E2,A2:A100,B2:B100)</li>
+<li>古いExcelでも使える式：=IFERROR(INDEX(B2:B100,MATCH(E2,A2:A100,0)),"")</li>
+</ul>
+<p>「2つ目をコピー」で、後者がコピーできます。</p>
+<div class="note">2つ目の式は、MATCHで位置を探し、INDEXで値を取り出します。どの版でも動きます。</div>
+<h2>仕組み</h2>
 <ol>
-<li>XLOOKUPを選ぶ</li>
-<li>式を作る</li>
-<li>2つ目の式をコピーする</li>
+<li>MATCH(E2,A2:A100,0)：E2の値が、A列の何番目にあるかを探す（0は完全一致）</li>
+<li>INDEX(B2:B100,位置)：B列の、同じ位置の値を取り出す</li>
+<li>IFERROR：見つからないとき、指定の値にする</li>
 </ol>
-<div class="note">INDEXとMATCHを組み合わせた式です。</div>
+<h2>使える版</h2>
+<ul>
+<li>XLOOKUP：Microsoft 365、Excel 2021以降、Googleスプレッドシート</li>
+<li>INDEXとMATCHの式：ほぼすべての版</li>
+</ul>
+<h2>種類ごとの、古い版の式</h2>
+<ul>
+<li>LAST：=LOOKUP(2,1/(A2:A100=E2),B2:B100)</li>
+<li>APPROX：=IFERROR(INDEX(B2:B100,MATCH(E2,A2:A100,1)),"")</li>
+<li>XMATCH：=MATCH(E2,A2:A100,0)</li>
+<li>REVERSE：探す列と返す列を入れ替えて、INDEXとMATCH</li>
+</ul>
+<h2>VLOOKUPとの違い</h2>
+<p>VLOOKUPでも、古いExcelで検索できます。ただし、探す列が左端にある必要があり、列番号の指定がずれやすいです。INDEXとMATCHなら、その制限がありません。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>古いExcelを使う相手に、ファイルを渡す</li>
+<li>会社の環境が、古い版のとき</li>
+</ul>
+<h2>例</h2>
+<p>自分のExcelでは動いたXLOOKUPが、相手のExcelで#NAME?になった。2つ目の式に替えて、相手の環境でも動いた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>範囲がずれる</b>：下にコピーするときは、$で固定する。</li>
+<li><b>見つからないとき</b>：IFERRORの値が出る。空なら、空の文字。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>どちらを使うべきですか？</h3>
+<p>自分だけが使うなら、XLOOKUP。誰かに渡すなら、2つ目の式が安心です。</p>
+<h2>まとめ</h2>
+<p>相手の環境が分からないときは、INDEXとMATCHの式を使いましょう。</p>
 <a class="cta" href="/xlookup-formula-builder.html">XLOOKUPの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/index-match-builder.html">INDEX・MATCHの式を作る</a>：INDEX・MATCHの式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +256,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Looking Up in Older Excel</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose XLOOKUP</li><li>Build the formula</li><li>Copy the second formula</li></ul></div>
-<p><a href="/xlookup-formula-builder.html">XLOOKUP Builder</a> also builds a formula for older Excel that lacks XLOOKUP.</p>
-<h2>Steps</h2>
+<p>XLOOKUP is a function from Excel 365 and 2021 onward. Older Excel gives #NAME?. <a href="/xlookup-formula-builder.html">Build an XLOOKUP Formula</a> also builds a formula that works in old Excel.</p>
+<h2>The two formulas</h2>
+<ul>
+<li>XLOOKUP: =XLOOKUP(E2,A2:A100,B2:B100)</li>
+<li>Works in old Excel: =IFERROR(INDEX(B2:B100,MATCH(E2,A2:A100,0)),"")</li>
+</ul>
+<p>"Copy the second" copies the latter.</p>
+<div class="note">The second formula finds the position with MATCH and pulls the value with INDEX. It works in every version.</div>
+<h2>How it works</h2>
 <ol>
-<li>Choose XLOOKUP</li>
-<li>Build the formula</li>
-<li>Copy the second formula</li>
+<li>MATCH(E2,A2:A100,0): finds which position in column A holds E2's value (0 means exact match)</li>
+<li>INDEX(B2:B100,position): pulls the value at the same position in column B</li>
+<li>IFERROR: gives the specified value when not found</li>
 </ol>
-<div class="note">It combines INDEX and MATCH.</div>
+<h2>Supported versions</h2>
+<ul>
+<li>XLOOKUP: Microsoft 365, Excel 2021 and later, Google Sheets</li>
+<li>INDEX/MATCH formula: nearly all versions</li>
+</ul>
+<h2>Old-version formulas by type</h2>
+<ul>
+<li>LAST: =LOOKUP(2,1/(A2:A100=E2),B2:B100)</li>
+<li>APPROX: =IFERROR(INDEX(B2:B100,MATCH(E2,A2:A100,1)),"")</li>
+<li>XMATCH: =MATCH(E2,A2:A100,0)</li>
+<li>REVERSE: swap lookup and return columns, with INDEX and MATCH</li>
+</ul>
+<h2>Difference from VLOOKUP</h2>
+<p>VLOOKUP also searches in old Excel, but the lookup column must be leftmost and column numbers shift easily. INDEX and MATCH has no such limits.</p>
+<h2>Good for</h2>
+<ul>
+<li>Handing the file to someone using old Excel</li>
+<li>When the company environment is old</li>
+</ul>
+<h2>Example</h2>
+<p>An XLOOKUP that worked in my Excel gave #NAME? in the recipient's. Switching to the second formula made it work there too.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Ranges shift</b>: fix with $ when copying down.</li>
+<li><b>When not found</b>: IFERROR's value appears; if empty, an empty string.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Which should I use?</h3>
+<p>If only you use it, XLOOKUP. If handing it to someone, the second formula is safer.</p>
+<h2>Summary</h2>
+<p>When you don't know the recipient's environment, use the INDEX and MATCH formula.</p>
 <a class="cta" href="/xlookup-formula-builder.html">Use "Build an XLOOKUP Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/index-match-builder.html">Build an INDEX and MATCH Formula</a>: Build INDEX and MATCH formulas.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/text-date-formula-builder.html">텍스트→날짜 수식 만들기</a>이(가) 작동하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">You pasted the formula but it doesn't convert. Here are common troubles with <a href="/ko/text-date-formula-builder.html">Build a Text to Date Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell to convert isn't in the "A2" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: text unreadable as a date or number is present.</li>
+<li lang="en"><b>A number (like 46296) appears</b>: set the cell's display format to date.</li>
+<li lang="en"><b>Date is off by a day or the year is wrong</b>: the order of year, month and day in the source doesn't match settings (e.g., "10/01/2026").</li>
+<li lang="en"><b>Eight digits don't convert</b>: wrong digit count, or a missing leading 0.</li>
+<li lang="en"><b>Still left-aligned after converting</b>: the result is text (a TEXT-based type).</li>
+<li lang="en"><b>#NAME?</b>: the function name is wrong.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Check whether the source cell is text or a number (left-aligned means text).</li>
+<li lang="en">Check for invisible spaces and full-width symbols in the text.</li>
+<li lang="en">Unify separators and digit counts.</li>
 </ol>
-<div class="note">수식이 나오지 않으면 셀이 A2처럼 쓰여 있는지 확인하세요.</div>
+<div class="note" lang="en">Surrounding spaces can block conversion. Tidy with TRIM first.</div>
+<h2 lang="en">About order</h2>
+<p lang="en">"10/01/2026" is read as month/day/year in some environments and day/month/year in others. When ambiguous, rewrite as eight digits and convert with YMD8 to be sure.</p>
+<h2 lang="en">Two-digit years</h2>
+<p lang="en">A two-digit year like "26/10/01" may be read as 1926 or 2026 depending on the environment. Expand to four digits before use.</p>
+<h2>예</h2>
+<p lang="en">Dates wouldn't convert. A non-breaking space trailed the text. Removing it with SUBSTITUTE made them convert.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Dates before 1900</b>: some environments can't handle them.</li>
+<li lang="en"><b>With times</b>: DATEVALUE takes only the date part.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to fix the converted result</h3>
+<p lang="en">Copy, then paste values only.</p>
+<h2>요약</h2>
+<p lang="en">Check the source text's shape, invisible characters and order.</p>
 <a class="cta" href="/ko/text-date-formula-builder.html">“텍스트→날짜 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/date-calculator.html">나이, 날짜 간 일수, 날짜 가감 계산</a>: 나이와 날짜 간 일수를 계산합니다.</li><li><a href="/ko/excel-text-format-builder.html">엑셀 TEXT 수식 만들기</a>: TEXT 수식을 만듭니다.</li><li><a href="/ko/date-offset-formula-builder.html">날짜 계산 수식 만들기</a>: 날짜 계산 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

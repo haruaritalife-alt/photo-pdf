@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Tìm từ dưới lên</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Chọn LAST</li><li>Nhập các cột</li><li>Sao chép</li></ul></div>
-<p>Trong <a href="/vi/xlookup-formula-builder.html">Trình tạo XLOOKUP</a>, bạn có thể tạo công thức trả về kết quả khớp dưới cùng khi một giá trị xuất hiện nhiều lần.</p>
+<p lang="en">When several rows have the same value, XLOOKUP returns the first found. To get the latest record, i.e. a lower row, search from the bottom. "LAST" in <a href="/vi/xlookup-formula-builder.html">Build an XLOOKUP Formula</a> builds it.</p>
 <h2>Các bước</h2>
 <ol>
-<li>Chọn LAST</li>
-<li>Nhập các cột</li>
-<li>Sao chép</li>
+<li lang="en">Choose "LAST" in "Type".</li>
+<li lang="en">Enter the "Value to find", "Lookup column" and "Return column".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Tiện để lấy bản ghi mới nhất.</div>
+<div class="note" lang="en">The trailing "0,-1" in the formula means exact match, searching from the bottom.</div>
+<h2>Ví dụ</h2>
+<ul>
+<li lang="en">=XLOOKUP(E2,A2:A100,B2:B100,"",0,-1)</li>
+</ul>
+<p lang="en">From records where the same customer appears many times, it returns the latest (lowest) row's value.</p>
+<h2 lang="en">In old Excel</h2>
+<p lang="en">The second formula uses LOOKUP.</p>
+<ul>
+<li lang="en">=LOOKUP(2,1/(A2:A100=E2),B2:B100)</li>
+</ul>
+<p lang="en">A well-known form returning the last among matching rows.</p>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Each customer's latest order</li>
+<li lang="en">Each product's latest unit price</li>
+<li lang="en">The current state from a history table</li>
+</ul>
+<h2 lang="en">Difference from searching from the top</h2>
+<ul>
+<li lang="en">From the top (default): the first found row</li>
+<li lang="en">From the bottom (LAST): the last found row</li>
+</ul>
+<p lang="en">If records run from older at the top to newer at the bottom, searching from the bottom gets the latest.</p>
+<h2 lang="en">Order is assumed</h2>
+<p lang="en">LAST assumes "lower means newer". If the order differs, so does the result. Sort by date before using.</p>
+<h2>Ví dụ</h2>
+<p lang="en">Wanted the current price from a product's price-history table. Records ran oldest first, so LAST got the latest row's price.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Not found</b>: if "When not found" is empty, you get an empty string.</li>
+<li lang="en"><b>LOOKUP formula</b>: #N/A when nothing matches.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to judge by the latest date</h3>
+<p lang="en">You can also get the maximum date with MAXIFS and look up by that date.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">To pull the latest row, use LAST, searching from the bottom.</p>
 <a class="cta" href="/vi/xlookup-formula-builder.html">Dùng “Tạo công thức XLOOKUP” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/vlookup-formula-builder.html">Tạo công thức VLOOKUP hoặc XLOOKUP</a>: Tạo công thức VLOOKUP và XLOOKUP.</li><li><a href="/vi/index-match-builder.html">Tạo công thức INDEX và MATCH</a>: Tạo các công thức INDEX và MATCH.</li><li><a href="/vi/filter-formula-builder.html">Tạo công thức FILTER</a>: Tạo công thức FILTER.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>
