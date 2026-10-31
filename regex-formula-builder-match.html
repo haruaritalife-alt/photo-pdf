@@ -200,14 +200,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>一致を調べる</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>MATCHを選ぶ</li><li>パターンを入れる</li><li>コピーする</li></ul></div>
-<p><a href="/regex-formula-builder.html">正規表現式の作成</a> では、セルがパターンに合うかをTRUEかFALSEで調べます。</p>
+<p>セルの文字が、ある形に合っているかだけを知りたい。たとえば、郵便番号の形かどうかです。それが REGEXMATCH です。<a href="/regex-formula-builder.html">正規表現の式を作る</a> の「MATCH」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>MATCHを選ぶ</li>
-<li>パターンを入れる</li>
-<li>コピーする</li>
+<li>「種類」で「MATCH」を選ぶ。</li>
+<li>「文字のセル」と「パターン」を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">条件付き書式やフィルタにも使えます。</div>
+<div class="note">結果は、TRUE（合う）かFALSE（合わない）です。</div>
+<h2>例</h2>
+<ul>
+<li>=REGEXMATCH(A2,"\d{3}-\d{4}")</li>
+</ul>
+<p>A2に「123-4567」の形が含まれていれば、TRUEです。</p>
+<h2>部分一致に注意</h2>
+<p>REGEXMATCHは、文字の一部が合えば、TRUEになります。全体が合うかを調べるには、パターンの前後に「^」と「$」を付けます。</p>
+<ul>
+<li>例：=REGEXMATCH(A2,"^\d{3}-\d{4}$")</li>
+</ul>
+<h2>使い道</h2>
+<ul>
+<li>IFと組み合わせて、入力チェックをする</li>
+<li>FILTERと組み合わせて、条件に合う行を取り出す</li>
+<li>条件付き書式で、形が違う行に色をつける</li>
+</ul>
+<h2>IFと組み合わせる</h2>
+<ul>
+<li>例：=IF(REGEXMATCH(A2,"^\d{3}-\d{4}$"),"OK","形が違います")</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>名簿の郵便番号・電話番号の形を点検したい</li>
+<li>取り込んだデータのメールアドレスを点検したい</li>
+<li>特定の言葉を含む行を探したい</li>
+</ul>
+<h2>例</h2>
+<p>名簿の郵便番号の列で、ハイフンが抜けた行を探したかった。MATCHで形を調べ、FALSEの行を見つけて直した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>全体が合うかを調べたい</b>：^ と $ を付ける。</li>
+<li><b>全角のハイフン</b>：半角と全角は別の文字。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>複数の言葉のどれかを含むか調べたい</h3>
+<p>パターンを「東京|大阪|名古屋」のように、縦棒でつなぎます。</p>
+<h2>まとめ</h2>
+<p>形のチェックには、REGEXMATCH。全体の一致は、^と$で。</p>
 <a class="cta" href="/regex-formula-builder.html">正規表現の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/regex-tester.html">正規表現テスター</a>：正規表現を試し、一致と置換を確かめます。</li><li><a href="/substitute-formula-builder.html">SUBSTITUTE・REPLACEの式を作る</a>：文字を置き換える式を作ります。</li><li><a href="/split-formula-builder.html">SPLITの式を作る</a>：文字を分ける式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +257,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Checking for a Match</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose MATCH</li><li>Enter the pattern</li><li>Copy it</li></ul></div>
-<p>In <a href="/regex-formula-builder.html">Regular Expression Builder</a> you can check whether a cell fits the pattern as TRUE or FALSE.</p>
+<p>You only want to know whether a cell's text has a certain shape, such as a postal code. That's REGEXMATCH. "MATCH" in <a href="/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose MATCH</li>
-<li>Enter the pattern</li>
-<li>Copy it</li>
+<li>Choose "MATCH" in "Type".</li>
+<li>Enter the "Text cell" and "Pattern".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">It also works in conditional formatting and filters.</div>
+<div class="note">The result is TRUE (matches) or FALSE (doesn't).</div>
+<h2>Example</h2>
+<ul>
+<li>=REGEXMATCH(A2,"\d{3}-\d{4}")</li>
+</ul>
+<p>It's TRUE if A2 contains the form "123-4567".</p>
+<h2>Beware partial matches</h2>
+<p>REGEXMATCH is TRUE if any part of the text matches. To test the whole text, add "^" and "$" around the pattern.</p>
+<ul>
+<li>Example: =REGEXMATCH(A2,"^\d{3}-\d{4}$")</li>
+</ul>
+<h2>Uses</h2>
+<ul>
+<li>Combine with IF for input checks</li>
+<li>Combine with FILTER to pull matching rows</li>
+<li>Color rows with the wrong shape via conditional formatting</li>
+</ul>
+<h2>Combining with IF</h2>
+<ul>
+<li>Example: =IF(REGEXMATCH(A2,"^\d{3}-\d{4}$"),"OK","Wrong format")</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Auditing postal and phone formats in a roster</li>
+<li>Auditing email addresses in imported data</li>
+<li>Finding rows containing particular words</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to find rows missing the hyphen in a roster's postal-code column. MATCH checked the shape, and I fixed the FALSE rows.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Testing the whole text</b>: add ^ and $.</li>
+<li><b>Full-width hyphens</b>: half-width and full-width are different characters.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to test for any of several words</h3>
+<p>Join them with a pipe, like "Tokyo|Osaka|Nagoya".</p>
+<h2>Summary</h2>
+<p>Use REGEXMATCH to check shapes; use ^ and $ for a whole-text match.</p>
 <a class="cta" href="/regex-formula-builder.html">Use "Build a Regular Expression Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/regex-tester.html">Regex Tester</a>: Test regular expressions with matches and replacements.</li><li><a href="/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a>: Build text replacement formulas.</li><li><a href="/split-formula-builder.html">Build a SPLIT Formula</a>: Build text splitting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

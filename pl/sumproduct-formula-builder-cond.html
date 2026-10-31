@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Tylko pasujące wiersze</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Wybierz COND</li><li>Wpisz warunek</li><li>Skopiuj</li></ul></div>
-<p>W <a href="/pl/sumproduct-formula-builder.html">Kreator SUMPRODUCT</a> możesz mnożyć i sumować tylko wiersze spełniające warunek.</p>
+<p lang="en">Like "the total of Tokyo's sales only", you want to multiply and sum just the rows meeting a condition. "COND" in <a href="/pl/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a> builds it.</p>
 <h2>Kroki</h2>
 <ol>
-<li>Wybierz COND</li>
-<li>Wpisz warunek</li>
-<li>Skopiuj</li>
+<li lang="en">Choose "COND" in "Method".</li>
+<li lang="en">Enter the ranges to multiply in "First range" and "Second range".</li>
+<li lang="en">In "Condition range (such as A2:A100)", enter the column to test.</li>
+<li lang="en">In "Condition value (such as Tokyo)", enter the value.</li>
 </ol>
-<div class="note">Wpisz warunek tekstowy, na przykład Tokyo.</div>
+<div class="note" lang="en">An empty condition value gives "The input is not valid."</div>
+<h2>Przykład</h2>
+<p lang="en">With regions in column A, unit prices in B and quantities in C, the amount for Tokyo only:</p>
+<ul>
+<li lang="en">=SUMPRODUCT((A2:A100="Tokyo")*B2:B100*C2:C100)</li>
+</ul>
+<p lang="en">Matching rows become 1 and others 0, so non-matching rows don't enter the sum.</p>
+<h2 lang="en">Choosing between this and SUMIFS</h2>
+<ul>
+<li lang="en">SUMIFS: when the summed column is a single column</li>
+<li lang="en">SUMPRODUCT: when you multiply before summing</li>
+</ul>
+<h2 lang="en">Adding conditions</h2>
+<p lang="en">Joining conditions by multiplication means "and". Add by hand after pasting.</p>
+<ul>
+<li lang="en">Example: =SUMPRODUCT((A2:A100="Tokyo")*(D2:D100="A")*B2:B100*C2:C100)</li>
+</ul>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">Sales by region</li>
+<li lang="en">Amounts by person in charge</li>
+<li lang="en">Monthly totals</li>
+</ul>
+<h2>Przykład</h2>
+<p lang="en">Needed price × quantity totals per branch. Built a SUMPRODUCT with a branch-name condition and reused it by changing only the branch name.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Case</b>: not distinguished.</li>
+<li lang="en"><b>Numeric condition values</b>: for numbers, omitting quotes is safer; edit by hand if needed.</li>
+<li lang="en"><b>Partial matches</b>: "=" is an exact match. Partial matching needs another function.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want an "or" condition</h3>
+<p lang="en">Join the conditions with addition.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">Enter a condition range and value to total only some rows.</p>
 <a class="cta" href="/pl/sumproduct-formula-builder.html">Użyj „Utwórz formułę SUMPRODUCT” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/sumif-formula-builder.html">Tworzenie formuły SUMIF lub COUNTIF</a>: Twórz formuły SUMIF i COUNTIF.</li><li><a href="/pl/rank-formula-builder.html">Utwórz formułę rankingu</a>: Twórz formuły rankingu.</li><li><a href="/pl/percent-calculator.html">Obliczanie procentów, rabatów i zmian procentowych</a>: Natychmiast oblicz procenty, rabaty i zmiany procentowe.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

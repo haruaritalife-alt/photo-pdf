@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>셀 값으로 만드는 링크</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>CELLURL 선택</li><li>URL 앞부분 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/hyperlink-formula-builder.html">HYPERLINK 수식 만들기</a>에서는 URL 앞부분과 셀 값을 이어 행마다 링크를 만듭니다.</p>
+<p lang="en">You want links built per row from an ID column's values, for example from a product number to its product page. "CELLURL" in <a href="/ko/hyperlink-formula-builder.html">Build a HYPERLINK Formula</a> builds it.</p>
 <h2>순서</h2>
 <ol>
-<li>CELLURL 선택</li>
-<li>URL 앞부분 입력</li>
-<li>복사</li>
+<li lang="en">Choose "CELLURL" in "Type".</li>
+<li lang="en">In "Link target", enter the URL prefix (e.g., https://example.com/item/).</li>
+<li lang="en">In "Cell (for CELLURL, such as A2)", enter the cell holding the ID.</li>
+<li lang="en">Copy the formula, paste it, and copy down.</li>
 </ol>
-<div class="note">상품 번호 같은 ID로 만드는 링크에 알맞습니다.</div>
+<div class="note" lang="en">Start the URL prefix with http(s) and include up to the final "/".</div>
+<h2>예</h2>
+<p lang="en">With a product number in A2:</p>
+<ul>
+<li lang="en">=HYPERLINK("https://example.com/item/"&amp;A2,A2)</li>
+</ul>
+<p lang="en">If A2 is "123", it links to https://example.com/item/123 and the cell shows "123".</p>
+<h2>작동 방식</h2>
+<p lang="en">The URL prefix and the cell value are joined with "&amp;". The display name is the cell value itself.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">From product numbers to product pages</li>
+<li lang="en">From order numbers to an admin screen</li>
+<li lang="en">From search keywords to search result pages</li>
+</ul>
+<h2 lang="en">Linking to a search page</h2>
+<ul>
+<li lang="en">Example: =HYPERLINK("https://www.google.com/search?q="&amp;A2,A2)</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Built links from an order-number column to the admin order pages. Copying down gave every row a link.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>IDs with Japanese text or symbols</b>: convert characters unusable in URLs with ENCODEURL.</li>
+<li lang="en">Example: =HYPERLINK("https://example.com/s?q="&amp;ENCODEURL(A2),A2)</li>
+<li lang="en"><b>Missing "/" at the end of the prefix</b>: the link target comes out wrong.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want a different display name</h3>
+<p lang="en">Rewrite the final "A2" in the formula to another cell or text.</p>
+<h2>요약</h2>
+<p lang="en">Join a URL prefix and a cell to make per-row links automatically.</p>
 <a class="cta" href="/ko/hyperlink-formula-builder.html">“HYPERLINK 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/importrange-builder.html">IMPORTRANGE 수식 만들기</a>: IMPORTRANGE 수식을 만듭니다.</li><li><a href="/ko/textjoin-formula-builder.html">TEXTJOIN 수식 만들기</a>: TEXTJOIN 수식을 만듭니다.</li><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

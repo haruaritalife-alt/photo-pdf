@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Büyük ve Küçük Harf</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>IGNORE'u seçin</li><li>Deseni yazın</li><li>Kontrol edin</li></ul></div>
-<p><a href="/tr/regex-formula-builder.html">Düzenli ifade oluşturucu</a> içinde büyük ve küçük harf farkını yok sayabilirsiniz.</p>
+<p lang="en">You want to check English text without distinguishing upper and lower case. Regular expressions distinguish by default. "Case" in <a href="/tr/regex-formula-builder.html">Build a Regular Expression Formula</a> lets you choose to ignore.</p>
 <h2>Adımlar</h2>
 <ol>
-<li>IGNORE'u seçin</li>
-<li>Deseni yazın</li>
-<li>Kontrol edin</li>
+<li lang="en">In "Case", choose the ignore setting.</li>
+<li lang="en">Copy the formula and paste.</li>
+<li lang="en">Check the pattern in the formula starts with "(?i)".</li>
 </ol>
-<div class="note">Desenin başına (?i) eklenir.</div>
+<div class="note" lang="en">"(?i)" specifies that case isn't distinguished within the pattern.</div>
+<h2>Örnek</h2>
+<ul>
+<li lang="en">Case-sensitive: =REGEXMATCH(A2,"pdf")</li>
+<li lang="en">Case-insensitive: =REGEXMATCH(A2,"(?i)pdf")</li>
+</ul>
+<p lang="en">"PDF", "Pdf" and "pdf" all give TRUE.</p>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Checking file extensions (.PDF and .pdf)</li>
+<li lang="en">Finding English keywords without notation variants</li>
+<li lang="en">Checking emails regardless of case differences</li>
+</ul>
+<h2 lang="en">When to distinguish</h2>
+<ul>
+<li lang="en">IDs or codes where case matters</li>
+<li lang="en">Strict format checks</li>
+</ul>
+<h2 lang="en">For Japanese</h2>
+<p lang="en">Hiragana vs katakana, and full-width vs half-width, aren't treated alike by this setting. Handle them separately.</p>
+<ul>
+<li lang="en">Example: =REGEXMATCH(A2,"[ァ-ン]")</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">A file-name column mixed ".JPG" and ".jpg". Ignoring case found both at once.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width letters</b>: full-width Ａ and half-width A are different characters.</li>
+<li lang="en"><b>Position of (?i)</b>: it goes at the start of the pattern. The tool adds it automatically.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does it work with REGEXREPLACE?</h3>
+<p lang="en">Yes. It ignores case when deciding what to replace.</p>
+<h2>Özet</h2>
+<p lang="en">For English text, ignore case to avoid notation variants.</p>
 <a class="cta" href="/tr/regex-formula-builder.html">“Düzenli ifade formülü oluşturun” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/regex-tester.html">Düzenli İfade Test Aracı</a>: Düzenli ifadeleri eşleşmeler ve değiştirmelerle test edin.</li><li><a href="/tr/substitute-formula-builder.html">SUBSTITUTE Formülü Oluşturun</a>: Metin değiştirme formülleri oluşturun.</li><li><a href="/tr/split-formula-builder.html">SPLIT Formülü Oluşturun</a>: Metin bölme formülleri oluşturun.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

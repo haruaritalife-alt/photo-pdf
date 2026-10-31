@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Estrarre i numeri</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Scegli EXTRACT</li><li>Scrivi \d+</li><li>Copialo</li></ul></div>
-<p>In <a href="/it/regex-formula-builder.html">Generatore di espressioni regolari</a> puoi estrarre da un testo solo le cifre.</p>
+<p lang="en">You want only "12345" from "Order number 12345". That's REGEXEXTRACT. "EXTRACT" in <a href="/it/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>Passaggi</h2>
 <ol>
-<li>Scegli EXTRACT</li>
-<li>Scrivi \d+</li>
-<li>Copialo</li>
+<li lang="en">Choose "EXTRACT" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">In "Pattern", enter the shape you want.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Se non trova nulla, dà #N/D, quindi viene creata anche una versione avvolta in IFERROR.</div>
+<div class="note" lang="en">The result is only the first part that matches. With no match you get #N/A.</div>
+<h2 lang="en">Common patterns</h2>
+<ul>
+<li lang="en">\d+: a run of digits</li>
+<li lang="en">\d{3}-\d{4}: a postal-code shape (123-4567)</li>
+<li lang="en">[A-Za-z0-9._-]+@[A-Za-z0-9.-]+: an email shape</li>
+<li lang="en">https?://\S+: a URL</li>
+<li lang="en">[ぁ-ん]+: hiragana</li>
+</ul>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">=REGEXEXTRACT(A2,"\d+")</li>
+<li lang="en">=REGEXEXTRACT(A2,"\d{3}-\d{4}")</li>
+</ul>
+<h2 lang="en">Applying to a whole column</h2>
+<p lang="en">The second formula applies to the whole column at once. Rows with no match become blank via IFERROR.</p>
+<ul>
+<li lang="en">=ARRAYFORMULA(IFERROR(REGEXEXTRACT(A2:A,"\d+"),""))</li>
+</ul>
+<h2 lang="en">Taking just a part with parentheses</h2>
+<p lang="en">With parentheses () in the pattern, only what's inside them is extracted.</p>
+<ul>
+<li lang="en">Example: =REGEXEXTRACT(A2,"Order number (\d+)")</li>
+</ul>
+<p lang="en">From "Order number 12345" you get just "12345".</p>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Extracting order numbers or IDs</li>
+<li lang="en">Pulling emails and phone numbers out of prose</li>
+<li lang="en">Taking only the number from numbers with units</li>
+</ul>
+<h2>Esempio</h2>
+<p lang="en">A notes column had sentences like "Next time is March 15". The extraction formula split the date numbers into another column.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Numbers come out as text</b>: the result is a string. Convert with VALUE.</li>
+<li lang="en"><b>Full-width digits</b>: \d is half-width digits only. Handle full-width separately.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want all matches</h3>
+<p lang="en">REGEXEXTRACT returns the first match. Use another approach for all.</p>
+<h2>Riepilogo</h2>
+<p lang="en">Describe the shape in a pattern and only the needed part comes out.</p>
 <a class="cta" href="/it/regex-formula-builder.html">Usa “Crea una formula con espressioni regolari” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/regex-tester.html">Tester di espressioni regolari</a>: Prova espressioni regolari con corrispondenze e sostituzioni.</li><li><a href="/it/substitute-formula-builder.html">Crea una formula SUBSTITUTE</a>: Crea formule di sostituzione del testo.</li><li><a href="/it/split-formula-builder.html">Crea una formula SPLIT</a>: Crea formule di divisione del testo.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>

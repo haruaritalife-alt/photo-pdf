@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Groß- und Kleinschreibung</h1>
 <p class="meta">Veröffentlicht: 19.10.2026 | Aktualisiert: 19.10.2026 | <a href="/about.html">Über uns (Japanisch)</a></p>
 <div class="points"><b>Wichtige Punkte</b><ul><li>IGNORE wählen</li><li>Muster eingeben</li><li>Prüfen</li></ul></div>
-<p>In <a href="/de/regex-formula-builder.html">Regex-Generator</a> können Sie den Unterschied zwischen Groß- und Kleinschreibung ignorieren.</p>
+<p lang="en">You want to check English text without distinguishing upper and lower case. Regular expressions distinguish by default. "Case" in <a href="/de/regex-formula-builder.html">Build a Regular Expression Formula</a> lets you choose to ignore.</p>
 <h2>Schritte</h2>
 <ol>
-<li>IGNORE wählen</li>
-<li>Muster eingeben</li>
-<li>Prüfen</li>
+<li lang="en">In "Case", choose the ignore setting.</li>
+<li lang="en">Copy the formula and paste.</li>
+<li lang="en">Check the pattern in the formula starts with "(?i)".</li>
 </ol>
-<div class="note">(?i) wird an den Anfang des Musters gesetzt.</div>
+<div class="note" lang="en">"(?i)" specifies that case isn't distinguished within the pattern.</div>
+<h2>Beispiel</h2>
+<ul>
+<li lang="en">Case-sensitive: =REGEXMATCH(A2,"pdf")</li>
+<li lang="en">Case-insensitive: =REGEXMATCH(A2,"(?i)pdf")</li>
+</ul>
+<p lang="en">"PDF", "Pdf" and "pdf" all give TRUE.</p>
+<h2>Gut geeignet für</h2>
+<ul>
+<li lang="en">Checking file extensions (.PDF and .pdf)</li>
+<li lang="en">Finding English keywords without notation variants</li>
+<li lang="en">Checking emails regardless of case differences</li>
+</ul>
+<h2 lang="en">When to distinguish</h2>
+<ul>
+<li lang="en">IDs or codes where case matters</li>
+<li lang="en">Strict format checks</li>
+</ul>
+<h2 lang="en">For Japanese</h2>
+<p lang="en">Hiragana vs katakana, and full-width vs half-width, aren't treated alike by this setting. Handle them separately.</p>
+<ul>
+<li lang="en">Example: =REGEXMATCH(A2,"[ァ-ン]")</li>
+</ul>
+<h2>Beispiel</h2>
+<p lang="en">A file-name column mixed ".JPG" and ".jpg". Ignoring case found both at once.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width letters</b>: full-width Ａ and half-width A are different characters.</li>
+<li lang="en"><b>Position of (?i)</b>: it goes at the start of the pattern. The tool adds it automatically.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does it work with REGEXREPLACE?</h3>
+<p lang="en">Yes. It ignores case when deciding what to replace.</p>
+<h2>Zusammenfassung</h2>
+<p lang="en">For English text, ignore case to avoid notation variants.</p>
 <a class="cta" href="/de/regex-formula-builder.html">„Regex-Formel erstellen“ verwenden (kostenlos)</a>
 <h2>Passende Werkzeuge dazu</h2><ul><li><a href="/de/regex-tester.html">Regex-Tester</a>: Reguläre Ausdrücke mit Treffern und Ersetzungen testen.</li><li><a href="/de/substitute-formula-builder.html">SUBSTITUTE-Formel erstellen</a>: Formeln zum Ersetzen von Text erstellen.</li><li><a href="/de/split-formula-builder.html">SPLIT-Formel erstellen</a>: Formeln zum Teilen von Text erstellen.</li></ul>
 <div class="tip"><p>Wenn Ihnen diese Anleitung geholfen hat, freuen wir uns über ein kleines Trinkgeld.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Trinkgeld senden (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Geschenk senden (Amazon-Wunschliste)</a></div>

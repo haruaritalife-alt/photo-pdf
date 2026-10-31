@@ -215,14 +215,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>مطابقت جانچنا</h1>
 <p class="meta">شائع شدہ: 19 اکتوبر 2026 | اپ ڈیٹ: 19 اکتوبر 2026 | <a href="/about.html">تعارف (جاپانی)</a></p>
 <div class="points"><b>اہم نکات</b><ul><li>MATCH منتخب کریں</li><li>پیٹرن لکھیں</li><li>کاپی کریں</li></ul></div>
-<p><a href="/ur/regex-formula-builder.html">ریگولر ایکسپریشن فارمولا بنانے والا</a> میں آپ TRUE یا FALSE سے جانچ سکتے ہیں کہ خانہ پیٹرن سے مطابقت رکھتا ہے یا نہیں۔</p>
+<p lang="en">You only want to know whether a cell's text has a certain shape, such as a postal code. That's REGEXMATCH. "MATCH" in <a href="/ur/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>مراحل</h2>
 <ol>
-<li>MATCH منتخب کریں</li>
-<li>پیٹرن لکھیں</li>
-<li>کاپی کریں</li>
+<li lang="en">Choose "MATCH" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Pattern".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">یہ مشروط فارمیٹنگ اور فلٹرز میں بھی کام کرتا ہے۔</div>
+<div class="note" lang="en">The result is TRUE (matches) or FALSE (doesn't).</div>
+<h2>مثال</h2>
+<ul>
+<li lang="en">=REGEXMATCH(A2,"\d{3}-\d{4}")</li>
+</ul>
+<p lang="en">It's TRUE if A2 contains the form "123-4567".</p>
+<h2 lang="en">Beware partial matches</h2>
+<p lang="en">REGEXMATCH is TRUE if any part of the text matches. To test the whole text, add "^" and "$" around the pattern.</p>
+<ul>
+<li lang="en">Example: =REGEXMATCH(A2,"^\d{3}-\d{4}$")</li>
+</ul>
+<h2 lang="en">Uses</h2>
+<ul>
+<li lang="en">Combine with IF for input checks</li>
+<li lang="en">Combine with FILTER to pull matching rows</li>
+<li lang="en">Color rows with the wrong shape via conditional formatting</li>
+</ul>
+<h2 lang="en">Combining with IF</h2>
+<ul>
+<li lang="en">Example: =IF(REGEXMATCH(A2,"^\d{3}-\d{4}$"),"OK","Wrong format")</li>
+</ul>
+<h2>ان کے لیے موزوں</h2>
+<ul>
+<li lang="en">Auditing postal and phone formats in a roster</li>
+<li lang="en">Auditing email addresses in imported data</li>
+<li lang="en">Finding rows containing particular words</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Wanted to find rows missing the hyphen in a roster's postal-code column. MATCH checked the shape, and I fixed the FALSE rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Testing the whole text</b>: add ^ and $.</li>
+<li lang="en"><b>Full-width hyphens</b>: half-width and full-width are different characters.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to test for any of several words</h3>
+<p lang="en">Join them with a pipe, like "Tokyo|Osaka|Nagoya".</p>
+<h2>خلاصہ</h2>
+<p lang="en">Use REGEXMATCH to check shapes; use ^ and $ for a whole-text match.</p>
 <a class="cta" href="/ur/regex-formula-builder.html">«ریگولر ایکسپریشن فارمولا بنائیں» استعمال کریں (مفت)</a>
 <h2>وہ ٹولز جو اس کے ساتھ اچھے لگتے ہیں</h2><ul><li><a href="/ur/regex-tester.html">ریگولر ایکسپریشن ٹیسٹر</a>: ریگولر ایکسپریشن کو مماثلتوں اور تبدیلیوں کے ساتھ جانچیں۔</li><li><a href="/ur/substitute-formula-builder.html">SUBSTITUTE فارمولا بنائیں</a>: متن تبدیل کرنے کے فارمولے بنائیں۔</li><li><a href="/ur/split-formula-builder.html">SPLIT فارمولا بنائیں</a>: متن تقسیم کرنے کے فارمولے بنائیں۔</li></ul>
 <div class="tip"><p>اگر یہ گائیڈ مفید رہی تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ٹپ بھیجیں (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">تحفہ بھیجیں (ایمیزون وش لسٹ)</a></div>

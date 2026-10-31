@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/regex-formula-builder.html">Regular Expression Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted the formula but it doesn't work. Here are common troubles with <a href="/en/regex-formula-builder.html">Build a Regular Expression Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the text cell isn't in the "A2" form, or the pattern is empty.</li>
+</ul>
+<h2>After pasting into the sheet</h2>
+<ul>
+<li><b>#N/A</b>: nothing matches the pattern (EXTRACT). IFERROR can blank it.</li>
+<li><b>#VALUE!</b>: the pattern is malformed (an unclosed parenthesis, etc.).</li>
+<li><b>FALSE everywhere</b>: the whole-text "^" and "$" is too strict, or full-width/half-width differ.</li>
+<li><b>Nothing replaced</b>: the pattern doesn't match, or case differs.</li>
+<li><b>Can't treat as a number</b>: the result is text. Fix with VALUE.</li>
+<li><b>#ERROR!</b>: the quotes are full-width.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>First try the pattern in the "Regex tester".</li>
+<li>Look for full-width/half-width and space differences.</li>
+<li>Consider whether symbols in the pattern (. ( ) etc.) need "\".</li>
 </ol>
-<div class="note">If no formula appears, check that the cell is written like A2 and a pattern is entered.</div>
+<div class="note">Double quotes " in the pattern are converted to "" by the tool.</div>
+<h2>Special symbols</h2>
+<p>These have special meanings. To use them as literal characters, put "\" before them.</p>
+<ul>
+<li>. ^ $ * + ? ( ) [ ] { } | \</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to remove "(株)" but nothing was replaced. Parentheses are special, so the pattern needed "\(株\)".</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Pasted into Excel</b>: doesn't work in Excel. 365 has other functions.</li>
+<li><b>Results vary by row</b>: notation variants in the data.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What do I do in Excel?</h3>
+<p>Excel 365 has TEXTBEFORE, TEXTAFTER and others. For complex cases use Power Query.</p>
+<h2>Summary</h2>
+<p>Test the pattern, check full/half-width, and mind special symbols.</p>
 <a class="cta" href="/en/regex-formula-builder.html">Use "Build a Regular Expression Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/regex-tester.html">Regex Tester</a>: Test regular expressions with matches and replacements.</li><li><a href="/en/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a>: Build text replacement formulas.</li><li><a href="/en/split-formula-builder.html">Build a SPLIT Formula</a>: Build text splitting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

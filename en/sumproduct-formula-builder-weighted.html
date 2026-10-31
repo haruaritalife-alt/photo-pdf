@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Weighted Average</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose WEIGHTED</li><li>Enter the ranges</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/sumproduct-formula-builder.html">SUMPRODUCT Builder</a> you can build a weighted average from values and weights.</p>
+<p>A test average with per-subject weights, or an average price across different quantities. A simple average doesn't reflect reality. "WEIGHTED" computes the weighted average. <a href="/en/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose WEIGHTED</li>
-<li>Enter the ranges</li>
-<li>Copy it</li>
+<li>Choose "WEIGHTED" in "Method".</li>
+<li>Enter the range of values (scores or prices) as "First range".</li>
+<li>Enter the range of weights (points or quantities) as "Second range".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">It divides by the sum of the weights.</div>
+<div class="note">The first is values, the second is weights. Swapping them changes the result.</div>
+<h2>Example</h2>
+<p>With scores in B2:B6 and weights in C2:C6, the weighted average is:</p>
+<ul>
+<li>=SUMPRODUCT(B2:B6,C2:C6)/SUM(C2:C6)</li>
+</ul>
+<h2>What it computes</h2>
+<p>The sum of value × weight divided by the sum of weights. For example, 80 points with weight 30 and 90 points with weight 70: (80×30+90×70)÷100 = 87.</p>
+<h2>Difference from a simple average</h2>
+<ul>
+<li>AVERAGE: the average of 80 and 90 is 85</li>
+<li>Weighted: pulled toward the heavily weighted 90, giving 87</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Averages of graded scores with weights</li>
+<li>Average unit price across purchases of different quantities</li>
+<li>Averages of importance-weighted ratings</li>
+</ul>
+<h2>Example</h2>
+<p>Monthly purchase prices and quantities differed. The weighted average price matched total cost ÷ total quantity.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Weights sum to 0</b>: gives #DIV/0!.</li>
+<li><b>Different row counts</b>: gives #VALUE!.</li>
+<li><b>Percent weights</b>: work even if they don't total 100%.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if a weight is blank?</h3>
+<p>Blanks count as 0, so that row doesn't affect the result.</p>
+<h2>Summary</h2>
+<p>Enter value and weight ranges to get the weighted average.</p>
 <a class="cta" href="/en/sumproduct-formula-builder.html">Use "Build a SUMPRODUCT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/en/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

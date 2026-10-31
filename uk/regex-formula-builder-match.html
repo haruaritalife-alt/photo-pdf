@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Перевірка збігу</h1>
 <p class="meta">Опубліковано: 19 жовт. 2026 | Оновлено: 19 жовт. 2026 | <a href="/about.html">Про нас (японською)</a></p>
 <div class="points"><b>Основне</b><ul><li>Виберіть MATCH</li><li>Введіть шаблон</li><li>Скопіюйте</li></ul></div>
-<p>У <a href="/uk/regex-formula-builder.html">Конструктор регулярних виразів</a> можна перевірити, чи збігається клітинка з шаблоном, отримавши TRUE або FALSE.</p>
+<p lang="en">You only want to know whether a cell's text has a certain shape, such as a postal code. That's REGEXMATCH. "MATCH" in <a href="/uk/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>Кроки</h2>
 <ol>
-<li>Виберіть MATCH</li>
-<li>Введіть шаблон</li>
-<li>Скопіюйте</li>
+<li lang="en">Choose "MATCH" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Pattern".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Працює також в умовному форматуванні та фільтрах.</div>
+<div class="note" lang="en">The result is TRUE (matches) or FALSE (doesn't).</div>
+<h2>Приклад</h2>
+<ul>
+<li lang="en">=REGEXMATCH(A2,"\d{3}-\d{4}")</li>
+</ul>
+<p lang="en">It's TRUE if A2 contains the form "123-4567".</p>
+<h2 lang="en">Beware partial matches</h2>
+<p lang="en">REGEXMATCH is TRUE if any part of the text matches. To test the whole text, add "^" and "$" around the pattern.</p>
+<ul>
+<li lang="en">Example: =REGEXMATCH(A2,"^\d{3}-\d{4}$")</li>
+</ul>
+<h2 lang="en">Uses</h2>
+<ul>
+<li lang="en">Combine with IF for input checks</li>
+<li lang="en">Combine with FILTER to pull matching rows</li>
+<li lang="en">Color rows with the wrong shape via conditional formatting</li>
+</ul>
+<h2 lang="en">Combining with IF</h2>
+<ul>
+<li lang="en">Example: =IF(REGEXMATCH(A2,"^\d{3}-\d{4}$"),"OK","Wrong format")</li>
+</ul>
+<h2>Підходить для</h2>
+<ul>
+<li lang="en">Auditing postal and phone formats in a roster</li>
+<li lang="en">Auditing email addresses in imported data</li>
+<li lang="en">Finding rows containing particular words</li>
+</ul>
+<h2>Приклад</h2>
+<p lang="en">Wanted to find rows missing the hyphen in a roster's postal-code column. MATCH checked the shape, and I fixed the FALSE rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Testing the whole text</b>: add ^ and $.</li>
+<li lang="en"><b>Full-width hyphens</b>: half-width and full-width are different characters.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to test for any of several words</h3>
+<p lang="en">Join them with a pipe, like "Tokyo|Osaka|Nagoya".</p>
+<h2>Підсумок</h2>
+<p lang="en">Use REGEXMATCH to check shapes; use ^ and $ for a whole-text match.</p>
 <a class="cta" href="/uk/regex-formula-builder.html">Використати «Створіть формулу з регулярним виразом» (безкоштовно)</a>
 <h2>Інструменти, що добре поєднуються з цим</h2><ul><li><a href="/uk/regex-tester.html">Тестер регулярних виразів</a>: Перевіряйте регулярні вирази зі збігами та замінами.</li><li><a href="/uk/substitute-formula-builder.html">Створити формулу SUBSTITUTE</a>: Створюйте формули заміни тексту.</li><li><a href="/uk/split-formula-builder.html">Створити формулу SPLIT</a>: Створюйте формули розділення тексту.</li></ul>
 <div class="tip"><p>Якщо цей посібник став у пригоді, невеликі чайові будуть дуже доречні.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Надіслати чайові (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Надіслати подарунок (список бажань Amazon)</a></div>

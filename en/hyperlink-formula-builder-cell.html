@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Links From a Cell Value</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose CELLURL</li><li>Enter the URL prefix</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/hyperlink-formula-builder.html">HYPERLINK Builder</a> you join a URL prefix and a cell value to make a link for each row.</p>
+<p>You want links built per row from an ID column's values, for example from a product number to its product page. "CELLURL" in <a href="/en/hyperlink-formula-builder.html">Build a HYPERLINK Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose CELLURL</li>
-<li>Enter the URL prefix</li>
-<li>Copy it</li>
+<li>Choose "CELLURL" in "Type".</li>
+<li>In "Link target", enter the URL prefix (e.g., https://example.com/item/).</li>
+<li>In "Cell (for CELLURL, such as A2)", enter the cell holding the ID.</li>
+<li>Copy the formula, paste it, and copy down.</li>
 </ol>
-<div class="note">It suits links built on IDs such as product numbers.</div>
+<div class="note">Start the URL prefix with http(s) and include up to the final "/".</div>
+<h2>Example</h2>
+<p>With a product number in A2:</p>
+<ul>
+<li>=HYPERLINK("https://example.com/item/"&amp;A2,A2)</li>
+</ul>
+<p>If A2 is "123", it links to https://example.com/item/123 and the cell shows "123".</p>
+<h2>How it works</h2>
+<p>The URL prefix and the cell value are joined with "&amp;". The display name is the cell value itself.</p>
+<h2>Good for</h2>
+<ul>
+<li>From product numbers to product pages</li>
+<li>From order numbers to an admin screen</li>
+<li>From search keywords to search result pages</li>
+</ul>
+<h2>Linking to a search page</h2>
+<ul>
+<li>Example: =HYPERLINK("https://www.google.com/search?q="&amp;A2,A2)</li>
+</ul>
+<h2>Example</h2>
+<p>Built links from an order-number column to the admin order pages. Copying down gave every row a link.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>IDs with Japanese text or symbols</b>: convert characters unusable in URLs with ENCODEURL.</li>
+<li>Example: =HYPERLINK("https://example.com/s?q="&amp;ENCODEURL(A2),A2)</li>
+<li><b>Missing "/" at the end of the prefix</b>: the link target comes out wrong.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want a different display name</h3>
+<p>Rewrite the final "A2" in the formula to another cell or text.</p>
+<h2>Summary</h2>
+<p>Join a URL prefix and a cell to make per-row links automatically.</p>
 <a class="cta" href="/en/hyperlink-formula-builder.html">Use "Build a HYPERLINK Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/en/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a>: Build a TEXTJOIN formula.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

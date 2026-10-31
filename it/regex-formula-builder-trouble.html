@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Cosa fare quando non funziona</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Controlla il file</li><li>Controlla la dimensione</li><li>Prova su un altro dispositivo</li></ul></div>
-<p>Se <a href="/it/regex-formula-builder.html">Generatore di espressioni regolari</a> non funziona, controlla quanto segue.</p>
-<h2>Passaggi</h2>
+<p lang="en">You pasted the formula but it doesn't work. Here are common troubles with <a href="/it/regex-formula-builder.html">Build a Regular Expression Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the text cell isn't in the "A2" form, or the pattern is empty.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: nothing matches the pattern (EXTRACT). IFERROR can blank it.</li>
+<li lang="en"><b>#VALUE!</b>: the pattern is malformed (an unclosed parenthesis, etc.).</li>
+<li lang="en"><b>FALSE everywhere</b>: the whole-text "^" and "$" is too strict, or full-width/half-width differ.</li>
+<li lang="en"><b>Nothing replaced</b>: the pattern doesn't match, or case differs.</li>
+<li lang="en"><b>Can't treat as a number</b>: the result is text. Fix with VALUE.</li>
+<li lang="en"><b>#ERROR!</b>: the quotes are full-width.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Controlla il file</li>
-<li>Controlla la dimensione</li>
-<li>Prova su un altro dispositivo</li>
+<li lang="en">First try the pattern in the "Regex tester".</li>
+<li lang="en">Look for full-width/half-width and space differences.</li>
+<li lang="en">Consider whether symbols in the pattern (. ( ) etc.) need "\".</li>
 </ol>
-<div class="note">Se non compare alcuna formula, controlla che la cella sia scritta come A2 e che sia stato inserito un modello.</div>
+<div class="note" lang="en">Double quotes " in the pattern are converted to "" by the tool.</div>
+<h2 lang="en">Special symbols</h2>
+<p lang="en">These have special meanings. To use them as literal characters, put "\" before them.</p>
+<ul>
+<li lang="en">. ^ $ * + ? ( ) [ ] { } | \</li>
+</ul>
+<h2>Esempio</h2>
+<p lang="en">Wanted to remove "(株)" but nothing was replaced. Parentheses are special, so the pattern needed "\(株\)".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Pasted into Excel</b>: doesn't work in Excel. 365 has other functions.</li>
+<li lang="en"><b>Results vary by row</b>: notation variants in the data.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What do I do in Excel?</h3>
+<p lang="en">Excel 365 has TEXTBEFORE, TEXTAFTER and others. For complex cases use Power Query.</p>
+<h2>Riepilogo</h2>
+<p lang="en">Test the pattern, check full/half-width, and mind special symbols.</p>
 <a class="cta" href="/it/regex-formula-builder.html">Usa “Crea una formula con espressioni regolari” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/regex-tester.html">Tester di espressioni regolari</a>: Prova espressioni regolari con corrispondenze e sostituzioni.</li><li><a href="/it/substitute-formula-builder.html">Crea una formula SUBSTITUTE</a>: Crea formule di sostituzione del testo.</li><li><a href="/it/split-formula-builder.html">Crea una formula SPLIT</a>: Crea formule di divisione del testo.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>

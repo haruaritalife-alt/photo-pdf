@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Eşleşen satırları sayma</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>COUNT seçin</li><li>Koşulu yazın</li><li>Kopyalayın</li></ul></div>
-<p><a href="/tr/sumproduct-formula-builder.html">SUMPRODUCT Oluşturucu</a>, bir koşulu sağlayan satırları sayan bir formül de oluşturabilir.</p>
+<p lang="en">COUNTIF is the standard for counting rows meeting a condition. But for conditions across several columns, or on computed values, SUMPRODUCT is handy. "COUNT" in <a href="/tr/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a> builds it.</p>
 <h2>Adımlar</h2>
 <ol>
-<li>COUNT seçin</li>
-<li>Koşulu yazın</li>
-<li>Kopyalayın</li>
+<li lang="en">Choose "COUNT" in "Method".</li>
+<li lang="en">Enter the "Condition range (such as A2:A100)".</li>
+<li lang="en">Enter the "Condition value (such as Tokyo)".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">COUNTIF'in iyi işleyemediği kombinasyonlarda çalışır.</div>
+<div class="note" lang="en">In COUNT, the first and second ranges aren't used.</div>
+<h2>Örnek</h2>
+<ul>
+<li lang="en">=SUMPRODUCT(--(A2:A100="Tokyo"))</li>
+</ul>
+<p lang="en">Matching rows become 1, others 0, and the sum is the count.</p>
+<h2 lang="en">What "--" means</h2>
+<p lang="en">It turns TRUE and FALSE into 1 and 0. Without it the total would be 0.</p>
+<h2 lang="en">Compared with COUNTIF</h2>
+<ul>
+<li lang="en">COUNTIF: =COUNTIF(A2:A100,"Tokyo")</li>
+<li lang="en">SUMPRODUCT: can join multiple conditions by multiplication</li>
+</ul>
+<h2 lang="en">Adding conditions</h2>
+<ul>
+<li lang="en">Example: =SUMPRODUCT((A2:A100="Tokyo")*(B2:B100&gt;1000))</li>
+</ul>
+<p lang="en">The count of rows in Tokyo and over 1000. Add by hand after pasting.</p>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Counts by region</li>
+<li lang="en">Counts with stacked conditions</li>
+<li lang="en">Creative ways to count duplicates</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">Wanted the count of Tokyo orders over 1000. Multiplying two conditions in SUMPRODUCT gave it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the condition range isn't in the "A2:A100" form, or the value is empty.</li>
+<li lang="en"><b>Different row counts</b>: gives #VALUE!.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want partial matches</h3>
+<p lang="en">COUNTIF wildcards ("*Tokyo*") are simpler.</p>
+<h2>Özet</h2>
+<p lang="en">To count with multiple conditions, use SUMPRODUCT.</p>
 <a class="cta" href="/tr/sumproduct-formula-builder.html">“SUMPRODUCT Formülü Oluşturun” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/sumif-formula-builder.html">SUMIF veya COUNTIF formülü oluşturma</a>: SUMIF ve COUNTIF formülleri oluşturun.</li><li><a href="/tr/rank-formula-builder.html">Sıralama formülü oluştur</a>: Sıralama formülleri oluşturun.</li><li><a href="/tr/percent-calculator.html">Yüzde, indirim ve yüzde değişimi hesaplayın</a>: Yüzdeleri, indirimleri ve yüzde değişimini anında hesaplayın.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

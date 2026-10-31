@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Alleen rijen die overeenkomen</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Kies COND</li><li>Typ de voorwaarde</li><li>Kopieer</li></ul></div>
-<p>In <a href="/nl/sumproduct-formula-builder.html">SUMPRODUCT-maker</a> kun je alleen de rijen vermenigvuldigen en optellen die aan een voorwaarde voldoen.</p>
+<p lang="en">Like "the total of Tokyo's sales only", you want to multiply and sum just the rows meeting a condition. "COND" in <a href="/nl/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a> builds it.</p>
 <h2>Stappen</h2>
 <ol>
-<li>Kies COND</li>
-<li>Typ de voorwaarde</li>
-<li>Kopieer</li>
+<li lang="en">Choose "COND" in "Method".</li>
+<li lang="en">Enter the ranges to multiply in "First range" and "Second range".</li>
+<li lang="en">In "Condition range (such as A2:A100)", enter the column to test.</li>
+<li lang="en">In "Condition value (such as Tokyo)", enter the value.</li>
 </ol>
-<div class="note">Voer een tekstvoorwaarde in, zoals Tokyo.</div>
+<div class="note" lang="en">An empty condition value gives "The input is not valid."</div>
+<h2>Voorbeeld</h2>
+<p lang="en">With regions in column A, unit prices in B and quantities in C, the amount for Tokyo only:</p>
+<ul>
+<li lang="en">=SUMPRODUCT((A2:A100="Tokyo")*B2:B100*C2:C100)</li>
+</ul>
+<p lang="en">Matching rows become 1 and others 0, so non-matching rows don't enter the sum.</p>
+<h2 lang="en">Choosing between this and SUMIFS</h2>
+<ul>
+<li lang="en">SUMIFS: when the summed column is a single column</li>
+<li lang="en">SUMPRODUCT: when you multiply before summing</li>
+</ul>
+<h2 lang="en">Adding conditions</h2>
+<p lang="en">Joining conditions by multiplication means "and". Add by hand after pasting.</p>
+<ul>
+<li lang="en">Example: =SUMPRODUCT((A2:A100="Tokyo")*(D2:D100="A")*B2:B100*C2:C100)</li>
+</ul>
+<h2>Goed voor</h2>
+<ul>
+<li lang="en">Sales by region</li>
+<li lang="en">Amounts by person in charge</li>
+<li lang="en">Monthly totals</li>
+</ul>
+<h2>Voorbeeld</h2>
+<p lang="en">Needed price × quantity totals per branch. Built a SUMPRODUCT with a branch-name condition and reused it by changing only the branch name.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Case</b>: not distinguished.</li>
+<li lang="en"><b>Numeric condition values</b>: for numbers, omitting quotes is safer; edit by hand if needed.</li>
+<li lang="en"><b>Partial matches</b>: "=" is an exact match. Partial matching needs another function.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want an "or" condition</h3>
+<p lang="en">Join the conditions with addition.</p>
+<h2>Samenvatting</h2>
+<p lang="en">Enter a condition range and value to total only some rows.</p>
 <a class="cta" href="/nl/sumproduct-formula-builder.html">Gebruik “Een SUMPRODUCT-formule maken” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/sumif-formula-builder.html">Een SUMIF- of COUNTIF-formule maken</a>: Maak SUMIF- en COUNTIF-formules.</li><li><a href="/nl/rank-formula-builder.html">Een rangformule maken</a>: Maak rangformules.</li><li><a href="/nl/percent-calculator.html">Percentages, kortingen en procentuele verandering berekenen</a>: Bereken direct percentages, kortingen en procentuele veranderingen.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>

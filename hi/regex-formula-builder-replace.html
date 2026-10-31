@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>पाठ बदलना</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>REPLACE चुनें</li><li>प्रतिस्थापन टेक्स्ट दर्ज करें</li><li>कॉपी करें</li></ul></div>
-<p><a href="/hi/regex-formula-builder.html">रेगुलर एक्सप्रेशन सूत्र बनाने वाला टूल</a> में पैटर्न से मेल खाते हिस्से को दूसरे पाठ से बदल दिया जाता है।</p>
+<p lang="en">You want to strip stray symbols or digits from text in bulk, or reshape and replace. That's REGEXREPLACE. "REPLACE" in <a href="/hi/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>चरण</h2>
 <ol>
-<li>REPLACE चुनें</li>
-<li>प्रतिस्थापन टेक्स्ट दर्ज करें</li>
-<li>कॉपी करें</li>
+<li lang="en">Choose "REPLACE" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Pattern".</li>
+<li lang="en">In "Replacement text", enter the new text (leave empty to delete).</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">उस हिस्से को हटाने के लिए खाली छोड़ें।</div>
+<div class="note" lang="en">With empty replacement text, the matching part is deleted.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">Remove non-digits: =REGEXREPLACE(A2,"\D","")</li>
+<li lang="en">Remove all whitespace: =REGEXREPLACE(A2,"\s","")</li>
+<li lang="en">Remove hyphens: =REGEXREPLACE(A2,"-","")</li>
+</ul>
+<p lang="en">"03-1234-5678" becomes "0312345678".</p>
+<h2 lang="en">Keeping parts with parentheses</h2>
+<p lang="en">What's inside pattern parentheses can be used in the replacement, called with "$1".</p>
+<ul>
+<li lang="en">Example: =REGEXREPLACE(A2,"(\d{3})(\d{4})","$1-$2")</li>
+</ul>
+<p lang="en">It reshapes "1234567" into "123-4567". Enter "$1-$2" in the replacement field.</p>
+<h2 lang="en">Difference from SUBSTITUTE</h2>
+<ul>
+<li lang="en">SUBSTITUTE: replaces fixed text</li>
+<li lang="en">REGEXREPLACE: replaces by shape (pattern)</li>
+</ul>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">Removing hyphens and parentheses from phone numbers</li>
+<li lang="en">Removing "yen" and commas from amounts to make numbers</li>
+<li lang="en">Removing stray spaces in bulk</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">An amount column held text like "1,200円". A non-digit-removing formula made it "1200", and VALUE turned it into a number so it could be totaled.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>\D is uppercase</b>: \D is non-digit, \d is digit.</li>
+<li lang="en"><b>Result is text</b>: use VALUE to make it a number.</li>
+<li lang="en"><b>Periods and parentheses</b>: put "\" before "." and "(" etc.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to replace ignoring case</h3>
+<p lang="en">Choose ignore in the "Case" field.</p>
+<h2>सारांश</h2>
+<p lang="en">To replace by shape, use REGEXREPLACE.</p>
 <a class="cta" href="/hi/regex-formula-builder.html">“रेगुलर एक्सप्रेशन सूत्र बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/regex-tester.html">Regex परीक्षक</a>: मिलान और प्रतिस्थापन के साथ रेगुलर एक्सप्रेशन जाँचें।</li><li><a href="/hi/substitute-formula-builder.html">SUBSTITUTE सूत्र बनाएँ</a>: टेक्स्ट बदलने वाले सूत्र बनाएँ।</li><li><a href="/hi/split-formula-builder.html">SPLIT सूत्र बनाएँ</a>: टेक्स्ट बाँटने वाले सूत्र बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

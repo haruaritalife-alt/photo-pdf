@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Bir hücre değerinden bağlantılar</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>CELLURL seçin</li><li>URL önekini girin</li><li>Kopyalayın</li></ul></div>
-<p><a href="/tr/hyperlink-formula-builder.html">HYPERLINK Oluşturucu</a> içinde her satır için bağlantı oluşturmak üzere bir URL önekini ve bir hücre değerini birleştirirsiniz.</p>
+<p lang="en">You want links built per row from an ID column's values, for example from a product number to its product page. "CELLURL" in <a href="/tr/hyperlink-formula-builder.html">Build a HYPERLINK Formula</a> builds it.</p>
 <h2>Adımlar</h2>
 <ol>
-<li>CELLURL seçin</li>
-<li>URL önekini girin</li>
-<li>Kopyalayın</li>
+<li lang="en">Choose "CELLURL" in "Type".</li>
+<li lang="en">In "Link target", enter the URL prefix (e.g., https://example.com/item/).</li>
+<li lang="en">In "Cell (for CELLURL, such as A2)", enter the cell holding the ID.</li>
+<li lang="en">Copy the formula, paste it, and copy down.</li>
 </ol>
-<div class="note">Ürün numarası gibi kimliklere dayalı bağlantılara uygundur.</div>
+<div class="note" lang="en">Start the URL prefix with http(s) and include up to the final "/".</div>
+<h2>Örnek</h2>
+<p lang="en">With a product number in A2:</p>
+<ul>
+<li lang="en">=HYPERLINK("https://example.com/item/"&amp;A2,A2)</li>
+</ul>
+<p lang="en">If A2 is "123", it links to https://example.com/item/123 and the cell shows "123".</p>
+<h2>Nasıl çalışır</h2>
+<p lang="en">The URL prefix and the cell value are joined with "&amp;". The display name is the cell value itself.</p>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">From product numbers to product pages</li>
+<li lang="en">From order numbers to an admin screen</li>
+<li lang="en">From search keywords to search result pages</li>
+</ul>
+<h2 lang="en">Linking to a search page</h2>
+<ul>
+<li lang="en">Example: =HYPERLINK("https://www.google.com/search?q="&amp;A2,A2)</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">Built links from an order-number column to the admin order pages. Copying down gave every row a link.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>IDs with Japanese text or symbols</b>: convert characters unusable in URLs with ENCODEURL.</li>
+<li lang="en">Example: =HYPERLINK("https://example.com/s?q="&amp;ENCODEURL(A2),A2)</li>
+<li lang="en"><b>Missing "/" at the end of the prefix</b>: the link target comes out wrong.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want a different display name</h3>
+<p lang="en">Rewrite the final "A2" in the formula to another cell or text.</p>
+<h2>Özet</h2>
+<p lang="en">Join a URL prefix and a cell to make per-row links automatically.</p>
 <a class="cta" href="/tr/hyperlink-formula-builder.html">“HYPERLINK Formülü Oluşturun” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/importrange-builder.html">IMPORTRANGE formülü oluşturma</a>: IMPORTRANGE formülü oluşturun.</li><li><a href="/tr/textjoin-formula-builder.html">TEXTJOIN Formülü Oluşturma</a>: Bir TEXTJOIN formülü oluşturun.</li><li><a href="/tr/excel-if-builder.html">IF formülü oluşturma</a>: IF formülü oluşturun.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

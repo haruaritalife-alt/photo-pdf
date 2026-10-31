@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Chữ hoa và chữ thường</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Chọn IGNORE</li><li>Nhập mẫu</li><li>Kiểm tra lại</li></ul></div>
-<p>Trong <a href="/vi/regex-formula-builder.html">Trình tạo biểu thức chính quy</a> bạn có thể bỏ qua sự khác biệt giữa chữ hoa và chữ thường.</p>
+<p lang="en">You want to check English text without distinguishing upper and lower case. Regular expressions distinguish by default. "Case" in <a href="/vi/regex-formula-builder.html">Build a Regular Expression Formula</a> lets you choose to ignore.</p>
 <h2>Các bước</h2>
 <ol>
-<li>Chọn IGNORE</li>
-<li>Nhập mẫu</li>
-<li>Kiểm tra lại</li>
+<li lang="en">In "Case", choose the ignore setting.</li>
+<li lang="en">Copy the formula and paste.</li>
+<li lang="en">Check the pattern in the formula starts with "(?i)".</li>
 </ol>
-<div class="note">(?i) được thêm vào đầu mẫu.</div>
+<div class="note" lang="en">"(?i)" specifies that case isn't distinguished within the pattern.</div>
+<h2>Ví dụ</h2>
+<ul>
+<li lang="en">Case-sensitive: =REGEXMATCH(A2,"pdf")</li>
+<li lang="en">Case-insensitive: =REGEXMATCH(A2,"(?i)pdf")</li>
+</ul>
+<p lang="en">"PDF", "Pdf" and "pdf" all give TRUE.</p>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Checking file extensions (.PDF and .pdf)</li>
+<li lang="en">Finding English keywords without notation variants</li>
+<li lang="en">Checking emails regardless of case differences</li>
+</ul>
+<h2 lang="en">When to distinguish</h2>
+<ul>
+<li lang="en">IDs or codes where case matters</li>
+<li lang="en">Strict format checks</li>
+</ul>
+<h2 lang="en">For Japanese</h2>
+<p lang="en">Hiragana vs katakana, and full-width vs half-width, aren't treated alike by this setting. Handle them separately.</p>
+<ul>
+<li lang="en">Example: =REGEXMATCH(A2,"[ァ-ン]")</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">A file-name column mixed ".JPG" and ".jpg". Ignoring case found both at once.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width letters</b>: full-width Ａ and half-width A are different characters.</li>
+<li lang="en"><b>Position of (?i)</b>: it goes at the start of the pattern. The tool adds it automatically.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does it work with REGEXREPLACE?</h3>
+<p lang="en">Yes. It ignores case when deciding what to replace.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">For English text, ignore case to avoid notation variants.</p>
 <a class="cta" href="/vi/regex-formula-builder.html">Dùng “Tạo công thức biểu thức chính quy” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/regex-tester.html">Trình kiểm tra biểu thức chính quy</a>: Kiểm tra biểu thức chính quy với kết quả khớp và thay thế.</li><li><a href="/vi/substitute-formula-builder.html">Tạo công thức SUBSTITUTE</a>: Tạo các công thức thay thế văn bản.</li><li><a href="/vi/split-formula-builder.html">Tạo công thức SPLIT</a>: Tạo các công thức tách văn bản.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

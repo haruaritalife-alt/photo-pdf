@@ -215,14 +215,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>اگر کار نکرد چه باید کرد</h1>
 <p class="meta">منتشرشده: 19 اکتبر 2026 | به‌روزرسانی: 19 اکتبر 2026 | <a href="/about.html">دربارهٔ ما (ژاپنی)</a></p>
 <div class="points"><b>نکات کلیدی</b><ul><li>فایل را بررسی کنید</li><li>اندازه را بررسی کنید</li><li>دستگاه دیگری را امتحان کنید</li></ul></div>
-<p>اگر <a href="/fa/regex-formula-builder.html">سازندهٔ عبارت منظم</a> کار نمی‌کند، موارد زیر را بررسی کنید.</p>
-<h2>مراحل</h2>
+<p lang="en">You pasted the formula but it doesn't work. Here are common troubles with <a href="/fa/regex-formula-builder.html">Build a Regular Expression Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the text cell isn't in the "A2" form, or the pattern is empty.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: nothing matches the pattern (EXTRACT). IFERROR can blank it.</li>
+<li lang="en"><b>#VALUE!</b>: the pattern is malformed (an unclosed parenthesis, etc.).</li>
+<li lang="en"><b>FALSE everywhere</b>: the whole-text "^" and "$" is too strict, or full-width/half-width differ.</li>
+<li lang="en"><b>Nothing replaced</b>: the pattern doesn't match, or case differs.</li>
+<li lang="en"><b>Can't treat as a number</b>: the result is text. Fix with VALUE.</li>
+<li lang="en"><b>#ERROR!</b>: the quotes are full-width.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>فایل را بررسی کنید</li>
-<li>اندازه را بررسی کنید</li>
-<li>دستگاه دیگری را امتحان کنید</li>
+<li lang="en">First try the pattern in the "Regex tester".</li>
+<li lang="en">Look for full-width/half-width and space differences.</li>
+<li lang="en">Consider whether symbols in the pattern (. ( ) etc.) need "\".</li>
 </ol>
-<div class="note">اگر فرمولی نمایش داده نشد، بررسی کنید که خانه مانند A2 نوشته شده و الگویی وارد شده باشد.</div>
+<div class="note" lang="en">Double quotes " in the pattern are converted to "" by the tool.</div>
+<h2 lang="en">Special symbols</h2>
+<p lang="en">These have special meanings. To use them as literal characters, put "\" before them.</p>
+<ul>
+<li lang="en">. ^ $ * + ? ( ) [ ] { } | \</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Wanted to remove "(株)" but nothing was replaced. Parentheses are special, so the pattern needed "\(株\)".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Pasted into Excel</b>: doesn't work in Excel. 365 has other functions.</li>
+<li lang="en"><b>Results vary by row</b>: notation variants in the data.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What do I do in Excel?</h3>
+<p lang="en">Excel 365 has TEXTBEFORE, TEXTAFTER and others. For complex cases use Power Query.</p>
+<h2>خلاصه</h2>
+<p lang="en">Test the pattern, check full/half-width, and mind special symbols.</p>
 <a class="cta" href="/fa/regex-formula-builder.html">استفاده از «ساخت فرمول عبارت منظم» (رایگان)</a>
 <h2>ابزارهایی که با این ابزار خوب هماهنگ‌اند</h2><ul><li><a href="/fa/regex-tester.html">آزمایشگر عبارت منظم (Regex)</a>: عبارت‌های منظم را با تطبیق‌ها و جایگزینی‌ها آزمایش کنید.</li><li><a href="/fa/substitute-formula-builder.html">ساخت فرمول SUBSTITUTE</a>: فرمول‌های جایگزینی متن بسازید.</li><li><a href="/fa/split-formula-builder.html">ساخت فرمول SPLIT</a>: فرمول‌های تقسیم متن بسازید.</li></ul>
 <div class="tip"><p>اگر این راهنما مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ارسال انعام (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ارسال هدیه (فهرست آرزوهای آمازون)</a></div>

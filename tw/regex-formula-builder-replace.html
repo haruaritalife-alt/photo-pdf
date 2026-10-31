@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>替換文字</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>選擇 REPLACE</li><li>輸入替換內容</li><li>複製</li></ul></div>
-<p>在<a href="/tw/regex-formula-builder.html">正規表示式公式生成器</a>中，匹配模式的部分會被替換成其他文字。</p>
+<p lang="en">You want to strip stray symbols or digits from text in bulk, or reshape and replace. That's REGEXREPLACE. "REPLACE" in <a href="/tw/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>步驟</h2>
 <ol>
-<li>選擇 REPLACE</li>
-<li>輸入替換內容</li>
-<li>複製</li>
+<li lang="en">Choose "REPLACE" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Pattern".</li>
+<li lang="en">In "Replacement text", enter the new text (leave empty to delete).</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">留空即可刪除該部分。</div>
+<div class="note" lang="en">With empty replacement text, the matching part is deleted.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">Remove non-digits: =REGEXREPLACE(A2,"\D","")</li>
+<li lang="en">Remove all whitespace: =REGEXREPLACE(A2,"\s","")</li>
+<li lang="en">Remove hyphens: =REGEXREPLACE(A2,"-","")</li>
+</ul>
+<p lang="en">"03-1234-5678" becomes "0312345678".</p>
+<h2 lang="en">Keeping parts with parentheses</h2>
+<p lang="en">What's inside pattern parentheses can be used in the replacement, called with "$1".</p>
+<ul>
+<li lang="en">Example: =REGEXREPLACE(A2,"(\d{3})(\d{4})","$1-$2")</li>
+</ul>
+<p lang="en">It reshapes "1234567" into "123-4567". Enter "$1-$2" in the replacement field.</p>
+<h2 lang="en">Difference from SUBSTITUTE</h2>
+<ul>
+<li lang="en">SUBSTITUTE: replaces fixed text</li>
+<li lang="en">REGEXREPLACE: replaces by shape (pattern)</li>
+</ul>
+<h2>適合</h2>
+<ul>
+<li lang="en">Removing hyphens and parentheses from phone numbers</li>
+<li lang="en">Removing "yen" and commas from amounts to make numbers</li>
+<li lang="en">Removing stray spaces in bulk</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">An amount column held text like "1,200円". A non-digit-removing formula made it "1200", and VALUE turned it into a number so it could be totaled.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>\D is uppercase</b>: \D is non-digit, \d is digit.</li>
+<li lang="en"><b>Result is text</b>: use VALUE to make it a number.</li>
+<li lang="en"><b>Periods and parentheses</b>: put "\" before "." and "(" etc.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to replace ignoring case</h3>
+<p lang="en">Choose ignore in the "Case" field.</p>
+<h2>小結</h2>
+<p lang="en">To replace by shape, use REGEXREPLACE.</p>
 <a class="cta" href="/tw/regex-formula-builder.html">使用「生成正規表示式公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/regex-tester.html">正規表示式測試器</a>: 測試正規表示式，檢視匹配和替換結果。</li><li><a href="/tw/substitute-formula-builder.html">生成 SUBSTITUTE 公式</a>: 生成文字替換公式。</li><li><a href="/tw/split-formula-builder.html">生成 SPLIT 公式</a>: 生成文字拆分公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>无法正常使用时的处理办法</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>检查文件</li><li>确认大小</li><li>换一台设备试试</li></ul></div>
-<p>如果<a href="/zh/regex-formula-builder.html">正则表达式公式生成器</a>不能用，请检查以下几点。</p>
-<h2>步骤</h2>
+<p lang="en">You pasted the formula but it doesn't work. Here are common troubles with <a href="/zh/regex-formula-builder.html">Build a Regular Expression Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the text cell isn't in the "A2" form, or the pattern is empty.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: nothing matches the pattern (EXTRACT). IFERROR can blank it.</li>
+<li lang="en"><b>#VALUE!</b>: the pattern is malformed (an unclosed parenthesis, etc.).</li>
+<li lang="en"><b>FALSE everywhere</b>: the whole-text "^" and "$" is too strict, or full-width/half-width differ.</li>
+<li lang="en"><b>Nothing replaced</b>: the pattern doesn't match, or case differs.</li>
+<li lang="en"><b>Can't treat as a number</b>: the result is text. Fix with VALUE.</li>
+<li lang="en"><b>#ERROR!</b>: the quotes are full-width.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>检查文件</li>
-<li>确认大小</li>
-<li>换一台设备试试</li>
+<li lang="en">First try the pattern in the "Regex tester".</li>
+<li lang="en">Look for full-width/half-width and space differences.</li>
+<li lang="en">Consider whether symbols in the pattern (. ( ) etc.) need "\".</li>
 </ol>
-<div class="note">如果没有出现公式，请检查单元格是否写成 A2 这样，并且已输入模式。</div>
+<div class="note" lang="en">Double quotes " in the pattern are converted to "" by the tool.</div>
+<h2 lang="en">Special symbols</h2>
+<p lang="en">These have special meanings. To use them as literal characters, put "\" before them.</p>
+<ul>
+<li lang="en">. ^ $ * + ? ( ) [ ] { } | \</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Wanted to remove "(株)" but nothing was replaced. Parentheses are special, so the pattern needed "\(株\)".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Pasted into Excel</b>: doesn't work in Excel. 365 has other functions.</li>
+<li lang="en"><b>Results vary by row</b>: notation variants in the data.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What do I do in Excel?</h3>
+<p lang="en">Excel 365 has TEXTBEFORE, TEXTAFTER and others. For complex cases use Power Query.</p>
+<h2>小结</h2>
+<p lang="en">Test the pattern, check full/half-width, and mind special symbols.</p>
 <a class="cta" href="/zh/regex-formula-builder.html">使用“生成正则表达式公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/regex-tester.html">正则表达式测试器</a>: 测试正则表达式，查看匹配和替换结果。</li><li><a href="/zh/substitute-formula-builder.html">生成 SUBSTITUTE 公式</a>: 生成文字替换公式。</li><li><a href="/zh/split-formula-builder.html">生成 SPLIT 公式</a>: 生成文字拆分公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

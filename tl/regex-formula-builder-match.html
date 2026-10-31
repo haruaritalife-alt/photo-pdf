@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pagsuri ng tugma</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Piliin ang MATCH</li><li>I-type ang pattern</li><li>Kopyahin</li></ul></div>
-<p>Sa <a href="/tl/regex-formula-builder.html">Regular Expression Builder</a>, masusuri mo gamit ang TRUE o FALSE kung tumutugma ang isang cell sa pattern.</p>
+<p lang="en">You only want to know whether a cell's text has a certain shape, such as a postal code. That's REGEXMATCH. "MATCH" in <a href="/tl/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Piliin ang MATCH</li>
-<li>I-type ang pattern</li>
-<li>Kopyahin</li>
+<li lang="en">Choose "MATCH" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Pattern".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Gumagana rin ito sa conditional formatting at mga filter.</div>
+<div class="note" lang="en">The result is TRUE (matches) or FALSE (doesn't).</div>
+<h2>Halimbawa</h2>
+<ul>
+<li lang="en">=REGEXMATCH(A2,"\d{3}-\d{4}")</li>
+</ul>
+<p lang="en">It's TRUE if A2 contains the form "123-4567".</p>
+<h2 lang="en">Beware partial matches</h2>
+<p lang="en">REGEXMATCH is TRUE if any part of the text matches. To test the whole text, add "^" and "$" around the pattern.</p>
+<ul>
+<li lang="en">Example: =REGEXMATCH(A2,"^\d{3}-\d{4}$")</li>
+</ul>
+<h2 lang="en">Uses</h2>
+<ul>
+<li lang="en">Combine with IF for input checks</li>
+<li lang="en">Combine with FILTER to pull matching rows</li>
+<li lang="en">Color rows with the wrong shape via conditional formatting</li>
+</ul>
+<h2 lang="en">Combining with IF</h2>
+<ul>
+<li lang="en">Example: =IF(REGEXMATCH(A2,"^\d{3}-\d{4}$"),"OK","Wrong format")</li>
+</ul>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Auditing postal and phone formats in a roster</li>
+<li lang="en">Auditing email addresses in imported data</li>
+<li lang="en">Finding rows containing particular words</li>
+</ul>
+<h2>Halimbawa</h2>
+<p lang="en">Wanted to find rows missing the hyphen in a roster's postal-code column. MATCH checked the shape, and I fixed the FALSE rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Testing the whole text</b>: add ^ and $.</li>
+<li lang="en"><b>Full-width hyphens</b>: half-width and full-width are different characters.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to test for any of several words</h3>
+<p lang="en">Join them with a pipe, like "Tokyo|Osaka|Nagoya".</p>
+<h2>Buod</h2>
+<p lang="en">Use REGEXMATCH to check shapes; use ^ and $ for a whole-text match.</p>
 <a class="cta" href="/tl/regex-formula-builder.html">Gamitin ang “Gumawa ng formula ng regular expression” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/regex-tester.html">Regex Tester</a>: Subukan ang mga regular expression kasama ang mga tugma at kapalit.</li><li><a href="/tl/substitute-formula-builder.html">Gumawa ng SUBSTITUTE Formula</a>: Gumawa ng mga formula sa pagpapalit ng teksto.</li><li><a href="/tl/split-formula-builder.html">Gumawa ng SPLIT Formula</a>: Gumawa ng mga formula sa paghahati ng teksto.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>提取数字</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>选择 EXTRACT</li><li>输入 \d+</li><li>复制</li></ul></div>
-<p>在<a href="/zh/regex-formula-builder.html">正则表达式公式生成器</a>中可以只把文字中的数字取出来。</p>
+<p lang="en">You want only "12345" from "Order number 12345". That's REGEXEXTRACT. "EXTRACT" in <a href="/zh/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>步骤</h2>
 <ol>
-<li>选择 EXTRACT</li>
-<li>输入 \d+</li>
-<li>复制</li>
+<li lang="en">Choose "EXTRACT" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">In "Pattern", enter the shape you want.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">找不到时会得到 #N/A，因此也会生成用 IFERROR 包裹的版本。</div>
+<div class="note" lang="en">The result is only the first part that matches. With no match you get #N/A.</div>
+<h2 lang="en">Common patterns</h2>
+<ul>
+<li lang="en">\d+: a run of digits</li>
+<li lang="en">\d{3}-\d{4}: a postal-code shape (123-4567)</li>
+<li lang="en">[A-Za-z0-9._-]+@[A-Za-z0-9.-]+: an email shape</li>
+<li lang="en">https?://\S+: a URL</li>
+<li lang="en">[ぁ-ん]+: hiragana</li>
+</ul>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">=REGEXEXTRACT(A2,"\d+")</li>
+<li lang="en">=REGEXEXTRACT(A2,"\d{3}-\d{4}")</li>
+</ul>
+<h2 lang="en">Applying to a whole column</h2>
+<p lang="en">The second formula applies to the whole column at once. Rows with no match become blank via IFERROR.</p>
+<ul>
+<li lang="en">=ARRAYFORMULA(IFERROR(REGEXEXTRACT(A2:A,"\d+"),""))</li>
+</ul>
+<h2 lang="en">Taking just a part with parentheses</h2>
+<p lang="en">With parentheses () in the pattern, only what's inside them is extracted.</p>
+<ul>
+<li lang="en">Example: =REGEXEXTRACT(A2,"Order number (\d+)")</li>
+</ul>
+<p lang="en">From "Order number 12345" you get just "12345".</p>
+<h2>适合</h2>
+<ul>
+<li lang="en">Extracting order numbers or IDs</li>
+<li lang="en">Pulling emails and phone numbers out of prose</li>
+<li lang="en">Taking only the number from numbers with units</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">A notes column had sentences like "Next time is March 15". The extraction formula split the date numbers into another column.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Numbers come out as text</b>: the result is a string. Convert with VALUE.</li>
+<li lang="en"><b>Full-width digits</b>: \d is half-width digits only. Handle full-width separately.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want all matches</h3>
+<p lang="en">REGEXEXTRACT returns the first match. Use another approach for all.</p>
+<h2>小结</h2>
+<p lang="en">Describe the shape in a pattern and only the needed part comes out.</p>
 <a class="cta" href="/zh/regex-formula-builder.html">使用“生成正则表达式公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/regex-tester.html">正则表达式测试器</a>: 测试正则表达式，查看匹配和替换结果。</li><li><a href="/zh/substitute-formula-builder.html">生成 SUBSTITUTE 公式</a>: 生成文字替换公式。</li><li><a href="/zh/split-formula-builder.html">生成 SPLIT 公式</a>: 生成文字拆分公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

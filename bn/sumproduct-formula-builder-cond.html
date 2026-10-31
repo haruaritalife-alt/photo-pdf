@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>শুধু মিলে যাওয়া সারি</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>COND বেছে নিন</li><li>শর্ত লিখুন</li><li>কপি করুন</li></ul></div>
-<p><a href="/bn/sumproduct-formula-builder.html">SUMPRODUCT সূত্র নির্মাতা</a>-এ আপনি শুধু শর্ত পূরণ করা সারিগুলো গুণ করে যোগ করতে পারেন।</p>
+<p lang="en">Like "the total of Tokyo's sales only", you want to multiply and sum just the rows meeting a condition. "COND" in <a href="/bn/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a> builds it.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>COND বেছে নিন</li>
-<li>শর্ত লিখুন</li>
-<li>কপি করুন</li>
+<li lang="en">Choose "COND" in "Method".</li>
+<li lang="en">Enter the ranges to multiply in "First range" and "Second range".</li>
+<li lang="en">In "Condition range (such as A2:A100)", enter the column to test.</li>
+<li lang="en">In "Condition value (such as Tokyo)", enter the value.</li>
 </ol>
-<div class="note">Tokyo-র মতো একটি টেক্সটের শর্ত দিন।</div>
+<div class="note" lang="en">An empty condition value gives "The input is not valid."</div>
+<h2>উদাহরণ</h2>
+<p lang="en">With regions in column A, unit prices in B and quantities in C, the amount for Tokyo only:</p>
+<ul>
+<li lang="en">=SUMPRODUCT((A2:A100="Tokyo")*B2:B100*C2:C100)</li>
+</ul>
+<p lang="en">Matching rows become 1 and others 0, so non-matching rows don't enter the sum.</p>
+<h2 lang="en">Choosing between this and SUMIFS</h2>
+<ul>
+<li lang="en">SUMIFS: when the summed column is a single column</li>
+<li lang="en">SUMPRODUCT: when you multiply before summing</li>
+</ul>
+<h2 lang="en">Adding conditions</h2>
+<p lang="en">Joining conditions by multiplication means "and". Add by hand after pasting.</p>
+<ul>
+<li lang="en">Example: =SUMPRODUCT((A2:A100="Tokyo")*(D2:D100="A")*B2:B100*C2:C100)</li>
+</ul>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Sales by region</li>
+<li lang="en">Amounts by person in charge</li>
+<li lang="en">Monthly totals</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">Needed price × quantity totals per branch. Built a SUMPRODUCT with a branch-name condition and reused it by changing only the branch name.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Case</b>: not distinguished.</li>
+<li lang="en"><b>Numeric condition values</b>: for numbers, omitting quotes is safer; edit by hand if needed.</li>
+<li lang="en"><b>Partial matches</b>: "=" is an exact match. Partial matching needs another function.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want an "or" condition</h3>
+<p lang="en">Join the conditions with addition.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">Enter a condition range and value to total only some rows.</p>
 <a class="cta" href="/bn/sumproduct-formula-builder.html">“SUMPRODUCT সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/sumif-formula-builder.html">SUMIF বা COUNTIF সূত্র তৈরি করুন</a>: SUMIF ও COUNTIF সূত্র তৈরি করুন।</li><li><a href="/bn/rank-formula-builder.html">র‍্যাঙ্কের সূত্র তৈরি করুন</a>: র‍্যাঙ্কের সূত্র তৈরি করুন।</li><li><a href="/bn/percent-calculator.html">শতাংশ, ছাড় ও % পরিবর্তন গণনা</a>: শতাংশ, ছাড় ও % পরিবর্তন মুহূর্তে হিসাব করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

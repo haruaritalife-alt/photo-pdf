@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>การแทนที่ข้อความ</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก REPLACE</li><li>ป้อนข้อความที่จะแทนที่</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/regex-formula-builder.html">ตัวสร้างสูตร Regular Expression</a> ส่วนที่ตรงกับรูปแบบจะถูกแทนที่ด้วยข้อความอื่น</p>
+<p lang="en">You want to strip stray symbols or digits from text in bulk, or reshape and replace. That's REGEXREPLACE. "REPLACE" in <a href="/th/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือก REPLACE</li>
-<li>ป้อนข้อความที่จะแทนที่</li>
-<li>คัดลอก</li>
+<li lang="en">Choose "REPLACE" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Pattern".</li>
+<li lang="en">In "Replacement text", enter the new text (leave empty to delete).</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">เว้นว่างไว้เพื่อลบส่วนนั้น</div>
+<div class="note" lang="en">With empty replacement text, the matching part is deleted.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">Remove non-digits: =REGEXREPLACE(A2,"\D","")</li>
+<li lang="en">Remove all whitespace: =REGEXREPLACE(A2,"\s","")</li>
+<li lang="en">Remove hyphens: =REGEXREPLACE(A2,"-","")</li>
+</ul>
+<p lang="en">"03-1234-5678" becomes "0312345678".</p>
+<h2 lang="en">Keeping parts with parentheses</h2>
+<p lang="en">What's inside pattern parentheses can be used in the replacement, called with "$1".</p>
+<ul>
+<li lang="en">Example: =REGEXREPLACE(A2,"(\d{3})(\d{4})","$1-$2")</li>
+</ul>
+<p lang="en">It reshapes "1234567" into "123-4567". Enter "$1-$2" in the replacement field.</p>
+<h2 lang="en">Difference from SUBSTITUTE</h2>
+<ul>
+<li lang="en">SUBSTITUTE: replaces fixed text</li>
+<li lang="en">REGEXREPLACE: replaces by shape (pattern)</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Removing hyphens and parentheses from phone numbers</li>
+<li lang="en">Removing "yen" and commas from amounts to make numbers</li>
+<li lang="en">Removing stray spaces in bulk</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">An amount column held text like "1,200円". A non-digit-removing formula made it "1200", and VALUE turned it into a number so it could be totaled.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>\D is uppercase</b>: \D is non-digit, \d is digit.</li>
+<li lang="en"><b>Result is text</b>: use VALUE to make it a number.</li>
+<li lang="en"><b>Periods and parentheses</b>: put "\" before "." and "(" etc.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to replace ignoring case</h3>
+<p lang="en">Choose ignore in the "Case" field.</p>
+<h2>สรุป</h2>
+<p lang="en">To replace by shape, use REGEXREPLACE.</p>
 <a class="cta" href="/th/regex-formula-builder.html">ใช้ “สร้างสูตร Regular Expression” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/regex-tester.html">เครื่องมือทดสอบ Regex</a>: ทดสอบนิพจน์ทั่วไปพร้อมผลที่ตรงกันและการแทนที่</li><li><a href="/th/substitute-formula-builder.html">สร้างสูตร SUBSTITUTE</a>: สร้างสูตรแทนที่ข้อความ</li><li><a href="/th/split-formula-builder.html">สร้างสูตร SPLIT</a>: สร้างสูตรแยกข้อความ</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>
