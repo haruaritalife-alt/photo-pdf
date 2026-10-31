@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>한 행으로 늘어놓기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>TOROW를 고릅니다</li><li>범위 입력하기</li><li>복사</li></ul></div>
-<p><a href="/ko/transpose-formula-builder.html">TRANSPOSE 수식 만들기</a>에서는 표를 한 행으로 늘어놓는 수식을 만들 수 있습니다.</p>
+<p lang="en">You want data over several rows and columns lined up in one horizontal row: a heading row, or one long list. Use the "ROW" type. <a href="/ko/transpose-formula-builder.html">Build a TRANSPOSE Formula</a> builds it.</p>
 <h2>순서</h2>
 <ol>
-<li>TOROW를 고릅니다</li>
-<li>범위 입력하기</li>
-<li>복사</li>
+<li lang="en">Choose "ROW" in "Type".</li>
+<li lang="en">Enter the "Range".</li>
+<li lang="en">Copy the "Google Sheets formula" or "Excel formula" and paste.</li>
 </ol>
-<div class="note">Google 스프레드시트에서는 TRANSPOSE와 FLATTEN을 함께 씁니다.</div>
+<div class="note" lang="en">Google combines TRANSPOSE and FLATTEN; Excel uses TOROW (Excel 365).</div>
+<h2>예</h2>
+<p lang="en">Making A1:C5 into one row:</p>
+<ul>
+<li lang="en">Google: =TRANSPOSE(FLATTEN(A1:C5))</li>
+<li lang="en">Excel: =TOROW(A1:C5)</li>
+</ul>
+<h2>작동 방식</h2>
+<p lang="en">In Google, FLATTEN makes one column and TRANSPOSE turns it horizontal.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Making vertically listed names a heading row</li>
+<li lang="en">Making values from several columns a single-row list</li>
+<li lang="en">Joining into text with a delimiter (with TEXTJOIN)</li>
+<li lang="en">Example: =TEXTJOIN(",",TRUE,A1:C5)</li>
+</ul>
+<h2 lang="en">If you just want vertical to horizontal</h2>
+<p lang="en">For turning one column into one row, TRANSPOSE is enough.</p>
+<ul>
+<li lang="en">Example: =TRANSPOSE(A1:A10)</li>
+</ul>
+<h2 lang="en">The result size</h2>
+<p lang="en">If the source is A1:C5 (15 cells), the result is 1 row × 15 columns. Check the 15 columns in the spill range are empty.</p>
+<h2>예</h2>
+<p lang="en">Wanted twelve vertically listed month names as horizontal headings. TRANSPOSE converted them to one row for the heading row.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>TOROW unavailable</b>: old Excel lacks it.</li>
+<li lang="en"><b>Spreads too far right</b>: beyond the sheet's right edge it errors.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to exclude empty cells</h3>
+<p lang="en">Excel's TOROW can exclude empties with the second argument.</p>
+<ul>
+<li lang="en">Example: =TOROW(A1:C5,1)</li>
+</ul>
+<h2>요약</h2>
+<p lang="en">To gather into one row: Google uses TRANSPOSE with FLATTEN; Excel uses TOROW.</p>
 <a class="cta" href="/ko/transpose-formula-builder.html">“TRANSPOSE 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/table-transpose.html">표의 행과 열 바꾸기</a>: 붙여 넣은 표의 행과 열을 바꿉니다.</li><li><a href="/ko/filter-formula-builder.html">FILTER 수식 만들기</a>: FILTER 수식을 만듭니다.</li><li><a href="/ko/arrayformula-builder.html">ARRAYFORMULA 만들기</a>: ARRAYFORMULA 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

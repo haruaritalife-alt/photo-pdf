@@ -200,14 +200,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>曜日の名前</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>NAMEを選ぶ</li><li>セルを入れる</li><li>コピーする</li></ul></div>
-<p><a href="/weekday-formula-builder.html">曜日式の作成</a> では、曜日の名前を出す式を作れます。</p>
+<p>日付の隣に、「木」や「Thursday」のような曜日の名前を出したい。<a href="/weekday-formula-builder.html">曜日・週番号の式を作る</a> の「NAME」「FULLNAME」「JA」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>NAMEを選ぶ</li>
-<li>セルを入れる</li>
-<li>コピーする</li>
+<li>「種類」で、「NAME」「FULLNAME」「JA」のどれかを選ぶ。</li>
+<li>「日付のセル」を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">FULLNAMEなら、長い名前になります。</div>
+<div class="note">曜日の名前は、TEXT関数の書式で決まります。</div>
+<h2>3つの種類と例</h2>
+<p>2026-10-01（木曜日）の場合です。</p>
+<ul>
+<li>NAME：=TEXT(A2,"ddd") → Thu</li>
+<li>FULLNAME：=TEXT(A2,"dddd") → Thursday</li>
+<li>JA：=TEXT(A2,"aaa") → 木</li>
+</ul>
+<h2>日付と曜日を一緒に出す</h2>
+<ul>
+<li>例：=TEXT(A2,"yyyy/m/d(aaa)")</li>
+</ul>
+<p>「2026/10/1(木)」の形になります。</p>
+<h2>セルの書式で出す方法</h2>
+<p>式を使わず、セルの表示形式で曜日を出す方法もあります。「ユーザー設定の書式」に「aaa」や「ddd」と入れます。値は日付のままなので、計算に使えます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>予定表やシフト表の曜日の列</li>
+<li>日付と曜日を、1つのセルに出す</li>
+<li>英語の資料の曜日表記</li>
+</ul>
+<h2>Googleスプレッドシートで</h2>
+<p>GoogleスプレッドシートのTEXT関数では、「aaa」が使えない場合があります。日本語の曜日は、CHOOSEとWEEKDAYで作ります。</p>
+<ul>
+<li>例：=CHOOSE(WEEKDAY(A2),"日","月","火","水","木","金","土")</li>
+</ul>
+<h2>例</h2>
+<p>シフト表の日付の隣に、曜日を出したかった。JAの式を下にコピーして、「月」「火」…と並べた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>結果は文字列</b>：曜日の名前は、文字として出る。計算には使えない。</li>
+<li><b>環境の言語</b>：英語の曜日は、使うソフトの言語設定で、表記が変わる場合がある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>曜日が英語で出てしまう</h3>
+<p>JAの式を使うか、CHOOSEで日本語の曜日を並べます。</p>
+<h2>まとめ</h2>
+<p>曜日の名前は、TEXT関数の書式で決まります。</p>
 <a class="cta" href="/weekday-formula-builder.html">曜日・週番号の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-offset-formula-builder.html">日付の足し引きの式を作る</a>：日付の足し引きの式を作ります。</li><li><a href="/datedif-formula-builder.html">DATEDIFの式を作る</a>：DATEDIFの式を作ります。</li><li><a href="/networkdays-formula-builder.html">営業日数の式を作る</a>：営業日数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +256,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Weekday Names</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose NAME</li><li>Enter the cell</li><li>Copy it</li></ul></div>
-<p>In <a href="/weekday-formula-builder.html">WEEKDAY Builder</a> you can build a formula that gives the weekday name.</p>
+<p>Next to a date you want the weekday name, like "木" or "Thursday". "NAME", "FULLNAME" and "JA" in <a href="/weekday-formula-builder.html">Build a WEEKDAY Formula</a> build these.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose NAME</li>
-<li>Enter the cell</li>
-<li>Copy it</li>
+<li>Choose "NAME", "FULLNAME" or "JA" in "Type".</li>
+<li>Enter the "Date cell".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">FULLNAME gives the long name.</div>
+<div class="note">The weekday name is set by the TEXT function's format.</div>
+<h2>The three types with examples</h2>
+<p>For 2026-10-01 (Thursday):</p>
+<ul>
+<li>NAME: =TEXT(A2,"ddd") → Thu</li>
+<li>FULLNAME: =TEXT(A2,"dddd") → Thursday</li>
+<li>JA: =TEXT(A2,"aaa") → 木</li>
+</ul>
+<h2>Showing date and weekday together</h2>
+<ul>
+<li>Example: =TEXT(A2,"yyyy/m/d(aaa)")</li>
+</ul>
+<p>It gives "2026/10/1(木)".</p>
+<h2>Using cell format instead</h2>
+<p>You can show the weekday without a formula via the cell's display format. Enter "aaa" or "ddd" in a custom format. The value stays a date, so it's usable in calculations.</p>
+<h2>Good for</h2>
+<ul>
+<li>Weekday columns in schedules and rotas</li>
+<li>Showing date and weekday in one cell</li>
+<li>Weekday notation in English documents</li>
+</ul>
+<h2>In Google Sheets</h2>
+<p>Google Sheets' TEXT may not support "aaa". Build Japanese weekdays with CHOOSE and WEEKDAY.</p>
+<ul>
+<li>Example: =CHOOSE(WEEKDAY(A2),"日","月","火","水","木","金","土")</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted the weekday beside dates in a shift table. Copying the JA formula down lined up "月", "火"…</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The result is text</b>: the weekday name is text and not for calculation.</li>
+<li><b>Environment language</b>: English weekday spelling may vary with the software's language setting.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>The weekday shows in English</h3>
+<p>Use the JA formula, or line up Japanese weekdays with CHOOSE.</p>
+<h2>Summary</h2>
+<p>The weekday name is determined by the TEXT format.</p>
 <a class="cta" href="/weekday-formula-builder.html">Use "Build a WEEKDAY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li><li><a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a>: Build working-day formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

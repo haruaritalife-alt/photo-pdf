@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Việc cần làm khi không hoạt động</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Kiểm tra tệp</li><li>Kiểm tra dung lượng</li><li>Thử thiết bị khác</li></ul></div>
-<p>Nếu <a href="/vi/transpose-formula-builder.html">Trình tạo TRANSPOSE</a> không hoạt động, hãy kiểm tra những điều sau.</p>
-<h2>Các bước</h2>
+<p lang="en">You pasted the formula but it doesn't swap properly. Here are common troubles with <a href="/vi/transpose-formula-builder.html">Build a TRANSPOSE Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the range isn't in the "A1:C5" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF! (Google) / #SPILL! (Excel)</b>: values sit in the spill range. Clear those cells.</li>
+<li lang="en"><b>#NAME? (Excel)</b>: an older version without TOCOL or TOROW.</li>
+<li lang="en"><b>Only one value</b>: in old Excel, the INDEX formula was entered in just one cell. Copy it across the whole result range.</li>
+<li lang="en"><b>Result shows 0</b>: the source cell is blank. INDEX returns blanks as 0.</li>
+<li lang="en"><b>Only the headings don't swap</b>: the range doesn't include the headings.</li>
+<li lang="en"><b>Values aren't current</b>: the calculation setting is manual.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Kiểm tra tệp</li>
-<li>Kiểm tra dung lượng</li>
-<li>Thử thiết bị khác</li>
+<li lang="en">Check the range covers the whole table including headings.</li>
+<li lang="en">Check the spill range is empty.</li>
+<li lang="en">Check the Excel version.</li>
 </ol>
-<div class="note">Nếu không có công thức nào hiện ra, hãy kiểm tra phạm vi được viết như A1:C5.</div>
+<div class="note" lang="en">You can't edit just some cells of the result. Fix the formula cell.</div>
+<h2 lang="en">Formatting isn't swapped</h2>
+<p lang="en">TRANSPOSE and similar swap only values. Formats like column width, color and borders aren't copied. Copy the formatting separately if needed.</p>
+<h2 lang="en">With merged cells</h2>
+<p lang="en">Ranges containing merged cells may not swap well. Unmerge before using.</p>
+<h2>Ví dụ</h2>
+<p lang="en">After swapping, empty cells showed 0, because the INDEX formula returns blanks as 0. To hide that, test for blanks with IF.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Forgot Ctrl+Shift+Enter in old Excel</b>: TRANSPOSE doesn't work correctly.</li>
+<li lang="en"><b>Range too large</b>: calculation gets heavy.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want formatting swapped too</h3>
+<p lang="en">Use Paste Special → Transpose, which swaps with formats.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">Check the spill range, the Excel version and merged cells.</p>
 <a class="cta" href="/vi/transpose-formula-builder.html">Dùng “Tạo công thức TRANSPOSE” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/table-transpose.html">Đổi chỗ hàng và cột của bảng</a>: Đổi chỗ hàng và cột của bảng được dán.</li><li><a href="/vi/filter-formula-builder.html">Tạo công thức FILTER</a>: Tạo công thức FILTER.</li><li><a href="/vi/arrayformula-builder.html">Tạo ARRAYFORMULA</a>: Tạo các công thức ARRAYFORMULA.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

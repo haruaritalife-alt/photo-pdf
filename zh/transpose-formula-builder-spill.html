@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>溢出的结果</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>生成公式</li><li>粘贴到一个空单元格中</li><li>核对一下</li></ul></div>
-<p><a href="/zh/transpose-formula-builder.html">TRANSPOSE 公式生成器</a>生成的公式，结果会向下和向右溢出。</p>
-<h2>步骤</h2>
+<p lang="en">When you enter TRANSPOSE or similar in one cell, the result spreads to neighboring cells. This "spill" has some rules. Know them before pasting a formula from <a href="/zh/transpose-formula-builder.html">Build a TRANSPOSE Formula</a>.</p>
+<h2 lang="en">How spilling works</h2>
+<p lang="en">With the formula cell as the top-left, cells to the right and below are used for the size of the result.</p>
+<ul>
+<li lang="en">TRANSPOSE of A1:C5 (5×3): a 3×5 area is used</li>
+<li lang="en">From the formula cell, 5 columns right and 3 rows down</li>
+</ul>
+<h2 lang="en">If the spill range isn't empty</h2>
+<p lang="en">If other cells hold values, the result can't spread and errors.</p>
+<ul>
+<li lang="en">Google: #REF!</li>
+<li lang="en">Excel: #SPILL!</li>
+</ul>
+<p lang="en">Clearing the cells in the way fixes it.</p>
+<div class="note" lang="en">You can't edit just some cells of a spilled result. To fix, edit the formula cell.</div>
+<h2 lang="en">Steps (check before spilling)</h2>
 <ol>
-<li>生成公式</li>
-<li>粘贴到一个空单元格中</li>
-<li>核对一下</li>
+<li lang="en">Work out the result size (swap the source's rows and columns).</li>
+<li lang="en">From the top-left cell, check that area is empty.</li>
+<li lang="en">Paste the formula.</li>
 </ol>
-<div class="note">请让它溢出的单元格保持为空。</div>
+<h2 lang="en">When the source grows</h2>
+<p lang="en">If the source range is fixed, added rows aren't reflected. Extend the range, or in Google omit the end like "A1:C".</p>
+<h2 lang="en">Fixing the result</h2>
+<p lang="en">To keep the result as values, copy and "Paste values only". The formula disappears, leaving ordinary values.</p>
+<h2>适合</h2>
+<ul>
+<li lang="en">Deciding where to place the result beforehand</li>
+<li lang="en">When other data is above or to the right of the table</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Placed the swapped table right beside the original. The original overlapped the result range, causing an error. Moving the placement apart fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Result hits hidden cells</b>: merged cells, filtered rows.</li>
+<li lang="en"><b>Exceeds the sheet edge</b>: a result beyond the sheet's edge errors.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I can't tell where the error is</h3>
+<p lang="en">In Excel, selecting the error cell shows which cells are in the way.</p>
+<h2>小结</h2>
+<p lang="en">Count the result's size and keep the spill range empty.</p>
 <a class="cta" href="/zh/transpose-formula-builder.html">使用“生成 TRANSPOSE 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/table-transpose.html">互换表格的行和列</a>: 互换所粘贴表格的行和列。</li><li><a href="/zh/filter-formula-builder.html">生成 FILTER 公式</a>: 生成 FILTER 公式。</li><li><a href="/zh/arrayformula-builder.html">生成 ARRAYFORMULA</a>: 生成 ARRAYFORMULA 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

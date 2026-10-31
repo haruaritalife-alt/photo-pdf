@@ -200,14 +200,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>含まれるか</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>CONTAINSを選ぶ</li><li>探す文字を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/find-formula-builder.html">FIND式の作成</a> では、セルに文字が含まれているかをTRUEかFALSEで調べます。</p>
+<p>「このセルに、ある言葉が含まれているか」を、TRUEかFALSEで知りたい。それが「CONTAINS」です。<a href="/find-formula-builder.html">文字を探す式を作る</a> で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>CONTAINSを選ぶ</li>
-<li>探す文字を入れる</li>
-<li>コピーする</li>
+<li>「種類」で「CONTAINS」を選ぶ。</li>
+<li>「文字のセル」と「探す文字」を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">もう1つの式は、1か0で出します。</div>
+<div class="note">2つ目の式は、1か0で返します。計算に使うときに便利です。</div>
+<h2>例</h2>
+<ul>
+<li>=ISNUMBER(SEARCH("東京",A2))</li>
+</ul>
+<p>A2に「東京」が含まれていればTRUE、なければFALSEです。</p>
+<ul>
+<li>2つ目：=IF(ISNUMBER(SEARCH("東京",A2)),1,0)</li>
+</ul>
+<h2>仕組み</h2>
+<p>SEARCHは、見つかれば位置の数字を、見つからなければエラーを返します。ISNUMBERは、数字ならTRUEを返します。つまり、見つかったかどうかが分かります。</p>
+<h2>IFと組み合わせる</h2>
+<ul>
+<li>例：=IF(ISNUMBER(SEARCH("東京",A2)),"東京の案件","その他")</li>
+</ul>
+<h2>条件付き書式で使う</h2>
+<p>特定の言葉を含む行に、色をつけます。</p>
+<ul>
+<li>例：=ISNUMBER(SEARCH("至急",$A2))</li>
+</ul>
+<h2>数える</h2>
+<p>言葉を含む行の数は、SUMPRODUCTで数えます。</p>
+<ul>
+<li>例：=SUMPRODUCT(--ISNUMBER(SEARCH("東京",A2:A100)))</li>
+</ul>
+<h2>COUNTIFのワイルドカードでもできる</h2>
+<ul>
+<li>例：=COUNTIF(A2:A100,"*東京*")</li>
+</ul>
+<p>簡単に数えるだけなら、こちらのほうが短くなります。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>備考欄に「至急」を含む行を探す</li>
+<li>住所に特定の県名を含むかを判定する</li>
+<li>メールの件名の分類</li>
+</ul>
+<h2>例</h2>
+<p>問い合わせの一覧から、「返品」を含む行だけを抜き出したかった。CONTAINSの式をFILTERの条件にして、一覧を作れた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>全角と半角</b>：別の文字として扱われる。</li>
+<li><b>ワイルドカード文字</b>：探す言葉に「?」や「*」を含むと、意図と違う。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>複数の言葉のどれかを含むか調べたい</h3>
+<p>SEARCHの結果を、足し算でつなぐか、REGEXMATCHを使います。</p>
+<h2>まとめ</h2>
+<p>含まれるかの判定は、ISNUMBERとSEARCHで。</p>
 <a class="cta" href="/find-formula-builder.html">文字を探す式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-left-mid-builder.html">文字を取り出す式を作る</a>：文字を取り出す式を作ります。</li><li><a href="/substitute-formula-builder.html">SUBSTITUTE・REPLACEの式を作る</a>：文字を置き換える式を作ります。</li><li><a href="/split-formula-builder.html">SPLITの式を作る</a>：文字を分ける式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +266,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Checking for Text</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose CONTAINS</li><li>Enter the text</li><li>Copy it</li></ul></div>
-<p>In <a href="/find-formula-builder.html">FIND Builder</a> you can check whether a cell includes the text as TRUE or FALSE.</p>
+<p>You want TRUE or FALSE for whether a cell contains a certain word. That's "CONTAINS". <a href="/find-formula-builder.html">Build a FIND Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose CONTAINS</li>
-<li>Enter the text</li>
-<li>Copy it</li>
+<li>Choose "CONTAINS" in "Type".</li>
+<li>Enter the "Text cell" and "Character to find".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">The second formula gives 1 or 0.</div>
+<div class="note">The second formula returns 1 or 0, handy for calculations.</div>
+<h2>Example</h2>
+<ul>
+<li>=ISNUMBER(SEARCH("Tokyo",A2))</li>
+</ul>
+<p>TRUE if A2 contains "Tokyo", otherwise FALSE.</p>
+<ul>
+<li>Second: =IF(ISNUMBER(SEARCH("Tokyo",A2)),1,0)</li>
+</ul>
+<h2>How it works</h2>
+<p>SEARCH returns a position number if found and an error if not. ISNUMBER returns TRUE for numbers. So it tells whether it was found.</p>
+<h2>Combining with IF</h2>
+<ul>
+<li>Example: =IF(ISNUMBER(SEARCH("Tokyo",A2)),"Tokyo case","Other")</li>
+</ul>
+<h2>Using in conditional formatting</h2>
+<p>Color rows containing a particular word.</p>
+<ul>
+<li>Example: =ISNUMBER(SEARCH("urgent",$A2))</li>
+</ul>
+<h2>Counting</h2>
+<p>Count rows containing a word with SUMPRODUCT.</p>
+<ul>
+<li>Example: =SUMPRODUCT(--ISNUMBER(SEARCH("Tokyo",A2:A100)))</li>
+</ul>
+<h2>COUNTIF wildcards also work</h2>
+<ul>
+<li>Example: =COUNTIF(A2:A100,"*Tokyo*")</li>
+</ul>
+<p>For simple counting this is shorter.</p>
+<h2>Good for</h2>
+<ul>
+<li>Finding rows whose notes contain "urgent"</li>
+<li>Judging whether an address contains a particular prefecture</li>
+<li>Classifying email subjects</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted only the rows containing "return" from an inquiry list. Using the CONTAINS formula as FILTER's condition made the list.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Full-width vs half-width</b>: treated as different characters.</li>
+<li><b>Wildcard characters</b>: if the word contains "?" or "*", behavior differs from intent.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to test for any of several words</h3>
+<p>Add the SEARCH results together, or use REGEXMATCH.</p>
+<h2>Summary</h2>
+<p>Test for containment with ISNUMBER and SEARCH.</p>
 <a class="cta" href="/find-formula-builder.html">Use "Build a FIND Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a>: Build text extraction formulas.</li><li><a href="/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a>: Build text replacement formulas.</li><li><a href="/split-formula-builder.html">Build a SPLIT Formula</a>: Build text splitting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Eliminare gli spazi extra</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Scegli TRIM</li><li>Inserisci la cella</li><li>Copialo</li></ul></div>
-<p>In <a href="/it/text-case-formula-builder.html">Generatore di maiuscole e spazi</a> puoi creare una formula che rimuove gli spazi iniziali, finali e doppi.</p>
+<p lang="en">Spaces around a name, double spaces between words. Hard to see, but they cause mismatches in duplicate checks and lookups. "TRIM" in <a href="/it/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> removes them.</p>
 <h2>Passaggi</h2>
 <ol>
-<li>Scegli TRIM</li>
-<li>Inserisci la cella</li>
-<li>Copialo</li>
+<li lang="en">Choose "TRIM" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Tra le parole resta uno spazio.</div>
+<div class="note" lang="en">To apply to a whole column, use the second formula (ARRAYFORMULA).</div>
+<h2>Esempio</h2>
+<ul>
+<li lang="en">=TRIM(A2)</li>
+</ul>
+<p lang="en">" Yamada Taro " becomes "Yamada Taro".</p>
+<h2 lang="en">What TRIM does</h2>
+<ul>
+<li lang="en">Removes leading and trailing spaces</li>
+<li lang="en">Collapses repeated spaces between words into one</li>
+</ul>
+<h2 lang="en">What TRIM doesn't remove</h2>
+<ul>
+<li lang="en">Full-width spaces (Japanese spaces) may remain</li>
+<li lang="en">Non-breaking spaces (special spaces) remain</li>
+<li lang="en">Line breaks and tabs remain</li>
+</ul>
+<p lang="en">Handle those another way.</p>
+<h2 lang="en">Removing full-width spaces</h2>
+<ul>
+<li lang="en">Example: =TRIM(SUBSTITUTE(A2," "," "))</li>
+</ul>
+<p lang="en">Converts full-width spaces to half-width, then applies TRIM.</p>
+<h2 lang="en">Removing non-printing characters</h2>
+<p lang="en">"CLEAN" removes control characters like line breaks. Layer it with TRIM.</p>
+<ul>
+<li lang="en">Example: =TRIM(CLEAN(A2))</li>
+</ul>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Tidying an imported roster</li>
+<li lang="en">Fixing why VLOOKUP doesn't match</li>
+<li lang="en">Pre-processing for duplicate checks</li>
+</ul>
+<h2>Esempio</h2>
+<p lang="en">Some rows didn't match in VLOOKUP. The lookup values had trailing spaces. Applying TRIM made them match.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looks unchanged</b>: invisible characters are the cause. Check the length with LEN.</li>
+<li lang="en"><b>Result is still a formula</b>: to use as values, paste values only.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How does it differ from the site's "invisible characters" tool?</h3>
+<p lang="en">That tool tidies pasted text in bulk. This one is for when you want to build a formula.</p>
+<h2>Riepilogo</h2>
+<p lang="en">TRIM removes leading, trailing and repeated spaces.</p>
 <a class="cta" href="/it/text-case-formula-builder.html">Usa “Crea una formula per maiuscole e spazi” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/excel-text-clean.html">Rimuovere spazi superflui e caratteri invisibili dal testo di Excel</a>: Rimuovi gli spazi superflui e i caratteri invisibili.</li><li><a href="/it/text-case-converter.html">Convertitore maiuscole/minuscole (camelCase, snake_case)</a>: Converti maiuscole/minuscole e stili di denominazione del testo.</li><li><a href="/it/excel-left-mid-builder.html">Crea una formula LEFT, MID o RIGHT</a>: Crea formule per estrarre testo.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>

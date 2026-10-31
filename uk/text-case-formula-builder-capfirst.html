@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Лише перша літера</h1>
 <p class="meta">Опубліковано: 19 жовт. 2026 | Оновлено: 19 жовт. 2026 | <a href="/about.html">Про нас (японською)</a></p>
 <div class="points"><b>Основне</b><ul><li>Виберіть CAPFIRST</li><li>Введіть клітинку</li><li>Скопіюйте</li></ul></div>
-<p>У <a href="/uk/text-case-formula-builder.html">Конструктор регістру та пробілів</a> можна зробити великою лише першу літеру тексту.</p>
+<p lang="en">You want only the first character of a sentence capitalized and the rest lowercase: "hello WORLD" to "Hello world". That's "CAPFIRST". <a href="/uk/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> builds it.</p>
 <h2>Кроки</h2>
 <ol>
-<li>Виберіть CAPFIRST</li>
-<li>Введіть клітинку</li>
-<li>Скопіюйте</li>
+<li lang="en">Choose "CAPFIRST" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Решта літер стають малими.</div>
+<div class="note" lang="en">There's no dedicated function, so it combines LEFT, MID, UPPER and LOWER.</div>
+<h2>Приклад</h2>
+<ul>
+<li lang="en">=UPPER(LEFT(A2,1))&amp;LOWER(MID(A2,2,LEN(A2)))</li>
+</ul>
+<p lang="en">"hello WORLD" becomes "Hello world".</p>
+<h2 lang="en">Reading the formula</h2>
+<ul>
+<li lang="en">UPPER(LEFT(A2,1)): the first character in uppercase</li>
+<li lang="en">LOWER(MID(A2,2,LEN(A2))): the rest in lowercase</li>
+<li lang="en">&amp;: joins the two</li>
+</ul>
+<h2 lang="en">Difference from PROPER</h2>
+<ul>
+<li lang="en">PROPER: every word capitalized (Hello World)</li>
+<li lang="en">CAPFIRST: only the start capitalized (Hello world)</li>
+</ul>
+<h2>Підходить для</h2>
+<ul>
+<li lang="en">Tidying a sentence so only its start is capitalized</li>
+<li lang="en">Unifying heading notation</li>
+<li lang="en">Making all-caps sentences more readable</li>
+</ul>
+<h2>Застереження</h2>
+<p lang="en">Proper nouns mid-sentence also become lowercase. Fix "I" or names by hand.</p>
+<h2 lang="en">For empty cells</h2>
+<p lang="en">An empty cell doesn't error; it stays empty.</p>
+<h2>Приклад</h2>
+<p lang="en">Product descriptions were entered in all caps. CAPFIRST capitalized just the start and made them readable.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leading space</b>: the character after the space isn't capitalized. Apply TRIM first.</li>
+<li lang="en"><b>Sentences starting in Japanese</b>: no effect.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to use it with TRIM</h3>
+<p lang="en">Replace A2 with TRIM(A2). Edit by hand.</p>
+<h2>Підсумок</h2>
+<p lang="en">To capitalize only the start, use CAPFIRST.</p>
 <a class="cta" href="/uk/text-case-formula-builder.html">Використати «Створіть формулу для регістру та пробілів» (безкоштовно)</a>
 <h2>Інструменти, що добре поєднуються з цим</h2><ul><li><a href="/uk/excel-text-clean.html">Видалення зайвих пробілів і невидимих символів із тексту Excel</a>: Приберіть зайві пробіли та невидимі символи.</li><li><a href="/uk/text-case-converter.html">Конвертер регістру (camelCase, snake_case)</a>: Перетворюйте регістр і стилі іменування тексту.</li><li><a href="/uk/excel-left-mid-builder.html">Створити формулу LEFT, MID або RIGHT</a>: Створюйте формули для отримання тексту.</li></ul>
 <div class="tip"><p>Якщо цей посібник став у пригоді, невеликі чайові будуть дуже доречні.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Надіслати чайові (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Надіслати подарунок (список бажань Amazon)</a></div>

@@ -200,14 +200,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>特殊な空白</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>NBSPを選ぶ</li><li>セルを入れる</li><li>コピーする</li></ul></div>
-<p><a href="/text-case-formula-builder.html">大文字小文字式の作成</a> では、Webページからコピーした特殊な空白も消せます。</p>
+<p>TRIMをかけたのに、空白が消えない。その原因は、見た目は空白でも、普通の空白とは別の文字（ノーブレークスペース）かもしれません。<a href="/text-case-formula-builder.html">大文字小文字・空白の式を作る</a> の「NBSP」で整えられます。</p>
 <h2>手順</h2>
 <ol>
-<li>NBSPを選ぶ</li>
-<li>セルを入れる</li>
-<li>コピーする</li>
+<li>「種類」で「NBSP」を選ぶ。</li>
+<li>「文字のセル」を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">TRIMだけでは消えない空白に使います。</div>
+<div class="note">式は、TRIM(SUBSTITUTE(セル,CHAR(160)," ")) の形です。</div>
+<h2>例</h2>
+<ul>
+<li>=TRIM(SUBSTITUTE(A2,CHAR(160)," "))</li>
+</ul>
+<p>CHAR(160)は、ノーブレークスペースです。これを普通の空白に変えてから、TRIMで整えます。</p>
+<h2>ノーブレークスペースとは</h2>
+<p>Webページからコピーした文字や、一部のシステムの出力に含まれる、特殊な空白です。見た目は普通の空白ですが、TRIMでは消えません。</p>
+<h2>見つけ方</h2>
+<ul>
+<li>LEN関数で文字数を数えて、見た目の文字数と比べる</li>
+<li>見た目より、文字数が多い場合は、見えない文字がある</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>Webからコピーしたデータの整理</li>
+<li>VLOOKUPが一致しない原因の調査</li>
+<li>会計ソフトなどから出力したデータの整理</li>
+</ul>
+<h2>他の特殊な文字</h2>
+<ul>
+<li>改行：CLEANで消せる</li>
+<li>タブ：SUBSTITUTEで置き換える。CHAR(9)</li>
+<li>ゼロ幅スペース：UNICHAR(8203)など、別の文字コード</li>
+</ul>
+<h2>例</h2>
+<p>Webの価格表をコピーしたら、数値として計算できなかった。ノーブレークスペースが入っていた。NBSPの式で整えて、VALUEで数値に直すと、合計できた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>ExcelではCHAR(160)が環境で異なる</b>：Windows版では動くが、Mac版では異なる場合がある。UNICHAR(160)を試す。</li>
+<li><b>TRIMだけでは消えない</b>：CHAR(160)の置き換えが必要。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>特殊な空白をまとめて消したい</h3>
+<p>このサイトの「Excelの文字の余分なスペース・見えない文字を取る」ツールを使うと、貼り付けた文字から、まとめて取れます。</p>
+<h2>まとめ</h2>
+<p>TRIMで消えない空白は、CHAR(160)を置き換えます。</p>
 <a class="cta" href="/text-case-formula-builder.html">大文字小文字・空白の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li><li><a href="/text-case-converter.html">英字の大文字・小文字変換（camelCase・snake_case）</a>：英文の大文字小文字や命名形式を変換します。</li><li><a href="/excel-left-mid-builder.html">文字を取り出す式を作る</a>：文字を取り出す式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +255,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Special Spaces</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose NBSP</li><li>Enter the cell</li><li>Copy it</li></ul></div>
-<p>In <a href="/text-case-formula-builder.html">Text Case Builder</a> you can also remove the special spaces copied from web pages.</p>
+<p>TRIM didn't remove the space. The cause may be a character that looks like a space but isn't one (a non-breaking space). "NBSP" in <a href="/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> tidies it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose NBSP</li>
-<li>Enter the cell</li>
-<li>Copy it</li>
+<li>Choose "NBSP" in "Type".</li>
+<li>Enter the "Text cell".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">Use it for spaces that TRIM alone does not remove.</div>
+<div class="note">The form is TRIM(SUBSTITUTE(cell,CHAR(160)," ")).</div>
+<h2>Example</h2>
+<ul>
+<li>=TRIM(SUBSTITUTE(A2,CHAR(160)," "))</li>
+</ul>
+<p>CHAR(160) is the non-breaking space. It's converted to a normal space and then tidied with TRIM.</p>
+<h2>What a non-breaking space is</h2>
+<p>A special space found in text copied from web pages or output by some systems. It looks normal but TRIM doesn't remove it.</p>
+<h2>How to spot it</h2>
+<ul>
+<li>Count characters with LEN and compare with the visible count</li>
+<li>If it's larger than it looks, there are invisible characters</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Tidying data copied from the web</li>
+<li>Investigating why VLOOKUP doesn't match</li>
+<li>Tidying data exported from accounting software</li>
+</ul>
+<h2>Other special characters</h2>
+<ul>
+<li>Line breaks: removable with CLEAN</li>
+<li>Tabs: replace with SUBSTITUTE, CHAR(9)</li>
+<li>Zero-width spaces: another code such as UNICHAR(8203)</li>
+</ul>
+<h2>Example</h2>
+<p>Copying a web price table, numbers wouldn't calculate. Non-breaking spaces were in them. After tidying with NBSP and converting with VALUE, totals worked.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>CHAR(160) differs by Excel environment</b>: works on Windows but may differ on Mac. Try UNICHAR(160).</li>
+<li><b>TRIM alone doesn't remove it</b>: you need to replace CHAR(160).</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to remove special spaces in bulk</h3>
+<p>The site's "Remove extra spaces and invisible characters from Excel text" tool removes them from pasted text in one go.</p>
+<h2>Summary</h2>
+<p>For spaces TRIM can't remove, replace CHAR(160).</p>
 <a class="cta" href="/text-case-formula-builder.html">Use "Build a Text Case and Trim Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/text-case-converter.html">Text Case Converter (camelCase, snake_case)</a>: Convert text case and naming styles.</li><li><a href="/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a>: Build text extraction formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

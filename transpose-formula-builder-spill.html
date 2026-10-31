@@ -200,14 +200,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>広がる結果</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>式を作る</li><li>空いたセルに貼る</li><li>確かめる</li></ul></div>
-<p><a href="/transpose-formula-builder.html">行列入れ替え式の作成</a> の式は、結果が下や右に広がります。</p>
-<h2>手順</h2>
+<p>TRANSPOSEなどの結果は、1つのセルに式を入れると、周りのセルに広がります。この「広がる結果」には、いくつかの決まりがあります。<a href="/transpose-formula-builder.html">行列入れ替えの式を作る</a> で式を貼る前に、知っておきましょう。</p>
+<h2>広がる仕組み</h2>
+<p>式を入れたセルを左上として、結果の大きさだけ、右と下にセルが使われます。</p>
+<ul>
+<li>A1:C5（5行3列）のTRANSPOSE：3行5列が使われる</li>
+<li>式のセルから、右に5列、下に3行</li>
+</ul>
+<h2>広がる先が空いていないと</h2>
+<p>他のセルに値があると、結果は広がれず、エラーになります。</p>
+<ul>
+<li>Google：#REF!</li>
+<li>Excel：#SPILL!</li>
+</ul>
+<p>広がる先のセルを、空にすると、直ります。</p>
+<div class="note">広がった結果の、一部のセルだけを、編集することはできません。直すときは、式のセルを直します。</div>
+<h2>手順（広げる前の確認）</h2>
 <ol>
-<li>式を作る</li>
-<li>空いたセルに貼る</li>
-<li>確かめる</li>
+<li>結果の大きさを数える（元の表の行と列を、入れ替える）。</li>
+<li>左上のセルから、その大きさの範囲が、空かどうか確かめる。</li>
+<li>式を貼る。</li>
 </ol>
-<div class="note">広がる先のセルは、空にしておきます。</div>
+<h2>元の表が増えたとき</h2>
+<p>元の範囲を固定していると、行を足しても、結果に反映されません。範囲を増やすか、Googleなら「A1:C」のように、終わりを省略します。</p>
+<h2>結果を固定したい</h2>
+<p>結果を値にして残したいときは、コピーして、「値のみ貼り付け」します。式が消え、通常の値になります。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>結果の置き場所を、先に決めたい</li>
+<li>表の上や右に、他のデータがあるとき</li>
+</ul>
+<h2>例</h2>
+<p>入れ替えた表を、元の表の右に置いた。元の表が、結果の範囲にかぶっていて、エラーになった。置き場所を、離して直った。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>結果が隠れたセルにかかる</b>：結合セル、フィルタされた行。</li>
+<li><b>シートの端を超える</b>：結果が、シートの端を超えると、エラー。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>エラーの場所が分からない</h3>
+<p>Excelでは、エラーのセルを選ぶと、ぶつかっているセルが示されます。</p>
+<h2>まとめ</h2>
+<p>結果の大きさを数えて、広がる先を空けておきましょう。</p>
 <a class="cta" href="/transpose-formula-builder.html">行列入れ替えの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/table-transpose.html">表の行と列を入れ替える</a>：貼り付けた表の行と列を入れ替えます。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/arrayformula-builder.html">ARRAYFORMULAの式を作る</a>：ARRAYFORMULAの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +253,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Spilling Results</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>Paste it in an empty cell</li><li>Check it</li></ul></div>
-<p>The formulas from <a href="/transpose-formula-builder.html">TRANSPOSE Builder</a> spill their results down and to the right.</p>
-<h2>Steps</h2>
+<p>When you enter TRANSPOSE or similar in one cell, the result spreads to neighboring cells. This "spill" has some rules. Know them before pasting a formula from <a href="/transpose-formula-builder.html">Build a TRANSPOSE Formula</a>.</p>
+<h2>How spilling works</h2>
+<p>With the formula cell as the top-left, cells to the right and below are used for the size of the result.</p>
+<ul>
+<li>TRANSPOSE of A1:C5 (5×3): a 3×5 area is used</li>
+<li>From the formula cell, 5 columns right and 3 rows down</li>
+</ul>
+<h2>If the spill range isn't empty</h2>
+<p>If other cells hold values, the result can't spread and errors.</p>
+<ul>
+<li>Google: #REF!</li>
+<li>Excel: #SPILL!</li>
+</ul>
+<p>Clearing the cells in the way fixes it.</p>
+<div class="note">You can't edit just some cells of a spilled result. To fix, edit the formula cell.</div>
+<h2>Steps (check before spilling)</h2>
 <ol>
-<li>Build the formula</li>
-<li>Paste it in an empty cell</li>
-<li>Check it</li>
+<li>Work out the result size (swap the source's rows and columns).</li>
+<li>From the top-left cell, check that area is empty.</li>
+<li>Paste the formula.</li>
 </ol>
-<div class="note">Leave the cells it spills into empty.</div>
+<h2>When the source grows</h2>
+<p>If the source range is fixed, added rows aren't reflected. Extend the range, or in Google omit the end like "A1:C".</p>
+<h2>Fixing the result</h2>
+<p>To keep the result as values, copy and "Paste values only". The formula disappears, leaving ordinary values.</p>
+<h2>Good for</h2>
+<ul>
+<li>Deciding where to place the result beforehand</li>
+<li>When other data is above or to the right of the table</li>
+</ul>
+<h2>Example</h2>
+<p>Placed the swapped table right beside the original. The original overlapped the result range, causing an error. Moving the placement apart fixed it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Result hits hidden cells</b>: merged cells, filtered rows.</li>
+<li><b>Exceeds the sheet edge</b>: a result beyond the sheet's edge errors.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I can't tell where the error is</h3>
+<p>In Excel, selecting the error cell shows which cells are in the way.</p>
+<h2>Summary</h2>
+<p>Count the result's size and keep the spill range empty.</p>
 <a class="cta" href="/transpose-formula-builder.html">Use "Build a TRANSPOSE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/table-transpose.html">Swap Rows and Columns of a Table</a>: Swap the rows and columns of a pasted table.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/arrayformula-builder.html">Build an ARRAYFORMULA</a>: Build ARRAYFORMULA formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

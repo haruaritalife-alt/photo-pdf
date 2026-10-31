@@ -201,14 +201,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/find-formula-builder.html">FIND 수식 만들기</a>가 작동하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/ko/find-formula-builder.html">Build a FIND Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the text cell isn't in the "A2" form; the character to find is empty (except LEN).</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: the character isn't found (FIND, SEARCH). The second formula can give 0.</li>
+<li lang="en"><b>Result is 0</b>: the second formula didn't find it.</li>
+<li lang="en"><b>Positions are off</b>: full-width vs half-width, or invisible characters like non-breaking spaces.</li>
+<li lang="en"><b>Not found due to case</b>: FIND is case-sensitive. Switch to SEARCH.</li>
+<li lang="en"><b>Counts don't match</b>: overlapping characters, empty cells.</li>
+<li lang="en"><b>LENB gives the same value</b>: Google Sheets may treat bytes differently.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Copy the character to find from the cell's text and paste it again.</li>
+<li lang="en">Count with LEN to check for invisible characters.</li>
+<li lang="en">Try SEARCH instead of FIND.</li>
 </ol>
-<div class="note">수식이 나오지 않으면 셀이 A2처럼 쓰여 있는지, 찾을 문자가 입력되어 있는지 확인하세요.</div>
+<div class="note" lang="en">Surrounding spaces and full-width/half-width differences are the top causes.</div>
+<h2 lang="en">Searching for "?" or "*"</h2>
+<p lang="en">SEARCH treats them as wildcards. To find them literally, write "~?" or "~*". FIND finds them as is.</p>
+<h2>예</h2>
+<p lang="en">The hyphen position wouldn't resolve. The cell's separator was a full-width hyphen "－". Changing the character to find to full-width resolved the position.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Numeric cells</b>: searching a number as text is affected by formatting. Convert with TEXT.</li>
+<li lang="en"><b>Using the result</b>: the position is a number. Combine with LEFT or MID.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want blank when not found</h3>
+<p lang="en">Wrap in IFERROR. The second formula returns 0.</p>
+<h2>요약</h2>
+<p lang="en">Check the notation of the character, invisible characters, and FIND vs SEARCH.</p>
 <a class="cta" href="/ko/find-formula-builder.html">“FIND 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-left-mid-builder.html">LEFT·MID·RIGHT 수식 만들기</a>: 글자를 꺼내는 수식을 만듭니다.</li><li><a href="/ko/substitute-formula-builder.html">SUBSTITUTE 수식 만들기</a>: 문자 바꾸기 수식을 만듭니다.</li><li><a href="/ko/split-formula-builder.html">SPLIT 수식 만들기</a>: 문자 나누기 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

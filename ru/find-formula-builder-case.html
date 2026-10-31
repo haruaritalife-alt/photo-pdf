@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Верхний и нижний регистр</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Выберите FIND или SEARCH</li><li>Введите текст</li><li>Скопируйте его</li></ul></div>
-<p>В <a href="/ru/find-formula-builder.html">Конструктор FIND</a> можно использовать FIND, учитывающий регистр, или SEARCH, не учитывающий его.</p>
+<p lang="en">Do you want "ABC" and "abc" treated as the same character or different? That's the difference between FIND and SEARCH. "FIND" and "SEARCH" in <a href="/ru/find-formula-builder.html">Build a FIND Formula</a> build them.</p>
+<h2>В чём разница</h2>
+<ul>
+<li lang="en"><b>FIND</b>: case-sensitive; no wildcards</li>
+<li lang="en"><b>SEARCH</b>: case-insensitive; wildcards (? and *) work</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">With "Apple" in A2:</p>
+<ul>
+<li lang="en">=FIND("a",A2) → #VALUE! (no lowercase a)</li>
+<li lang="en">=SEARCH("a",A2) → 1 (treated like A)</li>
+</ul>
 <h2>Шаги</h2>
 <ol>
-<li>Выберите FIND или SEARCH</li>
-<li>Введите текст</li>
-<li>Скопируйте его</li>
+<li lang="en">Choose "FIND" or "SEARCH" in "Type".</li>
+<li lang="en">Enter the cell and the character to find.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Если ничего не найдено, появится ошибка, поэтому также показывается вариант, возвращающий 0.</div>
+<div class="note" lang="en">Japanese characters have no case, so either gives the same result.</div>
+<h2 lang="en">Choosing</h2>
+<ul>
+<li lang="en">IDs or codes where case matters: FIND</li>
+<li lang="en">English keywords without notation variants: SEARCH</li>
+</ul>
+<h2 lang="en">Wildcards</h2>
+<p lang="en">SEARCH accepts these:</p>
+<ul>
+<li lang="en">?: any single character</li>
+<li lang="en">*: any string</li>
+<li lang="en">~: the symbol itself (~? finds "?" itself)</li>
+</ul>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">The position of "@" in an email</li>
+<li lang="en">The position of a file extension</li>
+<li lang="en">Finding a particular word in English text</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">Wanted the position of "A-" in product codes, case-sensitively, so used FIND. The lowercase "a-" wasn't found, so it distinguished correctly.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width vs half-width are different</b>: "A" and "Ａ" don't match.</li>
+<li lang="en"><b>Unintended wildcard behavior</b>: when searching for "?" or "*", put "~" before.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I choose where to start searching?</h3>
+<p lang="en">Yes, with the third argument of FIND and SEARCH. Add by hand.</p>
+<ul>
+<li lang="en">Example: =FIND("-",A2,5)</li>
+</ul>
+<h2>Итог</h2>
+<p lang="en">FIND to distinguish case, SEARCH not to.</p>
 <a class="cta" href="/ru/find-formula-builder.html">Использовать «Создайте формулу FIND» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/excel-left-mid-builder.html">Создать формулу LEFT, MID или RIGHT</a>: Создавайте формулы для извлечения текста.</li><li><a href="/ru/substitute-formula-builder.html">Создать формулу SUBSTITUTE</a>: Создавайте формулы замены текста.</li><li><a href="/ru/split-formula-builder.html">Создать формулу SPLIT</a>: Создавайте формулы разделения текста.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

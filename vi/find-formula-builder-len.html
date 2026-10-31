@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Đếm độ dài</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Chọn LEN</li><li>Nhập ô</li><li>Sao chép</li></ul></div>
-<p>Trong <a href="/vi/find-formula-builder.html">Trình tạo FIND</a> bạn có thể tạo công thức cho số ký tự và số byte.</p>
+<p lang="en">You want to check character counts: whether text fits an input limit, whether a postal code has 7 digits, and so on. "LEN" in <a href="/vi/find-formula-builder.html">Build a FIND Formula</a> builds it.</p>
 <h2>Các bước</h2>
 <ol>
-<li>Chọn LEN</li>
-<li>Nhập ô</li>
-<li>Sao chép</li>
+<li lang="en">Choose "LEN" in "Type".</li>
+<li lang="en">Enter the "Text cell" (no character to find needed).</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Một ký tự toàn chiều rộng được tính là 2 theo byte.</div>
+<div class="note" lang="en">The second formula is LENB (byte count). In environments where full-width counts as 2 and half-width as 1.</div>
+<h2>Ví dụ</h2>
+<ul>
+<li lang="en">=LEN(A2)</li>
+</ul>
+<p lang="en">"東京都" gives 3 and "Tokyo" gives 5.</p>
+<ul>
+<li lang="en">Second: =LENB(A2)</li>
+</ul>
+<h2 lang="en">LEN vs LENB</h2>
+<ul>
+<li lang="en">LEN: number of characters</li>
+<li lang="en">LENB: byte count (in Japanese environments, full-width is 2 and half-width is 1)</li>
+</ul>
+<p lang="en">In Google Sheets, LENB may not behave as expected.</p>
+<h2 lang="en">Using for checks</h2>
+<ul>
+<li lang="en">Is the postal code 7 digits: =LEN(SUBSTITUTE(A2,"-",""))=7</li>
+<li lang="en">Within 100 characters: =LEN(A2)&lt;=100</li>
+</ul>
+<h2 lang="en">Spaces count too</h2>
+<p lang="en">LEN counts spaces as characters. If the count exceeds what you see, leading or trailing spaces or invisible characters may be present.</p>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Checking entries with length limits</li>
+<li lang="en">Digit checks (phone numbers, ID numbers)</li>
+<li lang="en">Finding invisible spaces</li>
+</ul>
+<h2 lang="en">Line breaks count too</h2>
+<p lang="en">A line break counts as one character.</p>
+<h2>Ví dụ</h2>
+<p lang="en">A web form's description had a 100-character limit. LEN counted characters, and conditional formatting colored rows over the limit.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Numeric cells</b>: digit counts work, but decimal points and formats affect them.</li>
+<li lang="en"><b>Emoji</b>: one may count as two characters.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about length without spaces?</h3>
+<p lang="en">Remove spaces with SUBSTITUTE, then count with LEN.</p>
+<ul>
+<li lang="en">Example: =LEN(SUBSTITUTE(A2," ",""))</li>
+</ul>
+<h2>Tóm tắt</h2>
+<p lang="en">LEN for character count; LENB for bytes.</p>
 <a class="cta" href="/vi/find-formula-builder.html">Dùng “Tạo công thức FIND” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/excel-left-mid-builder.html">Tạo công thức LEFT, MID hoặc RIGHT</a>: Tạo công thức để lấy văn bản.</li><li><a href="/vi/substitute-formula-builder.html">Tạo công thức SUBSTITUTE</a>: Tạo các công thức thay thế văn bản.</li><li><a href="/vi/split-formula-builder.html">Tạo công thức SPLIT</a>: Tạo các công thức tách văn bản.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

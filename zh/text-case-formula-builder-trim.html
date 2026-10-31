@@ -201,14 +201,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>去除多余空格</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>选择 TRIM</li><li>输入单元格</li><li>复制</li></ul></div>
-<p>在<a href="/zh/text-case-formula-builder.html">大小写与空格公式生成器</a>中可以生成去除开头、结尾和重复空格的公式。</p>
+<p lang="en">Spaces around a name, double spaces between words. Hard to see, but they cause mismatches in duplicate checks and lookups. "TRIM" in <a href="/zh/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> removes them.</p>
 <h2>步骤</h2>
 <ol>
-<li>选择 TRIM</li>
-<li>输入单元格</li>
-<li>复制</li>
+<li lang="en">Choose "TRIM" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">单词之间会保留一个空格。</div>
+<div class="note" lang="en">To apply to a whole column, use the second formula (ARRAYFORMULA).</div>
+<h2>示例</h2>
+<ul>
+<li lang="en">=TRIM(A2)</li>
+</ul>
+<p lang="en">" Yamada Taro " becomes "Yamada Taro".</p>
+<h2 lang="en">What TRIM does</h2>
+<ul>
+<li lang="en">Removes leading and trailing spaces</li>
+<li lang="en">Collapses repeated spaces between words into one</li>
+</ul>
+<h2 lang="en">What TRIM doesn't remove</h2>
+<ul>
+<li lang="en">Full-width spaces (Japanese spaces) may remain</li>
+<li lang="en">Non-breaking spaces (special spaces) remain</li>
+<li lang="en">Line breaks and tabs remain</li>
+</ul>
+<p lang="en">Handle those another way.</p>
+<h2 lang="en">Removing full-width spaces</h2>
+<ul>
+<li lang="en">Example: =TRIM(SUBSTITUTE(A2," "," "))</li>
+</ul>
+<p lang="en">Converts full-width spaces to half-width, then applies TRIM.</p>
+<h2 lang="en">Removing non-printing characters</h2>
+<p lang="en">"CLEAN" removes control characters like line breaks. Layer it with TRIM.</p>
+<ul>
+<li lang="en">Example: =TRIM(CLEAN(A2))</li>
+</ul>
+<h2>适合</h2>
+<ul>
+<li lang="en">Tidying an imported roster</li>
+<li lang="en">Fixing why VLOOKUP doesn't match</li>
+<li lang="en">Pre-processing for duplicate checks</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Some rows didn't match in VLOOKUP. The lookup values had trailing spaces. Applying TRIM made them match.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looks unchanged</b>: invisible characters are the cause. Check the length with LEN.</li>
+<li lang="en"><b>Result is still a formula</b>: to use as values, paste values only.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How does it differ from the site's "invisible characters" tool?</h3>
+<p lang="en">That tool tidies pasted text in bulk. This one is for when you want to build a formula.</p>
+<h2>小结</h2>
+<p lang="en">TRIM removes leading, trailing and repeated spaces.</p>
 <a class="cta" href="/zh/text-case-formula-builder.html">使用“生成大小写与去空格公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/excel-text-clean.html">去掉 Excel 文字中多余的空格和看不见的字符</a>: 去掉多余的空格和看不见的字符。</li><li><a href="/zh/text-case-converter.html">英文大小写转换器（camelCase、snake_case）</a>: 转换文本的大小写和命名风格。</li><li><a href="/zh/excel-left-mid-builder.html">生成 LEFT、MID 或 RIGHT 公式</a>: 生成取出文字的公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

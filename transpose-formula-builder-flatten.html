@@ -200,14 +200,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>1列に並べる</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>FLATTENを選ぶ</li><li>範囲を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/transpose-formula-builder.html">行列入れ替え式の作成</a> では、表の中身を1列に並べる式を作れます。</p>
+<p>複数の列に分かれたデータを、1列にまとめたい。3列の名簿を、縦に1列に並べたい。そんなときは、FLATTENを使います。<a href="/transpose-formula-builder.html">行列入れ替えの式を作る</a> の「FLATTEN」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>FLATTENを選ぶ</li>
-<li>範囲を入れる</li>
-<li>コピーする</li>
+<li>「種類」で「FLATTEN」を選ぶ。</li>
+<li>「範囲」を入れる。</li>
+<li>「Googleスプレッドシートの式」か「Excelの式」をコピーして貼る。</li>
 </ol>
-<div class="note">Excelでは、TOCOLを使います。</div>
+<div class="note">Googleは FLATTEN、Excelは TOCOL（Excel 365）を使います。</div>
+<h2>例</h2>
+<p>A1:C5を、1列にする場合です。</p>
+<ul>
+<li>Google：=FLATTEN(A1:C5)</li>
+<li>Excel：=TOCOL(A1:C5)</li>
+</ul>
+<p>左上から、行方向に（A1、B1、C1、A2…）並べられます。</p>
+<h2>並べる順序</h2>
+<ul>
+<li>FLATTEN：列ごとではなく、行ごとでもなく、既定の順序（列方向）で並べる場合があります</li>
+<li>順序を変えたい場合は、TOCOLの第3引数で指定できます（Excel）</li>
+</ul>
+<h2>空のセル</h2>
+<p>空のセルは、結果に含まれる場合があります。除きたいときは、第2引数を指定します（Excel）。</p>
+<ul>
+<li>例：=TOCOL(A1:C5,1)</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>複数列の名簿を、1列にまとめる</li>
+<li>複数列の数字を、まとめて集計する</li>
+<li>UNIQUEと組み合わせて、全体の重複を除く</li>
+<li>例：=UNIQUE(FLATTEN(A1:C5))</li>
+</ul>
+<h2>例</h2>
+<p>3つの班の名簿が、横に3列に並んでいた。FLATTENで1列にして、UNIQUEで重複を除き、参加者の一覧を作れた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>TOCOLが使えない</b>：古いExcelでは、使えない。</li>
+<li><b>並び順が思ったと違う</b>：Googleは、行の順に並べる。Excelは、既定が行方向。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>古いExcelでは？</h3>
+<p>TOCOLがない版では、INDEXとROWで1列に並べる式を組みます。</p>
+<h2>まとめ</h2>
+<p>複数列を1列にするなら、FLATTENかTOCOL。</p>
 <a class="cta" href="/transpose-formula-builder.html">行列入れ替えの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/table-transpose.html">表の行と列を入れ替える</a>：貼り付けた表の行と列を入れ替えます。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/arrayformula-builder.html">ARRAYFORMULAの式を作る</a>：ARRAYFORMULAの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +255,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Lining Up in One Column</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose FLATTEN</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/transpose-formula-builder.html">TRANSPOSE Builder</a> you can build a formula that lines up a table in one column.</p>
+<p>You want data spread over several columns gathered into one: a three-column roster lined up in a single column. Use FLATTEN. "FLATTEN" in <a href="/transpose-formula-builder.html">Build a TRANSPOSE Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose FLATTEN</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>Choose "FLATTEN" in "Type".</li>
+<li>Enter the "Range".</li>
+<li>Copy the "Google Sheets formula" or "Excel formula" and paste.</li>
 </ol>
-<div class="note">Excel uses TOCOL.</div>
+<div class="note">Google uses FLATTEN; Excel uses TOCOL (Excel 365).</div>
+<h2>Example</h2>
+<p>Making A1:C5 into one column:</p>
+<ul>
+<li>Google: =FLATTEN(A1:C5)</li>
+<li>Excel: =TOCOL(A1:C5)</li>
+</ul>
+<p>Items line up from the top-left, row by row (A1, B1, C1, A2…).</p>
+<h2>Ordering</h2>
+<ul>
+<li>FLATTEN: may line up in its default order</li>
+<li>To change the order, TOCOL's third argument can specify it (Excel)</li>
+</ul>
+<h2>Empty cells</h2>
+<p>Empty cells may be included in the result. To exclude them, specify the second argument (Excel).</p>
+<ul>
+<li>Example: =TOCOL(A1:C5,1)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Gathering a multi-column roster into one column</li>
+<li>Totaling numbers spread over several columns</li>
+<li>Combining with UNIQUE to remove duplicates across everything</li>
+<li>Example: =UNIQUE(FLATTEN(A1:C5))</li>
+</ul>
+<h2>Example</h2>
+<p>Three groups' rosters sat in three side-by-side columns. FLATTEN made one column, UNIQUE removed duplicates, and a participant list resulted.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>TOCOL unavailable</b>: old Excel lacks it.</li>
+<li><b>Order differs from expectation</b>: Google goes row by row; Excel's default is row-wise.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What about old Excel?</h3>
+<p>Without TOCOL, build a one-column formula using INDEX and ROW.</p>
+<h2>Summary</h2>
+<p>To gather columns into one, use FLATTEN or TOCOL.</p>
 <a class="cta" href="/transpose-formula-builder.html">Use "Build a TRANSPOSE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/table-transpose.html">Swap Rows and Columns of a Table</a>: Swap the rows and columns of a pasted table.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/arrayformula-builder.html">Build an ARRAYFORMULA</a>: Build ARRAYFORMULA formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

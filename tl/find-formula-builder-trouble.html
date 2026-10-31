@@ -201,14 +201,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Ano ang Gagawin Kapag Hindi Gumagana</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Suriin ang file</li><li>Suriin ang laki</li><li>Subukan ang ibang device</li></ul></div>
-<p>Kung hindi gumagana ang <a href="/tl/find-formula-builder.html">FIND Builder</a>, suriin ang mga sumusunod.</p>
-<h2>Mga hakbang</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/tl/find-formula-builder.html">Build a FIND Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the text cell isn't in the "A2" form; the character to find is empty (except LEN).</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: the character isn't found (FIND, SEARCH). The second formula can give 0.</li>
+<li lang="en"><b>Result is 0</b>: the second formula didn't find it.</li>
+<li lang="en"><b>Positions are off</b>: full-width vs half-width, or invisible characters like non-breaking spaces.</li>
+<li lang="en"><b>Not found due to case</b>: FIND is case-sensitive. Switch to SEARCH.</li>
+<li lang="en"><b>Counts don't match</b>: overlapping characters, empty cells.</li>
+<li lang="en"><b>LENB gives the same value</b>: Google Sheets may treat bytes differently.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Suriin ang file</li>
-<li>Suriin ang laki</li>
-<li>Subukan ang ibang device</li>
+<li lang="en">Copy the character to find from the cell's text and paste it again.</li>
+<li lang="en">Count with LEN to check for invisible characters.</li>
+<li lang="en">Try SEARCH instead of FIND.</li>
 </ol>
-<div class="note">Kung walang lumabas na formula, tingnan kung nakasulat ang cell tulad ng A2 at nailagay ang tekstong hahanapin.</div>
+<div class="note" lang="en">Surrounding spaces and full-width/half-width differences are the top causes.</div>
+<h2 lang="en">Searching for "?" or "*"</h2>
+<p lang="en">SEARCH treats them as wildcards. To find them literally, write "~?" or "~*". FIND finds them as is.</p>
+<h2>Halimbawa</h2>
+<p lang="en">The hyphen position wouldn't resolve. The cell's separator was a full-width hyphen "－". Changing the character to find to full-width resolved the position.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Numeric cells</b>: searching a number as text is affected by formatting. Convert with TEXT.</li>
+<li lang="en"><b>Using the result</b>: the position is a number. Combine with LEFT or MID.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want blank when not found</h3>
+<p lang="en">Wrap in IFERROR. The second formula returns 0.</p>
+<h2>Buod</h2>
+<p lang="en">Check the notation of the character, invisible characters, and FIND vs SEARCH.</p>
 <a class="cta" href="/tl/find-formula-builder.html">Gamitin ang “Gumawa ng formula ng FIND” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/excel-left-mid-builder.html">Gumawa ng formula na LEFT, MID o RIGHT</a>: Gumawa ng mga formula para kumuha ng teksto.</li><li><a href="/tl/substitute-formula-builder.html">Gumawa ng SUBSTITUTE Formula</a>: Gumawa ng mga formula sa pagpapalit ng teksto.</li><li><a href="/tl/split-formula-builder.html">Gumawa ng SPLIT Formula</a>: Gumawa ng mga formula sa paghahati ng teksto.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

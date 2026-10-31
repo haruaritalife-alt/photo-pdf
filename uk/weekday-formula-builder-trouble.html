@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Що робити, якщо не працює</h1>
 <p class="meta">Опубліковано: 19 жовт. 2026 | Оновлено: 19 жовт. 2026 | <a href="/about.html">Про нас (японською)</a></p>
 <div class="points"><b>Основне</b><ul><li>Перевірте файл</li><li>Перевірте розмір</li><li>Спробуйте інший пристрій</li></ul></div>
-<p>Якщо <a href="/uk/weekday-formula-builder.html">Конструктор WEEKDAY</a> не працює, перевірте таке.</p>
-<h2>Кроки</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/uk/weekday-formula-builder.html">Build a WEEKDAY Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the date cell isn't in the "A2" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: the date cell is text.</li>
+<li lang="en"><b>No Japanese weekday</b>: Google Sheets' TEXT may not support "aaa". Build with CHOOSE and WEEKDAY.</li>
+<li lang="en"><b>Weekdays are off</b>: the week-start setting differs from what you expect.</li>
+<li lang="en"><b>Week numbers don't match</b>: WEEKNUM and ISOWEEKNUM count differently.</li>
+<li lang="en"><b>#NAME?</b>: an older version without ISOWEEKNUM.</li>
+<li lang="en"><b>Only one result</b>: for a whole column, use the second formula (ARRAYFORMULA).</li>
+<li lang="en"><b>A number (like 46296) appears</b>: set the cell's display format to date.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Перевірте файл</li>
-<li>Перевірте розмір</li>
-<li>Спробуйте інший пристрій</li>
+<li lang="en">Check the date cell displays right-aligned.</li>
+<li lang="en">Unify the date format, like "2026/10/1".</li>
+<li lang="en">Check the week start.</li>
 </ol>
-<div class="note">Якщо формула не з’являється, перевірте, що клітинку з датою записано як A2 і в ній справжня дата.</div>
+<div class="note" lang="en">If dates are left-aligned, they're likely text.</div>
+<h2 lang="en">Fixing text dates</h2>
+<ul>
+<li lang="en">Convert with DATEVALUE</li>
+<li lang="en">Unify separators to "/" or "-"</li>
+<li lang="en">Specify the date format via Data → Text to Columns</li>
+</ul>
+<h2>Приклад</h2>
+<p lang="en">The weekday gave #VALUE!. Dates were like "2026.10.01", i.e. text. Replacing with "/" made the weekday appear.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Dates with times</b>: times are ignored, but the value must be recognized as a date.</li>
+<li lang="en"><b>Before 1900</b>: Excel can't handle some dates.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want weekdays in Japanese, not English</h3>
+<p lang="en">Excel: use "aaa". Google: use CHOOSE with WEEKDAY.</p>
+<h2>Підсумок</h2>
+<p lang="en">Check the date is truly a date, the week start and language settings.</p>
 <a class="cta" href="/uk/weekday-formula-builder.html">Використати «Створіть формулу WEEKDAY» (безкоштовно)</a>
 <h2>Інструменти, що добре поєднуються з цим</h2><ul><li><a href="/uk/date-offset-formula-builder.html">Створити формулу зсуву дати</a>: Створюйте формули зсуву дати.</li><li><a href="/uk/datedif-formula-builder.html">Створення формули DATEDIF</a>: Створіть формулу DATEDIF.</li><li><a href="/uk/networkdays-formula-builder.html">Створити формулу NETWORKDAYS</a>: Створюйте формули робочих днів.</li></ul>
 <div class="tip"><p>Якщо цей посібник став у пригоді, невеликі чайові будуть дуже доречні.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Надіслати чайові (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Надіслати подарунок (список бажань Amazon)</a></div>

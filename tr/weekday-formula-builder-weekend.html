@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Hafta Sonu Denetimi</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>WEEKEND'i seçin</li><li>Hücreyi girin</li><li>Kopyalayın</li></ul></div>
-<p><a href="/tr/weekday-formula-builder.html">WEEKDAY oluşturucu</a> içinde Cumartesi veya Pazar için TRUE veren bir formül oluşturabilirsiniz.</p>
+<p lang="en">You want to color only weekends, or count weekend sales. Use a formula that tests "is it a weekend". "WEEKEND" in <a href="/tr/weekday-formula-builder.html">Build a WEEKDAY Formula</a> builds it.</p>
 <h2>Adımlar</h2>
 <ol>
-<li>WEEKEND'i seçin</li>
-<li>Hücreyi girin</li>
-<li>Kopyalayın</li>
+<li lang="en">Choose "WEEKEND" in "Type".</li>
+<li lang="en">Enter the "Date cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Koşullu biçimlendirmede de çalışır.</div>
+<div class="note" lang="en">The result is TRUE on weekends and FALSE on weekdays.</div>
+<h2>Örnek</h2>
+<ul>
+<li lang="en">=WEEKDAY(A2,2)&gt;5</li>
+</ul>
+<p lang="en">With WEEKDAY's second argument 2, Monday is 1 and Sunday is 7. Greater than 5 means Saturday (6) or Sunday (7).</p>
+<h2 lang="en">Coloring with conditional formatting</h2>
+<ol>
+<li lang="en">Select the range to color.</li>
+<li lang="en">Choose "Conditional formatting" → "Custom formula".</li>
+<li lang="en">Enter the formula (relative to the first cell).</li>
+</ol>
+<ul>
+<li lang="en">Example: =WEEKDAY($A2,2)&gt;5</li>
+</ul>
+<h2 lang="en">Splitting totals into weekdays and weekends</h2>
+<ul>
+<li lang="en">Weekend sales: =SUMPRODUCT((WEEKDAY(A2:A100,2)&gt;5)*B2:B100)</li>
+<li lang="en">Weekday sales: =SUMPRODUCT((WEEKDAY(A2:A100,2)&lt;=5)*B2:B100)</li>
+</ul>
+<h2 lang="en">Holidays aren't included</h2>
+<p lang="en">This tests by weekday only. A holiday on a non-weekend counts as a weekday. To treat holidays as days off too, check against a holiday list.</p>
+<ul>
+<li lang="en">Example: =OR(WEEKDAY(A2,2)&gt;5,COUNTIF(holiday range,A2)&gt;0)</li>
+</ul>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Coloring calendars and schedules</li>
+<li lang="en">Comparing sales or visitors on weekdays and weekends</li>
+<li lang="en">Counting weekend work</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">Wanted to compare average visitors on weekends and weekdays. Using the weekend test as a condition in SUMPRODUCT, then dividing by the days, gave the averages.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Assuming Sunday start</b>: with a second argument of 1, Sunday is 1 and the test number changes.</li>
+<li lang="en"><b>Date column is text</b>: can't be tested.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want only Sunday to be off</h3>
+<p lang="en">Use WEEKDAY(A2,2)=7.</p>
+<h2>Özet</h2>
+<p lang="en">The weekend test is WEEKDAY(date,2)&gt;5.</p>
 <a class="cta" href="/tr/weekday-formula-builder.html">“WEEKDAY formülü oluşturun” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/date-offset-formula-builder.html">Tarih kaydırma formülü oluştur</a>: Tarih kaydırma formülleri oluşturun.</li><li><a href="/tr/datedif-formula-builder.html">DATEDIF formülü oluşturma</a>: DATEDIF formülü oluşturun.</li><li><a href="/tr/networkdays-formula-builder.html">NETWORKDAYS Formülü Oluşturun</a>: İş günü formülleri oluşturun.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

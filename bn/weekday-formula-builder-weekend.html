@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>সপ্তাহান্ত যাচাই</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>WEEKEND বেছে নিন</li><li>সেল লিখুন</li><li>কপি করুন</li></ul></div>
-<p><a href="/bn/weekday-formula-builder.html">WEEKDAY সূত্র নির্মাতা</a>-এ আপনি এমন সূত্র তৈরি করতে পারেন যা শনিবার বা রবিবারের জন্য TRUE দেয়।</p>
+<p lang="en">You want to color only weekends, or count weekend sales. Use a formula that tests "is it a weekend". "WEEKEND" in <a href="/bn/weekday-formula-builder.html">Build a WEEKDAY Formula</a> builds it.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>WEEKEND বেছে নিন</li>
-<li>সেল লিখুন</li>
-<li>কপি করুন</li>
+<li lang="en">Choose "WEEKEND" in "Type".</li>
+<li lang="en">Enter the "Date cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">শর্তসাপেক্ষ ফরম্যাটিংয়েও এটি কাজ করে।</div>
+<div class="note" lang="en">The result is TRUE on weekends and FALSE on weekdays.</div>
+<h2>উদাহরণ</h2>
+<ul>
+<li lang="en">=WEEKDAY(A2,2)&gt;5</li>
+</ul>
+<p lang="en">With WEEKDAY's second argument 2, Monday is 1 and Sunday is 7. Greater than 5 means Saturday (6) or Sunday (7).</p>
+<h2 lang="en">Coloring with conditional formatting</h2>
+<ol>
+<li lang="en">Select the range to color.</li>
+<li lang="en">Choose "Conditional formatting" → "Custom formula".</li>
+<li lang="en">Enter the formula (relative to the first cell).</li>
+</ol>
+<ul>
+<li lang="en">Example: =WEEKDAY($A2,2)&gt;5</li>
+</ul>
+<h2 lang="en">Splitting totals into weekdays and weekends</h2>
+<ul>
+<li lang="en">Weekend sales: =SUMPRODUCT((WEEKDAY(A2:A100,2)&gt;5)*B2:B100)</li>
+<li lang="en">Weekday sales: =SUMPRODUCT((WEEKDAY(A2:A100,2)&lt;=5)*B2:B100)</li>
+</ul>
+<h2 lang="en">Holidays aren't included</h2>
+<p lang="en">This tests by weekday only. A holiday on a non-weekend counts as a weekday. To treat holidays as days off too, check against a holiday list.</p>
+<ul>
+<li lang="en">Example: =OR(WEEKDAY(A2,2)&gt;5,COUNTIF(holiday range,A2)&gt;0)</li>
+</ul>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Coloring calendars and schedules</li>
+<li lang="en">Comparing sales or visitors on weekdays and weekends</li>
+<li lang="en">Counting weekend work</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">Wanted to compare average visitors on weekends and weekdays. Using the weekend test as a condition in SUMPRODUCT, then dividing by the days, gave the averages.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Assuming Sunday start</b>: with a second argument of 1, Sunday is 1 and the test number changes.</li>
+<li lang="en"><b>Date column is text</b>: can't be tested.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want only Sunday to be off</h3>
+<p lang="en">Use WEEKDAY(A2,2)=7.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">The weekend test is WEEKDAY(date,2)&gt;5.</p>
 <a class="cta" href="/bn/weekday-formula-builder.html">“WEEKDAY সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/date-offset-formula-builder.html">তারিখ সরানোর সূত্র তৈরি করুন</a>: তারিখ সরানোর সূত্র তৈরি করুন।</li><li><a href="/bn/datedif-formula-builder.html">DATEDIF সূত্র তৈরি করুন</a>: একটি DATEDIF সূত্র তৈরি করুন।</li><li><a href="/bn/networkdays-formula-builder.html">NETWORKDAYS সূত্র তৈরি করুন</a>: কর্মদিবসের সূত্র তৈরি করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

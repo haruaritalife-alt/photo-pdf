@@ -201,14 +201,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>বাড়তি স্পেস মোছা</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>TRIM বেছে নিন</li><li>সেল লিখুন</li><li>কপি করুন</li></ul></div>
-<p><a href="/bn/text-case-formula-builder.html">বড় ছোট হাতের অক্ষর ও স্পেস সূত্র নির্মাতা</a>-এ আপনি এমন সূত্র তৈরি করতে পারেন যা শুরু, শেষ ও দ্বিগুণ স্পেস মুছে দেয়।</p>
+<p lang="en">Spaces around a name, double spaces between words. Hard to see, but they cause mismatches in duplicate checks and lookups. "TRIM" in <a href="/bn/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> removes them.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>TRIM বেছে নিন</li>
-<li>সেল লিখুন</li>
-<li>কপি করুন</li>
+<li lang="en">Choose "TRIM" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">শব্দগুলোর মাঝে একটি স্পেস থাকে।</div>
+<div class="note" lang="en">To apply to a whole column, use the second formula (ARRAYFORMULA).</div>
+<h2>উদাহরণ</h2>
+<ul>
+<li lang="en">=TRIM(A2)</li>
+</ul>
+<p lang="en">" Yamada Taro " becomes "Yamada Taro".</p>
+<h2 lang="en">What TRIM does</h2>
+<ul>
+<li lang="en">Removes leading and trailing spaces</li>
+<li lang="en">Collapses repeated spaces between words into one</li>
+</ul>
+<h2 lang="en">What TRIM doesn't remove</h2>
+<ul>
+<li lang="en">Full-width spaces (Japanese spaces) may remain</li>
+<li lang="en">Non-breaking spaces (special spaces) remain</li>
+<li lang="en">Line breaks and tabs remain</li>
+</ul>
+<p lang="en">Handle those another way.</p>
+<h2 lang="en">Removing full-width spaces</h2>
+<ul>
+<li lang="en">Example: =TRIM(SUBSTITUTE(A2," "," "))</li>
+</ul>
+<p lang="en">Converts full-width spaces to half-width, then applies TRIM.</p>
+<h2 lang="en">Removing non-printing characters</h2>
+<p lang="en">"CLEAN" removes control characters like line breaks. Layer it with TRIM.</p>
+<ul>
+<li lang="en">Example: =TRIM(CLEAN(A2))</li>
+</ul>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Tidying an imported roster</li>
+<li lang="en">Fixing why VLOOKUP doesn't match</li>
+<li lang="en">Pre-processing for duplicate checks</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">Some rows didn't match in VLOOKUP. The lookup values had trailing spaces. Applying TRIM made them match.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looks unchanged</b>: invisible characters are the cause. Check the length with LEN.</li>
+<li lang="en"><b>Result is still a formula</b>: to use as values, paste values only.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How does it differ from the site's "invisible characters" tool?</h3>
+<p lang="en">That tool tidies pasted text in bulk. This one is for when you want to build a formula.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">TRIM removes leading, trailing and repeated spaces.</p>
 <a class="cta" href="/bn/text-case-formula-builder.html">“বড় ছোট হাতের অক্ষর ও স্পেসের সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/excel-text-clean.html">এক্সেলের লেখা থেকে বাড়তি স্পেস ও অদৃশ্য অক্ষর সরানো</a>: বাড়তি স্পেস ও অদৃশ্য অক্ষর সরান।</li><li><a href="/bn/text-case-converter.html">অক্ষরের ছাঁদ কনভার্টার (camelCase, snake_case)</a>: টেক্সটের অক্ষরের ছাঁদ ও নামকরণ রীতি রূপান্তর করুন।</li><li><a href="/bn/excel-left-mid-builder.html">LEFT, MID বা RIGHT সূত্র তৈরি করুন</a>: লেখা বের করার সূত্র তৈরি করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>只改第一个字母</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>选择 CAPFIRST</li><li>输入单元格</li><li>复制</li></ul></div>
-<p>在<a href="/zh/text-case-formula-builder.html">大小写与空格公式生成器</a>中可以只把文字的第一个字母变成大写。</p>
+<p lang="en">You want only the first character of a sentence capitalized and the rest lowercase: "hello WORLD" to "Hello world". That's "CAPFIRST". <a href="/zh/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> builds it.</p>
 <h2>步骤</h2>
 <ol>
-<li>选择 CAPFIRST</li>
-<li>输入单元格</li>
-<li>复制</li>
+<li lang="en">Choose "CAPFIRST" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">其余字母会变成小写。</div>
+<div class="note" lang="en">There's no dedicated function, so it combines LEFT, MID, UPPER and LOWER.</div>
+<h2>示例</h2>
+<ul>
+<li lang="en">=UPPER(LEFT(A2,1))&amp;LOWER(MID(A2,2,LEN(A2)))</li>
+</ul>
+<p lang="en">"hello WORLD" becomes "Hello world".</p>
+<h2 lang="en">Reading the formula</h2>
+<ul>
+<li lang="en">UPPER(LEFT(A2,1)): the first character in uppercase</li>
+<li lang="en">LOWER(MID(A2,2,LEN(A2))): the rest in lowercase</li>
+<li lang="en">&amp;: joins the two</li>
+</ul>
+<h2 lang="en">Difference from PROPER</h2>
+<ul>
+<li lang="en">PROPER: every word capitalized (Hello World)</li>
+<li lang="en">CAPFIRST: only the start capitalized (Hello world)</li>
+</ul>
+<h2>适合</h2>
+<ul>
+<li lang="en">Tidying a sentence so only its start is capitalized</li>
+<li lang="en">Unifying heading notation</li>
+<li lang="en">Making all-caps sentences more readable</li>
+</ul>
+<h2>注意</h2>
+<p lang="en">Proper nouns mid-sentence also become lowercase. Fix "I" or names by hand.</p>
+<h2 lang="en">For empty cells</h2>
+<p lang="en">An empty cell doesn't error; it stays empty.</p>
+<h2>示例</h2>
+<p lang="en">Product descriptions were entered in all caps. CAPFIRST capitalized just the start and made them readable.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leading space</b>: the character after the space isn't capitalized. Apply TRIM first.</li>
+<li lang="en"><b>Sentences starting in Japanese</b>: no effect.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to use it with TRIM</h3>
+<p lang="en">Replace A2 with TRIM(A2). Edit by hand.</p>
+<h2>小结</h2>
+<p lang="en">To capitalize only the start, use CAPFIRST.</p>
 <a class="cta" href="/zh/text-case-formula-builder.html">使用“生成大小写与去空格公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/excel-text-clean.html">去掉 Excel 文字中多余的空格和看不见的字符</a>: 去掉多余的空格和看不见的字符。</li><li><a href="/zh/text-case-converter.html">英文大小写转换器（camelCase、snake_case）</a>: 转换文本的大小写和命名风格。</li><li><a href="/zh/excel-left-mid-builder.html">生成 LEFT、MID 或 RIGHT 公式</a>: 生成取出文字的公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

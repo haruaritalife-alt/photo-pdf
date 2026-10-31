@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>जब यह काम न करे तो क्या करें</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>फ़ाइल जाँचें</li><li>आकार जाँचें</li><li>दूसरा डिवाइस आज़माएँ</li></ul></div>
-<p>यदि <a href="/hi/text-case-formula-builder.html">अक्षर-रूप और स्पेस सूत्र बनाने वाला टूल</a> काम न करे, तो नीचे दी बातें जाँचें।</p>
-<h2>चरण</h2>
+<p lang="en">You pasted the formula but the text isn't tidy. Here are common troubles with <a href="/hi/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the text cell isn't in the "A2" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Looks unchanged</b>: invisible characters (such as non-breaking spaces) are the cause. Try NBSP.</li>
+<li lang="en"><b>Japanese unchanged</b>: case only applies to English letters.</li>
+<li lang="en"><b>#NAME?</b>: the function name is wrong.</li>
+<li lang="en"><b>Only one result</b>: to apply to a column, use the second formula (ARRAYFORMULA).</li>
+<li lang="en"><b>PROPER is off</b>: small words and brand names also get capitalized.</li>
+<li lang="en"><b>Full-width spaces remain</b>: TRIM may not remove full-width spaces.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>फ़ाइल जाँचें</li>
-<li>आकार जाँचें</li>
-<li>दूसरा डिवाइस आज़माएँ</li>
+<li lang="en">Check the length with LEN. If it's larger than it looks, invisible characters exist.</li>
+<li lang="en">Try the NBSP formula.</li>
+<li lang="en">If full-width spaces exist, convert them to half-width with SUBSTITUTE.</li>
 </ol>
-<div class="note">यदि कोई सूत्र न दिखे, तो जाँचें कि कक्ष A2 की तरह लिखा है।</div>
+<div class="note" lang="en">A formula's result lives apart from the original cell. To tidy the original table, paste as values.</div>
+<h2 lang="en">Combining</h2>
+<p lang="en">Several tidy-ups can be layered.</p>
+<ul>
+<li lang="en">Example: =PROPER(TRIM(CLEAN(A2)))</li>
+</ul>
+<p lang="en">From the inside: remove non-printing characters, tidy spaces, capitalize the start.</p>
+<h2>उदाहरण</h2>
+<p lang="en">Even after TRIM, sorting was off. A full-width space was at the start. Converting it to half-width with SUBSTITUTE and then applying TRIM aligned them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Can't be used as numbers</b>: TRIM's result is text. Use VALUE.</li>
+<li lang="en"><b>ARRAYFORMULA doesn't spread</b>: values below cause an error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to fix the original cells directly</h3>
+<p lang="en">Copy the formula's result and "Paste values only" into the original cells.</p>
+<h2>सारांश</h2>
+<p lang="en">Check invisible characters, how Japanese is handled, and formula combinations.</p>
 <a class="cta" href="/hi/text-case-formula-builder.html">“अक्षर-रूप और स्पेस का सूत्र बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/excel-text-clean.html">एक्सेल पाठ से फ़ालतू स्पेस और अदृश्य वर्ण हटाना</a>: फ़ालतू स्पेस और अदृश्य वर्ण हटाएँ।</li><li><a href="/hi/text-case-converter.html">अक्षर-रूप कन्वर्टर (camelCase, snake_case)</a>: टेक्स्ट के अक्षर-रूप और नामकरण शैलियाँ बदलें।</li><li><a href="/hi/excel-left-mid-builder.html">LEFT, MID या RIGHT सूत्र बनाएँ</a>: पाठ निकालने वाले सूत्र बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

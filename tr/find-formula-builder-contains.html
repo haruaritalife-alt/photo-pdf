@@ -201,14 +201,61 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Metin Olup Olmadığını Denetleme</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>CONTAINS'i seçin</li><li>Metni girin</li><li>Kopyalayın</li></ul></div>
-<p><a href="/tr/find-formula-builder.html">FIND oluşturucu</a> içinde bir hücrenin metni içerip içermediğini TRUE veya FALSE olarak denetleyebilirsiniz.</p>
+<p lang="en">You want TRUE or FALSE for whether a cell contains a certain word. That's "CONTAINS". <a href="/tr/find-formula-builder.html">Build a FIND Formula</a> builds it.</p>
 <h2>Adımlar</h2>
 <ol>
-<li>CONTAINS'i seçin</li>
-<li>Metni girin</li>
-<li>Kopyalayın</li>
+<li lang="en">Choose "CONTAINS" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Character to find".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">İkinci formül 1 veya 0 verir.</div>
+<div class="note" lang="en">The second formula returns 1 or 0, handy for calculations.</div>
+<h2>Örnek</h2>
+<ul>
+<li lang="en">=ISNUMBER(SEARCH("Tokyo",A2))</li>
+</ul>
+<p lang="en">TRUE if A2 contains "Tokyo", otherwise FALSE.</p>
+<ul>
+<li lang="en">Second: =IF(ISNUMBER(SEARCH("Tokyo",A2)),1,0)</li>
+</ul>
+<h2>Nasıl çalışır</h2>
+<p lang="en">SEARCH returns a position number if found and an error if not. ISNUMBER returns TRUE for numbers. So it tells whether it was found.</p>
+<h2 lang="en">Combining with IF</h2>
+<ul>
+<li lang="en">Example: =IF(ISNUMBER(SEARCH("Tokyo",A2)),"Tokyo case","Other")</li>
+</ul>
+<h2 lang="en">Using in conditional formatting</h2>
+<p lang="en">Color rows containing a particular word.</p>
+<ul>
+<li lang="en">Example: =ISNUMBER(SEARCH("urgent",$A2))</li>
+</ul>
+<h2 lang="en">Counting</h2>
+<p lang="en">Count rows containing a word with SUMPRODUCT.</p>
+<ul>
+<li lang="en">Example: =SUMPRODUCT(--ISNUMBER(SEARCH("Tokyo",A2:A100)))</li>
+</ul>
+<h2 lang="en">COUNTIF wildcards also work</h2>
+<ul>
+<li lang="en">Example: =COUNTIF(A2:A100,"*Tokyo*")</li>
+</ul>
+<p lang="en">For simple counting this is shorter.</p>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Finding rows whose notes contain "urgent"</li>
+<li lang="en">Judging whether an address contains a particular prefecture</li>
+<li lang="en">Classifying email subjects</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">Wanted only the rows containing "return" from an inquiry list. Using the CONTAINS formula as FILTER's condition made the list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width vs half-width</b>: treated as different characters.</li>
+<li lang="en"><b>Wildcard characters</b>: if the word contains "?" or "*", behavior differs from intent.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to test for any of several words</h3>
+<p lang="en">Add the SEARCH results together, or use REGEXMATCH.</p>
+<h2>Özet</h2>
+<p lang="en">Test for containment with ISNUMBER and SEARCH.</p>
 <a class="cta" href="/tr/find-formula-builder.html">“FIND formülü oluşturun” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/excel-left-mid-builder.html">LEFT, MID veya RIGHT formülü oluştur</a>: Metin çıkarmak için formüller oluşturun.</li><li><a href="/tr/substitute-formula-builder.html">SUBSTITUTE Formülü Oluşturun</a>: Metin değiştirme formülleri oluşturun.</li><li><a href="/tr/split-formula-builder.html">SPLIT Formülü Oluşturun</a>: Metin bölme formülleri oluşturun.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

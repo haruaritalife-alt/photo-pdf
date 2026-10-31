@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>排成一列</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>選擇 FLATTEN</li><li>輸入範圍</li><li>複製</li></ul></div>
-<p>在<a href="/tw/transpose-formula-builder.html">TRANSPOSE 公式生成器</a>中可以生成把表格排成一列的公式。</p>
+<p lang="en">You want data spread over several columns gathered into one: a three-column roster lined up in a single column. Use FLATTEN. "FLATTEN" in <a href="/tw/transpose-formula-builder.html">Build a TRANSPOSE Formula</a> builds it.</p>
 <h2>步驟</h2>
 <ol>
-<li>選擇 FLATTEN</li>
-<li>輸入範圍</li>
-<li>複製</li>
+<li lang="en">Choose "FLATTEN" in "Type".</li>
+<li lang="en">Enter the "Range".</li>
+<li lang="en">Copy the "Google Sheets formula" or "Excel formula" and paste.</li>
 </ol>
-<div class="note">Excel 使用 TOCOL。</div>
+<div class="note" lang="en">Google uses FLATTEN; Excel uses TOCOL (Excel 365).</div>
+<h2>示例</h2>
+<p lang="en">Making A1:C5 into one column:</p>
+<ul>
+<li lang="en">Google: =FLATTEN(A1:C5)</li>
+<li lang="en">Excel: =TOCOL(A1:C5)</li>
+</ul>
+<p lang="en">Items line up from the top-left, row by row (A1, B1, C1, A2…).</p>
+<h2>排序</h2>
+<ul>
+<li lang="en">FLATTEN: may line up in its default order</li>
+<li lang="en">To change the order, TOCOL's third argument can specify it (Excel)</li>
+</ul>
+<h2 lang="en">Empty cells</h2>
+<p lang="en">Empty cells may be included in the result. To exclude them, specify the second argument (Excel).</p>
+<ul>
+<li lang="en">Example: =TOCOL(A1:C5,1)</li>
+</ul>
+<h2>適合</h2>
+<ul>
+<li lang="en">Gathering a multi-column roster into one column</li>
+<li lang="en">Totaling numbers spread over several columns</li>
+<li lang="en">Combining with UNIQUE to remove duplicates across everything</li>
+<li lang="en">Example: =UNIQUE(FLATTEN(A1:C5))</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Three groups' rosters sat in three side-by-side columns. FLATTEN made one column, UNIQUE removed duplicates, and a participant list resulted.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>TOCOL unavailable</b>: old Excel lacks it.</li>
+<li lang="en"><b>Order differs from expectation</b>: Google goes row by row; Excel's default is row-wise.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about old Excel?</h3>
+<p lang="en">Without TOCOL, build a one-column formula using INDEX and ROW.</p>
+<h2>小結</h2>
+<p lang="en">To gather columns into one, use FLATTEN or TOCOL.</p>
 <a class="cta" href="/tw/transpose-formula-builder.html">使用「生成 TRANSPOSE 公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/table-transpose.html">互換表格的行和列</a>: 互換所貼上表格的行和列。</li><li><a href="/tw/filter-formula-builder.html">生成 FILTER 公式</a>: 生成 FILTER 公式。</li><li><a href="/tw/arrayformula-builder.html">生成 ARRAYFORMULA</a>: 生成 ARRAYFORMULA 公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

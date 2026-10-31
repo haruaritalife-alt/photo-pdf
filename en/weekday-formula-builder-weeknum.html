@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Week Numbers</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose WEEKNUM</li><li>Choose the week start</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/weekday-formula-builder.html">WEEKDAY Builder</a> you can build a formula for the week of the year.</p>
+<p>You want to know which week of the year it is, or to total by week. Use WEEKNUM. "WEEKNUM" in <a href="/en/weekday-formula-builder.html">Build a WEEKDAY Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose WEEKNUM</li>
-<li>Choose the week start</li>
-<li>Copy it</li>
+<li>Choose "WEEKNUM" in "Type".</li>
+<li>Enter the "Date cell".</li>
+<li>Choose the "Week start".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">ISO gives the international standard week number.</div>
+<div class="note">Depending on the week start, the same date can have a different week number.</div>
+<h2>Examples</h2>
+<ul>
+<li>Sunday start: =WEEKNUM(A2,1)</li>
+<li>Monday start: =WEEKNUM(A2,2)</li>
+<li>ISO week number: =ISOWEEKNUM(A2)</li>
+</ul>
+<h2>How week numbers work</h2>
+<ul>
+<li>WEEKNUM: the week containing January 1 is week 1</li>
+<li>ISOWEEKNUM: counts by the year the week's Thursday belongs to (international standard)</li>
+</ul>
+<h2>Why they differ</h2>
+<p>Around year-end and year-start, the same date can have different week numbers by method. For example, in a year where January 1 is a Friday, ISO may call it week 53 of the previous year.</p>
+<h2>Totaling by week</h2>
+<p>Make a WEEKNUM column and total with SUMIF.</p>
+<ul>
+<li>Example: =SUMIF(C2:C100,10,B2:B100)</li>
+</ul>
+<p>The total of week 10's sales.</p>
+<h2>Good for</h2>
+<ul>
+<li>Weekly sales or workload totals</li>
+<li>Schedules managed by week number</li>
+<li>Weekly report summaries</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted weekly sales totals. Showing week numbers beside dates and summing with SUMIF worked. Aligning to Monday start matched the company's weeks.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Crossing years</b>: with two years of data the same week number appears twice. Make the year a condition too.</li>
+<li><b>ISOWEEKNUM unavailable</b>: may not work in old Excel.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want the week within the month</h3>
+<p>Week-of-month is computed from the day of the month. Build the formula by hand.</p>
+<h2>Summary</h2>
+<p>Align the week start and count with WEEKNUM or ISOWEEKNUM.</p>
 <a class="cta" href="/en/weekday-formula-builder.html">Use "Build a WEEKDAY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li><li><a href="/en/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/en/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a>: Build working-day formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

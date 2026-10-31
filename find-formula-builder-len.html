@@ -200,14 +200,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>文字数</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>LENを選ぶ</li><li>セルを入れる</li><li>コピーする</li></ul></div>
-<p><a href="/find-formula-builder.html">FIND式の作成</a> では、文字数とバイト数を調べる式を作れます。</p>
+<p>文字数をチェックしたい。入力欄の上限に収まっているか、郵便番号が7桁か、などです。<a href="/find-formula-builder.html">文字を探す式を作る</a> の「LEN」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>LENを選ぶ</li>
-<li>セルを入れる</li>
-<li>コピーする</li>
+<li>「種類」で「LEN」を選ぶ。</li>
+<li>「文字のセル」を入れる（探す文字は不要）。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">全角文字は、バイト数では2として数えられます。</div>
+<div class="note">2つ目の式は、LENB（バイト数）です。全角は2、半角は1と数える環境で使えます。</div>
+<h2>例</h2>
+<ul>
+<li>=LEN(A2)</li>
+</ul>
+<p>「東京都」なら3、「Tokyo」なら5です。</p>
+<ul>
+<li>2つ目：=LENB(A2)</li>
+</ul>
+<h2>LENとLENBの違い</h2>
+<ul>
+<li>LEN：文字の数</li>
+<li>LENB：バイト数（日本語環境で、全角は2、半角は1）</li>
+</ul>
+<p>Googleスプレッドシートでは、LENBが期待どおりに動かない場合があります。</p>
+<h2>チェックに使う</h2>
+<ul>
+<li>郵便番号が7桁か：=LEN(SUBSTITUTE(A2,"-",""))=7</li>
+<li>100文字以内か：=LEN(A2)&lt;=100</li>
+</ul>
+<h2>空白も数えられる</h2>
+<p>LENは、空白も1文字と数えます。見た目より多い場合は、前後の空白や見えない文字が含まれている可能性があります。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>文字数制限のある入力の確認</li>
+<li>桁数のチェック（電話番号、番号）</li>
+<li>見えない空白の発見</li>
+</ul>
+<h2>改行も数えられる</h2>
+<p>改行は、1文字として数えられます。</p>
+<h2>例</h2>
+<p>Webフォームの説明文が、100文字以内という制限だった。LENで文字数を数え、超えている行を条件付き書式で色づけした。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>数値のセル</b>：数値の桁数も数えられるが、小数点や書式は影響する。</li>
+<li><b>絵文字</b>：1文字が、2文字分に数えられる場合がある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>空白を除いた文字数は？</h3>
+<p>SUBSTITUTEで空白を消してから、LENで数えます。</p>
+<ul>
+<li>例：=LEN(SUBSTITUTE(A2," ",""))</li>
+</ul>
+<h2>まとめ</h2>
+<p>文字数は、LEN。バイト数はLENB。</p>
 <a class="cta" href="/find-formula-builder.html">文字を探す式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-left-mid-builder.html">文字を取り出す式を作る</a>：文字を取り出す式を作ります。</li><li><a href="/substitute-formula-builder.html">SUBSTITUTE・REPLACEの式を作る</a>：文字を置き換える式を作ります。</li><li><a href="/split-formula-builder.html">SPLITの式を作る</a>：文字を分ける式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +263,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Counting Length</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose LEN</li><li>Enter the cell</li><li>Copy it</li></ul></div>
-<p>In <a href="/find-formula-builder.html">FIND Builder</a> you can build formulas for the character count and the byte count.</p>
+<p>You want to check character counts: whether text fits an input limit, whether a postal code has 7 digits, and so on. "LEN" in <a href="/find-formula-builder.html">Build a FIND Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose LEN</li>
-<li>Enter the cell</li>
-<li>Copy it</li>
+<li>Choose "LEN" in "Type".</li>
+<li>Enter the "Text cell" (no character to find needed).</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">A full-width character counts as 2 in bytes.</div>
+<div class="note">The second formula is LENB (byte count). In environments where full-width counts as 2 and half-width as 1.</div>
+<h2>Example</h2>
+<ul>
+<li>=LEN(A2)</li>
+</ul>
+<p>"東京都" gives 3 and "Tokyo" gives 5.</p>
+<ul>
+<li>Second: =LENB(A2)</li>
+</ul>
+<h2>LEN vs LENB</h2>
+<ul>
+<li>LEN: number of characters</li>
+<li>LENB: byte count (in Japanese environments, full-width is 2 and half-width is 1)</li>
+</ul>
+<p>In Google Sheets, LENB may not behave as expected.</p>
+<h2>Using for checks</h2>
+<ul>
+<li>Is the postal code 7 digits: =LEN(SUBSTITUTE(A2,"-",""))=7</li>
+<li>Within 100 characters: =LEN(A2)&lt;=100</li>
+</ul>
+<h2>Spaces count too</h2>
+<p>LEN counts spaces as characters. If the count exceeds what you see, leading or trailing spaces or invisible characters may be present.</p>
+<h2>Good for</h2>
+<ul>
+<li>Checking entries with length limits</li>
+<li>Digit checks (phone numbers, ID numbers)</li>
+<li>Finding invisible spaces</li>
+</ul>
+<h2>Line breaks count too</h2>
+<p>A line break counts as one character.</p>
+<h2>Example</h2>
+<p>A web form's description had a 100-character limit. LEN counted characters, and conditional formatting colored rows over the limit.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Numeric cells</b>: digit counts work, but decimal points and formats affect them.</li>
+<li><b>Emoji</b>: one may count as two characters.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What about length without spaces?</h3>
+<p>Remove spaces with SUBSTITUTE, then count with LEN.</p>
+<ul>
+<li>Example: =LEN(SUBSTITUTE(A2," ",""))</li>
+</ul>
+<h2>Summary</h2>
+<p>LEN for character count; LENB for bytes.</p>
 <a class="cta" href="/find-formula-builder.html">Use "Build a FIND Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a>: Build text extraction formulas.</li><li><a href="/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a>: Build text replacement formulas.</li><li><a href="/split-formula-builder.html">Build a SPLIT Formula</a>: Build text splitting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

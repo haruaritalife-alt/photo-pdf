@@ -201,14 +201,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ต้องทำอย่างไรเมื่อใช้งานไม่ได้</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ตรวจสอบไฟล์</li><li>ตรวจสอบขนาด</li><li>ลองใช้อุปกรณ์อื่น</li></ul></div>
-<p>หาก <a href="/th/find-formula-builder.html">ตัวสร้างสูตร FIND</a> ไม่ทำงาน ให้ตรวจสอบสิ่งต่อไปนี้</p>
-<h2>ขั้นตอน</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/th/find-formula-builder.html">Build a FIND Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the text cell isn't in the "A2" form; the character to find is empty (except LEN).</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: the character isn't found (FIND, SEARCH). The second formula can give 0.</li>
+<li lang="en"><b>Result is 0</b>: the second formula didn't find it.</li>
+<li lang="en"><b>Positions are off</b>: full-width vs half-width, or invisible characters like non-breaking spaces.</li>
+<li lang="en"><b>Not found due to case</b>: FIND is case-sensitive. Switch to SEARCH.</li>
+<li lang="en"><b>Counts don't match</b>: overlapping characters, empty cells.</li>
+<li lang="en"><b>LENB gives the same value</b>: Google Sheets may treat bytes differently.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>ตรวจสอบไฟล์</li>
-<li>ตรวจสอบขนาด</li>
-<li>ลองใช้อุปกรณ์อื่น</li>
+<li lang="en">Copy the character to find from the cell's text and paste it again.</li>
+<li lang="en">Count with LEN to check for invisible characters.</li>
+<li lang="en">Try SEARCH instead of FIND.</li>
 </ol>
-<div class="note">ถ้าไม่มีสูตรปรากฏ ให้ตรวจสอบว่าเซลล์เขียนเป็น A2 และใส่ข้อความที่จะค้นหาแล้ว</div>
+<div class="note" lang="en">Surrounding spaces and full-width/half-width differences are the top causes.</div>
+<h2 lang="en">Searching for "?" or "*"</h2>
+<p lang="en">SEARCH treats them as wildcards. To find them literally, write "~?" or "~*". FIND finds them as is.</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">The hyphen position wouldn't resolve. The cell's separator was a full-width hyphen "－". Changing the character to find to full-width resolved the position.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Numeric cells</b>: searching a number as text is affected by formatting. Convert with TEXT.</li>
+<li lang="en"><b>Using the result</b>: the position is a number. Combine with LEFT or MID.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want blank when not found</h3>
+<p lang="en">Wrap in IFERROR. The second formula returns 0.</p>
+<h2>สรุป</h2>
+<p lang="en">Check the notation of the character, invisible characters, and FIND vs SEARCH.</p>
 <a class="cta" href="/th/find-formula-builder.html">ใช้ “สร้างสูตร FIND” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/excel-left-mid-builder.html">สร้างสูตร LEFT, MID หรือ RIGHT</a>: สร้างสูตรสำหรับดึงข้อความ</li><li><a href="/th/substitute-formula-builder.html">สร้างสูตร SUBSTITUTE</a>: สร้างสูตรแทนที่ข้อความ</li><li><a href="/th/split-formula-builder.html">สร้างสูตร SPLIT</a>: สร้างสูตรแยกข้อความ</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Semakan hujung minggu</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Dikemas kini: 19 Okt 2026 | <a href="/about.html">Perihal (Jepun)</a></p>
 <div class="points"><b>Perkara penting</b><ul><li>Pilih WEEKEND</li><li>Masukkan sel</li><li>Salin</li></ul></div>
-<p>Dalam <a href="/ms/weekday-formula-builder.html">Pembina WEEKDAY</a> anda boleh membina formula yang memberikan TRUE untuk hari Sabtu atau Ahad.</p>
+<p lang="en">You want to color only weekends, or count weekend sales. Use a formula that tests "is it a weekend". "WEEKEND" in <a href="/ms/weekday-formula-builder.html">Build a WEEKDAY Formula</a> builds it.</p>
 <h2>Langkah</h2>
 <ol>
-<li>Pilih WEEKEND</li>
-<li>Masukkan sel</li>
-<li>Salin</li>
+<li lang="en">Choose "WEEKEND" in "Type".</li>
+<li lang="en">Enter the "Date cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Ia juga berfungsi dalam pemformatan bersyarat.</div>
+<div class="note" lang="en">The result is TRUE on weekends and FALSE on weekdays.</div>
+<h2>Contoh</h2>
+<ul>
+<li lang="en">=WEEKDAY(A2,2)&gt;5</li>
+</ul>
+<p lang="en">With WEEKDAY's second argument 2, Monday is 1 and Sunday is 7. Greater than 5 means Saturday (6) or Sunday (7).</p>
+<h2 lang="en">Coloring with conditional formatting</h2>
+<ol>
+<li lang="en">Select the range to color.</li>
+<li lang="en">Choose "Conditional formatting" → "Custom formula".</li>
+<li lang="en">Enter the formula (relative to the first cell).</li>
+</ol>
+<ul>
+<li lang="en">Example: =WEEKDAY($A2,2)&gt;5</li>
+</ul>
+<h2 lang="en">Splitting totals into weekdays and weekends</h2>
+<ul>
+<li lang="en">Weekend sales: =SUMPRODUCT((WEEKDAY(A2:A100,2)&gt;5)*B2:B100)</li>
+<li lang="en">Weekday sales: =SUMPRODUCT((WEEKDAY(A2:A100,2)&lt;=5)*B2:B100)</li>
+</ul>
+<h2 lang="en">Holidays aren't included</h2>
+<p lang="en">This tests by weekday only. A holiday on a non-weekend counts as a weekday. To treat holidays as days off too, check against a holiday list.</p>
+<ul>
+<li lang="en">Example: =OR(WEEKDAY(A2,2)&gt;5,COUNTIF(holiday range,A2)&gt;0)</li>
+</ul>
+<h2>Sesuai untuk</h2>
+<ul>
+<li lang="en">Coloring calendars and schedules</li>
+<li lang="en">Comparing sales or visitors on weekdays and weekends</li>
+<li lang="en">Counting weekend work</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">Wanted to compare average visitors on weekends and weekdays. Using the weekend test as a condition in SUMPRODUCT, then dividing by the days, gave the averages.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Assuming Sunday start</b>: with a second argument of 1, Sunday is 1 and the test number changes.</li>
+<li lang="en"><b>Date column is text</b>: can't be tested.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want only Sunday to be off</h3>
+<p lang="en">Use WEEKDAY(A2,2)=7.</p>
+<h2>Ringkasan</h2>
+<p lang="en">The weekend test is WEEKDAY(date,2)&gt;5.</p>
 <a class="cta" href="/ms/weekday-formula-builder.html">Guna “Bina formula WEEKDAY” (percuma)</a>
 <h2>Alat yang sepadan dengan ini</h2><ul><li><a href="/ms/date-offset-formula-builder.html">Bina formula anjakan tarikh</a>: Bina formula anjakan tarikh.</li><li><a href="/ms/datedif-formula-builder.html">Cipta formula DATEDIF</a>: Cipta formula DATEDIF.</li><li><a href="/ms/networkdays-formula-builder.html">Bina Formula NETWORKDAYS</a>: Bina formula hari bekerja.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil amat dihargai.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Hantar tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hantar hadiah (senarai hajat Amazon)</a></div>

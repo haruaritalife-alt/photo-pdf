@@ -215,14 +215,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>حذف فاصله‌های اضافی</h1>
 <p class="meta">منتشرشده: 19 اکتبر 2026 | به‌روزرسانی: 19 اکتبر 2026 | <a href="/about.html">دربارهٔ ما (ژاپنی)</a></p>
 <div class="points"><b>نکات کلیدی</b><ul><li>TRIM را انتخاب کنید</li><li>سلول را وارد کنید</li><li>کپی کنید</li></ul></div>
-<p>در <a href="/fa/text-case-formula-builder.html">سازندهٔ حروف بزرگ و کوچک و فاصله</a> می‌توانید فرمولی بسازید که فاصله‌های ابتدا، انتها و دوتایی را حذف می‌کند.</p>
+<p lang="en">Spaces around a name, double spaces between words. Hard to see, but they cause mismatches in duplicate checks and lookups. "TRIM" in <a href="/fa/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> removes them.</p>
 <h2>مراحل</h2>
 <ol>
-<li>TRIM را انتخاب کنید</li>
-<li>سلول را وارد کنید</li>
-<li>کپی کنید</li>
+<li lang="en">Choose "TRIM" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">بین کلمه‌ها یک فاصله می‌ماند.</div>
+<div class="note" lang="en">To apply to a whole column, use the second formula (ARRAYFORMULA).</div>
+<h2>مثال</h2>
+<ul>
+<li lang="en">=TRIM(A2)</li>
+</ul>
+<p lang="en">" Yamada Taro " becomes "Yamada Taro".</p>
+<h2 lang="en">What TRIM does</h2>
+<ul>
+<li lang="en">Removes leading and trailing spaces</li>
+<li lang="en">Collapses repeated spaces between words into one</li>
+</ul>
+<h2 lang="en">What TRIM doesn't remove</h2>
+<ul>
+<li lang="en">Full-width spaces (Japanese spaces) may remain</li>
+<li lang="en">Non-breaking spaces (special spaces) remain</li>
+<li lang="en">Line breaks and tabs remain</li>
+</ul>
+<p lang="en">Handle those another way.</p>
+<h2 lang="en">Removing full-width spaces</h2>
+<ul>
+<li lang="en">Example: =TRIM(SUBSTITUTE(A2," "," "))</li>
+</ul>
+<p lang="en">Converts full-width spaces to half-width, then applies TRIM.</p>
+<h2 lang="en">Removing non-printing characters</h2>
+<p lang="en">"CLEAN" removes control characters like line breaks. Layer it with TRIM.</p>
+<ul>
+<li lang="en">Example: =TRIM(CLEAN(A2))</li>
+</ul>
+<h2>مناسب برای</h2>
+<ul>
+<li lang="en">Tidying an imported roster</li>
+<li lang="en">Fixing why VLOOKUP doesn't match</li>
+<li lang="en">Pre-processing for duplicate checks</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Some rows didn't match in VLOOKUP. The lookup values had trailing spaces. Applying TRIM made them match.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Looks unchanged</b>: invisible characters are the cause. Check the length with LEN.</li>
+<li lang="en"><b>Result is still a formula</b>: to use as values, paste values only.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How does it differ from the site's "invisible characters" tool?</h3>
+<p lang="en">That tool tidies pasted text in bulk. This one is for when you want to build a formula.</p>
+<h2>خلاصه</h2>
+<p lang="en">TRIM removes leading, trailing and repeated spaces.</p>
 <a class="cta" href="/fa/text-case-formula-builder.html">استفاده از «ساخت فرمول حروف بزرگ و کوچک و فاصله» (رایگان)</a>
 <h2>ابزارهایی که با این ابزار خوب هماهنگ‌اند</h2><ul><li><a href="/fa/excel-text-clean.html">حذف فاصله‌های اضافی و نویسه‌های نامرئی از متن اکسل</a>: فاصله‌های اضافی و نویسه‌های نامرئی را حذف کنید.</li><li><a href="/fa/text-case-converter.html">تبدیل‌کننده حروف بزرگ و کوچک (camelCase، snake_case)</a>: حروف بزرگ و کوچک و سبک‌های نام‌گذاری متن را تبدیل کنید.</li><li><a href="/fa/excel-left-mid-builder.html">ساخت فرمول LEFT، MID یا RIGHT</a>: فرمول‌هایی برای استخراج متن بسازید.</li></ul>
 <div class="tip"><p>اگر این راهنما مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ارسال انعام (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ارسال هدیه (فهرست آرزوهای آمازون)</a></div>

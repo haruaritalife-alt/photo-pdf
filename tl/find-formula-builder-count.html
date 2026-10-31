@@ -201,14 +201,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pagbibilang ng paglitaw</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Piliin ang COUNTCHAR</li><li>Ilagay ang text</li><li>Kopyahin</li></ul></div>
-<p>Sa <a href="/tl/find-formula-builder.html">FIND Builder</a>, mabibilang mo kung ilang beses lumitaw ang isang teksto.</p>
+<p lang="en">You want to count how many times a character appears, for example to learn the item count from the number of commas. There's no dedicated function, so combine LEN and SUBSTITUTE. "COUNTCHAR" in <a href="/tl/find-formula-builder.html">Build a FIND Formula</a> builds it.</p>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Piliin ang COUNTCHAR</li>
-<li>Ilagay ang text</li>
-<li>Kopyahin</li>
+<li lang="en">Choose "COUNTCHAR" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Character to find".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Hinahati nito sa haba ng teksto, kaya gumagana rin sa ilang character lang.</div>
+<div class="note" lang="en">The second formula counts case-insensitively. Copy it with "Copy the second".</div>
+<h2>Halimbawa</h2>
+<p lang="en">The number of commas in A2:</p>
+<ul>
+<li lang="en">=(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))/LEN(",")</li>
+</ul>
+<p lang="en">For "Tokyo,Osaka,Nagoya" it returns 2.</p>
+<h2 lang="en">Reading the formula</h2>
+<ol>
+<li lang="en">LEN(A2): original length</li>
+<li lang="en">LEN(SUBSTITUTE(A2,",","")): length after removing commas</li>
+<li lang="en">The difference divided by the target's length: the number of commas</li>
+</ol>
+<h2 lang="en">Knowing the item count</h2>
+<p lang="en">Add 1 to the comma count to get the item count.</p>
+<ul>
+<li lang="en">Example: =(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))+1</li>
+</ul>
+<h2 lang="en">Multi-character words work too</h2>
+<p lang="en">Even with several characters to find, dividing by the length at the end lets it count.</p>
+<ul>
+<li lang="en">Example: how many times "apple" appears</li>
+</ul>
+<h2>Malaki at maliit na titik</h2>
+<ul>
+<li lang="en">First formula: case-sensitive</li>
+<li lang="en">Second formula: uppercases first and counts; case-insensitive</li>
+</ul>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Knowing item counts from delimiter counts</li>
+<li lang="en">How many times a word appears in text</li>
+<li lang="en">Counting spaces (word count)</li>
+</ul>
+<h2>Halimbawa</h2>
+<p lang="en">Wanted the number of tags in cells holding comma-separated tags. Adding 1 to the comma count gave the tag count.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Empty cells</b>: the result is 0. The item count would become 1, so judge empty cells separately.</li>
+<li lang="en"><b>Overlapping characters</b>: "aa" inside "aaa" counts as one.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to count across a whole range</h3>
+<p lang="en">Combine with SUMPRODUCT. Build the formula by hand.</p>
+<h2>Buod</h2>
+<p lang="en">Character counts come from the LEN difference with SUBSTITUTE.</p>
 <a class="cta" href="/tl/find-formula-builder.html">Gamitin ang “Gumawa ng formula ng FIND” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/excel-left-mid-builder.html">Gumawa ng formula na LEFT, MID o RIGHT</a>: Gumawa ng mga formula para kumuha ng teksto.</li><li><a href="/tl/substitute-formula-builder.html">Gumawa ng SUBSTITUTE Formula</a>: Gumawa ng mga formula sa pagpapalit ng teksto.</li><li><a href="/tl/split-formula-builder.html">Gumawa ng SPLIT Formula</a>: Gumawa ng mga formula sa paghahati ng teksto.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

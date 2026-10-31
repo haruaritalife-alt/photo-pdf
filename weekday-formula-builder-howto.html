@@ -200,14 +200,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>曜日の書き方（式を自動で作る・無料）</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>日付のセルを入れる</li><li>種類を選ぶ</li><li>式をコピー</li></ul></div>
-<p><a href="/weekday-formula-builder.html">曜日式の作成</a> は、入力した内容から式を作ります。</p>
+<p>日付のセルから、曜日を出したい。週の何週目かを知りたい。土日かどうかを判定したい。<a href="/weekday-formula-builder.html">曜日・週番号の式を作る</a> は、日付のセルと種類を選ぶだけで、その式を作ります。入力は、この端末の中で処理され、外には送られません。</p>
 <h2>手順</h2>
 <ol>
-<li>日付のセルを入れる</li>
-<li>種類を選ぶ</li>
-<li>式をコピー</li>
+<li>「日付のセル（A2 など）」に、日付の入ったセルを入れます。</li>
+<li>「種類」を選びます（WEEKDAY、NAME、FULLNAME、JA、WEEKNUM、WEEKEND）。</li>
+<li>「週の始まり」を選びます。</li>
+<li>「式」を、「結果をコピー」でコピーして貼ります。</li>
+<li>列全体にかけたいときは、2つ目の式（Googleスプレッドシート）を使います。</li>
 </ol>
-<div class="note">できた式は、そのままセルに貼れます。</div>
+<div class="note">2つ目の式は、ARRAYFORMULAで包んだ式です。1つのセルに貼ると、列全体に広がります。</div>
+<h2>例</h2>
+<p>A2の日付から、日本語の曜日を出す場合です。</p>
+<ul>
+<li>=TEXT(A2,"aaa")</li>
+</ul>
+<p>2026-10-01なら、「木」と表示されます。</p>
+<h2>6つの種類</h2>
+<ul>
+<li><b>WEEKDAY</b>：曜日の番号</li>
+<li><b>NAME</b>：短い英語の曜日（Thu）</li>
+<li><b>FULLNAME</b>：長い英語の曜日（Thursday）</li>
+<li><b>JA</b>：日本語の曜日（木）</li>
+<li><b>WEEKNUM</b>：その年の何週目か</li>
+<li><b>WEEKEND</b>：土日ならTRUE</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>日付の隣に、曜日を表示したい</li>
+<li>土日だけ、色をつけたい</li>
+<li>週ごとに、売上を集計したい</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：セルが「A2」の形でない。</li>
+<li><b>日本語の曜日が出ない</b>：「aaa」はExcelの書式。Googleスプレッドシートでは、別の方法が必要な場合がある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>日付を文字で入れたセルでも使えますか？</h3>
+<p>日付として認識されているセルのみです。文字の日付は、DATEVALUEで直します。</p>
+<h2>まとめ</h2>
+<p>日付のセルと種類を選ぶだけで、曜日の式ができます。</p>
 <a class="cta" href="/weekday-formula-builder.html">曜日・週番号の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-offset-formula-builder.html">日付の足し引きの式を作る</a>：日付の足し引きの式を作ります。</li><li><a href="/datedif-formula-builder.html">DATEDIFの式を作る</a>：DATEDIFの式を作ります。</li><li><a href="/networkdays-formula-builder.html">営業日数の式を作る</a>：営業日数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +252,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Write WEEKDAY (Build It Automatically, Free)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the date cell</li><li>Choose the kind</li><li>Copy the formula</li></ul></div>
-<p><a href="/weekday-formula-builder.html">WEEKDAY Builder</a> builds the formula from what you enter.</p>
+<p>You want the weekday from a date cell, the week number, or a weekend test. <a href="/weekday-formula-builder.html">Build a WEEKDAY Formula</a> builds the formula from a date cell and a type. Input is processed inside this device and not sent outside.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the date cell</li>
-<li>Choose the kind</li>
-<li>Copy the formula</li>
+<li>In "Date cell (such as A2)", enter the cell holding the date.</li>
+<li>Choose a "Type" (WEEKDAY, NAME, FULLNAME, JA, WEEKNUM, WEEKEND).</li>
+<li>Choose the "Week start".</li>
+<li>Copy the "Formula" with "Copy result" and paste.</li>
+<li>To apply to a whole column, use the second formula (Google Sheets).</li>
 </ol>
-<div class="note">The formula can be pasted straight into a cell.</div>
+<div class="note">The second formula is wrapped in ARRAYFORMULA. Pasted in one cell, it spreads over the column.</div>
+<h2>Example</h2>
+<p>Getting the Japanese weekday from the date in A2:</p>
+<ul>
+<li>=TEXT(A2,"aaa")</li>
+</ul>
+<p>For 2026-10-01 it shows "木" (Thursday).</p>
+<h2>The six types</h2>
+<ul>
+<li><b>WEEKDAY</b>: weekday number</li>
+<li><b>NAME</b>: short English weekday (Thu)</li>
+<li><b>FULLNAME</b>: long English weekday (Thursday)</li>
+<li><b>JA</b>: Japanese weekday (木)</li>
+<li><b>WEEKNUM</b>: which week of the year</li>
+<li><b>WEEKEND</b>: TRUE on weekends</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Showing the weekday next to a date</li>
+<li>Coloring only weekends</li>
+<li>Totaling sales by week</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the cell isn't in the "A2" form.</li>
+<li><b>Japanese weekday doesn't appear</b>: "aaa" is an Excel format. Google Sheets may need another approach.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does it work with dates entered as text?</h3>
+<p>Only cells recognized as dates. Fix text dates with DATEVALUE.</p>
+<h2>Summary</h2>
+<p>Choose a date cell and a type to build the weekday formula.</p>
 <a class="cta" href="/weekday-formula-builder.html">Use "Build a WEEKDAY Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li><li><a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a>: Build working-day formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

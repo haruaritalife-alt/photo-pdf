@@ -201,14 +201,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Voorkomens tellen</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Kies COUNTCHAR</li><li>Voer de tekst in</li><li>Kopieer</li></ul></div>
-<p>In <a href="/nl/find-formula-builder.html">FIND-maker</a> kun je tellen hoe vaak een tekst voorkomt.</p>
+<p lang="en">You want to count how many times a character appears, for example to learn the item count from the number of commas. There's no dedicated function, so combine LEN and SUBSTITUTE. "COUNTCHAR" in <a href="/nl/find-formula-builder.html">Build a FIND Formula</a> builds it.</p>
 <h2>Stappen</h2>
 <ol>
-<li>Kies COUNTCHAR</li>
-<li>Voer de tekst in</li>
-<li>Kopieer</li>
+<li lang="en">Choose "COUNTCHAR" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Character to find".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Deelt door de lengte van de tekst, dus werkt ook voor enkele tekens.</div>
+<div class="note" lang="en">The second formula counts case-insensitively. Copy it with "Copy the second".</div>
+<h2>Voorbeeld</h2>
+<p lang="en">The number of commas in A2:</p>
+<ul>
+<li lang="en">=(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))/LEN(",")</li>
+</ul>
+<p lang="en">For "Tokyo,Osaka,Nagoya" it returns 2.</p>
+<h2 lang="en">Reading the formula</h2>
+<ol>
+<li lang="en">LEN(A2): original length</li>
+<li lang="en">LEN(SUBSTITUTE(A2,",","")): length after removing commas</li>
+<li lang="en">The difference divided by the target's length: the number of commas</li>
+</ol>
+<h2 lang="en">Knowing the item count</h2>
+<p lang="en">Add 1 to the comma count to get the item count.</p>
+<ul>
+<li lang="en">Example: =(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))+1</li>
+</ul>
+<h2 lang="en">Multi-character words work too</h2>
+<p lang="en">Even with several characters to find, dividing by the length at the end lets it count.</p>
+<ul>
+<li lang="en">Example: how many times "apple" appears</li>
+</ul>
+<h2>Hoofdletters en kleine letters</h2>
+<ul>
+<li lang="en">First formula: case-sensitive</li>
+<li lang="en">Second formula: uppercases first and counts; case-insensitive</li>
+</ul>
+<h2>Goed voor</h2>
+<ul>
+<li lang="en">Knowing item counts from delimiter counts</li>
+<li lang="en">How many times a word appears in text</li>
+<li lang="en">Counting spaces (word count)</li>
+</ul>
+<h2>Voorbeeld</h2>
+<p lang="en">Wanted the number of tags in cells holding comma-separated tags. Adding 1 to the comma count gave the tag count.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Empty cells</b>: the result is 0. The item count would become 1, so judge empty cells separately.</li>
+<li lang="en"><b>Overlapping characters</b>: "aa" inside "aaa" counts as one.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to count across a whole range</h3>
+<p lang="en">Combine with SUMPRODUCT. Build the formula by hand.</p>
+<h2>Samenvatting</h2>
+<p lang="en">Character counts come from the LEN difference with SUBSTITUTE.</p>
 <a class="cta" href="/nl/find-formula-builder.html">Gebruik “Maak een FIND-formule” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/excel-left-mid-builder.html">Een LEFT-, MID- of RIGHT-formule maken</a>: Maak formules om tekst op te halen.</li><li><a href="/nl/substitute-formula-builder.html">Een SUBSTITUTE-formule maken</a>: Maak formules om tekst te vervangen.</li><li><a href="/nl/split-formula-builder.html">Een SPLIT-formule maken</a>: Maak formules om tekst te splitsen.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>

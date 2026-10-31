@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ผลลัพธ์ที่ไหลต่อ</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>สร้างสูตร</li><li>วางลงในเซลล์ว่าง</li><li>ตรวจสอบ</li></ul></div>
-<p>สูตร <a href="/th/transpose-formula-builder.html">ตัวสร้างสูตร TRANSPOSE</a> ปล่อยผลลัพธ์ไหลลงล่างและไปทางขวา</p>
-<h2>ขั้นตอน</h2>
+<p lang="en">When you enter TRANSPOSE or similar in one cell, the result spreads to neighboring cells. This "spill" has some rules. Know them before pasting a formula from <a href="/th/transpose-formula-builder.html">Build a TRANSPOSE Formula</a>.</p>
+<h2 lang="en">How spilling works</h2>
+<p lang="en">With the formula cell as the top-left, cells to the right and below are used for the size of the result.</p>
+<ul>
+<li lang="en">TRANSPOSE of A1:C5 (5×3): a 3×5 area is used</li>
+<li lang="en">From the formula cell, 5 columns right and 3 rows down</li>
+</ul>
+<h2 lang="en">If the spill range isn't empty</h2>
+<p lang="en">If other cells hold values, the result can't spread and errors.</p>
+<ul>
+<li lang="en">Google: #REF!</li>
+<li lang="en">Excel: #SPILL!</li>
+</ul>
+<p lang="en">Clearing the cells in the way fixes it.</p>
+<div class="note" lang="en">You can't edit just some cells of a spilled result. To fix, edit the formula cell.</div>
+<h2 lang="en">Steps (check before spilling)</h2>
 <ol>
-<li>สร้างสูตร</li>
-<li>วางลงในเซลล์ว่าง</li>
-<li>ตรวจสอบ</li>
+<li lang="en">Work out the result size (swap the source's rows and columns).</li>
+<li lang="en">From the top-left cell, check that area is empty.</li>
+<li lang="en">Paste the formula.</li>
 </ol>
-<div class="note">เว้นเซลล์ที่ผลลัพธ์ไหลไปถึงให้ว่างไว้</div>
+<h2 lang="en">When the source grows</h2>
+<p lang="en">If the source range is fixed, added rows aren't reflected. Extend the range, or in Google omit the end like "A1:C".</p>
+<h2 lang="en">Fixing the result</h2>
+<p lang="en">To keep the result as values, copy and "Paste values only". The formula disappears, leaving ordinary values.</p>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Deciding where to place the result beforehand</li>
+<li lang="en">When other data is above or to the right of the table</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Placed the swapped table right beside the original. The original overlapped the result range, causing an error. Moving the placement apart fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Result hits hidden cells</b>: merged cells, filtered rows.</li>
+<li lang="en"><b>Exceeds the sheet edge</b>: a result beyond the sheet's edge errors.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I can't tell where the error is</h3>
+<p lang="en">In Excel, selecting the error cell shows which cells are in the way.</p>
+<h2>สรุป</h2>
+<p lang="en">Count the result's size and keep the spill range empty.</p>
 <a class="cta" href="/th/transpose-formula-builder.html">ใช้ “สร้างสูตร TRANSPOSE” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/table-transpose.html">สลับแถวและคอลัมน์ของตาราง</a>: สลับแถวและคอลัมน์ของตารางที่วาง</li><li><a href="/th/filter-formula-builder.html">สร้างสูตร FILTER</a>: สร้างสูตร FILTER</li><li><a href="/th/arrayformula-builder.html">สร้าง ARRAYFORMULA</a>: สร้างสูตร ARRAYFORMULA</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

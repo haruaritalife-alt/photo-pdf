@@ -200,14 +200,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/find-formula-builder.html">FIND式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を貼ったのに、結果がおかしい。<a href="/find-formula-builder.html">文字を探す式を作る</a> で起こりやすい困りごとと対処法です。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：文字のセルが「A2」の形でない。探す文字が空（LEN以外）。</li>
+</ul>
+<h2>スプレッドシートに貼ったあと</h2>
+<ul>
+<li><b>#VALUE!</b>：探す文字が見つからない（FIND、SEARCH）。2つ目の式で、0にできる。</li>
+<li><b>結果が0</b>：2つ目の式で、見つからなかった。</li>
+<li><b>位置がずれる</b>：全角と半角の違い。ノーブレークスペースなど、見えない文字。</li>
+<li><b>大文字小文字で見つからない</b>：FINDは区別する。SEARCHに替える。</li>
+<li><b>個数が合わない</b>：重なる文字、空のセル。</li>
+<li><b>LENBが同じ値</b>：Googleスプレッドシートでは、バイト数の扱いが異なる場合がある。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>探す文字を、セルの文字からコピーして、貼り直す。</li>
+<li>LENで文字数を数え、見えない文字がないか確かめる。</li>
+<li>FINDではなく、SEARCHを試す。</li>
 </ol>
-<div class="note">式が出ないときは、セルがA2のように書かれているか、探す文字が入っているか確かめます。</div>
+<div class="note">前後の空白や、全角と半角の違いが、いちばんの原因です。</div>
+<h2>「?」や「*」を探したい</h2>
+<p>SEARCHは、ワイルドカードとして扱います。そのまま探すには、「~?」「~*」と書きます。FINDなら、そのまま探せます。</p>
+<h2>例</h2>
+<p>ハイフンの位置がうまく取れなかった。セルの区切りが、全角のハイフン「－」だった。探す文字を全角に変えると、位置が取れた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>数値のセル</b>：数値を文字として探す場合、書式の影響を受ける。TEXT関数で文字にする。</li>
+<li><b>結果の使い方</b>：位置は数字。LEFTやMIDと組み合わせる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>見つからないときに、空にしたい</h3>
+<p>IFERRORで包みます。2つ目の式は、0を返します。</p>
+<h2>まとめ</h2>
+<p>探す文字の表記、見えない文字、FINDとSEARCHの違い。この3つを確かめましょう。</p>
 <a class="cta" href="/find-formula-builder.html">文字を探す式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-left-mid-builder.html">文字を取り出す式を作る</a>：文字を取り出す式を作ります。</li><li><a href="/substitute-formula-builder.html">SUBSTITUTE・REPLACEの式を作る</a>：文字を置き換える式を作ります。</li><li><a href="/split-formula-builder.html">SPLITの式を作る</a>：文字を分ける式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +246,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/find-formula-builder.html">FIND Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted the formula but the result is odd. Here are common troubles with <a href="/find-formula-builder.html">Build a FIND Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the text cell isn't in the "A2" form; the character to find is empty (except LEN).</li>
+</ul>
+<h2>After pasting into the sheet</h2>
+<ul>
+<li><b>#VALUE!</b>: the character isn't found (FIND, SEARCH). The second formula can give 0.</li>
+<li><b>Result is 0</b>: the second formula didn't find it.</li>
+<li><b>Positions are off</b>: full-width vs half-width, or invisible characters like non-breaking spaces.</li>
+<li><b>Not found due to case</b>: FIND is case-sensitive. Switch to SEARCH.</li>
+<li><b>Counts don't match</b>: overlapping characters, empty cells.</li>
+<li><b>LENB gives the same value</b>: Google Sheets may treat bytes differently.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Copy the character to find from the cell's text and paste it again.</li>
+<li>Count with LEN to check for invisible characters.</li>
+<li>Try SEARCH instead of FIND.</li>
 </ol>
-<div class="note">If no formula appears, check that the cell is written like A2 and the text to find is entered.</div>
+<div class="note">Surrounding spaces and full-width/half-width differences are the top causes.</div>
+<h2>Searching for "?" or "*"</h2>
+<p>SEARCH treats them as wildcards. To find them literally, write "~?" or "~*". FIND finds them as is.</p>
+<h2>Example</h2>
+<p>The hyphen position wouldn't resolve. The cell's separator was a full-width hyphen "－". Changing the character to find to full-width resolved the position.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Numeric cells</b>: searching a number as text is affected by formatting. Convert with TEXT.</li>
+<li><b>Using the result</b>: the position is a number. Combine with LEFT or MID.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want blank when not found</h3>
+<p>Wrap in IFERROR. The second formula returns 0.</p>
+<h2>Summary</h2>
+<p>Check the notation of the character, invisible characters, and FIND vs SEARCH.</p>
 <a class="cta" href="/find-formula-builder.html">Use "Build a FIND Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a>: Build text extraction formulas.</li><li><a href="/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a>: Build text replacement formulas.</li><li><a href="/split-formula-builder.html">Build a SPLIT Formula</a>: Build text splitting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

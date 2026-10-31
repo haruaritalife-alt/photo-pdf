@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>星期名称</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>选择 NAME</li><li>输入单元格</li><li>复制</li></ul></div>
-<p>在<a href="/zh/weekday-formula-builder.html">WEEKDAY 公式生成器</a>中可以生成给出星期名称的公式。</p>
+<p lang="en">Next to a date you want the weekday name, like "木" or "Thursday". "NAME", "FULLNAME" and "JA" in <a href="/zh/weekday-formula-builder.html">Build a WEEKDAY Formula</a> build these.</p>
 <h2>步骤</h2>
 <ol>
-<li>选择 NAME</li>
-<li>输入单元格</li>
-<li>复制</li>
+<li lang="en">Choose "NAME", "FULLNAME" or "JA" in "Type".</li>
+<li lang="en">Enter the "Date cell".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">FULLNAME 给出完整名称。</div>
+<div class="note" lang="en">The weekday name is set by the TEXT function's format.</div>
+<h2 lang="en">The three types with examples</h2>
+<p lang="en">For 2026-10-01 (Thursday):</p>
+<ul>
+<li lang="en">NAME: =TEXT(A2,"ddd") → Thu</li>
+<li lang="en">FULLNAME: =TEXT(A2,"dddd") → Thursday</li>
+<li lang="en">JA: =TEXT(A2,"aaa") → 木</li>
+</ul>
+<h2 lang="en">Showing date and weekday together</h2>
+<ul>
+<li lang="en">Example: =TEXT(A2,"yyyy/m/d(aaa)")</li>
+</ul>
+<p lang="en">It gives "2026/10/1(木)".</p>
+<h2 lang="en">Using cell format instead</h2>
+<p lang="en">You can show the weekday without a formula via the cell's display format. Enter "aaa" or "ddd" in a custom format. The value stays a date, so it's usable in calculations.</p>
+<h2>适合</h2>
+<ul>
+<li lang="en">Weekday columns in schedules and rotas</li>
+<li lang="en">Showing date and weekday in one cell</li>
+<li lang="en">Weekday notation in English documents</li>
+</ul>
+<h2 lang="en">In Google Sheets</h2>
+<p lang="en">Google Sheets' TEXT may not support "aaa". Build Japanese weekdays with CHOOSE and WEEKDAY.</p>
+<ul>
+<li lang="en">Example: =CHOOSE(WEEKDAY(A2),"日","月","火","水","木","金","土")</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Wanted the weekday beside dates in a shift table. Copying the JA formula down lined up "月", "火"…</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>The result is text</b>: the weekday name is text and not for calculation.</li>
+<li lang="en"><b>Environment language</b>: English weekday spelling may vary with the software's language setting.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">The weekday shows in English</h3>
+<p lang="en">Use the JA formula, or line up Japanese weekdays with CHOOSE.</p>
+<h2>小结</h2>
+<p lang="en">The weekday name is determined by the TEXT format.</p>
 <a class="cta" href="/zh/weekday-formula-builder.html">使用“生成 WEEKDAY 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/date-offset-formula-builder.html">生成日期加减公式</a>: 生成日期加减公式。</li><li><a href="/zh/datedif-formula-builder.html">生成 DATEDIF 公式</a>: 生成 DATEDIF 公式。</li><li><a href="/zh/networkdays-formula-builder.html">生成 NETWORKDAYS 公式</a>: 生成工作日公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

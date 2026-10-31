@@ -201,14 +201,59 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>কতবার আছে তা গোনা</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>COUNTCHAR বেছে নিন</li><li>লেখা লিখুন</li><li>কপি করুন</li></ul></div>
-<p><a href="/bn/find-formula-builder.html">FIND সূত্র নির্মাতা</a>-এ আপনি গুনতে পারেন একটি লেখা কতবার এসেছে।</p>
+<p lang="en">You want to count how many times a character appears, for example to learn the item count from the number of commas. There's no dedicated function, so combine LEN and SUBSTITUTE. "COUNTCHAR" in <a href="/bn/find-formula-builder.html">Build a FIND Formula</a> builds it.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>COUNTCHAR বেছে নিন</li>
-<li>লেখা লিখুন</li>
-<li>কপি করুন</li>
+<li lang="en">Choose "COUNTCHAR" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Character to find".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">এটি লেখার দৈর্ঘ্য দিয়ে ভাগ করে, তাই কয়েকটি অক্ষরের জন্যও কাজ করে।</div>
+<div class="note" lang="en">The second formula counts case-insensitively. Copy it with "Copy the second".</div>
+<h2>উদাহরণ</h2>
+<p lang="en">The number of commas in A2:</p>
+<ul>
+<li lang="en">=(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))/LEN(",")</li>
+</ul>
+<p lang="en">For "Tokyo,Osaka,Nagoya" it returns 2.</p>
+<h2 lang="en">Reading the formula</h2>
+<ol>
+<li lang="en">LEN(A2): original length</li>
+<li lang="en">LEN(SUBSTITUTE(A2,",","")): length after removing commas</li>
+<li lang="en">The difference divided by the target's length: the number of commas</li>
+</ol>
+<h2 lang="en">Knowing the item count</h2>
+<p lang="en">Add 1 to the comma count to get the item count.</p>
+<ul>
+<li lang="en">Example: =(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))+1</li>
+</ul>
+<h2 lang="en">Multi-character words work too</h2>
+<p lang="en">Even with several characters to find, dividing by the length at the end lets it count.</p>
+<ul>
+<li lang="en">Example: how many times "apple" appears</li>
+</ul>
+<h2>বড় ও ছোট হাতের অক্ষর</h2>
+<ul>
+<li lang="en">First formula: case-sensitive</li>
+<li lang="en">Second formula: uppercases first and counts; case-insensitive</li>
+</ul>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Knowing item counts from delimiter counts</li>
+<li lang="en">How many times a word appears in text</li>
+<li lang="en">Counting spaces (word count)</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">Wanted the number of tags in cells holding comma-separated tags. Adding 1 to the comma count gave the tag count.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Empty cells</b>: the result is 0. The item count would become 1, so judge empty cells separately.</li>
+<li lang="en"><b>Overlapping characters</b>: "aa" inside "aaa" counts as one.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to count across a whole range</h3>
+<p lang="en">Combine with SUMPRODUCT. Build the formula by hand.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">Character counts come from the LEN difference with SUBSTITUTE.</p>
 <a class="cta" href="/bn/find-formula-builder.html">“FIND সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/excel-left-mid-builder.html">LEFT, MID বা RIGHT সূত্র তৈরি করুন</a>: লেখা বের করার সূত্র তৈরি করুন।</li><li><a href="/bn/substitute-formula-builder.html">SUBSTITUTE সূত্র তৈরি করুন</a>: টেক্সট প্রতিস্থাপনের সূত্র তৈরি করুন।</li><li><a href="/bn/split-formula-builder.html">SPLIT সূত্র তৈরি করুন</a>: টেক্সট ভাগ করার সূত্র তৈরি করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Что делать, если не работает</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Проверьте файл</li><li>Проверьте размер</li><li>Попробуйте другое устройство</li></ul></div>
-<p>Если <a href="/ru/text-case-formula-builder.html">Конструктор регистра и пробелов</a> не работает, проверьте следующее.</p>
-<h2>Шаги</h2>
+<p lang="en">You pasted the formula but the text isn't tidy. Here are common troubles with <a href="/ru/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the text cell isn't in the "A2" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Looks unchanged</b>: invisible characters (such as non-breaking spaces) are the cause. Try NBSP.</li>
+<li lang="en"><b>Japanese unchanged</b>: case only applies to English letters.</li>
+<li lang="en"><b>#NAME?</b>: the function name is wrong.</li>
+<li lang="en"><b>Only one result</b>: to apply to a column, use the second formula (ARRAYFORMULA).</li>
+<li lang="en"><b>PROPER is off</b>: small words and brand names also get capitalized.</li>
+<li lang="en"><b>Full-width spaces remain</b>: TRIM may not remove full-width spaces.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Проверьте файл</li>
-<li>Проверьте размер</li>
-<li>Попробуйте другое устройство</li>
+<li lang="en">Check the length with LEN. If it's larger than it looks, invisible characters exist.</li>
+<li lang="en">Try the NBSP formula.</li>
+<li lang="en">If full-width spaces exist, convert them to half-width with SUBSTITUTE.</li>
 </ol>
-<div class="note">Если формула не появляется, проверьте, что ячейка записана как A2.</div>
+<div class="note" lang="en">A formula's result lives apart from the original cell. To tidy the original table, paste as values.</div>
+<h2 lang="en">Combining</h2>
+<p lang="en">Several tidy-ups can be layered.</p>
+<ul>
+<li lang="en">Example: =PROPER(TRIM(CLEAN(A2)))</li>
+</ul>
+<p lang="en">From the inside: remove non-printing characters, tidy spaces, capitalize the start.</p>
+<h2>Пример</h2>
+<p lang="en">Even after TRIM, sorting was off. A full-width space was at the start. Converting it to half-width with SUBSTITUTE and then applying TRIM aligned them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Can't be used as numbers</b>: TRIM's result is text. Use VALUE.</li>
+<li lang="en"><b>ARRAYFORMULA doesn't spread</b>: values below cause an error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to fix the original cells directly</h3>
+<p lang="en">Copy the formula's result and "Paste values only" into the original cells.</p>
+<h2>Итог</h2>
+<p lang="en">Check invisible characters, how Japanese is handled, and formula combinations.</p>
 <a class="cta" href="/ru/text-case-formula-builder.html">Использовать «Создайте формулу для регистра и пробелов» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/excel-text-clean.html">Удаление лишних пробелов и невидимых символов из текста Excel</a>: Уберите лишние пробелы и невидимые символы.</li><li><a href="/ru/text-case-converter.html">Конвертер регистра (camelCase, snake_case)</a>: Преобразуйте регистр и стили именования текста.</li><li><a href="/ru/excel-left-mid-builder.html">Создать формулу LEFT, MID или RIGHT</a>: Создавайте формулы для извлечения текста.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

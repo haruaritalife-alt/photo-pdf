@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Only the First Letter</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose CAPFIRST</li><li>Enter the cell</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/text-case-formula-builder.html">Text Case Builder</a> you can capitalize only the first letter of the text.</p>
+<p>You want only the first character of a sentence capitalized and the rest lowercase: "hello WORLD" to "Hello world". That's "CAPFIRST". <a href="/en/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose CAPFIRST</li>
-<li>Enter the cell</li>
-<li>Copy it</li>
+<li>Choose "CAPFIRST" in "Type".</li>
+<li>Enter the "Text cell".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">The rest of the letters become small.</div>
+<div class="note">There's no dedicated function, so it combines LEFT, MID, UPPER and LOWER.</div>
+<h2>Example</h2>
+<ul>
+<li>=UPPER(LEFT(A2,1))&amp;LOWER(MID(A2,2,LEN(A2)))</li>
+</ul>
+<p>"hello WORLD" becomes "Hello world".</p>
+<h2>Reading the formula</h2>
+<ul>
+<li>UPPER(LEFT(A2,1)): the first character in uppercase</li>
+<li>LOWER(MID(A2,2,LEN(A2))): the rest in lowercase</li>
+<li>&amp;: joins the two</li>
+</ul>
+<h2>Difference from PROPER</h2>
+<ul>
+<li>PROPER: every word capitalized (Hello World)</li>
+<li>CAPFIRST: only the start capitalized (Hello world)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Tidying a sentence so only its start is capitalized</li>
+<li>Unifying heading notation</li>
+<li>Making all-caps sentences more readable</li>
+</ul>
+<h2>Caution</h2>
+<p>Proper nouns mid-sentence also become lowercase. Fix "I" or names by hand.</p>
+<h2>For empty cells</h2>
+<p>An empty cell doesn't error; it stays empty.</p>
+<h2>Example</h2>
+<p>Product descriptions were entered in all caps. CAPFIRST capitalized just the start and made them readable.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Leading space</b>: the character after the space isn't capitalized. Apply TRIM first.</li>
+<li><b>Sentences starting in Japanese</b>: no effect.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to use it with TRIM</h3>
+<p>Replace A2 with TRIM(A2). Edit by hand.</p>
+<h2>Summary</h2>
+<p>To capitalize only the start, use CAPFIRST.</p>
 <a class="cta" href="/en/text-case-formula-builder.html">Use "Build a Text Case and Trim Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/en/text-case-converter.html">Text Case Converter (camelCase, snake_case)</a>: Convert text case and naming styles.</li><li><a href="/en/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a>: Build text extraction formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

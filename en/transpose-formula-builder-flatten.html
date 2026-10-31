@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Lining Up in One Column</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose FLATTEN</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/transpose-formula-builder.html">TRANSPOSE Builder</a> you can build a formula that lines up a table in one column.</p>
+<p>You want data spread over several columns gathered into one: a three-column roster lined up in a single column. Use FLATTEN. "FLATTEN" in <a href="/en/transpose-formula-builder.html">Build a TRANSPOSE Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose FLATTEN</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>Choose "FLATTEN" in "Type".</li>
+<li>Enter the "Range".</li>
+<li>Copy the "Google Sheets formula" or "Excel formula" and paste.</li>
 </ol>
-<div class="note">Excel uses TOCOL.</div>
+<div class="note">Google uses FLATTEN; Excel uses TOCOL (Excel 365).</div>
+<h2>Example</h2>
+<p>Making A1:C5 into one column:</p>
+<ul>
+<li>Google: =FLATTEN(A1:C5)</li>
+<li>Excel: =TOCOL(A1:C5)</li>
+</ul>
+<p>Items line up from the top-left, row by row (A1, B1, C1, A2…).</p>
+<h2>Ordering</h2>
+<ul>
+<li>FLATTEN: may line up in its default order</li>
+<li>To change the order, TOCOL's third argument can specify it (Excel)</li>
+</ul>
+<h2>Empty cells</h2>
+<p>Empty cells may be included in the result. To exclude them, specify the second argument (Excel).</p>
+<ul>
+<li>Example: =TOCOL(A1:C5,1)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Gathering a multi-column roster into one column</li>
+<li>Totaling numbers spread over several columns</li>
+<li>Combining with UNIQUE to remove duplicates across everything</li>
+<li>Example: =UNIQUE(FLATTEN(A1:C5))</li>
+</ul>
+<h2>Example</h2>
+<p>Three groups' rosters sat in three side-by-side columns. FLATTEN made one column, UNIQUE removed duplicates, and a participant list resulted.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>TOCOL unavailable</b>: old Excel lacks it.</li>
+<li><b>Order differs from expectation</b>: Google goes row by row; Excel's default is row-wise.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What about old Excel?</h3>
+<p>Without TOCOL, build a one-column formula using INDEX and ROW.</p>
+<h2>Summary</h2>
+<p>To gather columns into one, use FLATTEN or TOCOL.</p>
 <a class="cta" href="/en/transpose-formula-builder.html">Use "Build a TRANSPOSE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/table-transpose.html">Swap Rows and Columns of a Table</a>: Swap the rows and columns of a pasted table.</li><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/arrayformula-builder.html">Build an ARRAYFORMULA</a>: Build ARRAYFORMULA formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

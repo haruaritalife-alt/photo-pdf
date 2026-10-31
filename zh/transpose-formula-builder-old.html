@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>在旧版 Excel 中互换</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>选择 TRANSPOSE</li><li>输入范围</li><li>把公式向右和向下复制</li></ul></div>
-<p><a href="/zh/transpose-formula-builder.html">TRANSPOSE 公式生成器</a>会显示使用 INDEX、适用于旧版 Excel 的公式。</p>
+<p lang="en">In old Excel, TRANSPOSE was a slightly tricky function because it had to be entered as an array formula. The "Excel formula" in <a href="/zh/transpose-formula-builder.html">Build a TRANSPOSE Formula</a> uses INDEX, so it works in old Excel one cell at a time.</p>
+<h2 lang="en">The two formulas</h2>
+<ul>
+<li lang="en">Google: =TRANSPOSE(A1:C5)</li>
+<li lang="en">Excel (any version): =INDEX($A$1:$C$5,COLUMN(A1),ROW(A1))</li>
+</ul>
+<p lang="en">"Copy the second" copies the Excel formula.</p>
+<div class="note" lang="en">Copy the Excel formula across the whole range where results should go. Each cell yields one value.</div>
 <h2>步骤</h2>
 <ol>
-<li>选择 TRANSPOSE</li>
-<li>输入范围</li>
-<li>把公式向右和向下复制</li>
+<li lang="en">Paste the Excel formula into the top-left cell of the result.</li>
+<li lang="en">Copy that cell right and down for the size of the result.</li>
+<li lang="en">If the source is 5 rows × 3 columns, the result is 3 rows × 5 columns.</li>
 </ol>
-<div class="note">区域用 $ 固定。</div>
+<h2>工作原理</h2>
+<p lang="en">It takes the result's row and column numbers with ROW and COLUMN and applies them to the source table's column and row.</p>
+<ul>
+<li lang="en">COLUMN(A1): result column number (increases rightward)</li>
+<li lang="en">ROW(A1): result row number (increases downward)</li>
+<li lang="en">INDEX(range,row,column): the value at that row and column of the source</li>
+</ul>
+<h2 lang="en">In new Excel</h2>
+<p lang="en">In Excel 365 and 2021, TRANSPOSE spills automatically.</p>
+<ul>
+<li lang="en">Example: =TRANSPOSE(A1:C5)</li>
+</ul>
+<h2 lang="en">Using TRANSPOSE in old Excel</h2>
+<ol>
+<li lang="en">Select the result range (3 rows × 5 columns) first.</li>
+<li lang="en">Enter the formula.</li>
+<li lang="en">Confirm with Ctrl+Shift+Enter.</li>
+</ol>
+<h2>适合</h2>
+<ul>
+<li lang="en">Handing the file to someone using old Excel</li>
+<li lang="en">Small ranges to swap</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">In old Excel, entering TRANSPOSE gave a single value. Copying the INDEX formula over the result range swapped the table.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Range not absolute</b>: copying shifts the source range. The tool's formula has $.</li>
+<li lang="en"><b>When the source changes</b>: the result changes too.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I delete the original table?</h3>
+<p lang="en">The result refers to the original. Before deleting, paste as values.</p>
+<h2>小结</h2>
+<p lang="en">In old Excel, copy the INDEX formula across the result.</p>
 <a class="cta" href="/zh/transpose-formula-builder.html">使用“生成 TRANSPOSE 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/table-transpose.html">互换表格的行和列</a>: 互换所粘贴表格的行和列。</li><li><a href="/zh/filter-formula-builder.html">生成 FILTER 公式</a>: 生成 FILTER 公式。</li><li><a href="/zh/arrayformula-builder.html">生成 ARRAYFORMULA</a>: 生成 ARRAYFORMULA 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>
