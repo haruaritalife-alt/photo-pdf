@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>오류가 날 때</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>시트 이름 확인</li><li>셀을 쓴 방식 확인</li><li>오류를 빈칸으로 만드는 수식 사용</li></ul></div>
-<p>시트 이름이나 셀이 틀리면 <a href="/ko/indirect-formula-builder.html">INDIRECT 만들기</a>의 수식은 오류가 납니다.</p>
+<p lang="en">The INDIRECT formula returns #REF!. The sheet name should be right, yet it doesn't work. Here are common causes of errors in formulas built with <a href="/ko/indirect-formula-builder.html">Build an INDIRECT Formula</a> and fixes.</p>
 <h2>순서</h2>
 <ol>
-<li>시트 이름 확인</li>
-<li>셀을 쓴 방식 확인</li>
-<li>오류를 빈칸으로 만드는 수식 사용</li>
+<li lang="en">Compare the sheet name with the actual sheet's name.</li>
+<li lang="en">Check for surrounding spaces and full-width/half-width differences.</li>
+<li lang="en">Check the name is wrapped in the quote "'".</li>
 </ol>
-<div class="note">공백이 있는 시트 이름은 따옴표로 묶습니다.</div>
+<div class="note" lang="en">"#REF!" means the called location can't be found.</div>
+<h2 lang="en">Common causes</h2>
+<ul>
+<li lang="en"><b>Sheet name mismatch</b>: even one character off isn't found.</li>
+<li lang="en"><b>Stray spaces</b>: the cell text has spaces around it. Remove with TRIM.</li>
+<li lang="en"><b>Missing quotes</b>: the name has spaces or symbols but isn't wrapped.</li>
+<li lang="en"><b>File is closed</b>: you're calling another file that isn't open.</li>
+<li lang="en"><b>Outside the sheet</b>: pointing at a cell that doesn't exist.</li>
+</ul>
+<h2 lang="en">Removing spaces</h2>
+<p lang="en">If reading the sheet name from a cell, wrap it in TRIM.</p>
+<ul>
+<li lang="en">Example: =INDIRECT("'"&amp;TRIM(A1)&amp;"'!B2")</li>
+</ul>
+<h2 lang="en">Turning errors into empty</h2>
+<p lang="en">The second formula is wrapped in IFERROR.</p>
+<ul>
+<li lang="en">=IFERROR(INDIRECT("'"&amp;A1&amp;"'!B2"),"")</li>
+</ul>
+<p lang="en">But this hides errors, so use it after checking the cause.</p>
+<h2 lang="en">When a sheet is renamed</h2>
+<p lang="en">A sheet name written as text doesn't follow a rename; you get #REF!.</p>
+<h2 lang="en">Google Sheets note</h2>
+<p lang="en">On first use you may be asked to permit access to the sheet.</p>
+<h2>예</h2>
+<p lang="en">One of the formulas calling monthly sheets gave #REF!. The sheet name ended with a full-width space. TRIM fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width vs half-width digits</b>: they're different characters.</li>
+<li lang="en"><b>Names with dots</b>: wrap in quotes.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How can I debug more easily?</h3>
+<p lang="en">Counting the name cell's characters with LEN reveals stray spaces.</p>
+<h2>요약</h2>
+<p lang="en">For #REF!, suspect name mismatch, spaces and quotes.</p>
 <a class="cta" href="/ko/indirect-formula-builder.html">“INDIRECT 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/vlookup-formula-builder.html">VLOOKUP·XLOOKUP 수식 만들기</a>: VLOOKUP과 XLOOKUP 수식을 만듭니다.</li><li><a href="/ko/importrange-builder.html">IMPORTRANGE 수식 만들기</a>: IMPORTRANGE 수식을 만듭니다.</li><li><a href="/ko/index-match-builder.html">INDEX·MATCH 수식 만들기</a>: INDEX와 MATCH 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

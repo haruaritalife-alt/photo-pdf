@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Appeler une autre feuille</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Choisissez SHEET</li><li>Saisir le nom de la feuille et la cellule</li><li>Copiez-le</li></ul></div>
-<p>Dans <a href="/fr/indirect-formula-builder.html">Créateur de INDIRECT</a>, vous pouvez créer une formule qui appelle une cellule d'une autre feuille.</p>
+<p lang="en">Sheets are split by month and you want the same cell from "Jan", "Feb" and so on. Writing sheet names into formulas means rewriting per month. INDIRECT can read the sheet name from a cell. "SHEET" in <a href="/fr/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>Étapes</h2>
 <ol>
-<li>Choisissez SHEET</li>
-<li>Saisir le nom de la feuille et la cellule</li>
-<li>Copiez-le</li>
+<li lang="en">Choose "SHEET" in "Type".</li>
+<li lang="en">In "Sheet name", enter the sheet name or a cell holding it.</li>
+<li lang="en">In "Cell", enter the cell to call.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Si vous saisissez le nom de la feuille sous forme de cellule, comme A1, vous pouvez le changer grâce au texte de la cellule.</div>
+<div class="note" lang="en">If you enter the sheet name in cell form like "A1", that cell's text is used as the sheet name.</div>
+<h2>Exemple</h2>
+<p lang="en">Writing the sheet name as text:</p>
+<ul>
+<li lang="en">=INDIRECT("'Jan'!B2")</li>
+</ul>
+<p lang="en">When A1 holds the sheet name (entered as "A1"):</p>
+<ul>
+<li lang="en">=INDIRECT("'"&amp;A1&amp;"'!B2")</li>
+</ul>
+<p lang="en">Just change A1 from "Jan" to "Feb" and the reference switches.</p>
+<h2 lang="en">The alternative formula</h2>
+<p lang="en">The second is wrapped in IFERROR, giving empty instead of an error when the sheet is missing.</p>
+<ul>
+<li lang="en">=IFERROR(INDIRECT("'"&amp;A1&amp;"'!B2"),"")</li>
+</ul>
+<h2 lang="en">Quoting the sheet name</h2>
+<p lang="en">If the name has spaces, symbols or non-ASCII characters, it must be quoted with '. The tool's formula includes the quotes.</p>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Gathering same-position values from monthly sheets</li>
+<li lang="en">Listing totals from branch sheets</li>
+<li lang="en">Showing the sheet chosen in a dropdown</li>
+</ul>
+<h2 lang="en">Combining with a dropdown</h2>
+<p lang="en">If A1 lets you pick a sheet name from a dropdown, the display switches.</p>
+<h2>Exemple</h2>
+<p lang="en">Wanted each monthly sheet's total cell collected in a list. With sheet names in rows and INDIRECT reading them, one formula built the list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#REF!</b>: wrong sheet name, or stray spaces.</li>
+<li lang="en"><b>Renaming</b>: a sheet name typed as text doesn't follow renames.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can it call another file?</h3>
+<p lang="en">In Excel it may not work unless the other file is open.</p>
+<h2>En résumé</h2>
+<p lang="en">To switch sheet names via a cell, use INDIRECT.</p>
 <a class="cta" href="/fr/indirect-formula-builder.html">Utiliser « Créer une formule INDIRECT » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/vlookup-formula-builder.html">Créer une formule VLOOKUP ou XLOOKUP</a>: Créez des formules VLOOKUP et XLOOKUP.</li><li><a href="/fr/importrange-builder.html">Créer une formule IMPORTRANGE</a>: Créez une formule IMPORTRANGE.</li><li><a href="/fr/index-match-builder.html">Créer une formule INDEX et MATCH</a>: Créez des formules INDEX et MATCH.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

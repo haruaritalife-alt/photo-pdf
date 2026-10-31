@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ตรวจสอบว่าว่างหรือไม่</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก ISBLANK</li><li>ป้อนเซลล์</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/check-formula-builder.html">ตัวสร้างสูตร ISBLANK</a> คุณสร้างสูตรที่ตรวจสอบว่าเซลล์ว่างหรือไม่ได้</p>
+<p lang="en">You want to check nothing is left blank. This builds formulas that find empty cells. "ISBLANK" and "EMPTY" in <a href="/th/check-formula-builder.html">Build an ISBLANK Formula</a> build it.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือก ISBLANK</li>
-<li>ป้อนเซลล์</li>
-<li>คัดลอก</li>
+<li lang="en">Choose "ISBLANK" or "EMPTY" in "Type".</li>
+<li lang="en">Enter the "Cell to check".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">หากต้องการให้เซลล์ที่มีแต่ช่องว่างนับเป็นเซลล์ว่าง ให้ใช้ EMPTY</div>
+<div class="note" lang="en">A cell that looks empty but contains spaces gives ISBLANK FALSE. In that case use EMPTY.</div>
+<h2>ตัวอย่าง</h2>
+<ul>
+<li lang="en">ISBLANK: =ISBLANK(A2)</li>
+<li lang="en">EMPTY: =LEN(TRIM(A2))=0</li>
+</ul>
+<p lang="en">EMPTY checks whether the length after trimming spaces is 0.</p>
+<h2 lang="en">Judging "has input" (invert)</h2>
+<p lang="en">Tick "Invert (NOT)" to build a formula checking whether something is entered.</p>
+<ul>
+<li lang="en">ISBLANK: =NOT(ISBLANK(A2))</li>
+<li lang="en">EMPTY: =LEN(TRIM(A2))&gt;0</li>
+</ul>
+<h2 lang="en">Showing the result as text</h2>
+<p lang="en">The second formula outputs text via IF.</p>
+<ul>
+<li lang="en">Example: =IF(LEN(TRIM(A2))=0,"Missing","OK")</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Checking missing entries in surveys and application forms</li>
+<li lang="en">Confirming required columns have no blanks</li>
+<li lang="en">Highlighting only rows missing input</li>
+</ul>
+<h2 lang="en">Coloring with conditional formatting</h2>
+<p lang="en">To color empty cells, use the check formula in conditional formatting.</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">In an application list, I wanted to find missing phone numbers. The EMPTY formula found them, including cells with only spaces.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Only spaces judged as filled</b>: ISBLANK does that. Use EMPTY.</li>
+<li lang="en"><b>Cells whose formula result is ""</b>: ISBLANK is FALSE; EMPTY is TRUE.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Which should I use?</h3>
+<p lang="en">For data where spaces slip in, like pasted form data, EMPTY is safer.</p>
+<h2>สรุป</h2>
+<p lang="en">For missing-input checks, EMPTY is safe.</p>
 <a class="cta" href="/th/check-formula-builder.html">ใช้ “สร้างสูตร ISBLANK” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/excel-if-builder.html">สร้างสูตร IF</a>: สร้างสูตร IF</li><li><a href="/th/cond-format-formula-builder.html">สร้างสูตรการจัดรูปแบบตามเงื่อนไข</a>: สร้างสูตรการจัดรูปแบบตามเงื่อนไข</li><li><a href="/th/countif-formula-builder.html">สร้างสูตร COUNTIF</a>: สร้างสูตรที่นับเซลล์ที่ตรงตามเงื่อนไข</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

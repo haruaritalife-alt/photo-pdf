@@ -201,14 +201,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pagbabalik ng Column sa Kaliwa</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>I-type ang mga range</li><li>Tingnan ang formula</li><li>Kopyahin</li></ul></div>
-<p>Sa <a href="/tl/index-match-builder.html">INDEX MATCH Builder</a>, makakapagbalik ka ng column sa kaliwa ng column ng paghahanapan.</p>
+<p lang="en">VLOOKUP can't return a column left of the lookup column, for example a table with employee numbers on the right and names on the left, where you want the number from a name. With <a href="/tl/index-match-builder.html">Build an INDEX and MATCH Formula</a> you can.</p>
 <h2>Mga hakbang</h2>
 <ol>
-<li>I-type ang mga range</li>
-<li>Tingnan ang formula</li>
-<li>Kopyahin</li>
+<li lang="en">In "Range to return", enter the column to return (the left column).</li>
+<li lang="en">In "Lookup column range", enter the column holding the value to find (the right column).</li>
+<li lang="en">Enter the "Cell with the value to find".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Hindi makapagbalik ng column sa kaliwa ang VLOOKUP.</div>
+<div class="note" lang="en">The return column and lookup column can be in either order. You needn't care about column order.</div>
+<h2>Halimbawa</h2>
+<p lang="en">With names in column A and employee numbers in column B, getting a name from a number (F2):</p>
+<ul>
+<li lang="en">=INDEX($A$2:$A$100,MATCH(F2,$B$2:$B$100,0))</li>
+</ul>
+<h2 lang="en">With VLOOKUP</h2>
+<p lang="en">VLOOKUP needs the lookup column leftmost. To return a left column you had to reorder the table.</p>
+<h2 lang="en">Robust to added columns</h2>
+<p lang="en">VLOOKUP's column number shifts when you insert columns. INDEX/MATCH points to the columns themselves, so inserting doesn't break it.</p>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Returning a left column from a right one</li>
+<li lang="en">Tables where columns are inserted or deleted often</li>
+<li lang="en">Pulling several values from a large table</li>
+</ul>
+<h2 lang="en">Pulling several values</h2>
+<p lang="en">Putting MATCH's result in another cell means the MATCH is computed once even with several INDEXes.</p>
+<ul>
+<li lang="en">Example: G2 =MATCH(F2,$B$2:$B$100,0), H2 =INDEX($A$2:$A$100,G2)</li>
+</ul>
+<h2>Halimbawa</h2>
+<p lang="en">In a roster with numbers on the right and names on the left, I wanted names from numbers. The INDEX/MATCH formula did it without reordering columns.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: the value isn't in the lookup column.</li>
+<li lang="en"><b>A different row's value returns</b>: several rows share the value and the first is returned.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How does it differ from XLOOKUP?</h3>
+<p lang="en">XLOOKUP also returns left columns, but isn't available in old Excel. INDEX/MATCH works in every version.</p>
+<h2>Buod</h2>
+<p lang="en">To pull a left column, use INDEX and MATCH.</p>
 <a class="cta" href="/tl/index-match-builder.html">Gamitin ang “Gumawa ng INDEX at MATCH Formula” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/vlookup-formula-builder.html">Gumawa ng VLOOKUP o XLOOKUP Formula</a>: Gumawa ng mga formula ng VLOOKUP at XLOOKUP.</li><li><a href="/tl/filter-formula-builder.html">Gumawa ng FILTER formula</a>: Gumawa ng FILTER formula.</li><li><a href="/tl/sumif-formula-builder.html">Gumawa ng SUMIF o COUNTIF formula</a>: Gumawa ng mga formulang SUMIF at COUNTIF.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

@@ -200,14 +200,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>INDEX・MATCHの書き方（式を自動で作る・無料）</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>範囲を入れる</li><li>値を入れる</li><li>式をコピー</li></ul></div>
-<p><a href="/index-match-builder.html">INDEX・MATCH式の作成</a> は、範囲と探す値からINDEX・MATCHの式を作ります。</p>
+<p>VLOOKUPは便利ですが、探す列より左の列は取り出せません。列を足すと、列番号がずれます。INDEXとMATCHを組み合わせれば、その弱点がなくなります。<a href="/index-match-builder.html">INDEX・MATCHの式を作る</a> は、範囲と探す値を入れるだけで、その式を作ります。入力は、この端末の中で処理され、外には送られません。</p>
 <h2>手順</h2>
 <ol>
-<li>範囲を入れる</li>
-<li>値を入れる</li>
-<li>式をコピー</li>
+<li>「取り出す範囲（C2:C100 など）」を入れます。</li>
+<li>「探す列の範囲（B2:B100 など）」を入れます。</li>
+<li>「探す値のセル（F2 など）」を入れます。</li>
+<li>「一致の種類」を選びます（EXACT、LESS、GREATER）。</li>
+<li>表の縦横から取り出すなら、「見出しの範囲」と「見出しの値のセル」も入れます。</li>
+<li>「INDEX・MATCHの式」を「結果をコピー」で、「見つからないときは空にする式」を「2つ目をコピー」で、コピーします。</li>
 </ol>
-<div class="note">できた式は、そのままセルに貼れます。</div>
+<div class="note">範囲は、式の中で自動的に絶対参照（$付き）になります。下にコピーしても、範囲がずれません。</div>
+<h2>例</h2>
+<p>F2の値をB列から探して、C列の値を取り出す式です。</p>
+<ul>
+<li>=INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0))</li>
+</ul>
+<h2>仕組み</h2>
+<ul>
+<li>MATCH：探す値が、探す列の何番目にあるかを返す</li>
+<li>INDEX：取り出す範囲の、その番目の値を返す</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>検索する列の、左にある値を取り出す</li>
+<li>列の順序が変わっても壊れない検索</li>
+<li>縦と横の両方から、1つの値を取り出す</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：範囲が「C2:C100」の形でない。探す値が「F2」の形でない。</li>
+<li><b>範囲の行数が違う</b>：取り出す範囲と探す列の範囲は、同じ行数にする。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>VLOOKUPと、どちらがいいですか？</h3>
+<p>列の追加や、左の列の取り出しがあるなら、INDEXとMATCHが丈夫です。単純な検索なら、VLOOKUPやXLOOKUPでも足ります。</p>
+<h2>まとめ</h2>
+<p>範囲と探す値を入れるだけで、INDEXとMATCHの式ができます。</p>
 <a class="cta" href="/index-match-builder.html">INDEX・MATCHの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +248,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Write INDEX and MATCH (Build Them Automatically, Free)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the ranges</li><li>Enter the value</li><li>Copy the formula</li></ul></div>
-<p><a href="/index-match-builder.html">INDEX MATCH Builder</a> builds an INDEX and MATCH formula from ranges and a value.</p>
+<p>VLOOKUP is handy, but can't return columns left of the lookup column, and its column number shifts when columns are added. Combining INDEX and MATCH removes that weakness. <a href="/index-match-builder.html">Build an INDEX and MATCH Formula</a> builds the formula from ranges and a value to find. Input is processed inside this device and not sent outside.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the ranges</li>
-<li>Enter the value</li>
-<li>Copy the formula</li>
+<li>Enter the "Range to return (such as C2:C100)".</li>
+<li>Enter the "Lookup column range (such as B2:B100)".</li>
+<li>Enter the "Cell with the value to find (such as F2)".</li>
+<li>Choose a "Match type" (EXACT, LESS, GREATER).</li>
+<li>To pull from rows and columns of a table, also enter "Header range" and "Cell with the header value".</li>
+<li>Copy the "INDEX/MATCH formula" with "Copy result" and the "Formula that leaves blank when not found" with "Copy the second".</li>
 </ol>
-<div class="note">The formula can be pasted straight into a cell.</div>
+<div class="note">Ranges automatically become absolute references (with $) in the formula, so copying down doesn't shift them.</div>
+<h2>Example</h2>
+<p>Finding F2's value in column B and returning column C's value:</p>
+<ul>
+<li>=INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0))</li>
+</ul>
+<h2>How it works</h2>
+<ul>
+<li>MATCH: returns the position of the value in the lookup column</li>
+<li>INDEX: returns the value at that position in the return range</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Returning values left of the lookup column</li>
+<li>Lookups that survive column reordering</li>
+<li>Pulling one value using both rows and columns</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"The input is not valid."</b>: a range isn't in the "C2:C100" form, or the value isn't in the "F2" form.</li>
+<li><b>Ranges differ in row count</b>: use the same row count for the return range and lookup column.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Which is better, this or VLOOKUP?</h3>
+<p>If columns get added or you need left columns, INDEX/MATCH is sturdier. For simple lookups VLOOKUP or XLOOKUP is enough.</p>
+<h2>Summary</h2>
+<p>Enter ranges and a value to build the INDEX/MATCH formula.</p>
 <a class="cta" href="/index-match-builder.html">Use "Build an INDEX and MATCH Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

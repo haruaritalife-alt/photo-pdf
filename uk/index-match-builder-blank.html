@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Коли нічого не знайдено</h1>
 <p class="meta">Опубліковано: 19 жовт. 2026 | Оновлено: 19 жовт. 2026 | <a href="/about.html">Про нас (японською)</a></p>
 <div class="points"><b>Основне</b><ul><li>Складіть формулу</li><li>Виберіть другий варіант</li><li>Скопіюйте</li></ul></div>
-<p><a href="/uk/index-match-builder.html">Конструктор INDEX MATCH</a> також показує варіант, який залишає порожньо, якщо нічого не знайдено.</p>
+<p lang="en">When the value isn't found, #N/A appears. You want to avoid a table full of errors. The second formula in <a href="/uk/index-match-builder.html">Build an INDEX and MATCH Formula</a> returns empty when nothing is found.</p>
 <h2>Кроки</h2>
 <ol>
-<li>Складіть формулу</li>
-<li>Виберіть другий варіант</li>
-<li>Скопіюйте</li>
+<li lang="en">Enter the ranges and value to find.</li>
+<li lang="en">Copy the "Formula that leaves blank when not found" with "Copy the second".</li>
+<li lang="en">Paste it.</li>
 </ol>
-<div class="note">Обгорнуто в IFERROR.</div>
+<div class="note" lang="en">IFERROR also blanks errors other than #N/A. Formula mistakes get hidden too, so be careful.</div>
+<h2>Приклад</h2>
+<ul>
+<li lang="en">=IFERROR(INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0)),"")</li>
+</ul>
+<p lang="en">When not found, it's empty.</p>
+<h2 lang="en">Showing other text</h2>
+<p lang="en">Change the empty part to other text to show something like "Not found".</p>
+<ul>
+<li lang="en">Example: =IFERROR(INDEX(…),"Not found")</li>
+</ul>
+<h2 lang="en">Blanking only #N/A</h2>
+<p lang="en">To avoid hiding real mistakes, use IFNA.</p>
+<ul>
+<li lang="en">Example: =IFNA(INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0)),"")</li>
+</ul>
+<p lang="en">IFNA targets only #N/A.</p>
+<h2>Підходить для</h2>
+<ul>
+<li lang="en">Display of a search form when nothing is entered</li>
+<li lang="en">Blanking not-found rows for readability</li>
+<li lang="en">Keeping errors out of later calculations</li>
+</ul>
+<h2 lang="en">Empty vs 0</h2>
+<p lang="en">An empty string can cause errors in later calculations. If used as a number, returning 0 is safer.</p>
+<ul>
+<li lang="en">Example: =IFERROR(INDEX(…),0)</li>
+</ul>
+<h2>Приклад</h2>
+<p lang="en">A matching list had #N/A on not-found rows. IFERROR blanked them for readability, though I checked separately for real mistakes.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Everything is empty</b>: a formula mistake is hidden by IFERROR.</li>
+<li lang="en"><b>Empty cells error in calculations</b>: an empty string isn't a number.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to know why it isn't found</h3>
+<p lang="en">First check with the formula not wrapped in IFERROR. Full-width/half-width and spaces are common causes.</p>
+<h2>Підсумок</h2>
+<p lang="en">To avoid #N/A, use IFERROR or IFNA.</p>
 <a class="cta" href="/uk/index-match-builder.html">Використати «Створити формулу INDEX і MATCH» (безкоштовно)</a>
 <h2>Інструменти, що добре поєднуються з цим</h2><ul><li><a href="/uk/vlookup-formula-builder.html">Створення формули VLOOKUP або XLOOKUP</a>: Створюйте формули VLOOKUP і XLOOKUP.</li><li><a href="/uk/filter-formula-builder.html">Створення формули FILTER</a>: Створіть формулу FILTER.</li><li><a href="/uk/sumif-formula-builder.html">Створення формули SUMIF або COUNTIF</a>: Створюйте формули SUMIF і COUNTIF.</li></ul>
 <div class="tip"><p>Якщо цей посібник став у пригоді, невеликі чайові будуть дуже доречні.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Надіслати чайові (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Надіслати подарунок (список бажань Amazon)</a></div>

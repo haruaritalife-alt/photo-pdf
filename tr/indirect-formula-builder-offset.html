@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Kaydırarak çağırma</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>OFFSET seçin</li><li>Hücreyi ve kaydırmayı girin</li><li>Kopyalayın</li></ul></div>
-<p><a href="/tr/indirect-formula-builder.html">INDIRECT Oluşturucu</a> ile satır ve sütun kadar kaydırılmış hücreyi çağıran bir formül oluşturabilirsiniz.</p>
+<p lang="en">Two rows down and one column right of a base cell. OFFSET calls the cell shifted like that. "OFFSET" in <a href="/tr/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>Adımlar</h2>
 <ol>
-<li>OFFSET seçin</li>
-<li>Hücreyi ve kaydırmayı girin</li>
-<li>Kopyalayın</li>
+<li lang="en">Choose "OFFSET" in "Type".</li>
+<li lang="en">In "Cell", enter the base cell.</li>
+<li lang="en">In "Row offset" and "Column offset", enter integers.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">İkinci formül daha az yeniden hesaplama gerektiren bir yoldur.</div>
+<div class="note" lang="en">Rows: positive is down, negative is up. Columns: positive is right, negative is left.</div>
+<h2>Örnek</h2>
+<p lang="en">The cell two rows down and one column right of A1:</p>
+<ul>
+<li lang="en">=OFFSET(A1,2,1)</li>
+</ul>
+<p lang="en">This points to B3.</p>
+<h2 lang="en">The alternative formula</h2>
+<p lang="en">The second uses INDEX.</p>
+<ul>
+<li lang="en">=INDEX(1:1048576,ROW(A1)+2,COLUMN(A1)+1)</li>
+</ul>
+<p lang="en">OFFSET always recalculates, whereas INDEX doesn't. On large sheets INDEX is lighter.</p>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Reading a value at a fixed position from a base</li>
+<li lang="en">Taking by relative position even if the table's head moves</li>
+<li lang="en">Regular references such as every third row</li>
+</ul>
+<h2 lang="en">Negative values</h2>
+<p lang="en">You can also shift up or left.</p>
+<ul>
+<li lang="en">Example: =OFFSET(C5,-1,-2) → A4</li>
+</ul>
+<h2 lang="en">Returning ranges</h2>
+<p lang="en">OFFSET can also return a range with height and width. The tool builds the single-cell form.</p>
+<h2>Örnek</h2>
+<p lang="en">Wanted the value two below a base cell. Even after inserting rows, it was taken by position relative to the base.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#REF!</b>: the shifted target falls outside the sheet.</li>
+<li lang="en"><b>Slow</b>: OFFSET recalculates often. The INDEX formula is an alternative.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Won't inserting rows shift it?</h3>
+<p lang="en">If the base cell moves, the result moves. To fix the base cell, add $.</p>
+<h2>Özet</h2>
+<p lang="en">To call shifted from a base, use OFFSET; on big sheets, the INDEX formula.</p>
 <a class="cta" href="/tr/indirect-formula-builder.html">“INDIRECT formülü oluştur” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/vlookup-formula-builder.html">VLOOKUP veya XLOOKUP Formülü Oluşturma</a>: VLOOKUP ve XLOOKUP formülleri oluşturun.</li><li><a href="/tr/importrange-builder.html">IMPORTRANGE formülü oluşturma</a>: IMPORTRANGE formülü oluşturun.</li><li><a href="/tr/index-match-builder.html">INDEX ve MATCH Formülü Oluşturun</a>: INDEX ve MATCH formülleri oluşturun.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

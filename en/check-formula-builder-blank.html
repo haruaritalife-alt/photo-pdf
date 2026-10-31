@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Whether It Is Empty</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose ISBLANK</li><li>Enter the cell</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/check-formula-builder.html">ISBLANK Builder</a> you can build a formula that checks whether a cell is empty.</p>
+<p>You want to check nothing is left blank. This builds formulas that find empty cells. "ISBLANK" and "EMPTY" in <a href="/en/check-formula-builder.html">Build an ISBLANK Formula</a> build it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose ISBLANK</li>
-<li>Enter the cell</li>
-<li>Copy it</li>
+<li>Choose "ISBLANK" or "EMPTY" in "Type".</li>
+<li>Enter the "Cell to check".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">To treat a cell with only spaces as empty, use EMPTY.</div>
+<div class="note">A cell that looks empty but contains spaces gives ISBLANK FALSE. In that case use EMPTY.</div>
+<h2>Example</h2>
+<ul>
+<li>ISBLANK: =ISBLANK(A2)</li>
+<li>EMPTY: =LEN(TRIM(A2))=0</li>
+</ul>
+<p>EMPTY checks whether the length after trimming spaces is 0.</p>
+<h2>Judging "has input" (invert)</h2>
+<p>Tick "Invert (NOT)" to build a formula checking whether something is entered.</p>
+<ul>
+<li>ISBLANK: =NOT(ISBLANK(A2))</li>
+<li>EMPTY: =LEN(TRIM(A2))&gt;0</li>
+</ul>
+<h2>Showing the result as text</h2>
+<p>The second formula outputs text via IF.</p>
+<ul>
+<li>Example: =IF(LEN(TRIM(A2))=0,"Missing","OK")</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Checking missing entries in surveys and application forms</li>
+<li>Confirming required columns have no blanks</li>
+<li>Highlighting only rows missing input</li>
+</ul>
+<h2>Coloring with conditional formatting</h2>
+<p>To color empty cells, use the check formula in conditional formatting.</p>
+<h2>Example</h2>
+<p>In an application list, I wanted to find missing phone numbers. The EMPTY formula found them, including cells with only spaces.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Only spaces judged as filled</b>: ISBLANK does that. Use EMPTY.</li>
+<li><b>Cells whose formula result is ""</b>: ISBLANK is FALSE; EMPTY is TRUE.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Which should I use?</h3>
+<p>For data where spaces slip in, like pasted form data, EMPTY is safer.</p>
+<h2>Summary</h2>
+<p>For missing-input checks, EMPTY is safe.</p>
 <a class="cta" href="/en/check-formula-builder.html">Use "Build an ISBLANK Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/en/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a>: Build conditional formatting formulas.</li><li><a href="/en/countif-formula-builder.html">Build a COUNTIF Formula</a>: Build formulas that count cells meeting a condition.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

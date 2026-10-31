@@ -201,14 +201,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Apa yang Perlu Dilakukan Jika Tidak Berfungsi</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Dikemas kini: 19 Okt 2026 | <a href="/about.html">Perihal (Jepun)</a></p>
 <div class="points"><b>Perkara penting</b><ul><li>Semak fail</li><li>Semak saiz</li><li>Cuba peranti lain</li></ul></div>
-<p>Jika <a href="/ms/subtotal-formula-builder.html">Pembina SUBTOTAL</a> tidak berfungsi, semak perkara berikut.</p>
-<h2>Langkah</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/ms/subtotal-formula-builder.html">Build a SUBTOTAL Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the range isn't in the "B2:B100" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>The total doesn't change when filtering</b>: you're using SUM. Use SUBTOTAL.</li>
+<li lang="en"><b>Hidden rows are added</b>: you're using 9. Use 109.</li>
+<li lang="en"><b>#VALUE!</b>: the range contains error values. Use AGGREGATE.</li>
+<li lang="en"><b>The total disappears when filtering</b>: the formula sits inside the filter range.</li>
+<li lang="en"><b>Everything is added though filtered</b>: the filter range breaks partway.</li>
+<li lang="en"><b>#NAME?</b>: AGGREGATE used in Google Sheets.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Semak fail</li>
-<li>Semak saiz</li>
-<li>Cuba peranti lain</li>
+<li lang="en">Check the formula cell is outside the filter range.</li>
+<li lang="en">Check the function number (9 vs 109).</li>
+<li lang="en">Check the range for error values or blank rows.</li>
 </ol>
-<div class="note">Jika tiada formula muncul, semak bahawa julat ditulis seperti B2:B100.</div>
+<div class="note" lang="en">SUBTOTAL doesn't work for hidden columns. It only affects hidden rows and filters.</div>
+<h2 lang="en">SUBTOTAL inside SUBTOTAL</h2>
+<p lang="en">If the range contains other SUBTOTALs they are excluded automatically to avoid double counting. A subtotal column and a grand total can share a range safely.</p>
+<h2>Contoh</h2>
+<p lang="en">Filtering didn't change my total. I had used SUM. Switching to SUBTOTAL gave the total of only filtered rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Text numbers</b>: not included. Convert to numbers.</li>
+<li lang="en"><b>Range too short</b>: rows added but not in the range.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I take the table range generously wide in advance?</h3>
+<p lang="en">Yes. Empty cells are ignored.</p>
+<h2>Ringkasan</h2>
+<p lang="en">Check the formula's position, function number and the range's contents.</p>
 <a class="cta" href="/ms/subtotal-formula-builder.html">Guna “Bina formula SUBTOTAL” (percuma)</a>
 <h2>Alat yang sepadan dengan ini</h2><ul><li><a href="/ms/sumif-formula-builder.html">Cipta formula SUMIF atau COUNTIF</a>: Cipta formula SUMIF dan COUNTIF.</li><li><a href="/ms/filter-formula-builder.html">Cipta formula FILTER</a>: Cipta formula FILTER.</li><li><a href="/ms/unique-formula-builder.html">Bina Formula UNIQUE</a>: Bina formula pengendalian pendua.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil amat dihargai.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Hantar tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hantar hadiah (senarai hajat Amazon)</a></div>

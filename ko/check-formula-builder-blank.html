@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>비었는지 확인</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>ISBLANK 선택</li><li>셀 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/check-formula-builder.html">ISBLANK 만들기</a>에서는 셀이 비었는지 확인하는 수식을 만들 수 있습니다.</p>
+<p lang="en">You want to check nothing is left blank. This builds formulas that find empty cells. "ISBLANK" and "EMPTY" in <a href="/ko/check-formula-builder.html">Build an ISBLANK Formula</a> build it.</p>
 <h2>순서</h2>
 <ol>
-<li>ISBLANK 선택</li>
-<li>셀 입력</li>
-<li>복사</li>
+<li lang="en">Choose "ISBLANK" or "EMPTY" in "Type".</li>
+<li lang="en">Enter the "Cell to check".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">공백만 있는 셀도 빈 셀로 취급하려면 EMPTY를 사용하세요.</div>
+<div class="note" lang="en">A cell that looks empty but contains spaces gives ISBLANK FALSE. In that case use EMPTY.</div>
+<h2>예</h2>
+<ul>
+<li lang="en">ISBLANK: =ISBLANK(A2)</li>
+<li lang="en">EMPTY: =LEN(TRIM(A2))=0</li>
+</ul>
+<p lang="en">EMPTY checks whether the length after trimming spaces is 0.</p>
+<h2 lang="en">Judging "has input" (invert)</h2>
+<p lang="en">Tick "Invert (NOT)" to build a formula checking whether something is entered.</p>
+<ul>
+<li lang="en">ISBLANK: =NOT(ISBLANK(A2))</li>
+<li lang="en">EMPTY: =LEN(TRIM(A2))&gt;0</li>
+</ul>
+<h2 lang="en">Showing the result as text</h2>
+<p lang="en">The second formula outputs text via IF.</p>
+<ul>
+<li lang="en">Example: =IF(LEN(TRIM(A2))=0,"Missing","OK")</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Checking missing entries in surveys and application forms</li>
+<li lang="en">Confirming required columns have no blanks</li>
+<li lang="en">Highlighting only rows missing input</li>
+</ul>
+<h2 lang="en">Coloring with conditional formatting</h2>
+<p lang="en">To color empty cells, use the check formula in conditional formatting.</p>
+<h2>예</h2>
+<p lang="en">In an application list, I wanted to find missing phone numbers. The EMPTY formula found them, including cells with only spaces.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Only spaces judged as filled</b>: ISBLANK does that. Use EMPTY.</li>
+<li lang="en"><b>Cells whose formula result is ""</b>: ISBLANK is FALSE; EMPTY is TRUE.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Which should I use?</h3>
+<p lang="en">For data where spaces slip in, like pasted form data, EMPTY is safer.</p>
+<h2>요약</h2>
+<p lang="en">For missing-input checks, EMPTY is safe.</p>
 <a class="cta" href="/ko/check-formula-builder.html">“ISBLANK 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li><li><a href="/ko/cond-format-formula-builder.html">조건부 서식 수식 만들기</a>: 조건부 서식 수식을 만듭니다.</li><li><a href="/ko/countif-formula-builder.html">COUNTIF 수식 만들기</a>: 조건에 맞는 셀의 개수를 세는 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

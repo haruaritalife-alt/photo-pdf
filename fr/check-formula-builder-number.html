@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Nombre ou texte</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Choisir ISNUMBER</li><li>Saisissez la cellule</li><li>Copiez-le</li></ul></div>
-<p>Dans <a href="/fr/check-formula-builder.html">Créateur de ISBLANK</a>, vous pouvez créer une formule qui vérifie si une cellule est un nombre ou du texte.</p>
+<p lang="en">Is a value in a column a number or text? A total that's off is often caused by numbers stored as text. "ISNUMBER" and "ISTEXT" in <a href="/fr/check-formula-builder.html">Build an ISBLANK Formula</a> build the check.</p>
 <h2>Étapes</h2>
 <ol>
-<li>Choisir ISNUMBER</li>
-<li>Saisissez la cellule</li>
-<li>Copiez-le</li>
+<li lang="en">Choose "ISNUMBER" or "ISTEXT" in "Type".</li>
+<li lang="en">Enter the "Cell to check".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Pratique pour repérer les nombres enregistrés comme du texte.</div>
+<div class="note" lang="en">A number stored as text looks like a number but gives ISNUMBER FALSE.</div>
+<h2>Exemple</h2>
+<ul>
+<li lang="en">=ISNUMBER(A2): TRUE if numeric</li>
+<li lang="en">=ISTEXT(A2): TRUE if text</li>
+</ul>
+<h2 lang="en">Showing the result as text</h2>
+<p lang="en">The second formula outputs text via IF.</p>
+<ul>
+<li lang="en">Example: =IF(ISNUMBER(A2),"Number","Text")</li>
+</ul>
+<h2 lang="en">Finding text numbers</h2>
+<p lang="en">When a total is off, copy ISNUMBER down and look for FALSE rows.</p>
+<h2 lang="en">Fixing text numbers</h2>
+<ul>
+<li lang="en">Convert with VALUE: =VALUE(A2)</li>
+<li lang="en">Multiply by 1: =A2*1</li>
+<li lang="en">Strip separators and spaces, then convert</li>
+</ul>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Investigating why totals or averages are off</li>
+<li lang="en">Checking the types in imported data</li>
+<li lang="en">Tidying columns mixing numbers and text</li>
+</ul>
+<h2 lang="en">Judging dates</h2>
+<p lang="en">Dates are numbers internally. ISNUMBER is TRUE for date cells. For text dates it's FALSE.</p>
+<h2>Exemple</h2>
+<p lang="en">A total came out low. ISNUMBER showed several cells were text numbers. VALUE fixed them and the total matched.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Left-aligned numbers</b>: often text numbers.</li>
+<li lang="en"><b>A leading "'"</b>: a mark of text entry.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about empty cells?</h3>
+<p lang="en">Empty cells give FALSE for both ISNUMBER and ISTEXT.</p>
+<h2>En résumé</h2>
+<p lang="en">When totals don't match, check types with ISNUMBER.</p>
 <a class="cta" href="/fr/check-formula-builder.html">Utiliser « Créer une formule ISBLANK » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/excel-if-builder.html">Créer une formule IF</a>: Créez une formule IF.</li><li><a href="/fr/cond-format-formula-builder.html">Créer une formule de mise en forme conditionnelle</a>: Créez des formules de mise en forme conditionnelle.</li><li><a href="/fr/countif-formula-builder.html">Créer une formule COUNTIF</a>: Crée des formules qui comptent les cellules répondant à une condition.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

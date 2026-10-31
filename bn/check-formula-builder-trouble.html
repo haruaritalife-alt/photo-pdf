@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>কাজ না করলে কী করবেন</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>ফাইলটি যাচাই করুন</li><li>আকার যাচাই করুন</li><li>অন্য ডিভাইস চেষ্টা করুন</li></ul></div>
-<p><a href="/bn/check-formula-builder.html">ISBLANK সূত্র নির্মাতা</a> কাজ না করলে নিচের বিষয়গুলো যাচাই করুন।</p>
-<h2>ধাপ</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/bn/check-formula-builder.html">Build an ISBLANK Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell isn't in the "A2" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Looks empty but ISBLANK is FALSE</b>: it has spaces or an empty string. Use EMPTY.</li>
+<li lang="en"><b>A number but ISNUMBER is FALSE</b>: a text number. Fix with VALUE.</li>
+<li lang="en"><b>ISERROR is TRUE but no error is visible</b>: the display is hidden by conditional formatting or similar.</li>
+<li lang="en"><b>ISFORMULA unavailable</b>: not usable in old Excel or some environments.</li>
+<li lang="en"><b>The result isn't text</b>: the first formula returns TRUE or FALSE. Text is the second formula.</li>
+<li lang="en"><b>Inverted but the same result</b>: the box isn't ticked.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>ফাইলটি যাচাই করুন</li>
-<li>আকার যাচাই করুন</li>
-<li>অন্য ডিভাইস চেষ্টা করুন</li>
+<li lang="en">Look directly at the cell being checked.</li>
+<li lang="en">Count characters with LEN to find invisible characters.</li>
+<li lang="en">Check the type fits the purpose.</li>
 </ol>
-<div class="note">কোনো সূত্র না এলে ঘরটি A2-এর মতো লেখা আছে কি না দেখুন।</div>
+<div class="note" lang="en">Invisible spaces (full-width spaces, line breaks) can't be seen. Counting with LEN reveals them.</div>
+<h2 lang="en">Removing invisible characters</h2>
+<ul>
+<li lang="en">Surrounding spaces: TRIM</li>
+<li lang="en">Line breaks and control characters: CLEAN</li>
+<li lang="en">Full-width spaces: SUBSTITUTE(A2," ","")</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">A cell looked empty yet slipped past the missing-input check. It held a full-width space. Removing it with SUBSTITUTE made detection work.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>TRIM doesn't remove full-width spaces</b>: handle them separately.</li>
+<li lang="en"><b>Cell format is text</b>: numbers become text on entry.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I choose between ISBLANK and EMPTY?</h3>
+<p lang="en">ISBLANK for truly empty only. EMPTY to treat space-only cells as empty.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">Check invisible characters, types and the choice of kind.</p>
 <a class="cta" href="/bn/check-formula-builder.html">“ISBLANK সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/excel-if-builder.html">IF সূত্র তৈরি করুন</a>: একটি IF সূত্র তৈরি করুন।</li><li><a href="/bn/cond-format-formula-builder.html">শর্তসাপেক্ষ ফরম্যাটিংয়ের সূত্র তৈরি করুন</a>: শর্তসাপেক্ষ ফরম্যাটিংয়ের সূত্র তৈরি করুন।</li><li><a href="/bn/countif-formula-builder.html">COUNTIF সূত্র তৈরি করুন</a>: শর্ত পূরণ করা সেল গোনে এমন সূত্র তৈরি করে।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

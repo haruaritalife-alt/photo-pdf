@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pokazywanie położenia komórki jako tekstu</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Wybierz ADDRESS</li><li>Wpisz numery wiersza i kolumny</li><li>Skopiuj</li></ul></div>
-<p>W <a href="/pl/indirect-formula-builder.html">Kreator INDIRECT</a> możesz utworzyć formułę podającą położenie komórki jako tekst na podstawie numerów wiersza i kolumny.</p>
+<p lang="en">You want a location like "B3" as text from row and column numbers. That's ADDRESS. "ADDRESS" in <a href="/pl/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>Kroki</h2>
 <ol>
-<li>Wybierz ADDRESS</li>
-<li>Wpisz numery wiersza i kolumny</li>
-<li>Skopiuj</li>
+<li lang="en">Choose "ADDRESS" in "Type".</li>
+<li lang="en">Enter the row number in "Row offset" and the column number in "Column offset".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Druga formuła podaje położenie jako tekst.</div>
+<div class="note" lang="en">In this type the two numbers are used directly as the row and column numbers.</div>
+<h2>Przykład</h2>
+<p lang="en">The location at row 3, column 2:</p>
+<ul>
+<li lang="en">=INDIRECT(ADDRESS(3,2))</li>
+</ul>
+<p lang="en">This returns B3's value.</p>
+<h2 lang="en">The alternative formula</h2>
+<p lang="en">The second gives the location itself as text.</p>
+<ul>
+<li lang="en">=ADDRESS(3,2,4)</li>
+</ul>
+<p lang="en">The result is the text "B3". The trailing 4 specifies relative reference without $.</p>
+<h2 lang="en">Choosing the reference style</h2>
+<p lang="en">ADDRESS's third number chooses how $ appears.</p>
+<ul>
+<li lang="en">1: $B$3 (row and column fixed)</li>
+<li lang="en">2: B$3 (row fixed)</li>
+<li lang="en">3: $B3 (column fixed)</li>
+<li lang="en">4: B3 (nothing fixed)</li>
+</ul>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">Showing as text where the maximum is</li>
+<li lang="en">Keeping a location as text in another cell</li>
+<li lang="en">Reading a value from row and column numbers</li>
+</ul>
+<h2 lang="en">Showing the location as text</h2>
+<p lang="en">Handy for finding where, say, the last row is.</p>
+<ul>
+<li lang="en">Example: =ADDRESS(MATCH(MAX(B:B),B:B,0),2,4)</li>
+</ul>
+<h2>Przykład</h2>
+<p lang="en">Wanted to know which cell holds the top sales. MATCH gave the row number and ADDRESS displayed it like "B15".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: row or column isn't an integer.</li>
+<li lang="en"><b>Zero or below</b>: rows and columns are 1 or greater.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can ADDRESS alone read a value?</h3>
+<p lang="en">ADDRESS only outputs the location text. To read the value, combine with INDIRECT.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">To get a location from numbers, use ADDRESS; to read the value, combine with INDIRECT.</p>
 <a class="cta" href="/pl/indirect-formula-builder.html">Użyj „Utwórz formułę INDIRECT” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/vlookup-formula-builder.html">Tworzenie formuły VLOOKUP lub XLOOKUP</a>: Twórz formuły VLOOKUP i XLOOKUP.</li><li><a href="/pl/importrange-builder.html">Tworzenie formuły IMPORTRANGE</a>: Utwórz formułę IMPORTRANGE.</li><li><a href="/pl/index-match-builder.html">Utwórz formułę INDEX i MATCH</a>: Twórz formuły INDEX i MATCH.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

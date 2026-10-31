@@ -200,14 +200,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>SUBTOTALの書き方（式を自動で作る・無料）</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>範囲を入れる</li><li>種類を選ぶ</li><li>式をコピー</li></ul></div>
-<p><a href="/subtotal-formula-builder.html">見えている行の集計式の作成</a> は、入力した内容から式を作ります。</p>
+<p>フィルターで絞った行だけを合計したい。SUMでは、隠れた行も含めて足してしまいます。見えている行だけを集計するのが、SUBTOTALです。<a href="/subtotal-formula-builder.html">見えている行だけ集計する式を作る</a> は、範囲と種類を選ぶだけで、その式を作ります。入力は、この端末の中で処理され、外には送られません。</p>
 <h2>手順</h2>
 <ol>
-<li>範囲を入れる</li>
-<li>種類を選ぶ</li>
-<li>式をコピー</li>
+<li>「範囲（B2:B100 など）」を入れます。</li>
+<li>「種類」を選びます（SUM、AVERAGE、COUNT、COUNTA、MAX、MIN）。</li>
+<li>「非表示の行」を選びます（FILTERED、HIDDEN）。</li>
+<li>「式」を「結果をコピー」で、「エラーも除く式（Excel）」を「2つ目をコピー」で、コピーします。</li>
 </ol>
-<div class="note">できた式は、そのままセルに貼れます。</div>
+<div class="note">FILTEREDは、フィルターで除かれた行だけを無視します。HIDDENは、手で隠した行も無視します。</div>
+<h2>例</h2>
+<p>B2:B100の、見えている行の合計です。</p>
+<ul>
+<li>=SUBTOTAL(9,B2:B100)</li>
+</ul>
+<p>手で隠した行も除くなら、次の形です。</p>
+<ul>
+<li>=SUBTOTAL(109,B2:B100)</li>
+</ul>
+<h2>関数の番号</h2>
+<ul>
+<li>1：AVERAGE、2：COUNT、3：COUNTA、4：MAX、5：MIN、9：SUM</li>
+<li>100を足すと（101、102…109）、手で隠した行も無視する</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>フィルターで絞った結果の合計</li>
+<li>絞り込みごとの件数や平均</li>
+<li>一覧の下に置く、集計行</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：範囲が「B2:B100」の形でない。</li>
+<li><b>フィルターしても合計が変わらない</b>：SUMを使っていないか。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>SUMとの違いは？</h3>
+<p>SUMは、隠れた行も足します。SUBTOTALは、見えている行だけを足します。</p>
+<h2>まとめ</h2>
+<p>絞り込んだ行の集計は、SUBTOTAL。</p>
 <a class="cta" href="/subtotal-formula-builder.html">見えている行だけ集計する式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/unique-formula-builder.html">UNIQUEの式を作る</a>：重複を扱う式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +250,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Write SUBTOTAL (Build It Automatically, Free)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the range</li><li>Choose the kind</li><li>Copy the formula</li></ul></div>
-<p><a href="/subtotal-formula-builder.html">SUBTOTAL Builder</a> builds the formula from what you enter.</p>
+<p>You want to total only the rows left after filtering. SUM adds hidden rows too. SUBTOTAL aggregates only visible rows. <a href="/subtotal-formula-builder.html">Build a SUBTOTAL Formula</a> builds the formula from a range and a type. Input is processed inside this device and not sent outside.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the range</li>
-<li>Choose the kind</li>
-<li>Copy the formula</li>
+<li>Enter the "Range (such as B2:B100)".</li>
+<li>Choose a "Type" (SUM, AVERAGE, COUNT, COUNTA, MAX, MIN).</li>
+<li>Choose "Hidden rows" (FILTERED, HIDDEN).</li>
+<li>Copy the "Formula" with "Copy result" and the "Formula that also drops errors (Excel)" with "Copy the second".</li>
 </ol>
-<div class="note">The formula can be pasted straight into a cell.</div>
+<div class="note">FILTERED ignores only rows removed by a filter. HIDDEN also ignores manually hidden rows.</div>
+<h2>Example</h2>
+<p>The sum of visible rows in B2:B100:</p>
+<ul>
+<li>=SUBTOTAL(9,B2:B100)</li>
+</ul>
+<p>To also exclude manually hidden rows:</p>
+<ul>
+<li>=SUBTOTAL(109,B2:B100)</li>
+</ul>
+<h2>Function numbers</h2>
+<ul>
+<li>1: AVERAGE, 2: COUNT, 3: COUNTA, 4: MAX, 5: MIN, 9: SUM</li>
+<li>Adding 100 (101, 102 … 109) also ignores manually hidden rows</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Totals of a filtered result</li>
+<li>Counts or averages per filter</li>
+<li>A summary row under a list</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the range isn't in the "B2:B100" form.</li>
+<li><b>The total doesn't change when filtering</b>: are you using SUM?</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How does it differ from SUM?</h3>
+<p>SUM adds hidden rows too. SUBTOTAL adds only visible rows.</p>
+<h2>Summary</h2>
+<p>For aggregating filtered rows, use SUBTOTAL.</p>
 <a class="cta" href="/subtotal-formula-builder.html">Use "Build a SUBTOTAL Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/unique-formula-builder.html">Build a UNIQUE Formula</a>: Build duplicate-handling formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

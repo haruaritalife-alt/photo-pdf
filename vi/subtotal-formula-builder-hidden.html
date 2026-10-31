@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Hàng ẩn thủ công</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Chọn HIDDEN</li><li>Nhập khoảng</li><li>Sao chép</li></ul></div>
-<p>Trong <a href="/vi/subtotal-formula-builder.html">Trình tạo SUBTOTAL</a>, bạn có thể tạo công thức cũng loại các hàng ẩn thủ công.</p>
+<p lang="en">Not a filter, but rows you hid by hand, such as via right-click "Hide". You also want them out of the total. "HIDDEN" in <a href="/vi/subtotal-formula-builder.html">Build a SUBTOTAL Formula</a> builds it.</p>
 <h2>Các bước</h2>
 <ol>
-<li>Chọn HIDDEN</li>
-<li>Nhập khoảng</li>
-<li>Sao chép</li>
+<li lang="en">Choose "HIDDEN" in "Hidden rows".</li>
+<li lang="en">Enter the "Range" and "Type".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Tổng vẫn đúng sau khi ẩn hàng.</div>
+<div class="note" lang="en">The function number gets 100 added (such as 109).</div>
+<h2>Ví dụ</h2>
+<ul>
+<li lang="en">=SUBTOTAL(109,B2:B100)</li>
+</ul>
+<p lang="en">Manually hidden rows are left out of the aggregate. So are rows removed by a filter.</p>
+<h2 lang="en">9 vs 109</h2>
+<ul>
+<li lang="en">9: ignores filtered-out rows; adds manually hidden rows</li>
+<li lang="en">109: ignores both manually hidden and filtered rows</li>
+</ul>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Hiding unneeded rows and aggregating the rest</li>
+<li lang="en">Hiding some months and viewing the total</li>
+<li lang="en">Reports where the total must match visible numbers</li>
+</ul>
+<h2 lang="en">Matching what's visible</h2>
+<p lang="en">To add only numbers visible on screen, 109 is the safe choice.</p>
+<h2 lang="en">Ways to hide rows</h2>
+<ul>
+<li lang="en">Right-click the row number and "Hide"</li>
+<li lang="en">Group and collapse</li>
+</ul>
+<p lang="en">109 excludes collapsed rows too.</p>
+<h2>Ví dụ</h2>
+<p lang="en">In a monthly table I hid unused months and wanted the total of the rest. The 109 formula gave the total of visible months only.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Hidden rows still added</b>: you're using 9. Use 109.</li>
+<li lang="en"><b>Hidden columns</b>: SUBTOTAL only affects rows. Hidden columns in a horizontal range aren't excluded.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Should I always use 109?</h3>
+<p lang="en">To exclude manually hidden rows too, 109. To exclude only filtered rows, 9.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">To exclude manually hidden rows, use 109.</p>
 <a class="cta" href="/vi/subtotal-formula-builder.html">Dùng “Tạo công thức SUBTOTAL” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/sumif-formula-builder.html">Tạo công thức SUMIF hoặc COUNTIF</a>: Tạo công thức SUMIF và COUNTIF.</li><li><a href="/vi/filter-formula-builder.html">Tạo công thức FILTER</a>: Tạo công thức FILTER.</li><li><a href="/vi/unique-formula-builder.html">Tạo công thức UNIQUE</a>: Tạo các công thức xử lý giá trị trùng.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

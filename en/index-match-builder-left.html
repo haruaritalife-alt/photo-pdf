@@ -201,14 +201,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Returning a Column to the Left</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the ranges</li><li>See the formula</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/index-match-builder.html">INDEX MATCH Builder</a> you can return a column to the left of the search column.</p>
+<p>VLOOKUP can't return a column left of the lookup column, for example a table with employee numbers on the right and names on the left, where you want the number from a name. With <a href="/en/index-match-builder.html">Build an INDEX and MATCH Formula</a> you can.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the ranges</li>
-<li>See the formula</li>
-<li>Copy it</li>
+<li>In "Range to return", enter the column to return (the left column).</li>
+<li>In "Lookup column range", enter the column holding the value to find (the right column).</li>
+<li>Enter the "Cell with the value to find".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">VLOOKUP cannot return a column to the left.</div>
+<div class="note">The return column and lookup column can be in either order. You needn't care about column order.</div>
+<h2>Example</h2>
+<p>With names in column A and employee numbers in column B, getting a name from a number (F2):</p>
+<ul>
+<li>=INDEX($A$2:$A$100,MATCH(F2,$B$2:$B$100,0))</li>
+</ul>
+<h2>With VLOOKUP</h2>
+<p>VLOOKUP needs the lookup column leftmost. To return a left column you had to reorder the table.</p>
+<h2>Robust to added columns</h2>
+<p>VLOOKUP's column number shifts when you insert columns. INDEX/MATCH points to the columns themselves, so inserting doesn't break it.</p>
+<h2>Good for</h2>
+<ul>
+<li>Returning a left column from a right one</li>
+<li>Tables where columns are inserted or deleted often</li>
+<li>Pulling several values from a large table</li>
+</ul>
+<h2>Pulling several values</h2>
+<p>Putting MATCH's result in another cell means the MATCH is computed once even with several INDEXes.</p>
+<ul>
+<li>Example: G2 =MATCH(F2,$B$2:$B$100,0), H2 =INDEX($A$2:$A$100,G2)</li>
+</ul>
+<h2>Example</h2>
+<p>In a roster with numbers on the right and names on the left, I wanted names from numbers. The INDEX/MATCH formula did it without reordering columns.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>#N/A</b>: the value isn't in the lookup column.</li>
+<li><b>A different row's value returns</b>: several rows share the value and the first is returned.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How does it differ from XLOOKUP?</h3>
+<p>XLOOKUP also returns left columns, but isn't available in old Excel. INDEX/MATCH works in every version.</p>
+<h2>Summary</h2>
+<p>To pull a left column, use INDEX and MATCH.</p>
 <a class="cta" href="/en/index-match-builder.html">Use "Build an INDEX and MATCH Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

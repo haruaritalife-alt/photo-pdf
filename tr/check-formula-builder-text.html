@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Sonucu metin olarak gösterme</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>Doğru için metni girin</li><li>Yanlış için metni girin</li><li>İkinci formülü kopyalayın</li></ul></div>
-<p><a href="/tr/check-formula-builder.html">ISBLANK Oluşturucu</a>, sonucu OK veya NG gibi metin olarak gösteren bir formül de oluşturur.</p>
+<p lang="en">Instead of TRUE or FALSE, you want results in readable text like "Empty" or "OK". The second formula in <a href="/tr/check-formula-builder.html">Build an ISBLANK Formula</a> does that.</p>
 <h2>Adımlar</h2>
 <ol>
-<li>Doğru için metni girin</li>
-<li>Yanlış için metni girin</li>
-<li>İkinci formülü kopyalayın</li>
+<li lang="en">Enter the "Type" and "Cell to check".</li>
+<li lang="en">In "When it applies", enter the text to show.</li>
+<li lang="en">Enter text in "When it doesn't" too.</li>
+<li lang="en">Copy the "Formula that returns text" with "Copy the second".</li>
 </ol>
-<div class="note">Metni istediğiniz gibi değiştirebilirsiniz.</div>
+<div class="note" lang="en">Text is wrapped in "..." in the formula. If your text contains a " the shape can break.</div>
+<h2>Örnek</h2>
+<ul>
+<li lang="en">=IF(ISBLANK(A2),"Empty","Filled")</li>
+</ul>
+<p lang="en">Shows "Empty" if empty, otherwise "Filled".</p>
+<h2 lang="en">Inverting</h2>
+<p lang="en">Tick "Invert (NOT)" to reverse the check.</p>
+<ul>
+<li lang="en">Example: =IF(NOT(ISBLANK(A2)),"Filled","Empty")</li>
+</ul>
+<h2 lang="en">Text examples</h2>
+<ul>
+<li lang="en">Empty: "Missing", "OK"</li>
+<li lang="en">Number: "Number", "Text"</li>
+<li lang="en">Error: "Check", "Normal"</li>
+</ul>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Showing results in words in a review column</li>
+<li lang="en">A check column in a printed table</li>
+<li lang="en">Filtering only "Check" rows</li>
+</ul>
+<h2 lang="en">Showing nothing</h2>
+<p lang="en">To leave the non-matching case blank, enter an empty string.</p>
+<ul>
+<li lang="en">Example: =IF(ISBLANK(A2),"Missing","")</li>
+</ul>
+<h2 lang="en">Combining conditions</h2>
+<p lang="en">Nested IFs can judge multiple conditions, but readability drops.</p>
+<h2>Örnek</h2>
+<p lang="en">In an application list, I wanted "Missing" on rows with empty required fields. Filtering the result column left only rows to fix.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Quotes inside the text</b>: the formula breaks. Avoid quotes.</li>
+<li lang="en"><b>Long text</b>: doesn't fit the column width.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to check two conditions at once</h3>
+<p lang="en">Combine with AND or OR.</p>
+<h2>Özet</h2>
+<p lang="en">For readable judgments, turn them into text with IF.</p>
 <a class="cta" href="/tr/check-formula-builder.html">“ISBLANK formülü oluştur” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/excel-if-builder.html">IF formülü oluşturma</a>: IF formülü oluşturun.</li><li><a href="/tr/cond-format-formula-builder.html">Koşullu Biçimlendirme Formülü Oluşturun</a>: Koşullu biçimlendirme formülleri oluşturun.</li><li><a href="/tr/countif-formula-builder.html">COUNTIF formülü oluştur</a>: Bir koşulu karşılayan hücreleri sayan formüller oluşturur.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

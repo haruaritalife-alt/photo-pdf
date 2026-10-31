@@ -200,14 +200,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/subtotal-formula-builder.html">見えている行の集計式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を貼ったのに、結果がおかしい。<a href="/subtotal-formula-builder.html">見えている行だけ集計する式を作る</a> で起こりやすい困りごとと対処法です。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：範囲が「B2:B100」の形でない。</li>
+</ul>
+<h2>スプレッドシートに貼ったあと</h2>
+<ul>
+<li><b>フィルターしても、合計が変わらない</b>：SUMを使っている。SUBTOTALにする。</li>
+<li><b>隠した行が足される</b>：9を使っている。109にする。</li>
+<li><b>#VALUE!</b>：範囲に、エラー値が含まれる。AGGREGATEを使う。</li>
+<li><b>合計が、フィルターで見えなくなる</b>：式を、フィルター範囲の中に置いている。</li>
+<li><b>フィルターしたのに、全部足される</b>：フィルターの範囲が、途中で途切れている。</li>
+<li><b>#NAME?</b>：AGGREGATEを、Googleスプレッドシートで使っている。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>式のセルが、フィルター範囲の外にあるか見る。</li>
+<li>関数の番号（9と109）を確かめる。</li>
+<li>範囲に、エラー値や、空白行がないか確かめる。</li>
 </ol>
-<div class="note">式が出ないときは、範囲がB2:B100のように書かれているか確かめます。</div>
+<div class="note">SUBTOTALは、列を隠した場合には効きません。行の非表示とフィルターにだけ効きます。</div>
+<h2>SUBTOTALの中のSUBTOTAL</h2>
+<p>範囲の中に別のSUBTOTALがあると、二重に数えないよう、自動で除かれます。小計の列と、総計を同じ範囲にしても、大丈夫です。</p>
+<h2>例</h2>
+<p>フィルターをかけても合計が変わらず困った。SUMを使っていた。SUBTOTALに変えると、絞った行だけの合計になった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>文字の数字</b>：合計に入らない。数値に直す。</li>
+<li><b>範囲が足りない</b>：行を足したのに、範囲に入っていない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>表全体の範囲を、あらかじめ広く取っていいですか？</h3>
+<p>かまいません。空のセルは無視されます。</p>
+<h2>まとめ</h2>
+<p>式の位置、関数の番号、範囲の中身。この3つを確かめましょう。</p>
 <a class="cta" href="/subtotal-formula-builder.html">見えている行だけ集計する式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/unique-formula-builder.html">UNIQUEの式を作る</a>：重複を扱う式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +246,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/subtotal-formula-builder.html">SUBTOTAL Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted the formula but the result is odd. Here are common troubles with <a href="/subtotal-formula-builder.html">Build a SUBTOTAL Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the range isn't in the "B2:B100" form.</li>
+</ul>
+<h2>After pasting into the sheet</h2>
+<ul>
+<li><b>The total doesn't change when filtering</b>: you're using SUM. Use SUBTOTAL.</li>
+<li><b>Hidden rows are added</b>: you're using 9. Use 109.</li>
+<li><b>#VALUE!</b>: the range contains error values. Use AGGREGATE.</li>
+<li><b>The total disappears when filtering</b>: the formula sits inside the filter range.</li>
+<li><b>Everything is added though filtered</b>: the filter range breaks partway.</li>
+<li><b>#NAME?</b>: AGGREGATE used in Google Sheets.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the formula cell is outside the filter range.</li>
+<li>Check the function number (9 vs 109).</li>
+<li>Check the range for error values or blank rows.</li>
 </ol>
-<div class="note">If no formula appears, check that the range is written like B2:B100.</div>
+<div class="note">SUBTOTAL doesn't work for hidden columns. It only affects hidden rows and filters.</div>
+<h2>SUBTOTAL inside SUBTOTAL</h2>
+<p>If the range contains other SUBTOTALs they are excluded automatically to avoid double counting. A subtotal column and a grand total can share a range safely.</p>
+<h2>Example</h2>
+<p>Filtering didn't change my total. I had used SUM. Switching to SUBTOTAL gave the total of only filtered rows.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Text numbers</b>: not included. Convert to numbers.</li>
+<li><b>Range too short</b>: rows added but not in the range.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I take the table range generously wide in advance?</h3>
+<p>Yes. Empty cells are ignored.</p>
+<h2>Summary</h2>
+<p>Check the formula's position, function number and the range's contents.</p>
 <a class="cta" href="/subtotal-formula-builder.html">Use "Build a SUBTOTAL Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/unique-formula-builder.html">Build a UNIQUE Formula</a>: Build duplicate-handling formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Totals After Filtering</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose SUM</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/subtotal-formula-builder.html">SUBTOTAL Builder</a> you can build a formula that totals only the rows left after filtering.</p>
+<p>You want the total of a filtered result in another cell. That is SUBTOTAL's most common use. "FILTERED" with "SUM" in <a href="/en/subtotal-formula-builder.html">Build a SUBTOTAL Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose SUM</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>In "Range", enter the column to total.</li>
+<li>Set "Type" to "SUM".</li>
+<li>Set "Hidden rows" to "FILTERED".</li>
+<li>Copy the formula and paste it above or below the list.</li>
 </ol>
-<div class="note">SUM would add the hidden rows too.</div>
+<div class="note">Put the summary cell outside the filtered range. Inside it, filtering would hide it.</div>
+<h2>Example</h2>
+<ul>
+<li>=SUBTOTAL(9,B2:B100)</li>
+</ul>
+<p>Filtering to "Tokyo" shows the total of Tokyo rows. It changes every time the condition changes.</p>
+<h2>Putting it above the list</h2>
+<p>In tables with many rows, place the total above the list (row 1, say) so it stays visible while scrolling.</p>
+<h2>Multiple columns</h2>
+<p>Copy right for per-column totals. The range changes per column.</p>
+<h2>Good for</h2>
+<ul>
+<li>Totals narrowed by department or month</li>
+<li>Sales of a search (filter) result</li>
+<li>Subtotals in an invoice draft</li>
+</ul>
+<h2>Difference from SUMIF</h2>
+<ul>
+<li>SUMIF: the condition is in the formula; no filter needed</li>
+<li>SUBTOTAL: follows the filtered result</li>
+</ul>
+<p>To narrow on screen and watch, SUBTOTAL fits.</p>
+<h2>Example</h2>
+<p>Wanted to see the total while filtering a monthly sales list by person. A SUBTOTAL above the table changed each time I switched persons.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>The total is off</b>: the formula was placed inside the filter range.</li>
+<li><b>Filter doesn't apply</b>: a blank row in the data breaks the range.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does it work in Google Sheets?</h3>
+<p>Yes. It has the same SUBTOTAL form.</p>
+<h2>Summary</h2>
+<p>For a total that follows filters, use SUBTOTAL(9,…).</p>
 <a class="cta" href="/en/subtotal-formula-builder.html">Use "Build a SUBTOTAL Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/unique-formula-builder.html">Build a UNIQUE Formula</a>: Build duplicate-handling formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

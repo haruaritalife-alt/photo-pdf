@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>숫자인지 텍스트인지</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>ISNUMBER 선택</li><li>셀 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/check-formula-builder.html">ISBLANK 만들기</a>에서는 셀이 숫자인지 텍스트인지 확인하는 수식을 만들 수 있습니다.</p>
+<p lang="en">Is a value in a column a number or text? A total that's off is often caused by numbers stored as text. "ISNUMBER" and "ISTEXT" in <a href="/ko/check-formula-builder.html">Build an ISBLANK Formula</a> build the check.</p>
 <h2>순서</h2>
 <ol>
-<li>ISNUMBER 선택</li>
-<li>셀 입력</li>
-<li>복사</li>
+<li lang="en">Choose "ISNUMBER" or "ISTEXT" in "Type".</li>
+<li lang="en">Enter the "Cell to check".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">텍스트로 저장된 숫자를 찾을 때 편리합니다.</div>
+<div class="note" lang="en">A number stored as text looks like a number but gives ISNUMBER FALSE.</div>
+<h2>예</h2>
+<ul>
+<li lang="en">=ISNUMBER(A2): TRUE if numeric</li>
+<li lang="en">=ISTEXT(A2): TRUE if text</li>
+</ul>
+<h2 lang="en">Showing the result as text</h2>
+<p lang="en">The second formula outputs text via IF.</p>
+<ul>
+<li lang="en">Example: =IF(ISNUMBER(A2),"Number","Text")</li>
+</ul>
+<h2 lang="en">Finding text numbers</h2>
+<p lang="en">When a total is off, copy ISNUMBER down and look for FALSE rows.</p>
+<h2 lang="en">Fixing text numbers</h2>
+<ul>
+<li lang="en">Convert with VALUE: =VALUE(A2)</li>
+<li lang="en">Multiply by 1: =A2*1</li>
+<li lang="en">Strip separators and spaces, then convert</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Investigating why totals or averages are off</li>
+<li lang="en">Checking the types in imported data</li>
+<li lang="en">Tidying columns mixing numbers and text</li>
+</ul>
+<h2 lang="en">Judging dates</h2>
+<p lang="en">Dates are numbers internally. ISNUMBER is TRUE for date cells. For text dates it's FALSE.</p>
+<h2>예</h2>
+<p lang="en">A total came out low. ISNUMBER showed several cells were text numbers. VALUE fixed them and the total matched.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Left-aligned numbers</b>: often text numbers.</li>
+<li lang="en"><b>A leading "'"</b>: a mark of text entry.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about empty cells?</h3>
+<p lang="en">Empty cells give FALSE for both ISNUMBER and ISTEXT.</p>
+<h2>요약</h2>
+<p lang="en">When totals don't match, check types with ISNUMBER.</p>
 <a class="cta" href="/ko/check-formula-builder.html">“ISBLANK 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li><li><a href="/ko/cond-format-formula-builder.html">조건부 서식 수식 만들기</a>: 조건부 서식 수식을 만듭니다.</li><li><a href="/ko/countif-formula-builder.html">COUNTIF 수식 만들기</a>: 조건에 맞는 셀의 개수를 세는 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

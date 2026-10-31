@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Chamar outra planilha</h1>
 <p class="meta">Publicado em: 19 out 2026 | Atualizado em: 19 out 2026 | <a href="/about.html">Sobre (em japonês)</a></p>
 <div class="points"><b>Pontos principais</b><ul><li>Escolha SHEET</li><li>Digite o nome da planilha e a célula</li><li>Copie</li></ul></div>
-<p>No <a href="/pt/indirect-formula-builder.html">Gerador de INDIRECT</a> você pode criar uma fórmula que chama uma célula de outra planilha.</p>
+<p lang="en">Sheets are split by month and you want the same cell from "Jan", "Feb" and so on. Writing sheet names into formulas means rewriting per month. INDIRECT can read the sheet name from a cell. "SHEET" in <a href="/pt/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>Passos</h2>
 <ol>
-<li>Escolha SHEET</li>
-<li>Digite o nome da planilha e a célula</li>
-<li>Copie</li>
+<li lang="en">Choose "SHEET" in "Type".</li>
+<li lang="en">In "Sheet name", enter the sheet name or a cell holding it.</li>
+<li lang="en">In "Cell", enter the cell to call.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Se você digitar o nome da planilha como uma célula, como A1, poderá trocá-lo pelo texto da célula.</div>
+<div class="note" lang="en">If you enter the sheet name in cell form like "A1", that cell's text is used as the sheet name.</div>
+<h2>Exemplo</h2>
+<p lang="en">Writing the sheet name as text:</p>
+<ul>
+<li lang="en">=INDIRECT("'Jan'!B2")</li>
+</ul>
+<p lang="en">When A1 holds the sheet name (entered as "A1"):</p>
+<ul>
+<li lang="en">=INDIRECT("'"&amp;A1&amp;"'!B2")</li>
+</ul>
+<p lang="en">Just change A1 from "Jan" to "Feb" and the reference switches.</p>
+<h2 lang="en">The alternative formula</h2>
+<p lang="en">The second is wrapped in IFERROR, giving empty instead of an error when the sheet is missing.</p>
+<ul>
+<li lang="en">=IFERROR(INDIRECT("'"&amp;A1&amp;"'!B2"),"")</li>
+</ul>
+<h2 lang="en">Quoting the sheet name</h2>
+<p lang="en">If the name has spaces, symbols or non-ASCII characters, it must be quoted with '. The tool's formula includes the quotes.</p>
+<h2>Bom para</h2>
+<ul>
+<li lang="en">Gathering same-position values from monthly sheets</li>
+<li lang="en">Listing totals from branch sheets</li>
+<li lang="en">Showing the sheet chosen in a dropdown</li>
+</ul>
+<h2 lang="en">Combining with a dropdown</h2>
+<p lang="en">If A1 lets you pick a sheet name from a dropdown, the display switches.</p>
+<h2>Exemplo</h2>
+<p lang="en">Wanted each monthly sheet's total cell collected in a list. With sheet names in rows and INDIRECT reading them, one formula built the list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#REF!</b>: wrong sheet name, or stray spaces.</li>
+<li lang="en"><b>Renaming</b>: a sheet name typed as text doesn't follow renames.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can it call another file?</h3>
+<p lang="en">In Excel it may not work unless the other file is open.</p>
+<h2>Resumo</h2>
+<p lang="en">To switch sheet names via a cell, use INDIRECT.</p>
 <a class="cta" href="/pt/indirect-formula-builder.html">Usar “Crie uma fórmula INDIRECT” (grátis)</a>
 <h2>Ferramentas que combinam com esta</h2><ul><li><a href="/pt/vlookup-formula-builder.html">Criar uma fórmula VLOOKUP ou XLOOKUP</a>: Crie fórmulas VLOOKUP e XLOOKUP.</li><li><a href="/pt/importrange-builder.html">Criar uma fórmula IMPORTRANGE</a>: Crie uma fórmula IMPORTRANGE.</li><li><a href="/pt/index-match-builder.html">Criar uma fórmula INDEX e MATCH</a>: Crie fórmulas INDEX e MATCH.</li></ul>
 <div class="tip"><p>Se este guia ajudou, uma pequena gorjeta significaria muito.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Enviar uma gorjeta (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar um presente (lista de desejos da Amazon)</a></div>

@@ -200,14 +200,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>左の列を取り出す</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>範囲を入れる</li><li>式を見る</li><li>コピーする</li></ul></div>
-<p><a href="/index-match-builder.html">INDEX・MATCH式の作成</a> では、探す列より左にある列も取り出せます。</p>
+<p>VLOOKUPでは、探す列の左にある列の値を、取り出せません。社員番号が右にあり、氏名が左にある表で、氏名から番号を引きたい、といった場面です。<a href="/index-match-builder.html">INDEX・MATCHの式を作る</a> なら、取り出せます。</p>
 <h2>手順</h2>
 <ol>
-<li>範囲を入れる</li>
-<li>式を見る</li>
-<li>コピーする</li>
+<li>「取り出す範囲」に、取り出したい列（左の列）を入れる。</li>
+<li>「探す列の範囲」に、探す値のある列（右の列）を入れる。</li>
+<li>「探す値のセル」を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">VLOOKUPでは、左の列は取り出せません。</div>
+<div class="note">取り出す列と探す列は、左右どちらでも構いません。列の順序を、気にしなくて済みます。</div>
+<h2>例</h2>
+<p>A列が氏名、B列が社員番号の表で、社員番号（F2）から、氏名を引く場合です。</p>
+<ul>
+<li>=INDEX($A$2:$A$100,MATCH(F2,$B$2:$B$100,0))</li>
+</ul>
+<h2>VLOOKUPの場合</h2>
+<p>VLOOKUPは、探す列が左端でなければなりません。左の列を取り出すには、表の列を並べ替える必要がありました。</p>
+<h2>列の追加に強い</h2>
+<p>VLOOKUPの列番号は、列を挿入するとずれます。INDEXとMATCHは、列そのものを指すので、挿入しても壊れません。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>右の列から、左の列を引く</li>
+<li>列の挿入や削除が多い表</li>
+<li>大きな表で、複数の値を引く</li>
+</ul>
+<h2>複数の値を引く</h2>
+<p>MATCHの結果を、別のセルに出しておくと、INDEXを複数並べても、MATCHの計算は1回で済みます。</p>
+<ul>
+<li>例：G2に=MATCH(F2,$B$2:$B$100,0)、H2に=INDEX($A$2:$A$100,G2)</li>
+</ul>
+<h2>例</h2>
+<p>社員番号が右にあり、氏名が左にある名簿で、番号から氏名を引きたかった。INDEXとMATCHの式で、列を並べ替えずに引けた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>#N/A</b>：探す値が、探す列にない。</li>
+<li><b>別の行の値が返る</b>：同じ値が複数あり、最初の行が返る。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>XLOOKUPとの違いは？</h3>
+<p>XLOOKUPも、左の列を取り出せます。ただし、古いExcelでは使えません。INDEXとMATCHは、どの版でも動きます。</p>
+<h2>まとめ</h2>
+<p>左の列を引くなら、INDEXとMATCH。</p>
 <a class="cta" href="/index-match-builder.html">INDEX・MATCHの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +252,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Returning a Column to the Left</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the ranges</li><li>See the formula</li><li>Copy it</li></ul></div>
-<p>In <a href="/index-match-builder.html">INDEX MATCH Builder</a> you can return a column to the left of the search column.</p>
+<p>VLOOKUP can't return a column left of the lookup column, for example a table with employee numbers on the right and names on the left, where you want the number from a name. With <a href="/index-match-builder.html">Build an INDEX and MATCH Formula</a> you can.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the ranges</li>
-<li>See the formula</li>
-<li>Copy it</li>
+<li>In "Range to return", enter the column to return (the left column).</li>
+<li>In "Lookup column range", enter the column holding the value to find (the right column).</li>
+<li>Enter the "Cell with the value to find".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">VLOOKUP cannot return a column to the left.</div>
+<div class="note">The return column and lookup column can be in either order. You needn't care about column order.</div>
+<h2>Example</h2>
+<p>With names in column A and employee numbers in column B, getting a name from a number (F2):</p>
+<ul>
+<li>=INDEX($A$2:$A$100,MATCH(F2,$B$2:$B$100,0))</li>
+</ul>
+<h2>With VLOOKUP</h2>
+<p>VLOOKUP needs the lookup column leftmost. To return a left column you had to reorder the table.</p>
+<h2>Robust to added columns</h2>
+<p>VLOOKUP's column number shifts when you insert columns. INDEX/MATCH points to the columns themselves, so inserting doesn't break it.</p>
+<h2>Good for</h2>
+<ul>
+<li>Returning a left column from a right one</li>
+<li>Tables where columns are inserted or deleted often</li>
+<li>Pulling several values from a large table</li>
+</ul>
+<h2>Pulling several values</h2>
+<p>Putting MATCH's result in another cell means the MATCH is computed once even with several INDEXes.</p>
+<ul>
+<li>Example: G2 =MATCH(F2,$B$2:$B$100,0), H2 =INDEX($A$2:$A$100,G2)</li>
+</ul>
+<h2>Example</h2>
+<p>In a roster with numbers on the right and names on the left, I wanted names from numbers. The INDEX/MATCH formula did it without reordering columns.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>#N/A</b>: the value isn't in the lookup column.</li>
+<li><b>A different row's value returns</b>: several rows share the value and the first is returned.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How does it differ from XLOOKUP?</h3>
+<p>XLOOKUP also returns left columns, but isn't available in old Excel. INDEX/MATCH works in every version.</p>
+<h2>Summary</h2>
+<p>To pull a left column, use INDEX and MATCH.</p>
 <a class="cta" href="/index-match-builder.html">Use "Build an INDEX and MATCH Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

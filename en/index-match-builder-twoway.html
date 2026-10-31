@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Two-Way Lookup</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the header range</li><li>Enter the header value</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/index-match-builder.html">INDEX MATCH Builder</a>, entering the header range and value makes a two-way table lookup.</p>
+<p>You want the value where a row heading and a column heading intersect, such as "Product A in March" from a product-by-month sales table. With <a href="/en/index-match-builder.html">Build an INDEX and MATCH Formula</a>, two MATCHes pull from both rows and columns.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the header range</li>
-<li>Enter the header value</li>
-<li>Copy it</li>
+<li>In "Range to return", enter the table's numeric part.</li>
+<li>In "Lookup column range", enter the row headings (the product-name column).</li>
+<li>In "Cell with the value to find", enter the cell with the product to find.</li>
+<li>In "Header range", enter the column headings (the month row).</li>
+<li>In "Cell with the header value", enter the cell with the month to find.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">Two MATCH functions find the row and the column.</div>
+<div class="note">Make the return range the numeric part only. Don't include heading rows and columns.</div>
+<h2>Example</h2>
+<p>With sales in B2:D10, product names in A2:A10, months in B1:D1, and the product in F2 and month in G2:</p>
+<ul>
+<li>=INDEX($B$2:$D$10,MATCH(F2,$A$2:$A$10,0),MATCH(G2,$B$1:$D$1,0))</li>
+</ul>
+<h2>How it works</h2>
+<ul>
+<li>First MATCH: which row the product is in</li>
+<li>Second MATCH: which column the month is in</li>
+<li>INDEX: returns the cell at that row and column</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Product-by-month sales tables</li>
+<li>Region-by-year statistics tables</li>
+<li>Price tables (size × weight)</li>
+</ul>
+<h2>Combining with dropdowns</h2>
+<p>Make F2 and G2 dropdowns and you get a lookup sheet that shows the intersecting value just by choosing.</p>
+<h2>Example</h2>
+<p>Wanted a table that gives sales when you pick a product and month. Two-way INDEX/MATCH built it in one formula.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Including headings in the return range</b>: the position shifts by one.</li>
+<li><b>Range sizes don't match</b>: align the number of row headings with the return range's rows.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I leave the header range empty?</h3>
+<p>You get the ordinary one-direction INDEX/MATCH formula.</p>
+<h2>Summary</h2>
+<p>To pull from both directions, use two MATCHes.</p>
 <a class="cta" href="/en/index-match-builder.html">Use "Build an INDEX and MATCH Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

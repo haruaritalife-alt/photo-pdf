@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Bỏ qua cả lỗi</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Tạo công thức</li><li>Chọn công thức thứ hai</li><li>Sao chép</li></ul></div>
-<p><a href="/vi/subtotal-formula-builder.html">Trình tạo SUBTOTAL</a> cũng tạo công thức bỏ qua các ô có lỗi.</p>
+<p lang="en">SUBTOTAL returns an error if the range contains an error value (such as #N/A). To aggregate while skipping errors, use AGGREGATE. The second formula in <a href="/vi/subtotal-formula-builder.html">Build a SUBTOTAL Formula</a> is that.</p>
 <h2>Các bước</h2>
 <ol>
-<li>Tạo công thức</li>
-<li>Chọn công thức thứ hai</li>
-<li>Sao chép</li>
+<li lang="en">Enter the "Range" and "Type".</li>
+<li lang="en">Copy the "Formula that also drops errors (Excel)" with "Copy the second".</li>
+<li lang="en">Paste it.</li>
 </ol>
-<div class="note">Dùng được trong Excel. Trong Google Trang tính, hãy dùng công thức thứ nhất.</div>
+<div class="note" lang="en">AGGREGATE is an Excel function. It isn't available in Google Sheets.</div>
+<h2>Ví dụ</h2>
+<ul>
+<li lang="en">=AGGREGATE(9,7,B2:B100)</li>
+</ul>
+<p lang="en">9 means sum, and 7 means "ignore hidden rows and error values".</p>
+<h2 lang="en">AGGREGATE's features</h2>
+<ul>
+<li lang="en">Ignores hidden rows</li>
+<li lang="en">Ignores error values</li>
+<li lang="en">Offers more aggregation methods than SUBTOTAL</li>
+</ul>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Totals of a column mixed with #N/A</li>
+<li lang="en">Tables whose formula results include errors</li>
+<li lang="en">Knowing the overall value before fixing errors</li>
+</ul>
+<h2 lang="en">In Google Sheets</h2>
+<p lang="en">For the same aim, you can combine SUBTOTAL and IFERROR.</p>
+<ul>
+<li lang="en">Example: =SUBTOTAL(9,ARRAYFORMULA(IFERROR(B2:B100,0)))</li>
+</ul>
+<p lang="en">Behavior can differ by environment, so test before relying on it.</p>
+<h2 lang="en">A caution about hiding errors</h2>
+<p lang="en">A total that ignores errors differs from the true total. It's safer to check the cause of the errors first.</p>
+<h2>Ví dụ</h2>
+<p lang="en">A VLOOKUP result column had #N/A on rows not found. AGGREGATE gave a total skipping the errors.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#NAME?</b>: AGGREGATE may not work in Google Sheets.</li>
+<li lang="en"><b>The result is small</b>: error rows are excluded from the aggregate.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What is the number "7"?</h3>
+<p lang="en">The option number. 7 ignores hidden rows and error values.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">For columns mixed with errors, use AGGREGATE.</p>
 <a class="cta" href="/vi/subtotal-formula-builder.html">Dùng “Tạo công thức SUBTOTAL” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/sumif-formula-builder.html">Tạo công thức SUMIF hoặc COUNTIF</a>: Tạo công thức SUMIF và COUNTIF.</li><li><a href="/vi/filter-formula-builder.html">Tạo công thức FILTER</a>: Tạo công thức FILTER.</li><li><a href="/vi/unique-formula-builder.html">Tạo công thức UNIQUE</a>: Tạo các công thức xử lý giá trị trùng.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

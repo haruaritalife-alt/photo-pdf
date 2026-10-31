@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>অন্য শিট ডাকা</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>SHEET বেছে নিন</li><li>শিটের নাম ও সেল লিখুন</li><li>কপি করুন</li></ul></div>
-<p><a href="/bn/indirect-formula-builder.html">INDIRECT সূত্র নির্মাতা</a>-এ আপনি এমন সূত্র তৈরি করতে পারেন যা অন্য শিটের সেল ডাকে।</p>
+<p lang="en">Sheets are split by month and you want the same cell from "Jan", "Feb" and so on. Writing sheet names into formulas means rewriting per month. INDIRECT can read the sheet name from a cell. "SHEET" in <a href="/bn/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>SHEET বেছে নিন</li>
-<li>শিটের নাম ও সেল লিখুন</li>
-<li>কপি করুন</li>
+<li lang="en">Choose "SHEET" in "Type".</li>
+<li lang="en">In "Sheet name", enter the sheet name or a cell holding it.</li>
+<li lang="en">In "Cell", enter the cell to call.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">শিটের নাম A1-এর মতো সেল হিসেবে লিখলে সেলের টেক্সট দিয়ে তা বদলাতে পারবেন।</div>
+<div class="note" lang="en">If you enter the sheet name in cell form like "A1", that cell's text is used as the sheet name.</div>
+<h2>উদাহরণ</h2>
+<p lang="en">Writing the sheet name as text:</p>
+<ul>
+<li lang="en">=INDIRECT("'Jan'!B2")</li>
+</ul>
+<p lang="en">When A1 holds the sheet name (entered as "A1"):</p>
+<ul>
+<li lang="en">=INDIRECT("'"&amp;A1&amp;"'!B2")</li>
+</ul>
+<p lang="en">Just change A1 from "Jan" to "Feb" and the reference switches.</p>
+<h2 lang="en">The alternative formula</h2>
+<p lang="en">The second is wrapped in IFERROR, giving empty instead of an error when the sheet is missing.</p>
+<ul>
+<li lang="en">=IFERROR(INDIRECT("'"&amp;A1&amp;"'!B2"),"")</li>
+</ul>
+<h2 lang="en">Quoting the sheet name</h2>
+<p lang="en">If the name has spaces, symbols or non-ASCII characters, it must be quoted with '. The tool's formula includes the quotes.</p>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Gathering same-position values from monthly sheets</li>
+<li lang="en">Listing totals from branch sheets</li>
+<li lang="en">Showing the sheet chosen in a dropdown</li>
+</ul>
+<h2 lang="en">Combining with a dropdown</h2>
+<p lang="en">If A1 lets you pick a sheet name from a dropdown, the display switches.</p>
+<h2>উদাহরণ</h2>
+<p lang="en">Wanted each monthly sheet's total cell collected in a list. With sheet names in rows and INDIRECT reading them, one formula built the list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#REF!</b>: wrong sheet name, or stray spaces.</li>
+<li lang="en"><b>Renaming</b>: a sheet name typed as text doesn't follow renames.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can it call another file?</h3>
+<p lang="en">In Excel it may not work unless the other file is open.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">To switch sheet names via a cell, use INDIRECT.</p>
 <a class="cta" href="/bn/indirect-formula-builder.html">“INDIRECT সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/vlookup-formula-builder.html">VLOOKUP বা XLOOKUP ফর্মুলা তৈরি করুন</a>: VLOOKUP ও XLOOKUP ফর্মুলা তৈরি করুন।</li><li><a href="/bn/importrange-builder.html">IMPORTRANGE সূত্র তৈরি করুন</a>: একটি IMPORTRANGE সূত্র তৈরি করুন।</li><li><a href="/bn/index-match-builder.html">INDEX ও MATCH সূত্র তৈরি করুন</a>: INDEX ও MATCH সূত্র তৈরি করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

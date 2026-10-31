@@ -200,14 +200,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>手で隠した行</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>HIDDENを選ぶ</li><li>範囲を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/subtotal-formula-builder.html">見えている行の集計式の作成</a> では、手で隠した行も除く式を作れます。</p>
+<p>フィルターではなく、行を手で隠したとき。右クリックで「非表示」にした行も、集計から外したい。<a href="/subtotal-formula-builder.html">見えている行だけ集計する式を作る</a> の「HIDDEN」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>HIDDENを選ぶ</li>
-<li>範囲を入れる</li>
-<li>コピーする</li>
+<li>「非表示の行」で「HIDDEN」を選ぶ。</li>
+<li>「範囲」と「種類」を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">行を隠したあとも、集計が合います。</div>
+<div class="note">関数の番号に100を足した形（109など）になります。</div>
+<h2>例</h2>
+<ul>
+<li>=SUBTOTAL(109,B2:B100)</li>
+</ul>
+<p>手で隠した行は、集計に入りません。フィルターで除かれた行も、除かれます。</p>
+<h2>9と109の違い</h2>
+<ul>
+<li>9：フィルターで除かれた行は無視する。手で隠した行は、足す</li>
+<li>109：手で隠した行も、フィルターの行も、無視する</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>不要な行を隠して、残りだけを集計</li>
+<li>一部の月を隠して、合計を見る</li>
+<li>見えている数字と、合計を一致させたい報告書</li>
+</ul>
+<h2>見えているものと一致させる</h2>
+<p>画面に見えている数字だけを足したいなら、109が確実です。</p>
+<h2>行を隠す方法</h2>
+<ul>
+<li>行番号を右クリックして、「非表示」</li>
+<li>グループ化して、折りたたむ</li>
+</ul>
+<p>折りたたんだ行も、109は除きます。</p>
+<h2>例</h2>
+<p>月次の表で、使わない月の行を隠して、残りの月の合計を見たかった。109の式を使うと、見えている月だけの合計になった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>隠した行が、まだ足される</b>：9を使っている。109にする。</li>
+<li><b>列を隠した場合</b>：SUBTOTALは行にだけ効く。横に並べた範囲の、隠した列は除かれない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>常に109を使えばいいですか？</h3>
+<p>手で隠した行も除きたいなら、109。フィルターだけを除きたいなら、9。</p>
+<h2>まとめ</h2>
+<p>手で隠した行も除くなら、109。</p>
 <a class="cta" href="/subtotal-formula-builder.html">見えている行だけ集計する式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/unique-formula-builder.html">UNIQUEの式を作る</a>：重複を扱う式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +255,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Rows Hidden by Hand</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose HIDDEN</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/subtotal-formula-builder.html">SUBTOTAL Builder</a> you can build a formula that also leaves out rows hidden by hand.</p>
+<p>Not a filter, but rows you hid by hand, such as via right-click "Hide". You also want them out of the total. "HIDDEN" in <a href="/subtotal-formula-builder.html">Build a SUBTOTAL Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose HIDDEN</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>Choose "HIDDEN" in "Hidden rows".</li>
+<li>Enter the "Range" and "Type".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">The totals stay right after you hide rows.</div>
+<div class="note">The function number gets 100 added (such as 109).</div>
+<h2>Example</h2>
+<ul>
+<li>=SUBTOTAL(109,B2:B100)</li>
+</ul>
+<p>Manually hidden rows are left out of the aggregate. So are rows removed by a filter.</p>
+<h2>9 vs 109</h2>
+<ul>
+<li>9: ignores filtered-out rows; adds manually hidden rows</li>
+<li>109: ignores both manually hidden and filtered rows</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Hiding unneeded rows and aggregating the rest</li>
+<li>Hiding some months and viewing the total</li>
+<li>Reports where the total must match visible numbers</li>
+</ul>
+<h2>Matching what's visible</h2>
+<p>To add only numbers visible on screen, 109 is the safe choice.</p>
+<h2>Ways to hide rows</h2>
+<ul>
+<li>Right-click the row number and "Hide"</li>
+<li>Group and collapse</li>
+</ul>
+<p>109 excludes collapsed rows too.</p>
+<h2>Example</h2>
+<p>In a monthly table I hid unused months and wanted the total of the rest. The 109 formula gave the total of visible months only.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Hidden rows still added</b>: you're using 9. Use 109.</li>
+<li><b>Hidden columns</b>: SUBTOTAL only affects rows. Hidden columns in a horizontal range aren't excluded.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Should I always use 109?</h3>
+<p>To exclude manually hidden rows too, 109. To exclude only filtered rows, 9.</p>
+<h2>Summary</h2>
+<p>To exclude manually hidden rows, use 109.</p>
 <a class="cta" href="/subtotal-formula-builder.html">Use "Build a SUBTOTAL Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/unique-formula-builder.html">Build a UNIQUE Formula</a>: Build duplicate-handling formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

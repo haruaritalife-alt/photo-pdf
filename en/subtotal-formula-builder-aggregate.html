@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Skipping Errors Too</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>Pick the second formula</li><li>Copy it</li></ul></div>
-<p><a href="/en/subtotal-formula-builder.html">SUBTOTAL Builder</a> also builds a formula that skips cells with errors.</p>
+<p>SUBTOTAL returns an error if the range contains an error value (such as #N/A). To aggregate while skipping errors, use AGGREGATE. The second formula in <a href="/en/subtotal-formula-builder.html">Build a SUBTOTAL Formula</a> is that.</p>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>Pick the second formula</li>
-<li>Copy it</li>
+<li>Enter the "Range" and "Type".</li>
+<li>Copy the "Formula that also drops errors (Excel)" with "Copy the second".</li>
+<li>Paste it.</li>
 </ol>
-<div class="note">It works in Excel. In Google Sheets, use the first formula.</div>
+<div class="note">AGGREGATE is an Excel function. It isn't available in Google Sheets.</div>
+<h2>Example</h2>
+<ul>
+<li>=AGGREGATE(9,7,B2:B100)</li>
+</ul>
+<p>9 means sum, and 7 means "ignore hidden rows and error values".</p>
+<h2>AGGREGATE's features</h2>
+<ul>
+<li>Ignores hidden rows</li>
+<li>Ignores error values</li>
+<li>Offers more aggregation methods than SUBTOTAL</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Totals of a column mixed with #N/A</li>
+<li>Tables whose formula results include errors</li>
+<li>Knowing the overall value before fixing errors</li>
+</ul>
+<h2>In Google Sheets</h2>
+<p>For the same aim, you can combine SUBTOTAL and IFERROR.</p>
+<ul>
+<li>Example: =SUBTOTAL(9,ARRAYFORMULA(IFERROR(B2:B100,0)))</li>
+</ul>
+<p>Behavior can differ by environment, so test before relying on it.</p>
+<h2>A caution about hiding errors</h2>
+<p>A total that ignores errors differs from the true total. It's safer to check the cause of the errors first.</p>
+<h2>Example</h2>
+<p>A VLOOKUP result column had #N/A on rows not found. AGGREGATE gave a total skipping the errors.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>#NAME?</b>: AGGREGATE may not work in Google Sheets.</li>
+<li><b>The result is small</b>: error rows are excluded from the aggregate.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What is the number "7"?</h3>
+<p>The option number. 7 ignores hidden rows and error values.</p>
+<h2>Summary</h2>
+<p>For columns mixed with errors, use AGGREGATE.</p>
 <a class="cta" href="/en/subtotal-formula-builder.html">Use "Build a SUBTOTAL Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/unique-formula-builder.html">Build a UNIQUE Formula</a>: Build duplicate-handling formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

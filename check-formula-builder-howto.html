@@ -200,14 +200,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>セルを調べるの書き方（式を自動で作る・無料）</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>セルを入れる</li><li>種類を選ぶ</li><li>式をコピー</li></ul></div>
-<p><a href="/check-formula-builder.html">セルを調べる式の作成</a> は、入力した内容から式を作ります。</p>
+<p>入力のもれや、エラーのセルを見つけたい。そのセルが空か、数か、文字か、エラーか。調べる関数が IS系関数です。<a href="/check-formula-builder.html">セルの中身を調べる式を作る</a> は、セルと種類を選ぶだけで、その式と、結果を文字で出す式を作ります。入力は、この端末の中で処理され、外には送られません。</p>
 <h2>手順</h2>
 <ol>
-<li>セルを入れる</li>
-<li>種類を選ぶ</li>
-<li>式をコピー</li>
+<li>「調べるセル（A2 など）」を入れます。</li>
+<li>「種類」を選びます（ISBLANK、EMPTY、ISNUMBER、ISTEXT、ISERROR、ISNA、ISFORMULA）。</li>
+<li>結果を文字で出す式を作るなら、「当てはまるとき」と「当てはまらないとき」の文字を入れます。</li>
+<li>反対にするなら、「反対（NOT）にする」にチェックします。</li>
+<li>「式」を「結果をコピー」で、「結果を文字で出す式」を「2つ目をコピー」で、コピーします。</li>
 </ol>
-<div class="note">できた式は、そのままセルに貼れます。</div>
+<div class="note">「EMPTY」は、見た目が空のセル（空白だけのセルも）を調べる、ツール独自の種類です。</div>
+<h2>例</h2>
+<p>A2が空かどうかを、調べる式です。</p>
+<ul>
+<li>=ISBLANK(A2)</li>
+</ul>
+<p>結果を文字で出す式は、次のようになります。</p>
+<ul>
+<li>=IF(ISBLANK(A2),"空です","入力あり")</li>
+</ul>
+<h2>種類の意味</h2>
+<ul>
+<li><b>ISBLANK</b>：完全に空のセル</li>
+<li><b>EMPTY</b>：空、または空白だけのセル</li>
+<li><b>ISNUMBER</b>：数値</li>
+<li><b>ISTEXT</b>：文字</li>
+<li><b>ISERROR</b>：エラー全般</li>
+<li><b>ISNA</b>：#N/Aだけ</li>
+<li><b>ISFORMULA</b>：数式が入っているか</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>入力もれのチェック</li>
+<li>エラーを見つけて、別の値に置き換える</li>
+<li>数値と文字が混じった列の整理</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：セルが「A2」の形でない。</li>
+<li><b>空に見えるのに、ISBLANKがFALSE</b>：空白や空の文字が入っている。EMPTYを使う。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>結果の「TRUE」「FALSE」とは？</h3>
+<p>当てはまれば TRUE、当てはまらなければ FALSE という、答えです。</p>
+<h2>まとめ</h2>
+<p>セルの中身の判定は、IS系関数。</p>
 <a class="cta" href="/check-formula-builder.html">セルの中身を調べる式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li><li><a href="/cond-format-formula-builder.html">条件付き書式の式を作る</a>：条件付き書式の式を作ります。</li><li><a href="/countif-formula-builder.html">条件に合う数を数える式を作る</a>：条件に合うセルの数を数える式を作る。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +256,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Write Cell Check Formulas (Build It Automatically, Free)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the cell</li><li>Choose the kind</li><li>Copy the formula</li></ul></div>
-<p><a href="/check-formula-builder.html">ISBLANK Builder</a> builds the formula from what you enter.</p>
+<p>You want to find missing inputs and error cells. Is the cell empty, a number, text or an error? The IS functions check that. <a href="/check-formula-builder.html">Build an ISBLANK Formula</a> builds the formula, and a formula showing the result as text, from a cell and a type. Input is processed inside this device and not sent outside.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the cell</li>
-<li>Choose the kind</li>
-<li>Copy the formula</li>
+<li>Enter the "Cell to check (such as A2)".</li>
+<li>Choose a "Type" (ISBLANK, EMPTY, ISNUMBER, ISTEXT, ISERROR, ISNA, ISFORMULA).</li>
+<li>To build a formula that returns text, enter the texts for "When it applies" and "When it doesn't".</li>
+<li>To invert, tick "Invert (NOT)".</li>
+<li>Copy the "Formula" with "Copy result" and the "Formula that returns text" with "Copy the second".</li>
 </ol>
-<div class="note">The formula can be pasted straight into a cell.</div>
+<div class="note">"EMPTY" is the tool's own type that checks cells that look empty (including cells with only spaces).</div>
+<h2>Example</h2>
+<p>A formula checking whether A2 is empty:</p>
+<ul>
+<li>=ISBLANK(A2)</li>
+</ul>
+<p>The formula returning text:</p>
+<ul>
+<li>=IF(ISBLANK(A2),"Empty","Filled")</li>
+</ul>
+<h2>What the types mean</h2>
+<ul>
+<li><b>ISBLANK</b>: a completely empty cell</li>
+<li><b>EMPTY</b>: empty, or only spaces</li>
+<li><b>ISNUMBER</b>: a number</li>
+<li><b>ISTEXT</b>: text</li>
+<li><b>ISERROR</b>: any error</li>
+<li><b>ISNA</b>: only #N/A</li>
+<li><b>ISFORMULA</b>: contains a formula</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Checking for missing inputs</li>
+<li>Finding errors and replacing them</li>
+<li>Tidying a column mixing numbers and text</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the cell isn't in the "A2" form.</li>
+<li><b>Looks empty but ISBLANK is FALSE</b>: it holds spaces or an empty string. Use EMPTY.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What are "TRUE" and "FALSE"?</h3>
+<p>Answers: TRUE if it applies, FALSE if it doesn't.</p>
+<h2>Summary</h2>
+<p>For checking cell contents, use the IS functions.</p>
 <a class="cta" href="/check-formula-builder.html">Use "Build an ISBLANK Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a>: Build conditional formatting formulas.</li><li><a href="/countif-formula-builder.html">Build a COUNTIF Formula</a>: Build formulas that count cells meeting a condition.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Rows Hidden by Hand</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose HIDDEN</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/subtotal-formula-builder.html">SUBTOTAL Builder</a> you can build a formula that also leaves out rows hidden by hand.</p>
+<p>Not a filter, but rows you hid by hand, such as via right-click "Hide". You also want them out of the total. "HIDDEN" in <a href="/en/subtotal-formula-builder.html">Build a SUBTOTAL Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose HIDDEN</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>Choose "HIDDEN" in "Hidden rows".</li>
+<li>Enter the "Range" and "Type".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">The totals stay right after you hide rows.</div>
+<div class="note">The function number gets 100 added (such as 109).</div>
+<h2>Example</h2>
+<ul>
+<li>=SUBTOTAL(109,B2:B100)</li>
+</ul>
+<p>Manually hidden rows are left out of the aggregate. So are rows removed by a filter.</p>
+<h2>9 vs 109</h2>
+<ul>
+<li>9: ignores filtered-out rows; adds manually hidden rows</li>
+<li>109: ignores both manually hidden and filtered rows</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Hiding unneeded rows and aggregating the rest</li>
+<li>Hiding some months and viewing the total</li>
+<li>Reports where the total must match visible numbers</li>
+</ul>
+<h2>Matching what's visible</h2>
+<p>To add only numbers visible on screen, 109 is the safe choice.</p>
+<h2>Ways to hide rows</h2>
+<ul>
+<li>Right-click the row number and "Hide"</li>
+<li>Group and collapse</li>
+</ul>
+<p>109 excludes collapsed rows too.</p>
+<h2>Example</h2>
+<p>In a monthly table I hid unused months and wanted the total of the rest. The 109 formula gave the total of visible months only.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Hidden rows still added</b>: you're using 9. Use 109.</li>
+<li><b>Hidden columns</b>: SUBTOTAL only affects rows. Hidden columns in a horizontal range aren't excluded.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Should I always use 109?</h3>
+<p>To exclude manually hidden rows too, 109. To exclude only filtered rows, 9.</p>
+<h2>Summary</h2>
+<p>To exclude manually hidden rows, use 109.</p>
 <a class="cta" href="/en/subtotal-formula-builder.html">Use "Build a SUBTOTAL Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/unique-formula-builder.html">Build a UNIQUE Formula</a>: Build duplicate-handling formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

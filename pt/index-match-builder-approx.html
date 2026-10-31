@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Encontrando o valor mais próximo</h1>
 <p class="meta">Publicado em: 19 out 2026 | Atualizado em: 19 out 2026 | <a href="/about.html">Sobre (em japonês)</a></p>
 <div class="points"><b>Pontos principais</b><ul><li>Escolha LESS ou GREATER</li><li>Digite os intervalos</li><li>Conferir</li></ul></div>
-<p>Em <a href="/pt/index-match-builder.html">Gerador de INDEX MATCH</a>, LESS e GREATER encontram o valor mais próximo.</p>
+<p lang="en">You want the nearest value rather than an exact match, such as a grade from a score or a tier from an amount. "LESS" and "GREATER" in <a href="/pt/index-match-builder.html">Build an INDEX and MATCH Formula</a> build it.</p>
 <h2>Passos</h2>
 <ol>
-<li>Escolha LESS ou GREATER</li>
-<li>Digite os intervalos</li>
-<li>Conferir</li>
+<li lang="en">Choose "LESS" or "GREATER" in "Match type".</li>
+<li lang="en">Enter the "Range to return", "Lookup column range" and "Cell with the value to find".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Com LESS, a coluna de busca precisa estar em ordem crescente.</div>
+<div class="note" lang="en">The lookup column must be sorted ascending for LESS and descending for GREATER.</div>
+<h2>Exemplo</h2>
+<p lang="en">A LESS (largest value at or below) formula:</p>
+<ul>
+<li lang="en">=INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,1))</li>
+</ul>
+<p lang="en">A GREATER (smallest value at or above) formula:</p>
+<ul>
+<li lang="en">=INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,-1))</li>
+</ul>
+<h2 lang="en">Match types</h2>
+<ul>
+<li lang="en"><b>EXACT</b>: exact match (0)</li>
+<li lang="en"><b>LESS</b>: largest at or below (1). Sort ascending</li>
+<li lang="en"><b>GREATER</b>: smallest at or above (-1). Sort descending</li>
+</ul>
+<h2 lang="en">Building the table (LESS)</h2>
+<p lang="en">Put each tier's lower bound in column B ascending.</p>
+<ul>
+<li lang="en">0 → C</li>
+<li lang="en">60 → B</li>
+<li lang="en">80 → A</li>
+</ul>
+<p lang="en">A score of 75 returns the 60 row's "B".</p>
+<h2>Bom para</h2>
+<ul>
+<li lang="en">Deciding grades from scores</li>
+<li lang="en">Deciding fee-rate tiers from sales</li>
+<li lang="en">Deciding brackets from age</li>
+</ul>
+<h2 lang="en">Respect the sort order</h2>
+<p lang="en">With the wrong order the result is wrong. It may not error and can return a wrong value. Always check the order.</p>
+<h2>Exemplo</h2>
+<p lang="en">Wanted a commission tier from the sales amount. A table of ascending lower bounds and a LESS formula avoided stacked IFs.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Value below the lowest bound</b>: gives #N/A. Include a 0 row.</li>
+<li lang="en"><b>Order reversed</b>: results don't match.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can XLOOKUP do this?</h3>
+<p lang="en">Yes. XLOOKUP spares you caring about the order.</p>
+<h2>Resumo</h2>
+<p lang="en">Tier-based values are pulled with LESS. Mind the sort order.</p>
 <a class="cta" href="/pt/index-match-builder.html">Usar “Criar uma fórmula INDEX e MATCH” (grátis)</a>
 <h2>Ferramentas que combinam com esta</h2><ul><li><a href="/pt/vlookup-formula-builder.html">Criar uma fórmula VLOOKUP ou XLOOKUP</a>: Crie fórmulas VLOOKUP e XLOOKUP.</li><li><a href="/pt/filter-formula-builder.html">Criar uma fórmula FILTER</a>: Crie uma fórmula FILTER.</li><li><a href="/pt/sumif-formula-builder.html">Criar uma fórmula SUMIF ou COUNTIF</a>: Crie fórmulas SUMIF e COUNTIF.</li></ul>
 <div class="tip"><p>Se este guia ajudou, uma pequena gorjeta significaria muito.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Enviar uma gorjeta (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar um presente (lista de desejos da Amazon)</a></div>

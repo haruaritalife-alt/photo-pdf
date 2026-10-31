@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Wyszukiwanie w dwóch kierunkach</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Wpisz zakres nagłówków</li><li>Wpisz wartość nagłówka</li><li>Skopiuj</li></ul></div>
-<p>W <a href="/pl/index-match-builder.html">Kreator INDEX MATCH</a> wpisanie zakresu i wartości nagłówka tworzy wyszukiwanie w tabeli w dwóch kierunkach.</p>
+<p lang="en">You want the value where a row heading and a column heading intersect, such as "Product A in March" from a product-by-month sales table. With <a href="/pl/index-match-builder.html">Build an INDEX and MATCH Formula</a>, two MATCHes pull from both rows and columns.</p>
 <h2>Kroki</h2>
 <ol>
-<li>Wpisz zakres nagłówków</li>
-<li>Wpisz wartość nagłówka</li>
-<li>Skopiuj</li>
+<li lang="en">In "Range to return", enter the table's numeric part.</li>
+<li lang="en">In "Lookup column range", enter the row headings (the product-name column).</li>
+<li lang="en">In "Cell with the value to find", enter the cell with the product to find.</li>
+<li lang="en">In "Header range", enter the column headings (the month row).</li>
+<li lang="en">In "Cell with the header value", enter the cell with the month to find.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Dwie funkcje MATCH znajdują wiersz i kolumnę.</div>
+<div class="note" lang="en">Make the return range the numeric part only. Don't include heading rows and columns.</div>
+<h2>Przykład</h2>
+<p lang="en">With sales in B2:D10, product names in A2:A10, months in B1:D1, and the product in F2 and month in G2:</p>
+<ul>
+<li lang="en">=INDEX($B$2:$D$10,MATCH(F2,$A$2:$A$10,0),MATCH(G2,$B$1:$D$1,0))</li>
+</ul>
+<h2>Jak to działa</h2>
+<ul>
+<li lang="en">First MATCH: which row the product is in</li>
+<li lang="en">Second MATCH: which column the month is in</li>
+<li lang="en">INDEX: returns the cell at that row and column</li>
+</ul>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">Product-by-month sales tables</li>
+<li lang="en">Region-by-year statistics tables</li>
+<li lang="en">Price tables (size × weight)</li>
+</ul>
+<h2 lang="en">Combining with dropdowns</h2>
+<p lang="en">Make F2 and G2 dropdowns and you get a lookup sheet that shows the intersecting value just by choosing.</p>
+<h2>Przykład</h2>
+<p lang="en">Wanted a table that gives sales when you pick a product and month. Two-way INDEX/MATCH built it in one formula.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Including headings in the return range</b>: the position shifts by one.</li>
+<li lang="en"><b>Range sizes don't match</b>: align the number of row headings with the return range's rows.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I leave the header range empty?</h3>
+<p lang="en">You get the ordinary one-direction INDEX/MATCH formula.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">To pull from both directions, use two MATCHes.</p>
 <a class="cta" href="/pl/index-match-builder.html">Użyj „Utwórz formułę INDEX i MATCH” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/vlookup-formula-builder.html">Tworzenie formuły VLOOKUP lub XLOOKUP</a>: Twórz formuły VLOOKUP i XLOOKUP.</li><li><a href="/pl/filter-formula-builder.html">Tworzenie formuły FILTER</a>: Utwórz formułę FILTER.</li><li><a href="/pl/sumif-formula-builder.html">Tworzenie formuły SUMIF lub COUNTIF</a>: Twórz formuły SUMIF i COUNTIF.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

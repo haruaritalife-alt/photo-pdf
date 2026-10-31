@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Пропуск и ошибок</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Составьте формулу</li><li>Выберите вторую формулу</li><li>Скопируйте его</li></ul></div>
-<p><a href="/ru/subtotal-formula-builder.html">Конструктор SUBTOTAL</a> также создаёт формулу, пропускающую ячейки с ошибками.</p>
+<p lang="en">SUBTOTAL returns an error if the range contains an error value (such as #N/A). To aggregate while skipping errors, use AGGREGATE. The second formula in <a href="/ru/subtotal-formula-builder.html">Build a SUBTOTAL Formula</a> is that.</p>
 <h2>Шаги</h2>
 <ol>
-<li>Составьте формулу</li>
-<li>Выберите вторую формулу</li>
-<li>Скопируйте его</li>
+<li lang="en">Enter the "Range" and "Type".</li>
+<li lang="en">Copy the "Formula that also drops errors (Excel)" with "Copy the second".</li>
+<li lang="en">Paste it.</li>
 </ol>
-<div class="note">Работает в Excel. В Google Таблицах используйте первую формулу.</div>
+<div class="note" lang="en">AGGREGATE is an Excel function. It isn't available in Google Sheets.</div>
+<h2>Пример</h2>
+<ul>
+<li lang="en">=AGGREGATE(9,7,B2:B100)</li>
+</ul>
+<p lang="en">9 means sum, and 7 means "ignore hidden rows and error values".</p>
+<h2 lang="en">AGGREGATE's features</h2>
+<ul>
+<li lang="en">Ignores hidden rows</li>
+<li lang="en">Ignores error values</li>
+<li lang="en">Offers more aggregation methods than SUBTOTAL</li>
+</ul>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Totals of a column mixed with #N/A</li>
+<li lang="en">Tables whose formula results include errors</li>
+<li lang="en">Knowing the overall value before fixing errors</li>
+</ul>
+<h2 lang="en">In Google Sheets</h2>
+<p lang="en">For the same aim, you can combine SUBTOTAL and IFERROR.</p>
+<ul>
+<li lang="en">Example: =SUBTOTAL(9,ARRAYFORMULA(IFERROR(B2:B100,0)))</li>
+</ul>
+<p lang="en">Behavior can differ by environment, so test before relying on it.</p>
+<h2 lang="en">A caution about hiding errors</h2>
+<p lang="en">A total that ignores errors differs from the true total. It's safer to check the cause of the errors first.</p>
+<h2>Пример</h2>
+<p lang="en">A VLOOKUP result column had #N/A on rows not found. AGGREGATE gave a total skipping the errors.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#NAME?</b>: AGGREGATE may not work in Google Sheets.</li>
+<li lang="en"><b>The result is small</b>: error rows are excluded from the aggregate.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What is the number "7"?</h3>
+<p lang="en">The option number. 7 ignores hidden rows and error values.</p>
+<h2>Итог</h2>
+<p lang="en">For columns mixed with errors, use AGGREGATE.</p>
 <a class="cta" href="/ru/subtotal-formula-builder.html">Использовать «Создать формулу SUBTOTAL» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/sumif-formula-builder.html">Создание формулы SUMIF или COUNTIF</a>: Создавайте формулы SUMIF и COUNTIF.</li><li><a href="/ru/filter-formula-builder.html">Создание формулы FILTER</a>: Создайте формулу FILTER.</li><li><a href="/ru/unique-formula-builder.html">Создать формулу UNIQUE</a>: Создавайте формулы для работы с дубликатами.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

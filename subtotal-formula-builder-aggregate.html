@@ -200,14 +200,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>エラーも除く</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>式を作る</li><li>2つ目の式を選ぶ</li><li>コピーする</li></ul></div>
-<p><a href="/subtotal-formula-builder.html">見えている行の集計式の作成</a> は、エラーのセルも除く式も同時に作ります。</p>
+<p>SUBTOTALは、範囲にエラー値（#N/Aなど）が1つあると、結果もエラーになります。エラーを除いて集計したいときは、AGGREGATEを使います。<a href="/subtotal-formula-builder.html">見えている行だけ集計する式を作る</a> の2つ目の式が、それです。</p>
 <h2>手順</h2>
 <ol>
-<li>式を作る</li>
-<li>2つ目の式を選ぶ</li>
-<li>コピーする</li>
+<li>「範囲」と「種類」を入れる。</li>
+<li>「エラーも除く式（Excel）」を、「2つ目をコピー」でコピーする。</li>
+<li>貼る。</li>
 </ol>
-<div class="note">Excelで使えます。Googleスプレッドシートでは、1つ目の式を使います。</div>
+<div class="note">AGGREGATEは、Excelの関数です。Googleスプレッドシートでは使えません。</div>
+<h2>例</h2>
+<ul>
+<li>=AGGREGATE(9,7,B2:B100)</li>
+</ul>
+<p>9は合計、7は「非表示の行とエラー値を無視する」指定です。</p>
+<h2>AGGREGATEの特徴</h2>
+<ul>
+<li>非表示の行を無視する</li>
+<li>エラー値を無視する</li>
+<li>SUBTOTALより、多くの集計方法を持つ</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>#N/Aが混じる列の、合計</li>
+<li>計算式の結果に、エラーが含まれる表</li>
+<li>エラーを直す前に、全体の値を知りたいとき</li>
+</ul>
+<h2>Googleスプレッドシートで</h2>
+<p>同じ目的には、SUBTOTALとIFERRORを、組み合わせる方法があります。</p>
+<ul>
+<li>例：=SUBTOTAL(9,ARRAYFORMULA(IFERROR(B2:B100,0)))</li>
+</ul>
+<p>環境によって動作が違うことがあるため、試してから使います。</p>
+<h2>エラーを隠すことの注意</h2>
+<p>エラーを無視した合計は、本来の合計とは違います。エラーの原因を確かめてから使うのが安全です。</p>
+<h2>例</h2>
+<p>VLOOKUPの結果の列に、見つからない行の#N/Aが混じっていた。AGGREGATEで、エラーを除いて合計を出せた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>#NAME?</b>：Googleスプレッドシートでは、AGGREGATEが使えない場合がある。</li>
+<li><b>結果が小さい</b>：エラーの行が、集計から除かれている。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>数字の「7」は何ですか？</h3>
+<p>オプションの番号です。7は、「非表示の行と、エラー値を無視」します。</p>
+<h2>まとめ</h2>
+<p>エラーが混じる列は、AGGREGATE。</p>
 <a class="cta" href="/subtotal-formula-builder.html">見えている行だけ集計する式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/unique-formula-builder.html">UNIQUEの式を作る</a>：重複を扱う式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +256,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Skipping Errors Too</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>Pick the second formula</li><li>Copy it</li></ul></div>
-<p><a href="/subtotal-formula-builder.html">SUBTOTAL Builder</a> also builds a formula that skips cells with errors.</p>
+<p>SUBTOTAL returns an error if the range contains an error value (such as #N/A). To aggregate while skipping errors, use AGGREGATE. The second formula in <a href="/subtotal-formula-builder.html">Build a SUBTOTAL Formula</a> is that.</p>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>Pick the second formula</li>
-<li>Copy it</li>
+<li>Enter the "Range" and "Type".</li>
+<li>Copy the "Formula that also drops errors (Excel)" with "Copy the second".</li>
+<li>Paste it.</li>
 </ol>
-<div class="note">It works in Excel. In Google Sheets, use the first formula.</div>
+<div class="note">AGGREGATE is an Excel function. It isn't available in Google Sheets.</div>
+<h2>Example</h2>
+<ul>
+<li>=AGGREGATE(9,7,B2:B100)</li>
+</ul>
+<p>9 means sum, and 7 means "ignore hidden rows and error values".</p>
+<h2>AGGREGATE's features</h2>
+<ul>
+<li>Ignores hidden rows</li>
+<li>Ignores error values</li>
+<li>Offers more aggregation methods than SUBTOTAL</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Totals of a column mixed with #N/A</li>
+<li>Tables whose formula results include errors</li>
+<li>Knowing the overall value before fixing errors</li>
+</ul>
+<h2>In Google Sheets</h2>
+<p>For the same aim, you can combine SUBTOTAL and IFERROR.</p>
+<ul>
+<li>Example: =SUBTOTAL(9,ARRAYFORMULA(IFERROR(B2:B100,0)))</li>
+</ul>
+<p>Behavior can differ by environment, so test before relying on it.</p>
+<h2>A caution about hiding errors</h2>
+<p>A total that ignores errors differs from the true total. It's safer to check the cause of the errors first.</p>
+<h2>Example</h2>
+<p>A VLOOKUP result column had #N/A on rows not found. AGGREGATE gave a total skipping the errors.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>#NAME?</b>: AGGREGATE may not work in Google Sheets.</li>
+<li><b>The result is small</b>: error rows are excluded from the aggregate.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What is the number "7"?</h3>
+<p>The option number. 7 ignores hidden rows and error values.</p>
+<h2>Summary</h2>
+<p>For columns mixed with errors, use AGGREGATE.</p>
 <a class="cta" href="/subtotal-formula-builder.html">Use "Build a SUBTOTAL Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/unique-formula-builder.html">Build a UNIQUE Formula</a>: Build duplicate-handling formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

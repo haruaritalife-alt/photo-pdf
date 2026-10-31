@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Afficher l'emplacement d'une cellule sous forme de texte</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Choisir ADDRESS</li><li>Saisir les numéros de ligne et de colonne</li><li>Copiez-le</li></ul></div>
-<p>Dans <a href="/fr/indirect-formula-builder.html">Créateur de INDIRECT</a>, vous pouvez créer une formule qui donne l'emplacement d'une cellule sous forme de texte à partir de numéros de ligne et de colonne.</p>
+<p lang="en">You want a location like "B3" as text from row and column numbers. That's ADDRESS. "ADDRESS" in <a href="/fr/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>Étapes</h2>
 <ol>
-<li>Choisir ADDRESS</li>
-<li>Saisir les numéros de ligne et de colonne</li>
-<li>Copiez-le</li>
+<li lang="en">Choose "ADDRESS" in "Type".</li>
+<li lang="en">Enter the row number in "Row offset" and the column number in "Column offset".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">La deuxième formule donne l'emplacement sous forme de texte.</div>
+<div class="note" lang="en">In this type the two numbers are used directly as the row and column numbers.</div>
+<h2>Exemple</h2>
+<p lang="en">The location at row 3, column 2:</p>
+<ul>
+<li lang="en">=INDIRECT(ADDRESS(3,2))</li>
+</ul>
+<p lang="en">This returns B3's value.</p>
+<h2 lang="en">The alternative formula</h2>
+<p lang="en">The second gives the location itself as text.</p>
+<ul>
+<li lang="en">=ADDRESS(3,2,4)</li>
+</ul>
+<p lang="en">The result is the text "B3". The trailing 4 specifies relative reference without $.</p>
+<h2 lang="en">Choosing the reference style</h2>
+<p lang="en">ADDRESS's third number chooses how $ appears.</p>
+<ul>
+<li lang="en">1: $B$3 (row and column fixed)</li>
+<li lang="en">2: B$3 (row fixed)</li>
+<li lang="en">3: $B3 (column fixed)</li>
+<li lang="en">4: B3 (nothing fixed)</li>
+</ul>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Showing as text where the maximum is</li>
+<li lang="en">Keeping a location as text in another cell</li>
+<li lang="en">Reading a value from row and column numbers</li>
+</ul>
+<h2 lang="en">Showing the location as text</h2>
+<p lang="en">Handy for finding where, say, the last row is.</p>
+<ul>
+<li lang="en">Example: =ADDRESS(MATCH(MAX(B:B),B:B,0),2,4)</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">Wanted to know which cell holds the top sales. MATCH gave the row number and ADDRESS displayed it like "B15".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: row or column isn't an integer.</li>
+<li lang="en"><b>Zero or below</b>: rows and columns are 1 or greater.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can ADDRESS alone read a value?</h3>
+<p lang="en">ADDRESS only outputs the location text. To read the value, combine with INDIRECT.</p>
+<h2>En résumé</h2>
+<p lang="en">To get a location from numbers, use ADDRESS; to read the value, combine with INDIRECT.</p>
 <a class="cta" href="/fr/indirect-formula-builder.html">Utiliser « Créer une formule INDIRECT » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/vlookup-formula-builder.html">Créer une formule VLOOKUP ou XLOOKUP</a>: Créez des formules VLOOKUP et XLOOKUP.</li><li><a href="/fr/importrange-builder.html">Créer une formule IMPORTRANGE</a>: Créez une formule IMPORTRANGE.</li><li><a href="/fr/index-match-builder.html">Créer une formule INDEX et MATCH</a>: Créez des formules INDEX et MATCH.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

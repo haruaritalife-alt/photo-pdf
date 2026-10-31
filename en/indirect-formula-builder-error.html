@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>When You Get an Error</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the sheet name</li><li>Check how the cell is written</li><li>Use the formula that blanks errors</li></ul></div>
-<p>A <a href="/en/indirect-formula-builder.html">INDIRECT Builder</a> formula gives an error if the sheet name or cell is wrong.</p>
+<p>The INDIRECT formula returns #REF!. The sheet name should be right, yet it doesn't work. Here are common causes of errors in formulas built with <a href="/en/indirect-formula-builder.html">Build an INDIRECT Formula</a> and fixes.</p>
 <h2>Steps</h2>
 <ol>
-<li>Check the sheet name</li>
-<li>Check how the cell is written</li>
-<li>Use the formula that blanks errors</li>
+<li>Compare the sheet name with the actual sheet's name.</li>
+<li>Check for surrounding spaces and full-width/half-width differences.</li>
+<li>Check the name is wrapped in the quote "'".</li>
 </ol>
-<div class="note">A sheet name with spaces is wrapped in quotation marks.</div>
+<div class="note">"#REF!" means the called location can't be found.</div>
+<h2>Common causes</h2>
+<ul>
+<li><b>Sheet name mismatch</b>: even one character off isn't found.</li>
+<li><b>Stray spaces</b>: the cell text has spaces around it. Remove with TRIM.</li>
+<li><b>Missing quotes</b>: the name has spaces or symbols but isn't wrapped.</li>
+<li><b>File is closed</b>: you're calling another file that isn't open.</li>
+<li><b>Outside the sheet</b>: pointing at a cell that doesn't exist.</li>
+</ul>
+<h2>Removing spaces</h2>
+<p>If reading the sheet name from a cell, wrap it in TRIM.</p>
+<ul>
+<li>Example: =INDIRECT("'"&amp;TRIM(A1)&amp;"'!B2")</li>
+</ul>
+<h2>Turning errors into empty</h2>
+<p>The second formula is wrapped in IFERROR.</p>
+<ul>
+<li>=IFERROR(INDIRECT("'"&amp;A1&amp;"'!B2"),"")</li>
+</ul>
+<p>But this hides errors, so use it after checking the cause.</p>
+<h2>When a sheet is renamed</h2>
+<p>A sheet name written as text doesn't follow a rename; you get #REF!.</p>
+<h2>Google Sheets note</h2>
+<p>On first use you may be asked to permit access to the sheet.</p>
+<h2>Example</h2>
+<p>One of the formulas calling monthly sheets gave #REF!. The sheet name ended with a full-width space. TRIM fixed it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Full-width vs half-width digits</b>: they're different characters.</li>
+<li><b>Names with dots</b>: wrap in quotes.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How can I debug more easily?</h3>
+<p>Counting the name cell's characters with LEN reveals stray spaces.</p>
+<h2>Summary</h2>
+<p>For #REF!, suspect name mismatch, spaces and quotes.</p>
 <a class="cta" href="/en/indirect-formula-builder.html">Use "Build an INDIRECT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/en/index-match-builder.html">Build an INDEX and MATCH Formula</a>: Build INDEX and MATCH formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -200,14 +200,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>近い値を探す</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>LESSかGREATERを選ぶ</li><li>範囲を入れる</li><li>確かめる</li></ul></div>
-<p><a href="/index-match-builder.html">INDEX・MATCH式の作成</a> では、LESSやGREATERで近い値を探せます。</p>
+<p>ちょうど一致でなく、近い値を探したい。点数から評価、金額から段階を決める、といった場面です。<a href="/index-match-builder.html">INDEX・MATCHの式を作る</a> の「LESS」と「GREATER」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>LESSかGREATERを選ぶ</li>
-<li>範囲を入れる</li>
-<li>確かめる</li>
+<li>「一致の種類」で「LESS」か「GREATER」を選ぶ。</li>
+<li>「取り出す範囲」「探す列の範囲」「探す値のセル」を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">LESSでは、探す列を小さい順に並べておきます。</div>
+<div class="note">探す列は、LESSなら小さい順（昇順）、GREATERなら大きい順（降順）に並べておく必要があります。</div>
+<h2>例</h2>
+<p>LESS（以下で最大の値）の式です。</p>
+<ul>
+<li>=INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,1))</li>
+</ul>
+<p>GREATER（以上で最小の値）の式です。</p>
+<ul>
+<li>=INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,-1))</li>
+</ul>
+<h2>一致の種類</h2>
+<ul>
+<li><b>EXACT</b>：ちょうど一致（0）</li>
+<li><b>LESS</b>：以下で最大（1）。昇順に並べる</li>
+<li><b>GREATER</b>：以上で最小（-1）。降順に並べる</li>
+</ul>
+<h2>表の作り方（LESS）</h2>
+<p>B列に段階の下限を昇順に入れます。</p>
+<ul>
+<li>0 → 可</li>
+<li>60 → 良</li>
+<li>80 → 優</li>
+</ul>
+<p>75点なら、60の行の「良」が返ります。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>点数から評価を決める</li>
+<li>売上から手数料率の段階を決める</li>
+<li>年齢から区分を決める</li>
+</ul>
+<h2>並び順を守る</h2>
+<p>並び順が違うと、結果が正しくなりません。エラーにならず、間違った値が返ることもあります。並び順を、必ず確かめます。</p>
+<h2>例</h2>
+<p>売上額から、手数料率の段階を引きたかった。下限を昇順に並べた表を作り、LESSの式で引くと、IFを重ねずに済んだ。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>下限より小さい値</b>：#N/Aになる。0の行を入れる。</li>
+<li><b>並び順が逆</b>：結果が合わない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>XLOOKUPでもできますか？</h3>
+<p>できます。XLOOKUPなら、並び順を気にしなくて済みます。</p>
+<h2>まとめ</h2>
+<p>段階で決まる値は、LESSで引く。並び順に注意。</p>
 <a class="cta" href="/index-match-builder.html">INDEX・MATCHの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +262,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Finding the Nearest Value</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose LESS or GREATER</li><li>Enter the ranges</li><li>Check it</li></ul></div>
-<p>In <a href="/index-match-builder.html">INDEX MATCH Builder</a>, LESS and GREATER find the nearest value.</p>
+<p>You want the nearest value rather than an exact match, such as a grade from a score or a tier from an amount. "LESS" and "GREATER" in <a href="/index-match-builder.html">Build an INDEX and MATCH Formula</a> build it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose LESS or GREATER</li>
-<li>Enter the ranges</li>
-<li>Check it</li>
+<li>Choose "LESS" or "GREATER" in "Match type".</li>
+<li>Enter the "Range to return", "Lookup column range" and "Cell with the value to find".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">For LESS, the search column must be sorted ascending.</div>
+<div class="note">The lookup column must be sorted ascending for LESS and descending for GREATER.</div>
+<h2>Example</h2>
+<p>A LESS (largest value at or below) formula:</p>
+<ul>
+<li>=INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,1))</li>
+</ul>
+<p>A GREATER (smallest value at or above) formula:</p>
+<ul>
+<li>=INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,-1))</li>
+</ul>
+<h2>Match types</h2>
+<ul>
+<li><b>EXACT</b>: exact match (0)</li>
+<li><b>LESS</b>: largest at or below (1). Sort ascending</li>
+<li><b>GREATER</b>: smallest at or above (-1). Sort descending</li>
+</ul>
+<h2>Building the table (LESS)</h2>
+<p>Put each tier's lower bound in column B ascending.</p>
+<ul>
+<li>0 → C</li>
+<li>60 → B</li>
+<li>80 → A</li>
+</ul>
+<p>A score of 75 returns the 60 row's "B".</p>
+<h2>Good for</h2>
+<ul>
+<li>Deciding grades from scores</li>
+<li>Deciding fee-rate tiers from sales</li>
+<li>Deciding brackets from age</li>
+</ul>
+<h2>Respect the sort order</h2>
+<p>With the wrong order the result is wrong. It may not error and can return a wrong value. Always check the order.</p>
+<h2>Example</h2>
+<p>Wanted a commission tier from the sales amount. A table of ascending lower bounds and a LESS formula avoided stacked IFs.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Value below the lowest bound</b>: gives #N/A. Include a 0 row.</li>
+<li><b>Order reversed</b>: results don't match.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can XLOOKUP do this?</h3>
+<p>Yes. XLOOKUP spares you caring about the order.</p>
+<h2>Summary</h2>
+<p>Tier-based values are pulled with LESS. Mind the sort order.</p>
 <a class="cta" href="/index-match-builder.html">Use "Build an INDEX and MATCH Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

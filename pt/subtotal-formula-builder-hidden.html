@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Linhas ocultadas manualmente</h1>
 <p class="meta">Publicado em: 19 out 2026 | Atualizado em: 19 out 2026 | <a href="/about.html">Sobre (em japonês)</a></p>
 <div class="points"><b>Pontos principais</b><ul><li>Escolha HIDDEN</li><li>Informe o intervalo</li><li>Copie</li></ul></div>
-<p>No <a href="/pt/subtotal-formula-builder.html">Gerador de SUBTOTAL</a> você pode criar uma fórmula que também deixa de fora as linhas ocultadas manualmente.</p>
+<p lang="en">Not a filter, but rows you hid by hand, such as via right-click "Hide". You also want them out of the total. "HIDDEN" in <a href="/pt/subtotal-formula-builder.html">Build a SUBTOTAL Formula</a> builds it.</p>
 <h2>Passos</h2>
 <ol>
-<li>Escolha HIDDEN</li>
-<li>Informe o intervalo</li>
-<li>Copie</li>
+<li lang="en">Choose "HIDDEN" in "Hidden rows".</li>
+<li lang="en">Enter the "Range" and "Type".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Os totais continuam corretos depois de ocultar linhas.</div>
+<div class="note" lang="en">The function number gets 100 added (such as 109).</div>
+<h2>Exemplo</h2>
+<ul>
+<li lang="en">=SUBTOTAL(109,B2:B100)</li>
+</ul>
+<p lang="en">Manually hidden rows are left out of the aggregate. So are rows removed by a filter.</p>
+<h2 lang="en">9 vs 109</h2>
+<ul>
+<li lang="en">9: ignores filtered-out rows; adds manually hidden rows</li>
+<li lang="en">109: ignores both manually hidden and filtered rows</li>
+</ul>
+<h2>Bom para</h2>
+<ul>
+<li lang="en">Hiding unneeded rows and aggregating the rest</li>
+<li lang="en">Hiding some months and viewing the total</li>
+<li lang="en">Reports where the total must match visible numbers</li>
+</ul>
+<h2 lang="en">Matching what's visible</h2>
+<p lang="en">To add only numbers visible on screen, 109 is the safe choice.</p>
+<h2 lang="en">Ways to hide rows</h2>
+<ul>
+<li lang="en">Right-click the row number and "Hide"</li>
+<li lang="en">Group and collapse</li>
+</ul>
+<p lang="en">109 excludes collapsed rows too.</p>
+<h2>Exemplo</h2>
+<p lang="en">In a monthly table I hid unused months and wanted the total of the rest. The 109 formula gave the total of visible months only.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Hidden rows still added</b>: you're using 9. Use 109.</li>
+<li lang="en"><b>Hidden columns</b>: SUBTOTAL only affects rows. Hidden columns in a horizontal range aren't excluded.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Should I always use 109?</h3>
+<p lang="en">To exclude manually hidden rows too, 109. To exclude only filtered rows, 9.</p>
+<h2>Resumo</h2>
+<p lang="en">To exclude manually hidden rows, use 109.</p>
 <a class="cta" href="/pt/subtotal-formula-builder.html">Usar “Crie uma fórmula SUBTOTAL” (grátis)</a>
 <h2>Ferramentas que combinam com esta</h2><ul><li><a href="/pt/sumif-formula-builder.html">Criar uma fórmula SUMIF ou COUNTIF</a>: Crie fórmulas SUMIF e COUNTIF.</li><li><a href="/pt/filter-formula-builder.html">Criar uma fórmula FILTER</a>: Crie uma fórmula FILTER.</li><li><a href="/pt/unique-formula-builder.html">Criar uma fórmula UNIQUE</a>: Crie fórmulas para tratar duplicados.</li></ul>
 <div class="tip"><p>Se este guia ajudou, uma pequena gorjeta significaria muito.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Enviar uma gorjeta (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar um presente (lista de desejos da Amazon)</a></div>

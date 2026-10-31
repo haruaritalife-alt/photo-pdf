@@ -200,14 +200,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/indirect-formula-builder.html">INDIRECTの式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を貼ったのに、結果がおかしい。<a href="/indirect-formula-builder.html">INDIRECTの式を作る</a> で起こりやすい困りごとと対処法です。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：セルが「A1」の形でない。シート名が空（SHEETのとき）。ずらし方が整数でない（OFFSET・ADDRESSのとき）。</li>
+</ul>
+<h2>スプレッドシートに貼ったあと</h2>
+<ul>
+<li><b>#REF!</b>：場所が存在しない。シート名や位置を確かめる。</li>
+<li><b>0が表示される</b>：呼び出した先が空。</li>
+<li><b>古い値のままになる</b>：再計算の設定が、手動になっている。</li>
+<li><b>動作が重い</b>：INDIRECTとOFFSETは、再計算が多い関数。</li>
+<li><b>行を挿入すると、参照がずれる</b>：文字で書いた場所は、追従しない。</li>
+<li><b>別のファイルが呼べない</b>：相手のファイルが閉じている。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>呼び出す場所を、手で確かめる。</li>
+<li>シート名の引用符と空白を確かめる。</li>
+<li>重いときは、INDEXの式に替える。</li>
 </ol>
-<div class="note">式が出ないときは、セルがA1のように書かれているか、シート名が入っているか確かめます。</div>
+<div class="note">INDIRECTは、文字で場所を組み立てるため、行や列を挿入しても、参照先は自動で更新されません。</div>
+<h2>重さの対策</h2>
+<ul>
+<li>大きな範囲を、何度も呼び出さない。</li>
+<li>OFFSETを、INDEXに替える。</li>
+<li>使うセルだけに、式を置く。</li>
+</ul>
+<h2>例</h2>
+<p>行を挿入したら、INDIRECTの結果がずれた。文字で書いた場所は追従しないため、INDEXとMATCHに替えて、安定した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>式を下にコピーしてもずれない</b>：場所が文字で固定されている。ROWで番号を作る。</li>
+<li><b>結果が文字として出る</b>：セルの表示形式が、文字になっている。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>INDIRECTを使わないほうがいい場面は？</h3>
+<p>行や列の挿入が多い表。参照先が決まっているなら、普通の参照で足ります。</p>
+<h2>まとめ</h2>
+<p>場所の確認、再計算、重さ。この3つを確かめましょう。</p>
 <a class="cta" href="/indirect-formula-builder.html">INDIRECTの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/importrange-builder.html">IMPORTRANGEの式を作る</a>：IMPORTRANGEの式を作ります。</li><li><a href="/index-match-builder.html">INDEX・MATCHの式を作る</a>：INDEX・MATCHの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +250,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/indirect-formula-builder.html">INDIRECT Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted the formula but the result is odd. Here are common troubles with <a href="/indirect-formula-builder.html">Build an INDIRECT Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the cell isn't in the "A1" form; the sheet name is empty (for SHEET); an offset isn't an integer (for OFFSET and ADDRESS).</li>
+</ul>
+<h2>After pasting into the sheet</h2>
+<ul>
+<li><b>#REF!</b>: the location doesn't exist. Check the sheet name and position.</li>
+<li><b>Shows 0</b>: the called cell is empty.</li>
+<li><b>Stuck on old values</b>: calculation is set to manual.</li>
+<li><b>Slow</b>: INDIRECT and OFFSET recalculate often.</li>
+<li><b>References shift on inserting rows</b>: locations written as text don't follow.</li>
+<li><b>Can't call another file</b>: the other file is closed.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the called location by hand.</li>
+<li>Check the sheet name's quotes and spaces.</li>
+<li>If slow, switch to the INDEX formula.</li>
 </ol>
-<div class="note">If no formula appears, check that the cell is written like A1 and that a sheet name is entered.</div>
+<div class="note">INDIRECT builds locations as text, so inserting rows or columns doesn't update the target automatically.</div>
+<h2>Reducing slowness</h2>
+<ul>
+<li>Don't call large ranges repeatedly.</li>
+<li>Replace OFFSET with INDEX.</li>
+<li>Place formulas only in cells that need them.</li>
+</ul>
+<h2>Example</h2>
+<p>Inserting a row shifted INDIRECT's results. Locations written as text don't follow, so I switched to INDEX and MATCH and it stabilized.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Copying down doesn't shift it</b>: the location is fixed as text. Build numbers with ROW.</li>
+<li><b>Result shows as text</b>: the cell's display format is text.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>When should I avoid INDIRECT?</h3>
+<p>In tables where rows or columns are inserted often. If the target is fixed, a plain reference suffices.</p>
+<h2>Summary</h2>
+<p>Check the location, recalculation and speed.</p>
 <a class="cta" href="/indirect-formula-builder.html">Use "Build an INDIRECT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/index-match-builder.html">Build an INDEX and MATCH Formula</a>: Build INDEX and MATCH formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

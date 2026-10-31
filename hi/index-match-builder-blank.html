@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>जब कुछ न मिले</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>फ़ॉर्मूला बनाएँ</li><li>दूसरा चुनें</li><li>कॉपी करें</li></ul></div>
-<p><a href="/hi/index-match-builder.html">INDEX MATCH सूत्र बनाने वाला टूल</a> वह संस्करण भी दिखाता है जो कुछ न मिलने पर खाली रहता है।</p>
+<p lang="en">When the value isn't found, #N/A appears. You want to avoid a table full of errors. The second formula in <a href="/hi/index-match-builder.html">Build an INDEX and MATCH Formula</a> returns empty when nothing is found.</p>
 <h2>चरण</h2>
 <ol>
-<li>फ़ॉर्मूला बनाएँ</li>
-<li>दूसरा चुनें</li>
-<li>कॉपी करें</li>
+<li lang="en">Enter the ranges and value to find.</li>
+<li lang="en">Copy the "Formula that leaves blank when not found" with "Copy the second".</li>
+<li lang="en">Paste it.</li>
 </ol>
-<div class="note">यह IFERROR में लिपटा होता है।</div>
+<div class="note" lang="en">IFERROR also blanks errors other than #N/A. Formula mistakes get hidden too, so be careful.</div>
+<h2>उदाहरण</h2>
+<ul>
+<li lang="en">=IFERROR(INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0)),"")</li>
+</ul>
+<p lang="en">When not found, it's empty.</p>
+<h2 lang="en">Showing other text</h2>
+<p lang="en">Change the empty part to other text to show something like "Not found".</p>
+<ul>
+<li lang="en">Example: =IFERROR(INDEX(…),"Not found")</li>
+</ul>
+<h2 lang="en">Blanking only #N/A</h2>
+<p lang="en">To avoid hiding real mistakes, use IFNA.</p>
+<ul>
+<li lang="en">Example: =IFNA(INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0)),"")</li>
+</ul>
+<p lang="en">IFNA targets only #N/A.</p>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">Display of a search form when nothing is entered</li>
+<li lang="en">Blanking not-found rows for readability</li>
+<li lang="en">Keeping errors out of later calculations</li>
+</ul>
+<h2 lang="en">Empty vs 0</h2>
+<p lang="en">An empty string can cause errors in later calculations. If used as a number, returning 0 is safer.</p>
+<ul>
+<li lang="en">Example: =IFERROR(INDEX(…),0)</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">A matching list had #N/A on not-found rows. IFERROR blanked them for readability, though I checked separately for real mistakes.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Everything is empty</b>: a formula mistake is hidden by IFERROR.</li>
+<li lang="en"><b>Empty cells error in calculations</b>: an empty string isn't a number.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to know why it isn't found</h3>
+<p lang="en">First check with the formula not wrapped in IFERROR. Full-width/half-width and spaces are common causes.</p>
+<h2>सारांश</h2>
+<p lang="en">To avoid #N/A, use IFERROR or IFNA.</p>
 <a class="cta" href="/hi/index-match-builder.html">“INDEX और MATCH सूत्र बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/vlookup-formula-builder.html">VLOOKUP या XLOOKUP फ़ॉर्मूला बनाएँ</a>: VLOOKUP और XLOOKUP फ़ॉर्मूले बनाएँ।</li><li><a href="/hi/filter-formula-builder.html">FILTER फ़ॉर्मूला बनाएँ</a>: FILTER फ़ॉर्मूला बनाएँ।</li><li><a href="/hi/sumif-formula-builder.html">SUMIF या COUNTIF फ़ॉर्मूला बनाएँ</a>: SUMIF और COUNTIF फ़ॉर्मूले बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pagtingin kung error</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Piliin ang ISERROR</li><li>Ilagay ang cell</li><li>Kopyahin</li></ul></div>
-<p>Sa <a href="/tl/check-formula-builder.html">ISBLANK Builder</a>, makakagawa ka ng formula na tumitingin kung error ang isang cell.</p>
+<p lang="en">A calculation result is mixed with errors, and you want to find which cells. ISERROR and ISNA do that. "ISERROR" and "ISNA" in <a href="/tl/check-formula-builder.html">Build an ISBLANK Formula</a> build it.</p>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Piliin ang ISERROR</li>
-<li>Ilagay ang cell</li>
-<li>Kopyahin</li>
+<li lang="en">Choose "ISERROR" or "ISNA" in "Type".</li>
+<li lang="en">Enter the "Cell to check".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Para #N/A lang ang tingnan, gamitin ang ISNA.</div>
+<div class="note" lang="en">ISERROR covers all errors. ISNA covers only #N/A (not found).</div>
+<h2>Halimbawa</h2>
+<ul>
+<li lang="en">=ISERROR(A2): TRUE if an error</li>
+<li lang="en">=ISNA(A2): TRUE if #N/A</li>
+</ul>
+<h2>Alin ang gagamitin</h2>
+<ul>
+<li lang="en"><b>ISNA</b>: to catch only "not found" from VLOOKUP and similar</li>
+<li lang="en"><b>ISERROR</b>: to catch other errors too, such as division by zero</li>
+</ul>
+<p lang="en">ISERROR also hides real mistakes, so ISNA is safer in many cases.</p>
+<h2 lang="en">Showing the result as text</h2>
+<p lang="en">The second formula outputs text via IF.</p>
+<ul>
+<li lang="en">Example: =IF(ISNA(A2),"Not found","Found")</li>
+</ul>
+<h2 lang="en">Replacing errors with another value</h2>
+<p lang="en">For replacing rather than judging, IFERROR is shorter.</p>
+<ul>
+<li lang="en">Example: =IFERROR(A2,"")</li>
+</ul>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Finding not-found rows in VLOOKUP results</li>
+<li lang="en">Checking calculation errors in a list</li>
+<li lang="en">Counting errors</li>
+</ul>
+<h2 lang="en">Counting errors</h2>
+<ul>
+<li lang="en">Example: =SUMPRODUCT(--ISERROR(A2:A100))</li>
+</ul>
+<h2>Halimbawa</h2>
+<p lang="en">Wanted only rows not found in a matching result. Copying an ISNA formula down let me filter the TRUE rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>All errors get hidden</b>: ISERROR ignores the cause.</li>
+<li lang="en"><b>#NAME?</b>: a misspelled function name also makes ISERROR TRUE.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to know the error type</h3>
+<p lang="en">ERROR.TYPE gives a number.</p>
+<h2>Buod</h2>
+<p lang="en">To catch only "not found", use ISNA.</p>
 <a class="cta" href="/tl/check-formula-builder.html">Gamitin ang “Gumawa ng formula na ISBLANK” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/excel-if-builder.html">Gumawa ng IF formula</a>: Gumawa ng IF formula.</li><li><a href="/tl/cond-format-formula-builder.html">Gumawa ng Formula ng Conditional Formatting</a>: Gumawa ng mga formula ng conditional formatting.</li><li><a href="/tl/countif-formula-builder.html">Gumawa ng formula na COUNTIF</a>: Gumagawa ng mga formula na nagbibilang ng mga cell na pumapasa sa isang kondisyon.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>
