@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Blanking Out Errors</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose IF-ERROR as the alternative</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/stat-formula-builder.html">AVERAGE and MEDIAN Builder</a> you can build a formula that goes blank on an error.</p>
+<p>If error values (#DIV/0!, #N/A, etc.) are mixed in the range, the aggregate errors too. "IF-ERROR" blanks that to tidy the look. Choose it in "Alternative form" in <a href="/en/stat-formula-builder.html">Build an AVERAGE and MEDIAN Formula</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose IF-ERROR as the alternative</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>In "Alternative form", choose "IF-ERROR".</li>
+<li>Enter the "Type" and "Numeric range".</li>
+<li>Copy the "Alternative formula" with "Copy the second" and paste.</li>
 </ol>
-<div class="note">It also avoids an error when the range has no numbers.</div>
+<div class="note">Its form is =IFERROR(formula,""). It's blank when the aggregate itself errors.</div>
+<h2>Example</h2>
+<ul>
+<li>=IFERROR(AVERAGE(B2:B100),"")</li>
+</ul>
+<p>If the range holds no numbers, AVERAGE would be #DIV/0! but shows blank.</p>
+<h2>Note: errors inside the range remain</h2>
+<p>IFERROR works when the aggregate result is an error. If the range contains error values, the aggregate errors too. Then you need a formula that skips range errors.</p>
+<ul>
+<li>Example: =AGGREGATE(1,6,B2:B100)</li>
+</ul>
+<p>AGGREGATE aggregates ignoring error values. 1 means average and 6 means ignore errors.</p>
+<h2>Good for</h2>
+<ul>
+<li>Empty tables before entry where errors shouldn't show</li>
+<li>Aggregate cells feeding other formulas</li>
+<li>Tidying report tables</li>
+</ul>
+<h2>Don't hide too much</h2>
+<p>Hiding errors makes data problems harder to notice. Check with the basic formula first.</p>
+<h2>Example</h2>
+<p>At the start of the month there was no data and the average cell was full of #DIV/0!. Wrapping in IFERROR showed blanks and cleaned up the report table.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Want to return 0</b>: rewrite IFERROR's "" as 0.</li>
+<li><b>Empty string</b>: a result of "" may be treated as text in later calculations.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I use it with ROUND?</h3>
+<p>You can layer formulas. Build by hand.</p>
+<ul>
+<li>Example: =IFERROR(ROUND(AVERAGE(B2:B100),2),"")</li>
+</ul>
+<h2>Summary</h2>
+<p>To hide errors, use IF-ERROR.</p>
 <a class="cta" href="/en/stat-formula-builder.html">Use "Build an AVERAGE and MEDIAN Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/en/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a>: Build formulas for the Nth largest or smallest value.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

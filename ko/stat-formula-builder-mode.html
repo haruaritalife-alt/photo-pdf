@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>가장 자주 나오는 값</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>MODE 선택</li><li>범위 입력하기</li><li>복사</li></ul></div>
-<p><a href="/ko/stat-formula-builder.html">평균·중앙값 수식 만들기</a>에서는 가장 자주 나오는 값을 구하는 수식을 만들 수 있습니다.</p>
+<p lang="en">You want the most frequent value, the mode: the best-selling shoe size, or the most common survey answer. That's MODE. "MODE" in <a href="/ko/stat-formula-builder.html">Build an AVERAGE and MEDIAN Formula</a> builds it.</p>
 <h2>순서</h2>
 <ol>
-<li>MODE 선택</li>
-<li>범위 입력하기</li>
-<li>복사</li>
+<li lang="en">Choose "MODE" in "Type".</li>
+<li lang="en">Enter the "Numeric range".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">값이 같은 경우 먼저 나오는 값이 선택됩니다.</div>
+<div class="note" lang="en">It only handles numbers. The mode of text (apple, orange) needs another formula.</div>
+<h2>예</h2>
+<ul>
+<li lang="en">=MODE(B2:B100)</li>
+</ul>
+<p lang="en">For 24, 25, 25, 26, 25, 27, it returns 25.</p>
+<h2 lang="en">With multiple modes</h2>
+<p lang="en">Even if several values appear equally often, MODE returns only the first one that appeared.</p>
+<ul>
+<li lang="en">Example: for 1, 2, 2, 3, 3 it returns 2</li>
+</ul>
+<p lang="en">To list all, use MODE.MULT.</p>
+<ul>
+<li lang="en">Example: =MODE.MULT(B2:B100)</li>
+</ul>
+<h2 lang="en">When there's no mode</h2>
+<p lang="en">If every value appears once, you get #N/A. IFERROR can blank it.</p>
+<h2 lang="en">The mode of text</h2>
+<p lang="en">A formula for the most frequent among text values:</p>
+<ul>
+<li lang="en">Example: =INDEX(A2:A100,MODE(MATCH(A2:A100,A2:A100,0)))</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Best-selling sizes and colors</li>
+<li lang="en">The most common survey answer</li>
+<li lang="en">Typical values (scores, sizes)</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Survey answers were numbers 1 to 5. MODE showed the most common answer, closer to reality than the mean.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Decimal differences</b>: decimals that look the same can differ slightly. Round before using.</li>
+<li lang="en"><b>#N/A</b>: no value appears twice or more.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I choose among mean, median and mode?</h3>
+<p lang="en">For category-like numbers (sizes, levels) use the mode; for continuous numbers the mean or median suits.</p>
+<h2>요약</h2>
+<p lang="en">For the most frequent value, use MODE.</p>
 <a class="cta" href="/ko/stat-formula-builder.html">“평균·중앙값 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li><li><a href="/ko/rank-formula-builder.html">순위 수식 만들기</a>: 순위 수식을 만듭니다.</li><li><a href="/ko/large-small-formula-builder.html">LARGE·SMALL 수식 만들기</a>: N번째로 큰 값·작은 값의 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

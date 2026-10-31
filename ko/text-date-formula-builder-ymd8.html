@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>8자리 숫자를 날짜로 바꾸기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>YMD8 선택</li><li>셀 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/text-date-formula-builder.html">텍스트→날짜 수식 만들기</a>에서는 20261001 같은 8자리 숫자를 날짜로 바꾸는 수식을 만들 수 있습니다.</p>
+<p lang="en">Year, month and day are strung together as eight digits like "20261001". As is, it won't calculate as a date. "YMD8" in <a href="/ko/text-date-formula-builder.html">Build a Text to Date Formula</a> converts it.</p>
 <h2>순서</h2>
 <ol>
-<li>YMD8 선택</li>
-<li>셀 입력</li>
-<li>복사</li>
+<li lang="en">Choose "YMD8" in "Type".</li>
+<li lang="en">Enter the "Cell to convert".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">셀 서식을 날짜로 설정하면 읽기 쉬워집니다.</div>
+<div class="note" lang="en">The eight digits are 4 for the year, 2 for the month and 2 for the day.</div>
+<h2>예</h2>
+<ul>
+<li lang="en">=DATE(LEFT(A2,4),MID(A2,5,2),RIGHT(A2,2))</li>
+</ul>
+<p lang="en">"20261001" becomes the date October 1, 2026.</p>
+<h2>작동 방식</h2>
+<ul>
+<li lang="en">LEFT(A2,4): the first four digits (year)</li>
+<li lang="en">MID(A2,5,2): two digits from the 5th (month)</li>
+<li lang="en">RIGHT(A2,2): the last two digits (day)</li>
+</ul>
+<p lang="en">DATE then assembles them into a date.</p>
+<h2 lang="en">Six-digit year-month</h2>
+<p lang="en">For six digits like "202610" (year-month only), use "YM6".</p>
+<ul>
+<li lang="en">=DATE(LEFT(A2,4),RIGHT(A2,2),1)</li>
+</ul>
+<p lang="en">It gives the first of that month.</p>
+<h2 lang="en">When stored as a number</h2>
+<p lang="en">If the eight digits are numeric (right-aligned), LEFT and the like treat them as text and still work. The result is a date value.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Eight-digit dates exported from core systems</li>
+<li lang="en">Dates embedded in file names</li>
+<li lang="en">A date column for forms without dates</li>
+</ul>
+<h2 lang="en">Tidying the display format</h2>
+<p lang="en">If the result shows a number like 46296, set the cell format to "Date".</p>
+<h2>예</h2>
+<p lang="en">A system-exported CSV had dates as eight-digit numbers. The YMD8 formula made them dates, enabling sorting and monthly totals.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Different digit counts</b>: seven digits, or numbers missing a leading 0, won't convert correctly.</li>
+<li lang="en"><b>Nonexistent dates</b>: values like 20261332 give odd dates.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about text like "2026/10/01"?</h3>
+<p lang="en">Use "DATEVALUE".</p>
+<h2>요약</h2>
+<p lang="en">Convert eight-digit dates to date values with YMD8.</p>
 <a class="cta" href="/ko/text-date-formula-builder.html">“텍스트→날짜 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/date-calculator.html">나이, 날짜 간 일수, 날짜 가감 계산</a>: 나이와 날짜 간 일수를 계산합니다.</li><li><a href="/ko/excel-text-format-builder.html">엑셀 TEXT 수식 만들기</a>: TEXT 수식을 만듭니다.</li><li><a href="/ko/date-offset-formula-builder.html">날짜 계산 수식 만들기</a>: 날짜 계산 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>การหาค่าที่ใกล้เคียงที่สุด</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก APPROX</li><li>ใส่คอลัมน์</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/xlookup-formula-builder.html">ตัวสร้างสูตร XLOOKUP</a> คุณสร้างสูตรที่คืนแถวของค่าที่น้อยกว่าถัดไปเมื่อไม่มีค่าที่ตรงกันพอดีได้</p>
+<p lang="en">Instead of an exact match, you want the nearest value: determine a grade (A/B/C) from a score, or a fee tier from an amount. That's approximate lookup. "APPROX" in <a href="/th/xlookup-formula-builder.html">Build an XLOOKUP Formula</a> builds it.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือก APPROX</li>
-<li>ใส่คอลัมน์</li>
-<li>คัดลอก</li>
+<li lang="en">Choose "APPROX" in "Type".</li>
+<li lang="en">Enter the "Value to find", "Lookup column" and "Return column".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">สำหรับสูตร Excel รุ่นเก่า ให้เรียงคอลัมน์ค้นหาจากน้อยไปมาก</div>
+<div class="note" lang="en">The trailing "-1" means "if not found, use the next smaller value".</div>
+<h2>ตัวอย่าง</h2>
+<ul>
+<li lang="en">=XLOOKUP(E2,A2:A100,B2:B100,"",-1)</li>
+</ul>
+<p lang="en">In a table with score lower bounds in column A (0, 60, 80) and grades in column B (C, B, A), a score of 75 returns the 60 row's "B".</p>
+<h2 lang="en">Building the table</h2>
+<p lang="en">Put each tier's lower bound in the lookup column.</p>
+<ul>
+<li lang="en">0 → C</li>
+<li lang="en">60 → B</li>
+<li lang="en">80 → A</li>
+</ul>
+<p lang="en">75 is at least 60 and under 80, so "B".</p>
+<h2 lang="en">In old Excel</h2>
+<p lang="en">The second formula uses MATCH's approximate search.</p>
+<ul>
+<li lang="en">=IFERROR(INDEX(B2:B100,MATCH(E2,A2:A100,1)),"")</li>
+</ul>
+<p lang="en">With MATCH's third argument 1, it finds the largest value at or below in an ascending column.</p>
+<h2 lang="en">Note: order</h2>
+<p lang="en">The second formula needs the lookup column sorted smallest first. XLOOKUP's "-1" doesn't require sorting, but sorting reduces mistakes.</p>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Grades from scores</li>
+<li lang="en">Fee-rate tiers from sales</li>
+<li lang="en">Age brackets from age</li>
+<li lang="en">Shipping tiers (a fee table by weight)</li>
+</ul>
+<h2 lang="en">To find the next larger value</h2>
+<p lang="en">Change "-1" to "1" (edit by hand).</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Built a table setting commission rates from sales amounts. With tier lower bounds and rates in a table, XLOOKUP's approximate mode avoided stacking IFs.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Value below the lowest bound</b>: not found, so the specified value (empty) appears. Include a 0 row.</li>
+<li lang="en"><b>Decimal bounds</b>: mind rounding error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want exact matches only</h3>
+<p lang="en">Use the "XLOOKUP" type.</p>
+<h2>สรุป</h2>
+<p lang="en">Tier-based values can be pulled with approximate lookup.</p>
 <a class="cta" href="/th/xlookup-formula-builder.html">ใช้ “สร้างสูตร XLOOKUP” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/vlookup-formula-builder.html">สร้างสูตร VLOOKUP หรือ XLOOKUP</a>: สร้างสูตร VLOOKUP และ XLOOKUP</li><li><a href="/th/index-match-builder.html">สร้างสูตร INDEX และ MATCH</a>: สร้างสูตร INDEX และ MATCH</li><li><a href="/th/filter-formula-builder.html">สร้างสูตร FILTER</a>: สร้างสูตร FILTER</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

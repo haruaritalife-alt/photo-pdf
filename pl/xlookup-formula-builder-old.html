@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Wyszukiwanie w starym Excelu</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Wybierz XLOOKUP</li><li>Zbuduj formułę</li><li>Skopiuj drugą formułę</li></ul></div>
-<p><a href="/pl/xlookup-formula-builder.html">Kreator XLOOKUP</a> tworzy też formułę dla starszych wersji Excela, które nie mają XLOOKUP.</p>
-<h2>Kroki</h2>
+<p lang="en">XLOOKUP is a function from Excel 365 and 2021 onward. Older Excel gives #NAME?. <a href="/pl/xlookup-formula-builder.html">Build an XLOOKUP Formula</a> also builds a formula that works in old Excel.</p>
+<h2 lang="en">The two formulas</h2>
+<ul>
+<li lang="en">XLOOKUP: =XLOOKUP(E2,A2:A100,B2:B100)</li>
+<li lang="en">Works in old Excel: =IFERROR(INDEX(B2:B100,MATCH(E2,A2:A100,0)),"")</li>
+</ul>
+<p lang="en">"Copy the second" copies the latter.</p>
+<div class="note" lang="en">The second formula finds the position with MATCH and pulls the value with INDEX. It works in every version.</div>
+<h2>Jak to działa</h2>
 <ol>
-<li>Wybierz XLOOKUP</li>
-<li>Zbuduj formułę</li>
-<li>Skopiuj drugą formułę</li>
+<li lang="en">MATCH(E2,A2:A100,0): finds which position in column A holds E2's value (0 means exact match)</li>
+<li lang="en">INDEX(B2:B100,position): pulls the value at the same position in column B</li>
+<li lang="en">IFERROR: gives the specified value when not found</li>
 </ol>
-<div class="note">Łączy INDEX i MATCH.</div>
+<h2 lang="en">Supported versions</h2>
+<ul>
+<li lang="en">XLOOKUP: Microsoft 365, Excel 2021 and later, Google Sheets</li>
+<li lang="en">INDEX/MATCH formula: nearly all versions</li>
+</ul>
+<h2 lang="en">Old-version formulas by type</h2>
+<ul>
+<li lang="en">LAST: =LOOKUP(2,1/(A2:A100=E2),B2:B100)</li>
+<li lang="en">APPROX: =IFERROR(INDEX(B2:B100,MATCH(E2,A2:A100,1)),"")</li>
+<li lang="en">XMATCH: =MATCH(E2,A2:A100,0)</li>
+<li lang="en">REVERSE: swap lookup and return columns, with INDEX and MATCH</li>
+</ul>
+<h2 lang="en">Difference from VLOOKUP</h2>
+<p lang="en">VLOOKUP also searches in old Excel, but the lookup column must be leftmost and column numbers shift easily. INDEX and MATCH has no such limits.</p>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">Handing the file to someone using old Excel</li>
+<li lang="en">When the company environment is old</li>
+</ul>
+<h2>Przykład</h2>
+<p lang="en">An XLOOKUP that worked in my Excel gave #NAME? in the recipient's. Switching to the second formula made it work there too.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Ranges shift</b>: fix with $ when copying down.</li>
+<li lang="en"><b>When not found</b>: IFERROR's value appears; if empty, an empty string.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Which should I use?</h3>
+<p lang="en">If only you use it, XLOOKUP. If handing it to someone, the second formula is safer.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">When you don't know the recipient's environment, use the INDEX and MATCH formula.</p>
 <a class="cta" href="/pl/xlookup-formula-builder.html">Użyj „Utwórz formułę XLOOKUP” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/vlookup-formula-builder.html">Tworzenie formuły VLOOKUP lub XLOOKUP</a>: Twórz formuły VLOOKUP i XLOOKUP.</li><li><a href="/pl/index-match-builder.html">Utwórz formułę INDEX i MATCH</a>: Twórz formuły INDEX i MATCH.</li><li><a href="/pl/filter-formula-builder.html">Tworzenie formuły FILTER</a>: Utwórz formułę FILTER.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

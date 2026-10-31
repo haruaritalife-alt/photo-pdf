@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>把 8 位数字转换为日期</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>选择 YMD8</li><li>输入单元格</li><li>复制</li></ul></div>
-<p>在 <a href="/zh/text-date-formula-builder.html">文本转日期公式生成器</a> 中，可以生成把 20261001 这样的 8 位数字转换为日期的公式。</p>
+<p lang="en">Year, month and day are strung together as eight digits like "20261001". As is, it won't calculate as a date. "YMD8" in <a href="/zh/text-date-formula-builder.html">Build a Text to Date Formula</a> converts it.</p>
 <h2>步骤</h2>
 <ol>
-<li>选择 YMD8</li>
-<li>输入单元格</li>
-<li>复制</li>
+<li lang="en">Choose "YMD8" in "Type".</li>
+<li lang="en">Enter the "Cell to convert".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">把单元格格式设为日期，会更容易阅读。</div>
+<div class="note" lang="en">The eight digits are 4 for the year, 2 for the month and 2 for the day.</div>
+<h2>示例</h2>
+<ul>
+<li lang="en">=DATE(LEFT(A2,4),MID(A2,5,2),RIGHT(A2,2))</li>
+</ul>
+<p lang="en">"20261001" becomes the date October 1, 2026.</p>
+<h2>工作原理</h2>
+<ul>
+<li lang="en">LEFT(A2,4): the first four digits (year)</li>
+<li lang="en">MID(A2,5,2): two digits from the 5th (month)</li>
+<li lang="en">RIGHT(A2,2): the last two digits (day)</li>
+</ul>
+<p lang="en">DATE then assembles them into a date.</p>
+<h2 lang="en">Six-digit year-month</h2>
+<p lang="en">For six digits like "202610" (year-month only), use "YM6".</p>
+<ul>
+<li lang="en">=DATE(LEFT(A2,4),RIGHT(A2,2),1)</li>
+</ul>
+<p lang="en">It gives the first of that month.</p>
+<h2 lang="en">When stored as a number</h2>
+<p lang="en">If the eight digits are numeric (right-aligned), LEFT and the like treat them as text and still work. The result is a date value.</p>
+<h2>适合</h2>
+<ul>
+<li lang="en">Eight-digit dates exported from core systems</li>
+<li lang="en">Dates embedded in file names</li>
+<li lang="en">A date column for forms without dates</li>
+</ul>
+<h2 lang="en">Tidying the display format</h2>
+<p lang="en">If the result shows a number like 46296, set the cell format to "Date".</p>
+<h2>示例</h2>
+<p lang="en">A system-exported CSV had dates as eight-digit numbers. The YMD8 formula made them dates, enabling sorting and monthly totals.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Different digit counts</b>: seven digits, or numbers missing a leading 0, won't convert correctly.</li>
+<li lang="en"><b>Nonexistent dates</b>: values like 20261332 give odd dates.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about text like "2026/10/01"?</h3>
+<p lang="en">Use "DATEVALUE".</p>
+<h2>小结</h2>
+<p lang="en">Convert eight-digit dates to date values with YMD8.</p>
 <a class="cta" href="/zh/text-date-formula-builder.html">使用“生成文本转日期公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/date-calculator.html">计算年龄、日期间隔天数和日期加减</a>：计算年龄和两个日期之间的天数。</li><li><a href="/zh/excel-text-format-builder.html">生成 Excel 的 TEXT 公式</a>: 生成 TEXT 公式。</li><li><a href="/zh/date-offset-formula-builder.html">生成日期加减公式</a>: 生成日期加减公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

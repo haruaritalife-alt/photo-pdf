@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>오류를 빈칸으로 만들기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>다른 방식에서 IF-ERROR 선택</li><li>범위 입력하기</li><li>복사</li></ul></div>
-<p><a href="/ko/stat-formula-builder.html">평균·중앙값 수식 만들기</a>에서는 오류가 나면 빈칸이 되는 수식을 만들 수 있습니다.</p>
+<p lang="en">If error values (#DIV/0!, #N/A, etc.) are mixed in the range, the aggregate errors too. "IF-ERROR" blanks that to tidy the look. Choose it in "Alternative form" in <a href="/ko/stat-formula-builder.html">Build an AVERAGE and MEDIAN Formula</a>.</p>
 <h2>순서</h2>
 <ol>
-<li>다른 방식에서 IF-ERROR 선택</li>
-<li>범위 입력하기</li>
-<li>복사</li>
+<li lang="en">In "Alternative form", choose "IF-ERROR".</li>
+<li lang="en">Enter the "Type" and "Numeric range".</li>
+<li lang="en">Copy the "Alternative formula" with "Copy the second" and paste.</li>
 </ol>
-<div class="note">범위에 숫자가 없을 때의 오류도 피할 수 있습니다.</div>
+<div class="note" lang="en">Its form is =IFERROR(formula,""). It's blank when the aggregate itself errors.</div>
+<h2>예</h2>
+<ul>
+<li lang="en">=IFERROR(AVERAGE(B2:B100),"")</li>
+</ul>
+<p lang="en">If the range holds no numbers, AVERAGE would be #DIV/0! but shows blank.</p>
+<h2 lang="en">Note: errors inside the range remain</h2>
+<p lang="en">IFERROR works when the aggregate result is an error. If the range contains error values, the aggregate errors too. Then you need a formula that skips range errors.</p>
+<ul>
+<li lang="en">Example: =AGGREGATE(1,6,B2:B100)</li>
+</ul>
+<p lang="en">AGGREGATE aggregates ignoring error values. 1 means average and 6 means ignore errors.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Empty tables before entry where errors shouldn't show</li>
+<li lang="en">Aggregate cells feeding other formulas</li>
+<li lang="en">Tidying report tables</li>
+</ul>
+<h2 lang="en">Don't hide too much</h2>
+<p lang="en">Hiding errors makes data problems harder to notice. Check with the basic formula first.</p>
+<h2>예</h2>
+<p lang="en">At the start of the month there was no data and the average cell was full of #DIV/0!. Wrapping in IFERROR showed blanks and cleaned up the report table.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Want to return 0</b>: rewrite IFERROR's "" as 0.</li>
+<li lang="en"><b>Empty string</b>: a result of "" may be treated as text in later calculations.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I use it with ROUND?</h3>
+<p lang="en">You can layer formulas. Build by hand.</p>
+<ul>
+<li lang="en">Example: =IFERROR(ROUND(AVERAGE(B2:B100),2),"")</li>
+</ul>
+<h2>요약</h2>
+<p lang="en">To hide errors, use IF-ERROR.</p>
 <a class="cta" href="/ko/stat-formula-builder.html">“평균·중앙값 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li><li><a href="/ko/rank-formula-builder.html">순위 수식 만들기</a>: 순위 수식을 만듭니다.</li><li><a href="/ko/large-small-formula-builder.html">LARGE·SMALL 수식 만들기</a>: N번째로 큰 값·작은 값의 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

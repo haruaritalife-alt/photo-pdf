@@ -200,14 +200,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>0を除いて出す</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>別の書き方でNO-ZEROを選ぶ</li><li>範囲を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/stat-formula-builder.html">平均・中央値の式の作成</a> では、0を数に入れない平均や最小の式も作れます。</p>
+<p>未入力のセルに、0が入っている。その0を含めて平均を出すと、実際より低くなります。0を除いて集計したいときは、「NO-ZERO」を使います。<a href="/stat-formula-builder.html">平均・中央値などの式を作る</a> の「別の書き方」で選べます。</p>
 <h2>手順</h2>
 <ol>
-<li>別の書き方でNO-ZEROを選ぶ</li>
-<li>範囲を入れる</li>
-<li>コピーする</li>
+<li>「別の書き方」で「NO-ZERO」を選ぶ。</li>
+<li>「種類」と「数字の範囲」を入れる。</li>
+<li>「別の書き方の式」を、「2つ目をコピー」でコピーして貼る。</li>
 </ol>
-<div class="note">入力もれの0を除きたいときに使います。</div>
+<div class="note">種類によって、式の形が変わります。ツールが自動で切り替えます。</div>
+<h2>例</h2>
+<p>種類ごとの、0を除いた式です。</p>
+<ul>
+<li>AVERAGE：=AVERAGEIF(B2:B100,"&lt;&gt;0")</li>
+<li>MIN：=MINIFS(B2:B100,B2:B100,"&lt;&gt;0")</li>
+<li>MAX：=MAXIFS(B2:B100,B2:B100,"&lt;&gt;0")</li>
+<li>COUNT：=COUNTIF(B2:B100,"&lt;&gt;0")</li>
+<li>MEDIAN・MODE・STDEV：=MEDIAN(FILTER(B2:B100,B2:B100&lt;&gt;0))</li>
+<li>SUM：0を足しても変わらないので、そのまま</li>
+</ul>
+<h2>0を除くとどう変わるか</h2>
+<p>5、0、10、0、15の場合です。</p>
+<ul>
+<li>AVERAGE：6（0を含む）</li>
+<li>NO-ZEROのAVERAGE：10（0を除く）</li>
+</ul>
+<h2>使い分けのポイント</h2>
+<ul>
+<li>0が「未入力」の意味なら、除く</li>
+<li>0が「本当に0（売上ゼロ）」なら、除かない</li>
+</ul>
+<p>どちらの意味か、データの意味を確かめてから、選びましょう。</p>
+<h2>空欄にする方法</h2>
+<p>もともと、未入力のセルを空欄にしておけば、AVERAGEは空欄を無視します。0を入れずに済みます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>欠席の日を0としている出席データ</li>
+<li>未入力の月が0になっている売上表</li>
+</ul>
+<h2>例</h2>
+<p>月別の売上で、まだ入力していない月が0だった。AVERAGEだと年平均が低く出た。NO-ZEROで、入力済みの月の平均が分かった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>古いExcelでMINIFS・MAXIFSが使えない</b>：Excel 2019以降。</li>
+<li><b>FILTERが使えない</b>：Excel 365・2021以降。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>0が1つもない場合は？</h3>
+<p>結果は同じになります。</p>
+<h2>まとめ</h2>
+<p>未入力の0を除きたいなら、NO-ZERO。</p>
 <a class="cta" href="/stat-formula-builder.html">平均・中央値などの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/rank-formula-builder.html">順位の式を作る</a>：順位の式を作ります。</li><li><a href="/large-small-formula-builder.html">N番目の値の式を作る</a>：N番目に大きい・小さい値の式を作る。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +260,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Leaving Out Zeros</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose NO-ZERO as the alternative</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/stat-formula-builder.html">AVERAGE and MEDIAN Builder</a> you can also build averages and minimums that leave out zeros.</p>
+<p>Unentered cells hold 0. Averaging with those zeros gives lower than reality. To exclude zeros, use "NO-ZERO". Choose it in "Alternative form" in <a href="/stat-formula-builder.html">Build an AVERAGE and MEDIAN Formula</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose NO-ZERO as the alternative</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>In "Alternative form", choose "NO-ZERO".</li>
+<li>Enter the "Type" and "Numeric range".</li>
+<li>Copy the "Alternative formula" with "Copy the second" and paste.</li>
 </ol>
-<div class="note">Use it to leave out zeros that stand for missing entries.</div>
+<div class="note">The formula's shape changes by type. The tool switches automatically.</div>
+<h2>Examples</h2>
+<p>Zero-excluding formulas by type:</p>
+<ul>
+<li>AVERAGE: =AVERAGEIF(B2:B100,"&lt;&gt;0")</li>
+<li>MIN: =MINIFS(B2:B100,B2:B100,"&lt;&gt;0")</li>
+<li>MAX: =MAXIFS(B2:B100,B2:B100,"&lt;&gt;0")</li>
+<li>COUNT: =COUNTIF(B2:B100,"&lt;&gt;0")</li>
+<li>MEDIAN, MODE, STDEV: =MEDIAN(FILTER(B2:B100,B2:B100&lt;&gt;0))</li>
+<li>SUM: unchanged, since adding 0 changes nothing</li>
+</ul>
+<h2>How excluding zeros changes things</h2>
+<p>For 5, 0, 10, 0, 15:</p>
+<ul>
+<li>AVERAGE: 6 (zeros included)</li>
+<li>NO-ZERO AVERAGE: 10 (zeros excluded)</li>
+</ul>
+<h2>Key to choosing</h2>
+<ul>
+<li>If 0 means "not entered", exclude it</li>
+<li>If 0 really means zero (zero sales), don't exclude</li>
+</ul>
+<p>Check what the data means before choosing.</p>
+<h2>Leaving cells blank</h2>
+<p>If unentered cells are kept truly blank, AVERAGE ignores them. You needn't enter 0.</p>
+<h2>Good for</h2>
+<ul>
+<li>Attendance data where absent days are 0</li>
+<li>Sales tables where unentered months are 0</li>
+</ul>
+<h2>Example</h2>
+<p>In monthly sales, months not yet entered were 0. AVERAGE gave a low annual mean. NO-ZERO showed the average of entered months.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>MINIFS/MAXIFS unavailable in old Excel</b>: Excel 2019 or later.</li>
+<li><b>FILTER unavailable</b>: Excel 365 and 2021 or later.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if there are no zeros?</h3>
+<p>The result is the same.</p>
+<h2>Summary</h2>
+<p>To exclude unentered zeros, use NO-ZERO.</p>
 <a class="cta" href="/stat-formula-builder.html">Use "Build an AVERAGE and MEDIAN Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a>: Build formulas for the Nth largest or smallest value.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

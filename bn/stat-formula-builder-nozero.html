@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>শূন্য বাদ দেওয়া</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>বিকল্প হিসেবে NO-ZERO বেছে নিন</li><li>রেঞ্জ লিখুন</li><li>কপি করুন</li></ul></div>
-<p><a href="/bn/stat-formula-builder.html">গড় ও মধ্যমা সূত্র নির্মাতা</a>-এ আপনি শূন্য বাদ দেওয়া গড় ও সর্বনিম্নের সূত্রও তৈরি করতে পারেন।</p>
+<p lang="en">Unentered cells hold 0. Averaging with those zeros gives lower than reality. To exclude zeros, use "NO-ZERO". Choose it in "Alternative form" in <a href="/bn/stat-formula-builder.html">Build an AVERAGE and MEDIAN Formula</a>.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>বিকল্প হিসেবে NO-ZERO বেছে নিন</li>
-<li>রেঞ্জ লিখুন</li>
-<li>কপি করুন</li>
+<li lang="en">In "Alternative form", choose "NO-ZERO".</li>
+<li lang="en">Enter the "Type" and "Numeric range".</li>
+<li lang="en">Copy the "Alternative formula" with "Copy the second" and paste.</li>
 </ol>
-<div class="note">বাদ পড়া এন্ট্রি বোঝানো শূন্য বাদ দিতে ব্যবহার করুন।</div>
+<div class="note" lang="en">The formula's shape changes by type. The tool switches automatically.</div>
+<h2 lang="en">Examples</h2>
+<p lang="en">Zero-excluding formulas by type:</p>
+<ul>
+<li lang="en">AVERAGE: =AVERAGEIF(B2:B100,"&lt;&gt;0")</li>
+<li lang="en">MIN: =MINIFS(B2:B100,B2:B100,"&lt;&gt;0")</li>
+<li lang="en">MAX: =MAXIFS(B2:B100,B2:B100,"&lt;&gt;0")</li>
+<li lang="en">COUNT: =COUNTIF(B2:B100,"&lt;&gt;0")</li>
+<li lang="en">MEDIAN, MODE, STDEV: =MEDIAN(FILTER(B2:B100,B2:B100&lt;&gt;0))</li>
+<li lang="en">SUM: unchanged, since adding 0 changes nothing</li>
+</ul>
+<h2 lang="en">How excluding zeros changes things</h2>
+<p lang="en">For 5, 0, 10, 0, 15:</p>
+<ul>
+<li lang="en">AVERAGE: 6 (zeros included)</li>
+<li lang="en">NO-ZERO AVERAGE: 10 (zeros excluded)</li>
+</ul>
+<h2 lang="en">Key to choosing</h2>
+<ul>
+<li lang="en">If 0 means "not entered", exclude it</li>
+<li lang="en">If 0 really means zero (zero sales), don't exclude</li>
+</ul>
+<p lang="en">Check what the data means before choosing.</p>
+<h2 lang="en">Leaving cells blank</h2>
+<p lang="en">If unentered cells are kept truly blank, AVERAGE ignores them. You needn't enter 0.</p>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Attendance data where absent days are 0</li>
+<li lang="en">Sales tables where unentered months are 0</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">In monthly sales, months not yet entered were 0. AVERAGE gave a low annual mean. NO-ZERO showed the average of entered months.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>MINIFS/MAXIFS unavailable in old Excel</b>: Excel 2019 or later.</li>
+<li lang="en"><b>FILTER unavailable</b>: Excel 365 and 2021 or later.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if there are no zeros?</h3>
+<p lang="en">The result is the same.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">To exclude unentered zeros, use NO-ZERO.</p>
 <a class="cta" href="/bn/stat-formula-builder.html">“গড় ও মধ্যমার সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/sumif-formula-builder.html">SUMIF বা COUNTIF সূত্র তৈরি করুন</a>: SUMIF ও COUNTIF সূত্র তৈরি করুন।</li><li><a href="/bn/rank-formula-builder.html">র‍্যাঙ্কের সূত্র তৈরি করুন</a>: র‍্যাঙ্কের সূত্র তৈরি করুন।</li><li><a href="/bn/large-small-formula-builder.html">LARGE ও SMALL সূত্র তৈরি করুন</a>: N-তম সর্বোচ্চ বা সর্বনিম্ন মানের সূত্র তৈরি করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

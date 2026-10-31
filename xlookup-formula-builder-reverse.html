@@ -200,14 +200,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>右から左へ探す</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>REVERSEを選ぶ</li><li>探す列と返す列を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/xlookup-formula-builder.html">XLOOKUPの式の作成</a> では、右の列で探して、左の列の値を返す式を作れます。</p>
+<p>VLOOKUPの弱点は、探す列が、返す列より左にないといけないことでした。XLOOKUPは、右の列で探して、左の列を返せます。<a href="/xlookup-formula-builder.html">XLOOKUPの式を作る</a> の「REVERSE」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>REVERSEを選ぶ</li>
-<li>探す列と返す列を入れる</li>
-<li>コピーする</li>
+<li>「種類」で「REVERSE」を選ぶ。</li>
+<li>「探す列」に、探す値のある列を入れる。</li>
+<li>「返す列」に、返したい値のある列を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">VLOOKUPでは、できない探し方です。</div>
+<div class="note">ツールでは、REVERSEのとき、探す列と返す列の役割が入れ替わります。「返す列」を探して、「探す列」の値を返します。</div>
+<h2>例</h2>
+<p>A列が社員番号、B列が氏名の表で、氏名から社員番号を引く場合です。</p>
+<ul>
+<li>=XLOOKUP(E2,B2:B100,A2:A100)</li>
+</ul>
+<p>REVERSEでは、「探す列」にA2:A100、「返す列」にB2:B100を入れると、この式になります。</p>
+<h2>VLOOKUPでは</h2>
+<p>左の列を返すには、INDEXとMATCHが必要でした。</p>
+<ul>
+<li>例：=INDEX(A2:A100,MATCH(E2,B2:B100,0))</li>
+</ul>
+<p>2つ目の式が、この形です。古いExcelでも動きます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>名前から、IDを引く</li>
+<li>後ろの列を基準に、前の列を引く</li>
+<li>列の順序を、変えたくない表</li>
+</ul>
+<h2>列の順序を気にしなくてよい</h2>
+<p>XLOOKUPなら、表の列を入れ替えても、式は壊れません。VLOOKUPの列番号は、列を足すとずれます。</p>
+<h2>例</h2>
+<p>氏名の列が右にあり、社員番号の列が左にある表で、氏名から社員番号を引きたかった。REVERSEの式で、列の順序を変えずに引けた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>同じ名前が複数ある</b>：最初に見つかった行の値が返る。</li>
+<li><b>見つからないとき</b>：#N/A。「見つからないとき」の欄で、別の文字を指定できる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>完全一致以外も、探せますか？</h3>
+<p>「APPROX」の種類で、近い値を探せます。</p>
+<h2>まとめ</h2>
+<p>右から左へ引くなら、REVERSE。</p>
 <a class="cta" href="/xlookup-formula-builder.html">XLOOKUPの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/index-match-builder.html">INDEX・MATCHの式を作る</a>：INDEX・MATCHの式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +252,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Looking Up Right to Left</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose REVERSE</li><li>Enter the columns</li><li>Copy it</li></ul></div>
-<p>In <a href="/xlookup-formula-builder.html">XLOOKUP Builder</a> you can build a formula that searches the right column and returns the left one.</p>
+<p>VLOOKUP's weakness is that the lookup column must be left of the return column. XLOOKUP can search a right column and return a left column. "REVERSE" in <a href="/xlookup-formula-builder.html">Build an XLOOKUP Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose REVERSE</li>
-<li>Enter the columns</li>
-<li>Copy it</li>
+<li>Choose "REVERSE" in "Type".</li>
+<li>In "Lookup column", enter the column holding the value to find.</li>
+<li>In "Return column", enter the column holding the value to return.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">VLOOKUP cannot search this way.</div>
+<div class="note">In REVERSE the tool swaps the roles of the lookup and return columns: it searches the "Return column" and returns the "Lookup column" value.</div>
+<h2>Example</h2>
+<p>With employee numbers in column A and names in column B, getting the number from a name:</p>
+<ul>
+<li>=XLOOKUP(E2,B2:B100,A2:A100)</li>
+</ul>
+<p>In REVERSE, entering A2:A100 as the lookup column and B2:B100 as the return column yields this formula.</p>
+<h2>With VLOOKUP</h2>
+<p>Returning a left column needed INDEX and MATCH.</p>
+<ul>
+<li>Example: =INDEX(A2:A100,MATCH(E2,B2:B100,0))</li>
+</ul>
+<p>The second formula has this form. It works in old Excel.</p>
+<h2>Good for</h2>
+<ul>
+<li>Getting IDs from names</li>
+<li>Looking up a front column by a back column</li>
+<li>Tables whose column order you don't want to change</li>
+</ul>
+<h2>Column order doesn't matter</h2>
+<p>With XLOOKUP, rearranging table columns doesn't break the formula. VLOOKUP's column number shifts when columns are added.</p>
+<h2>Example</h2>
+<p>In a table with names on the right and employee numbers on the left, I wanted numbers from names. The REVERSE formula did it without reordering columns.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Several people with the same name</b>: the first found row's value is returned.</li>
+<li><b>When not found</b>: #N/A. You can specify other text in "When not found".</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can it find non-exact matches?</h3>
+<p>The "APPROX" type finds nearby values.</p>
+<h2>Summary</h2>
+<p>To look up right to left, use REVERSE.</p>
 <a class="cta" href="/xlookup-formula-builder.html">Use "Build an XLOOKUP Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/index-match-builder.html">Build an INDEX and MATCH Formula</a>: Build INDEX and MATCH formulas.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

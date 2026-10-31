@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Что делать, если не работает</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Проверьте файл</li><li>Проверьте размер</li><li>Попробуйте другое устройство</li></ul></div>
-<p>Если <a href="/ru/stat-formula-builder.html">Конструктор среднего и медианы</a> не работает, проверьте следующее.</p>
-<h2>Шаги</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/ru/stat-formula-builder.html">Build an AVERAGE and MEDIAN Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the range isn't in the "B2:B100" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#DIV/0!</b>: the range has no numbers (AVERAGE, MEDIAN, etc.).</li>
+<li lang="en"><b>#N/A</b>: in MODE, no value appears twice or more.</li>
+<li lang="en"><b>#VALUE!</b>: the range contains error values.</li>
+<li lang="en"><b>Result is small</b>: text numbers aren't being counted.</li>
+<li lang="en"><b>Average is low</b>: unentered zeros are included. Use NO-ZERO.</li>
+<li lang="en"><b>#NAME?</b>: old Excel lacks MINIFS, MAXIFS or FILTER.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Проверьте файл</li>
-<li>Проверьте размер</li>
-<li>Попробуйте другое устройство</li>
+<li lang="en">Check the numbers in the range are right-aligned numeric values.</li>
+<li lang="en">Check the range doesn't include header or total rows.</li>
+<li lang="en">Check what 0 means (not entered, or a real zero).</li>
 </ol>
-<div class="note">Если формула не появляется, проверьте, что диапазон записан как B2:B100.</div>
+<div class="note" lang="en">Including a total row in the range distorts averages and maximums.</div>
+<h2 lang="en">Fixing text numbers</h2>
+<p lang="en">Convert to numbers with Data → Text to Columns or VALUE.</p>
+<h2 lang="en">About COUNT</h2>
+<p lang="en">COUNT counts only numbers. To count text too, use COUNTA.</p>
+<ul>
+<li lang="en">Count of non-empty cells: =COUNTA(B2:B100)</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">The average was lower than imagined. A total row was included at the end of the range. Limiting the range to data rows gave the right value.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Ranges on other sheets</b>: add the sheet name.</li>
+<li lang="en"><b>Kinds of STDEV</b>: sample (STDEV.S) and population (STDEV.P). The tool's formula uses STDEV.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the population standard deviation</h3>
+<p lang="en">Use STDEV.P. Edit the formula by hand.</p>
+<h2>Итог</h2>
+<p lang="en">Check text numbers, what the range includes, and the meaning of 0.</p>
 <a class="cta" href="/ru/stat-formula-builder.html">Использовать «Создать формулу среднего и медианы» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/sumif-formula-builder.html">Создание формулы SUMIF или COUNTIF</a>: Создавайте формулы SUMIF и COUNTIF.</li><li><a href="/ru/rank-formula-builder.html">Создать формулу рейтинга</a>: Создавайте формулы рейтинга.</li><li><a href="/ru/large-small-formula-builder.html">Создайте формулу LARGE и SMALL</a>: Создавайте формулы для N-го наибольшего или наименьшего значения.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

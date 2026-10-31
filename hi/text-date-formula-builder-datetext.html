@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>तारीख को टेक्स्ट में बदलना</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>DATETEXT चुनें</li><li>सेल दर्ज करें</li><li>कॉपी करें</li></ul></div>
-<p><a href="/hi/text-date-formula-builder.html">टेक्स्ट से तारीख सूत्र बनाने वाला टूल</a> में आप ऐसा सूत्र बना सकते हैं जो तारीख को 2026-10-01 जैसे टेक्स्ट में बदलता है।</p>
+<p lang="en">You want a date as text like "2026-10-01": for file names, handing to other systems, or keeping digit widths. Convert with TEXT. "DATETEXT" and "TEXTNUM" in <a href="/hi/text-date-formula-builder.html">Build a Text to Date Formula</a> build these.</p>
 <h2>चरण</h2>
 <ol>
-<li>DATETEXT चुनें</li>
-<li>सेल दर्ज करें</li>
-<li>कॉपी करें</li>
+<li lang="en">Choose "DATETEXT" or "TEXTNUM" in "Type".</li>
+<li lang="en">Enter the "Cell to convert".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">दूसरे टेक्स्ट से जोड़ते समय काम आता है।</div>
+<div class="note" lang="en">The result is text, so it can't be calculated as a date as is.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">DATETEXT: =TEXT(A2,"yyyy-mm-dd") → 2026-10-01</li>
+<li lang="en">TEXTNUM: =TEXT(A2,"0") → a number as text with fixed digits</li>
+</ul>
+<h2 lang="en">Format examples</h2>
+<p lang="en">Rewriting TEXT's second argument gives various shapes.</p>
+<ul>
+<li lang="en">"yyyy/m/d": 2026/10/1</li>
+<li lang="en">"yyyymmdd": 20261001</li>
+<li lang="en">"yyyy年m月d日": 2026年10月1日</li>
+<li lang="en">"m/d": 10/1</li>
+<li lang="en">"00000": zero-padded to 5 digits</li>
+</ul>
+<h2 lang="en">Keeping leading zeros</h2>
+<p lang="en">Leading zeros in postal codes or employee numbers vanish if left numeric. Make them text with TEXTNUM.</p>
+<ul>
+<li lang="en">Example: =TEXT(A2,"0000000")</li>
+</ul>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">File names and IDs containing dates</li>
+<li lang="en">Data formats handed to other systems</li>
+<li lang="en">Joining text ("Due: " plus a date)</li>
+</ul>
+<h2 lang="en">Putting dates in sentences</h2>
+<p lang="en">A date in a sentence turns into a number (46296). Wrap with TEXT.</p>
+<ul>
+<li lang="en">Example: ="Due: " &amp; TEXT(A2,"yyyy/m/d")</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">Wanted dated file names like "2026-10-01_report" built from a table. DATETEXT made the date text, then "_report" was appended.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Format letters vary by environment</b>: language settings may turn "yyyy" into "jjjj" and the like.</li>
+<li lang="en"><b>Google Sheets</b>: format letters are broadly the same.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the text date back as a date</h3>
+<p lang="en">Use "DATEVALUE".</p>
+<h2>सारांश</h2>
+<p lang="en">To make dates text, set the shape with TEXT's format.</p>
 <a class="cta" href="/hi/text-date-formula-builder.html">“टेक्स्ट से तारीख का सूत्र बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/date-calculator.html">उम्र, दो तारीख़ों के बीच के दिन और तारीख़ का आगे-पीछे होना निकालें</a>: उम्र और दो तारीख़ों के बीच के दिन निकालें।</li><li><a href="/hi/excel-text-format-builder.html">Excel का TEXT फ़ॉर्मूला बनाएँ</a>: TEXT फ़ॉर्मूला बनाएँ।</li><li><a href="/hi/date-offset-formula-builder.html">तारीख खिसकाने का सूत्र बनाएँ</a>: तारीख खिसकाने वाले सूत्र बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

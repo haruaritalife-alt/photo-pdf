@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pagpapalit ng numerong teksto tungo sa numero</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Piliin ang VALUE</li><li>Ilagay ang cell</li><li>Kopyahin</li></ul></div>
-<p>Sa <a href="/tl/text-date-formula-builder.html">Text to Date Builder</a>, makakagawa ka ng formula na nagpapalit ng numerong nakasulat bilang teksto tungo sa numerong magagamit sa pagkalkula.</p>
+<p lang="en">"1,200" or "¥3,000" can't be used in calculations. They look like numbers but are treated as text. VALUE converts them. "VALUE" in <a href="/tl/text-date-formula-builder.html">Build a Text to Date Formula</a> builds it.</p>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Piliin ang VALUE</li>
-<li>Ilagay ang cell</li>
-<li>Kopyahin</li>
+<li lang="en">Choose "VALUE" in "Type".</li>
+<li lang="en">Enter the "Cell to convert".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Gamitin ito kapag 0 ang lumalabas na kabuuan.</div>
+<div class="note" lang="en">Only text readable as a number converts. With a suffix like "yen" or "pcs", it errors.</div>
+<h2>Halimbawa</h2>
+<ul>
+<li lang="en">=VALUE(A2)</li>
+</ul>
+<p lang="en">"1,200" becomes the number 1200.</p>
+<h2 lang="en">What converts and what doesn't</h2>
+<ul>
+<li lang="en">Converts: "1,200", "1200", "12.5", "¥3,000" (environment-dependent)</li>
+<li lang="en">Doesn't: "1,200円", "3個", "約100"</li>
+</ul>
+<h2 lang="en">Remove units first</h2>
+<p lang="en">With units attached, strip them with SUBSTITUTE, then convert.</p>
+<ul>
+<li lang="en">Example: =VALUE(SUBSTITUTE(A2,"円",""))</li>
+</ul>
+<h2 lang="en">Telling whether it's a number</h2>
+<ul>
+<li lang="en">Left-aligned: likely text</li>
+<li lang="en">A green triangle at the cell's corner: the "number stored as text" warning</li>
+</ul>
+<h2 lang="en">Simpler ways</h2>
+<ul>
+<li lang="en">Multiply by 1: =A2*1</li>
+<li lang="en">Convert in bulk with Data → Text to Columns</li>
+</ul>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Amount columns in imported data</li>
+<li lang="en">Numbers copied from the web</li>
+<li lang="en">Numbers prefixed with "'"</li>
+</ul>
+<h2>Halimbawa</h2>
+<p lang="en">Copying a web price table, the total came to 0. The numbers were text. Converting with VALUE let it total.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width digits</b>: "１２００" converts in some environments but not others.</li>
+<li lang="en"><b>Empty cells</b>: may become 0 rather than an error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about data from countries using "," as the decimal point?</h3>
+<p lang="en">Results vary with regional settings. Tidy symbols with replacement.</p>
+<h2>Buod</h2>
+<p lang="en">Convert text numbers with VALUE.</p>
 <a class="cta" href="/tl/text-date-formula-builder.html">Gamitin ang “Gumawa ng formula na teksto tungo sa petsa” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/date-calculator.html">Kalkulahin ang Edad, Araw sa Pagitan ng mga Petsa at Offset ng Petsa</a>: Kalkulahin ang edad at mga araw sa pagitan ng mga petsa.</li><li><a href="/tl/excel-text-format-builder.html">Gumawa ng TEXT Formula ng Excel</a>: Gumawa ng TEXT formula.</li><li><a href="/tl/date-offset-formula-builder.html">Gumawa ng formula sa paglipat ng petsa</a>: Gumawa ng mga formula sa paglipat ng petsa.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

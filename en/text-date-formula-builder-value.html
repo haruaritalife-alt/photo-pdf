@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Turning Number Text into a Number</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose VALUE</li><li>Enter the cell</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/text-date-formula-builder.html">Text to Date Builder</a> you can build a formula that turns number text into a number you can calculate with.</p>
+<p>"1,200" or "¥3,000" can't be used in calculations. They look like numbers but are treated as text. VALUE converts them. "VALUE" in <a href="/en/text-date-formula-builder.html">Build a Text to Date Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose VALUE</li>
-<li>Enter the cell</li>
-<li>Copy it</li>
+<li>Choose "VALUE" in "Type".</li>
+<li>Enter the "Cell to convert".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">Use it when a total comes out as 0.</div>
+<div class="note">Only text readable as a number converts. With a suffix like "yen" or "pcs", it errors.</div>
+<h2>Example</h2>
+<ul>
+<li>=VALUE(A2)</li>
+</ul>
+<p>"1,200" becomes the number 1200.</p>
+<h2>What converts and what doesn't</h2>
+<ul>
+<li>Converts: "1,200", "1200", "12.5", "¥3,000" (environment-dependent)</li>
+<li>Doesn't: "1,200円", "3個", "約100"</li>
+</ul>
+<h2>Remove units first</h2>
+<p>With units attached, strip them with SUBSTITUTE, then convert.</p>
+<ul>
+<li>Example: =VALUE(SUBSTITUTE(A2,"円",""))</li>
+</ul>
+<h2>Telling whether it's a number</h2>
+<ul>
+<li>Left-aligned: likely text</li>
+<li>A green triangle at the cell's corner: the "number stored as text" warning</li>
+</ul>
+<h2>Simpler ways</h2>
+<ul>
+<li>Multiply by 1: =A2*1</li>
+<li>Convert in bulk with Data → Text to Columns</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Amount columns in imported data</li>
+<li>Numbers copied from the web</li>
+<li>Numbers prefixed with "'"</li>
+</ul>
+<h2>Example</h2>
+<p>Copying a web price table, the total came to 0. The numbers were text. Converting with VALUE let it total.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Full-width digits</b>: "１２００" converts in some environments but not others.</li>
+<li><b>Empty cells</b>: may become 0 rather than an error.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What about data from countries using "," as the decimal point?</h3>
+<p>Results vary with regional settings. Tidy symbols with replacement.</p>
+<h2>Summary</h2>
+<p>Convert text numbers with VALUE.</p>
 <a class="cta" href="/en/text-date-formula-builder.html">Use "Build a Text to Date Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/en/excel-text-format-builder.html">Build an Excel TEXT Formula</a>: Build a TEXT formula.</li><li><a href="/en/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

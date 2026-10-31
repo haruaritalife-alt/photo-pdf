@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Searching from the Bottom</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose LAST</li><li>Enter the columns</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/xlookup-formula-builder.html">XLOOKUP Builder</a> you can build a formula that returns the bottom match when a value appears more than once.</p>
+<p>When several rows have the same value, XLOOKUP returns the first found. To get the latest record, i.e. a lower row, search from the bottom. "LAST" in <a href="/en/xlookup-formula-builder.html">Build an XLOOKUP Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose LAST</li>
-<li>Enter the columns</li>
-<li>Copy it</li>
+<li>Choose "LAST" in "Type".</li>
+<li>Enter the "Value to find", "Lookup column" and "Return column".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">It is handy for picking out the latest record.</div>
+<div class="note">The trailing "0,-1" in the formula means exact match, searching from the bottom.</div>
+<h2>Example</h2>
+<ul>
+<li>=XLOOKUP(E2,A2:A100,B2:B100,"",0,-1)</li>
+</ul>
+<p>From records where the same customer appears many times, it returns the latest (lowest) row's value.</p>
+<h2>In old Excel</h2>
+<p>The second formula uses LOOKUP.</p>
+<ul>
+<li>=LOOKUP(2,1/(A2:A100=E2),B2:B100)</li>
+</ul>
+<p>A well-known form returning the last among matching rows.</p>
+<h2>Good for</h2>
+<ul>
+<li>Each customer's latest order</li>
+<li>Each product's latest unit price</li>
+<li>The current state from a history table</li>
+</ul>
+<h2>Difference from searching from the top</h2>
+<ul>
+<li>From the top (default): the first found row</li>
+<li>From the bottom (LAST): the last found row</li>
+</ul>
+<p>If records run from older at the top to newer at the bottom, searching from the bottom gets the latest.</p>
+<h2>Order is assumed</h2>
+<p>LAST assumes "lower means newer". If the order differs, so does the result. Sort by date before using.</p>
+<h2>Example</h2>
+<p>Wanted the current price from a product's price-history table. Records ran oldest first, so LAST got the latest row's price.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Not found</b>: if "When not found" is empty, you get an empty string.</li>
+<li><b>LOOKUP formula</b>: #N/A when nothing matches.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to judge by the latest date</h3>
+<p>You can also get the maximum date with MAXIFS and look up by that date.</p>
+<h2>Summary</h2>
+<p>To pull the latest row, use LAST, searching from the bottom.</p>
 <a class="cta" href="/en/xlookup-formula-builder.html">Use "Build an XLOOKUP Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/index-match-builder.html">Build an INDEX and MATCH Formula</a>: Build INDEX and MATCH formulas.</li><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

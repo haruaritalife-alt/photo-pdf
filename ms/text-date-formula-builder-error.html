@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Apabila anda mendapat ralat</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Dikemas kini: 19 Okt 2026 | <a href="/about.html">Perihal (Jepun)</a></p>
 <div class="points"><b>Perkara penting</b><ul><li>Bina formula</li><li>Gunakan formula yang mengosongkan ralat</li><li>Semak teks asal</li></ul></div>
-<p>Dalam <a href="/ms/text-date-formula-builder.html">Pembina teks kepada tarikh</a> formula yang menjadi kosong apabila berlaku ralat juga dibina.</p>
+<p lang="en">DATEVALUE or VALUE gives #VALUE!. That happens when unconvertible text is mixed in. The second formula, "Formula that blanks on error", in <a href="/ms/text-date-formula-builder.html">Build a Text to Date Formula</a> tidies the look.</p>
 <h2>Langkah</h2>
 <ol>
-<li>Bina formula</li>
-<li>Gunakan formula yang mengosongkan ralat</li>
-<li>Semak teks asal</li>
+<li lang="en">Build the first formula.</li>
+<li lang="en">Check the second "Formula that blanks on error".</li>
+<li lang="en">Copy it with "Copy the second" and paste.</li>
 </ol>
-<div class="note">Cara tarikh dibaca bergantung pada tetapan wilayah.</div>
+<div class="note" lang="en">Its form is =IFERROR(formula,""). The cell is empty when conversion fails.</div>
+<h2>Contoh</h2>
+<ul>
+<li lang="en">=IFERROR(DATEVALUE(A2),"")</li>
+</ul>
+<h2 lang="en">Main causes of errors</h2>
+<ul>
+<li lang="en">The date form isn't recognized ("2026.10.01", Japanese era dates, etc.)</li>
+<li lang="en">Text is mixed in ("around 10/1")</li>
+<li lang="en">Numbers have units ("1,200円")</li>
+<li lang="en">An empty cell was converted</li>
+</ul>
+<h2 lang="en">Fixes by cause</h2>
+<ul>
+<li lang="en">"." separators: replace with "/" via SUBSTITUTE</li>
+<li lang="en">Japanese era dates: convert another way (the site's era-date tool)</li>
+<li lang="en">With units: strip with SUBSTITUTE</li>
+</ul>
+<h2 lang="en">Is blanking enough?</h2>
+<p lang="en">Blanking errors makes unconverted rows easy to miss. To find error rows, keep the first formula and test with ISERROR.</p>
+<ul>
+<li lang="en">Example: =ISERROR(DATEVALUE(A2))</li>
+</ul>
+<h2>Sesuai untuk</h2>
+<ul>
+<li lang="en">Imported data with uneven dates</li>
+<li lang="en">Cells feeding summary tables</li>
+<li lang="en">Finding unconverted rows later</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">Some imported dates read "TBD". IFERROR blanked them and totals stopped breaking. ISERROR could also find the blanked rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Everything is blank</b>: the conversion type doesn't match the data's shape.</li>
+<li lang="en"><b>Hiding too much</b>: mere format differences get missed.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want other text instead of the error</h3>
+<p lang="en">Rewrite IFERROR's "" as something like "check".</p>
+<h2>Ringkasan</h2>
+<p lang="en">For unconvertible rows, blank the errors or test to find them.</p>
 <a class="cta" href="/ms/text-date-formula-builder.html">Guna “Bina formula teks kepada tarikh” (percuma)</a>
 <h2>Alat yang sepadan dengan ini</h2><ul><li><a href="/ms/date-calculator.html">Kira Umur, Hari Antara Tarikh dan Anjakan Tarikh</a>: Kira umur dan hari antara tarikh.</li><li><a href="/ms/excel-text-format-builder.html">Bina Formula TEXT Excel</a>: Bina formula TEXT.</li><li><a href="/ms/date-offset-formula-builder.html">Bina formula anjakan tarikh</a>: Bina formula anjakan tarikh.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil amat dihargai.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Hantar tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hantar hadiah (senarai hajat Amazon)</a></div>

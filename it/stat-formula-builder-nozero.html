@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Escludere gli zeri</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Scegli NO-ZERO come alternativa</li><li>Inserisci l'intervallo</li><li>Copialo</li></ul></div>
-<p>In <a href="/it/stat-formula-builder.html">Generatore di media e mediana</a> puoi anche creare medie e minimi che escludono gli zeri.</p>
+<p lang="en">Unentered cells hold 0. Averaging with those zeros gives lower than reality. To exclude zeros, use "NO-ZERO". Choose it in "Alternative form" in <a href="/it/stat-formula-builder.html">Build an AVERAGE and MEDIAN Formula</a>.</p>
 <h2>Passaggi</h2>
 <ol>
-<li>Scegli NO-ZERO come alternativa</li>
-<li>Inserisci l'intervallo</li>
-<li>Copialo</li>
+<li lang="en">In "Alternative form", choose "NO-ZERO".</li>
+<li lang="en">Enter the "Type" and "Numeric range".</li>
+<li lang="en">Copy the "Alternative formula" with "Copy the second" and paste.</li>
 </ol>
-<div class="note">Usalo per escludere gli zeri che rappresentano dati mancanti.</div>
+<div class="note" lang="en">The formula's shape changes by type. The tool switches automatically.</div>
+<h2 lang="en">Examples</h2>
+<p lang="en">Zero-excluding formulas by type:</p>
+<ul>
+<li lang="en">AVERAGE: =AVERAGEIF(B2:B100,"&lt;&gt;0")</li>
+<li lang="en">MIN: =MINIFS(B2:B100,B2:B100,"&lt;&gt;0")</li>
+<li lang="en">MAX: =MAXIFS(B2:B100,B2:B100,"&lt;&gt;0")</li>
+<li lang="en">COUNT: =COUNTIF(B2:B100,"&lt;&gt;0")</li>
+<li lang="en">MEDIAN, MODE, STDEV: =MEDIAN(FILTER(B2:B100,B2:B100&lt;&gt;0))</li>
+<li lang="en">SUM: unchanged, since adding 0 changes nothing</li>
+</ul>
+<h2 lang="en">How excluding zeros changes things</h2>
+<p lang="en">For 5, 0, 10, 0, 15:</p>
+<ul>
+<li lang="en">AVERAGE: 6 (zeros included)</li>
+<li lang="en">NO-ZERO AVERAGE: 10 (zeros excluded)</li>
+</ul>
+<h2 lang="en">Key to choosing</h2>
+<ul>
+<li lang="en">If 0 means "not entered", exclude it</li>
+<li lang="en">If 0 really means zero (zero sales), don't exclude</li>
+</ul>
+<p lang="en">Check what the data means before choosing.</p>
+<h2 lang="en">Leaving cells blank</h2>
+<p lang="en">If unentered cells are kept truly blank, AVERAGE ignores them. You needn't enter 0.</p>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Attendance data where absent days are 0</li>
+<li lang="en">Sales tables where unentered months are 0</li>
+</ul>
+<h2>Esempio</h2>
+<p lang="en">In monthly sales, months not yet entered were 0. AVERAGE gave a low annual mean. NO-ZERO showed the average of entered months.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>MINIFS/MAXIFS unavailable in old Excel</b>: Excel 2019 or later.</li>
+<li lang="en"><b>FILTER unavailable</b>: Excel 365 and 2021 or later.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if there are no zeros?</h3>
+<p lang="en">The result is the same.</p>
+<h2>Riepilogo</h2>
+<p lang="en">To exclude unentered zeros, use NO-ZERO.</p>
 <a class="cta" href="/it/stat-formula-builder.html">Usa “Crea una formula di media e mediana” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/sumif-formula-builder.html">Creare una formula SUMIF o COUNTIF</a>: Crea formule SUMIF e COUNTIF.</li><li><a href="/it/rank-formula-builder.html">Crea una formula di classifica</a>: Crea formule di classifica.</li><li><a href="/it/large-small-formula-builder.html">Crea una formula LARGE e SMALL</a>: Crea formule per l'N-esimo valore maggiore o minore.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>

@@ -200,14 +200,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>割合を引く</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>SUBを選ぶ</li><li>値と割合を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/percent-formula-builder.html">割合の式の作成</a> では、ある割合を引いた値を出す式を作れます。</p>
+<p>10パーセント引きの価格、手数料を引いた手取り、減価した資産の価値。ある値から、一定の割合を引いた値の求め方です。<a href="/percent-formula-builder.html">割合・増減率の式を作る</a> の「SUB」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>SUBを選ぶ</li>
-<li>値と割合を入れる</li>
-<li>コピーする</li>
+<li>「種類」で「SUB」を選ぶ。</li>
+<li>「1つ目」に元の値、「2つ目」に引く割合を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">割引後の値を出すときに使えます。</div>
+<div class="note">割合は、10%なら0.1と入れます。</div>
+<h2>例</h2>
+<p>元の値が1000、割引率が20%（0.2）のとき。</p>
+<ul>
+<li>=1000*(1-0.2) → 800</li>
+</ul>
+<p>セルなら、次の形です。</p>
+<ul>
+<li>=A2*(1-B2)</li>
+</ul>
+<h2>表示を整えた式</h2>
+<p>2つ目の式は、ROUNDで整数に丸めます。</p>
+<ul>
+<li>=ROUND(A2*(1-B2),0)</li>
+</ul>
+<h2>引いた金額を知りたい</h2>
+<p>割引の金額そのものは、元の値×割合です。</p>
+<ul>
+<li>例：=A2*B2</li>
+</ul>
+<h2>割引後の価格から、元の割引率を求める</h2>
+<ul>
+<li>例：=1-B2/A2</li>
+</ul>
+<p>元値A2と割引後B2から、割引率が出ます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>セールの価格（20%引き、30%引き）</li>
+<li>手数料や税を引いた手取り</li>
+<li>減価償却や、劣化後の価値</li>
+</ul>
+<h2>割引を重ねる</h2>
+<p>20%引きの後に、さらに10%引きなら、掛け合わせます。</p>
+<ul>
+<li>例：=A2*(1-0.2)*(1-0.1)</li>
+</ul>
+<p>合計で30%引きではなく、28%引きになります。</p>
+<h2>例</h2>
+<p>セールの価格表を作りたかった。元の価格の列と、割引率の列から、SUBの式で割引後の価格を出した。割引率を変えるだけで、価格が更新された。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>20と入れてしまう</b>：割合は0.2。</li>
+<li><b>「1−割合」を忘れる</b>：元の値×割合だと、割引額になる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>割引額を引く、のとは違いますか？</h3>
+<p>結果は同じです。元の値−元の値×割合を、まとめた形です。</p>
+<h2>まとめ</h2>
+<p>割合を引くなら、元の値×(1−割合)。</p>
 <a class="cta" href="/percent-formula-builder.html">割合・増減率の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/round-formula-builder.html">丸めの式を作る</a>：ROUNDなどの式を作ります。</li><li><a href="/rank-formula-builder.html">順位の式を作る</a>：順位の式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +267,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Taking Off a Rate</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose SUB</li><li>Enter the value and the rate</li><li>Copy it</li></ul></div>
-<p>In <a href="/percent-formula-builder.html">Percentage Builder</a> you can build a formula that gives a value with a rate taken off.</p>
+<p>A price at 10 percent off, take-home pay after fees, the value of a depreciated asset. That's how to get a value with a percentage subtracted. "SUB" in <a href="/percent-formula-builder.html">Build a Percentage Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose SUB</li>
-<li>Enter the value and the rate</li>
-<li>Copy it</li>
+<li>Choose "SUB" in "Type".</li>
+<li>Enter the original value as "First" and the rate to subtract as "Second".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">Use it to find a discounted value.</div>
+<div class="note">Enter 10% as 0.1.</div>
+<h2>Example</h2>
+<p>With an original value of 1000 and a discount of 20% (0.2):</p>
+<ul>
+<li>=1000*(1-0.2) → 800</li>
+</ul>
+<p>With cells:</p>
+<ul>
+<li>=A2*(1-B2)</li>
+</ul>
+<h2>The formatted formula</h2>
+<p>The second formula rounds to an integer with ROUND.</p>
+<ul>
+<li>=ROUND(A2*(1-B2),0)</li>
+</ul>
+<h2>Wanting the amount subtracted</h2>
+<p>The discount amount itself is original × rate.</p>
+<ul>
+<li>Example: =A2*B2</li>
+</ul>
+<h2>Finding the discount rate from the discounted price</h2>
+<ul>
+<li>Example: =1-B2/A2</li>
+</ul>
+<p>From original A2 and discounted B2, you get the rate.</p>
+<h2>Good for</h2>
+<ul>
+<li>Sale prices (20% off, 30% off)</li>
+<li>Take-home after fees or tax</li>
+<li>Value after depreciation or wear</li>
+</ul>
+<h2>Stacking discounts</h2>
+<p>A 20% off followed by another 10% off is multiplied.</p>
+<ul>
+<li>Example: =A2*(1-0.2)*(1-0.1)</li>
+</ul>
+<p>Total is 28% off, not 30%.</p>
+<h2>Example</h2>
+<p>Wanted a sale price table. From a price column and a discount-rate column, the SUB formula gave discounted prices. Changing only the rate updated them.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Entering 20</b>: the rate is 0.2.</li>
+<li><b>Forgetting "1 − rate"</b>: original × rate gives the discount amount.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is it different from subtracting the discount amount?</h3>
+<p>The result is the same. It's the combined form of original − original × rate.</p>
+<h2>Summary</h2>
+<p>To subtract a percentage: original × (1 − rate).</p>
 <a class="cta" href="/percent-formula-builder.html">Use "Build a Percentage Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/round-formula-builder.html">Build a Rounding Formula</a>: Build ROUND-style formulas.</li><li><a href="/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

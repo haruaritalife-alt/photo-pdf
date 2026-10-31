@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>날짜를 텍스트로 바꾸기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>DATETEXT 선택</li><li>셀 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/text-date-formula-builder.html">텍스트→날짜 수식 만들기</a>에서는 날짜를 2026-10-01 같은 텍스트로 바꾸는 수식을 만들 수 있습니다.</p>
+<p lang="en">You want a date as text like "2026-10-01": for file names, handing to other systems, or keeping digit widths. Convert with TEXT. "DATETEXT" and "TEXTNUM" in <a href="/ko/text-date-formula-builder.html">Build a Text to Date Formula</a> build these.</p>
 <h2>순서</h2>
 <ol>
-<li>DATETEXT 선택</li>
-<li>셀 입력</li>
-<li>복사</li>
+<li lang="en">Choose "DATETEXT" or "TEXTNUM" in "Type".</li>
+<li lang="en">Enter the "Cell to convert".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">다른 텍스트와 이을 때 편리합니다.</div>
+<div class="note" lang="en">The result is text, so it can't be calculated as a date as is.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">DATETEXT: =TEXT(A2,"yyyy-mm-dd") → 2026-10-01</li>
+<li lang="en">TEXTNUM: =TEXT(A2,"0") → a number as text with fixed digits</li>
+</ul>
+<h2 lang="en">Format examples</h2>
+<p lang="en">Rewriting TEXT's second argument gives various shapes.</p>
+<ul>
+<li lang="en">"yyyy/m/d": 2026/10/1</li>
+<li lang="en">"yyyymmdd": 20261001</li>
+<li lang="en">"yyyy年m月d日": 2026年10月1日</li>
+<li lang="en">"m/d": 10/1</li>
+<li lang="en">"00000": zero-padded to 5 digits</li>
+</ul>
+<h2 lang="en">Keeping leading zeros</h2>
+<p lang="en">Leading zeros in postal codes or employee numbers vanish if left numeric. Make them text with TEXTNUM.</p>
+<ul>
+<li lang="en">Example: =TEXT(A2,"0000000")</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">File names and IDs containing dates</li>
+<li lang="en">Data formats handed to other systems</li>
+<li lang="en">Joining text ("Due: " plus a date)</li>
+</ul>
+<h2 lang="en">Putting dates in sentences</h2>
+<p lang="en">A date in a sentence turns into a number (46296). Wrap with TEXT.</p>
+<ul>
+<li lang="en">Example: ="Due: " &amp; TEXT(A2,"yyyy/m/d")</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted dated file names like "2026-10-01_report" built from a table. DATETEXT made the date text, then "_report" was appended.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Format letters vary by environment</b>: language settings may turn "yyyy" into "jjjj" and the like.</li>
+<li lang="en"><b>Google Sheets</b>: format letters are broadly the same.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the text date back as a date</h3>
+<p lang="en">Use "DATEVALUE".</p>
+<h2>요약</h2>
+<p lang="en">To make dates text, set the shape with TEXT's format.</p>
 <a class="cta" href="/ko/text-date-formula-builder.html">“텍스트→날짜 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/date-calculator.html">나이, 날짜 간 일수, 날짜 가감 계산</a>: 나이와 날짜 간 일수를 계산합니다.</li><li><a href="/ko/excel-text-format-builder.html">엑셀 TEXT 수식 만들기</a>: TEXT 수식을 만듭니다.</li><li><a href="/ko/date-offset-formula-builder.html">날짜 계산 수식 만들기</a>: 날짜 계산 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

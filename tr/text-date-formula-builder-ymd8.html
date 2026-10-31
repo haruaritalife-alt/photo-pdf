@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Sekiz haneyi tarihe çevirme</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>YMD8 seçin</li><li>Hücreyi girin</li><li>Kopyalayın</li></ul></div>
-<p><a href="/tr/text-date-formula-builder.html">Metinden Tarihe Oluşturucu</a> ile 20261001 gibi sekiz haneyi tarihe çeviren bir formül oluşturabilirsiniz.</p>
+<p lang="en">Year, month and day are strung together as eight digits like "20261001". As is, it won't calculate as a date. "YMD8" in <a href="/tr/text-date-formula-builder.html">Build a Text to Date Formula</a> converts it.</p>
 <h2>Adımlar</h2>
 <ol>
-<li>YMD8 seçin</li>
-<li>Hücreyi girin</li>
-<li>Kopyalayın</li>
+<li lang="en">Choose "YMD8" in "Type".</li>
+<li lang="en">Enter the "Cell to convert".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Hücre biçimini tarih yapmak okumayı kolaylaştırır.</div>
+<div class="note" lang="en">The eight digits are 4 for the year, 2 for the month and 2 for the day.</div>
+<h2>Örnek</h2>
+<ul>
+<li lang="en">=DATE(LEFT(A2,4),MID(A2,5,2),RIGHT(A2,2))</li>
+</ul>
+<p lang="en">"20261001" becomes the date October 1, 2026.</p>
+<h2>Nasıl çalışır</h2>
+<ul>
+<li lang="en">LEFT(A2,4): the first four digits (year)</li>
+<li lang="en">MID(A2,5,2): two digits from the 5th (month)</li>
+<li lang="en">RIGHT(A2,2): the last two digits (day)</li>
+</ul>
+<p lang="en">DATE then assembles them into a date.</p>
+<h2 lang="en">Six-digit year-month</h2>
+<p lang="en">For six digits like "202610" (year-month only), use "YM6".</p>
+<ul>
+<li lang="en">=DATE(LEFT(A2,4),RIGHT(A2,2),1)</li>
+</ul>
+<p lang="en">It gives the first of that month.</p>
+<h2 lang="en">When stored as a number</h2>
+<p lang="en">If the eight digits are numeric (right-aligned), LEFT and the like treat them as text and still work. The result is a date value.</p>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Eight-digit dates exported from core systems</li>
+<li lang="en">Dates embedded in file names</li>
+<li lang="en">A date column for forms without dates</li>
+</ul>
+<h2 lang="en">Tidying the display format</h2>
+<p lang="en">If the result shows a number like 46296, set the cell format to "Date".</p>
+<h2>Örnek</h2>
+<p lang="en">A system-exported CSV had dates as eight-digit numbers. The YMD8 formula made them dates, enabling sorting and monthly totals.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Different digit counts</b>: seven digits, or numbers missing a leading 0, won't convert correctly.</li>
+<li lang="en"><b>Nonexistent dates</b>: values like 20261332 give odd dates.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about text like "2026/10/01"?</h3>
+<p lang="en">Use "DATEVALUE".</p>
+<h2>Özet</h2>
+<p lang="en">Convert eight-digit dates to date values with YMD8.</p>
 <a class="cta" href="/tr/text-date-formula-builder.html">“Metinden tarihe formül oluştur” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/date-calculator.html">Yaşı, iki tarih arasındaki günleri ve tarih kaydırmalarını hesaplayın</a>: Yaşı ve iki tarih arasındaki gün sayısını hesaplayın.</li><li><a href="/tr/excel-text-format-builder.html">Excel TEXT Formülü Oluşturma</a>: Bir TEXT formülü oluşturun.</li><li><a href="/tr/date-offset-formula-builder.html">Tarih kaydırma formülü oluştur</a>: Tarih kaydırma formülleri oluşturun.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

@@ -215,14 +215,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>متن میں لکھے عدد کو عدد میں بدلنا</h1>
 <p class="meta">شائع شدہ: 19 اکتوبر 2026 | اپ ڈیٹ: 19 اکتوبر 2026 | <a href="/about.html">تعارف (جاپانی)</a></p>
 <div class="points"><b>اہم نکات</b><ul><li>VALUE منتخب کریں</li><li>سیل درج کریں</li><li>کاپی کریں</li></ul></div>
-<p><a href="/ur/text-date-formula-builder.html">متن سے تاریخ فارمولا بنانے والا</a> میں آپ ایسا فارمولا بنا سکتے ہیں جو متن میں لکھے عدد کو حساب کے قابل عدد میں بدلتا ہے۔</p>
+<p lang="en">"1,200" or "¥3,000" can't be used in calculations. They look like numbers but are treated as text. VALUE converts them. "VALUE" in <a href="/ur/text-date-formula-builder.html">Build a Text to Date Formula</a> builds it.</p>
 <h2>مراحل</h2>
 <ol>
-<li>VALUE منتخب کریں</li>
-<li>سیل درج کریں</li>
-<li>کاپی کریں</li>
+<li lang="en">Choose "VALUE" in "Type".</li>
+<li lang="en">Enter the "Cell to convert".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">جب کل جمع 0 آئے تو استعمال کریں۔</div>
+<div class="note" lang="en">Only text readable as a number converts. With a suffix like "yen" or "pcs", it errors.</div>
+<h2>مثال</h2>
+<ul>
+<li lang="en">=VALUE(A2)</li>
+</ul>
+<p lang="en">"1,200" becomes the number 1200.</p>
+<h2 lang="en">What converts and what doesn't</h2>
+<ul>
+<li lang="en">Converts: "1,200", "1200", "12.5", "¥3,000" (environment-dependent)</li>
+<li lang="en">Doesn't: "1,200円", "3個", "約100"</li>
+</ul>
+<h2 lang="en">Remove units first</h2>
+<p lang="en">With units attached, strip them with SUBSTITUTE, then convert.</p>
+<ul>
+<li lang="en">Example: =VALUE(SUBSTITUTE(A2,"円",""))</li>
+</ul>
+<h2 lang="en">Telling whether it's a number</h2>
+<ul>
+<li lang="en">Left-aligned: likely text</li>
+<li lang="en">A green triangle at the cell's corner: the "number stored as text" warning</li>
+</ul>
+<h2 lang="en">Simpler ways</h2>
+<ul>
+<li lang="en">Multiply by 1: =A2*1</li>
+<li lang="en">Convert in bulk with Data → Text to Columns</li>
+</ul>
+<h2>ان کے لیے موزوں</h2>
+<ul>
+<li lang="en">Amount columns in imported data</li>
+<li lang="en">Numbers copied from the web</li>
+<li lang="en">Numbers prefixed with "'"</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Copying a web price table, the total came to 0. The numbers were text. Converting with VALUE let it total.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width digits</b>: "１２００" converts in some environments but not others.</li>
+<li lang="en"><b>Empty cells</b>: may become 0 rather than an error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about data from countries using "," as the decimal point?</h3>
+<p lang="en">Results vary with regional settings. Tidy symbols with replacement.</p>
+<h2>خلاصہ</h2>
+<p lang="en">Convert text numbers with VALUE.</p>
 <a class="cta" href="/ur/text-date-formula-builder.html">«متن سے تاریخ کا فارمولا بنائیں» استعمال کریں (مفت)</a>
 <h2>وہ ٹولز جو اس کے ساتھ اچھے لگتے ہیں</h2><ul><li><a href="/ur/date-calculator.html">عمر، دو تاریخوں کے درمیان دن اور تاریخی فرق کا حساب</a>: عمر اور دو تاریخوں کے درمیان دن نکالیں۔</li><li><a href="/ur/excel-text-format-builder.html">Excel کا TEXT فارمولا بنانا</a>: TEXT فارمولا بنائیں۔</li><li><a href="/ur/date-offset-formula-builder.html">تاریخ آگے پیچھے کرنے کا فارمولا بنائیں</a>: تاریخ آگے پیچھے کرنے کے فارمولے بنائیں۔</li></ul>
 <div class="tip"><p>اگر یہ گائیڈ مفید رہی تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ٹپ بھیجیں (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">تحفہ بھیجیں (ایمیزون وش لسٹ)</a></div>

@@ -215,14 +215,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ترك الأخطاء فارغة</h1>
 <p class="meta">تاريخ النشر: 19 أكتوبر 2026 | آخر تحديث: 19 أكتوبر 2026 | <a href="/about.html">حول (باليابانية)</a></p>
 <div class="points"><b>النقاط الرئيسية</b><ul><li>اختر IF-ERROR كبديل</li><li>أدخل النطاق</li><li>انسخ</li></ul></div>
-<p>في <a href="/ar/stat-formula-builder.html">منشئ المتوسط والوسيط</a> يمكنك إنشاء صيغة تبقى فارغة عند حدوث خطأ.</p>
+<p lang="en">If error values (#DIV/0!, #N/A, etc.) are mixed in the range, the aggregate errors too. "IF-ERROR" blanks that to tidy the look. Choose it in "Alternative form" in <a href="/ar/stat-formula-builder.html">Build an AVERAGE and MEDIAN Formula</a>.</p>
 <h2>الخطوات</h2>
 <ol>
-<li>اختر IF-ERROR كبديل</li>
-<li>أدخل النطاق</li>
-<li>انسخ</li>
+<li lang="en">In "Alternative form", choose "IF-ERROR".</li>
+<li lang="en">Enter the "Type" and "Numeric range".</li>
+<li lang="en">Copy the "Alternative formula" with "Copy the second" and paste.</li>
 </ol>
-<div class="note">يتجنب أيضًا الخطأ عندما لا يحتوي النطاق على أرقام.</div>
+<div class="note" lang="en">Its form is =IFERROR(formula,""). It's blank when the aggregate itself errors.</div>
+<h2>مثال</h2>
+<ul>
+<li lang="en">=IFERROR(AVERAGE(B2:B100),"")</li>
+</ul>
+<p lang="en">If the range holds no numbers, AVERAGE would be #DIV/0! but shows blank.</p>
+<h2 lang="en">Note: errors inside the range remain</h2>
+<p lang="en">IFERROR works when the aggregate result is an error. If the range contains error values, the aggregate errors too. Then you need a formula that skips range errors.</p>
+<ul>
+<li lang="en">Example: =AGGREGATE(1,6,B2:B100)</li>
+</ul>
+<p lang="en">AGGREGATE aggregates ignoring error values. 1 means average and 6 means ignore errors.</p>
+<h2>مناسب لـ</h2>
+<ul>
+<li lang="en">Empty tables before entry where errors shouldn't show</li>
+<li lang="en">Aggregate cells feeding other formulas</li>
+<li lang="en">Tidying report tables</li>
+</ul>
+<h2 lang="en">Don't hide too much</h2>
+<p lang="en">Hiding errors makes data problems harder to notice. Check with the basic formula first.</p>
+<h2>مثال</h2>
+<p lang="en">At the start of the month there was no data and the average cell was full of #DIV/0!. Wrapping in IFERROR showed blanks and cleaned up the report table.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Want to return 0</b>: rewrite IFERROR's "" as 0.</li>
+<li lang="en"><b>Empty string</b>: a result of "" may be treated as text in later calculations.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I use it with ROUND?</h3>
+<p lang="en">You can layer formulas. Build by hand.</p>
+<ul>
+<li lang="en">Example: =IFERROR(ROUND(AVERAGE(B2:B100),2),"")</li>
+</ul>
+<h2>الخلاصة</h2>
+<p lang="en">To hide errors, use IF-ERROR.</p>
 <a class="cta" href="/ar/stat-formula-builder.html">استخدم «أنشئ صيغة المتوسط والوسيط» (مجانًا)</a>
 <h2>أدوات تتكامل مع هذه الأداة</h2><ul><li><a href="/ar/sumif-formula-builder.html">إنشاء صيغة SUMIF أو COUNTIF</a>: أنشئ صيغ SUMIF وCOUNTIF.</li><li><a href="/ar/rank-formula-builder.html">إنشاء صيغة ترتيب</a>: أنشئ صيغ الترتيب.</li><li><a href="/ar/large-small-formula-builder.html">أنشئ صيغة LARGE وSMALL</a>: أنشئ صيغًا لأكبر أو أصغر قيمة رقم N.</li></ul>
 <div class="tip"><p>إذا أفادك هذا الدليل، فإن إكرامية صغيرة تعني لنا الكثير.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">أرسل إكرامية (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">أرسل هدية (قائمة أمنيات Amazon)</a></div>

@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Een getal als tekst omzetten in een getal</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Kies VALUE</li><li>Voer de cel in</li><li>Kopieer</li></ul></div>
-<p>In <a href="/nl/text-date-formula-builder.html">Tekst-naar-datum-maker</a> kun je een formule maken die een als tekst geschreven getal omzet in een getal waarmee je kunt rekenen.</p>
+<p lang="en">"1,200" or "¥3,000" can't be used in calculations. They look like numbers but are treated as text. VALUE converts them. "VALUE" in <a href="/nl/text-date-formula-builder.html">Build a Text to Date Formula</a> builds it.</p>
 <h2>Stappen</h2>
 <ol>
-<li>Kies VALUE</li>
-<li>Voer de cel in</li>
-<li>Kopieer</li>
+<li lang="en">Choose "VALUE" in "Type".</li>
+<li lang="en">Enter the "Cell to convert".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Gebruik het als een totaal 0 oplevert.</div>
+<div class="note" lang="en">Only text readable as a number converts. With a suffix like "yen" or "pcs", it errors.</div>
+<h2>Voorbeeld</h2>
+<ul>
+<li lang="en">=VALUE(A2)</li>
+</ul>
+<p lang="en">"1,200" becomes the number 1200.</p>
+<h2 lang="en">What converts and what doesn't</h2>
+<ul>
+<li lang="en">Converts: "1,200", "1200", "12.5", "¥3,000" (environment-dependent)</li>
+<li lang="en">Doesn't: "1,200円", "3個", "約100"</li>
+</ul>
+<h2 lang="en">Remove units first</h2>
+<p lang="en">With units attached, strip them with SUBSTITUTE, then convert.</p>
+<ul>
+<li lang="en">Example: =VALUE(SUBSTITUTE(A2,"円",""))</li>
+</ul>
+<h2 lang="en">Telling whether it's a number</h2>
+<ul>
+<li lang="en">Left-aligned: likely text</li>
+<li lang="en">A green triangle at the cell's corner: the "number stored as text" warning</li>
+</ul>
+<h2 lang="en">Simpler ways</h2>
+<ul>
+<li lang="en">Multiply by 1: =A2*1</li>
+<li lang="en">Convert in bulk with Data → Text to Columns</li>
+</ul>
+<h2>Goed voor</h2>
+<ul>
+<li lang="en">Amount columns in imported data</li>
+<li lang="en">Numbers copied from the web</li>
+<li lang="en">Numbers prefixed with "'"</li>
+</ul>
+<h2>Voorbeeld</h2>
+<p lang="en">Copying a web price table, the total came to 0. The numbers were text. Converting with VALUE let it total.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width digits</b>: "１２００" converts in some environments but not others.</li>
+<li lang="en"><b>Empty cells</b>: may become 0 rather than an error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about data from countries using "," as the decimal point?</h3>
+<p lang="en">Results vary with regional settings. Tidy symbols with replacement.</p>
+<h2>Samenvatting</h2>
+<p lang="en">Convert text numbers with VALUE.</p>
 <a class="cta" href="/nl/text-date-formula-builder.html">Gebruik “Een tekst-naar-datum-formule maken” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/date-calculator.html">Leeftijd, dagen tussen datums en datumverschillen berekenen</a>: Bereken leeftijd en het aantal dagen tussen datums.</li><li><a href="/nl/excel-text-format-builder.html">Een Excel TEXT-formule maken</a>: Bouw een TEXT-formule.</li><li><a href="/nl/date-offset-formula-builder.html">Een formule voor datumverschuiving maken</a>: Maak formules voor datumverschuiving.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>

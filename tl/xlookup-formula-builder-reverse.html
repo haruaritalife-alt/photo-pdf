@@ -201,14 +201,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Paghahanap mula kanan pakaliwa</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Piliin ang REVERSE</li><li>Ilagay ang mga column</li><li>Kopyahin</li></ul></div>
-<p>Sa <a href="/tl/xlookup-formula-builder.html">XLOOKUP Builder</a>, makakagawa ka ng formula na naghahanap sa kanang hanay at nagbabalik ng kaliwang hanay.</p>
+<p lang="en">VLOOKUP's weakness is that the lookup column must be left of the return column. XLOOKUP can search a right column and return a left column. "REVERSE" in <a href="/tl/xlookup-formula-builder.html">Build an XLOOKUP Formula</a> builds it.</p>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Piliin ang REVERSE</li>
-<li>Ilagay ang mga column</li>
-<li>Kopyahin</li>
+<li lang="en">Choose "REVERSE" in "Type".</li>
+<li lang="en">In "Lookup column", enter the column holding the value to find.</li>
+<li lang="en">In "Return column", enter the column holding the value to return.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Hindi makakahanap ang VLOOKUP sa ganitong paraan.</div>
+<div class="note" lang="en">In REVERSE the tool swaps the roles of the lookup and return columns: it searches the "Return column" and returns the "Lookup column" value.</div>
+<h2>Halimbawa</h2>
+<p lang="en">With employee numbers in column A and names in column B, getting the number from a name:</p>
+<ul>
+<li lang="en">=XLOOKUP(E2,B2:B100,A2:A100)</li>
+</ul>
+<p lang="en">In REVERSE, entering A2:A100 as the lookup column and B2:B100 as the return column yields this formula.</p>
+<h2 lang="en">With VLOOKUP</h2>
+<p lang="en">Returning a left column needed INDEX and MATCH.</p>
+<ul>
+<li lang="en">Example: =INDEX(A2:A100,MATCH(E2,B2:B100,0))</li>
+</ul>
+<p lang="en">The second formula has this form. It works in old Excel.</p>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Getting IDs from names</li>
+<li lang="en">Looking up a front column by a back column</li>
+<li lang="en">Tables whose column order you don't want to change</li>
+</ul>
+<h2 lang="en">Column order doesn't matter</h2>
+<p lang="en">With XLOOKUP, rearranging table columns doesn't break the formula. VLOOKUP's column number shifts when columns are added.</p>
+<h2>Halimbawa</h2>
+<p lang="en">In a table with names on the right and employee numbers on the left, I wanted numbers from names. The REVERSE formula did it without reordering columns.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Several people with the same name</b>: the first found row's value is returned.</li>
+<li lang="en"><b>When not found</b>: #N/A. You can specify other text in "When not found".</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can it find non-exact matches?</h3>
+<p lang="en">The "APPROX" type finds nearby values.</p>
+<h2>Buod</h2>
+<p lang="en">To look up right to left, use REVERSE.</p>
 <a class="cta" href="/tl/xlookup-formula-builder.html">Gamitin ang “Gumawa ng formula na XLOOKUP” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/vlookup-formula-builder.html">Gumawa ng VLOOKUP o XLOOKUP Formula</a>: Gumawa ng mga formula ng VLOOKUP at XLOOKUP.</li><li><a href="/tl/index-match-builder.html">Gumawa ng INDEX at MATCH Formula</a>: Gumawa ng mga INDEX at MATCH formula.</li><li><a href="/tl/filter-formula-builder.html">Gumawa ng FILTER formula</a>: Gumawa ng FILTER formula.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

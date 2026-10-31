@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Turning Eight Digits into a Date</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose YMD8</li><li>Enter the cell</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/text-date-formula-builder.html">Text to Date Builder</a> you can build a formula that turns eight digits such as 20261001 into a date.</p>
+<p>Year, month and day are strung together as eight digits like "20261001". As is, it won't calculate as a date. "YMD8" in <a href="/en/text-date-formula-builder.html">Build a Text to Date Formula</a> converts it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose YMD8</li>
-<li>Enter the cell</li>
-<li>Copy it</li>
+<li>Choose "YMD8" in "Type".</li>
+<li>Enter the "Cell to convert".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">Setting the cell format to date makes it easier to read.</div>
+<div class="note">The eight digits are 4 for the year, 2 for the month and 2 for the day.</div>
+<h2>Example</h2>
+<ul>
+<li>=DATE(LEFT(A2,4),MID(A2,5,2),RIGHT(A2,2))</li>
+</ul>
+<p>"20261001" becomes the date October 1, 2026.</p>
+<h2>How it works</h2>
+<ul>
+<li>LEFT(A2,4): the first four digits (year)</li>
+<li>MID(A2,5,2): two digits from the 5th (month)</li>
+<li>RIGHT(A2,2): the last two digits (day)</li>
+</ul>
+<p>DATE then assembles them into a date.</p>
+<h2>Six-digit year-month</h2>
+<p>For six digits like "202610" (year-month only), use "YM6".</p>
+<ul>
+<li>=DATE(LEFT(A2,4),RIGHT(A2,2),1)</li>
+</ul>
+<p>It gives the first of that month.</p>
+<h2>When stored as a number</h2>
+<p>If the eight digits are numeric (right-aligned), LEFT and the like treat them as text and still work. The result is a date value.</p>
+<h2>Good for</h2>
+<ul>
+<li>Eight-digit dates exported from core systems</li>
+<li>Dates embedded in file names</li>
+<li>A date column for forms without dates</li>
+</ul>
+<h2>Tidying the display format</h2>
+<p>If the result shows a number like 46296, set the cell format to "Date".</p>
+<h2>Example</h2>
+<p>A system-exported CSV had dates as eight-digit numbers. The YMD8 formula made them dates, enabling sorting and monthly totals.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Different digit counts</b>: seven digits, or numbers missing a leading 0, won't convert correctly.</li>
+<li><b>Nonexistent dates</b>: values like 20261332 give odd dates.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What about text like "2026/10/01"?</h3>
+<p>Use "DATEVALUE".</p>
+<h2>Summary</h2>
+<p>Convert eight-digit dates to date values with YMD8.</p>
 <a class="cta" href="/en/text-date-formula-builder.html">Use "Build a Text to Date Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/en/excel-text-format-builder.html">Build an Excel TEXT Formula</a>: Build a TEXT formula.</li><li><a href="/en/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

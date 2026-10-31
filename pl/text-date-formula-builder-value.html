@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Zamiana liczby-tekstu na liczbę</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Wybierz VALUE</li><li>Wpisz komórkę</li><li>Skopiuj</li></ul></div>
-<p>W <a href="/pl/text-date-formula-builder.html">Kreator tekstu na datę</a> możesz utworzyć formułę zamieniającą liczbę zapisaną jako tekst na liczbę, na której można liczyć.</p>
+<p lang="en">"1,200" or "¥3,000" can't be used in calculations. They look like numbers but are treated as text. VALUE converts them. "VALUE" in <a href="/pl/text-date-formula-builder.html">Build a Text to Date Formula</a> builds it.</p>
 <h2>Kroki</h2>
 <ol>
-<li>Wybierz VALUE</li>
-<li>Wpisz komórkę</li>
-<li>Skopiuj</li>
+<li lang="en">Choose "VALUE" in "Type".</li>
+<li lang="en">Enter the "Cell to convert".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Użyj, gdy suma wychodzi 0.</div>
+<div class="note" lang="en">Only text readable as a number converts. With a suffix like "yen" or "pcs", it errors.</div>
+<h2>Przykład</h2>
+<ul>
+<li lang="en">=VALUE(A2)</li>
+</ul>
+<p lang="en">"1,200" becomes the number 1200.</p>
+<h2 lang="en">What converts and what doesn't</h2>
+<ul>
+<li lang="en">Converts: "1,200", "1200", "12.5", "¥3,000" (environment-dependent)</li>
+<li lang="en">Doesn't: "1,200円", "3個", "約100"</li>
+</ul>
+<h2 lang="en">Remove units first</h2>
+<p lang="en">With units attached, strip them with SUBSTITUTE, then convert.</p>
+<ul>
+<li lang="en">Example: =VALUE(SUBSTITUTE(A2,"円",""))</li>
+</ul>
+<h2 lang="en">Telling whether it's a number</h2>
+<ul>
+<li lang="en">Left-aligned: likely text</li>
+<li lang="en">A green triangle at the cell's corner: the "number stored as text" warning</li>
+</ul>
+<h2 lang="en">Simpler ways</h2>
+<ul>
+<li lang="en">Multiply by 1: =A2*1</li>
+<li lang="en">Convert in bulk with Data → Text to Columns</li>
+</ul>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">Amount columns in imported data</li>
+<li lang="en">Numbers copied from the web</li>
+<li lang="en">Numbers prefixed with "'"</li>
+</ul>
+<h2>Przykład</h2>
+<p lang="en">Copying a web price table, the total came to 0. The numbers were text. Converting with VALUE let it total.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width digits</b>: "１２００" converts in some environments but not others.</li>
+<li lang="en"><b>Empty cells</b>: may become 0 rather than an error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about data from countries using "," as the decimal point?</h3>
+<p lang="en">Results vary with regional settings. Tidy symbols with replacement.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">Convert text numbers with VALUE.</p>
 <a class="cta" href="/pl/text-date-formula-builder.html">Użyj „Utwórz formułę tekstu na datę” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/date-calculator.html">Obliczanie wieku, liczby dni między datami i przesunięć dat</a>: Oblicz wiek i liczbę dni między datami.</li><li><a href="/pl/excel-text-format-builder.html">Tworzenie formuły TEXT dla Excela</a>: Utwórz formułę TEXT.</li><li><a href="/pl/date-offset-formula-builder.html">Utwórz formułę przesunięcia daty</a>: Twórz formuły przesunięcia daty.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

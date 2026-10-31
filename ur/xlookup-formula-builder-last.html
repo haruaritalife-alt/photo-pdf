@@ -215,14 +215,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>نیچے سے تلاش کرنا</h1>
 <p class="meta">شائع شدہ: 19 اکتوبر 2026 | اپ ڈیٹ: 19 اکتوبر 2026 | <a href="/about.html">تعارف (جاپانی)</a></p>
 <div class="points"><b>اہم نکات</b><ul><li>LAST منتخب کریں</li><li>کالم درج کریں</li><li>کاپی کریں</li></ul></div>
-<p><a href="/ur/xlookup-formula-builder.html">XLOOKUP فارمولا بنانے والا</a> میں آپ ایسا فارمولا بنا سکتے ہیں جو قدر کے ایک سے زیادہ بار آنے پر سب سے نیچے کا ملاپ لوٹاتا ہے۔</p>
+<p lang="en">When several rows have the same value, XLOOKUP returns the first found. To get the latest record, i.e. a lower row, search from the bottom. "LAST" in <a href="/ur/xlookup-formula-builder.html">Build an XLOOKUP Formula</a> builds it.</p>
 <h2>مراحل</h2>
 <ol>
-<li>LAST منتخب کریں</li>
-<li>کالم درج کریں</li>
-<li>کاپی کریں</li>
+<li lang="en">Choose "LAST" in "Type".</li>
+<li lang="en">Enter the "Value to find", "Lookup column" and "Return column".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">تازہ ترین ریکارڈ نکالنے میں کارآمد ہے۔</div>
+<div class="note" lang="en">The trailing "0,-1" in the formula means exact match, searching from the bottom.</div>
+<h2>مثال</h2>
+<ul>
+<li lang="en">=XLOOKUP(E2,A2:A100,B2:B100,"",0,-1)</li>
+</ul>
+<p lang="en">From records where the same customer appears many times, it returns the latest (lowest) row's value.</p>
+<h2 lang="en">In old Excel</h2>
+<p lang="en">The second formula uses LOOKUP.</p>
+<ul>
+<li lang="en">=LOOKUP(2,1/(A2:A100=E2),B2:B100)</li>
+</ul>
+<p lang="en">A well-known form returning the last among matching rows.</p>
+<h2>ان کے لیے موزوں</h2>
+<ul>
+<li lang="en">Each customer's latest order</li>
+<li lang="en">Each product's latest unit price</li>
+<li lang="en">The current state from a history table</li>
+</ul>
+<h2 lang="en">Difference from searching from the top</h2>
+<ul>
+<li lang="en">From the top (default): the first found row</li>
+<li lang="en">From the bottom (LAST): the last found row</li>
+</ul>
+<p lang="en">If records run from older at the top to newer at the bottom, searching from the bottom gets the latest.</p>
+<h2 lang="en">Order is assumed</h2>
+<p lang="en">LAST assumes "lower means newer". If the order differs, so does the result. Sort by date before using.</p>
+<h2>مثال</h2>
+<p lang="en">Wanted the current price from a product's price-history table. Records ran oldest first, so LAST got the latest row's price.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Not found</b>: if "When not found" is empty, you get an empty string.</li>
+<li lang="en"><b>LOOKUP formula</b>: #N/A when nothing matches.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to judge by the latest date</h3>
+<p lang="en">You can also get the maximum date with MAXIFS and look up by that date.</p>
+<h2>خلاصہ</h2>
+<p lang="en">To pull the latest row, use LAST, searching from the bottom.</p>
 <a class="cta" href="/ur/xlookup-formula-builder.html">«XLOOKUP فارمولا بنائیں» استعمال کریں (مفت)</a>
 <h2>وہ ٹولز جو اس کے ساتھ اچھے لگتے ہیں</h2><ul><li><a href="/ur/vlookup-formula-builder.html">VLOOKUP یا XLOOKUP فارمولا بنانا</a>: VLOOKUP اور XLOOKUP کے فارمولے بنائیں۔</li><li><a href="/ur/index-match-builder.html">INDEX اور MATCH فارمولا بنائیں</a>: INDEX اور MATCH فارمولے بنائیں۔</li><li><a href="/ur/filter-formula-builder.html">FILTER فارمولا بنانا</a>: FILTER فارمولا بنائیں۔</li></ul>
 <div class="tip"><p>اگر یہ گائیڈ مفید رہی تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ٹپ بھیجیں (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">تحفہ بھیجیں (ایمیزون وش لسٹ)</a></div>

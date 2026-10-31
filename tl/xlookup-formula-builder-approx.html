@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Paghahanap ng Pinakamalapit na Value</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Piliin ang APPROX</li><li>Ilagay ang mga column</li><li>Kopyahin</li></ul></div>
-<p>Sa <a href="/tl/xlookup-formula-builder.html">XLOOKUP Builder</a>, makakagawa ka ng formula na nagbabalik ng hilera ng susunod na mas maliit na halaga kapag walang eksaktong tugma.</p>
+<p lang="en">Instead of an exact match, you want the nearest value: determine a grade (A/B/C) from a score, or a fee tier from an amount. That's approximate lookup. "APPROX" in <a href="/tl/xlookup-formula-builder.html">Build an XLOOKUP Formula</a> builds it.</p>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Piliin ang APPROX</li>
-<li>Ilagay ang mga column</li>
-<li>Kopyahin</li>
+<li lang="en">Choose "APPROX" in "Type".</li>
+<li lang="en">Enter the "Value to find", "Lookup column" and "Return column".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Para sa formula ng lumang Excel, ayusin ang hanay ng paghahanap mula pinakamaliit hanggang pinakamalaki.</div>
+<div class="note" lang="en">The trailing "-1" means "if not found, use the next smaller value".</div>
+<h2>Halimbawa</h2>
+<ul>
+<li lang="en">=XLOOKUP(E2,A2:A100,B2:B100,"",-1)</li>
+</ul>
+<p lang="en">In a table with score lower bounds in column A (0, 60, 80) and grades in column B (C, B, A), a score of 75 returns the 60 row's "B".</p>
+<h2 lang="en">Building the table</h2>
+<p lang="en">Put each tier's lower bound in the lookup column.</p>
+<ul>
+<li lang="en">0 → C</li>
+<li lang="en">60 → B</li>
+<li lang="en">80 → A</li>
+</ul>
+<p lang="en">75 is at least 60 and under 80, so "B".</p>
+<h2 lang="en">In old Excel</h2>
+<p lang="en">The second formula uses MATCH's approximate search.</p>
+<ul>
+<li lang="en">=IFERROR(INDEX(B2:B100,MATCH(E2,A2:A100,1)),"")</li>
+</ul>
+<p lang="en">With MATCH's third argument 1, it finds the largest value at or below in an ascending column.</p>
+<h2 lang="en">Note: order</h2>
+<p lang="en">The second formula needs the lookup column sorted smallest first. XLOOKUP's "-1" doesn't require sorting, but sorting reduces mistakes.</p>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Grades from scores</li>
+<li lang="en">Fee-rate tiers from sales</li>
+<li lang="en">Age brackets from age</li>
+<li lang="en">Shipping tiers (a fee table by weight)</li>
+</ul>
+<h2 lang="en">To find the next larger value</h2>
+<p lang="en">Change "-1" to "1" (edit by hand).</p>
+<h2>Halimbawa</h2>
+<p lang="en">Built a table setting commission rates from sales amounts. With tier lower bounds and rates in a table, XLOOKUP's approximate mode avoided stacking IFs.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Value below the lowest bound</b>: not found, so the specified value (empty) appears. Include a 0 row.</li>
+<li lang="en"><b>Decimal bounds</b>: mind rounding error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want exact matches only</h3>
+<p lang="en">Use the "XLOOKUP" type.</p>
+<h2>Buod</h2>
+<p lang="en">Tier-based values can be pulled with approximate lookup.</p>
 <a class="cta" href="/tl/xlookup-formula-builder.html">Gamitin ang “Gumawa ng formula na XLOOKUP” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/vlookup-formula-builder.html">Gumawa ng VLOOKUP o XLOOKUP Formula</a>: Gumawa ng mga formula ng VLOOKUP at XLOOKUP.</li><li><a href="/tl/index-match-builder.html">Gumawa ng INDEX at MATCH Formula</a>: Gumawa ng mga INDEX at MATCH formula.</li><li><a href="/tl/filter-formula-builder.html">Gumawa ng FILTER formula</a>: Gumawa ng FILTER formula.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

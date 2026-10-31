@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Mengosongkan kesalahan</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Pilih IF-ERROR sebagai alternatif</li><li>Masukkan rentang</li><li>Salin</li></ul></div>
-<p>Di <a href="/id/stat-formula-builder.html">Pembuat rata-rata dan median</a> Anda dapat membuat rumus yang menjadi kosong saat terjadi kesalahan.</p>
+<p lang="en">If error values (#DIV/0!, #N/A, etc.) are mixed in the range, the aggregate errors too. "IF-ERROR" blanks that to tidy the look. Choose it in "Alternative form" in <a href="/id/stat-formula-builder.html">Build an AVERAGE and MEDIAN Formula</a>.</p>
 <h2>Langkah-langkah</h2>
 <ol>
-<li>Pilih IF-ERROR sebagai alternatif</li>
-<li>Masukkan rentang</li>
-<li>Salin</li>
+<li lang="en">In "Alternative form", choose "IF-ERROR".</li>
+<li lang="en">Enter the "Type" and "Numeric range".</li>
+<li lang="en">Copy the "Alternative formula" with "Copy the second" and paste.</li>
 </ol>
-<div class="note">Juga menghindari kesalahan saat rentang tidak berisi angka.</div>
+<div class="note" lang="en">Its form is =IFERROR(formula,""). It's blank when the aggregate itself errors.</div>
+<h2>Contoh</h2>
+<ul>
+<li lang="en">=IFERROR(AVERAGE(B2:B100),"")</li>
+</ul>
+<p lang="en">If the range holds no numbers, AVERAGE would be #DIV/0! but shows blank.</p>
+<h2 lang="en">Note: errors inside the range remain</h2>
+<p lang="en">IFERROR works when the aggregate result is an error. If the range contains error values, the aggregate errors too. Then you need a formula that skips range errors.</p>
+<ul>
+<li lang="en">Example: =AGGREGATE(1,6,B2:B100)</li>
+</ul>
+<p lang="en">AGGREGATE aggregates ignoring error values. 1 means average and 6 means ignore errors.</p>
+<h2>Cocok untuk</h2>
+<ul>
+<li lang="en">Empty tables before entry where errors shouldn't show</li>
+<li lang="en">Aggregate cells feeding other formulas</li>
+<li lang="en">Tidying report tables</li>
+</ul>
+<h2 lang="en">Don't hide too much</h2>
+<p lang="en">Hiding errors makes data problems harder to notice. Check with the basic formula first.</p>
+<h2>Contoh</h2>
+<p lang="en">At the start of the month there was no data and the average cell was full of #DIV/0!. Wrapping in IFERROR showed blanks and cleaned up the report table.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Want to return 0</b>: rewrite IFERROR's "" as 0.</li>
+<li lang="en"><b>Empty string</b>: a result of "" may be treated as text in later calculations.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I use it with ROUND?</h3>
+<p lang="en">You can layer formulas. Build by hand.</p>
+<ul>
+<li lang="en">Example: =IFERROR(ROUND(AVERAGE(B2:B100),2),"")</li>
+</ul>
+<h2>Ringkasan</h2>
+<p lang="en">To hide errors, use IF-ERROR.</p>
 <a class="cta" href="/id/stat-formula-builder.html">Gunakan “Buat rumus rata-rata dan median” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/sumif-formula-builder.html">Buat rumus SUMIF atau COUNTIF</a>: Buat rumus SUMIF dan COUNTIF.</li><li><a href="/id/rank-formula-builder.html">Buat rumus peringkat</a>: Buat rumus peringkat.</li><li><a href="/id/large-small-formula-builder.html">Buat Rumus LARGE dan SMALL</a>: Buat rumus untuk nilai terbesar atau terkecil ke-N.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>

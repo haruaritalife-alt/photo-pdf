@@ -200,14 +200,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>下から探す</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>LASTを選ぶ</li><li>探す列と返す列を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/xlookup-formula-builder.html">XLOOKUPの式の作成</a> では、同じ値が複数あるとき、一番下のものを返す式を作れます。</p>
+<p>同じ値が複数あるとき、XLOOKUPは、最初に見つかった行を返します。最新の記録、つまり下のほうの行を返したいときは、下から探します。<a href="/xlookup-formula-builder.html">XLOOKUPの式を作る</a> の「LAST」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>LASTを選ぶ</li>
-<li>探す列と返す列を入れる</li>
-<li>コピーする</li>
+<li>「種類」で「LAST」を選ぶ。</li>
+<li>「探す値」「探す列」「返す列」を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">最新の記録を取り出すときに便利です。</div>
+<div class="note">式の最後の「0,-1」が、完全一致で、下から探す指定です。</div>
+<h2>例</h2>
+<ul>
+<li>=XLOOKUP(E2,A2:A100,B2:B100,"",0,-1)</li>
+</ul>
+<p>同じ顧客が何度も出てくる記録から、最新の（最も下の）行の値を返します。</p>
+<h2>古いExcelでは</h2>
+<p>2つ目の式は、LOOKUPを使います。</p>
+<ul>
+<li>=LOOKUP(2,1/(A2:A100=E2),B2:B100)</li>
+</ul>
+<p>条件に合う行のうち、最後のものを返す、よく知られた形です。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>顧客ごとの、最新の注文</li>
+<li>商品ごとの、最新の単価</li>
+<li>履歴の表から、現在の状態</li>
+</ul>
+<h2>上から探す場合との違い</h2>
+<ul>
+<li>上から（既定）：最初に見つかった行</li>
+<li>下から（LAST）：最後に見つかった行</li>
+</ul>
+<p>記録が日付順に、上から下へ並んでいるなら、下から探すと最新が得られます。</p>
+<h2>並び順が前提</h2>
+<p>LASTは、「下にあるほど新しい」という前提です。並び順が違うなら、結果も変わります。日付で並べ替えてから使いましょう。</p>
+<h2>例</h2>
+<p>商品の価格履歴の表から、現在の価格を引きたかった。日付の古い順に並んでいたので、LASTで最新の行の価格が得られた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>見つからない</b>：「見つからないとき」の欄が空なら、空の文字になる。</li>
+<li><b>LOOKUP式</b>：該当がないと、#N/A。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>最新の日付で判定したい</h3>
+<p>MAXIFSで最大の日付を求め、その日付で引く方法もあります。</p>
+<h2>まとめ</h2>
+<p>最新の行を引くなら、下から探すLAST。</p>
 <a class="cta" href="/xlookup-formula-builder.html">XLOOKUPの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/index-match-builder.html">INDEX・MATCHの式を作る</a>：INDEX・MATCHの式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +256,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Searching from the Bottom</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose LAST</li><li>Enter the columns</li><li>Copy it</li></ul></div>
-<p>In <a href="/xlookup-formula-builder.html">XLOOKUP Builder</a> you can build a formula that returns the bottom match when a value appears more than once.</p>
+<p>When several rows have the same value, XLOOKUP returns the first found. To get the latest record, i.e. a lower row, search from the bottom. "LAST" in <a href="/xlookup-formula-builder.html">Build an XLOOKUP Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose LAST</li>
-<li>Enter the columns</li>
-<li>Copy it</li>
+<li>Choose "LAST" in "Type".</li>
+<li>Enter the "Value to find", "Lookup column" and "Return column".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">It is handy for picking out the latest record.</div>
+<div class="note">The trailing "0,-1" in the formula means exact match, searching from the bottom.</div>
+<h2>Example</h2>
+<ul>
+<li>=XLOOKUP(E2,A2:A100,B2:B100,"",0,-1)</li>
+</ul>
+<p>From records where the same customer appears many times, it returns the latest (lowest) row's value.</p>
+<h2>In old Excel</h2>
+<p>The second formula uses LOOKUP.</p>
+<ul>
+<li>=LOOKUP(2,1/(A2:A100=E2),B2:B100)</li>
+</ul>
+<p>A well-known form returning the last among matching rows.</p>
+<h2>Good for</h2>
+<ul>
+<li>Each customer's latest order</li>
+<li>Each product's latest unit price</li>
+<li>The current state from a history table</li>
+</ul>
+<h2>Difference from searching from the top</h2>
+<ul>
+<li>From the top (default): the first found row</li>
+<li>From the bottom (LAST): the last found row</li>
+</ul>
+<p>If records run from older at the top to newer at the bottom, searching from the bottom gets the latest.</p>
+<h2>Order is assumed</h2>
+<p>LAST assumes "lower means newer". If the order differs, so does the result. Sort by date before using.</p>
+<h2>Example</h2>
+<p>Wanted the current price from a product's price-history table. Records ran oldest first, so LAST got the latest row's price.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Not found</b>: if "When not found" is empty, you get an empty string.</li>
+<li><b>LOOKUP formula</b>: #N/A when nothing matches.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to judge by the latest date</h3>
+<p>You can also get the maximum date with MAXIFS and look up by that date.</p>
+<h2>Summary</h2>
+<p>To pull the latest row, use LAST, searching from the bottom.</p>
 <a class="cta" href="/xlookup-formula-builder.html">Use "Build an XLOOKUP Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/index-match-builder.html">Build an INDEX and MATCH Formula</a>: Build INDEX and MATCH formulas.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

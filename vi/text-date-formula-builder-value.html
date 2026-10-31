@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Chuyển số dạng văn bản thành số</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Chọn VALUE</li><li>Nhập ô</li><li>Sao chép</li></ul></div>
-<p>Trong <a href="/vi/text-date-formula-builder.html">Trình tạo chuyển văn bản thành ngày</a>, bạn có thể tạo công thức chuyển số dạng văn bản thành số có thể tính toán.</p>
+<p lang="en">"1,200" or "¥3,000" can't be used in calculations. They look like numbers but are treated as text. VALUE converts them. "VALUE" in <a href="/vi/text-date-formula-builder.html">Build a Text to Date Formula</a> builds it.</p>
 <h2>Các bước</h2>
 <ol>
-<li>Chọn VALUE</li>
-<li>Nhập ô</li>
-<li>Sao chép</li>
+<li lang="en">Choose "VALUE" in "Type".</li>
+<li lang="en">Enter the "Cell to convert".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Dùng khi tổng ra 0.</div>
+<div class="note" lang="en">Only text readable as a number converts. With a suffix like "yen" or "pcs", it errors.</div>
+<h2>Ví dụ</h2>
+<ul>
+<li lang="en">=VALUE(A2)</li>
+</ul>
+<p lang="en">"1,200" becomes the number 1200.</p>
+<h2 lang="en">What converts and what doesn't</h2>
+<ul>
+<li lang="en">Converts: "1,200", "1200", "12.5", "¥3,000" (environment-dependent)</li>
+<li lang="en">Doesn't: "1,200円", "3個", "約100"</li>
+</ul>
+<h2 lang="en">Remove units first</h2>
+<p lang="en">With units attached, strip them with SUBSTITUTE, then convert.</p>
+<ul>
+<li lang="en">Example: =VALUE(SUBSTITUTE(A2,"円",""))</li>
+</ul>
+<h2 lang="en">Telling whether it's a number</h2>
+<ul>
+<li lang="en">Left-aligned: likely text</li>
+<li lang="en">A green triangle at the cell's corner: the "number stored as text" warning</li>
+</ul>
+<h2 lang="en">Simpler ways</h2>
+<ul>
+<li lang="en">Multiply by 1: =A2*1</li>
+<li lang="en">Convert in bulk with Data → Text to Columns</li>
+</ul>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Amount columns in imported data</li>
+<li lang="en">Numbers copied from the web</li>
+<li lang="en">Numbers prefixed with "'"</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">Copying a web price table, the total came to 0. The numbers were text. Converting with VALUE let it total.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width digits</b>: "１２００" converts in some environments but not others.</li>
+<li lang="en"><b>Empty cells</b>: may become 0 rather than an error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about data from countries using "," as the decimal point?</h3>
+<p lang="en">Results vary with regional settings. Tidy symbols with replacement.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">Convert text numbers with VALUE.</p>
 <a class="cta" href="/vi/text-date-formula-builder.html">Dùng “Tạo công thức chuyển văn bản thành ngày” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/date-calculator.html">Tính tuổi, số ngày giữa hai ngày và ngày cộng/trừ</a>: Tính tuổi và số ngày giữa hai ngày.</li><li><a href="/vi/excel-text-format-builder.html">Tạo công thức TEXT cho Excel</a>: Tạo công thức TEXT.</li><li><a href="/vi/date-offset-formula-builder.html">Tạo công thức dịch chuyển ngày</a>: Tạo công thức dịch chuyển ngày.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

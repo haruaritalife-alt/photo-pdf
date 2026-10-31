@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Qué hacer cuando no funciona</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
 <div class="points"><b>Puntos clave</b><ul><li>Comprueba el archivo</li><li>Comprueba el tamaño</li><li>Prueba en otro dispositivo</li></ul></div>
-<p>Si <a href="/es/text-date-formula-builder.html">Creador de texto a fecha</a> no funciona, revisa lo siguiente.</p>
-<h2>Pasos</h2>
+<p lang="en">You pasted the formula but it doesn't convert. Here are common troubles with <a href="/es/text-date-formula-builder.html">Build a Text to Date Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell to convert isn't in the "A2" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: text unreadable as a date or number is present.</li>
+<li lang="en"><b>A number (like 46296) appears</b>: set the cell's display format to date.</li>
+<li lang="en"><b>Date is off by a day or the year is wrong</b>: the order of year, month and day in the source doesn't match settings (e.g., "10/01/2026").</li>
+<li lang="en"><b>Eight digits don't convert</b>: wrong digit count, or a missing leading 0.</li>
+<li lang="en"><b>Still left-aligned after converting</b>: the result is text (a TEXT-based type).</li>
+<li lang="en"><b>#NAME?</b>: the function name is wrong.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Comprueba el archivo</li>
-<li>Comprueba el tamaño</li>
-<li>Prueba en otro dispositivo</li>
+<li lang="en">Check whether the source cell is text or a number (left-aligned means text).</li>
+<li lang="en">Check for invisible spaces and full-width symbols in the text.</li>
+<li lang="en">Unify separators and digit counts.</li>
 </ol>
-<div class="note">Si no aparece ninguna fórmula, comprueba que la celda esté escrita como A2.</div>
+<div class="note" lang="en">Surrounding spaces can block conversion. Tidy with TRIM first.</div>
+<h2 lang="en">About order</h2>
+<p lang="en">"10/01/2026" is read as month/day/year in some environments and day/month/year in others. When ambiguous, rewrite as eight digits and convert with YMD8 to be sure.</p>
+<h2 lang="en">Two-digit years</h2>
+<p lang="en">A two-digit year like "26/10/01" may be read as 1926 or 2026 depending on the environment. Expand to four digits before use.</p>
+<h2>Ejemplo</h2>
+<p lang="en">Dates wouldn't convert. A non-breaking space trailed the text. Removing it with SUBSTITUTE made them convert.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Dates before 1900</b>: some environments can't handle them.</li>
+<li lang="en"><b>With times</b>: DATEVALUE takes only the date part.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to fix the converted result</h3>
+<p lang="en">Copy, then paste values only.</p>
+<h2>Resumen</h2>
+<p lang="en">Check the source text's shape, invisible characters and order.</p>
 <a class="cta" href="/es/text-date-formula-builder.html">Usar «Crea una fórmula de texto a fecha» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/date-calculator.html">Calcular la edad, los días entre fechas y sumar o restar días</a>: Calcula la edad y los días entre fechas.</li><li><a href="/es/excel-text-format-builder.html">Crear una fórmula TEXTO de Excel</a>: Crea una fórmula TEXTO.</li><li><a href="/es/date-offset-formula-builder.html">Crear una fórmula de desplazamiento de fecha</a>: Crea fórmulas de desplazamiento de fecha.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

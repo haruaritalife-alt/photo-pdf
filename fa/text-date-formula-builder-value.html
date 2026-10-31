@@ -215,14 +215,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>تبدیل عدد متنی به عدد</h1>
 <p class="meta">منتشرشده: 19 اکتبر 2026 | به‌روزرسانی: 19 اکتبر 2026 | <a href="/about.html">دربارهٔ ما (ژاپنی)</a></p>
 <div class="points"><b>نکات کلیدی</b><ul><li>VALUE را انتخاب کنید</li><li>سلول را وارد کنید</li><li>کپی کنید</li></ul></div>
-<p>در <a href="/fa/text-date-formula-builder.html">سازندهٔ تبدیل متن به تاریخ</a> می‌توانید فرمولی بسازید که عددِ نوشته‌شده به‌صورت متن را به عددی قابل‌محاسبه تبدیل می‌کند.</p>
+<p lang="en">"1,200" or "¥3,000" can't be used in calculations. They look like numbers but are treated as text. VALUE converts them. "VALUE" in <a href="/fa/text-date-formula-builder.html">Build a Text to Date Formula</a> builds it.</p>
 <h2>مراحل</h2>
 <ol>
-<li>VALUE را انتخاب کنید</li>
-<li>سلول را وارد کنید</li>
-<li>کپی کنید</li>
+<li lang="en">Choose "VALUE" in "Type".</li>
+<li lang="en">Enter the "Cell to convert".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">وقتی مجموع صفر درمی‌آید از آن استفاده کنید.</div>
+<div class="note" lang="en">Only text readable as a number converts. With a suffix like "yen" or "pcs", it errors.</div>
+<h2>مثال</h2>
+<ul>
+<li lang="en">=VALUE(A2)</li>
+</ul>
+<p lang="en">"1,200" becomes the number 1200.</p>
+<h2 lang="en">What converts and what doesn't</h2>
+<ul>
+<li lang="en">Converts: "1,200", "1200", "12.5", "¥3,000" (environment-dependent)</li>
+<li lang="en">Doesn't: "1,200円", "3個", "約100"</li>
+</ul>
+<h2 lang="en">Remove units first</h2>
+<p lang="en">With units attached, strip them with SUBSTITUTE, then convert.</p>
+<ul>
+<li lang="en">Example: =VALUE(SUBSTITUTE(A2,"円",""))</li>
+</ul>
+<h2 lang="en">Telling whether it's a number</h2>
+<ul>
+<li lang="en">Left-aligned: likely text</li>
+<li lang="en">A green triangle at the cell's corner: the "number stored as text" warning</li>
+</ul>
+<h2 lang="en">Simpler ways</h2>
+<ul>
+<li lang="en">Multiply by 1: =A2*1</li>
+<li lang="en">Convert in bulk with Data → Text to Columns</li>
+</ul>
+<h2>مناسب برای</h2>
+<ul>
+<li lang="en">Amount columns in imported data</li>
+<li lang="en">Numbers copied from the web</li>
+<li lang="en">Numbers prefixed with "'"</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Copying a web price table, the total came to 0. The numbers were text. Converting with VALUE let it total.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width digits</b>: "１２００" converts in some environments but not others.</li>
+<li lang="en"><b>Empty cells</b>: may become 0 rather than an error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about data from countries using "," as the decimal point?</h3>
+<p lang="en">Results vary with regional settings. Tidy symbols with replacement.</p>
+<h2>خلاصه</h2>
+<p lang="en">Convert text numbers with VALUE.</p>
 <a class="cta" href="/fa/text-date-formula-builder.html">استفاده از «ساخت فرمول تبدیل متن به تاریخ» (رایگان)</a>
 <h2>ابزارهایی که با این ابزار خوب هماهنگ‌اند</h2><ul><li><a href="/fa/date-calculator.html">محاسبهٔ سن، روزهای بین دو تاریخ و جابه‌جایی تاریخ</a>: سن و تعداد روزهای بین دو تاریخ را محاسبه کنید.</li><li><a href="/fa/excel-text-format-builder.html">ساخت فرمول TEXT در Excel</a>: فرمول TEXT را بسازید.</li><li><a href="/fa/date-offset-formula-builder.html">ساخت فرمول جابه‌جایی تاریخ</a>: فرمول‌های جابه‌جایی تاریخ بسازید.</li></ul>
 <div class="tip"><p>اگر این راهنما مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ارسال انعام (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ارسال هدیه (فهرست آرزوهای آمازون)</a></div>

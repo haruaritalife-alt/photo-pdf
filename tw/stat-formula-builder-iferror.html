@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>讓錯誤顯示為空</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>在替代寫法中選擇 IF-ERROR</li><li>輸入範圍</li><li>複製</li></ul></div>
-<p>在 <a href="/tw/stat-formula-builder.html">平均值與中位數公式生成器</a> 中，可以生成出現錯誤時顯示為空的公式。</p>
+<p lang="en">If error values (#DIV/0!, #N/A, etc.) are mixed in the range, the aggregate errors too. "IF-ERROR" blanks that to tidy the look. Choose it in "Alternative form" in <a href="/tw/stat-formula-builder.html">Build an AVERAGE and MEDIAN Formula</a>.</p>
 <h2>步驟</h2>
 <ol>
-<li>在替代寫法中選擇 IF-ERROR</li>
-<li>輸入範圍</li>
-<li>複製</li>
+<li lang="en">In "Alternative form", choose "IF-ERROR".</li>
+<li lang="en">Enter the "Type" and "Numeric range".</li>
+<li lang="en">Copy the "Alternative formula" with "Copy the second" and paste.</li>
 </ol>
-<div class="note">範圍內沒有數字時，也可以避免出現錯誤。</div>
+<div class="note" lang="en">Its form is =IFERROR(formula,""). It's blank when the aggregate itself errors.</div>
+<h2>示例</h2>
+<ul>
+<li lang="en">=IFERROR(AVERAGE(B2:B100),"")</li>
+</ul>
+<p lang="en">If the range holds no numbers, AVERAGE would be #DIV/0! but shows blank.</p>
+<h2 lang="en">Note: errors inside the range remain</h2>
+<p lang="en">IFERROR works when the aggregate result is an error. If the range contains error values, the aggregate errors too. Then you need a formula that skips range errors.</p>
+<ul>
+<li lang="en">Example: =AGGREGATE(1,6,B2:B100)</li>
+</ul>
+<p lang="en">AGGREGATE aggregates ignoring error values. 1 means average and 6 means ignore errors.</p>
+<h2>適合</h2>
+<ul>
+<li lang="en">Empty tables before entry where errors shouldn't show</li>
+<li lang="en">Aggregate cells feeding other formulas</li>
+<li lang="en">Tidying report tables</li>
+</ul>
+<h2 lang="en">Don't hide too much</h2>
+<p lang="en">Hiding errors makes data problems harder to notice. Check with the basic formula first.</p>
+<h2>示例</h2>
+<p lang="en">At the start of the month there was no data and the average cell was full of #DIV/0!. Wrapping in IFERROR showed blanks and cleaned up the report table.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Want to return 0</b>: rewrite IFERROR's "" as 0.</li>
+<li lang="en"><b>Empty string</b>: a result of "" may be treated as text in later calculations.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I use it with ROUND?</h3>
+<p lang="en">You can layer formulas. Build by hand.</p>
+<ul>
+<li lang="en">Example: =IFERROR(ROUND(AVERAGE(B2:B100),2),"")</li>
+</ul>
+<h2>小結</h2>
+<p lang="en">To hide errors, use IF-ERROR.</p>
 <a class="cta" href="/tw/stat-formula-builder.html">使用「生成平均值與中位數公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li><li><a href="/tw/rank-formula-builder.html">生成排名公式</a>: 生成排名公式。</li><li><a href="/tw/large-small-formula-builder.html">生成 LARGE 和 SMALL 公式</a>: 生成第 N 大或第 N 小值的公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>
