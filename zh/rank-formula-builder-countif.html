@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>用 COUNTIF 排名</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>选择 COUNTIF</li><li>输入范围</li><li>复制公式</li></ul></div>
-<p>在<a href="/zh/rank-formula-builder.html">排名公式生成器</a>中,还可以生成用 COUNTIF 统计更大的值再加 1 的公式。</p>
+<p lang="en">Where RANK isn't available, or you want the rank in a different shape, COUNTIF can rank. "COUNTIF" in <a href="/zh/rank-formula-builder.html">Build a Rank Formula</a> builds that formula.</p>
+<h2 lang="en">The formula's form</h2>
+<ul>
+<li lang="en">=COUNTIF($B$2:$B$100,"&gt;"&amp;B2)+1</li>
+</ul>
+<p lang="en">It means "the number of larger values + 1". Zero larger values means 1st; one means 2nd.</p>
 <h2>步骤</h2>
 <ol>
-<li>选择 COUNTIF</li>
-<li>输入范围</li>
-<li>复制公式</li>
+<li lang="en">Choose "COUNTIF" in "Method".</li>
+<li lang="en">Enter "Cell to rank" and "Range to compare".</li>
+<li lang="en">Check the formula has the form COUNTIF(…,"&gt;"&amp;cell)+1.</li>
+<li lang="en">Check with sample numbers that it gives the same result as RANK.</li>
 </ol>
-<div class="note">这种写法在旧版软件中也能使用。</div>
+<div class="note" lang="en">Equal values get the same rank, the same behavior as RANK.</div>
+<h2>试算结果</h2>
+<p lang="en">Entering "90,80,80,70" as samples and "80" as the number to rank shows "2", same as RANK.</p>
+<h2 lang="en">Why use COUNTIF instead of RANK</h2>
+<ul>
+<li lang="en">The formula's meaning is easy to see</li>
+<li lang="en">It works the same way in Google Sheets and other spreadsheet software</li>
+<li lang="en">You can add conditions to rank within groups</li>
+</ul>
+<h2 lang="en">Rank within groups</h2>
+<p lang="en">Switching to COUNTIFS gives per-group ranks.</p>
+<ul>
+<li lang="en">Example: =COUNTIFS($A$2:$A$100,A2,$B$2:$B$100,"&gt;"&amp;B2)+1</li>
+</ul>
+<p lang="en">With departments in column A and scores in column B, this ranks within departments.</p>
+<h2 lang="en">For ascending</h2>
+<p lang="en">Change "&gt;" to "&lt;".</p>
+<ul>
+<li lang="en">Example: =COUNTIF($B$2:$B$100,"&lt;"&amp;B2)+1</li>
+</ul>
+<h2>适合</h2>
+<ul>
+<li lang="en">Ranking within departments or classes</li>
+<li lang="en">Conditional ranking</li>
+<li lang="en">When RANK isn't available or wanted</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Wanted sales ranks per department. RANK gives an overall rank. Switching to COUNTIFS gave ranks within each department.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Forgetting "&gt;"&amp;</b>: write "&gt;"&amp;B2, not "&gt;"B2.</li>
+<li lang="en"><b>Numbers as text</b>: text numbers aren't compared. Convert to numbers.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is it slower than RANK?</h3>
+<p lang="en">With large data COUNTIF can be slower. For a few thousand rows it's unnoticeable.</p>
+<h2>小结</h2>
+<p lang="en">COUNTIF-based ranking also extends to within-group ranks.</p>
 <a class="cta" href="/zh/rank-formula-builder.html">使用“生成排名公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li><li><a href="/zh/percent-calculator.html">计算百分比、折扣和增减率</a>：立即计算百分比、折扣和增减率。</li><li><a href="/zh/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Importing a Table or List</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose table or list</li><li>Enter the number</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/import-formula-builder.html">Import Builder</a> you pick which table or list on the page to import.</p>
+<p>The standard way to import a page's table is IMPORTHTML. "IMPORTHTML-table" in <a href="/en/import-formula-builder.html">Build an IMPORTHTML Formula</a> builds the formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose table or list</li>
-<li>Enter the number</li>
-<li>Copy it</li>
+<li>Choose "IMPORTHTML-table" in "Method".</li>
+<li>Enter the "URL of the page to import".</li>
+<li>In "Which table or list", enter the table's order (1 for the first).</li>
+<li>Copy the formula and paste it into the sheet.</li>
 </ol>
-<div class="note">Numbers count from the top of the page.</div>
+<div class="note">Tables are counted from the top of the page. This can differ from how it looks, so try other numbers if it doesn't match.</div>
+<h2>Example</h2>
+<ul>
+<li>=IMPORTHTML("https://example.com/rates","table",2)</li>
+</ul>
+<p>The 2nd table spreads out from the cell you pasted into.</p>
+<h2>When the table won't import</h2>
+<ul>
+<li>Try numbers 1, 2, 3…</li>
+<li>Tables built later by JavaScript may not import.</li>
+<li>Pages needing login can't be imported.</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Public statistics tables</li>
+<li>Lists of exchange rates or prices</li>
+<li>Sports standings</li>
+</ul>
+<h2>The spill range</h2>
+<p>Results spread right and down from the cell. If there are values in the way you get #REF!. Keep it clear.</p>
+<h2>Example</h2>
+<p>Wanted to watch an exchange-rate table daily. Setting the table number to 2 and pasting brought the latest table into the sheet and it updated automatically.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Stuck on Loading…</b>: wait a while; if it persists, check the URL.</li>
+<li><b>#N/A</b>: there is no table with that number.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want only some columns</h3>
+<p>Pick from the imported range with QUERY or INDEX.</p>
+<h2>Summary</h2>
+<p>Matching the table number is the key.</p>
 <a class="cta" href="/en/import-formula-builder.html">Use "Build an IMPORTHTML Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/en/query-formula-builder.html">Build a QUERY Formula</a>: Build a QUERY formula.</li><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

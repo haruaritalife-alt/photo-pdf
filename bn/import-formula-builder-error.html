@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ত্রুটি হলে</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>ফর্মুলা তৈরি করুন</li><li>দ্বিতীয়টি বেছে নিন</li><li>কপি করুন</li></ul></div>
-<p><a href="/bn/import-formula-builder.html">ইমপোর্ট সূত্র নির্মাতা</a> IFERROR দিয়ে মোড়ানো একটি সংস্করণও দেখায়, যা ত্রুটি হলে ফাঁকা থাকে।</p>
+<p lang="en">Import formulas easily error depending on the site. So use the formula that blanks on error. That's the second field in <a href="/bn/import-formula-builder.html">Build an IMPORTHTML Formula</a>.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>ফর্মুলা তৈরি করুন</li>
-<li>দ্বিতীয়টি বেছে নিন</li>
-<li>কপি করুন</li>
+<li lang="en">Build the import formula.</li>
+<li lang="en">Check the second "Formula that blanks on error".</li>
+<li lang="en">Copy it with "Copy second" and paste.</li>
 </ol>
-<div class="note">কিছু পেজ ইমপোর্ট করা যায় না এবং ত্রুটি দেখায়।</div>
+<div class="note" lang="en">Its form is =IFERROR(import formula,""). The cell becomes empty on error.</div>
+<h2>উদাহরণ</h2>
+<ul>
+<li lang="en">=IFERROR(IMPORTHTML("https://example.com/page","table",1),"")</li>
+</ul>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Sources that sometimes fail to connect</li>
+<li lang="en">Hiding error displays</li>
+<li lang="en">Avoiding errors in cells that feed totals</li>
+</ul>
+<h2>সতর্কতা</h2>
+<p lang="en">Hiding errors makes causes harder to notice. Test with the first formula, then switch to the second once stable.</p>
+<h2 lang="en">Common errors</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: the import result is empty.</li>
+<li lang="en"><b>#REF!</b>: values are in the spill range.</li>
+<li lang="en"><b>Loading…</b>: still loading.</li>
+<li lang="en"><b>Resource at url not found</b>: wrong URL, or the page is gone.</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">The sheet sometimes showed errors in the morning. Wrapping in IFERROR left blanks on error, and totals stopped breaking.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Can't see the reason</b>: use the first formula when hunting causes.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I keep the previous value?</h3>
+<p lang="en">Hard with functions alone. A script can save values.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">For stable operation, wrap in IFERROR.</p>
 <a class="cta" href="/bn/import-formula-builder.html">“IMPORTHTML সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/importrange-builder.html">IMPORTRANGE সূত্র তৈরি করুন</a>: একটি IMPORTRANGE সূত্র তৈরি করুন।</li><li><a href="/bn/query-formula-builder.html">QUERY সূত্র তৈরি করুন</a>: QUERY সূত্র তৈরি করুন।</li><li><a href="/bn/filter-formula-builder.html">FILTER সূত্র তৈরি করুন</a>: একটি FILTER সূত্র তৈরি করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>從小到大排名</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>選擇 RANK-ASC</li><li>輸入範圍</li><li>複製</li></ul></div>
-<p>在<a href="/tw/rank-formula-builder.html">排名公式生成器</a>中,也可以像比賽成績那樣讓較小的值排在前面。</p>
+<p lang="en">RANK is descending by default. But for times or anything where smaller is better, you want ascending. "RANK-ASC" in <a href="/tw/rank-formula-builder.html">Build a Rank Formula</a> builds that formula.</p>
 <h2>步驟</h2>
 <ol>
-<li>選擇 RANK-ASC</li>
-<li>輸入範圍</li>
-<li>複製</li>
+<li lang="en">Choose "RANK-ASC" in "Method".</li>
+<li lang="en">Enter "Cell to rank" and "Range to compare".</li>
+<li lang="en">Check the last argument of the formula is "1".</li>
 </ol>
-<div class="note">0 表示從大到小,1 表示從小到大。</div>
+<div class="note" lang="en">RANK's third argument: 0 is descending (large first), 1 is ascending (small first).</div>
+<h2>示例</h2>
+<p lang="en">Ranking the running time in B2 within B2:B100, fastest first.</p>
+<ul>
+<li lang="en">=RANK(B2,$B$2:$B$100,1)</li>
+</ul>
+<p lang="en">The smallest value is 1st.</p>
+<h2>試算結果</h2>
+<p lang="en">Entering "9.8,10.2,10.5,9.9" as samples and "9.8" as the number to rank gives:</p>
+<ul>
+<li lang="en">RANK (descending): 4th</li>
+<li lang="en">RANK-ASC (ascending): 1st</li>
+</ul>
+<h2>適合</h2>
+<ul>
+<li lang="en">Values where shorter is better, like running or work times</li>
+<li lang="en">Values where lower is better, like golf scores</li>
+<li lang="en">Cheapest-first prices</li>
+<li lang="en">Values where fewer is better, like defect counts</li>
+</ul>
+<h2 lang="en">Remembering the third argument</h2>
+<ul>
+<li lang="en">0 (or omitted): large first. Scores, sales, etc.</li>
+<li lang="en">1: small first. Times, prices, etc.</li>
+</ul>
+<h2 lang="en">Relation between descending and ascending</h2>
+<p lang="en">With N people and no ties:</p>
+<ul>
+<li lang="en">Ascending rank = N + 1 − descending rank</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Wanted to rank 100m sprint records fastest first. Since shorter is better, set the third argument to 1, and =RANK(B2,$B$2:$B$11,1) made the shortest record 1st.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leaving it descending</b>: with times, the slowest person ends up 1st.</li>
+<li lang="en"><b>Time formats</b>: even in forms like "0:09.8", smaller values are faster.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I just want to sort low to high?</h3>
+<p lang="en">SORT or the sort feature works. Use RANK when you need the rank numbers.</p>
+<h2>小結</h2>
+<p lang="en">For smaller-is-better values, set RANK's third argument to 1.</p>
 <a class="cta" href="/tw/rank-formula-builder.html">使用「生成排名公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li><li><a href="/tw/percent-calculator.html">計算百分比、折扣和增減率</a>：立即計算百分比、折扣和增減率。</li><li><a href="/tw/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

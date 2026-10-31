@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Kapag magkakapantay ang mga halaga</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Piliin ang paraan</li><li>Maglagay ng mga pansubok na numero</li><li>Tingnan ang resulta</li></ul></div>
-<p>Sa <a href="/tl/rank-formula-builder.html">Rank Builder</a>, binibigyan ng RANK ng parehong rank ang magkakapantay na halaga at ang RANK.AVG ay nagbibigay ng average na rank.</p>
+<p lang="en">What happens to ranks when several values are equal? In <a href="/tl/rank-formula-builder.html">Build a Rank Formula</a>, RANK and RANK.AVG treat ties differently. Check with sample numbers.</p>
+<h2 lang="en">Handling ties</h2>
+<p lang="en">For four people with scores 90, 80, 80, 70:</p>
+<ul>
+<li lang="en"><b>RANK</b>: 90→1st, 80→2nd, 80→2nd, 70→4th (ranks skip after a tie)</li>
+<li lang="en"><b>RANK.AVG</b>: 90→1st, 80→2.5th, 80→2.5th, 70→4th (ties get the average rank)</li>
+</ul>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Piliin ang paraan</li>
-<li>Maglagay ng mga pansubok na numero</li>
-<li>Tingnan ang resulta</li>
+<li lang="en">Enter "90,80,80,70" in "Sample numbers".</li>
+<li lang="en">Enter "80" in "Number to rank".</li>
+<li lang="en">Switch "Method" between RANK and RANK.AVG and compare the "Sample result".</li>
 </ol>
-<div class="note">Makikita mo ang pagkakaiba gamit ang mga pansubok na numero.</div>
+<div class="note" lang="en">The sample result shows "2" for RANK and "2.5" for RANK.AVG.</div>
+<h2 lang="en">Why ranks skip</h2>
+<p lang="en">RANK is "the number of larger values + 1". The 80s have one larger (90), so 2nd. The 70 has three larger, so 4th. 3rd is left empty.</p>
+<h2 lang="en">Giving ties distinct ranks</h2>
+<p lang="en">To give equal values non-overlapping ranks, add a helper.</p>
+<ul>
+<li lang="en">Example: =RANK(B2,$B$2:$B$100,0)+COUNTIF($B$2:B2,B2)-1</li>
+</ul>
+<p lang="en">The one appearing first (higher up) gets the higher rank.</p>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Test ranks where ties are possible</li>
+<li lang="en">Deciding how to treat ties</li>
+<li lang="en">Deciding prizes or ratings by rank</li>
+</ul>
+<h2 lang="en">Avoiding rank gaps</h2>
+<p lang="en">For a "dense rank" without gaps, use this.</p>
+<ul>
+<li lang="en">Example: =SUMPRODUCT(($B$2:$B$100&gt;B2)/COUNTIF($B$2:$B$100,$B$2:$B$100&amp;""))+1</li>
+</ul>
+<p lang="en">For 90, 80, 80, 70 it gives 1st, 2nd, 2nd, 3rd.</p>
+<h2>Halimbawa</h2>
+<p lang="en">A grade sheet had two tied people. RANK gave two 2nds, then 4th, leaving 3rd empty. This rule was assumed when deciding who gets awarded.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>RANK.AVG decimals</b>: use fractional ranks like 2.5 as displayed.</li>
+<li lang="en"><b>Old Excel</b>: RANK.AVG needs Excel 2010 or later.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How does RANK differ from RANK.EQ?</h3>
+<p lang="en">Same result. RANK.EQ is RANK's newer name; both are available for compatibility.</p>
+<h2>Buod</h2>
+<p lang="en">For ties, RANK shares the rank and skips the next; RANK.AVG gives the average rank.</p>
 <a class="cta" href="/tl/rank-formula-builder.html">Gamitin ang “Gumawa ng rank formula” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/sumif-formula-builder.html">Gumawa ng SUMIF o COUNTIF formula</a>: Gumawa ng mga formulang SUMIF at COUNTIF.</li><li><a href="/tl/percent-calculator.html">Kalkulahin ang mga Porsiyento, Diskuwento at % na Pagbabago</a>: Agad na kalkulahin ang mga porsiyento, diskuwento at % na pagbabago.</li><li><a href="/tl/excel-if-builder.html">Gumawa ng IF formula</a>: Gumawa ng IF formula.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

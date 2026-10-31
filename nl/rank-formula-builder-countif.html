@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Rangschikken met COUNTIF</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Kies COUNTIF</li><li>Voer het bereik in</li><li>Kopieer de formule</li></ul></div>
-<p>In <a href="/nl/rank-formula-builder.html">Rang-maker</a> kun je ook een formule maken die met COUNTIF grotere waarden telt en er 1 bij optelt.</p>
+<p lang="en">Where RANK isn't available, or you want the rank in a different shape, COUNTIF can rank. "COUNTIF" in <a href="/nl/rank-formula-builder.html">Build a Rank Formula</a> builds that formula.</p>
+<h2 lang="en">The formula's form</h2>
+<ul>
+<li lang="en">=COUNTIF($B$2:$B$100,"&gt;"&amp;B2)+1</li>
+</ul>
+<p lang="en">It means "the number of larger values + 1". Zero larger values means 1st; one means 2nd.</p>
 <h2>Stappen</h2>
 <ol>
-<li>Kies COUNTIF</li>
-<li>Voer het bereik in</li>
-<li>Kopieer de formule</li>
+<li lang="en">Choose "COUNTIF" in "Method".</li>
+<li lang="en">Enter "Cell to rank" and "Range to compare".</li>
+<li lang="en">Check the formula has the form COUNTIF(…,"&gt;"&amp;cell)+1.</li>
+<li lang="en">Check with sample numbers that it gives the same result as RANK.</li>
 </ol>
-<div class="note">Deze schrijfwijze werkt ook in oudere software.</div>
+<div class="note" lang="en">Equal values get the same rank, the same behavior as RANK.</div>
+<h2>Proefresultaat</h2>
+<p lang="en">Entering "90,80,80,70" as samples and "80" as the number to rank shows "2", same as RANK.</p>
+<h2 lang="en">Why use COUNTIF instead of RANK</h2>
+<ul>
+<li lang="en">The formula's meaning is easy to see</li>
+<li lang="en">It works the same way in Google Sheets and other spreadsheet software</li>
+<li lang="en">You can add conditions to rank within groups</li>
+</ul>
+<h2 lang="en">Rank within groups</h2>
+<p lang="en">Switching to COUNTIFS gives per-group ranks.</p>
+<ul>
+<li lang="en">Example: =COUNTIFS($A$2:$A$100,A2,$B$2:$B$100,"&gt;"&amp;B2)+1</li>
+</ul>
+<p lang="en">With departments in column A and scores in column B, this ranks within departments.</p>
+<h2 lang="en">For ascending</h2>
+<p lang="en">Change "&gt;" to "&lt;".</p>
+<ul>
+<li lang="en">Example: =COUNTIF($B$2:$B$100,"&lt;"&amp;B2)+1</li>
+</ul>
+<h2>Goed voor</h2>
+<ul>
+<li lang="en">Ranking within departments or classes</li>
+<li lang="en">Conditional ranking</li>
+<li lang="en">When RANK isn't available or wanted</li>
+</ul>
+<h2>Voorbeeld</h2>
+<p lang="en">Wanted sales ranks per department. RANK gives an overall rank. Switching to COUNTIFS gave ranks within each department.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Forgetting "&gt;"&amp;</b>: write "&gt;"&amp;B2, not "&gt;"B2.</li>
+<li lang="en"><b>Numbers as text</b>: text numbers aren't compared. Convert to numbers.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is it slower than RANK?</h3>
+<p lang="en">With large data COUNTIF can be slower. For a few thousand rows it's unnoticeable.</p>
+<h2>Samenvatting</h2>
+<p lang="en">COUNTIF-based ranking also extends to within-group ranks.</p>
 <a class="cta" href="/nl/rank-formula-builder.html">Gebruik “Een rangformule maken” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/sumif-formula-builder.html">Een SUMIF- of COUNTIF-formule maken</a>: Maak SUMIF- en COUNTIF-formules.</li><li><a href="/nl/percent-calculator.html">Percentages, kortingen en procentuele verandering berekenen</a>: Bereken direct percentages, kortingen en procentuele veranderingen.</li><li><a href="/nl/excel-if-builder.html">Een IF-formule maken</a>: Maak een IF-formule.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>

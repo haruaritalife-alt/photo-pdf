@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>কিছু না পেলে</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>ফর্মুলা তৈরি করুন</li><li>দ্বিতীয়টি দেখুন</li><li>কপি করুন</li></ul></div>
-<p><a href="/bn/excel-left-mid-builder.html">LEFT/MID সূত্র নির্মাতা</a> IFERROR দিয়ে এমন একটি সূত্রও দেখায়, যা কিছু না পেলে মূল লেখা ফেরত দেয়।</p>
+<p lang="en">If the delimiter isn't found, FIND returns a #VALUE! error. The second formula of <a href="/bn/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> is wrapped in IFERROR to return the original text when not found.</p>
+<h2 lang="en">The two formulas</h2>
+<ul>
+<li lang="en">First: =LEFT(A2,FIND("@",A2)-1)</li>
+<li lang="en">Second: =IFERROR(LEFT(A2,FIND("@",A2)-1),A2)</li>
+</ul>
+<p lang="en">For cells without "@", the second returns the original text instead of an error.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>ফর্মুলা তৈরি করুন</li>
-<li>দ্বিতীয়টি দেখুন</li>
-<li>কপি করুন</li>
+<li lang="en">Enter the cell, method and delimiter.</li>
+<li lang="en">Check the "formula returning the original if not found".</li>
+<li lang="en">Copy with "Copy the second".</li>
 </ol>
-<div class="note">#VALUE! এড়াতে চাইলে এটি ব্যবহার করুন।</div>
+<div class="note" lang="en">If data without the delimiter is mixed in, the second formula is safer.</div>
+<h2 lang="en">Reading the sample result</h2>
+<p lang="en">Entering text without the delimiter in "Sample text" shows "Sample result: #VALUE!". It shows the first formula would error like this.</p>
+<h2 lang="en">If you want a different value than the original</h2>
+<p lang="en">Rewrite the final "A2" of the formula.</p>
+<ul>
+<li lang="en">Blank: IFERROR(…,"")</li>
+<li lang="en">Show "None": IFERROR(…,"None")</li>
+<li lang="en">The number 0: IFERROR(…,0)</li>
+</ul>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Data mixing rows with and without the delimiter</li>
+<li lang="en">Avoiding errors partway down a list</li>
+<li lang="en">Avoiding errors when feeding other functions</li>
+</ul>
+<h2>সতর্কতা</h2>
+<p lang="en">IFERROR hides all errors, including causes other than the delimiter. Confirm the first formula works, then use the second, for safety.</p>
+<h2>আরেকটি উপায়</h2>
+<p lang="en">IF with ISNUMBER can check for the delimiter.</p>
+<ul>
+<li lang="en">Example: =IF(ISNUMBER(FIND("@",A2)),LEFT(A2,FIND("@",A2)-1),A2)</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">An email list had rows without "@". The first formula lined up #VALUE!, but the second returned the original text and tidied the list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Hiding too much</b>: wrong formulas show no error, so go unnoticed.</li>
+<li lang="en"><b>Not noticing the original is returned</b>: you may not tell whether the delimiter was absent or extraction worked.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I only want to check for the delimiter?</h3>
+<p lang="en">=ISNUMBER(FIND("@",A2)) is TRUE if the delimiter exists.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">When rows without the delimiter are mixed in, use the IFERROR-wrapped second formula.</p>
 <a class="cta" href="/bn/excel-left-mid-builder.html">“LEFT, MID বা RIGHT সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/excel-text-clean.html">এক্সেলের লেখা থেকে বাড়তি স্পেস ও অদৃশ্য অক্ষর সরানো</a>: বাড়তি স্পেস ও অদৃশ্য অক্ষর সরান।</li><li><a href="/bn/text-to-columns.html">বিভাজক দিয়ে টেক্সট কলামে ভাগ করুন</a>: বিভাজক দিয়ে টেক্সট কলামে ভাগ করুন।</li><li><a href="/bn/excel-if-builder.html">IF সূত্র তৈরি করুন</a>: একটি IF সূত্র তৈরি করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

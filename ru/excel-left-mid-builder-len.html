@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Подсчёт символов</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Выберите LEN</li><li>Посмотрите формулу</li><li>Скопируйте его</li></ul></div>
-<p>Если выбрать LEN в <a href="/ru/excel-left-mid-builder.html">Конструктор LEFT/MID</a>, получится формула, считающая символы в ячейке.</p>
+<p lang="en">LEN counts characters. Choosing "LEN" in <a href="/ru/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> builds the formula. It's also handy when you want the length before extracting text.</p>
 <h2>Шаги</h2>
 <ol>
-<li>Выберите LEN</li>
-<li>Посмотрите формулу</li>
-<li>Скопируйте его</li>
+<li lang="en">Choose "LEN" in "Method".</li>
+<li lang="en">Enter the "Cell to extract from".</li>
+<li lang="en">Entering a "Sample text" shows the character count.</li>
 </ol>
-<div class="note">Пробелы тоже считаются символами.</div>
+<div class="note" lang="en">Full-width, half-width and spaces each count as one.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">=LEN(A2)</li>
+<li lang="en">"ABC-12345" → 9</li>
+<li lang="en">"東京都" → 3</li>
+<li lang="en">"A B" (with a half-width space) → 3</li>
+</ul>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Checking character limits (e.g. 31 for sheet names, 140 for a tweet)</li>
+<li lang="en">Checking for extra spaces</li>
+<li lang="en">Checking part numbers have consistent digit counts</li>
+</ul>
+<h2 lang="en">Finding extra spaces</h2>
+<p lang="en">If two items look the same but LEN differs, extra characters like spaces are present.</p>
+<ul>
+<li lang="en">"Tokyo" → 5</li>
+<li lang="en">"Tokyo " (trailing half-width space) → 6</li>
+</ul>
+<p lang="en">When VLOOKUP doesn't match, checking with LEN is a standard step.</p>
+<h2 lang="en">Checking digit counts</h2>
+<p lang="en">With a rule that part numbers must be 8 characters, you can find rows that differ.</p>
+<ul>
+<li lang="en">Example: =IF(LEN(A2)=8,"OK","Length error")</li>
+</ul>
+<h2 lang="en">Combining with other functions</h2>
+<ul>
+<li lang="en">Remove the last 3 characters: =LEFT(A2,LEN(A2)-3)</li>
+<li lang="en">Count a specific character: =LEN(A2)-LEN(SUBSTITUTE(A2,"-",""))</li>
+</ul>
+<h2 lang="en">Counting bytes</h2>
+<p lang="en">To count bytes rather than characters, there's LENB. In some environments full-width counts as 2 bytes.</p>
+<h2>Пример</h2>
+<p lang="en">Wanted to check that product names stayed within a length limit (20 full-width characters). Building a list with =LEN(A2) let me filter rows over 20.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Line breaks count too</b>: in-cell line breaks are included.</li>
+<li lang="en"><b>Digits of numbers</b>: LEN counts digits of number cells, but the look (thousands separators) isn't included.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is an emoji counted as one?</h3>
+<p lang="en">In some environments it counts as two.</p>
+<h2>Итог</h2>
+<p lang="en">LEN counts characters and also helps find extra spaces.</p>
 <a class="cta" href="/ru/excel-left-mid-builder.html">Использовать «Создать формулу LEFT, MID или RIGHT» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/excel-text-clean.html">Удаление лишних пробелов и невидимых символов из текста Excel</a>: Уберите лишние пробелы и невидимые символы.</li><li><a href="/ru/text-to-columns.html">Разбиение текста на столбцы по разделителю</a>: Разбивайте текст на столбцы по разделителю.</li><li><a href="/ru/excel-if-builder.html">Создание формулы IF</a>: Создайте формулу IF.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

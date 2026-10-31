@@ -215,14 +215,67 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>پیدا کردن پایان ماه</h1>
 <p class="meta">منتشرشده: 19 اکتبر 2026 | به‌روزرسانی: 19 اکتبر 2026 | <a href="/about.html">دربارهٔ ما (ژاپنی)</a></p>
 <div class="points"><b>نکات کلیدی</b><ul><li>EOMONTH را انتخاب کنید</li><li>ماه‌ها را وارد کنید</li><li>کپی کنید</li></ul></div>
-<p>در <a href="/fa/date-offset-formula-builder.html">سازندهٔ تاریخ</a>، EOMONTH پایان ماه را چند ماه بعد می‌دهد.</p>
+<p lang="en">"Month-end closing", "payment by end of next month". EOMONTH finds month-end dates. Choosing "EOMONTH" in <a href="/fa/date-offset-formula-builder.html">Build a Date Offset Formula</a> builds the formula.</p>
 <h2>مراحل</h2>
 <ol>
-<li>EOMONTH را انتخاب کنید</li>
-<li>ماه‌ها را وارد کنید</li>
-<li>کپی کنید</li>
+<li lang="en">Choose "EOMONTH" in "Method".</li>
+<li lang="en">Enter the "Date cell".</li>
+<li lang="en">Enter the number of months in "Amount to add" (0 gives that month's last day).</li>
+<li lang="en">Check the result with a "Sample date".</li>
 </ol>
-<div class="note">برای گرفتن پایان همان ماه ۰ وارد کنید.</div>
+<div class="note" lang="en">Amount 0 is the end of the date's own month; 1 is the end of the next month.</div>
+<h2>مثال</h2>
+<p lang="en">Finding the month-end of the month containing A2.</p>
+<ul>
+<li lang="en">=EOMONTH(A2,0)</li>
+<li lang="en">Sample: 2026-10-25 → 2026-10-31</li>
+</ul>
+<p lang="en">For payment at the end of next month:</p>
+<ul>
+<li lang="en">=EOMONTH(A2,1)</li>
+<li lang="en">Sample: 2026-10-25 → 2026-11-30</li>
+</ul>
+<h2 lang="en">Results by amount (2026-10-25)</h2>
+<ul>
+<li lang="en">0: 2026-10-31 (this month-end)</li>
+<li lang="en">1: 2026-11-30 (next month-end)</li>
+<li lang="en">2: 2026-12-31 (month-end after next)</li>
+<li lang="en">-1: 2026-09-30 (previous month-end)</li>
+</ul>
+<h2 lang="en">Finding the first of the month</h2>
+<p lang="en">Add 1 to the previous month-end.</p>
+<ul>
+<li lang="en">=EOMONTH(A2,-1)+1</li>
+</ul>
+<h2>مناسب برای</h2>
+<ul>
+<li lang="en">Finding payment dates for month-end close, next-month-end payment</li>
+<li lang="en">Knowing a month's last day</li>
+<li lang="en">Building monthly aggregation periods</li>
+</ul>
+<h2 lang="en">February in leap years</h2>
+<p lang="en">EOMONTH handles leap years correctly.</p>
+<ul>
+<li lang="en">2028-02-10 → 2028-02-29</li>
+<li lang="en">2026-02-10 → 2026-02-28</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Even if invoice dates fell mid-month, payment due was the end of the next month. =EOMONTH(A2,1) gave next month-end for every invoice date.</p>
+<h2 lang="en">Difference from EDATE</h2>
+<ul>
+<li lang="en">EDATE: moves to the same day (like the 31st); adjusts when it overflows</li>
+<li lang="en">EOMONTH: always moves to month-end</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Result appears as a number</b>: set the cell's format to Date.</li>
+<li lang="en"><b>Whether month-end is the 30th or 31st</b>: EOMONTH decides automatically; no need to write it.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if month-end falls on a weekend?</h3>
+<p lang="en">To adjust to a business day, combine with WORKDAY. Example: =WORKDAY(EOMONTH(A2,1)+1,-1)</p>
+<h2>خلاصه</h2>
+<p lang="en">EOMONTH for month-end dates. Changing the amount also gives next or previous month-end.</p>
 <a class="cta" href="/fa/date-offset-formula-builder.html">استفاده از «ساخت فرمول جابه‌جایی تاریخ» (رایگان)</a>
 <h2>ابزارهایی که با این ابزار خوب هماهنگ‌اند</h2><ul><li><a href="/fa/date-calculator.html">محاسبهٔ سن، روزهای بین دو تاریخ و جابه‌جایی تاریخ</a>: سن و تعداد روزهای بین دو تاریخ را محاسبه کنید.</li><li><a href="/fa/datedif-formula-builder.html">ساخت فرمول DATEDIF</a>: یک فرمول DATEDIF بسازید.</li><li><a href="/fa/excel-serial-date.html">مبدل مقدار سریال و تاریخ اکسل</a>: مقدار سریال و تاریخ اکسل را تبدیل کنید.</li></ul>
 <div class="tip"><p>اگر این راهنما مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ارسال انعام (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ارسال هدیه (فهرست آرزوهای آمازون)</a></div>

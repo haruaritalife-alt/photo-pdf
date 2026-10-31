@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pobierz znaki ze środka</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Wybierz MID</li><li>Wpisz pozycję i liczbę znaków</li><li>Skopiuj</li></ul></div>
-<p>Po wybraniu MID w <a href="/pl/excel-left-mid-builder.html">Kreator LEFT/MID</a> otrzymasz formułę pobierającą znaki od pozycji początkowej.</p>
+<p lang="en">MID extracts text from the middle. Choosing "MID" in <a href="/pl/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> builds a formula with a start position and a length.</p>
 <h2>Kroki</h2>
 <ol>
-<li>Wybierz MID</li>
-<li>Wpisz pozycję i liczbę znaków</li>
-<li>Skopiuj</li>
+<li lang="en">Choose "MID" in "Method".</li>
+<li lang="en">In "Start position (for MID)", enter where to begin (the first character is 1).</li>
+<li lang="en">Enter the number of characters to take in "Characters".</li>
+<li lang="en">Check the result with a "Sample text".</li>
 </ol>
-<div class="note">Pierwszy znak ma pozycję 1.</div>
+<div class="note" lang="en">The start position counts from 1. Entering 0 errors.</div>
+<h2>Przykład</h2>
+<p lang="en">Taking 5 characters from the 5th of "ABC-12345".</p>
+<ul>
+<li lang="en">=MID(A2,5,5)</li>
+<li lang="en">Result: 12345</li>
+</ul>
+<h2 lang="en">How positions count</h2>
+<p lang="en">The positions in "ABC-12345":</p>
+<ul>
+<li lang="en">A=1, B=2, C=3, -=4, 1=5, 2=6, 3=7, 4=8, 5=9</li>
+</ul>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">Taking only a middle code from a part number</li>
+<li lang="en">Taking month or day from a date string (20261025)</li>
+<li lang="en">Splitting numbers made of fixed digits</li>
+</ul>
+<h2 lang="en">Splitting a date string</h2>
+<p lang="en">From the text "20261025" in A2, take year, month and day.</p>
+<ul>
+<li lang="en">Year: =MID(A2,1,4) → 2026</li>
+<li lang="en">Month: =MID(A2,5,2) → 10</li>
+<li lang="en">Day: =MID(A2,7,2) → 25</li>
+</ul>
+<h2 lang="en">Asking for more characters than remain</h2>
+<p lang="en">Asking for more than remain doesn't error; the remainder is returned.</p>
+<ul>
+<li lang="en">Example: =MID("ABC",2,10) → BC</li>
+</ul>
+<h2 lang="en">Start beyond the length</h2>
+<p lang="en">If the start exceeds the length, an empty string is returned.</p>
+<h2>Przykład</h2>
+<p lang="en">Wanted the region "TOKYO" from the product code "JP-TOKYO-0045". Specifying position 4 for 5 characters, =MID(A2,4,5), extracted it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Off by one</b>: counting from 0. Count from 1.</li>
+<li lang="en"><b>Lengths vary</b>: if part number lengths differ, positions aren't fixed. Consider using delimiters.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the result be used as a number?</h3>
+<p lang="en">MID's result is text. Convert with VALUE or "*1".</p>
+<h2>Podsumowanie</h2>
+<p lang="en">MID takes a start position and length. Positions count from 1.</p>
 <a class="cta" href="/pl/excel-left-mid-builder.html">Użyj „Utwórz formułę LEFT, MID lub RIGHT” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/excel-text-clean.html">Usuwanie zbędnych spacji i niewidocznych znaków z tekstu Excela</a>: Usuń zbędne spacje i niewidoczne znaki.</li><li><a href="/pl/text-to-columns.html">Podziel tekst na kolumny według separatora</a>: Podziel tekst na kolumny według separatora.</li><li><a href="/pl/excel-if-builder.html">Tworzenie formuły IF</a>: Utwórz formułę IF.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

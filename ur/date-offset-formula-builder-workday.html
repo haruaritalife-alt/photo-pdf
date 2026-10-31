@@ -215,14 +215,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>کام کے دن تلاش کرنا</h1>
 <p class="meta">شائع شدہ: 19 اکتوبر 2026 | اپ ڈیٹ: 19 اکتوبر 2026 | <a href="/about.html">تعارف (جاپانی)</a></p>
 <div class="points"><b>اہم نکات</b><ul><li>WORKDAY منتخب کریں</li><li>دنوں کی تعداد درج کریں</li><li>چھٹیاں درج کریں</li></ul></div>
-<p><a href="/ur/date-offset-formula-builder.html">تاریخ فارمولا بنانے والا</a> میں WORKDAY ہفتہ وار تعطیلات چھوڑ کر کچھ کام کے دنوں بعد کی تاریخ دیتا ہے۔</p>
+<p lang="en">Delivery and payment deadlines are often counted in "business days" excluding weekends. Choosing "WORKDAY" in <a href="/ur/date-offset-formula-builder.html">Build a Date Offset Formula</a> builds a business-day formula.</p>
 <h2>مراحل</h2>
 <ol>
-<li>WORKDAY منتخب کریں</li>
-<li>دنوں کی تعداد درج کریں</li>
-<li>چھٹیاں درج کریں</li>
+<li lang="en">Choose "WORKDAY" in "Method".</li>
+<li lang="en">Enter the "Date cell".</li>
+<li lang="en">Enter business days in "Amount to add" (negative to subtract).</li>
+<li lang="en">To exclude holidays too, enter the holiday list range in "Holiday range (for WORKDAY; may be empty)".</li>
+<li lang="en">Check the result with a "Sample date".</li>
 </ol>
-<div class="note">چھٹیاں بھی چھوڑنے کے لیے چھٹیوں کی رینج درج کریں۔</div>
+<div class="note" lang="en">The sample result excludes weekends only. Holidays aren't considered.</div>
+<h2>مثال</h2>
+<p lang="en">Finding 5 business days after the date in A2.</p>
+<ul>
+<li lang="en">No holidays: =WORKDAY(A2,5)</li>
+<li lang="en">With holidays: =WORKDAY(A2,5,E2:E20)</li>
+</ul>
+<p lang="en">Entering 2026-10-23 (Friday) with amount 1 shows "2026-10-23 → 2026-10-26 (weekends only)".</p>
+<h2 lang="en">How it counts</h2>
+<p lang="en">The base day isn't counted; counting starts from the next day.</p>
+<ul>
+<li lang="en">1 business day after Friday: next Monday</li>
+<li lang="en">5 business days after Monday: next Monday</li>
+</ul>
+<h2 lang="en">Making a holiday list</h2>
+<p lang="en">List holiday dates in a separate range and specify that range as the third argument.</p>
+<ul>
+<li lang="en">Example: list holiday dates in E2:E20</li>
+<li lang="en">Fix the range with $ so copying is safe</li>
+</ul>
+<h2 lang="en">Finding earlier business days</h2>
+<p lang="en">Enter a negative amount.</p>
+<ul>
+<li lang="en">3 business days earlier: =WORKDAY(A2,-3)</li>
+</ul>
+<h2>ان کے لیے موزوں</h2>
+<ul>
+<li lang="en">Finding delivery dates counted in business days</li>
+<li lang="en">Finding payment deadlines in business days</li>
+<li lang="en">Managing reply deadlines in business days</li>
+</ul>
+<h2 lang="en">Companies off on days other than weekends</h2>
+<p lang="en">Use WORKDAY.INTL for days off other than Sat/Sun.</p>
+<ul>
+<li lang="en">Example: =WORKDAY.INTL(A2,5,"0000011")</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Wanted a shipping date 5 business days after the order. Prepared a holiday list and used =WORKDAY(A2,5,$E$2:$E$20). Correct dates came out across holiday weekends.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Forgetting holidays</b>: holidays are counted as business days.</li>
+<li lang="en"><b>Sample vs real</b>: the tool's sample excludes weekends only. With holidays, check in actual cells.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want to count business days?</h3>
+<p lang="en">NETWORKDAYS gives the number of business days between two dates.</p>
+<h2>خلاصہ</h2>
+<p lang="en">WORKDAY for counting business days. A holiday list makes it more accurate.</p>
 <a class="cta" href="/ur/date-offset-formula-builder.html">«تاریخ آگے پیچھے کرنے کا فارمولا بنائیں» استعمال کریں (مفت)</a>
 <h2>وہ ٹولز جو اس کے ساتھ اچھے لگتے ہیں</h2><ul><li><a href="/ur/date-calculator.html">عمر، دو تاریخوں کے درمیان دن اور تاریخی فرق کا حساب</a>: عمر اور دو تاریخوں کے درمیان دن نکالیں۔</li><li><a href="/ur/datedif-formula-builder.html">DATEDIF فارمولا بنانا</a>: DATEDIF فارمولا بنائیں۔</li><li><a href="/ur/excel-serial-date.html">ایکسل سیریل ویلیو اور تاریخ کنورٹر</a>: ایکسل کی سیریل ویلیو اور تاریخیں تبدیل کریں۔</li></ul>
 <div class="tip"><p>اگر یہ گائیڈ مفید رہی تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ٹپ بھیجیں (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">تحفہ بھیجیں (ایمیزون وش لسٹ)</a></div>

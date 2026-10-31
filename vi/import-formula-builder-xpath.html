@@ -201,14 +201,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Nhập một phần của trang bằng XPath</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Chọn IMPORTXML</li><li>Nhập XPath</li><li>Sao chép</li></ul></div>
-<p>Trong <a href="/vi/import-formula-builder.html">Trình tạo nhập dữ liệu</a>, bạn có thể nhập một phần của trang bằng XPath như //title.</p>
+<p lang="en">To import just part of a page, such as the title or a price, use IMPORTXML with XPath. "IMPORTXML" in <a href="/vi/import-formula-builder.html">Build an IMPORTHTML Formula</a> builds the formula.</p>
 <h2>Các bước</h2>
 <ol>
-<li>Chọn IMPORTXML</li>
-<li>Nhập XPath</li>
-<li>Sao chép</li>
+<li lang="en">Choose "IMPORTXML" in "Method".</li>
+<li lang="en">Enter the "URL of the page to import".</li>
+<li lang="en">In "XPath (for IMPORTXML)", enter the spec for the part you want.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">XPath phụ thuộc vào thứ bạn muốn nhập.</div>
+<div class="note" lang="en">An empty XPath gives "The input is not valid."</div>
+<h2 lang="en">XPath examples</h2>
+<ul>
+<li lang="en">//title: the page title</li>
+<li lang="en">//h2: all level-2 headings</li>
+<li lang="en">//a/@href: all link targets</li>
+<li lang="en">//img/@src: all image URLs</li>
+</ul>
+<h2 lang="en">Formula example</h2>
+<ul>
+<li lang="en">=IMPORTXML("https://example.com","//title")</li>
+</ul>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Taking only the price from a product page</li>
+<li lang="en">Listing an article's headings</li>
+<li lang="en">Collecting link URLs</li>
+</ul>
+<h2 lang="en">Finding the XPath</h2>
+<p lang="en">In the browser's developer tools, right-click the element and choose "Copy XPath". It can be used as is.</p>
+<h2>Ví dụ</h2>
+<p lang="en">Wanted a list of blog article titles. After checking the heading element, specifying //h2 lined the titles up vertically.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#N/A (imported content is empty)</b>: the XPath doesn't match, or the element is built later by JavaScript.</li>
+<li lang="en"><b>Quotes</b>: if the XPath contains double quotes, use single quotes.</li>
+<li lang="en"><b>Site terms</b>: some sites prohibit importing.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Some parts won't import</h3>
+<p lang="en">Dynamically built elements can't be imported.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">Use XPath to specify only the part you want.</p>
 <a class="cta" href="/vi/import-formula-builder.html">Dùng “Tạo công thức IMPORTHTML” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/importrange-builder.html">Tạo công thức IMPORTRANGE</a>: Tạo công thức IMPORTRANGE.</li><li><a href="/vi/query-formula-builder.html">Tạo công thức QUERY</a>: Tạo công thức QUERY.</li><li><a href="/vi/filter-formula-builder.html">Tạo công thức FILTER</a>: Tạo công thức FILTER.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

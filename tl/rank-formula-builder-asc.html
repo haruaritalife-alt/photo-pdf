@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pag-rank mula sa pinakamaliit</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Piliin ang RANK-ASC</li><li>Ilagay ang saklaw</li><li>Kopyahin</li></ul></div>
-<p>Sa <a href="/tl/rank-formula-builder.html">Rank Builder</a>, maaari ka ring mag-rank nang nauuna ang mas maliliit na halaga, tulad ng oras sa karera.</p>
+<p lang="en">RANK is descending by default. But for times or anything where smaller is better, you want ascending. "RANK-ASC" in <a href="/tl/rank-formula-builder.html">Build a Rank Formula</a> builds that formula.</p>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Piliin ang RANK-ASC</li>
-<li>Ilagay ang saklaw</li>
-<li>Kopyahin</li>
+<li lang="en">Choose "RANK-ASC" in "Method".</li>
+<li lang="en">Enter "Cell to rank" and "Range to compare".</li>
+<li lang="en">Check the last argument of the formula is "1".</li>
 </ol>
-<div class="note">Ang 0 ay mula sa pinakamalaki at ang 1 ay mula sa pinakamaliit.</div>
+<div class="note" lang="en">RANK's third argument: 0 is descending (large first), 1 is ascending (small first).</div>
+<h2>Halimbawa</h2>
+<p lang="en">Ranking the running time in B2 within B2:B100, fastest first.</p>
+<ul>
+<li lang="en">=RANK(B2,$B$2:$B$100,1)</li>
+</ul>
+<p lang="en">The smallest value is 1st.</p>
+<h2>Resulta ng pagsubok</h2>
+<p lang="en">Entering "9.8,10.2,10.5,9.9" as samples and "9.8" as the number to rank gives:</p>
+<ul>
+<li lang="en">RANK (descending): 4th</li>
+<li lang="en">RANK-ASC (ascending): 1st</li>
+</ul>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Values where shorter is better, like running or work times</li>
+<li lang="en">Values where lower is better, like golf scores</li>
+<li lang="en">Cheapest-first prices</li>
+<li lang="en">Values where fewer is better, like defect counts</li>
+</ul>
+<h2 lang="en">Remembering the third argument</h2>
+<ul>
+<li lang="en">0 (or omitted): large first. Scores, sales, etc.</li>
+<li lang="en">1: small first. Times, prices, etc.</li>
+</ul>
+<h2 lang="en">Relation between descending and ascending</h2>
+<p lang="en">With N people and no ties:</p>
+<ul>
+<li lang="en">Ascending rank = N + 1 − descending rank</li>
+</ul>
+<h2>Halimbawa</h2>
+<p lang="en">Wanted to rank 100m sprint records fastest first. Since shorter is better, set the third argument to 1, and =RANK(B2,$B$2:$B$11,1) made the shortest record 1st.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leaving it descending</b>: with times, the slowest person ends up 1st.</li>
+<li lang="en"><b>Time formats</b>: even in forms like "0:09.8", smaller values are faster.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I just want to sort low to high?</h3>
+<p lang="en">SORT or the sort feature works. Use RANK when you need the rank numbers.</p>
+<h2>Buod</h2>
+<p lang="en">For smaller-is-better values, set RANK's third argument to 1.</p>
 <a class="cta" href="/tl/rank-formula-builder.html">Gamitin ang “Gumawa ng rank formula” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/sumif-formula-builder.html">Gumawa ng SUMIF o COUNTIF formula</a>: Gumawa ng mga formulang SUMIF at COUNTIF.</li><li><a href="/tl/percent-calculator.html">Kalkulahin ang mga Porsiyento, Diskuwento at % na Pagbabago</a>: Agad na kalkulahin ang mga porsiyento, diskuwento at % na pagbabago.</li><li><a href="/tl/excel-if-builder.html">Gumawa ng IF formula</a>: Gumawa ng IF formula.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

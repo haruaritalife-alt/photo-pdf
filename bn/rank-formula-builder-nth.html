@@ -201,14 +201,64 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>N-তম মান</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>LARGE বেছে নিন</li><li>কততম তা লিখুন</li><li>কপি করুন</li></ul></div>
-<p><a href="/bn/rank-formula-builder.html">র‍্যাঙ্ক সূত্র নির্মাতা</a>-য় LARGE ও SMALL N-তম সর্বোচ্চ বা সর্বনিম্ন মান দেয়।</p>
+<p lang="en">"The 1st-place score", "the top 3 scores", "second from the bottom". To pull out the Nth value itself rather than a rank, use LARGE and SMALL. "LARGE" and "SMALL" in <a href="/bn/rank-formula-builder.html">Build a Rank Formula</a> build those formulas.</p>
+<h2 lang="en">The two functions</h2>
+<ul>
+<li lang="en"><b>LARGE</b>: the Nth value counting from the largest</li>
+<li lang="en"><b>SMALL</b>: the Nth value counting from the smallest</li>
+</ul>
 <h2>ধাপ</h2>
 <ol>
-<li>LARGE বেছে নিন</li>
-<li>কততম তা লিখুন</li>
-<li>কপি করুন</li>
+<li lang="en">Choose "LARGE" or "SMALL" in "Method".</li>
+<li lang="en">Enter the "Range to compare".</li>
+<li lang="en">In "Which one (for LARGE and SMALL)", enter a number.</li>
+<li lang="en">Check the result with "Sample numbers".</li>
 </ol>
-<div class="note">সর্বোচ্চ বা সর্বনিম্ন পেতে ১ লিখুন।</div>
+<div class="note" lang="en">For LARGE and SMALL, the "Cell to rank" field isn't used.</div>
+<h2>উদাহরণ</h2>
+<p lang="en">Finding the 3rd largest value in B2:B100.</p>
+<ul>
+<li lang="en">=LARGE($B$2:$B$100,3)</li>
+</ul>
+<p lang="en">Entering "90,80,80,70" as samples and "2" as which one shows "80" for LARGE.</p>
+<h2 lang="en">Listing the top 3</h2>
+<p lang="en">Put the 1st, 2nd and 3rd in separate cells.</p>
+<ul>
+<li lang="en">1st: =LARGE($B$2:$B$100,1)</li>
+<li lang="en">2nd: =LARGE($B$2:$B$100,2)</li>
+<li lang="en">3rd: =LARGE($B$2:$B$100,3)</li>
+</ul>
+<h2 lang="en">Showing the names too</h2>
+<p lang="en">To show the name matching a value, combine INDEX and MATCH.</p>
+<ul>
+<li lang="en">Example: =INDEX($A$2:$A$100,MATCH(D2,$B$2:$B$100,0))</li>
+</ul>
+<p lang="en">Put the LARGE value in D2. With ties, only the first name appears.</p>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Pulling out the top 3 scores or sales</li>
+<li lang="en">Knowing the highest or lowest value (the 1st)</li>
+<li lang="en">Pulling out values near the middle</li>
+</ul>
+<h2 lang="en">Relation to MAX and MIN</h2>
+<ul>
+<li lang="en">MAX(range) = LARGE(range,1)</li>
+<li lang="en">MIN(range) = SMALL(range,1)</li>
+</ul>
+<h2 lang="en">Number beyond the range</h2>
+<p lang="en">Specifying a number larger than the item count gives #NUM!. The sample result also shows "#NUM!".</p>
+<h2>উদাহরণ</h2>
+<p lang="en">Wanted the top 3 sales on a dashboard. LARGE found the 1st to 3rd, with INDEX and MATCH giving names beside them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Ties</b>: LARGE counts equal values separately. For 90, 80, 80 the 2nd and 3rd are both 80.</li>
+<li lang="en"><b>Blanks and text</b>: ignored.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the average of the top N</h3>
+<p lang="en">Use an array form: =AVERAGE(LARGE(range,{1,2,3})).</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">LARGE and SMALL for the Nth value; RANK for the rank itself.</p>
 <a class="cta" href="/bn/rank-formula-builder.html">“র‍্যাঙ্কের সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/sumif-formula-builder.html">SUMIF বা COUNTIF সূত্র তৈরি করুন</a>: SUMIF ও COUNTIF সূত্র তৈরি করুন।</li><li><a href="/bn/percent-calculator.html">শতাংশ, ছাড় ও % পরিবর্তন গণনা</a>: শতাংশ, ছাড় ও % পরিবর্তন মুহূর্তে হিসাব করুন।</li><li><a href="/bn/excel-if-builder.html">IF সূত্র তৈরি করুন</a>: একটি IF সূত্র তৈরি করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

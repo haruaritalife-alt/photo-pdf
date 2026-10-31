@@ -201,14 +201,64 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>N번째 값</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>LARGE 선택</li><li>몇 번째인지 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/rank-formula-builder.html">순위 수식 만들기</a>에서 LARGE와 SMALL은 N번째로 크거나 작은 값을 돌려줍니다.</p>
+<p lang="en">"The 1st-place score", "the top 3 scores", "second from the bottom". To pull out the Nth value itself rather than a rank, use LARGE and SMALL. "LARGE" and "SMALL" in <a href="/ko/rank-formula-builder.html">Build a Rank Formula</a> build those formulas.</p>
+<h2 lang="en">The two functions</h2>
+<ul>
+<li lang="en"><b>LARGE</b>: the Nth value counting from the largest</li>
+<li lang="en"><b>SMALL</b>: the Nth value counting from the smallest</li>
+</ul>
 <h2>순서</h2>
 <ol>
-<li>LARGE 선택</li>
-<li>몇 번째인지 입력</li>
-<li>복사</li>
+<li lang="en">Choose "LARGE" or "SMALL" in "Method".</li>
+<li lang="en">Enter the "Range to compare".</li>
+<li lang="en">In "Which one (for LARGE and SMALL)", enter a number.</li>
+<li lang="en">Check the result with "Sample numbers".</li>
 </ol>
-<div class="note">1을 넣으면 최댓값 또는 최솟값입니다.</div>
+<div class="note" lang="en">For LARGE and SMALL, the "Cell to rank" field isn't used.</div>
+<h2>예</h2>
+<p lang="en">Finding the 3rd largest value in B2:B100.</p>
+<ul>
+<li lang="en">=LARGE($B$2:$B$100,3)</li>
+</ul>
+<p lang="en">Entering "90,80,80,70" as samples and "2" as which one shows "80" for LARGE.</p>
+<h2 lang="en">Listing the top 3</h2>
+<p lang="en">Put the 1st, 2nd and 3rd in separate cells.</p>
+<ul>
+<li lang="en">1st: =LARGE($B$2:$B$100,1)</li>
+<li lang="en">2nd: =LARGE($B$2:$B$100,2)</li>
+<li lang="en">3rd: =LARGE($B$2:$B$100,3)</li>
+</ul>
+<h2 lang="en">Showing the names too</h2>
+<p lang="en">To show the name matching a value, combine INDEX and MATCH.</p>
+<ul>
+<li lang="en">Example: =INDEX($A$2:$A$100,MATCH(D2,$B$2:$B$100,0))</li>
+</ul>
+<p lang="en">Put the LARGE value in D2. With ties, only the first name appears.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Pulling out the top 3 scores or sales</li>
+<li lang="en">Knowing the highest or lowest value (the 1st)</li>
+<li lang="en">Pulling out values near the middle</li>
+</ul>
+<h2 lang="en">Relation to MAX and MIN</h2>
+<ul>
+<li lang="en">MAX(range) = LARGE(range,1)</li>
+<li lang="en">MIN(range) = SMALL(range,1)</li>
+</ul>
+<h2 lang="en">Number beyond the range</h2>
+<p lang="en">Specifying a number larger than the item count gives #NUM!. The sample result also shows "#NUM!".</p>
+<h2>예</h2>
+<p lang="en">Wanted the top 3 sales on a dashboard. LARGE found the 1st to 3rd, with INDEX and MATCH giving names beside them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Ties</b>: LARGE counts equal values separately. For 90, 80, 80 the 2nd and 3rd are both 80.</li>
+<li lang="en"><b>Blanks and text</b>: ignored.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the average of the top N</h3>
+<p lang="en">Use an array form: =AVERAGE(LARGE(range,{1,2,3})).</p>
+<h2>요약</h2>
+<p lang="en">LARGE and SMALL for the Nth value; RANK for the rank itself.</p>
 <a class="cta" href="/ko/rank-formula-builder.html">“순위 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li><li><a href="/ko/percent-calculator.html">퍼센트, 할인, 증감률 계산</a>: 퍼센트, 할인, 증감률을 바로 계산합니다.</li><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

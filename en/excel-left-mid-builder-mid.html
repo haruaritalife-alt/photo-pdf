@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Taking Characters From the Middle</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose MID</li><li>Enter the position and count</li><li>Copy it</li></ul></div>
-<p>Choosing MID in <a href="/en/excel-left-mid-builder.html">LEFT/MID Builder</a> gives a formula that takes characters from a start position.</p>
+<p>MID extracts text from the middle. Choosing "MID" in <a href="/en/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> builds a formula with a start position and a length.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose MID</li>
-<li>Enter the position and count</li>
-<li>Copy it</li>
+<li>Choose "MID" in "Method".</li>
+<li>In "Start position (for MID)", enter where to begin (the first character is 1).</li>
+<li>Enter the number of characters to take in "Characters".</li>
+<li>Check the result with a "Sample text".</li>
 </ol>
-<div class="note">The first character is position 1.</div>
+<div class="note">The start position counts from 1. Entering 0 errors.</div>
+<h2>Example</h2>
+<p>Taking 5 characters from the 5th of "ABC-12345".</p>
+<ul>
+<li>=MID(A2,5,5)</li>
+<li>Result: 12345</li>
+</ul>
+<h2>How positions count</h2>
+<p>The positions in "ABC-12345":</p>
+<ul>
+<li>A=1, B=2, C=3, -=4, 1=5, 2=6, 3=7, 4=8, 5=9</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Taking only a middle code from a part number</li>
+<li>Taking month or day from a date string (20261025)</li>
+<li>Splitting numbers made of fixed digits</li>
+</ul>
+<h2>Splitting a date string</h2>
+<p>From the text "20261025" in A2, take year, month and day.</p>
+<ul>
+<li>Year: =MID(A2,1,4) → 2026</li>
+<li>Month: =MID(A2,5,2) → 10</li>
+<li>Day: =MID(A2,7,2) → 25</li>
+</ul>
+<h2>Asking for more characters than remain</h2>
+<p>Asking for more than remain doesn't error; the remainder is returned.</p>
+<ul>
+<li>Example: =MID("ABC",2,10) → BC</li>
+</ul>
+<h2>Start beyond the length</h2>
+<p>If the start exceeds the length, an empty string is returned.</p>
+<h2>Example</h2>
+<p>Wanted the region "TOKYO" from the product code "JP-TOKYO-0045". Specifying position 4 for 5 characters, =MID(A2,4,5), extracted it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Off by one</b>: counting from 0. Count from 1.</li>
+<li><b>Lengths vary</b>: if part number lengths differ, positions aren't fixed. Consider using delimiters.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can the result be used as a number?</h3>
+<p>MID's result is text. Convert with VALUE or "*1".</p>
+<h2>Summary</h2>
+<p>MID takes a start position and length. Positions count from 1.</p>
 <a class="cta" href="/en/excel-left-mid-builder.html">Use "Build a LEFT, MID or RIGHT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/en/text-to-columns.html">Split Text into Columns by a Delimiter</a>: Split text into columns by a delimiter.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

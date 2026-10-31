@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>When It Is Not Found</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>See the second one</li><li>Copy it</li></ul></div>
-<p><a href="/en/excel-left-mid-builder.html">LEFT/MID Builder</a> also shows a formula with IFERROR that returns the original text when nothing is found.</p>
+<p>If the delimiter isn't found, FIND returns a #VALUE! error. The second formula of <a href="/en/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> is wrapped in IFERROR to return the original text when not found.</p>
+<h2>The two formulas</h2>
+<ul>
+<li>First: =LEFT(A2,FIND("@",A2)-1)</li>
+<li>Second: =IFERROR(LEFT(A2,FIND("@",A2)-1),A2)</li>
+</ul>
+<p>For cells without "@", the second returns the original text instead of an error.</p>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>See the second one</li>
-<li>Copy it</li>
+<li>Enter the cell, method and delimiter.</li>
+<li>Check the "formula returning the original if not found".</li>
+<li>Copy with "Copy the second".</li>
 </ol>
-<div class="note">Use it to avoid #VALUE!.</div>
+<div class="note">If data without the delimiter is mixed in, the second formula is safer.</div>
+<h2>Reading the sample result</h2>
+<p>Entering text without the delimiter in "Sample text" shows "Sample result: #VALUE!". It shows the first formula would error like this.</p>
+<h2>If you want a different value than the original</h2>
+<p>Rewrite the final "A2" of the formula.</p>
+<ul>
+<li>Blank: IFERROR(…,"")</li>
+<li>Show "None": IFERROR(…,"None")</li>
+<li>The number 0: IFERROR(…,0)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Data mixing rows with and without the delimiter</li>
+<li>Avoiding errors partway down a list</li>
+<li>Avoiding errors when feeding other functions</li>
+</ul>
+<h2>Caution</h2>
+<p>IFERROR hides all errors, including causes other than the delimiter. Confirm the first formula works, then use the second, for safety.</p>
+<h2>Another way</h2>
+<p>IF with ISNUMBER can check for the delimiter.</p>
+<ul>
+<li>Example: =IF(ISNUMBER(FIND("@",A2)),LEFT(A2,FIND("@",A2)-1),A2)</li>
+</ul>
+<h2>Example</h2>
+<p>An email list had rows without "@". The first formula lined up #VALUE!, but the second returned the original text and tidied the list.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Hiding too much</b>: wrong formulas show no error, so go unnoticed.</li>
+<li><b>Not noticing the original is returned</b>: you may not tell whether the delimiter was absent or extraction worked.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I only want to check for the delimiter?</h3>
+<p>=ISNUMBER(FIND("@",A2)) is TRUE if the delimiter exists.</p>
+<h2>Summary</h2>
+<p>When rows without the delimiter are mixed in, use the IFERROR-wrapped second formula.</p>
 <a class="cta" href="/en/excel-left-mid-builder.html">Use "Build a LEFT, MID or RIGHT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/en/text-to-columns.html">Split Text into Columns by a Delimiter</a>: Split text into columns by a delimiter.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

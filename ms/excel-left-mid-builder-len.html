@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Kira aksara</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Dikemas kini: 19 Okt 2026 | <a href="/about.html">Perihal (Jepun)</a></p>
 <div class="points"><b>Perkara penting</b><ul><li>Pilih LEN</li><li>Lihat formula</li><li>Salin</li></ul></div>
-<p>Memilih LEN dalam <a href="/ms/excel-left-mid-builder.html">Pembina LEFT/MID</a> memberikan formula yang mengira aksara dalam sel.</p>
+<p lang="en">LEN counts characters. Choosing "LEN" in <a href="/ms/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> builds the formula. It's also handy when you want the length before extracting text.</p>
 <h2>Langkah</h2>
 <ol>
-<li>Pilih LEN</li>
-<li>Lihat formula</li>
-<li>Salin</li>
+<li lang="en">Choose "LEN" in "Method".</li>
+<li lang="en">Enter the "Cell to extract from".</li>
+<li lang="en">Entering a "Sample text" shows the character count.</li>
 </ol>
-<div class="note">Ruang kosong dikira sebagai aksara.</div>
+<div class="note" lang="en">Full-width, half-width and spaces each count as one.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">=LEN(A2)</li>
+<li lang="en">"ABC-12345" → 9</li>
+<li lang="en">"東京都" → 3</li>
+<li lang="en">"A B" (with a half-width space) → 3</li>
+</ul>
+<h2>Sesuai untuk</h2>
+<ul>
+<li lang="en">Checking character limits (e.g. 31 for sheet names, 140 for a tweet)</li>
+<li lang="en">Checking for extra spaces</li>
+<li lang="en">Checking part numbers have consistent digit counts</li>
+</ul>
+<h2 lang="en">Finding extra spaces</h2>
+<p lang="en">If two items look the same but LEN differs, extra characters like spaces are present.</p>
+<ul>
+<li lang="en">"Tokyo" → 5</li>
+<li lang="en">"Tokyo " (trailing half-width space) → 6</li>
+</ul>
+<p lang="en">When VLOOKUP doesn't match, checking with LEN is a standard step.</p>
+<h2 lang="en">Checking digit counts</h2>
+<p lang="en">With a rule that part numbers must be 8 characters, you can find rows that differ.</p>
+<ul>
+<li lang="en">Example: =IF(LEN(A2)=8,"OK","Length error")</li>
+</ul>
+<h2 lang="en">Combining with other functions</h2>
+<ul>
+<li lang="en">Remove the last 3 characters: =LEFT(A2,LEN(A2)-3)</li>
+<li lang="en">Count a specific character: =LEN(A2)-LEN(SUBSTITUTE(A2,"-",""))</li>
+</ul>
+<h2 lang="en">Counting bytes</h2>
+<p lang="en">To count bytes rather than characters, there's LENB. In some environments full-width counts as 2 bytes.</p>
+<h2>Contoh</h2>
+<p lang="en">Wanted to check that product names stayed within a length limit (20 full-width characters). Building a list with =LEN(A2) let me filter rows over 20.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Line breaks count too</b>: in-cell line breaks are included.</li>
+<li lang="en"><b>Digits of numbers</b>: LEN counts digits of number cells, but the look (thousands separators) isn't included.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is an emoji counted as one?</h3>
+<p lang="en">In some environments it counts as two.</p>
+<h2>Ringkasan</h2>
+<p lang="en">LEN counts characters and also helps find extra spaces.</p>
 <a class="cta" href="/ms/excel-left-mid-builder.html">Guna “Bina formula LEFT, MID atau RIGHT” (percuma)</a>
 <h2>Alat yang sepadan dengan ini</h2><ul><li><a href="/ms/excel-text-clean.html">Membuang ruang berlebihan dan aksara tidak kelihatan daripada teks Excel</a>: Buang ruang berlebihan dan aksara tidak kelihatan.</li><li><a href="/ms/text-to-columns.html">Bahagikan Teks kepada Lajur dengan Pembatas</a>: Bahagikan teks kepada lajur dengan pembatas.</li><li><a href="/ms/excel-if-builder.html">Cipta formula IF</a>: Cipta formula IF.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil amat dihargai.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Hantar tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hantar hadiah (senarai hajat Amazon)</a></div>

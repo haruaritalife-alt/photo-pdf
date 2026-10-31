@@ -201,14 +201,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>날짜에서 빼기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>음수 입력</li><li>수식 보기</li><li>확인하기</li></ul></div>
-<p><a href="/ko/date-offset-formula-builder.html">날짜 계산 수식 만들기</a>에서 음수를 넣으면 더 이전의 날짜가 나옵니다.</p>
+<p lang="en">"30 days earlier", "3 months earlier", "2 business days earlier". To subtract dates, enter a negative amount. In <a href="/ko/date-offset-formula-builder.html">Build a Date Offset Formula</a>, all four methods accept negatives.</p>
 <h2>순서</h2>
 <ol>
-<li>음수 입력</li>
-<li>수식 보기</li>
-<li>확인하기</li>
+<li lang="en">Choose a "Method".</li>
+<li lang="en">Enter a negative number in "Amount to add" (e.g. -30).</li>
+<li lang="en">Check the negative number is in the formula.</li>
 </ol>
-<div class="note">시험용 날짜로 결과를 확인할 수 있습니다.</div>
+<div class="note" lang="en">The "Amount to add" field is used as is when subtracting too. There is no separate subtraction field.</div>
+<h2 lang="en">Examples by method</h2>
+<ul>
+<li lang="en"><b>PLUS</b>: 30 days earlier → =A2-30</li>
+<li lang="en"><b>EDATE</b>: 3 months earlier → =EDATE(A2,-3)</li>
+<li lang="en"><b>EOMONTH</b>: previous month-end → =EOMONTH(A2,-1)</li>
+<li lang="en"><b>WORKDAY</b>: 2 business days earlier → =WORKDAY(A2,-2)</li>
+</ul>
+<h2 lang="en">Sample results</h2>
+<p lang="en">For the sample date 2026-10-25:</p>
+<ul>
+<li lang="en">PLUS, -30: 2026-09-25</li>
+<li lang="en">EDATE, -3: 2026-07-25</li>
+<li lang="en">EOMONTH, -1: 2026-09-30</li>
+<li lang="en">WORKDAY, -2: 2026-10-22 (2 business days before a Sunday is Thursday)</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Sending notices N days before a deadline</li>
+<li lang="en">Working back from a start date to when to begin preparing</li>
+<li lang="en">Comparing past dates with a reference</li>
+</ul>
+<h2 lang="en">Working back example</h2>
+<p lang="en">To start work 5 business days before the due date:</p>
+<ul>
+<li lang="en">=WORKDAY(due-date cell,-5)</li>
+</ul>
+<h2 lang="en">Finding the gap between two dates</h2>
+<p lang="en">Subtracting a date from a date gives days.</p>
+<ul>
+<li lang="en">=B2-A2 gives days</li>
+<li lang="en">DATEDIF can give year or month gaps too</li>
+</ul>
+<h2 lang="en">Applications</h2>
+<ul>
+<li lang="en">Producing a reminder date 30 days before renewal</li>
+<li lang="en">Making 7 days before the invoice date the prep date</li>
+</ul>
+<h2>예</h2>
+<p lang="en">A rule required contacting 60 days before contract expiry. From the expiry-date column, =A2-60 lined up the contact deadlines.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Date minus date</b>: the result is days (a number), not a date. Mind the display format.</li>
+<li lang="en"><b>Forgetting the minus</b>: with plus, you get a future date.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want to switch "before" and "after"?</h3>
+<p lang="en">Just swap the sign of the amount.</p>
+<h2>요약</h2>
+<p lang="en">To subtract, enter a negative. It's the same for every method.</p>
 <a class="cta" href="/ko/date-offset-formula-builder.html">“날짜 계산 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/date-calculator.html">나이, 날짜 간 일수, 날짜 가감 계산</a>: 나이와 날짜 간 일수를 계산합니다.</li><li><a href="/ko/datedif-formula-builder.html">DATEDIF 수식 만들기</a>: DATEDIF 수식을 만듭니다.</li><li><a href="/ko/excel-serial-date.html">엑셀 일련번호·날짜 변환기</a>: 엑셀의 일련번호와 날짜를 변환합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

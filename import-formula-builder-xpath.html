@@ -200,14 +200,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>XPathで一部を取り込む</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>IMPORTXMLを選ぶ</li><li>XPathを入れる</li><li>コピーする</li></ul></div>
-<p><a href="/import-formula-builder.html">取り込み式の作成</a> では、//titleのようなXPathでページの一部を取り込めます。</p>
+<p>ページの一部だけ、たとえばタイトルや価格だけを取り込むなら、IMPORTXMLとXPathを使います。<a href="/import-formula-builder.html">IMPORTHTMLなどの式を作る</a> の「IMPORTXML」で、式を作ります。</p>
 <h2>手順</h2>
 <ol>
-<li>IMPORTXMLを選ぶ</li>
-<li>XPathを入れる</li>
-<li>コピーする</li>
+<li>「方法」で「IMPORTXML」を選ぶ。</li>
+<li>「取り込むページのURL」を入れる。</li>
+<li>「XPath（IMPORTXML用）」に、取りたい部分の指定を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">XPathの書き方は、取り込みたい場所によって変わります。</div>
+<div class="note">XPathが空だと、「入力の形が正しくありません。」と出ます。</div>
+<h2>XPathの例</h2>
+<ul>
+<li>//title：ページのタイトル</li>
+<li>//h2：すべての見出し2</li>
+<li>//a/@href：すべてのリンク先</li>
+<li>//img/@src：すべての画像のURL</li>
+</ul>
+<h2>式の例</h2>
+<ul>
+<li>=IMPORTXML("https://example.com","//title")</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>商品ページの価格だけを取りたい</li>
+<li>記事の見出しを、一覧にしたい</li>
+<li>リンク先のURLを、集めたい</li>
+</ul>
+<h2>XPathの見つけ方</h2>
+<p>ブラウザの開発者ツールで、取りたい要素を右クリックし、「XPathをコピー」できます。そのまま使えます。</p>
+<h2>例</h2>
+<p>ブログの記事タイトルを一覧にしたかった。見出しの要素を調べ、//h2 を指定すると、タイトルが縦に並んだ。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>#N/A（インポートされたコンテンツが空）</b>：XPathが合っていない。または、JavaScriptで後から作られる要素。</li>
+<li><b>引用符</b>：XPathの中に二重引用符がある場合は、単一引用符にする。</li>
+<li><b>サイトの規約</b>：取り込みを禁じるサイトがあります。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>一部だけ取れません</h3>
+<p>動的に作られる要素は、取れません。</p>
+<h2>まとめ</h2>
+<p>XPathで、欲しい部分だけを指定します。</p>
 <a class="cta" href="/import-formula-builder.html">IMPORTHTMLなどの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/importrange-builder.html">IMPORTRANGEの式を作る</a>：IMPORTRANGEの式を作ります。</li><li><a href="/query-formula-builder.html">QUERYの式を作る</a>：QUERY関数の式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +252,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Importing Part of a Page With XPath</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose IMPORTXML</li><li>Enter the XPath</li><li>Copy it</li></ul></div>
-<p>In <a href="/import-formula-builder.html">Import Builder</a> you can import part of a page with an XPath such as //title.</p>
+<p>To import just part of a page, such as the title or a price, use IMPORTXML with XPath. "IMPORTXML" in <a href="/import-formula-builder.html">Build an IMPORTHTML Formula</a> builds the formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose IMPORTXML</li>
-<li>Enter the XPath</li>
-<li>Copy it</li>
+<li>Choose "IMPORTXML" in "Method".</li>
+<li>Enter the "URL of the page to import".</li>
+<li>In "XPath (for IMPORTXML)", enter the spec for the part you want.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">The XPath depends on what you want to import.</div>
+<div class="note">An empty XPath gives "The input is not valid."</div>
+<h2>XPath examples</h2>
+<ul>
+<li>//title: the page title</li>
+<li>//h2: all level-2 headings</li>
+<li>//a/@href: all link targets</li>
+<li>//img/@src: all image URLs</li>
+</ul>
+<h2>Formula example</h2>
+<ul>
+<li>=IMPORTXML("https://example.com","//title")</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Taking only the price from a product page</li>
+<li>Listing an article's headings</li>
+<li>Collecting link URLs</li>
+</ul>
+<h2>Finding the XPath</h2>
+<p>In the browser's developer tools, right-click the element and choose "Copy XPath". It can be used as is.</p>
+<h2>Example</h2>
+<p>Wanted a list of blog article titles. After checking the heading element, specifying //h2 lined the titles up vertically.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>#N/A (imported content is empty)</b>: the XPath doesn't match, or the element is built later by JavaScript.</li>
+<li><b>Quotes</b>: if the XPath contains double quotes, use single quotes.</li>
+<li><b>Site terms</b>: some sites prohibit importing.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Some parts won't import</h3>
+<p>Dynamically built elements can't be imported.</p>
+<h2>Summary</h2>
+<p>Use XPath to specify only the part you want.</p>
 <a class="cta" href="/import-formula-builder.html">Use "Build an IMPORTHTML Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/query-formula-builder.html">Build a QUERY Formula</a>: Build a QUERY formula.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

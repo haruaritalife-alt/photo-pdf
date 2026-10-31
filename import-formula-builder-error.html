@@ -200,14 +200,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>エラーのとき</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>式を作る</li><li>2つ目を選ぶ</li><li>コピーする</li></ul></div>
-<p><a href="/import-formula-builder.html">取り込み式の作成</a> では、IFERRORで包んだ、エラーのとき空にする式も出ます。</p>
+<p>取り込みの式は、サイトの都合でエラーになりやすい関数です。そこで、エラーのときは空にする式を使います。<a href="/import-formula-builder.html">IMPORTHTMLなどの式を作る</a> の2つ目の欄が、それです。</p>
 <h2>手順</h2>
 <ol>
-<li>式を作る</li>
-<li>2つ目を選ぶ</li>
-<li>コピーする</li>
+<li>取り込みの式を作る。</li>
+<li>2つ目の「エラーのとき空にする式」を確かめる。</li>
+<li>「2つ目をコピー」で、コピーして貼る。</li>
 </ol>
-<div class="note">取り込めないページでは、エラーになることがあります。</div>
+<div class="note">形は、=IFERROR(取り込みの式,"") です。エラーのとき、セルが空になります。</div>
+<h2>例</h2>
+<ul>
+<li>=IFERROR(IMPORTHTML("https://example.com/page","table",1),"")</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>取り込み先が、時々つながらない</li>
+<li>エラー表示を、見せたくない</li>
+<li>集計の元になるセルで、エラーを避けたい</li>
+</ul>
+<h2>注意</h2>
+<p>エラーを隠すと、原因に気づきにくくなります。最初は1つ目の式で確かめ、安定してから2つ目に替えます。</p>
+<h2>よくあるエラー</h2>
+<ul>
+<li><b>#N/A</b>：取り込みの結果が空。</li>
+<li><b>#REF!</b>：広がる先に値がある。</li>
+<li><b>Loading…</b>：読み込み中。</li>
+<li><b>Resource at url not found</b>：URLが違う、またはページが消えた。</li>
+</ul>
+<h2>例</h2>
+<p>朝にシートを開くと、時々エラーだった。IFERRORで包むと、エラーのときは空になり、集計が崩れなくなった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>エラーの理由が見えない</b>：原因を探すときは、1つ目の式で。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>前の値を残せますか？</h3>
+<p>関数だけでは、難しいです。スクリプトで保存する方法があります。</p>
+<h2>まとめ</h2>
+<p>安定運用には、IFERRORで包みましょう。</p>
 <a class="cta" href="/import-formula-builder.html">IMPORTHTMLなどの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/importrange-builder.html">IMPORTRANGEの式を作る</a>：IMPORTRANGEの式を作ります。</li><li><a href="/query-formula-builder.html">QUERYの式を作る</a>：QUERY関数の式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +249,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>When There Is an Error</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>Pick the second</li><li>Copy it</li></ul></div>
-<p><a href="/import-formula-builder.html">Import Builder</a> also shows a version wrapped in IFERROR that goes blank on error.</p>
+<p>Import formulas easily error depending on the site. So use the formula that blanks on error. That's the second field in <a href="/import-formula-builder.html">Build an IMPORTHTML Formula</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>Pick the second</li>
-<li>Copy it</li>
+<li>Build the import formula.</li>
+<li>Check the second "Formula that blanks on error".</li>
+<li>Copy it with "Copy second" and paste.</li>
 </ol>
-<div class="note">Some pages cannot be imported and show an error.</div>
+<div class="note">Its form is =IFERROR(import formula,""). The cell becomes empty on error.</div>
+<h2>Example</h2>
+<ul>
+<li>=IFERROR(IMPORTHTML("https://example.com/page","table",1),"")</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Sources that sometimes fail to connect</li>
+<li>Hiding error displays</li>
+<li>Avoiding errors in cells that feed totals</li>
+</ul>
+<h2>Caution</h2>
+<p>Hiding errors makes causes harder to notice. Test with the first formula, then switch to the second once stable.</p>
+<h2>Common errors</h2>
+<ul>
+<li><b>#N/A</b>: the import result is empty.</li>
+<li><b>#REF!</b>: values are in the spill range.</li>
+<li><b>Loading…</b>: still loading.</li>
+<li><b>Resource at url not found</b>: wrong URL, or the page is gone.</li>
+</ul>
+<h2>Example</h2>
+<p>The sheet sometimes showed errors in the morning. Wrapping in IFERROR left blanks on error, and totals stopped breaking.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Can't see the reason</b>: use the first formula when hunting causes.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I keep the previous value?</h3>
+<p>Hard with functions alone. A script can save values.</p>
+<h2>Summary</h2>
+<p>For stable operation, wrap in IFERROR.</p>
 <a class="cta" href="/import-formula-builder.html">Use "Build an IMPORTHTML Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/query-formula-builder.html">Build a QUERY Formula</a>: Build a QUERY formula.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

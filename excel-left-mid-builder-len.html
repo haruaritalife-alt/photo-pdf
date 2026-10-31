@@ -200,14 +200,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>文字数を数える</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>LENを選ぶ</li><li>式を見る</li><li>コピーする</li></ul></div>
-<p><a href="/excel-left-mid-builder.html">文字取り出し式の作成</a> でLENを選ぶと、セルの文字数を数える式になります。</p>
+<p>文字数を数えるのが、LEN関数です。<a href="/excel-left-mid-builder.html">文字を取り出す式を作る</a> で「LEN」を選ぶと、式が作れます。文字の取り出しの前に、文字数を知りたいときにも役立ちます。</p>
 <h2>手順</h2>
 <ol>
-<li>LENを選ぶ</li>
-<li>式を見る</li>
-<li>コピーする</li>
+<li>「取り出し方」で「LEN」を選ぶ。</li>
+<li>「文字を取り出すセル」を入れる。</li>
+<li>「試しの文字」を入れると、文字数が表示される。</li>
 </ol>
-<div class="note">空白も1文字として数えます。</div>
+<div class="note">全角も半角も、スペースも、1文字として数えます。</div>
+<h2>例</h2>
+<ul>
+<li>=LEN(A2)</li>
+<li>「ABC-12345」→ 9</li>
+<li>「東京都」→ 3</li>
+<li>「A B」（半角スペースを含む）→ 3</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>文字数の制限を、確かめたい（例：シート名31文字、ツイート140字）</li>
+<li>余分なスペースが入っていないか、確かめたい</li>
+<li>品番の桁数が、そろっているか確かめたい</li>
+</ul>
+<h2>余分なスペースを見つける</h2>
+<p>見た目は同じでも、LENの値が違う場合、スペースなどの余分な文字が入っています。</p>
+<ul>
+<li>「東京」→ 2</li>
+<li>「東京 」（末尾に半角スペース）→ 3</li>
+</ul>
+<p>VLOOKUPが一致しないとき、LENで確かめるのは、定番の手順です。</p>
+<h2>桁数のチェック</h2>
+<p>品番が必ず8文字、というルールがあるとき、桁数が違う行を見つけられます。</p>
+<ul>
+<li>例：=IF(LEN(A2)=8,"OK","桁数エラー")</li>
+</ul>
+<h2>他の関数との組み合わせ</h2>
+<ul>
+<li>末尾の3文字を取り除く：=LEFT(A2,LEN(A2)-3)</li>
+<li>特定の文字の数を数える：=LEN(A2)-LEN(SUBSTITUTE(A2,"-",""))</li>
+</ul>
+<h2>バイト数を数えたい場合</h2>
+<p>文字数ではなく、バイト数を数えたいときは、LENB関数があります。全角を2バイトとして数える環境があります。</p>
+<h2>例</h2>
+<p>商品名の長さの制限（全角20文字）を超えていないか、確認したかった。=LEN(A2) で一覧を作り、20を超えた行を絞り込めた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>改行も1文字</b>：セル内の改行も、文字数に含まれる。</li>
+<li><b>数字の桁数</b>：数字のセルでも、LENで桁数を数えられる。ただし、書式の見た目（桁区切り）は、含まれない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>絵文字は、1文字と数えますか？</h3>
+<p>環境によって、2文字として数えられる場合があります。</p>
+<h2>まとめ</h2>
+<p>LENは、文字数を数える関数。余分なスペースの発見にも役立ちます。</p>
 <a class="cta" href="/excel-left-mid-builder.html">文字を取り出す式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li><li><a href="/text-to-columns.html">文字を区切り文字で列に分ける</a>：文字を区切り文字で列に分けます。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +263,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Counting Characters</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose LEN</li><li>See the formula</li><li>Copy it</li></ul></div>
-<p>Choosing LEN in <a href="/excel-left-mid-builder.html">LEFT/MID Builder</a> gives a formula that counts the characters in a cell.</p>
+<p>LEN counts characters. Choosing "LEN" in <a href="/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> builds the formula. It's also handy when you want the length before extracting text.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose LEN</li>
-<li>See the formula</li>
-<li>Copy it</li>
+<li>Choose "LEN" in "Method".</li>
+<li>Enter the "Cell to extract from".</li>
+<li>Entering a "Sample text" shows the character count.</li>
 </ol>
-<div class="note">Spaces count as characters.</div>
+<div class="note">Full-width, half-width and spaces each count as one.</div>
+<h2>Examples</h2>
+<ul>
+<li>=LEN(A2)</li>
+<li>"ABC-12345" → 9</li>
+<li>"東京都" → 3</li>
+<li>"A B" (with a half-width space) → 3</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Checking character limits (e.g. 31 for sheet names, 140 for a tweet)</li>
+<li>Checking for extra spaces</li>
+<li>Checking part numbers have consistent digit counts</li>
+</ul>
+<h2>Finding extra spaces</h2>
+<p>If two items look the same but LEN differs, extra characters like spaces are present.</p>
+<ul>
+<li>"Tokyo" → 5</li>
+<li>"Tokyo " (trailing half-width space) → 6</li>
+</ul>
+<p>When VLOOKUP doesn't match, checking with LEN is a standard step.</p>
+<h2>Checking digit counts</h2>
+<p>With a rule that part numbers must be 8 characters, you can find rows that differ.</p>
+<ul>
+<li>Example: =IF(LEN(A2)=8,"OK","Length error")</li>
+</ul>
+<h2>Combining with other functions</h2>
+<ul>
+<li>Remove the last 3 characters: =LEFT(A2,LEN(A2)-3)</li>
+<li>Count a specific character: =LEN(A2)-LEN(SUBSTITUTE(A2,"-",""))</li>
+</ul>
+<h2>Counting bytes</h2>
+<p>To count bytes rather than characters, there's LENB. In some environments full-width counts as 2 bytes.</p>
+<h2>Example</h2>
+<p>Wanted to check that product names stayed within a length limit (20 full-width characters). Building a list with =LEN(A2) let me filter rows over 20.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Line breaks count too</b>: in-cell line breaks are included.</li>
+<li><b>Digits of numbers</b>: LEN counts digits of number cells, but the look (thousands separators) isn't included.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is an emoji counted as one?</h3>
+<p>In some environments it counts as two.</p>
+<h2>Summary</h2>
+<p>LEN counts characters and also helps find extra spaces.</p>
 <a class="cta" href="/excel-left-mid-builder.html">Use "Build a LEFT, MID or RIGHT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/text-to-columns.html">Split Text into Columns by a Delimiter</a>: Split text into columns by a delimiter.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

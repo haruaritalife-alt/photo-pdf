@@ -200,14 +200,67 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>月末を求める</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>EOMONTHを選ぶ</li><li>月数を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/date-offset-formula-builder.html">日付式の作成</a> では、EOMONTHで○か月後の月末を求められます。</p>
+<p>「月末締め」「翌月末払い」。月末の日付を求めるのが、EOMONTH関数です。<a href="/date-offset-formula-builder.html">日付の足し引きの式を作る</a> で「EOMONTH」を選ぶと、式が作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>EOMONTHを選ぶ</li>
-<li>月数を入れる</li>
-<li>コピーする</li>
+<li>「方法」で「EOMONTH」を選ぶ。</li>
+<li>「日付のセル」を入れる。</li>
+<li>「足す数」に、月数を入れる（0なら、その月の末日）。</li>
+<li>「試しの日付」で、結果を確かめる。</li>
 </ol>
-<div class="note">0を入れると、その月の月末になります。</div>
+<div class="note">足す数が0なら、その日付の月の月末。1なら、翌月の月末です。</div>
+<h2>例</h2>
+<p>A2の日付が属する月の、月末を求める場合です。</p>
+<ul>
+<li>=EOMONTH(A2,0)</li>
+<li>試し：2026-10-25 → 2026-10-31</li>
+</ul>
+<p>翌月末払いなら、次のとおりです。</p>
+<ul>
+<li>=EOMONTH(A2,1)</li>
+<li>試し：2026-10-25 → 2026-11-30</li>
+</ul>
+<h2>足す数ごとの結果（2026-10-25）</h2>
+<ul>
+<li>0：2026-10-31（当月末）</li>
+<li>1：2026-11-30（翌月末）</li>
+<li>2：2026-12-31（翌々月末）</li>
+<li>-1：2026-09-30（前月末）</li>
+</ul>
+<h2>月初を求める</h2>
+<p>月初（1日）は、前月末に1を足すと求められます。</p>
+<ul>
+<li>=EOMONTH(A2,-1)+1</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>月末締め、翌月末払いの支払期日を求めたい</li>
+<li>その月の最終日を知りたい</li>
+<li>月ごとの集計期間を、作りたい</li>
+</ul>
+<h2>うるう年の2月</h2>
+<p>EOMONTHは、うるう年も正しく扱います。</p>
+<ul>
+<li>2028-02-10 → 2028-02-29</li>
+<li>2026-02-10 → 2026-02-28</li>
+</ul>
+<h2>例</h2>
+<p>請求日が月の途中でも、支払期日は翌月末にしたかった。=EOMONTH(A2,1) で、すべての請求日に対して、翌月末が求まった。</p>
+<h2>EDATEとの違い</h2>
+<ul>
+<li>EDATE：同じ日（31日など）に移動。月末を超えると調整される</li>
+<li>EOMONTH：常に月末に移動</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>結果が数字で出る</b>：セルの表示形式を、日付にする。</li>
+<li><b>月末の日が30日か31日か</b>：EOMONTHが自動で判断するので、手で書かなくてよい。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>月末が土日のときは？</h3>
+<p>営業日に調整したい場合は、WORKDAYと組み合わせます。例：=WORKDAY(EOMONTH(A2,1)+1,-1)</p>
+<h2>まとめ</h2>
+<p>月末の日付は、EOMONTH。足す数を変えるだけで、翌月末や前月末も求められます。</p>
 <a class="cta" href="/date-offset-formula-builder.html">日付の足し引きの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/datedif-formula-builder.html">DATEDIFの式を作る</a>：DATEDIFの式を作ります。</li><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +272,67 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Finding the Month End</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose EOMONTH</li><li>Enter the months</li><li>Copy it</li></ul></div>
-<p>In <a href="/date-offset-formula-builder.html">Date Offset Builder</a>, EOMONTH gives the month end some months later.</p>
+<p>"Month-end closing", "payment by end of next month". EOMONTH finds month-end dates. Choosing "EOMONTH" in <a href="/date-offset-formula-builder.html">Build a Date Offset Formula</a> builds the formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose EOMONTH</li>
-<li>Enter the months</li>
-<li>Copy it</li>
+<li>Choose "EOMONTH" in "Method".</li>
+<li>Enter the "Date cell".</li>
+<li>Enter the number of months in "Amount to add" (0 gives that month's last day).</li>
+<li>Check the result with a "Sample date".</li>
 </ol>
-<div class="note">Enter 0 to get the end of the same month.</div>
+<div class="note">Amount 0 is the end of the date's own month; 1 is the end of the next month.</div>
+<h2>Example</h2>
+<p>Finding the month-end of the month containing A2.</p>
+<ul>
+<li>=EOMONTH(A2,0)</li>
+<li>Sample: 2026-10-25 → 2026-10-31</li>
+</ul>
+<p>For payment at the end of next month:</p>
+<ul>
+<li>=EOMONTH(A2,1)</li>
+<li>Sample: 2026-10-25 → 2026-11-30</li>
+</ul>
+<h2>Results by amount (2026-10-25)</h2>
+<ul>
+<li>0: 2026-10-31 (this month-end)</li>
+<li>1: 2026-11-30 (next month-end)</li>
+<li>2: 2026-12-31 (month-end after next)</li>
+<li>-1: 2026-09-30 (previous month-end)</li>
+</ul>
+<h2>Finding the first of the month</h2>
+<p>Add 1 to the previous month-end.</p>
+<ul>
+<li>=EOMONTH(A2,-1)+1</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Finding payment dates for month-end close, next-month-end payment</li>
+<li>Knowing a month's last day</li>
+<li>Building monthly aggregation periods</li>
+</ul>
+<h2>February in leap years</h2>
+<p>EOMONTH handles leap years correctly.</p>
+<ul>
+<li>2028-02-10 → 2028-02-29</li>
+<li>2026-02-10 → 2026-02-28</li>
+</ul>
+<h2>Example</h2>
+<p>Even if invoice dates fell mid-month, payment due was the end of the next month. =EOMONTH(A2,1) gave next month-end for every invoice date.</p>
+<h2>Difference from EDATE</h2>
+<ul>
+<li>EDATE: moves to the same day (like the 31st); adjusts when it overflows</li>
+<li>EOMONTH: always moves to month-end</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Result appears as a number</b>: set the cell's format to Date.</li>
+<li><b>Whether month-end is the 30th or 31st</b>: EOMONTH decides automatically; no need to write it.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if month-end falls on a weekend?</h3>
+<p>To adjust to a business day, combine with WORKDAY. Example: =WORKDAY(EOMONTH(A2,1)+1,-1)</p>
+<h2>Summary</h2>
+<p>EOMONTH for month-end dates. Changing the amount also gives next or previous month-end.</p>
 <a class="cta" href="/date-offset-formula-builder.html">Use "Build a Date Offset Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

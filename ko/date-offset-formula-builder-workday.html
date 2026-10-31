@@ -201,14 +201,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>영업일 구하기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>WORKDAY 선택</li><li>일수 입력</li><li>공휴일 입력</li></ul></div>
-<p><a href="/ko/date-offset-formula-builder.html">날짜 계산 수식 만들기</a>에서 WORKDAY는 주말을 건너뛴 몇 영업일 뒤의 날짜를 구합니다.</p>
+<p lang="en">Delivery and payment deadlines are often counted in "business days" excluding weekends. Choosing "WORKDAY" in <a href="/ko/date-offset-formula-builder.html">Build a Date Offset Formula</a> builds a business-day formula.</p>
 <h2>순서</h2>
 <ol>
-<li>WORKDAY 선택</li>
-<li>일수 입력</li>
-<li>공휴일 입력</li>
+<li lang="en">Choose "WORKDAY" in "Method".</li>
+<li lang="en">Enter the "Date cell".</li>
+<li lang="en">Enter business days in "Amount to add" (negative to subtract).</li>
+<li lang="en">To exclude holidays too, enter the holiday list range in "Holiday range (for WORKDAY; may be empty)".</li>
+<li lang="en">Check the result with a "Sample date".</li>
 </ol>
-<div class="note">공휴일 범위를 넣으면 공휴일도 건너뜁니다.</div>
+<div class="note" lang="en">The sample result excludes weekends only. Holidays aren't considered.</div>
+<h2>예</h2>
+<p lang="en">Finding 5 business days after the date in A2.</p>
+<ul>
+<li lang="en">No holidays: =WORKDAY(A2,5)</li>
+<li lang="en">With holidays: =WORKDAY(A2,5,E2:E20)</li>
+</ul>
+<p lang="en">Entering 2026-10-23 (Friday) with amount 1 shows "2026-10-23 → 2026-10-26 (weekends only)".</p>
+<h2 lang="en">How it counts</h2>
+<p lang="en">The base day isn't counted; counting starts from the next day.</p>
+<ul>
+<li lang="en">1 business day after Friday: next Monday</li>
+<li lang="en">5 business days after Monday: next Monday</li>
+</ul>
+<h2 lang="en">Making a holiday list</h2>
+<p lang="en">List holiday dates in a separate range and specify that range as the third argument.</p>
+<ul>
+<li lang="en">Example: list holiday dates in E2:E20</li>
+<li lang="en">Fix the range with $ so copying is safe</li>
+</ul>
+<h2 lang="en">Finding earlier business days</h2>
+<p lang="en">Enter a negative amount.</p>
+<ul>
+<li lang="en">3 business days earlier: =WORKDAY(A2,-3)</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Finding delivery dates counted in business days</li>
+<li lang="en">Finding payment deadlines in business days</li>
+<li lang="en">Managing reply deadlines in business days</li>
+</ul>
+<h2 lang="en">Companies off on days other than weekends</h2>
+<p lang="en">Use WORKDAY.INTL for days off other than Sat/Sun.</p>
+<ul>
+<li lang="en">Example: =WORKDAY.INTL(A2,5,"0000011")</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted a shipping date 5 business days after the order. Prepared a holiday list and used =WORKDAY(A2,5,$E$2:$E$20). Correct dates came out across holiday weekends.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Forgetting holidays</b>: holidays are counted as business days.</li>
+<li lang="en"><b>Sample vs real</b>: the tool's sample excludes weekends only. With holidays, check in actual cells.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want to count business days?</h3>
+<p lang="en">NETWORKDAYS gives the number of business days between two dates.</p>
+<h2>요약</h2>
+<p lang="en">WORKDAY for counting business days. A holiday list makes it more accurate.</p>
 <a class="cta" href="/ko/date-offset-formula-builder.html">“날짜 계산 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/date-calculator.html">나이, 날짜 간 일수, 날짜 가감 계산</a>: 나이와 날짜 간 일수를 계산합니다.</li><li><a href="/ko/datedif-formula-builder.html">DATEDIF 수식 만들기</a>: DATEDIF 수식을 만듭니다.</li><li><a href="/ko/excel-serial-date.html">엑셀 일련번호·날짜 변환기</a>: 엑셀의 일련번호와 날짜를 변환합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

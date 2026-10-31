@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Việc cần làm khi không hoạt động</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Kiểm tra tệp</li><li>Kiểm tra dung lượng</li><li>Thử thiết bị khác</li></ul></div>
-<p>Nếu <a href="/vi/excel-left-mid-builder.html">Trình tạo LEFT/MID</a> không hoạt động, hãy kiểm tra các điểm sau.</p>
-<h2>Các bước</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/vi/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell isn't in the "A2" form; characters isn't a number for LEFT, RIGHT or MID; the MID start is below 1; or the delimiter is empty for the delimiter methods.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#VALUE! appears</b>: FIND can't find the delimiter, or MID's start is 0 or less.</li>
+<li lang="en"><b>Different characters than expected</b>: positions off by one, or full-/half-width mix.</li>
+<li lang="en"><b>Cut short</b>: the character count is too low.</li>
+<li lang="en"><b>Extra spaces attached</b>: the original contains spaces. Tidy with TRIM.</li>
+<li lang="en"><b>Result can't be used as a number</b>: results of LEFT, MID and so on are text. Convert with VALUE.</li>
+<li lang="en"><b>#NAME? appears</b>: a typo in the function name.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Kiểm tra tệp</li>
-<li>Kiểm tra dung lượng</li>
-<li>Thử thiết bị khác</li>
+<li lang="en">Enter a sample text and check the tool's result is as expected.</li>
+<li lang="en">Count the real cell's text with LEN and see whether it matches what you see.</li>
+<li lang="en">Check whether the delimiter is full-width or half-width.</li>
 </ol>
-<div class="note">Nếu không có công thức nào hiện ra, hãy kiểm tra ô được viết như A2 và số ký tự là một con số.</div>
+<div class="note" lang="en">Used on number cells, it works on the stored value, not the formatted look.</div>
+<h2 lang="en">When used on number cells</h2>
+<p lang="en">Even if a cell looks like 0012, if its content is the number 12, LEFT and the like work on "12". To handle leading zeros, store it as text.</p>
+<h2 lang="en">When used on date cells</h2>
+<p lang="en">Using LEFT on a date cell works on the serial value (like 45000). Take date parts with YEAR, MONTH, DAY or TEXT.</p>
+<h2>Ví dụ</h2>
+<p lang="en">Taking the left 4 characters of a date cell to get the year gave "4500", since dates are serial values. Switching to YEAR gave 2023.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Invisible characters</b>: copied text may contain invisible characters.</li>
+<li lang="en"><b>Characters and positions</b>: spaces count as one character.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want to use it as a number?</h3>
+<p lang="en">Convert with =VALUE(LEFT(A2,3)) or =LEFT(A2,3)*1.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">Delimiter, how positions count, text vs number. Check these three in order.</p>
 <a class="cta" href="/vi/excel-left-mid-builder.html">Dùng “Tạo công thức LEFT, MID hoặc RIGHT” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/excel-text-clean.html">Loại bỏ khoảng trắng thừa và ký tự vô hình khỏi văn bản Excel</a>: Loại bỏ khoảng trắng thừa và ký tự vô hình.</li><li><a href="/vi/text-to-columns.html">Tách văn bản thành cột theo dấu phân cách</a>: Tách văn bản thành cột theo dấu phân cách.</li><li><a href="/vi/excel-if-builder.html">Tạo công thức IF</a>: Tạo công thức IF.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

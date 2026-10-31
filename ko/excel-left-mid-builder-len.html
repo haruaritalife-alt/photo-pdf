@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>글자 수 세기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>LEN 선택</li><li>수식 보기</li><li>복사</li></ul></div>
-<p><a href="/ko/excel-left-mid-builder.html">LEFT/MID 만들기</a>에서 LEN을 고르면 셀의 글자 수를 세는 수식이 됩니다.</p>
+<p lang="en">LEN counts characters. Choosing "LEN" in <a href="/ko/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> builds the formula. It's also handy when you want the length before extracting text.</p>
 <h2>순서</h2>
 <ol>
-<li>LEN 선택</li>
-<li>수식 보기</li>
-<li>복사</li>
+<li lang="en">Choose "LEN" in "Method".</li>
+<li lang="en">Enter the "Cell to extract from".</li>
+<li lang="en">Entering a "Sample text" shows the character count.</li>
 </ol>
-<div class="note">공백도 한 글자로 셉니다.</div>
+<div class="note" lang="en">Full-width, half-width and spaces each count as one.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">=LEN(A2)</li>
+<li lang="en">"ABC-12345" → 9</li>
+<li lang="en">"東京都" → 3</li>
+<li lang="en">"A B" (with a half-width space) → 3</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Checking character limits (e.g. 31 for sheet names, 140 for a tweet)</li>
+<li lang="en">Checking for extra spaces</li>
+<li lang="en">Checking part numbers have consistent digit counts</li>
+</ul>
+<h2 lang="en">Finding extra spaces</h2>
+<p lang="en">If two items look the same but LEN differs, extra characters like spaces are present.</p>
+<ul>
+<li lang="en">"Tokyo" → 5</li>
+<li lang="en">"Tokyo " (trailing half-width space) → 6</li>
+</ul>
+<p lang="en">When VLOOKUP doesn't match, checking with LEN is a standard step.</p>
+<h2 lang="en">Checking digit counts</h2>
+<p lang="en">With a rule that part numbers must be 8 characters, you can find rows that differ.</p>
+<ul>
+<li lang="en">Example: =IF(LEN(A2)=8,"OK","Length error")</li>
+</ul>
+<h2 lang="en">Combining with other functions</h2>
+<ul>
+<li lang="en">Remove the last 3 characters: =LEFT(A2,LEN(A2)-3)</li>
+<li lang="en">Count a specific character: =LEN(A2)-LEN(SUBSTITUTE(A2,"-",""))</li>
+</ul>
+<h2 lang="en">Counting bytes</h2>
+<p lang="en">To count bytes rather than characters, there's LENB. In some environments full-width counts as 2 bytes.</p>
+<h2>예</h2>
+<p lang="en">Wanted to check that product names stayed within a length limit (20 full-width characters). Building a list with =LEN(A2) let me filter rows over 20.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Line breaks count too</b>: in-cell line breaks are included.</li>
+<li lang="en"><b>Digits of numbers</b>: LEN counts digits of number cells, but the look (thousands separators) isn't included.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is an emoji counted as one?</h3>
+<p lang="en">In some environments it counts as two.</p>
+<h2>요약</h2>
+<p lang="en">LEN counts characters and also helps find extra spaces.</p>
 <a class="cta" href="/ko/excel-left-mid-builder.html">“LEFT·MID·RIGHT 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-text-clean.html">엑셀 글의 불필요한 공백과 보이지 않는 문자 없애기</a>: 불필요한 공백과 보이지 않는 문자를 없앱니다.</li><li><a href="/ko/text-to-columns.html">구분 문자로 글을 열로 나누기</a>: 구분 문자로 글을 열로 나눕니다.</li><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

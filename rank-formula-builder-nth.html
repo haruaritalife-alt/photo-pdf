@@ -200,14 +200,64 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>N番目の値</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>LARGEを選ぶ</li><li>何番目かを入れる</li><li>コピーする</li></ul></div>
-<p><a href="/rank-formula-builder.html">順位式の作成</a> では、LARGEとSMALLで上位・下位のN番目の値を取り出せます。</p>
+<p>「1位の点数」「上位3人の点数」「下から2番目の値」。順位ではなく、N番目の値そのものを取り出したいときは、LARGEとSMALLを使います。<a href="/rank-formula-builder.html">順位の式を作る</a> の「LARGE」「SMALL」が、その式を作ります。</p>
+<h2>2つの関数</h2>
+<ul>
+<li><b>LARGE</b>：大きいほうから数えて、N番目の値</li>
+<li><b>SMALL</b>：小さいほうから数えて、N番目の値</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>LARGEを選ぶ</li>
-<li>何番目かを入れる</li>
-<li>コピーする</li>
+<li>「方法」で「LARGE」か「SMALL」を選ぶ。</li>
+<li>「比べる範囲」を入れる。</li>
+<li>「何番目か（LARGE・SMALL用）」に、数字を入れる。</li>
+<li>「試しの数値」で、結果を確かめる。</li>
 </ol>
-<div class="note">1を入れると、最大または最小です。</div>
+<div class="note">LARGE・SMALLでは、「順位をつけるセル」の欄は、使いません。</div>
+<h2>例</h2>
+<p>B2:B100の中で、3番目に大きい値を求める場合です。</p>
+<ul>
+<li>=LARGE($B$2:$B$100,3)</li>
+</ul>
+<p>試しの数値に「90,80,80,70」、何番目かに「2」を入れると、LARGEは「80」と表示されます。</p>
+<h2>上位3件を並べる</h2>
+<p>1番目、2番目、3番目を、それぞれのセルに出します。</p>
+<ul>
+<li>1位：=LARGE($B$2:$B$100,1)</li>
+<li>2位：=LARGE($B$2:$B$100,2)</li>
+<li>3位：=LARGE($B$2:$B$100,3)</li>
+</ul>
+<h2>上位の名前も出したい</h2>
+<p>値に対応する名前を出すには、INDEX関数とMATCH関数を組み合わせます。</p>
+<ul>
+<li>例：=INDEX($A$2:$A$100,MATCH(D2,$B$2:$B$100,0))</li>
+</ul>
+<p>D2に、LARGEで出した値を入れます。同点の場合は、最初の名前だけが出ます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>上位3件の点数、売上を取り出したい</li>
+<li>最高値、最低値を知りたい（1番目）</li>
+<li>中央付近の値を取り出したい</li>
+</ul>
+<h2>MAX・MINとの関係</h2>
+<ul>
+<li>MAX(範囲) = LARGE(範囲,1)</li>
+<li>MIN(範囲) = SMALL(範囲,1)</li>
+</ul>
+<h2>範囲を超えた番号</h2>
+<p>データの個数より大きい番号を指定すると、#NUM!になります。試しの結果にも「#NUM!」と表示されます。</p>
+<h2>例</h2>
+<p>売上上位3件を、ダッシュボードに表示したかった。LARGEで1〜3番目を求め、横の列に、INDEXとMATCHで名前を出した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>同点の扱い</b>：LARGEは、同じ値も別々に数える。90、80、80のとき、2番目も3番目も80。</li>
+<li><b>空欄・文字</b>：無視される。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>上位N件の平均を出したい</h3>
+<p>=AVERAGE(LARGE(範囲,{1,2,3})) の形で、配列として求められます。</p>
+<h2>まとめ</h2>
+<p>N番目の値は、LARGEとSMALL。順位そのものは、RANKを使います。</p>
 <a class="cta" href="/rank-formula-builder.html">順位の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/percent-calculator.html">割合・割引・増減（%）を計算する</a>：割合・割引・増減の%を、すぐに計算します。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +269,64 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>The Nth Value</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose LARGE</li><li>Enter which one</li><li>Copy it</li></ul></div>
-<p>In <a href="/rank-formula-builder.html">Rank Builder</a>, LARGE and SMALL return the Nth highest or lowest value.</p>
+<p>"The 1st-place score", "the top 3 scores", "second from the bottom". To pull out the Nth value itself rather than a rank, use LARGE and SMALL. "LARGE" and "SMALL" in <a href="/rank-formula-builder.html">Build a Rank Formula</a> build those formulas.</p>
+<h2>The two functions</h2>
+<ul>
+<li><b>LARGE</b>: the Nth value counting from the largest</li>
+<li><b>SMALL</b>: the Nth value counting from the smallest</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Choose LARGE</li>
-<li>Enter which one</li>
-<li>Copy it</li>
+<li>Choose "LARGE" or "SMALL" in "Method".</li>
+<li>Enter the "Range to compare".</li>
+<li>In "Which one (for LARGE and SMALL)", enter a number.</li>
+<li>Check the result with "Sample numbers".</li>
 </ol>
-<div class="note">Enter 1 for the maximum or minimum.</div>
+<div class="note">For LARGE and SMALL, the "Cell to rank" field isn't used.</div>
+<h2>Example</h2>
+<p>Finding the 3rd largest value in B2:B100.</p>
+<ul>
+<li>=LARGE($B$2:$B$100,3)</li>
+</ul>
+<p>Entering "90,80,80,70" as samples and "2" as which one shows "80" for LARGE.</p>
+<h2>Listing the top 3</h2>
+<p>Put the 1st, 2nd and 3rd in separate cells.</p>
+<ul>
+<li>1st: =LARGE($B$2:$B$100,1)</li>
+<li>2nd: =LARGE($B$2:$B$100,2)</li>
+<li>3rd: =LARGE($B$2:$B$100,3)</li>
+</ul>
+<h2>Showing the names too</h2>
+<p>To show the name matching a value, combine INDEX and MATCH.</p>
+<ul>
+<li>Example: =INDEX($A$2:$A$100,MATCH(D2,$B$2:$B$100,0))</li>
+</ul>
+<p>Put the LARGE value in D2. With ties, only the first name appears.</p>
+<h2>Good for</h2>
+<ul>
+<li>Pulling out the top 3 scores or sales</li>
+<li>Knowing the highest or lowest value (the 1st)</li>
+<li>Pulling out values near the middle</li>
+</ul>
+<h2>Relation to MAX and MIN</h2>
+<ul>
+<li>MAX(range) = LARGE(range,1)</li>
+<li>MIN(range) = SMALL(range,1)</li>
+</ul>
+<h2>Number beyond the range</h2>
+<p>Specifying a number larger than the item count gives #NUM!. The sample result also shows "#NUM!".</p>
+<h2>Example</h2>
+<p>Wanted the top 3 sales on a dashboard. LARGE found the 1st to 3rd, with INDEX and MATCH giving names beside them.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Ties</b>: LARGE counts equal values separately. For 90, 80, 80 the 2nd and 3rd are both 80.</li>
+<li><b>Blanks and text</b>: ignored.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want the average of the top N</h3>
+<p>Use an array form: =AVERAGE(LARGE(range,{1,2,3})).</p>
+<h2>Summary</h2>
+<p>LARGE and SMALL for the Nth value; RANK for the rank itself.</p>
 <a class="cta" href="/rank-formula-builder.html">Use "Build a Rank Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

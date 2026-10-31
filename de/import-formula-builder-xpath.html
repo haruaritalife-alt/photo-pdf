@@ -201,14 +201,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Einen Teil einer Seite per XPath importieren</h1>
 <p class="meta">Veröffentlicht: 19.10.2026 | Aktualisiert: 19.10.2026 | <a href="/about.html">Über uns (Japanisch)</a></p>
 <div class="points"><b>Wichtige Punkte</b><ul><li>IMPORTXML wählen</li><li>XPath eingeben</li><li>Kopieren</li></ul></div>
-<p>Im <a href="/de/import-formula-builder.html">Import-Generator</a> können Sie mit einem XPath wie //title einen Teil einer Seite importieren.</p>
+<p lang="en">To import just part of a page, such as the title or a price, use IMPORTXML with XPath. "IMPORTXML" in <a href="/de/import-formula-builder.html">Build an IMPORTHTML Formula</a> builds the formula.</p>
 <h2>Schritte</h2>
 <ol>
-<li>IMPORTXML wählen</li>
-<li>XPath eingeben</li>
-<li>Kopieren</li>
+<li lang="en">Choose "IMPORTXML" in "Method".</li>
+<li lang="en">Enter the "URL of the page to import".</li>
+<li lang="en">In "XPath (for IMPORTXML)", enter the spec for the part you want.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Der XPath hängt davon ab, was Sie importieren möchten.</div>
+<div class="note" lang="en">An empty XPath gives "The input is not valid."</div>
+<h2 lang="en">XPath examples</h2>
+<ul>
+<li lang="en">//title: the page title</li>
+<li lang="en">//h2: all level-2 headings</li>
+<li lang="en">//a/@href: all link targets</li>
+<li lang="en">//img/@src: all image URLs</li>
+</ul>
+<h2 lang="en">Formula example</h2>
+<ul>
+<li lang="en">=IMPORTXML("https://example.com","//title")</li>
+</ul>
+<h2>Gut geeignet für</h2>
+<ul>
+<li lang="en">Taking only the price from a product page</li>
+<li lang="en">Listing an article's headings</li>
+<li lang="en">Collecting link URLs</li>
+</ul>
+<h2 lang="en">Finding the XPath</h2>
+<p lang="en">In the browser's developer tools, right-click the element and choose "Copy XPath". It can be used as is.</p>
+<h2>Beispiel</h2>
+<p lang="en">Wanted a list of blog article titles. After checking the heading element, specifying //h2 lined the titles up vertically.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#N/A (imported content is empty)</b>: the XPath doesn't match, or the element is built later by JavaScript.</li>
+<li lang="en"><b>Quotes</b>: if the XPath contains double quotes, use single quotes.</li>
+<li lang="en"><b>Site terms</b>: some sites prohibit importing.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Some parts won't import</h3>
+<p lang="en">Dynamically built elements can't be imported.</p>
+<h2>Zusammenfassung</h2>
+<p lang="en">Use XPath to specify only the part you want.</p>
 <a class="cta" href="/de/import-formula-builder.html">„Eine IMPORTHTML-Formel erstellen“ verwenden (kostenlos)</a>
 <h2>Passende Werkzeuge dazu</h2><ul><li><a href="/de/importrange-builder.html">Eine IMPORTRANGE-Formel erstellen</a>: Erstellen Sie eine IMPORTRANGE-Formel.</li><li><a href="/de/query-formula-builder.html">Eine QUERY-Formel erstellen</a>: Erstellen Sie eine QUERY-Formel.</li><li><a href="/de/filter-formula-builder.html">Eine FILTER-Formel erstellen</a>: Erstellen Sie eine FILTER-Formel.</li></ul>
 <div class="tip"><p>Wenn Ihnen diese Anleitung geholfen hat, freuen wir uns über ein kleines Trinkgeld.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Trinkgeld senden (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Geschenk senden (Amazon-Wunschliste)</a></div>

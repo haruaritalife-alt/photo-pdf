@@ -215,14 +215,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>رتبه‌دهی از کوچک‌ترین</h1>
 <p class="meta">منتشرشده: 19 اکتبر 2026 | به‌روزرسانی: 19 اکتبر 2026 | <a href="/about.html">دربارهٔ ما (ژاپنی)</a></p>
 <div class="points"><b>نکات کلیدی</b><ul><li>RANK-ASC را انتخاب کنید</li><li>محدوده را وارد کنید</li><li>کپی کنید</li></ul></div>
-<p>در <a href="/fa/rank-formula-builder.html">سازندهٔ رتبه</a> می‌توانید طوری هم رتبه بدهید که مقادیر کوچک‌تر اول بیایند، مثل زمان دو.</p>
+<p lang="en">RANK is descending by default. But for times or anything where smaller is better, you want ascending. "RANK-ASC" in <a href="/fa/rank-formula-builder.html">Build a Rank Formula</a> builds that formula.</p>
 <h2>مراحل</h2>
 <ol>
-<li>RANK-ASC را انتخاب کنید</li>
-<li>محدوده را وارد کنید</li>
-<li>کپی کنید</li>
+<li lang="en">Choose "RANK-ASC" in "Method".</li>
+<li lang="en">Enter "Cell to rank" and "Range to compare".</li>
+<li lang="en">Check the last argument of the formula is "1".</li>
 </ol>
-<div class="note">۰ یعنی از بزرگ‌ترین و ۱ یعنی از کوچک‌ترین.</div>
+<div class="note" lang="en">RANK's third argument: 0 is descending (large first), 1 is ascending (small first).</div>
+<h2>مثال</h2>
+<p lang="en">Ranking the running time in B2 within B2:B100, fastest first.</p>
+<ul>
+<li lang="en">=RANK(B2,$B$2:$B$100,1)</li>
+</ul>
+<p lang="en">The smallest value is 1st.</p>
+<h2>نتیجهٔ آزمایش</h2>
+<p lang="en">Entering "9.8,10.2,10.5,9.9" as samples and "9.8" as the number to rank gives:</p>
+<ul>
+<li lang="en">RANK (descending): 4th</li>
+<li lang="en">RANK-ASC (ascending): 1st</li>
+</ul>
+<h2>مناسب برای</h2>
+<ul>
+<li lang="en">Values where shorter is better, like running or work times</li>
+<li lang="en">Values where lower is better, like golf scores</li>
+<li lang="en">Cheapest-first prices</li>
+<li lang="en">Values where fewer is better, like defect counts</li>
+</ul>
+<h2 lang="en">Remembering the third argument</h2>
+<ul>
+<li lang="en">0 (or omitted): large first. Scores, sales, etc.</li>
+<li lang="en">1: small first. Times, prices, etc.</li>
+</ul>
+<h2 lang="en">Relation between descending and ascending</h2>
+<p lang="en">With N people and no ties:</p>
+<ul>
+<li lang="en">Ascending rank = N + 1 − descending rank</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Wanted to rank 100m sprint records fastest first. Since shorter is better, set the third argument to 1, and =RANK(B2,$B$2:$B$11,1) made the shortest record 1st.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leaving it descending</b>: with times, the slowest person ends up 1st.</li>
+<li lang="en"><b>Time formats</b>: even in forms like "0:09.8", smaller values are faster.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I just want to sort low to high?</h3>
+<p lang="en">SORT or the sort feature works. Use RANK when you need the rank numbers.</p>
+<h2>خلاصه</h2>
+<p lang="en">For smaller-is-better values, set RANK's third argument to 1.</p>
 <a class="cta" href="/fa/rank-formula-builder.html">استفاده از «ساخت فرمول رتبه» (رایگان)</a>
 <h2>ابزارهایی که با این ابزار خوب هماهنگ‌اند</h2><ul><li><a href="/fa/sumif-formula-builder.html">ساخت فرمول SUMIF یا COUNTIF</a>: فرمول‌های SUMIF و COUNTIF بسازید.</li><li><a href="/fa/percent-calculator.html">محاسبهٔ درصد، تخفیف و درصد تغییر</a>: درصد، تخفیف و درصد تغییر را فوراً محاسبه کنید.</li><li><a href="/fa/excel-if-builder.html">ساخت فرمول IF</a>: یک فرمول IF بسازید.</li></ul>
 <div class="tip"><p>اگر این راهنما مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ارسال انعام (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ارسال هدیه (فهرست آرزوهای آمازون)</a></div>

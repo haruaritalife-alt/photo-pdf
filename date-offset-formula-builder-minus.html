@@ -200,14 +200,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>日付を引く</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>マイナスを入れる</li><li>式を見る</li><li>確かめる</li></ul></div>
-<p><a href="/date-offset-formula-builder.html">日付式の作成</a> では、マイナスの数を入れると前の日付を求められます。</p>
+<p>「30日前」「3か月前」「2営業日前」。日付を引くときは、足す数に、マイナスを入れます。<a href="/date-offset-formula-builder.html">日付の足し引きの式を作る</a> では、4つの方法のすべてで、マイナスが使えます。</p>
 <h2>手順</h2>
 <ol>
-<li>マイナスを入れる</li>
-<li>式を見る</li>
-<li>確かめる</li>
+<li>「方法」を選ぶ。</li>
+<li>「足す数」に、マイナスの数を入れる（例：-30）。</li>
+<li>式の中に、マイナスの数が入っていることを確かめる。</li>
 </ol>
-<div class="note">試しの日付で結果を確かめられます。</div>
+<div class="note">「足す数」の欄は、引くときもそのまま使います。引き算用の欄はありません。</div>
+<h2>方法ごとの例</h2>
+<ul>
+<li><b>PLUS</b>：30日前 → =A2-30</li>
+<li><b>EDATE</b>：3か月前 → =EDATE(A2,-3)</li>
+<li><b>EOMONTH</b>：前月末 → =EOMONTH(A2,-1)</li>
+<li><b>WORKDAY</b>：2営業日前 → =WORKDAY(A2,-2)</li>
+</ul>
+<h2>試しの結果</h2>
+<p>試しの日付 2026-10-25 に対する結果は、次のとおりです。</p>
+<ul>
+<li>PLUS、-30：2026-09-25</li>
+<li>EDATE、-3：2026-07-25</li>
+<li>EOMONTH、-1：2026-09-30</li>
+<li>WORKDAY、-2：2026-10-22（日曜日の2営業日前は、木曜日）</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>期限の○日前に、通知を出したい</li>
+<li>開始日から逆算して、準備を始める日を求めたい</li>
+<li>過去の日付を、基準に比べたい</li>
+</ul>
+<h2>逆算の例</h2>
+<p>納期から、5営業日前を、作業開始日にしたい。</p>
+<ul>
+<li>=WORKDAY(納期のセル,-5)</li>
+</ul>
+<h2>2つの日付の差を求める</h2>
+<p>日付から日付を引くと、日数が求まります。</p>
+<ul>
+<li>=B2-A2 で、日数</li>
+<li>DATEDIFで、年や月の差も求められる</li>
+</ul>
+<h2>向いている場面（応用）</h2>
+<ul>
+<li>更新日の30日前に、リマインドの日付を出す</li>
+<li>請求日の7日前を、準備日にする</li>
+</ul>
+<h2>例</h2>
+<p>契約の満了日の60日前に、更新の連絡をする決まりがあった。満了日の列から、=A2-60 を求めて、連絡の期限を並べた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>日付から日付を引く</b>：結果は日数（数字）。日付にならないので、表示形式に注意する。</li>
+<li><b>マイナスの付け忘れ</b>：プラスのままだと、未来の日付になる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>「前」と「後」を、切り替えたいときは？</h3>
+<p>足す数を、プラスとマイナスで入れ替えるだけです。</p>
+<h2>まとめ</h2>
+<p>引くときは、マイナスを入れます。どの方法でも同じです。</p>
 <a class="cta" href="/date-offset-formula-builder.html">日付の足し引きの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/datedif-formula-builder.html">DATEDIFの式を作る</a>：DATEDIFの式を作ります。</li><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +268,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Subtracting From a Date</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter a negative</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/date-offset-formula-builder.html">Date Offset Builder</a>, a negative number gives an earlier date.</p>
+<p>"30 days earlier", "3 months earlier", "2 business days earlier". To subtract dates, enter a negative amount. In <a href="/date-offset-formula-builder.html">Build a Date Offset Formula</a>, all four methods accept negatives.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter a negative</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>Choose a "Method".</li>
+<li>Enter a negative number in "Amount to add" (e.g. -30).</li>
+<li>Check the negative number is in the formula.</li>
 </ol>
-<div class="note">You can check the result with a sample date.</div>
+<div class="note">The "Amount to add" field is used as is when subtracting too. There is no separate subtraction field.</div>
+<h2>Examples by method</h2>
+<ul>
+<li><b>PLUS</b>: 30 days earlier → =A2-30</li>
+<li><b>EDATE</b>: 3 months earlier → =EDATE(A2,-3)</li>
+<li><b>EOMONTH</b>: previous month-end → =EOMONTH(A2,-1)</li>
+<li><b>WORKDAY</b>: 2 business days earlier → =WORKDAY(A2,-2)</li>
+</ul>
+<h2>Sample results</h2>
+<p>For the sample date 2026-10-25:</p>
+<ul>
+<li>PLUS, -30: 2026-09-25</li>
+<li>EDATE, -3: 2026-07-25</li>
+<li>EOMONTH, -1: 2026-09-30</li>
+<li>WORKDAY, -2: 2026-10-22 (2 business days before a Sunday is Thursday)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Sending notices N days before a deadline</li>
+<li>Working back from a start date to when to begin preparing</li>
+<li>Comparing past dates with a reference</li>
+</ul>
+<h2>Working back example</h2>
+<p>To start work 5 business days before the due date:</p>
+<ul>
+<li>=WORKDAY(due-date cell,-5)</li>
+</ul>
+<h2>Finding the gap between two dates</h2>
+<p>Subtracting a date from a date gives days.</p>
+<ul>
+<li>=B2-A2 gives days</li>
+<li>DATEDIF can give year or month gaps too</li>
+</ul>
+<h2>Applications</h2>
+<ul>
+<li>Producing a reminder date 30 days before renewal</li>
+<li>Making 7 days before the invoice date the prep date</li>
+</ul>
+<h2>Example</h2>
+<p>A rule required contacting 60 days before contract expiry. From the expiry-date column, =A2-60 lined up the contact deadlines.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Date minus date</b>: the result is days (a number), not a date. Mind the display format.</li>
+<li><b>Forgetting the minus</b>: with plus, you get a future date.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I want to switch "before" and "after"?</h3>
+<p>Just swap the sign of the amount.</p>
+<h2>Summary</h2>
+<p>To subtract, enter a negative. It's the same for every method.</p>
 <a class="cta" href="/date-offset-formula-builder.html">Use "Build a Date Offset Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/date-offset-formula-builder.html">Date Offset Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but the result is odd. Here are common troubles with <a href="/en/date-offset-formula-builder.html">Build a Date Offset Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the date cell isn't in the "A2" form, the amount isn't an integer, or the holiday range isn't in a form like "E2:E20".</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>The result appears as a number</b>: the cell's format is "General". Set it to "Short Date".</li>
+<li><b>#VALUE! appears</b>: the date cell isn't recognised as a date (a text date).</li>
+<li><b>#NUM! appears</b>: the resulting date is beyond Excel's range.</li>
+<li><b>Off by a day</b>: whether the base day is included or not.</li>
+<li><b>Business days don't match</b>: holidays aren't included.</li>
+<li><b>Adjusted to month-end</b>: EDATE moves to month-end if the target has no such day.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the date cell is recognised as a date (right-aligned means date).</li>
+<li>Set the result cell's format to Date.</li>
+<li>Compare with the tool's result using a sample date.</li>
 </ol>
-<div class="note">If no formula appears, check that the cell is written like A2 and the number is a whole number.</div>
+<div class="note">If dates display left-aligned, they may be text.</div>
+<h2>Fixing text dates</h2>
+<ul>
+<li>DATEVALUE function: =DATEVALUE("2026/10/25")</li>
+<li>Select cells and convert with "Data" → "Text to Columns"</li>
+<li>Dot-separated forms like "2026.10.25" may not be recognised as dates</li>
+</ul>
+<h2>Differences from the sample result</h2>
+<p>The tool's sample result:</p>
+<ul>
+<li>WORKDAY: weekends only; holidays aren't considered</li>
+<li>EDATE: includes month-end adjustment</li>
+</ul>
+<p>With a holiday range in actual cells, results change.</p>
+<h2>Example</h2>
+<p>The result showed as the number "46323" because the cell's format was "General". Setting it to a date format showed "2026/10/28".</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Text in the holiday range</b>: put only dates.</li>
+<li><b>Old dates</b>: dates before 1900 can't be handled.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Are holidays included automatically?</h3>
+<p>No. Prepare the holiday list yourself.</p>
+<h2>Summary</h2>
+<p>Display format, date form, holidays. Check these three in order.</p>
 <a class="cta" href="/en/date-offset-formula-builder.html">Use "Build a Date Offset Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/en/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/en/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

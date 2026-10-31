@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Lấy ký tự ở giữa</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Chọn MID</li><li>Nhập vị trí và số ký tự</li><li>Sao chép</li></ul></div>
-<p>Chọn MID trong <a href="/vi/excel-left-mid-builder.html">Trình tạo LEFT/MID</a> sẽ cho công thức lấy ký tự từ vị trí bắt đầu.</p>
+<p lang="en">MID extracts text from the middle. Choosing "MID" in <a href="/vi/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> builds a formula with a start position and a length.</p>
 <h2>Các bước</h2>
 <ol>
-<li>Chọn MID</li>
-<li>Nhập vị trí và số ký tự</li>
-<li>Sao chép</li>
+<li lang="en">Choose "MID" in "Method".</li>
+<li lang="en">In "Start position (for MID)", enter where to begin (the first character is 1).</li>
+<li lang="en">Enter the number of characters to take in "Characters".</li>
+<li lang="en">Check the result with a "Sample text".</li>
 </ol>
-<div class="note">Ký tự đầu tiên là vị trí 1.</div>
+<div class="note" lang="en">The start position counts from 1. Entering 0 errors.</div>
+<h2>Ví dụ</h2>
+<p lang="en">Taking 5 characters from the 5th of "ABC-12345".</p>
+<ul>
+<li lang="en">=MID(A2,5,5)</li>
+<li lang="en">Result: 12345</li>
+</ul>
+<h2 lang="en">How positions count</h2>
+<p lang="en">The positions in "ABC-12345":</p>
+<ul>
+<li lang="en">A=1, B=2, C=3, -=4, 1=5, 2=6, 3=7, 4=8, 5=9</li>
+</ul>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Taking only a middle code from a part number</li>
+<li lang="en">Taking month or day from a date string (20261025)</li>
+<li lang="en">Splitting numbers made of fixed digits</li>
+</ul>
+<h2 lang="en">Splitting a date string</h2>
+<p lang="en">From the text "20261025" in A2, take year, month and day.</p>
+<ul>
+<li lang="en">Year: =MID(A2,1,4) → 2026</li>
+<li lang="en">Month: =MID(A2,5,2) → 10</li>
+<li lang="en">Day: =MID(A2,7,2) → 25</li>
+</ul>
+<h2 lang="en">Asking for more characters than remain</h2>
+<p lang="en">Asking for more than remain doesn't error; the remainder is returned.</p>
+<ul>
+<li lang="en">Example: =MID("ABC",2,10) → BC</li>
+</ul>
+<h2 lang="en">Start beyond the length</h2>
+<p lang="en">If the start exceeds the length, an empty string is returned.</p>
+<h2>Ví dụ</h2>
+<p lang="en">Wanted the region "TOKYO" from the product code "JP-TOKYO-0045". Specifying position 4 for 5 characters, =MID(A2,4,5), extracted it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Off by one</b>: counting from 0. Count from 1.</li>
+<li lang="en"><b>Lengths vary</b>: if part number lengths differ, positions aren't fixed. Consider using delimiters.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the result be used as a number?</h3>
+<p lang="en">MID's result is text. Convert with VALUE or "*1".</p>
+<h2>Tóm tắt</h2>
+<p lang="en">MID takes a start position and length. Positions count from 1.</p>
 <a class="cta" href="/vi/excel-left-mid-builder.html">Dùng “Tạo công thức LEFT, MID hoặc RIGHT” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/excel-text-clean.html">Loại bỏ khoảng trắng thừa và ký tự vô hình khỏi văn bản Excel</a>: Loại bỏ khoảng trắng thừa và ký tự vô hình.</li><li><a href="/vi/text-to-columns.html">Tách văn bản thành cột theo dấu phân cách</a>: Tách văn bản thành cột theo dấu phân cách.</li><li><a href="/vi/excel-if-builder.html">Tạo công thức IF</a>: Tạo công thức IF.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

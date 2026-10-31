@@ -201,14 +201,67 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Encontrar o fim do mês</h1>
 <p class="meta">Publicado em: 19 out 2026 | Atualizado em: 19 out 2026 | <a href="/about.html">Sobre (em japonês)</a></p>
 <div class="points"><b>Pontos principais</b><ul><li>Escolha EOMONTH</li><li>Digite os meses</li><li>Copie</li></ul></div>
-<p>Em <a href="/pt/date-offset-formula-builder.html">Gerador de datas</a>, EOMONTH dá o fim do mês alguns meses depois.</p>
+<p lang="en">"Month-end closing", "payment by end of next month". EOMONTH finds month-end dates. Choosing "EOMONTH" in <a href="/pt/date-offset-formula-builder.html">Build a Date Offset Formula</a> builds the formula.</p>
 <h2>Passos</h2>
 <ol>
-<li>Escolha EOMONTH</li>
-<li>Digite os meses</li>
-<li>Copie</li>
+<li lang="en">Choose "EOMONTH" in "Method".</li>
+<li lang="en">Enter the "Date cell".</li>
+<li lang="en">Enter the number of months in "Amount to add" (0 gives that month's last day).</li>
+<li lang="en">Check the result with a "Sample date".</li>
 </ol>
-<div class="note">Digite 0 para obter o fim do mesmo mês.</div>
+<div class="note" lang="en">Amount 0 is the end of the date's own month; 1 is the end of the next month.</div>
+<h2>Exemplo</h2>
+<p lang="en">Finding the month-end of the month containing A2.</p>
+<ul>
+<li lang="en">=EOMONTH(A2,0)</li>
+<li lang="en">Sample: 2026-10-25 → 2026-10-31</li>
+</ul>
+<p lang="en">For payment at the end of next month:</p>
+<ul>
+<li lang="en">=EOMONTH(A2,1)</li>
+<li lang="en">Sample: 2026-10-25 → 2026-11-30</li>
+</ul>
+<h2 lang="en">Results by amount (2026-10-25)</h2>
+<ul>
+<li lang="en">0: 2026-10-31 (this month-end)</li>
+<li lang="en">1: 2026-11-30 (next month-end)</li>
+<li lang="en">2: 2026-12-31 (month-end after next)</li>
+<li lang="en">-1: 2026-09-30 (previous month-end)</li>
+</ul>
+<h2 lang="en">Finding the first of the month</h2>
+<p lang="en">Add 1 to the previous month-end.</p>
+<ul>
+<li lang="en">=EOMONTH(A2,-1)+1</li>
+</ul>
+<h2>Bom para</h2>
+<ul>
+<li lang="en">Finding payment dates for month-end close, next-month-end payment</li>
+<li lang="en">Knowing a month's last day</li>
+<li lang="en">Building monthly aggregation periods</li>
+</ul>
+<h2 lang="en">February in leap years</h2>
+<p lang="en">EOMONTH handles leap years correctly.</p>
+<ul>
+<li lang="en">2028-02-10 → 2028-02-29</li>
+<li lang="en">2026-02-10 → 2026-02-28</li>
+</ul>
+<h2>Exemplo</h2>
+<p lang="en">Even if invoice dates fell mid-month, payment due was the end of the next month. =EOMONTH(A2,1) gave next month-end for every invoice date.</p>
+<h2 lang="en">Difference from EDATE</h2>
+<ul>
+<li lang="en">EDATE: moves to the same day (like the 31st); adjusts when it overflows</li>
+<li lang="en">EOMONTH: always moves to month-end</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Result appears as a number</b>: set the cell's format to Date.</li>
+<li lang="en"><b>Whether month-end is the 30th or 31st</b>: EOMONTH decides automatically; no need to write it.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if month-end falls on a weekend?</h3>
+<p lang="en">To adjust to a business day, combine with WORKDAY. Example: =WORKDAY(EOMONTH(A2,1)+1,-1)</p>
+<h2>Resumo</h2>
+<p lang="en">EOMONTH for month-end dates. Changing the amount also gives next or previous month-end.</p>
 <a class="cta" href="/pt/date-offset-formula-builder.html">Usar “Criar uma fórmula de deslocamento de data” (grátis)</a>
 <h2>Ferramentas que combinam com esta</h2><ul><li><a href="/pt/date-calculator.html">Calcular idade, dias entre datas e deslocamentos de datas</a>: Calcule idade e dias entre datas.</li><li><a href="/pt/datedif-formula-builder.html">Criar uma fórmula DATEDIF</a>: Crie uma fórmula DATEDIF.</li><li><a href="/pt/excel-serial-date.html">Conversor de valor serial e data do Excel</a>: Converta valores seriais e datas do Excel.</li></ul>
 <div class="tip"><p>Se este guia ajudou, uma pequena gorjeta significaria muito.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Enviar uma gorjeta (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar um presente (lista de desejos da Amazon)</a></div>

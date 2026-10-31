@@ -200,14 +200,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>IMPORTHTMLの書き方（式を自動で作る・無料）</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>URLを入れる</li><li>方法を選ぶ</li><li>式をコピー</li></ul></div>
-<p><a href="/import-formula-builder.html">取り込み式の作成</a> は、URLと取り込み方からIMPORTHTMLなどの式を作ります。</p>
+<p>Webページの表や一覧を、Googleスプレッドシートに取り込みたい。そのための関数が IMPORTHTML、IMPORTXML、IMPORTDATA、IMPORTFEED です。<a href="/import-formula-builder.html">IMPORTHTMLなどの式を作る</a> は、URLと取り込み方を選ぶだけで、その式を作ります。入力は、この端末の中で処理され、外には送られません。</p>
 <h2>手順</h2>
 <ol>
-<li>URLを入れる</li>
-<li>方法を選ぶ</li>
-<li>式をコピー</li>
+<li>「取り込むページのURL」に、http または https で始まるURLを入れます。</li>
+<li>「取り込み方」を選びます（IMPORTHTML-table、IMPORTHTML-list、IMPORTXML、IMPORTDATA、IMPORTFEED）。</li>
+<li>IMPORTHTMLなら「何番目の表・リストか（IMPORTHTML用）」に数字を入れます。</li>
+<li>IMPORTXMLなら「XPath（IMPORTXML用）」を入れます。</li>
+<li>「取り込みの式」を、「結果をコピー」でコピーし、スプレッドシートのセルに貼ります。</li>
 </ol>
-<div class="note">できた式は、そのままセルに貼れます。</div>
+<div class="note">2つ目の欄「エラーのとき空にする式」は、IFERRORで包んだ式です。「2つ目をコピー」でコピーできます。</div>
+<h2>例</h2>
+<ul>
+<li>=IMPORTHTML("https://example.com/page","table",1)</li>
+</ul>
+<p>ページの1番目の表を、取り込みます。</p>
+<h2>5つの取り込み方</h2>
+<ul>
+<li><b>IMPORTHTML-table</b>：ページの表</li>
+<li><b>IMPORTHTML-list</b>：ページの箇条書き</li>
+<li><b>IMPORTXML</b>：XPathで指定した部分</li>
+<li><b>IMPORTDATA</b>：CSVやTSVのファイル</li>
+<li><b>IMPORTFEED</b>：RSSやAtomのフィード</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>為替や株価など、更新される表を取り込みたい</li>
+<li>ニュースのRSSを、一覧にしたい</li>
+<li>公開されているCSVを、そのまま読み込みたい</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：URLがhttp(s)で始まっていない。何番目かが数字でない。IMPORTXMLでXPathが空。</li>
+<li><b>Excelでは動かない</b>：これらはGoogleスプレッドシートの関数です。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>取り込んだデータは自動で更新されますか？</h3>
+<p>はい。数時間ごとに、更新されます。</p>
+<h2>まとめ</h2>
+<p>URLと取り込み方を選べば、式ができます。</p>
 <a class="cta" href="/import-formula-builder.html">IMPORTHTMLなどの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/importrange-builder.html">IMPORTRANGEの式を作る</a>：IMPORTRANGEの式を作ります。</li><li><a href="/query-formula-builder.html">QUERYの式を作る</a>：QUERY関数の式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +250,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Write IMPORTHTML (Build It Automatically, Free)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the URL</li><li>Choose the method</li><li>Copy the formula</li></ul></div>
-<p><a href="/import-formula-builder.html">Import Builder</a> builds IMPORTHTML-style formulas from a URL and a method.</p>
+<p>You want to bring a web page's table or list into Google Sheets. The functions for that are IMPORTHTML, IMPORTXML, IMPORTDATA and IMPORTFEED. <a href="/import-formula-builder.html">Build an IMPORTHTML Formula</a> builds the formula from just a URL and a method. Input is processed inside this device and not sent outside.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the URL</li>
-<li>Choose the method</li>
-<li>Copy the formula</li>
+<li>In "URL of the page to import", enter a URL starting with http or https.</li>
+<li>Choose "Import method" (IMPORTHTML-table, IMPORTHTML-list, IMPORTXML, IMPORTDATA, IMPORTFEED).</li>
+<li>For IMPORTHTML, enter a number in "Which table or list (for IMPORTHTML)".</li>
+<li>For IMPORTXML, enter an "XPath (for IMPORTXML)".</li>
+<li>Copy the "Import formula" with "Copy result" and paste it into a sheet cell.</li>
 </ol>
-<div class="note">The formula can be pasted straight into a cell.</div>
+<div class="note">The second field, "Formula that blanks on error", wraps it in IFERROR. Copy it with "Copy second".</div>
+<h2>Example</h2>
+<ul>
+<li>=IMPORTHTML("https://example.com/page","table",1)</li>
+</ul>
+<p>Imports the page's first table.</p>
+<h2>The five methods</h2>
+<ul>
+<li><b>IMPORTHTML-table</b>: a table on the page</li>
+<li><b>IMPORTHTML-list</b>: a list on the page</li>
+<li><b>IMPORTXML</b>: the part specified by XPath</li>
+<li><b>IMPORTDATA</b>: a CSV or TSV file</li>
+<li><b>IMPORTFEED</b>: an RSS or Atom feed</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Importing tables that update, like exchange rates or prices</li>
+<li>Listing news RSS</li>
+<li>Reading a public CSV as is</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the URL doesn't start with http(s); the index isn't a number; XPath is empty for IMPORTXML.</li>
+<li><b>Doesn't work in Excel</b>: these are Google Sheets functions.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does imported data update automatically?</h3>
+<p>Yes, every few hours.</p>
+<h2>Summary</h2>
+<p>Pick a URL and a method and the formula is built.</p>
 <a class="cta" href="/import-formula-builder.html">Use "Build an IMPORTHTML Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/query-formula-builder.html">Build a QUERY Formula</a>: Build a QUERY formula.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

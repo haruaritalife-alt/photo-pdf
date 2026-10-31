@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>無法正常使用時的處理辦法</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>檢查檔案</li><li>確認大小</li><li>換一臺裝置試試</li></ul></div>
-<p>如果<a href="/tw/date-offset-formula-builder.html">日期加減公式生成器</a>無法使用,請檢查以下幾點。</p>
-<h2>步驟</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/tw/date-offset-formula-builder.html">Build a Date Offset Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the date cell isn't in the "A2" form, the amount isn't an integer, or the holiday range isn't in a form like "E2:E20".</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>The result appears as a number</b>: the cell's format is "General". Set it to "Short Date".</li>
+<li lang="en"><b>#VALUE! appears</b>: the date cell isn't recognised as a date (a text date).</li>
+<li lang="en"><b>#NUM! appears</b>: the resulting date is beyond Excel's range.</li>
+<li lang="en"><b>Off by a day</b>: whether the base day is included or not.</li>
+<li lang="en"><b>Business days don't match</b>: holidays aren't included.</li>
+<li lang="en"><b>Adjusted to month-end</b>: EDATE moves to month-end if the target has no such day.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>檢查檔案</li>
-<li>確認大小</li>
-<li>換一臺裝置試試</li>
+<li lang="en">Check the date cell is recognised as a date (right-aligned means date).</li>
+<li lang="en">Set the result cell's format to Date.</li>
+<li lang="en">Compare with the tool's result using a sample date.</li>
 </ol>
-<div class="note">如果沒有出現公式,請確認單元格寫成 A2 這樣的形式,並且數值是整數。</div>
+<div class="note" lang="en">If dates display left-aligned, they may be text.</div>
+<h2 lang="en">Fixing text dates</h2>
+<ul>
+<li lang="en">DATEVALUE function: =DATEVALUE("2026/10/25")</li>
+<li lang="en">Select cells and convert with "Data" → "Text to Columns"</li>
+<li lang="en">Dot-separated forms like "2026.10.25" may not be recognised as dates</li>
+</ul>
+<h2 lang="en">Differences from the sample result</h2>
+<p lang="en">The tool's sample result:</p>
+<ul>
+<li lang="en">WORKDAY: weekends only; holidays aren't considered</li>
+<li lang="en">EDATE: includes month-end adjustment</li>
+</ul>
+<p lang="en">With a holiday range in actual cells, results change.</p>
+<h2>示例</h2>
+<p lang="en">The result showed as the number "46323" because the cell's format was "General". Setting it to a date format showed "2026/10/28".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Text in the holiday range</b>: put only dates.</li>
+<li lang="en"><b>Old dates</b>: dates before 1900 can't be handled.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are holidays included automatically?</h3>
+<p lang="en">No. Prepare the holiday list yourself.</p>
+<h2>小結</h2>
+<p lang="en">Display format, date form, holidays. Check these three in order.</p>
 <a class="cta" href="/tw/date-offset-formula-builder.html">使用「生成日期加減公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/date-calculator.html">計算年齡、日期間隔天數和日期加減</a>：計算年齡和兩個日期之間的天數。</li><li><a href="/tw/datedif-formula-builder.html">生成 DATEDIF 公式</a>: 生成 DATEDIF 公式。</li><li><a href="/tw/excel-serial-date.html">Excel 序列值與日期轉換器</a>: 轉換 Excel 的序列值和日期。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

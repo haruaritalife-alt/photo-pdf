@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>無法正常使用時的處理辦法</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>檢查檔案</li><li>確認大小</li><li>換一臺裝置試試</li></ul></div>
-<p>如果<a href="/tw/excel-left-mid-builder.html">LEFT/MID公式生成器</a>無法使用,請檢查以下幾點。</p>
-<h2>步驟</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/tw/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell isn't in the "A2" form; characters isn't a number for LEFT, RIGHT or MID; the MID start is below 1; or the delimiter is empty for the delimiter methods.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#VALUE! appears</b>: FIND can't find the delimiter, or MID's start is 0 or less.</li>
+<li lang="en"><b>Different characters than expected</b>: positions off by one, or full-/half-width mix.</li>
+<li lang="en"><b>Cut short</b>: the character count is too low.</li>
+<li lang="en"><b>Extra spaces attached</b>: the original contains spaces. Tidy with TRIM.</li>
+<li lang="en"><b>Result can't be used as a number</b>: results of LEFT, MID and so on are text. Convert with VALUE.</li>
+<li lang="en"><b>#NAME? appears</b>: a typo in the function name.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>檢查檔案</li>
-<li>確認大小</li>
-<li>換一臺裝置試試</li>
+<li lang="en">Enter a sample text and check the tool's result is as expected.</li>
+<li lang="en">Count the real cell's text with LEN and see whether it matches what you see.</li>
+<li lang="en">Check whether the delimiter is full-width or half-width.</li>
 </ol>
-<div class="note">如果沒有出現公式,請確認單元格寫成 A2 這樣的形式,並且字元數是數字。</div>
+<div class="note" lang="en">Used on number cells, it works on the stored value, not the formatted look.</div>
+<h2 lang="en">When used on number cells</h2>
+<p lang="en">Even if a cell looks like 0012, if its content is the number 12, LEFT and the like work on "12". To handle leading zeros, store it as text.</p>
+<h2 lang="en">When used on date cells</h2>
+<p lang="en">Using LEFT on a date cell works on the serial value (like 45000). Take date parts with YEAR, MONTH, DAY or TEXT.</p>
+<h2>示例</h2>
+<p lang="en">Taking the left 4 characters of a date cell to get the year gave "4500", since dates are serial values. Switching to YEAR gave 2023.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Invisible characters</b>: copied text may contain invisible characters.</li>
+<li lang="en"><b>Characters and positions</b>: spaces count as one character.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want to use it as a number?</h3>
+<p lang="en">Convert with =VALUE(LEFT(A2,3)) or =LEFT(A2,3)*1.</p>
+<h2>小結</h2>
+<p lang="en">Delimiter, how positions count, text vs number. Check these three in order.</p>
 <a class="cta" href="/tw/excel-left-mid-builder.html">使用「生成 LEFT、MID 或 RIGHT 公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/excel-text-clean.html">去掉 Excel 文字中多餘的空格和看不見的字元</a>: 去掉多餘的空格和看不見的字元。</li><li><a href="/tw/text-to-columns.html">按分隔符把文字拆成多列</a>: 按分隔符把文字拆成多列。</li><li><a href="/tw/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Apa yang Perlu Dilakukan Jika Tidak Berfungsi</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Dikemas kini: 19 Okt 2026 | <a href="/about.html">Perihal (Jepun)</a></p>
 <div class="points"><b>Perkara penting</b><ul><li>Semak fail</li><li>Semak saiz</li><li>Cuba peranti lain</li></ul></div>
-<p>Jika <a href="/ms/date-offset-formula-builder.html">Pembina tarikh</a> tidak berfungsi, semak perkara berikut.</p>
-<h2>Langkah</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/ms/date-offset-formula-builder.html">Build a Date Offset Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the date cell isn't in the "A2" form, the amount isn't an integer, or the holiday range isn't in a form like "E2:E20".</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>The result appears as a number</b>: the cell's format is "General". Set it to "Short Date".</li>
+<li lang="en"><b>#VALUE! appears</b>: the date cell isn't recognised as a date (a text date).</li>
+<li lang="en"><b>#NUM! appears</b>: the resulting date is beyond Excel's range.</li>
+<li lang="en"><b>Off by a day</b>: whether the base day is included or not.</li>
+<li lang="en"><b>Business days don't match</b>: holidays aren't included.</li>
+<li lang="en"><b>Adjusted to month-end</b>: EDATE moves to month-end if the target has no such day.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Semak fail</li>
-<li>Semak saiz</li>
-<li>Cuba peranti lain</li>
+<li lang="en">Check the date cell is recognised as a date (right-aligned means date).</li>
+<li lang="en">Set the result cell's format to Date.</li>
+<li lang="en">Compare with the tool's result using a sample date.</li>
 </ol>
-<div class="note">Jika tiada formula muncul, pastikan sel ditulis seperti A2 dan nombor ialah integer.</div>
+<div class="note" lang="en">If dates display left-aligned, they may be text.</div>
+<h2 lang="en">Fixing text dates</h2>
+<ul>
+<li lang="en">DATEVALUE function: =DATEVALUE("2026/10/25")</li>
+<li lang="en">Select cells and convert with "Data" → "Text to Columns"</li>
+<li lang="en">Dot-separated forms like "2026.10.25" may not be recognised as dates</li>
+</ul>
+<h2 lang="en">Differences from the sample result</h2>
+<p lang="en">The tool's sample result:</p>
+<ul>
+<li lang="en">WORKDAY: weekends only; holidays aren't considered</li>
+<li lang="en">EDATE: includes month-end adjustment</li>
+</ul>
+<p lang="en">With a holiday range in actual cells, results change.</p>
+<h2>Contoh</h2>
+<p lang="en">The result showed as the number "46323" because the cell's format was "General". Setting it to a date format showed "2026/10/28".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Text in the holiday range</b>: put only dates.</li>
+<li lang="en"><b>Old dates</b>: dates before 1900 can't be handled.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are holidays included automatically?</h3>
+<p lang="en">No. Prepare the holiday list yourself.</p>
+<h2>Ringkasan</h2>
+<p lang="en">Display format, date form, holidays. Check these three in order.</p>
 <a class="cta" href="/ms/date-offset-formula-builder.html">Guna “Bina formula anjakan tarikh” (percuma)</a>
 <h2>Alat yang sepadan dengan ini</h2><ul><li><a href="/ms/date-calculator.html">Kira Umur, Hari Antara Tarikh dan Anjakan Tarikh</a>: Kira umur dan hari antara tarikh.</li><li><a href="/ms/datedif-formula-builder.html">Cipta formula DATEDIF</a>: Cipta formula DATEDIF.</li><li><a href="/ms/excel-serial-date.html">Penukar Nilai Siri dan Tarikh Excel</a>: Tukar nilai siri dan tarikh Excel.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil amat dihargai.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Hantar tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hantar hadiah (senarai hajat Amazon)</a></div>

@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/excel-left-mid-builder.html">LEFT/MID Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but the result is odd. Here are common troubles with <a href="/en/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the cell isn't in the "A2" form; characters isn't a number for LEFT, RIGHT or MID; the MID start is below 1; or the delimiter is empty for the delimiter methods.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>#VALUE! appears</b>: FIND can't find the delimiter, or MID's start is 0 or less.</li>
+<li><b>Different characters than expected</b>: positions off by one, or full-/half-width mix.</li>
+<li><b>Cut short</b>: the character count is too low.</li>
+<li><b>Extra spaces attached</b>: the original contains spaces. Tidy with TRIM.</li>
+<li><b>Result can't be used as a number</b>: results of LEFT, MID and so on are text. Convert with VALUE.</li>
+<li><b>#NAME? appears</b>: a typo in the function name.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Enter a sample text and check the tool's result is as expected.</li>
+<li>Count the real cell's text with LEN and see whether it matches what you see.</li>
+<li>Check whether the delimiter is full-width or half-width.</li>
 </ol>
-<div class="note">If no formula appears, check that the cell is written like A2 and the count is a number.</div>
+<div class="note">Used on number cells, it works on the stored value, not the formatted look.</div>
+<h2>When used on number cells</h2>
+<p>Even if a cell looks like 0012, if its content is the number 12, LEFT and the like work on "12". To handle leading zeros, store it as text.</p>
+<h2>When used on date cells</h2>
+<p>Using LEFT on a date cell works on the serial value (like 45000). Take date parts with YEAR, MONTH, DAY or TEXT.</p>
+<h2>Example</h2>
+<p>Taking the left 4 characters of a date cell to get the year gave "4500", since dates are serial values. Switching to YEAR gave 2023.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Invisible characters</b>: copied text may contain invisible characters.</li>
+<li><b>Characters and positions</b>: spaces count as one character.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I want to use it as a number?</h3>
+<p>Convert with =VALUE(LEFT(A2,3)) or =LEFT(A2,3)*1.</p>
+<h2>Summary</h2>
+<p>Delimiter, how positions count, text vs number. Check these three in order.</p>
 <a class="cta" href="/en/excel-left-mid-builder.html">Use "Build a LEFT, MID or RIGHT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/en/text-to-columns.html">Split Text into Columns by a Delimiter</a>: Split text into columns by a delimiter.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

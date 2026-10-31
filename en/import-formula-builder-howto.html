@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Write IMPORTHTML (Build It Automatically, Free)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the URL</li><li>Choose the method</li><li>Copy the formula</li></ul></div>
-<p><a href="/en/import-formula-builder.html">Import Builder</a> builds IMPORTHTML-style formulas from a URL and a method.</p>
+<p>You want to bring a web page's table or list into Google Sheets. The functions for that are IMPORTHTML, IMPORTXML, IMPORTDATA and IMPORTFEED. <a href="/en/import-formula-builder.html">Build an IMPORTHTML Formula</a> builds the formula from just a URL and a method. Input is processed inside this device and not sent outside.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the URL</li>
-<li>Choose the method</li>
-<li>Copy the formula</li>
+<li>In "URL of the page to import", enter a URL starting with http or https.</li>
+<li>Choose "Import method" (IMPORTHTML-table, IMPORTHTML-list, IMPORTXML, IMPORTDATA, IMPORTFEED).</li>
+<li>For IMPORTHTML, enter a number in "Which table or list (for IMPORTHTML)".</li>
+<li>For IMPORTXML, enter an "XPath (for IMPORTXML)".</li>
+<li>Copy the "Import formula" with "Copy result" and paste it into a sheet cell.</li>
 </ol>
-<div class="note">The formula can be pasted straight into a cell.</div>
+<div class="note">The second field, "Formula that blanks on error", wraps it in IFERROR. Copy it with "Copy second".</div>
+<h2>Example</h2>
+<ul>
+<li>=IMPORTHTML("https://example.com/page","table",1)</li>
+</ul>
+<p>Imports the page's first table.</p>
+<h2>The five methods</h2>
+<ul>
+<li><b>IMPORTHTML-table</b>: a table on the page</li>
+<li><b>IMPORTHTML-list</b>: a list on the page</li>
+<li><b>IMPORTXML</b>: the part specified by XPath</li>
+<li><b>IMPORTDATA</b>: a CSV or TSV file</li>
+<li><b>IMPORTFEED</b>: an RSS or Atom feed</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Importing tables that update, like exchange rates or prices</li>
+<li>Listing news RSS</li>
+<li>Reading a public CSV as is</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the URL doesn't start with http(s); the index isn't a number; XPath is empty for IMPORTXML.</li>
+<li><b>Doesn't work in Excel</b>: these are Google Sheets functions.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does imported data update automatically?</h3>
+<p>Yes, every few hours.</p>
+<h2>Summary</h2>
+<p>Pick a URL and a method and the formula is built.</p>
 <a class="cta" href="/en/import-formula-builder.html">Use "Build an IMPORTHTML Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/en/query-formula-builder.html">Build a QUERY Formula</a>: Build a QUERY formula.</li><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
