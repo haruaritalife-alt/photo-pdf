@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Was tun, wenn es nicht funktioniert</h1>
 <p class="meta">Veröffentlicht: 19.10.2026 | Aktualisiert: 19.10.2026 | <a href="/about.html">Über uns (Japanisch)</a></p>
 <div class="points"><b>Wichtige Punkte</b><ul><li>Die Datei prüfen</li><li>Größe prüfen</li><li>Auf einem anderen Gerät versuchen</li></ul></div>
-<p>Wenn <a href="/de/split-formula-builder.html">SPLIT-Generator</a> nicht funktioniert, prüfen Sie Folgendes.</p>
-<h2>Schritte</h2>
+<p lang="en">You pasted the formula but it doesn't split. Here are common troubles with <a href="/de/split-formula-builder.html">Build a SPLIT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell to split isn't in the "A2" form; the delimiter is empty; or in Nth mode the number isn't an integer of 1 or more.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Doesn't split</b>: the delimiter doesn't match the data (full-width vs half-width, etc.).</li>
+<li lang="en"><b>#REF!</b>: the number exceeds the item count, or cells to the right hold values.</li>
+<li lang="en"><b>#SPILL! (Excel)</b>: values sit in the spill range.</li>
+<li lang="en"><b>#NAME? (Excel)</b>: a version without TEXTSPLIT.</li>
+<li lang="en"><b>Spaces remain around items</b>: tidy with TRIM.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Die Datei prüfen</li>
-<li>Größe prüfen</li>
-<li>Auf einem anderen Gerät versuchen</li>
+<li lang="en">Look closely at the source text: is the delimiter full-width or half-width?</li>
+<li lang="en">Paste it into "Sample text" and view the tool's result.</li>
+<li lang="en">Check the cells to the right are empty.</li>
 </ol>
-<div class="note">Wenn keine Formel erscheint, prüfen Sie, ob die Zelle wie A2 geschrieben und ein Trennzeichen eingegeben wurde.</div>
+<div class="note" lang="en">The delimiter may be an invisible character (line break, tab).</div>
+<h2 lang="en">Splitting on line breaks</h2>
+<p lang="en">A line break is CHAR(10). It can't be typed in the delimiter field directly, so edit the formula by hand.</p>
+<ul>
+<li lang="en">Example: =SPLIT(A2,CHAR(10))</li>
+</ul>
+<h2>Beispiel</h2>
+<p lang="en">Names didn't split because the delimiter was a tab. Editing the formula by hand fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Numbers become dates</b>: values like "1-2" may turn into dates. Set the format to text.</li>
+<li lang="en"><b>Leading zeros vanish</b>: keep as text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Split numbers remain text</h3>
+<p lang="en">Convert with VALUE.</p>
+<h2>Zusammenfassung</h2>
+<p lang="en">Check the delimiter, the empty cells to the right, and the supported version.</p>
 <a class="cta" href="/de/split-formula-builder.html">„SPLIT-Formel erstellen“ verwenden (kostenlos)</a>
 <h2>Passende Werkzeuge dazu</h2><ul><li><a href="/de/text-to-columns.html">Text an einem Trennzeichen in Spalten teilen</a>: Teilen Sie Text an einem Trennzeichen in Spalten.</li><li><a href="/de/excel-left-mid-builder.html">Eine LEFT-, MID- oder RIGHT-Formel erstellen</a>: Erstellen Sie Formeln zum Extrahieren von Text.</li><li><a href="/de/textjoin-formula-builder.html">TEXTJOIN-Formel erstellen</a>: Erstellen Sie eine TEXTJOIN-Formel.</li></ul>
 <div class="tip"><p>Wenn Ihnen diese Anleitung geholfen hat, freuen wir uns über ein kleines Trinkgeld.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Trinkgeld senden (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Geschenk senden (Amazon-Wunschliste)</a></div>

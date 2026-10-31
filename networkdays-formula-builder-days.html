@@ -200,14 +200,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>日数の差</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>DAYSを選ぶ</li><li>日付を入れる</li><li>確かめる</li></ul></div>
-<p><a href="/networkdays-formula-builder.html">営業日数式の作成</a> では、DAYSで終了日から開始日を引いた日数が出ます。</p>
+<p>営業日ではなく、単純な日数の差が知りたいこともあります。たとえば、契約から何日経ったかです。<a href="/networkdays-formula-builder.html">営業日数の式を作る</a> の「DAYS」と「DAYS-INCL」が、その式を作ります。</p>
+<h2>2つの方法</h2>
+<ul>
+<li><b>DAYS</b>：終了日−開始日。両端のうち、片方を数えない。</li>
+<li><b>DAYS-INCL</b>：DAYSに1を足し、両端を含める。</li>
+</ul>
 <h2>手順</h2>
 <ol>
-<li>DAYSを選ぶ</li>
-<li>日付を入れる</li>
-<li>確かめる</li>
+<li>「方法」で「DAYS」か「DAYS-INCL」を選ぶ。</li>
+<li>開始日と終了日のセルを入れる。</li>
+<li>試しの日付で、結果を確かめる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">開始日を含めるなら、DAYS-INCLにします。</div>
+<div class="note">DAYS関数の引数は、「終了日、開始日」の順です。ツールが自動で並べます。</div>
+<h2>例</h2>
+<ul>
+<li>DAYS：=DAYS(B2,A2)</li>
+<li>DAYS-INCL：=DAYS(B2,A2)+1</li>
+</ul>
+<p>2026-10-01から2026-10-07の場合、DAYSは「6」、DAYS-INCLは「7」です。</p>
+<h2>どちらを使うか</h2>
+<ul>
+<li>経過日数（何日経ったか）：DAYS</li>
+<li>期間の日数（何日間か）：DAYS-INCL</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>契約や貸出の、経過日数</li>
+<li>イベントの開催日数</li>
+<li>旅行の日数</li>
+</ul>
+<h2>単純な引き算でも求まる</h2>
+<p>=B2-A2 でも、同じ結果になります。セルが日付形式のとき、結果が日付に見える場合は、表示形式を「数値」にします。</p>
+<h2>例</h2>
+<p>旅行が10月1日から7日までで、何日間かを知りたかった。両端を含めるので、DAYS-INCLで7日間になった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>終了日が前</b>：結果がマイナスになる。</li>
+<li><b>Excelの古い版</b>：DAYS関数は、Excel 2013以降。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>月数や年数で出したい</h3>
+<p>DATEDIF関数を使います。</p>
+<h2>まとめ</h2>
+<p>単純な日数の差は、DAYS。両端を含めるなら+1です。</p>
 <a class="cta" href="/networkdays-formula-builder.html">営業日数の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-offset-formula-builder.html">日付の足し引きの式を作る</a>：日付の足し引きの式を作ります。</li><li><a href="/datedif-formula-builder.html">DATEDIFの式を作る</a>：DATEDIFの式を作ります。</li><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +256,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Day Differences</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose DAYS</li><li>Enter the dates</li><li>Check it</li></ul></div>
-<p>In <a href="/networkdays-formula-builder.html">NETWORKDAYS Builder</a>, DAYS gives the end date minus the start date.</p>
+<p>Sometimes you want the plain difference in days rather than business days, such as how many days passed since a contract. "DAYS" and "DAYS-INCL" in <a href="/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a> build those formulas.</p>
+<h2>The two methods</h2>
+<ul>
+<li><b>DAYS</b>: end − start. One of the two ends isn't counted.</li>
+<li><b>DAYS-INCL</b>: DAYS plus 1, counting both ends.</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Choose DAYS</li>
-<li>Enter the dates</li>
-<li>Check it</li>
+<li>Choose "DAYS" or "DAYS-INCL" in "Method".</li>
+<li>Enter the start and end date cells.</li>
+<li>Check the result with sample dates.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">Use DAYS-INCL to include the start date.</div>
+<div class="note">The DAYS function takes arguments as "end, start". The tool orders them for you.</div>
+<h2>Example</h2>
+<ul>
+<li>DAYS: =DAYS(B2,A2)</li>
+<li>DAYS-INCL: =DAYS(B2,A2)+1</li>
+</ul>
+<p>For 2026-10-01 to 2026-10-07, DAYS gives "6" and DAYS-INCL gives "7".</p>
+<h2>Which to use</h2>
+<ul>
+<li>Elapsed days (how many days have passed): DAYS</li>
+<li>Length of a period (how many days long): DAYS-INCL</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Days elapsed on a contract or loan</li>
+<li>Length of an event in days</li>
+<li>Length of a trip</li>
+</ul>
+<h2>Plain subtraction also works</h2>
+<p>=B2-A2 gives the same result. If it shows as a date, set the display format to "Number".</p>
+<h2>Example</h2>
+<p>A trip ran October 1 to 7 and I wanted the number of days. Since both ends count, DAYS-INCL gave 7 days.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>End date earlier</b>: the result is negative.</li>
+<li><b>Older Excel</b>: DAYS needs Excel 2013 or later.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want months or years</h3>
+<p>Use DATEDIF.</p>
+<h2>Summary</h2>
+<p>For plain day differences use DAYS; add 1 to count both ends.</p>
 <a class="cta" href="/networkdays-formula-builder.html">Use "Build a NETWORKDAYS Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li><li><a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -200,14 +200,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Excelでは</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>式を作る</li><li>Excelか確かめる</li><li>ほかの方法を探す</li></ul></div>
-<p><a href="/arrayformula-builder.html">ARRAYFORMULA式の作成</a> の式は、Googleスプレッドシート用です。</p>
-<h2>手順</h2>
-<ol>
-<li>式を作る</li>
-<li>Excelか確かめる</li>
-<li>ほかの方法を探す</li>
-</ol>
-<div class="note">Excelでは、式を下にコピーするか、新しいバージョンの動的配列を使います。</div>
+<p>ARRAYFORMULAは、Googleスプレッドシートの関数です。Excelでは、どうなるのでしょうか。<a href="/arrayformula-builder.html">ARRAYFORMULAの式を作る</a> で作る式の、Excelでの考え方をまとめます。</p>
+<h2>Excelでは</h2>
+<ul>
+<li>Excel 365 / 2021以降：「ダイナミック配列」で、式が自動で広がります。ARRAYFORMULAは不要です。</li>
+<li>それ以前のExcel：配列数式（Ctrl+Shift+Enter）を使います。</li>
+</ul>
+<div class="note">このツールの式は、Googleスプレッドシート用です。そのままExcelに貼っても動きません。</div>
+<h2>Excel 365での書き方</h2>
+<p>Googleでは次の式が、</p>
+<ul>
+<li>=ARRAYFORMULA(B2:B*C2:C)</li>
+</ul>
+<p>Excel 365では、範囲を決めて次のように書きます。</p>
+<ul>
+<li>=B2:B100*C2:C100</li>
+</ul>
+<h2>違い</h2>
+<ul>
+<li>Googleは、列全体（B2:B）が使える</li>
+<li>Excelは、範囲を明示する（B2:B100）か、テーブルを使う</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>同じ表を、GoogleとExcelの両方で使いたい</li>
+<li>式を移すときに、書き換える箇所を知りたい</li>
+</ul>
+<h2>テーブルを使う</h2>
+<p>Excelでは、表を「テーブル」にすると、列の式が自動で広がります。行が増えても、式が付きます。</p>
+<h2>例</h2>
+<p>Googleのシートを、Excelに移した。ARRAYFORMULAを外し、範囲を B2:B100 に直すと動いた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>#NAME?</b>：ExcelにARRAYFORMULAはない。</li>
+<li><b>#SPILL!</b>：広がる先に値がある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>古いExcelで広げるには？</h3>
+<p>範囲を選んで式を入力し、Ctrl+Shift+Enterで確定します。</p>
+<h2>まとめ</h2>
+<p>Excelでは、ARRAYFORMULAを外して、範囲を明示します。</p>
 <a class="cta" href="/arrayformula-builder.html">ARRAYFORMULAの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/query-formula-builder.html">QUERYの式を作る</a>：QUERY関数の式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +251,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>In Excel</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>Check if it is Excel</li><li>Look for another way</li></ul></div>
-<p>The formula from <a href="/arrayformula-builder.html">ARRAYFORMULA Builder</a> is for Google Sheets.</p>
-<h2>Steps</h2>
-<ol>
-<li>Build the formula</li>
-<li>Check if it is Excel</li>
-<li>Look for another way</li>
-</ol>
-<div class="note">In Excel, copy the formula down or use dynamic arrays in newer versions.</div>
+<p>ARRAYFORMULA is a Google Sheets function. What about Excel? Here's how to think about the formulas <a href="/arrayformula-builder.html">Build an ARRAYFORMULA</a> builds, in Excel.</p>
+<h2>In Excel</h2>
+<ul>
+<li>Excel 365 / 2021 and later: "dynamic arrays" spread formulas automatically. ARRAYFORMULA isn't needed.</li>
+<li>Earlier Excel: use array formulas (Ctrl+Shift+Enter).</li>
+</ul>
+<div class="note">This tool's formulas are for Google Sheets. Pasted into Excel as is, they won't work.</div>
+<h2>Writing it in Excel 365</h2>
+<p>In Google:</p>
+<ul>
+<li>=ARRAYFORMULA(B2:B*C2:C)</li>
+</ul>
+<p>In Excel 365 you fix the range and write:</p>
+<ul>
+<li>=B2:B100*C2:C100</li>
+</ul>
+<h2>Differences</h2>
+<ul>
+<li>Google can use whole columns (B2:B)</li>
+<li>Excel needs an explicit range (B2:B100) or a table</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Using the same sheet in both Google and Excel</li>
+<li>Knowing what to rewrite when moving formulas</li>
+</ul>
+<h2>Using a table</h2>
+<p>In Excel, making the range a "table" spreads column formulas automatically. Formulas attach as rows are added.</p>
+<h2>Example</h2>
+<p>Moved a Google sheet to Excel. Removing ARRAYFORMULA and changing the range to B2:B100 made it work.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>#NAME?</b>: Excel has no ARRAYFORMULA.</li>
+<li><b>#SPILL!</b>: values sit in the spill range.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How do I spread in old Excel?</h3>
+<p>Select the range, enter the formula, and confirm with Ctrl+Shift+Enter.</p>
+<h2>Summary</h2>
+<p>In Excel, drop ARRAYFORMULA and state the range explicitly.</p>
 <a class="cta" href="/arrayformula-builder.html">Use "Build an ARRAYFORMULA" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/query-formula-builder.html">Build a QUERY Formula</a>: Build a QUERY formula.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

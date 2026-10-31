@@ -201,14 +201,40 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>範圍如何變化</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>輸入公式</li><li>檢視公式</li><li>核對一下</li></ul></div>
-<p>在<a href="/tw/arrayformula-builder.html">ARRAYFORMULA 公式生成器</a>中,B2 會變成 B2:B 這樣的整列範圍。</p>
-<h2>步驟</h2>
-<ol>
-<li>輸入公式</li>
-<li>檢視公式</li>
-<li>核對一下</li>
-</ol>
-<div class="note">每個單元格引用都會變成各自的整列。</div>
+<p lang="en">In ARRAYFORMULA, "B2" becomes "B2:B". Knowing how ranges change lets you tweak formulas. <a href="/tw/arrayformula-builder.html">Build an ARRAYFORMULA</a> does this conversion automatically.</p>
+<h2 lang="en">Conversion rules</h2>
+<ul>
+<li lang="en">B2 → B2:B (from B2 to the end of column B)</li>
+<li lang="en">C2 → C2:C</li>
+<li lang="en">Multiple cells are all converted.</li>
+</ul>
+<div class="note" lang="en">Only column-letter plus row-number (A1 style) references are converted. Plain numbers are left alone.</div>
+<h2>示例</h2>
+<ul>
+<li lang="en">Input: B2*C2+100</li>
+<li lang="en">Result: =ARRAYFORMULA(B2:B*C2:C+100)</li>
+</ul>
+<h2 lang="en">Limiting the range</h2>
+<p lang="en">If you don't need all rows, edit by hand to something like "B2:B100".</p>
+<h2>適合</h2>
+<ul>
+<li lang="en">Choosing which rows to calculate</li>
+<li lang="en">Matching the length of other columns</li>
+</ul>
+<h2 lang="en">Matching range lengths</h2>
+<p lang="en">Mismatched range lengths in a formula can cause errors. Start them all from the same row.</p>
+<h2>示例</h2>
+<p lang="en">Mixing B2:B and C3:C shifted results. Aligning the start row fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Rows not aligned</b>: differing start rows such as B2 and C3 cause offsets.</li>
+<li lang="en"><b>Absolute references</b>: "$" is removed automatically.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about cells on other sheets?</h3>
+<p lang="en">Sheet-qualified cells aren't handled. Fix by hand.</p>
+<h2>小結</h2>
+<p lang="en">Cells become ranges to the column end. Align the start rows.</p>
 <a class="cta" href="/tw/arrayformula-builder.html">使用「生成 ARRAYFORMULA」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/query-formula-builder.html">生成 QUERY 公式</a>: 生成 QUERY 公式。</li><li><a href="/tw/filter-formula-builder.html">生成 FILTER 公式</a>: 生成 FILTER 公式。</li><li><a href="/tw/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

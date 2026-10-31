@@ -200,14 +200,42 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>何番目だけ取り出す</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>NTHを選ぶ</li><li>番号を入れる</li><li>確かめる</li></ul></div>
-<p><a href="/split-formula-builder.html">SPLIT式の作成</a> では、INDEXと組み合わせて何番目だけを取り出せます。</p>
+<p>全部ではなく、2番目の要素だけが欲しい。そのときは、「何番目か」を使います。<a href="/split-formula-builder.html">SPLITの式を作る</a> の「取り出し方」で選べます。</p>
 <h2>手順</h2>
 <ol>
-<li>NTHを選ぶ</li>
-<li>番号を入れる</li>
-<li>確かめる</li>
+<li>「取り出し方」で、何番目か（NTH）を選ぶ。</li>
+<li>「何番目か（NTH用）」に、数字を入れる（2番目なら2）。</li>
+<li>「試しの文字」で、取り出される値を確かめる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">試しの文字で結果を確かめられます。</div>
+<div class="note">番号が1以上の整数でないと、「入力の形が正しくありません。」と出ます。</div>
+<h2>例</h2>
+<p>A2が「東京,大阪,名古屋」で、2番目を取り出す場合です。</p>
+<ul>
+<li>Google：=INDEX(SPLIT(A2,","),1,2)</li>
+<li>Excel：=INDEX(TEXTSPLIT(A2,","),1,2)</li>
+</ul>
+<p>結果は「大阪」です。</p>
+<h2>試しの結果</h2>
+<p>試しの文字に「東京,大阪,名古屋」を入れ、番号を2にすると、「大阪」と表示されます。要素数を超える番号では、「#REF!」と出ます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>氏名から、名字だけを取りたい</li>
+<li>住所の2つ目の区切りだけを、取りたい</li>
+<li>ログの特定の項目だけを、取りたい</li>
+</ul>
+<h2>例</h2>
+<p>「山田 太郎」を空白で分け、1番目で名字、2番目で名前を取り出した。列ごとに、番号を変えて使った。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>#REF!</b>：区切りの数より、大きい番号を指定した。</li>
+<li><b>番号は左から</b>：1番目が、一番左です。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>最後の要素を取りたい</h3>
+<p>要素数が決まっていれば、その番号を指定します。決まっていなければ、別の式が必要です。</p>
+<h2>まとめ</h2>
+<p>何番目かを指定して、欲しい要素だけを取り出せます。</p>
 <a class="cta" href="/split-formula-builder.html">SPLITの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/text-to-columns.html">文字を区切り文字で列に分ける</a>：文字を区切り文字で列に分けます。</li><li><a href="/excel-left-mid-builder.html">文字を取り出す式を作る</a>：文字を取り出す式を作ります。</li><li><a href="/textjoin-formula-builder.html">TEXTJOINの式を作る（セルをまとめてつなぐ）</a>：TEXTJOINの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +247,42 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Taking Only the Nth</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose NTH</li><li>Enter the number</li><li>Check it</li></ul></div>
-<p>In <a href="/split-formula-builder.html">SPLIT Builder</a> you can combine INDEX to take only the Nth piece.</p>
+<p>Instead of everything, you want only the 2nd element. Use "which one". You can choose it in "Extraction" in <a href="/split-formula-builder.html">Build a SPLIT Formula</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose NTH</li>
-<li>Enter the number</li>
-<li>Check it</li>
+<li>In "Extraction", choose the Nth (NTH).</li>
+<li>In "Which one (for NTH)", enter a number (2 for the second).</li>
+<li>Check the extracted value with "Sample text".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">You can check the result with sample text.</div>
+<div class="note">A number that isn't an integer of 1 or more gives "The input is not valid."</div>
+<h2>Example</h2>
+<p>With "Tokyo,Osaka,Nagoya" in A2, extracting the 2nd:</p>
+<ul>
+<li>Google: =INDEX(SPLIT(A2,","),1,2)</li>
+<li>Excel: =INDEX(TEXTSPLIT(A2,","),1,2)</li>
+</ul>
+<p>The result is "Osaka".</p>
+<h2>Sample result</h2>
+<p>Entering "Tokyo,Osaka,Nagoya" as sample and 2 as the number shows "Osaka". A number beyond the item count shows "#REF!".</p>
+<h2>Good for</h2>
+<ul>
+<li>Taking only the family name from a full name</li>
+<li>Taking only the second field of an address</li>
+<li>Taking one particular field from a log</li>
+</ul>
+<h2>Example</h2>
+<p>Split "Yamada Taro" by space; took the 1st for family name and the 2nd for given name, changing the number per column.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>#REF!</b>: the number exceeds the item count.</li>
+<li><b>Counted from the left</b>: the 1st is the leftmost.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want the last element</h3>
+<p>If the count is fixed, specify that number. If not, you need a different formula.</p>
+<h2>Summary</h2>
+<p>Specify which one to pull out just the element you want.</p>
 <a class="cta" href="/split-formula-builder.html">Use "Build a SPLIT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/text-to-columns.html">Split Text into Columns by a Delimiter</a>: Split text into columns by a delimiter.</li><li><a href="/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a>: Build text extraction formulas.</li><li><a href="/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a>: Build a TEXTJOIN formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -200,14 +200,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>並べ替えた一覧</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>SORT-UNIQUEを選ぶ</li><li>範囲を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/unique-formula-builder.html">UNIQUE式の作成</a> では、重複を除いた一覧をSORTで並べ替えられます。</p>
+<p>重複を除いた一覧を、五十音順やABC順に並べたい。それには SORT と UNIQUE を組み合わせます。<a href="/unique-formula-builder.html">UNIQUEの式を作る</a> の「SORT-UNIQUE」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>SORT-UNIQUEを選ぶ</li>
-<li>範囲を入れる</li>
-<li>コピーする</li>
+<li>「方法」で「SORT-UNIQUE」を選ぶ。</li>
+<li>「データの範囲」を入れる。</li>
+<li>「試しのデータ」で、並び方を確かめる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">五十音や昇順に並びます。</div>
+<div class="note">式は、=SORT(UNIQUE(範囲)) の形です。内側のUNIQUEが先に働きます。</div>
+<h2>例</h2>
+<ul>
+<li>=SORT(UNIQUE(A2:A100))</li>
+</ul>
+<p>試しのデータに「みかん,りんご,ぶどう,りんご」を入れると、並べ替えた結果が表示されます。</p>
+<h2>降順にしたい</h2>
+<p>SORTの引数を足して、降順にできます。ツールの式を貼ったあと、手で直します。</p>
+<ul>
+<li>例：=SORT(UNIQUE(A2:A100),1,FALSE)</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>プルダウンの選択肢の元になる一覧</li>
+<li>取引先の一覧表</li>
+<li>重複のない、見やすいリスト</li>
+</ul>
+<h2>並び順について</h2>
+<ul>
+<li>数字は、小さい順</li>
+<li>文字は、文字コード順（かな・漢字の並びは、読みの順とは限らない）</li>
+</ul>
+<h2>例</h2>
+<p>入力フォームの回答から、都道府県の一覧を作りたかった。SORT-UNIQUEで、重複のない一覧ができ、プルダウンに使えた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>漢字の並び</b>：読み仮名の順にはならない。</li>
+<li><b>空のセル</b>：並びの先頭か末尾に出る場合がある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>読み仮名の順に並べたい</h3>
+<p>読み仮名の列を作り、それを基準に並べます。</p>
+<h2>まとめ</h2>
+<p>一覧を並べるなら、SORT-UNIQUEです。</p>
 <a class="cta" href="/unique-formula-builder.html">UNIQUEの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/line-sort-dedupe.html">重複した行を消す・並べ替える</a>：重複した行を消して、並べ替えます。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +253,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>A Sorted List</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose SORT-UNIQUE</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/unique-formula-builder.html">UNIQUE Builder</a>, SORT arranges the de-duplicated list.</p>
+<p>You want a duplicate-free list in alphabetical or kana order. Combine SORT and UNIQUE. "SORT-UNIQUE" in <a href="/unique-formula-builder.html">Build a UNIQUE Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose SORT-UNIQUE</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>Choose "SORT-UNIQUE" in "Method".</li>
+<li>Enter the "Data range".</li>
+<li>Check the order with "Sample data".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">It is sorted in ascending order.</div>
+<div class="note">The form is =SORT(UNIQUE(range)). The inner UNIQUE works first.</div>
+<h2>Example</h2>
+<ul>
+<li>=SORT(UNIQUE(A2:A100))</li>
+</ul>
+<p>With "orange,apple,grape,apple" as sample data, the sorted result is shown.</p>
+<h2>For descending</h2>
+<p>Add SORT arguments for descending. Edit by hand after pasting.</p>
+<ul>
+<li>Example: =SORT(UNIQUE(A2:A100),1,FALSE)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>A source list for dropdown choices</li>
+<li>A table of clients</li>
+<li>A tidy, duplicate-free list</li>
+</ul>
+<h2>About the order</h2>
+<ul>
+<li>Numbers: smallest first</li>
+<li>Text: by character code (kana and kanji order isn't necessarily reading order)</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted a list of prefectures from form answers. SORT-UNIQUE made a duplicate-free list usable in a dropdown.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Kanji order</b>: not in reading order.</li>
+<li><b>Blank cells</b>: may appear first or last.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want reading (furigana) order</h3>
+<p>Make a reading column and sort by it.</p>
+<h2>Summary</h2>
+<p>To order the list, use SORT-UNIQUE.</p>
 <a class="cta" href="/unique-formula-builder.html">Use "Build a UNIQUE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

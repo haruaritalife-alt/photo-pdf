@@ -201,14 +201,38 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Mantenere vuote le righe vuote</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Scegli ARRAY-BLANK</li><li>Inserisci la formula</li><li>Copialo</li></ul></div>
-<p>In <a href="/it/arrayformula-builder.html">Generatore di ARRAYFORMULA</a> puoi creare una formula che lascia vuote le righe senza dati.</p>
+<p lang="en">Used as is, ARRAYFORMULA fills rows with no data with 0s or errors. "ARRAY-BLANK" avoids that. <a href="/it/arrayformula-builder.html">Build an ARRAYFORMULA</a> builds it.</p>
 <h2>Passaggi</h2>
 <ol>
-<li>Scegli ARRAY-BLANK</li>
-<li>Inserisci la formula</li>
-<li>Copialo</li>
+<li lang="en">Choose "ARRAY-BLANK" in "Method".</li>
+<li lang="en">Enter the "First-row formula" (e.g., B2*C2).</li>
+<li lang="en">Copy the formula and paste into row 1.</li>
 </ol>
-<div class="note">IF controlla se la prima colonna è vuota.</div>
+<div class="note" lang="en">Rows where the first cell to appear (B2 here) is blank give a blank result.</div>
+<h2>Esempio</h2>
+<ul>
+<li lang="en">=ARRAYFORMULA(IF(B2:B="","",B2:B*C2:C))</li>
+</ul>
+<p lang="en">Rows with blank B stay empty; only filled rows are calculated.</p>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Sheets with spare rows below where you don't want 0s</li>
+<li lang="en">Keeping a growing sheet tidy</li>
+</ul>
+<h2 lang="en">The cell used for the test</h2>
+<p lang="en">Blankness is judged by the first cell appearing in the formula. Writing the cell you want to test first gives the intended behavior.</p>
+<h2>Esempio</h2>
+<p lang="en">Wanted amount = price (B) × quantity (C). With quantity written first, only rows with blank quantity stayed empty. I wrote the column to test first.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>0 remains</b>: the tested cell holds 0, not blank.</li>
+<li lang="en"><b>Whitespace</b>: cells with invisible spaces aren't treated as blank.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want blank only when several columns are empty</h3>
+<p lang="en">Widen the IF condition with OR or AND. Edit by hand after pasting.</p>
+<h2>Riepilogo</h2>
+<p lang="en">To blank out empty rows, use ARRAY-BLANK.</p>
 <a class="cta" href="/it/arrayformula-builder.html">Usa “Crea una ARRAYFORMULA” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/query-formula-builder.html">Crea una formula QUERY</a>: Crea una formula QUERY.</li><li><a href="/it/filter-formula-builder.html">Creare una formula FILTER</a>: Crea una formula FILTER.</li><li><a href="/it/excel-if-builder.html">Creare una formula IF</a>: Crea una formula IF.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>

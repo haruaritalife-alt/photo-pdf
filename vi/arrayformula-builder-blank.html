@@ -201,14 +201,38 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Giữ các hàng trống ở trạng thái trống</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Chọn ARRAY-BLANK</li><li>Nhập công thức</li><li>Sao chép</li></ul></div>
-<p>Trong <a href="/vi/arrayformula-builder.html">Trình tạo ARRAYFORMULA</a>, bạn có thể tạo công thức để các hàng không có dữ liệu luôn trống.</p>
+<p lang="en">Used as is, ARRAYFORMULA fills rows with no data with 0s or errors. "ARRAY-BLANK" avoids that. <a href="/vi/arrayformula-builder.html">Build an ARRAYFORMULA</a> builds it.</p>
 <h2>Các bước</h2>
 <ol>
-<li>Chọn ARRAY-BLANK</li>
-<li>Nhập công thức</li>
-<li>Sao chép</li>
+<li lang="en">Choose "ARRAY-BLANK" in "Method".</li>
+<li lang="en">Enter the "First-row formula" (e.g., B2*C2).</li>
+<li lang="en">Copy the formula and paste into row 1.</li>
 </ol>
-<div class="note">IF kiểm tra xem cột đầu tiên có trống không.</div>
+<div class="note" lang="en">Rows where the first cell to appear (B2 here) is blank give a blank result.</div>
+<h2>Ví dụ</h2>
+<ul>
+<li lang="en">=ARRAYFORMULA(IF(B2:B="","",B2:B*C2:C))</li>
+</ul>
+<p lang="en">Rows with blank B stay empty; only filled rows are calculated.</p>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Sheets with spare rows below where you don't want 0s</li>
+<li lang="en">Keeping a growing sheet tidy</li>
+</ul>
+<h2 lang="en">The cell used for the test</h2>
+<p lang="en">Blankness is judged by the first cell appearing in the formula. Writing the cell you want to test first gives the intended behavior.</p>
+<h2>Ví dụ</h2>
+<p lang="en">Wanted amount = price (B) × quantity (C). With quantity written first, only rows with blank quantity stayed empty. I wrote the column to test first.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>0 remains</b>: the tested cell holds 0, not blank.</li>
+<li lang="en"><b>Whitespace</b>: cells with invisible spaces aren't treated as blank.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want blank only when several columns are empty</h3>
+<p lang="en">Widen the IF condition with OR or AND. Edit by hand after pasting.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">To blank out empty rows, use ARRAY-BLANK.</p>
 <a class="cta" href="/vi/arrayformula-builder.html">Dùng “Tạo ARRAYFORMULA” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/query-formula-builder.html">Tạo công thức QUERY</a>: Tạo công thức QUERY.</li><li><a href="/vi/filter-formula-builder.html">Tạo công thức FILTER</a>: Tạo công thức FILTER.</li><li><a href="/vi/excel-if-builder.html">Tạo công thức IF</a>: Tạo công thức IF.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

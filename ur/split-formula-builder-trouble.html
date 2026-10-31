@@ -215,14 +215,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>اگر کام نہ کرے تو کیا کریں</h1>
 <p class="meta">شائع شدہ: 19 اکتوبر 2026 | اپ ڈیٹ: 19 اکتوبر 2026 | <a href="/about.html">تعارف (جاپانی)</a></p>
 <div class="points"><b>اہم نکات</b><ul><li>فائل جانچیں</li><li>سائز جانچیں</li><li>دوسری ڈیوائس آزمائیں</li></ul></div>
-<p>اگر <a href="/ur/split-formula-builder.html">SPLIT فارمولا بنانے والا</a> کام نہ کرے تو درج ذیل چیزیں دیکھیں۔</p>
-<h2>مراحل</h2>
+<p lang="en">You pasted the formula but it doesn't split. Here are common troubles with <a href="/ur/split-formula-builder.html">Build a SPLIT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell to split isn't in the "A2" form; the delimiter is empty; or in Nth mode the number isn't an integer of 1 or more.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Doesn't split</b>: the delimiter doesn't match the data (full-width vs half-width, etc.).</li>
+<li lang="en"><b>#REF!</b>: the number exceeds the item count, or cells to the right hold values.</li>
+<li lang="en"><b>#SPILL! (Excel)</b>: values sit in the spill range.</li>
+<li lang="en"><b>#NAME? (Excel)</b>: a version without TEXTSPLIT.</li>
+<li lang="en"><b>Spaces remain around items</b>: tidy with TRIM.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>فائل جانچیں</li>
-<li>سائز جانچیں</li>
-<li>دوسری ڈیوائس آزمائیں</li>
+<li lang="en">Look closely at the source text: is the delimiter full-width or half-width?</li>
+<li lang="en">Paste it into "Sample text" and view the tool's result.</li>
+<li lang="en">Check the cells to the right are empty.</li>
 </ol>
-<div class="note">اگر فارمولا ظاہر نہ ہو تو دیکھیں کہ سیل A2 جیسا لکھا ہے اور حد بندی کنندہ درج ہے۔</div>
+<div class="note" lang="en">The delimiter may be an invisible character (line break, tab).</div>
+<h2 lang="en">Splitting on line breaks</h2>
+<p lang="en">A line break is CHAR(10). It can't be typed in the delimiter field directly, so edit the formula by hand.</p>
+<ul>
+<li lang="en">Example: =SPLIT(A2,CHAR(10))</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Names didn't split because the delimiter was a tab. Editing the formula by hand fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Numbers become dates</b>: values like "1-2" may turn into dates. Set the format to text.</li>
+<li lang="en"><b>Leading zeros vanish</b>: keep as text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Split numbers remain text</h3>
+<p lang="en">Convert with VALUE.</p>
+<h2>خلاصہ</h2>
+<p lang="en">Check the delimiter, the empty cells to the right, and the supported version.</p>
 <a class="cta" href="/ur/split-formula-builder.html">«SPLIT فارمولا بنائیں» استعمال کریں (مفت)</a>
 <h2>وہ ٹولز جو اس کے ساتھ اچھے لگتے ہیں</h2><ul><li><a href="/ur/text-to-columns.html">ڈیلیمیٹر سے ٹیکسٹ کو کالموں میں تقسیم کریں</a>: ڈیلیمیٹر سے ٹیکسٹ کو کالموں میں تقسیم کریں۔</li><li><a href="/ur/excel-left-mid-builder.html">LEFT، MID یا RIGHT فارمولا بنائیں</a>: متن نکالنے کے فارمولے بنائیں۔</li><li><a href="/ur/textjoin-formula-builder.html">TEXTJOIN فارمولا بنانا</a>: TEXTJOIN فارمولا بنائیں۔</li></ul>
 <div class="tip"><p>اگر یہ گائیڈ مفید رہی تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ٹپ بھیجیں (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">تحفہ بھیجیں (ایمیزون وش لسٹ)</a></div>

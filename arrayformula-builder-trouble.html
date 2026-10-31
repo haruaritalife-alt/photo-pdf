@@ -200,14 +200,40 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/arrayformula-builder.html">ARRAYFORMULA式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を貼ったのに、うまく広がらない。<a href="/arrayformula-builder.html">ARRAYFORMULAの式を作る</a> で起こりやすい困りごとと対処法です。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：式にセル（B2 など）が含まれていない。式に二重引用符「"」が入っている。ARRAY-HEADERで、見出しの文字が空。</li>
+</ul>
+<h2>スプレッドシートに貼ったあと</h2>
+<ul>
+<li><b>#REF!「配列の結果は、データを上書きできません」</b>：広がる先に、すでに値がある。そのセルを空にする。</li>
+<li><b>結果が1行だけ</b>：貼る式が、範囲（B2:B）になっていない。</li>
+<li><b>#VALUE!</b>：範囲の中に、計算できない文字がある。</li>
+<li><b>0が並ぶ</b>：空の行を空にしたい場合は、ARRAY-BLANK。</li>
+<li><b>見出しが出ない</b>：ARRAY-HEADERの式を、1行目以外に貼った。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>貼ったセルの下が、空かどうか確かめる。</li>
+<li>式の先頭が「=ARRAYFORMULA(」になっているか見る。</li>
+<li>範囲の開始行が揃っているか確かめる。</li>
 </ol>
-<div class="note">式が出ないときは、1行目の式にB2のようなセルが入っているか、引用符が入っていないか確かめます。</div>
+<div class="note">式にIFなど文字列の判定を足すとき、全角の引用符にしないでください。</div>
+<h2>一部の関数は広がらない</h2>
+<p>VLOOKUPや、一部の関数は、ARRAYFORMULAの中で期待どおりに広がらないことがあります。その場合は、別の関数に置き換えます。</p>
+<h2>例</h2>
+<p>貼ったら、#REF!になった。下のセルに、前の式が残っていた。消すと広がった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>セルごとに式を入れた</b>：1つのセルだけに入れる。</li>
+<li><b>ソートやフィルタ</b>：広がる範囲に影響する場合がある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>式を後から直すには？</h3>
+<p>貼ったセルを選んで、直接編集します。</p>
+<h2>まとめ</h2>
+<p>広がる先が空か、範囲の形、開始行。この3つを確かめましょう。</p>
 <a class="cta" href="/arrayformula-builder.html">ARRAYFORMULAの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/query-formula-builder.html">QUERYの式を作る</a>：QUERY関数の式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +245,40 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/arrayformula-builder.html">ARRAYFORMULA Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted the formula but it won't spread. Here are common troubles with <a href="/arrayformula-builder.html">Build an ARRAYFORMULA</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the formula has no cell (like B2); contains a double quote; or in ARRAY-HEADER the heading is empty.</li>
+</ul>
+<h2>After pasting into the sheet</h2>
+<ul>
+<li><b>#REF! "Array result was not expanded because it would overwrite data"</b>: values already exist in the spill range. Clear those cells.</li>
+<li><b>Only one row of result</b>: the pasted formula isn't range-based (B2:B).</li>
+<li><b>#VALUE!</b>: text that can't be calculated is in the range.</li>
+<li><b>0s fill rows</b>: to blank empty rows, use ARRAY-BLANK.</li>
+<li><b>No heading</b>: the ARRAY-HEADER formula was pasted outside row 1.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the cells below the pasted cell are empty.</li>
+<li>Check the formula starts with "=ARRAYFORMULA(".</li>
+<li>Check range start rows are aligned.</li>
 </ol>
-<div class="note">If no formula appears, check that the first-row formula has cells like B2 and no quotation marks.</div>
+<div class="note">When adding IF text tests, don't use full-width quotes.</div>
+<h2>Some functions don't spread</h2>
+<p>VLOOKUP and a few others may not spread as expected inside ARRAYFORMULA. Replace them with other functions.</p>
+<h2>Example</h2>
+<p>Pasting gave #REF!. An old formula remained in a cell below. Clearing it let it spread.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Entered a formula in every cell</b>: put it in only one cell.</li>
+<li><b>Sorting and filtering</b>: can affect the spill range.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How do I fix the formula later?</h3>
+<p>Select the pasted cell and edit directly.</p>
+<h2>Summary</h2>
+<p>Check that the spill range is empty, the range shape, and the start row.</p>
 <a class="cta" href="/arrayformula-builder.html">Use "Build an ARRAYFORMULA" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/query-formula-builder.html">Build a QUERY Formula</a>: Build a QUERY formula.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

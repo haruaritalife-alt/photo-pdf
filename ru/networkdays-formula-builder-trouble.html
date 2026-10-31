@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Что делать, если не работает</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Проверьте файл</li><li>Проверьте размер</li><li>Попробуйте другое устройство</li></ul></div>
-<p>Если <a href="/ru/networkdays-formula-builder.html">Конструктор NETWORKDAYS</a> не работает, проверьте следующее.</p>
-<h2>Шаги</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/ru/networkdays-formula-builder.html">Build a NETWORKDAYS Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the start or end date cell isn't in the "A2" form; the holiday range isn't in the "E2:E20" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#VALUE!</b>: the date cell isn't recognized as a date (it's text).</li>
+<li lang="en"><b>#NAME?</b>: older Excel lacks newer functions (like DAYS).</li>
+<li lang="en"><b>Result is 1 too large</b>: NETWORKDAYS counts both the start and end dates.</li>
+<li lang="en"><b>Negative</b>: the end date is before the start.</li>
+<li lang="en"><b>Holidays aren't excluded</b>: the holiday cells are text.</li>
+<li lang="en"><b>Looks like a date</b>: set the result cell to a Number display format.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Проверьте файл</li>
-<li>Проверьте размер</li>
-<li>Попробуйте другое устройство</li>
+<li lang="en">Check date cells display right-aligned (left-aligned may be text).</li>
+<li lang="en">Check the start and end cell references aren't swapped.</li>
+<li lang="en">Compare the tool's result with the real result using sample dates.</li>
 </ol>
-<div class="note">Если формула не появляется, проверьте, что начальная и конечная ячейки записаны как A2 и B2.</div>
+<div class="note" lang="en">Check that dates don't use dots or full-width separators.</div>
+<h2 lang="en">Fixing text dates</h2>
+<ul>
+<li lang="en">Convert with DATEVALUE</li>
+<li lang="en">Unify separators to "/" or "-"</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">The day count gave #VALUE!. Dates were like "2026.10.01", i.e. text. Replacing with "/" made it calculate.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Holiday range shifts</b>: fix it with $.</li>
+<li lang="en"><b>Weekend codes in Google</b>: NETWORKDAYS.INTL weekend codes also work in Google.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to add business days to get a date</h3>
+<p lang="en">Use WORKDAY. The "date offset formula" tool can help.</p>
+<h2>Итог</h2>
+<p lang="en">Check the date format, cell order and holiday format.</p>
 <a class="cta" href="/ru/networkdays-formula-builder.html">Использовать «Создать формулу NETWORKDAYS» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/date-offset-formula-builder.html">Создать формулу сдвига даты</a>: Создавайте формулы сдвига даты.</li><li><a href="/ru/datedif-formula-builder.html">Создание формулы DATEDIF</a>: Создайте формулу DATEDIF.</li><li><a href="/ru/date-calculator.html">Вычислить возраст, дни между датами и смещение дат</a>: Рассчитайте возраст и число дней между датами.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

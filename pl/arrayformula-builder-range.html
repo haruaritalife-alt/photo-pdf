@@ -201,14 +201,40 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Jak zmieniają się zakresy</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Wpisz formułę</li><li>Zobacz formułę</li><li>Sprawdź to</li></ul></div>
-<p>W <a href="/pl/arrayformula-builder.html">Kreator ARRAYFORMULA</a> B2 zamienia się w zakres całej kolumny, taki jak B2:B.</p>
-<h2>Kroki</h2>
-<ol>
-<li>Wpisz formułę</li>
-<li>Zobacz formułę</li>
-<li>Sprawdź to</li>
-</ol>
-<div class="note">Każde odwołanie do komórki staje się własną całą kolumną.</div>
+<p lang="en">In ARRAYFORMULA, "B2" becomes "B2:B". Knowing how ranges change lets you tweak formulas. <a href="/pl/arrayformula-builder.html">Build an ARRAYFORMULA</a> does this conversion automatically.</p>
+<h2 lang="en">Conversion rules</h2>
+<ul>
+<li lang="en">B2 → B2:B (from B2 to the end of column B)</li>
+<li lang="en">C2 → C2:C</li>
+<li lang="en">Multiple cells are all converted.</li>
+</ul>
+<div class="note" lang="en">Only column-letter plus row-number (A1 style) references are converted. Plain numbers are left alone.</div>
+<h2>Przykład</h2>
+<ul>
+<li lang="en">Input: B2*C2+100</li>
+<li lang="en">Result: =ARRAYFORMULA(B2:B*C2:C+100)</li>
+</ul>
+<h2 lang="en">Limiting the range</h2>
+<p lang="en">If you don't need all rows, edit by hand to something like "B2:B100".</p>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">Choosing which rows to calculate</li>
+<li lang="en">Matching the length of other columns</li>
+</ul>
+<h2 lang="en">Matching range lengths</h2>
+<p lang="en">Mismatched range lengths in a formula can cause errors. Start them all from the same row.</p>
+<h2>Przykład</h2>
+<p lang="en">Mixing B2:B and C3:C shifted results. Aligning the start row fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Rows not aligned</b>: differing start rows such as B2 and C3 cause offsets.</li>
+<li lang="en"><b>Absolute references</b>: "$" is removed automatically.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about cells on other sheets?</h3>
+<p lang="en">Sheet-qualified cells aren't handled. Fix by hand.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">Cells become ranges to the column end. Align the start rows.</p>
 <a class="cta" href="/pl/arrayformula-builder.html">Użyj „Utwórz ARRAYFORMULA” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/query-formula-builder.html">Utwórz formułę QUERY</a>: Utwórz formułę QUERY.</li><li><a href="/pl/filter-formula-builder.html">Tworzenie formuły FILTER</a>: Utwórz formułę FILTER.</li><li><a href="/pl/excel-if-builder.html">Tworzenie formuły IF</a>: Utwórz formułę IF.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Values That Appear Once</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose ONCE</li><li>Enter the range</li><li>Check it</li></ul></div>
-<p>In <a href="/en/unique-formula-builder.html">UNIQUE Builder</a> you can return only the values that are not duplicated.</p>
+<p>You want values that appear only once, such as customers who bought just once. Use UNIQUE's third argument. "ONCE" in <a href="/en/unique-formula-builder.html">Build a UNIQUE Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose ONCE</li>
-<li>Enter the range</li>
-<li>Check it</li>
+<li>Choose "ONCE" in "Method".</li>
+<li>Enter the "Data range".</li>
+<li>Check the result with "Sample data".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">It uses TRUE as the third argument of UNIQUE.</div>
+<div class="note">The form is =UNIQUE(range,FALSE,TRUE). With the third argument TRUE you get once-only values.</div>
+<h2>Example</h2>
+<ul>
+<li>=UNIQUE(A2:A100,FALSE,TRUE)</li>
+</ul>
+<p>With "apple,orange,apple,grape" as sample data, it shows "orange, grape". "apple" appears twice, so it's dropped.</p>
+<h2>Difference from plain UNIQUE</h2>
+<ul>
+<li>UNIQUE: keeps one of each (apple, orange, grape)</li>
+<li>ONCE: removes everything appearing twice or more (orange, grape)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Finding customers who bought only once</li>
+<li>Finding one-of-a-kind values</li>
+<li>Spotting possible typos (values matching nothing else)</li>
+</ul>
+<h2>Example</h2>
+<p>In a member-number list, I checked numbers appearing once. It helped find typos that had become different numbers through notation differences.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>If everything is duplicated the result is empty</b>: with no result you get an error or blank.</li>
+<li><b>Notation variants</b>: full-width "ＡＢＣ" and "ABC" are different values.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want only values appearing twice or more</h3>
+<p>Combine FILTER and COUNTIF.</p>
+<ul>
+<li>Example: =UNIQUE(FILTER(A2:A100,COUNTIF(A2:A100,A2:A100)&gt;1))</li>
+</ul>
+<h2>Summary</h2>
+<p>For once-only values, set UNIQUE's third argument to TRUE.</p>
 <a class="cta" href="/en/unique-formula-builder.html">Use "Build a UNIQUE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/line-sort-dedupe.html">Remove Duplicate Lines and Sort a List</a>: Remove duplicate lines and sort them.</li><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
