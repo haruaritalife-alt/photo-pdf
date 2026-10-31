@@ -200,14 +200,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>SPARKLINEの書き方（式を自動で作る・無料）</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>範囲を入れる</li><li>種類を選ぶ</li><li>式をコピー</li></ul></div>
-<p><a href="/sparkline-formula-builder.html">SPARKLINE式の作成</a> は、範囲と種類からSPARKLINEの式を作ります。</p>
+<p>月ごとの売上の推移を、表のセルの中に、小さなグラフで表示したい。Googleスプレッドシートの SPARKLINE 関数が、それを実現します。<a href="/sparkline-formula-builder.html">SPARKLINEの式を作る</a> は、データの範囲を入れてグラフの種類を選ぶだけで、その式を作ります。入力は、この端末の中で処理され、外には送られません。</p>
 <h2>手順</h2>
 <ol>
-<li>範囲を入れる</li>
-<li>種類を選ぶ</li>
-<li>式をコピー</li>
+<li>「データの範囲（B2:G2 など）」に、グラフにしたい数字の範囲を入れます。</li>
+<li>「グラフの種類」を選びます（line、bar、column、winloss）。</li>
+<li>必要なら、「色（#4285f4 など。空でもOK）」「縦軸の最大値」「縦軸の最小値」を入れます。</li>
+<li>「SPARKLINEの式」を、「結果をコピー」でコピーします。</li>
+<li>グラフを表示したいセルに貼ります。</li>
 </ol>
-<div class="note">できた式は、そのままセルに貼れます。</div>
+<div class="note">色は「#」と6桁の16進数で入れます。最大値・最小値は、数字だけです。</div>
+<h2>例</h2>
+<p>B2:G2の6か月分の推移を、折れ線で表示する場合です。</p>
+<ul>
+<li>=SPARKLINE(B2:G2,{"charttype","line"})</li>
+</ul>
+<p>色や軸を指定すると、設定が増えます。</p>
+<ul>
+<li>=SPARKLINE(B2:G2,{"charttype","column";"color","#4285f4";"ymax",100;"ymin",0})</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>月別の売上の推移を、一目で見たい</li>
+<li>行ごとに、小さなグラフを並べたい</li>
+<li>成績の上がり下がりを、表の中で示したい</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：範囲が「B2:G2」の形でない。色が「#」と6桁の形でない。最大値・最小値が数字でない。</li>
+<li><b>Excelでは動かない</b>：SPARKLINEはGoogleスプレッドシートの関数です。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>グラフの大きさは変えられますか？</h3>
+<p>セルの大きさに従います。行の高さや列の幅を変えます。</p>
+<h2>まとめ</h2>
+<p>範囲と種類を選ぶだけで、セルの中のグラフができます。</p>
 <a class="cta" href="/sparkline-formula-builder.html">SPARKLINEの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/query-formula-builder.html">QUERYの式を作る</a>：QUERY関数の式を作ります。</li><li><a href="/arrayformula-builder.html">ARRAYFORMULAの式を作る</a>：ARRAYFORMULAの式を作ります。</li><li><a href="/rank-formula-builder.html">順位の式を作る</a>：順位の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +246,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Write SPARKLINE (Build It Automatically, Free)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the range</li><li>Choose the type</li><li>Copy the formula</li></ul></div>
-<p><a href="/sparkline-formula-builder.html">SPARKLINE Builder</a> builds a SPARKLINE formula from a range and a type.</p>
+<p>You want a tiny chart inside a table cell showing, say, monthly sales trends. Google Sheets' SPARKLINE does that. <a href="/sparkline-formula-builder.html">Build a SPARKLINE Formula</a> builds the formula from a data range and a chart type. Input is processed inside this device and not sent outside.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the range</li>
-<li>Choose the type</li>
-<li>Copy the formula</li>
+<li>In "Data range (such as B2:G2)", enter the range of numbers to chart.</li>
+<li>Choose a "Chart type" (line, bar, column, winloss).</li>
+<li>If needed, enter "Color (such as #4285f4; may be empty)", "Y-axis max" and "Y-axis min".</li>
+<li>Copy the "SPARKLINE formula" with "Copy result".</li>
+<li>Paste it into the cell where the chart should appear.</li>
 </ol>
-<div class="note">The formula can be pasted straight into a cell.</div>
+<div class="note">Enter color as "#" plus a 6-digit hex. Max and min are numbers only.</div>
+<h2>Example</h2>
+<p>Showing six months in B2:G2 as a line:</p>
+<ul>
+<li>=SPARKLINE(B2:G2,{"charttype","line"})</li>
+</ul>
+<p>Specifying color and axis adds options.</p>
+<ul>
+<li>=SPARKLINE(B2:G2,{"charttype","column";"color","#4285f4";"ymax",100;"ymin",0})</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Seeing monthly sales trends at a glance</li>
+<li>Lining up small charts per row</li>
+<li>Showing rises and falls in grades within a table</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the range isn't in the "B2:G2" form; the color isn't "#" plus 6 digits; the max/min aren't numbers.</li>
+<li><b>Doesn't work in Excel</b>: SPARKLINE is a Google Sheets function.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I change the chart size?</h3>
+<p>It follows the cell size. Change row height or column width.</p>
+<h2>Summary</h2>
+<p>Pick a range and a type to make an in-cell chart.</p>
 <a class="cta" href="/sparkline-formula-builder.html">Use "Build a SPARKLINE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/query-formula-builder.html">Build a QUERY Formula</a>: Build a QUERY formula.</li><li><a href="/arrayformula-builder.html">Build an ARRAYFORMULA</a>: Build ARRAYFORMULA formulas.</li><li><a href="/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

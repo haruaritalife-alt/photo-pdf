@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>মিল যাচাই করা</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>MATCH বেছে নিন</li><li>প্যাটার্ন লিখুন</li><li>কপি করুন</li></ul></div>
-<p><a href="/bn/regex-formula-builder.html">রেগুলার এক্সপ্রেশন সূত্র নির্মাতা</a>-এ আপনি TRUE বা FALSE দিয়ে যাচাই করতে পারেন কোনো ঘর প্যাটার্নের সঙ্গে মেলে কি না।</p>
+<p lang="en">You only want to know whether a cell's text has a certain shape, such as a postal code. That's REGEXMATCH. "MATCH" in <a href="/bn/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>MATCH বেছে নিন</li>
-<li>প্যাটার্ন লিখুন</li>
-<li>কপি করুন</li>
+<li lang="en">Choose "MATCH" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Pattern".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">শর্তসাপেক্ষ ফরম্যাটিং ও ফিল্টারেও এটি কাজ করে।</div>
+<div class="note" lang="en">The result is TRUE (matches) or FALSE (doesn't).</div>
+<h2>উদাহরণ</h2>
+<ul>
+<li lang="en">=REGEXMATCH(A2,"\d{3}-\d{4}")</li>
+</ul>
+<p lang="en">It's TRUE if A2 contains the form "123-4567".</p>
+<h2 lang="en">Beware partial matches</h2>
+<p lang="en">REGEXMATCH is TRUE if any part of the text matches. To test the whole text, add "^" and "$" around the pattern.</p>
+<ul>
+<li lang="en">Example: =REGEXMATCH(A2,"^\d{3}-\d{4}$")</li>
+</ul>
+<h2 lang="en">Uses</h2>
+<ul>
+<li lang="en">Combine with IF for input checks</li>
+<li lang="en">Combine with FILTER to pull matching rows</li>
+<li lang="en">Color rows with the wrong shape via conditional formatting</li>
+</ul>
+<h2 lang="en">Combining with IF</h2>
+<ul>
+<li lang="en">Example: =IF(REGEXMATCH(A2,"^\d{3}-\d{4}$"),"OK","Wrong format")</li>
+</ul>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Auditing postal and phone formats in a roster</li>
+<li lang="en">Auditing email addresses in imported data</li>
+<li lang="en">Finding rows containing particular words</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">Wanted to find rows missing the hyphen in a roster's postal-code column. MATCH checked the shape, and I fixed the FALSE rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Testing the whole text</b>: add ^ and $.</li>
+<li lang="en"><b>Full-width hyphens</b>: half-width and full-width are different characters.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to test for any of several words</h3>
+<p lang="en">Join them with a pipe, like "Tokyo|Osaka|Nagoya".</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">Use REGEXMATCH to check shapes; use ^ and $ for a whole-text match.</p>
 <a class="cta" href="/bn/regex-formula-builder.html">“রেগুলার এক্সপ্রেশন সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/regex-tester.html">রেগুলার এক্সপ্রেশন টেস্টার</a>: মিল ও প্রতিস্থাপনসহ রেগুলার এক্সপ্রেশন পরীক্ষা করুন।</li><li><a href="/bn/substitute-formula-builder.html">SUBSTITUTE সূত্র তৈরি করুন</a>: টেক্সট প্রতিস্থাপনের সূত্র তৈরি করুন।</li><li><a href="/bn/split-formula-builder.html">SPLIT সূত্র তৈরি করুন</a>: টেক্সট ভাগ করার সূত্র তৈরি করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Upper and Lower Case</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose IGNORE</li><li>Enter the pattern</li><li>Check it</li></ul></div>
-<p>In <a href="/en/regex-formula-builder.html">Regular Expression Builder</a> you can ignore the difference between upper and lower case.</p>
+<p>You want to check English text without distinguishing upper and lower case. Regular expressions distinguish by default. "Case" in <a href="/en/regex-formula-builder.html">Build a Regular Expression Formula</a> lets you choose to ignore.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose IGNORE</li>
-<li>Enter the pattern</li>
-<li>Check it</li>
+<li>In "Case", choose the ignore setting.</li>
+<li>Copy the formula and paste.</li>
+<li>Check the pattern in the formula starts with "(?i)".</li>
 </ol>
-<div class="note">(?i) is added to the front of the pattern.</div>
+<div class="note">"(?i)" specifies that case isn't distinguished within the pattern.</div>
+<h2>Example</h2>
+<ul>
+<li>Case-sensitive: =REGEXMATCH(A2,"pdf")</li>
+<li>Case-insensitive: =REGEXMATCH(A2,"(?i)pdf")</li>
+</ul>
+<p>"PDF", "Pdf" and "pdf" all give TRUE.</p>
+<h2>Good for</h2>
+<ul>
+<li>Checking file extensions (.PDF and .pdf)</li>
+<li>Finding English keywords without notation variants</li>
+<li>Checking emails regardless of case differences</li>
+</ul>
+<h2>When to distinguish</h2>
+<ul>
+<li>IDs or codes where case matters</li>
+<li>Strict format checks</li>
+</ul>
+<h2>For Japanese</h2>
+<p>Hiragana vs katakana, and full-width vs half-width, aren't treated alike by this setting. Handle them separately.</p>
+<ul>
+<li>Example: =REGEXMATCH(A2,"[ァ-ン]")</li>
+</ul>
+<h2>Example</h2>
+<p>A file-name column mixed ".JPG" and ".jpg". Ignoring case found both at once.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Full-width letters</b>: full-width Ａ and half-width A are different characters.</li>
+<li><b>Position of (?i)</b>: it goes at the start of the pattern. The tool adds it automatically.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does it work with REGEXREPLACE?</h3>
+<p>Yes. It ignores case when deciding what to replace.</p>
+<h2>Summary</h2>
+<p>For English text, ignore case to avoid notation variants.</p>
 <a class="cta" href="/en/regex-formula-builder.html">Use "Build a Regular Expression Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/regex-tester.html">Regex Tester</a>: Test regular expressions with matches and replacements.</li><li><a href="/en/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a>: Build text replacement formulas.</li><li><a href="/en/split-formula-builder.html">Build a SPLIT Formula</a>: Build text splitting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>문자 바꾸기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>REPLACE 선택</li><li>치환할 글자 입력하기</li><li>복사</li></ul></div>
-<p><a href="/ko/regex-formula-builder.html">정규식 수식 만들기</a>에서는 패턴에 맞는 부분이 다른 문자로 바뀝니다.</p>
+<p lang="en">You want to strip stray symbols or digits from text in bulk, or reshape and replace. That's REGEXREPLACE. "REPLACE" in <a href="/ko/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>순서</h2>
 <ol>
-<li>REPLACE 선택</li>
-<li>치환할 글자 입력하기</li>
-<li>복사</li>
+<li lang="en">Choose "REPLACE" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Pattern".</li>
+<li lang="en">In "Replacement text", enter the new text (leave empty to delete).</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">비워 두면 그 부분이 지워집니다.</div>
+<div class="note" lang="en">With empty replacement text, the matching part is deleted.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">Remove non-digits: =REGEXREPLACE(A2,"\D","")</li>
+<li lang="en">Remove all whitespace: =REGEXREPLACE(A2,"\s","")</li>
+<li lang="en">Remove hyphens: =REGEXREPLACE(A2,"-","")</li>
+</ul>
+<p lang="en">"03-1234-5678" becomes "0312345678".</p>
+<h2 lang="en">Keeping parts with parentheses</h2>
+<p lang="en">What's inside pattern parentheses can be used in the replacement, called with "$1".</p>
+<ul>
+<li lang="en">Example: =REGEXREPLACE(A2,"(\d{3})(\d{4})","$1-$2")</li>
+</ul>
+<p lang="en">It reshapes "1234567" into "123-4567". Enter "$1-$2" in the replacement field.</p>
+<h2 lang="en">Difference from SUBSTITUTE</h2>
+<ul>
+<li lang="en">SUBSTITUTE: replaces fixed text</li>
+<li lang="en">REGEXREPLACE: replaces by shape (pattern)</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Removing hyphens and parentheses from phone numbers</li>
+<li lang="en">Removing "yen" and commas from amounts to make numbers</li>
+<li lang="en">Removing stray spaces in bulk</li>
+</ul>
+<h2>예</h2>
+<p lang="en">An amount column held text like "1,200円". A non-digit-removing formula made it "1200", and VALUE turned it into a number so it could be totaled.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>\D is uppercase</b>: \D is non-digit, \d is digit.</li>
+<li lang="en"><b>Result is text</b>: use VALUE to make it a number.</li>
+<li lang="en"><b>Periods and parentheses</b>: put "\" before "." and "(" etc.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to replace ignoring case</h3>
+<p lang="en">Choose ignore in the "Case" field.</p>
+<h2>요약</h2>
+<p lang="en">To replace by shape, use REGEXREPLACE.</p>
 <a class="cta" href="/ko/regex-formula-builder.html">“정규식 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/regex-tester.html">정규식 테스터</a>: 정규식을 테스트하고 일치 결과와 치환 결과를 확인합니다.</li><li><a href="/ko/substitute-formula-builder.html">SUBSTITUTE 수식 만들기</a>: 문자 바꾸기 수식을 만듭니다.</li><li><a href="/ko/split-formula-builder.html">SPLIT 수식 만들기</a>: 문자 나누기 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

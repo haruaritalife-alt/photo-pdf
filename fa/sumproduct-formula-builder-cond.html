@@ -215,14 +215,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>فقط ردیف‌های مطابق</h1>
 <p class="meta">منتشرشده: 19 اکتبر 2026 | به‌روزرسانی: 19 اکتبر 2026 | <a href="/about.html">دربارهٔ ما (ژاپنی)</a></p>
 <div class="points"><b>نکات کلیدی</b><ul><li>COND را انتخاب کنید</li><li>شرط را بنویسید</li><li>کپی کنید</li></ul></div>
-<p>در <a href="/fa/sumproduct-formula-builder.html">سازندهٔ SUMPRODUCT</a> می‌توانید فقط ردیف‌های دارای شرط را ضرب و جمع کنید.</p>
+<p lang="en">Like "the total of Tokyo's sales only", you want to multiply and sum just the rows meeting a condition. "COND" in <a href="/fa/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a> builds it.</p>
 <h2>مراحل</h2>
 <ol>
-<li>COND را انتخاب کنید</li>
-<li>شرط را بنویسید</li>
-<li>کپی کنید</li>
+<li lang="en">Choose "COND" in "Method".</li>
+<li lang="en">Enter the ranges to multiply in "First range" and "Second range".</li>
+<li lang="en">In "Condition range (such as A2:A100)", enter the column to test.</li>
+<li lang="en">In "Condition value (such as Tokyo)", enter the value.</li>
 </ol>
-<div class="note">یک شرط متنی مثل Tokyo وارد کنید.</div>
+<div class="note" lang="en">An empty condition value gives "The input is not valid."</div>
+<h2>مثال</h2>
+<p lang="en">With regions in column A, unit prices in B and quantities in C, the amount for Tokyo only:</p>
+<ul>
+<li lang="en">=SUMPRODUCT((A2:A100="Tokyo")*B2:B100*C2:C100)</li>
+</ul>
+<p lang="en">Matching rows become 1 and others 0, so non-matching rows don't enter the sum.</p>
+<h2 lang="en">Choosing between this and SUMIFS</h2>
+<ul>
+<li lang="en">SUMIFS: when the summed column is a single column</li>
+<li lang="en">SUMPRODUCT: when you multiply before summing</li>
+</ul>
+<h2 lang="en">Adding conditions</h2>
+<p lang="en">Joining conditions by multiplication means "and". Add by hand after pasting.</p>
+<ul>
+<li lang="en">Example: =SUMPRODUCT((A2:A100="Tokyo")*(D2:D100="A")*B2:B100*C2:C100)</li>
+</ul>
+<h2>مناسب برای</h2>
+<ul>
+<li lang="en">Sales by region</li>
+<li lang="en">Amounts by person in charge</li>
+<li lang="en">Monthly totals</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Needed price × quantity totals per branch. Built a SUMPRODUCT with a branch-name condition and reused it by changing only the branch name.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Case</b>: not distinguished.</li>
+<li lang="en"><b>Numeric condition values</b>: for numbers, omitting quotes is safer; edit by hand if needed.</li>
+<li lang="en"><b>Partial matches</b>: "=" is an exact match. Partial matching needs another function.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want an "or" condition</h3>
+<p lang="en">Join the conditions with addition.</p>
+<h2>خلاصه</h2>
+<p lang="en">Enter a condition range and value to total only some rows.</p>
 <a class="cta" href="/fa/sumproduct-formula-builder.html">استفاده از «ساخت فرمول SUMPRODUCT» (رایگان)</a>
 <h2>ابزارهایی که با این ابزار خوب هماهنگ‌اند</h2><ul><li><a href="/fa/sumif-formula-builder.html">ساخت فرمول SUMIF یا COUNTIF</a>: فرمول‌های SUMIF و COUNTIF بسازید.</li><li><a href="/fa/rank-formula-builder.html">ساخت فرمول رتبه</a>: فرمول‌های رتبه بسازید.</li><li><a href="/fa/percent-calculator.html">محاسبهٔ درصد، تخفیف و درصد تغییر</a>: درصد، تخفیف و درصد تغییر را فوراً محاسبه کنید.</li></ul>
 <div class="tip"><p>اگر این راهنما مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ارسال انعام (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ارسال هدیه (فهرست آرزوهای آمازون)</a></div>

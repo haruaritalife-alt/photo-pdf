@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>통합 문서 안 링크</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>SHEET 선택</li><li>Sheet!Cell 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/hyperlink-formula-builder.html">HYPERLINK 수식 만들기</a>에서는 같은 파일 안의 다른 시트나 셀로 링크할 수 있습니다.</p>
+<p lang="en">You want to jump from a table-of-contents sheet to other sheets. Links to sheets or cells within the same file are written differently in Google and Excel. "SHEET" in <a href="/ko/hyperlink-formula-builder.html">Build a HYPERLINK Formula</a> builds both at once.</p>
 <h2>순서</h2>
 <ol>
-<li>SHEET 선택</li>
-<li>Sheet!Cell 입력</li>
-<li>복사</li>
+<li lang="en">Choose "SHEET" in "Type".</li>
+<li lang="en">In "Link target", enter "Sheet!cell" (e.g., Sales!B5).</li>
+<li lang="en">In "Sheet ID (for Google Sheets, such as 0)", enter the sheet's ID.</li>
+<li lang="en">Enter a "Display name".</li>
+<li lang="en">The first output is for Google, the second for Excel.</li>
 </ol>
-<div class="note">Google 스프레드시트에서는 시트 gid도 입력합니다.</div>
+<div class="note" lang="en">The sheet ID is the number after "gid=" in the URL when you open that sheet in Google Sheets.</div>
+<h2>예</h2>
+<p lang="en">A link to B5 on the "Sales" sheet.</p>
+<ul>
+<li lang="en">Google: =HYPERLINK("#gid=123456⦥=B5","To Sales")</li>
+<li lang="en">Excel: =HYPERLINK("#Sales!B5","To Sales")</li>
+</ul>
+<h2 lang="en">Finding the sheet ID</h2>
+<p lang="en">In Google Sheets, open the target sheet and look at the number after "#gid=" at the end of the browser address. The first sheet is often "0".</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Making a table-of-contents sheet</li>
+<li lang="en">Jumping from a summary sheet to source data</li>
+<li lang="en">Adding a link back to the top of a long sheet</li>
+</ul>
+<h2>예</h2>
+<p lang="en">In a file with twelve monthly sheets, built a table of contents. After finding each month's sheet ID and lining up the links, one click moved between them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Sheet names with spaces</b>: in Excel, wrap the name in "'". Example: #'Sales 2026'!B5</li>
+<li lang="en"><b>Wrong sheet ID</b>: the link won't open.</li>
+<li lang="en"><b>Renaming</b>: Google's version uses the ID, so renaming doesn't break it.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about sheets in other files?</h3>
+<p lang="en">For other files use that file's URL, with the "URL" type.</p>
+<h2>요약</h2>
+<p lang="en">Google specifies by sheet id; Excel by sheet name.</p>
 <a class="cta" href="/ko/hyperlink-formula-builder.html">“HYPERLINK 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/importrange-builder.html">IMPORTRANGE 수식 만들기</a>: IMPORTRANGE 수식을 만듭니다.</li><li><a href="/ko/textjoin-formula-builder.html">TEXTJOIN 수식 만들기</a>: TEXTJOIN 수식을 만듭니다.</li><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

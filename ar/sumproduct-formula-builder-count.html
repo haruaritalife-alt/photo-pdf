@@ -215,14 +215,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>عدّ الصفوف المطابقة</h1>
 <p class="meta">تاريخ النشر: 19 أكتوبر 2026 | آخر تحديث: 19 أكتوبر 2026 | <a href="/about.html">حول (باليابانية)</a></p>
 <div class="points"><b>النقاط الرئيسية</b><ul><li>اختر COUNT</li><li>اكتب الشرط</li><li>انسخ</li></ul></div>
-<p><a href="/ar/sumproduct-formula-builder.html">منشئ SUMPRODUCT</a> يمكنه أيضًا إنشاء صيغة تعدّ الصفوف التي تحقق شرطًا.</p>
+<p lang="en">COUNTIF is the standard for counting rows meeting a condition. But for conditions across several columns, or on computed values, SUMPRODUCT is handy. "COUNT" in <a href="/ar/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a> builds it.</p>
 <h2>الخطوات</h2>
 <ol>
-<li>اختر COUNT</li>
-<li>اكتب الشرط</li>
-<li>انسخ</li>
+<li lang="en">Choose "COUNT" in "Method".</li>
+<li lang="en">Enter the "Condition range (such as A2:A100)".</li>
+<li lang="en">Enter the "Condition value (such as Tokyo)".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">تصلح للتركيبات التي لا تتعامل معها COUNTIF جيدًا.</div>
+<div class="note" lang="en">In COUNT, the first and second ranges aren't used.</div>
+<h2>مثال</h2>
+<ul>
+<li lang="en">=SUMPRODUCT(--(A2:A100="Tokyo"))</li>
+</ul>
+<p lang="en">Matching rows become 1, others 0, and the sum is the count.</p>
+<h2 lang="en">What "--" means</h2>
+<p lang="en">It turns TRUE and FALSE into 1 and 0. Without it the total would be 0.</p>
+<h2 lang="en">Compared with COUNTIF</h2>
+<ul>
+<li lang="en">COUNTIF: =COUNTIF(A2:A100,"Tokyo")</li>
+<li lang="en">SUMPRODUCT: can join multiple conditions by multiplication</li>
+</ul>
+<h2 lang="en">Adding conditions</h2>
+<ul>
+<li lang="en">Example: =SUMPRODUCT((A2:A100="Tokyo")*(B2:B100&gt;1000))</li>
+</ul>
+<p lang="en">The count of rows in Tokyo and over 1000. Add by hand after pasting.</p>
+<h2>مناسب لـ</h2>
+<ul>
+<li lang="en">Counts by region</li>
+<li lang="en">Counts with stacked conditions</li>
+<li lang="en">Creative ways to count duplicates</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Wanted the count of Tokyo orders over 1000. Multiplying two conditions in SUMPRODUCT gave it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the condition range isn't in the "A2:A100" form, or the value is empty.</li>
+<li lang="en"><b>Different row counts</b>: gives #VALUE!.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want partial matches</h3>
+<p lang="en">COUNTIF wildcards ("*Tokyo*") are simpler.</p>
+<h2>الخلاصة</h2>
+<p lang="en">To count with multiple conditions, use SUMPRODUCT.</p>
 <a class="cta" href="/ar/sumproduct-formula-builder.html">استخدم «إنشاء صيغة SUMPRODUCT» (مجانًا)</a>
 <h2>أدوات تتكامل مع هذه الأداة</h2><ul><li><a href="/ar/sumif-formula-builder.html">إنشاء صيغة SUMIF أو COUNTIF</a>: أنشئ صيغ SUMIF وCOUNTIF.</li><li><a href="/ar/rank-formula-builder.html">إنشاء صيغة ترتيب</a>: أنشئ صيغ الترتيب.</li><li><a href="/ar/percent-calculator.html">حساب النسب المئوية والخصومات والتغير بالنسبة المئوية</a>: احسب النسب المئوية والخصومات والتغير بالنسبة المئوية فورًا.</li></ul>
 <div class="tip"><p>إذا أفادك هذا الدليل، فإن إكرامية صغيرة تعني لنا الكثير.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">أرسل إكرامية (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">أرسل هدية (قائمة أمنيات Amazon)</a></div>

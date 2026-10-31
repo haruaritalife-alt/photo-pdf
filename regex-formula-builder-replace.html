@@ -200,14 +200,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>置き換える</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>REPLACEを選ぶ</li><li>置き換える文字を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/regex-formula-builder.html">正規表現式の作成</a> では、パターンに合う部分を別の文字に置き換えます。</p>
+<p>文字の中の、余計な記号や数字をまとめて消したい。あるいは、形を変えて置き換えたい。それが REGEXREPLACE です。<a href="/regex-formula-builder.html">正規表現の式を作る</a> の「REPLACE」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>REPLACEを選ぶ</li>
-<li>置き換える文字を入れる</li>
-<li>コピーする</li>
+<li>「種類」で「REPLACE」を選ぶ。</li>
+<li>「文字のセル」と「パターン」を入れる。</li>
+<li>「置き換える文字」に、置き換え後の文字を入れる（消すなら空）。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">空にすると、その部分を消せます。</div>
+<div class="note">置き換える文字が空だと、パターンに合う部分が消えます。</div>
+<h2>例</h2>
+<ul>
+<li>数字以外を消す：=REGEXREPLACE(A2,"\D","")</li>
+<li>空白をすべて消す：=REGEXREPLACE(A2,"\s","")</li>
+<li>ハイフンを消す：=REGEXREPLACE(A2,"-","")</li>
+</ul>
+<p>「03-1234-5678」が、「0312345678」になります。</p>
+<h2>かっこで一部を残す</h2>
+<p>パターンのかっこの中を、置き換えに使えます。「$1」で呼び出します。</p>
+<ul>
+<li>例：=REGEXREPLACE(A2,"(\d{3})(\d{4})","$1-$2")</li>
+</ul>
+<p>「1234567」を「123-4567」の形に直せます。置き換えの欄に、「$1-$2」と入れます。</p>
+<h2>SUBSTITUTEとの違い</h2>
+<ul>
+<li>SUBSTITUTE：決まった文字を置き換える</li>
+<li>REGEXREPLACE：形（パターン）で置き換える</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>電話番号から、ハイフンや括弧を消す</li>
+<li>金額から、「円」やカンマを消して数値にする</li>
+<li>余計な空白をまとめて消す</li>
+</ul>
+<h2>例</h2>
+<p>金額の列に「1,200円」のような文字があった。数字以外を消す式で、「1200」に直し、VALUEで数値にして合計できた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>\D は大文字</b>：\D は数字以外、\d は数字。</li>
+<li><b>結果は文字列</b>：数値にするには、VALUEを使う。</li>
+<li><b>ピリオドやかっこの扱い</b>：「.」「(」などは、前に「\」を付ける。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>大文字小文字を区別せず置き換えたい</h3>
+<p>「大文字小文字」の欄で、無視を選びます。</p>
+<h2>まとめ</h2>
+<p>形で置き換えるなら、REGEXREPLACE。</p>
 <a class="cta" href="/regex-formula-builder.html">正規表現の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/regex-tester.html">正規表現テスター</a>：正規表現を試し、一致と置換を確かめます。</li><li><a href="/substitute-formula-builder.html">SUBSTITUTE・REPLACEの式を作る</a>：文字を置き換える式を作ります。</li><li><a href="/split-formula-builder.html">SPLITの式を作る</a>：文字を分ける式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +257,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Replacing Text</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose REPLACE</li><li>Enter the replacement</li><li>Copy it</li></ul></div>
-<p>In <a href="/regex-formula-builder.html">Regular Expression Builder</a> the part matching the pattern is replaced with other text.</p>
+<p>You want to strip stray symbols or digits from text in bulk, or reshape and replace. That's REGEXREPLACE. "REPLACE" in <a href="/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose REPLACE</li>
-<li>Enter the replacement</li>
-<li>Copy it</li>
+<li>Choose "REPLACE" in "Type".</li>
+<li>Enter the "Text cell" and "Pattern".</li>
+<li>In "Replacement text", enter the new text (leave empty to delete).</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">Leave it empty to delete that part.</div>
+<div class="note">With empty replacement text, the matching part is deleted.</div>
+<h2>Examples</h2>
+<ul>
+<li>Remove non-digits: =REGEXREPLACE(A2,"\D","")</li>
+<li>Remove all whitespace: =REGEXREPLACE(A2,"\s","")</li>
+<li>Remove hyphens: =REGEXREPLACE(A2,"-","")</li>
+</ul>
+<p>"03-1234-5678" becomes "0312345678".</p>
+<h2>Keeping parts with parentheses</h2>
+<p>What's inside pattern parentheses can be used in the replacement, called with "$1".</p>
+<ul>
+<li>Example: =REGEXREPLACE(A2,"(\d{3})(\d{4})","$1-$2")</li>
+</ul>
+<p>It reshapes "1234567" into "123-4567". Enter "$1-$2" in the replacement field.</p>
+<h2>Difference from SUBSTITUTE</h2>
+<ul>
+<li>SUBSTITUTE: replaces fixed text</li>
+<li>REGEXREPLACE: replaces by shape (pattern)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Removing hyphens and parentheses from phone numbers</li>
+<li>Removing "yen" and commas from amounts to make numbers</li>
+<li>Removing stray spaces in bulk</li>
+</ul>
+<h2>Example</h2>
+<p>An amount column held text like "1,200円". A non-digit-removing formula made it "1200", and VALUE turned it into a number so it could be totaled.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>\D is uppercase</b>: \D is non-digit, \d is digit.</li>
+<li><b>Result is text</b>: use VALUE to make it a number.</li>
+<li><b>Periods and parentheses</b>: put "\" before "." and "(" etc.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to replace ignoring case</h3>
+<p>Choose ignore in the "Case" field.</p>
+<h2>Summary</h2>
+<p>To replace by shape, use REGEXREPLACE.</p>
 <a class="cta" href="/regex-formula-builder.html">Use "Build a Regular Expression Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/regex-tester.html">Regex Tester</a>: Test regular expressions with matches and replacements.</li><li><a href="/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a>: Build text replacement formulas.</li><li><a href="/split-formula-builder.html">Build a SPLIT Formula</a>: Build text splitting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

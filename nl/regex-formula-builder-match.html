@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Een overeenkomst controleren</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Kies MATCH</li><li>Typ het patroon</li><li>Kopieer</li></ul></div>
-<p>In <a href="/nl/regex-formula-builder.html">Reguliere-expressie-maker</a> kun je met TRUE of FALSE controleren of een cel bij het patroon past.</p>
+<p lang="en">You only want to know whether a cell's text has a certain shape, such as a postal code. That's REGEXMATCH. "MATCH" in <a href="/nl/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>Stappen</h2>
 <ol>
-<li>Kies MATCH</li>
-<li>Typ het patroon</li>
-<li>Kopieer</li>
+<li lang="en">Choose "MATCH" in "Type".</li>
+<li lang="en">Enter the "Text cell" and "Pattern".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Werkt ook in voorwaardelijke opmaak en filters.</div>
+<div class="note" lang="en">The result is TRUE (matches) or FALSE (doesn't).</div>
+<h2>Voorbeeld</h2>
+<ul>
+<li lang="en">=REGEXMATCH(A2,"\d{3}-\d{4}")</li>
+</ul>
+<p lang="en">It's TRUE if A2 contains the form "123-4567".</p>
+<h2 lang="en">Beware partial matches</h2>
+<p lang="en">REGEXMATCH is TRUE if any part of the text matches. To test the whole text, add "^" and "$" around the pattern.</p>
+<ul>
+<li lang="en">Example: =REGEXMATCH(A2,"^\d{3}-\d{4}$")</li>
+</ul>
+<h2 lang="en">Uses</h2>
+<ul>
+<li lang="en">Combine with IF for input checks</li>
+<li lang="en">Combine with FILTER to pull matching rows</li>
+<li lang="en">Color rows with the wrong shape via conditional formatting</li>
+</ul>
+<h2 lang="en">Combining with IF</h2>
+<ul>
+<li lang="en">Example: =IF(REGEXMATCH(A2,"^\d{3}-\d{4}$"),"OK","Wrong format")</li>
+</ul>
+<h2>Goed voor</h2>
+<ul>
+<li lang="en">Auditing postal and phone formats in a roster</li>
+<li lang="en">Auditing email addresses in imported data</li>
+<li lang="en">Finding rows containing particular words</li>
+</ul>
+<h2>Voorbeeld</h2>
+<p lang="en">Wanted to find rows missing the hyphen in a roster's postal-code column. MATCH checked the shape, and I fixed the FALSE rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Testing the whole text</b>: add ^ and $.</li>
+<li lang="en"><b>Full-width hyphens</b>: half-width and full-width are different characters.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to test for any of several words</h3>
+<p lang="en">Join them with a pipe, like "Tokyo|Osaka|Nagoya".</p>
+<h2>Samenvatting</h2>
+<p lang="en">Use REGEXMATCH to check shapes; use ^ and $ for a whole-text match.</p>
 <a class="cta" href="/nl/regex-formula-builder.html">Gebruik “Maak een formule met een reguliere expressie” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/regex-tester.html">Regex-tester</a>: Test reguliere expressies met overeenkomsten en vervangingen.</li><li><a href="/nl/substitute-formula-builder.html">Een SUBSTITUTE-formule maken</a>: Maak formules om tekst te vervangen.</li><li><a href="/nl/split-formula-builder.html">Een SPLIT-formule maken</a>: Maak formules om tekst te splitsen.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>

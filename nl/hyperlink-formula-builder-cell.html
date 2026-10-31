@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Links op basis van een celwaarde</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Kies CELLURL</li><li>Voer het URL-voorvoegsel in</li><li>Kopieer</li></ul></div>
-<p>In <a href="/nl/hyperlink-formula-builder.html">HYPERLINK-maker</a> voeg je een URL-voorvoegsel en een celwaarde samen om voor elke rij een link te maken.</p>
+<p lang="en">You want links built per row from an ID column's values, for example from a product number to its product page. "CELLURL" in <a href="/nl/hyperlink-formula-builder.html">Build a HYPERLINK Formula</a> builds it.</p>
 <h2>Stappen</h2>
 <ol>
-<li>Kies CELLURL</li>
-<li>Voer het URL-voorvoegsel in</li>
-<li>Kopieer</li>
+<li lang="en">Choose "CELLURL" in "Type".</li>
+<li lang="en">In "Link target", enter the URL prefix (e.g., https://example.com/item/).</li>
+<li lang="en">In "Cell (for CELLURL, such as A2)", enter the cell holding the ID.</li>
+<li lang="en">Copy the formula, paste it, and copy down.</li>
 </ol>
-<div class="note">Het past bij links die op ID's zijn gebaseerd, zoals productnummers.</div>
+<div class="note" lang="en">Start the URL prefix with http(s) and include up to the final "/".</div>
+<h2>Voorbeeld</h2>
+<p lang="en">With a product number in A2:</p>
+<ul>
+<li lang="en">=HYPERLINK("https://example.com/item/"&amp;A2,A2)</li>
+</ul>
+<p lang="en">If A2 is "123", it links to https://example.com/item/123 and the cell shows "123".</p>
+<h2>Hoe het werkt</h2>
+<p lang="en">The URL prefix and the cell value are joined with "&amp;". The display name is the cell value itself.</p>
+<h2>Goed voor</h2>
+<ul>
+<li lang="en">From product numbers to product pages</li>
+<li lang="en">From order numbers to an admin screen</li>
+<li lang="en">From search keywords to search result pages</li>
+</ul>
+<h2 lang="en">Linking to a search page</h2>
+<ul>
+<li lang="en">Example: =HYPERLINK("https://www.google.com/search?q="&amp;A2,A2)</li>
+</ul>
+<h2>Voorbeeld</h2>
+<p lang="en">Built links from an order-number column to the admin order pages. Copying down gave every row a link.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>IDs with Japanese text or symbols</b>: convert characters unusable in URLs with ENCODEURL.</li>
+<li lang="en">Example: =HYPERLINK("https://example.com/s?q="&amp;ENCODEURL(A2),A2)</li>
+<li lang="en"><b>Missing "/" at the end of the prefix</b>: the link target comes out wrong.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want a different display name</h3>
+<p lang="en">Rewrite the final "A2" in the formula to another cell or text.</p>
+<h2>Samenvatting</h2>
+<p lang="en">Join a URL prefix and a cell to make per-row links automatically.</p>
 <a class="cta" href="/nl/hyperlink-formula-builder.html">Gebruik “Een HYPERLINK-formule maken” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/importrange-builder.html">Een IMPORTRANGE-formule maken</a>: Maak een IMPORTRANGE-formule.</li><li><a href="/nl/textjoin-formula-builder.html">Een TEXTJOIN-formule maken</a>: Bouw een TEXTJOIN-formule.</li><li><a href="/nl/excel-if-builder.html">Een IF-formule maken</a>: Maak een IF-formule.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>

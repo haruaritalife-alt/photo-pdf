@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Replacing Text</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose REPLACE</li><li>Enter the replacement</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/regex-formula-builder.html">Regular Expression Builder</a> the part matching the pattern is replaced with other text.</p>
+<p>You want to strip stray symbols or digits from text in bulk, or reshape and replace. That's REGEXREPLACE. "REPLACE" in <a href="/en/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose REPLACE</li>
-<li>Enter the replacement</li>
-<li>Copy it</li>
+<li>Choose "REPLACE" in "Type".</li>
+<li>Enter the "Text cell" and "Pattern".</li>
+<li>In "Replacement text", enter the new text (leave empty to delete).</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">Leave it empty to delete that part.</div>
+<div class="note">With empty replacement text, the matching part is deleted.</div>
+<h2>Examples</h2>
+<ul>
+<li>Remove non-digits: =REGEXREPLACE(A2,"\D","")</li>
+<li>Remove all whitespace: =REGEXREPLACE(A2,"\s","")</li>
+<li>Remove hyphens: =REGEXREPLACE(A2,"-","")</li>
+</ul>
+<p>"03-1234-5678" becomes "0312345678".</p>
+<h2>Keeping parts with parentheses</h2>
+<p>What's inside pattern parentheses can be used in the replacement, called with "$1".</p>
+<ul>
+<li>Example: =REGEXREPLACE(A2,"(\d{3})(\d{4})","$1-$2")</li>
+</ul>
+<p>It reshapes "1234567" into "123-4567". Enter "$1-$2" in the replacement field.</p>
+<h2>Difference from SUBSTITUTE</h2>
+<ul>
+<li>SUBSTITUTE: replaces fixed text</li>
+<li>REGEXREPLACE: replaces by shape (pattern)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Removing hyphens and parentheses from phone numbers</li>
+<li>Removing "yen" and commas from amounts to make numbers</li>
+<li>Removing stray spaces in bulk</li>
+</ul>
+<h2>Example</h2>
+<p>An amount column held text like "1,200円". A non-digit-removing formula made it "1200", and VALUE turned it into a number so it could be totaled.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>\D is uppercase</b>: \D is non-digit, \d is digit.</li>
+<li><b>Result is text</b>: use VALUE to make it a number.</li>
+<li><b>Periods and parentheses</b>: put "\" before "." and "(" etc.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to replace ignoring case</h3>
+<p>Choose ignore in the "Case" field.</p>
+<h2>Summary</h2>
+<p>To replace by shape, use REGEXREPLACE.</p>
 <a class="cta" href="/en/regex-formula-builder.html">Use "Build a Regular Expression Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/regex-tester.html">Regex Tester</a>: Test regular expressions with matches and replacements.</li><li><a href="/en/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a>: Build text replacement formulas.</li><li><a href="/en/split-formula-builder.html">Build a SPLIT Formula</a>: Build text splitting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ลิงก์จากค่าของเซลล์</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก CELLURL</li><li>ใส่ส่วนต้นของ URL</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/hyperlink-formula-builder.html">ตัวสร้างสูตร HYPERLINK</a> คุณนำส่วนต้นของ URL มาต่อกับค่าของเซลล์เพื่อสร้างลิงก์ของแต่ละแถว</p>
+<p lang="en">You want links built per row from an ID column's values, for example from a product number to its product page. "CELLURL" in <a href="/th/hyperlink-formula-builder.html">Build a HYPERLINK Formula</a> builds it.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือก CELLURL</li>
-<li>ใส่ส่วนต้นของ URL</li>
-<li>คัดลอก</li>
+<li lang="en">Choose "CELLURL" in "Type".</li>
+<li lang="en">In "Link target", enter the URL prefix (e.g., https://example.com/item/).</li>
+<li lang="en">In "Cell (for CELLURL, such as A2)", enter the cell holding the ID.</li>
+<li lang="en">Copy the formula, paste it, and copy down.</li>
 </ol>
-<div class="note">เหมาะกับลิงก์ที่สร้างจากรหัสอย่างหมายเลขสินค้า</div>
+<div class="note" lang="en">Start the URL prefix with http(s) and include up to the final "/".</div>
+<h2>ตัวอย่าง</h2>
+<p lang="en">With a product number in A2:</p>
+<ul>
+<li lang="en">=HYPERLINK("https://example.com/item/"&amp;A2,A2)</li>
+</ul>
+<p lang="en">If A2 is "123", it links to https://example.com/item/123 and the cell shows "123".</p>
+<h2>วิธีการทำงาน</h2>
+<p lang="en">The URL prefix and the cell value are joined with "&amp;". The display name is the cell value itself.</p>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">From product numbers to product pages</li>
+<li lang="en">From order numbers to an admin screen</li>
+<li lang="en">From search keywords to search result pages</li>
+</ul>
+<h2 lang="en">Linking to a search page</h2>
+<ul>
+<li lang="en">Example: =HYPERLINK("https://www.google.com/search?q="&amp;A2,A2)</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Built links from an order-number column to the admin order pages. Copying down gave every row a link.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>IDs with Japanese text or symbols</b>: convert characters unusable in URLs with ENCODEURL.</li>
+<li lang="en">Example: =HYPERLINK("https://example.com/s?q="&amp;ENCODEURL(A2),A2)</li>
+<li lang="en"><b>Missing "/" at the end of the prefix</b>: the link target comes out wrong.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want a different display name</h3>
+<p lang="en">Rewrite the final "A2" in the formula to another cell or text.</p>
+<h2>สรุป</h2>
+<p lang="en">Join a URL prefix and a cell to make per-row links automatically.</p>
 <a class="cta" href="/th/hyperlink-formula-builder.html">ใช้ “สร้างสูตร HYPERLINK” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/importrange-builder.html">สร้างสูตร IMPORTRANGE</a>: สร้างสูตร IMPORTRANGE</li><li><a href="/th/textjoin-formula-builder.html">สร้างสูตร TEXTJOIN</a>: สร้างสูตร TEXTJOIN</li><li><a href="/th/excel-if-builder.html">สร้างสูตร IF</a>: สร้างสูตร IF</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

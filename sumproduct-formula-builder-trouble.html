@@ -200,14 +200,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/sumproduct-formula-builder.html">SUMPRODUCT式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を貼ったのに、結果がおかしい。<a href="/sumproduct-formula-builder.html">SUMPRODUCTの式を作る</a> で起こりやすい困りごとと対処法です。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：範囲が「B2:B100」の形でない。COND・COUNTで、条件の範囲や値が空。</li>
+</ul>
+<h2>スプレッドシートに貼ったあと</h2>
+<ul>
+<li><b>#VALUE!</b>：範囲の行数が揃っていない。</li>
+<li><b>結果が0</b>：数字が文字列になっている。または、条件に合う行がない。</li>
+<li><b>条件が効かない</b>：全角と半角、前後の空白が違う。</li>
+<li><b>#DIV/0!</b>：加重平均で、重みの合計が0。</li>
+<li><b>合計が少ない</b>：文字列の数字が、0として扱われた。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>範囲の行数が、すべて同じか確かめる。</li>
+<li>数字が左揃えなら、数値に直す。</li>
+<li>条件の値を、セルの値と見比べる。</li>
 </ol>
-<div class="note">式が出ないときは、範囲がB2:B100のように書かれているか、条件の範囲と値が入っているか確かめます。</div>
+<div class="note">見出しを範囲に含めると、行数がずれてしまいます。</div>
+<h2>文字列の数字を数値にする</h2>
+<ul>
+<li>「データ」→「区切り位置」で、数値に変換する</li>
+<li>VALUE関数を使う</li>
+<li>「1を掛ける」で変換する</li>
+</ul>
+<h2>条件が数値のとき</h2>
+<p>条件の値が数値の場合、ツールは引用符で囲みます。数値として比べたいときは、貼ったあとで引用符を外します。</p>
+<h2>例</h2>
+<p>金額の合計が、実際より小さかった。一部の金額が文字列で、0として扱われていた。数値に直すと合った。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>別のシートの範囲</b>：シート名を付ける。</li>
+<li><b>計算が遅い</b>：範囲を大きくしすぎない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>空欄の行があっても大丈夫ですか？</h3>
+<p>空欄は0として扱われ、結果に影響しません。</p>
+<h2>まとめ</h2>
+<p>行数、文字列の数字、条件の表記。この3つを確かめましょう。</p>
 <a class="cta" href="/sumproduct-formula-builder.html">SUMPRODUCTの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/rank-formula-builder.html">順位の式を作る</a>：順位の式を作ります。</li><li><a href="/percent-calculator.html">割合・割引・増減（%）を計算する</a>：割合・割引・増減の%を、すぐに計算します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +251,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/sumproduct-formula-builder.html">SUMPRODUCT Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted the formula but the result is odd. Here are common troubles with <a href="/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: a range isn't in the "B2:B100" form; in COND/COUNT the condition range or value is empty.</li>
+</ul>
+<h2>After pasting into the sheet</h2>
+<ul>
+<li><b>#VALUE!</b>: ranges have different row counts.</li>
+<li><b>Result is 0</b>: numbers are text, or no rows match.</li>
+<li><b>Condition doesn't work</b>: full-width/half-width or surrounding spaces differ.</li>
+<li><b>#DIV/0!</b>: in a weighted average, the weights sum to 0.</li>
+<li><b>Total is too small</b>: text numbers were treated as 0.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check all ranges have the same number of rows.</li>
+<li>If numbers are left-aligned, convert them to numbers.</li>
+<li>Compare the condition value with the cell values.</li>
 </ol>
-<div class="note">If no formula appears, check that ranges are written like B2:B100 and the condition range and value are entered.</div>
+<div class="note">Including the header in a range shifts the row counts.</div>
+<h2>Converting text numbers</h2>
+<ul>
+<li>Convert with Data → Text to Columns</li>
+<li>Use VALUE</li>
+<li>Convert by "multiplying by 1"</li>
+</ul>
+<h2>When the condition is a number</h2>
+<p>For numeric condition values the tool wraps them in quotes. To compare as numbers, remove the quotes after pasting.</p>
+<h2>Example</h2>
+<p>A total came out smaller than reality. Some amounts were text and counted as 0. Converting them fixed it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Ranges on other sheets</b>: add the sheet name.</li>
+<li><b>Slow calculation</b>: don't make ranges too large.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Are blank rows fine?</h3>
+<p>Blanks count as 0 and don't affect the result.</p>
+<h2>Summary</h2>
+<p>Check row counts, text numbers and condition notation.</p>
 <a class="cta" href="/sumproduct-formula-builder.html">Use "Build a SUMPRODUCT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

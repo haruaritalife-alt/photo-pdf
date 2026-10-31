@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Contar filas que coinciden</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
 <div class="points"><b>Puntos clave</b><ul><li>Elige COUNT</li><li>Escribe la condición</li><li>Cópialo</li></ul></div>
-<p><a href="/es/sumproduct-formula-builder.html">Creador de SUMPRODUCT</a> también puede crear una fórmula que cuenta las filas que cumplen una condición.</p>
+<p lang="en">COUNTIF is the standard for counting rows meeting a condition. But for conditions across several columns, or on computed values, SUMPRODUCT is handy. "COUNT" in <a href="/es/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a> builds it.</p>
 <h2>Pasos</h2>
 <ol>
-<li>Elige COUNT</li>
-<li>Escribe la condición</li>
-<li>Cópialo</li>
+<li lang="en">Choose "COUNT" in "Method".</li>
+<li lang="en">Enter the "Condition range (such as A2:A100)".</li>
+<li lang="en">Enter the "Condition value (such as Tokyo)".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Funciona con combinaciones que COUNTIF maneja mal.</div>
+<div class="note" lang="en">In COUNT, the first and second ranges aren't used.</div>
+<h2>Ejemplo</h2>
+<ul>
+<li lang="en">=SUMPRODUCT(--(A2:A100="Tokyo"))</li>
+</ul>
+<p lang="en">Matching rows become 1, others 0, and the sum is the count.</p>
+<h2 lang="en">What "--" means</h2>
+<p lang="en">It turns TRUE and FALSE into 1 and 0. Without it the total would be 0.</p>
+<h2 lang="en">Compared with COUNTIF</h2>
+<ul>
+<li lang="en">COUNTIF: =COUNTIF(A2:A100,"Tokyo")</li>
+<li lang="en">SUMPRODUCT: can join multiple conditions by multiplication</li>
+</ul>
+<h2 lang="en">Adding conditions</h2>
+<ul>
+<li lang="en">Example: =SUMPRODUCT((A2:A100="Tokyo")*(B2:B100&gt;1000))</li>
+</ul>
+<p lang="en">The count of rows in Tokyo and over 1000. Add by hand after pasting.</p>
+<h2>Adecuado para</h2>
+<ul>
+<li lang="en">Counts by region</li>
+<li lang="en">Counts with stacked conditions</li>
+<li lang="en">Creative ways to count duplicates</li>
+</ul>
+<h2>Ejemplo</h2>
+<p lang="en">Wanted the count of Tokyo orders over 1000. Multiplying two conditions in SUMPRODUCT gave it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the condition range isn't in the "A2:A100" form, or the value is empty.</li>
+<li lang="en"><b>Different row counts</b>: gives #VALUE!.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want partial matches</h3>
+<p lang="en">COUNTIF wildcards ("*Tokyo*") are simpler.</p>
+<h2>Resumen</h2>
+<p lang="en">To count with multiple conditions, use SUMPRODUCT.</p>
 <a class="cta" href="/es/sumproduct-formula-builder.html">Usar «Crear una fórmula SUMPRODUCT» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/sumif-formula-builder.html">Crear una fórmula SUMIF o COUNTIF</a>: Crea fórmulas SUMIF y COUNTIF.</li><li><a href="/es/rank-formula-builder.html">Crear una fórmula de clasificación</a>: Crea fórmulas de clasificación.</li><li><a href="/es/percent-calculator.html">Calcular porcentajes, descuentos y variaciones porcentuales</a>: Calcula al instante porcentajes, descuentos y variaciones porcentuales.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

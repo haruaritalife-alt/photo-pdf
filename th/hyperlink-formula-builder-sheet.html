@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ลิงก์ภายในสมุดงาน</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก SHEET</li><li>ใส่ Sheet!Cell</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/hyperlink-formula-builder.html">ตัวสร้างสูตร HYPERLINK</a> คุณลิงก์ไปยังชีตหรือเซลล์อื่นในไฟล์เดียวกันได้</p>
+<p lang="en">You want to jump from a table-of-contents sheet to other sheets. Links to sheets or cells within the same file are written differently in Google and Excel. "SHEET" in <a href="/th/hyperlink-formula-builder.html">Build a HYPERLINK Formula</a> builds both at once.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือก SHEET</li>
-<li>ใส่ Sheet!Cell</li>
-<li>คัดลอก</li>
+<li lang="en">Choose "SHEET" in "Type".</li>
+<li lang="en">In "Link target", enter "Sheet!cell" (e.g., Sales!B5).</li>
+<li lang="en">In "Sheet ID (for Google Sheets, such as 0)", enter the sheet's ID.</li>
+<li lang="en">Enter a "Display name".</li>
+<li lang="en">The first output is for Google, the second for Excel.</li>
 </ol>
-<div class="note">ใน Google Sheets ให้ใส่ gid ของชีตด้วย</div>
+<div class="note" lang="en">The sheet ID is the number after "gid=" in the URL when you open that sheet in Google Sheets.</div>
+<h2>ตัวอย่าง</h2>
+<p lang="en">A link to B5 on the "Sales" sheet.</p>
+<ul>
+<li lang="en">Google: =HYPERLINK("#gid=123456⦥=B5","To Sales")</li>
+<li lang="en">Excel: =HYPERLINK("#Sales!B5","To Sales")</li>
+</ul>
+<h2 lang="en">Finding the sheet ID</h2>
+<p lang="en">In Google Sheets, open the target sheet and look at the number after "#gid=" at the end of the browser address. The first sheet is often "0".</p>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Making a table-of-contents sheet</li>
+<li lang="en">Jumping from a summary sheet to source data</li>
+<li lang="en">Adding a link back to the top of a long sheet</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">In a file with twelve monthly sheets, built a table of contents. After finding each month's sheet ID and lining up the links, one click moved between them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Sheet names with spaces</b>: in Excel, wrap the name in "'". Example: #'Sales 2026'!B5</li>
+<li lang="en"><b>Wrong sheet ID</b>: the link won't open.</li>
+<li lang="en"><b>Renaming</b>: Google's version uses the ID, so renaming doesn't break it.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about sheets in other files?</h3>
+<p lang="en">For other files use that file's URL, with the "URL" type.</p>
+<h2>สรุป</h2>
+<p lang="en">Google specifies by sheet id; Excel by sheet name.</p>
 <a class="cta" href="/th/hyperlink-formula-builder.html">ใช้ “สร้างสูตร HYPERLINK” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/importrange-builder.html">สร้างสูตร IMPORTRANGE</a>: สร้างสูตร IMPORTRANGE</li><li><a href="/th/textjoin-formula-builder.html">สร้างสูตร TEXTJOIN</a>: สร้างสูตร TEXTJOIN</li><li><a href="/th/excel-if-builder.html">สร้างสูตร IF</a>: สร้างสูตร IF</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

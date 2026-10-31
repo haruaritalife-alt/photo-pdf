@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>การดึงตัวเลขออกมา</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก EXTRACT</li><li>พิมพ์ \d+</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/regex-formula-builder.html">ตัวสร้างสูตร Regular Expression</a> คุณดึงเฉพาะตัวเลขออกจากข้อความได้</p>
+<p lang="en">You want only "12345" from "Order number 12345". That's REGEXEXTRACT. "EXTRACT" in <a href="/th/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือก EXTRACT</li>
-<li>พิมพ์ \d+</li>
-<li>คัดลอก</li>
+<li lang="en">Choose "EXTRACT" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">In "Pattern", enter the shape you want.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">หากไม่พบ จะขึ้น #N/A ระบบจึงสร้างอีกแบบที่ครอบด้วย IFERROR ให้ด้วย</div>
+<div class="note" lang="en">The result is only the first part that matches. With no match you get #N/A.</div>
+<h2 lang="en">Common patterns</h2>
+<ul>
+<li lang="en">\d+: a run of digits</li>
+<li lang="en">\d{3}-\d{4}: a postal-code shape (123-4567)</li>
+<li lang="en">[A-Za-z0-9._-]+@[A-Za-z0-9.-]+: an email shape</li>
+<li lang="en">https?://\S+: a URL</li>
+<li lang="en">[ぁ-ん]+: hiragana</li>
+</ul>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">=REGEXEXTRACT(A2,"\d+")</li>
+<li lang="en">=REGEXEXTRACT(A2,"\d{3}-\d{4}")</li>
+</ul>
+<h2 lang="en">Applying to a whole column</h2>
+<p lang="en">The second formula applies to the whole column at once. Rows with no match become blank via IFERROR.</p>
+<ul>
+<li lang="en">=ARRAYFORMULA(IFERROR(REGEXEXTRACT(A2:A,"\d+"),""))</li>
+</ul>
+<h2 lang="en">Taking just a part with parentheses</h2>
+<p lang="en">With parentheses () in the pattern, only what's inside them is extracted.</p>
+<ul>
+<li lang="en">Example: =REGEXEXTRACT(A2,"Order number (\d+)")</li>
+</ul>
+<p lang="en">From "Order number 12345" you get just "12345".</p>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Extracting order numbers or IDs</li>
+<li lang="en">Pulling emails and phone numbers out of prose</li>
+<li lang="en">Taking only the number from numbers with units</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">A notes column had sentences like "Next time is March 15". The extraction formula split the date numbers into another column.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Numbers come out as text</b>: the result is a string. Convert with VALUE.</li>
+<li lang="en"><b>Full-width digits</b>: \d is half-width digits only. Handle full-width separately.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want all matches</h3>
+<p lang="en">REGEXEXTRACT returns the first match. Use another approach for all.</p>
+<h2>สรุป</h2>
+<p lang="en">Describe the shape in a pattern and only the needed part comes out.</p>
 <a class="cta" href="/th/regex-formula-builder.html">ใช้ “สร้างสูตร Regular Expression” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/regex-tester.html">เครื่องมือทดสอบ Regex</a>: ทดสอบนิพจน์ทั่วไปพร้อมผลที่ตรงกันและการแทนที่</li><li><a href="/th/substitute-formula-builder.html">สร้างสูตร SUBSTITUTE</a>: สร้างสูตรแทนที่ข้อความ</li><li><a href="/th/split-formula-builder.html">สร้างสูตร SPLIT</a>: สร้างสูตรแยกข้อความ</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Extracting Numbers</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose EXTRACT</li><li>Enter \d+</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/regex-formula-builder.html">Regular Expression Builder</a> you can pull only the digits out of text.</p>
+<p>You want only "12345" from "Order number 12345". That's REGEXEXTRACT. "EXTRACT" in <a href="/en/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose EXTRACT</li>
-<li>Enter \d+</li>
-<li>Copy it</li>
+<li>Choose "EXTRACT" in "Type".</li>
+<li>Enter the "Text cell".</li>
+<li>In "Pattern", enter the shape you want.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">A not-found result gives #N/A, so a version wrapped in IFERROR is built too.</div>
+<div class="note">The result is only the first part that matches. With no match you get #N/A.</div>
+<h2>Common patterns</h2>
+<ul>
+<li>\d+: a run of digits</li>
+<li>\d{3}-\d{4}: a postal-code shape (123-4567)</li>
+<li>[A-Za-z0-9._-]+@[A-Za-z0-9.-]+: an email shape</li>
+<li>https?://\S+: a URL</li>
+<li>[ぁ-ん]+: hiragana</li>
+</ul>
+<h2>Examples</h2>
+<ul>
+<li>=REGEXEXTRACT(A2,"\d+")</li>
+<li>=REGEXEXTRACT(A2,"\d{3}-\d{4}")</li>
+</ul>
+<h2>Applying to a whole column</h2>
+<p>The second formula applies to the whole column at once. Rows with no match become blank via IFERROR.</p>
+<ul>
+<li>=ARRAYFORMULA(IFERROR(REGEXEXTRACT(A2:A,"\d+"),""))</li>
+</ul>
+<h2>Taking just a part with parentheses</h2>
+<p>With parentheses () in the pattern, only what's inside them is extracted.</p>
+<ul>
+<li>Example: =REGEXEXTRACT(A2,"Order number (\d+)")</li>
+</ul>
+<p>From "Order number 12345" you get just "12345".</p>
+<h2>Good for</h2>
+<ul>
+<li>Extracting order numbers or IDs</li>
+<li>Pulling emails and phone numbers out of prose</li>
+<li>Taking only the number from numbers with units</li>
+</ul>
+<h2>Example</h2>
+<p>A notes column had sentences like "Next time is March 15". The extraction formula split the date numbers into another column.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Numbers come out as text</b>: the result is a string. Convert with VALUE.</li>
+<li><b>Full-width digits</b>: \d is half-width digits only. Handle full-width separately.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want all matches</h3>
+<p>REGEXEXTRACT returns the first match. Use another approach for all.</p>
+<h2>Summary</h2>
+<p>Describe the shape in a pattern and only the needed part comes out.</p>
 <a class="cta" href="/en/regex-formula-builder.html">Use "Build a Regular Expression Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/regex-tester.html">Regex Tester</a>: Test regular expressions with matches and replacements.</li><li><a href="/en/substitute-formula-builder.html">Build a SUBSTITUTE Formula</a>: Build text replacement formulas.</li><li><a href="/en/split-formula-builder.html">Build a SPLIT Formula</a>: Build text splitting formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

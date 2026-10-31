@@ -200,14 +200,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>単価×数量の合計</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>SUMPRODUCTを選ぶ</li><li>範囲を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/sumproduct-formula-builder.html">SUMPRODUCT式の作成</a> では、単価と数量を行ごとに掛けて、合計金額を一度に出せます。</p>
+<p>いちばん基本の使い方が、「単価×数量の合計」です。<a href="/sumproduct-formula-builder.html">SUMPRODUCTの式を作る</a> の「SUMPRODUCT」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>SUMPRODUCTを選ぶ</li>
-<li>範囲を入れる</li>
-<li>コピーする</li>
+<li>「方法」で「SUMPRODUCT」を選ぶ。</li>
+<li>「1つ目の範囲」に単価の範囲、「2つ目の範囲」に数量の範囲を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">掛け算の列を作らなくて済みます。</div>
+<div class="note">どちらを1つ目にしても、結果は同じです。</div>
+<h2>例</h2>
+<ul>
+<li>=SUMPRODUCT(B2:B100,C2:C100)</li>
+</ul>
+<p>B2×C2 + B3×C3 + … の合計が、1つのセルに出ます。</p>
+<h2>行ごとの計算との比べ方</h2>
+<ul>
+<li>行ごとの列を作る：D列に =B2*C2 を並べ、SUMで合計</li>
+<li>SUMPRODUCT：列を作らずに、1つのセルで合計</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>見積書や請求書の総額</li>
+<li>在庫の評価額（単価×在庫数）</li>
+<li>作業時間×時給の人件費</li>
+</ul>
+<h2>3つ以上の範囲</h2>
+<p>範囲を足すと、3つ以上も掛けられます。ツールの式を貼ったあと、手で足します。</p>
+<ul>
+<li>例：=SUMPRODUCT(B2:B100,C2:C100,D2:D100)</li>
+</ul>
+<h2>例</h2>
+<p>在庫の一覧から、在庫の総額を出したかった。単価の列と在庫数の列にSUMPRODUCTを使うと、補助の列なしで総額が出た。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>範囲の行数が違う</b>：#VALUE!になる。</li>
+<li><b>空欄・文字</b>：文字は0として扱われる。</li>
+<li><b>見出しを含めた</b>：見出しの文字は0になるが、範囲はデータ行だけにするのが安全。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>税込にしたい</h3>
+<p>式の後ろに「*1.1」を足します。ただし、端数処理が必要なら、行ごとの計算が向きます。</p>
+<h2>まとめ</h2>
+<p>単価×数量の合計は、SUMPRODUCT1つで求まります。</p>
 <a class="cta" href="/sumproduct-formula-builder.html">SUMPRODUCTの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/rank-formula-builder.html">順位の式を作る</a>：順位の式を作ります。</li><li><a href="/percent-calculator.html">割合・割引・増減（%）を計算する</a>：割合・割引・増減の%を、すぐに計算します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +253,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Price Times Quantity</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose SUMPRODUCT</li><li>Enter the ranges</li><li>Copy it</li></ul></div>
-<p>In <a href="/sumproduct-formula-builder.html">SUMPRODUCT Builder</a> you can multiply price and quantity row by row to get the total at once.</p>
+<p>The most basic use is "total of unit price × quantity". "SUMPRODUCT" in <a href="/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose SUMPRODUCT</li>
-<li>Enter the ranges</li>
-<li>Copy it</li>
+<li>Choose "SUMPRODUCT" in "Method".</li>
+<li>Enter the price range as "First range" and the quantity range as "Second range".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">No helper column is needed.</div>
+<div class="note">Either order gives the same result.</div>
+<h2>Example</h2>
+<ul>
+<li>=SUMPRODUCT(B2:B100,C2:C100)</li>
+</ul>
+<p>The sum of B2×C2 + B3×C3 + … appears in one cell.</p>
+<h2>Compared with per-row calculation</h2>
+<ul>
+<li>Per-row column: put =B2*C2 down column D and SUM</li>
+<li>SUMPRODUCT: total in one cell without a helper column</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Totals of quotes and invoices</li>
+<li>Inventory valuation (unit price × stock)</li>
+<li>Labor cost (hours × hourly rate)</li>
+</ul>
+<h2>Three or more ranges</h2>
+<p>Adding ranges multiplies three or more. Add them by hand after pasting.</p>
+<ul>
+<li>Example: =SUMPRODUCT(B2:B100,C2:C100,D2:D100)</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted the total inventory value from a list. SUMPRODUCT over the price and stock columns gave the total with no helper column.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Different row counts</b>: gives #VALUE!.</li>
+<li><b>Blanks and text</b>: text counts as 0.</li>
+<li><b>Including the header</b>: header text counts as 0, but keeping the range to data rows is safer.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want it tax-included</h3>
+<p>Append "*1.1". If rounding is needed, per-row calculation suits better.</p>
+<h2>Summary</h2>
+<p>One SUMPRODUCT gives the price × quantity total.</p>
 <a class="cta" href="/sumproduct-formula-builder.html">Use "Build a SUMPRODUCT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

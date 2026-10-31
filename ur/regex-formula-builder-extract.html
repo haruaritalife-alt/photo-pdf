@@ -215,14 +215,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>اعداد نکالنا</h1>
 <p class="meta">شائع شدہ: 19 اکتوبر 2026 | اپ ڈیٹ: 19 اکتوبر 2026 | <a href="/about.html">تعارف (جاپانی)</a></p>
 <div class="points"><b>اہم نکات</b><ul><li>EXTRACT منتخب کریں</li><li>\d+ لکھیں</li><li>کاپی کریں</li></ul></div>
-<p><a href="/ur/regex-formula-builder.html">ریگولر ایکسپریشن فارمولا بنانے والا</a> میں آپ متن سے صرف ہندسے نکال سکتے ہیں۔</p>
+<p lang="en">You want only "12345" from "Order number 12345". That's REGEXEXTRACT. "EXTRACT" in <a href="/ur/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
 <h2>مراحل</h2>
 <ol>
-<li>EXTRACT منتخب کریں</li>
-<li>\d+ لکھیں</li>
-<li>کاپی کریں</li>
+<li lang="en">Choose "EXTRACT" in "Type".</li>
+<li lang="en">Enter the "Text cell".</li>
+<li lang="en">In "Pattern", enter the shape you want.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">اگر کچھ نہ ملے تو #N/A آتا ہے، اس لیے IFERROR میں لپٹا ہوا ایک ورژن بھی بنایا جاتا ہے۔</div>
+<div class="note" lang="en">The result is only the first part that matches. With no match you get #N/A.</div>
+<h2 lang="en">Common patterns</h2>
+<ul>
+<li lang="en">\d+: a run of digits</li>
+<li lang="en">\d{3}-\d{4}: a postal-code shape (123-4567)</li>
+<li lang="en">[A-Za-z0-9._-]+@[A-Za-z0-9.-]+: an email shape</li>
+<li lang="en">https?://\S+: a URL</li>
+<li lang="en">[ぁ-ん]+: hiragana</li>
+</ul>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">=REGEXEXTRACT(A2,"\d+")</li>
+<li lang="en">=REGEXEXTRACT(A2,"\d{3}-\d{4}")</li>
+</ul>
+<h2 lang="en">Applying to a whole column</h2>
+<p lang="en">The second formula applies to the whole column at once. Rows with no match become blank via IFERROR.</p>
+<ul>
+<li lang="en">=ARRAYFORMULA(IFERROR(REGEXEXTRACT(A2:A,"\d+"),""))</li>
+</ul>
+<h2 lang="en">Taking just a part with parentheses</h2>
+<p lang="en">With parentheses () in the pattern, only what's inside them is extracted.</p>
+<ul>
+<li lang="en">Example: =REGEXEXTRACT(A2,"Order number (\d+)")</li>
+</ul>
+<p lang="en">From "Order number 12345" you get just "12345".</p>
+<h2>ان کے لیے موزوں</h2>
+<ul>
+<li lang="en">Extracting order numbers or IDs</li>
+<li lang="en">Pulling emails and phone numbers out of prose</li>
+<li lang="en">Taking only the number from numbers with units</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">A notes column had sentences like "Next time is March 15". The extraction formula split the date numbers into another column.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Numbers come out as text</b>: the result is a string. Convert with VALUE.</li>
+<li lang="en"><b>Full-width digits</b>: \d is half-width digits only. Handle full-width separately.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want all matches</h3>
+<p lang="en">REGEXEXTRACT returns the first match. Use another approach for all.</p>
+<h2>خلاصہ</h2>
+<p lang="en">Describe the shape in a pattern and only the needed part comes out.</p>
 <a class="cta" href="/ur/regex-formula-builder.html">«ریگولر ایکسپریشن فارمولا بنائیں» استعمال کریں (مفت)</a>
 <h2>وہ ٹولز جو اس کے ساتھ اچھے لگتے ہیں</h2><ul><li><a href="/ur/regex-tester.html">ریگولر ایکسپریشن ٹیسٹر</a>: ریگولر ایکسپریشن کو مماثلتوں اور تبدیلیوں کے ساتھ جانچیں۔</li><li><a href="/ur/substitute-formula-builder.html">SUBSTITUTE فارمولا بنائیں</a>: متن تبدیل کرنے کے فارمولے بنائیں۔</li><li><a href="/ur/split-formula-builder.html">SPLIT فارمولا بنائیں</a>: متن تقسیم کرنے کے فارمولے بنائیں۔</li></ul>
 <div class="tip"><p>اگر یہ گائیڈ مفید رہی تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ٹپ بھیجیں (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">تحفہ بھیجیں (ایمیزون وش لسٹ)</a></div>
