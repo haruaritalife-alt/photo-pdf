@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "빈칸과 오류", "description": "빈칸과 오류에 대해서입니다.", "url": "https://pdfmikata.com/ko/large-small-formula-builder-blank.html", "mainEntityOfPage": "https://pdfmikata.com/ko/large-small-formula-builder-blank.html", "inLanguage": "ko", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ko/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ko/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "빈칸과 오류", "description": "빈칸과 오류에 대해서입니다.", "url": "https://pdfmikata.com/ko/large-small-formula-builder-blank.html", "mainEntityOfPage": "https://pdfmikata.com/ko/large-small-formula-builder-blank.html", "inLanguage": "ko", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ko/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ko/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>빈칸과 오류</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>수식 만들기</li><li>두 번째 고르기</li><li>복사</li></ul></div>
-<p><a href="/ko/large-small-formula-builder.html">LARGE SMALL 수식 만들기</a>는 오류일 때 빈칸이 되는 버전도 보여 줍니다.</p>
+<p lang="en">You'd rather the formula not show errors. When no data meets the condition, or the number is too large, the "formula that blanks on error" covers you. That's the second field in <a href="/ko/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a>.</p>
 <h2>순서</h2>
 <ol>
-<li>수식 만들기</li>
-<li>두 번째 고르기</li>
-<li>복사</li>
+<li lang="en">Build the first formula.</li>
+<li lang="en">Check the second "Formula that blanks on error".</li>
+<li lang="en">Copy it with "Copy the second" and paste.</li>
 </ol>
-<div class="note">순위가 데이터 개수보다 크면 오류가 납니다.</div>
+<div class="note" lang="en">Its form is =IFERROR(formula,""). The cell is empty on error.</div>
+<h2>예</h2>
+<ul>
+<li lang="en">=IFERROR(LARGE(B2:B100,3),"")</li>
+</ul>
+<p lang="en">If there are only two numbers and no 3rd, it's blank instead of #NUM!.</p>
+<h2 lang="en">Handling blanks and text</h2>
+<p lang="en">LARGE, SMALL, MAXIFS and MINIFS ignore blanks and text in the range. Only numbers are counted.</p>
+<h2 lang="en">When 0 is returned</h2>
+<p lang="en">MAXIFS and MINIFS return 0 when no row meets the condition. To distinguish 0 from blank, check the count with COUNTIF.</p>
+<ul>
+<li lang="en">Example: =IF(COUNTIF(A2:A100,"Tokyo")=0,"",MAXIFS(B2:B100,A2:A100,"Tokyo"))</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Empty tables before data grows</li>
+<li lang="en">Avoiding error displays in summary tables</li>
+<li lang="en">Cell values that feed other formulas</li>
+</ul>
+<h2>주의</h2>
+<p lang="en">Hiding errors makes input mistakes harder to notice too. Test with the first formula, then switch to the second once stable.</p>
+<h2>예</h2>
+<p lang="en">At the start of the month there was no data yet and summary cells were full of errors. Wrapping in IFERROR showed blanks and tidied the look.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Can't see the reason</b>: use the first formula when hunting causes.</li>
+<li lang="en"><b>Blanks treated as text</b>: an empty string ("") may be treated as text in later calculations.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to show 0</h3>
+<p lang="en">Rewrite IFERROR's "" as 0.</p>
+<h2>요약</h2>
+<p lang="en">To avoid errors, use the second formula.</p>
 <a class="cta" href="/ko/large-small-formula-builder.html">“LARGE·SMALL 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/rank-formula-builder.html">순위 수식 만들기</a>: 순위 수식을 만듭니다.</li><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li><li><a href="/ko/sumproduct-formula-builder.html">SUMPRODUCT 수식 만들기</a>: SUMPRODUCT 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>
@@ -217,6 +249,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/ko/guides.html">모든 가이드 보기</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="ko">소개 / 문의 (일본어)</span></a><a href="/ko/privacy.html"><span lang="ko">개인정보 처리방침</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ko">X 업데이트 소식</span></a></footer>
+<footer><a href="/about.html"><span lang="ko">소개 / 문의 (일본어)</span></a><a href="/ko/privacy.html"><span lang="ko">개인정보 처리방침</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ko">X 업데이트 소식</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Números repetidos", "description": "Sobre números repetidos.", "url": "https://pdfmikata.com/pt/sequence-formula-builder-repeat.html", "mainEntityOfPage": "https://pdfmikata.com/pt/sequence-formula-builder-repeat.html", "inLanguage": "pt-BR", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/pt/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/pt/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Números repetidos", "description": "Sobre números repetidos.", "url": "https://pdfmikata.com/pt/sequence-formula-builder-repeat.html", "mainEntityOfPage": "https://pdfmikata.com/pt/sequence-formula-builder-repeat.html", "inLanguage": "pt-BR", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/pt/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/pt/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Números repetidos</h1>
 <p class="meta">Publicado em: 19 out 2026 | Atualizado em: 19 out 2026 | <a href="/about.html">Sobre (em japonês)</a></p>
 <div class="points"><b>Pontos principais</b><ul><li>Escolha REPEAT</li><li>Digite o tamanho do ciclo</li><li>Copie</li></ul></div>
-<p>No <a href="/pt/sequence-formula-builder.html">Gerador de SEQUENCE</a> você pode criar números que se repetem como 1, 2, 3, 1, 2, 3.</p>
+<p lang="en">Sometimes you want numbers that repeat in a fixed cycle: 1-2-3-4-1-2-3-4… Useful for group assignment, shift rotas and four-column layouts. "REPEAT" in <a href="/pt/sequence-formula-builder.html">Build a SEQUENCE Formula</a> builds it.</p>
 <h2>Passos</h2>
 <ol>
-<li>Escolha REPEAT</li>
-<li>Digite o tamanho do ciclo</li>
-<li>Copie</li>
+<li lang="en">Choose "REPEAT" in "Type".</li>
+<li lang="en">In "Count (for REPEAT, the repeat length)", enter how high to cycle from 1.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">É útil para ordem de assentos e agrupamentos.</div>
+<div class="note" lang="en">In REPEAT, "Count" is the cycle length. With 4, it repeats 1 to 4.</div>
+<h2>Exemplo</h2>
+<p lang="en">Repeating 1 to 4:</p>
+<ul>
+<li lang="en">Google: =ARRAYFORMULA(MOD(ROW(A1:A100)-1,4)+1)</li>
+<li lang="en">Row by row: =MOD(ROW(A1)-1,4)+1</li>
+</ul>
+<p lang="en">The result is 1, 2, 3, 4, 1, 2, 3, 4…</p>
+<h2>Como funciona</h2>
+<p lang="en">ROW(A1) returns the row number (1, 2, 3…). It subtracts 1, takes the remainder by the cycle length, and adds 1.</p>
+<h2>Bom para</h2>
+<ul>
+<li lang="en">Group assignment (assign people to groups 1–4 in turn)</li>
+<li lang="en">Rotating duty assignments</li>
+<li lang="en">Rearranging many items into four columns</li>
+</ul>
+<h2 lang="en">The row range</h2>
+<p lang="en">The tool's formula covers rows up to 10× the cycle (at least 100). If that's not enough, widen the "A1:A100" part.</p>
+<h2>Exemplo</h2>
+<p lang="en">Wanted to assign a roster in order to groups 1–5. A MOD and ROW formula gave numbers cycling through the five groups.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Rows shift</b>: if the formula isn't in row 1, adjust the ROW part.</li>
+<li lang="en"><b>Inserted rows</b>: ROW depends on position, so numbers change.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want each number twice</h3>
+<p lang="en">Combine with INT.</p>
+<ul>
+<li lang="en">Example: =INT((ROW(A1)-1)/2)+1</li>
+</ul>
+<p lang="en">It gives 1, 1, 2, 2, 3, 3…</p>
+<h2>Resumo</h2>
+<p lang="en">Repeating numbers come from MOD combined with ROW.</p>
 <a class="cta" href="/pt/sequence-formula-builder.html">Usar “Criar uma fórmula SEQUENCE” (grátis)</a>
 <h2>Ferramentas que combinam com esta</h2><ul><li><a href="/pt/date-offset-formula-builder.html">Criar uma fórmula de deslocamento de data</a>: Crie fórmulas de deslocamento de data.</li><li><a href="/pt/arrayformula-builder.html">Criar um ARRAYFORMULA</a>: Crie fórmulas ARRAYFORMULA.</li><li><a href="/pt/rank-formula-builder.html">Criar uma fórmula de classificação</a>: Crie fórmulas de classificação.</li></ul>
 <div class="tip"><p>Se este guia ajudou, uma pequena gorjeta significaria muito.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Enviar uma gorjeta (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar um presente (lista de desejos da Amazon)</a></div>
@@ -217,6 +250,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/pt/guides.html">Ver todos os guias</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="pt-BR">Sobre / Contato (em japonês)</span></a><a href="/pt/privacy.html"><span lang="pt-BR">Política de Privacidade</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="pt-BR">Novidades no X</span></a></footer>
+<footer><a href="/about.html"><span lang="pt-BR">Sobre / Contato (em japonês)</span></a><a href="/pt/privacy.html"><span lang="pt-BR">Política de Privacidade</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="pt-BR">Novidades no X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

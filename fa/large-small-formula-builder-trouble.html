@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "اگر کار نکرد چه باید کرد", "description": "علل و راه‌حل‌ها هنگام شکست پردازش.", "url": "https://pdfmikata.com/fa/large-small-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/fa/large-small-formula-builder-trouble.html", "inLanguage": "fa", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fa/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fa/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "اگر کار نکرد چه باید کرد", "description": "علل و راه‌حل‌ها هنگام شکست پردازش.", "url": "https://pdfmikata.com/fa/large-small-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/fa/large-small-formula-builder-trouble.html", "inLanguage": "fa", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fa/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fa/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -215,14 +215,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>اگر کار نکرد چه باید کرد</h1>
 <p class="meta">منتشرشده: 19 اکتبر 2026 | به‌روزرسانی: 19 اکتبر 2026 | <a href="/about.html">دربارهٔ ما (ژاپنی)</a></p>
 <div class="points"><b>نکات کلیدی</b><ul><li>فایل را بررسی کنید</li><li>اندازه را بررسی کنید</li><li>دستگاه دیگری را امتحان کنید</li></ul></div>
-<p>اگر <a href="/fa/large-small-formula-builder.html">سازندهٔ LARGE SMALL</a> کار نمی‌کند، موارد زیر را بررسی کنید.</p>
-<h2>مراحل</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/fa/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the numeric range isn't in the "B2:B100" form; "which one" isn't an integer of 1 or more; for MAXIFS/MINIFS the condition range or value is empty; for TOPSUM the count is 21 or more.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#NUM!</b>: the number exceeds the count of values, or the range has no numbers.</li>
+<li lang="en"><b>#VALUE!</b>: MAXIFS/MINIFS ranges have different row counts.</li>
+<li lang="en"><b>#NAME?</b>: old Excel lacks MAXIFS/MINIFS.</li>
+<li lang="en"><b>0 returned</b>: no row meets the condition in MAXIFS/MINIFS.</li>
+<li lang="en"><b>Result too small or large</b>: text numbers are being ignored.</li>
+<li lang="en"><b>Condition doesn't work</b>: full-width/half-width or surrounding spaces differ.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>فایل را بررسی کنید</li>
-<li>اندازه را بررسی کنید</li>
-<li>دستگاه دیگری را امتحان کنید</li>
+<li lang="en">Check the numbers in the range are right-aligned numeric values.</li>
+<li lang="en">Check ranges have the same number of rows.</li>
+<li lang="en">Compare the condition value with the cell values.</li>
 </ol>
-<div class="note">اگر فرمولی ظاهر نشد، بررسی کنید که محدوده‌ها مثل B2:B100 نوشته شده باشند و محدودهٔ شرط و مقدار وارد شده باشد.</div>
+<div class="note" lang="en">Don't include header rows in the range.</div>
+<h2 lang="en">Fixing text numbers</h2>
+<p lang="en">Convert with Data → Text to Columns or VALUE.</p>
+<h2>مثال</h2>
+<p lang="en">LARGE gave a smaller value than expected. Some numbers were text and weren't counted. Converting them gave the right value.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Ranges on other sheets</b>: add the sheet name.</li>
+<li lang="en"><b>Including a total row in the range</b>: the total becomes the maximum. Exclude it.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about decimals and negatives?</h3>
+<p lang="en">Both are handled fine. Negatives rank as small values.</p>
+<h2>خلاصه</h2>
+<p lang="en">Check numeric type, row counts and condition notation.</p>
 <a class="cta" href="/fa/large-small-formula-builder.html">استفاده از «ساخت فرمول LARGE و SMALL» (رایگان)</a>
 <h2>ابزارهایی که با این ابزار خوب هماهنگ‌اند</h2><ul><li><a href="/fa/rank-formula-builder.html">ساخت فرمول رتبه</a>: فرمول‌های رتبه بسازید.</li><li><a href="/fa/sumif-formula-builder.html">ساخت فرمول SUMIF یا COUNTIF</a>: فرمول‌های SUMIF و COUNTIF بسازید.</li><li><a href="/fa/sumproduct-formula-builder.html">ساخت فرمول SUMPRODUCT</a>: فرمول‌های SUMPRODUCT بسازید.</li></ul>
 <div class="tip"><p>اگر این راهنما مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ارسال انعام (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ارسال هدیه (فهرست آرزوهای آمازون)</a></div>
@@ -231,6 +258,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/fa/guides.html">دیدن همهٔ راهنماها</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="fa">دربارهٔ ما / تماس (ژاپنی)</span></a><a href="/fa/privacy.html"><span lang="fa">سیاست حفظ حریم خصوصی</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="fa">خبرها در X</span></a></footer>
+<footer><a href="/about.html"><span lang="fa">دربارهٔ ما / تماس (ژاپنی)</span></a><a href="/fa/privacy.html"><span lang="fa">سیاست حفظ حریم خصوصی</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="fa">خبرها در X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

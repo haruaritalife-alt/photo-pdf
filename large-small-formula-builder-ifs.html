@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "条件付きの最大・最小", "description": "条件付きの最大・最小を解説します。", "url": "https://pdfmikata.com/large-small-formula-builder-ifs.html", "mainEntityOfPage": "https://pdfmikata.com/large-small-formula-builder-ifs.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "条件付きの最大・最小", "description": "条件付きの最大・最小を解説します。", "url": "https://pdfmikata.com/large-small-formula-builder-ifs.html", "mainEntityOfPage": "https://pdfmikata.com/large-small-formula-builder-ifs.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -200,14 +200,60 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>条件付きの最大・最小</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>MAXIFSかMINIFSを選ぶ</li><li>条件を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/large-small-formula-builder.html">N番目の値の式の作成</a> では、条件に合う行だけの最大値・最小値を出せます。</p>
+<p>「東京の店舗の最高売上」「A部署の最低点」。条件に合う行だけの最大・最小は、MAXIFSとMINIFSで求めます。<a href="/large-small-formula-builder.html">N番目の値の式を作る</a> の「MAXIFS」「MINIFS」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>MAXIFSかMINIFSを選ぶ</li>
-<li>条件を入れる</li>
-<li>コピーする</li>
+<li>「種類」で「MAXIFS」か「MINIFS」を選ぶ。</li>
+<li>「数値の範囲」に、最大・最小を求める数字の範囲を入れる。</li>
+<li>「条件の範囲（A2:A100 など。MAXIFS・MINIFS用）」に、条件を調べる列を入れる。</li>
+<li>「条件の値（東京 など）」に、条件の値を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">条件の範囲は、数値の範囲と同じ大きさにします。</div>
+<div class="note">条件の範囲が空、または条件の値が空だと、「入力の形が正しくありません。」と出ます。</div>
+<h2>例</h2>
+<p>A列が地域、B列が売上のとき、東京の最高売上です。</p>
+<ul>
+<li>=MAXIFS(B2:B100,A2:A100,"東京")</li>
+</ul>
+<p>東京の最低売上は、MINIFSです。</p>
+<ul>
+<li>=MINIFS(B2:B100,A2:A100,"東京")</li>
+</ul>
+<h2>条件を増やす</h2>
+<p>条件の範囲と値のペアを足すと、「かつ」になります。ツールの式を貼ったあと、手で足します。</p>
+<ul>
+<li>例：=MAXIFS(B2:B100,A2:A100,"東京",C2:C100,"A店")</li>
+</ul>
+<h2>使える版</h2>
+<ul>
+<li>Googleスプレッドシート：使える</li>
+<li>Excel 2019以降、365：使える</li>
+<li>Excel 2016以前：使えない</li>
+</ul>
+<h2>古いExcelの代わり</h2>
+<p>配列数式で、同じ結果が求められます。</p>
+<ul>
+<li>例：=MAX(IF(A2:A100="東京",B2:B100))</li>
+</ul>
+<p>Ctrl+Shift+Enterで確定します。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>地域別、部署別の最高値・最低値</li>
+<li>商品ごとの最高価格</li>
+<li>担当者別の最高売上</li>
+</ul>
+<h2>例</h2>
+<p>店舗ごとの、過去最高の日次売上を調べたかった。MAXIFSで、店舗名を条件にして、店舗の数だけ式をコピーして求めた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>条件に合う行がない</b>：0が返る。</li>
+<li><b>範囲の行数が違う</b>：#VALUE!になる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>「以上」や「以下」の条件は？</h3>
+<p>条件の値を、"&gt;=100" のように書きます。手で直します。</p>
+<h2>まとめ</h2>
+<p>条件つきの最大・最小は、MAXIFSとMINIFSです。</p>
 <a class="cta" href="/large-small-formula-builder.html">N番目の値の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/rank-formula-builder.html">順位の式を作る</a>：順位の式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/sumproduct-formula-builder.html">SUMPRODUCTの式を作る</a>：SUMPRODUCTの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +265,60 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Conditional Maximum and Minimum</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose MAXIFS or MINIFS</li><li>Enter the condition</li><li>Copy it</li></ul></div>
-<p>In <a href="/large-small-formula-builder.html">LARGE SMALL Builder</a> you can get the maximum or minimum of only the rows that meet a condition.</p>
+<p>"The best sales among Tokyo stores", "the lowest score in Department A". Maximums and minimums over only rows meeting a condition come from MAXIFS and MINIFS. "MAXIFS" and "MINIFS" in <a href="/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a> build them.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose MAXIFS or MINIFS</li>
-<li>Enter the condition</li>
-<li>Copy it</li>
+<li>Choose "MAXIFS" or "MINIFS" in "Type".</li>
+<li>In "Numeric range", enter the numbers for the max or min.</li>
+<li>In "Condition range (such as A2:A100; for MAXIFS/MINIFS)", enter the column to test.</li>
+<li>In "Condition value (such as Tokyo)", enter the value.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">The condition range must be the same size as the number range.</div>
+<div class="note">An empty condition range or value gives "The input is not valid."</div>
+<h2>Example</h2>
+<p>With regions in column A and sales in column B, the highest sales for Tokyo:</p>
+<ul>
+<li>=MAXIFS(B2:B100,A2:A100,"Tokyo")</li>
+</ul>
+<p>The lowest sales for Tokyo with MINIFS:</p>
+<ul>
+<li>=MINIFS(B2:B100,A2:A100,"Tokyo")</li>
+</ul>
+<h2>Adding conditions</h2>
+<p>Add more range-and-value pairs for "and". Add by hand after pasting.</p>
+<ul>
+<li>Example: =MAXIFS(B2:B100,A2:A100,"Tokyo",C2:C100,"Store A")</li>
+</ul>
+<h2>Supported versions</h2>
+<ul>
+<li>Google Sheets: yes</li>
+<li>Excel 2019 and later, 365: yes</li>
+<li>Excel 2016 and earlier: no</li>
+</ul>
+<h2>Substitute for old Excel</h2>
+<p>An array formula gives the same result.</p>
+<ul>
+<li>Example: =MAX(IF(A2:A100="Tokyo",B2:B100))</li>
+</ul>
+<p>Confirm with Ctrl+Shift+Enter.</p>
+<h2>Good for</h2>
+<ul>
+<li>Highest and lowest values per region or department</li>
+<li>The highest price per product</li>
+<li>The best sales per person in charge</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted each store's record-high daily sales. MAXIFS with the store name as the condition, copied once per store, gave them.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>No row meets the condition</b>: 0 is returned.</li>
+<li><b>Different row counts</b>: gives #VALUE!.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What about "at least" or "at most" conditions?</h3>
+<p>Write the condition value like "&gt;=100". Edit by hand.</p>
+<h2>Summary</h2>
+<p>For conditional max and min, use MAXIFS and MINIFS.</p>
 <a class="cta" href="/large-small-formula-builder.html">Use "Build a LARGE and SMALL Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a>: Build SUMPRODUCT formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
@@ -235,6 +327,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/guides.html">See all guides</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a></footer>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

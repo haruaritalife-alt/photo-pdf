@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Pagtutugma ng mga Numero", "description": "Tungkol sa pagtutugma ng mga numero.", "url": "https://pdfmikata.com/tl/switch-formula-builder-number.html", "mainEntityOfPage": "https://pdfmikata.com/tl/switch-formula-builder-number.html", "inLanguage": "fil", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tl/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tl/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Pagtutugma ng mga Numero", "description": "Tungkol sa pagtutugma ng mga numero.", "url": "https://pdfmikata.com/tl/switch-formula-builder-number.html", "mainEntityOfPage": "https://pdfmikata.com/tl/switch-formula-builder-number.html", "inLanguage": "fil", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tl/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tl/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pagtutugma ng mga Numero</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Maglagay ng mga numero</li><li>Tingnan ang formula</li><li>Suriin ito</li></ul></div>
-<p>Sa <a href="/tl/switch-formula-builder.html">SWITCH Builder</a>, maitutugma mo rin ang mga numerong tulad ng 1=Mababa at 2=Katamtaman.</p>
+<p lang="en">When mapping values are numbers, it's unclear whether to compare as text or as numbers. <a href="/tl/switch-formula-builder.html">Build a SWITCH Formula</a> treats mapping values as text.</p>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Maglagay ng mga numero</li>
-<li>Tingnan ang formula</li>
-<li>Suriin ito</li>
+<li lang="en">Enter the mapping like "1=Mon,2=Tue".</li>
+<li lang="en">Copy the formula and paste.</li>
+<li lang="en">If the cell being compared is numeric, remove the quotes in the formula by hand.</li>
 </ol>
-<div class="note">Nananatili ang mga numero, at nilalagyan ng panipi ang teksto.</div>
+<div class="note" lang="en">The tool wraps both the left and right values of the mapping in quotes. That is, it compares as text.</div>
+<h2>Halimbawa</h2>
+<ul>
+<li lang="en">Tool's formula: =SWITCH(A2,"1","Mon","2","Tue")</li>
+<li lang="en">Numeric comparison: =SWITCH(A2,1,"Mon",2,"Tue")</li>
+</ul>
+<p lang="en">If A2 is the number 1, the latter matches.</p>
+<h2 lang="en">Text vs number</h2>
+<ul>
+<li lang="en">The text "1" and the number 1 are different values</li>
+<li lang="en">If A2 is text, the former matches</li>
+<li lang="en">If A2 is a number, the latter matches</li>
+</ul>
+<h2 lang="en">In sheets</h2>
+<p lang="en">In Google Sheets, the text "1" and the number 1 may match. Excel distinguishes strictly. When unsure, remove the quotes for numbers.</p>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Turning category numbers into names</li>
+<li lang="en">Turning age brackets into words</li>
+</ul>
+<h2 lang="en">When you need range tests</h2>
+<p lang="en">SWITCH is exact-match only. For range tests like "60 or more passes", use IF or IFS.</p>
+<ul>
+<li lang="en">Example: =IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<h2>Halimbawa</h2>
+<p lang="en">A category-number formula didn't match. The tool compared as text, but the source cell was numeric. Removing the quotes made it match.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leading zeros</b>: treat numbers with leading zeros as text.</li>
+<li lang="en"><b>Decimals</b>: beware of rounding error in decimal comparisons.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if there are many numeric tests?</h3>
+<p lang="en">Removing quotes in bulk, or using VLOOKUP/XLOOKUP, is easier.</p>
+<h2>Buod</h2>
+<p lang="en">For numeric comparison, remove the quotes in the formula.</p>
 <a class="cta" href="/tl/switch-formula-builder.html">Gamitin ang “Gumawa ng formula ng SWITCH” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/excel-if-builder.html">Gumawa ng IF formula</a>: Gumawa ng IF formula.</li><li><a href="/tl/vlookup-formula-builder.html">Gumawa ng VLOOKUP o XLOOKUP Formula</a>: Gumawa ng mga formula ng VLOOKUP at XLOOKUP.</li><li><a href="/tl/index-match-builder.html">Gumawa ng INDEX at MATCH Formula</a>: Gumawa ng mga INDEX at MATCH formula.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>
@@ -217,6 +253,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/tl/guides.html">Tingnan ang lahat ng gabay</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="fil">Tungkol / Makipag-ugnayan (Japanese)</span></a><a href="/tl/privacy.html"><span lang="fil">Patakaran sa Privacy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="fil">Mga update sa X</span></a></footer>
+<footer><a href="/about.html"><span lang="fil">Tungkol / Makipag-ugnayan (Japanese)</span></a><a href="/tl/privacy.html"><span lang="fil">Patakaran sa Privacy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="fil">Mga update sa X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

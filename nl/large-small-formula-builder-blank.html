@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Lege cellen en fouten", "description": "Over lege cellen en fouten.", "url": "https://pdfmikata.com/nl/large-small-formula-builder-blank.html", "mainEntityOfPage": "https://pdfmikata.com/nl/large-small-formula-builder-blank.html", "inLanguage": "nl", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/nl/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/nl/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Lege cellen en fouten", "description": "Over lege cellen en fouten.", "url": "https://pdfmikata.com/nl/large-small-formula-builder-blank.html", "mainEntityOfPage": "https://pdfmikata.com/nl/large-small-formula-builder-blank.html", "inLanguage": "nl", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/nl/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/nl/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Lege cellen en fouten</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Bouw de formule</li><li>Kies de tweede</li><li>Kopieer</li></ul></div>
-<p><a href="/nl/large-small-formula-builder.html">LARGE-SMALL-maker</a> toont ook een versie die bij een fout leeg blijft.</p>
+<p lang="en">You'd rather the formula not show errors. When no data meets the condition, or the number is too large, the "formula that blanks on error" covers you. That's the second field in <a href="/nl/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a>.</p>
 <h2>Stappen</h2>
 <ol>
-<li>Bouw de formule</li>
-<li>Kies de tweede</li>
-<li>Kopieer</li>
+<li lang="en">Build the first formula.</li>
+<li lang="en">Check the second "Formula that blanks on error".</li>
+<li lang="en">Copy it with "Copy the second" and paste.</li>
 </ol>
-<div class="note">Een rang die groter is dan het aantal gegevens geeft een fout.</div>
+<div class="note" lang="en">Its form is =IFERROR(formula,""). The cell is empty on error.</div>
+<h2>Voorbeeld</h2>
+<ul>
+<li lang="en">=IFERROR(LARGE(B2:B100,3),"")</li>
+</ul>
+<p lang="en">If there are only two numbers and no 3rd, it's blank instead of #NUM!.</p>
+<h2 lang="en">Handling blanks and text</h2>
+<p lang="en">LARGE, SMALL, MAXIFS and MINIFS ignore blanks and text in the range. Only numbers are counted.</p>
+<h2 lang="en">When 0 is returned</h2>
+<p lang="en">MAXIFS and MINIFS return 0 when no row meets the condition. To distinguish 0 from blank, check the count with COUNTIF.</p>
+<ul>
+<li lang="en">Example: =IF(COUNTIF(A2:A100,"Tokyo")=0,"",MAXIFS(B2:B100,A2:A100,"Tokyo"))</li>
+</ul>
+<h2>Goed voor</h2>
+<ul>
+<li lang="en">Empty tables before data grows</li>
+<li lang="en">Avoiding error displays in summary tables</li>
+<li lang="en">Cell values that feed other formulas</li>
+</ul>
+<h2>Let op</h2>
+<p lang="en">Hiding errors makes input mistakes harder to notice too. Test with the first formula, then switch to the second once stable.</p>
+<h2>Voorbeeld</h2>
+<p lang="en">At the start of the month there was no data yet and summary cells were full of errors. Wrapping in IFERROR showed blanks and tidied the look.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Can't see the reason</b>: use the first formula when hunting causes.</li>
+<li lang="en"><b>Blanks treated as text</b>: an empty string ("") may be treated as text in later calculations.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to show 0</h3>
+<p lang="en">Rewrite IFERROR's "" as 0.</p>
+<h2>Samenvatting</h2>
+<p lang="en">To avoid errors, use the second formula.</p>
 <a class="cta" href="/nl/large-small-formula-builder.html">Gebruik “Maak een LARGE- en SMALL-formule” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/rank-formula-builder.html">Een rangformule maken</a>: Maak rangformules.</li><li><a href="/nl/sumif-formula-builder.html">Een SUMIF- of COUNTIF-formule maken</a>: Maak SUMIF- en COUNTIF-formules.</li><li><a href="/nl/sumproduct-formula-builder.html">Een SUMPRODUCT-formule maken</a>: Maak SUMPRODUCT-formules.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>
@@ -217,6 +249,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/nl/guides.html">Bekijk alle handleidingen</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="nl">Over ons / Contact (in het Japans)</span></a><a href="/nl/privacy.html"><span lang="nl">Privacybeleid</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="nl">Updates op X</span></a></footer>
+<footer><a href="/about.html"><span lang="nl">Over ons / Contact (in het Japans)</span></a><a href="/nl/privacy.html"><span lang="nl">Privacybeleid</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="nl">Updates op X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

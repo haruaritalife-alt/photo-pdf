@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Koşullu En Büyük ve En Küçük", "description": "Koşullu en büyük ve en küçük değerler hakkında.", "url": "https://pdfmikata.com/tr/large-small-formula-builder-ifs.html", "mainEntityOfPage": "https://pdfmikata.com/tr/large-small-formula-builder-ifs.html", "inLanguage": "tr", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tr/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tr/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Koşullu En Büyük ve En Küçük", "description": "Koşullu en büyük ve en küçük değerler hakkında.", "url": "https://pdfmikata.com/tr/large-small-formula-builder-ifs.html", "mainEntityOfPage": "https://pdfmikata.com/tr/large-small-formula-builder-ifs.html", "inLanguage": "tr", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tr/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tr/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,60 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Koşullu En Büyük ve En Küçük</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>MAXIFS veya MINIFS'i seçin</li><li>Koşulu yazın</li><li>Kopyalayın</li></ul></div>
-<p><a href="/tr/large-small-formula-builder.html">LARGE SMALL oluşturucu</a> içinde yalnızca koşulu sağlayan satırların en büyük veya en küçük değerini alabilirsiniz.</p>
+<p lang="en">"The best sales among Tokyo stores", "the lowest score in Department A". Maximums and minimums over only rows meeting a condition come from MAXIFS and MINIFS. "MAXIFS" and "MINIFS" in <a href="/tr/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a> build them.</p>
 <h2>Adımlar</h2>
 <ol>
-<li>MAXIFS veya MINIFS'i seçin</li>
-<li>Koşulu yazın</li>
-<li>Kopyalayın</li>
+<li lang="en">Choose "MAXIFS" or "MINIFS" in "Type".</li>
+<li lang="en">In "Numeric range", enter the numbers for the max or min.</li>
+<li lang="en">In "Condition range (such as A2:A100; for MAXIFS/MINIFS)", enter the column to test.</li>
+<li lang="en">In "Condition value (such as Tokyo)", enter the value.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Koşul aralığı sayı aralığıyla aynı boyutta olmalıdır.</div>
+<div class="note" lang="en">An empty condition range or value gives "The input is not valid."</div>
+<h2>Örnek</h2>
+<p lang="en">With regions in column A and sales in column B, the highest sales for Tokyo:</p>
+<ul>
+<li lang="en">=MAXIFS(B2:B100,A2:A100,"Tokyo")</li>
+</ul>
+<p lang="en">The lowest sales for Tokyo with MINIFS:</p>
+<ul>
+<li lang="en">=MINIFS(B2:B100,A2:A100,"Tokyo")</li>
+</ul>
+<h2 lang="en">Adding conditions</h2>
+<p lang="en">Add more range-and-value pairs for "and". Add by hand after pasting.</p>
+<ul>
+<li lang="en">Example: =MAXIFS(B2:B100,A2:A100,"Tokyo",C2:C100,"Store A")</li>
+</ul>
+<h2 lang="en">Supported versions</h2>
+<ul>
+<li lang="en">Google Sheets: yes</li>
+<li lang="en">Excel 2019 and later, 365: yes</li>
+<li lang="en">Excel 2016 and earlier: no</li>
+</ul>
+<h2 lang="en">Substitute for old Excel</h2>
+<p lang="en">An array formula gives the same result.</p>
+<ul>
+<li lang="en">Example: =MAX(IF(A2:A100="Tokyo",B2:B100))</li>
+</ul>
+<p lang="en">Confirm with Ctrl+Shift+Enter.</p>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Highest and lowest values per region or department</li>
+<li lang="en">The highest price per product</li>
+<li lang="en">The best sales per person in charge</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">Wanted each store's record-high daily sales. MAXIFS with the store name as the condition, copied once per store, gave them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>No row meets the condition</b>: 0 is returned.</li>
+<li lang="en"><b>Different row counts</b>: gives #VALUE!.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about "at least" or "at most" conditions?</h3>
+<p lang="en">Write the condition value like "&gt;=100". Edit by hand.</p>
+<h2>Özet</h2>
+<p lang="en">For conditional max and min, use MAXIFS and MINIFS.</p>
 <a class="cta" href="/tr/large-small-formula-builder.html">“LARGE ve SMALL formülü oluşturun” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/rank-formula-builder.html">Sıralama formülü oluştur</a>: Sıralama formülleri oluşturun.</li><li><a href="/tr/sumif-formula-builder.html">SUMIF veya COUNTIF formülü oluşturma</a>: SUMIF ve COUNTIF formülleri oluşturun.</li><li><a href="/tr/sumproduct-formula-builder.html">SUMPRODUCT Formülü Oluşturun</a>: SUMPRODUCT formülleri oluşturun.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>
@@ -217,6 +263,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/tr/guides.html">Tüm rehberleri gör</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="tr">Hakkında / İletişim (Japonca)</span></a><a href="/tr/privacy.html"><span lang="tr">Gizlilik politikası</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="tr">X'te güncellemeler</span></a></footer>
+<footer><a href="/about.html"><span lang="tr">Hakkında / İletişim (Japonca)</span></a><a href="/tr/privacy.html"><span lang="tr">Gizlilik politikası</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="tr">X'te güncellemeler</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

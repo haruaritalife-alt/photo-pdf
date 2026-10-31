@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Column Numbers", "description": "About column numbers.", "url": "https://pdfmikata.com/en/sort-formula-builder-column.html", "mainEntityOfPage": "https://pdfmikata.com/en/sort-formula-builder-column.html", "inLanguage": "en", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Column Numbers", "description": "About column numbers.", "url": "https://pdfmikata.com/en/sort-formula-builder-column.html", "mainEntityOfPage": "https://pdfmikata.com/en/sort-formula-builder-column.html", "inLanguage": "en", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Column Numbers</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the range</li><li>Enter the column number</li><li>Check it</li></ul></div>
-<p>In <a href="/en/sort-formula-builder.html">SORT Builder</a> you give the column to sort by as a number counted from the left of the range.</p>
+<p>"Column number to sort by" isn't the sheet's column letter (A, B, C) but which column from the left of the range. Getting it wrong sorts differently than intended. Set it in "Column number to sort by" in <a href="/en/sort-formula-builder.html">Build a SORT Formula</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the range</li>
-<li>Enter the column number</li>
-<li>Check it</li>
+<li>Enter the "Range to sort".</li>
+<li>Count from the range's left edge to find which column is the key.</li>
+<li>Enter that number in "Column number to sort by".</li>
 </ol>
-<div class="note">Leave the header row out of the range.</div>
+<div class="note">If the range is "C2:E100" and the key is column D, it's the 2nd from the left, so "2" — not "4" just because it's D.</div>
+<h2>Examples</h2>
+<p>For range "A2:C100":</p>
+<ul>
+<li>1: sort by column A</li>
+<li>2: sort by column B</li>
+<li>3: sort by column C</li>
+</ul>
+<p>For range "C2:E100":</p>
+<ul>
+<li>1: column C</li>
+<li>2: column D</li>
+<li>3: column E</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Ranges that don't start at column A</li>
+<li>Changing the key column later</li>
+</ul>
+<h2>When you widen the range</h2>
+<p>Adding columns on the left changes the column numbers. When you change the range, recheck the number.</p>
+<h2>Example</h2>
+<p>With range "B2:D100" I wanted to sort by D and entered "4", which errored. D is 3rd from the left, so "3" sorted properly.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Number beyond the range</b>: gives #VALUE!.</li>
+<li><b>0 or decimals</b>: the tool accepts only integers of 1 or more.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I specify by column name?</h3>
+<p>No, by number. But Excel's SORTBY, which takes the key as a separate range, is also an option.</p>
+<h2>Summary</h2>
+<p>Count the column number from the left of the range.</p>
 <a class="cta" href="/en/sort-formula-builder.html">Use "Build a SORT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/query-formula-builder.html">Build a QUERY Formula</a>: Build a QUERY formula.</li><li><a href="/en/unique-formula-builder.html">Build a UNIQUE Formula</a>: Build duplicate-handling formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
@@ -217,6 +249,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/en/guides.html">See all guides</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="en">About / Contact (Japanese)</span></a><a href="/en/privacy.html"><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="en">Updates on X</span></a></footer>
+<footer><a href="/about.html"><span lang="en">About / Contact (Japanese)</span></a><a href="/en/privacy.html"><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="en">Updates on X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

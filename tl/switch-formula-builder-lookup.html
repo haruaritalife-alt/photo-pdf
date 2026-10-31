@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Paggamit sa Mas Lumang Excel", "description": "Tungkol sa mas lumang Excel.", "url": "https://pdfmikata.com/tl/switch-formula-builder-lookup.html", "mainEntityOfPage": "https://pdfmikata.com/tl/switch-formula-builder-lookup.html", "inLanguage": "fil", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tl/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tl/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Paggamit sa Mas Lumang Excel", "description": "Tungkol sa mas lumang Excel.", "url": "https://pdfmikata.com/tl/switch-formula-builder-lookup.html", "mainEntityOfPage": "https://pdfmikata.com/tl/switch-formula-builder-lookup.html", "inLanguage": "fil", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tl/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tl/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Paggamit sa Mas Lumang Excel</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Piliin ang SWITCH</li><li>I-type ang mga pares</li><li>Gamitin ang pangalawang formula</li></ul></div>
-<p>Nagpapakita rin ang <a href="/tl/switch-formula-builder.html">SWITCH Builder</a> ng formula para sa mas lumang Excel na walang SWITCH.</p>
-<h2>Mga hakbang</h2>
+<p lang="en">SWITCH is a function from Excel 2019 onward. Older Excel gives #NAME?. <a href="/tl/switch-formula-builder.html">Build a SWITCH Formula</a> also builds a formula that works in any Excel.</p>
+<h2 lang="en">The second formula</h2>
+<ul>
+<li lang="en">SWITCH formula: =SWITCH(A2,"A","apple","B","orange","Unknown")</li>
+<li lang="en">Works in any Excel: =IFERROR(INDEX({"apple","orange"},MATCH(A2,{"A","B"},0)),"Unknown")</li>
+</ul>
+<p lang="en">"Copy the second" copies the latter.</p>
+<div class="note" lang="en">The second formula finds the position with MATCH and pulls the result with INDEX. It works in old versions too.</div>
+<h2>Paano ito gumagana</h2>
 <ol>
-<li>Piliin ang SWITCH</li>
-<li>I-type ang mga pares</li>
-<li>Gamitin ang pangalawang formula</li>
+<li lang="en">MATCH finds which of "A", "B" A2 is</li>
+<li lang="en">INDEX pulls the result at the same position</li>
+<li lang="en">If nothing matches, IFERROR gives the default</li>
 </ol>
-<div class="note">Pinagsasama nito ang INDEX at MATCH.</div>
+<h2 lang="en">Supported versions</h2>
+<ul>
+<li lang="en">SWITCH: Google Sheets, Excel 2019 and later, 365</li>
+<li lang="en">INDEX/MATCH formula: nearly all versions</li>
+</ul>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Handing the file to someone using old Excel</li>
+<li lang="en">When the company environment is old</li>
+</ul>
+<h2 lang="en">Putting the mapping in a table</h2>
+<p lang="en">For many mappings, make a table on another sheet and look it up with VLOOKUP or XLOOKUP.</p>
+<h2>Halimbawa</h2>
+<p lang="en">In the recipient's Excel, SWITCH gave #NAME?. Switching to the second formula made it work in their environment too.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Array constant syntax</b>: separators may differ by region.</li>
+<li lang="en"><b>Case</b>: MATCH doesn't distinguish.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Which should I use?</h3>
+<p lang="en">If only you use it, SWITCH. If handing it to someone, the second formula is safer.</p>
+<h2>Buod</h2>
+<p lang="en">When you don't know the recipient's environment, use the second formula.</p>
 <a class="cta" href="/tl/switch-formula-builder.html">Gamitin ang “Gumawa ng formula ng SWITCH” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/excel-if-builder.html">Gumawa ng IF formula</a>: Gumawa ng IF formula.</li><li><a href="/tl/vlookup-formula-builder.html">Gumawa ng VLOOKUP o XLOOKUP Formula</a>: Gumawa ng mga formula ng VLOOKUP at XLOOKUP.</li><li><a href="/tl/index-match-builder.html">Gumawa ng INDEX at MATCH Formula</a>: Gumawa ng mga INDEX at MATCH formula.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>
@@ -217,6 +247,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/tl/guides.html">Tingnan ang lahat ng gabay</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="fil">Tungkol / Makipag-ugnayan (Japanese)</span></a><a href="/tl/privacy.html"><span lang="fil">Patakaran sa Privacy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="fil">Mga update sa X</span></a></footer>
+<footer><a href="/about.html"><span lang="fil">Tungkol / Makipag-ugnayan (Japanese)</span></a><a href="/tl/privacy.html"><span lang="fil">Patakaran sa Privacy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="fil">Mga update sa X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

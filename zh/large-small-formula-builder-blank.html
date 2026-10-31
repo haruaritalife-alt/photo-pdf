@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "空白和错误", "description": "关于空白和错误。", "url": "https://pdfmikata.com/zh/large-small-formula-builder-blank.html", "mainEntityOfPage": "https://pdfmikata.com/zh/large-small-formula-builder-blank.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "空白和错误", "description": "关于空白和错误。", "url": "https://pdfmikata.com/zh/large-small-formula-builder-blank.html", "mainEntityOfPage": "https://pdfmikata.com/zh/large-small-formula-builder-blank.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>空白和错误</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>生成公式</li><li>选择第二个</li><li>复制</li></ul></div>
-<p><a href="/zh/large-small-formula-builder.html">LARGE SMALL 公式生成器</a>也会显示出错时留空的版本。</p>
+<p lang="en">You'd rather the formula not show errors. When no data meets the condition, or the number is too large, the "formula that blanks on error" covers you. That's the second field in <a href="/zh/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a>.</p>
 <h2>步骤</h2>
 <ol>
-<li>生成公式</li>
-<li>选择第二个</li>
-<li>复制</li>
+<li lang="en">Build the first formula.</li>
+<li lang="en">Check the second "Formula that blanks on error".</li>
+<li lang="en">Copy it with "Copy the second" and paste.</li>
 </ol>
-<div class="note">名次大于数据个数时会出错。</div>
+<div class="note" lang="en">Its form is =IFERROR(formula,""). The cell is empty on error.</div>
+<h2>示例</h2>
+<ul>
+<li lang="en">=IFERROR(LARGE(B2:B100,3),"")</li>
+</ul>
+<p lang="en">If there are only two numbers and no 3rd, it's blank instead of #NUM!.</p>
+<h2 lang="en">Handling blanks and text</h2>
+<p lang="en">LARGE, SMALL, MAXIFS and MINIFS ignore blanks and text in the range. Only numbers are counted.</p>
+<h2 lang="en">When 0 is returned</h2>
+<p lang="en">MAXIFS and MINIFS return 0 when no row meets the condition. To distinguish 0 from blank, check the count with COUNTIF.</p>
+<ul>
+<li lang="en">Example: =IF(COUNTIF(A2:A100,"Tokyo")=0,"",MAXIFS(B2:B100,A2:A100,"Tokyo"))</li>
+</ul>
+<h2>适合</h2>
+<ul>
+<li lang="en">Empty tables before data grows</li>
+<li lang="en">Avoiding error displays in summary tables</li>
+<li lang="en">Cell values that feed other formulas</li>
+</ul>
+<h2>注意</h2>
+<p lang="en">Hiding errors makes input mistakes harder to notice too. Test with the first formula, then switch to the second once stable.</p>
+<h2>示例</h2>
+<p lang="en">At the start of the month there was no data yet and summary cells were full of errors. Wrapping in IFERROR showed blanks and tidied the look.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Can't see the reason</b>: use the first formula when hunting causes.</li>
+<li lang="en"><b>Blanks treated as text</b>: an empty string ("") may be treated as text in later calculations.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to show 0</h3>
+<p lang="en">Rewrite IFERROR's "" as 0.</p>
+<h2>小结</h2>
+<p lang="en">To avoid errors, use the second formula.</p>
 <a class="cta" href="/zh/large-small-formula-builder.html">使用“生成 LARGE 和 SMALL 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/rank-formula-builder.html">生成排名公式</a>: 生成排名公式。</li><li><a href="/zh/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li><li><a href="/zh/sumproduct-formula-builder.html">生成 SUMPRODUCT 公式</a>: 生成 SUMPRODUCT 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>
@@ -217,6 +249,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/zh/guides.html">查看全部教程</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="zh-Hans">关于 / 联系（日文）</span></a><a href="/zh/privacy.html"><span lang="zh-Hans">隐私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hans">在 X 上查看更新</span></a></footer>
+<footer><a href="/about.html"><span lang="zh-Hans">关于 / 联系（日文）</span></a><a href="/zh/privacy.html"><span lang="zh-Hans">隐私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hans">在 X 上查看更新</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "L'utiliser dans les anciennes versions d'Excel", "description": "À propos des anciennes versions d'Excel.", "url": "https://pdfmikata.com/fr/switch-formula-builder-lookup.html", "mainEntityOfPage": "https://pdfmikata.com/fr/switch-formula-builder-lookup.html", "inLanguage": "fr", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fr/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fr/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "L'utiliser dans les anciennes versions d'Excel", "description": "À propos des anciennes versions d'Excel.", "url": "https://pdfmikata.com/fr/switch-formula-builder-lookup.html", "mainEntityOfPage": "https://pdfmikata.com/fr/switch-formula-builder-lookup.html", "inLanguage": "fr", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fr/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fr/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>L'utiliser dans les anciennes versions d'Excel</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Choisissez SWITCH</li><li>Saisissez les paires</li><li>Utilisez la deuxième formule</li></ul></div>
-<p><a href="/fr/switch-formula-builder.html">Créateur de SWITCH</a> affiche aussi une formule pour les anciennes versions d'Excel qui n'ont pas SWITCH.</p>
-<h2>Étapes</h2>
+<p lang="en">SWITCH is a function from Excel 2019 onward. Older Excel gives #NAME?. <a href="/fr/switch-formula-builder.html">Build a SWITCH Formula</a> also builds a formula that works in any Excel.</p>
+<h2 lang="en">The second formula</h2>
+<ul>
+<li lang="en">SWITCH formula: =SWITCH(A2,"A","apple","B","orange","Unknown")</li>
+<li lang="en">Works in any Excel: =IFERROR(INDEX({"apple","orange"},MATCH(A2,{"A","B"},0)),"Unknown")</li>
+</ul>
+<p lang="en">"Copy the second" copies the latter.</p>
+<div class="note" lang="en">The second formula finds the position with MATCH and pulls the result with INDEX. It works in old versions too.</div>
+<h2>Comment ça marche</h2>
 <ol>
-<li>Choisissez SWITCH</li>
-<li>Saisissez les paires</li>
-<li>Utilisez la deuxième formule</li>
+<li lang="en">MATCH finds which of "A", "B" A2 is</li>
+<li lang="en">INDEX pulls the result at the same position</li>
+<li lang="en">If nothing matches, IFERROR gives the default</li>
 </ol>
-<div class="note">Elle combine INDEX et MATCH.</div>
+<h2 lang="en">Supported versions</h2>
+<ul>
+<li lang="en">SWITCH: Google Sheets, Excel 2019 and later, 365</li>
+<li lang="en">INDEX/MATCH formula: nearly all versions</li>
+</ul>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Handing the file to someone using old Excel</li>
+<li lang="en">When the company environment is old</li>
+</ul>
+<h2 lang="en">Putting the mapping in a table</h2>
+<p lang="en">For many mappings, make a table on another sheet and look it up with VLOOKUP or XLOOKUP.</p>
+<h2>Exemple</h2>
+<p lang="en">In the recipient's Excel, SWITCH gave #NAME?. Switching to the second formula made it work in their environment too.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Array constant syntax</b>: separators may differ by region.</li>
+<li lang="en"><b>Case</b>: MATCH doesn't distinguish.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Which should I use?</h3>
+<p lang="en">If only you use it, SWITCH. If handing it to someone, the second formula is safer.</p>
+<h2>En résumé</h2>
+<p lang="en">When you don't know the recipient's environment, use the second formula.</p>
 <a class="cta" href="/fr/switch-formula-builder.html">Utiliser « Créer une formule SWITCH » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/excel-if-builder.html">Créer une formule IF</a>: Créez une formule IF.</li><li><a href="/fr/vlookup-formula-builder.html">Créer une formule VLOOKUP ou XLOOKUP</a>: Créez des formules VLOOKUP et XLOOKUP.</li><li><a href="/fr/index-match-builder.html">Créer une formule INDEX et MATCH</a>: Créez des formules INDEX et MATCH.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>
@@ -217,6 +247,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/fr/guides.html">Voir tous les guides</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="fr">À propos / Contact (en japonais)</span></a><a href="/fr/privacy.html"><span lang="fr">Politique de confidentialité</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="fr">Actualités sur X</span></a></footer>
+<footer><a href="/about.html"><span lang="fr">À propos / Contact (en japonais)</span></a><a href="/fr/privacy.html"><span lang="fr">Politique de confidentialité</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="fr">Actualités sur X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

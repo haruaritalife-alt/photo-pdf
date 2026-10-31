@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "N-е значение", "description": "О N-м значении.", "url": "https://pdfmikata.com/ru/large-small-formula-builder-nth.html", "mainEntityOfPage": "https://pdfmikata.com/ru/large-small-formula-builder-nth.html", "inLanguage": "ru", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ru/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ru/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "N-е значение", "description": "О N-м значении.", "url": "https://pdfmikata.com/ru/large-small-formula-builder-nth.html", "mainEntityOfPage": "https://pdfmikata.com/ru/large-small-formula-builder-nth.html", "inLanguage": "ru", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ru/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ru/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>N-е значение</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Выберите LARGE или SMALL</li><li>Введите диапазон</li><li>Скопируйте его</li></ul></div>
-<p>В <a href="/ru/large-small-formula-builder.html">Конструктор LARGE SMALL</a> можно взять второе, третье или любое N-е значение.</p>
+<p lang="en">The 3rd largest, the 2nd smallest. LARGE and SMALL pull out the Nth value. "LARGE" and "SMALL" in <a href="/ru/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a> build them.</p>
 <h2>Шаги</h2>
 <ol>
-<li>Выберите LARGE или SMALL</li>
-<li>Введите диапазон</li>
-<li>Скопируйте его</li>
+<li lang="en">Choose "LARGE" or "SMALL" in "Type".</li>
+<li lang="en">Enter the "Numeric range".</li>
+<li lang="en">In "Which one (for LARGE, SMALL, TOPSUM)", enter a number.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Первый — то же, что MAX или MIN.</div>
+<div class="note" lang="en">"Which one" is an integer of 1 or more.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">3rd largest: =LARGE(B2:B100,3)</li>
+<li lang="en">2nd smallest: =SMALL(B2:B100,2)</li>
+</ul>
+<h2 lang="en">A number larger than the count</h2>
+<p lang="en">If the range has only 10 numbers and you specify the 11th, you get #NUM!.</p>
+<h2 lang="en">Handling ties</h2>
+<p lang="en">Equal values are counted separately. For 90, 80, 80, 70, both the 2nd and 3rd LARGE are 80.</p>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Knowing the 2nd and 3rd sales amounts</li>
+<li lang="en">Knowing the value near the middle (half the count)</li>
+<li lang="en">Knowing the highest and lowest scores (the 1st)</li>
+</ul>
+<h2 lang="en">Showing names with ranks</h2>
+<p lang="en">To show the name matching a value, combine INDEX and MATCH.</p>
+<ul>
+<li lang="en">Example: =INDEX(A2:A100,MATCH(LARGE(B2:B100,1),B2:B100,0))</li>
+</ul>
+<p lang="en">With several equal values, only the first name appears.</p>
+<h2>Пример</h2>
+<p lang="en">Wanted to show the top 3 test scores. LARGE listed the 1st to 3rd, with INDEX and MATCH showing names beside them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Blanks and text</b>: ignored. Only numbers are counted.</li>
+<li lang="en"><b>Numbers as text</b>: not counted. Convert them.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Why want values instead of ranks?</h3>
+<p lang="en">RANK returns the rank number. LARGE returns the value at that rank. Use whichever suits the purpose.</p>
+<h2>Итог</h2>
+<p lang="en">For the Nth value, use LARGE and SMALL.</p>
 <a class="cta" href="/ru/large-small-formula-builder.html">Использовать «Создайте формулу LARGE и SMALL» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/rank-formula-builder.html">Создать формулу рейтинга</a>: Создавайте формулы рейтинга.</li><li><a href="/ru/sumif-formula-builder.html">Создание формулы SUMIF или COUNTIF</a>: Создавайте формулы SUMIF и COUNTIF.</li><li><a href="/ru/sumproduct-formula-builder.html">Создать формулу SUMPRODUCT</a>: Создавайте формулы SUMPRODUCT.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>
@@ -217,6 +251,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/ru/guides.html">Все руководства</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="ru">О сайте / Контакты (на японском)</span></a><a href="/ru/privacy.html"><span lang="ru">Политика конфиденциальности</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ru">Новости в X</span></a></footer>
+<footer><a href="/about.html"><span lang="ru">О сайте / Контакты (на японском)</span></a><a href="/ru/privacy.html"><span lang="ru">Политика конфиденциальности</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ru">Новости в X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

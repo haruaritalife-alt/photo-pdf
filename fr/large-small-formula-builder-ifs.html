@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Maximum et minimum conditionnels", "description": "À propos des maximums et minimums conditionnels.", "url": "https://pdfmikata.com/fr/large-small-formula-builder-ifs.html", "mainEntityOfPage": "https://pdfmikata.com/fr/large-small-formula-builder-ifs.html", "inLanguage": "fr", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fr/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fr/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Maximum et minimum conditionnels", "description": "À propos des maximums et minimums conditionnels.", "url": "https://pdfmikata.com/fr/large-small-formula-builder-ifs.html", "mainEntityOfPage": "https://pdfmikata.com/fr/large-small-formula-builder-ifs.html", "inLanguage": "fr", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fr/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fr/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,60 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Maximum et minimum conditionnels</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Choisissez MAXIFS ou MINIFS</li><li>Saisir la condition</li><li>Copiez-le</li></ul></div>
-<p>Dans <a href="/fr/large-small-formula-builder.html">Créateur de LARGE SMALL</a>, vous pouvez obtenir le maximum ou le minimum des seules lignes qui remplissent une condition.</p>
+<p lang="en">"The best sales among Tokyo stores", "the lowest score in Department A". Maximums and minimums over only rows meeting a condition come from MAXIFS and MINIFS. "MAXIFS" and "MINIFS" in <a href="/fr/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a> build them.</p>
 <h2>Étapes</h2>
 <ol>
-<li>Choisissez MAXIFS ou MINIFS</li>
-<li>Saisir la condition</li>
-<li>Copiez-le</li>
+<li lang="en">Choose "MAXIFS" or "MINIFS" in "Type".</li>
+<li lang="en">In "Numeric range", enter the numbers for the max or min.</li>
+<li lang="en">In "Condition range (such as A2:A100; for MAXIFS/MINIFS)", enter the column to test.</li>
+<li lang="en">In "Condition value (such as Tokyo)", enter the value.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">La plage de condition doit avoir la même taille que la plage numérique.</div>
+<div class="note" lang="en">An empty condition range or value gives "The input is not valid."</div>
+<h2>Exemple</h2>
+<p lang="en">With regions in column A and sales in column B, the highest sales for Tokyo:</p>
+<ul>
+<li lang="en">=MAXIFS(B2:B100,A2:A100,"Tokyo")</li>
+</ul>
+<p lang="en">The lowest sales for Tokyo with MINIFS:</p>
+<ul>
+<li lang="en">=MINIFS(B2:B100,A2:A100,"Tokyo")</li>
+</ul>
+<h2 lang="en">Adding conditions</h2>
+<p lang="en">Add more range-and-value pairs for "and". Add by hand after pasting.</p>
+<ul>
+<li lang="en">Example: =MAXIFS(B2:B100,A2:A100,"Tokyo",C2:C100,"Store A")</li>
+</ul>
+<h2 lang="en">Supported versions</h2>
+<ul>
+<li lang="en">Google Sheets: yes</li>
+<li lang="en">Excel 2019 and later, 365: yes</li>
+<li lang="en">Excel 2016 and earlier: no</li>
+</ul>
+<h2 lang="en">Substitute for old Excel</h2>
+<p lang="en">An array formula gives the same result.</p>
+<ul>
+<li lang="en">Example: =MAX(IF(A2:A100="Tokyo",B2:B100))</li>
+</ul>
+<p lang="en">Confirm with Ctrl+Shift+Enter.</p>
+<h2>Convient pour</h2>
+<ul>
+<li lang="en">Highest and lowest values per region or department</li>
+<li lang="en">The highest price per product</li>
+<li lang="en">The best sales per person in charge</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">Wanted each store's record-high daily sales. MAXIFS with the store name as the condition, copied once per store, gave them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>No row meets the condition</b>: 0 is returned.</li>
+<li lang="en"><b>Different row counts</b>: gives #VALUE!.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about "at least" or "at most" conditions?</h3>
+<p lang="en">Write the condition value like "&gt;=100". Edit by hand.</p>
+<h2>En résumé</h2>
+<p lang="en">For conditional max and min, use MAXIFS and MINIFS.</p>
 <a class="cta" href="/fr/large-small-formula-builder.html">Utiliser « Créer une formule LARGE et SMALL » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/rank-formula-builder.html">Créer une formule de classement</a>: Créez des formules de classement.</li><li><a href="/fr/sumif-formula-builder.html">Créer une formule SUMIF ou COUNTIF</a>: Créez des formules SUMIF et COUNTIF.</li><li><a href="/fr/sumproduct-formula-builder.html">Créer une formule SUMPRODUCT</a>: Créez des formules SUMPRODUCT.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>
@@ -217,6 +263,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/fr/guides.html">Voir tous les guides</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="fr">À propos / Contact (en japonais)</span></a><a href="/fr/privacy.html"><span lang="fr">Politique de confidentialité</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="fr">Actualités sur X</span></a></footer>
+<footer><a href="/about.html"><span lang="fr">À propos / Contact (en japonais)</span></a><a href="/fr/privacy.html"><span lang="fr">Politique de confidentialité</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="fr">Actualités sur X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

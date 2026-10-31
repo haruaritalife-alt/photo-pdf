@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "O que fazer quando não funciona", "description": "Causas e soluções quando o processamento falha.", "url": "https://pdfmikata.com/pt/sort-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/pt/sort-formula-builder-trouble.html", "inLanguage": "pt-BR", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/pt/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/pt/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "O que fazer quando não funciona", "description": "Causas e soluções quando o processamento falha.", "url": "https://pdfmikata.com/pt/sort-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/pt/sort-formula-builder-trouble.html", "inLanguage": "pt-BR", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/pt/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/pt/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>O que fazer quando não funciona</h1>
 <p class="meta">Publicado em: 19 out 2026 | Atualizado em: 19 out 2026 | <a href="/about.html">Sobre (em japonês)</a></p>
 <div class="points"><b>Pontos principais</b><ul><li>Confira o arquivo</li><li>Confira o tamanho</li><li>Tente em outro dispositivo</li></ul></div>
-<p>Se o <a href="/pt/sort-formula-builder.html">Gerador de ordenação</a> não funcionar, verifique o seguinte.</p>
-<h2>Passos</h2>
+<p lang="en">You pasted the formula but it doesn't sort well. Here are common troubles with <a href="/pt/sort-formula-builder.html">Build a SORT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the range isn't in the "A2:C100" form; the column number isn't an integer of 1 or more; for SORTN the count isn't an integer of 1 or more.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF! (Google) / #SPILL! (Excel)</b>: values sit in the spill range. Clear those cells.</li>
+<li lang="en"><b>#VALUE!</b>: the column number exceeds the range's column count.</li>
+<li lang="en"><b>#NAME? (Excel)</b>: an older version without SORT or TAKE.</li>
+<li lang="en"><b>Number order is wrong</b>: numbers are text.</li>
+<li lang="en"><b>The header row is sorted too</b>: the range includes the header. Exclude it.</li>
+<li lang="en"><b>Blank rows mixed in</b>: the range has many empty rows. Narrow it.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Confira o arquivo</li>
-<li>Confira o tamanho</li>
-<li>Tente em outro dispositivo</li>
+<li lang="en">Check the range doesn't include the header row.</li>
+<li lang="en">Recount the column number from the range's left.</li>
+<li lang="en">Check the spill range is empty.</li>
 </ol>
-<div class="note">Se nenhuma fórmula aparecer, verifique se o intervalo está escrito como A2:C100 e se a coluna é um número como 1.</div>
+<div class="note" lang="en">You can't edit part of the result cells. To fix, edit the formula cell.</div>
+<h2 lang="en">When numbers are text</h2>
+<p lang="en">"10" coming before "2" means they're sorted as text. Convert to numbers.</p>
+<ul>
+<li lang="en">Convert with Data → Text to Columns</li>
+<li lang="en">Use VALUE</li>
+</ul>
+<h2>Exemplo</h2>
+<p lang="en">A header appeared in the first row of the result because the range included the header row. Starting the range at row 2 fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Added data isn't reflected</b>: the range end is fixed. Leave slack or use an open end (A2:C).</li>
+<li lang="en"><b>Want results as values</b>: copy, then paste values only.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Will added rows be reflected?</h3>
+<p lang="en">If the range covers the added rows, yes. In Google you can omit the end as "A2:C".</p>
+<h2>Resumo</h2>
+<p lang="en">Check the header, the column number and the spill range.</p>
 <a class="cta" href="/pt/sort-formula-builder.html">Usar “Criar uma fórmula SORT” (grátis)</a>
 <h2>Ferramentas que combinam com esta</h2><ul><li><a href="/pt/filter-formula-builder.html">Criar uma fórmula FILTER</a>: Crie uma fórmula FILTER.</li><li><a href="/pt/query-formula-builder.html">Criar uma fórmula QUERY</a>: Crie uma fórmula QUERY.</li><li><a href="/pt/unique-formula-builder.html">Criar uma fórmula UNIQUE</a>: Crie fórmulas para tratar duplicados.</li></ul>
 <div class="tip"><p>Se este guia ajudou, uma pequena gorjeta significaria muito.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Enviar uma gorjeta (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar um presente (lista de desejos da Amazon)</a></div>
@@ -217,6 +248,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/pt/guides.html">Ver todos os guias</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="pt-BR">Sobre / Contato (em japonês)</span></a><a href="/pt/privacy.html"><span lang="pt-BR">Política de Privacidade</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="pt-BR">Novidades no X</span></a></footer>
+<footer><a href="/about.html"><span lang="pt-BR">Sobre / Contato (em japonês)</span></a><a href="/pt/privacy.html"><span lang="pt-BR">Política de Privacidade</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="pt-BR">Novidades no X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

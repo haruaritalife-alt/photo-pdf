@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Yang harus dilakukan bila tidak berfungsi", "description": "Penyebab dan solusi saat pemrosesan gagal.", "url": "https://pdfmikata.com/id/switch-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/id/switch-formula-builder-trouble.html", "inLanguage": "id", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/id/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/id/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Yang harus dilakukan bila tidak berfungsi", "description": "Penyebab dan solusi saat pemrosesan gagal.", "url": "https://pdfmikata.com/id/switch-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/id/switch-formula-builder-trouble.html", "inLanguage": "id", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/id/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/id/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Yang harus dilakukan bila tidak berfungsi</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Periksa berkasnya</li><li>Periksa ukurannya</li><li>Coba perangkat lain</li></ul></div>
-<p>Jika <a href="/id/switch-formula-builder.html">Pembuat SWITCH</a> tidak berfungsi, periksa hal berikut.</p>
-<h2>Langkah-langkah</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/id/switch-formula-builder.html">Build a SWITCH Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell to test isn't in the "A2" form; the mapping is empty; in SWITCH an item lacks "=".</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: no value matches and there's no default.</li>
+<li lang="en"><b>#NAME?</b>: old Excel can't use SWITCH. Use the second formula.</li>
+<li lang="en"><b>#VALUE!</b>: CHOOSE with an out-of-range number.</li>
+<li lang="en"><b>No match</b>: full-width/half-width, surrounding spaces, or text vs number.</li>
+<li lang="en"><b>Always the default</b>: mapping values differ from the cell's value.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Periksa berkasnya</li>
-<li>Periksa ukurannya</li>
-<li>Coba perangkat lain</li>
+<li lang="en">Compare the cell's value with the mapping's left side character by character.</li>
+<li lang="en">Check text vs number agree.</li>
+<li lang="en">Check for surrounding spaces by measuring with LEN.</li>
 </ol>
-<div class="note">Jika tidak ada rumus yang muncul, periksa bahwa sel ditulis seperti A2 dan pasangan ditulis seperti A=Apple.</div>
+<div class="note" lang="en">Only the first "=" in an item is treated as the separator, so values may contain "=".</div>
+<h2 lang="en">Writing the mapping</h2>
+<ul>
+<li lang="en">Separate with commas ","</li>
+<li lang="en">Values can't contain commas</li>
+<li lang="en">Surrounding spaces are trimmed</li>
+</ul>
+<h2 lang="en">Trimming spaces</h2>
+<p lang="en">Apply TRIM to the tested cell. Edit by hand after pasting.</p>
+<ul>
+<li lang="en">Example: =SWITCH(TRIM(A2),"A","apple","B","orange")</li>
+</ul>
+<h2>Contoh</h2>
+<p lang="en">Some values didn't match. The cell values had trailing spaces. Applying TRIM made them match.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Too many mappings</b>: IFS or a lookup table is easier to manage.</li>
+<li lang="en"><b>Commas in values</b>: the tool can't handle them. Write by hand.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want partial matching</h3>
+<p lang="en">SWITCH is exact-match only. Use something like IF with SEARCH.</p>
+<h2>Ringkasan</h2>
+<p lang="en">Check value comparison, text vs number, and surrounding spaces.</p>
 <a class="cta" href="/id/switch-formula-builder.html">Gunakan “Buat Rumus SWITCH” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/excel-if-builder.html">Buat rumus IF</a>: Buat rumus IF.</li><li><a href="/id/vlookup-formula-builder.html">Buat Rumus VLOOKUP atau XLOOKUP</a>: Buat rumus VLOOKUP dan XLOOKUP.</li><li><a href="/id/index-match-builder.html">Buat Rumus INDEX dan MATCH</a>: Buat rumus INDEX dan MATCH.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>
@@ -217,6 +252,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/id/guides.html">Lihat semua panduan</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="id">Tentang / Kontak (bahasa Jepang)</span></a><a href="/id/privacy.html"><span lang="id">Kebijakan Privasi</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="id">Kabar terbaru di X</span></a></footer>
+<footer><a href="/about.html"><span lang="id">Tentang / Kontak (bahasa Jepang)</span></a><a href="/id/privacy.html"><span lang="id">Kebijakan Privasi</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="id">Kabar terbaru di X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

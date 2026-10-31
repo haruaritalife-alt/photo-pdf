@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Blanks and Errors", "description": "About errors.", "url": "https://pdfmikata.com/en/large-small-formula-builder-blank.html", "mainEntityOfPage": "https://pdfmikata.com/en/large-small-formula-builder-blank.html", "inLanguage": "en", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Blanks and Errors", "description": "About errors.", "url": "https://pdfmikata.com/en/large-small-formula-builder-blank.html", "mainEntityOfPage": "https://pdfmikata.com/en/large-small-formula-builder-blank.html", "inLanguage": "en", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Blanks and Errors</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>Pick the second</li><li>Copy it</li></ul></div>
-<p><a href="/en/large-small-formula-builder.html">LARGE SMALL Builder</a> also shows a version that goes blank on error.</p>
+<p>You'd rather the formula not show errors. When no data meets the condition, or the number is too large, the "formula that blanks on error" covers you. That's the second field in <a href="/en/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>Pick the second</li>
-<li>Copy it</li>
+<li>Build the first formula.</li>
+<li>Check the second "Formula that blanks on error".</li>
+<li>Copy it with "Copy the second" and paste.</li>
 </ol>
-<div class="note">A rank larger than the count gives an error.</div>
+<div class="note">Its form is =IFERROR(formula,""). The cell is empty on error.</div>
+<h2>Example</h2>
+<ul>
+<li>=IFERROR(LARGE(B2:B100,3),"")</li>
+</ul>
+<p>If there are only two numbers and no 3rd, it's blank instead of #NUM!.</p>
+<h2>Handling blanks and text</h2>
+<p>LARGE, SMALL, MAXIFS and MINIFS ignore blanks and text in the range. Only numbers are counted.</p>
+<h2>When 0 is returned</h2>
+<p>MAXIFS and MINIFS return 0 when no row meets the condition. To distinguish 0 from blank, check the count with COUNTIF.</p>
+<ul>
+<li>Example: =IF(COUNTIF(A2:A100,"Tokyo")=0,"",MAXIFS(B2:B100,A2:A100,"Tokyo"))</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Empty tables before data grows</li>
+<li>Avoiding error displays in summary tables</li>
+<li>Cell values that feed other formulas</li>
+</ul>
+<h2>Caution</h2>
+<p>Hiding errors makes input mistakes harder to notice too. Test with the first formula, then switch to the second once stable.</p>
+<h2>Example</h2>
+<p>At the start of the month there was no data yet and summary cells were full of errors. Wrapping in IFERROR showed blanks and tidied the look.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Can't see the reason</b>: use the first formula when hunting causes.</li>
+<li><b>Blanks treated as text</b>: an empty string ("") may be treated as text in later calculations.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to show 0</h3>
+<p>Rewrite IFERROR's "" as 0.</p>
+<h2>Summary</h2>
+<p>To avoid errors, use the second formula.</p>
 <a class="cta" href="/en/large-small-formula-builder.html">Use "Build a LARGE and SMALL Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a>: Build SUMPRODUCT formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
@@ -217,6 +249,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/en/guides.html">See all guides</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="en">About / Contact (Japanese)</span></a><a href="/en/privacy.html"><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="en">Updates on X</span></a></footer>
+<footer><a href="/about.html"><span lang="en">About / Contact (Japanese)</span></a><a href="/en/privacy.html"><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="en">Updates on X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

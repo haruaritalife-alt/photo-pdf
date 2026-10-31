@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ค่าลำดับที่ N", "description": "เกี่ยวกับค่าลำดับที่ N", "url": "https://pdfmikata.com/th/large-small-formula-builder-nth.html", "mainEntityOfPage": "https://pdfmikata.com/th/large-small-formula-builder-nth.html", "inLanguage": "th", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ค่าลำดับที่ N", "description": "เกี่ยวกับค่าลำดับที่ N", "url": "https://pdfmikata.com/th/large-small-formula-builder-nth.html", "mainEntityOfPage": "https://pdfmikata.com/th/large-small-formula-builder-nth.html", "inLanguage": "th", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ค่าลำดับที่ N</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก LARGE หรือ SMALL</li><li>ป้อนช่วงเวลา</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/large-small-formula-builder.html">ตัวสร้างสูตร LARGE SMALL</a> คุณดึงค่าลำดับที่สอง สาม หรือลำดับที่ N ใดก็ได้</p>
+<p lang="en">The 3rd largest, the 2nd smallest. LARGE and SMALL pull out the Nth value. "LARGE" and "SMALL" in <a href="/th/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a> build them.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือก LARGE หรือ SMALL</li>
-<li>ป้อนช่วงเวลา</li>
-<li>คัดลอก</li>
+<li lang="en">Choose "LARGE" or "SMALL" in "Type".</li>
+<li lang="en">Enter the "Numeric range".</li>
+<li lang="en">In "Which one (for LARGE, SMALL, TOPSUM)", enter a number.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">ลำดับแรกให้ผลเหมือน MAX หรือ MIN</div>
+<div class="note" lang="en">"Which one" is an integer of 1 or more.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">3rd largest: =LARGE(B2:B100,3)</li>
+<li lang="en">2nd smallest: =SMALL(B2:B100,2)</li>
+</ul>
+<h2 lang="en">A number larger than the count</h2>
+<p lang="en">If the range has only 10 numbers and you specify the 11th, you get #NUM!.</p>
+<h2 lang="en">Handling ties</h2>
+<p lang="en">Equal values are counted separately. For 90, 80, 80, 70, both the 2nd and 3rd LARGE are 80.</p>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Knowing the 2nd and 3rd sales amounts</li>
+<li lang="en">Knowing the value near the middle (half the count)</li>
+<li lang="en">Knowing the highest and lowest scores (the 1st)</li>
+</ul>
+<h2 lang="en">Showing names with ranks</h2>
+<p lang="en">To show the name matching a value, combine INDEX and MATCH.</p>
+<ul>
+<li lang="en">Example: =INDEX(A2:A100,MATCH(LARGE(B2:B100,1),B2:B100,0))</li>
+</ul>
+<p lang="en">With several equal values, only the first name appears.</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Wanted to show the top 3 test scores. LARGE listed the 1st to 3rd, with INDEX and MATCH showing names beside them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Blanks and text</b>: ignored. Only numbers are counted.</li>
+<li lang="en"><b>Numbers as text</b>: not counted. Convert them.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Why want values instead of ranks?</h3>
+<p lang="en">RANK returns the rank number. LARGE returns the value at that rank. Use whichever suits the purpose.</p>
+<h2>สรุป</h2>
+<p lang="en">For the Nth value, use LARGE and SMALL.</p>
 <a class="cta" href="/th/large-small-formula-builder.html">ใช้ “สร้างสูตร LARGE และ SMALL” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/rank-formula-builder.html">สร้างสูตรอันดับ</a>: สร้างสูตรอันดับ</li><li><a href="/th/sumif-formula-builder.html">สร้างสูตร SUMIF หรือ COUNTIF</a>: สร้างสูตร SUMIF และ COUNTIF</li><li><a href="/th/sumproduct-formula-builder.html">สร้างสูตร SUMPRODUCT</a>: สร้างสูตร SUMPRODUCT</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>
@@ -217,6 +251,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/th/guides.html">ดูคู่มือทั้งหมด</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="th">เกี่ยวกับ / ติดต่อ (ภาษาญี่ปุ่น)</span></a><a href="/th/privacy.html"><span lang="th">นโยบายความเป็นส่วนตัว</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="th">อัปเดตบน X</span></a></footer>
+<footer><a href="/about.html"><span lang="th">เกี่ยวกับ / ติดต่อ (ภาษาญี่ปุ่น)</span></a><a href="/th/privacy.html"><span lang="th">นโยบายความเป็นส่วนตัว</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="th">อัปเดตบน X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

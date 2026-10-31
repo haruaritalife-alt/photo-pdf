@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "পুনরাবৃত্ত সংখ্যা", "description": "পুনরাবৃত্ত সংখ্যা সম্পর্কে।", "url": "https://pdfmikata.com/bn/sequence-formula-builder-repeat.html", "mainEntityOfPage": "https://pdfmikata.com/bn/sequence-formula-builder-repeat.html", "inLanguage": "bn", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/bn/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/bn/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "পুনরাবৃত্ত সংখ্যা", "description": "পুনরাবৃত্ত সংখ্যা সম্পর্কে।", "url": "https://pdfmikata.com/bn/sequence-formula-builder-repeat.html", "mainEntityOfPage": "https://pdfmikata.com/bn/sequence-formula-builder-repeat.html", "inLanguage": "bn", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/bn/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/bn/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>পুনরাবৃত্ত সংখ্যা</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>REPEAT বেছে নিন</li><li>চক্রের দৈর্ঘ্য লিখুন</li><li>কপি করুন</li></ul></div>
-<p><a href="/bn/sequence-formula-builder.html">SEQUENCE সূত্র নির্মাতা</a>-এ আপনি 1, 2, 3, 1, 2, 3-এর মতো পুনরাবৃত্ত সংখ্যা তৈরি করতে পারেন।</p>
+<p lang="en">Sometimes you want numbers that repeat in a fixed cycle: 1-2-3-4-1-2-3-4… Useful for group assignment, shift rotas and four-column layouts. "REPEAT" in <a href="/bn/sequence-formula-builder.html">Build a SEQUENCE Formula</a> builds it.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>REPEAT বেছে নিন</li>
-<li>চক্রের দৈর্ঘ্য লিখুন</li>
-<li>কপি করুন</li>
+<li lang="en">Choose "REPEAT" in "Type".</li>
+<li lang="en">In "Count (for REPEAT, the repeat length)", enter how high to cycle from 1.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">আসন বিন্যাস ও দল ভাগ করতে কাজে লাগে।</div>
+<div class="note" lang="en">In REPEAT, "Count" is the cycle length. With 4, it repeats 1 to 4.</div>
+<h2>উদাহরণ</h2>
+<p lang="en">Repeating 1 to 4:</p>
+<ul>
+<li lang="en">Google: =ARRAYFORMULA(MOD(ROW(A1:A100)-1,4)+1)</li>
+<li lang="en">Row by row: =MOD(ROW(A1)-1,4)+1</li>
+</ul>
+<p lang="en">The result is 1, 2, 3, 4, 1, 2, 3, 4…</p>
+<h2>কীভাবে কাজ করে</h2>
+<p lang="en">ROW(A1) returns the row number (1, 2, 3…). It subtracts 1, takes the remainder by the cycle length, and adds 1.</p>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Group assignment (assign people to groups 1–4 in turn)</li>
+<li lang="en">Rotating duty assignments</li>
+<li lang="en">Rearranging many items into four columns</li>
+</ul>
+<h2 lang="en">The row range</h2>
+<p lang="en">The tool's formula covers rows up to 10× the cycle (at least 100). If that's not enough, widen the "A1:A100" part.</p>
+<h2>উদাহরণ</h2>
+<p lang="en">Wanted to assign a roster in order to groups 1–5. A MOD and ROW formula gave numbers cycling through the five groups.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Rows shift</b>: if the formula isn't in row 1, adjust the ROW part.</li>
+<li lang="en"><b>Inserted rows</b>: ROW depends on position, so numbers change.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want each number twice</h3>
+<p lang="en">Combine with INT.</p>
+<ul>
+<li lang="en">Example: =INT((ROW(A1)-1)/2)+1</li>
+</ul>
+<p lang="en">It gives 1, 1, 2, 2, 3, 3…</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">Repeating numbers come from MOD combined with ROW.</p>
 <a class="cta" href="/bn/sequence-formula-builder.html">“SEQUENCE সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/date-offset-formula-builder.html">তারিখ সরানোর সূত্র তৈরি করুন</a>: তারিখ সরানোর সূত্র তৈরি করুন।</li><li><a href="/bn/arrayformula-builder.html">ARRAYFORMULA তৈরি করুন</a>: ARRAYFORMULA সূত্র তৈরি করুন।</li><li><a href="/bn/rank-formula-builder.html">র‍্যাঙ্কের সূত্র তৈরি করুন</a>: র‍্যাঙ্কের সূত্র তৈরি করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>
@@ -217,6 +250,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/bn/guides.html">সব গাইড দেখুন</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="bn">সম্পর্কে / যোগাযোগ (জাপানি)</span></a><a href="/bn/privacy.html"><span lang="bn">গোপনীয়তা নীতি</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="bn">X-এ আপডেট</span></a></footer>
+<footer><a href="/about.html"><span lang="bn">সম্পর্কে / যোগাযোগ (জাপানি)</span></a><a href="/bn/privacy.html"><span lang="bn">গোপনীয়তা নীতি</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="bn">X-এ আপডেট</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

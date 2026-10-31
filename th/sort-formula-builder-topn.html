@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "เฉพาะแถวบนสุด", "description": "เกี่ยวกับการคืนแถวบนสุด", "url": "https://pdfmikata.com/th/sort-formula-builder-topn.html", "mainEntityOfPage": "https://pdfmikata.com/th/sort-formula-builder-topn.html", "inLanguage": "th", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "เฉพาะแถวบนสุด", "description": "เกี่ยวกับการคืนแถวบนสุด", "url": "https://pdfmikata.com/th/sort-formula-builder-topn.html", "mainEntityOfPage": "https://pdfmikata.com/th/sort-formula-builder-topn.html", "inLanguage": "th", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>เฉพาะแถวบนสุด</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก SORTN</li><li>ป้อนจำนวน</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/sort-formula-builder.html">ตัวสร้างสูตรเรียงลำดับ</a> คุณคืนเฉพาะจำนวนแถวที่กำหนดจากด้านบนได้</p>
+<p lang="en">Instead of everything, you want just the top 10 in another place. Use SORTN. Choose SORTN in "Type" in <a href="/th/sort-formula-builder.html">Build a SORT Formula</a>.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือก SORTN</li>
-<li>ป้อนจำนวน</li>
-<li>คัดลอก</li>
+<li lang="en">Choose "SORTN" in "Type".</li>
+<li lang="en">Enter the count in "Top how many (for SORTN)".</li>
+<li lang="en">Enter the range, column number and order.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">ใน Excel จะกลายเป็นสูตรที่รวม SORT กับ TAKE</div>
+<div class="note" lang="en">The count is an integer of 1 or more. Without it you get "The input is not valid."</div>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Sorting A2:C100 by column 3, largest first, and showing the top 10:</p>
+<ul>
+<li lang="en">Google: =SORTN(A2:C100,10,0,3,FALSE)</li>
+<li lang="en">Excel: =TAKE(SORT(A2:C100,3,-1),10)</li>
+</ul>
+<h2 lang="en">Reading the formulas</h2>
+<ul>
+<li lang="en">Google's SORTN: range, count, tie mode, column, order. Tie mode "0" cuts at the count without including ties</li>
+<li lang="en">Excel's TAKE: takes the first rows of the sorted result</li>
+</ul>
+<h2 lang="en">Tie handling</h2>
+<p lang="en">The tool's Google formula sets tie mode to "0". Even if the 10th has ties, it cuts at 10. To include all ties, change "0" to "1".</p>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Top 10 sales</li>
+<li lang="en">Top 5 scorers</li>
+<li lang="en">The latest 5 items (dates descending)</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Wanted the five most recent orders from an order list on another sheet. Sorting the date column descending and taking 5 gave an automatically updating recent list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Older Excel</b>: TAKE is only in newer Excel 365.</li>
+<li lang="en"><b>Count too large</b>: a count above the row count doesn't error; all rows appear.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the bottom N</h3>
+<p lang="en">Choose ascending; the head of the smallest-first order gives the bottom N.</p>
+<h2>สรุป</h2>
+<p lang="en">For just the top, use SORTN (Excel: TAKE with SORT).</p>
 <a class="cta" href="/th/sort-formula-builder.html">ใช้ “สร้างสูตร SORT” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/filter-formula-builder.html">สร้างสูตร FILTER</a>: สร้างสูตร FILTER</li><li><a href="/th/query-formula-builder.html">สร้างสูตร QUERY</a>: สร้างสูตร QUERY</li><li><a href="/th/unique-formula-builder.html">สร้างสูตร UNIQUE</a>: สร้างสูตรจัดการค่าที่ซ้ำ</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>
@@ -217,6 +249,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/th/guides.html">ดูคู่มือทั้งหมด</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="th">เกี่ยวกับ / ติดต่อ (ภาษาญี่ปุ่น)</span></a><a href="/th/privacy.html"><span lang="th">นโยบายความเป็นส่วนตัว</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="th">อัปเดตบน X</span></a></footer>
+<footer><a href="/about.html"><span lang="th">เกี่ยวกับ / ติดต่อ (ภาษาญี่ปุ่น)</span></a><a href="/th/privacy.html"><span lang="th">นโยบายความเป็นส่วนตัว</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="th">อัปเดตบน X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

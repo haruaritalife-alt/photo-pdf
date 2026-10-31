@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "اگر کار نکرد چه باید کرد", "description": "علل و راه‌حل‌ها هنگام شکست پردازش.", "url": "https://pdfmikata.com/fa/sort-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/fa/sort-formula-builder-trouble.html", "inLanguage": "fa", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fa/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fa/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "اگر کار نکرد چه باید کرد", "description": "علل و راه‌حل‌ها هنگام شکست پردازش.", "url": "https://pdfmikata.com/fa/sort-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/fa/sort-formula-builder-trouble.html", "inLanguage": "fa", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fa/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/fa/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -215,14 +215,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>اگر کار نکرد چه باید کرد</h1>
 <p class="meta">منتشرشده: 19 اکتبر 2026 | به‌روزرسانی: 19 اکتبر 2026 | <a href="/about.html">دربارهٔ ما (ژاپنی)</a></p>
 <div class="points"><b>نکات کلیدی</b><ul><li>فایل را بررسی کنید</li><li>اندازه را بررسی کنید</li><li>دستگاه دیگری را امتحان کنید</li></ul></div>
-<p>اگر <a href="/fa/sort-formula-builder.html">سازندهٔ مرتب‌سازی</a> کار نمی‌کند، موارد زیر را بررسی کنید.</p>
-<h2>مراحل</h2>
+<p lang="en">You pasted the formula but it doesn't sort well. Here are common troubles with <a href="/fa/sort-formula-builder.html">Build a SORT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the range isn't in the "A2:C100" form; the column number isn't an integer of 1 or more; for SORTN the count isn't an integer of 1 or more.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF! (Google) / #SPILL! (Excel)</b>: values sit in the spill range. Clear those cells.</li>
+<li lang="en"><b>#VALUE!</b>: the column number exceeds the range's column count.</li>
+<li lang="en"><b>#NAME? (Excel)</b>: an older version without SORT or TAKE.</li>
+<li lang="en"><b>Number order is wrong</b>: numbers are text.</li>
+<li lang="en"><b>The header row is sorted too</b>: the range includes the header. Exclude it.</li>
+<li lang="en"><b>Blank rows mixed in</b>: the range has many empty rows. Narrow it.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>فایل را بررسی کنید</li>
-<li>اندازه را بررسی کنید</li>
-<li>دستگاه دیگری را امتحان کنید</li>
+<li lang="en">Check the range doesn't include the header row.</li>
+<li lang="en">Recount the column number from the range's left.</li>
+<li lang="en">Check the spill range is empty.</li>
 </ol>
-<div class="note">اگر فرمولی نمایش داده نشد، بررسی کنید که محدوده مانند A2:C100 نوشته شده و ستون عددی مانند 1 باشد.</div>
+<div class="note" lang="en">You can't edit part of the result cells. To fix, edit the formula cell.</div>
+<h2 lang="en">When numbers are text</h2>
+<p lang="en">"10" coming before "2" means they're sorted as text. Convert to numbers.</p>
+<ul>
+<li lang="en">Convert with Data → Text to Columns</li>
+<li lang="en">Use VALUE</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">A header appeared in the first row of the result because the range included the header row. Starting the range at row 2 fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Added data isn't reflected</b>: the range end is fixed. Leave slack or use an open end (A2:C).</li>
+<li lang="en"><b>Want results as values</b>: copy, then paste values only.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Will added rows be reflected?</h3>
+<p lang="en">If the range covers the added rows, yes. In Google you can omit the end as "A2:C".</p>
+<h2>خلاصه</h2>
+<p lang="en">Check the header, the column number and the spill range.</p>
 <a class="cta" href="/fa/sort-formula-builder.html">استفاده از «ساخت فرمول SORT» (رایگان)</a>
 <h2>ابزارهایی که با این ابزار خوب هماهنگ‌اند</h2><ul><li><a href="/fa/filter-formula-builder.html">ساخت فرمول FILTER</a>: یک فرمول FILTER بسازید.</li><li><a href="/fa/query-formula-builder.html">ساخت فرمول QUERY</a>: فرمول QUERY بسازید.</li><li><a href="/fa/unique-formula-builder.html">ساخت فرمول UNIQUE</a>: فرمول‌های مدیریت موارد تکراری بسازید.</li></ul>
 <div class="tip"><p>اگر این راهنما مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ارسال انعام (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ارسال هدیه (فهرست آرزوهای آمازون)</a></div>
@@ -231,6 +262,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/fa/guides.html">دیدن همهٔ راهنماها</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="fa">دربارهٔ ما / تماس (ژاپنی)</span></a><a href="/fa/privacy.html"><span lang="fa">سیاست حفظ حریم خصوصی</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="fa">خبرها در X</span></a></footer>
+<footer><a href="/about.html"><span lang="fa">دربارهٔ ما / تماس (ژاپنی)</span></a><a href="/fa/privacy.html"><span lang="fa">سیاست حفظ حریم خصوصی</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="fa">خبرها در X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

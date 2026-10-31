@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Numbering From Row Numbers", "description": "About row numbers.", "url": "https://pdfmikata.com/en/sequence-formula-builder-rownum.html", "mainEntityOfPage": "https://pdfmikata.com/en/sequence-formula-builder-rownum.html", "inLanguage": "en", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Numbering From Row Numbers", "description": "About row numbers.", "url": "https://pdfmikata.com/en/sequence-formula-builder-rownum.html", "mainEntityOfPage": "https://pdfmikata.com/en/sequence-formula-builder-rownum.html", "inLanguage": "en", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Numbering From Row Numbers</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose ROWNUM</li><li>Enter the header row</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/sequence-formula-builder.html">SEQUENCE Builder</a> you can build a formula whose numbers renumber when rows are added or removed.</p>
+<p>After numbering a list, adding or deleting rows can leave gaps in the numbers. Building sequence numbers from row numbers renumbers automatically when rows change. "ROWNUM" in <a href="/en/sequence-formula-builder.html">Build a SEQUENCE Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose ROWNUM</li>
-<li>Enter the header row</li>
-<li>Copy it</li>
+<li>Choose "ROWNUM" in "Type".</li>
+<li>In "Header row number (for ROWNUM, such as 1)", enter the header row's number.</li>
+<li>Copy the formula, paste it in the first data row of the number column, and copy down.</li>
 </ol>
-<div class="note">Enter the number of the header row.</div>
+<div class="note">A header row number that isn't an integer of 1 or more gives "The input is not valid."</div>
+<h2>Example</h2>
+<p>With the header in row 1, put this in row 2:</p>
+<ul>
+<li>=ROW()-1</li>
+</ul>
+<p>Row 2 gets 1, row 3 gets 2, and so on.</p>
+<h2>The other formula</h2>
+<ul>
+<li>=ROW()-ROW($A$1)</li>
+</ul>
+<p>It's anchored to the header cell, so inserting rows above the header doesn't shift it.</p>
+<h2>When you delete rows</h2>
+<p>Hand-typed numbers leave gaps when rows are deleted. With ROW, numbers close up immediately after deletion.</p>
+<h2>Good for</h2>
+<ul>
+<li>Lists where rows are added and removed often</li>
+<li>Showing table order rather than the original pre-filter numbers</li>
+<li>Shared sheets where people add rows</li>
+</ul>
+<h2>When filtered</h2>
+<p>ROW returns the original row position, so hidden rows make numbers look skipped. For consecutive numbers, SUBTOTAL suits better.</p>
+<ul>
+<li>Example: =SUBTOTAL(103,$B$2:B2)</li>
+</ul>
+<h2>Example</h2>
+<p>Added a number column to a shared list. Whether people added or deleted rows, numbers closed up automatically and no fixing was needed.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Headers spanning 2+ rows</b>: use the header's last row as the anchor.</li>
+<li><b>Inserting rows above</b>: the ROW()-1 form shifts. Use the ROW($A$1) form.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want the sequence to start at 0</h3>
+<p>Subtract one more at the end of the formula.</p>
+<h2>Summary</h2>
+<p>For lists with row changes, ROW-based numbering suits.</p>
 <a class="cta" href="/en/sequence-formula-builder.html">Use "Build a SEQUENCE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li><li><a href="/en/arrayformula-builder.html">Build an ARRAYFORMULA</a>: Build ARRAYFORMULA formulas.</li><li><a href="/en/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
@@ -217,6 +253,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/en/guides.html">See all guides</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="en">About / Contact (Japanese)</span></a><a href="/en/privacy.html"><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="en">Updates on X</span></a></footer>
+<footer><a href="/about.html"><span lang="en">About / Contact (Japanese)</span></a><a href="/en/privacy.html"><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="en">Updates on X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

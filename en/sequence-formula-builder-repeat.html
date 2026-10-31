@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Repeating Numbers", "description": "About repeating numbers.", "url": "https://pdfmikata.com/en/sequence-formula-builder-repeat.html", "mainEntityOfPage": "https://pdfmikata.com/en/sequence-formula-builder-repeat.html", "inLanguage": "en", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Repeating Numbers", "description": "About repeating numbers.", "url": "https://pdfmikata.com/en/sequence-formula-builder-repeat.html", "mainEntityOfPage": "https://pdfmikata.com/en/sequence-formula-builder-repeat.html", "inLanguage": "en", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Repeating Numbers</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose REPEAT</li><li>Enter the cycle length</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/sequence-formula-builder.html">SEQUENCE Builder</a> you can build numbers that repeat like 1, 2, 3, 1, 2, 3.</p>
+<p>Sometimes you want numbers that repeat in a fixed cycle: 1-2-3-4-1-2-3-4… Useful for group assignment, shift rotas and four-column layouts. "REPEAT" in <a href="/en/sequence-formula-builder.html">Build a SEQUENCE Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose REPEAT</li>
-<li>Enter the cycle length</li>
-<li>Copy it</li>
+<li>Choose "REPEAT" in "Type".</li>
+<li>In "Count (for REPEAT, the repeat length)", enter how high to cycle from 1.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">It is handy for seat orders and grouping.</div>
+<div class="note">In REPEAT, "Count" is the cycle length. With 4, it repeats 1 to 4.</div>
+<h2>Example</h2>
+<p>Repeating 1 to 4:</p>
+<ul>
+<li>Google: =ARRAYFORMULA(MOD(ROW(A1:A100)-1,4)+1)</li>
+<li>Row by row: =MOD(ROW(A1)-1,4)+1</li>
+</ul>
+<p>The result is 1, 2, 3, 4, 1, 2, 3, 4…</p>
+<h2>How it works</h2>
+<p>ROW(A1) returns the row number (1, 2, 3…). It subtracts 1, takes the remainder by the cycle length, and adds 1.</p>
+<h2>Good for</h2>
+<ul>
+<li>Group assignment (assign people to groups 1–4 in turn)</li>
+<li>Rotating duty assignments</li>
+<li>Rearranging many items into four columns</li>
+</ul>
+<h2>The row range</h2>
+<p>The tool's formula covers rows up to 10× the cycle (at least 100). If that's not enough, widen the "A1:A100" part.</p>
+<h2>Example</h2>
+<p>Wanted to assign a roster in order to groups 1–5. A MOD and ROW formula gave numbers cycling through the five groups.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Rows shift</b>: if the formula isn't in row 1, adjust the ROW part.</li>
+<li><b>Inserted rows</b>: ROW depends on position, so numbers change.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want each number twice</h3>
+<p>Combine with INT.</p>
+<ul>
+<li>Example: =INT((ROW(A1)-1)/2)+1</li>
+</ul>
+<p>It gives 1, 1, 2, 2, 3, 3…</p>
+<h2>Summary</h2>
+<p>Repeating numbers come from MOD combined with ROW.</p>
 <a class="cta" href="/en/sequence-formula-builder.html">Use "Build a SEQUENCE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li><li><a href="/en/arrayformula-builder.html">Build an ARRAYFORMULA</a>: Build ARRAYFORMULA formulas.</li><li><a href="/en/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
@@ -217,6 +250,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/en/guides.html">See all guides</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="en">About / Contact (Japanese)</span></a><a href="/en/privacy.html"><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="en">Updates on X</span></a></footer>
+<footer><a href="/about.html"><span lang="en">About / Contact (Japanese)</span></a><a href="/en/privacy.html"><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="en">Updates on X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

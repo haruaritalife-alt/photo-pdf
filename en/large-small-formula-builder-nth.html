@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Nth Value", "description": "About the Nth value.", "url": "https://pdfmikata.com/en/large-small-formula-builder-nth.html", "mainEntityOfPage": "https://pdfmikata.com/en/large-small-formula-builder-nth.html", "inLanguage": "en", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The Nth Value", "description": "About the Nth value.", "url": "https://pdfmikata.com/en/large-small-formula-builder-nth.html", "mainEntityOfPage": "https://pdfmikata.com/en/large-small-formula-builder-nth.html", "inLanguage": "en", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>The Nth Value</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose LARGE or SMALL</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/large-small-formula-builder.html">LARGE SMALL Builder</a> you can get the second, third or any Nth value.</p>
+<p>The 3rd largest, the 2nd smallest. LARGE and SMALL pull out the Nth value. "LARGE" and "SMALL" in <a href="/en/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a> build them.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose LARGE or SMALL</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>Choose "LARGE" or "SMALL" in "Type".</li>
+<li>Enter the "Numeric range".</li>
+<li>In "Which one (for LARGE, SMALL, TOPSUM)", enter a number.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">The first is the same as MAX or MIN.</div>
+<div class="note">"Which one" is an integer of 1 or more.</div>
+<h2>Examples</h2>
+<ul>
+<li>3rd largest: =LARGE(B2:B100,3)</li>
+<li>2nd smallest: =SMALL(B2:B100,2)</li>
+</ul>
+<h2>A number larger than the count</h2>
+<p>If the range has only 10 numbers and you specify the 11th, you get #NUM!.</p>
+<h2>Handling ties</h2>
+<p>Equal values are counted separately. For 90, 80, 80, 70, both the 2nd and 3rd LARGE are 80.</p>
+<h2>Good for</h2>
+<ul>
+<li>Knowing the 2nd and 3rd sales amounts</li>
+<li>Knowing the value near the middle (half the count)</li>
+<li>Knowing the highest and lowest scores (the 1st)</li>
+</ul>
+<h2>Showing names with ranks</h2>
+<p>To show the name matching a value, combine INDEX and MATCH.</p>
+<ul>
+<li>Example: =INDEX(A2:A100,MATCH(LARGE(B2:B100,1),B2:B100,0))</li>
+</ul>
+<p>With several equal values, only the first name appears.</p>
+<h2>Example</h2>
+<p>Wanted to show the top 3 test scores. LARGE listed the 1st to 3rd, with INDEX and MATCH showing names beside them.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Blanks and text</b>: ignored. Only numbers are counted.</li>
+<li><b>Numbers as text</b>: not counted. Convert them.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Why want values instead of ranks?</h3>
+<p>RANK returns the rank number. LARGE returns the value at that rank. Use whichever suits the purpose.</p>
+<h2>Summary</h2>
+<p>For the Nth value, use LARGE and SMALL.</p>
 <a class="cta" href="/en/large-small-formula-builder.html">Use "Build a LARGE and SMALL Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a>: Build SUMPRODUCT formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
@@ -217,6 +251,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/en/guides.html">See all guides</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="en">About / Contact (Japanese)</span></a><a href="/en/privacy.html"><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="en">Updates on X</span></a></footer>
+<footer><a href="/about.html"><span lang="en">About / Contact (Japanese)</span></a><a href="/en/privacy.html"><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="en">Updates on X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

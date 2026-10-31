@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "数字の対応", "description": "数字の対応を解説します。", "url": "https://pdfmikata.com/switch-formula-builder-number.html", "mainEntityOfPage": "https://pdfmikata.com/switch-formula-builder-number.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "数字の対応", "description": "数字の対応を解説します。", "url": "https://pdfmikata.com/switch-formula-builder-number.html", "mainEntityOfPage": "https://pdfmikata.com/switch-formula-builder-number.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -200,14 +200,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>数字の対応</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>数字を入れる</li><li>式を見る</li><li>確かめる</li></ul></div>
-<p><a href="/switch-formula-builder.html">SWITCH式の作成</a> では、1=低、2=中のように数字も対応させられます。</p>
+<p>対応表の値が数字のとき、書き方に迷うことがあります。数字を、文字として比べるのか、数値として比べるのか。<a href="/switch-formula-builder.html">SWITCHの式を作る</a> は、対応表の値を文字として扱います。</p>
 <h2>手順</h2>
 <ol>
-<li>数字を入れる</li>
-<li>式を見る</li>
-<li>確かめる</li>
+<li>「対応表」に、「1=月,2=火」のように入れる。</li>
+<li>式をコピーして貼る。</li>
+<li>比べる相手が数値なら、式の引用符を手で外す。</li>
 </ol>
-<div class="note">数字はそのまま、文字は引用符つきで出ます。</div>
+<div class="note">ツールは、対応表の左側の値も、右側の値も、引用符で囲みます。つまり、文字として比べます。</div>
+<h2>例</h2>
+<ul>
+<li>ツールの式：=SWITCH(A2,"1","月","2","火")</li>
+<li>数値で比べる式：=SWITCH(A2,1,"月",2,"火")</li>
+</ul>
+<p>A2が数値の1なら、後者が一致します。</p>
+<h2>文字と数値の違い</h2>
+<ul>
+<li>文字の「1」と、数値の1は、別の値</li>
+<li>A2が文字なら、前者が一致</li>
+<li>A2が数値なら、後者が一致</li>
+</ul>
+<h2>スプレッドシートでは</h2>
+<p>Googleスプレッドシートでは、文字の「1」と数値の1が、一致する場合があります。ただし、Excelは厳密に区別します。迷ったら、数値は引用符なしに直します。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>区分の番号を、名前に変える</li>
+<li>年齢の区分を、言葉に変える</li>
+</ul>
+<h2>範囲で判定したい場合</h2>
+<p>SWITCHは、完全一致のみです。「60点以上なら合格」のような範囲の判定には、IFやIFSを使います。</p>
+<ul>
+<li>例：=IFS(A2&gt;=80,"優",A2&gt;=60,"良",TRUE,"可")</li>
+</ul>
+<h2>例</h2>
+<p>区分番号を名前に変える式で、一致しなかった。ツールの式が文字として比べていたが、元のセルは数値だった。引用符を外すと、一致した。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>0落ち</b>：先頭の0がある番号は、文字として扱うこと。</li>
+<li><b>小数</b>：小数の比較は、誤差に注意。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>数値の判定が多いときは？</h3>
+<p>引用符を一括で外すか、VLOOKUPやXLOOKUPで引く方法が楽です。</p>
+<h2>まとめ</h2>
+<p>数値で比べるなら、式の引用符を外しましょう。</p>
 <a class="cta" href="/switch-formula-builder.html">SWITCHの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/index-match-builder.html">INDEX・MATCHの式を作る</a>：INDEX・MATCHの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +255,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Matching Numbers</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter numbers</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/switch-formula-builder.html">SWITCH Builder</a> you can match numbers too, such as 1=Low and 2=Mid.</p>
+<p>When mapping values are numbers, it's unclear whether to compare as text or as numbers. <a href="/switch-formula-builder.html">Build a SWITCH Formula</a> treats mapping values as text.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter numbers</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>Enter the mapping like "1=Mon,2=Tue".</li>
+<li>Copy the formula and paste.</li>
+<li>If the cell being compared is numeric, remove the quotes in the formula by hand.</li>
 </ol>
-<div class="note">Numbers stay as they are and text gets quotation marks.</div>
+<div class="note">The tool wraps both the left and right values of the mapping in quotes. That is, it compares as text.</div>
+<h2>Example</h2>
+<ul>
+<li>Tool's formula: =SWITCH(A2,"1","Mon","2","Tue")</li>
+<li>Numeric comparison: =SWITCH(A2,1,"Mon",2,"Tue")</li>
+</ul>
+<p>If A2 is the number 1, the latter matches.</p>
+<h2>Text vs number</h2>
+<ul>
+<li>The text "1" and the number 1 are different values</li>
+<li>If A2 is text, the former matches</li>
+<li>If A2 is a number, the latter matches</li>
+</ul>
+<h2>In sheets</h2>
+<p>In Google Sheets, the text "1" and the number 1 may match. Excel distinguishes strictly. When unsure, remove the quotes for numbers.</p>
+<h2>Good for</h2>
+<ul>
+<li>Turning category numbers into names</li>
+<li>Turning age brackets into words</li>
+</ul>
+<h2>When you need range tests</h2>
+<p>SWITCH is exact-match only. For range tests like "60 or more passes", use IF or IFS.</p>
+<ul>
+<li>Example: =IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<h2>Example</h2>
+<p>A category-number formula didn't match. The tool compared as text, but the source cell was numeric. Removing the quotes made it match.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Leading zeros</b>: treat numbers with leading zeros as text.</li>
+<li><b>Decimals</b>: beware of rounding error in decimal comparisons.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if there are many numeric tests?</h3>
+<p>Removing quotes in bulk, or using VLOOKUP/XLOOKUP, is easier.</p>
+<h2>Summary</h2>
+<p>For numeric comparison, remove the quotes in the formula.</p>
 <a class="cta" href="/switch-formula-builder.html">Use "Build a SWITCH Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/index-match-builder.html">Build an INDEX and MATCH Formula</a>: Build INDEX and MATCH formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
@@ -235,6 +307,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/guides.html">See all guides</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a></footer>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

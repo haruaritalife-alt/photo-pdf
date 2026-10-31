@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Date Series", "description": "About date series.", "url": "https://pdfmikata.com/en/sequence-formula-builder-dates.html", "mainEntityOfPage": "https://pdfmikata.com/en/sequence-formula-builder-dates.html", "inLanguage": "en", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Date Series", "description": "About date series.", "url": "https://pdfmikata.com/en/sequence-formula-builder-dates.html", "mainEntityOfPage": "https://pdfmikata.com/en/sequence-formula-builder-dates.html", "inLanguage": "en", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/en/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Date Series</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose DATES</li><li>Enter the start date</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/sequence-formula-builder.html">SEQUENCE Builder</a> you can build a formula that lists dates daily or weekly.</p>
+<p>You want a month of dates lined up vertically. Handy for daily logs and schedules. "DATES" in <a href="/en/sequence-formula-builder.html">Build a SEQUENCE Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose DATES</li>
-<li>Enter the start date</li>
-<li>Copy it</li>
+<li>Choose "DATES" in "Type".</li>
+<li>In "Start value", enter the first date as "2026-10-01".</li>
+<li>In "Count", enter the number of days.</li>
+<li>In "Step", enter 1 (daily).</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">Enter the start date like 2026-10-01.</div>
+<div class="note">A start value not in year-month-day form gives "The input is not valid."</div>
+<h2>Example</h2>
+<p>31 days from October 1, 2026:</p>
+<ul>
+<li>=SEQUENCE(31,1,DATE(2026,10,1),1)</li>
+</ul>
+<h2>The old-Excel formula</h2>
+<ul>
+<li>=DATE(2026,10,1)+(ROW(A1)-1)*1</li>
+</ul>
+<p>Copied down, the date increases by one day each row.</p>
+<h2>Display format</h2>
+<p>If results show as numbers (like 46296), set the cell format to "Date".</p>
+<h2>Changing the step</h2>
+<ul>
+<li>1: daily</li>
+<li>7: weekly (same weekday)</li>
+<li>14: every other week</li>
+</ul>
+<p>For month-by-month sequences, EDATE suits better.</p>
+<h2>Good for</h2>
+<ul>
+<li>Daily log sheets</li>
+<li>A list of week-start dates for a year</li>
+<li>Source data for a calendar</li>
+</ul>
+<h2>Weekdays only</h2>
+<p>Combine with WORKDAY. This site's "date offset formula" tool can help.</p>
+<h2>Example</h2>
+<p>Wanted a daily weight log for October. DATES produced 31 days of dates and I entered weights beside them.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Shown as numbers</b>: set the display format to date.</li>
+<li><b>Nonexistent dates</b>: Feb 30 and the like can't be entered.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want dates auto-generated to month end</h3>
+<p>Get the end date with EOMONTH and the count with DAYS.</p>
+<h2>Summary</h2>
+<p>A start date and a count make a list of dates.</p>
 <a class="cta" href="/en/sequence-formula-builder.html">Use "Build a SEQUENCE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li><li><a href="/en/arrayformula-builder.html">Build an ARRAYFORMULA</a>: Build ARRAYFORMULA formulas.</li><li><a href="/en/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
@@ -217,6 +258,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/en/guides.html">See all guides</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="en">About / Contact (Japanese)</span></a><a href="/en/privacy.html"><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="en">Updates on X</span></a></footer>
+<footer><a href="/about.html"><span lang="en">About / Contact (Japanese)</span></a><a href="/en/privacy.html"><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="en">Updates on X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

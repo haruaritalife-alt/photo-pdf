@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "การใส่เลขลำดับจากหมายเลขแถว", "description": "เกี่ยวกับหมายเลขแถว", "url": "https://pdfmikata.com/th/sequence-formula-builder-rownum.html", "mainEntityOfPage": "https://pdfmikata.com/th/sequence-formula-builder-rownum.html", "inLanguage": "th", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "การใส่เลขลำดับจากหมายเลขแถว", "description": "เกี่ยวกับหมายเลขแถว", "url": "https://pdfmikata.com/th/sequence-formula-builder-rownum.html", "mainEntityOfPage": "https://pdfmikata.com/th/sequence-formula-builder-rownum.html", "inLanguage": "th", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>การใส่เลขลำดับจากหมายเลขแถว</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก ROWNUM</li><li>กรอกแถวหัวตาราง</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/sequence-formula-builder.html">ตัวสร้างสูตร SEQUENCE</a> คุณสร้างสูตรที่หมายเลขจะนับใหม่เมื่อเพิ่มหรือลบแถวได้</p>
+<p lang="en">After numbering a list, adding or deleting rows can leave gaps in the numbers. Building sequence numbers from row numbers renumbers automatically when rows change. "ROWNUM" in <a href="/th/sequence-formula-builder.html">Build a SEQUENCE Formula</a> builds it.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือก ROWNUM</li>
-<li>กรอกแถวหัวตาราง</li>
-<li>คัดลอก</li>
+<li lang="en">Choose "ROWNUM" in "Type".</li>
+<li lang="en">In "Header row number (for ROWNUM, such as 1)", enter the header row's number.</li>
+<li lang="en">Copy the formula, paste it in the first data row of the number column, and copy down.</li>
 </ol>
-<div class="note">กรอกหมายเลขแถวหัวตาราง</div>
+<div class="note" lang="en">A header row number that isn't an integer of 1 or more gives "The input is not valid."</div>
+<h2>ตัวอย่าง</h2>
+<p lang="en">With the header in row 1, put this in row 2:</p>
+<ul>
+<li lang="en">=ROW()-1</li>
+</ul>
+<p lang="en">Row 2 gets 1, row 3 gets 2, and so on.</p>
+<h2 lang="en">The other formula</h2>
+<ul>
+<li lang="en">=ROW()-ROW($A$1)</li>
+</ul>
+<p lang="en">It's anchored to the header cell, so inserting rows above the header doesn't shift it.</p>
+<h2 lang="en">When you delete rows</h2>
+<p lang="en">Hand-typed numbers leave gaps when rows are deleted. With ROW, numbers close up immediately after deletion.</p>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Lists where rows are added and removed often</li>
+<li lang="en">Showing table order rather than the original pre-filter numbers</li>
+<li lang="en">Shared sheets where people add rows</li>
+</ul>
+<h2 lang="en">When filtered</h2>
+<p lang="en">ROW returns the original row position, so hidden rows make numbers look skipped. For consecutive numbers, SUBTOTAL suits better.</p>
+<ul>
+<li lang="en">Example: =SUBTOTAL(103,$B$2:B2)</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Added a number column to a shared list. Whether people added or deleted rows, numbers closed up automatically and no fixing was needed.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Headers spanning 2+ rows</b>: use the header's last row as the anchor.</li>
+<li lang="en"><b>Inserting rows above</b>: the ROW()-1 form shifts. Use the ROW($A$1) form.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the sequence to start at 0</h3>
+<p lang="en">Subtract one more at the end of the formula.</p>
+<h2>สรุป</h2>
+<p lang="en">For lists with row changes, ROW-based numbering suits.</p>
 <a class="cta" href="/th/sequence-formula-builder.html">ใช้ “สร้างสูตร SEQUENCE” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/date-offset-formula-builder.html">สร้างสูตรเลื่อนวันที่</a>: สร้างสูตรเลื่อนวันที่</li><li><a href="/th/arrayformula-builder.html">สร้าง ARRAYFORMULA</a>: สร้างสูตร ARRAYFORMULA</li><li><a href="/th/rank-formula-builder.html">สร้างสูตรอันดับ</a>: สร้างสูตรอันดับ</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>
@@ -217,6 +253,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/th/guides.html">ดูคู่มือทั้งหมด</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="th">เกี่ยวกับ / ติดต่อ (ภาษาญี่ปุ่น)</span></a><a href="/th/privacy.html"><span lang="th">นโยบายความเป็นส่วนตัว</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="th">อัปเดตบน X</span></a></footer>
+<footer><a href="/about.html"><span lang="th">เกี่ยวกับ / ติดต่อ (ภาษาญี่ปุ่น)</span></a><a href="/th/privacy.html"><span lang="th">นโยบายความเป็นส่วนตัว</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="th">อัปเดตบน X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

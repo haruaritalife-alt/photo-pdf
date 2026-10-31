@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "जब यह काम न करे तो क्या करें", "description": "प्रोसेसिंग विफल होने के कारण और समाधान।", "url": "https://pdfmikata.com/hi/sequence-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/hi/sequence-formula-builder-trouble.html", "inLanguage": "hi", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/hi/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/hi/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "जब यह काम न करे तो क्या करें", "description": "प्रोसेसिंग विफल होने के कारण और समाधान।", "url": "https://pdfmikata.com/hi/sequence-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/hi/sequence-formula-builder-trouble.html", "inLanguage": "hi", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/hi/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/hi/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>जब यह काम न करे तो क्या करें</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>फ़ाइल जाँचें</li><li>आकार जाँचें</li><li>दूसरा डिवाइस आज़माएँ</li></ul></div>
-<p>यदि <a href="/hi/sequence-formula-builder.html">SEQUENCE सूत्र बनाने वाला टूल</a> काम न करे, तो नीचे दी बातें जाँचें।</p>
-<h2>चरण</h2>
+<p lang="en">You pasted the formula but the sequence doesn't appear or looks wrong. Here are common troubles with <a href="/hi/sequence-formula-builder.html">Build a SEQUENCE Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the count isn't an integer of 1 or more (up to 100,000); the start or step isn't a number; for DATES the start isn't in the "2026-10-01" form; for ROWNUM the header row number isn't an integer of 1 or more.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF! (Google) / #SPILL! (Excel)</b>: values sit in the spill range.</li>
+<li lang="en"><b>#NAME?</b>: old Excel can't use SEQUENCE. Use the second formula.</li>
+<li lang="en"><b>Dates appear as numbers</b>: set the display format to "Date".</li>
+<li lang="en"><b>Numbers skip</b>: rows were inserted or deleted with a ROW-based formula.</li>
+<li lang="en"><b>Only one appears</b>: the ROW formula, meant to be copied down, was pasted into one cell.</li>
+<li lang="en"><b>REPEAT stops partway</b>: the row range isn't enough.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>फ़ाइल जाँचें</li>
-<li>आकार जाँचें</li>
-<li>दूसरा डिवाइस आज़माएँ</li>
+<li lang="en">Check the spill cells are empty.</li>
+<li lang="en">Check your Excel version.</li>
+<li lang="en">If the first formula fails, try the second.</li>
 </ol>
-<div class="note">यदि कोई सूत्र न दिखे, तो जाँचें कि शुरुआत और संख्या अंक हैं। DATES के लिए 2026-10-01 रूप का उपयोग करें।</div>
+<div class="note" lang="en">The second formula (ROW-based) is meant to be copied down. The first goes into a single cell.</div>
+<h2>कौन-सा इस्तेमाल करें</h2>
+<ul>
+<li lang="en">First: paste in one cell and it spreads down (SEQUENCE)</li>
+<li lang="en">Second: copy down row by row (ROW)</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">SEQUENCE gave #NAME?. The Excel was old. Switching to the second formula and copying down lined up the numbers.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Count too large</b>: limited to 100,000.</li>
+<li lang="en"><b>Decimal step</b>: may show rounding error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to keep the sequence as values</h3>
+<p lang="en">Copy, then paste values only.</p>
+<h2>सारांश</h2>
+<p lang="en">Check the spill range, Excel version and which formula to use.</p>
 <a class="cta" href="/hi/sequence-formula-builder.html">“SEQUENCE सूत्र बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/date-offset-formula-builder.html">तारीख खिसकाने का सूत्र बनाएँ</a>: तारीख खिसकाने वाले सूत्र बनाएँ।</li><li><a href="/hi/arrayformula-builder.html">ARRAYFORMULA बनाएँ</a>: ARRAYFORMULA सूत्र बनाएँ।</li><li><a href="/hi/rank-formula-builder.html">रैंक का सूत्र बनाएँ</a>: रैंक के सूत्र बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>
@@ -217,6 +247,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/hi/guides.html">सभी गाइड देखें</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="hi">परिचय / संपर्क (जापानी)</span></a><a href="/hi/privacy.html"><span lang="hi">गोपनीयता नीति</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="hi">X पर अपडेट</span></a></footer>
+<footer><a href="/about.html"><span lang="hi">परिचय / संपर्क (जापानी)</span></a><a href="/hi/privacy.html"><span lang="hi">गोपनीयता नीति</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="hi">X पर अपडेट</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "前几名之和", "description": "关于前几名之和。", "url": "https://pdfmikata.com/zh/large-small-formula-builder-topsum.html", "mainEntityOfPage": "https://pdfmikata.com/zh/large-small-formula-builder-topsum.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "前几名之和", "description": "关于前几名之和。", "url": "https://pdfmikata.com/zh/large-small-formula-builder-topsum.html", "mainEntityOfPage": "https://pdfmikata.com/zh/large-small-formula-builder-topsum.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>前几名之和</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>选择 TOPSUM</li><li>输入个数</li><li>复制</li></ul></div>
-<p>在<a href="/zh/large-small-formula-builder.html">LARGE SMALL 公式生成器</a>中可以生成把前几个最大值相加的公式。</p>
+<p lang="en">"The sum of the top 3", "sales of the top 5 companies". The sum of the top N comes from combining SUM and LARGE. "TOPSUM" in <a href="/zh/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a> builds it.</p>
 <h2>步骤</h2>
 <ol>
-<li>选择 TOPSUM</li>
-<li>输入个数</li>
-<li>复制</li>
+<li lang="en">Choose "TOPSUM" in "Type".</li>
+<li lang="en">Enter the "Numeric range".</li>
+<li lang="en">In "Which one (for LARGE, SMALL, TOPSUM)", enter the top count.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">它把 1、2、3 这样的名次列表传给 LARGE，再把结果相加。</div>
+<div class="note" lang="en">The count is 1 to 20. 21 or more gives "The input is not valid."</div>
+<h2>示例</h2>
+<p lang="en">The sum of the top 3:</p>
+<ul>
+<li lang="en">=SUM(LARGE(B2:B100,{1,2,3}))</li>
+</ul>
+<p lang="en">The {1,2,3} part pulls out the 1st, 2nd and 3rd together.</p>
+<h2 lang="en">Share of the whole</h2>
+<p lang="en">To see what share the top 3 make, divide by the total.</p>
+<ul>
+<li lang="en">Example: =SUM(LARGE(B2:B100,{1,2,3}))/SUM(B2:B100)</li>
+</ul>
+<p lang="en">Showing it as a percentage reads better.</p>
+<h2>适合</h2>
+<ul>
+<li lang="en">Total sales of the top 5 companies</li>
+<li lang="en">Total points of the top 3 people</li>
+<li lang="en">Knowing concentration in the top (sales skew)</li>
+</ul>
+<h2 lang="en">Sum of the bottom</h2>
+<p lang="en">For the bottom sum, change LARGE to SMALL. Edit by hand after pasting.</p>
+<ul>
+<li lang="en">Example: =SUM(SMALL(B2:B100,{1,2,3}))</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Wanted to know what share the top 5 customers make of total sales. Dividing the TOPSUM formula by the grand total showed the concentration.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Older Excel</b>: array constants work as is, but mind how the formula is entered.</li>
+<li lang="en"><b>Count exceeds the number of values</b>: gives #NUM!.</li>
+<li lang="en"><b>21 or more</b>: the tool can't build it. Widen the array by hand or use SUMPRODUCT.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if the count is large?</h3>
+<p lang="en">SUMIF can total everything at or above a threshold.</p>
+<ul>
+<li lang="en">Example: =SUMIF(B2:B100,"&gt;="&amp;LARGE(B2:B100,10))</li>
+</ul>
+<h2>小结</h2>
+<p lang="en">The top-N total combines SUM and LARGE.</p>
 <a class="cta" href="/zh/large-small-formula-builder.html">使用“生成 LARGE 和 SMALL 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/rank-formula-builder.html">生成排名公式</a>: 生成排名公式。</li><li><a href="/zh/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li><li><a href="/zh/sumproduct-formula-builder.html">生成 SUMPRODUCT 公式</a>: 生成 SUMPRODUCT 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>
@@ -217,6 +257,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/zh/guides.html">查看全部教程</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="zh-Hans">关于 / 联系（日文）</span></a><a href="/zh/privacy.html"><span lang="zh-Hans">隐私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hans">在 X 上查看更新</span></a></footer>
+<footer><a href="/about.html"><span lang="zh-Hans">关于 / 联系（日文）</span></a><a href="/zh/privacy.html"><span lang="zh-Hans">隐私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hans">在 X 上查看更新</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

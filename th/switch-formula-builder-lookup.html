@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "การใช้ใน Excel รุ่นเก่า", "description": "เกี่ยวกับ Excel รุ่นเก่า", "url": "https://pdfmikata.com/th/switch-formula-builder-lookup.html", "mainEntityOfPage": "https://pdfmikata.com/th/switch-formula-builder-lookup.html", "inLanguage": "th", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "การใช้ใน Excel รุ่นเก่า", "description": "เกี่ยวกับ Excel รุ่นเก่า", "url": "https://pdfmikata.com/th/switch-formula-builder-lookup.html", "mainEntityOfPage": "https://pdfmikata.com/th/switch-formula-builder-lookup.html", "inLanguage": "th", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/th/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>การใช้ใน Excel รุ่นเก่า</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก SWITCH</li><li>กรอกคู่ค่า</li><li>ใช้สูตรที่สอง</li></ul></div>
-<p><a href="/th/switch-formula-builder.html">ตัวสร้างสูตร SWITCH</a> แสดงสูตรสำหรับ Excel รุ่นเก่าที่ไม่มี SWITCH ด้วย</p>
-<h2>ขั้นตอน</h2>
+<p lang="en">SWITCH is a function from Excel 2019 onward. Older Excel gives #NAME?. <a href="/th/switch-formula-builder.html">Build a SWITCH Formula</a> also builds a formula that works in any Excel.</p>
+<h2 lang="en">The second formula</h2>
+<ul>
+<li lang="en">SWITCH formula: =SWITCH(A2,"A","apple","B","orange","Unknown")</li>
+<li lang="en">Works in any Excel: =IFERROR(INDEX({"apple","orange"},MATCH(A2,{"A","B"},0)),"Unknown")</li>
+</ul>
+<p lang="en">"Copy the second" copies the latter.</p>
+<div class="note" lang="en">The second formula finds the position with MATCH and pulls the result with INDEX. It works in old versions too.</div>
+<h2>วิธีการทำงาน</h2>
 <ol>
-<li>เลือก SWITCH</li>
-<li>กรอกคู่ค่า</li>
-<li>ใช้สูตรที่สอง</li>
+<li lang="en">MATCH finds which of "A", "B" A2 is</li>
+<li lang="en">INDEX pulls the result at the same position</li>
+<li lang="en">If nothing matches, IFERROR gives the default</li>
 </ol>
-<div class="note">รวม INDEX กับ MATCH</div>
+<h2 lang="en">Supported versions</h2>
+<ul>
+<li lang="en">SWITCH: Google Sheets, Excel 2019 and later, 365</li>
+<li lang="en">INDEX/MATCH formula: nearly all versions</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Handing the file to someone using old Excel</li>
+<li lang="en">When the company environment is old</li>
+</ul>
+<h2 lang="en">Putting the mapping in a table</h2>
+<p lang="en">For many mappings, make a table on another sheet and look it up with VLOOKUP or XLOOKUP.</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">In the recipient's Excel, SWITCH gave #NAME?. Switching to the second formula made it work in their environment too.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Array constant syntax</b>: separators may differ by region.</li>
+<li lang="en"><b>Case</b>: MATCH doesn't distinguish.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Which should I use?</h3>
+<p lang="en">If only you use it, SWITCH. If handing it to someone, the second formula is safer.</p>
+<h2>สรุป</h2>
+<p lang="en">When you don't know the recipient's environment, use the second formula.</p>
 <a class="cta" href="/th/switch-formula-builder.html">ใช้ “สร้างสูตร SWITCH” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/excel-if-builder.html">สร้างสูตร IF</a>: สร้างสูตร IF</li><li><a href="/th/vlookup-formula-builder.html">สร้างสูตร VLOOKUP หรือ XLOOKUP</a>: สร้างสูตร VLOOKUP และ XLOOKUP</li><li><a href="/th/index-match-builder.html">สร้างสูตร INDEX และ MATCH</a>: สร้างสูตร INDEX และ MATCH</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>
@@ -217,6 +247,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/th/guides.html">ดูคู่มือทั้งหมด</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="th">เกี่ยวกับ / ติดต่อ (ภาษาญี่ปุ่น)</span></a><a href="/th/privacy.html"><span lang="th">นโยบายความเป็นส่วนตัว</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="th">อัปเดตบน X</span></a></footer>
+<footer><a href="/about.html"><span lang="th">เกี่ยวกับ / ติดต่อ (ภาษาญี่ปุ่น)</span></a><a href="/th/privacy.html"><span lang="th">นโยบายความเป็นส่วนตัว</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="th">อัปเดตบน X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

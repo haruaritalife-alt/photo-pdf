@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "大きい順に並べる", "description": "降順を解説します。", "url": "https://pdfmikata.com/sort-formula-builder-desc.html", "mainEntityOfPage": "https://pdfmikata.com/sort-formula-builder-desc.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "大きい順に並べる", "description": "降順を解説します。", "url": "https://pdfmikata.com/sort-formula-builder-desc.html", "mainEntityOfPage": "https://pdfmikata.com/sort-formula-builder-desc.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -200,14 +200,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>大きい順に並べる</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>DESCを選ぶ</li><li>範囲を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/sort-formula-builder.html">並べ替え式の作成</a> では、大きい順（降順）に並べる式も作れます。</p>
+<p>売上の多い順、点数の高い順など、大きい順に並べたいことは多いものです。<a href="/sort-formula-builder.html">並べ替えの式を作る</a> の「順番」で、降順を選びます。</p>
 <h2>手順</h2>
 <ol>
-<li>DESCを選ぶ</li>
-<li>範囲を入れる</li>
-<li>コピーする</li>
+<li>「順番」で、降順（大きい順）を選ぶ。</li>
+<li>範囲と列の番号を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">ASCは小さい順、DESCは大きい順です。</div>
+<div class="note">昇順は「小さい順」、降順は「大きい順」です。文字は、昇順が五十音・ABC順になります。</div>
+<h2>例</h2>
+<p>A2:C100を、3列目の大きい順に並べる場合です。</p>
+<ul>
+<li>Google：=SORT(A2:C100,3,FALSE)</li>
+<li>Excel：=SORT(A2:C100,3,-1)</li>
+</ul>
+<h2>GoogleとExcelの違い</h2>
+<ul>
+<li>Google：第3引数は TRUE（昇順）・FALSE（降順）</li>
+<li>Excel：第3引数は 1（昇順）・-1（降順）</li>
+</ul>
+<p>ツールが、それぞれに合わせた式を作ります。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>売上ランキング</li>
+<li>成績の上位順</li>
+<li>在庫が多い順、少ない順</li>
+</ul>
+<h2>文字の並び順</h2>
+<p>文字を並べると、文字コードの順になります。漢字は、読みの順にならないことがあります。読み順で並べたいときは、読み仮名の列を基準にします。</p>
+<h2>例</h2>
+<p>商品別の売上表を、売上の多い順に並べたかった。金額の列（3列目）を基準に降順にして、上から売れ筋が並んだ。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>数字が文字列</b>：文字列の数字は、数値とは別の並びになる。数値に直す。</li>
+<li><b>空のセル</b>：昇順では末尾、降順では先頭近くに来る場合がある。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>複数の列で並べたい</h3>
+<p>「第1基準、第2基準」と、引数を増やします。ツールの式を貼ったあと、手で足します。</p>
+<ul>
+<li>例：=SORT(A2:C100,3,FALSE,1,TRUE)</li>
+</ul>
+<h2>まとめ</h2>
+<p>大きい順は、Googleは FALSE、Excelは -1 です。</p>
 <a class="cta" href="/sort-formula-builder.html">並べ替えの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/query-formula-builder.html">QUERYの式を作る</a>：QUERY関数の式を作ります。</li><li><a href="/unique-formula-builder.html">UNIQUEの式を作る</a>：重複を扱う式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +254,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Sorting Largest First</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose DESC</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/sort-formula-builder.html">SORT Builder</a> you can also build a formula that sorts largest first.</p>
+<p>Often you want largest first, such as highest sales or highest scores. Choose descending in "Order" in <a href="/sort-formula-builder.html">Build a SORT Formula</a>.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose DESC</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>In "Order", choose descending (largest first).</li>
+<li>Enter the range and column number.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">ASC is smallest first and DESC is largest first.</div>
+<div class="note">Ascending is smallest first, descending is largest first. For text, ascending is alphabetical or kana order.</div>
+<h2>Example</h2>
+<p>Sorting A2:C100 by column 3, largest first:</p>
+<ul>
+<li>Google: =SORT(A2:C100,3,FALSE)</li>
+<li>Excel: =SORT(A2:C100,3,-1)</li>
+</ul>
+<h2>Google vs Excel</h2>
+<ul>
+<li>Google: the third argument is TRUE (ascending) or FALSE (descending)</li>
+<li>Excel: the third argument is 1 (ascending) or -1 (descending)</li>
+</ul>
+<p>The tool builds each to match.</p>
+<h2>Good for</h2>
+<ul>
+<li>Sales rankings</li>
+<li>Top-score order</li>
+<li>Most or least stock first</li>
+</ul>
+<h2>Text order</h2>
+<p>Text sorts by character code. Kanji may not be in reading order. To sort by reading, use a reading column as the key.</p>
+<h2>Example</h2>
+<p>Wanted a product sales table sorted by sales descending. Using the amount column (column 3) as the key in descending order put best-sellers on top.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Numbers as text</b>: text numbers sort differently from numbers. Convert them.</li>
+<li><b>Blank cells</b>: may land last in ascending and near the top in descending.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to sort by several columns</h3>
+<p>Add arguments for a second key. Add by hand after pasting.</p>
+<ul>
+<li>Example: =SORT(A2:C100,3,FALSE,1,TRUE)</li>
+</ul>
+<h2>Summary</h2>
+<p>For largest first, Google uses FALSE and Excel uses -1.</p>
 <a class="cta" href="/sort-formula-builder.html">Use "Build a SORT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/query-formula-builder.html">Build a QUERY Formula</a>: Build a QUERY formula.</li><li><a href="/unique-formula-builder.html">Build a UNIQUE Formula</a>: Build duplicate-handling formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
@@ -235,6 +305,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/guides.html">See all guides</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a></footer>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>
