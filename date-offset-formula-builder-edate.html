@@ -200,14 +200,64 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>○か月後を求める</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>EDATEを選ぶ</li><li>月数を入れる</li><li>結果を見る</li></ul></div>
-<p><a href="/date-offset-formula-builder.html">日付式の作成</a> では、EDATEで○か月後の同じ日を求められます。</p>
+<p>契約の更新日や、保証の期限。「3か月後の同じ日」を求めるのが、EDATE関数です。<a href="/date-offset-formula-builder.html">日付の足し引きの式を作る</a> で「EDATE」を選ぶと、式が作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>EDATEを選ぶ</li>
-<li>月数を入れる</li>
-<li>結果を見る</li>
+<li>「方法」で「EDATE」を選ぶ。</li>
+<li>「日付のセル」を入れる。</li>
+<li>「足す数」に、月数を入れる（引くときはマイナス）。</li>
+<li>「試しの日付」で、結果を確かめる。</li>
 </ol>
-<div class="note">31日の月末は、月に合わせて調整されます。</div>
+<div class="note">日数ではなく、月数を入れます。</div>
+<h2>例</h2>
+<p>A2の日付の、3か月後を求める場合です。</p>
+<ul>
+<li>=EDATE(A2,3)</li>
+<li>試し：2026-10-25 → 2027-01-25</li>
+</ul>
+<h2>月末を超える場合</h2>
+<p>同じ日が、移動先の月にない場合は、その月の末日になります。</p>
+<ul>
+<li>1月31日の1か月後 → 2月28日（うるう年は29日）</li>
+<li>5月31日の1か月後 → 6月30日</li>
+</ul>
+<p>試しの日付に 2026-01-31 を入れ、足す数を 1 にすると、2026-02-28 と表示されます。</p>
+<h2>前の日付を求める</h2>
+<p>足す数にマイナスを入れます。</p>
+<ul>
+<li>3か月前：=EDATE(A2,-3)</li>
+<li>1年前：=EDATE(A2,-12)</li>
+</ul>
+<h2>年単位でずらす</h2>
+<p>12か月が1年です。</p>
+<ul>
+<li>1年後：=EDATE(A2,12)</li>
+<li>2年後：=EDATE(A2,24)</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>契約の更新日を、毎年自動で求めたい</li>
+<li>保証期間の満了日を、求めたい</li>
+<li>3か月ごとの定期点検の日を、並べたい</li>
+</ul>
+<h2>例</h2>
+<p>契約日から1年後の更新日を、全員分求めたかった。契約日の列から、=EDATE(A2,12) を下までコピーして、更新日が並んだ。</p>
+<h2>満了日の注意</h2>
+<p>「1年間」の契約の満了日は、更新日の前日になることが多くあります。その場合は、1日引きます。</p>
+<ul>
+<li>例：=EDATE(A2,12)-1</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>結果が数字で出る</b>：セルの表示形式を、日付にする。</li>
+<li><b>月数が小数</b>：小数は切り捨てられる。</li>
+<li><b>文字列の日付</b>：日付として認識されないと、#VALUE!になる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>Excel 2003以前でも使えますか？</h3>
+<p>古いバージョンでは、アドインが必要でした。現在のExcelとGoogleスプレッドシートでは、そのまま使えます。</p>
+<h2>まとめ</h2>
+<p>○か月後の同じ日は、EDATE。月末を超えるときは、末日に調整されます。</p>
 <a class="cta" href="/date-offset-formula-builder.html">日付の足し引きの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/datedif-formula-builder.html">DATEDIFの式を作る</a>：DATEDIFの式を作ります。</li><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +269,64 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Finding a Date Months Later</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose EDATE</li><li>Enter the months</li><li>See the result</li></ul></div>
-<p>In <a href="/date-offset-formula-builder.html">Date Offset Builder</a>, EDATE gives the same day some months later.</p>
+<p>Contract renewal dates and warranty expiries. EDATE finds "the same day N months later". Choosing "EDATE" in <a href="/date-offset-formula-builder.html">Build a Date Offset Formula</a> builds the formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose EDATE</li>
-<li>Enter the months</li>
-<li>See the result</li>
+<li>Choose "EDATE" in "Method".</li>
+<li>Enter the "Date cell".</li>
+<li>Enter the number of months in "Amount to add" (negative to subtract).</li>
+<li>Check the result with a "Sample date".</li>
 </ol>
-<div class="note">A day like the 31st is adjusted to fit the month.</div>
+<div class="note">Enter months, not days.</div>
+<h2>Example</h2>
+<p>Finding 3 months after the date in A2.</p>
+<ul>
+<li>=EDATE(A2,3)</li>
+<li>Sample: 2026-10-25 → 2027-01-25</li>
+</ul>
+<h2>When it goes past month-end</h2>
+<p>If the same day doesn't exist in the target month, it becomes the month's last day.</p>
+<ul>
+<li>One month after January 31 → February 28 (29 in leap years)</li>
+<li>One month after May 31 → June 30</li>
+</ul>
+<p>Entering 2026-01-31 with amount 1 shows 2026-02-28.</p>
+<h2>Finding earlier dates</h2>
+<p>Enter a negative amount.</p>
+<ul>
+<li>3 months earlier: =EDATE(A2,-3)</li>
+<li>1 year earlier: =EDATE(A2,-12)</li>
+</ul>
+<h2>Shifting by years</h2>
+<p>12 months is one year.</p>
+<ul>
+<li>1 year later: =EDATE(A2,12)</li>
+<li>2 years later: =EDATE(A2,24)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Automatically finding yearly renewal dates</li>
+<li>Finding warranty expiry dates</li>
+<li>Lining up quarterly inspection dates</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted one-year renewal dates for everyone from their contract dates. Copying =EDATE(A2,12) down the contract-date column lined up renewal dates.</p>
+<h2>Note on expiry dates</h2>
+<p>For a one-year contract, the expiry is often the day before the renewal date. Subtract 1 then.</p>
+<ul>
+<li>Example: =EDATE(A2,12)-1</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Result appears as a number</b>: set the cell's format to Date.</li>
+<li><b>Fractional months</b>: decimals are truncated.</li>
+<li><b>Text dates</b>: if not recognised as dates, #VALUE! results.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Does it work in Excel 2003 or earlier?</h3>
+<p>Older versions needed an add-in. Current Excel and Google Sheets work as is.</p>
+<h2>Summary</h2>
+<p>EDATE for the same day N months later. Past month-end it adjusts to the last day.</p>
 <a class="cta" href="/date-offset-formula-builder.html">Use "Build a Date Offset Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Als er niets wordt gevonden</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Bouw de formule</li><li>Bekijk de tweede</li><li>Kopieer</li></ul></div>
-<p><a href="/nl/excel-left-mid-builder.html">LEFT/MID-maker</a> toont ook een formule met IFERROR die de oorspronkelijke tekst teruggeeft als er niets wordt gevonden.</p>
+<p lang="en">If the delimiter isn't found, FIND returns a #VALUE! error. The second formula of <a href="/nl/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> is wrapped in IFERROR to return the original text when not found.</p>
+<h2 lang="en">The two formulas</h2>
+<ul>
+<li lang="en">First: =LEFT(A2,FIND("@",A2)-1)</li>
+<li lang="en">Second: =IFERROR(LEFT(A2,FIND("@",A2)-1),A2)</li>
+</ul>
+<p lang="en">For cells without "@", the second returns the original text instead of an error.</p>
 <h2>Stappen</h2>
 <ol>
-<li>Bouw de formule</li>
-<li>Bekijk de tweede</li>
-<li>Kopieer</li>
+<li lang="en">Enter the cell, method and delimiter.</li>
+<li lang="en">Check the "formula returning the original if not found".</li>
+<li lang="en">Copy with "Copy the second".</li>
 </ol>
-<div class="note">Gebruik dit om #VALUE! te vermijden.</div>
+<div class="note" lang="en">If data without the delimiter is mixed in, the second formula is safer.</div>
+<h2 lang="en">Reading the sample result</h2>
+<p lang="en">Entering text without the delimiter in "Sample text" shows "Sample result: #VALUE!". It shows the first formula would error like this.</p>
+<h2 lang="en">If you want a different value than the original</h2>
+<p lang="en">Rewrite the final "A2" of the formula.</p>
+<ul>
+<li lang="en">Blank: IFERROR(…,"")</li>
+<li lang="en">Show "None": IFERROR(…,"None")</li>
+<li lang="en">The number 0: IFERROR(…,0)</li>
+</ul>
+<h2>Goed voor</h2>
+<ul>
+<li lang="en">Data mixing rows with and without the delimiter</li>
+<li lang="en">Avoiding errors partway down a list</li>
+<li lang="en">Avoiding errors when feeding other functions</li>
+</ul>
+<h2>Let op</h2>
+<p lang="en">IFERROR hides all errors, including causes other than the delimiter. Confirm the first formula works, then use the second, for safety.</p>
+<h2>Een andere manier</h2>
+<p lang="en">IF with ISNUMBER can check for the delimiter.</p>
+<ul>
+<li lang="en">Example: =IF(ISNUMBER(FIND("@",A2)),LEFT(A2,FIND("@",A2)-1),A2)</li>
+</ul>
+<h2>Voorbeeld</h2>
+<p lang="en">An email list had rows without "@". The first formula lined up #VALUE!, but the second returned the original text and tidied the list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Hiding too much</b>: wrong formulas show no error, so go unnoticed.</li>
+<li lang="en"><b>Not noticing the original is returned</b>: you may not tell whether the delimiter was absent or extraction worked.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I only want to check for the delimiter?</h3>
+<p lang="en">=ISNUMBER(FIND("@",A2)) is TRUE if the delimiter exists.</p>
+<h2>Samenvatting</h2>
+<p lang="en">When rows without the delimiter are mixed in, use the IFERROR-wrapped second formula.</p>
 <a class="cta" href="/nl/excel-left-mid-builder.html">Gebruik “Een LEFT-, MID- of RIGHT-formule maken” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/excel-text-clean.html">Overbodige spaties en onzichtbare tekens uit Excel-tekst verwijderen</a>: Verwijder overbodige spaties en onzichtbare tekens.</li><li><a href="/nl/text-to-columns.html">Tekst met een scheidingsteken in kolommen splitsen</a>: Splits tekst met een scheidingsteken in kolommen.</li><li><a href="/nl/excel-if-builder.html">Een IF-formule maken</a>: Maak een IF-formule.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>

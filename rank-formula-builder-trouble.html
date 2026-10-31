@@ -200,14 +200,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/rank-formula-builder.html">順位式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を作ったのに、結果がおかしい。<a href="/rank-formula-builder.html">順位の式を作る</a> で起こりやすい困りごとと対処法をまとめます。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：比べる範囲が「B2:B100」の形でない。順位をつけるセルが「B2」の形でない（LARGE・SMALL以外）。LARGE・SMALLで、何番目かが数字でない。</li>
+</ul>
+<h2>式を貼ったあとの困りごと</h2>
+<ul>
+<li><b>#N/A</b>：順位をつける値が、範囲の中にない。</li>
+<li><b>#NUM!</b>：LARGE・SMALLで、番号が個数を超えている。または、範囲が空。</li>
+<li><b>#VALUE!</b>：範囲の中の値が、比較できない。</li>
+<li><b>順位が全部1位</b>：範囲に$が付いておらず、下にコピーすると範囲がずれた。または、セルの指定が範囲全体になっている。</li>
+<li><b>順位が逆</b>：大きい順と小さい順の取り違え。</li>
+<li><b>順位が飛ぶ</b>：同点があり、RANKの仕様どおり。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>セルと範囲が、同じ列にあるか確かめる。</li>
+<li>範囲に$がついているか確かめる。</li>
+<li>試しの数値で、ツールの結果と、実際の結果を見比べる。</li>
 </ol>
-<div class="note">式が出ないときは、セルがB2、範囲がB2:B100のように書かれているか確かめます。</div>
+<div class="note">数字が左揃えで表示されていたら、文字列の可能性があります。RANKは文字列を無視します。</div>
+<h2>文字列の数字</h2>
+<p>文字列の数字は、RANKの対象になりません。結果が、期待より順位が上がったり、#N/Aになったりします。数値に直してから、順位をつけます。</p>
+<h2>空欄と0</h2>
+<p>空欄は無視されますが、0は数字として扱われます。未入力を0と入れていないか、確かめます。</p>
+<h2>範囲の途中にエラー</h2>
+<p>範囲に#N/Aなどのエラー値があると、RANKもエラーになります。IFERRORで整えるか、エラーの原因を直します。</p>
+<h2>例</h2>
+<p>下にコピーしたら、順位がおかしくなった。範囲を $B$2:$B$100 と固定せず、B2:B100 のままだったため。ツールで作った式は、自動で$が付いているので、貼り直すと直った。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>別のシートの範囲</b>：シート名を付ける。ツールで作った式の範囲の前に、書き足す。</li>
+<li><b>フィルターをかけたとき</b>：RANKは、隠れた行も含めて順位をつける。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>フィルターした行だけで、順位をつけられますか？</h3>
+<p>SUBTOTALやAGGREGATE関数との組み合わせが必要です。式が複雑になります。</p>
+<h2>まとめ</h2>
+<p>$・数値かどうか・同点の仕様。この3つを順に確かめましょう。</p>
 <a class="cta" href="/rank-formula-builder.html">順位の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/percent-calculator.html">割合・割引・増減（%）を計算する</a>：割合・割引・増減の%を、すぐに計算します。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +250,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/rank-formula-builder.html">Rank Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but the result is odd. Here are common troubles with <a href="/rank-formula-builder.html">Build a Rank Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the comparison range isn't in the "B2:B100" form; the cell to rank isn't in the "B2" form (except for LARGE/SMALL); or "which one" isn't a number for LARGE/SMALL.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>#N/A</b>: the value to rank isn't in the range.</li>
+<li><b>#NUM!</b>: for LARGE/SMALL, the number exceeds the count, or the range is empty.</li>
+<li><b>#VALUE!</b>: values in the range can't be compared.</li>
+<li><b>Every rank is 1st</b>: the range lacks $ and shifted on copying down, or the cell reference spans the whole range.</li>
+<li><b>Ranks are reversed</b>: descending and ascending mixed up.</li>
+<li><b>Ranks skip</b>: ties exist, as RANK is specified.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the cell and range are in the same column.</li>
+<li>Check the range has $.</li>
+<li>Compare the tool's result with the real result using sample numbers.</li>
 </ol>
-<div class="note">If no formula appears, check that the cell is written like B2 and the range like B2:B100.</div>
+<div class="note">If numbers display left-aligned, they may be text. RANK ignores text.</div>
+<h2>Numbers as text</h2>
+<p>Text numbers aren't ranked. Ranks can come out higher than expected, or #N/A. Convert to numbers before ranking.</p>
+<h2>Blanks and zeros</h2>
+<p>Blanks are ignored but 0 counts as a number. Check you haven't entered 0 for "not entered".</p>
+<h2>Errors inside the range</h2>
+<p>If the range holds error values like #N/A, RANK errors too. Tidy with IFERROR or fix the cause.</p>
+<h2>Example</h2>
+<p>Copying down scrambled the ranks because the range stayed B2:B100 rather than $B$2:$B$100. The tool's formula adds $ automatically, so pasting it again fixed it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Ranges on other sheets</b>: add the sheet name before the range in the built formula.</li>
+<li><b>When filtered</b>: RANK ranks including hidden rows.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I rank only the filtered rows?</h3>
+<p>You need to combine with SUBTOTAL or AGGREGATE. The formula gets complex.</p>
+<h2>Summary</h2>
+<p>$, numeric or not, tie specification. Check these three in order.</p>
 <a class="cta" href="/rank-formula-builder.html">Use "Build a Rank Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

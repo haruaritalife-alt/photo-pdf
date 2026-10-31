@@ -200,14 +200,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/date-offset-formula-builder.html">日付式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を作ったのに、結果がおかしい。<a href="/date-offset-formula-builder.html">日付の足し引きの式を作る</a> で起こりやすい困りごとと対処法をまとめます。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：日付のセルが「A2」の形でない。足す数が整数でない。祝日の範囲が「E2:E20」などの形でない。</li>
+</ul>
+<h2>式を貼ったあとの困りごと</h2>
+<ul>
+<li><b>結果が数字で出る</b>：セルの表示形式が「標準」になっている。「短い日付形式」にする。</li>
+<li><b>#VALUE!が出る</b>：日付のセルが、日付として認識されていない（文字列の日付）。</li>
+<li><b>#NUM!が出る</b>：結果の日付が、Excelの範囲を超えた。</li>
+<li><b>1日ずれる</b>：基準の日を含めるか、含めないかの違い。</li>
+<li><b>営業日が合わない</b>：祝日が入っていない。</li>
+<li><b>月末に調整された</b>：EDATEは、移動先に同じ日がないと、月末になる。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>日付のセルが、日付として認識されているか確かめる（右揃えなら日付）。</li>
+<li>結果のセルの表示形式を、日付にする。</li>
+<li>試しの日付で、ツールの結果と見比べる。</li>
 </ol>
-<div class="note">式が出ないときは、セルがA2のように書かれているか、足す数が整数になっているか確かめます。</div>
+<div class="note">日付が左揃えで表示されていたら、文字列の可能性があります。</div>
+<h2>文字列の日付を直す</h2>
+<ul>
+<li>DATEVALUE関数：=DATEVALUE("2026/10/25")</li>
+<li>セルを選んで、「データ」→「区切り位置」で、日付に変換する</li>
+<li>「2026.10.25」のようなドット区切りは、日付として認識されないことがある</li>
+</ul>
+<h2>試しの結果との違い</h2>
+<p>ツールの試しの結果は、次のとおりです。</p>
+<ul>
+<li>WORKDAY：土日のみ除外。祝日は考慮しない</li>
+<li>EDATE：月末への調整あり</li>
+</ul>
+<p>実際のセルで、祝日の範囲を指定した場合は、結果が変わります。</p>
+<h2>例</h2>
+<p>結果が「46323」と数字で表示された。セルの表示形式が「標準」だったため。形式を日付にすると、「2026/10/28」と表示された。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>祝日の範囲に文字が混ざる</b>：日付だけを入れる。</li>
+<li><b>古い日付</b>：1900年より前の日付は、扱えない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>祝日は、自動で入りますか？</h3>
+<p>自動では入りません。祝日の一覧を、自分で用意します。</p>
+<h2>まとめ</h2>
+<p>表示形式・日付の形・祝日。この3つを順に確かめましょう。</p>
 <a class="cta" href="/date-offset-formula-builder.html">日付の足し引きの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/datedif-formula-builder.html">DATEDIFの式を作る</a>：DATEDIFの式を作ります。</li><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +257,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/date-offset-formula-builder.html">Date Offset Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but the result is odd. Here are common troubles with <a href="/date-offset-formula-builder.html">Build a Date Offset Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the date cell isn't in the "A2" form, the amount isn't an integer, or the holiday range isn't in a form like "E2:E20".</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>The result appears as a number</b>: the cell's format is "General". Set it to "Short Date".</li>
+<li><b>#VALUE! appears</b>: the date cell isn't recognised as a date (a text date).</li>
+<li><b>#NUM! appears</b>: the resulting date is beyond Excel's range.</li>
+<li><b>Off by a day</b>: whether the base day is included or not.</li>
+<li><b>Business days don't match</b>: holidays aren't included.</li>
+<li><b>Adjusted to month-end</b>: EDATE moves to month-end if the target has no such day.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the date cell is recognised as a date (right-aligned means date).</li>
+<li>Set the result cell's format to Date.</li>
+<li>Compare with the tool's result using a sample date.</li>
 </ol>
-<div class="note">If no formula appears, check that the cell is written like A2 and the number is a whole number.</div>
+<div class="note">If dates display left-aligned, they may be text.</div>
+<h2>Fixing text dates</h2>
+<ul>
+<li>DATEVALUE function: =DATEVALUE("2026/10/25")</li>
+<li>Select cells and convert with "Data" → "Text to Columns"</li>
+<li>Dot-separated forms like "2026.10.25" may not be recognised as dates</li>
+</ul>
+<h2>Differences from the sample result</h2>
+<p>The tool's sample result:</p>
+<ul>
+<li>WORKDAY: weekends only; holidays aren't considered</li>
+<li>EDATE: includes month-end adjustment</li>
+</ul>
+<p>With a holiday range in actual cells, results change.</p>
+<h2>Example</h2>
+<p>The result showed as the number "46323" because the cell's format was "General". Setting it to a date format showed "2026/10/28".</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Text in the holiday range</b>: put only dates.</li>
+<li><b>Old dates</b>: dates before 1900 can't be handled.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Are holidays included automatically?</h3>
+<p>No. Prepare the holiday list yourself.</p>
+<h2>Summary</h2>
+<p>Display format, date form, holidays. Check these three in order.</p>
 <a class="cta" href="/date-offset-formula-builder.html">Use "Build a Date Offset Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

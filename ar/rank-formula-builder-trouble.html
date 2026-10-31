@@ -215,14 +215,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ماذا تفعل إذا لم يعمل</h1>
 <p class="meta">تاريخ النشر: 19 أكتوبر 2026 | آخر تحديث: 19 أكتوبر 2026 | <a href="/about.html">حول (باليابانية)</a></p>
 <div class="points"><b>النقاط الرئيسية</b><ul><li>افحص الملف</li><li>تحقق من الحجم</li><li>جرّب جهازًا آخر</li></ul></div>
-<p>إذا لم يعمل <a href="/ar/rank-formula-builder.html">منشئ الترتيب</a>، فتحقق مما يلي.</p>
-<h2>الخطوات</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/ar/rank-formula-builder.html">Build a Rank Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the comparison range isn't in the "B2:B100" form; the cell to rank isn't in the "B2" form (except for LARGE/SMALL); or "which one" isn't a number for LARGE/SMALL.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: the value to rank isn't in the range.</li>
+<li lang="en"><b>#NUM!</b>: for LARGE/SMALL, the number exceeds the count, or the range is empty.</li>
+<li lang="en"><b>#VALUE!</b>: values in the range can't be compared.</li>
+<li lang="en"><b>Every rank is 1st</b>: the range lacks $ and shifted on copying down, or the cell reference spans the whole range.</li>
+<li lang="en"><b>Ranks are reversed</b>: descending and ascending mixed up.</li>
+<li lang="en"><b>Ranks skip</b>: ties exist, as RANK is specified.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>افحص الملف</li>
-<li>تحقق من الحجم</li>
-<li>جرّب جهازًا آخر</li>
+<li lang="en">Check the cell and range are in the same column.</li>
+<li lang="en">Check the range has $.</li>
+<li lang="en">Compare the tool's result with the real result using sample numbers.</li>
 </ol>
-<div class="note">إذا لم تظهر أي صيغة، فتأكد من كتابة الخلية مثل B2 والنطاق مثل B2:B100.</div>
+<div class="note" lang="en">If numbers display left-aligned, they may be text. RANK ignores text.</div>
+<h2 lang="en">Numbers as text</h2>
+<p lang="en">Text numbers aren't ranked. Ranks can come out higher than expected, or #N/A. Convert to numbers before ranking.</p>
+<h2 lang="en">Blanks and zeros</h2>
+<p lang="en">Blanks are ignored but 0 counts as a number. Check you haven't entered 0 for "not entered".</p>
+<h2 lang="en">Errors inside the range</h2>
+<p lang="en">If the range holds error values like #N/A, RANK errors too. Tidy with IFERROR or fix the cause.</p>
+<h2>مثال</h2>
+<p lang="en">Copying down scrambled the ranks because the range stayed B2:B100 rather than $B$2:$B$100. The tool's formula adds $ automatically, so pasting it again fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Ranges on other sheets</b>: add the sheet name before the range in the built formula.</li>
+<li lang="en"><b>When filtered</b>: RANK ranks including hidden rows.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I rank only the filtered rows?</h3>
+<p lang="en">You need to combine with SUBTOTAL or AGGREGATE. The formula gets complex.</p>
+<h2>الخلاصة</h2>
+<p lang="en">$, numeric or not, tie specification. Check these three in order.</p>
 <a class="cta" href="/ar/rank-formula-builder.html">استخدم «إنشاء صيغة ترتيب» (مجانًا)</a>
 <h2>أدوات تتكامل مع هذه الأداة</h2><ul><li><a href="/ar/sumif-formula-builder.html">إنشاء صيغة SUMIF أو COUNTIF</a>: أنشئ صيغ SUMIF وCOUNTIF.</li><li><a href="/ar/percent-calculator.html">حساب النسب المئوية والخصومات والتغير بالنسبة المئوية</a>: احسب النسب المئوية والخصومات والتغير بالنسبة المئوية فورًا.</li><li><a href="/ar/excel-if-builder.html">إنشاء صيغة IF</a>: أنشئ صيغة IF.</li></ul>
 <div class="tip"><p>إذا أفادك هذا الدليل، فإن إكرامية صغيرة تعني لنا الكثير.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">أرسل إكرامية (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">أرسل هدية (قائمة أمنيات Amazon)</a></div>

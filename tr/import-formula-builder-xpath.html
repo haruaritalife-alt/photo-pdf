@@ -201,14 +201,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>XPath ile bir sayfanın bir kısmını içe aktarma</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>IMPORTXML seçin</li><li>XPath'i girin</li><li>Kopyalayın</li></ul></div>
-<p><a href="/tr/import-formula-builder.html">İçe Aktarma Oluşturucu</a>'da //title gibi bir XPath ile sayfanın bir kısmını içe aktarabilirsiniz.</p>
+<p lang="en">To import just part of a page, such as the title or a price, use IMPORTXML with XPath. "IMPORTXML" in <a href="/tr/import-formula-builder.html">Build an IMPORTHTML Formula</a> builds the formula.</p>
 <h2>Adımlar</h2>
 <ol>
-<li>IMPORTXML seçin</li>
-<li>XPath'i girin</li>
-<li>Kopyalayın</li>
+<li lang="en">Choose "IMPORTXML" in "Method".</li>
+<li lang="en">Enter the "URL of the page to import".</li>
+<li lang="en">In "XPath (for IMPORTXML)", enter the spec for the part you want.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">XPath, içe aktarmak istediğinize bağlıdır.</div>
+<div class="note" lang="en">An empty XPath gives "The input is not valid."</div>
+<h2 lang="en">XPath examples</h2>
+<ul>
+<li lang="en">//title: the page title</li>
+<li lang="en">//h2: all level-2 headings</li>
+<li lang="en">//a/@href: all link targets</li>
+<li lang="en">//img/@src: all image URLs</li>
+</ul>
+<h2 lang="en">Formula example</h2>
+<ul>
+<li lang="en">=IMPORTXML("https://example.com","//title")</li>
+</ul>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Taking only the price from a product page</li>
+<li lang="en">Listing an article's headings</li>
+<li lang="en">Collecting link URLs</li>
+</ul>
+<h2 lang="en">Finding the XPath</h2>
+<p lang="en">In the browser's developer tools, right-click the element and choose "Copy XPath". It can be used as is.</p>
+<h2>Örnek</h2>
+<p lang="en">Wanted a list of blog article titles. After checking the heading element, specifying //h2 lined the titles up vertically.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#N/A (imported content is empty)</b>: the XPath doesn't match, or the element is built later by JavaScript.</li>
+<li lang="en"><b>Quotes</b>: if the XPath contains double quotes, use single quotes.</li>
+<li lang="en"><b>Site terms</b>: some sites prohibit importing.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Some parts won't import</h3>
+<p lang="en">Dynamically built elements can't be imported.</p>
+<h2>Özet</h2>
+<p lang="en">Use XPath to specify only the part you want.</p>
 <a class="cta" href="/tr/import-formula-builder.html">“IMPORTHTML formülü oluştur” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/importrange-builder.html">IMPORTRANGE formülü oluşturma</a>: IMPORTRANGE formülü oluşturun.</li><li><a href="/tr/query-formula-builder.html">QUERY formülü oluştur</a>: QUERY formülü oluşturun.</li><li><a href="/tr/filter-formula-builder.html">FILTER formülü oluşturma</a>: FILTER formülü oluşturun.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

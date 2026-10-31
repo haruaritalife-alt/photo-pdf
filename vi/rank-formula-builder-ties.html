@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Khi các giá trị bằng nhau</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Chọn phương pháp</li><li>Nhập các số thử</li><li>Xem kết quả</li></ul></div>
-<p>Trong <a href="/vi/rank-formula-builder.html">Trình tạo xếp hạng</a>, RANK cho các giá trị bằng nhau cùng một hạng, còn RANK.AVG cho hạng trung bình.</p>
+<p lang="en">What happens to ranks when several values are equal? In <a href="/vi/rank-formula-builder.html">Build a Rank Formula</a>, RANK and RANK.AVG treat ties differently. Check with sample numbers.</p>
+<h2 lang="en">Handling ties</h2>
+<p lang="en">For four people with scores 90, 80, 80, 70:</p>
+<ul>
+<li lang="en"><b>RANK</b>: 90→1st, 80→2nd, 80→2nd, 70→4th (ranks skip after a tie)</li>
+<li lang="en"><b>RANK.AVG</b>: 90→1st, 80→2.5th, 80→2.5th, 70→4th (ties get the average rank)</li>
+</ul>
 <h2>Các bước</h2>
 <ol>
-<li>Chọn phương pháp</li>
-<li>Nhập các số thử</li>
-<li>Xem kết quả</li>
+<li lang="en">Enter "90,80,80,70" in "Sample numbers".</li>
+<li lang="en">Enter "80" in "Number to rank".</li>
+<li lang="en">Switch "Method" between RANK and RANK.AVG and compare the "Sample result".</li>
 </ol>
-<div class="note">Bạn có thể thấy sự khác biệt bằng các số thử.</div>
+<div class="note" lang="en">The sample result shows "2" for RANK and "2.5" for RANK.AVG.</div>
+<h2 lang="en">Why ranks skip</h2>
+<p lang="en">RANK is "the number of larger values + 1". The 80s have one larger (90), so 2nd. The 70 has three larger, so 4th. 3rd is left empty.</p>
+<h2 lang="en">Giving ties distinct ranks</h2>
+<p lang="en">To give equal values non-overlapping ranks, add a helper.</p>
+<ul>
+<li lang="en">Example: =RANK(B2,$B$2:$B$100,0)+COUNTIF($B$2:B2,B2)-1</li>
+</ul>
+<p lang="en">The one appearing first (higher up) gets the higher rank.</p>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Test ranks where ties are possible</li>
+<li lang="en">Deciding how to treat ties</li>
+<li lang="en">Deciding prizes or ratings by rank</li>
+</ul>
+<h2 lang="en">Avoiding rank gaps</h2>
+<p lang="en">For a "dense rank" without gaps, use this.</p>
+<ul>
+<li lang="en">Example: =SUMPRODUCT(($B$2:$B$100&gt;B2)/COUNTIF($B$2:$B$100,$B$2:$B$100&amp;""))+1</li>
+</ul>
+<p lang="en">For 90, 80, 80, 70 it gives 1st, 2nd, 2nd, 3rd.</p>
+<h2>Ví dụ</h2>
+<p lang="en">A grade sheet had two tied people. RANK gave two 2nds, then 4th, leaving 3rd empty. This rule was assumed when deciding who gets awarded.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>RANK.AVG decimals</b>: use fractional ranks like 2.5 as displayed.</li>
+<li lang="en"><b>Old Excel</b>: RANK.AVG needs Excel 2010 or later.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How does RANK differ from RANK.EQ?</h3>
+<p lang="en">Same result. RANK.EQ is RANK's newer name; both are available for compatibility.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">For ties, RANK shares the rank and skips the next; RANK.AVG gives the average rank.</p>
 <a class="cta" href="/vi/rank-formula-builder.html">Dùng “Tạo công thức xếp hạng” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/sumif-formula-builder.html">Tạo công thức SUMIF hoặc COUNTIF</a>: Tạo công thức SUMIF và COUNTIF.</li><li><a href="/vi/percent-calculator.html">Tính phần trăm, giảm giá và % thay đổi</a>: Tính phần trăm, giảm giá và % thay đổi ngay lập tức.</li><li><a href="/vi/excel-if-builder.html">Tạo công thức IF</a>: Tạo công thức IF.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

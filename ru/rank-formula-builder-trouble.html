@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Что делать, если не работает</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Проверьте файл</li><li>Проверьте размер</li><li>Попробуйте другое устройство</li></ul></div>
-<p>Если <a href="/ru/rank-formula-builder.html">Конструктор рейтинга</a> не работает, проверьте следующее.</p>
-<h2>Шаги</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/ru/rank-formula-builder.html">Build a Rank Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the comparison range isn't in the "B2:B100" form; the cell to rank isn't in the "B2" form (except for LARGE/SMALL); or "which one" isn't a number for LARGE/SMALL.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: the value to rank isn't in the range.</li>
+<li lang="en"><b>#NUM!</b>: for LARGE/SMALL, the number exceeds the count, or the range is empty.</li>
+<li lang="en"><b>#VALUE!</b>: values in the range can't be compared.</li>
+<li lang="en"><b>Every rank is 1st</b>: the range lacks $ and shifted on copying down, or the cell reference spans the whole range.</li>
+<li lang="en"><b>Ranks are reversed</b>: descending and ascending mixed up.</li>
+<li lang="en"><b>Ranks skip</b>: ties exist, as RANK is specified.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Проверьте файл</li>
-<li>Проверьте размер</li>
-<li>Попробуйте другое устройство</li>
+<li lang="en">Check the cell and range are in the same column.</li>
+<li lang="en">Check the range has $.</li>
+<li lang="en">Compare the tool's result with the real result using sample numbers.</li>
 </ol>
-<div class="note">Если формула не появляется, проверьте, что ячейка записана как B2, а диапазон — как B2:B100.</div>
+<div class="note" lang="en">If numbers display left-aligned, they may be text. RANK ignores text.</div>
+<h2 lang="en">Numbers as text</h2>
+<p lang="en">Text numbers aren't ranked. Ranks can come out higher than expected, or #N/A. Convert to numbers before ranking.</p>
+<h2 lang="en">Blanks and zeros</h2>
+<p lang="en">Blanks are ignored but 0 counts as a number. Check you haven't entered 0 for "not entered".</p>
+<h2 lang="en">Errors inside the range</h2>
+<p lang="en">If the range holds error values like #N/A, RANK errors too. Tidy with IFERROR or fix the cause.</p>
+<h2>Пример</h2>
+<p lang="en">Copying down scrambled the ranks because the range stayed B2:B100 rather than $B$2:$B$100. The tool's formula adds $ automatically, so pasting it again fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Ranges on other sheets</b>: add the sheet name before the range in the built formula.</li>
+<li lang="en"><b>When filtered</b>: RANK ranks including hidden rows.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I rank only the filtered rows?</h3>
+<p lang="en">You need to combine with SUBTOTAL or AGGREGATE. The formula gets complex.</p>
+<h2>Итог</h2>
+<p lang="en">$, numeric or not, tie specification. Check these three in order.</p>
 <a class="cta" href="/ru/rank-formula-builder.html">Использовать «Создать формулу рейтинга» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/sumif-formula-builder.html">Создание формулы SUMIF или COUNTIF</a>: Создавайте формулы SUMIF и COUNTIF.</li><li><a href="/ru/percent-calculator.html">Рассчитать проценты, скидки и изменение в %</a>: Мгновенно рассчитывайте проценты, скидки и изменения в %.</li><li><a href="/ru/excel-if-builder.html">Создание формулы IF</a>: Создайте формулу IF.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

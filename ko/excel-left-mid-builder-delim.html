@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>구분 문자의 앞과 뒤</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>구분 문자 입력</li><li>수식 보기</li><li>확인하기</li></ul></div>
-<p><a href="/ko/excel-left-mid-builder.html">LEFT/MID 만들기</a>에서는 - 나 / 같은 구분 문자의 앞이나 뒤의 글자를 꺼낼 수 있습니다.</p>
+<p lang="en">To take the part before or after a delimiter, LEFT or MID alone can't fix the character count. Combine them with FIND. "LEFT+FIND" and "MID+FIND" in <a href="/ko/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> build those formulas.</p>
+<h2 lang="en">The two formulas</h2>
+<ul>
+<li lang="en"><b>LEFT+FIND</b>: takes the part before the delimiter</li>
+<li lang="en"><b>MID+FIND</b>: takes the part after the delimiter</li>
+</ul>
 <h2>순서</h2>
 <ol>
-<li>구분 문자 입력</li>
-<li>수식 보기</li>
-<li>확인하기</li>
+<li lang="en">In "Method", choose "LEFT+FIND" or "MID+FIND".</li>
+<li lang="en">Enter the separator in "Delimiter (for before/after)".</li>
+<li lang="en">Enter a "Sample text" and check the result.</li>
 </ol>
-<div class="note">FIND로 구분 문자의 위치를 찾습니다.</div>
+<div class="note" lang="en">If the delimiter appears several times in the text, the first one is the basis.</div>
+<h2 lang="en">Example (delimiter "@")</h2>
+<p lang="en">With A2 "taro@example.com":</p>
+<ul>
+<li lang="en">Before: =LEFT(A2,FIND("@",A2)-1) → taro</li>
+<li lang="en">After: =MID(A2,FIND("@",A2)+1,LEN(A2)) → example.com</li>
+</ul>
+<h2 lang="en">How the formulas work</h2>
+<ul>
+<li lang="en">FIND("@",A2): which character "@" is</li>
+<li lang="en">Before: LEFT up to one before that position</li>
+<li lang="en">After: MID from the next position to the end</li>
+</ul>
+<p lang="en">For multi-character delimiters (e.g. " - "), the "after" formula advances by the delimiter's length. The tool counts and assembles it automatically.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Splitting an email's user name and domain</li>
+<li lang="en">Splitting "family given" names by a space</li>
+<li lang="en">Splitting "part-colour" before and after</li>
+</ul>
+<h2 lang="en">Splitting names</h2>
+<p lang="en">With A2 "Yamada Taro", use the space as delimiter.</p>
+<ul>
+<li lang="en">Family: =LEFT(A2,FIND(" ",A2)-1) → Yamada</li>
+<li lang="en">Given: =MID(A2,FIND(" ",A2)+1,LEN(A2)) → Taro</li>
+</ul>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en"><b>Full-width spaces</b>: if the delimiter is a full-width space, enter a full-width space.</li>
+<li lang="en"><b>No delimiter</b>: FIND gives #VALUE!. Handle with the next page's method.</li>
+<li lang="en"><b>Case</b>: FIND distinguishes case. To ignore, use SEARCH.</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted only the domain parts from a list of email addresses to summarise. Copied the MID+FIND formula down the column.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Multiple delimiters</b>: only the first is the basis. Later ones need other formulas.</li>
+<li lang="en"><b>Spaces around delimiters</b>: tidy with TRIM.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about splitting at the last delimiter?</h3>
+<p lang="en">The formula gets complex. TEXTBEFORE and TEXTAFTER (newer Excel) can do it.</p>
+<h2>요약</h2>
+<p lang="en">To take what's before or after a delimiter, use formulas combined with FIND.</p>
 <a class="cta" href="/ko/excel-left-mid-builder.html">“LEFT·MID·RIGHT 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-text-clean.html">엑셀 글의 불필요한 공백과 보이지 않는 문자 없애기</a>: 불필요한 공백과 보이지 않는 문자를 없앱니다.</li><li><a href="/ko/text-to-columns.html">구분 문자로 글을 열로 나누기</a>: 구분 문자로 글을 열로 나눕니다.</li><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

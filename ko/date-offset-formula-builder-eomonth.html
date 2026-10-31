@@ -201,14 +201,67 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>말일 구하기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>EOMONTH 선택</li><li>개월 수 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/date-offset-formula-builder.html">날짜 계산 수식 만들기</a>에서 EOMONTH는 몇 개월 뒤의 말일을 구합니다.</p>
+<p lang="en">"Month-end closing", "payment by end of next month". EOMONTH finds month-end dates. Choosing "EOMONTH" in <a href="/ko/date-offset-formula-builder.html">Build a Date Offset Formula</a> builds the formula.</p>
 <h2>순서</h2>
 <ol>
-<li>EOMONTH 선택</li>
-<li>개월 수 입력</li>
-<li>복사</li>
+<li lang="en">Choose "EOMONTH" in "Method".</li>
+<li lang="en">Enter the "Date cell".</li>
+<li lang="en">Enter the number of months in "Amount to add" (0 gives that month's last day).</li>
+<li lang="en">Check the result with a "Sample date".</li>
 </ol>
-<div class="note">0을 넣으면 그 달의 말일이 됩니다.</div>
+<div class="note" lang="en">Amount 0 is the end of the date's own month; 1 is the end of the next month.</div>
+<h2>예</h2>
+<p lang="en">Finding the month-end of the month containing A2.</p>
+<ul>
+<li lang="en">=EOMONTH(A2,0)</li>
+<li lang="en">Sample: 2026-10-25 → 2026-10-31</li>
+</ul>
+<p lang="en">For payment at the end of next month:</p>
+<ul>
+<li lang="en">=EOMONTH(A2,1)</li>
+<li lang="en">Sample: 2026-10-25 → 2026-11-30</li>
+</ul>
+<h2 lang="en">Results by amount (2026-10-25)</h2>
+<ul>
+<li lang="en">0: 2026-10-31 (this month-end)</li>
+<li lang="en">1: 2026-11-30 (next month-end)</li>
+<li lang="en">2: 2026-12-31 (month-end after next)</li>
+<li lang="en">-1: 2026-09-30 (previous month-end)</li>
+</ul>
+<h2 lang="en">Finding the first of the month</h2>
+<p lang="en">Add 1 to the previous month-end.</p>
+<ul>
+<li lang="en">=EOMONTH(A2,-1)+1</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Finding payment dates for month-end close, next-month-end payment</li>
+<li lang="en">Knowing a month's last day</li>
+<li lang="en">Building monthly aggregation periods</li>
+</ul>
+<h2 lang="en">February in leap years</h2>
+<p lang="en">EOMONTH handles leap years correctly.</p>
+<ul>
+<li lang="en">2028-02-10 → 2028-02-29</li>
+<li lang="en">2026-02-10 → 2026-02-28</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Even if invoice dates fell mid-month, payment due was the end of the next month. =EOMONTH(A2,1) gave next month-end for every invoice date.</p>
+<h2 lang="en">Difference from EDATE</h2>
+<ul>
+<li lang="en">EDATE: moves to the same day (like the 31st); adjusts when it overflows</li>
+<li lang="en">EOMONTH: always moves to month-end</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Result appears as a number</b>: set the cell's format to Date.</li>
+<li lang="en"><b>Whether month-end is the 30th or 31st</b>: EOMONTH decides automatically; no need to write it.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if month-end falls on a weekend?</h3>
+<p lang="en">To adjust to a business day, combine with WORKDAY. Example: =WORKDAY(EOMONTH(A2,1)+1,-1)</p>
+<h2>요약</h2>
+<p lang="en">EOMONTH for month-end dates. Changing the amount also gives next or previous month-end.</p>
 <a class="cta" href="/ko/date-offset-formula-builder.html">“날짜 계산 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/date-calculator.html">나이, 날짜 간 일수, 날짜 가감 계산</a>: 나이와 날짜 간 일수를 계산합니다.</li><li><a href="/ko/datedif-formula-builder.html">DATEDIF 수식 만들기</a>: DATEDIF 수식을 만듭니다.</li><li><a href="/ko/excel-serial-date.html">엑셀 일련번호·날짜 변환기</a>: 엑셀의 일련번호와 날짜를 변환합니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

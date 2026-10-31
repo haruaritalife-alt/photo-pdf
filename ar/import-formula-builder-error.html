@@ -215,14 +215,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>عند حدوث خطأ</h1>
 <p class="meta">تاريخ النشر: 19 أكتوبر 2026 | آخر تحديث: 19 أكتوبر 2026 | <a href="/about.html">حول (باليابانية)</a></p>
 <div class="points"><b>النقاط الرئيسية</b><ul><li>أنشئ الصيغة</li><li>اختر الثاني</li><li>انسخ</li></ul></div>
-<p>يعرض <a href="/ar/import-formula-builder.html">منشئ الاستيراد</a> أيضًا نسخة ملفوفة بـ IFERROR تبقى فارغة عند حدوث خطأ.</p>
+<p lang="en">Import formulas easily error depending on the site. So use the formula that blanks on error. That's the second field in <a href="/ar/import-formula-builder.html">Build an IMPORTHTML Formula</a>.</p>
 <h2>الخطوات</h2>
 <ol>
-<li>أنشئ الصيغة</li>
-<li>اختر الثاني</li>
-<li>انسخ</li>
+<li lang="en">Build the import formula.</li>
+<li lang="en">Check the second "Formula that blanks on error".</li>
+<li lang="en">Copy it with "Copy second" and paste.</li>
 </ol>
-<div class="note">لا يمكن استيراد بعض الصفحات وتظهر خطأً.</div>
+<div class="note" lang="en">Its form is =IFERROR(import formula,""). The cell becomes empty on error.</div>
+<h2>مثال</h2>
+<ul>
+<li lang="en">=IFERROR(IMPORTHTML("https://example.com/page","table",1),"")</li>
+</ul>
+<h2>مناسب لـ</h2>
+<ul>
+<li lang="en">Sources that sometimes fail to connect</li>
+<li lang="en">Hiding error displays</li>
+<li lang="en">Avoiding errors in cells that feed totals</li>
+</ul>
+<h2>تنبيه</h2>
+<p lang="en">Hiding errors makes causes harder to notice. Test with the first formula, then switch to the second once stable.</p>
+<h2 lang="en">Common errors</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: the import result is empty.</li>
+<li lang="en"><b>#REF!</b>: values are in the spill range.</li>
+<li lang="en"><b>Loading…</b>: still loading.</li>
+<li lang="en"><b>Resource at url not found</b>: wrong URL, or the page is gone.</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">The sheet sometimes showed errors in the morning. Wrapping in IFERROR left blanks on error, and totals stopped breaking.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Can't see the reason</b>: use the first formula when hunting causes.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I keep the previous value?</h3>
+<p lang="en">Hard with functions alone. A script can save values.</p>
+<h2>الخلاصة</h2>
+<p lang="en">For stable operation, wrap in IFERROR.</p>
 <a class="cta" href="/ar/import-formula-builder.html">استخدم «إنشاء صيغة IMPORTHTML» (مجانًا)</a>
 <h2>أدوات تتكامل مع هذه الأداة</h2><ul><li><a href="/ar/importrange-builder.html">إنشاء صيغة IMPORTRANGE</a>: أنشئ صيغة IMPORTRANGE.</li><li><a href="/ar/query-formula-builder.html">إنشاء صيغة QUERY</a>: أنشئ صيغة QUERY.</li><li><a href="/ar/filter-formula-builder.html">إنشاء صيغة FILTER</a>: أنشئ صيغة FILTER.</li></ul>
 <div class="tip"><p>إذا أفادك هذا الدليل، فإن إكرامية صغيرة تعني لنا الكثير.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">أرسل إكرامية (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">أرسل هدية (قائمة أمنيات Amazon)</a></div>

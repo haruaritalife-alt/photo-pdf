@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Before and After a Delimiter</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the delimiter</li><li>See the formula</li><li>Check it</li></ul></div>
-<p>In <a href="/en/excel-left-mid-builder.html">LEFT/MID Builder</a> you can take the text before or after a delimiter such as - or /.</p>
+<p>To take the part before or after a delimiter, LEFT or MID alone can't fix the character count. Combine them with FIND. "LEFT+FIND" and "MID+FIND" in <a href="/en/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> build those formulas.</p>
+<h2>The two formulas</h2>
+<ul>
+<li><b>LEFT+FIND</b>: takes the part before the delimiter</li>
+<li><b>MID+FIND</b>: takes the part after the delimiter</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Enter the delimiter</li>
-<li>See the formula</li>
-<li>Check it</li>
+<li>In "Method", choose "LEFT+FIND" or "MID+FIND".</li>
+<li>Enter the separator in "Delimiter (for before/after)".</li>
+<li>Enter a "Sample text" and check the result.</li>
 </ol>
-<div class="note">FIND is used to locate the delimiter.</div>
+<div class="note">If the delimiter appears several times in the text, the first one is the basis.</div>
+<h2>Example (delimiter "@")</h2>
+<p>With A2 "taro@example.com":</p>
+<ul>
+<li>Before: =LEFT(A2,FIND("@",A2)-1) → taro</li>
+<li>After: =MID(A2,FIND("@",A2)+1,LEN(A2)) → example.com</li>
+</ul>
+<h2>How the formulas work</h2>
+<ul>
+<li>FIND("@",A2): which character "@" is</li>
+<li>Before: LEFT up to one before that position</li>
+<li>After: MID from the next position to the end</li>
+</ul>
+<p>For multi-character delimiters (e.g. " - "), the "after" formula advances by the delimiter's length. The tool counts and assembles it automatically.</p>
+<h2>Good for</h2>
+<ul>
+<li>Splitting an email's user name and domain</li>
+<li>Splitting "family given" names by a space</li>
+<li>Splitting "part-colour" before and after</li>
+</ul>
+<h2>Splitting names</h2>
+<p>With A2 "Yamada Taro", use the space as delimiter.</p>
+<ul>
+<li>Family: =LEFT(A2,FIND(" ",A2)-1) → Yamada</li>
+<li>Given: =MID(A2,FIND(" ",A2)+1,LEN(A2)) → Taro</li>
+</ul>
+<h2>Cautions</h2>
+<ul>
+<li><b>Full-width spaces</b>: if the delimiter is a full-width space, enter a full-width space.</li>
+<li><b>No delimiter</b>: FIND gives #VALUE!. Handle with the next page's method.</li>
+<li><b>Case</b>: FIND distinguishes case. To ignore, use SEARCH.</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted only the domain parts from a list of email addresses to summarise. Copied the MID+FIND formula down the column.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Multiple delimiters</b>: only the first is the basis. Later ones need other formulas.</li>
+<li><b>Spaces around delimiters</b>: tidy with TRIM.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What about splitting at the last delimiter?</h3>
+<p>The formula gets complex. TEXTBEFORE and TEXTAFTER (newer Excel) can do it.</p>
+<h2>Summary</h2>
+<p>To take what's before or after a delimiter, use formulas combined with FIND.</p>
 <a class="cta" href="/en/excel-left-mid-builder.html">Use "Build a LEFT, MID or RIGHT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/en/text-to-columns.html">Split Text into Columns by a Delimiter</a>: Split text into columns by a delimiter.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

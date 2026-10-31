@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ต้องทำอย่างไรเมื่อใช้งานไม่ได้</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ตรวจสอบไฟล์</li><li>ตรวจสอบขนาด</li><li>ลองใช้อุปกรณ์อื่น</li></ul></div>
-<p>ถ้า <a href="/th/date-offset-formula-builder.html">ตัวสร้างสูตรวันที่</a> ใช้งานไม่ได้ ให้ตรวจสอบสิ่งต่อไปนี้</p>
-<h2>ขั้นตอน</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/th/date-offset-formula-builder.html">Build a Date Offset Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the date cell isn't in the "A2" form, the amount isn't an integer, or the holiday range isn't in a form like "E2:E20".</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>The result appears as a number</b>: the cell's format is "General". Set it to "Short Date".</li>
+<li lang="en"><b>#VALUE! appears</b>: the date cell isn't recognised as a date (a text date).</li>
+<li lang="en"><b>#NUM! appears</b>: the resulting date is beyond Excel's range.</li>
+<li lang="en"><b>Off by a day</b>: whether the base day is included or not.</li>
+<li lang="en"><b>Business days don't match</b>: holidays aren't included.</li>
+<li lang="en"><b>Adjusted to month-end</b>: EDATE moves to month-end if the target has no such day.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>ตรวจสอบไฟล์</li>
-<li>ตรวจสอบขนาด</li>
-<li>ลองใช้อุปกรณ์อื่น</li>
+<li lang="en">Check the date cell is recognised as a date (right-aligned means date).</li>
+<li lang="en">Set the result cell's format to Date.</li>
+<li lang="en">Compare with the tool's result using a sample date.</li>
 </ol>
-<div class="note">ถ้าสูตรไม่ปรากฏ ให้ตรวจว่าเซลล์เขียนแบบ A2 และตัวเลขเป็นจำนวนเต็ม</div>
+<div class="note" lang="en">If dates display left-aligned, they may be text.</div>
+<h2 lang="en">Fixing text dates</h2>
+<ul>
+<li lang="en">DATEVALUE function: =DATEVALUE("2026/10/25")</li>
+<li lang="en">Select cells and convert with "Data" → "Text to Columns"</li>
+<li lang="en">Dot-separated forms like "2026.10.25" may not be recognised as dates</li>
+</ul>
+<h2 lang="en">Differences from the sample result</h2>
+<p lang="en">The tool's sample result:</p>
+<ul>
+<li lang="en">WORKDAY: weekends only; holidays aren't considered</li>
+<li lang="en">EDATE: includes month-end adjustment</li>
+</ul>
+<p lang="en">With a holiday range in actual cells, results change.</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">The result showed as the number "46323" because the cell's format was "General". Setting it to a date format showed "2026/10/28".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Text in the holiday range</b>: put only dates.</li>
+<li lang="en"><b>Old dates</b>: dates before 1900 can't be handled.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are holidays included automatically?</h3>
+<p lang="en">No. Prepare the holiday list yourself.</p>
+<h2>สรุป</h2>
+<p lang="en">Display format, date form, holidays. Check these three in order.</p>
 <a class="cta" href="/th/date-offset-formula-builder.html">ใช้ “สร้างสูตรเลื่อนวันที่” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/date-calculator.html">คำนวณอายุ จำนวนวันระหว่างวันที่ และการเลื่อนวันที่</a>: คำนวณอายุและจำนวนวันระหว่างวันที่</li><li><a href="/th/datedif-formula-builder.html">สร้างสูตร DATEDIF</a>: สร้างสูตร DATEDIF</li><li><a href="/th/excel-serial-date.html">ตัวแปลงค่าซีเรียลและวันที่ของ Excel</a>: แปลงค่าซีเรียลและวันที่ของ Excel</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

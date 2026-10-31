@@ -201,14 +201,64 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ค่าลำดับที่ N</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก LARGE</li><li>ใส่ว่าเป็นลำดับที่เท่าไร</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/rank-formula-builder.html">ตัวสร้างสูตรอันดับ</a> LARGE และ SMALL คืนค่าที่มากที่สุดหรือน้อยที่สุดลำดับที่ N</p>
+<p lang="en">"The 1st-place score", "the top 3 scores", "second from the bottom". To pull out the Nth value itself rather than a rank, use LARGE and SMALL. "LARGE" and "SMALL" in <a href="/th/rank-formula-builder.html">Build a Rank Formula</a> build those formulas.</p>
+<h2 lang="en">The two functions</h2>
+<ul>
+<li lang="en"><b>LARGE</b>: the Nth value counting from the largest</li>
+<li lang="en"><b>SMALL</b>: the Nth value counting from the smallest</li>
+</ul>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือก LARGE</li>
-<li>ใส่ว่าเป็นลำดับที่เท่าไร</li>
-<li>คัดลอก</li>
+<li lang="en">Choose "LARGE" or "SMALL" in "Method".</li>
+<li lang="en">Enter the "Range to compare".</li>
+<li lang="en">In "Which one (for LARGE and SMALL)", enter a number.</li>
+<li lang="en">Check the result with "Sample numbers".</li>
 </ol>
-<div class="note">ใส่ 1 เพื่อให้ได้ค่าสูงสุดหรือต่ำสุด</div>
+<div class="note" lang="en">For LARGE and SMALL, the "Cell to rank" field isn't used.</div>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Finding the 3rd largest value in B2:B100.</p>
+<ul>
+<li lang="en">=LARGE($B$2:$B$100,3)</li>
+</ul>
+<p lang="en">Entering "90,80,80,70" as samples and "2" as which one shows "80" for LARGE.</p>
+<h2 lang="en">Listing the top 3</h2>
+<p lang="en">Put the 1st, 2nd and 3rd in separate cells.</p>
+<ul>
+<li lang="en">1st: =LARGE($B$2:$B$100,1)</li>
+<li lang="en">2nd: =LARGE($B$2:$B$100,2)</li>
+<li lang="en">3rd: =LARGE($B$2:$B$100,3)</li>
+</ul>
+<h2 lang="en">Showing the names too</h2>
+<p lang="en">To show the name matching a value, combine INDEX and MATCH.</p>
+<ul>
+<li lang="en">Example: =INDEX($A$2:$A$100,MATCH(D2,$B$2:$B$100,0))</li>
+</ul>
+<p lang="en">Put the LARGE value in D2. With ties, only the first name appears.</p>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Pulling out the top 3 scores or sales</li>
+<li lang="en">Knowing the highest or lowest value (the 1st)</li>
+<li lang="en">Pulling out values near the middle</li>
+</ul>
+<h2 lang="en">Relation to MAX and MIN</h2>
+<ul>
+<li lang="en">MAX(range) = LARGE(range,1)</li>
+<li lang="en">MIN(range) = SMALL(range,1)</li>
+</ul>
+<h2 lang="en">Number beyond the range</h2>
+<p lang="en">Specifying a number larger than the item count gives #NUM!. The sample result also shows "#NUM!".</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Wanted the top 3 sales on a dashboard. LARGE found the 1st to 3rd, with INDEX and MATCH giving names beside them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Ties</b>: LARGE counts equal values separately. For 90, 80, 80 the 2nd and 3rd are both 80.</li>
+<li lang="en"><b>Blanks and text</b>: ignored.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the average of the top N</h3>
+<p lang="en">Use an array form: =AVERAGE(LARGE(range,{1,2,3})).</p>
+<h2>สรุป</h2>
+<p lang="en">LARGE and SMALL for the Nth value; RANK for the rank itself.</p>
 <a class="cta" href="/th/rank-formula-builder.html">ใช้ “สร้างสูตรอันดับ” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/sumif-formula-builder.html">สร้างสูตร SUMIF หรือ COUNTIF</a>: สร้างสูตร SUMIF และ COUNTIF</li><li><a href="/th/percent-calculator.html">คำนวณเปอร์เซ็นต์ ส่วนลด และการเปลี่ยนแปลงเป็น %</a>: คำนวณเปอร์เซ็นต์ ส่วนลด และการเปลี่ยนแปลงเป็น % ได้ทันที</li><li><a href="/th/excel-if-builder.html">สร้างสูตร IF</a>: สร้างสูตร IF</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

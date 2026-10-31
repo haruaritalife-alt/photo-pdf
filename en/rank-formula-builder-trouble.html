@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/rank-formula-builder.html">Rank Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You built the formula but the result is odd. Here are common troubles with <a href="/en/rank-formula-builder.html">Build a Rank Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the comparison range isn't in the "B2:B100" form; the cell to rank isn't in the "B2" form (except for LARGE/SMALL); or "which one" isn't a number for LARGE/SMALL.</li>
+</ul>
+<h2>Troubles after pasting the formula</h2>
+<ul>
+<li><b>#N/A</b>: the value to rank isn't in the range.</li>
+<li><b>#NUM!</b>: for LARGE/SMALL, the number exceeds the count, or the range is empty.</li>
+<li><b>#VALUE!</b>: values in the range can't be compared.</li>
+<li><b>Every rank is 1st</b>: the range lacks $ and shifted on copying down, or the cell reference spans the whole range.</li>
+<li><b>Ranks are reversed</b>: descending and ascending mixed up.</li>
+<li><b>Ranks skip</b>: ties exist, as RANK is specified.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the cell and range are in the same column.</li>
+<li>Check the range has $.</li>
+<li>Compare the tool's result with the real result using sample numbers.</li>
 </ol>
-<div class="note">If no formula appears, check that the cell is written like B2 and the range like B2:B100.</div>
+<div class="note">If numbers display left-aligned, they may be text. RANK ignores text.</div>
+<h2>Numbers as text</h2>
+<p>Text numbers aren't ranked. Ranks can come out higher than expected, or #N/A. Convert to numbers before ranking.</p>
+<h2>Blanks and zeros</h2>
+<p>Blanks are ignored but 0 counts as a number. Check you haven't entered 0 for "not entered".</p>
+<h2>Errors inside the range</h2>
+<p>If the range holds error values like #N/A, RANK errors too. Tidy with IFERROR or fix the cause.</p>
+<h2>Example</h2>
+<p>Copying down scrambled the ranks because the range stayed B2:B100 rather than $B$2:$B$100. The tool's formula adds $ automatically, so pasting it again fixed it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Ranges on other sheets</b>: add the sheet name before the range in the built formula.</li>
+<li><b>When filtered</b>: RANK ranks including hidden rows.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I rank only the filtered rows?</h3>
+<p>You need to combine with SUBTOTAL or AGGREGATE. The formula gets complex.</p>
+<h2>Summary</h2>
+<p>$, numeric or not, tie specification. Check these three in order.</p>
 <a class="cta" href="/en/rank-formula-builder.html">Use "Build a Rank Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

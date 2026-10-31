@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Magbilang ng mga character</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Piliin ang LEN</li><li>Tingnan ang formula</li><li>Kopyahin</li></ul></div>
-<p>Kapag pinili ang LEN sa <a href="/tl/excel-left-mid-builder.html">LEFT/MID Builder</a>, makakakuha ka ng formula na bumibilang ng mga character sa isang cell.</p>
+<p lang="en">LEN counts characters. Choosing "LEN" in <a href="/tl/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> builds the formula. It's also handy when you want the length before extracting text.</p>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Piliin ang LEN</li>
-<li>Tingnan ang formula</li>
-<li>Kopyahin</li>
+<li lang="en">Choose "LEN" in "Method".</li>
+<li lang="en">Enter the "Cell to extract from".</li>
+<li lang="en">Entering a "Sample text" shows the character count.</li>
 </ol>
-<div class="note">Binibilang din na character ang mga espasyo.</div>
+<div class="note" lang="en">Full-width, half-width and spaces each count as one.</div>
+<h2 lang="en">Examples</h2>
+<ul>
+<li lang="en">=LEN(A2)</li>
+<li lang="en">"ABC-12345" → 9</li>
+<li lang="en">"東京都" → 3</li>
+<li lang="en">"A B" (with a half-width space) → 3</li>
+</ul>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Checking character limits (e.g. 31 for sheet names, 140 for a tweet)</li>
+<li lang="en">Checking for extra spaces</li>
+<li lang="en">Checking part numbers have consistent digit counts</li>
+</ul>
+<h2 lang="en">Finding extra spaces</h2>
+<p lang="en">If two items look the same but LEN differs, extra characters like spaces are present.</p>
+<ul>
+<li lang="en">"Tokyo" → 5</li>
+<li lang="en">"Tokyo " (trailing half-width space) → 6</li>
+</ul>
+<p lang="en">When VLOOKUP doesn't match, checking with LEN is a standard step.</p>
+<h2 lang="en">Checking digit counts</h2>
+<p lang="en">With a rule that part numbers must be 8 characters, you can find rows that differ.</p>
+<ul>
+<li lang="en">Example: =IF(LEN(A2)=8,"OK","Length error")</li>
+</ul>
+<h2 lang="en">Combining with other functions</h2>
+<ul>
+<li lang="en">Remove the last 3 characters: =LEFT(A2,LEN(A2)-3)</li>
+<li lang="en">Count a specific character: =LEN(A2)-LEN(SUBSTITUTE(A2,"-",""))</li>
+</ul>
+<h2 lang="en">Counting bytes</h2>
+<p lang="en">To count bytes rather than characters, there's LENB. In some environments full-width counts as 2 bytes.</p>
+<h2>Halimbawa</h2>
+<p lang="en">Wanted to check that product names stayed within a length limit (20 full-width characters). Building a list with =LEN(A2) let me filter rows over 20.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Line breaks count too</b>: in-cell line breaks are included.</li>
+<li lang="en"><b>Digits of numbers</b>: LEN counts digits of number cells, but the look (thousands separators) isn't included.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Is an emoji counted as one?</h3>
+<p lang="en">In some environments it counts as two.</p>
+<h2>Buod</h2>
+<p lang="en">LEN counts characters and also helps find extra spaces.</p>
 <a class="cta" href="/tl/excel-left-mid-builder.html">Gamitin ang “Gumawa ng formula na LEFT, MID o RIGHT” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/excel-text-clean.html">Pag-alis ng sobrang espasyo at di-nakikitang karakter sa teksto ng Excel</a>: Alisin ang sobrang espasyo at di-nakikitang karakter.</li><li><a href="/tl/text-to-columns.html">Hatiin ang Teksto sa mga Column gamit ang Delimiter</a>: Hatiin ang teksto sa mga column gamit ang delimiter.</li><li><a href="/tl/excel-if-builder.html">Gumawa ng IF formula</a>: Gumawa ng IF formula.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

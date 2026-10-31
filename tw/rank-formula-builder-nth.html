@@ -201,14 +201,64 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>第 N 個值</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>選擇 LARGE</li><li>輸入第幾個</li><li>複製</li></ul></div>
-<p>在<a href="/tw/rank-formula-builder.html">排名公式生成器</a>中,LARGE 和 SMALL 返回第 N 大或第 N 小的值。</p>
+<p lang="en">"The 1st-place score", "the top 3 scores", "second from the bottom". To pull out the Nth value itself rather than a rank, use LARGE and SMALL. "LARGE" and "SMALL" in <a href="/tw/rank-formula-builder.html">Build a Rank Formula</a> build those formulas.</p>
+<h2 lang="en">The two functions</h2>
+<ul>
+<li lang="en"><b>LARGE</b>: the Nth value counting from the largest</li>
+<li lang="en"><b>SMALL</b>: the Nth value counting from the smallest</li>
+</ul>
 <h2>步驟</h2>
 <ol>
-<li>選擇 LARGE</li>
-<li>輸入第幾個</li>
-<li>複製</li>
+<li lang="en">Choose "LARGE" or "SMALL" in "Method".</li>
+<li lang="en">Enter the "Range to compare".</li>
+<li lang="en">In "Which one (for LARGE and SMALL)", enter a number.</li>
+<li lang="en">Check the result with "Sample numbers".</li>
 </ol>
-<div class="note">輸入 1 即為最大值或最小值。</div>
+<div class="note" lang="en">For LARGE and SMALL, the "Cell to rank" field isn't used.</div>
+<h2>示例</h2>
+<p lang="en">Finding the 3rd largest value in B2:B100.</p>
+<ul>
+<li lang="en">=LARGE($B$2:$B$100,3)</li>
+</ul>
+<p lang="en">Entering "90,80,80,70" as samples and "2" as which one shows "80" for LARGE.</p>
+<h2 lang="en">Listing the top 3</h2>
+<p lang="en">Put the 1st, 2nd and 3rd in separate cells.</p>
+<ul>
+<li lang="en">1st: =LARGE($B$2:$B$100,1)</li>
+<li lang="en">2nd: =LARGE($B$2:$B$100,2)</li>
+<li lang="en">3rd: =LARGE($B$2:$B$100,3)</li>
+</ul>
+<h2 lang="en">Showing the names too</h2>
+<p lang="en">To show the name matching a value, combine INDEX and MATCH.</p>
+<ul>
+<li lang="en">Example: =INDEX($A$2:$A$100,MATCH(D2,$B$2:$B$100,0))</li>
+</ul>
+<p lang="en">Put the LARGE value in D2. With ties, only the first name appears.</p>
+<h2>適合</h2>
+<ul>
+<li lang="en">Pulling out the top 3 scores or sales</li>
+<li lang="en">Knowing the highest or lowest value (the 1st)</li>
+<li lang="en">Pulling out values near the middle</li>
+</ul>
+<h2 lang="en">Relation to MAX and MIN</h2>
+<ul>
+<li lang="en">MAX(range) = LARGE(range,1)</li>
+<li lang="en">MIN(range) = SMALL(range,1)</li>
+</ul>
+<h2 lang="en">Number beyond the range</h2>
+<p lang="en">Specifying a number larger than the item count gives #NUM!. The sample result also shows "#NUM!".</p>
+<h2>示例</h2>
+<p lang="en">Wanted the top 3 sales on a dashboard. LARGE found the 1st to 3rd, with INDEX and MATCH giving names beside them.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Ties</b>: LARGE counts equal values separately. For 90, 80, 80 the 2nd and 3rd are both 80.</li>
+<li lang="en"><b>Blanks and text</b>: ignored.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the average of the top N</h3>
+<p lang="en">Use an array form: =AVERAGE(LARGE(range,{1,2,3})).</p>
+<h2>小結</h2>
+<p lang="en">LARGE and SMALL for the Nth value; RANK for the rank itself.</p>
 <a class="cta" href="/tw/rank-formula-builder.html">使用「生成排名公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li><li><a href="/tw/percent-calculator.html">計算百分比、折扣和增減率</a>：立即計算百分比、折扣和增減率。</li><li><a href="/tw/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

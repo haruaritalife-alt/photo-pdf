@@ -215,14 +215,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ماذا تفعل إذا لم يعمل</h1>
 <p class="meta">تاريخ النشر: 19 أكتوبر 2026 | آخر تحديث: 19 أكتوبر 2026 | <a href="/about.html">حول (باليابانية)</a></p>
 <div class="points"><b>النقاط الرئيسية</b><ul><li>افحص الملف</li><li>تحقق من الحجم</li><li>جرّب جهازًا آخر</li></ul></div>
-<p>إذا لم يعمل <a href="/ar/date-offset-formula-builder.html">منشئ التواريخ</a>، فتحقق مما يلي.</p>
-<h2>الخطوات</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/ar/date-offset-formula-builder.html">Build a Date Offset Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the date cell isn't in the "A2" form, the amount isn't an integer, or the holiday range isn't in a form like "E2:E20".</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>The result appears as a number</b>: the cell's format is "General". Set it to "Short Date".</li>
+<li lang="en"><b>#VALUE! appears</b>: the date cell isn't recognised as a date (a text date).</li>
+<li lang="en"><b>#NUM! appears</b>: the resulting date is beyond Excel's range.</li>
+<li lang="en"><b>Off by a day</b>: whether the base day is included or not.</li>
+<li lang="en"><b>Business days don't match</b>: holidays aren't included.</li>
+<li lang="en"><b>Adjusted to month-end</b>: EDATE moves to month-end if the target has no such day.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>افحص الملف</li>
-<li>تحقق من الحجم</li>
-<li>جرّب جهازًا آخر</li>
+<li lang="en">Check the date cell is recognised as a date (right-aligned means date).</li>
+<li lang="en">Set the result cell's format to Date.</li>
+<li lang="en">Compare with the tool's result using a sample date.</li>
 </ol>
-<div class="note">إذا لم تظهر أي صيغة، فتأكد من كتابة الخلية مثل A2 وأن الرقم عدد صحيح.</div>
+<div class="note" lang="en">If dates display left-aligned, they may be text.</div>
+<h2 lang="en">Fixing text dates</h2>
+<ul>
+<li lang="en">DATEVALUE function: =DATEVALUE("2026/10/25")</li>
+<li lang="en">Select cells and convert with "Data" → "Text to Columns"</li>
+<li lang="en">Dot-separated forms like "2026.10.25" may not be recognised as dates</li>
+</ul>
+<h2 lang="en">Differences from the sample result</h2>
+<p lang="en">The tool's sample result:</p>
+<ul>
+<li lang="en">WORKDAY: weekends only; holidays aren't considered</li>
+<li lang="en">EDATE: includes month-end adjustment</li>
+</ul>
+<p lang="en">With a holiday range in actual cells, results change.</p>
+<h2>مثال</h2>
+<p lang="en">The result showed as the number "46323" because the cell's format was "General". Setting it to a date format showed "2026/10/28".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Text in the holiday range</b>: put only dates.</li>
+<li lang="en"><b>Old dates</b>: dates before 1900 can't be handled.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are holidays included automatically?</h3>
+<p lang="en">No. Prepare the holiday list yourself.</p>
+<h2>الخلاصة</h2>
+<p lang="en">Display format, date form, holidays. Check these three in order.</p>
 <a class="cta" href="/ar/date-offset-formula-builder.html">استخدم «إنشاء صيغة إزاحة التاريخ» (مجانًا)</a>
 <h2>أدوات تتكامل مع هذه الأداة</h2><ul><li><a href="/ar/date-calculator.html">حساب العمر والأيام بين تاريخين وإزاحة التواريخ</a>: احسب العمر والأيام بين تاريخين.</li><li><a href="/ar/datedif-formula-builder.html">إنشاء صيغة DATEDIF</a>: أنشئ صيغة DATEDIF.</li><li><a href="/ar/excel-serial-date.html">محول القيمة التسلسلية والتاريخ في Excel</a>: حوّل القيم التسلسلية والتواريخ في Excel.</li></ul>
 <div class="tip"><p>إذا أفادك هذا الدليل، فإن إكرامية صغيرة تعني لنا الكثير.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">أرسل إكرامية (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">أرسل هدية (قائمة أمنيات Amazon)</a></div>

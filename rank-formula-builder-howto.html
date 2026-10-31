@@ -200,14 +200,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>RANKの書き方（式を自動で作る・無料）</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>セルと範囲を入れる</li><li>方法を選ぶ</li><li>式をコピー</li></ul></div>
-<p><a href="/rank-formula-builder.html">順位式の作成</a> は、セルと範囲から順位の式を作ります。</p>
+<p>成績や売上に、順位をつけたい。そのための関数が RANK です。ただ、同じ値のときの扱いや、昇順・降順など、細かい違いがあります。<a href="/rank-formula-builder.html">順位の式を作る</a> は、セルと範囲を入れて方法を選ぶだけで、順位の式を作るツールです。入力は、この端末の中で処理され、外には送られません。</p>
 <h2>手順</h2>
 <ol>
-<li>セルと範囲を入れる</li>
-<li>方法を選ぶ</li>
-<li>式をコピー</li>
+<li>「順位をつけるセル（B2 など）」に、順位を知りたいセルを入れます。</li>
+<li>「比べる範囲（B2:B100 など）」に、全員の値が並ぶ範囲を入れます。</li>
+<li>「方法」を選びます（RANK、RANK-ASC、RANK.AVG、COUNTIF、PERCENTRANK、LARGE、SMALL）。</li>
+<li>「試しの数値（カンマ区切り）」と「順位を見る数値」を入れると、結果を事前に確かめられます。</li>
+<li>「順位の式」を、「結果をコピー」でコピーします。</li>
 </ol>
-<div class="note">できた式は、そのままセルに貼れます。</div>
+<div class="note">範囲には、ツールが自動で「$」を付けます。式を下の行にコピーしても、範囲はずれません。</div>
+<h2>例</h2>
+<p>B2の点数が、B2:B100の中で何位かを求める場合です。</p>
+<ul>
+<li>=RANK(B2,$B$2:$B$100,0)</li>
+</ul>
+<p>大きい順（降順）で、1位が最も大きい値です。</p>
+<h2>7つの方法</h2>
+<ul>
+<li><b>RANK</b>：大きい順の順位。同じ値は同順位</li>
+<li><b>RANK-ASC</b>：小さい順の順位</li>
+<li><b>RANK.AVG</b>：同じ値は、順位の平均</li>
+<li><b>COUNTIF</b>：COUNTIFで順位をつける（古い環境でも安心）</li>
+<li><b>PERCENTRANK</b>：全体の中での位置を、0〜1の割合で</li>
+<li><b>LARGE</b>：N番目に大きい値</li>
+<li><b>SMALL</b>：N番目に小さい値</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>テストの点数に、順位をつけたい</li>
+<li>売上ランキングを作りたい</li>
+<li>上位3件の値を、取り出したい</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」と出る</b>：範囲が「B2:B100」の形でない。セルが「B2」の形でない。</li>
+<li><b>LARGE・SMALL</b>：「何番目か」に、数字を入れる。セルは不要。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>上位だけを表示したいときは？</h3>
+<p>LARGE関数で、1番目、2番目…の値を取り出せます。</p>
+<h2>まとめ</h2>
+<p>範囲と方法を選ぶだけで、順位の式ができます。</p>
 <a class="cta" href="/rank-formula-builder.html">順位の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/percent-calculator.html">割合・割引・増減（%）を計算する</a>：割合・割引・増減の%を、すぐに計算します。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +253,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Write RANK (Build It Automatically, Free)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the cell and range</li><li>Choose the method</li><li>Copy the formula</li></ul></div>
-<p><a href="/rank-formula-builder.html">Rank Builder</a> builds a rank formula from a cell and a range.</p>
+<p>You want to rank scores or sales. The function for that is RANK. But there are subtle differences, such as ties and ascending vs descending. <a href="/rank-formula-builder.html">Build a Rank Formula</a> builds ranking formulas from just a cell, a range and a method. Input is processed inside this device and not sent outside.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the cell and range</li>
-<li>Choose the method</li>
-<li>Copy the formula</li>
+<li>In "Cell to rank (such as B2)", enter the cell whose rank you want.</li>
+<li>In "Range to compare (such as B2:B100)", enter the range holding everyone's values.</li>
+<li>Choose a "Method" (RANK, RANK-ASC, RANK.AVG, COUNTIF, PERCENTRANK, LARGE, SMALL).</li>
+<li>Entering "Sample numbers (comma-separated)" and "Number to rank" lets you check the result beforehand.</li>
+<li>Copy the "Rank formula" with "Copy result".</li>
 </ol>
-<div class="note">The formula can be pasted straight into a cell.</div>
+<div class="note">The tool adds "$" to the range automatically. Copying the formula down doesn't shift the range.</div>
+<h2>Example</h2>
+<p>Finding the rank of the score in B2 within B2:B100.</p>
+<ul>
+<li>=RANK(B2,$B$2:$B$100,0)</li>
+</ul>
+<p>Descending order: rank 1 is the largest value.</p>
+<h2>The seven methods</h2>
+<ul>
+<li><b>RANK</b>: descending rank; ties share a rank</li>
+<li><b>RANK-ASC</b>: ascending rank</li>
+<li><b>RANK.AVG</b>: ties get the average rank</li>
+<li><b>COUNTIF</b>: ranks with COUNTIF (safe in old environments)</li>
+<li><b>PERCENTRANK</b>: position within the whole as a 0–1 ratio</li>
+<li><b>LARGE</b>: the Nth largest value</li>
+<li><b>SMALL</b>: the Nth smallest value</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Ranking test scores</li>
+<li>Making sales rankings</li>
+<li>Pulling out the top 3 values</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"The input is not valid." appears</b>: the range isn't in the "B2:B100" form, or the cell isn't in the "B2" form.</li>
+<li><b>LARGE and SMALL</b>: enter a number for "which one". No cell needed.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I only want to show the top?</h3>
+<p>LARGE can pull out the 1st, 2nd… values.</p>
+<h2>Summary</h2>
+<p>Choose a range and a method and the ranking formula is built.</p>
 <a class="cta" href="/rank-formula-builder.html">Use "Build a Rank Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

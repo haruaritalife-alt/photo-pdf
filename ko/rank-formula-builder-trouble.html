@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/rank-formula-builder.html">순위 수식 만들기</a>가 동작하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/ko/rank-formula-builder.html">Build a Rank Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the comparison range isn't in the "B2:B100" form; the cell to rank isn't in the "B2" form (except for LARGE/SMALL); or "which one" isn't a number for LARGE/SMALL.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: the value to rank isn't in the range.</li>
+<li lang="en"><b>#NUM!</b>: for LARGE/SMALL, the number exceeds the count, or the range is empty.</li>
+<li lang="en"><b>#VALUE!</b>: values in the range can't be compared.</li>
+<li lang="en"><b>Every rank is 1st</b>: the range lacks $ and shifted on copying down, or the cell reference spans the whole range.</li>
+<li lang="en"><b>Ranks are reversed</b>: descending and ascending mixed up.</li>
+<li lang="en"><b>Ranks skip</b>: ties exist, as RANK is specified.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Check the cell and range are in the same column.</li>
+<li lang="en">Check the range has $.</li>
+<li lang="en">Compare the tool's result with the real result using sample numbers.</li>
 </ol>
-<div class="note">수식이 나오지 않으면 셀이 B2, 범위가 B2:B100처럼 쓰여 있는지 확인하세요.</div>
+<div class="note" lang="en">If numbers display left-aligned, they may be text. RANK ignores text.</div>
+<h2 lang="en">Numbers as text</h2>
+<p lang="en">Text numbers aren't ranked. Ranks can come out higher than expected, or #N/A. Convert to numbers before ranking.</p>
+<h2 lang="en">Blanks and zeros</h2>
+<p lang="en">Blanks are ignored but 0 counts as a number. Check you haven't entered 0 for "not entered".</p>
+<h2 lang="en">Errors inside the range</h2>
+<p lang="en">If the range holds error values like #N/A, RANK errors too. Tidy with IFERROR or fix the cause.</p>
+<h2>예</h2>
+<p lang="en">Copying down scrambled the ranks because the range stayed B2:B100 rather than $B$2:$B$100. The tool's formula adds $ automatically, so pasting it again fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Ranges on other sheets</b>: add the sheet name before the range in the built formula.</li>
+<li lang="en"><b>When filtered</b>: RANK ranks including hidden rows.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I rank only the filtered rows?</h3>
+<p lang="en">You need to combine with SUBTOTAL or AGGREGATE. The formula gets complex.</p>
+<h2>요약</h2>
+<p lang="en">$, numeric or not, tie specification. Check these three in order.</p>
 <a class="cta" href="/ko/rank-formula-builder.html">“순위 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li><li><a href="/ko/percent-calculator.html">퍼센트, 할인, 증감률 계산</a>: 퍼센트, 할인, 증감률을 바로 계산합니다.</li><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

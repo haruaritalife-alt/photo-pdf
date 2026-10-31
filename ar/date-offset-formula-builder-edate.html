@@ -215,14 +215,64 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>إيجاد تاريخ بعد عدة أشهر</h1>
 <p class="meta">تاريخ النشر: 19 أكتوبر 2026 | آخر تحديث: 19 أكتوبر 2026 | <a href="/about.html">حول (باليابانية)</a></p>
 <div class="points"><b>النقاط الرئيسية</b><ul><li>اختر EDATE</li><li>أدخل الأشهر</li><li>انظر إلى النتيجة</li></ul></div>
-<p>في <a href="/ar/date-offset-formula-builder.html">منشئ التواريخ</a> تعطي EDATE اليوم نفسه بعد عدة أشهر.</p>
+<p lang="en">Contract renewal dates and warranty expiries. EDATE finds "the same day N months later". Choosing "EDATE" in <a href="/ar/date-offset-formula-builder.html">Build a Date Offset Formula</a> builds the formula.</p>
 <h2>الخطوات</h2>
 <ol>
-<li>اختر EDATE</li>
-<li>أدخل الأشهر</li>
-<li>انظر إلى النتيجة</li>
+<li lang="en">Choose "EDATE" in "Method".</li>
+<li lang="en">Enter the "Date cell".</li>
+<li lang="en">Enter the number of months in "Amount to add" (negative to subtract).</li>
+<li lang="en">Check the result with a "Sample date".</li>
 </ol>
-<div class="note">يُعدَّل يوم مثل 31 ليناسب الشهر.</div>
+<div class="note" lang="en">Enter months, not days.</div>
+<h2>مثال</h2>
+<p lang="en">Finding 3 months after the date in A2.</p>
+<ul>
+<li lang="en">=EDATE(A2,3)</li>
+<li lang="en">Sample: 2026-10-25 → 2027-01-25</li>
+</ul>
+<h2 lang="en">When it goes past month-end</h2>
+<p lang="en">If the same day doesn't exist in the target month, it becomes the month's last day.</p>
+<ul>
+<li lang="en">One month after January 31 → February 28 (29 in leap years)</li>
+<li lang="en">One month after May 31 → June 30</li>
+</ul>
+<p lang="en">Entering 2026-01-31 with amount 1 shows 2026-02-28.</p>
+<h2 lang="en">Finding earlier dates</h2>
+<p lang="en">Enter a negative amount.</p>
+<ul>
+<li lang="en">3 months earlier: =EDATE(A2,-3)</li>
+<li lang="en">1 year earlier: =EDATE(A2,-12)</li>
+</ul>
+<h2 lang="en">Shifting by years</h2>
+<p lang="en">12 months is one year.</p>
+<ul>
+<li lang="en">1 year later: =EDATE(A2,12)</li>
+<li lang="en">2 years later: =EDATE(A2,24)</li>
+</ul>
+<h2>مناسب لـ</h2>
+<ul>
+<li lang="en">Automatically finding yearly renewal dates</li>
+<li lang="en">Finding warranty expiry dates</li>
+<li lang="en">Lining up quarterly inspection dates</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Wanted one-year renewal dates for everyone from their contract dates. Copying =EDATE(A2,12) down the contract-date column lined up renewal dates.</p>
+<h2 lang="en">Note on expiry dates</h2>
+<p lang="en">For a one-year contract, the expiry is often the day before the renewal date. Subtract 1 then.</p>
+<ul>
+<li lang="en">Example: =EDATE(A2,12)-1</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Result appears as a number</b>: set the cell's format to Date.</li>
+<li lang="en"><b>Fractional months</b>: decimals are truncated.</li>
+<li lang="en"><b>Text dates</b>: if not recognised as dates, #VALUE! results.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Does it work in Excel 2003 or earlier?</h3>
+<p lang="en">Older versions needed an add-in. Current Excel and Google Sheets work as is.</p>
+<h2>الخلاصة</h2>
+<p lang="en">EDATE for the same day N months later. Past month-end it adjusts to the last day.</p>
 <a class="cta" href="/ar/date-offset-formula-builder.html">استخدم «إنشاء صيغة إزاحة التاريخ» (مجانًا)</a>
 <h2>أدوات تتكامل مع هذه الأداة</h2><ul><li><a href="/ar/date-calculator.html">حساب العمر والأيام بين تاريخين وإزاحة التواريخ</a>: احسب العمر والأيام بين تاريخين.</li><li><a href="/ar/datedif-formula-builder.html">إنشاء صيغة DATEDIF</a>: أنشئ صيغة DATEDIF.</li><li><a href="/ar/excel-serial-date.html">محول القيمة التسلسلية والتاريخ في Excel</a>: حوّل القيم التسلسلية والتواريخ في Excel.</li></ul>
 <div class="tip"><p>إذا أفادك هذا الدليل، فإن إكرامية صغيرة تعني لنا الكثير.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">أرسل إكرامية (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">أرسل هدية (قائمة أمنيات Amazon)</a></div>

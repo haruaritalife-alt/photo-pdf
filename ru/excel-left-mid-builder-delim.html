@@ -201,14 +201,62 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>До и после разделителя</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Введите разделитель</li><li>Посмотрите формулу</li><li>Проверьте</li></ul></div>
-<p>В <a href="/ru/excel-left-mid-builder.html">Конструктор LEFT/MID</a> можно взять текст до или после разделителя, например - или /.</p>
+<p lang="en">To take the part before or after a delimiter, LEFT or MID alone can't fix the character count. Combine them with FIND. "LEFT+FIND" and "MID+FIND" in <a href="/ru/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> build those formulas.</p>
+<h2 lang="en">The two formulas</h2>
+<ul>
+<li lang="en"><b>LEFT+FIND</b>: takes the part before the delimiter</li>
+<li lang="en"><b>MID+FIND</b>: takes the part after the delimiter</li>
+</ul>
 <h2>Шаги</h2>
 <ol>
-<li>Введите разделитель</li>
-<li>Посмотрите формулу</li>
-<li>Проверьте</li>
+<li lang="en">In "Method", choose "LEFT+FIND" or "MID+FIND".</li>
+<li lang="en">Enter the separator in "Delimiter (for before/after)".</li>
+<li lang="en">Enter a "Sample text" and check the result.</li>
 </ol>
-<div class="note">FIND используется для поиска позиции разделителя.</div>
+<div class="note" lang="en">If the delimiter appears several times in the text, the first one is the basis.</div>
+<h2 lang="en">Example (delimiter "@")</h2>
+<p lang="en">With A2 "taro@example.com":</p>
+<ul>
+<li lang="en">Before: =LEFT(A2,FIND("@",A2)-1) → taro</li>
+<li lang="en">After: =MID(A2,FIND("@",A2)+1,LEN(A2)) → example.com</li>
+</ul>
+<h2 lang="en">How the formulas work</h2>
+<ul>
+<li lang="en">FIND("@",A2): which character "@" is</li>
+<li lang="en">Before: LEFT up to one before that position</li>
+<li lang="en">After: MID from the next position to the end</li>
+</ul>
+<p lang="en">For multi-character delimiters (e.g. " - "), the "after" formula advances by the delimiter's length. The tool counts and assembles it automatically.</p>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Splitting an email's user name and domain</li>
+<li lang="en">Splitting "family given" names by a space</li>
+<li lang="en">Splitting "part-colour" before and after</li>
+</ul>
+<h2 lang="en">Splitting names</h2>
+<p lang="en">With A2 "Yamada Taro", use the space as delimiter.</p>
+<ul>
+<li lang="en">Family: =LEFT(A2,FIND(" ",A2)-1) → Yamada</li>
+<li lang="en">Given: =MID(A2,FIND(" ",A2)+1,LEN(A2)) → Taro</li>
+</ul>
+<h2 lang="en">Cautions</h2>
+<ul>
+<li lang="en"><b>Full-width spaces</b>: if the delimiter is a full-width space, enter a full-width space.</li>
+<li lang="en"><b>No delimiter</b>: FIND gives #VALUE!. Handle with the next page's method.</li>
+<li lang="en"><b>Case</b>: FIND distinguishes case. To ignore, use SEARCH.</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">Wanted only the domain parts from a list of email addresses to summarise. Copied the MID+FIND formula down the column.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Multiple delimiters</b>: only the first is the basis. Later ones need other formulas.</li>
+<li lang="en"><b>Spaces around delimiters</b>: tidy with TRIM.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about splitting at the last delimiter?</h3>
+<p lang="en">The formula gets complex. TEXTBEFORE and TEXTAFTER (newer Excel) can do it.</p>
+<h2>Итог</h2>
+<p lang="en">To take what's before or after a delimiter, use formulas combined with FIND.</p>
 <a class="cta" href="/ru/excel-left-mid-builder.html">Использовать «Создать формулу LEFT, MID или RIGHT» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/excel-text-clean.html">Удаление лишних пробелов и невидимых символов из текста Excel</a>: Уберите лишние пробелы и невидимые символы.</li><li><a href="/ru/text-to-columns.html">Разбиение текста на столбцы по разделителю</a>: Разбивайте текст на столбцы по разделителю.</li><li><a href="/ru/excel-if-builder.html">Создание формулы IF</a>: Создайте формулу IF.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>

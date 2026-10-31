@@ -200,14 +200,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>途中の文字を取り出す</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>MIDを選ぶ</li><li>位置と文字数を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/excel-left-mid-builder.html">文字取り出し式の作成</a> でMIDを選ぶと、開始位置と文字数で途中の文字を取り出す式になります。</p>
+<p>途中の文字を取り出すのが、MID関数です。<a href="/excel-left-mid-builder.html">文字を取り出す式を作る</a> で「MID」を選ぶと、開始位置と文字数を指定した式が作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>MIDを選ぶ</li>
-<li>位置と文字数を入れる</li>
-<li>コピーする</li>
+<li>「取り出し方」で「MID」を選ぶ。</li>
+<li>「開始位置（MID用）」に、取り出し始める位置を入れる（最初の文字が1）。</li>
+<li>「文字数」に、取り出す文字数を入れる。</li>
+<li>「試しの文字」で、結果を確かめる。</li>
 </ol>
-<div class="note">開始位置は、1文字目が1です。</div>
+<div class="note">開始位置は、1から数えます。0を入れるとエラーになります。</div>
+<h2>例</h2>
+<p>「ABC-12345」の、5文字目から5文字を取り出す場合です。</p>
+<ul>
+<li>=MID(A2,5,5)</li>
+<li>結果：12345</li>
+</ul>
+<h2>位置の数え方</h2>
+<p>「ABC-12345」の各文字の位置は、次のとおりです。</p>
+<ul>
+<li>A=1、B=2、C=3、-=4、1=5、2=6、3=7、4=8、5=9</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>品番の、途中のコードだけを取り出したい</li>
+<li>日付の文字列（20261025）から、月や日を取り出したい</li>
+<li>固定の桁数でできた番号を、分解したい</li>
+</ul>
+<h2>日付の文字列を分解する例</h2>
+<p>「20261025」というA2の文字から、年・月・日を取り出します。</p>
+<ul>
+<li>年：=MID(A2,1,4) → 2026</li>
+<li>月：=MID(A2,5,2) → 10</li>
+<li>日：=MID(A2,7,2) → 25</li>
+</ul>
+<h2>文字数より多く指定したとき</h2>
+<p>残りの文字数より多く指定しても、エラーにならず、残りの文字が返ります。</p>
+<ul>
+<li>例：=MID("ABC",2,10) → BC</li>
+</ul>
+<h2>開始位置が文字数より後</h2>
+<p>開始位置が、文字数を超えると、空の文字が返ります。</p>
+<h2>例</h2>
+<p>商品コード「JP-TOKYO-0045」から、地域の部分「TOKYO」を取り出したかった。位置3から5文字を指定して、=MID(A2,4,5) で取り出せた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>位置が1つずれる</b>：0から数えてしまう。1から数える。</li>
+<li><b>桁数が一定でない</b>：品番の長さがばらばらだと、位置が決まらない。区切りの文字を使う方法を検討する。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>数字として使えますか？</h3>
+<p>MIDの結果は文字です。数字として使うには、VALUE関数や、「*1」で変換します。</p>
+<h2>まとめ</h2>
+<p>MIDは、開始位置と文字数。位置は1から数えます。</p>
 <a class="cta" href="/excel-left-mid-builder.html">文字を取り出す式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-text-clean.html">Excelの文字の余分なスペース・見えない文字を取る</a>：余分なスペースや見えない文字を取り除きます。</li><li><a href="/text-to-columns.html">文字を区切り文字で列に分ける</a>：文字を区切り文字で列に分けます。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +263,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Taking Characters From the Middle</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose MID</li><li>Enter the position and count</li><li>Copy it</li></ul></div>
-<p>Choosing MID in <a href="/excel-left-mid-builder.html">LEFT/MID Builder</a> gives a formula that takes characters from a start position.</p>
+<p>MID extracts text from the middle. Choosing "MID" in <a href="/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> builds a formula with a start position and a length.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose MID</li>
-<li>Enter the position and count</li>
-<li>Copy it</li>
+<li>Choose "MID" in "Method".</li>
+<li>In "Start position (for MID)", enter where to begin (the first character is 1).</li>
+<li>Enter the number of characters to take in "Characters".</li>
+<li>Check the result with a "Sample text".</li>
 </ol>
-<div class="note">The first character is position 1.</div>
+<div class="note">The start position counts from 1. Entering 0 errors.</div>
+<h2>Example</h2>
+<p>Taking 5 characters from the 5th of "ABC-12345".</p>
+<ul>
+<li>=MID(A2,5,5)</li>
+<li>Result: 12345</li>
+</ul>
+<h2>How positions count</h2>
+<p>The positions in "ABC-12345":</p>
+<ul>
+<li>A=1, B=2, C=3, -=4, 1=5, 2=6, 3=7, 4=8, 5=9</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Taking only a middle code from a part number</li>
+<li>Taking month or day from a date string (20261025)</li>
+<li>Splitting numbers made of fixed digits</li>
+</ul>
+<h2>Splitting a date string</h2>
+<p>From the text "20261025" in A2, take year, month and day.</p>
+<ul>
+<li>Year: =MID(A2,1,4) → 2026</li>
+<li>Month: =MID(A2,5,2) → 10</li>
+<li>Day: =MID(A2,7,2) → 25</li>
+</ul>
+<h2>Asking for more characters than remain</h2>
+<p>Asking for more than remain doesn't error; the remainder is returned.</p>
+<ul>
+<li>Example: =MID("ABC",2,10) → BC</li>
+</ul>
+<h2>Start beyond the length</h2>
+<p>If the start exceeds the length, an empty string is returned.</p>
+<h2>Example</h2>
+<p>Wanted the region "TOKYO" from the product code "JP-TOKYO-0045". Specifying position 4 for 5 characters, =MID(A2,4,5), extracted it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Off by one</b>: counting from 0. Count from 1.</li>
+<li><b>Lengths vary</b>: if part number lengths differ, positions aren't fixed. Consider using delimiters.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can the result be used as a number?</h3>
+<p>MID's result is text. Convert with VALUE or "*1".</p>
+<h2>Summary</h2>
+<p>MID takes a start position and length. Positions count from 1.</p>
 <a class="cta" href="/excel-left-mid-builder.html">Use "Build a LEFT, MID or RIGHT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>: Remove extra spaces and invisible characters.</li><li><a href="/text-to-columns.html">Split Text into Columns by a Delimiter</a>: Split text into columns by a delimiter.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

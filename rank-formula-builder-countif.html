@@ -200,14 +200,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>COUNTIFで順位をつける</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>COUNTIFを選ぶ</li><li>範囲を入れる</li><li>式をコピー</li></ul></div>
-<p><a href="/rank-formula-builder.html">順位式の作成</a> では、COUNTIFで自分より大きい数を数えて1を足す式も作れます。</p>
+<p>RANK関数が使えない環境や、RANKの結果を別の形で出したいときは、COUNTIFで順位をつけられます。<a href="/rank-formula-builder.html">順位の式を作る</a> の「COUNTIF」が、その式を作ります。</p>
+<h2>式の形</h2>
+<ul>
+<li>=COUNTIF($B$2:$B$100,"&gt;"&amp;B2)+1</li>
+</ul>
+<p>意味は、「自分より大きい値の数 + 1」です。大きい値が0個なら1位、1個なら2位です。</p>
 <h2>手順</h2>
 <ol>
-<li>COUNTIFを選ぶ</li>
-<li>範囲を入れる</li>
-<li>式をコピー</li>
+<li>「方法」で「COUNTIF」を選ぶ。</li>
+<li>「順位をつけるセル」と「比べる範囲」を入れる。</li>
+<li>式が「COUNTIF(…,"&gt;"&amp;セル)+1」の形になっていることを確かめる。</li>
+<li>試しの数値で、RANKと同じ結果になることを確かめる。</li>
 </ol>
-<div class="note">古いソフトでも使える書き方です。</div>
+<div class="note">同じ値には、同じ順位がつきます。RANKと同じ挙動です。</div>
+<h2>試しの結果</h2>
+<p>試しの数値に「90,80,80,70」、順位を見る数値に「80」を入れると、「2」と表示されます。RANKと同じです。</p>
+<h2>RANKでなくCOUNTIFを使う理由</h2>
+<ul>
+<li>式の意味が、見て分かりやすい</li>
+<li>Googleスプレッドシートや、他の表計算ソフトでも、同じ書き方で動く</li>
+<li>条件を足して、グループ内の順位に変えられる</li>
+</ul>
+<h2>グループ内の順位</h2>
+<p>COUNTIFSに変えると、グループごとの順位が求められます。</p>
+<ul>
+<li>例：=COUNTIFS($A$2:$A$100,A2,$B$2:$B$100,"&gt;"&amp;B2)+1</li>
+</ul>
+<p>A列が部署、B列が点数のとき、部署内の順位になります。</p>
+<h2>小さい順にしたい</h2>
+<p>"&gt;" を "&lt;" に変えます。</p>
+<ul>
+<li>例：=COUNTIF($B$2:$B$100,"&lt;"&amp;B2)+1</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>部署別、クラス別の順位を求めたい</li>
+<li>条件つきの順位を求めたい</li>
+<li>RANKが使えない、または使いたくない場合</li>
+</ul>
+<h2>例</h2>
+<p>部署ごとに、売上の順位をつけたかった。RANKでは全体の順位になってしまう。COUNTIFSに変えて、部署内の順位を求められた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>条件に"&gt;"&amp;を忘れる</b>："&gt;"B2 ではなく、"&gt;"&amp;B2 と書く。</li>
+<li><b>文字列の数字</b>：文字列の数字は、比較されない。数値に直す。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>RANKより遅くなりますか？</h3>
+<p>大量のデータでは、COUNTIFのほうが遅くなる場合があります。数千行程度なら、気になりません。</p>
+<h2>まとめ</h2>
+<p>COUNTIFによる順位は、グループ内の順位にも応用できます。</p>
 <a class="cta" href="/rank-formula-builder.html">順位の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/percent-calculator.html">割合・割引・増減（%）を計算する</a>：割合・割引・増減の%を、すぐに計算します。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +262,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Ranking With COUNTIF</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose COUNTIF</li><li>Enter the range</li><li>Copy the formula</li></ul></div>
-<p>In <a href="/rank-formula-builder.html">Rank Builder</a> you can also build a formula that counts larger values with COUNTIF and adds 1.</p>
+<p>Where RANK isn't available, or you want the rank in a different shape, COUNTIF can rank. "COUNTIF" in <a href="/rank-formula-builder.html">Build a Rank Formula</a> builds that formula.</p>
+<h2>The formula's form</h2>
+<ul>
+<li>=COUNTIF($B$2:$B$100,"&gt;"&amp;B2)+1</li>
+</ul>
+<p>It means "the number of larger values + 1". Zero larger values means 1st; one means 2nd.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose COUNTIF</li>
-<li>Enter the range</li>
-<li>Copy the formula</li>
+<li>Choose "COUNTIF" in "Method".</li>
+<li>Enter "Cell to rank" and "Range to compare".</li>
+<li>Check the formula has the form COUNTIF(…,"&gt;"&amp;cell)+1.</li>
+<li>Check with sample numbers that it gives the same result as RANK.</li>
 </ol>
-<div class="note">This style also works in older software.</div>
+<div class="note">Equal values get the same rank, the same behavior as RANK.</div>
+<h2>Sample result</h2>
+<p>Entering "90,80,80,70" as samples and "80" as the number to rank shows "2", same as RANK.</p>
+<h2>Why use COUNTIF instead of RANK</h2>
+<ul>
+<li>The formula's meaning is easy to see</li>
+<li>It works the same way in Google Sheets and other spreadsheet software</li>
+<li>You can add conditions to rank within groups</li>
+</ul>
+<h2>Rank within groups</h2>
+<p>Switching to COUNTIFS gives per-group ranks.</p>
+<ul>
+<li>Example: =COUNTIFS($A$2:$A$100,A2,$B$2:$B$100,"&gt;"&amp;B2)+1</li>
+</ul>
+<p>With departments in column A and scores in column B, this ranks within departments.</p>
+<h2>For ascending</h2>
+<p>Change "&gt;" to "&lt;".</p>
+<ul>
+<li>Example: =COUNTIF($B$2:$B$100,"&lt;"&amp;B2)+1</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Ranking within departments or classes</li>
+<li>Conditional ranking</li>
+<li>When RANK isn't available or wanted</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted sales ranks per department. RANK gives an overall rank. Switching to COUNTIFS gave ranks within each department.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Forgetting "&gt;"&amp;</b>: write "&gt;"&amp;B2, not "&gt;"B2.</li>
+<li><b>Numbers as text</b>: text numbers aren't compared. Convert to numbers.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Is it slower than RANK?</h3>
+<p>With large data COUNTIF can be slower. For a few thousand rows it's unnoticeable.</p>
+<h2>Summary</h2>
+<p>COUNTIF-based ranking also extends to within-group ranks.</p>
 <a class="cta" href="/rank-formula-builder.html">Use "Build a Rank Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -200,14 +200,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>小さい順の順位</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>RANK-ASCを選ぶ</li><li>範囲を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/rank-formula-builder.html">順位式の作成</a> では、タイムなど小さいほうが上位になる順位も作れます。</p>
+<p>RANKは、大きい順の順位が基本です。でも、タイムや順位の小さいほうが良い場合は、小さい順で数えたい。<a href="/rank-formula-builder.html">順位の式を作る</a> の「RANK-ASC」が、そのための式を作ります。</p>
 <h2>手順</h2>
 <ol>
-<li>RANK-ASCを選ぶ</li>
-<li>範囲を入れる</li>
-<li>コピーする</li>
+<li>「方法」で「RANK-ASC」を選ぶ。</li>
+<li>「順位をつけるセル」と「比べる範囲」を入れる。</li>
+<li>式の最後の引数が「1」になっていることを確かめる。</li>
 </ol>
-<div class="note">大きい順は0、小さい順は1の指定です。</div>
+<div class="note">RANKの第3引数が、0なら大きい順（降順）、1なら小さい順（昇順）です。</div>
+<h2>例</h2>
+<p>走った時間のB2が、B2:B100の中で何位かを、速い順に求める場合です。</p>
+<ul>
+<li>=RANK(B2,$B$2:$B$100,1)</li>
+</ul>
+<p>小さい値が、1位です。</p>
+<h2>試しの結果</h2>
+<p>試しの数値に「9.8,10.2,10.5,9.9」を入れ、順位を見る数値に「9.8」を入れると、次のようになります。</p>
+<ul>
+<li>RANK（降順）：4位</li>
+<li>RANK-ASC（昇順）：1位</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>走った時間、作業時間など、短いほど良い値</li>
+<li>ゴルフのスコアなど、小さいほど良い値</li>
+<li>価格の安い順</li>
+<li>不具合の件数など、少ないほど良い値</li>
+</ul>
+<h2>第3引数の覚え方</h2>
+<ul>
+<li>0（または省略）：大きい順。点数、売上など</li>
+<li>1：小さい順。タイム、価格など</li>
+</ul>
+<h2>大きい順と小さい順の関係</h2>
+<p>全員の人数がN人で、同順位がないとき、次の関係があります。</p>
+<ul>
+<li>小さい順の順位 = N + 1 − 大きい順の順位</li>
+</ul>
+<h2>例</h2>
+<p>陸上の100m走の記録で、速い順に順位をつけたかった。タイムが短いほど良いので、第3引数を1にして、=RANK(B2,$B$2:$B$11,1) で、1位が最短記録になった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>降順のままにしてしまう</b>：タイムなのに、遅い人が1位になる。</li>
+<li><b>時間の形式</b>：「0:09.8」のように、時間形式の場合も、値が小さいほど速い。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>点数の低い順に並べるだけなら？</h3>
+<p>SORT関数や、並べ替え機能が使えます。順位の数字が必要なときに、RANKを使います。</p>
+<h2>まとめ</h2>
+<p>小さいほど良い値は、RANKの第3引数を1に。</p>
 <a class="cta" href="/rank-formula-builder.html">順位の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/percent-calculator.html">割合・割引・増減（%）を計算する</a>：割合・割引・増減の%を、すぐに計算します。</li><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +260,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Ranking From Smallest</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose RANK-ASC</li><li>Enter the range</li><li>Copy it</li></ul></div>
-<p>In <a href="/rank-formula-builder.html">Rank Builder</a> you can also rank so that smaller values come first, such as race times.</p>
+<p>RANK is descending by default. But for times or anything where smaller is better, you want ascending. "RANK-ASC" in <a href="/rank-formula-builder.html">Build a Rank Formula</a> builds that formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose RANK-ASC</li>
-<li>Enter the range</li>
-<li>Copy it</li>
+<li>Choose "RANK-ASC" in "Method".</li>
+<li>Enter "Cell to rank" and "Range to compare".</li>
+<li>Check the last argument of the formula is "1".</li>
 </ol>
-<div class="note">0 means largest first and 1 means smallest first.</div>
+<div class="note">RANK's third argument: 0 is descending (large first), 1 is ascending (small first).</div>
+<h2>Example</h2>
+<p>Ranking the running time in B2 within B2:B100, fastest first.</p>
+<ul>
+<li>=RANK(B2,$B$2:$B$100,1)</li>
+</ul>
+<p>The smallest value is 1st.</p>
+<h2>Sample result</h2>
+<p>Entering "9.8,10.2,10.5,9.9" as samples and "9.8" as the number to rank gives:</p>
+<ul>
+<li>RANK (descending): 4th</li>
+<li>RANK-ASC (ascending): 1st</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Values where shorter is better, like running or work times</li>
+<li>Values where lower is better, like golf scores</li>
+<li>Cheapest-first prices</li>
+<li>Values where fewer is better, like defect counts</li>
+</ul>
+<h2>Remembering the third argument</h2>
+<ul>
+<li>0 (or omitted): large first. Scores, sales, etc.</li>
+<li>1: small first. Times, prices, etc.</li>
+</ul>
+<h2>Relation between descending and ascending</h2>
+<p>With N people and no ties:</p>
+<ul>
+<li>Ascending rank = N + 1 − descending rank</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to rank 100m sprint records fastest first. Since shorter is better, set the third argument to 1, and =RANK(B2,$B$2:$B$11,1) made the shortest record 1st.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Leaving it descending</b>: with times, the slowest person ends up 1st.</li>
+<li><b>Time formats</b>: even in forms like "0:09.8", smaller values are faster.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I just want to sort low to high?</h3>
+<p>SORT or the sort feature works. Use RANK when you need the rank numbers.</p>
+<h2>Summary</h2>
+<p>For smaller-is-better values, set RANK's third argument to 1.</p>
 <a class="cta" href="/rank-formula-builder.html">Use "Build a Rank Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

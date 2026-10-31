@@ -200,14 +200,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>営業日を求める</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>WORKDAYを選ぶ</li><li>日数を入れる</li><li>祝日を入れる</li></ul></div>
-<p><a href="/date-offset-formula-builder.html">日付式の作成</a> では、WORKDAYで土日を除いた○営業日後を求められます。</p>
+<p>納期や支払期限は、土日を除いた「営業日」で数えることが多くあります。<a href="/date-offset-formula-builder.html">日付の足し引きの式を作る</a> で「WORKDAY」を選ぶと、営業日を数える式が作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>WORKDAYを選ぶ</li>
-<li>日数を入れる</li>
-<li>祝日を入れる</li>
+<li>「方法」で「WORKDAY」を選ぶ。</li>
+<li>「日付のセル」を入れる。</li>
+<li>「足す数」に、営業日数を入れる（引くときはマイナス）。</li>
+<li>祝日も除きたいときは、「祝日の範囲（WORKDAY用。空でもOK）」に、祝日の一覧の範囲を入れる。</li>
+<li>「試しの日付」で、結果を確かめる。</li>
 </ol>
-<div class="note">祝日の範囲を入れると、祝日も除かれます。</div>
+<div class="note">試しの結果は、土日だけを除いて計算されます。祝日は、考慮されません。</div>
+<h2>例</h2>
+<p>A2の日付から、5営業日後を求める場合です。</p>
+<ul>
+<li>祝日なし：=WORKDAY(A2,5)</li>
+<li>祝日あり：=WORKDAY(A2,5,E2:E20)</li>
+</ul>
+<p>試しの日付に 2026-10-23（金）を入れ、足す数を 1 にすると、「2026-10-23 → 2026-10-26 (土日のみ除外)」と表示されます。</p>
+<h2>数え方</h2>
+<p>基準の日は、数えません。翌日から数え始めます。</p>
+<ul>
+<li>金曜日の1営業日後：翌週の月曜日</li>
+<li>月曜日の5営業日後：翌週の月曜日</li>
+</ul>
+<h2>祝日の一覧を作る</h2>
+<p>祝日の日付を、別のセル範囲に並べておき、その範囲を第3引数に指定します。</p>
+<ul>
+<li>例：E2:E20 に、祝日の日付を並べておく</li>
+<li>範囲は、$で固定しておくと、コピーしても安全</li>
+</ul>
+<h2>前の営業日を求める</h2>
+<p>足す数にマイナスを入れます。</p>
+<ul>
+<li>3営業日前：=WORKDAY(A2,-3)</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>営業日で数えた納期を求めたい</li>
+<li>支払期限を、営業日で求めたい</li>
+<li>返信の期限を、営業日で管理したい</li>
+</ul>
+<h2>土日以外が休みの会社</h2>
+<p>土日以外を休みにしたい場合は、WORKDAY.INTL関数を使います。</p>
+<ul>
+<li>例：=WORKDAY.INTL(A2,5,"0000011")</li>
+</ul>
+<h2>例</h2>
+<p>注文から5営業日後の発送予定日を求めたかった。祝日の一覧を用意して、=WORKDAY(A2,5,$E$2:$E$20) とした。連休をはさむ場合も、正しい日付が求まった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>祝日を入れ忘れる</b>：祝日があっても、営業日として数えてしまう。</li>
+<li><b>試しの結果と実際の違い</b>：ツールの試しの結果は、土日のみ除外。祝日を入れた場合は、実際のセルで確かめる。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>営業日の数を数えたいときは？</h3>
+<p>2つの日付のあいだの営業日数は、NETWORKDAYS関数で求められます。</p>
+<h2>まとめ</h2>
+<p>営業日で数えるなら、WORKDAY。祝日の一覧を用意すると、より正確です。</p>
 <a class="cta" href="/date-offset-formula-builder.html">日付の足し引きの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-calculator.html">年齢・日数・日付を計算する</a>：年齢や、日付のあいだの日数を計算します。</li><li><a href="/datedif-formula-builder.html">DATEDIFの式を作る</a>：DATEDIFの式を作ります。</li><li><a href="/excel-serial-date.html">Excel シリアル値 日付変換</a>：Excelのシリアル値と日付を変換します。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +268,63 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Finding Working Days</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose WORKDAY</li><li>Enter the days</li><li>Enter holidays</li></ul></div>
-<p>In <a href="/date-offset-formula-builder.html">Date Offset Builder</a>, WORKDAY gives the date some working days later, skipping weekends.</p>
+<p>Delivery and payment deadlines are often counted in "business days" excluding weekends. Choosing "WORKDAY" in <a href="/date-offset-formula-builder.html">Build a Date Offset Formula</a> builds a business-day formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose WORKDAY</li>
-<li>Enter the days</li>
-<li>Enter holidays</li>
+<li>Choose "WORKDAY" in "Method".</li>
+<li>Enter the "Date cell".</li>
+<li>Enter business days in "Amount to add" (negative to subtract).</li>
+<li>To exclude holidays too, enter the holiday list range in "Holiday range (for WORKDAY; may be empty)".</li>
+<li>Check the result with a "Sample date".</li>
 </ol>
-<div class="note">Enter a holiday range to skip holidays too.</div>
+<div class="note">The sample result excludes weekends only. Holidays aren't considered.</div>
+<h2>Example</h2>
+<p>Finding 5 business days after the date in A2.</p>
+<ul>
+<li>No holidays: =WORKDAY(A2,5)</li>
+<li>With holidays: =WORKDAY(A2,5,E2:E20)</li>
+</ul>
+<p>Entering 2026-10-23 (Friday) with amount 1 shows "2026-10-23 → 2026-10-26 (weekends only)".</p>
+<h2>How it counts</h2>
+<p>The base day isn't counted; counting starts from the next day.</p>
+<ul>
+<li>1 business day after Friday: next Monday</li>
+<li>5 business days after Monday: next Monday</li>
+</ul>
+<h2>Making a holiday list</h2>
+<p>List holiday dates in a separate range and specify that range as the third argument.</p>
+<ul>
+<li>Example: list holiday dates in E2:E20</li>
+<li>Fix the range with $ so copying is safe</li>
+</ul>
+<h2>Finding earlier business days</h2>
+<p>Enter a negative amount.</p>
+<ul>
+<li>3 business days earlier: =WORKDAY(A2,-3)</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Finding delivery dates counted in business days</li>
+<li>Finding payment deadlines in business days</li>
+<li>Managing reply deadlines in business days</li>
+</ul>
+<h2>Companies off on days other than weekends</h2>
+<p>Use WORKDAY.INTL for days off other than Sat/Sun.</p>
+<ul>
+<li>Example: =WORKDAY.INTL(A2,5,"0000011")</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted a shipping date 5 business days after the order. Prepared a holiday list and used =WORKDAY(A2,5,$E$2:$E$20). Correct dates came out across holiday weekends.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Forgetting holidays</b>: holidays are counted as business days.</li>
+<li><b>Sample vs real</b>: the tool's sample excludes weekends only. With holidays, check in actual cells.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I want to count business days?</h3>
+<p>NETWORKDAYS gives the number of business days between two dates.</p>
+<h2>Summary</h2>
+<p>WORKDAY for counting business days. A holiday list makes it more accurate.</p>
 <a class="cta" href="/date-offset-formula-builder.html">Use "Build a Date Offset Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-calculator.html">Calculate Age, Days Between Dates and Date Offsets</a>: Calculate age and days between dates.</li><li><a href="/datedif-formula-builder.html">Build a DATEDIF Formula</a>: Build a DATEDIF formula.</li><li><a href="/excel-serial-date.html">Excel Serial Number and Date Converter</a>: Convert Excel serial numbers and dates.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

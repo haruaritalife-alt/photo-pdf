@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>When Values Tie</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose the method</li><li>Enter sample numbers</li><li>See the result</li></ul></div>
-<p>In <a href="/en/rank-formula-builder.html">Rank Builder</a>, RANK gives tied values the same rank, and RANK.AVG gives the average rank.</p>
+<p>What happens to ranks when several values are equal? In <a href="/en/rank-formula-builder.html">Build a Rank Formula</a>, RANK and RANK.AVG treat ties differently. Check with sample numbers.</p>
+<h2>Handling ties</h2>
+<p>For four people with scores 90, 80, 80, 70:</p>
+<ul>
+<li><b>RANK</b>: 90→1st, 80→2nd, 80→2nd, 70→4th (ranks skip after a tie)</li>
+<li><b>RANK.AVG</b>: 90→1st, 80→2.5th, 80→2.5th, 70→4th (ties get the average rank)</li>
+</ul>
 <h2>Steps</h2>
 <ol>
-<li>Choose the method</li>
-<li>Enter sample numbers</li>
-<li>See the result</li>
+<li>Enter "90,80,80,70" in "Sample numbers".</li>
+<li>Enter "80" in "Number to rank".</li>
+<li>Switch "Method" between RANK and RANK.AVG and compare the "Sample result".</li>
 </ol>
-<div class="note">You can see the difference with sample numbers.</div>
+<div class="note">The sample result shows "2" for RANK and "2.5" for RANK.AVG.</div>
+<h2>Why ranks skip</h2>
+<p>RANK is "the number of larger values + 1". The 80s have one larger (90), so 2nd. The 70 has three larger, so 4th. 3rd is left empty.</p>
+<h2>Giving ties distinct ranks</h2>
+<p>To give equal values non-overlapping ranks, add a helper.</p>
+<ul>
+<li>Example: =RANK(B2,$B$2:$B$100,0)+COUNTIF($B$2:B2,B2)-1</li>
+</ul>
+<p>The one appearing first (higher up) gets the higher rank.</p>
+<h2>Good for</h2>
+<ul>
+<li>Test ranks where ties are possible</li>
+<li>Deciding how to treat ties</li>
+<li>Deciding prizes or ratings by rank</li>
+</ul>
+<h2>Avoiding rank gaps</h2>
+<p>For a "dense rank" without gaps, use this.</p>
+<ul>
+<li>Example: =SUMPRODUCT(($B$2:$B$100&gt;B2)/COUNTIF($B$2:$B$100,$B$2:$B$100&amp;""))+1</li>
+</ul>
+<p>For 90, 80, 80, 70 it gives 1st, 2nd, 2nd, 3rd.</p>
+<h2>Example</h2>
+<p>A grade sheet had two tied people. RANK gave two 2nds, then 4th, leaving 3rd empty. This rule was assumed when deciding who gets awarded.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>RANK.AVG decimals</b>: use fractional ranks like 2.5 as displayed.</li>
+<li><b>Old Excel</b>: RANK.AVG needs Excel 2010 or later.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How does RANK differ from RANK.EQ?</h3>
+<p>Same result. RANK.EQ is RANK's newer name; both are available for compatibility.</p>
+<h2>Summary</h2>
+<p>For ties, RANK shares the rank and skips the next; RANK.AVG gives the average rank.</p>
 <a class="cta" href="/en/rank-formula-builder.html">Use "Build a Rank Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/en/percent-calculator.html">Calculate Percentages, Discounts and % Change</a>: Calculate percentages, discounts and % change instantly.</li><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

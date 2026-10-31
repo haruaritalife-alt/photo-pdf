@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Gdy wystąpi błąd</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Zbuduj formułę</li><li>Wybierz drugi</li><li>Skopiuj</li></ul></div>
-<p><a href="/pl/import-formula-builder.html">Kreator importu</a> pokazuje też wersję opakowaną w IFERROR, która przy błędzie pozostaje pusta.</p>
+<p lang="en">Import formulas easily error depending on the site. So use the formula that blanks on error. That's the second field in <a href="/pl/import-formula-builder.html">Build an IMPORTHTML Formula</a>.</p>
 <h2>Kroki</h2>
 <ol>
-<li>Zbuduj formułę</li>
-<li>Wybierz drugi</li>
-<li>Skopiuj</li>
+<li lang="en">Build the import formula.</li>
+<li lang="en">Check the second "Formula that blanks on error".</li>
+<li lang="en">Copy it with "Copy second" and paste.</li>
 </ol>
-<div class="note">Niektórych stron nie da się zaimportować i pokazują błąd.</div>
+<div class="note" lang="en">Its form is =IFERROR(import formula,""). The cell becomes empty on error.</div>
+<h2>Przykład</h2>
+<ul>
+<li lang="en">=IFERROR(IMPORTHTML("https://example.com/page","table",1),"")</li>
+</ul>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">Sources that sometimes fail to connect</li>
+<li lang="en">Hiding error displays</li>
+<li lang="en">Avoiding errors in cells that feed totals</li>
+</ul>
+<h2>Uwaga</h2>
+<p lang="en">Hiding errors makes causes harder to notice. Test with the first formula, then switch to the second once stable.</p>
+<h2 lang="en">Common errors</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: the import result is empty.</li>
+<li lang="en"><b>#REF!</b>: values are in the spill range.</li>
+<li lang="en"><b>Loading…</b>: still loading.</li>
+<li lang="en"><b>Resource at url not found</b>: wrong URL, or the page is gone.</li>
+</ul>
+<h2>Przykład</h2>
+<p lang="en">The sheet sometimes showed errors in the morning. Wrapping in IFERROR left blanks on error, and totals stopped breaking.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Can't see the reason</b>: use the first formula when hunting causes.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I keep the previous value?</h3>
+<p lang="en">Hard with functions alone. A script can save values.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">For stable operation, wrap in IFERROR.</p>
 <a class="cta" href="/pl/import-formula-builder.html">Użyj „Utwórz formułę IMPORTHTML” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/importrange-builder.html">Tworzenie formuły IMPORTRANGE</a>: Utwórz formułę IMPORTRANGE.</li><li><a href="/pl/query-formula-builder.html">Utwórz formułę QUERY</a>: Utwórz formułę QUERY.</li><li><a href="/pl/filter-formula-builder.html">Tworzenie formuły FILTER</a>: Utwórz formułę FILTER.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

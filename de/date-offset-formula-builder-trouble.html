@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Was tun, wenn es nicht funktioniert</h1>
 <p class="meta">Veröffentlicht: 19.10.2026 | Aktualisiert: 19.10.2026 | <a href="/about.html">Über uns (Japanisch)</a></p>
 <div class="points"><b>Wichtige Punkte</b><ul><li>Die Datei prüfen</li><li>Größe prüfen</li><li>Auf einem anderen Gerät versuchen</li></ul></div>
-<p>Wenn der <a href="/de/date-offset-formula-builder.html">Datums-Generator</a> nicht funktioniert, prüfen Sie Folgendes.</p>
-<h2>Schritte</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/de/date-offset-formula-builder.html">Build a Date Offset Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the date cell isn't in the "A2" form, the amount isn't an integer, or the holiday range isn't in a form like "E2:E20".</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>The result appears as a number</b>: the cell's format is "General". Set it to "Short Date".</li>
+<li lang="en"><b>#VALUE! appears</b>: the date cell isn't recognised as a date (a text date).</li>
+<li lang="en"><b>#NUM! appears</b>: the resulting date is beyond Excel's range.</li>
+<li lang="en"><b>Off by a day</b>: whether the base day is included or not.</li>
+<li lang="en"><b>Business days don't match</b>: holidays aren't included.</li>
+<li lang="en"><b>Adjusted to month-end</b>: EDATE moves to month-end if the target has no such day.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Die Datei prüfen</li>
-<li>Größe prüfen</li>
-<li>Auf einem anderen Gerät versuchen</li>
+<li lang="en">Check the date cell is recognised as a date (right-aligned means date).</li>
+<li lang="en">Set the result cell's format to Date.</li>
+<li lang="en">Compare with the tool's result using a sample date.</li>
 </ol>
-<div class="note">Wenn keine Formel erscheint, prüfen Sie, ob die Zelle wie A2 geschrieben ist und die Zahl eine ganze Zahl ist.</div>
+<div class="note" lang="en">If dates display left-aligned, they may be text.</div>
+<h2 lang="en">Fixing text dates</h2>
+<ul>
+<li lang="en">DATEVALUE function: =DATEVALUE("2026/10/25")</li>
+<li lang="en">Select cells and convert with "Data" → "Text to Columns"</li>
+<li lang="en">Dot-separated forms like "2026.10.25" may not be recognised as dates</li>
+</ul>
+<h2 lang="en">Differences from the sample result</h2>
+<p lang="en">The tool's sample result:</p>
+<ul>
+<li lang="en">WORKDAY: weekends only; holidays aren't considered</li>
+<li lang="en">EDATE: includes month-end adjustment</li>
+</ul>
+<p lang="en">With a holiday range in actual cells, results change.</p>
+<h2>Beispiel</h2>
+<p lang="en">The result showed as the number "46323" because the cell's format was "General". Setting it to a date format showed "2026/10/28".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Text in the holiday range</b>: put only dates.</li>
+<li lang="en"><b>Old dates</b>: dates before 1900 can't be handled.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Are holidays included automatically?</h3>
+<p lang="en">No. Prepare the holiday list yourself.</p>
+<h2>Zusammenfassung</h2>
+<p lang="en">Display format, date form, holidays. Check these three in order.</p>
 <a class="cta" href="/de/date-offset-formula-builder.html">„Eine Datumsverschiebungs-Formel erstellen“ verwenden (kostenlos)</a>
 <h2>Passende Werkzeuge dazu</h2><ul><li><a href="/de/date-calculator.html">Alter, Tage zwischen Daten und Datumsverschiebungen berechnen</a>: Alter und Tage zwischen zwei Daten berechnen.</li><li><a href="/de/datedif-formula-builder.html">Eine DATEDIF-Formel erstellen</a>: Erstellen Sie eine DATEDIF-Formel.</li><li><a href="/de/excel-serial-date.html">Umrechner für Excel-Seriennummernwert und Datum</a>: Excel-Seriennummernwerte und Daten umrechnen.</li></ul>
 <div class="tip"><p>Wenn Ihnen diese Anleitung geholfen hat, freuen wir uns über ein kleines Trinkgeld.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Trinkgeld senden (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Geschenk senden (Amazon-Wunschliste)</a></div>

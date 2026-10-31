@@ -201,14 +201,67 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Tìm ngày cuối tháng</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Chọn EOMONTH</li><li>Nhập số tháng</li><li>Sao chép</li></ul></div>
-<p>Trong <a href="/vi/date-offset-formula-builder.html">Trình tạo ngày</a>, EOMONTH cho ngày cuối tháng sau vài tháng.</p>
+<p lang="en">"Month-end closing", "payment by end of next month". EOMONTH finds month-end dates. Choosing "EOMONTH" in <a href="/vi/date-offset-formula-builder.html">Build a Date Offset Formula</a> builds the formula.</p>
 <h2>Các bước</h2>
 <ol>
-<li>Chọn EOMONTH</li>
-<li>Nhập số tháng</li>
-<li>Sao chép</li>
+<li lang="en">Choose "EOMONTH" in "Method".</li>
+<li lang="en">Enter the "Date cell".</li>
+<li lang="en">Enter the number of months in "Amount to add" (0 gives that month's last day).</li>
+<li lang="en">Check the result with a "Sample date".</li>
 </ol>
-<div class="note">Nhập 0 để lấy ngày cuối của cùng tháng.</div>
+<div class="note" lang="en">Amount 0 is the end of the date's own month; 1 is the end of the next month.</div>
+<h2>Ví dụ</h2>
+<p lang="en">Finding the month-end of the month containing A2.</p>
+<ul>
+<li lang="en">=EOMONTH(A2,0)</li>
+<li lang="en">Sample: 2026-10-25 → 2026-10-31</li>
+</ul>
+<p lang="en">For payment at the end of next month:</p>
+<ul>
+<li lang="en">=EOMONTH(A2,1)</li>
+<li lang="en">Sample: 2026-10-25 → 2026-11-30</li>
+</ul>
+<h2 lang="en">Results by amount (2026-10-25)</h2>
+<ul>
+<li lang="en">0: 2026-10-31 (this month-end)</li>
+<li lang="en">1: 2026-11-30 (next month-end)</li>
+<li lang="en">2: 2026-12-31 (month-end after next)</li>
+<li lang="en">-1: 2026-09-30 (previous month-end)</li>
+</ul>
+<h2 lang="en">Finding the first of the month</h2>
+<p lang="en">Add 1 to the previous month-end.</p>
+<ul>
+<li lang="en">=EOMONTH(A2,-1)+1</li>
+</ul>
+<h2>Phù hợp với</h2>
+<ul>
+<li lang="en">Finding payment dates for month-end close, next-month-end payment</li>
+<li lang="en">Knowing a month's last day</li>
+<li lang="en">Building monthly aggregation periods</li>
+</ul>
+<h2 lang="en">February in leap years</h2>
+<p lang="en">EOMONTH handles leap years correctly.</p>
+<ul>
+<li lang="en">2028-02-10 → 2028-02-29</li>
+<li lang="en">2026-02-10 → 2026-02-28</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">Even if invoice dates fell mid-month, payment due was the end of the next month. =EOMONTH(A2,1) gave next month-end for every invoice date.</p>
+<h2 lang="en">Difference from EDATE</h2>
+<ul>
+<li lang="en">EDATE: moves to the same day (like the 31st); adjusts when it overflows</li>
+<li lang="en">EOMONTH: always moves to month-end</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Result appears as a number</b>: set the cell's format to Date.</li>
+<li lang="en"><b>Whether month-end is the 30th or 31st</b>: EOMONTH decides automatically; no need to write it.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if month-end falls on a weekend?</h3>
+<p lang="en">To adjust to a business day, combine with WORKDAY. Example: =WORKDAY(EOMONTH(A2,1)+1,-1)</p>
+<h2>Tóm tắt</h2>
+<p lang="en">EOMONTH for month-end dates. Changing the amount also gives next or previous month-end.</p>
 <a class="cta" href="/vi/date-offset-formula-builder.html">Dùng “Tạo công thức dịch chuyển ngày” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/date-calculator.html">Tính tuổi, số ngày giữa hai ngày và ngày cộng/trừ</a>: Tính tuổi và số ngày giữa hai ngày.</li><li><a href="/vi/datedif-formula-builder.html">Tạo công thức DATEDIF</a>: Tạo công thức DATEDIF.</li><li><a href="/vi/excel-serial-date.html">Chuyển đổi giá trị số sê-ri và ngày Excel</a>: Chuyển đổi giá trị số sê-ri và ngày Excel.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

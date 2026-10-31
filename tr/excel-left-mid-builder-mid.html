@@ -201,14 +201,58 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Ortadan karakter alma</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>MID seçin</li><li>Konumu ve karakter sayısını girin</li><li>Kopyalayın</li></ul></div>
-<p><a href="/tr/excel-left-mid-builder.html">LEFT/MID Oluşturucu</a>'da MID'i seçerseniz başlangıç konumundan itibaren karakter alan formül elde edersiniz.</p>
+<p lang="en">MID extracts text from the middle. Choosing "MID" in <a href="/tr/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> builds a formula with a start position and a length.</p>
 <h2>Adımlar</h2>
 <ol>
-<li>MID seçin</li>
-<li>Konumu ve karakter sayısını girin</li>
-<li>Kopyalayın</li>
+<li lang="en">Choose "MID" in "Method".</li>
+<li lang="en">In "Start position (for MID)", enter where to begin (the first character is 1).</li>
+<li lang="en">Enter the number of characters to take in "Characters".</li>
+<li lang="en">Check the result with a "Sample text".</li>
 </ol>
-<div class="note">İlk karakter 1. konumdur.</div>
+<div class="note" lang="en">The start position counts from 1. Entering 0 errors.</div>
+<h2>Örnek</h2>
+<p lang="en">Taking 5 characters from the 5th of "ABC-12345".</p>
+<ul>
+<li lang="en">=MID(A2,5,5)</li>
+<li lang="en">Result: 12345</li>
+</ul>
+<h2 lang="en">How positions count</h2>
+<p lang="en">The positions in "ABC-12345":</p>
+<ul>
+<li lang="en">A=1, B=2, C=3, -=4, 1=5, 2=6, 3=7, 4=8, 5=9</li>
+</ul>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Taking only a middle code from a part number</li>
+<li lang="en">Taking month or day from a date string (20261025)</li>
+<li lang="en">Splitting numbers made of fixed digits</li>
+</ul>
+<h2 lang="en">Splitting a date string</h2>
+<p lang="en">From the text "20261025" in A2, take year, month and day.</p>
+<ul>
+<li lang="en">Year: =MID(A2,1,4) → 2026</li>
+<li lang="en">Month: =MID(A2,5,2) → 10</li>
+<li lang="en">Day: =MID(A2,7,2) → 25</li>
+</ul>
+<h2 lang="en">Asking for more characters than remain</h2>
+<p lang="en">Asking for more than remain doesn't error; the remainder is returned.</p>
+<ul>
+<li lang="en">Example: =MID("ABC",2,10) → BC</li>
+</ul>
+<h2 lang="en">Start beyond the length</h2>
+<p lang="en">If the start exceeds the length, an empty string is returned.</p>
+<h2>Örnek</h2>
+<p lang="en">Wanted the region "TOKYO" from the product code "JP-TOKYO-0045". Specifying position 4 for 5 characters, =MID(A2,4,5), extracted it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Off by one</b>: counting from 0. Count from 1.</li>
+<li lang="en"><b>Lengths vary</b>: if part number lengths differ, positions aren't fixed. Consider using delimiters.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can the result be used as a number?</h3>
+<p lang="en">MID's result is text. Convert with VALUE or "*1".</p>
+<h2>Özet</h2>
+<p lang="en">MID takes a start position and length. Positions count from 1.</p>
 <a class="cta" href="/tr/excel-left-mid-builder.html">“LEFT, MID veya RIGHT formülü oluştur” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/excel-text-clean.html">Excel metnindeki fazla boşlukları ve görünmez karakterleri kaldırma</a>: Fazla boşlukları ve görünmez karakterleri kaldırın.</li><li><a href="/tr/text-to-columns.html">Metni Bir Ayırıcıyla Sütunlara Bölme</a>: Metni bir ayırıcıyla sütunlara bölün.</li><li><a href="/tr/excel-if-builder.html">IF formülü oluşturma</a>: IF formülü oluşturun.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>

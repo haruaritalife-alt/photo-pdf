@@ -200,14 +200,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>CSVやRSSを取り込む</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>方法を選ぶ</li><li>URLを入れる</li><li>コピーする</li></ul></div>
-<p><a href="/import-formula-builder.html">取り込み式の作成</a> では、IMPORTDATAでCSV、IMPORTFEEDでRSSを取り込む式を作れます。</p>
+<p>公開されているCSVを、そのままシートに読み込みたい。それには IMPORTDATA を使います。<a href="/import-formula-builder.html">IMPORTHTMLなどの式を作る</a> の「IMPORTDATA」で、式を作ります。</p>
 <h2>手順</h2>
 <ol>
-<li>方法を選ぶ</li>
-<li>URLを入れる</li>
-<li>コピーする</li>
+<li>「方法」で「IMPORTDATA」を選ぶ。</li>
+<li>「取り込むページのURL」に、CSVやTSVのURLを入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">URLは、https://で始まるものを入れます。</div>
+<div class="note">URLは、ファイルそのものを指す必要があります。ダウンロードページのURLでは、読めません。</div>
+<h2>式の例</h2>
+<ul>
+<li>=IMPORTDATA("https://example.com/data.csv")</li>
+</ul>
+<h2>IMPORTFEEDも</h2>
+<p>RSSやAtomのフィードを読むなら、「IMPORTFEED」を選びます。</p>
+<ul>
+<li>=IMPORTFEED("https://example.com/feed.xml")</li>
+</ul>
+<p>ニュースやブログの新着を、一覧にできます。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>政府や自治体の公開データ</li>
+<li>毎日更新されるCSV</li>
+<li>ブログやニュースの新着一覧</li>
+</ul>
+<h2>例</h2>
+<p>自治体が公開するCSVを、毎日見たかった。ファイルのURLをIMPORTDATAに入れると、シートに読み込まれ、更新も反映された。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>#N/A</b>：URLが、CSVそのものでない。</li>
+<li><b>文字化け</b>：文字コードが合わないCSVは、読めないことがあります。</li>
+<li><b>行数の上限</b>：大きすぎるファイルは、読めません。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>区切りが違うCSVは？</h3>
+<p>IMPORTDATAは、区切りを自動で判断します。</p>
+<h2>まとめ</h2>
+<p>CSVのURLを入れるだけで、読み込めます。</p>
 <a class="cta" href="/import-formula-builder.html">IMPORTHTMLなどの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/importrange-builder.html">IMPORTRANGEの式を作る</a>：IMPORTRANGEの式を作ります。</li><li><a href="/query-formula-builder.html">QUERYの式を作る</a>：QUERY関数の式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +248,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Importing CSV or RSS</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose the method</li><li>Enter the URL</li><li>Copy it</li></ul></div>
-<p>In <a href="/import-formula-builder.html">Import Builder</a>, IMPORTDATA reads CSV and IMPORTFEED reads RSS.</p>
+<p>To read a public CSV straight into a sheet, use IMPORTDATA. "IMPORTDATA" in <a href="/import-formula-builder.html">Build an IMPORTHTML Formula</a> builds the formula.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose the method</li>
-<li>Enter the URL</li>
-<li>Copy it</li>
+<li>Choose "IMPORTDATA" in "Method".</li>
+<li>Enter the CSV or TSV URL in "URL of the page to import".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">Enter a URL that starts with https://.</div>
+<div class="note">The URL must point to the file itself. A download page's URL can't be read.</div>
+<h2>Formula example</h2>
+<ul>
+<li>=IMPORTDATA("https://example.com/data.csv")</li>
+</ul>
+<h2>IMPORTFEED too</h2>
+<p>To read an RSS or Atom feed, choose "IMPORTFEED".</p>
+<ul>
+<li>=IMPORTFEED("https://example.com/feed.xml")</li>
+</ul>
+<p>It can list news or blog updates.</p>
+<h2>Good for</h2>
+<ul>
+<li>Open data from governments or municipalities</li>
+<li>CSVs updated daily</li>
+<li>Lists of blog or news updates</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to watch a municipality's published CSV daily. Putting the file URL in IMPORTDATA loaded it into the sheet, and updates were reflected.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>#N/A</b>: the URL isn't the CSV itself.</li>
+<li><b>Garbled text</b>: CSVs with mismatched encoding may not read.</li>
+<li><b>Row limit</b>: files that are too large can't be read.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What about CSVs with other delimiters?</h3>
+<p>IMPORTDATA detects the delimiter automatically.</p>
+<h2>Summary</h2>
+<p>Just enter the CSV URL to load it.</p>
 <a class="cta" href="/import-formula-builder.html">Use "Build an IMPORTHTML Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/query-formula-builder.html">Build a QUERY Formula</a>: Build a QUERY formula.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

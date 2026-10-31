@@ -215,14 +215,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>اگر کام نہ کرے تو کیا کریں</h1>
 <p class="meta">شائع شدہ: 19 اکتوبر 2026 | اپ ڈیٹ: 19 اکتوبر 2026 | <a href="/about.html">تعارف (جاپانی)</a></p>
 <div class="points"><b>اہم نکات</b><ul><li>فائل جانچیں</li><li>سائز جانچیں</li><li>دوسری ڈیوائس آزمائیں</li></ul></div>
-<p>اگر <a href="/ur/excel-left-mid-builder.html">LEFT/MID بنانے والا</a> کام نہ کرے تو درج ذیل باتیں دیکھیں۔</p>
-<h2>مراحل</h2>
+<p lang="en">You built the formula but the result is odd. Here are common troubles with <a href="/ur/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell isn't in the "A2" form; characters isn't a number for LEFT, RIGHT or MID; the MID start is below 1; or the delimiter is empty for the delimiter methods.</li>
+</ul>
+<h2 lang="en">Troubles after pasting the formula</h2>
+<ul>
+<li lang="en"><b>#VALUE! appears</b>: FIND can't find the delimiter, or MID's start is 0 or less.</li>
+<li lang="en"><b>Different characters than expected</b>: positions off by one, or full-/half-width mix.</li>
+<li lang="en"><b>Cut short</b>: the character count is too low.</li>
+<li lang="en"><b>Extra spaces attached</b>: the original contains spaces. Tidy with TRIM.</li>
+<li lang="en"><b>Result can't be used as a number</b>: results of LEFT, MID and so on are text. Convert with VALUE.</li>
+<li lang="en"><b>#NAME? appears</b>: a typo in the function name.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>فائل جانچیں</li>
-<li>سائز جانچیں</li>
-<li>دوسری ڈیوائس آزمائیں</li>
+<li lang="en">Enter a sample text and check the tool's result is as expected.</li>
+<li lang="en">Count the real cell's text with LEN and see whether it matches what you see.</li>
+<li lang="en">Check whether the delimiter is full-width or half-width.</li>
 </ol>
-<div class="note">اگر کوئی فارمولا نظر نہ آئے تو دیکھیں کہ سیل A2 کی طرح لکھا ہے اور حروف کی تعداد ایک عدد ہے۔</div>
+<div class="note" lang="en">Used on number cells, it works on the stored value, not the formatted look.</div>
+<h2 lang="en">When used on number cells</h2>
+<p lang="en">Even if a cell looks like 0012, if its content is the number 12, LEFT and the like work on "12". To handle leading zeros, store it as text.</p>
+<h2 lang="en">When used on date cells</h2>
+<p lang="en">Using LEFT on a date cell works on the serial value (like 45000). Take date parts with YEAR, MONTH, DAY or TEXT.</p>
+<h2>مثال</h2>
+<p lang="en">Taking the left 4 characters of a date cell to get the year gave "4500", since dates are serial values. Switching to YEAR gave 2023.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Invisible characters</b>: copied text may contain invisible characters.</li>
+<li lang="en"><b>Characters and positions</b>: spaces count as one character.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I want to use it as a number?</h3>
+<p lang="en">Convert with =VALUE(LEFT(A2,3)) or =LEFT(A2,3)*1.</p>
+<h2>خلاصہ</h2>
+<p lang="en">Delimiter, how positions count, text vs number. Check these three in order.</p>
 <a class="cta" href="/ur/excel-left-mid-builder.html">«LEFT، MID یا RIGHT فارمولا بنائیں» استعمال کریں (مفت)</a>
 <h2>وہ ٹولز جو اس کے ساتھ اچھے لگتے ہیں</h2><ul><li><a href="/ur/excel-text-clean.html">ایکسل کے متن سے فالتو اسپیس اور نظر نہ آنے والے حروف ہٹانا</a>: فالتو اسپیس اور نظر نہ آنے والے حروف ہٹائیں۔</li><li><a href="/ur/text-to-columns.html">ڈیلیمیٹر سے ٹیکسٹ کو کالموں میں تقسیم کریں</a>: ڈیلیمیٹر سے ٹیکسٹ کو کالموں میں تقسیم کریں۔</li><li><a href="/ur/excel-if-builder.html">IF فارمولا بنانا</a>: IF فارمولا بنائیں۔</li></ul>
 <div class="tip"><p>اگر یہ گائیڈ مفید رہی تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ٹپ بھیجیں (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">تحفہ بھیجیں (ایمیزون وش لسٹ)</a></div>
