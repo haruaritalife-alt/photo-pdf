@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "うまくいかないときの対処法", "description": "処理できないときの原因と対処法を解説します。", "url": "https://pdfmikata.com/large-small-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/large-small-formula-builder-trouble.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "うまくいかないときの対処法", "description": "処理できないときの原因と対処法を解説します。", "url": "https://pdfmikata.com/large-small-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/large-small-formula-builder-trouble.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -200,14 +200,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/large-small-formula-builder.html">N番目の値の式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を貼ったのに、結果がおかしい。<a href="/large-small-formula-builder.html">N番目の値の式を作る</a> で起こりやすい困りごとと対処法です。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：数値の範囲が「B2:B100」の形でない。何番目かが1以上の整数でない。MAXIFS・MINIFSで、条件の範囲や値が空。TOPSUMで、件数が21以上。</li>
+</ul>
+<h2>スプレッドシートに貼ったあと</h2>
+<ul>
+<li><b>#NUM!</b>：番号が、数字の数を超えている。範囲に数値がない。</li>
+<li><b>#VALUE!</b>：MAXIFS・MINIFSで、範囲の行数が揃っていない。</li>
+<li><b>#NAME?</b>：古いExcelで、MAXIFS・MINIFSが使えない。</li>
+<li><b>0が返る</b>：MAXIFS・MINIFSで、条件に合う行がない。</li>
+<li><b>結果が小さい・大きい</b>：文字列の数字が、無視されている。</li>
+<li><b>条件が効かない</b>：全角と半角、前後の空白の違い。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>範囲の数字が、右揃えの数値か確かめる。</li>
+<li>範囲の行数が、そろっているか確かめる。</li>
+<li>条件の値を、セルの値と見比べる。</li>
 </ol>
-<div class="note">式が出ないときは、範囲がB2:B100のように書かれているか、条件の範囲と値が入っているか確かめます。</div>
+<div class="note">見出しの行を、範囲に含めないようにしましょう。</div>
+<h2>文字列の数字を直す</h2>
+<p>「データ」→「区切り位置」や、VALUE関数で、数値に直します。</p>
+<h2>例</h2>
+<p>LARGEの結果が、思っていた値より小さかった。一部の数字が文字列で、数えられていなかった。数値に直すと、正しい値になった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>別のシートの範囲</b>：シート名を付ける。</li>
+<li><b>範囲に合計の行を含める</b>：合計の行が、最大値になってしまう。合計の行を除く。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>小数や負の数は？</h3>
+<p>問題なく扱えます。負の数は、小さい値として並びます。</p>
+<h2>まとめ</h2>
+<p>数値かどうか、行数、条件の表記。この3つを確かめましょう。</p>
 <a class="cta" href="/large-small-formula-builder.html">N番目の値の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/rank-formula-builder.html">順位の式を作る</a>：順位の式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/sumproduct-formula-builder.html">SUMPRODUCTの式を作る</a>：SUMPRODUCTの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +246,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/large-small-formula-builder.html">LARGE SMALL Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted the formula but the result is odd. Here are common troubles with <a href="/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the numeric range isn't in the "B2:B100" form; "which one" isn't an integer of 1 or more; for MAXIFS/MINIFS the condition range or value is empty; for TOPSUM the count is 21 or more.</li>
+</ul>
+<h2>After pasting into the sheet</h2>
+<ul>
+<li><b>#NUM!</b>: the number exceeds the count of values, or the range has no numbers.</li>
+<li><b>#VALUE!</b>: MAXIFS/MINIFS ranges have different row counts.</li>
+<li><b>#NAME?</b>: old Excel lacks MAXIFS/MINIFS.</li>
+<li><b>0 returned</b>: no row meets the condition in MAXIFS/MINIFS.</li>
+<li><b>Result too small or large</b>: text numbers are being ignored.</li>
+<li><b>Condition doesn't work</b>: full-width/half-width or surrounding spaces differ.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the numbers in the range are right-aligned numeric values.</li>
+<li>Check ranges have the same number of rows.</li>
+<li>Compare the condition value with the cell values.</li>
 </ol>
-<div class="note">If no formula appears, check that ranges are written like B2:B100 and the condition range and value are entered.</div>
+<div class="note">Don't include header rows in the range.</div>
+<h2>Fixing text numbers</h2>
+<p>Convert with Data → Text to Columns or VALUE.</p>
+<h2>Example</h2>
+<p>LARGE gave a smaller value than expected. Some numbers were text and weren't counted. Converting them gave the right value.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Ranges on other sheets</b>: add the sheet name.</li>
+<li><b>Including a total row in the range</b>: the total becomes the maximum. Exclude it.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What about decimals and negatives?</h3>
+<p>Both are handled fine. Negatives rank as small values.</p>
+<h2>Summary</h2>
+<p>Check numeric type, row counts and condition notation.</p>
 <a class="cta" href="/large-small-formula-builder.html">Use "Build a LARGE and SMALL Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a>: Build SUMPRODUCT formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
@@ -235,6 +289,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/guides.html">See all guides</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a></footer>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Co zrobić, gdy nie działa", "description": "Przyczyny i rozwiązania, gdy przetwarzanie się nie udaje.", "url": "https://pdfmikata.com/pl/sequence-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/pl/sequence-formula-builder-trouble.html", "inLanguage": "pl", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/pl/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/pl/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Co zrobić, gdy nie działa", "description": "Przyczyny i rozwiązania, gdy przetwarzanie się nie udaje.", "url": "https://pdfmikata.com/pl/sequence-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/pl/sequence-formula-builder-trouble.html", "inLanguage": "pl", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/pl/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/pl/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Co zrobić, gdy nie działa</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Sprawdź plik</li><li>Sprawdź rozmiar</li><li>Spróbuj na innym urządzeniu</li></ul></div>
-<p>Jeśli <a href="/pl/sequence-formula-builder.html">Kreator SEQUENCE</a> nie działa, sprawdź poniższe rzeczy.</p>
-<h2>Kroki</h2>
+<p lang="en">You pasted the formula but the sequence doesn't appear or looks wrong. Here are common troubles with <a href="/pl/sequence-formula-builder.html">Build a SEQUENCE Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the count isn't an integer of 1 or more (up to 100,000); the start or step isn't a number; for DATES the start isn't in the "2026-10-01" form; for ROWNUM the header row number isn't an integer of 1 or more.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF! (Google) / #SPILL! (Excel)</b>: values sit in the spill range.</li>
+<li lang="en"><b>#NAME?</b>: old Excel can't use SEQUENCE. Use the second formula.</li>
+<li lang="en"><b>Dates appear as numbers</b>: set the display format to "Date".</li>
+<li lang="en"><b>Numbers skip</b>: rows were inserted or deleted with a ROW-based formula.</li>
+<li lang="en"><b>Only one appears</b>: the ROW formula, meant to be copied down, was pasted into one cell.</li>
+<li lang="en"><b>REPEAT stops partway</b>: the row range isn't enough.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Sprawdź plik</li>
-<li>Sprawdź rozmiar</li>
-<li>Spróbuj na innym urządzeniu</li>
+<li lang="en">Check the spill cells are empty.</li>
+<li lang="en">Check your Excel version.</li>
+<li lang="en">If the first formula fails, try the second.</li>
 </ol>
-<div class="note">Jeśli nie pojawia się żadna formuła, sprawdź, czy początek i liczba są liczbami. Dla DATES użyj formatu 2026-10-01.</div>
+<div class="note" lang="en">The second formula (ROW-based) is meant to be copied down. The first goes into a single cell.</div>
+<h2>Którego użyć</h2>
+<ul>
+<li lang="en">First: paste in one cell and it spreads down (SEQUENCE)</li>
+<li lang="en">Second: copy down row by row (ROW)</li>
+</ul>
+<h2>Przykład</h2>
+<p lang="en">SEQUENCE gave #NAME?. The Excel was old. Switching to the second formula and copying down lined up the numbers.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Count too large</b>: limited to 100,000.</li>
+<li lang="en"><b>Decimal step</b>: may show rounding error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to keep the sequence as values</h3>
+<p lang="en">Copy, then paste values only.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">Check the spill range, Excel version and which formula to use.</p>
 <a class="cta" href="/pl/sequence-formula-builder.html">Użyj „Utwórz formułę SEQUENCE” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/date-offset-formula-builder.html">Utwórz formułę przesunięcia daty</a>: Twórz formuły przesunięcia daty.</li><li><a href="/pl/arrayformula-builder.html">Utwórz ARRAYFORMULA</a>: Twórz formuły ARRAYFORMULA.</li><li><a href="/pl/rank-formula-builder.html">Utwórz formułę rankingu</a>: Twórz formuły rankingu.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>
@@ -217,6 +247,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/pl/guides.html">Zobacz wszystkie poradniki</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="pl">O stronie / Kontakt (po japońsku)</span></a><a href="/pl/privacy.html"><span lang="pl">Polityka prywatności</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="pl">Aktualności na X</span></a></footer>
+<footer><a href="/about.html"><span lang="pl">O stronie / Kontakt (po japońsku)</span></a><a href="/pl/privacy.html"><span lang="pl">Polityka prywatności</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="pl">Aktualności na X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

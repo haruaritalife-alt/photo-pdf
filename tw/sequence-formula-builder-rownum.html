@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "用行號編號", "description": "關於行號。", "url": "https://pdfmikata.com/tw/sequence-formula-builder-rownum.html", "mainEntityOfPage": "https://pdfmikata.com/tw/sequence-formula-builder-rownum.html", "inLanguage": "zh-Hant", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tw/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tw/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "用行號編號", "description": "關於行號。", "url": "https://pdfmikata.com/tw/sequence-formula-builder-rownum.html", "mainEntityOfPage": "https://pdfmikata.com/tw/sequence-formula-builder-rownum.html", "inLanguage": "zh-Hant", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tw/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tw/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>用行號編號</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>選擇 ROWNUM</li><li>輸入標題行</li><li>複製</li></ul></div>
-<p>在<a href="/tw/sequence-formula-builder.html">SEQUENCE 公式生成器</a>中可以生成在增減行時會自動重新編號的公式。</p>
+<p lang="en">After numbering a list, adding or deleting rows can leave gaps in the numbers. Building sequence numbers from row numbers renumbers automatically when rows change. "ROWNUM" in <a href="/tw/sequence-formula-builder.html">Build a SEQUENCE Formula</a> builds it.</p>
 <h2>步驟</h2>
 <ol>
-<li>選擇 ROWNUM</li>
-<li>輸入標題行</li>
-<li>複製</li>
+<li lang="en">Choose "ROWNUM" in "Type".</li>
+<li lang="en">In "Header row number (for ROWNUM, such as 1)", enter the header row's number.</li>
+<li lang="en">Copy the formula, paste it in the first data row of the number column, and copy down.</li>
 </ol>
-<div class="note">輸入標題行的行號。</div>
+<div class="note" lang="en">A header row number that isn't an integer of 1 or more gives "The input is not valid."</div>
+<h2>示例</h2>
+<p lang="en">With the header in row 1, put this in row 2:</p>
+<ul>
+<li lang="en">=ROW()-1</li>
+</ul>
+<p lang="en">Row 2 gets 1, row 3 gets 2, and so on.</p>
+<h2 lang="en">The other formula</h2>
+<ul>
+<li lang="en">=ROW()-ROW($A$1)</li>
+</ul>
+<p lang="en">It's anchored to the header cell, so inserting rows above the header doesn't shift it.</p>
+<h2 lang="en">When you delete rows</h2>
+<p lang="en">Hand-typed numbers leave gaps when rows are deleted. With ROW, numbers close up immediately after deletion.</p>
+<h2>適合</h2>
+<ul>
+<li lang="en">Lists where rows are added and removed often</li>
+<li lang="en">Showing table order rather than the original pre-filter numbers</li>
+<li lang="en">Shared sheets where people add rows</li>
+</ul>
+<h2 lang="en">When filtered</h2>
+<p lang="en">ROW returns the original row position, so hidden rows make numbers look skipped. For consecutive numbers, SUBTOTAL suits better.</p>
+<ul>
+<li lang="en">Example: =SUBTOTAL(103,$B$2:B2)</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Added a number column to a shared list. Whether people added or deleted rows, numbers closed up automatically and no fixing was needed.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Headers spanning 2+ rows</b>: use the header's last row as the anchor.</li>
+<li lang="en"><b>Inserting rows above</b>: the ROW()-1 form shifts. Use the ROW($A$1) form.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the sequence to start at 0</h3>
+<p lang="en">Subtract one more at the end of the formula.</p>
+<h2>小結</h2>
+<p lang="en">For lists with row changes, ROW-based numbering suits.</p>
 <a class="cta" href="/tw/sequence-formula-builder.html">使用「生成 SEQUENCE 公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/date-offset-formula-builder.html">生成日期加減公式</a>: 生成日期加減公式。</li><li><a href="/tw/arrayformula-builder.html">生成 ARRAYFORMULA</a>: 生成 ARRAYFORMULA 公式。</li><li><a href="/tw/rank-formula-builder.html">生成排名公式</a>: 生成排名公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>
@@ -217,6 +253,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/tw/guides.html">檢視全部教程</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="zh-Hant">關於 / 聯絡（日文）</span></a><a href="/tw/privacy.html"><span lang="zh-Hant">隱私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hant">在 X 上檢視更新</span></a></footer>
+<footer><a href="/about.html"><span lang="zh-Hant">關於 / 聯絡（日文）</span></a><a href="/tw/privacy.html"><span lang="zh-Hant">隱私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hant">在 X 上檢視更新</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

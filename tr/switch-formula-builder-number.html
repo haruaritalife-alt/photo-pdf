@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Sayıları Eşleştirme", "description": "Sayıları eşleştirme hakkında.", "url": "https://pdfmikata.com/tr/switch-formula-builder-number.html", "mainEntityOfPage": "https://pdfmikata.com/tr/switch-formula-builder-number.html", "inLanguage": "tr", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tr/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tr/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Sayıları Eşleştirme", "description": "Sayıları eşleştirme hakkında.", "url": "https://pdfmikata.com/tr/switch-formula-builder-number.html", "mainEntityOfPage": "https://pdfmikata.com/tr/switch-formula-builder-number.html", "inLanguage": "tr", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tr/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tr/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Sayıları Eşleştirme</h1>
 <p class="meta">Yayınlanma: 19 Eki 2026 | Güncellenme: 19 Eki 2026 | <a href="/about.html">Hakkında (Japonca)</a></p>
 <div class="points"><b>Önemli noktalar</b><ul><li>Sayıları girin</li><li>Formüle bakın</li><li>Kontrol edin</li></ul></div>
-<p><a href="/tr/switch-formula-builder.html">SWITCH oluşturucu</a> içinde 1=Düşük ve 2=Orta gibi sayıları da eşleştirebilirsiniz.</p>
+<p lang="en">When mapping values are numbers, it's unclear whether to compare as text or as numbers. <a href="/tr/switch-formula-builder.html">Build a SWITCH Formula</a> treats mapping values as text.</p>
 <h2>Adımlar</h2>
 <ol>
-<li>Sayıları girin</li>
-<li>Formüle bakın</li>
-<li>Kontrol edin</li>
+<li lang="en">Enter the mapping like "1=Mon,2=Tue".</li>
+<li lang="en">Copy the formula and paste.</li>
+<li lang="en">If the cell being compared is numeric, remove the quotes in the formula by hand.</li>
 </ol>
-<div class="note">Sayılar olduğu gibi kalır, metne tırnak işareti eklenir.</div>
+<div class="note" lang="en">The tool wraps both the left and right values of the mapping in quotes. That is, it compares as text.</div>
+<h2>Örnek</h2>
+<ul>
+<li lang="en">Tool's formula: =SWITCH(A2,"1","Mon","2","Tue")</li>
+<li lang="en">Numeric comparison: =SWITCH(A2,1,"Mon",2,"Tue")</li>
+</ul>
+<p lang="en">If A2 is the number 1, the latter matches.</p>
+<h2 lang="en">Text vs number</h2>
+<ul>
+<li lang="en">The text "1" and the number 1 are different values</li>
+<li lang="en">If A2 is text, the former matches</li>
+<li lang="en">If A2 is a number, the latter matches</li>
+</ul>
+<h2 lang="en">In sheets</h2>
+<p lang="en">In Google Sheets, the text "1" and the number 1 may match. Excel distinguishes strictly. When unsure, remove the quotes for numbers.</p>
+<h2>Şunlar için iyidir</h2>
+<ul>
+<li lang="en">Turning category numbers into names</li>
+<li lang="en">Turning age brackets into words</li>
+</ul>
+<h2 lang="en">When you need range tests</h2>
+<p lang="en">SWITCH is exact-match only. For range tests like "60 or more passes", use IF or IFS.</p>
+<ul>
+<li lang="en">Example: =IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<h2>Örnek</h2>
+<p lang="en">A category-number formula didn't match. The tool compared as text, but the source cell was numeric. Removing the quotes made it match.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leading zeros</b>: treat numbers with leading zeros as text.</li>
+<li lang="en"><b>Decimals</b>: beware of rounding error in decimal comparisons.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if there are many numeric tests?</h3>
+<p lang="en">Removing quotes in bulk, or using VLOOKUP/XLOOKUP, is easier.</p>
+<h2>Özet</h2>
+<p lang="en">For numeric comparison, remove the quotes in the formula.</p>
 <a class="cta" href="/tr/switch-formula-builder.html">“SWITCH formülü oluşturun” aracını kullan (ücretsiz)</a>
 <h2>Bununla iyi giden araçlar</h2><ul><li><a href="/tr/excel-if-builder.html">IF formülü oluşturma</a>: IF formülü oluşturun.</li><li><a href="/tr/vlookup-formula-builder.html">VLOOKUP veya XLOOKUP Formülü Oluşturma</a>: VLOOKUP ve XLOOKUP formülleri oluşturun.</li><li><a href="/tr/index-match-builder.html">INDEX ve MATCH Formülü Oluşturun</a>: INDEX ve MATCH formülleri oluşturun.</li></ul>
 <div class="tip"><p>Bu rehber işinize yaradıysa, küçük bir bahşiş bizim için çok değerli olur.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Bahşiş gönder (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hediye gönder (Amazon istek listesi)</a></div>
@@ -217,6 +253,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/tr/guides.html">Tüm rehberleri gör</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="tr">Hakkında / İletişim (Japonca)</span></a><a href="/tr/privacy.html"><span lang="tr">Gizlilik politikası</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="tr">X'te güncellemeler</span></a></footer>
+<footer><a href="/about.html"><span lang="tr">Hakkında / İletişim (Japonca)</span></a><a href="/tr/privacy.html"><span lang="tr">Gizlilik politikası</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="tr">X'te güncellemeler</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

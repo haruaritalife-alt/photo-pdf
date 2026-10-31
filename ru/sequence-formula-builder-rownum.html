@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Нумерация по номерам строк", "description": "О номерах строк.", "url": "https://pdfmikata.com/ru/sequence-formula-builder-rownum.html", "mainEntityOfPage": "https://pdfmikata.com/ru/sequence-formula-builder-rownum.html", "inLanguage": "ru", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ru/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ru/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Нумерация по номерам строк", "description": "О номерах строк.", "url": "https://pdfmikata.com/ru/sequence-formula-builder-rownum.html", "mainEntityOfPage": "https://pdfmikata.com/ru/sequence-formula-builder-rownum.html", "inLanguage": "ru", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ru/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ru/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Нумерация по номерам строк</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Выберите ROWNUM</li><li>Введите строку заголовка</li><li>Скопируйте его</li></ul></div>
-<p>В <a href="/ru/sequence-formula-builder.html">Конструктор SEQUENCE</a> можно создать формулу, номера которой пересчитываются при добавлении или удалении строк.</p>
+<p lang="en">After numbering a list, adding or deleting rows can leave gaps in the numbers. Building sequence numbers from row numbers renumbers automatically when rows change. "ROWNUM" in <a href="/ru/sequence-formula-builder.html">Build a SEQUENCE Formula</a> builds it.</p>
 <h2>Шаги</h2>
 <ol>
-<li>Выберите ROWNUM</li>
-<li>Введите строку заголовка</li>
-<li>Скопируйте его</li>
+<li lang="en">Choose "ROWNUM" in "Type".</li>
+<li lang="en">In "Header row number (for ROWNUM, such as 1)", enter the header row's number.</li>
+<li lang="en">Copy the formula, paste it in the first data row of the number column, and copy down.</li>
 </ol>
-<div class="note">Введите номер строки заголовка.</div>
+<div class="note" lang="en">A header row number that isn't an integer of 1 or more gives "The input is not valid."</div>
+<h2>Пример</h2>
+<p lang="en">With the header in row 1, put this in row 2:</p>
+<ul>
+<li lang="en">=ROW()-1</li>
+</ul>
+<p lang="en">Row 2 gets 1, row 3 gets 2, and so on.</p>
+<h2 lang="en">The other formula</h2>
+<ul>
+<li lang="en">=ROW()-ROW($A$1)</li>
+</ul>
+<p lang="en">It's anchored to the header cell, so inserting rows above the header doesn't shift it.</p>
+<h2 lang="en">When you delete rows</h2>
+<p lang="en">Hand-typed numbers leave gaps when rows are deleted. With ROW, numbers close up immediately after deletion.</p>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Lists where rows are added and removed often</li>
+<li lang="en">Showing table order rather than the original pre-filter numbers</li>
+<li lang="en">Shared sheets where people add rows</li>
+</ul>
+<h2 lang="en">When filtered</h2>
+<p lang="en">ROW returns the original row position, so hidden rows make numbers look skipped. For consecutive numbers, SUBTOTAL suits better.</p>
+<ul>
+<li lang="en">Example: =SUBTOTAL(103,$B$2:B2)</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">Added a number column to a shared list. Whether people added or deleted rows, numbers closed up automatically and no fixing was needed.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Headers spanning 2+ rows</b>: use the header's last row as the anchor.</li>
+<li lang="en"><b>Inserting rows above</b>: the ROW()-1 form shifts. Use the ROW($A$1) form.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the sequence to start at 0</h3>
+<p lang="en">Subtract one more at the end of the formula.</p>
+<h2>Итог</h2>
+<p lang="en">For lists with row changes, ROW-based numbering suits.</p>
 <a class="cta" href="/ru/sequence-formula-builder.html">Использовать «Создайте формулу SEQUENCE» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/date-offset-formula-builder.html">Создать формулу сдвига даты</a>: Создавайте формулы сдвига даты.</li><li><a href="/ru/arrayformula-builder.html">Создать ARRAYFORMULA</a>: Создавайте формулы ARRAYFORMULA.</li><li><a href="/ru/rank-formula-builder.html">Создать формулу рейтинга</a>: Создавайте формулы рейтинга.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>
@@ -217,6 +253,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/ru/guides.html">Все руководства</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="ru">О сайте / Контакты (на японском)</span></a><a href="/ru/privacy.html"><span lang="ru">Политика конфиденциальности</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ru">Новости в X</span></a></footer>
+<footer><a href="/about.html"><span lang="ru">О сайте / Контакты (на японском)</span></a><a href="/ru/privacy.html"><span lang="ru">Политика конфиденциальности</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ru">Новости в X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

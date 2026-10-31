@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "上位の合計", "description": "上位の合計を解説します。", "url": "https://pdfmikata.com/large-small-formula-builder-topsum.html", "mainEntityOfPage": "https://pdfmikata.com/large-small-formula-builder-topsum.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "上位の合計", "description": "上位の合計を解説します。", "url": "https://pdfmikata.com/large-small-formula-builder-topsum.html", "mainEntityOfPage": "https://pdfmikata.com/large-small-formula-builder-topsum.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -200,14 +200,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>上位の合計</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>TOPSUMを選ぶ</li><li>件数を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/large-small-formula-builder.html">N番目の値の式の作成</a> では、上位の数件を合計する式を作れます。</p>
+<p>「上位3件の合計」「上位5社の売上」。上位N件の合計は、SUMとLARGEを組み合わせて求めます。<a href="/large-small-formula-builder.html">N番目の値の式を作る</a> の「TOPSUM」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>TOPSUMを選ぶ</li>
-<li>件数を入れる</li>
-<li>コピーする</li>
+<li>「種類」で「TOPSUM」を選ぶ。</li>
+<li>「数値の範囲」を入れる。</li>
+<li>「何番目か（LARGE・SMALL・TOPSUM用）」に、上位の件数を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">LARGEに1・2・3のような順位の並びを渡して合計します。</div>
+<div class="note">件数は、1以上20以下です。21以上は、「入力の形が正しくありません。」と出ます。</div>
+<h2>例</h2>
+<p>上位3件の合計です。</p>
+<ul>
+<li>=SUM(LARGE(B2:B100,{1,2,3}))</li>
+</ul>
+<p>{1,2,3} の部分は、1番目、2番目、3番目をまとめて取り出す指定です。</p>
+<h2>全体に対する割合</h2>
+<p>上位3件が、全体の何割かを見るには、合計で割ります。</p>
+<ul>
+<li>例：=SUM(LARGE(B2:B100,{1,2,3}))/SUM(B2:B100)</li>
+</ul>
+<p>パーセント表示にすると、見やすくなります。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>売上上位5社の合計</li>
+<li>上位3人の得点の合計</li>
+<li>上位への集中度（売上の偏り）を知りたい</li>
+</ul>
+<h2>下位の合計</h2>
+<p>下位の合計は、LARGEをSMALLに替えます。ツールの式を貼ったあと、手で直します。</p>
+<ul>
+<li>例：=SUM(SMALL(B2:B100,{1,2,3}))</li>
+</ul>
+<h2>例</h2>
+<p>顧客別売上の上位5社が、全体の何割を占めるか知りたかった。TOPSUMの式を全体の合計で割ると、集中度が分かった。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>Excelの古い版</b>：配列定数をそのまま使えるが、数式の入力方法に注意。</li>
+<li><b>件数が数字の数より多い</b>：#NUM!になる。</li>
+<li><b>21件以上</b>：ツールでは作れない。手で配列を広げるか、SUMPRODUCTを使う。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>件数が多いときは？</h3>
+<p>SUMIFで、基準以上の合計を求める方法があります。</p>
+<ul>
+<li>例：=SUMIF(B2:B100,"&gt;="&amp;LARGE(B2:B100,10))</li>
+</ul>
+<h2>まとめ</h2>
+<p>上位N件の合計は、SUMとLARGEを組み合わせます。</p>
 <a class="cta" href="/large-small-formula-builder.html">N番目の値の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/rank-formula-builder.html">順位の式を作る</a>：順位の式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li><li><a href="/sumproduct-formula-builder.html">SUMPRODUCTの式を作る</a>：SUMPRODUCTの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +259,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Sum of the Top Values</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose TOPSUM</li><li>Enter the count</li><li>Copy it</li></ul></div>
-<p>In <a href="/large-small-formula-builder.html">LARGE SMALL Builder</a> you can build a formula that adds the top few values.</p>
+<p>"The sum of the top 3", "sales of the top 5 companies". The sum of the top N comes from combining SUM and LARGE. "TOPSUM" in <a href="/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose TOPSUM</li>
-<li>Enter the count</li>
-<li>Copy it</li>
+<li>Choose "TOPSUM" in "Type".</li>
+<li>Enter the "Numeric range".</li>
+<li>In "Which one (for LARGE, SMALL, TOPSUM)", enter the top count.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">It passes a list of ranks like 1, 2, 3 to LARGE and adds the results.</div>
+<div class="note">The count is 1 to 20. 21 or more gives "The input is not valid."</div>
+<h2>Example</h2>
+<p>The sum of the top 3:</p>
+<ul>
+<li>=SUM(LARGE(B2:B100,{1,2,3}))</li>
+</ul>
+<p>The {1,2,3} part pulls out the 1st, 2nd and 3rd together.</p>
+<h2>Share of the whole</h2>
+<p>To see what share the top 3 make, divide by the total.</p>
+<ul>
+<li>Example: =SUM(LARGE(B2:B100,{1,2,3}))/SUM(B2:B100)</li>
+</ul>
+<p>Showing it as a percentage reads better.</p>
+<h2>Good for</h2>
+<ul>
+<li>Total sales of the top 5 companies</li>
+<li>Total points of the top 3 people</li>
+<li>Knowing concentration in the top (sales skew)</li>
+</ul>
+<h2>Sum of the bottom</h2>
+<p>For the bottom sum, change LARGE to SMALL. Edit by hand after pasting.</p>
+<ul>
+<li>Example: =SUM(SMALL(B2:B100,{1,2,3}))</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted to know what share the top 5 customers make of total sales. Dividing the TOPSUM formula by the grand total showed the concentration.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Older Excel</b>: array constants work as is, but mind how the formula is entered.</li>
+<li><b>Count exceeds the number of values</b>: gives #NUM!.</li>
+<li><b>21 or more</b>: the tool can't build it. Widen the array by hand or use SUMPRODUCT.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if the count is large?</h3>
+<p>SUMIF can total everything at or above a threshold.</p>
+<ul>
+<li>Example: =SUMIF(B2:B100,"&gt;="&amp;LARGE(B2:B100,10))</li>
+</ul>
+<h2>Summary</h2>
+<p>The top-N total combines SUM and LARGE.</p>
 <a class="cta" href="/large-small-formula-builder.html">Use "Build a LARGE and SMALL Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li><li><a href="/sumproduct-formula-builder.html">Build a SUMPRODUCT Formula</a>: Build SUMPRODUCT formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
@@ -235,6 +315,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/guides.html">See all guides</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a></footer>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

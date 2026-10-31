@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Việc cần làm khi không hoạt động", "description": "Nguyên nhân và cách khắc phục khi xử lý thất bại.", "url": "https://pdfmikata.com/vi/switch-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/vi/switch-formula-builder-trouble.html", "inLanguage": "vi", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/vi/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/vi/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Việc cần làm khi không hoạt động", "description": "Nguyên nhân và cách khắc phục khi xử lý thất bại.", "url": "https://pdfmikata.com/vi/switch-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/vi/switch-formula-builder-trouble.html", "inLanguage": "vi", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/vi/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/vi/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Việc cần làm khi không hoạt động</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Kiểm tra tệp</li><li>Kiểm tra dung lượng</li><li>Thử thiết bị khác</li></ul></div>
-<p>Nếu <a href="/vi/switch-formula-builder.html">Trình tạo SWITCH</a> không hoạt động, hãy kiểm tra những điều sau.</p>
-<h2>Các bước</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/vi/switch-formula-builder.html">Build a SWITCH Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell to test isn't in the "A2" form; the mapping is empty; in SWITCH an item lacks "=".</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: no value matches and there's no default.</li>
+<li lang="en"><b>#NAME?</b>: old Excel can't use SWITCH. Use the second formula.</li>
+<li lang="en"><b>#VALUE!</b>: CHOOSE with an out-of-range number.</li>
+<li lang="en"><b>No match</b>: full-width/half-width, surrounding spaces, or text vs number.</li>
+<li lang="en"><b>Always the default</b>: mapping values differ from the cell's value.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Kiểm tra tệp</li>
-<li>Kiểm tra dung lượng</li>
-<li>Thử thiết bị khác</li>
+<li lang="en">Compare the cell's value with the mapping's left side character by character.</li>
+<li lang="en">Check text vs number agree.</li>
+<li lang="en">Check for surrounding spaces by measuring with LEN.</li>
 </ol>
-<div class="note">Nếu không có công thức nào hiện ra, hãy kiểm tra ô được viết như A2 và các cặp được viết như A=Apple.</div>
+<div class="note" lang="en">Only the first "=" in an item is treated as the separator, so values may contain "=".</div>
+<h2 lang="en">Writing the mapping</h2>
+<ul>
+<li lang="en">Separate with commas ","</li>
+<li lang="en">Values can't contain commas</li>
+<li lang="en">Surrounding spaces are trimmed</li>
+</ul>
+<h2 lang="en">Trimming spaces</h2>
+<p lang="en">Apply TRIM to the tested cell. Edit by hand after pasting.</p>
+<ul>
+<li lang="en">Example: =SWITCH(TRIM(A2),"A","apple","B","orange")</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">Some values didn't match. The cell values had trailing spaces. Applying TRIM made them match.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Too many mappings</b>: IFS or a lookup table is easier to manage.</li>
+<li lang="en"><b>Commas in values</b>: the tool can't handle them. Write by hand.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want partial matching</h3>
+<p lang="en">SWITCH is exact-match only. Use something like IF with SEARCH.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">Check value comparison, text vs number, and surrounding spaces.</p>
 <a class="cta" href="/vi/switch-formula-builder.html">Dùng “Tạo công thức SWITCH” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/excel-if-builder.html">Tạo công thức IF</a>: Tạo công thức IF.</li><li><a href="/vi/vlookup-formula-builder.html">Tạo công thức VLOOKUP hoặc XLOOKUP</a>: Tạo công thức VLOOKUP và XLOOKUP.</li><li><a href="/vi/index-match-builder.html">Tạo công thức INDEX và MATCH</a>: Tạo các công thức INDEX và MATCH.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>
@@ -217,6 +252,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/vi/guides.html">Xem tất cả hướng dẫn</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="vi">Giới thiệu / Liên hệ (tiếng Nhật)</span></a><a href="/vi/privacy.html"><span lang="vi">Chính sách quyền riêng tư</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="vi">Cập nhật trên X</span></a></footer>
+<footer><a href="/about.html"><span lang="vi">Giới thiệu / Liên hệ (tiếng Nhật)</span></a><a href="/vi/privacy.html"><span lang="vi">Chính sách quyền riêng tư</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="vi">Cập nhật trên X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

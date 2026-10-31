@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "কাজ না করলে কী করবেন", "description": "প্রসেসিং ব্যর্থ হলে কারণ ও সমাধান।", "url": "https://pdfmikata.com/bn/switch-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/bn/switch-formula-builder-trouble.html", "inLanguage": "bn", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/bn/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/bn/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "কাজ না করলে কী করবেন", "description": "প্রসেসিং ব্যর্থ হলে কারণ ও সমাধান।", "url": "https://pdfmikata.com/bn/switch-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/bn/switch-formula-builder-trouble.html", "inLanguage": "bn", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/bn/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/bn/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>কাজ না করলে কী করবেন</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>ফাইলটি যাচাই করুন</li><li>আকার যাচাই করুন</li><li>অন্য ডিভাইস চেষ্টা করুন</li></ul></div>
-<p><a href="/bn/switch-formula-builder.html">SWITCH সূত্র নির্মাতা</a> কাজ না করলে নিচের বিষয়গুলো দেখুন।</p>
-<h2>ধাপ</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/bn/switch-formula-builder.html">Build a SWITCH Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell to test isn't in the "A2" form; the mapping is empty; in SWITCH an item lacks "=".</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: no value matches and there's no default.</li>
+<li lang="en"><b>#NAME?</b>: old Excel can't use SWITCH. Use the second formula.</li>
+<li lang="en"><b>#VALUE!</b>: CHOOSE with an out-of-range number.</li>
+<li lang="en"><b>No match</b>: full-width/half-width, surrounding spaces, or text vs number.</li>
+<li lang="en"><b>Always the default</b>: mapping values differ from the cell's value.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>ফাইলটি যাচাই করুন</li>
-<li>আকার যাচাই করুন</li>
-<li>অন্য ডিভাইস চেষ্টা করুন</li>
+<li lang="en">Compare the cell's value with the mapping's left side character by character.</li>
+<li lang="en">Check text vs number agree.</li>
+<li lang="en">Check for surrounding spaces by measuring with LEN.</li>
 </ol>
-<div class="note">কোনো সূত্র না এলে ঘরটি A2-এর মতো এবং জোড়াগুলো A=Apple-এর মতো লেখা আছে কি না দেখুন।</div>
+<div class="note" lang="en">Only the first "=" in an item is treated as the separator, so values may contain "=".</div>
+<h2 lang="en">Writing the mapping</h2>
+<ul>
+<li lang="en">Separate with commas ","</li>
+<li lang="en">Values can't contain commas</li>
+<li lang="en">Surrounding spaces are trimmed</li>
+</ul>
+<h2 lang="en">Trimming spaces</h2>
+<p lang="en">Apply TRIM to the tested cell. Edit by hand after pasting.</p>
+<ul>
+<li lang="en">Example: =SWITCH(TRIM(A2),"A","apple","B","orange")</li>
+</ul>
+<h2>উদাহরণ</h2>
+<p lang="en">Some values didn't match. The cell values had trailing spaces. Applying TRIM made them match.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Too many mappings</b>: IFS or a lookup table is easier to manage.</li>
+<li lang="en"><b>Commas in values</b>: the tool can't handle them. Write by hand.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want partial matching</h3>
+<p lang="en">SWITCH is exact-match only. Use something like IF with SEARCH.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">Check value comparison, text vs number, and surrounding spaces.</p>
 <a class="cta" href="/bn/switch-formula-builder.html">“SWITCH সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/excel-if-builder.html">IF সূত্র তৈরি করুন</a>: একটি IF সূত্র তৈরি করুন।</li><li><a href="/bn/vlookup-formula-builder.html">VLOOKUP বা XLOOKUP ফর্মুলা তৈরি করুন</a>: VLOOKUP ও XLOOKUP ফর্মুলা তৈরি করুন।</li><li><a href="/bn/index-match-builder.html">INDEX ও MATCH সূত্র তৈরি করুন</a>: INDEX ও MATCH সূত্র তৈরি করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>
@@ -217,6 +252,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/bn/guides.html">সব গাইড দেখুন</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="bn">সম্পর্কে / যোগাযোগ (জাপানি)</span></a><a href="/bn/privacy.html"><span lang="bn">গোপনীয়তা নীতি</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="bn">X-এ আপডেট</span></a></footer>
+<footer><a href="/about.html"><span lang="bn">সম্পর্কে / যোগাযোগ (জাপানি)</span></a><a href="/bn/privacy.html"><span lang="bn">গোপনীয়তা নীতি</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="bn">X-এ আপডেট</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

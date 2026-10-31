@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Nummeren vanaf rijnummers", "description": "Over rijnummers.", "url": "https://pdfmikata.com/nl/sequence-formula-builder-rownum.html", "mainEntityOfPage": "https://pdfmikata.com/nl/sequence-formula-builder-rownum.html", "inLanguage": "nl", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/nl/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/nl/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Nummeren vanaf rijnummers", "description": "Over rijnummers.", "url": "https://pdfmikata.com/nl/sequence-formula-builder-rownum.html", "mainEntityOfPage": "https://pdfmikata.com/nl/sequence-formula-builder-rownum.html", "inLanguage": "nl", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/nl/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/nl/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Nummeren vanaf rijnummers</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Kies ROWNUM</li><li>Typ de koprij</li><li>Kopieer</li></ul></div>
-<p>In <a href="/nl/sequence-formula-builder.html">SEQUENCE-maker</a> kun je een formule maken waarvan de nummers opnieuw worden geteld als je rijen toevoegt of verwijdert.</p>
+<p lang="en">After numbering a list, adding or deleting rows can leave gaps in the numbers. Building sequence numbers from row numbers renumbers automatically when rows change. "ROWNUM" in <a href="/nl/sequence-formula-builder.html">Build a SEQUENCE Formula</a> builds it.</p>
 <h2>Stappen</h2>
 <ol>
-<li>Kies ROWNUM</li>
-<li>Typ de koprij</li>
-<li>Kopieer</li>
+<li lang="en">Choose "ROWNUM" in "Type".</li>
+<li lang="en">In "Header row number (for ROWNUM, such as 1)", enter the header row's number.</li>
+<li lang="en">Copy the formula, paste it in the first data row of the number column, and copy down.</li>
 </ol>
-<div class="note">Typ het nummer van de koprij.</div>
+<div class="note" lang="en">A header row number that isn't an integer of 1 or more gives "The input is not valid."</div>
+<h2>Voorbeeld</h2>
+<p lang="en">With the header in row 1, put this in row 2:</p>
+<ul>
+<li lang="en">=ROW()-1</li>
+</ul>
+<p lang="en">Row 2 gets 1, row 3 gets 2, and so on.</p>
+<h2 lang="en">The other formula</h2>
+<ul>
+<li lang="en">=ROW()-ROW($A$1)</li>
+</ul>
+<p lang="en">It's anchored to the header cell, so inserting rows above the header doesn't shift it.</p>
+<h2 lang="en">When you delete rows</h2>
+<p lang="en">Hand-typed numbers leave gaps when rows are deleted. With ROW, numbers close up immediately after deletion.</p>
+<h2>Goed voor</h2>
+<ul>
+<li lang="en">Lists where rows are added and removed often</li>
+<li lang="en">Showing table order rather than the original pre-filter numbers</li>
+<li lang="en">Shared sheets where people add rows</li>
+</ul>
+<h2 lang="en">When filtered</h2>
+<p lang="en">ROW returns the original row position, so hidden rows make numbers look skipped. For consecutive numbers, SUBTOTAL suits better.</p>
+<ul>
+<li lang="en">Example: =SUBTOTAL(103,$B$2:B2)</li>
+</ul>
+<h2>Voorbeeld</h2>
+<p lang="en">Added a number column to a shared list. Whether people added or deleted rows, numbers closed up automatically and no fixing was needed.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Headers spanning 2+ rows</b>: use the header's last row as the anchor.</li>
+<li lang="en"><b>Inserting rows above</b>: the ROW()-1 form shifts. Use the ROW($A$1) form.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the sequence to start at 0</h3>
+<p lang="en">Subtract one more at the end of the formula.</p>
+<h2>Samenvatting</h2>
+<p lang="en">For lists with row changes, ROW-based numbering suits.</p>
 <a class="cta" href="/nl/sequence-formula-builder.html">Gebruik “Maak een SEQUENCE-formule” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/date-offset-formula-builder.html">Een formule voor datumverschuiving maken</a>: Maak formules voor datumverschuiving.</li><li><a href="/nl/arrayformula-builder.html">Een ARRAYFORMULA maken</a>: Maak ARRAYFORMULA-formules.</li><li><a href="/nl/rank-formula-builder.html">Een rangformule maken</a>: Maak rangformules.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>
@@ -217,6 +253,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/nl/guides.html">Bekijk alle handleidingen</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="nl">Over ons / Contact (in het Japans)</span></a><a href="/nl/privacy.html"><span lang="nl">Privacybeleid</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="nl">Updates op X</span></a></footer>
+<footer><a href="/about.html"><span lang="nl">Over ons / Contact (in het Japans)</span></a><a href="/nl/privacy.html"><span lang="nl">Privacybeleid</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="nl">Updates op X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

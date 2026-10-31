@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Numerare dai numeri di riga", "description": "Sui numeri di riga.", "url": "https://pdfmikata.com/it/sequence-formula-builder-rownum.html", "mainEntityOfPage": "https://pdfmikata.com/it/sequence-formula-builder-rownum.html", "inLanguage": "it", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/it/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/it/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Numerare dai numeri di riga", "description": "Sui numeri di riga.", "url": "https://pdfmikata.com/it/sequence-formula-builder-rownum.html", "mainEntityOfPage": "https://pdfmikata.com/it/sequence-formula-builder-rownum.html", "inLanguage": "it", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/it/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/it/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Numerare dai numeri di riga</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Scegli ROWNUM</li><li>Scrivi la riga di intestazione</li><li>Copialo</li></ul></div>
-<p>In <a href="/it/sequence-formula-builder.html">Generatore di SEQUENCE</a> puoi creare una formula i cui numeri si rinumerano quando si aggiungono o eliminano righe.</p>
+<p lang="en">After numbering a list, adding or deleting rows can leave gaps in the numbers. Building sequence numbers from row numbers renumbers automatically when rows change. "ROWNUM" in <a href="/it/sequence-formula-builder.html">Build a SEQUENCE Formula</a> builds it.</p>
 <h2>Passaggi</h2>
 <ol>
-<li>Scegli ROWNUM</li>
-<li>Scrivi la riga di intestazione</li>
-<li>Copialo</li>
+<li lang="en">Choose "ROWNUM" in "Type".</li>
+<li lang="en">In "Header row number (for ROWNUM, such as 1)", enter the header row's number.</li>
+<li lang="en">Copy the formula, paste it in the first data row of the number column, and copy down.</li>
 </ol>
-<div class="note">Scrivi il numero della riga di intestazione.</div>
+<div class="note" lang="en">A header row number that isn't an integer of 1 or more gives "The input is not valid."</div>
+<h2>Esempio</h2>
+<p lang="en">With the header in row 1, put this in row 2:</p>
+<ul>
+<li lang="en">=ROW()-1</li>
+</ul>
+<p lang="en">Row 2 gets 1, row 3 gets 2, and so on.</p>
+<h2 lang="en">The other formula</h2>
+<ul>
+<li lang="en">=ROW()-ROW($A$1)</li>
+</ul>
+<p lang="en">It's anchored to the header cell, so inserting rows above the header doesn't shift it.</p>
+<h2 lang="en">When you delete rows</h2>
+<p lang="en">Hand-typed numbers leave gaps when rows are deleted. With ROW, numbers close up immediately after deletion.</p>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Lists where rows are added and removed often</li>
+<li lang="en">Showing table order rather than the original pre-filter numbers</li>
+<li lang="en">Shared sheets where people add rows</li>
+</ul>
+<h2 lang="en">When filtered</h2>
+<p lang="en">ROW returns the original row position, so hidden rows make numbers look skipped. For consecutive numbers, SUBTOTAL suits better.</p>
+<ul>
+<li lang="en">Example: =SUBTOTAL(103,$B$2:B2)</li>
+</ul>
+<h2>Esempio</h2>
+<p lang="en">Added a number column to a shared list. Whether people added or deleted rows, numbers closed up automatically and no fixing was needed.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Headers spanning 2+ rows</b>: use the header's last row as the anchor.</li>
+<li lang="en"><b>Inserting rows above</b>: the ROW()-1 form shifts. Use the ROW($A$1) form.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want the sequence to start at 0</h3>
+<p lang="en">Subtract one more at the end of the formula.</p>
+<h2>Riepilogo</h2>
+<p lang="en">For lists with row changes, ROW-based numbering suits.</p>
 <a class="cta" href="/it/sequence-formula-builder.html">Usa “Crea una formula SEQUENCE” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/date-offset-formula-builder.html">Crea una formula di spostamento della data</a>: Crea formule di spostamento della data.</li><li><a href="/it/arrayformula-builder.html">Crea una ARRAYFORMULA</a>: Crea formule ARRAYFORMULA.</li><li><a href="/it/rank-formula-builder.html">Crea una formula di classifica</a>: Crea formule di classifica.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>
@@ -217,6 +253,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/it/guides.html">Vedi tutte le guide</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="it">Informazioni / Contatti (in giapponese)</span></a><a href="/it/privacy.html"><span lang="it">Informativa sulla privacy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="it">Novità su X</span></a></footer>
+<footer><a href="/about.html"><span lang="it">Informazioni / Contatti (in giapponese)</span></a><a href="/it/privacy.html"><span lang="it">Informativa sulla privacy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="it">Novità su X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

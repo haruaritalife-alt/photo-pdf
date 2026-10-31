@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "जब यह काम न करे तो क्या करें", "description": "प्रोसेसिंग विफल होने के कारण और समाधान।", "url": "https://pdfmikata.com/hi/large-small-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/hi/large-small-formula-builder-trouble.html", "inLanguage": "hi", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/hi/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/hi/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "जब यह काम न करे तो क्या करें", "description": "प्रोसेसिंग विफल होने के कारण और समाधान।", "url": "https://pdfmikata.com/hi/large-small-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/hi/large-small-formula-builder-trouble.html", "inLanguage": "hi", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/hi/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/hi/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>जब यह काम न करे तो क्या करें</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>फ़ाइल जाँचें</li><li>आकार जाँचें</li><li>दूसरा डिवाइस आज़माएँ</li></ul></div>
-<p>यदि <a href="/hi/large-small-formula-builder.html">LARGE SMALL सूत्र बनाने वाला टूल</a> काम न करे, तो नीचे दी बातें जाँचें।</p>
-<h2>चरण</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/hi/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the numeric range isn't in the "B2:B100" form; "which one" isn't an integer of 1 or more; for MAXIFS/MINIFS the condition range or value is empty; for TOPSUM the count is 21 or more.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#NUM!</b>: the number exceeds the count of values, or the range has no numbers.</li>
+<li lang="en"><b>#VALUE!</b>: MAXIFS/MINIFS ranges have different row counts.</li>
+<li lang="en"><b>#NAME?</b>: old Excel lacks MAXIFS/MINIFS.</li>
+<li lang="en"><b>0 returned</b>: no row meets the condition in MAXIFS/MINIFS.</li>
+<li lang="en"><b>Result too small or large</b>: text numbers are being ignored.</li>
+<li lang="en"><b>Condition doesn't work</b>: full-width/half-width or surrounding spaces differ.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>फ़ाइल जाँचें</li>
-<li>आकार जाँचें</li>
-<li>दूसरा डिवाइस आज़माएँ</li>
+<li lang="en">Check the numbers in the range are right-aligned numeric values.</li>
+<li lang="en">Check ranges have the same number of rows.</li>
+<li lang="en">Compare the condition value with the cell values.</li>
 </ol>
-<div class="note">अगर सूत्र नहीं दिखे, तो जाँचें कि रेंज B2:B100 की तरह लिखी हैं और शर्त की रेंज व मान डाले गए हैं।</div>
+<div class="note" lang="en">Don't include header rows in the range.</div>
+<h2 lang="en">Fixing text numbers</h2>
+<p lang="en">Convert with Data → Text to Columns or VALUE.</p>
+<h2>उदाहरण</h2>
+<p lang="en">LARGE gave a smaller value than expected. Some numbers were text and weren't counted. Converting them gave the right value.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Ranges on other sheets</b>: add the sheet name.</li>
+<li lang="en"><b>Including a total row in the range</b>: the total becomes the maximum. Exclude it.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about decimals and negatives?</h3>
+<p lang="en">Both are handled fine. Negatives rank as small values.</p>
+<h2>सारांश</h2>
+<p lang="en">Check numeric type, row counts and condition notation.</p>
 <a class="cta" href="/hi/large-small-formula-builder.html">“LARGE और SMALL सूत्र बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/rank-formula-builder.html">रैंक का सूत्र बनाएँ</a>: रैंक के सूत्र बनाएँ।</li><li><a href="/hi/sumif-formula-builder.html">SUMIF या COUNTIF फ़ॉर्मूला बनाएँ</a>: SUMIF और COUNTIF फ़ॉर्मूले बनाएँ।</li><li><a href="/hi/sumproduct-formula-builder.html">SUMPRODUCT सूत्र बनाएँ</a>: SUMPRODUCT सूत्र बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>
@@ -217,6 +244,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/hi/guides.html">सभी गाइड देखें</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="hi">परिचय / संपर्क (जापानी)</span></a><a href="/hi/privacy.html"><span lang="hi">गोपनीयता नीति</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="hi">X पर अपडेट</span></a></footer>
+<footer><a href="/about.html"><span lang="hi">परिचय / संपर्क (जापानी)</span></a><a href="/hi/privacy.html"><span lang="hi">गोपनीयता नीति</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="hi">X पर अपडेट</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

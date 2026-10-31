@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Сумма наибольших значений", "description": "О сумме наибольших значений.", "url": "https://pdfmikata.com/ru/large-small-formula-builder-topsum.html", "mainEntityOfPage": "https://pdfmikata.com/ru/large-small-formula-builder-topsum.html", "inLanguage": "ru", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ru/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ru/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Сумма наибольших значений", "description": "О сумме наибольших значений.", "url": "https://pdfmikata.com/ru/large-small-formula-builder-topsum.html", "mainEntityOfPage": "https://pdfmikata.com/ru/large-small-formula-builder-topsum.html", "inLanguage": "ru", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ru/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/ru/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,54 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Сумма наибольших значений</h1>
 <p class="meta">Опубликовано: 19 окт. 2026 | Обновлено: 19 окт. 2026 | <a href="/about.html">О сайте (на японском)</a></p>
 <div class="points"><b>Главное</b><ul><li>Выберите TOPSUM</li><li>Введите количество</li><li>Скопируйте его</li></ul></div>
-<p>В <a href="/ru/large-small-formula-builder.html">Конструктор LARGE SMALL</a> можно создать формулу, которая суммирует наибольшие значения.</p>
+<p lang="en">"The sum of the top 3", "sales of the top 5 companies". The sum of the top N comes from combining SUM and LARGE. "TOPSUM" in <a href="/ru/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a> builds it.</p>
 <h2>Шаги</h2>
 <ol>
-<li>Выберите TOPSUM</li>
-<li>Введите количество</li>
-<li>Скопируйте его</li>
+<li lang="en">Choose "TOPSUM" in "Type".</li>
+<li lang="en">Enter the "Numeric range".</li>
+<li lang="en">In "Which one (for LARGE, SMALL, TOPSUM)", enter the top count.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Передаёт LARGE список номеров мест вроде 1, 2, 3 и суммирует результаты.</div>
+<div class="note" lang="en">The count is 1 to 20. 21 or more gives "The input is not valid."</div>
+<h2>Пример</h2>
+<p lang="en">The sum of the top 3:</p>
+<ul>
+<li lang="en">=SUM(LARGE(B2:B100,{1,2,3}))</li>
+</ul>
+<p lang="en">The {1,2,3} part pulls out the 1st, 2nd and 3rd together.</p>
+<h2 lang="en">Share of the whole</h2>
+<p lang="en">To see what share the top 3 make, divide by the total.</p>
+<ul>
+<li lang="en">Example: =SUM(LARGE(B2:B100,{1,2,3}))/SUM(B2:B100)</li>
+</ul>
+<p lang="en">Showing it as a percentage reads better.</p>
+<h2>Подходит для</h2>
+<ul>
+<li lang="en">Total sales of the top 5 companies</li>
+<li lang="en">Total points of the top 3 people</li>
+<li lang="en">Knowing concentration in the top (sales skew)</li>
+</ul>
+<h2 lang="en">Sum of the bottom</h2>
+<p lang="en">For the bottom sum, change LARGE to SMALL. Edit by hand after pasting.</p>
+<ul>
+<li lang="en">Example: =SUM(SMALL(B2:B100,{1,2,3}))</li>
+</ul>
+<h2>Пример</h2>
+<p lang="en">Wanted to know what share the top 5 customers make of total sales. Dividing the TOPSUM formula by the grand total showed the concentration.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Older Excel</b>: array constants work as is, but mind how the formula is entered.</li>
+<li lang="en"><b>Count exceeds the number of values</b>: gives #NUM!.</li>
+<li lang="en"><b>21 or more</b>: the tool can't build it. Widen the array by hand or use SUMPRODUCT.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if the count is large?</h3>
+<p lang="en">SUMIF can total everything at or above a threshold.</p>
+<ul>
+<li lang="en">Example: =SUMIF(B2:B100,"&gt;="&amp;LARGE(B2:B100,10))</li>
+</ul>
+<h2>Итог</h2>
+<p lang="en">The top-N total combines SUM and LARGE.</p>
 <a class="cta" href="/ru/large-small-formula-builder.html">Использовать «Создайте формулу LARGE и SMALL» (бесплатно)</a>
 <h2>Инструменты, которые хорошо сочетаются с этим</h2><ul><li><a href="/ru/rank-formula-builder.html">Создать формулу рейтинга</a>: Создавайте формулы рейтинга.</li><li><a href="/ru/sumif-formula-builder.html">Создание формулы SUMIF или COUNTIF</a>: Создавайте формулы SUMIF и COUNTIF.</li><li><a href="/ru/sumproduct-formula-builder.html">Создать формулу SUMPRODUCT</a>: Создавайте формулы SUMPRODUCT.</li></ul>
 <div class="tip"><p>Если это руководство помогло, небольшие чаевые будут очень ценны.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Отправить чаевые (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Отправить подарок (список желаний Amazon)</a></div>
@@ -217,6 +257,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/ru/guides.html">Все руководства</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="ru">О сайте / Контакты (на японском)</span></a><a href="/ru/privacy.html"><span lang="ru">Политика конфиденциальности</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ru">Новости в X</span></a></footer>
+<footer><a href="/about.html"><span lang="ru">О сайте / Контакты (на японском)</span></a><a href="/ru/privacy.html"><span lang="ru">Политика конфиденциальности</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ru">Новости в X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

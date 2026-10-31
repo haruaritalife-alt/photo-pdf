@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "无法正常使用时的处理办法", "description": "处理失败的原因与解决办法。", "url": "https://pdfmikata.com/zh/sequence-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/zh/sequence-formula-builder-trouble.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "无法正常使用时的处理办法", "description": "处理失败的原因与解决办法。", "url": "https://pdfmikata.com/zh/sequence-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/zh/sequence-formula-builder-trouble.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,44 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>无法正常使用时的处理办法</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>检查文件</li><li>确认大小</li><li>换一台设备试试</li></ul></div>
-<p>如果<a href="/zh/sequence-formula-builder.html">SEQUENCE 公式生成器</a>不能用，请检查以下几点。</p>
-<h2>步骤</h2>
+<p lang="en">You pasted the formula but the sequence doesn't appear or looks wrong. Here are common troubles with <a href="/zh/sequence-formula-builder.html">Build a SEQUENCE Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the count isn't an integer of 1 or more (up to 100,000); the start or step isn't a number; for DATES the start isn't in the "2026-10-01" form; for ROWNUM the header row number isn't an integer of 1 or more.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF! (Google) / #SPILL! (Excel)</b>: values sit in the spill range.</li>
+<li lang="en"><b>#NAME?</b>: old Excel can't use SEQUENCE. Use the second formula.</li>
+<li lang="en"><b>Dates appear as numbers</b>: set the display format to "Date".</li>
+<li lang="en"><b>Numbers skip</b>: rows were inserted or deleted with a ROW-based formula.</li>
+<li lang="en"><b>Only one appears</b>: the ROW formula, meant to be copied down, was pasted into one cell.</li>
+<li lang="en"><b>REPEAT stops partway</b>: the row range isn't enough.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>检查文件</li>
-<li>确认大小</li>
-<li>换一台设备试试</li>
+<li lang="en">Check the spill cells are empty.</li>
+<li lang="en">Check your Excel version.</li>
+<li lang="en">If the first formula fails, try the second.</li>
 </ol>
-<div class="note">如果没有出现公式，请检查起始值和个数是否是数字。DATES 请用 2026-10-01 的形式。</div>
+<div class="note" lang="en">The second formula (ROW-based) is meant to be copied down. The first goes into a single cell.</div>
+<h2>该用哪个</h2>
+<ul>
+<li lang="en">First: paste in one cell and it spreads down (SEQUENCE)</li>
+<li lang="en">Second: copy down row by row (ROW)</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">SEQUENCE gave #NAME?. The Excel was old. Switching to the second formula and copying down lined up the numbers.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Count too large</b>: limited to 100,000.</li>
+<li lang="en"><b>Decimal step</b>: may show rounding error.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to keep the sequence as values</h3>
+<p lang="en">Copy, then paste values only.</p>
+<h2>小结</h2>
+<p lang="en">Check the spill range, Excel version and which formula to use.</p>
 <a class="cta" href="/zh/sequence-formula-builder.html">使用“生成 SEQUENCE 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/date-offset-formula-builder.html">生成日期加减公式</a>: 生成日期加减公式。</li><li><a href="/zh/arrayformula-builder.html">生成 ARRAYFORMULA</a>: 生成 ARRAYFORMULA 公式。</li><li><a href="/zh/rank-formula-builder.html">生成排名公式</a>: 生成排名公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>
@@ -217,6 +247,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/zh/guides.html">查看全部教程</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="zh-Hans">关于 / 联系（日文）</span></a><a href="/zh/privacy.html"><span lang="zh-Hans">隐私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hans">在 X 上查看更新</span></a></footer>
+<footer><a href="/about.html"><span lang="zh-Hans">关于 / 联系（日文）</span></a><a href="/zh/privacy.html"><span lang="zh-Hans">隐私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hans">在 X 上查看更新</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

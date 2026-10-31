@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Celle vuote ed errori", "description": "Su celle vuote ed errori.", "url": "https://pdfmikata.com/it/large-small-formula-builder-blank.html", "mainEntityOfPage": "https://pdfmikata.com/it/large-small-formula-builder-blank.html", "inLanguage": "it", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/it/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/it/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Celle vuote ed errori", "description": "Su celle vuote ed errori.", "url": "https://pdfmikata.com/it/large-small-formula-builder-blank.html", "mainEntityOfPage": "https://pdfmikata.com/it/large-small-formula-builder-blank.html", "inLanguage": "it", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/it/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/it/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,46 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Celle vuote ed errori</h1>
 <p class="meta">Pubblicato: 19 ott 2026 | Aggiornato: 19 ott 2026 | <a href="/about.html">Informazioni (in giapponese)</a></p>
 <div class="points"><b>Punti chiave</b><ul><li>Crea la formula</li><li>Scegli il secondo</li><li>Copialo</li></ul></div>
-<p><a href="/it/large-small-formula-builder.html">Generatore di LARGE SMALL</a> mostra anche una versione che resta vuota in caso di errore.</p>
+<p lang="en">You'd rather the formula not show errors. When no data meets the condition, or the number is too large, the "formula that blanks on error" covers you. That's the second field in <a href="/it/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a>.</p>
 <h2>Passaggi</h2>
 <ol>
-<li>Crea la formula</li>
-<li>Scegli il secondo</li>
-<li>Copialo</li>
+<li lang="en">Build the first formula.</li>
+<li lang="en">Check the second "Formula that blanks on error".</li>
+<li lang="en">Copy it with "Copy the second" and paste.</li>
 </ol>
-<div class="note">Una posizione maggiore del numero di dati dà un errore.</div>
+<div class="note" lang="en">Its form is =IFERROR(formula,""). The cell is empty on error.</div>
+<h2>Esempio</h2>
+<ul>
+<li lang="en">=IFERROR(LARGE(B2:B100,3),"")</li>
+</ul>
+<p lang="en">If there are only two numbers and no 3rd, it's blank instead of #NUM!.</p>
+<h2 lang="en">Handling blanks and text</h2>
+<p lang="en">LARGE, SMALL, MAXIFS and MINIFS ignore blanks and text in the range. Only numbers are counted.</p>
+<h2 lang="en">When 0 is returned</h2>
+<p lang="en">MAXIFS and MINIFS return 0 when no row meets the condition. To distinguish 0 from blank, check the count with COUNTIF.</p>
+<ul>
+<li lang="en">Example: =IF(COUNTIF(A2:A100,"Tokyo")=0,"",MAXIFS(B2:B100,A2:A100,"Tokyo"))</li>
+</ul>
+<h2>Adatto a</h2>
+<ul>
+<li lang="en">Empty tables before data grows</li>
+<li lang="en">Avoiding error displays in summary tables</li>
+<li lang="en">Cell values that feed other formulas</li>
+</ul>
+<h2>Attenzione</h2>
+<p lang="en">Hiding errors makes input mistakes harder to notice too. Test with the first formula, then switch to the second once stable.</p>
+<h2>Esempio</h2>
+<p lang="en">At the start of the month there was no data yet and summary cells were full of errors. Wrapping in IFERROR showed blanks and tidied the look.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Can't see the reason</b>: use the first formula when hunting causes.</li>
+<li lang="en"><b>Blanks treated as text</b>: an empty string ("") may be treated as text in later calculations.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to show 0</h3>
+<p lang="en">Rewrite IFERROR's "" as 0.</p>
+<h2>Riepilogo</h2>
+<p lang="en">To avoid errors, use the second formula.</p>
 <a class="cta" href="/it/large-small-formula-builder.html">Usa “Crea una formula LARGE e SMALL” (gratis)</a>
 <h2>Strumenti che si abbinano bene a questo</h2><ul><li><a href="/it/rank-formula-builder.html">Crea una formula di classifica</a>: Crea formule di classifica.</li><li><a href="/it/sumif-formula-builder.html">Creare una formula SUMIF o COUNTIF</a>: Crea formule SUMIF e COUNTIF.</li><li><a href="/it/sumproduct-formula-builder.html">Crea una formula SUMPRODUCT</a>: Crea formule SUMPRODUCT.</li></ul>
 <div class="tip"><p>Se questa guida ti è stata utile, una piccola mancia sarebbe molto apprezzata.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Invia una mancia (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Invia un regalo (lista desideri Amazon)</a></div>
@@ -217,6 +249,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/it/guides.html">Vedi tutte le guide</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="it">Informazioni / Contatti (in giapponese)</span></a><a href="/it/privacy.html"><span lang="it">Informativa sulla privacy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="it">Novità su X</span></a></footer>
+<footer><a href="/about.html"><span lang="it">Informazioni / Contatti (in giapponese)</span></a><a href="/it/privacy.html"><span lang="it">Informativa sulla privacy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="it">Novità su X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

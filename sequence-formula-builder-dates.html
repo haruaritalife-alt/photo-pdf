@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "日付の連番", "description": "日付の連番を解説します。", "url": "https://pdfmikata.com/sequence-formula-builder-dates.html", "mainEntityOfPage": "https://pdfmikata.com/sequence-formula-builder-dates.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "日付の連番", "description": "日付の連番を解説します。", "url": "https://pdfmikata.com/sequence-formula-builder-dates.html", "mainEntityOfPage": "https://pdfmikata.com/sequence-formula-builder-dates.html", "inLanguage": "ja", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -200,14 +200,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>日付の連番</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>DATESを選ぶ</li><li>開始日を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/sequence-formula-builder.html">連番式の作成</a> では、毎日や毎週の日付を並べる式を作れます。</p>
+<p>1か月分の日付を、縦に並べたい。毎日の記録表や、予定表を作るときに便利です。<a href="/sequence-formula-builder.html">連番の式を作る</a> の「DATES」で作れます。</p>
 <h2>手順</h2>
 <ol>
-<li>DATESを選ぶ</li>
-<li>開始日を入れる</li>
-<li>コピーする</li>
+<li>「種類」で「DATES」を選ぶ。</li>
+<li>「開始値」に、「2026-10-01」の形で、最初の日付を入れる。</li>
+<li>「件数」に、日数を入れる。</li>
+<li>「増える量」に、1（毎日）を入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">開始日は2026-10-01の形で入れます。</div>
+<div class="note">開始値が「年-月-日」の形でないと、「入力の形が正しくありません。」と出ます。</div>
+<h2>例</h2>
+<p>2026年10月1日から、31日分です。</p>
+<ul>
+<li>=SEQUENCE(31,1,DATE(2026,10,1),1)</li>
+</ul>
+<h2>古いExcelの式</h2>
+<ul>
+<li>=DATE(2026,10,1)+(ROW(A1)-1)*1</li>
+</ul>
+<p>下にコピーすると、日付が1日ずつ増えます。</p>
+<h2>表示形式</h2>
+<p>結果が数字（46296など）で表示されたら、セルの表示形式を「日付」にします。</p>
+<h2>増える量を変える</h2>
+<ul>
+<li>1：毎日</li>
+<li>7：毎週（同じ曜日）</li>
+<li>14：隔週</li>
+</ul>
+<p>月ごとの連番は、EDATE関数が向いています。</p>
+<h2>向いている場面</h2>
+<ul>
+<li>毎日の記録表</li>
+<li>1年分の週の始まりの日の一覧</li>
+<li>カレンダーの元データ</li>
+</ul>
+<h2>平日だけ並べたい</h2>
+<p>WORKDAY関数と組み合わせます。このサイトの「日付の足し引きの式を作る」ツールが助けになります。</p>
+<h2>例</h2>
+<p>10月の毎日の体重記録表を作りたかった。DATESで31日分の日付を作り、隣の列に体重を入れた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>数字で表示される</b>：表示形式を日付に。</li>
+<li><b>存在しない日付</b>：2月30日などは、入力できない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>月末までの日付を自動で作りたい</h3>
+<p>EOMONTH関数で終わりの日を求め、DAYSで件数を出します。</p>
+<h2>まとめ</h2>
+<p>開始日と件数で、日付の一覧が作れます。</p>
 <a class="cta" href="/sequence-formula-builder.html">連番の式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/date-offset-formula-builder.html">日付の足し引きの式を作る</a>：日付の足し引きの式を作ります。</li><li><a href="/arrayformula-builder.html">ARRAYFORMULAの式を作る</a>：ARRAYFORMULAの式を作ります。</li><li><a href="/rank-formula-builder.html">順位の式を作る</a>：順位の式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +260,55 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Date Series</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose DATES</li><li>Enter the start date</li><li>Copy it</li></ul></div>
-<p>In <a href="/sequence-formula-builder.html">SEQUENCE Builder</a> you can build a formula that lists dates daily or weekly.</p>
+<p>You want a month of dates lined up vertically. Handy for daily logs and schedules. "DATES" in <a href="/sequence-formula-builder.html">Build a SEQUENCE Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose DATES</li>
-<li>Enter the start date</li>
-<li>Copy it</li>
+<li>Choose "DATES" in "Type".</li>
+<li>In "Start value", enter the first date as "2026-10-01".</li>
+<li>In "Count", enter the number of days.</li>
+<li>In "Step", enter 1 (daily).</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">Enter the start date like 2026-10-01.</div>
+<div class="note">A start value not in year-month-day form gives "The input is not valid."</div>
+<h2>Example</h2>
+<p>31 days from October 1, 2026:</p>
+<ul>
+<li>=SEQUENCE(31,1,DATE(2026,10,1),1)</li>
+</ul>
+<h2>The old-Excel formula</h2>
+<ul>
+<li>=DATE(2026,10,1)+(ROW(A1)-1)*1</li>
+</ul>
+<p>Copied down, the date increases by one day each row.</p>
+<h2>Display format</h2>
+<p>If results show as numbers (like 46296), set the cell format to "Date".</p>
+<h2>Changing the step</h2>
+<ul>
+<li>1: daily</li>
+<li>7: weekly (same weekday)</li>
+<li>14: every other week</li>
+</ul>
+<p>For month-by-month sequences, EDATE suits better.</p>
+<h2>Good for</h2>
+<ul>
+<li>Daily log sheets</li>
+<li>A list of week-start dates for a year</li>
+<li>Source data for a calendar</li>
+</ul>
+<h2>Weekdays only</h2>
+<p>Combine with WORKDAY. This site's "date offset formula" tool can help.</p>
+<h2>Example</h2>
+<p>Wanted a daily weight log for October. DATES produced 31 days of dates and I entered weights beside them.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Shown as numbers</b>: set the display format to date.</li>
+<li><b>Nonexistent dates</b>: Feb 30 and the like can't be entered.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want dates auto-generated to month end</h3>
+<p>Get the end date with EOMONTH and the count with DAYS.</p>
+<h2>Summary</h2>
+<p>A start date and a count make a list of dates.</p>
 <a class="cta" href="/sequence-formula-builder.html">Use "Build a SEQUENCE Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/date-offset-formula-builder.html">Build a Date Offset Formula</a>: Build date offset formulas.</li><li><a href="/arrayformula-builder.html">Build an ARRAYFORMULA</a>: Build ARRAYFORMULA formulas.</li><li><a href="/rank-formula-builder.html">Build a Rank Formula</a>: Build rank formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
@@ -235,6 +317,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/guides.html">See all guides</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a></footer>
+<footer><a href="/about.html"><span lang="ja">運営者情報・お問い合わせ</span><span lang="en">About / Contact (Japanese)</span></a><a href="/privacy.html"><span lang="ja">プライバシーポリシー</span><span lang="en">Privacy Policy</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="ja">X（更新情報）</span><span lang="en">Updates on X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

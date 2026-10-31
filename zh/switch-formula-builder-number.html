@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "数字的对应", "description": "关于数字的对应。", "url": "https://pdfmikata.com/zh/switch-formula-builder-number.html", "mainEntityOfPage": "https://pdfmikata.com/zh/switch-formula-builder-number.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "数字的对应", "description": "关于数字的对应。", "url": "https://pdfmikata.com/zh/switch-formula-builder-number.html", "mainEntityOfPage": "https://pdfmikata.com/zh/switch-formula-builder-number.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>数字的对应</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>输入数字</li><li>查看公式</li><li>核对一下</li></ul></div>
-<p>在<a href="/zh/switch-formula-builder.html">SWITCH 公式生成器</a>中也可以对应数字，例如 1=低、2=中。</p>
+<p lang="en">When mapping values are numbers, it's unclear whether to compare as text or as numbers. <a href="/zh/switch-formula-builder.html">Build a SWITCH Formula</a> treats mapping values as text.</p>
 <h2>步骤</h2>
 <ol>
-<li>输入数字</li>
-<li>查看公式</li>
-<li>核对一下</li>
+<li lang="en">Enter the mapping like "1=Mon,2=Tue".</li>
+<li lang="en">Copy the formula and paste.</li>
+<li lang="en">If the cell being compared is numeric, remove the quotes in the formula by hand.</li>
 </ol>
-<div class="note">数字保持原样，文字会加上引号。</div>
+<div class="note" lang="en">The tool wraps both the left and right values of the mapping in quotes. That is, it compares as text.</div>
+<h2>示例</h2>
+<ul>
+<li lang="en">Tool's formula: =SWITCH(A2,"1","Mon","2","Tue")</li>
+<li lang="en">Numeric comparison: =SWITCH(A2,1,"Mon",2,"Tue")</li>
+</ul>
+<p lang="en">If A2 is the number 1, the latter matches.</p>
+<h2 lang="en">Text vs number</h2>
+<ul>
+<li lang="en">The text "1" and the number 1 are different values</li>
+<li lang="en">If A2 is text, the former matches</li>
+<li lang="en">If A2 is a number, the latter matches</li>
+</ul>
+<h2 lang="en">In sheets</h2>
+<p lang="en">In Google Sheets, the text "1" and the number 1 may match. Excel distinguishes strictly. When unsure, remove the quotes for numbers.</p>
+<h2>适合</h2>
+<ul>
+<li lang="en">Turning category numbers into names</li>
+<li lang="en">Turning age brackets into words</li>
+</ul>
+<h2 lang="en">When you need range tests</h2>
+<p lang="en">SWITCH is exact-match only. For range tests like "60 or more passes", use IF or IFS.</p>
+<ul>
+<li lang="en">Example: =IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">A category-number formula didn't match. The tool compared as text, but the source cell was numeric. Removing the quotes made it match.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leading zeros</b>: treat numbers with leading zeros as text.</li>
+<li lang="en"><b>Decimals</b>: beware of rounding error in decimal comparisons.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if there are many numeric tests?</h3>
+<p lang="en">Removing quotes in bulk, or using VLOOKUP/XLOOKUP, is easier.</p>
+<h2>小结</h2>
+<p lang="en">For numeric comparison, remove the quotes in the formula.</p>
 <a class="cta" href="/zh/switch-formula-builder.html">使用“生成 SWITCH 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li><li><a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/zh/index-match-builder.html">生成 INDEX 和 MATCH 公式</a>: 生成 INDEX 和 MATCH 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>
@@ -217,6 +253,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/zh/guides.html">查看全部教程</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="zh-Hans">关于 / 联系（日文）</span></a><a href="/zh/privacy.html"><span lang="zh-Hans">隐私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hans">在 X 上查看更新</span></a></footer>
+<footer><a href="/about.html"><span lang="zh-Hans">关于 / 联系（日文）</span></a><a href="/zh/privacy.html"><span lang="zh-Hans">隐私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hans">在 X 上查看更新</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

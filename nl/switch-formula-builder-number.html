@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Getallen koppelen", "description": "Over het koppelen van getallen.", "url": "https://pdfmikata.com/nl/switch-formula-builder-number.html", "mainEntityOfPage": "https://pdfmikata.com/nl/switch-formula-builder-number.html", "inLanguage": "nl", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/nl/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/nl/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Getallen koppelen", "description": "Over het koppelen van getallen.", "url": "https://pdfmikata.com/nl/switch-formula-builder-number.html", "mainEntityOfPage": "https://pdfmikata.com/nl/switch-formula-builder-number.html", "inLanguage": "nl", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/nl/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/nl/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,50 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Getallen koppelen</h1>
 <p class="meta">Gepubliceerd: 19 okt 2026 | Bijgewerkt: 19 okt 2026 | <a href="/about.html">Over ons (in het Japans)</a></p>
 <div class="points"><b>Belangrijkste punten</b><ul><li>Voer getallen in</li><li>Bekijk de formule</li><li>Controleer het</li></ul></div>
-<p>In <a href="/nl/switch-formula-builder.html">SWITCH-maker</a> kun je ook getallen koppelen, zoals 1=Laag en 2=Middel.</p>
+<p lang="en">When mapping values are numbers, it's unclear whether to compare as text or as numbers. <a href="/nl/switch-formula-builder.html">Build a SWITCH Formula</a> treats mapping values as text.</p>
 <h2>Stappen</h2>
 <ol>
-<li>Voer getallen in</li>
-<li>Bekijk de formule</li>
-<li>Controleer het</li>
+<li lang="en">Enter the mapping like "1=Mon,2=Tue".</li>
+<li lang="en">Copy the formula and paste.</li>
+<li lang="en">If the cell being compared is numeric, remove the quotes in the formula by hand.</li>
 </ol>
-<div class="note">Getallen blijven zoals ze zijn, tekst wordt tussen aanhalingstekens gezet.</div>
+<div class="note" lang="en">The tool wraps both the left and right values of the mapping in quotes. That is, it compares as text.</div>
+<h2>Voorbeeld</h2>
+<ul>
+<li lang="en">Tool's formula: =SWITCH(A2,"1","Mon","2","Tue")</li>
+<li lang="en">Numeric comparison: =SWITCH(A2,1,"Mon",2,"Tue")</li>
+</ul>
+<p lang="en">If A2 is the number 1, the latter matches.</p>
+<h2 lang="en">Text vs number</h2>
+<ul>
+<li lang="en">The text "1" and the number 1 are different values</li>
+<li lang="en">If A2 is text, the former matches</li>
+<li lang="en">If A2 is a number, the latter matches</li>
+</ul>
+<h2 lang="en">In sheets</h2>
+<p lang="en">In Google Sheets, the text "1" and the number 1 may match. Excel distinguishes strictly. When unsure, remove the quotes for numbers.</p>
+<h2>Goed voor</h2>
+<ul>
+<li lang="en">Turning category numbers into names</li>
+<li lang="en">Turning age brackets into words</li>
+</ul>
+<h2 lang="en">When you need range tests</h2>
+<p lang="en">SWITCH is exact-match only. For range tests like "60 or more passes", use IF or IFS.</p>
+<ul>
+<li lang="en">Example: =IFS(A2&gt;=80,"A",A2&gt;=60,"B",TRUE,"C")</li>
+</ul>
+<h2>Voorbeeld</h2>
+<p lang="en">A category-number formula didn't match. The tool compared as text, but the source cell was numeric. Removing the quotes made it match.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Leading zeros</b>: treat numbers with leading zeros as text.</li>
+<li lang="en"><b>Decimals</b>: beware of rounding error in decimal comparisons.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if there are many numeric tests?</h3>
+<p lang="en">Removing quotes in bulk, or using VLOOKUP/XLOOKUP, is easier.</p>
+<h2>Samenvatting</h2>
+<p lang="en">For numeric comparison, remove the quotes in the formula.</p>
 <a class="cta" href="/nl/switch-formula-builder.html">Gebruik “Maak een SWITCH-formule” (gratis)</a>
 <h2>Tools die hier goed bij passen</h2><ul><li><a href="/nl/excel-if-builder.html">Een IF-formule maken</a>: Maak een IF-formule.</li><li><a href="/nl/vlookup-formula-builder.html">Een VLOOKUP- of XLOOKUP-formule maken</a>: Bouw VLOOKUP- en XLOOKUP-formules.</li><li><a href="/nl/index-match-builder.html">Een INDEX- en MATCH-formule maken</a>: Maak INDEX- en MATCH-formules.</li></ul>
 <div class="tip"><p>Heeft deze handleiding je geholpen? Een kleine fooi zou veel voor ons betekenen.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Geef een fooi (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Stuur een cadeau (Amazon-verlanglijst)</a></div>
@@ -217,6 +253,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/nl/guides.html">Bekijk alle handleidingen</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="nl">Over ons / Contact (in het Japans)</span></a><a href="/nl/privacy.html"><span lang="nl">Privacybeleid</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="nl">Updates op X</span></a></footer>
+<footer><a href="/about.html"><span lang="nl">Over ons / Contact (in het Japans)</span></a><a href="/nl/privacy.html"><span lang="nl">Privacybeleid</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="nl">Updates op X</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>

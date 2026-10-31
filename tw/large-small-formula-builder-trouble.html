@@ -127,7 +127,7 @@ h1,h2{letter-spacing:.01em}
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "無法正常使用時的處理辦法", "description": "處理失敗的原因與解決辦法。", "url": "https://pdfmikata.com/tw/large-small-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/tw/large-small-formula-builder-trouble.html", "inLanguage": "zh-Hant", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tw/", "sameAs": ["https://x.com/pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tw/", "sameAs": ["https://x.com/pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "無法正常使用時的處理辦法", "description": "處理失敗的原因與解決辦法。", "url": "https://pdfmikata.com/tw/large-small-formula-builder-trouble.html", "mainEntityOfPage": "https://pdfmikata.com/tw/large-small-formula-builder-trouble.html", "inLanguage": "zh-Hant", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tw/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/tw/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -201,14 +201,41 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>無法正常使用時的處理辦法</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>檢查檔案</li><li>確認大小</li><li>換一臺裝置試試</li></ul></div>
-<p>如果<a href="/tw/large-small-formula-builder.html">LARGE SMALL 公式生成器</a>不能用，請檢查以下幾點。</p>
-<h2>步驟</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/tw/large-small-formula-builder.html">Build a LARGE and SMALL Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the numeric range isn't in the "B2:B100" form; "which one" isn't an integer of 1 or more; for MAXIFS/MINIFS the condition range or value is empty; for TOPSUM the count is 21 or more.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#NUM!</b>: the number exceeds the count of values, or the range has no numbers.</li>
+<li lang="en"><b>#VALUE!</b>: MAXIFS/MINIFS ranges have different row counts.</li>
+<li lang="en"><b>#NAME?</b>: old Excel lacks MAXIFS/MINIFS.</li>
+<li lang="en"><b>0 returned</b>: no row meets the condition in MAXIFS/MINIFS.</li>
+<li lang="en"><b>Result too small or large</b>: text numbers are being ignored.</li>
+<li lang="en"><b>Condition doesn't work</b>: full-width/half-width or surrounding spaces differ.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>檢查檔案</li>
-<li>確認大小</li>
-<li>換一臺裝置試試</li>
+<li lang="en">Check the numbers in the range are right-aligned numeric values.</li>
+<li lang="en">Check ranges have the same number of rows.</li>
+<li lang="en">Compare the condition value with the cell values.</li>
 </ol>
-<div class="note">如果沒有出現公式,請檢查範圍是否寫成 B2:B100 這樣,以及是否填入了條件範圍和值。</div>
+<div class="note" lang="en">Don't include header rows in the range.</div>
+<h2 lang="en">Fixing text numbers</h2>
+<p lang="en">Convert with Data → Text to Columns or VALUE.</p>
+<h2>示例</h2>
+<p lang="en">LARGE gave a smaller value than expected. Some numbers were text and weren't counted. Converting them gave the right value.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Ranges on other sheets</b>: add the sheet name.</li>
+<li lang="en"><b>Including a total row in the range</b>: the total becomes the maximum. Exclude it.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about decimals and negatives?</h3>
+<p lang="en">Both are handled fine. Negatives rank as small values.</p>
+<h2>小結</h2>
+<p lang="en">Check numeric type, row counts and condition notation.</p>
 <a class="cta" href="/tw/large-small-formula-builder.html">使用「生成 LARGE 和 SMALL 公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/rank-formula-builder.html">生成排名公式</a>: 生成排名公式。</li><li><a href="/tw/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li><li><a href="/tw/sumproduct-formula-builder.html">生成 SUMPRODUCT 公式</a>: 生成 SUMPRODUCT 公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>
@@ -217,6 +244,6 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <p><a href="/tw/guides.html">檢視全部教程</a></p>
 </div>
 </main>
-<footer><a href="/about.html"><span lang="zh-Hant">關於 / 聯絡（日文）</span></a><a href="/tw/privacy.html"><span lang="zh-Hant">隱私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hant">在 X 上檢視更新</span></a></footer>
+<footer><a href="/about.html"><span lang="zh-Hant">關於 / 聯絡（日文）</span></a><a href="/tw/privacy.html"><span lang="zh-Hant">隱私政策</span></a><a href="https://x.com/pdfmikata" rel="noopener noreferrer" target="_blank"><span lang="zh-Hant">在 X 上檢視更新</span></a><a href="https://youtube.com/@pdfmikata" rel="noopener noreferrer" target="_blank">YouTube</a></footer>
 </body>
 </html>
