@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>셀 위치를 텍스트로 표시</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>ADDRESS 선택</li><li>행 번호와 열 번호 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/indirect-formula-builder.html">INDIRECT 만들기</a>에서는 행 번호와 열 번호로 셀 위치를 텍스트로 알려 주는 수식을 만들 수 있습니다.</p>
+<p lang="en">You want a location like "B3" as text from row and column numbers. That's ADDRESS. "ADDRESS" in <a href="/ko/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>순서</h2>
 <ol>
-<li>ADDRESS 선택</li>
-<li>행 번호와 열 번호 입력</li>
-<li>복사</li>
+<li lang="en">Choose "ADDRESS" in "Type".</li>
+<li lang="en">Enter the row number in "Row offset" and the column number in "Column offset".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">두 번째 수식은 위치를 텍스트로 알려 줍니다.</div>
+<div class="note" lang="en">In this type the two numbers are used directly as the row and column numbers.</div>
+<h2>예</h2>
+<p lang="en">The location at row 3, column 2:</p>
+<ul>
+<li lang="en">=INDIRECT(ADDRESS(3,2))</li>
+</ul>
+<p lang="en">This returns B3's value.</p>
+<h2 lang="en">The alternative formula</h2>
+<p lang="en">The second gives the location itself as text.</p>
+<ul>
+<li lang="en">=ADDRESS(3,2,4)</li>
+</ul>
+<p lang="en">The result is the text "B3". The trailing 4 specifies relative reference without $.</p>
+<h2 lang="en">Choosing the reference style</h2>
+<p lang="en">ADDRESS's third number chooses how $ appears.</p>
+<ul>
+<li lang="en">1: $B$3 (row and column fixed)</li>
+<li lang="en">2: B$3 (row fixed)</li>
+<li lang="en">3: $B3 (column fixed)</li>
+<li lang="en">4: B3 (nothing fixed)</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Showing as text where the maximum is</li>
+<li lang="en">Keeping a location as text in another cell</li>
+<li lang="en">Reading a value from row and column numbers</li>
+</ul>
+<h2 lang="en">Showing the location as text</h2>
+<p lang="en">Handy for finding where, say, the last row is.</p>
+<ul>
+<li lang="en">Example: =ADDRESS(MATCH(MAX(B:B),B:B,0),2,4)</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Wanted to know which cell holds the top sales. MATCH gave the row number and ADDRESS displayed it like "B15".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: row or column isn't an integer.</li>
+<li lang="en"><b>Zero or below</b>: rows and columns are 1 or greater.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can ADDRESS alone read a value?</h3>
+<p lang="en">ADDRESS only outputs the location text. To read the value, combine with INDIRECT.</p>
+<h2>요약</h2>
+<p lang="en">To get a location from numbers, use ADDRESS; to read the value, combine with INDIRECT.</p>
 <a class="cta" href="/ko/indirect-formula-builder.html">“INDIRECT 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/vlookup-formula-builder.html">VLOOKUP·XLOOKUP 수식 만들기</a>: VLOOKUP과 XLOOKUP 수식을 만듭니다.</li><li><a href="/ko/importrange-builder.html">IMPORTRANGE 수식 만들기</a>: IMPORTRANGE 수식을 만듭니다.</li><li><a href="/ko/index-match-builder.html">INDEX·MATCH 수식 만들기</a>: INDEX와 MATCH 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

@@ -200,14 +200,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>うまくいかないときの対処法</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>ファイルを確認する</li><li>大きさを確認する</li><li>別の端末で試す</li></ul></div>
-<p><a href="/index-match-builder.html">INDEX・MATCH式の作成</a> でうまくいかないときは、次を確認してください。</p>
-<h2>手順</h2>
+<p>式を貼ったのに、結果がおかしい。<a href="/index-match-builder.html">INDEX・MATCHの式を作る</a> で起こりやすい困りごとと対処法です。</p>
+<h2>ツールの側のエラー</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：範囲が「C2:C100」の形でない。探す値が「F2」の形でない。見出しの範囲だけ入れて、見出しの値を空にした。</li>
+</ul>
+<h2>スプレッドシートに貼ったあと</h2>
+<ul>
+<li><b>#N/A</b>：探す値が、探す列にない。</li>
+<li><b>#REF!</b>：INDEXの位置が、範囲の外になっている。</li>
+<li><b>別の行の値が返る</b>：取り出す範囲と、探す列の範囲で、開始の行が違う。</li>
+<li><b>見つかるはずなのに、#N/A</b>：全角・半角、前後の空白、文字と数値の違い。</li>
+<li><b>近い値の検索で、間違った値が返る</b>：並び順が合っていない。</li>
+<li><b>下にコピーすると、結果がずれる</b>：探す値のセルに、$が付いている。</li>
+</ul>
+<h2>手順（うまくいかないとき）</h2>
 <ol>
-<li>ファイルを確認する</li>
-<li>大きさを確認する</li>
-<li>別の端末で試す</li>
+<li>取り出す範囲と、探す列の範囲が、同じ行から始まっているか見る。</li>
+<li>探す値と、探す列の値を、見比べる。</li>
+<li>前後の空白を、TRIMで除く。</li>
 </ol>
-<div class="note">式が出ないときは、範囲がC2:C100のように、セルがF2のように書かれているか確かめます。</div>
+<div class="note">取り出す範囲と、探す列の範囲は、同じ行数・同じ開始行にします。1行ずれるだけで、隣の行の値が返ります。</div>
+<h2>文字と数値の違い</h2>
+<p>「1001」が、片方は文字、片方は数値だと、一致しません。そろえます。</p>
+<ul>
+<li>文字にそろえる：TEXT(F2,"0")</li>
+<li>数値にそろえる：VALUE(F2)</li>
+</ul>
+<h2>例</h2>
+<p>商品コードで引くと、隣の行の値が返ってきた。取り出す範囲を、C1から始めてしまっていた。C2から始めると、直った。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>範囲に見出しを含める</b>：位置がずれる。</li>
+<li><b>範囲が足りない</b>：行を足したのに、範囲に入っていない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>範囲を広めに取っていいですか？</h3>
+<p>かまいません。空のセルは無視されます。ただし、取り出す範囲と探す列は、同じ行数にします。</p>
+<h2>まとめ</h2>
+<p>範囲の開始行、文字と数値、並び順。この3つを確かめましょう。</p>
 <a class="cta" href="/index-match-builder.html">INDEX・MATCHの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +250,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/index-match-builder.html">INDEX MATCH Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted the formula but the result is odd. Here are common troubles with <a href="/index-match-builder.html">Build an INDEX and MATCH Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: a range isn't in the "C2:C100" form; the value isn't in the "F2" form; you entered only the header range and left the header value empty.</li>
+</ul>
+<h2>After pasting into the sheet</h2>
+<ul>
+<li><b>#N/A</b>: the value isn't in the lookup column.</li>
+<li><b>#REF!</b>: INDEX's position falls outside the range.</li>
+<li><b>A different row's value returns</b>: the return range and lookup range start on different rows.</li>
+<li><b>#N/A though it should be found</b>: full-width/half-width, surrounding spaces, or text vs number.</li>
+<li><b>Approximate lookup returns a wrong value</b>: the sort order doesn't fit.</li>
+<li><b>Results shift when copied down</b>: the value cell has $ on it.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Check the return range and lookup range start on the same row.</li>
+<li>Compare the value to find with the lookup column's values.</li>
+<li>Remove surrounding spaces with TRIM.</li>
 </ol>
-<div class="note">If no formula appears, check that ranges are written like C2:C100 and the cell like F2.</div>
+<div class="note">The return range and lookup range must have the same row count and start row. Even one row off returns the neighbor's value.</div>
+<h2>Text vs number</h2>
+<p>If "1001" is text on one side and numeric on the other, they don't match. Align them.</p>
+<ul>
+<li>To text: TEXT(F2,"0")</li>
+<li>To number: VALUE(F2)</li>
+</ul>
+<h2>Example</h2>
+<p>Looking up by product code returned the neighbor row's value. I had started the return range at C1. Starting at C2 fixed it.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Including headings in the range</b>: the position shifts.</li>
+<li><b>Range too short</b>: rows added but not in the range.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can I take the ranges generously wide?</h3>
+<p>Yes. Empty cells are ignored. But keep the return range and lookup range at the same row count.</p>
+<h2>Summary</h2>
+<p>Check the start row, text vs number and sort order.</p>
 <a class="cta" href="/index-match-builder.html">Use "Build an INDEX and MATCH Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Що робити, якщо не працює</h1>
 <p class="meta">Опубліковано: 19 жовт. 2026 | Оновлено: 19 жовт. 2026 | <a href="/about.html">Про нас (японською)</a></p>
 <div class="points"><b>Основне</b><ul><li>Перевірте файл</li><li>Перевірте розмір</li><li>Спробуйте інший пристрій</li></ul></div>
-<p>Якщо <a href="/uk/index-match-builder.html">Конструктор INDEX MATCH</a> не працює, перевірте таке.</p>
-<h2>Кроки</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/uk/index-match-builder.html">Build an INDEX and MATCH Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: a range isn't in the "C2:C100" form; the value isn't in the "F2" form; you entered only the header range and left the header value empty.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: the value isn't in the lookup column.</li>
+<li lang="en"><b>#REF!</b>: INDEX's position falls outside the range.</li>
+<li lang="en"><b>A different row's value returns</b>: the return range and lookup range start on different rows.</li>
+<li lang="en"><b>#N/A though it should be found</b>: full-width/half-width, surrounding spaces, or text vs number.</li>
+<li lang="en"><b>Approximate lookup returns a wrong value</b>: the sort order doesn't fit.</li>
+<li lang="en"><b>Results shift when copied down</b>: the value cell has $ on it.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Перевірте файл</li>
-<li>Перевірте розмір</li>
-<li>Спробуйте інший пристрій</li>
+<li lang="en">Check the return range and lookup range start on the same row.</li>
+<li lang="en">Compare the value to find with the lookup column's values.</li>
+<li lang="en">Remove surrounding spaces with TRIM.</li>
 </ol>
-<div class="note">Якщо формула не з'являється, перевірте, чи діапазони записано на кшталт C2:C100, а клітинку — на кшталт F2.</div>
+<div class="note" lang="en">The return range and lookup range must have the same row count and start row. Even one row off returns the neighbor's value.</div>
+<h2 lang="en">Text vs number</h2>
+<p lang="en">If "1001" is text on one side and numeric on the other, they don't match. Align them.</p>
+<ul>
+<li lang="en">To text: TEXT(F2,"0")</li>
+<li lang="en">To number: VALUE(F2)</li>
+</ul>
+<h2>Приклад</h2>
+<p lang="en">Looking up by product code returned the neighbor row's value. I had started the return range at C1. Starting at C2 fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Including headings in the range</b>: the position shifts.</li>
+<li lang="en"><b>Range too short</b>: rows added but not in the range.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I take the ranges generously wide?</h3>
+<p lang="en">Yes. Empty cells are ignored. But keep the return range and lookup range at the same row count.</p>
+<h2>Підсумок</h2>
+<p lang="en">Check the start row, text vs number and sort order.</p>
 <a class="cta" href="/uk/index-match-builder.html">Використати «Створити формулу INDEX і MATCH» (безкоштовно)</a>
 <h2>Інструменти, що добре поєднуються з цим</h2><ul><li><a href="/uk/vlookup-formula-builder.html">Створення формули VLOOKUP або XLOOKUP</a>: Створюйте формули VLOOKUP і XLOOKUP.</li><li><a href="/uk/filter-formula-builder.html">Створення формули FILTER</a>: Створіть формулу FILTER.</li><li><a href="/uk/sumif-formula-builder.html">Створення формули SUMIF або COUNTIF</a>: Створюйте формули SUMIF і COUNTIF.</li></ul>
 <div class="tip"><p>Якщо цей посібник став у пригоді, невеликі чайові будуть дуже доречні.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Надіслати чайові (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Надіслати подарунок (список бажань Amazon)</a></div>

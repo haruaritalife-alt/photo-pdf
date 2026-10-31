@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ต้องทำอย่างไรเมื่อใช้งานไม่ได้</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ตรวจสอบไฟล์</li><li>ตรวจสอบขนาด</li><li>ลองใช้อุปกรณ์อื่น</li></ul></div>
-<p>หาก <a href="/th/indirect-formula-builder.html">ตัวสร้างสูตร INDIRECT</a> ไม่ทำงาน ให้ตรวจสอบสิ่งต่อไปนี้</p>
-<h2>ขั้นตอน</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/th/indirect-formula-builder.html">Build an INDIRECT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell isn't in the "A1" form; the sheet name is empty (for SHEET); an offset isn't an integer (for OFFSET and ADDRESS).</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF!</b>: the location doesn't exist. Check the sheet name and position.</li>
+<li lang="en"><b>Shows 0</b>: the called cell is empty.</li>
+<li lang="en"><b>Stuck on old values</b>: calculation is set to manual.</li>
+<li lang="en"><b>Slow</b>: INDIRECT and OFFSET recalculate often.</li>
+<li lang="en"><b>References shift on inserting rows</b>: locations written as text don't follow.</li>
+<li lang="en"><b>Can't call another file</b>: the other file is closed.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>ตรวจสอบไฟล์</li>
-<li>ตรวจสอบขนาด</li>
-<li>ลองใช้อุปกรณ์อื่น</li>
+<li lang="en">Check the called location by hand.</li>
+<li lang="en">Check the sheet name's quotes and spaces.</li>
+<li lang="en">If slow, switch to the INDEX formula.</li>
 </ol>
-<div class="note">หากไม่มีสูตรปรากฏ ให้ตรวจสอบว่าเซลล์เขียนเป็น A1 และป้อนชื่อชีตแล้ว</div>
+<div class="note" lang="en">INDIRECT builds locations as text, so inserting rows or columns doesn't update the target automatically.</div>
+<h2 lang="en">Reducing slowness</h2>
+<ul>
+<li lang="en">Don't call large ranges repeatedly.</li>
+<li lang="en">Replace OFFSET with INDEX.</li>
+<li lang="en">Place formulas only in cells that need them.</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Inserting a row shifted INDIRECT's results. Locations written as text don't follow, so I switched to INDEX and MATCH and it stabilized.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Copying down doesn't shift it</b>: the location is fixed as text. Build numbers with ROW.</li>
+<li lang="en"><b>Result shows as text</b>: the cell's display format is text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">When should I avoid INDIRECT?</h3>
+<p lang="en">In tables where rows or columns are inserted often. If the target is fixed, a plain reference suffices.</p>
+<h2>สรุป</h2>
+<p lang="en">Check the location, recalculation and speed.</p>
 <a class="cta" href="/th/indirect-formula-builder.html">ใช้ “สร้างสูตร INDIRECT” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/vlookup-formula-builder.html">สร้างสูตร VLOOKUP หรือ XLOOKUP</a>: สร้างสูตร VLOOKUP และ XLOOKUP</li><li><a href="/th/importrange-builder.html">สร้างสูตร IMPORTRANGE</a>: สร้างสูตร IMPORTRANGE</li><li><a href="/th/index-match-builder.html">สร้างสูตร INDEX และ MATCH</a>: สร้างสูตร INDEX และ MATCH</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

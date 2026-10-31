@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ตรวจสอบว่าเป็นข้อผิดพลาดหรือไม่</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>เลือก ISERROR</li><li>ป้อนเซลล์</li><li>คัดลอก</li></ul></div>
-<p>ใน <a href="/th/check-formula-builder.html">ตัวสร้างสูตร ISBLANK</a> คุณสร้างสูตรที่ตรวจสอบว่าเซลล์เป็นข้อผิดพลาดหรือไม่ได้</p>
+<p lang="en">A calculation result is mixed with errors, and you want to find which cells. ISERROR and ISNA do that. "ISERROR" and "ISNA" in <a href="/th/check-formula-builder.html">Build an ISBLANK Formula</a> build it.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>เลือก ISERROR</li>
-<li>ป้อนเซลล์</li>
-<li>คัดลอก</li>
+<li lang="en">Choose "ISERROR" or "ISNA" in "Type".</li>
+<li lang="en">Enter the "Cell to check".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">หากต้องการตรวจสอบเฉพาะ #N/A ให้ใช้ ISNA</div>
+<div class="note" lang="en">ISERROR covers all errors. ISNA covers only #N/A (not found).</div>
+<h2>ตัวอย่าง</h2>
+<ul>
+<li lang="en">=ISERROR(A2): TRUE if an error</li>
+<li lang="en">=ISNA(A2): TRUE if #N/A</li>
+</ul>
+<h2>ควรใช้แบบไหน</h2>
+<ul>
+<li lang="en"><b>ISNA</b>: to catch only "not found" from VLOOKUP and similar</li>
+<li lang="en"><b>ISERROR</b>: to catch other errors too, such as division by zero</li>
+</ul>
+<p lang="en">ISERROR also hides real mistakes, so ISNA is safer in many cases.</p>
+<h2 lang="en">Showing the result as text</h2>
+<p lang="en">The second formula outputs text via IF.</p>
+<ul>
+<li lang="en">Example: =IF(ISNA(A2),"Not found","Found")</li>
+</ul>
+<h2 lang="en">Replacing errors with another value</h2>
+<p lang="en">For replacing rather than judging, IFERROR is shorter.</p>
+<ul>
+<li lang="en">Example: =IFERROR(A2,"")</li>
+</ul>
+<h2>เหมาะกับ</h2>
+<ul>
+<li lang="en">Finding not-found rows in VLOOKUP results</li>
+<li lang="en">Checking calculation errors in a list</li>
+<li lang="en">Counting errors</li>
+</ul>
+<h2 lang="en">Counting errors</h2>
+<ul>
+<li lang="en">Example: =SUMPRODUCT(--ISERROR(A2:A100))</li>
+</ul>
+<h2>ตัวอย่าง</h2>
+<p lang="en">Wanted only rows not found in a matching result. Copying an ISNA formula down let me filter the TRUE rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>All errors get hidden</b>: ISERROR ignores the cause.</li>
+<li lang="en"><b>#NAME?</b>: a misspelled function name also makes ISERROR TRUE.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to know the error type</h3>
+<p lang="en">ERROR.TYPE gives a number.</p>
+<h2>สรุป</h2>
+<p lang="en">To catch only "not found", use ISNA.</p>
 <a class="cta" href="/th/check-formula-builder.html">ใช้ “สร้างสูตร ISBLANK” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/excel-if-builder.html">สร้างสูตร IF</a>: สร้างสูตร IF</li><li><a href="/th/cond-format-formula-builder.html">สร้างสูตรการจัดรูปแบบตามเงื่อนไข</a>: สร้างสูตรการจัดรูปแบบตามเงื่อนไข</li><li><a href="/th/countif-formula-builder.html">สร้างสูตร COUNTIF</a>: สร้างสูตรที่นับเซลล์ที่ตรงตามเงื่อนไข</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>결과를 텍스트로 표시</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>참일 때의 텍스트 입력</li><li>거짓일 때의 텍스트 입력</li><li>두 번째 수식 복사</li></ul></div>
-<p><a href="/ko/check-formula-builder.html">ISBLANK 만들기</a>은(는) 결과를 OK나 NG 같은 텍스트로 표시하는 수식도 만듭니다.</p>
+<p lang="en">Instead of TRUE or FALSE, you want results in readable text like "Empty" or "OK". The second formula in <a href="/ko/check-formula-builder.html">Build an ISBLANK Formula</a> does that.</p>
 <h2>순서</h2>
 <ol>
-<li>참일 때의 텍스트 입력</li>
-<li>거짓일 때의 텍스트 입력</li>
-<li>두 번째 수식 복사</li>
+<li lang="en">Enter the "Type" and "Cell to check".</li>
+<li lang="en">In "When it applies", enter the text to show.</li>
+<li lang="en">Enter text in "When it doesn't" too.</li>
+<li lang="en">Copy the "Formula that returns text" with "Copy the second".</li>
 </ol>
-<div class="note">텍스트는 원하는 대로 바꿀 수 있습니다.</div>
+<div class="note" lang="en">Text is wrapped in "..." in the formula. If your text contains a " the shape can break.</div>
+<h2>예</h2>
+<ul>
+<li lang="en">=IF(ISBLANK(A2),"Empty","Filled")</li>
+</ul>
+<p lang="en">Shows "Empty" if empty, otherwise "Filled".</p>
+<h2 lang="en">Inverting</h2>
+<p lang="en">Tick "Invert (NOT)" to reverse the check.</p>
+<ul>
+<li lang="en">Example: =IF(NOT(ISBLANK(A2)),"Filled","Empty")</li>
+</ul>
+<h2 lang="en">Text examples</h2>
+<ul>
+<li lang="en">Empty: "Missing", "OK"</li>
+<li lang="en">Number: "Number", "Text"</li>
+<li lang="en">Error: "Check", "Normal"</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Showing results in words in a review column</li>
+<li lang="en">A check column in a printed table</li>
+<li lang="en">Filtering only "Check" rows</li>
+</ul>
+<h2 lang="en">Showing nothing</h2>
+<p lang="en">To leave the non-matching case blank, enter an empty string.</p>
+<ul>
+<li lang="en">Example: =IF(ISBLANK(A2),"Missing","")</li>
+</ul>
+<h2 lang="en">Combining conditions</h2>
+<p lang="en">Nested IFs can judge multiple conditions, but readability drops.</p>
+<h2>예</h2>
+<p lang="en">In an application list, I wanted "Missing" on rows with empty required fields. Filtering the result column left only rows to fix.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Quotes inside the text</b>: the formula breaks. Avoid quotes.</li>
+<li lang="en"><b>Long text</b>: doesn't fit the column width.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to check two conditions at once</h3>
+<p lang="en">Combine with AND or OR.</p>
+<h2>요약</h2>
+<p lang="en">For readable judgments, turn them into text with IF.</p>
 <a class="cta" href="/ko/check-formula-builder.html">“ISBLANK 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/excel-if-builder.html">IF 수식 만들기</a>: IF 수식을 만듭니다.</li><li><a href="/ko/cond-format-formula-builder.html">조건부 서식 수식 만들기</a>: 조건부 서식 수식을 만듭니다.</li><li><a href="/ko/countif-formula-builder.html">COUNTIF 수식 만들기</a>: 조건에 맞는 셀의 개수를 세는 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

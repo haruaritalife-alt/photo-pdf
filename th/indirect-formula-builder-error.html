@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>เมื่อเกิดข้อผิดพลาด</h1>
 <p class="meta">เผยแพร่: 19 ต.ค. 2026 | อัปเดต: 19 ต.ค. 2026 | <a href="/about.html">เกี่ยวกับ (ภาษาญี่ปุ่น)</a></p>
 <div class="points"><b>ประเด็นสำคัญ</b><ul><li>ตรวจสอบชื่อชีต</li><li>ตรวจสอบวิธีเขียนเซลล์</li><li>ใช้สูตรที่ทำให้ข้อผิดพลาดเป็นค่าว่าง</li></ul></div>
-<p>สูตรของ <a href="/th/indirect-formula-builder.html">ตัวสร้างสูตร INDIRECT</a> จะเกิดข้อผิดพลาดหากชื่อชีตหรือเซลล์ผิด</p>
+<p lang="en">The INDIRECT formula returns #REF!. The sheet name should be right, yet it doesn't work. Here are common causes of errors in formulas built with <a href="/th/indirect-formula-builder.html">Build an INDIRECT Formula</a> and fixes.</p>
 <h2>ขั้นตอน</h2>
 <ol>
-<li>ตรวจสอบชื่อชีต</li>
-<li>ตรวจสอบวิธีเขียนเซลล์</li>
-<li>ใช้สูตรที่ทำให้ข้อผิดพลาดเป็นค่าว่าง</li>
+<li lang="en">Compare the sheet name with the actual sheet's name.</li>
+<li lang="en">Check for surrounding spaces and full-width/half-width differences.</li>
+<li lang="en">Check the name is wrapped in the quote "'".</li>
 </ol>
-<div class="note">ชื่อชีตที่มีช่องว่างจะอยู่ในเครื่องหมายคำพูด</div>
+<div class="note" lang="en">"#REF!" means the called location can't be found.</div>
+<h2 lang="en">Common causes</h2>
+<ul>
+<li lang="en"><b>Sheet name mismatch</b>: even one character off isn't found.</li>
+<li lang="en"><b>Stray spaces</b>: the cell text has spaces around it. Remove with TRIM.</li>
+<li lang="en"><b>Missing quotes</b>: the name has spaces or symbols but isn't wrapped.</li>
+<li lang="en"><b>File is closed</b>: you're calling another file that isn't open.</li>
+<li lang="en"><b>Outside the sheet</b>: pointing at a cell that doesn't exist.</li>
+</ul>
+<h2 lang="en">Removing spaces</h2>
+<p lang="en">If reading the sheet name from a cell, wrap it in TRIM.</p>
+<ul>
+<li lang="en">Example: =INDIRECT("'"&amp;TRIM(A1)&amp;"'!B2")</li>
+</ul>
+<h2 lang="en">Turning errors into empty</h2>
+<p lang="en">The second formula is wrapped in IFERROR.</p>
+<ul>
+<li lang="en">=IFERROR(INDIRECT("'"&amp;A1&amp;"'!B2"),"")</li>
+</ul>
+<p lang="en">But this hides errors, so use it after checking the cause.</p>
+<h2 lang="en">When a sheet is renamed</h2>
+<p lang="en">A sheet name written as text doesn't follow a rename; you get #REF!.</p>
+<h2 lang="en">Google Sheets note</h2>
+<p lang="en">On first use you may be asked to permit access to the sheet.</p>
+<h2>ตัวอย่าง</h2>
+<p lang="en">One of the formulas calling monthly sheets gave #REF!. The sheet name ended with a full-width space. TRIM fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width vs half-width digits</b>: they're different characters.</li>
+<li lang="en"><b>Names with dots</b>: wrap in quotes.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How can I debug more easily?</h3>
+<p lang="en">Counting the name cell's characters with LEN reveals stray spaces.</p>
+<h2>สรุป</h2>
+<p lang="en">For #REF!, suspect name mismatch, spaces and quotes.</p>
 <a class="cta" href="/th/indirect-formula-builder.html">ใช้ “สร้างสูตร INDIRECT” (ฟรี)</a>
 <h2>เครื่องมือที่ใช้คู่กันได้ดี</h2><ul><li><a href="/th/vlookup-formula-builder.html">สร้างสูตร VLOOKUP หรือ XLOOKUP</a>: สร้างสูตร VLOOKUP และ XLOOKUP</li><li><a href="/th/importrange-builder.html">สร้างสูตร IMPORTRANGE</a>: สร้างสูตร IMPORTRANGE</li><li><a href="/th/index-match-builder.html">สร้างสูตร INDEX และ MATCH</a>: สร้างสูตร INDEX และ MATCH</li></ul>
 <div class="tip"><p>หากคู่มือนี้เป็นประโยชน์ ทิปเล็ก ๆ น้อย ๆ จะเป็นกำลังใจอย่างมาก</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ส่งทิป (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ส่งของขวัญ (Amazon wishlist)</a></div>

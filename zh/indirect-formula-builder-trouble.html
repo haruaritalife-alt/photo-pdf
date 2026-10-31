@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>无法正常使用时的处理办法</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>检查文件</li><li>确认大小</li><li>换一台设备试试</li></ul></div>
-<p>如果 <a href="/zh/indirect-formula-builder.html">INDIRECT 公式生成器</a> 无法正常使用，请检查以下几点。</p>
-<h2>步骤</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/zh/indirect-formula-builder.html">Build an INDIRECT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell isn't in the "A1" form; the sheet name is empty (for SHEET); an offset isn't an integer (for OFFSET and ADDRESS).</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF!</b>: the location doesn't exist. Check the sheet name and position.</li>
+<li lang="en"><b>Shows 0</b>: the called cell is empty.</li>
+<li lang="en"><b>Stuck on old values</b>: calculation is set to manual.</li>
+<li lang="en"><b>Slow</b>: INDIRECT and OFFSET recalculate often.</li>
+<li lang="en"><b>References shift on inserting rows</b>: locations written as text don't follow.</li>
+<li lang="en"><b>Can't call another file</b>: the other file is closed.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>检查文件</li>
-<li>确认大小</li>
-<li>换一台设备试试</li>
+<li lang="en">Check the called location by hand.</li>
+<li lang="en">Check the sheet name's quotes and spaces.</li>
+<li lang="en">If slow, switch to the INDEX formula.</li>
 </ol>
-<div class="note">如果没有显示公式，请检查单元格是否写成 A1 的形式，以及是否输入了工作表名。</div>
+<div class="note" lang="en">INDIRECT builds locations as text, so inserting rows or columns doesn't update the target automatically.</div>
+<h2 lang="en">Reducing slowness</h2>
+<ul>
+<li lang="en">Don't call large ranges repeatedly.</li>
+<li lang="en">Replace OFFSET with INDEX.</li>
+<li lang="en">Place formulas only in cells that need them.</li>
+</ul>
+<h2>示例</h2>
+<p lang="en">Inserting a row shifted INDIRECT's results. Locations written as text don't follow, so I switched to INDEX and MATCH and it stabilized.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Copying down doesn't shift it</b>: the location is fixed as text. Build numbers with ROW.</li>
+<li lang="en"><b>Result shows as text</b>: the cell's display format is text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">When should I avoid INDIRECT?</h3>
+<p lang="en">In tables where rows or columns are inserted often. If the target is fixed, a plain reference suffices.</p>
+<h2>小结</h2>
+<p lang="en">Check the location, recalculation and speed.</p>
 <a class="cta" href="/zh/indirect-formula-builder.html">使用“生成 INDIRECT 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/zh/importrange-builder.html">生成 IMPORTRANGE 公式</a>: 生成 IMPORTRANGE 公式。</li><li><a href="/zh/index-match-builder.html">生成 INDEX 和 MATCH 公式</a>: 生成 INDEX 和 MATCH 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

@@ -200,14 +200,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>縦横から取り出す</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>見出しの範囲を入れる</li><li>見出しの値を入れる</li><li>コピーする</li></ul></div>
-<p><a href="/index-match-builder.html">INDEX・MATCH式の作成</a> では、見出しの範囲と値も入れると、表の縦横から取り出す式になります。</p>
+<p>行の見出しと、列の見出しの、交差するセルの値を取り出したい。たとえば、商品別・月別の売上表から、「商品Aの3月」を取り出す場合です。<a href="/index-match-builder.html">INDEX・MATCHの式を作る</a> なら、MATCHを2つ使って、縦横から取り出せます。</p>
 <h2>手順</h2>
 <ol>
-<li>見出しの範囲を入れる</li>
-<li>見出しの値を入れる</li>
-<li>コピーする</li>
+<li>「取り出す範囲」に、表の数値の部分を入れる。</li>
+<li>「探す列の範囲」に、行の見出し（商品名の列）を入れる。</li>
+<li>「探す値のセル」に、探す商品名のセルを入れる。</li>
+<li>「見出しの範囲」に、列の見出し（月の行）を入れる。</li>
+<li>「見出しの値のセル」に、探す月のセルを入れる。</li>
+<li>式をコピーして貼る。</li>
 </ol>
-<div class="note">行の探し方と列の探し方を、MATCHを2つ使って組み合わせます。</div>
+<div class="note">取り出す範囲は、数値の部分だけにします。見出しの行と列は、含めません。</div>
+<h2>例</h2>
+<p>B2:D10に売上、A2:A10に商品名、B1:D1に月がある表で、F2に商品名、G2に月が入っている場合です。</p>
+<ul>
+<li>=INDEX($B$2:$D$10,MATCH(F2,$A$2:$A$10,0),MATCH(G2,$B$1:$D$1,0))</li>
+</ul>
+<h2>仕組み</h2>
+<ul>
+<li>1つ目のMATCH：商品名が、何行目にあるか</li>
+<li>2つ目のMATCH：月が、何列目にあるか</li>
+<li>INDEX：その行と列の交差するセルを返す</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>商品別・月別の売上表</li>
+<li>地域別・年別の統計表</li>
+<li>単価表（サイズ×重さ）</li>
+</ul>
+<h2>プルダウンと組み合わせる</h2>
+<p>F2とG2をプルダウンにすると、選ぶだけで、交差する値が表示される、検索用の表になります。</p>
+<h2>例</h2>
+<p>商品と月を選ぶと、売上が出る表を作りたかった。二方向のINDEXとMATCHで、1つの式で作れた。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>取り出す範囲に見出しを含める</b>：位置が1つずれる。</li>
+<li><b>範囲の大きさが合わない</b>：行の見出しの数と、取り出す範囲の行数を、揃える。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>見出しの範囲を空にすると？</h3>
+<p>縦方向だけの、通常のINDEXとMATCHの式になります。</p>
+<h2>まとめ</h2>
+<p>縦横から取り出すなら、MATCHを2つ使う。</p>
 <a class="cta" href="/index-match-builder.html">INDEX・MATCHの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/filter-formula-builder.html">FILTERの式を作る</a>：FILTERの式を作ります。</li><li><a href="/sumif-formula-builder.html">SUMIF・COUNTIFの式を作る</a>：SUMIFやCOUNTIFの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +253,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Two-Way Lookup</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the header range</li><li>Enter the header value</li><li>Copy it</li></ul></div>
-<p>In <a href="/index-match-builder.html">INDEX MATCH Builder</a>, entering the header range and value makes a two-way table lookup.</p>
+<p>You want the value where a row heading and a column heading intersect, such as "Product A in March" from a product-by-month sales table. With <a href="/index-match-builder.html">Build an INDEX and MATCH Formula</a>, two MATCHes pull from both rows and columns.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the header range</li>
-<li>Enter the header value</li>
-<li>Copy it</li>
+<li>In "Range to return", enter the table's numeric part.</li>
+<li>In "Lookup column range", enter the row headings (the product-name column).</li>
+<li>In "Cell with the value to find", enter the cell with the product to find.</li>
+<li>In "Header range", enter the column headings (the month row).</li>
+<li>In "Cell with the header value", enter the cell with the month to find.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">Two MATCH functions find the row and the column.</div>
+<div class="note">Make the return range the numeric part only. Don't include heading rows and columns.</div>
+<h2>Example</h2>
+<p>With sales in B2:D10, product names in A2:A10, months in B1:D1, and the product in F2 and month in G2:</p>
+<ul>
+<li>=INDEX($B$2:$D$10,MATCH(F2,$A$2:$A$10,0),MATCH(G2,$B$1:$D$1,0))</li>
+</ul>
+<h2>How it works</h2>
+<ul>
+<li>First MATCH: which row the product is in</li>
+<li>Second MATCH: which column the month is in</li>
+<li>INDEX: returns the cell at that row and column</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Product-by-month sales tables</li>
+<li>Region-by-year statistics tables</li>
+<li>Price tables (size × weight)</li>
+</ul>
+<h2>Combining with dropdowns</h2>
+<p>Make F2 and G2 dropdowns and you get a lookup sheet that shows the intersecting value just by choosing.</p>
+<h2>Example</h2>
+<p>Wanted a table that gives sales when you pick a product and month. Two-way INDEX/MATCH built it in one formula.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Including headings in the return range</b>: the position shifts by one.</li>
+<li><b>Range sizes don't match</b>: align the number of row headings with the return range's rows.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>What if I leave the header range empty?</h3>
+<p>You get the ordinary one-direction INDEX/MATCH formula.</p>
+<h2>Summary</h2>
+<p>To pull from both directions, use two MATCHes.</p>
 <a class="cta" href="/index-match-builder.html">Use "Build an INDEX and MATCH Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

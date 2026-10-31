@@ -201,14 +201,47 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>왼쪽 열 가져오기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>범위 입력</li><li>수식 보기</li><li>복사</li></ul></div>
-<p><a href="/ko/index-match-builder.html">INDEX MATCH 수식 만들기</a>에서는 찾는 열의 왼쪽에 있는 열을 가져올 수 있습니다.</p>
+<p lang="en">VLOOKUP can't return a column left of the lookup column, for example a table with employee numbers on the right and names on the left, where you want the number from a name. With <a href="/ko/index-match-builder.html">Build an INDEX and MATCH Formula</a> you can.</p>
 <h2>순서</h2>
 <ol>
-<li>범위 입력</li>
-<li>수식 보기</li>
-<li>복사</li>
+<li lang="en">In "Range to return", enter the column to return (the left column).</li>
+<li lang="en">In "Lookup column range", enter the column holding the value to find (the right column).</li>
+<li lang="en">Enter the "Cell with the value to find".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">VLOOKUP은 왼쪽 열을 가져올 수 없습니다.</div>
+<div class="note" lang="en">The return column and lookup column can be in either order. You needn't care about column order.</div>
+<h2>예</h2>
+<p lang="en">With names in column A and employee numbers in column B, getting a name from a number (F2):</p>
+<ul>
+<li lang="en">=INDEX($A$2:$A$100,MATCH(F2,$B$2:$B$100,0))</li>
+</ul>
+<h2 lang="en">With VLOOKUP</h2>
+<p lang="en">VLOOKUP needs the lookup column leftmost. To return a left column you had to reorder the table.</p>
+<h2 lang="en">Robust to added columns</h2>
+<p lang="en">VLOOKUP's column number shifts when you insert columns. INDEX/MATCH points to the columns themselves, so inserting doesn't break it.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Returning a left column from a right one</li>
+<li lang="en">Tables where columns are inserted or deleted often</li>
+<li lang="en">Pulling several values from a large table</li>
+</ul>
+<h2 lang="en">Pulling several values</h2>
+<p lang="en">Putting MATCH's result in another cell means the MATCH is computed once even with several INDEXes.</p>
+<ul>
+<li lang="en">Example: G2 =MATCH(F2,$B$2:$B$100,0), H2 =INDEX($A$2:$A$100,G2)</li>
+</ul>
+<h2>예</h2>
+<p lang="en">In a roster with numbers on the right and names on the left, I wanted names from numbers. The INDEX/MATCH formula did it without reordering columns.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: the value isn't in the lookup column.</li>
+<li lang="en"><b>A different row's value returns</b>: several rows share the value and the first is returned.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How does it differ from XLOOKUP?</h3>
+<p lang="en">XLOOKUP also returns left columns, but isn't available in old Excel. INDEX/MATCH works in every version.</p>
+<h2>요약</h2>
+<p lang="en">To pull a left column, use INDEX and MATCH.</p>
 <a class="cta" href="/ko/index-match-builder.html">“INDEX·MATCH 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/vlookup-formula-builder.html">VLOOKUP·XLOOKUP 수식 만들기</a>: VLOOKUP과 XLOOKUP 수식을 만듭니다.</li><li><a href="/ko/filter-formula-builder.html">FILTER 수식 만들기</a>: FILTER 수식을 만듭니다.</li><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

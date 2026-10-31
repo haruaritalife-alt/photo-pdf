@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Write INDEX and MATCH (Build Them Automatically, Free)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the ranges</li><li>Enter the value</li><li>Copy the formula</li></ul></div>
-<p><a href="/en/index-match-builder.html">INDEX MATCH Builder</a> builds an INDEX and MATCH formula from ranges and a value.</p>
+<p>VLOOKUP is handy, but can't return columns left of the lookup column, and its column number shifts when columns are added. Combining INDEX and MATCH removes that weakness. <a href="/en/index-match-builder.html">Build an INDEX and MATCH Formula</a> builds the formula from ranges and a value to find. Input is processed inside this device and not sent outside.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the ranges</li>
-<li>Enter the value</li>
-<li>Copy the formula</li>
+<li>Enter the "Range to return (such as C2:C100)".</li>
+<li>Enter the "Lookup column range (such as B2:B100)".</li>
+<li>Enter the "Cell with the value to find (such as F2)".</li>
+<li>Choose a "Match type" (EXACT, LESS, GREATER).</li>
+<li>To pull from rows and columns of a table, also enter "Header range" and "Cell with the header value".</li>
+<li>Copy the "INDEX/MATCH formula" with "Copy result" and the "Formula that leaves blank when not found" with "Copy the second".</li>
 </ol>
-<div class="note">The formula can be pasted straight into a cell.</div>
+<div class="note">Ranges automatically become absolute references (with $) in the formula, so copying down doesn't shift them.</div>
+<h2>Example</h2>
+<p>Finding F2's value in column B and returning column C's value:</p>
+<ul>
+<li>=INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0))</li>
+</ul>
+<h2>How it works</h2>
+<ul>
+<li>MATCH: returns the position of the value in the lookup column</li>
+<li>INDEX: returns the value at that position in the return range</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Returning values left of the lookup column</li>
+<li>Lookups that survive column reordering</li>
+<li>Pulling one value using both rows and columns</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"The input is not valid."</b>: a range isn't in the "C2:C100" form, or the value isn't in the "F2" form.</li>
+<li><b>Ranges differ in row count</b>: use the same row count for the return range and lookup column.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Which is better, this or VLOOKUP?</h3>
+<p>If columns get added or you need left columns, INDEX/MATCH is sturdier. For simple lookups VLOOKUP or XLOOKUP is enough.</p>
+<h2>Summary</h2>
+<p>Enter ranges and a value to build the INDEX/MATCH formula.</p>
 <a class="cta" href="/en/index-match-builder.html">Use "Build an INDEX and MATCH Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ত্রুটি এলে</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>শিটের নাম যাচাই করুন</li><li>সেল কীভাবে লেখা হয়েছে যাচাই করুন</li><li>ত্রুটি খালি রাখা সূত্র ব্যবহার করুন</li></ul></div>
-<p>শিটের নাম বা সেল ভুল হলে <a href="/bn/indirect-formula-builder.html">INDIRECT সূত্র নির্মাতা</a>-এর সূত্র ত্রুটি দেয়।</p>
+<p lang="en">The INDIRECT formula returns #REF!. The sheet name should be right, yet it doesn't work. Here are common causes of errors in formulas built with <a href="/bn/indirect-formula-builder.html">Build an INDIRECT Formula</a> and fixes.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>শিটের নাম যাচাই করুন</li>
-<li>সেল কীভাবে লেখা হয়েছে যাচাই করুন</li>
-<li>ত্রুটি খালি রাখা সূত্র ব্যবহার করুন</li>
+<li lang="en">Compare the sheet name with the actual sheet's name.</li>
+<li lang="en">Check for surrounding spaces and full-width/half-width differences.</li>
+<li lang="en">Check the name is wrapped in the quote "'".</li>
 </ol>
-<div class="note">ফাঁকা জায়গাযুক্ত শিটের নাম উদ্ধৃতি চিহ্নের ভেতরে রাখা হয়।</div>
+<div class="note" lang="en">"#REF!" means the called location can't be found.</div>
+<h2 lang="en">Common causes</h2>
+<ul>
+<li lang="en"><b>Sheet name mismatch</b>: even one character off isn't found.</li>
+<li lang="en"><b>Stray spaces</b>: the cell text has spaces around it. Remove with TRIM.</li>
+<li lang="en"><b>Missing quotes</b>: the name has spaces or symbols but isn't wrapped.</li>
+<li lang="en"><b>File is closed</b>: you're calling another file that isn't open.</li>
+<li lang="en"><b>Outside the sheet</b>: pointing at a cell that doesn't exist.</li>
+</ul>
+<h2 lang="en">Removing spaces</h2>
+<p lang="en">If reading the sheet name from a cell, wrap it in TRIM.</p>
+<ul>
+<li lang="en">Example: =INDIRECT("'"&amp;TRIM(A1)&amp;"'!B2")</li>
+</ul>
+<h2 lang="en">Turning errors into empty</h2>
+<p lang="en">The second formula is wrapped in IFERROR.</p>
+<ul>
+<li lang="en">=IFERROR(INDIRECT("'"&amp;A1&amp;"'!B2"),"")</li>
+</ul>
+<p lang="en">But this hides errors, so use it after checking the cause.</p>
+<h2 lang="en">When a sheet is renamed</h2>
+<p lang="en">A sheet name written as text doesn't follow a rename; you get #REF!.</p>
+<h2 lang="en">Google Sheets note</h2>
+<p lang="en">On first use you may be asked to permit access to the sheet.</p>
+<h2>উদাহরণ</h2>
+<p lang="en">One of the formulas calling monthly sheets gave #REF!. The sheet name ended with a full-width space. TRIM fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width vs half-width digits</b>: they're different characters.</li>
+<li lang="en"><b>Names with dots</b>: wrap in quotes.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How can I debug more easily?</h3>
+<p lang="en">Counting the name cell's characters with LEN reveals stray spaces.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">For #REF!, suspect name mismatch, spaces and quotes.</p>
 <a class="cta" href="/bn/indirect-formula-builder.html">“INDIRECT সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/vlookup-formula-builder.html">VLOOKUP বা XLOOKUP ফর্মুলা তৈরি করুন</a>: VLOOKUP ও XLOOKUP ফর্মুলা তৈরি করুন।</li><li><a href="/bn/importrange-builder.html">IMPORTRANGE সূত্র তৈরি করুন</a>: একটি IMPORTRANGE সূত্র তৈরি করুন।</li><li><a href="/bn/index-match-builder.html">INDEX ও MATCH সূত্র তৈরি করুন</a>: INDEX ও MATCH সূত্র তৈরি করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

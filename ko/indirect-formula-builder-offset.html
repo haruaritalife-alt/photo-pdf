@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>이동해서 불러오기</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>OFFSET 선택</li><li>셀과 이동 값 입력</li><li>복사</li></ul></div>
-<p><a href="/ko/indirect-formula-builder.html">INDIRECT 만들기</a>에서는 행과 열을 이동한 셀을 불러오는 수식을 만들 수 있습니다.</p>
+<p lang="en">Two rows down and one column right of a base cell. OFFSET calls the cell shifted like that. "OFFSET" in <a href="/ko/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>순서</h2>
 <ol>
-<li>OFFSET 선택</li>
-<li>셀과 이동 값 입력</li>
-<li>복사</li>
+<li lang="en">Choose "OFFSET" in "Type".</li>
+<li lang="en">In "Cell", enter the base cell.</li>
+<li lang="en">In "Row offset" and "Column offset", enter integers.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">두 번째 수식은 다시 계산이 적게 드는 방식입니다.</div>
+<div class="note" lang="en">Rows: positive is down, negative is up. Columns: positive is right, negative is left.</div>
+<h2>예</h2>
+<p lang="en">The cell two rows down and one column right of A1:</p>
+<ul>
+<li lang="en">=OFFSET(A1,2,1)</li>
+</ul>
+<p lang="en">This points to B3.</p>
+<h2 lang="en">The alternative formula</h2>
+<p lang="en">The second uses INDEX.</p>
+<ul>
+<li lang="en">=INDEX(1:1048576,ROW(A1)+2,COLUMN(A1)+1)</li>
+</ul>
+<p lang="en">OFFSET always recalculates, whereas INDEX doesn't. On large sheets INDEX is lighter.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Reading a value at a fixed position from a base</li>
+<li lang="en">Taking by relative position even if the table's head moves</li>
+<li lang="en">Regular references such as every third row</li>
+</ul>
+<h2 lang="en">Negative values</h2>
+<p lang="en">You can also shift up or left.</p>
+<ul>
+<li lang="en">Example: =OFFSET(C5,-1,-2) → A4</li>
+</ul>
+<h2 lang="en">Returning ranges</h2>
+<p lang="en">OFFSET can also return a range with height and width. The tool builds the single-cell form.</p>
+<h2>예</h2>
+<p lang="en">Wanted the value two below a base cell. Even after inserting rows, it was taken by position relative to the base.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#REF!</b>: the shifted target falls outside the sheet.</li>
+<li lang="en"><b>Slow</b>: OFFSET recalculates often. The INDEX formula is an alternative.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Won't inserting rows shift it?</h3>
+<p lang="en">If the base cell moves, the result moves. To fix the base cell, add $.</p>
+<h2>요약</h2>
+<p lang="en">To call shifted from a base, use OFFSET; on big sheets, the INDEX formula.</p>
 <a class="cta" href="/ko/indirect-formula-builder.html">“INDIRECT 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/vlookup-formula-builder.html">VLOOKUP·XLOOKUP 수식 만들기</a>: VLOOKUP과 XLOOKUP 수식을 만듭니다.</li><li><a href="/ko/importrange-builder.html">IMPORTRANGE 수식 만들기</a>: IMPORTRANGE 수식을 만듭니다.</li><li><a href="/ko/index-match-builder.html">INDEX·MATCH 수식 만들기</a>: INDEX와 MATCH 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

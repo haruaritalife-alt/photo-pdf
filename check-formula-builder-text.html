@@ -200,14 +200,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>結果を文字で出す</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>当てはまるときの文字を入れる</li><li>当てはまらないときの文字を入れる</li><li>2つ目の式をコピーする</li></ul></div>
-<p><a href="/check-formula-builder.html">セルを調べる式の作成</a> は、結果をOKやNGのような文字で出す式も作ります。</p>
+<p>TRUEやFALSEでなく、「空です」「OK」のように、読みやすい文字で結果を出したい。<a href="/check-formula-builder.html">セルの中身を調べる式を作る</a> の2つ目の式が、それです。</p>
 <h2>手順</h2>
 <ol>
-<li>当てはまるときの文字を入れる</li>
-<li>当てはまらないときの文字を入れる</li>
-<li>2つ目の式をコピーする</li>
+<li>「種類」と「調べるセル」を入れる。</li>
+<li>「当てはまるとき」に、出したい文字を入れる。</li>
+<li>「当てはまらないとき」にも、文字を入れる。</li>
+<li>「結果を文字で出す式」を、「2つ目をコピー」でコピーする。</li>
 </ol>
-<div class="note">文字は、好きなものに変えられます。</div>
+<div class="note">文字は、式の中で「"…"」で囲まれます。入力した文字に「"」が含まれると、形が崩れることがあります。</div>
+<h2>例</h2>
+<ul>
+<li>=IF(ISBLANK(A2),"空です","入力あり")</li>
+</ul>
+<p>空なら「空です」、そうでなければ「入力あり」と表示されます。</p>
+<h2>反対にする</h2>
+<p>「反対（NOT）にする」にチェックすると、判定が逆になります。</p>
+<ul>
+<li>例：=IF(NOT(ISBLANK(A2)),"入力あり","空です")</li>
+</ul>
+<h2>文字の例</h2>
+<ul>
+<li>空：「未入力」「OK」</li>
+<li>数値：「数値」「文字」</li>
+<li>エラー：「要確認」「正常」</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>確認用の列に、結果を日本語で表示</li>
+<li>印刷する表の、チェック欄</li>
+<li>「要確認」の行だけを、フィルターで絞る</li>
+</ul>
+<h2>何も出さない</h2>
+<p>当てはまらないときを、空にしたいなら、空の文字を入れます。</p>
+<ul>
+<li>例：=IF(ISBLANK(A2),"未入力","")</li>
+</ul>
+<h2>複数の条件を組み合わせる</h2>
+<p>IFを重ねて、複数の条件を判定できます。ただし、読みやすさが下がります。</p>
+<h2>例</h2>
+<p>申込の一覧で、必須項目が空の行に「未入力」と出したかった。結果の列をフィルターで絞ると、直すべき行だけが残った。</p>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>文字の中に引用符</b>：式が崩れる。引用符を避ける。</li>
+<li><b>文字が長い</b>：列の幅に入らない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>2つの条件を同時に確かめたい</h3>
+<p>ANDやORで組み合わせます。</p>
+<h2>まとめ</h2>
+<p>読みやすい判定は、IFで文字にします。</p>
 <a class="cta" href="/check-formula-builder.html">セルの中身を調べる式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/excel-if-builder.html">IF関数の式を作る</a>：IF関数の式を作ります。</li><li><a href="/cond-format-formula-builder.html">条件付き書式の式を作る</a>：条件付き書式の式を作ります。</li><li><a href="/countif-formula-builder.html">条件に合う数を数える式を作る</a>：条件に合うセルの数を数える式を作る。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +261,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Showing the Result as Text</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the text for true</li><li>Enter the text for false</li><li>Copy the second formula</li></ul></div>
-<p><a href="/check-formula-builder.html">ISBLANK Builder</a> also builds a formula that shows the result as text such as OK or NG.</p>
+<p>Instead of TRUE or FALSE, you want results in readable text like "Empty" or "OK". The second formula in <a href="/check-formula-builder.html">Build an ISBLANK Formula</a> does that.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the text for true</li>
-<li>Enter the text for false</li>
-<li>Copy the second formula</li>
+<li>Enter the "Type" and "Cell to check".</li>
+<li>In "When it applies", enter the text to show.</li>
+<li>Enter text in "When it doesn't" too.</li>
+<li>Copy the "Formula that returns text" with "Copy the second".</li>
 </ol>
-<div class="note">You can change the text to anything you like.</div>
+<div class="note">Text is wrapped in "..." in the formula. If your text contains a " the shape can break.</div>
+<h2>Example</h2>
+<ul>
+<li>=IF(ISBLANK(A2),"Empty","Filled")</li>
+</ul>
+<p>Shows "Empty" if empty, otherwise "Filled".</p>
+<h2>Inverting</h2>
+<p>Tick "Invert (NOT)" to reverse the check.</p>
+<ul>
+<li>Example: =IF(NOT(ISBLANK(A2)),"Filled","Empty")</li>
+</ul>
+<h2>Text examples</h2>
+<ul>
+<li>Empty: "Missing", "OK"</li>
+<li>Number: "Number", "Text"</li>
+<li>Error: "Check", "Normal"</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Showing results in words in a review column</li>
+<li>A check column in a printed table</li>
+<li>Filtering only "Check" rows</li>
+</ul>
+<h2>Showing nothing</h2>
+<p>To leave the non-matching case blank, enter an empty string.</p>
+<ul>
+<li>Example: =IF(ISBLANK(A2),"Missing","")</li>
+</ul>
+<h2>Combining conditions</h2>
+<p>Nested IFs can judge multiple conditions, but readability drops.</p>
+<h2>Example</h2>
+<p>In an application list, I wanted "Missing" on rows with empty required fields. Filtering the result column left only rows to fix.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Quotes inside the text</b>: the formula breaks. Avoid quotes.</li>
+<li><b>Long text</b>: doesn't fit the column width.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to check two conditions at once</h3>
+<p>Combine with AND or OR.</p>
+<h2>Summary</h2>
+<p>For readable judgments, turn them into text with IF.</p>
 <a class="cta" href="/check-formula-builder.html">Use "Build an ISBLANK Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a>: Build conditional formatting formulas.</li><li><a href="/countif-formula-builder.html">Build a COUNTIF Formula</a>: Build formulas that count cells meeting a condition.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>सेल की जगह को टेक्स्ट के रूप में दिखाना</h1>
 <p class="meta">प्रकाशित: 19 अक्तू॰ 2026 | अपडेट: 19 अक्तू॰ 2026 | <a href="/about.html">परिचय (जापानी)</a></p>
 <div class="points"><b>मुख्य बातें</b><ul><li>ADDRESS चुनें</li><li>पंक्ति और स्तंभ की संख्या दर्ज करें</li><li>कॉपी करें</li></ul></div>
-<p><a href="/hi/indirect-formula-builder.html">INDIRECT सूत्र बनाने वाला टूल</a> में आप ऐसा सूत्र बना सकते हैं जो पंक्ति और स्तंभ की संख्या से सेल की जगह टेक्स्ट में देता है।</p>
+<p lang="en">You want a location like "B3" as text from row and column numbers. That's ADDRESS. "ADDRESS" in <a href="/hi/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>चरण</h2>
 <ol>
-<li>ADDRESS चुनें</li>
-<li>पंक्ति और स्तंभ की संख्या दर्ज करें</li>
-<li>कॉपी करें</li>
+<li lang="en">Choose "ADDRESS" in "Type".</li>
+<li lang="en">Enter the row number in "Row offset" and the column number in "Column offset".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">दूसरा सूत्र जगह को टेक्स्ट के रूप में देता है।</div>
+<div class="note" lang="en">In this type the two numbers are used directly as the row and column numbers.</div>
+<h2>उदाहरण</h2>
+<p lang="en">The location at row 3, column 2:</p>
+<ul>
+<li lang="en">=INDIRECT(ADDRESS(3,2))</li>
+</ul>
+<p lang="en">This returns B3's value.</p>
+<h2 lang="en">The alternative formula</h2>
+<p lang="en">The second gives the location itself as text.</p>
+<ul>
+<li lang="en">=ADDRESS(3,2,4)</li>
+</ul>
+<p lang="en">The result is the text "B3". The trailing 4 specifies relative reference without $.</p>
+<h2 lang="en">Choosing the reference style</h2>
+<p lang="en">ADDRESS's third number chooses how $ appears.</p>
+<ul>
+<li lang="en">1: $B$3 (row and column fixed)</li>
+<li lang="en">2: B$3 (row fixed)</li>
+<li lang="en">3: $B3 (column fixed)</li>
+<li lang="en">4: B3 (nothing fixed)</li>
+</ul>
+<h2>इनके लिए अच्छा</h2>
+<ul>
+<li lang="en">Showing as text where the maximum is</li>
+<li lang="en">Keeping a location as text in another cell</li>
+<li lang="en">Reading a value from row and column numbers</li>
+</ul>
+<h2 lang="en">Showing the location as text</h2>
+<p lang="en">Handy for finding where, say, the last row is.</p>
+<ul>
+<li lang="en">Example: =ADDRESS(MATCH(MAX(B:B),B:B,0),2,4)</li>
+</ul>
+<h2>उदाहरण</h2>
+<p lang="en">Wanted to know which cell holds the top sales. MATCH gave the row number and ADDRESS displayed it like "B15".</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: row or column isn't an integer.</li>
+<li lang="en"><b>Zero or below</b>: rows and columns are 1 or greater.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can ADDRESS alone read a value?</h3>
+<p lang="en">ADDRESS only outputs the location text. To read the value, combine with INDIRECT.</p>
+<h2>सारांश</h2>
+<p lang="en">To get a location from numbers, use ADDRESS; to read the value, combine with INDIRECT.</p>
 <a class="cta" href="/hi/indirect-formula-builder.html">“INDIRECT सूत्र बनाएँ” इस्तेमाल करें (मुफ़्त)</a>
 <h2>इसके साथ काम आने वाले टूल</h2><ul><li><a href="/hi/vlookup-formula-builder.html">VLOOKUP या XLOOKUP फ़ॉर्मूला बनाएँ</a>: VLOOKUP और XLOOKUP फ़ॉर्मूले बनाएँ।</li><li><a href="/hi/importrange-builder.html">IMPORTRANGE फ़ॉर्मूला बनाएँ</a>: IMPORTRANGE फ़ॉर्मूला बनाएँ।</li><li><a href="/hi/index-match-builder.html">INDEX और MATCH सूत्र बनाएँ</a>: INDEX और MATCH सूत्र बनाएँ।</li></ul>
 <div class="tip"><p>अगर यह गाइड काम आया हो, तो एक छोटी टिप हमारे लिए बहुत मायने रखेगी।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">टिप भेजें (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">उपहार भेजें (Amazon विशलिस्ट)</a></div>

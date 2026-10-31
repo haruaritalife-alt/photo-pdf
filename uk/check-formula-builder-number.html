@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Число чи текст</h1>
 <p class="meta">Опубліковано: 19 жовт. 2026 | Оновлено: 19 жовт. 2026 | <a href="/about.html">Про нас (японською)</a></p>
 <div class="points"><b>Основне</b><ul><li>Виберіть ISNUMBER</li><li>Введіть клітинку</li><li>Скопіюйте</li></ul></div>
-<p>У <a href="/uk/check-formula-builder.html">Конструктор ISBLANK</a> можна створити формулу, яка перевіряє, чи в клітинці число або текст.</p>
+<p lang="en">Is a value in a column a number or text? A total that's off is often caused by numbers stored as text. "ISNUMBER" and "ISTEXT" in <a href="/uk/check-formula-builder.html">Build an ISBLANK Formula</a> build the check.</p>
 <h2>Кроки</h2>
 <ol>
-<li>Виберіть ISNUMBER</li>
-<li>Введіть клітинку</li>
-<li>Скопіюйте</li>
+<li lang="en">Choose "ISNUMBER" or "ISTEXT" in "Type".</li>
+<li lang="en">Enter the "Cell to check".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Зручно для пошуку чисел, збережених як текст.</div>
+<div class="note" lang="en">A number stored as text looks like a number but gives ISNUMBER FALSE.</div>
+<h2>Приклад</h2>
+<ul>
+<li lang="en">=ISNUMBER(A2): TRUE if numeric</li>
+<li lang="en">=ISTEXT(A2): TRUE if text</li>
+</ul>
+<h2 lang="en">Showing the result as text</h2>
+<p lang="en">The second formula outputs text via IF.</p>
+<ul>
+<li lang="en">Example: =IF(ISNUMBER(A2),"Number","Text")</li>
+</ul>
+<h2 lang="en">Finding text numbers</h2>
+<p lang="en">When a total is off, copy ISNUMBER down and look for FALSE rows.</p>
+<h2 lang="en">Fixing text numbers</h2>
+<ul>
+<li lang="en">Convert with VALUE: =VALUE(A2)</li>
+<li lang="en">Multiply by 1: =A2*1</li>
+<li lang="en">Strip separators and spaces, then convert</li>
+</ul>
+<h2>Підходить для</h2>
+<ul>
+<li lang="en">Investigating why totals or averages are off</li>
+<li lang="en">Checking the types in imported data</li>
+<li lang="en">Tidying columns mixing numbers and text</li>
+</ul>
+<h2 lang="en">Judging dates</h2>
+<p lang="en">Dates are numbers internally. ISNUMBER is TRUE for date cells. For text dates it's FALSE.</p>
+<h2>Приклад</h2>
+<p lang="en">A total came out low. ISNUMBER showed several cells were text numbers. VALUE fixed them and the total matched.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Left-aligned numbers</b>: often text numbers.</li>
+<li lang="en"><b>A leading "'"</b>: a mark of text entry.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What about empty cells?</h3>
+<p lang="en">Empty cells give FALSE for both ISNUMBER and ISTEXT.</p>
+<h2>Підсумок</h2>
+<p lang="en">When totals don't match, check types with ISNUMBER.</p>
 <a class="cta" href="/uk/check-formula-builder.html">Використати «Створити формулу ISBLANK» (безкоштовно)</a>
 <h2>Інструменти, що добре поєднуються з цим</h2><ul><li><a href="/uk/excel-if-builder.html">Створення формули IF</a>: Створіть формулу IF.</li><li><a href="/uk/cond-format-formula-builder.html">Створити формулу умовного форматування</a>: Створюйте формули умовного форматування.</li><li><a href="/uk/countif-formula-builder.html">Створити формулу COUNTIF</a>: Створює формули, які рахують клітинки, що задовольняють умову.</li></ul>
 <div class="tip"><p>Якщо цей посібник став у пригоді, невеликі чайові будуть дуже доречні.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Надіслати чайові (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Надіслати подарунок (список бажань Amazon)</a></div>

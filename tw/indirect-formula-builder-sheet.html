@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>引用其他工作表</h1>
 <p class="meta">釋出日期：2026 年 10 月 19 日｜最後更新：2026 年 10 月 19 日｜<a href="/about.html">關於（日文）</a></p>
 <div class="points"><b>要點</b><ul><li>選擇 SHEET</li><li>輸入工作表名和單元格</li><li>複製</li></ul></div>
-<p>在 <a href="/tw/indirect-formula-builder.html">INDIRECT 公式生成器</a> 中，可以生成引用其他工作表中單元格的公式。</p>
+<p lang="en">Sheets are split by month and you want the same cell from "Jan", "Feb" and so on. Writing sheet names into formulas means rewriting per month. INDIRECT can read the sheet name from a cell. "SHEET" in <a href="/tw/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>步驟</h2>
 <ol>
-<li>選擇 SHEET</li>
-<li>輸入工作表名和單元格</li>
-<li>複製</li>
+<li lang="en">Choose "SHEET" in "Type".</li>
+<li lang="en">In "Sheet name", enter the sheet name or a cell holding it.</li>
+<li lang="en">In "Cell", enter the cell to call.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">如果把工作表名放在 A1 這樣的單元格中輸入，就可以透過單元格的文字來切換。</div>
+<div class="note" lang="en">If you enter the sheet name in cell form like "A1", that cell's text is used as the sheet name.</div>
+<h2>示例</h2>
+<p lang="en">Writing the sheet name as text:</p>
+<ul>
+<li lang="en">=INDIRECT("'Jan'!B2")</li>
+</ul>
+<p lang="en">When A1 holds the sheet name (entered as "A1"):</p>
+<ul>
+<li lang="en">=INDIRECT("'"&amp;A1&amp;"'!B2")</li>
+</ul>
+<p lang="en">Just change A1 from "Jan" to "Feb" and the reference switches.</p>
+<h2 lang="en">The alternative formula</h2>
+<p lang="en">The second is wrapped in IFERROR, giving empty instead of an error when the sheet is missing.</p>
+<ul>
+<li lang="en">=IFERROR(INDIRECT("'"&amp;A1&amp;"'!B2"),"")</li>
+</ul>
+<h2 lang="en">Quoting the sheet name</h2>
+<p lang="en">If the name has spaces, symbols or non-ASCII characters, it must be quoted with '. The tool's formula includes the quotes.</p>
+<h2>適合</h2>
+<ul>
+<li lang="en">Gathering same-position values from monthly sheets</li>
+<li lang="en">Listing totals from branch sheets</li>
+<li lang="en">Showing the sheet chosen in a dropdown</li>
+</ul>
+<h2 lang="en">Combining with a dropdown</h2>
+<p lang="en">If A1 lets you pick a sheet name from a dropdown, the display switches.</p>
+<h2>示例</h2>
+<p lang="en">Wanted each monthly sheet's total cell collected in a list. With sheet names in rows and INDIRECT reading them, one formula built the list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#REF!</b>: wrong sheet name, or stray spaces.</li>
+<li lang="en"><b>Renaming</b>: a sheet name typed as text doesn't follow renames.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can it call another file?</h3>
+<p lang="en">In Excel it may not work unless the other file is open.</p>
+<h2>小結</h2>
+<p lang="en">To switch sheet names via a cell, use INDIRECT.</p>
 <a class="cta" href="/tw/indirect-formula-builder.html">使用「生成 INDIRECT 公式」（免費）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/tw/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/tw/importrange-builder.html">生成 IMPORTRANGE 公式</a>: 生成 IMPORTRANGE 公式。</li><li><a href="/tw/index-match-builder.html">生成 INDEX 和 MATCH 公式</a>: 生成 INDEX 和 MATCH 公式。</li></ul>
 <div class="tip"><p>如果這篇教程對你有幫助，一點小小的打賞會讓我們非常開心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打賞（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">贈送禮物（亞馬遜心願單）</a></div>

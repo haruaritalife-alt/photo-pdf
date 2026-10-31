@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>সবচেয়ে কাছের মান খোঁজা</h1>
 <p class="meta">প্রকাশিত: 19 অক্টোবর, 2026 | হালনাগাদ: 19 অক্টোবর, 2026 | <a href="/about.html">সম্পর্কে (জাপানি)</a></p>
 <div class="points"><b>মূল বিষয়</b><ul><li>LESS বা GREATER বেছে নিন</li><li>রেঞ্জগুলো লিখুন</li><li>এটি যাচাই করুন</li></ul></div>
-<p><a href="/bn/index-match-builder.html">INDEX MATCH সূত্র নির্মাতা</a>-তে LESS ও GREATER সবচেয়ে কাছের মান খোঁজে।</p>
+<p lang="en">You want the nearest value rather than an exact match, such as a grade from a score or a tier from an amount. "LESS" and "GREATER" in <a href="/bn/index-match-builder.html">Build an INDEX and MATCH Formula</a> build it.</p>
 <h2>ধাপ</h2>
 <ol>
-<li>LESS বা GREATER বেছে নিন</li>
-<li>রেঞ্জগুলো লিখুন</li>
-<li>এটি যাচাই করুন</li>
+<li lang="en">Choose "LESS" or "GREATER" in "Match type".</li>
+<li lang="en">Enter the "Range to return", "Lookup column range" and "Cell with the value to find".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">LESS-এর জন্য খোঁজার কলাম ছোট থেকে বড় ক্রমে সাজানো থাকতে হবে।</div>
+<div class="note" lang="en">The lookup column must be sorted ascending for LESS and descending for GREATER.</div>
+<h2>উদাহরণ</h2>
+<p lang="en">A LESS (largest value at or below) formula:</p>
+<ul>
+<li lang="en">=INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,1))</li>
+</ul>
+<p lang="en">A GREATER (smallest value at or above) formula:</p>
+<ul>
+<li lang="en">=INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,-1))</li>
+</ul>
+<h2 lang="en">Match types</h2>
+<ul>
+<li lang="en"><b>EXACT</b>: exact match (0)</li>
+<li lang="en"><b>LESS</b>: largest at or below (1). Sort ascending</li>
+<li lang="en"><b>GREATER</b>: smallest at or above (-1). Sort descending</li>
+</ul>
+<h2 lang="en">Building the table (LESS)</h2>
+<p lang="en">Put each tier's lower bound in column B ascending.</p>
+<ul>
+<li lang="en">0 → C</li>
+<li lang="en">60 → B</li>
+<li lang="en">80 → A</li>
+</ul>
+<p lang="en">A score of 75 returns the 60 row's "B".</p>
+<h2>যেসবের জন্য ভালো</h2>
+<ul>
+<li lang="en">Deciding grades from scores</li>
+<li lang="en">Deciding fee-rate tiers from sales</li>
+<li lang="en">Deciding brackets from age</li>
+</ul>
+<h2 lang="en">Respect the sort order</h2>
+<p lang="en">With the wrong order the result is wrong. It may not error and can return a wrong value. Always check the order.</p>
+<h2>উদাহরণ</h2>
+<p lang="en">Wanted a commission tier from the sales amount. A table of ascending lower bounds and a LESS formula avoided stacked IFs.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Value below the lowest bound</b>: gives #N/A. Include a 0 row.</li>
+<li lang="en"><b>Order reversed</b>: results don't match.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can XLOOKUP do this?</h3>
+<p lang="en">Yes. XLOOKUP spares you caring about the order.</p>
+<h2>সারসংক্ষেপ</h2>
+<p lang="en">Tier-based values are pulled with LESS. Mind the sort order.</p>
 <a class="cta" href="/bn/index-match-builder.html">“INDEX ও MATCH সূত্র তৈরি করুন” ব্যবহার করুন (বিনামূল্যে)</a>
 <h2>এর সঙ্গে ভালো মানায় এমন টুল</h2><ul><li><a href="/bn/vlookup-formula-builder.html">VLOOKUP বা XLOOKUP ফর্মুলা তৈরি করুন</a>: VLOOKUP ও XLOOKUP ফর্মুলা তৈরি করুন।</li><li><a href="/bn/filter-formula-builder.html">FILTER সূত্র তৈরি করুন</a>: একটি FILTER সূত্র তৈরি করুন।</li><li><a href="/bn/sumif-formula-builder.html">SUMIF বা COUNTIF সূত্র তৈরি করুন</a>: SUMIF ও COUNTIF সূত্র তৈরি করুন।</li></ul>
 <div class="tip"><p>এই গাইড কাজে লাগলে একটি ছোট টিপ আমাদের অনেক উৎসাহ দেবে।</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">টিপ পাঠান (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">উপহার পাঠান (Amazon উইশলিস্ট)</a></div>

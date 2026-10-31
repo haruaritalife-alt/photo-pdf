@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>What to Do When It Does Not Work</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Check the file</li><li>Check the size</li><li>Try another device</li></ul></div>
-<p>If <a href="/en/check-formula-builder.html">ISBLANK Builder</a> is not working, check the following.</p>
-<h2>Steps</h2>
+<p>You pasted the formula but the result is odd. Here are common troubles with <a href="/en/check-formula-builder.html">Build an ISBLANK Formula</a> and fixes.</p>
+<h2>Errors on the tool side</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the cell isn't in the "A2" form.</li>
+</ul>
+<h2>After pasting into the sheet</h2>
+<ul>
+<li><b>Looks empty but ISBLANK is FALSE</b>: it has spaces or an empty string. Use EMPTY.</li>
+<li><b>A number but ISNUMBER is FALSE</b>: a text number. Fix with VALUE.</li>
+<li><b>ISERROR is TRUE but no error is visible</b>: the display is hidden by conditional formatting or similar.</li>
+<li><b>ISFORMULA unavailable</b>: not usable in old Excel or some environments.</li>
+<li><b>The result isn't text</b>: the first formula returns TRUE or FALSE. Text is the second formula.</li>
+<li><b>Inverted but the same result</b>: the box isn't ticked.</li>
+</ul>
+<h2>Steps (when it doesn't go well)</h2>
 <ol>
-<li>Check the file</li>
-<li>Check the size</li>
-<li>Try another device</li>
+<li>Look directly at the cell being checked.</li>
+<li>Count characters with LEN to find invisible characters.</li>
+<li>Check the type fits the purpose.</li>
 </ol>
-<div class="note">If no formula appears, check that the cell is written like A2.</div>
+<div class="note">Invisible spaces (full-width spaces, line breaks) can't be seen. Counting with LEN reveals them.</div>
+<h2>Removing invisible characters</h2>
+<ul>
+<li>Surrounding spaces: TRIM</li>
+<li>Line breaks and control characters: CLEAN</li>
+<li>Full-width spaces: SUBSTITUTE(A2," ","")</li>
+</ul>
+<h2>Example</h2>
+<p>A cell looked empty yet slipped past the missing-input check. It held a full-width space. Removing it with SUBSTITUTE made detection work.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>TRIM doesn't remove full-width spaces</b>: handle them separately.</li>
+<li><b>Cell format is text</b>: numbers become text on entry.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>How do I choose between ISBLANK and EMPTY?</h3>
+<p>ISBLANK for truly empty only. EMPTY to treat space-only cells as empty.</p>
+<h2>Summary</h2>
+<p>Check invisible characters, types and the choice of kind.</p>
 <a class="cta" href="/en/check-formula-builder.html">Use "Build an ISBLANK Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/en/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a>: Build conditional formatting formulas.</li><li><a href="/en/countif-formula-builder.html">Build a COUNTIF Formula</a>: Build formulas that count cells meeting a condition.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

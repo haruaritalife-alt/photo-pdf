@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Пошук найближчого значення</h1>
 <p class="meta">Опубліковано: 19 жовт. 2026 | Оновлено: 19 жовт. 2026 | <a href="/about.html">Про нас (японською)</a></p>
 <div class="points"><b>Основне</b><ul><li>Виберіть LESS або GREATER</li><li>Введіть діапазони</li><li>Перевірте це</li></ul></div>
-<p>У <a href="/uk/index-match-builder.html">Конструктор INDEX MATCH</a> LESS і GREATER шукають найближче значення.</p>
+<p lang="en">You want the nearest value rather than an exact match, such as a grade from a score or a tier from an amount. "LESS" and "GREATER" in <a href="/uk/index-match-builder.html">Build an INDEX and MATCH Formula</a> build it.</p>
 <h2>Кроки</h2>
 <ol>
-<li>Виберіть LESS або GREATER</li>
-<li>Введіть діапазони</li>
-<li>Перевірте це</li>
+<li lang="en">Choose "LESS" or "GREATER" in "Match type".</li>
+<li lang="en">Enter the "Range to return", "Lookup column range" and "Cell with the value to find".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Для LESS стовпець пошуку має бути відсортований за зростанням.</div>
+<div class="note" lang="en">The lookup column must be sorted ascending for LESS and descending for GREATER.</div>
+<h2>Приклад</h2>
+<p lang="en">A LESS (largest value at or below) formula:</p>
+<ul>
+<li lang="en">=INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,1))</li>
+</ul>
+<p lang="en">A GREATER (smallest value at or above) formula:</p>
+<ul>
+<li lang="en">=INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,-1))</li>
+</ul>
+<h2 lang="en">Match types</h2>
+<ul>
+<li lang="en"><b>EXACT</b>: exact match (0)</li>
+<li lang="en"><b>LESS</b>: largest at or below (1). Sort ascending</li>
+<li lang="en"><b>GREATER</b>: smallest at or above (-1). Sort descending</li>
+</ul>
+<h2 lang="en">Building the table (LESS)</h2>
+<p lang="en">Put each tier's lower bound in column B ascending.</p>
+<ul>
+<li lang="en">0 → C</li>
+<li lang="en">60 → B</li>
+<li lang="en">80 → A</li>
+</ul>
+<p lang="en">A score of 75 returns the 60 row's "B".</p>
+<h2>Підходить для</h2>
+<ul>
+<li lang="en">Deciding grades from scores</li>
+<li lang="en">Deciding fee-rate tiers from sales</li>
+<li lang="en">Deciding brackets from age</li>
+</ul>
+<h2 lang="en">Respect the sort order</h2>
+<p lang="en">With the wrong order the result is wrong. It may not error and can return a wrong value. Always check the order.</p>
+<h2>Приклад</h2>
+<p lang="en">Wanted a commission tier from the sales amount. A table of ascending lower bounds and a LESS formula avoided stacked IFs.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Value below the lowest bound</b>: gives #N/A. Include a 0 row.</li>
+<li lang="en"><b>Order reversed</b>: results don't match.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can XLOOKUP do this?</h3>
+<p lang="en">Yes. XLOOKUP spares you caring about the order.</p>
+<h2>Підсумок</h2>
+<p lang="en">Tier-based values are pulled with LESS. Mind the sort order.</p>
 <a class="cta" href="/uk/index-match-builder.html">Використати «Створити формулу INDEX і MATCH» (безкоштовно)</a>
 <h2>Інструменти, що добре поєднуються з цим</h2><ul><li><a href="/uk/vlookup-formula-builder.html">Створення формули VLOOKUP або XLOOKUP</a>: Створюйте формули VLOOKUP і XLOOKUP.</li><li><a href="/uk/filter-formula-builder.html">Створення формули FILTER</a>: Створіть формулу FILTER.</li><li><a href="/uk/sumif-formula-builder.html">Створення формули SUMIF або COUNTIF</a>: Створюйте формули SUMIF і COUNTIF.</li></ul>
 <div class="tip"><p>Якщо цей посібник став у пригоді, невеликі чайові будуть дуже доречні.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Надіслати чайові (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Надіслати подарунок (список бажань Amazon)</a></div>

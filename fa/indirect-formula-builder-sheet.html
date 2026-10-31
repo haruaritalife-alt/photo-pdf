@@ -215,14 +215,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>فراخوانی برگهٔ دیگر</h1>
 <p class="meta">منتشرشده: 19 اکتبر 2026 | به‌روزرسانی: 19 اکتبر 2026 | <a href="/about.html">دربارهٔ ما (ژاپنی)</a></p>
 <div class="points"><b>نکات کلیدی</b><ul><li>SHEET را انتخاب کنید</li><li>نام برگه و سلول را وارد کنید</li><li>کپی کنید</li></ul></div>
-<p>در <a href="/fa/indirect-formula-builder.html">سازندهٔ INDIRECT</a> می‌توانید فرمولی بسازید که سلولی را از برگهٔ دیگر فرامی‌خواند.</p>
+<p lang="en">Sheets are split by month and you want the same cell from "Jan", "Feb" and so on. Writing sheet names into formulas means rewriting per month. INDIRECT can read the sheet name from a cell. "SHEET" in <a href="/fa/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>مراحل</h2>
 <ol>
-<li>SHEET را انتخاب کنید</li>
-<li>نام برگه و سلول را وارد کنید</li>
-<li>کپی کنید</li>
+<li lang="en">Choose "SHEET" in "Type".</li>
+<li lang="en">In "Sheet name", enter the sheet name or a cell holding it.</li>
+<li lang="en">In "Cell", enter the cell to call.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">اگر نام برگه را به‌صورت یک سلول مانند A1 وارد کنید، می‌توانید آن را با متن سلول تغییر دهید.</div>
+<div class="note" lang="en">If you enter the sheet name in cell form like "A1", that cell's text is used as the sheet name.</div>
+<h2>مثال</h2>
+<p lang="en">Writing the sheet name as text:</p>
+<ul>
+<li lang="en">=INDIRECT("'Jan'!B2")</li>
+</ul>
+<p lang="en">When A1 holds the sheet name (entered as "A1"):</p>
+<ul>
+<li lang="en">=INDIRECT("'"&amp;A1&amp;"'!B2")</li>
+</ul>
+<p lang="en">Just change A1 from "Jan" to "Feb" and the reference switches.</p>
+<h2 lang="en">The alternative formula</h2>
+<p lang="en">The second is wrapped in IFERROR, giving empty instead of an error when the sheet is missing.</p>
+<ul>
+<li lang="en">=IFERROR(INDIRECT("'"&amp;A1&amp;"'!B2"),"")</li>
+</ul>
+<h2 lang="en">Quoting the sheet name</h2>
+<p lang="en">If the name has spaces, symbols or non-ASCII characters, it must be quoted with '. The tool's formula includes the quotes.</p>
+<h2>مناسب برای</h2>
+<ul>
+<li lang="en">Gathering same-position values from monthly sheets</li>
+<li lang="en">Listing totals from branch sheets</li>
+<li lang="en">Showing the sheet chosen in a dropdown</li>
+</ul>
+<h2 lang="en">Combining with a dropdown</h2>
+<p lang="en">If A1 lets you pick a sheet name from a dropdown, the display switches.</p>
+<h2>مثال</h2>
+<p lang="en">Wanted each monthly sheet's total cell collected in a list. With sheet names in rows and INDIRECT reading them, one formula built the list.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#REF!</b>: wrong sheet name, or stray spaces.</li>
+<li lang="en"><b>Renaming</b>: a sheet name typed as text doesn't follow renames.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can it call another file?</h3>
+<p lang="en">In Excel it may not work unless the other file is open.</p>
+<h2>خلاصه</h2>
+<p lang="en">To switch sheet names via a cell, use INDIRECT.</p>
 <a class="cta" href="/fa/indirect-formula-builder.html">استفاده از «ساخت فرمول INDIRECT» (رایگان)</a>
 <h2>ابزارهایی که با این ابزار خوب هماهنگ‌اند</h2><ul><li><a href="/fa/vlookup-formula-builder.html">ساخت فرمول VLOOKUP یا XLOOKUP</a>: فرمول‌های VLOOKUP و XLOOKUP بسازید.</li><li><a href="/fa/importrange-builder.html">ساخت فرمول IMPORTRANGE</a>: یک فرمول IMPORTRANGE بسازید.</li><li><a href="/fa/index-match-builder.html">ساخت فرمول INDEX و MATCH</a>: فرمول‌های INDEX و MATCH بسازید.</li></ul>
 <div class="tip"><p>اگر این راهنما مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ارسال انعام (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ارسال هدیه (فهرست آرزوهای آمازون)</a></div>

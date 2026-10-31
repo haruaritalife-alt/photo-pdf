@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Pokazywanie wyniku jako tekstu</h1>
 <p class="meta">Opublikowano: 19 paź 2026 | Zaktualizowano: 19 paź 2026 | <a href="/about.html">O stronie (po japońsku)</a></p>
 <div class="points"><b>Najważniejsze zasady</b><ul><li>Wpisz tekst dla wartości prawda</li><li>Wpisz tekst dla wartości fałsz</li><li>Skopiuj drugą formułę</li></ul></div>
-<p><a href="/pl/check-formula-builder.html">Kreator ISBLANK</a> tworzy też formułę pokazującą wynik jako tekst, np. OK lub NG.</p>
+<p lang="en">Instead of TRUE or FALSE, you want results in readable text like "Empty" or "OK". The second formula in <a href="/pl/check-formula-builder.html">Build an ISBLANK Formula</a> does that.</p>
 <h2>Kroki</h2>
 <ol>
-<li>Wpisz tekst dla wartości prawda</li>
-<li>Wpisz tekst dla wartości fałsz</li>
-<li>Skopiuj drugą formułę</li>
+<li lang="en">Enter the "Type" and "Cell to check".</li>
+<li lang="en">In "When it applies", enter the text to show.</li>
+<li lang="en">Enter text in "When it doesn't" too.</li>
+<li lang="en">Copy the "Formula that returns text" with "Copy the second".</li>
 </ol>
-<div class="note">Tekst możesz zmienić na dowolny.</div>
+<div class="note" lang="en">Text is wrapped in "..." in the formula. If your text contains a " the shape can break.</div>
+<h2>Przykład</h2>
+<ul>
+<li lang="en">=IF(ISBLANK(A2),"Empty","Filled")</li>
+</ul>
+<p lang="en">Shows "Empty" if empty, otherwise "Filled".</p>
+<h2 lang="en">Inverting</h2>
+<p lang="en">Tick "Invert (NOT)" to reverse the check.</p>
+<ul>
+<li lang="en">Example: =IF(NOT(ISBLANK(A2)),"Filled","Empty")</li>
+</ul>
+<h2 lang="en">Text examples</h2>
+<ul>
+<li lang="en">Empty: "Missing", "OK"</li>
+<li lang="en">Number: "Number", "Text"</li>
+<li lang="en">Error: "Check", "Normal"</li>
+</ul>
+<h2>Dobre do</h2>
+<ul>
+<li lang="en">Showing results in words in a review column</li>
+<li lang="en">A check column in a printed table</li>
+<li lang="en">Filtering only "Check" rows</li>
+</ul>
+<h2 lang="en">Showing nothing</h2>
+<p lang="en">To leave the non-matching case blank, enter an empty string.</p>
+<ul>
+<li lang="en">Example: =IF(ISBLANK(A2),"Missing","")</li>
+</ul>
+<h2 lang="en">Combining conditions</h2>
+<p lang="en">Nested IFs can judge multiple conditions, but readability drops.</p>
+<h2>Przykład</h2>
+<p lang="en">In an application list, I wanted "Missing" on rows with empty required fields. Filtering the result column left only rows to fix.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Quotes inside the text</b>: the formula breaks. Avoid quotes.</li>
+<li lang="en"><b>Long text</b>: doesn't fit the column width.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to check two conditions at once</h3>
+<p lang="en">Combine with AND or OR.</p>
+<h2>Podsumowanie</h2>
+<p lang="en">For readable judgments, turn them into text with IF.</p>
 <a class="cta" href="/pl/check-formula-builder.html">Użyj „Utwórz formułę ISBLANK” (za darmo)</a>
 <h2>Narzędzia, które dobrze z tym współgrają</h2><ul><li><a href="/pl/excel-if-builder.html">Tworzenie formuły IF</a>: Utwórz formułę IF.</li><li><a href="/pl/cond-format-formula-builder.html">Utwórz formułę formatowania warunkowego</a>: Twórz formuły formatowania warunkowego.</li><li><a href="/pl/countif-formula-builder.html">Utwórz formułę COUNTIF</a>: Tworzy formuły zliczające komórki spełniające warunek.</li></ul>
 <div class="tip"><p>Jeśli ten poradnik Ci pomógł, mały napiwek będzie dla nas ogromnym wsparciem.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Wesprzyj nas napiwkiem (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Wyślij prezent (lista życzeń Amazon)</a></div>

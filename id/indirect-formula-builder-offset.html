@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Memanggil dengan menggeser</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Pilih OFFSET</li><li>Masukkan sel dan pergeseran</li><li>Salin</li></ul></div>
-<p>Di <a href="/id/indirect-formula-builder.html">Pembuat INDIRECT</a> Anda dapat membuat rumus yang memanggil sel yang digeser beberapa baris dan kolom.</p>
+<p lang="en">Two rows down and one column right of a base cell. OFFSET calls the cell shifted like that. "OFFSET" in <a href="/id/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>Langkah-langkah</h2>
 <ol>
-<li>Pilih OFFSET</li>
-<li>Masukkan sel dan pergeseran</li>
-<li>Salin</li>
+<li lang="en">Choose "OFFSET" in "Type".</li>
+<li lang="en">In "Cell", enter the base cell.</li>
+<li lang="en">In "Row offset" and "Column offset", enter integers.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Rumus kedua adalah cara yang membutuhkan lebih sedikit penghitungan ulang.</div>
+<div class="note" lang="en">Rows: positive is down, negative is up. Columns: positive is right, negative is left.</div>
+<h2>Contoh</h2>
+<p lang="en">The cell two rows down and one column right of A1:</p>
+<ul>
+<li lang="en">=OFFSET(A1,2,1)</li>
+</ul>
+<p lang="en">This points to B3.</p>
+<h2 lang="en">The alternative formula</h2>
+<p lang="en">The second uses INDEX.</p>
+<ul>
+<li lang="en">=INDEX(1:1048576,ROW(A1)+2,COLUMN(A1)+1)</li>
+</ul>
+<p lang="en">OFFSET always recalculates, whereas INDEX doesn't. On large sheets INDEX is lighter.</p>
+<h2>Cocok untuk</h2>
+<ul>
+<li lang="en">Reading a value at a fixed position from a base</li>
+<li lang="en">Taking by relative position even if the table's head moves</li>
+<li lang="en">Regular references such as every third row</li>
+</ul>
+<h2 lang="en">Negative values</h2>
+<p lang="en">You can also shift up or left.</p>
+<ul>
+<li lang="en">Example: =OFFSET(C5,-1,-2) → A4</li>
+</ul>
+<h2 lang="en">Returning ranges</h2>
+<p lang="en">OFFSET can also return a range with height and width. The tool builds the single-cell form.</p>
+<h2>Contoh</h2>
+<p lang="en">Wanted the value two below a base cell. Even after inserting rows, it was taken by position relative to the base.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#REF!</b>: the shifted target falls outside the sheet.</li>
+<li lang="en"><b>Slow</b>: OFFSET recalculates often. The INDEX formula is an alternative.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Won't inserting rows shift it?</h3>
+<p lang="en">If the base cell moves, the result moves. To fix the base cell, add $.</p>
+<h2>Ringkasan</h2>
+<p lang="en">To call shifted from a base, use OFFSET; on big sheets, the INDEX formula.</p>
 <a class="cta" href="/id/indirect-formula-builder.html">Gunakan “Buat rumus INDIRECT” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/vlookup-formula-builder.html">Buat Rumus VLOOKUP atau XLOOKUP</a>: Buat rumus VLOOKUP dan XLOOKUP.</li><li><a href="/id/importrange-builder.html">Buat rumus IMPORTRANGE</a>: Buat rumus IMPORTRANGE.</li><li><a href="/id/index-match-builder.html">Buat Rumus INDEX dan MATCH</a>: Buat rumus INDEX dan MATCH.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>

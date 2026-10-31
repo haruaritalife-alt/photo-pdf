@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Whether It Is an Error</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose ISERROR</li><li>Enter the cell</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/check-formula-builder.html">ISBLANK Builder</a> you can build a formula that checks whether a cell is an error.</p>
+<p>A calculation result is mixed with errors, and you want to find which cells. ISERROR and ISNA do that. "ISERROR" and "ISNA" in <a href="/en/check-formula-builder.html">Build an ISBLANK Formula</a> build it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose ISERROR</li>
-<li>Enter the cell</li>
-<li>Copy it</li>
+<li>Choose "ISERROR" or "ISNA" in "Type".</li>
+<li>Enter the "Cell to check".</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">To check only for #N/A, use ISNA.</div>
+<div class="note">ISERROR covers all errors. ISNA covers only #N/A (not found).</div>
+<h2>Example</h2>
+<ul>
+<li>=ISERROR(A2): TRUE if an error</li>
+<li>=ISNA(A2): TRUE if #N/A</li>
+</ul>
+<h2>Which to use</h2>
+<ul>
+<li><b>ISNA</b>: to catch only "not found" from VLOOKUP and similar</li>
+<li><b>ISERROR</b>: to catch other errors too, such as division by zero</li>
+</ul>
+<p>ISERROR also hides real mistakes, so ISNA is safer in many cases.</p>
+<h2>Showing the result as text</h2>
+<p>The second formula outputs text via IF.</p>
+<ul>
+<li>Example: =IF(ISNA(A2),"Not found","Found")</li>
+</ul>
+<h2>Replacing errors with another value</h2>
+<p>For replacing rather than judging, IFERROR is shorter.</p>
+<ul>
+<li>Example: =IFERROR(A2,"")</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Finding not-found rows in VLOOKUP results</li>
+<li>Checking calculation errors in a list</li>
+<li>Counting errors</li>
+</ul>
+<h2>Counting errors</h2>
+<ul>
+<li>Example: =SUMPRODUCT(--ISERROR(A2:A100))</li>
+</ul>
+<h2>Example</h2>
+<p>Wanted only rows not found in a matching result. Copying an ISNA formula down let me filter the TRUE rows.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>All errors get hidden</b>: ISERROR ignores the cause.</li>
+<li><b>#NAME?</b>: a misspelled function name also makes ISERROR TRUE.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to know the error type</h3>
+<p>ERROR.TYPE gives a number.</p>
+<h2>Summary</h2>
+<p>To catch only "not found", use ISNA.</p>
 <a class="cta" href="/en/check-formula-builder.html">Use "Build an ISBLANK Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/excel-if-builder.html">Build an IF Formula</a>: Build an IF formula.</li><li><a href="/en/cond-format-formula-builder.html">Build a Conditional Formatting Formula</a>: Build conditional formatting formulas.</li><li><a href="/en/countif-formula-builder.html">Build a COUNTIF Formula</a>: Build formulas that count cells meeting a condition.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

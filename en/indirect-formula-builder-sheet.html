@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Calling Up Another Sheet</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose SHEET</li><li>Enter the sheet name and the cell</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/indirect-formula-builder.html">INDIRECT Builder</a> you can build a formula that calls up a cell on another sheet.</p>
+<p>Sheets are split by month and you want the same cell from "Jan", "Feb" and so on. Writing sheet names into formulas means rewriting per month. INDIRECT can read the sheet name from a cell. "SHEET" in <a href="/en/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose SHEET</li>
-<li>Enter the sheet name and the cell</li>
-<li>Copy it</li>
+<li>Choose "SHEET" in "Type".</li>
+<li>In "Sheet name", enter the sheet name or a cell holding it.</li>
+<li>In "Cell", enter the cell to call.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">If you enter the sheet name as a cell such as A1, you can switch it by the cell text.</div>
+<div class="note">If you enter the sheet name in cell form like "A1", that cell's text is used as the sheet name.</div>
+<h2>Example</h2>
+<p>Writing the sheet name as text:</p>
+<ul>
+<li>=INDIRECT("'Jan'!B2")</li>
+</ul>
+<p>When A1 holds the sheet name (entered as "A1"):</p>
+<ul>
+<li>=INDIRECT("'"&amp;A1&amp;"'!B2")</li>
+</ul>
+<p>Just change A1 from "Jan" to "Feb" and the reference switches.</p>
+<h2>The alternative formula</h2>
+<p>The second is wrapped in IFERROR, giving empty instead of an error when the sheet is missing.</p>
+<ul>
+<li>=IFERROR(INDIRECT("'"&amp;A1&amp;"'!B2"),"")</li>
+</ul>
+<h2>Quoting the sheet name</h2>
+<p>If the name has spaces, symbols or non-ASCII characters, it must be quoted with '. The tool's formula includes the quotes.</p>
+<h2>Good for</h2>
+<ul>
+<li>Gathering same-position values from monthly sheets</li>
+<li>Listing totals from branch sheets</li>
+<li>Showing the sheet chosen in a dropdown</li>
+</ul>
+<h2>Combining with a dropdown</h2>
+<p>If A1 lets you pick a sheet name from a dropdown, the display switches.</p>
+<h2>Example</h2>
+<p>Wanted each monthly sheet's total cell collected in a list. With sheet names in rows and INDIRECT reading them, one formula built the list.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>#REF!</b>: wrong sheet name, or stray spaces.</li>
+<li><b>Renaming</b>: a sheet name typed as text doesn't follow renames.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Can it call another file?</h3>
+<p>In Excel it may not work unless the other file is open.</p>
+<h2>Summary</h2>
+<p>To switch sheet names via a cell, use INDIRECT.</p>
 <a class="cta" href="/en/indirect-formula-builder.html">Use "Build an INDIRECT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/en/index-match-builder.html">Build an INDEX and MATCH Formula</a>: Build INDEX and MATCH formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

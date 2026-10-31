@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Paglaktaw din sa mga error</h1>
 <p class="meta">Nailathala: Okt 19, 2026 | Na-update: Okt 19, 2026 | <a href="/about.html">Tungkol (Japanese)</a></p>
 <div class="points"><b>Mahahalagang punto</b><ul><li>Buuin ang formula</li><li>Piliin ang pangalawang formula</li><li>Kopyahin</li></ul></div>
-<p>Gumagawa rin ang <a href="/tl/subtotal-formula-builder.html">SUBTOTAL Builder</a> ng formula na lumalaktaw sa mga cell na may error.</p>
+<p lang="en">SUBTOTAL returns an error if the range contains an error value (such as #N/A). To aggregate while skipping errors, use AGGREGATE. The second formula in <a href="/tl/subtotal-formula-builder.html">Build a SUBTOTAL Formula</a> is that.</p>
 <h2>Mga hakbang</h2>
 <ol>
-<li>Buuin ang formula</li>
-<li>Piliin ang pangalawang formula</li>
-<li>Kopyahin</li>
+<li lang="en">Enter the "Range" and "Type".</li>
+<li lang="en">Copy the "Formula that also drops errors (Excel)" with "Copy the second".</li>
+<li lang="en">Paste it.</li>
 </ol>
-<div class="note">Gumagana ito sa Excel. Sa Google Sheets, gamitin ang unang formula.</div>
+<div class="note" lang="en">AGGREGATE is an Excel function. It isn't available in Google Sheets.</div>
+<h2>Halimbawa</h2>
+<ul>
+<li lang="en">=AGGREGATE(9,7,B2:B100)</li>
+</ul>
+<p lang="en">9 means sum, and 7 means "ignore hidden rows and error values".</p>
+<h2 lang="en">AGGREGATE's features</h2>
+<ul>
+<li lang="en">Ignores hidden rows</li>
+<li lang="en">Ignores error values</li>
+<li lang="en">Offers more aggregation methods than SUBTOTAL</li>
+</ul>
+<h2>Mabuti para sa</h2>
+<ul>
+<li lang="en">Totals of a column mixed with #N/A</li>
+<li lang="en">Tables whose formula results include errors</li>
+<li lang="en">Knowing the overall value before fixing errors</li>
+</ul>
+<h2 lang="en">In Google Sheets</h2>
+<p lang="en">For the same aim, you can combine SUBTOTAL and IFERROR.</p>
+<ul>
+<li lang="en">Example: =SUBTOTAL(9,ARRAYFORMULA(IFERROR(B2:B100,0)))</li>
+</ul>
+<p lang="en">Behavior can differ by environment, so test before relying on it.</p>
+<h2 lang="en">A caution about hiding errors</h2>
+<p lang="en">A total that ignores errors differs from the true total. It's safer to check the cause of the errors first.</p>
+<h2>Halimbawa</h2>
+<p lang="en">A VLOOKUP result column had #N/A on rows not found. AGGREGATE gave a total skipping the errors.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#NAME?</b>: AGGREGATE may not work in Google Sheets.</li>
+<li lang="en"><b>The result is small</b>: error rows are excluded from the aggregate.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What is the number "7"?</h3>
+<p lang="en">The option number. 7 ignores hidden rows and error values.</p>
+<h2>Buod</h2>
+<p lang="en">For columns mixed with errors, use AGGREGATE.</p>
 <a class="cta" href="/tl/subtotal-formula-builder.html">Gamitin ang “Gumawa ng formula na SUBTOTAL” (libre)</a>
 <h2>Mga tool na bagay dito</h2><ul><li><a href="/tl/sumif-formula-builder.html">Gumawa ng SUMIF o COUNTIF formula</a>: Gumawa ng mga formulang SUMIF at COUNTIF.</li><li><a href="/tl/filter-formula-builder.html">Gumawa ng FILTER formula</a>: Gumawa ng FILTER formula.</li><li><a href="/tl/unique-formula-builder.html">Gumawa ng UNIQUE Formula</a>: Gumawa ng mga formula para sa paghawak ng mga duplicate.</li></ul>
 <div class="tip"><p>Kung nakatulong ang gabay na ito, malaking bagay ang maliit na tip.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Magpadala ng tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Magpadala ng regalo (Amazon wishlist)</a></div>

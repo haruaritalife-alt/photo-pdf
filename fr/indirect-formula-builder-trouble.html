@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Que faire quand ça ne fonctionne pas</h1>
 <p class="meta">Publié le 19 oct. 2026 | Mis à jour le 19 oct. 2026 | <a href="/about.html">À propos (en japonais)</a></p>
 <div class="points"><b>Points clés</b><ul><li>Vérifier le fichier</li><li>Vérifiez la taille</li><li>Essayez sur un autre appareil</li></ul></div>
-<p>Si <a href="/fr/indirect-formula-builder.html">Créateur de INDIRECT</a> ne fonctionne pas, vérifiez les points suivants.</p>
-<h2>Étapes</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/fr/indirect-formula-builder.html">Build an INDIRECT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell isn't in the "A1" form; the sheet name is empty (for SHEET); an offset isn't an integer (for OFFSET and ADDRESS).</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF!</b>: the location doesn't exist. Check the sheet name and position.</li>
+<li lang="en"><b>Shows 0</b>: the called cell is empty.</li>
+<li lang="en"><b>Stuck on old values</b>: calculation is set to manual.</li>
+<li lang="en"><b>Slow</b>: INDIRECT and OFFSET recalculate often.</li>
+<li lang="en"><b>References shift on inserting rows</b>: locations written as text don't follow.</li>
+<li lang="en"><b>Can't call another file</b>: the other file is closed.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Vérifier le fichier</li>
-<li>Vérifiez la taille</li>
-<li>Essayez sur un autre appareil</li>
+<li lang="en">Check the called location by hand.</li>
+<li lang="en">Check the sheet name's quotes and spaces.</li>
+<li lang="en">If slow, switch to the INDEX formula.</li>
 </ol>
-<div class="note">Si aucune formule n'apparaît, vérifiez que la cellule est écrite comme A1 et qu'un nom de feuille est saisi.</div>
+<div class="note" lang="en">INDIRECT builds locations as text, so inserting rows or columns doesn't update the target automatically.</div>
+<h2 lang="en">Reducing slowness</h2>
+<ul>
+<li lang="en">Don't call large ranges repeatedly.</li>
+<li lang="en">Replace OFFSET with INDEX.</li>
+<li lang="en">Place formulas only in cells that need them.</li>
+</ul>
+<h2>Exemple</h2>
+<p lang="en">Inserting a row shifted INDIRECT's results. Locations written as text don't follow, so I switched to INDEX and MATCH and it stabilized.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Copying down doesn't shift it</b>: the location is fixed as text. Build numbers with ROW.</li>
+<li lang="en"><b>Result shows as text</b>: the cell's display format is text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">When should I avoid INDIRECT?</h3>
+<p lang="en">In tables where rows or columns are inserted often. If the target is fixed, a plain reference suffices.</p>
+<h2>En résumé</h2>
+<p lang="en">Check the location, recalculation and speed.</p>
 <a class="cta" href="/fr/indirect-formula-builder.html">Utiliser « Créer une formule INDIRECT » (gratuit)</a>
 <h2>Outils complémentaires</h2><ul><li><a href="/fr/vlookup-formula-builder.html">Créer une formule VLOOKUP ou XLOOKUP</a>: Créez des formules VLOOKUP et XLOOKUP.</li><li><a href="/fr/importrange-builder.html">Créer une formule IMPORTRANGE</a>: Créez une formule IMPORTRANGE.</li><li><a href="/fr/index-match-builder.html">Créer une formule INDEX et MATCH</a>: Créez des formules INDEX et MATCH.</li></ul>
 <div class="tip"><p>Si ce guide vous a aidé, un petit pourboire nous ferait très plaisir.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Laisser un pourboire (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Offrir un cadeau (liste d'envies Amazon)</a></div>

@@ -200,14 +200,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>INDIRECTの書き方（式を自動で作る・無料）</h1>
 <p class="meta">公開日：2026年10月19日｜最終更新：2026年10月19日｜<a href="/about.html">運営者情報</a></p>
 <div class="points"><b>この記事のポイント</b><ul><li>シートとセルを入れる</li><li>種類を選ぶ</li><li>式をコピー</li></ul></div>
-<p><a href="/indirect-formula-builder.html">INDIRECTの式の作成</a> は、入力した内容から式を作ります。</p>
+<p>セルの場所を、文字で組み立てて呼び出す。シート名を切り替えながら同じセルを読む、行や列をずらして参照する。それを行うのが INDIRECT・OFFSET・ADDRESS です。<a href="/indirect-formula-builder.html">INDIRECTの式を作る</a> は、シートとセルを入れて種類を選ぶだけで、その式を作ります。入力は、この端末の中で処理され、外には送られません。</p>
 <h2>手順</h2>
 <ol>
-<li>シートとセルを入れる</li>
-<li>種類を選ぶ</li>
-<li>式をコピー</li>
+<li>「シート名（Sheet2 または A1 など）」と「セル（A1 など）」を入れます。</li>
+<li>OFFSETかADDRESSなら、「行のずらし方」と「列のずらし方」に整数を入れます。</li>
+<li>「種類」を選びます（SHEET、CELL、OFFSET、ADDRESS）。</li>
+<li>「式」を「結果をコピー」で、「別の書き方の式」を「2つ目をコピー」で、コピーします。</li>
 </ol>
-<div class="note">できた式は、そのままセルに貼れます。</div>
+<div class="note">シート名は、文字で入れる場合と、シート名が入ったセル（A1など）を指定する場合があります。</div>
+<h2>例</h2>
+<p>Sheet2のA1を呼び出す式です。</p>
+<ul>
+<li>=INDIRECT("'Sheet2'!A1")</li>
+</ul>
+<h2>4つの種類</h2>
+<ul>
+<li><b>SHEET</b>：ほかのシートのセルを呼び出す</li>
+<li><b>CELL</b>：セルに書かれた場所を呼び出す</li>
+<li><b>OFFSET</b>：基準のセルから、ずらして呼び出す</li>
+<li><b>ADDRESS</b>：行と列の番号から、セルの場所を出す</li>
+</ul>
+<h2>向いている場面</h2>
+<ul>
+<li>シート名をセルで切り替える集計</li>
+<li>月ごとのシートから、同じセルを集める</li>
+<li>基準からの相対位置で、値を取る</li>
+</ul>
+<h2>つまずきやすい点</h2>
+<ul>
+<li><b>「入力の形が正しくありません。」</b>：セルが「A1」の形でない。ずらし方が整数でない。</li>
+<li><b>#REF!</b>：呼び出す場所が存在しない。</li>
+</ul>
+<h2>よくある質問</h2>
+<h3>注意点はありますか？</h3>
+<p>INDIRECTとOFFSETは、再計算が多くなるため、大きな表では重くなることがあります。</p>
+<h2>まとめ</h2>
+<p>場所を文字で組み立てるなら、INDIRECT。</p>
 <a class="cta" href="/indirect-formula-builder.html">INDIRECTの式を作るを使う（無料）</a>
 <h2>あわせて使えるツール</h2><ul><li><a href="/vlookup-formula-builder.html">VLOOKUP・XLOOKUPの式を作る</a>：VLOOKUPとXLOOKUPの式を作ります。</li><li><a href="/importrange-builder.html">IMPORTRANGEの式を作る</a>：IMPORTRANGEの式を作ります。</li><li><a href="/index-match-builder.html">INDEX・MATCHの式を作る</a>：INDEX・MATCHの式を作ります。</li></ul>
 <div class="tip"><p>この解説が役に立ったら、応援してもらえるとうれしいです。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">応援する（300円）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ほしい物リストで応援</a></div>
@@ -219,14 +248,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>How to Write INDIRECT (Build It Automatically, Free)</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Enter the sheet and the cell</li><li>Choose the kind</li><li>Copy the formula</li></ul></div>
-<p><a href="/indirect-formula-builder.html">INDIRECT Builder</a> builds the formula from what you enter.</p>
+<p>Build a cell location as text and call it. Read the same cell while switching sheet names, or refer to cells shifted by rows and columns. That's what INDIRECT, OFFSET and ADDRESS do. <a href="/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds the formula from a sheet and cell and a type. Input is processed inside this device and not sent outside.</p>
 <h2>Steps</h2>
 <ol>
-<li>Enter the sheet and the cell</li>
-<li>Choose the kind</li>
-<li>Copy the formula</li>
+<li>Enter "Sheet name (Sheet2 or A1, etc.)" and "Cell (such as A1)".</li>
+<li>For OFFSET or ADDRESS, enter integers in "Row offset" and "Column offset".</li>
+<li>Choose a "Type" (SHEET, CELL, OFFSET, ADDRESS).</li>
+<li>Copy the "Formula" with "Copy result" and the "Alternative formula" with "Copy the second".</li>
 </ol>
-<div class="note">The formula can be pasted straight into a cell.</div>
+<div class="note">The sheet name can be typed as text, or given as a cell (such as A1) holding the name.</div>
+<h2>Example</h2>
+<p>A formula calling Sheet2's A1:</p>
+<ul>
+<li>=INDIRECT("'Sheet2'!A1")</li>
+</ul>
+<h2>The four types</h2>
+<ul>
+<li><b>SHEET</b>: call a cell on another sheet</li>
+<li><b>CELL</b>: call the location written in a cell</li>
+<li><b>OFFSET</b>: call shifted from a base cell</li>
+<li><b>ADDRESS</b>: produce a cell location from row and column numbers</li>
+</ul>
+<h2>Good for</h2>
+<ul>
+<li>Aggregations that switch sheet names via a cell</li>
+<li>Gathering the same cell from monthly sheets</li>
+<li>Taking values by position relative to a base</li>
+</ul>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>"The input is not valid."</b>: the cell isn't in the "A1" form, or an offset isn't an integer.</li>
+<li><b>#REF!</b>: the called location doesn't exist.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Anything to watch for?</h3>
+<p>INDIRECT and OFFSET recalculate often and can slow large sheets.</p>
+<h2>Summary</h2>
+<p>To build a location as text, use INDIRECT.</p>
 <a class="cta" href="/indirect-formula-builder.html">Use "Build an INDIRECT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/index-match-builder.html">Build an INDEX and MATCH Formula</a>: Build INDEX and MATCH formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

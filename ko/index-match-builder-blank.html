@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>찾지 못했을 때</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>수식 만들기</li><li>두 번째 고르기</li><li>복사</li></ul></div>
-<p><a href="/ko/index-match-builder.html">INDEX MATCH 수식 만들기</a>는 찾지 못했을 때 빈칸이 되는 버전도 보여 줍니다.</p>
+<p lang="en">When the value isn't found, #N/A appears. You want to avoid a table full of errors. The second formula in <a href="/ko/index-match-builder.html">Build an INDEX and MATCH Formula</a> returns empty when nothing is found.</p>
 <h2>순서</h2>
 <ol>
-<li>수식 만들기</li>
-<li>두 번째 고르기</li>
-<li>복사</li>
+<li lang="en">Enter the ranges and value to find.</li>
+<li lang="en">Copy the "Formula that leaves blank when not found" with "Copy the second".</li>
+<li lang="en">Paste it.</li>
 </ol>
-<div class="note">IFERROR로 감싸져 있습니다.</div>
+<div class="note" lang="en">IFERROR also blanks errors other than #N/A. Formula mistakes get hidden too, so be careful.</div>
+<h2>예</h2>
+<ul>
+<li lang="en">=IFERROR(INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0)),"")</li>
+</ul>
+<p lang="en">When not found, it's empty.</p>
+<h2 lang="en">Showing other text</h2>
+<p lang="en">Change the empty part to other text to show something like "Not found".</p>
+<ul>
+<li lang="en">Example: =IFERROR(INDEX(…),"Not found")</li>
+</ul>
+<h2 lang="en">Blanking only #N/A</h2>
+<p lang="en">To avoid hiding real mistakes, use IFNA.</p>
+<ul>
+<li lang="en">Example: =IFNA(INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0)),"")</li>
+</ul>
+<p lang="en">IFNA targets only #N/A.</p>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Display of a search form when nothing is entered</li>
+<li lang="en">Blanking not-found rows for readability</li>
+<li lang="en">Keeping errors out of later calculations</li>
+</ul>
+<h2 lang="en">Empty vs 0</h2>
+<p lang="en">An empty string can cause errors in later calculations. If used as a number, returning 0 is safer.</p>
+<ul>
+<li lang="en">Example: =IFERROR(INDEX(…),0)</li>
+</ul>
+<h2>예</h2>
+<p lang="en">A matching list had #N/A on not-found rows. IFERROR blanked them for readability, though I checked separately for real mistakes.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Everything is empty</b>: a formula mistake is hidden by IFERROR.</li>
+<li lang="en"><b>Empty cells error in calculations</b>: an empty string isn't a number.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to know why it isn't found</h3>
+<p lang="en">First check with the formula not wrapped in IFERROR. Full-width/half-width and spaces are common causes.</p>
+<h2>요약</h2>
+<p lang="en">To avoid #N/A, use IFERROR or IFNA.</p>
 <a class="cta" href="/ko/index-match-builder.html">“INDEX·MATCH 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/vlookup-formula-builder.html">VLOOKUP·XLOOKUP 수식 만들기</a>: VLOOKUP과 XLOOKUP 수식을 만듭니다.</li><li><a href="/ko/filter-formula-builder.html">FILTER 수식 만들기</a>: FILTER 수식을 만듭니다.</li><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

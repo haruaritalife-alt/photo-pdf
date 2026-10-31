@@ -201,14 +201,56 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>以文本显示结果</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
 <div class="points"><b>要点</b><ul><li>输入满足时显示的文本</li><li>输入不满足时显示的文本</li><li>复制第二个公式</li></ul></div>
-<p><a href="/zh/check-formula-builder.html">ISBLANK 公式生成器</a> 还会生成把结果显示为 OK 或 NG 等文本的公式。</p>
+<p lang="en">Instead of TRUE or FALSE, you want results in readable text like "Empty" or "OK". The second formula in <a href="/zh/check-formula-builder.html">Build an ISBLANK Formula</a> does that.</p>
 <h2>步骤</h2>
 <ol>
-<li>输入满足时显示的文本</li>
-<li>输入不满足时显示的文本</li>
-<li>复制第二个公式</li>
+<li lang="en">Enter the "Type" and "Cell to check".</li>
+<li lang="en">In "When it applies", enter the text to show.</li>
+<li lang="en">Enter text in "When it doesn't" too.</li>
+<li lang="en">Copy the "Formula that returns text" with "Copy the second".</li>
 </ol>
-<div class="note">文本可以改成任何你喜欢的内容。</div>
+<div class="note" lang="en">Text is wrapped in "..." in the formula. If your text contains a " the shape can break.</div>
+<h2>示例</h2>
+<ul>
+<li lang="en">=IF(ISBLANK(A2),"Empty","Filled")</li>
+</ul>
+<p lang="en">Shows "Empty" if empty, otherwise "Filled".</p>
+<h2 lang="en">Inverting</h2>
+<p lang="en">Tick "Invert (NOT)" to reverse the check.</p>
+<ul>
+<li lang="en">Example: =IF(NOT(ISBLANK(A2)),"Filled","Empty")</li>
+</ul>
+<h2 lang="en">Text examples</h2>
+<ul>
+<li lang="en">Empty: "Missing", "OK"</li>
+<li lang="en">Number: "Number", "Text"</li>
+<li lang="en">Error: "Check", "Normal"</li>
+</ul>
+<h2>适合</h2>
+<ul>
+<li lang="en">Showing results in words in a review column</li>
+<li lang="en">A check column in a printed table</li>
+<li lang="en">Filtering only "Check" rows</li>
+</ul>
+<h2 lang="en">Showing nothing</h2>
+<p lang="en">To leave the non-matching case blank, enter an empty string.</p>
+<ul>
+<li lang="en">Example: =IF(ISBLANK(A2),"Missing","")</li>
+</ul>
+<h2 lang="en">Combining conditions</h2>
+<p lang="en">Nested IFs can judge multiple conditions, but readability drops.</p>
+<h2>示例</h2>
+<p lang="en">In an application list, I wanted "Missing" on rows with empty required fields. Filtering the result column left only rows to fix.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Quotes inside the text</b>: the formula breaks. Avoid quotes.</li>
+<li lang="en"><b>Long text</b>: doesn't fit the column width.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to check two conditions at once</h3>
+<p lang="en">Combine with AND or OR.</p>
+<h2>小结</h2>
+<p lang="en">For readable judgments, turn them into text with IF.</p>
 <a class="cta" href="/zh/check-formula-builder.html">使用“生成 ISBLANK 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li><li><a href="/zh/cond-format-formula-builder.html">生成条件格式公式</a>: 生成条件格式公式。</li><li><a href="/zh/countif-formula-builder.html">生成 COUNTIF 公式</a>: 生成统计满足条件的单元格数量的公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

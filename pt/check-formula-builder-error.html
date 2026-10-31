@@ -201,14 +201,57 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Se é um erro</h1>
 <p class="meta">Publicado em: 19 out 2026 | Atualizado em: 19 out 2026 | <a href="/about.html">Sobre (em japonês)</a></p>
 <div class="points"><b>Pontos principais</b><ul><li>Escolha ISERROR</li><li>Digite a célula</li><li>Copie</li></ul></div>
-<p>No <a href="/pt/check-formula-builder.html">Gerador de ISBLANK</a> você pode criar uma fórmula que verifica se uma célula é um erro.</p>
+<p lang="en">A calculation result is mixed with errors, and you want to find which cells. ISERROR and ISNA do that. "ISERROR" and "ISNA" in <a href="/pt/check-formula-builder.html">Build an ISBLANK Formula</a> build it.</p>
 <h2>Passos</h2>
 <ol>
-<li>Escolha ISERROR</li>
-<li>Digite a célula</li>
-<li>Copie</li>
+<li lang="en">Choose "ISERROR" or "ISNA" in "Type".</li>
+<li lang="en">Enter the "Cell to check".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Para verificar apenas #N/A, use ISNA.</div>
+<div class="note" lang="en">ISERROR covers all errors. ISNA covers only #N/A (not found).</div>
+<h2>Exemplo</h2>
+<ul>
+<li lang="en">=ISERROR(A2): TRUE if an error</li>
+<li lang="en">=ISNA(A2): TRUE if #N/A</li>
+</ul>
+<h2>Qual usar</h2>
+<ul>
+<li lang="en"><b>ISNA</b>: to catch only "not found" from VLOOKUP and similar</li>
+<li lang="en"><b>ISERROR</b>: to catch other errors too, such as division by zero</li>
+</ul>
+<p lang="en">ISERROR also hides real mistakes, so ISNA is safer in many cases.</p>
+<h2 lang="en">Showing the result as text</h2>
+<p lang="en">The second formula outputs text via IF.</p>
+<ul>
+<li lang="en">Example: =IF(ISNA(A2),"Not found","Found")</li>
+</ul>
+<h2 lang="en">Replacing errors with another value</h2>
+<p lang="en">For replacing rather than judging, IFERROR is shorter.</p>
+<ul>
+<li lang="en">Example: =IFERROR(A2,"")</li>
+</ul>
+<h2>Bom para</h2>
+<ul>
+<li lang="en">Finding not-found rows in VLOOKUP results</li>
+<li lang="en">Checking calculation errors in a list</li>
+<li lang="en">Counting errors</li>
+</ul>
+<h2 lang="en">Counting errors</h2>
+<ul>
+<li lang="en">Example: =SUMPRODUCT(--ISERROR(A2:A100))</li>
+</ul>
+<h2>Exemplo</h2>
+<p lang="en">Wanted only rows not found in a matching result. Copying an ISNA formula down let me filter the TRUE rows.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>All errors get hidden</b>: ISERROR ignores the cause.</li>
+<li lang="en"><b>#NAME?</b>: a misspelled function name also makes ISERROR TRUE.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">I want to know the error type</h3>
+<p lang="en">ERROR.TYPE gives a number.</p>
+<h2>Resumo</h2>
+<p lang="en">To catch only "not found", use ISNA.</p>
 <a class="cta" href="/pt/check-formula-builder.html">Usar “Crie uma fórmula ISBLANK” (grátis)</a>
 <h2>Ferramentas que combinam com esta</h2><ul><li><a href="/pt/excel-if-builder.html">Criar uma fórmula IF</a>: Crie uma fórmula IF.</li><li><a href="/pt/cond-format-formula-builder.html">Criar uma fórmula de formatação condicional</a>: Crie fórmulas de formatação condicional.</li><li><a href="/pt/countif-formula-builder.html">Crie uma fórmula COUNTIF</a>: Crie fórmulas que contam as células que atendem a uma condição.</li></ul>
 <div class="tip"><p>Se este guia ajudou, uma pequena gorjeta significaria muito.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Enviar uma gorjeta (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar um presente (lista de desejos da Amazon)</a></div>

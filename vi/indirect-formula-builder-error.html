@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Khi gặp lỗi</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Kiểm tra tên trang tính</li><li>Kiểm tra cách viết ô</li><li>Dùng công thức để trống khi lỗi</li></ul></div>
-<p>Công thức của <a href="/vi/indirect-formula-builder.html">Trình tạo INDIRECT</a> báo lỗi nếu tên trang tính hoặc ô sai.</p>
+<p lang="en">The INDIRECT formula returns #REF!. The sheet name should be right, yet it doesn't work. Here are common causes of errors in formulas built with <a href="/vi/indirect-formula-builder.html">Build an INDIRECT Formula</a> and fixes.</p>
 <h2>Các bước</h2>
 <ol>
-<li>Kiểm tra tên trang tính</li>
-<li>Kiểm tra cách viết ô</li>
-<li>Dùng công thức để trống khi lỗi</li>
+<li lang="en">Compare the sheet name with the actual sheet's name.</li>
+<li lang="en">Check for surrounding spaces and full-width/half-width differences.</li>
+<li lang="en">Check the name is wrapped in the quote "'".</li>
 </ol>
-<div class="note">Tên trang tính có dấu cách được đặt trong dấu nháy.</div>
+<div class="note" lang="en">"#REF!" means the called location can't be found.</div>
+<h2 lang="en">Common causes</h2>
+<ul>
+<li lang="en"><b>Sheet name mismatch</b>: even one character off isn't found.</li>
+<li lang="en"><b>Stray spaces</b>: the cell text has spaces around it. Remove with TRIM.</li>
+<li lang="en"><b>Missing quotes</b>: the name has spaces or symbols but isn't wrapped.</li>
+<li lang="en"><b>File is closed</b>: you're calling another file that isn't open.</li>
+<li lang="en"><b>Outside the sheet</b>: pointing at a cell that doesn't exist.</li>
+</ul>
+<h2 lang="en">Removing spaces</h2>
+<p lang="en">If reading the sheet name from a cell, wrap it in TRIM.</p>
+<ul>
+<li lang="en">Example: =INDIRECT("'"&amp;TRIM(A1)&amp;"'!B2")</li>
+</ul>
+<h2 lang="en">Turning errors into empty</h2>
+<p lang="en">The second formula is wrapped in IFERROR.</p>
+<ul>
+<li lang="en">=IFERROR(INDIRECT("'"&amp;A1&amp;"'!B2"),"")</li>
+</ul>
+<p lang="en">But this hides errors, so use it after checking the cause.</p>
+<h2 lang="en">When a sheet is renamed</h2>
+<p lang="en">A sheet name written as text doesn't follow a rename; you get #REF!.</p>
+<h2 lang="en">Google Sheets note</h2>
+<p lang="en">On first use you may be asked to permit access to the sheet.</p>
+<h2>Ví dụ</h2>
+<p lang="en">One of the formulas calling monthly sheets gave #REF!. The sheet name ended with a full-width space. TRIM fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width vs half-width digits</b>: they're different characters.</li>
+<li lang="en"><b>Names with dots</b>: wrap in quotes.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How can I debug more easily?</h3>
+<p lang="en">Counting the name cell's characters with LEN reveals stray spaces.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">For #REF!, suspect name mismatch, spaces and quotes.</p>
 <a class="cta" href="/vi/indirect-formula-builder.html">Dùng “Tạo công thức INDIRECT” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/vlookup-formula-builder.html">Tạo công thức VLOOKUP hoặc XLOOKUP</a>: Tạo công thức VLOOKUP và XLOOKUP.</li><li><a href="/vi/importrange-builder.html">Tạo công thức IMPORTRANGE</a>: Tạo công thức IMPORTRANGE.</li><li><a href="/vi/index-match-builder.html">Tạo công thức INDEX và MATCH</a>: Tạo các công thức INDEX và MATCH.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

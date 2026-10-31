@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Calling Up by Shifting</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Choose OFFSET</li><li>Enter the cell and the shift</li><li>Copy it</li></ul></div>
-<p>In <a href="/en/indirect-formula-builder.html">INDIRECT Builder</a> you can build a formula that calls up the cell shifted by rows and columns.</p>
+<p>Two rows down and one column right of a base cell. OFFSET calls the cell shifted like that. "OFFSET" in <a href="/en/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>Steps</h2>
 <ol>
-<li>Choose OFFSET</li>
-<li>Enter the cell and the shift</li>
-<li>Copy it</li>
+<li>Choose "OFFSET" in "Type".</li>
+<li>In "Cell", enter the base cell.</li>
+<li>In "Row offset" and "Column offset", enter integers.</li>
+<li>Copy the formula and paste.</li>
 </ol>
-<div class="note">The second formula is a way that needs fewer recalculations.</div>
+<div class="note">Rows: positive is down, negative is up. Columns: positive is right, negative is left.</div>
+<h2>Example</h2>
+<p>The cell two rows down and one column right of A1:</p>
+<ul>
+<li>=OFFSET(A1,2,1)</li>
+</ul>
+<p>This points to B3.</p>
+<h2>The alternative formula</h2>
+<p>The second uses INDEX.</p>
+<ul>
+<li>=INDEX(1:1048576,ROW(A1)+2,COLUMN(A1)+1)</li>
+</ul>
+<p>OFFSET always recalculates, whereas INDEX doesn't. On large sheets INDEX is lighter.</p>
+<h2>Good for</h2>
+<ul>
+<li>Reading a value at a fixed position from a base</li>
+<li>Taking by relative position even if the table's head moves</li>
+<li>Regular references such as every third row</li>
+</ul>
+<h2>Negative values</h2>
+<p>You can also shift up or left.</p>
+<ul>
+<li>Example: =OFFSET(C5,-1,-2) → A4</li>
+</ul>
+<h2>Returning ranges</h2>
+<p>OFFSET can also return a range with height and width. The tool builds the single-cell form.</p>
+<h2>Example</h2>
+<p>Wanted the value two below a base cell. Even after inserting rows, it was taken by position relative to the base.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>#REF!</b>: the shifted target falls outside the sheet.</li>
+<li><b>Slow</b>: OFFSET recalculates often. The INDEX formula is an alternative.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>Won't inserting rows shift it?</h3>
+<p>If the base cell moves, the result moves. To fix the base cell, add $.</p>
+<h2>Summary</h2>
+<p>To call shifted from a base, use OFFSET; on big sheets, the INDEX formula.</p>
 <a class="cta" href="/en/indirect-formula-builder.html">Use "Build an INDIRECT Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/importrange-builder.html">Build an IMPORTRANGE Formula</a>: Build an IMPORTRANGE formula.</li><li><a href="/en/index-match-builder.html">Build an INDEX and MATCH Formula</a>: Build INDEX and MATCH formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>

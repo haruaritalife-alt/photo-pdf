@@ -215,14 +215,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>اگر کار نکرد چه باید کرد</h1>
 <p class="meta">منتشرشده: 19 اکتبر 2026 | به‌روزرسانی: 19 اکتبر 2026 | <a href="/about.html">دربارهٔ ما (ژاپنی)</a></p>
 <div class="points"><b>نکات کلیدی</b><ul><li>فایل را بررسی کنید</li><li>اندازه را بررسی کنید</li><li>دستگاه دیگری را امتحان کنید</li></ul></div>
-<p>اگر <a href="/fa/indirect-formula-builder.html">سازندهٔ INDIRECT</a> کار نمی‌کند، موارد زیر را بررسی کنید.</p>
-<h2>مراحل</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/fa/indirect-formula-builder.html">Build an INDIRECT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell isn't in the "A1" form; the sheet name is empty (for SHEET); an offset isn't an integer (for OFFSET and ADDRESS).</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF!</b>: the location doesn't exist. Check the sheet name and position.</li>
+<li lang="en"><b>Shows 0</b>: the called cell is empty.</li>
+<li lang="en"><b>Stuck on old values</b>: calculation is set to manual.</li>
+<li lang="en"><b>Slow</b>: INDIRECT and OFFSET recalculate often.</li>
+<li lang="en"><b>References shift on inserting rows</b>: locations written as text don't follow.</li>
+<li lang="en"><b>Can't call another file</b>: the other file is closed.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>فایل را بررسی کنید</li>
-<li>اندازه را بررسی کنید</li>
-<li>دستگاه دیگری را امتحان کنید</li>
+<li lang="en">Check the called location by hand.</li>
+<li lang="en">Check the sheet name's quotes and spaces.</li>
+<li lang="en">If slow, switch to the INDEX formula.</li>
 </ol>
-<div class="note">اگر فرمولی نمایش داده نشد، بررسی کنید سلول مانند A1 نوشته شده و نام برگه وارد شده باشد.</div>
+<div class="note" lang="en">INDIRECT builds locations as text, so inserting rows or columns doesn't update the target automatically.</div>
+<h2 lang="en">Reducing slowness</h2>
+<ul>
+<li lang="en">Don't call large ranges repeatedly.</li>
+<li lang="en">Replace OFFSET with INDEX.</li>
+<li lang="en">Place formulas only in cells that need them.</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">Inserting a row shifted INDIRECT's results. Locations written as text don't follow, so I switched to INDEX and MATCH and it stabilized.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Copying down doesn't shift it</b>: the location is fixed as text. Build numbers with ROW.</li>
+<li lang="en"><b>Result shows as text</b>: the cell's display format is text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">When should I avoid INDIRECT?</h3>
+<p lang="en">In tables where rows or columns are inserted often. If the target is fixed, a plain reference suffices.</p>
+<h2>خلاصه</h2>
+<p lang="en">Check the location, recalculation and speed.</p>
 <a class="cta" href="/fa/indirect-formula-builder.html">استفاده از «ساخت فرمول INDIRECT» (رایگان)</a>
 <h2>ابزارهایی که با این ابزار خوب هماهنگ‌اند</h2><ul><li><a href="/fa/vlookup-formula-builder.html">ساخت فرمول VLOOKUP یا XLOOKUP</a>: فرمول‌های VLOOKUP و XLOOKUP بسازید.</li><li><a href="/fa/importrange-builder.html">ساخت فرمول IMPORTRANGE</a>: یک فرمول IMPORTRANGE بسازید.</li><li><a href="/fa/index-match-builder.html">ساخت فرمول INDEX و MATCH</a>: فرمول‌های INDEX و MATCH بسازید.</li></ul>
 <div class="tip"><p>اگر این راهنما مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ارسال انعام (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ارسال هدیه (فهرست آرزوهای آمازون)</a></div>

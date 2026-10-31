@@ -201,14 +201,43 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>INDEX와 MATCH 쓰는 법 (자동으로 만들기, 무료)</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>범위 입력</li><li>값 입력</li><li>수식 복사</li></ul></div>
-<p><a href="/ko/index-match-builder.html">INDEX MATCH 수식 만들기</a>는 범위와 값으로 INDEX와 MATCH 수식을 만들어 줍니다.</p>
+<p lang="en">VLOOKUP is handy, but can't return columns left of the lookup column, and its column number shifts when columns are added. Combining INDEX and MATCH removes that weakness. <a href="/ko/index-match-builder.html">Build an INDEX and MATCH Formula</a> builds the formula from ranges and a value to find. Input is processed inside this device and not sent outside.</p>
 <h2>순서</h2>
 <ol>
-<li>범위 입력</li>
-<li>값 입력</li>
-<li>수식 복사</li>
+<li lang="en">Enter the "Range to return (such as C2:C100)".</li>
+<li lang="en">Enter the "Lookup column range (such as B2:B100)".</li>
+<li lang="en">Enter the "Cell with the value to find (such as F2)".</li>
+<li lang="en">Choose a "Match type" (EXACT, LESS, GREATER).</li>
+<li lang="en">To pull from rows and columns of a table, also enter "Header range" and "Cell with the header value".</li>
+<li lang="en">Copy the "INDEX/MATCH formula" with "Copy result" and the "Formula that leaves blank when not found" with "Copy the second".</li>
 </ol>
-<div class="note">만들어진 수식은 그대로 셀에 붙여 넣을 수 있습니다.</div>
+<div class="note" lang="en">Ranges automatically become absolute references (with $) in the formula, so copying down doesn't shift them.</div>
+<h2>예</h2>
+<p lang="en">Finding F2's value in column B and returning column C's value:</p>
+<ul>
+<li lang="en">=INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0))</li>
+</ul>
+<h2>작동 방식</h2>
+<ul>
+<li lang="en">MATCH: returns the position of the value in the lookup column</li>
+<li lang="en">INDEX: returns the value at that position in the return range</li>
+</ul>
+<h2>알맞은 경우</h2>
+<ul>
+<li lang="en">Returning values left of the lookup column</li>
+<li lang="en">Lookups that survive column reordering</li>
+<li lang="en">Pulling one value using both rows and columns</li>
+</ul>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: a range isn't in the "C2:C100" form, or the value isn't in the "F2" form.</li>
+<li lang="en"><b>Ranges differ in row count</b>: use the same row count for the return range and lookup column.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Which is better, this or VLOOKUP?</h3>
+<p lang="en">If columns get added or you need left columns, INDEX/MATCH is sturdier. For simple lookups VLOOKUP or XLOOKUP is enough.</p>
+<h2>요약</h2>
+<p lang="en">Enter ranges and a value to build the INDEX/MATCH formula.</p>
 <a class="cta" href="/ko/index-match-builder.html">“INDEX·MATCH 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/vlookup-formula-builder.html">VLOOKUP·XLOOKUP 수식 만들기</a>: VLOOKUP과 XLOOKUP 수식을 만듭니다.</li><li><a href="/ko/filter-formula-builder.html">FILTER 수식 만들기</a>: FILTER 수식을 만듭니다.</li><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

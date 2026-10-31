@@ -215,14 +215,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>خرابیاں بھی چھوڑنا</h1>
 <p class="meta">شائع شدہ: 19 اکتوبر 2026 | اپ ڈیٹ: 19 اکتوبر 2026 | <a href="/about.html">تعارف (جاپانی)</a></p>
 <div class="points"><b>اہم نکات</b><ul><li>فارمولا بنائیں</li><li>دوسرا فارمولا منتخب کریں</li><li>کاپی کریں</li></ul></div>
-<p><a href="/ur/subtotal-formula-builder.html">SUBTOTAL فارمولا بنانے والا</a> ایسا فارمولا بھی بناتا ہے جو خرابی والے سیل چھوڑ دیتا ہے۔</p>
+<p lang="en">SUBTOTAL returns an error if the range contains an error value (such as #N/A). To aggregate while skipping errors, use AGGREGATE. The second formula in <a href="/ur/subtotal-formula-builder.html">Build a SUBTOTAL Formula</a> is that.</p>
 <h2>مراحل</h2>
 <ol>
-<li>فارمولا بنائیں</li>
-<li>دوسرا فارمولا منتخب کریں</li>
-<li>کاپی کریں</li>
+<li lang="en">Enter the "Range" and "Type".</li>
+<li lang="en">Copy the "Formula that also drops errors (Excel)" with "Copy the second".</li>
+<li lang="en">Paste it.</li>
 </ol>
-<div class="note">یہ Excel میں کام کرتا ہے۔ Google شیٹس میں پہلا فارمولا استعمال کریں۔</div>
+<div class="note" lang="en">AGGREGATE is an Excel function. It isn't available in Google Sheets.</div>
+<h2>مثال</h2>
+<ul>
+<li lang="en">=AGGREGATE(9,7,B2:B100)</li>
+</ul>
+<p lang="en">9 means sum, and 7 means "ignore hidden rows and error values".</p>
+<h2 lang="en">AGGREGATE's features</h2>
+<ul>
+<li lang="en">Ignores hidden rows</li>
+<li lang="en">Ignores error values</li>
+<li lang="en">Offers more aggregation methods than SUBTOTAL</li>
+</ul>
+<h2>ان کے لیے موزوں</h2>
+<ul>
+<li lang="en">Totals of a column mixed with #N/A</li>
+<li lang="en">Tables whose formula results include errors</li>
+<li lang="en">Knowing the overall value before fixing errors</li>
+</ul>
+<h2 lang="en">In Google Sheets</h2>
+<p lang="en">For the same aim, you can combine SUBTOTAL and IFERROR.</p>
+<ul>
+<li lang="en">Example: =SUBTOTAL(9,ARRAYFORMULA(IFERROR(B2:B100,0)))</li>
+</ul>
+<p lang="en">Behavior can differ by environment, so test before relying on it.</p>
+<h2 lang="en">A caution about hiding errors</h2>
+<p lang="en">A total that ignores errors differs from the true total. It's safer to check the cause of the errors first.</p>
+<h2>مثال</h2>
+<p lang="en">A VLOOKUP result column had #N/A on rows not found. AGGREGATE gave a total skipping the errors.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#NAME?</b>: AGGREGATE may not work in Google Sheets.</li>
+<li lang="en"><b>The result is small</b>: error rows are excluded from the aggregate.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What is the number "7"?</h3>
+<p lang="en">The option number. 7 ignores hidden rows and error values.</p>
+<h2>خلاصہ</h2>
+<p lang="en">For columns mixed with errors, use AGGREGATE.</p>
 <a class="cta" href="/ur/subtotal-formula-builder.html">«SUBTOTAL فارمولا بنائیں» استعمال کریں (مفت)</a>
 <h2>وہ ٹولز جو اس کے ساتھ اچھے لگتے ہیں</h2><ul><li><a href="/ur/sumif-formula-builder.html">SUMIF یا COUNTIF فارمولا بنانا</a>: SUMIF اور COUNTIF فارمولے بنائیں۔</li><li><a href="/ur/filter-formula-builder.html">FILTER فارمولا بنانا</a>: FILTER فارمولا بنائیں۔</li><li><a href="/ur/unique-formula-builder.html">UNIQUE فارمولا بنائیں</a>: دہرائی گئی قدروں کو سنبھالنے والے فارمولے بنائیں۔</li></ul>
 <div class="tip"><p>اگر یہ گائیڈ مفید رہی تو ایک چھوٹی سی ٹپ ہمارے لیے بہت معنی رکھتی ہے۔</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ٹپ بھیجیں (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">تحفہ بھیجیں (ایمیزون وش لسٹ)</a></div>

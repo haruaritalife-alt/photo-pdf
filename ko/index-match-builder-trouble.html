@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>잘 안 될 때의 대처법</h1>
 <p class="meta">게시: 2026년 10월 19일 | 업데이트: 2026년 10월 19일 | <a href="/about.html">소개 (일본어)</a></p>
 <div class="points"><b>핵심 포인트</b><ul><li>파일 확인하기</li><li>크기 확인하기</li><li>다른 기기에서 시도하기</li></ul></div>
-<p><a href="/ko/index-match-builder.html">INDEX MATCH 수식 만들기</a>가 동작하지 않으면 다음을 확인하세요.</p>
-<h2>순서</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/ko/index-match-builder.html">Build an INDEX and MATCH Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: a range isn't in the "C2:C100" form; the value isn't in the "F2" form; you entered only the header range and left the header value empty.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#N/A</b>: the value isn't in the lookup column.</li>
+<li lang="en"><b>#REF!</b>: INDEX's position falls outside the range.</li>
+<li lang="en"><b>A different row's value returns</b>: the return range and lookup range start on different rows.</li>
+<li lang="en"><b>#N/A though it should be found</b>: full-width/half-width, surrounding spaces, or text vs number.</li>
+<li lang="en"><b>Approximate lookup returns a wrong value</b>: the sort order doesn't fit.</li>
+<li lang="en"><b>Results shift when copied down</b>: the value cell has $ on it.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>파일 확인하기</li>
-<li>크기 확인하기</li>
-<li>다른 기기에서 시도하기</li>
+<li lang="en">Check the return range and lookup range start on the same row.</li>
+<li lang="en">Compare the value to find with the lookup column's values.</li>
+<li lang="en">Remove surrounding spaces with TRIM.</li>
 </ol>
-<div class="note">수식이 나오지 않으면 범위가 C2:C100처럼, 셀이 F2처럼 쓰여 있는지 확인하세요.</div>
+<div class="note" lang="en">The return range and lookup range must have the same row count and start row. Even one row off returns the neighbor's value.</div>
+<h2 lang="en">Text vs number</h2>
+<p lang="en">If "1001" is text on one side and numeric on the other, they don't match. Align them.</p>
+<ul>
+<li lang="en">To text: TEXT(F2,"0")</li>
+<li lang="en">To number: VALUE(F2)</li>
+</ul>
+<h2>예</h2>
+<p lang="en">Looking up by product code returned the neighbor row's value. I had started the return range at C1. Starting at C2 fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Including headings in the range</b>: the position shifts.</li>
+<li lang="en"><b>Range too short</b>: rows added but not in the range.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Can I take the ranges generously wide?</h3>
+<p lang="en">Yes. Empty cells are ignored. But keep the return range and lookup range at the same row count.</p>
+<h2>요약</h2>
+<p lang="en">Check the start row, text vs number and sort order.</p>
 <a class="cta" href="/ko/index-match-builder.html">“INDEX·MATCH 수식 만들기” 사용하기 (무료)</a>
 <h2>함께 쓰면 좋은 도구</h2><ul><li><a href="/ko/vlookup-formula-builder.html">VLOOKUP·XLOOKUP 수식 만들기</a>: VLOOKUP과 XLOOKUP 수식을 만듭니다.</li><li><a href="/ko/filter-formula-builder.html">FILTER 수식 만들기</a>: FILTER 수식을 만듭니다.</li><li><a href="/ko/sumif-formula-builder.html">SUMIF·COUNTIF 수식 만들기</a>: SUMIF와 COUNTIF 수식을 만듭니다.</li></ul>
 <div class="tip"><p>이 가이드가 도움이 되었다면 작은 팁 하나가 큰 힘이 됩니다.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">팁 보내기 (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">선물 보내기 (아마존 위시리스트)</a></div>

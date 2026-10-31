@@ -201,14 +201,51 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Menyemak sama ada kosong</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Dikemas kini: 19 Okt 2026 | <a href="/about.html">Perihal (Jepun)</a></p>
 <div class="points"><b>Perkara penting</b><ul><li>Pilih ISBLANK</li><li>Masukkan sel</li><li>Salin</li></ul></div>
-<p>Dalam <a href="/ms/check-formula-builder.html">Pembina ISBLANK</a> anda boleh membina formula yang menyemak sama ada sel kosong.</p>
+<p lang="en">You want to check nothing is left blank. This builds formulas that find empty cells. "ISBLANK" and "EMPTY" in <a href="/ms/check-formula-builder.html">Build an ISBLANK Formula</a> build it.</p>
 <h2>Langkah</h2>
 <ol>
-<li>Pilih ISBLANK</li>
-<li>Masukkan sel</li>
-<li>Salin</li>
+<li lang="en">Choose "ISBLANK" or "EMPTY" in "Type".</li>
+<li lang="en">Enter the "Cell to check".</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">Untuk menganggap sel yang hanya berisi ruang sebagai kosong, gunakan EMPTY.</div>
+<div class="note" lang="en">A cell that looks empty but contains spaces gives ISBLANK FALSE. In that case use EMPTY.</div>
+<h2>Contoh</h2>
+<ul>
+<li lang="en">ISBLANK: =ISBLANK(A2)</li>
+<li lang="en">EMPTY: =LEN(TRIM(A2))=0</li>
+</ul>
+<p lang="en">EMPTY checks whether the length after trimming spaces is 0.</p>
+<h2 lang="en">Judging "has input" (invert)</h2>
+<p lang="en">Tick "Invert (NOT)" to build a formula checking whether something is entered.</p>
+<ul>
+<li lang="en">ISBLANK: =NOT(ISBLANK(A2))</li>
+<li lang="en">EMPTY: =LEN(TRIM(A2))&gt;0</li>
+</ul>
+<h2 lang="en">Showing the result as text</h2>
+<p lang="en">The second formula outputs text via IF.</p>
+<ul>
+<li lang="en">Example: =IF(LEN(TRIM(A2))=0,"Missing","OK")</li>
+</ul>
+<h2>Sesuai untuk</h2>
+<ul>
+<li lang="en">Checking missing entries in surveys and application forms</li>
+<li lang="en">Confirming required columns have no blanks</li>
+<li lang="en">Highlighting only rows missing input</li>
+</ul>
+<h2 lang="en">Coloring with conditional formatting</h2>
+<p lang="en">To color empty cells, use the check formula in conditional formatting.</p>
+<h2>Contoh</h2>
+<p lang="en">In an application list, I wanted to find missing phone numbers. The EMPTY formula found them, including cells with only spaces.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Only spaces judged as filled</b>: ISBLANK does that. Use EMPTY.</li>
+<li lang="en"><b>Cells whose formula result is ""</b>: ISBLANK is FALSE; EMPTY is TRUE.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Which should I use?</h3>
+<p lang="en">For data where spaces slip in, like pasted form data, EMPTY is safer.</p>
+<h2>Ringkasan</h2>
+<p lang="en">For missing-input checks, EMPTY is safe.</p>
 <a class="cta" href="/ms/check-formula-builder.html">Guna “Bina formula ISBLANK” (percuma)</a>
 <h2>Alat yang sepadan dengan ini</h2><ul><li><a href="/ms/excel-if-builder.html">Cipta formula IF</a>: Cipta formula IF.</li><li><a href="/ms/cond-format-formula-builder.html">Bina Formula Pemformatan Bersyarat</a>: Bina formula pemformatan bersyarat.</li><li><a href="/ms/countif-formula-builder.html">Bina formula COUNTIF</a>: Membina formula yang mengira sel yang memenuhi syarat.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil amat dihargai.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Hantar tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Hantar hadiah (senarai hajat Amazon)</a></div>

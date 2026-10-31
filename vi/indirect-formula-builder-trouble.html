@@ -201,14 +201,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Việc cần làm khi không hoạt động</h1>
 <p class="meta">Đăng: 19/10/2026 | Cập nhật: 19/10/2026 | <a href="/about.html">Giới thiệu (tiếng Nhật)</a></p>
 <div class="points"><b>Điểm chính</b><ul><li>Kiểm tra tệp</li><li>Kiểm tra dung lượng</li><li>Thử thiết bị khác</li></ul></div>
-<p>Nếu <a href="/vi/indirect-formula-builder.html">Trình tạo INDIRECT</a> không hoạt động, hãy kiểm tra các điểm sau.</p>
-<h2>Các bước</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/vi/indirect-formula-builder.html">Build an INDIRECT Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell isn't in the "A1" form; the sheet name is empty (for SHEET); an offset isn't an integer (for OFFSET and ADDRESS).</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>#REF!</b>: the location doesn't exist. Check the sheet name and position.</li>
+<li lang="en"><b>Shows 0</b>: the called cell is empty.</li>
+<li lang="en"><b>Stuck on old values</b>: calculation is set to manual.</li>
+<li lang="en"><b>Slow</b>: INDIRECT and OFFSET recalculate often.</li>
+<li lang="en"><b>References shift on inserting rows</b>: locations written as text don't follow.</li>
+<li lang="en"><b>Can't call another file</b>: the other file is closed.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>Kiểm tra tệp</li>
-<li>Kiểm tra dung lượng</li>
-<li>Thử thiết bị khác</li>
+<li lang="en">Check the called location by hand.</li>
+<li lang="en">Check the sheet name's quotes and spaces.</li>
+<li lang="en">If slow, switch to the INDEX formula.</li>
 </ol>
-<div class="note">Nếu không có công thức nào xuất hiện, hãy kiểm tra ô được viết như A1 và đã nhập tên trang tính.</div>
+<div class="note" lang="en">INDIRECT builds locations as text, so inserting rows or columns doesn't update the target automatically.</div>
+<h2 lang="en">Reducing slowness</h2>
+<ul>
+<li lang="en">Don't call large ranges repeatedly.</li>
+<li lang="en">Replace OFFSET with INDEX.</li>
+<li lang="en">Place formulas only in cells that need them.</li>
+</ul>
+<h2>Ví dụ</h2>
+<p lang="en">Inserting a row shifted INDIRECT's results. Locations written as text don't follow, so I switched to INDEX and MATCH and it stabilized.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Copying down doesn't shift it</b>: the location is fixed as text. Build numbers with ROW.</li>
+<li lang="en"><b>Result shows as text</b>: the cell's display format is text.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">When should I avoid INDIRECT?</h3>
+<p lang="en">In tables where rows or columns are inserted often. If the target is fixed, a plain reference suffices.</p>
+<h2>Tóm tắt</h2>
+<p lang="en">Check the location, recalculation and speed.</p>
 <a class="cta" href="/vi/indirect-formula-builder.html">Dùng “Tạo công thức INDIRECT” (miễn phí)</a>
 <h2>Công cụ hay dùng cùng</h2><ul><li><a href="/vi/vlookup-formula-builder.html">Tạo công thức VLOOKUP hoặc XLOOKUP</a>: Tạo công thức VLOOKUP và XLOOKUP.</li><li><a href="/vi/importrange-builder.html">Tạo công thức IMPORTRANGE</a>: Tạo công thức IMPORTRANGE.</li><li><a href="/vi/index-match-builder.html">Tạo công thức INDEX và MATCH</a>: Tạo các công thức INDEX và MATCH.</li></ul>
 <div class="tip"><p>Nếu hướng dẫn này hữu ích, một khoản ủng hộ nhỏ sẽ là niềm động viên lớn.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Gửi tiền ủng hộ (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Tặng quà (danh sách mong muốn Amazon)</a></div>

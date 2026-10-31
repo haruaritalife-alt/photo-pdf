@@ -215,14 +215,48 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>جستجوی دوطرفه</h1>
 <p class="meta">منتشرشده: 19 اکتبر 2026 | به‌روزرسانی: 19 اکتبر 2026 | <a href="/about.html">دربارهٔ ما (ژاپنی)</a></p>
 <div class="points"><b>نکات کلیدی</b><ul><li>محدودهٔ سرستون را وارد کنید</li><li>مقدار سرستون را وارد کنید</li><li>کپی کنید</li></ul></div>
-<p>در <a href="/fa/index-match-builder.html">سازندهٔ INDEX MATCH</a>، واردکردن محدودهٔ سرستون و مقدار، جستجوی دوطرفهٔ جدول می‌سازد.</p>
+<p lang="en">You want the value where a row heading and a column heading intersect, such as "Product A in March" from a product-by-month sales table. With <a href="/fa/index-match-builder.html">Build an INDEX and MATCH Formula</a>, two MATCHes pull from both rows and columns.</p>
 <h2>مراحل</h2>
 <ol>
-<li>محدودهٔ سرستون را وارد کنید</li>
-<li>مقدار سرستون را وارد کنید</li>
-<li>کپی کنید</li>
+<li lang="en">In "Range to return", enter the table's numeric part.</li>
+<li lang="en">In "Lookup column range", enter the row headings (the product-name column).</li>
+<li lang="en">In "Cell with the value to find", enter the cell with the product to find.</li>
+<li lang="en">In "Header range", enter the column headings (the month row).</li>
+<li lang="en">In "Cell with the header value", enter the cell with the month to find.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">دو تابع MATCH ردیف و ستون را پیدا می‌کنند.</div>
+<div class="note" lang="en">Make the return range the numeric part only. Don't include heading rows and columns.</div>
+<h2>مثال</h2>
+<p lang="en">With sales in B2:D10, product names in A2:A10, months in B1:D1, and the product in F2 and month in G2:</p>
+<ul>
+<li lang="en">=INDEX($B$2:$D$10,MATCH(F2,$A$2:$A$10,0),MATCH(G2,$B$1:$D$1,0))</li>
+</ul>
+<h2>چگونه کار می‌کند</h2>
+<ul>
+<li lang="en">First MATCH: which row the product is in</li>
+<li lang="en">Second MATCH: which column the month is in</li>
+<li lang="en">INDEX: returns the cell at that row and column</li>
+</ul>
+<h2>مناسب برای</h2>
+<ul>
+<li lang="en">Product-by-month sales tables</li>
+<li lang="en">Region-by-year statistics tables</li>
+<li lang="en">Price tables (size × weight)</li>
+</ul>
+<h2 lang="en">Combining with dropdowns</h2>
+<p lang="en">Make F2 and G2 dropdowns and you get a lookup sheet that shows the intersecting value just by choosing.</p>
+<h2>مثال</h2>
+<p lang="en">Wanted a table that gives sales when you pick a product and month. Two-way INDEX/MATCH built it in one formula.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Including headings in the return range</b>: the position shifts by one.</li>
+<li lang="en"><b>Range sizes don't match</b>: align the number of row headings with the return range's rows.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">What if I leave the header range empty?</h3>
+<p lang="en">You get the ordinary one-direction INDEX/MATCH formula.</p>
+<h2>خلاصه</h2>
+<p lang="en">To pull from both directions, use two MATCHes.</p>
 <a class="cta" href="/fa/index-match-builder.html">استفاده از «ساخت فرمول INDEX و MATCH» (رایگان)</a>
 <h2>ابزارهایی که با این ابزار خوب هماهنگ‌اند</h2><ul><li><a href="/fa/vlookup-formula-builder.html">ساخت فرمول VLOOKUP یا XLOOKUP</a>: فرمول‌های VLOOKUP و XLOOKUP بسازید.</li><li><a href="/fa/filter-formula-builder.html">ساخت فرمول FILTER</a>: یک فرمول FILTER بسازید.</li><li><a href="/fa/sumif-formula-builder.html">ساخت فرمول SUMIF یا COUNTIF</a>: فرمول‌های SUMIF و COUNTIF بسازید.</li></ul>
 <div class="tip"><p>اگر این راهنما مفید بود، یک انعام کوچک برایمان ارزش زیادی دارد.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">ارسال انعام (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">ارسال هدیه (فهرست آرزوهای آمازون)</a></div>

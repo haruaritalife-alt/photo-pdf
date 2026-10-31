@@ -201,14 +201,49 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Saat muncul kesalahan</h1>
 <p class="meta">Diterbitkan: 19 Okt 2026 | Diperbarui: 19 Okt 2026 | <a href="/about.html">Tentang (bahasa Jepang)</a></p>
 <div class="points"><b>Poin penting</b><ul><li>Periksa nama sheet</li><li>Periksa cara penulisan sel</li><li>Gunakan rumus yang mengosongkan kesalahan</li></ul></div>
-<p>Rumus <a href="/id/indirect-formula-builder.html">Pembuat INDIRECT</a> menghasilkan kesalahan jika nama sheet atau sel salah.</p>
+<p lang="en">The INDIRECT formula returns #REF!. The sheet name should be right, yet it doesn't work. Here are common causes of errors in formulas built with <a href="/id/indirect-formula-builder.html">Build an INDIRECT Formula</a> and fixes.</p>
 <h2>Langkah-langkah</h2>
 <ol>
-<li>Periksa nama sheet</li>
-<li>Periksa cara penulisan sel</li>
-<li>Gunakan rumus yang mengosongkan kesalahan</li>
+<li lang="en">Compare the sheet name with the actual sheet's name.</li>
+<li lang="en">Check for surrounding spaces and full-width/half-width differences.</li>
+<li lang="en">Check the name is wrapped in the quote "'".</li>
 </ol>
-<div class="note">Nama sheet yang berisi spasi diapit tanda kutip.</div>
+<div class="note" lang="en">"#REF!" means the called location can't be found.</div>
+<h2 lang="en">Common causes</h2>
+<ul>
+<li lang="en"><b>Sheet name mismatch</b>: even one character off isn't found.</li>
+<li lang="en"><b>Stray spaces</b>: the cell text has spaces around it. Remove with TRIM.</li>
+<li lang="en"><b>Missing quotes</b>: the name has spaces or symbols but isn't wrapped.</li>
+<li lang="en"><b>File is closed</b>: you're calling another file that isn't open.</li>
+<li lang="en"><b>Outside the sheet</b>: pointing at a cell that doesn't exist.</li>
+</ul>
+<h2 lang="en">Removing spaces</h2>
+<p lang="en">If reading the sheet name from a cell, wrap it in TRIM.</p>
+<ul>
+<li lang="en">Example: =INDIRECT("'"&amp;TRIM(A1)&amp;"'!B2")</li>
+</ul>
+<h2 lang="en">Turning errors into empty</h2>
+<p lang="en">The second formula is wrapped in IFERROR.</p>
+<ul>
+<li lang="en">=IFERROR(INDIRECT("'"&amp;A1&amp;"'!B2"),"")</li>
+</ul>
+<p lang="en">But this hides errors, so use it after checking the cause.</p>
+<h2 lang="en">When a sheet is renamed</h2>
+<p lang="en">A sheet name written as text doesn't follow a rename; you get #REF!.</p>
+<h2 lang="en">Google Sheets note</h2>
+<p lang="en">On first use you may be asked to permit access to the sheet.</p>
+<h2>Contoh</h2>
+<p lang="en">One of the formulas calling monthly sheets gave #REF!. The sheet name ended with a full-width space. TRIM fixed it.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>Full-width vs half-width digits</b>: they're different characters.</li>
+<li lang="en"><b>Names with dots</b>: wrap in quotes.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How can I debug more easily?</h3>
+<p lang="en">Counting the name cell's characters with LEN reveals stray spaces.</p>
+<h2>Ringkasan</h2>
+<p lang="en">For #REF!, suspect name mismatch, spaces and quotes.</p>
 <a class="cta" href="/id/indirect-formula-builder.html">Gunakan “Buat rumus INDIRECT” (gratis)</a>
 <h2>Alat yang cocok dipakai bersama</h2><ul><li><a href="/id/vlookup-formula-builder.html">Buat Rumus VLOOKUP atau XLOOKUP</a>: Buat rumus VLOOKUP dan XLOOKUP.</li><li><a href="/id/importrange-builder.html">Buat rumus IMPORTRANGE</a>: Buat rumus IMPORTRANGE.</li><li><a href="/id/index-match-builder.html">Buat Rumus INDEX dan MATCH</a>: Buat rumus INDEX dan MATCH.</li></ul>
 <div class="tip"><p>Jika panduan ini membantu, tip kecil akan sangat berarti bagi kami.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Kirim tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Kirim hadiah (daftar keinginan Amazon)</a></div>

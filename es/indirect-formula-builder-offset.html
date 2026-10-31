@@ -201,14 +201,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>Llamar a una celda con desplazamiento</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
 <div class="points"><b>Puntos clave</b><ul><li>Elige OFFSET</li><li>Escribe la celda y el desplazamiento</li><li>Cópialo</li></ul></div>
-<p>En <a href="/es/indirect-formula-builder.html">Creador de INDIRECT</a> puedes crear una fórmula que llama a la celda desplazada en filas y columnas.</p>
+<p lang="en">Two rows down and one column right of a base cell. OFFSET calls the cell shifted like that. "OFFSET" in <a href="/es/indirect-formula-builder.html">Build an INDIRECT Formula</a> builds it.</p>
 <h2>Pasos</h2>
 <ol>
-<li>Elige OFFSET</li>
-<li>Escribe la celda y el desplazamiento</li>
-<li>Cópialo</li>
+<li lang="en">Choose "OFFSET" in "Type".</li>
+<li lang="en">In "Cell", enter the base cell.</li>
+<li lang="en">In "Row offset" and "Column offset", enter integers.</li>
+<li lang="en">Copy the formula and paste.</li>
 </ol>
-<div class="note">La segunda fórmula es una forma que necesita menos recálculos.</div>
+<div class="note" lang="en">Rows: positive is down, negative is up. Columns: positive is right, negative is left.</div>
+<h2>Ejemplo</h2>
+<p lang="en">The cell two rows down and one column right of A1:</p>
+<ul>
+<li lang="en">=OFFSET(A1,2,1)</li>
+</ul>
+<p lang="en">This points to B3.</p>
+<h2 lang="en">The alternative formula</h2>
+<p lang="en">The second uses INDEX.</p>
+<ul>
+<li lang="en">=INDEX(1:1048576,ROW(A1)+2,COLUMN(A1)+1)</li>
+</ul>
+<p lang="en">OFFSET always recalculates, whereas INDEX doesn't. On large sheets INDEX is lighter.</p>
+<h2>Adecuado para</h2>
+<ul>
+<li lang="en">Reading a value at a fixed position from a base</li>
+<li lang="en">Taking by relative position even if the table's head moves</li>
+<li lang="en">Regular references such as every third row</li>
+</ul>
+<h2 lang="en">Negative values</h2>
+<p lang="en">You can also shift up or left.</p>
+<ul>
+<li lang="en">Example: =OFFSET(C5,-1,-2) → A4</li>
+</ul>
+<h2 lang="en">Returning ranges</h2>
+<p lang="en">OFFSET can also return a range with height and width. The tool builds the single-cell form.</p>
+<h2>Ejemplo</h2>
+<p lang="en">Wanted the value two below a base cell. Even after inserting rows, it was taken by position relative to the base.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>#REF!</b>: the shifted target falls outside the sheet.</li>
+<li lang="en"><b>Slow</b>: OFFSET recalculates often. The INDEX formula is an alternative.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">Won't inserting rows shift it?</h3>
+<p lang="en">If the base cell moves, the result moves. To fix the base cell, add $.</p>
+<h2>Resumen</h2>
+<p lang="en">To call shifted from a base, use OFFSET; on big sheets, the INDEX formula.</p>
 <a class="cta" href="/es/indirect-formula-builder.html">Usar «Crea una fórmula INDIRECT» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/vlookup-formula-builder.html">Crear una fórmula VLOOKUP o XLOOKUP</a>: Crea fórmulas VLOOKUP y XLOOKUP.</li><li><a href="/es/importrange-builder.html">Crear una fórmula IMPORTRANGE</a>: Crea una fórmula IMPORTRANGE.</li><li><a href="/es/index-match-builder.html">Crear una fórmula INDEX y MATCH</a>: Crea fórmulas INDEX y MATCH.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

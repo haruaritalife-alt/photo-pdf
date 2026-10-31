@@ -215,14 +215,45 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>ماذا تفعل إذا لم يعمل</h1>
 <p class="meta">تاريخ النشر: 19 أكتوبر 2026 | آخر تحديث: 19 أكتوبر 2026 | <a href="/about.html">حول (باليابانية)</a></p>
 <div class="points"><b>النقاط الرئيسية</b><ul><li>افحص الملف</li><li>تحقق من الحجم</li><li>جرّب جهازًا آخر</li></ul></div>
-<p>إذا كان <a href="/ar/check-formula-builder.html">منشئ ISBLANK</a> لا يعمل، فتحقق مما يلي.</p>
-<h2>الخطوات</h2>
+<p lang="en">You pasted the formula but the result is odd. Here are common troubles with <a href="/ar/check-formula-builder.html">Build an ISBLANK Formula</a> and fixes.</p>
+<h2 lang="en">Errors on the tool side</h2>
+<ul>
+<li lang="en"><b>"The input is not valid."</b>: the cell isn't in the "A2" form.</li>
+</ul>
+<h2 lang="en">After pasting into the sheet</h2>
+<ul>
+<li lang="en"><b>Looks empty but ISBLANK is FALSE</b>: it has spaces or an empty string. Use EMPTY.</li>
+<li lang="en"><b>A number but ISNUMBER is FALSE</b>: a text number. Fix with VALUE.</li>
+<li lang="en"><b>ISERROR is TRUE but no error is visible</b>: the display is hidden by conditional formatting or similar.</li>
+<li lang="en"><b>ISFORMULA unavailable</b>: not usable in old Excel or some environments.</li>
+<li lang="en"><b>The result isn't text</b>: the first formula returns TRUE or FALSE. Text is the second formula.</li>
+<li lang="en"><b>Inverted but the same result</b>: the box isn't ticked.</li>
+</ul>
+<h2 lang="en">Steps (when it doesn't go well)</h2>
 <ol>
-<li>افحص الملف</li>
-<li>تحقق من الحجم</li>
-<li>جرّب جهازًا آخر</li>
+<li lang="en">Look directly at the cell being checked.</li>
+<li lang="en">Count characters with LEN to find invisible characters.</li>
+<li lang="en">Check the type fits the purpose.</li>
 </ol>
-<div class="note">إذا لم تظهر أي صيغة، فتحقق من أن الخلية مكتوبة مثل A2.</div>
+<div class="note" lang="en">Invisible spaces (full-width spaces, line breaks) can't be seen. Counting with LEN reveals them.</div>
+<h2 lang="en">Removing invisible characters</h2>
+<ul>
+<li lang="en">Surrounding spaces: TRIM</li>
+<li lang="en">Line breaks and control characters: CLEAN</li>
+<li lang="en">Full-width spaces: SUBSTITUTE(A2," ","")</li>
+</ul>
+<h2>مثال</h2>
+<p lang="en">A cell looked empty yet slipped past the missing-input check. It held a full-width space. Removing it with SUBSTITUTE made detection work.</p>
+<h2 lang="en">Common stumbling blocks</h2>
+<ul>
+<li lang="en"><b>TRIM doesn't remove full-width spaces</b>: handle them separately.</li>
+<li lang="en"><b>Cell format is text</b>: numbers become text on entry.</li>
+</ul>
+<h2 lang="en">Frequently asked questions</h2>
+<h3 lang="en">How do I choose between ISBLANK and EMPTY?</h3>
+<p lang="en">ISBLANK for truly empty only. EMPTY to treat space-only cells as empty.</p>
+<h2>الخلاصة</h2>
+<p lang="en">Check invisible characters, types and the choice of kind.</p>
 <a class="cta" href="/ar/check-formula-builder.html">استخدم «أنشئ صيغة ISBLANK» (مجانًا)</a>
 <h2>أدوات تتكامل مع هذه الأداة</h2><ul><li><a href="/ar/excel-if-builder.html">إنشاء صيغة IF</a>: أنشئ صيغة IF.</li><li><a href="/ar/cond-format-formula-builder.html">إنشاء صيغة تنسيق شرطي</a>: أنشئ صيغ التنسيق الشرطي.</li><li><a href="/ar/countif-formula-builder.html">أنشئ صيغة COUNTIF</a>: ينشئ صيغًا تعدّ الخلايا التي تستوفي شرطًا.</li></ul>
 <div class="tip"><p>إذا أفادك هذا الدليل، فإن إكرامية صغيرة تعني لنا الكثير.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">أرسل إكرامية (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">أرسل هدية (قائمة أمنيات Amazon)</a></div>

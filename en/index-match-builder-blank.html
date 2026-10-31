@@ -201,14 +201,53 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <h1>When Nothing Is Found</h1>
 <p class="meta">Published: Oct 19, 2026 | Updated: Oct 19, 2026 | <a href="/about.html">About (Japanese)</a></p>
 <div class="points"><b>Key points</b><ul><li>Build the formula</li><li>Pick the second</li><li>Copy it</li></ul></div>
-<p><a href="/en/index-match-builder.html">INDEX MATCH Builder</a> also shows a version that goes blank when nothing is found.</p>
+<p>When the value isn't found, #N/A appears. You want to avoid a table full of errors. The second formula in <a href="/en/index-match-builder.html">Build an INDEX and MATCH Formula</a> returns empty when nothing is found.</p>
 <h2>Steps</h2>
 <ol>
-<li>Build the formula</li>
-<li>Pick the second</li>
-<li>Copy it</li>
+<li>Enter the ranges and value to find.</li>
+<li>Copy the "Formula that leaves blank when not found" with "Copy the second".</li>
+<li>Paste it.</li>
 </ol>
-<div class="note">It is wrapped in IFERROR.</div>
+<div class="note">IFERROR also blanks errors other than #N/A. Formula mistakes get hidden too, so be careful.</div>
+<h2>Example</h2>
+<ul>
+<li>=IFERROR(INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0)),"")</li>
+</ul>
+<p>When not found, it's empty.</p>
+<h2>Showing other text</h2>
+<p>Change the empty part to other text to show something like "Not found".</p>
+<ul>
+<li>Example: =IFERROR(INDEX(…),"Not found")</li>
+</ul>
+<h2>Blanking only #N/A</h2>
+<p>To avoid hiding real mistakes, use IFNA.</p>
+<ul>
+<li>Example: =IFNA(INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0)),"")</li>
+</ul>
+<p>IFNA targets only #N/A.</p>
+<h2>Good for</h2>
+<ul>
+<li>Display of a search form when nothing is entered</li>
+<li>Blanking not-found rows for readability</li>
+<li>Keeping errors out of later calculations</li>
+</ul>
+<h2>Empty vs 0</h2>
+<p>An empty string can cause errors in later calculations. If used as a number, returning 0 is safer.</p>
+<ul>
+<li>Example: =IFERROR(INDEX(…),0)</li>
+</ul>
+<h2>Example</h2>
+<p>A matching list had #N/A on not-found rows. IFERROR blanked them for readability, though I checked separately for real mistakes.</p>
+<h2>Common stumbling blocks</h2>
+<ul>
+<li><b>Everything is empty</b>: a formula mistake is hidden by IFERROR.</li>
+<li><b>Empty cells error in calculations</b>: an empty string isn't a number.</li>
+</ul>
+<h2>Frequently asked questions</h2>
+<h3>I want to know why it isn't found</h3>
+<p>First check with the formula not wrapped in IFERROR. Full-width/half-width and spaces are common causes.</p>
+<h2>Summary</h2>
+<p>To avoid #N/A, use IFERROR or IFNA.</p>
 <a class="cta" href="/en/index-match-builder.html">Use "Build an INDEX and MATCH Formula" (free)</a>
 <h2>Tools that go well with this</h2><ul><li><a href="/en/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a>: Build VLOOKUP and XLOOKUP formulas.</li><li><a href="/en/filter-formula-builder.html">Build a FILTER Formula</a>: Build a FILTER formula.</li><li><a href="/en/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a>: Build SUMIF and COUNTIF formulas.</li></ul>
 <div class="tip"><p>If this guide helped, a small tip would mean a lot.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Send a tip (¥300)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Send a gift (Amazon wishlist)</a></div>
