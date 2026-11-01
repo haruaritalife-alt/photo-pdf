@@ -4,12 +4,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>用正则表达式批量替换文字｜PDF Mikata</title>
+<title>用正则表达式批量替换文本｜PDF Mikata</title>
 
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/zh/regex-tester-replace.html" rel="canonical"/>
-<meta content="如何一次改写所有匹配的部分。" name="description"/>
+<meta content="一次性改写所有匹配部分的方法。" name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -115,19 +115,19 @@ h1,h2{letter-spacing:.01em}
 <meta content="PDF Mikata" property="og:site_name"/>
 <meta content="zh_CN" property="og:locale"/>
 
-<meta content="用正则表达式批量替换文字｜PDF Mikata" property="og:title"/>
-<meta content="如何一次改写所有匹配的部分。" property="og:description"/>
+<meta content="用正则表达式批量替换文本｜PDF Mikata" property="og:title"/>
+<meta content="一次性改写所有匹配部分的方法。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/regex-tester-replace.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="用正则表达式批量替换文字｜PDF Mikata" name="twitter:title"/>
-<meta content="如何一次改写所有匹配的部分。" name="twitter:description"/>
+<meta content="用正则表达式批量替换文本｜PDF Mikata" name="twitter:title"/>
+<meta content="一次性改写所有匹配部分的方法。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "用正则表达式批量替换文字", "description": "如何一次改写所有匹配的部分。", "url": "https://pdfmikata.com/zh/regex-tester-replace.html", "mainEntityOfPage": "https://pdfmikata.com/zh/regex-tester-replace.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "用正则表达式批量替换文本", "description": "一次性改写所有匹配部分的方法。", "url": "https://pdfmikata.com/zh/regex-tester-replace.html", "mainEntityOfPage": "https://pdfmikata.com/zh/regex-tester-replace.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -198,54 +198,73 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <main id="main" tabindex="-1">
 
 <div lang="zh-Hans">
-<h1>用正则表达式批量替换文字</h1>
+<h1>用正则表达式批量替换文本</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>写一个模式</li><li>输入替换内容</li><li>复制结果</li></ul></div>
-<p lang="en">You want to replace parts of a text that have a certain form with other characters all at once. Regular expression replacement saves you from fixing each by hand. Check replacement results with <a href="/zh/regex-tester.html">Regex Tester</a>.</p>
+<div class="points"><b>要点</b><ul><li>编写模式</li><li>输入替换内容</li><li>复制结果</li></ul></div><p>你想把文本中具有某种形式的部分一次性替换成其他字符。正则表达式替换让你无需逐个手动修改。请用 <a href="/zh/regex-tester.html">正则表达式测试器</a> 检查替换结果。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Write the pattern to find in "Regular expression pattern".</li>
-<li lang="en">Enter g in "Flags" (replace all).</li>
-<li lang="en">Enter the original text in "Text to test".</li>
-<li lang="en">Enter the replacement in "Replacement text (optional; $1 etc. can be used)".</li>
-<li lang="en">Look at "Replacement result" and check it's as expected.</li>
-<li lang="en">Copy with "Copy replacement result".</li>
+<li>在“Regular expression pattern”中写下要查找的模式。</li>
+<li>在“Flags”中输入g（替换全部）。</li>
+<li>在“Text to test”中输入原文。</li>
+<li>在“Replacement text (optional; $1 etc. can be used)”中输入替换内容。</li>
+<li>查看“Replacement result”，检查是否符合预期。</li>
+<li>用“Copy replacement result”复制。</li>
 </ol>
-<div class="note" lang="en">Without flag g, only the first match is replaced.</div>
-<h2 lang="en">Simple replacement</h2>
+<div class="note">没有标志g，只会替换第一个匹配。</div>
+<h2>简单的替换</h2>
 <ul>
-<li lang="en">Text: "2026/01/05"</li>
-<li lang="en">Pattern: /</li>
-<li lang="en">Replacement: -</li>
-<li lang="en">Result: "2026-01-05" (flag g needed)</li>
+<li>文本：“2026/01/05”</li>
+<li>模式：/</li>
+<li>替换：-</li>
+<li>结果：“2026-01-05”（需要标志g）</li>
 </ul>
-<h2 lang="en">Replacement using groups</h2>
-<p lang="en">Parenthesised parts can be recalled in the replacement as "$1", "$2".</p>
+<h2>使用分组的替换</h2>
+<p>括号部分可以在替换内容中用“$1”“$2”调用。</p>
 <ul>
-<li lang="en">Text: "2026/01/05"</li>
-<li lang="en">Pattern: (\d+)/(\d+)/(\d+)</li>
-<li lang="en">Replacement: $3.$2.$1</li>
-<li lang="en">Result: "05.01.2026"</li>
+<li>文本：“2026/01/05”</li>
+<li>模式：(\d+)/(\d+)/(\d+)</li>
+<li>替换：$3.$2.$1</li>
+<li>结果：“05.01.2026”</li>
 </ul>
-<h2>适合</h2>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Changing date notation in bulk</li>
-<li lang="en">Removing extra spaces in bulk</li>
-<li lang="en">Rewording specific terms in text at once</li>
-<li lang="en">Swapping order (such as name order)</li>
+<li>批量更改日期的写法</li>
+<li>批量删除多余的空格</li>
+<li>一次性改写文本中的特定词语</li>
+<li>调换顺序（如姓名顺序）</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">Wanted to swap a roster of "Yamada Taro" to "Taro Yamada". Pattern (\S+) (\S+) with replacement $2 $1 swapped them all.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>想把“Yamada Taro”的名册调换成“Taro Yamada”。模式 (\S+) (\S+) 加替换 $2 $1，全部调换成功。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Handling of "$"</b>: "$1" in the replacement recalls a group. To insert a plain "$", write "$$".</li>
-<li lang="en"><b>Unintended replacement</b>: a loose pattern changes unrelated parts. Check the result carefully.</li>
+<li><b>“$”的处理</b>：替换内容中的“$1”会调用分组。要插入普通的“$”，请写“$$”。</li>
+<li><b>意外的替换</b>：写得宽松的模式会改动不相关的部分。请仔细检查结果。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Does the result directly rewrite the original text?</h3>
-<p lang="en">No. It only appears in the "Replacement result" field; the original text is untouched.</p>
-<h2>小结</h2>
-<p lang="en">Pattern, replacement and flag g. These three replace in bulk.</p>
+<h2>常见问题</h2>
+<h3>结果会直接改写原文吗？</h3>
+<p>不会。它只显示在“Replacement result”栏中；原文保持不变。</p>
+<h2>总结</h2>
+<p>模式、替换内容和标志g。这三样就能批量替换。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/regex-tester.html">使用“正则表达式测试器”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/text-diff.html">对比两段文字的差异</a>: 逐行显示两段文字的差异。</li><li><a href="/zh/char-counter.html">文字数统计（用于求职申请表和报告）</a>：统计文字的字数、行数和稿纸张数。</li><li><a href="/zh/line-sort-dedupe.html">删除重复行并排序</a>：删除重复的行并排序。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

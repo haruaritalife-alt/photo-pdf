@@ -200,54 +200,81 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>找不到时</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>生成公式</li><li>选择第二个</li><li>复制</li></ul></div>
-<p lang="en">When the value isn't found, #N/A appears. You want to avoid a table full of errors. The second formula in <a href="/zh/index-match-builder.html">Build an INDEX and MATCH Formula</a> returns empty when nothing is found.</p>
+<div class="points"><b>要点</b><ul><li>生成公式</li><li>选第二个</li><li>复制</li></ul></div><p>找不到值时，会出现#N/A。你想避免整张表满是错误。<a href="/zh/index-match-builder.html">生成 INDEX 和 MATCH 公式</a> 的第二个公式在找不到时返回空白。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Enter the ranges and value to find.</li>
-<li lang="en">Copy the "Formula that leaves blank when not found" with "Copy the second".</li>
-<li lang="en">Paste it.</li>
+<li>输入区域和要查找的值。</li>
+<li>用“Copy the second”复制“Formula that leaves blank when not found”。</li>
+<li>粘贴。</li>
 </ol>
-<div class="note" lang="en">IFERROR also blanks errors other than #N/A. Formula mistakes get hidden too, so be careful.</div>
+<div class="note">IFERROR也会把#N/A以外的错误变成空白。公式的错误也会被隐藏，所以请小心。</div>
 <h2>示例</h2>
 <ul>
-<li lang="en">=IFERROR(INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0)),"")</li>
+<li>=IFERROR(INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0)),"")</li>
 </ul>
-<p lang="en">When not found, it's empty.</p>
-<h2 lang="en">Showing other text</h2>
-<p lang="en">Change the empty part to other text to show something like "Not found".</p>
+<p>找不到时，它是空的。</p>
+<h2>显示其他文字</h2>
+<p>把空白的部分改成其他文字，就能显示“Not found”之类的内容。</p>
 <ul>
-<li lang="en">Example: =IFERROR(INDEX(…),"Not found")</li>
+<li>示例：=IFERROR(INDEX(…),"Not found")</li>
 </ul>
-<h2 lang="en">Blanking only #N/A</h2>
-<p lang="en">To avoid hiding real mistakes, use IFNA.</p>
+<h2>只把#N/A变成空白</h2>
+<p>为避免隐藏真正的错误，请使用IFNA。</p>
 <ul>
-<li lang="en">Example: =IFNA(INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0)),"")</li>
+<li>示例：=IFNA(INDEX($C$2:$C$100,MATCH(F2,$B$2:$B$100,0)),"")</li>
 </ul>
-<p lang="en">IFNA targets only #N/A.</p>
-<h2>适合</h2>
+<p>IFNA只针对#N/A。</p>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Display of a search form when nothing is entered</li>
-<li lang="en">Blanking not-found rows for readability</li>
-<li lang="en">Keeping errors out of later calculations</li>
+<li>搜索表单在未输入时的显示</li>
+<li>把找不到的行变成空白以便阅读</li>
+<li>避免错误进入后续的计算</li>
 </ul>
-<h2 lang="en">Empty vs 0</h2>
-<p lang="en">An empty string can cause errors in later calculations. If used as a number, returning 0 is safer.</p>
+<h2>空白与0</h2>
+<p>空字符串可能导致后续计算出错。如果要当作数字使用，返回0更安全。</p>
 <ul>
-<li lang="en">Example: =IFERROR(INDEX(…),0)</li>
+<li>示例：=IFERROR(INDEX(…),0)</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">A matching list had #N/A on not-found rows. IFERROR blanked them for readability, though I checked separately for real mistakes.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>一份匹配清单里，找不到的行出现了#N/A。IFERROR把它们变成了空白，便于阅读，不过我另外检查了真正的错误。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Everything is empty</b>: a formula mistake is hidden by IFERROR.</li>
-<li lang="en"><b>Empty cells error in calculations</b>: an empty string isn't a number.</li>
+<li><b>全是空的</b>：公式的错误被IFERROR隐藏了。</li>
+<li><b>空单元格在计算中出错</b>：空字符串不是数字。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">I want to know why it isn't found</h3>
-<p lang="en">First check with the formula not wrapped in IFERROR. Full-width/half-width and spaces are common causes.</p>
-<h2>小结</h2>
-<p lang="en">To avoid #N/A, use IFERROR or IFNA.</p>
+<h2>常见问题</h2>
+<h3>我想知道为什么找不到</h3>
+<p>先用没有被IFERROR包起来的公式检查。常见的原因是全角/半角和空格。</p>
+<h2>总结</h2>
+<p>要避免#N/A，请使用IFERROR或IFNA。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/index-match-builder.html">使用“生成 INDEX 和 MATCH 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/zh/filter-formula-builder.html">生成 FILTER 公式</a>: 生成 FILTER 公式。</li><li><a href="/zh/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

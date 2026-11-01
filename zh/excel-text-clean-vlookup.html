@@ -4,12 +4,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>VLOOKUP 无法匹配时｜PDF Mikata</title>
+<title>VLOOKUP不匹配时｜PDF Mikata</title>
 
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/zh/excel-text-clean-vlookup.html" rel="canonical"/>
-<meta content="单元格无法匹配的原因。" name="description"/>
+<meta content="为什么值无法匹配。" name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -115,19 +115,19 @@ h1,h2{letter-spacing:.01em}
 <meta content="PDF Mikata" property="og:site_name"/>
 <meta content="zh_CN" property="og:locale"/>
 
-<meta content="VLOOKUP 无法匹配时｜PDF Mikata" property="og:title"/>
-<meta content="单元格无法匹配的原因。" property="og:description"/>
+<meta content="VLOOKUP不匹配时｜PDF Mikata" property="og:title"/>
+<meta content="为什么值无法匹配。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/excel-text-clean-vlookup.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="VLOOKUP 无法匹配时｜PDF Mikata" name="twitter:title"/>
-<meta content="单元格无法匹配的原因。" name="twitter:description"/>
+<meta content="VLOOKUP不匹配时｜PDF Mikata" name="twitter:title"/>
+<meta content="为什么值无法匹配。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "VLOOKUP 无法匹配时", "description": "单元格无法匹配的原因。", "url": "https://pdfmikata.com/zh/excel-text-clean-vlookup.html", "mainEntityOfPage": "https://pdfmikata.com/zh/excel-text-clean-vlookup.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "VLOOKUP不匹配时", "description": "为什么值无法匹配。", "url": "https://pdfmikata.com/zh/excel-text-clean-vlookup.html", "mainEntityOfPage": "https://pdfmikata.com/zh/excel-text-clean-vlookup.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -198,46 +198,65 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <main id="main" tabindex="-1">
 
 <div lang="zh-Hans">
-<h1>VLOOKUP 无法匹配时</h1>
+<h1>VLOOKUP不匹配时</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>粘贴文字</li><li>清理</li><li>再试一次</li></ul></div>
-<p lang="en">VLOOKUP returns "#N/A" even though the lookup value surely exists. Suspect extra spaces. Clean both the lookup value and the table side with <a href="/zh/excel-text-clean.html">Remove Extra Spaces and Invisible Characters from Excel Text</a>.</p>
-<h2 lang="en">Why they don't match</h2>
-<p lang="en">VLOOKUP compares text exactly. These differences make it judge them different:</p>
+<div class="points"><b>要点</b><ul><li>粘贴文本</li><li>清理</li><li>再试一次</li></ul></div><p>明明查找值确实存在，VLOOKUP却返回“#N/A”。请怀疑是多余的空格。用 <a href="/zh/excel-text-clean.html">去掉 Excel 文字中多余的空格和看不见的字符</a> 同时清理查找值和表格一侧。</p>
+<h2>为什么不匹配</h2>
+<p>VLOOKUP会精确比较文本。下面这些差异会让它判断为不同：</p>
 <ul>
-<li lang="en">A trailing half-width space</li>
-<li lang="en">Full-width spaces</li>
-<li lang="en">Non-breaking spaces (common in text copied from the web)</li>
-<li lang="en">Invisible control characters</li>
+<li>末尾的半角空格</li>
+<li>全角空格</li>
+<li>不间断空格（常见于从网页复制的文本）</li>
+<li>不可见的控制字符</li>
 </ul>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Copy the text of the lookup column (or the table's first column) and paste.</li>
-<li lang="en">Tick "Reduce extra spaces", "Convert full-width spaces to half-width" and "Remove invisible characters".</li>
-<li lang="en">Copy the "Cleaned text" and paste back into Excel.</li>
-<li lang="en">Redo the VLOOKUP.</li>
+<li>复制查找列（或表格第一列）的文本并粘贴。</li>
+<li>勾选“Reduce extra spaces”“Convert full-width spaces to half-width”和“Remove invisible characters”。</li>
+<li>复制“Cleaned text”并粘贴回Excel。</li>
+<li>重新做VLOOKUP。</li>
 </ol>
-<div class="note" lang="en">If the character count shrinks, there was an invisible difference.</div>
-<h2>如何确认</h2>
-<p lang="en">In Excel, =LEN(cell) gives the character count. A cell whose count doesn't match what you see is suspect.</p>
-<h2>适合</h2>
+<div class="note">如果字符数减少了，就说明存在不可见的差异。</div>
+<h2>如何检查</h2>
+<p>在Excel中，=LEN(单元格)会给出字符数。字符数与你看到的不符的单元格就有嫌疑。</p>
+<h2>适用于</h2>
 <ul>
-<li lang="en">VLOOKUP, XLOOKUP or MATCH not matching</li>
-<li lang="en">COUNTIF or SUMIF results off</li>
-<li lang="en">Remove Duplicates not working</li>
+<li>VLOOKUP、XLOOKUP或MATCH不匹配</li>
+<li>COUNTIF或SUMIF的结果有偏差</li>
+<li>“删除重复项”不起作用</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">A product code lookup gave "#N/A". After cleaning, the count dropped from 7 to 6, revealing an invisible trailing character, and the lookup worked.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>商品代码的查找得到“#N/A”。清理后，字符数从7降到6，发现了末尾一个不可见的字符，查找就成功了。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Cleaning only the table side</b>: the lookup side may have the same problem. Clean both.</li>
-<li lang="en"><b>Full-width vs half-width alphanumerics</b>: other than spaces, make those half-width with a different tool.</li>
+<li><b>只清理了表格一侧</b>：查找一侧可能有同样的问题。请两边都清理。</li>
+<li><b>全角与半角的字母数字</b>：除了空格之外，要把它们变成半角，请用其他工具。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Can a function fix it?</h3>
-<p lang="en">TRIM and CLEAN fix some, but non-breaking spaces remain. You'd need SUBSTITUTE.</p>
-<h2>小结</h2>
-<p lang="en">When things don't match, suspect invisible differences and re-search after cleaning.</p>
+<h2>常见问题</h2>
+<h3>能用函数解决吗？</h3>
+<p>TRIM和CLEAN能解决一部分，但不间断空格仍然存在。你还需要SUBSTITUTE。</p>
+<h2>总结</h2>
+<p>当东西不匹配时，请怀疑不可见的差异，清理后重新搜索。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/excel-text-clean.html">使用“去掉 Excel 文字中多余的空格和看不见的字符”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/zenkaku-hankaku.html">全角、半角、平假名、片假名互相转换</a>：全角与半角、平假名与片假名互相转换。</li><li><a href="/zh/line-break-remover.html">删除和整理文字中的换行</a>：整理从 PDF 等处复制的文字中的换行。</li><li><a href="/zh/line-sort-dedupe.html">删除重复行并排序</a>：删除重复的行并排序。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

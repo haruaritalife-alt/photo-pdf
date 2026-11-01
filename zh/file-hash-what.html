@@ -9,7 +9,7 @@
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/zh/file-hash-what.html" rel="canonical"/>
-<meta content="简单的说明。" name="description"/>
+<meta content="简短的说明。" name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -116,18 +116,18 @@ h1,h2{letter-spacing:.01em}
 <meta content="zh_CN" property="og:locale"/>
 
 <meta content="什么是哈希值？｜PDF Mikata" property="og:title"/>
-<meta content="简单的说明。" property="og:description"/>
+<meta content="简短的说明。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/file-hash-what.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="什么是哈希值？｜PDF Mikata" name="twitter:title"/>
-<meta content="简单的说明。" name="twitter:description"/>
+<meta content="简短的说明。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "什么是哈希值？", "description": "简单的说明。", "url": "https://pdfmikata.com/zh/file-hash-what.html", "mainEntityOfPage": "https://pdfmikata.com/zh/file-hash-what.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "什么是哈希值？", "description": "简短的说明。", "url": "https://pdfmikata.com/zh/file-hash-what.html", "mainEntityOfPage": "https://pdfmikata.com/zh/file-hash-what.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -200,52 +200,75 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>什么是哈希值？</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>了解</li><li>使用</li></ul></div>
-<p lang="en">A software download page lists a long string of letters and digits called "SHA-256". What is it for? That is a hash value. Here is a gentle explanation of the basics of the hash value that <a href="/zh/file-hash.html">Check a File's Hash (SHA-256)</a> can check.</p>
-<h2 lang="en">What a hash is</h2>
-<p lang="en">It turns a file's contents, by a fixed calculation, into a string of fixed length. It is compared to the file's "fingerprint".</p>
-<h2 lang="en">Characteristics of a hash</h2>
+<div class="points"><b>要点</b><ul><li>了解</li><li>使用</li><li>对比</li></ul></div><p>软件下载页面上列出了一长串称为“SHA-256”的字母和数字。它有什么用？那就是哈希值。下面通俗地介绍 <a href="/zh/file-hash.html">查看文件的哈希值（SHA-256）</a> 可以检查的哈希值的基础知识。</p>
+<h2>什么是哈希值</h2>
+<p>它通过固定的计算，把文件的内容变成固定长度的一串字符。可以比作文件的“指纹”。</p>
+<h2>哈希值的特点</h2>
 <ul>
-<li lang="en"><b>Same contents, same value</b>: the result is the same however many times it is calculated.</li>
-<li lang="en"><b>One character different, a totally different value</b>: even a slight difference changes the value greatly.</li>
-<li lang="en"><b>Cannot be reversed</b>: the original file cannot be restored from the value.</li>
-<li lang="en"><b>Fixed length</b>: the same length (64 characters for SHA-256) whether the file is large or small.</li>
+<li><b>内容相同，值相同</b>：无论计算多少次，结果都一样。</li>
+<li><b>差一个字符，值完全不同</b>：即使是细微的差别，也会让值大幅改变。</li>
+<li><b>无法逆推</b>：无法从该值还原出原文件。</li>
+<li><b>长度固定</b>：无论文件大小，长度都相同（SHA-256为64个字符）。</li>
 </ul>
-<h2 lang="en">What it is used for</h2>
+<h2>它的用途</h2>
 <ul>
-<li lang="en"><b>Checking downloads</b>: whether it downloaded correctly.</li>
-<li lang="en"><b>Detecting tampering</b>: whether it was rewritten on the way.</li>
-<li lang="en"><b>Judging whether files are the same</b>: whether two files have the same contents.</li>
-<li lang="en"><b>Finding duplicate files</b>: files with the same value have the same contents.</li>
+<li><b>检查下载</b>：是否下载正确。</li>
+<li><b>检测篡改</b>：是否在途中被改写。</li>
+<li><b>判断文件是否相同</b>：两个文件的内容是否相同。</li>
+<li><b>查找重复文件</b>：值相同的文件内容相同。</li>
 </ul>
-<h2 lang="en">Steps (checking)</h2>
+<h2>步骤（检查）</h2>
 <ol>
-<li lang="en">Choose a file with "Choose one file".</li>
-<li lang="en">After a short wait, the hash (SHA-256) is displayed.</li>
-<li lang="en">Copy it with "Copy SHA-256".</li>
+<li>用“选择一个文件”选择文件。</li>
+<li>稍等片刻，会显示哈希值（SHA-256）。</li>
+<li>用“复制SHA-256”复制它。</li>
 </ol>
-<div class="note" lang="en">Even if you change the file name, the hash does not change as long as the contents are the same.</div>
-<h2 lang="en">What a hash cannot tell you</h2>
+<div class="note">即使你更改文件名，只要内容相同，哈希值就不会改变。</div>
+<h2>哈希值无法告诉你的事</h2>
 <ul>
-<li lang="en">The file's safety (whether it has a virus)</li>
-<li lang="en">The file's author or origin</li>
-<li lang="en">Whether the file's contents are correct</li>
+<li>文件的安全性（是否带有病毒）</li>
+<li>文件的作者或来源</li>
+<li>文件的内容是否正确</li>
 </ul>
-<p lang="en">A hash is for checking "whether it is the same".</p>
-<h2 lang="en">Relation to passwords</h2>
-<p lang="en">Services sometimes store passwords not as they are but as hashes. The same mechanism is used.</p>
+<p>哈希值是用来检查“是否相同”的。</p>
+<h2>与密码的关系</h2>
+<p>服务有时不是原样保存密码，而是保存它的哈希值。用的是同一种机制。</p>
 <h2>示例</h2>
-<p lang="en">Checking the hashes of two backup files gave the same value. Although the file names differed, the contents were the same.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>检查两个备份文件的哈希值，得到了相同的值。虽然文件名不同，内容却是一样的。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Confusing it with "encryption"</b>: a hash cannot be reversed. Encryption can be undone with a key.</li>
-<li lang="en"><b>Comparing only part of the value</b>: it is not certain unless you compare all of it.</li>
+<li><b>与“加密”混淆</b>：哈希值无法逆推。加密可以用密钥还原。</li>
+<li><b>只比较数值的一部分</b>：除非比较全部，否则不能确定。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">If the hashes are the same, is it certainly the same file?</h3>
-<p lang="en">In practice, if the SHA-256 is the same, it is fine to consider it the same file.</p>
-<h2>小结</h2>
-<p lang="en">A hash is a file's fingerprint. It is used to check whether things are the same.</p>
+<h2>常见问题</h2>
+<h3>如果哈希值相同，一定是同一个文件吗？</h3>
+<p>实际上，如果SHA-256相同，就可以视为同一个文件。</p>
+<h2>总结</h2>
+<p>哈希值是文件的指纹。它用来检查是否相同。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/file-hash.html">使用“查看文件的哈希值（SHA-256）”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/zip-extract.html">打开 ZIP 文件（解压）</a>：查看 ZIP 里有什么，只取出需要的文件。</li><li><a href="/zh/zip-maker.html">把文件打包成 ZIP</a>：把多个文件打包成一个 ZIP。</li><li><a href="/zh/password-generator.html">生成高强度随机密码</a>：立即生成高强度随机密码。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

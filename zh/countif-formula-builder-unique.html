@@ -4,12 +4,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>统计不重复值的个数｜PDF Mikata</title>
+<title>去掉重复后计数｜PDF Mikata</title>
 
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/zh/countif-formula-builder-unique.html" rel="canonical"/>
-<meta content="关于不重复值。" name="description"/>
+<meta content="关于不重复的值。" name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -115,19 +115,19 @@ h1,h2{letter-spacing:.01em}
 <meta content="PDF Mikata" property="og:site_name"/>
 <meta content="zh_CN" property="og:locale"/>
 
-<meta content="统计不重复值的个数｜PDF Mikata" property="og:title"/>
-<meta content="关于不重复值。" property="og:description"/>
+<meta content="去掉重复后计数｜PDF Mikata" property="og:title"/>
+<meta content="关于不重复的值。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/countif-formula-builder-unique.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="统计不重复值的个数｜PDF Mikata" name="twitter:title"/>
-<meta content="关于不重复值。" name="twitter:description"/>
+<meta content="去掉重复后计数｜PDF Mikata" name="twitter:title"/>
+<meta content="关于不重复的值。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "统计不重复值的个数", "description": "关于不重复值。", "url": "https://pdfmikata.com/zh/countif-formula-builder-unique.html", "mainEntityOfPage": "https://pdfmikata.com/zh/countif-formula-builder-unique.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "去掉重复后计数", "description": "关于不重复的值。", "url": "https://pdfmikata.com/zh/countif-formula-builder-unique.html", "mainEntityOfPage": "https://pdfmikata.com/zh/countif-formula-builder-unique.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -198,35 +198,52 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <main id="main" tabindex="-1">
 
 <div lang="zh-Hans">
-<h1>统计不重复值的个数</h1>
+<h1>去掉重复后计数</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>选择 UNIQUE</li><li>输入范围</li><li>复制</li></ul></div>
-<p lang="en">In a column where the same value appears again and again, you sometimes want to know how many different values there are, such as how many different customers appear in a column of names. With <a href="/zh/countif-formula-builder.html">Build a COUNTIF Formula</a> you can build formulas that count distinct values.</p>
-<h2 lang="en">The basic formulas</h2>
-<p lang="en">The long-standing classic is <code>=SUMPRODUCT(1/COUNTIF(A2:A100,A2:A100))</code>. Each cell is divided by how many times its value appears, and adding everything up gives the number of distinct values.</p>
-<p lang="en">In Excel 365 and Google Sheets, <code>=COUNTA(UNIQUE(A2:A100))</code> is easier to read and is the one we recommend.</p>
+<div class="points"><b>要点</b><ul><li>选择UNIQUE</li><li>输入区域</li><li>复制</li></ul></div><p>在同一个值反复出现的列中，你有时想知道有多少个不同的值，比如在一列姓名中出现了多少个不同的客户。用 <a href="/zh/countif-formula-builder.html">生成 COUNTIF 公式</a>，你可以生成统计不重复值的公式。</p>
+<h2>基本公式</h2>
+<p>长期以来的经典写法是 <code>=SUMPRODUCT(1/COUNTIF(A2:A100,A2:A100))</code>。每个单元格都除以它的值出现的次数，全部加起来就是不重复值的个数。</p>
+<p>在Excel 365和Google表格中，<code>=COUNTA(UNIQUE(A2:A100))</code> 更易读，也是我们推荐的写法。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Choose UNIQUE.</li>
-<li lang="en">Enter the range (for example A2:A100).</li>
-<li lang="en">Copy the formula and paste it.</li>
+<li>选择UNIQUE。</li>
+<li>输入区域（例如 A2:A100）。</li>
+<li>复制公式并粘贴。</li>
 </ol>
-<div class="note" lang="en">If the range contains empty cells, the classic formula returns #DIV/0!. Use a version that skips blanks.</div>
+<div class="note">如果区域里有空单元格，经典公式会返回#DIV/0!。请使用跳过空白的版本。</div>
 <h2>示例</h2>
-<p lang="en">If a purchase history has 500 rows of customer names, <code>=COUNTA(UNIQUE(A2:A501))</code> tells you how many different people bought something, not how many purchases were made.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>如果购买记录里有500行客户姓名，<code>=COUNTA(UNIQUE(A2:A501))</code> 会告诉你有多少个不同的人买过东西，而不是发生了多少次购买。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Empty cells mixed in</b>: UNIQUE treats an empty cell as one value. To exclude them, combine it with FILTER.</li>
-<li lang="en"><b>Full-width, half-width and spaces</b>: values that look the same can still count as different. Tidy them up first.</li>
-<li lang="en"><b>UNIQUE is missing in older Excel</b>: use the SUMPRODUCT formula.</li>
+<li><b>混入了空单元格</b>：UNIQUE把空单元格当作一个值。要排除它们，请与FILTER组合。</li>
+<li><b>全角、半角和空格</b>：看起来相同的值，仍可能被算作不同。请先整理它们。</li>
+<li><b>较旧的Excel没有UNIQUE</b>：请使用SUMPRODUCT公式。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">How do I find only the values that repeat?</h3>
-<p lang="en">Use COUNTIF to get the count for each cell and look for 2 or more.</p>
-<h3 lang="en">Does it tell upper and lower case apart?</h3>
-<p lang="en">No. They are counted as the same value.</p>
-<h2>小结</h2>
-<p lang="en">To count distinct values, use UNIQUE in newer apps and the SUMPRODUCT formula in older ones.</p>
+<h2>常见问题</h2>
+<h3>如何只找出重复的值？</h3>
+<p>用COUNTIF得到每个单元格的次数，再找出2以上的。</p>
+<h3>它区分大小写吗？</h3>
+<p>不区分。它们被算作相同的值。</p>
+<h2>总结</h2>
+<p>要统计不重复的值，较新的应用用UNIQUE，较旧的应用用SUMPRODUCT公式。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/countif-formula-builder.html">使用“生成 COUNTIF 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li><li><a href="/zh/unique-formula-builder.html">生成 UNIQUE 公式</a>: 生成处理重复项的公式。</li><li><a href="/zh/cond-format-formula-builder.html">生成条件格式公式</a>: 生成条件格式公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

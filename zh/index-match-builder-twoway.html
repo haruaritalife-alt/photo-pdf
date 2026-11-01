@@ -200,49 +200,70 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>双向查找</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>输入标题范围</li><li>输入标题值</li><li>复制</li></ul></div>
-<p lang="en">You want the value where a row heading and a column heading intersect, such as "Product A in March" from a product-by-month sales table. With <a href="/zh/index-match-builder.html">Build an INDEX and MATCH Formula</a>, two MATCHes pull from both rows and columns.</p>
+<div class="points"><b>要点</b><ul><li>输入标题区域</li><li>输入标题值</li><li>复制</li></ul></div><p>你想要行标题和列标题交叉处的值，比如从“商品×月份”的销售表中取出“3月的商品A”。用 <a href="/zh/index-match-builder.html">生成 INDEX 和 MATCH 公式</a>，两个MATCH可以同时从行和列中取值。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">In "Range to return", enter the table's numeric part.</li>
-<li lang="en">In "Lookup column range", enter the row headings (the product-name column).</li>
-<li lang="en">In "Cell with the value to find", enter the cell with the product to find.</li>
-<li lang="en">In "Header range", enter the column headings (the month row).</li>
-<li lang="en">In "Cell with the header value", enter the cell with the month to find.</li>
-<li lang="en">Copy the formula and paste.</li>
+<li>在“Range to return”中，输入表格的数值部分。</li>
+<li>在“Lookup column range”中，输入行标题（商品名所在的列）。</li>
+<li>在“Cell with the value to find”中，输入含有要查找的商品的单元格。</li>
+<li>在“Header range”中，输入列标题（月份所在的行）。</li>
+<li>在“Cell with the header value”中，输入含有要查找的月份的单元格。</li>
+<li>复制公式并粘贴。</li>
 </ol>
-<div class="note" lang="en">Make the return range the numeric part only. Don't include heading rows and columns.</div>
+<div class="note">请让返回区域只包含数值部分。不要包含标题行和标题列。</div>
 <h2>示例</h2>
-<p lang="en">With sales in B2:D10, product names in A2:A10, months in B1:D1, and the product in F2 and month in G2:</p>
+<p>销售额在B2:D10，商品名在A2:A10，月份在B1:D1，商品在F2，月份在G2：</p>
 <ul>
-<li lang="en">=INDEX($B$2:$D$10,MATCH(F2,$A$2:$A$10,0),MATCH(G2,$B$1:$D$1,0))</li>
+<li>=INDEX($B$2:$D$10,MATCH(F2,$A$2:$A$10,0),MATCH(G2,$B$1:$D$1,0))</li>
 </ul>
 <h2>工作原理</h2>
 <ul>
-<li lang="en">First MATCH: which row the product is in</li>
-<li lang="en">Second MATCH: which column the month is in</li>
-<li lang="en">INDEX: returns the cell at that row and column</li>
+<li>第一个MATCH：商品在第几行</li>
+<li>第二个MATCH：月份在第几列</li>
+<li>INDEX：返回该行该列上的单元格</li>
 </ul>
-<h2>适合</h2>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Product-by-month sales tables</li>
-<li lang="en">Region-by-year statistics tables</li>
-<li lang="en">Price tables (size × weight)</li>
+<li>“商品×月份”的销售表</li>
+<li>“地区×年份”的统计表</li>
+<li>价格表（尺寸×重量）</li>
 </ul>
-<h2 lang="en">Combining with dropdowns</h2>
-<p lang="en">Make F2 and G2 dropdowns and you get a lookup sheet that shows the intersecting value just by choosing.</p>
+<h2>与下拉菜单组合</h2>
+<p>把F2和G2做成下拉菜单，你就得到一张只需选择就能显示交叉值的查询表。</p>
 <h2>示例</h2>
-<p lang="en">Wanted a table that gives sales when you pick a product and month. Two-way INDEX/MATCH built it in one formula.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>想要一张选好商品和月份就能得到销售额的表。双向INDEX/MATCH用一个公式就做出来了。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Including headings in the return range</b>: the position shifts by one.</li>
-<li lang="en"><b>Range sizes don't match</b>: align the number of row headings with the return range's rows.</li>
+<li><b>返回区域里包含了标题</b>：位置会偏移一位。</li>
+<li><b>区域大小不一致</b>：请让行标题的个数与返回区域的行数一致。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">What if I leave the header range empty?</h3>
-<p lang="en">You get the ordinary one-direction INDEX/MATCH formula.</p>
-<h2>小结</h2>
-<p lang="en">To pull from both directions, use two MATCHes.</p>
+<h2>常见问题</h2>
+<h3>把标题区域留空会怎样？</h3>
+<p>你会得到普通的单方向INDEX/MATCH公式。</p>
+<h2>总结</h2>
+<p>要从两个方向取值，就用两个MATCH。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/index-match-builder.html">使用“生成 INDEX 和 MATCH 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/zh/filter-formula-builder.html">生成 FILTER 公式</a>: 生成 FILTER 公式。</li><li><a href="/zh/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

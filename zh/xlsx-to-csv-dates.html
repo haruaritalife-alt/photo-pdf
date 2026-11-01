@@ -4,12 +4,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>日期显示成数字时｜PDF Mikata</title>
+<title>当日期显示为数字时｜PDF Mikata</title>
 
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/zh/xlsx-to-csv-dates.html" rel="canonical"/>
-<meta content="日期是如何处理的。" name="description"/>
+<meta content="日期如何处理。" name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -115,19 +115,19 @@ h1,h2{letter-spacing:.01em}
 <meta content="PDF Mikata" property="og:site_name"/>
 <meta content="zh_CN" property="og:locale"/>
 
-<meta content="日期显示成数字时｜PDF Mikata" property="og:title"/>
-<meta content="日期是如何处理的。" property="og:description"/>
+<meta content="当日期显示为数字时｜PDF Mikata" property="og:title"/>
+<meta content="日期如何处理。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/xlsx-to-csv-dates.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="日期显示成数字时｜PDF Mikata" name="twitter:title"/>
-<meta content="日期是如何处理的。" name="twitter:description"/>
+<meta content="当日期显示为数字时｜PDF Mikata" name="twitter:title"/>
+<meta content="日期如何处理。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "日期显示成数字时", "description": "日期是如何处理的。", "url": "https://pdfmikata.com/zh/xlsx-to-csv-dates.html", "mainEntityOfPage": "https://pdfmikata.com/zh/xlsx-to-csv-dates.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "当日期显示为数字时", "description": "日期如何处理。", "url": "https://pdfmikata.com/zh/xlsx-to-csv-dates.html", "mainEntityOfPage": "https://pdfmikata.com/zh/xlsx-to-csv-dates.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -198,52 +198,78 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <main id="main" tabindex="-1">
 
 <div lang="zh-Hans">
-<h1>日期显示成数字时</h1>
+<h1>当日期显示为数字时</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>选择</li><li>确认</li></ul></div>
-<p lang="en">Converting Excel to CSV turned dates into numbers like "45,000". Here are the cause and remedy. How <a href="/zh/xlsx-to-csv.html">Convert Excel to CSV or JSON</a> handles dates is explained.</p>
+<div class="points"><b>要点</b><ul><li>选择</li><li>确认</li><li>修正</li></ul></div><p>把Excel转换成CSV后，日期变成了“45,000”这样的数字。下面是原因和对策。同时说明 <a href="/zh/xlsx-to-csv.html">把 Excel 转换成 CSV 或 JSON</a> 如何处理日期。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">With "Choose one .xlsx Excel file", choose the file.</li>
-<li lang="en">Choose the "Sheet" and "Format".</li>
-<li lang="en">Check the date column in "After conversion".</li>
+<li>用“选择一个.xlsx Excel文件”选择文件。</li>
+<li>选择“工作表”和“格式”。</li>
+<li>在“转换后”中查看日期列。</li>
 </ol>
-<div class="note" lang="en">Date cells are converted and output in a form like "2026-10-21". Cells whose display format isn't a date come out as numbers.</div>
-<h2 lang="en">Why they become numbers</h2>
-<p lang="en">Excel stores dates as numbers called "serial values". For example, 21 October 2026 is a certain fixed number. It is displayed as a date only when the cell's "display format" is date.</p>
-<h2 lang="en">Cells output as dates</h2>
-<p lang="en">Cells whose display format is "Date" in Excel come out in the form "2026-10-21".</p>
-<h2 lang="en">Cells that come out as numbers</h2>
+<div class="note">日期单元格会被转换，并以“2026-10-21”这样的形式输出。显示格式不是日期的单元格会以数字输出。</div>
+<h2>为什么会变成数字</h2>
+<p>Excel把日期保存为称为“序列值”的数字。例如，2026年10月21日是某个固定的数字。只有当单元格的“显示格式”是日期时，它才显示为日期。</p>
+<h2>以日期输出的单元格</h2>
+<p>在Excel中显示格式为“日期”的单元格，会以“2026-10-21”的形式输出。</p>
+<h2>以数字输出的单元格</h2>
 <ul>
-<li lang="en">Date numbers entered in a cell whose display format remains "General" or "Number"</li>
-<li lang="en">Dates typed as text (typing "2026/10/21" as a string) come out as text as they are</li>
+<li>输入在显示格式仍为“常规”或“数值”的单元格中的日期数字</li>
+<li>作为文本输入的日期（把“2026/10/21”当作字符串输入）会原样作为文本输出</li>
 </ul>
 <h2>如何修正</h2>
 <ol>
-<li lang="en">In Excel, select the date column.</li>
-<li lang="en">In "Format Cells", set the display format to "Date".</li>
-<li lang="en">Save again.</li>
-<li lang="en">Convert again with this tool.</li>
+<li>在Excel中，选中日期列。</li>
+<li>在“设置单元格格式”中，把显示格式设为“日期”。</li>
+<li>再次保存。</li>
+<li>用本工具重新转换。</li>
 </ol>
-<h2 lang="en">Date format</h2>
-<p lang="en">Converted dates are in the form "year-month-day". If you want another format, change the format in Excel or similar after conversion.</p>
-<h2 lang="en">Cells with time</h2>
-<p lang="en">Cells containing both date and time may be output including the time part. Check as needed.</p>
-<h2 lang="en">A useful approach</h2>
-<p lang="en">When dates come out as numbers, fixing the display format in Excel and converting again is more reliable than correcting afterwards.</p>
+<h2>日期格式</h2>
+<p>转换后的日期是“年-月-日”的形式。如果想要其他格式，请在转换后用Excel等更改格式。</p>
+<h2>带时间的单元格</h2>
+<p>同时含有日期和时间的单元格，输出时可能包含时间部分。请按需要检查。</p>
+<h2>一个有用的办法</h2>
+<p>当日期以数字输出时，在Excel中修正显示格式再重新转换，比事后纠正更可靠。</p>
 <h2>示例</h2>
-<p lang="en">The order date column was output as numbers like "46,317". After fixing the column's display format to "Date" in Excel, saving again and converting again, it came out as "2026-10-21".</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>订单日期列被输出为“46,317”这样的数字。在Excel中把该列的显示格式改为“日期”，重新保存并再次转换后，输出为“2026-10-21”。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Only some cells are numbers</b>: only those rows' cells have a different display format.</li>
-<li lang="en"><b>Japanese era display</b>: the output is in Western calendar years.</li>
-<li lang="en"><b>Empty cells</b>: output as empty.</li>
+<li><b>只有部分单元格是数字</b>：只有那几行的单元格显示格式不同。</li>
+<li><b>日本年号显示</b>：输出的是公历年份。</li>
+<li><b>空单元格</b>：输出为空。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">How do I turn numbers back into dates?</h3>
-<p lang="en">In Excel, change the number cells' display format to date.</p>
-<h2>小结</h2>
-<p lang="en">Dates become numbers because the display format isn't date. Fix it in Excel and convert again.</p>
+<h2>常见问题</h2>
+<h3>如何把数字变回日期？</h3>
+<p>在Excel中，把数字单元格的显示格式改为日期。</p>
+<h2>总结</h2>
+<p>日期变成数字，是因为显示格式不是日期。请在Excel中修正并重新转换。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/xlsx-to-csv.html">使用“把 Excel 转换成 CSV 或 JSON”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/csv-to-xlsx.html">把 CSV 转换成 Excel（.xlsx）</a>：把 CSV 转换成 Excel（.xlsx）文件。</li><li><a href="/zh/csv-json.html">CSV 与 JSON 互相转换</a>：立即在 CSV 和 JSON 之间互相转换。</li><li><a href="/zh/docx-to-text.html">提取 Word 文件中的文字</a>：提取 Word 文件中的纯文字。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>用于多个条件的 SUMIFS｜PDF Mikata</title>
+<title>用SUMIFS处理多个条件｜PDF Mikata</title>
 
 
 <script src="/site.js"></script>
@@ -115,19 +115,19 @@ h1,h2{letter-spacing:.01em}
 <meta content="PDF Mikata" property="og:site_name"/>
 <meta content="zh_CN" property="og:locale"/>
 
-<meta content="用于多个条件的 SUMIFS｜PDF Mikata" property="og:title"/>
+<meta content="用SUMIFS处理多个条件｜PDF Mikata" property="og:title"/>
 <meta content="关于多个条件。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/sumif-formula-builder-sumifs.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="用于多个条件的 SUMIFS｜PDF Mikata" name="twitter:title"/>
+<meta content="用SUMIFS处理多个条件｜PDF Mikata" name="twitter:title"/>
 <meta content="关于多个条件。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "用于多个条件的 SUMIFS", "description": "关于多个条件。", "url": "https://pdfmikata.com/zh/sumif-formula-builder-sumifs.html", "mainEntityOfPage": "https://pdfmikata.com/zh/sumif-formula-builder-sumifs.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "用SUMIFS处理多个条件", "description": "关于多个条件。", "url": "https://pdfmikata.com/zh/sumif-formula-builder-sumifs.html", "mainEntityOfPage": "https://pdfmikata.com/zh/sumif-formula-builder-sumifs.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -198,56 +198,81 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <main id="main" tabindex="-1">
 
 <div lang="zh-Hans">
-<h1>用于多个条件的 SUMIFS</h1>
+<h1>用SUMIFS处理多个条件</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>生成公式</li><li>查看第二个</li><li>添加条件</li></ul></div>
-<p lang="en">When there are two or more conditions, like "Tokyo" and "April", use SUMIFS. <a href="/zh/sumif-formula-builder.html">Build a SUMIF or COUNTIF Formula</a> lists the SUMIFS formula in the second field.</p>
-<h2 lang="en">SUMIF vs SUMIFS</h2>
+<div class="points"><b>要点</b><ul><li>生成公式</li><li>查看第二个</li><li>追加条件</li></ul></div><p>有两个或更多条件时，如“Tokyo”和“April”，请使用SUMIFS。<a href="/zh/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a> 会把SUMIFS公式列在第二栏。</p>
+<h2>SUMIF与SUMIFS</h2>
 <ul>
-<li lang="en"><b>SUMIF</b>: one condition. Argument order is "criteria range, criterion, sum range"</li>
-<li lang="en"><b>SUMIFS</b>: multiple conditions. Argument order is "sum range, criteria range 1, criterion 1, criteria range 2, criterion 2…"</li>
+<li><b>SUMIF</b>：一个条件。参数顺序是“判断区域、条件、求和区域”</li>
+<li><b>SUMIFS</b>：多个条件。参数顺序是“求和区域、判断区域1、条件1、判断区域2、条件2…”</li>
 </ul>
-<p lang="en">Note that <b>the sum range comes first</b>.</p>
+<p>请注意，<b>求和区域排在最前面</b>。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Enter the range and condition.</li>
-<li lang="en">Check the "SUMIFS-type formula usable for multiple conditions".</li>
-<li lang="en">Copy with "Copy the second".</li>
-<li lang="en">To add conditions, append "criteria range, criterion" to the end.</li>
+<li>输入区域和条件。</li>
+<li>查看“可用于多个条件的SUMIFS-type formula”。</li>
+<li>用“Copy the second”复制。</li>
+<li>要追加条件，就把“判断区域, 条件”追加到末尾。</li>
 </ol>
-<div class="note" lang="en">SUMIFS targets only cells meeting all conditions (AND).</div>
+<div class="note">SUMIFS只针对满足所有条件（AND）的单元格。</div>
 <h2>示例</h2>
-<p lang="en">Column A is region, B is month, C is sales. The formula to total "Tokyo" sales:</p>
+<p>A列是地区，B列是月份，C列是销售额。合计“Tokyo”销售额的公式：</p>
 <ul>
-<li lang="en">=SUMIFS(C2:C100,A2:A100,"Tokyo")</li>
+<li>=SUMIFS(C2:C100,A2:A100,"Tokyo")</li>
 </ul>
-<p lang="en">Adding an "April" condition:</p>
+<p>追加“April”条件：</p>
 <ul>
-<li lang="en">=SUMIFS(C2:C100,A2:A100,"Tokyo",B2:B100,"April")</li>
+<li>=SUMIFS(C2:C100,A2:A100,"Tokyo",B2:B100,"April")</li>
 </ul>
-<h2 lang="en">"Or" conditions</h2>
-<p lang="en">SUMIFS targets items meeting all conditions (AND). For "either" conditions (OR) like "Tokyo or Osaka", add them:</p>
+<h2>“或”条件</h2>
+<p>SUMIFS针对满足所有条件（AND）的项目。对于“Tokyo或Osaka”这样满足任一条件（OR）的情况，请把它们相加：</p>
 <ul>
-<li lang="en">=SUMIFS(C2:C100,A2:A100,"Tokyo")+SUMIFS(C2:C100,A2:A100,"Osaka")</li>
+<li>=SUMIFS(C2:C100,A2:A100,"Tokyo")+SUMIFS(C2:C100,A2:A100,"Osaka")</li>
 </ul>
-<h2>适合</h2>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Totalling sales meeting both region and month</li>
-<li lang="en">Totalling over a specified period (date from and to)</li>
-<li lang="en">Counting people by several conditions (COUNTIFS)</li>
+<li>合计同时满足地区和月份的销售额</li>
+<li>合计指定期间内的数据（起始日期和结束日期）</li>
+<li>按多个条件统计人数（COUNTIFS）</li>
 </ul>
-<h2 lang="en">Period example</h2>
-<p lang="en">=SUMIFS(C2:C100,A2:A100,"&gt;="&amp;DATE(2026,4,1),A2:A100,"&lt;="&amp;DATE(2026,4,30))</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<h2>期间示例</h2>
+<p>=SUMIFS(C2:C100,A2:A100,"&gt;="&amp;DATE(2026,4,1),A2:A100,"&lt;="&amp;DATE(2026,4,30))</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Argument order</b>: the sum range's position differs between SUMIF and SUMIFS.</li>
-<li lang="en"><b>Range sizes</b>: make all ranges the same number of rows.</li>
+<li><b>参数顺序</b>：求和区域的位置在SUMIF和SUMIFS中不同。</li>
+<li><b>区域大小</b>：请让所有区域的行数相同。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">How many conditions can be written?</h3>
-<p lang="en">Up to 127.</p>
-<h2>小结</h2>
-<p lang="en">SUMIFS for multiple conditions. Don't forget the sum range comes first.</p>
+<h2>常见问题</h2>
+<h3>最多能写多少个条件？</h3>
+<p>最多127个。</p>
+<h2>总结</h2>
+<p>多个条件用SUMIFS。别忘了求和区域排在最前面。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/sumif-formula-builder.html">使用“生成 SUMIF 或 COUNTIF 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/zh/textjoin-formula-builder.html">生成 TEXTJOIN 公式</a>: 生成 TEXTJOIN 公式。</li><li><a href="/zh/column-stats.html">一列数字的合计、平均值和中位数</a>: 算出所粘贴数字的合计和平均值。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

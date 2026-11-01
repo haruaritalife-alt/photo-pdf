@@ -4,12 +4,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>混入了非数字时｜PDF Mikata</title>
+<title>混入非数字时｜PDF Mikata</title>
 
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/zh/column-stats-skip.html" rel="canonical"/>
-<meta content="关于被跳过的文字。" name="description"/>
+<meta content="关于被跳过的文本。" name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -115,19 +115,19 @@ h1,h2{letter-spacing:.01em}
 <meta content="PDF Mikata" property="og:site_name"/>
 <meta content="zh_CN" property="og:locale"/>
 
-<meta content="混入了非数字时｜PDF Mikata" property="og:title"/>
-<meta content="关于被跳过的文字。" property="og:description"/>
+<meta content="混入非数字时｜PDF Mikata" property="og:title"/>
+<meta content="关于被跳过的文本。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/column-stats-skip.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="混入了非数字时｜PDF Mikata" name="twitter:title"/>
-<meta content="关于被跳过的文字。" name="twitter:description"/>
+<meta content="混入非数字时｜PDF Mikata" name="twitter:title"/>
+<meta content="关于被跳过的文本。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "混入了非数字时", "description": "关于被跳过的文字。", "url": "https://pdfmikata.com/zh/column-stats-skip.html", "mainEntityOfPage": "https://pdfmikata.com/zh/column-stats-skip.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "混入非数字时", "description": "关于被跳过的文本。", "url": "https://pdfmikata.com/zh/column-stats-skip.html", "mainEntityOfPage": "https://pdfmikata.com/zh/column-stats-skip.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -198,60 +198,84 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <main id="main" tabindex="-1">
 
 <div lang="zh-Hans">
-<h1>混入了非数字时</h1>
+<h1>混入非数字时</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>粘贴数字</li><li>查看结果</li><li>确认字数</li></ul></div>
-<p lang="en">What happens if non-numeric text is mixed in the paste? <a href="/zh/column-stats.html">Sum, Average and Median of a Column of Numbers</a> reads only numbers and skips the rest.</p>
-<h2 lang="en">How skipping works</h2>
+<div class="points"><b>要点</b><ul><li>粘贴数字</li><li>查看结果</li><li>检查个数</li></ul></div><p>如果粘贴的内容里混入了非数字的文本，会怎么样？<a href="/zh/column-stats.html">一列数字的合计、平均值和中位数</a> 只读取数字，跳过其余部分。</p>
+<h2>跳过的原理</h2>
 <ul>
-<li lang="en">Parts that read as numbers: used in the summary</li>
-<li lang="en">Parts that can't be read (text, etc.): skipped</li>
-<li lang="en">The skipped count is shown, like "Non-numbers were skipped. (3)"</li>
+<li>能读成数字的部分：用于汇总</li>
+<li>无法读取的部分（文本等）：被跳过</li>
+<li>被跳过的数量会显示出来，如“Non-numbers were skipped. (3)”</li>
 </ul>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Paste a number list with text mixed in.</li>
-<li lang="en">Check the result and the skip notice.</li>
-<li lang="en">Check the skipped count matches what you expect.</li>
+<li>粘贴一个混有文本的数字列表。</li>
+<li>查看结果和跳过的提示。</li>
+<li>检查被跳过的数量与你预期的一致。</li>
 </ol>
-<div class="note" lang="en">If many were skipped, review the form of the paste source.</div>
+<div class="note">如果跳过了很多，请重新检查粘贴来源的形式。</div>
 <h2>示例</h2>
-<p lang="en">With space-separated "Sales 100", "200", "Total", "300", the words "Sales" and "Total" are text and skipped, and 100, 200, 300 are summarised. Two skipped are shown.</p>
-<h2 lang="en">Forms that can be read</h2>
+<p>对于以空格分隔的“Sales 100”“200”“Total”“300”，“Sales”和“Total”是文本，被跳过，100、200、300被汇总。会显示跳过了两个。</p>
+<h2>可以读取的形式</h2>
 <ul>
-<li lang="en">Integers, decimals, negatives (-5)</li>
-<li lang="en">A leading "+" or "-"</li>
-<li lang="en">A leading "$" or "¥" (removed)</li>
-<li lang="en">A trailing "%" (removed)</li>
-<li lang="en">Comma groupings (1,200)</li>
-<li lang="en">Full-width digits (１２３)</li>
+<li>整数、小数、负数（-5）</li>
+<li>开头的“+”或“-”</li>
+<li>开头的“$”或“¥”（会被去掉）</li>
+<li>末尾的“%”（会被去掉）</li>
+<li>逗号分组（1,200）</li>
+<li>全角数字（１２３）</li>
 </ul>
-<h2 lang="en">Forms that are skipped</h2>
+<h2>会被跳过的形式</h2>
 <ul>
-<li lang="en">Numbers followed by text, like "100yen"</li>
-<li lang="en">Dates (2026/10/25)</li>
-<li lang="en">Text-qualified forms like "about 100"</li>
-<li lang="en">Blanks</li>
+<li>后面带文字的数字，如“100yen”</li>
+<li>日期（2026/10/25）</li>
+<li>带文字修饰的形式，如“about 100”</li>
+<li>空白</li>
 </ul>
-<h2>适合</h2>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Pasting tables with headings or units mixed in as they are</li>
-<li lang="en">Summarising without deleting every non-number</li>
+<li>原样粘贴混有标题或单位的表格</li>
+<li>无需逐个删除非数字就能汇总</li>
 </ul>
 <h2>注意</h2>
-<p lang="en">Check the skipped count so you don't skip something that was actually an important number. For numbers with units like "yen" or "pcs", removing the unit before pasting is the surest.</p>
+<p>请检查被跳过的数量，以免跳过了实际上很重要的数字。对于带有“yen”或“pcs”等单位的数字，粘贴前先去掉单位最稳妥。</p>
 <h2>示例</h2>
-<p lang="en">Pasted "1200yen" and "800yen" and no numbers were found. Removing the units and pasting again summarised correctly.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>粘贴了“1200yen”和“800yen”，结果没有找到任何数字。去掉单位后重新粘贴，汇总正确了。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Numbers with units</b>: skipped. Remove the unit.</li>
-<li lang="en"><b>Dates and times</b>: not read as numbers.</li>
+<li><b>带单位的数字</b>：会被跳过。请去掉单位。</li>
+<li><b>日期和时间</b>：不会按数字读取。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Removing units is a hassle.</h3>
-<p lang="en">Excel's Replace can delete a unit in bulk, as can tools for cleaning text.</p>
-<h2>小结</h2>
-<p lang="en">Non-numbers are skipped. Always check the skipped count.</p>
+<h2>常见问题</h2>
+<h3>去掉单位很麻烦。</h3>
+<p>Excel的替换可以批量删除单位，清理文本的工具也可以。</p>
+<h2>总结</h2>
+<p>非数字会被跳过。请务必检查被跳过的数量。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/column-stats.html">使用“一列数字的合计、平均值和中位数”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/percent-calculator.html">计算百分比、折扣和增减率</a>：立即计算百分比、折扣和增减率。</li><li><a href="/zh/excel-column-letter.html">Excel 列号与列字母转换器</a>: 转换 Excel 的列号和列字母。</li><li><a href="/zh/table-transpose.html">互换表格的行和列</a>: 互换所粘贴表格的行和列。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

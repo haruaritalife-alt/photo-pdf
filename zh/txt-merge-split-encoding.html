@@ -9,7 +9,7 @@
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/zh/txt-merge-split-encoding.html" rel="canonical"/>
-<meta content="合并混有 Shift_JIS 和 UTF-8 的文本时的注意事项。" name="description"/>
+<meta content="合并混有Shift_JIS和UTF-8的文本时要注意什么。" name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -116,18 +116,18 @@ h1,h2{letter-spacing:.01em}
 <meta content="zh_CN" property="og:locale"/>
 
 <meta content="合并看起来乱码的文本｜PDF Mikata" property="og:title"/>
-<meta content="合并混有 Shift_JIS 和 UTF-8 的文本时的注意事项。" property="og:description"/>
+<meta content="合并混有Shift_JIS和UTF-8的文本时要注意什么。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/txt-merge-split-encoding.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="合并看起来乱码的文本｜PDF Mikata" name="twitter:title"/>
-<meta content="合并混有 Shift_JIS 和 UTF-8 的文本时的注意事项。" name="twitter:description"/>
+<meta content="合并混有Shift_JIS和UTF-8的文本时要注意什么。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "合并看起来乱码的文本", "description": "合并混有 Shift_JIS 和 UTF-8 的文本时的注意事项。", "url": "https://pdfmikata.com/zh/txt-merge-split-encoding.html", "mainEntityOfPage": "https://pdfmikata.com/zh/txt-merge-split-encoding.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "合并看起来乱码的文本", "description": "合并混有Shift_JIS和UTF-8的文本时要注意什么。", "url": "https://pdfmikata.com/zh/txt-merge-split-encoding.html", "mainEntityOfPage": "https://pdfmikata.com/zh/txt-merge-split-encoding.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -200,53 +200,76 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>合并看起来乱码的文本</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>检查每个文件的开头</li><li>合并</li><li>乱码时修正编码</li></ul></div>
-<p lang="en">After combining garbled texts, they became even less readable. <a href="/zh/txt-merge-split.html">Merge and Split Text Files</a> supports UTF-8 and Shift_JIS, auto-detects the encoding and saves as UTF-8. Here is what to do when garbling persists anyway.</p>
+<div class="points"><b>要点</b><ul><li>检查每个文件的开头</li><li>合并</li><li>乱码时修正编码</li></ul></div><p>把乱码的文本合并之后，反而更难读了。<a href="/zh/txt-merge-split.html">合并和拆分文本文件</a> 支持UTF-8和Shift_JIS，会自动检测编码并保存为UTF-8。下面是即使如此仍然乱码时该怎么办。</p>
 <h2>工作原理</h2>
 <ul>
-<li lang="en">When reading, it detects the encoding for each file</li>
-<li lang="en">When saving, it aligns to UTF-8</li>
+<li>读取时，会逐个文件检测编码</li>
+<li>保存时，统一为UTF-8</li>
 </ul>
-<p lang="en">So even a mix of UTF-8 and Shift_JIS can be merged.</p>
+<p>所以即使UTF-8和Shift_JIS混在一起，也可以合并。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Choose files with "Choose text files".</li>
-<li lang="en">Look at "Beginning of content" and check for garbling.</li>
-<li lang="en">If not garbled, press "Run and save".</li>
-<li lang="en">Open the saved file in an editor that supports UTF-8.</li>
+<li>用“选择文本文件”选择文件。</li>
+<li>查看“内容开头”，检查有没有乱码。</li>
+<li>如果没有乱码，点击“执行并保存”。</li>
+<li>用支持UTF-8的编辑器打开保存好的文件。</li>
 </ol>
-<div class="note" lang="en">The encoding is auto-detected and saved as UTF-8 (UTF-8 and Shift_JIS are supported).</div>
-<h2 lang="en">If garbled</h2>
+<div class="note">编码会自动检测，并保存为UTF-8（支持UTF-8和Shift_JIS）。</div>
+<h2>如果乱码</h2>
 <ul>
-<li lang="en"><b>EUC-JP, UTF-16 and so on</b>: not supported by this tool. First convert to UTF-8 with the encoding conversion tool.</li>
-<li lang="en"><b>The saved file is garbled</b>: the opening app doesn't support UTF-8. Apps that expect Shift_JIS need conversion.</li>
-<li lang="en"><b>Short files</b>: detection can be wrong.</li>
+<li><b>EUC-JP、UTF-16等</b>：本工具不支持。请先用编码转换工具转换为UTF-8。</li>
+<li><b>保存的文件乱码</b>：打开它的应用不支持UTF-8。期待Shift_JIS的应用需要转换。</li>
+<li><b>短文件</b>：检测可能出错。</li>
 </ul>
-<h2 lang="en">Steps (fix garbled files before merging)</h2>
+<h2>步骤（合并之前先修复乱码的文件）</h2>
 <ol>
-<li lang="en">Convert the garbled file to UTF-8 with the encoding conversion tool.</li>
-<li lang="en">Choose the fixed file together with the others.</li>
-<li lang="en">Merge.</li>
+<li>用编码转换工具把乱码的文件转换为UTF-8。</li>
+<li>把修复好的文件与其他文件一起选择。</li>
+<li>合并。</li>
 </ol>
-<h2 lang="en">When garbled in Windows Notepad after merging</h2>
-<p lang="en">Recent Notepad supports UTF-8, but older versions may garble. In that case, use another editor or convert to Shift_JIS.</p>
-<h2>适合</h2>
+<h2>合并后在Windows记事本中乱码时</h2>
+<p>较新的记事本支持UTF-8，但旧版本可能会乱码。这时请使用其他编辑器，或转换为Shift_JIS。</p>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Combining old-system logs (Shift_JIS) with new notes (UTF-8)</li>
-<li lang="en">Gathering texts from different sources</li>
+<li>合并旧系统的日志（Shift_JIS）与新笔记（UTF-8）</li>
+<li>汇集来自不同来源的文本</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">Wanted to combine an old Shift_JIS log with a new UTF-8 log. Choosing them in this tool auto-detected both and produced one UTF-8 file.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>想把旧的Shift_JIS日志与新的UTF-8日志合并。在本工具中选择它们，两者都被自动检测，得到了一个UTF-8文件。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Only part is garbled</b>: that file is in an unsupported encoding.</li>
-<li lang="en"><b>Everything is garbled</b>: check the opening app's settings.</li>
+<li><b>只有一部分乱码</b>：那个文件是不支持的编码。</li>
+<li><b>全部乱码</b>：检查打开它的应用的设置。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Can it save as Shift_JIS?</h3>
-<p lang="en">This tool saves as UTF-8. If you need Shift_JIS, use the encoding conversion tool.</p>
-<h2>小结</h2>
-<p lang="en">UTF-8 and Shift_JIS are auto-detected. For others, convert first and then merge.</p>
+<h2>常见问题</h2>
+<h3>能保存为Shift_JIS吗？</h3>
+<p>本工具保存为UTF-8。如果需要Shift_JIS，请使用编码转换工具。</p>
+<h2>总结</h2>
+<p>UTF-8和Shift_JIS会被自动检测。其他的，先转换再合并。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/txt-merge-split.html">使用“合并和拆分文本文件”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/line-break-remover.html">删除和整理文字中的换行</a>：整理从 PDF 等处复制的文字中的换行。</li><li><a href="/zh/charset-convert.html">转换文本编码（修复乱码）</a>: 在 Shift_JIS、UTF-8、EUC-JP 等之间转换文本文件，修复乱码。</li><li><a href="/zh/csv-tools.html">合并、拆分 CSV 并选取列</a>: 合并 CSV 文件、按行拆分，或只保留所选列。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

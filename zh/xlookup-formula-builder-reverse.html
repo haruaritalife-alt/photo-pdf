@@ -200,48 +200,72 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>从右向左查找</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>选择 REVERSE</li><li>输入列</li><li>复制</li></ul></div>
-<p lang="en">VLOOKUP's weakness is that the lookup column must be left of the return column. XLOOKUP can search a right column and return a left column. "REVERSE" in <a href="/zh/xlookup-formula-builder.html">Build an XLOOKUP Formula</a> builds it.</p>
+<div class="points"><b>要点</b><ul><li>选择REVERSE</li><li>输入列</li><li>复制</li></ul></div><p>VLOOKUP的弱点是查找列必须在返回列的左边。XLOOKUP可以在右边的列中查找，并返回左边的列。<a href="/zh/xlookup-formula-builder.html">生成 XLOOKUP 公式</a> 中的“REVERSE”会生成它。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Choose "REVERSE" in "Type".</li>
-<li lang="en">In "Lookup column", enter the column holding the value to find.</li>
-<li lang="en">In "Return column", enter the column holding the value to return.</li>
-<li lang="en">Copy the formula and paste.</li>
+<li>在“Type”中选择“REVERSE”。</li>
+<li>在“Lookup column”中，输入存放要查找的值的列。</li>
+<li>在“Return column”中，输入存放要返回的值的列。</li>
+<li>复制公式并粘贴。</li>
 </ol>
-<div class="note" lang="en">In REVERSE the tool swaps the roles of the lookup and return columns: it searches the "Return column" and returns the "Lookup column" value.</div>
+<div class="note">在REVERSE中，工具会对调查找列和返回列的角色：它在“Return column”中查找，并返回“Lookup column”的值。</div>
 <h2>示例</h2>
-<p lang="en">With employee numbers in column A and names in column B, getting the number from a name:</p>
+<p>A列是员工编号，B列是姓名，要由姓名得到编号：</p>
 <ul>
-<li lang="en">=XLOOKUP(E2,B2:B100,A2:A100)</li>
+<li>=XLOOKUP(E2,B2:B100,A2:A100)</li>
 </ul>
-<p lang="en">In REVERSE, entering A2:A100 as the lookup column and B2:B100 as the return column yields this formula.</p>
-<h2 lang="en">With VLOOKUP</h2>
-<p lang="en">Returning a left column needed INDEX and MATCH.</p>
+<p>在REVERSE中，把A2:A100输入为查找列、B2:B100输入为返回列，就会得到这个公式。</p>
+<h2>用VLOOKUP的话</h2>
+<p>返回左边的列，需要INDEX和MATCH。</p>
 <ul>
-<li lang="en">Example: =INDEX(A2:A100,MATCH(E2,B2:B100,0))</li>
+<li>示例：=INDEX(A2:A100,MATCH(E2,B2:B100,0))</li>
 </ul>
-<p lang="en">The second formula has this form. It works in old Excel.</p>
-<h2>适合</h2>
+<p>第二个公式就是这种形式。它在旧版Excel中也能用。</p>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Getting IDs from names</li>
-<li lang="en">Looking up a front column by a back column</li>
-<li lang="en">Tables whose column order you don't want to change</li>
+<li>由姓名得到ID</li>
+<li>用后面的列去查前面的列</li>
+<li>不想改变列顺序的表格</li>
 </ul>
-<h2 lang="en">Column order doesn't matter</h2>
-<p lang="en">With XLOOKUP, rearranging table columns doesn't break the formula. VLOOKUP's column number shifts when columns are added.</p>
+<h2>列的顺序无关紧要</h2>
+<p>用XLOOKUP的话，重新排列表格的列不会让公式失效。而VLOOKUP的列号，在添加列时会偏移。</p>
 <h2>示例</h2>
-<p lang="en">In a table with names on the right and employee numbers on the left, I wanted numbers from names. The REVERSE formula did it without reordering columns.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>在一张姓名在右、员工编号在左的表里，我想根据姓名得到编号。REVERSE公式没有调整列顺序就做到了。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Several people with the same name</b>: the first found row's value is returned.</li>
-<li lang="en"><b>When not found</b>: #N/A. You can specify other text in "When not found".</li>
+<li><b>有好几个人同名</b>：返回第一个找到的行的值。</li>
+<li><b>找不到时</b>：#N/A。你可以在“When not found”中指定其他文字。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Can it find non-exact matches?</h3>
-<p lang="en">The "APPROX" type finds nearby values.</p>
-<h2>小结</h2>
-<p lang="en">To look up right to left, use REVERSE.</p>
+<h2>常见问题</h2>
+<h3>它能找到不完全匹配的值吗？</h3>
+<p>“APPROX”类型可以找到相近的值。</p>
+<h2>总结</h2>
+<p>要从右向左查找，请使用REVERSE。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/xlookup-formula-builder.html">使用“生成 XLOOKUP 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/zh/index-match-builder.html">生成 INDEX 和 MATCH 公式</a>: 生成 INDEX 和 MATCH 公式。</li><li><a href="/zh/filter-formula-builder.html">生成 FILTER 公式</a>: 生成 FILTER 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

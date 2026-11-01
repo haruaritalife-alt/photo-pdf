@@ -4,12 +4,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>Base64 与日文及乱码｜PDF Mikata</title>
+<title>Base64与中日文乱码｜PDF Mikata</title>
 
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/zh/base64-text-japanese.html" rel="canonical"/>
-<meta content="处理日文文本时的注意事项。" name="description"/>
+<meta content="处理中文、日文文本时需要注意什么。" name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -115,19 +115,19 @@ h1,h2{letter-spacing:.01em}
 <meta content="PDF Mikata" property="og:site_name"/>
 <meta content="zh_CN" property="og:locale"/>
 
-<meta content="Base64 与日文及乱码｜PDF Mikata" property="og:title"/>
-<meta content="处理日文文本时的注意事项。" property="og:description"/>
+<meta content="Base64与中日文乱码｜PDF Mikata" property="og:title"/>
+<meta content="处理中文、日文文本时需要注意什么。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/base64-text-japanese.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="Base64 与日文及乱码｜PDF Mikata" name="twitter:title"/>
-<meta content="处理日文文本时的注意事项。" name="twitter:description"/>
+<meta content="Base64与中日文乱码｜PDF Mikata" name="twitter:title"/>
+<meta content="处理中文、日文文本时需要注意什么。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Base64 与日文及乱码", "description": "处理日文文本时的注意事项。", "url": "https://pdfmikata.com/zh/base64-text-japanese.html", "mainEntityOfPage": "https://pdfmikata.com/zh/base64-text-japanese.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Base64与中日文乱码", "description": "处理中文、日文文本时需要注意什么。", "url": "https://pdfmikata.com/zh/base64-text-japanese.html", "mainEntityOfPage": "https://pdfmikata.com/zh/base64-text-japanese.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -198,55 +198,80 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <main id="main" tabindex="-1">
 
 <div lang="zh-Hans">
-<h1>Base64 与日文及乱码</h1>
+<h1>Base64与中日文乱码</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>输入日文文本</li><li>进行编码</li><li>解码确认</li></ul></div>
-<p lang="en">Japanese turned into Base64 became unreadable. After converting back from Base64 it was garbled. When handling Japanese, you need to watch the character encoding. <a href="/zh/base64-text.html">Base64 Text Encoder and Decoder</a> converts using UTF-8.</p>
-<h2 lang="en">Basic mechanism</h2>
-<p lang="en">Base64 converts bytes (data). To make text Base64, you first turn the text into a byte sequence. The rule for "turning characters into bytes" is the character encoding.</p>
+<div class="points"><b>要点</b><ul><li>输入中文或日文</li><li>编码</li><li>解码确认</li></ul></div><p>把日文变成Base64后，变得无法阅读。从Base64转换回来后出现了乱码。处理中日文时，需要注意字符编码。<a href="/zh/base64-text.html">Base64 文本编码与解码</a> 使用UTF-8进行转换。</p>
+<h2>基本机制</h2>
+<p>Base64转换的是字节（数据）。要把文本变成Base64，首先要把文本变成字节序列。“把字符变成字节”的规则就是字符编码。</p>
 <ul>
-<li lang="en">This tool: UTF-8</li>
-<li lang="en">In UTF-8, one Japanese character is 3 bytes</li>
+<li>本工具：UTF-8</li>
+<li>在UTF-8中，一个日文字符是3个字节</li>
 </ul>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Enter Japanese in "String or Base64".</li>
-<li lang="en">Press "Encode to Base64".</li>
-<li>用“复制结果”复制结果。</li>
+<li>在“String or Base64”中输入日文。</li>
+<li>按下“Encode to Base64”。</li>
+<li>用“Copy result”复制结果。</li>
 </ol>
-<div class="note" lang="en">When converting back, it is also read as UTF-8. Base64 made from UTF-8 returns the Japanese correctly.</div>
-<h2 lang="en">Japanese conversion example</h2>
-<p lang="en">"こんにちは" in Base64 becomes "44GT44KT44Gr44Gh44Gv". You can see that Japanese can be expressed with letters and digits only.</p>
-<h2 lang="en">When garbled</h2>
+<div class="note">转换回来时，同样按UTF-8读取。由UTF-8制成的Base64能正确还原日文。</div>
+<h2>日文转换示例</h2>
+<p>“こんにちは”的Base64是“44GT44KT44Gr44Gh44Gv”。你可以看到，日文也能只用字母和数字来表示。</p>
+<h2>出现乱码时</h2>
 <ul>
-<li lang="en"><b>Base64 made with another encoding</b>: decoding Base64 made with Shift_JIS or similar can't be read as UTF-8, giving an error or garbled text.</li>
-<li lang="en"><b>Base64 of binary</b>: Base64 of images or files can't be read as text.</li>
+<li><b>用其他编码制成的Base64</b>：对用Shift_JIS等制成的Base64进行解码，无法按UTF-8读取，会出错或出现乱码。</li>
+<li><b>二进制的Base64</b>：图片或文件的Base64无法作为文本读取。</li>
 </ul>
-<h2 lang="en">Remedies</h2>
+<h2>补救办法</h2>
 <ul>
-<li lang="en">If you know the original encoding, use a different encoding conversion tool</li>
-<li lang="en">Convert as a file, not as text</li>
+<li>如果知道原来的编码，请使用其他的编码转换工具</li>
+<li>作为文件而不是文本来转换</li>
 </ul>
-<h2 lang="en">Differences from other tools</h2>
-<p lang="en">Some standard programming-language functions and online tools can't handle Japanese correctly. Results may differ from this tool, which assumes UTF-8.</p>
-<h2>适合</h2>
+<h2>与其他工具的差异</h2>
+<p>一些编程语言的标准函数和在线工具无法正确处理日文。结果可能与假定UTF-8的本工具不同。</p>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Creating settings values containing Japanese</li>
-<li lang="en">Checking contents of Japanese Base64</li>
-<li lang="en">Converting multilingual text</li>
+<li>创建含有日文的设置值</li>
+<li>检查日文Base64的内容</li>
+<li>转换多语言文本</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">Made "データ取得エラー" Base64 and put it in a setting. Loaded in another system, the Japanese came back correctly because both used UTF-8.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>把“データ取得エラー”做成Base64放进了设置。在另一个系统中读取时，因为双方都用UTF-8，日文被正确还原了。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>The other party uses another encoding</b>: check the encoding of whoever you exchange with.</li>
-<li lang="en"><b>Emoji</b>: UTF-8 can handle them.</li>
+<li><b>对方使用其他编码</b>：请确认与你交换数据的对方使用的编码。</li>
+<li><b>表情符号</b>：UTF-8可以处理。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">For English only, can I ignore the encoding?</h3>
-<p lang="en">Letters and digits give the same bytes in UTF-8 and Shift_JIS, so there's almost no problem.</p>
-<h2>小结</h2>
-<p lang="en">UTF-8 is the basis for Japanese Base64. If garbled, suspect the original encoding.</p>
+<h2>常见问题</h2>
+<h3>只有英文时，可以不管编码吗？</h3>
+<p>字母和数字在UTF-8和Shift_JIS中的字节相同，所以几乎没有问题。</p>
+<h2>总结</h2>
+<p>UTF-8是中日文Base64的基础。出现乱码时，请怀疑原来的编码。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/base64-text.html">使用“Base64 文本编码与解码”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/file-base64.html">文件与 Base64 互相转换</a>：在文件和 Base64 文字之间互相转换。</li><li><a href="/zh/url-encoder.html">URL 编码与解码</a>: 对网址中的文字进行编码和解码。</li><li><a href="/zh/json-formatter.html">整理并检查 JSON</a>: 整理、压缩并检查 JSON。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

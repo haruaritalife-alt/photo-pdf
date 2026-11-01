@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>合并单元格的处理方式｜PDF Mikata</title>
+<title>合并单元格如何处理｜PDF Mikata</title>
 
 
 <script src="/site.js"></script>
@@ -115,19 +115,19 @@ h1,h2{letter-spacing:.01em}
 <meta content="PDF Mikata" property="og:site_name"/>
 <meta content="zh_CN" property="og:locale"/>
 
-<meta content="合并单元格的处理方式｜PDF Mikata" property="og:title"/>
+<meta content="合并单元格如何处理｜PDF Mikata" property="og:title"/>
 <meta content="关于合并单元格。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/xlsx-to-html-merged.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="合并单元格的处理方式｜PDF Mikata" name="twitter:title"/>
+<meta content="合并单元格如何处理｜PDF Mikata" name="twitter:title"/>
 <meta content="关于合并单元格。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "合并单元格的处理方式", "description": "关于合并单元格。", "url": "https://pdfmikata.com/zh/xlsx-to-html-merged.html", "mainEntityOfPage": "https://pdfmikata.com/zh/xlsx-to-html-merged.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "合并单元格如何处理", "description": "关于合并单元格。", "url": "https://pdfmikata.com/zh/xlsx-to-html-merged.html", "mainEntityOfPage": "https://pdfmikata.com/zh/xlsx-to-html-merged.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -198,59 +198,83 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <main id="main" tabindex="-1">
 
 <div lang="zh-Hans">
-<h1>合并单元格的处理方式</h1>
+<h1>合并单元格如何处理</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>确认</li><li>解决办法</li></ul></div>
-<p lang="en">Excel tables sometimes have merged cells for looks. When converted with <a href="/zh/xlsx-to-html.html">Convert an Excel Table to HTML or Markdown</a>, a merged cell's text goes only into the top-left one, and the other cells become empty.</p>
-<h2 lang="en">Conversion rule</h2>
+<div class="points"><b>要点</b><ul><li>检查</li><li>修正</li><li>转换</li></ul></div><p>Excel表格有时为了美观会使用合并单元格。用 <a href="/zh/xlsx-to-html.html">把 Excel 表格转换成 HTML 或 Markdown</a> 转换时，合并单元格的文字只会进入左上角的那个单元格，其他单元格会变空。</p>
+<h2>转换规则</h2>
 <ul>
-<li lang="en">A merged cell's text goes only into the top-left cell.</li>
-<li lang="en">The other cells become empty.</li>
+<li>合并单元格的文字只会进入左上角的单元格。</li>
+<li>其他单元格变空。</li>
 </ul>
-<div class="note" lang="en">HTML merge attributes are not included. The look may differ from the original table.</div>
-<h2 lang="en">What commonly happens</h2>
+<div class="note">HTML的合并属性不包含在内。外观可能与原来的表格不同。</div>
+<h2>常见的情况</h2>
 <ul>
-<li lang="en">A "Category" cell merged across 3 rows → only the first row holds "Category"; rows 2 and 3 are empty</li>
-<li lang="en">A table title merged across all columns → only the first column holds the title</li>
+<li>一个“分类”单元格跨3行合并 → 只有第一行有“分类”；第2、3行是空的</li>
+<li>一个跨所有列合并的表格标题 → 只有第一列有标题</li>
 </ul>
-<h2 lang="en">Steps (to convert cleanly)</h2>
+<h2>步骤（为了干净地转换）</h2>
 <ol>
-<li lang="en">Before converting, unmerge cells in Excel.</li>
-<li lang="en">Fill the now-empty cells with the same text.</li>
-<li lang="en">Convert with this tool.</li>
-<li lang="en">Check the converted table.</li>
+<li>转换之前，在Excel中取消合并单元格。</li>
+<li>用相同的文字填满现在空着的单元格。</li>
+<li>用本工具转换。</li>
+<li>检查转换后的表格。</li>
 </ol>
-<h2 lang="en">Tips for unmerging</h2>
+<h2>取消合并的小技巧</h2>
 <ol>
-<li lang="en">Select the merged cell.</li>
-<li lang="en">Press "Merge &amp; Center" to unmerge.</li>
-<li lang="en">Copy the text into the emptied cells.</li>
+<li>选中合并单元格。</li>
+<li>点击“合并后居中”来取消合并。</li>
+<li>把文字复制到空出来的单元格中。</li>
 </ol>
-<h2 lang="en">Why not to merge</h2>
+<h2>为什么不要合并</h2>
 <ul>
-<li lang="en">Sorting and filtering don't work well</li>
-<li lang="en">Empty cells get in the way when handling it as data</li>
-<li lang="en">It breaks easily when pasted into web pages or systems</li>
+<li>排序和筛选效果不好</li>
+<li>当作数据处理时，空单元格会碍事</li>
+<li>粘贴到网页或系统中时容易出错</li>
 </ul>
-<h2 lang="en">How to fix after converting</h2>
-<p lang="en">If you want to keep merging in HTML, add colspan (column merge) or rowspan (row merge) by hand to the converted HTML.</p>
-<h2>适合</h2>
+<h2>转换之后的修正方法</h2>
+<p>如果想在HTML中保留合并，请在转换出的HTML里手动添加colspan（合并列）或rowspan（合并行）。</p>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Converting clean tables without merged cells</li>
-<li lang="en">Extracting just the data from tables that contain merged cells</li>
+<li>转换没有合并单元格的整洁表格</li>
+<li>只从含有合并单元格的表格中提取数据</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">In a monthly summary, "Q1" was merged across three months. After converting, only January had the text, so I unmerged in Excel, re-entered it for each month and redid it.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>在一份月度汇总中，“第一季度”跨三个月合并。转换后只有一月有文字，于是我在Excel中取消合并，为每个月重新输入后重做了。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>The text seems to have vanished</b>: when merged, everything except the top-left is empty.</li>
-<li lang="en"><b>Columns shift</b>: unmerge before converting.</li>
+<li><b>文字好像消失了</b>：合并之后，除左上角外都是空的。</li>
+<li><b>列错位</b>：转换之前先取消合并。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Can it convert keeping the merge?</h3>
-<p lang="en">The merged look isn't included. Unmerging is the reliable way.</p>
-<h2>小结</h2>
-<p lang="en">For merged cells, only the top-left gets the text. Unmerge before converting for a clean result.</p>
+<h2>常见问题</h2>
+<h3>能保持合并状态进行转换吗？</h3>
+<p>合并的外观不包含在内。取消合并是最可靠的办法。</p>
+<h2>总结</h2>
+<p>对于合并单元格，只有左上角会得到文字。转换之前取消合并，结果会更干净。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/xlsx-to-html.html">使用“把 Excel 表格转换成 HTML 或 Markdown”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/xlsx-to-csv.html">把 Excel 转换成 CSV 或 JSON</a>：把 Excel 工作表转换成 CSV、TSV 或 JSON。</li><li><a href="/zh/docx-to-html.html">把 Word 转换成 HTML</a>：把 Word 的文字转换成 HTML。</li><li><a href="/zh/csv-json.html">CSV 与 JSON 互相转换</a>：立即在 CSV 和 JSON 之间互相转换。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

@@ -200,55 +200,82 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>找不到时</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>生成公式</li><li>查看第二个</li><li>复制</li></ul></div>
-<p lang="en">If the delimiter isn't found, FIND returns a #VALUE! error. The second formula of <a href="/zh/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> is wrapped in IFERROR to return the original text when not found.</p>
-<h2 lang="en">The two formulas</h2>
+<div class="points"><b>要点</b><ul><li>生成公式</li><li>查看第二个</li><li>复制</li></ul></div><p>如果找不到分隔符，FIND会返回#VALUE!错误。<a href="/zh/excel-left-mid-builder.html">生成 LEFT、MID 或 RIGHT 公式</a> 的第二个公式用IFERROR包了起来，找不到时返回原来的文本。</p>
+<h2>两个公式</h2>
 <ul>
-<li lang="en">First: =LEFT(A2,FIND("@",A2)-1)</li>
-<li lang="en">Second: =IFERROR(LEFT(A2,FIND("@",A2)-1),A2)</li>
+<li>第一个：=LEFT(A2,FIND("@",A2)-1)</li>
+<li>第二个：=IFERROR(LEFT(A2,FIND("@",A2)-1),A2)</li>
 </ul>
-<p lang="en">For cells without "@", the second returns the original text instead of an error.</p>
+<p>对于没有“@”的单元格，第二个公式返回原来的文本，而不是错误。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Enter the cell, method and delimiter.</li>
-<li lang="en">Check the "formula returning the original if not found".</li>
-<li lang="en">Copy with "Copy the second".</li>
+<li>输入单元格、方法和分隔符。</li>
+<li>查看“formula returning the original if not found”。</li>
+<li>用“Copy the second”复制。</li>
 </ol>
-<div class="note" lang="en">If data without the delimiter is mixed in, the second formula is safer.</div>
-<h2 lang="en">Reading the sample result</h2>
-<p lang="en">Entering text without the delimiter in "Sample text" shows "Sample result: #VALUE!". It shows the first formula would error like this.</p>
-<h2 lang="en">If you want a different value than the original</h2>
-<p lang="en">Rewrite the final "A2" of the formula.</p>
+<div class="note">如果混有不含分隔符的数据，第二个公式更安全。</div>
+<h2>解读样本结果</h2>
+<p>在“Sample text”中输入不含分隔符的文本，会显示“Sample result: #VALUE!”。这表示第一个公式会像这样出错。</p>
+<h2>如果想要原文以外的值</h2>
+<p>改写公式最后的“A2”。</p>
 <ul>
-<li lang="en">Blank: IFERROR(…,"")</li>
-<li lang="en">Show "None": IFERROR(…,"None")</li>
-<li lang="en">The number 0: IFERROR(…,0)</li>
+<li>空白：IFERROR(…,"")</li>
+<li>显示“None”：IFERROR(…,"None")</li>
+<li>数字0：IFERROR(…,0)</li>
 </ul>
-<h2>适合</h2>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Data mixing rows with and without the delimiter</li>
-<li lang="en">Avoiding errors partway down a list</li>
-<li lang="en">Avoiding errors when feeding other functions</li>
+<li>同时混有含分隔符和不含分隔符的行的数据</li>
+<li>避免列表中途出现错误</li>
+<li>传给其他函数时避免错误</li>
 </ul>
 <h2>注意</h2>
-<p lang="en">IFERROR hides all errors, including causes other than the delimiter. Confirm the first formula works, then use the second, for safety.</p>
-<h2>另一个办法</h2>
-<p lang="en">IF with ISNUMBER can check for the delimiter.</p>
+<p>IFERROR会隐藏所有错误，包括分隔符以外的原因。为安全起见，请先确认第一个公式能用，再使用第二个。</p>
+<h2>另一种办法</h2>
+<p>IF配合ISNUMBER可以检查是否有分隔符。</p>
 <ul>
-<li lang="en">Example: =IF(ISNUMBER(FIND("@",A2)),LEFT(A2,FIND("@",A2)-1),A2)</li>
+<li>示例：=IF(ISNUMBER(FIND("@",A2)),LEFT(A2,FIND("@",A2)-1),A2)</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">An email list had rows without "@". The first formula lined up #VALUE!, but the second returned the original text and tidied the list.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>一份邮件列表里有不含“@”的行。第一个公式排满了#VALUE!，而第二个公式返回了原来的文本，让列表整洁了。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Hiding too much</b>: wrong formulas show no error, so go unnoticed.</li>
-<li lang="en"><b>Not noticing the original is returned</b>: you may not tell whether the delimiter was absent or extraction worked.</li>
+<li><b>隐藏得太多</b>：写错的公式不显示错误，所以不容易被发现。</li>
+<li><b>没注意到返回的是原文</b>：你可能分不清是没有分隔符，还是提取成功了。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">What if I only want to check for the delimiter?</h3>
-<p lang="en">=ISNUMBER(FIND("@",A2)) is TRUE if the delimiter exists.</p>
-<h2>小结</h2>
-<p lang="en">When rows without the delimiter are mixed in, use the IFERROR-wrapped second formula.</p>
+<h2>常见问题</h2>
+<h3>只想检查是否有分隔符怎么办？</h3>
+<p>=ISNUMBER(FIND("@",A2)) 在分隔符存在时为TRUE。</p>
+<h2>总结</h2>
+<p>当混有不含分隔符的行时，请使用用IFERROR包起来的第二个公式。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/excel-left-mid-builder.html">使用“生成 LEFT、MID 或 RIGHT 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/excel-text-clean.html">去掉 Excel 文字中多余的空格和看不见的字符</a>: 去掉多余的空格和看不见的字符。</li><li><a href="/zh/text-to-columns.html">按分隔符把文字拆成多列</a>: 按分隔符把文字拆成多列。</li><li><a href="/zh/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

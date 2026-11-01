@@ -200,63 +200,87 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>位数的含义</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>输入位数</li><li>用试算数值检查</li><li>核对一下</li></ul></div>
-<p lang="en">The second argument of ROUND-family functions is the "digits". Its meaning is confusing, so sort it out checking with the "Sample value" in <a href="/zh/round-formula-builder.html">Build a Rounding Formula</a>.</p>
-<h2 lang="en">What digits means</h2>
+<div class="points"><b>要点</b><ul><li>输入位数</li><li>用样本检查</li><li>检查</li></ul></div><p>ROUND系列函数的第二个参数是“位数”。它的含义容易混淆，所以请借助 <a href="/zh/round-formula-builder.html">生成舍入公式</a> 中的“Sample value”边检查边整理。</p>
+<h2>位数的含义</h2>
 <ul>
-<li lang="en">Positive: number of decimal places</li>
-<li lang="en">0: integer (no decimals)</li>
-<li lang="en">Negative: places in the integer part (tens, hundreds…)</li>
+<li>正数：小数位数</li>
+<li>0：整数（没有小数）</li>
+<li>负数：整数部分的位数（十位、百位…）</li>
 </ul>
-<h2 lang="en">Examples (ROUND on 1234.5678)</h2>
+<h2>示例（对1234.5678用ROUND）</h2>
 <ul>
-<li lang="en">2: 1234.57 (two decimals)</li>
-<li lang="en">1: 1234.6 (one decimal)</li>
-<li lang="en">0: 1235 (integer)</li>
-<li lang="en">-1: 1230 (to tens)</li>
-<li lang="en">-2: 1200 (to hundreds)</li>
-<li lang="en">-3: 1000 (to thousands)</li>
+<li>2：1234.57（两位小数）</li>
+<li>1：1234.6（一位小数）</li>
+<li>0：1235（整数）</li>
+<li>-1：1230（到十位）</li>
+<li>-2：1200（到百位）</li>
+<li>-3：1000（到千位）</li>
 </ul>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Choose "ROUND" in "Function".</li>
-<li lang="en">Enter a number in "Digits".</li>
-<li lang="en">Enter something like 1234.5678 in "Sample value" and check the result.</li>
+<li>在“Function”中选择“ROUND”。</li>
+<li>在“Digits”中输入一个数字。</li>
+<li>在“Sample value”中输入类似1234.5678的数，并检查结果。</li>
 </ol>
-<div class="note" lang="en">Think of digits as "how many decimal places to keep" for clarity.</div>
-<h2>该用哪个</h2>
+<div class="note">为了好理解，可以把位数看作“保留几位小数”。</div>
+<h2>用哪个</h2>
 <ul>
-<li lang="en">Handling fractions below one yen: 0</li>
-<li lang="en">Two decimals (percentages etc.): 2</li>
-<li lang="en">Rounding to thousands: -3</li>
-<li lang="en">Rounding to ten-thousands: -4</li>
+<li>处理1日元以下的零头：0</li>
+<li>两位小数（百分比等）：2</li>
+<li>舍入到千位：-3</li>
+<li>舍入到万位：-4</li>
 </ul>
-<h2 lang="en">Formula examples</h2>
+<h2>公式示例</h2>
 <ul>
-<li lang="en">Round below one yen: =ROUND(A2,0)</li>
-<li lang="en">Round to thousands: =ROUND(A2,-3)</li>
-<li lang="en">Truncate to two decimals: =ROUNDDOWN(A2,2)</li>
+<li>舍入1日元以下：=ROUND(A2,0)</li>
+<li>舍入到千位：=ROUND(A2,-3)</li>
+<li>截断到两位小数：=ROUNDDOWN(A2,2)</li>
 </ul>
-<h2>适合</h2>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Showing amounts in thousands or tens of thousands</li>
-<li lang="en">Aligning ratios to one decimal place</li>
-<li lang="en">Producing rough figures</li>
+<li>以千或万为单位显示金额</li>
+<li>把比例对齐到一位小数</li>
+<li>给出概数</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">Wanted 12,345,678 in sales as a ten-thousand-level approximation. =ROUND(A2,-4) gave 12,350,000.</p>
-<h2 lang="en">Non-integer digits</h2>
-<p lang="en">The tool accepts a decimal like 1.5, but Excel truncates it to an integer. Specifying integers is the norm.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>想把12,345,678的销售额概括到万位。=ROUND(A2,-4) 得到了12,350,000。</p>
+<h2>非整数的位数</h2>
+<p>工具接受像1.5这样的小数，但Excel会把它截断成整数。一般应指定整数。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Confusing negative digits</b>: -3 means "to the thousands place", not "keep 3 digits".</li>
-<li lang="en"><b>When you only want to change the look</b>: use cell formatting, not ROUND.</li>
+<li><b>搞混负数位数</b>：-3是“到千位”，而不是“保留3位”。</li>
+<li><b>只想改变外观时</b>：使用单元格格式，而不是ROUND。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">What if I just want to display in thousands?</h3>
-<p lang="en">The cell format "#,##0," shows thousands. The value doesn't change.</p>
-<h2>小结</h2>
-<p lang="en">Digits are based on the decimal point: right is positive, left is negative. Check with the sample value.</p>
+<h2>常见问题</h2>
+<h3>只想以千为单位显示怎么办？</h3>
+<p>单元格格式“#,##0,”可以以千为单位显示。值不会改变。</p>
+<h2>总结</h2>
+<p>位数以小数点为基准：右边为正，左边为负。请用样本值检查。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/round-formula-builder.html">使用“生成舍入公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/percent-calculator.html">计算百分比、折扣和增减率</a>：立即计算百分比、折扣和增减率。</li><li><a href="/zh/tax-calculator.html">计算消费税（含税／不含税）</a>：立即计算含税和不含税金额。</li><li><a href="/zh/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

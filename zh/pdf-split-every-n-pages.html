@@ -4,12 +4,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>如何每 N 页拆分 PDF（例如每两页一份）｜PDF Mikata</title>
+<title>如何每N页拆分PDF（如每两页一份）｜PDF Mikata</title>
 
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/zh/pdf-split-every-n-pages.html" rel="canonical"/>
-<meta content="如何把 PDF 按固定页数（如 2 页或 5 页）拆成若干份，以及适用场景。" name="description"/>
+<meta content="把PDF按固定页数（如2页或5页）拆分，以及何时使用。" name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -115,19 +115,19 @@ h1,h2{letter-spacing:.01em}
 <meta content="PDF Mikata" property="og:site_name"/>
 <meta content="zh_CN" property="og:locale"/>
 
-<meta content="如何每 N 页拆分 PDF（例如每两页一份）｜PDF Mikata" property="og:title"/>
-<meta content="如何把 PDF 按固定页数（如 2 页或 5 页）拆成若干份，以及适用场景。" property="og:description"/>
+<meta content="如何每N页拆分PDF（如每两页一份）｜PDF Mikata" property="og:title"/>
+<meta content="把PDF按固定页数（如2页或5页）拆分，以及何时使用。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/pdf-split-every-n-pages.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="如何每 N 页拆分 PDF（例如每两页一份）｜PDF Mikata" name="twitter:title"/>
-<meta content="如何把 PDF 按固定页数（如 2 页或 5 页）拆成若干份，以及适用场景。" name="twitter:description"/>
+<meta content="如何每N页拆分PDF（如每两页一份）｜PDF Mikata" name="twitter:title"/>
+<meta content="把PDF按固定页数（如2页或5页）拆分，以及何时使用。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "如何每 N 页拆分 PDF（例如每两页一份）", "description": "如何把 PDF 按固定页数（如 2 页或 5 页）拆成若干份，以及适用场景。", "url": "https://pdfmikata.com/zh/pdf-split-every-n-pages.html", "mainEntityOfPage": "https://pdfmikata.com/zh/pdf-split-every-n-pages.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "如何每N页拆分PDF（如每两页一份）", "description": "把PDF按固定页数（如2页或5页）拆分，以及何时使用。", "url": "https://pdfmikata.com/zh/pdf-split-every-n-pages.html", "mainEntityOfPage": "https://pdfmikata.com/zh/pdf-split-every-n-pages.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -198,56 +198,78 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <main id="main" tabindex="-1">
 
 <div lang="zh-Hans">
-<h1>如何每 N 页拆分一次 PDF（例如每 2 页一份）</h1>
+<h1>如何每N页拆分PDF（如每两页一份）</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>N 请输入 1 以上的数字</li><li>最后一个文件的页数可能较少</li><li>适合双面扫描和格式相同的文件</li></ul></div>
-<p lang="en">You want to cut a PDF into equal pieces: 2 pages, 10 pages and so on. For example, to pair up the front and back of double-sided scans, or to hand out a document in fixed lengths. Use "Every N pages" in <a href="/zh/pdf-split.html">Split PDF</a>.</p>
+<div class="points"><b>要点</b><ul><li>N输入1以上的数字</li><li>最后一个文件的页数可能较少</li><li>适合双面扫描和格式相同的文件</li></ul></div><p>你想把PDF切成等长的几段：每2页、每10页等等。例如，把双面扫描的正反面配成一对，或把文件按固定长度分发。请使用 <a href="/zh/pdf-split.html">拆分 PDF</a> 中的“每N页”。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">With "Choose PDF", pick the PDF.</li>
-<li lang="en">Under "How to split", choose "Every N pages".</li>
-<li lang="en">Enter a number in "Number of pages (N)". For example, "2" means 2 pages each.</li>
-<li lang="en">Press "Split".</li>
+<li>用“选择PDF”挑选PDF。</li>
+<li>在“拆分方式”下，选择“每N页”。</li>
+<li>在“页数（N）”中输入一个数字。例如，“2”表示每份2页。</li>
+<li>点击“拆分”。</li>
 <li>保存。</li>
 </ol>
-<div class="note" lang="en">Enter 1 or more for N. 0 or an empty field gives an error.</div>
+<div class="note">N请输入1以上的数字。0或留空都会报错。</div>
 <h2>示例</h2>
-<p lang="en">Splitting a 10-page PDF with N=3:</p>
+<p>用N=3拆分一个10页的PDF：</p>
 <ul>
-<li lang="en">First: pages 1 to 3</li>
-<li lang="en">Second: pages 4 to 6</li>
-<li lang="en">Third: pages 7 to 9</li>
-<li lang="en">Fourth: page 10 (the remainder)</li>
+<li>第一份：第1到3页</li>
+<li>第二份：第4到6页</li>
+<li>第三份：第7到9页</li>
+<li>第四份：第10页（余下的部分）</li>
 </ul>
-<p lang="en">When the page count does not divide evenly, the last PDF holds the remaining pages.</p>
-<h2 lang="en">Where it is used</h2>
+<p>当页数不能整除时，最后一个PDF容纳剩下的页面。</p>
+<h2>用在哪里</h2>
 <ul>
-<li lang="en"><b>N=2</b>: pair up the front and back of double-sided scans</li>
-<li lang="en"><b>N=4</b>: separate application forms or contracts of 4 pages into sets</li>
-<li lang="en"><b>N=10</b>: cut a long document into readable 10-page lengths</li>
-<li lang="en"><b>N=5</b>: hand out class handouts 5 pages at a time</li>
+<li><b>N=2</b>：把双面扫描的正反面配成一对</li>
+<li><b>N=4</b>：把4页的申请表或合同分成各套</li>
+<li><b>N=10</b>：把长文件切成便于阅读的10页一份</li>
+<li><b>N=5</b>：把课堂讲义每5页一份地分发</li>
 </ul>
-<h2 lang="en">When equal lengths will not work</h2>
-<p lang="en">When the page count differs by document, use "Specify ranges". If lengths vary, such as 3 pages, 5 pages and 2 pages, ranges are better.</p>
-<h2 lang="en">Check after splitting</h2>
+<h2>等长行不通时</h2>
+<p>当各份文件的页数不同时，请使用“指定范围”。如果长度不一，比如3页、5页和2页，用范围更好。</p>
+<h2>拆分后的检查</h2>
 <ul>
-<li lang="en">Are the split points where you intended?</li>
-<li lang="en">Is the page count of the last file what you expected?</li>
-<li lang="en">Do all the files add up to the original page count?</li>
+<li>拆分点在你想要的位置吗？</li>
+<li>最后一个文件的页数符合预期吗？</li>
+<li>所有文件加起来等于原来的总页数吗？</li>
 </ul>
-<h2 lang="en">Common stumbling blocks</h2>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>The splits are off</b>: a cover or blank page throws it off. Remove unneeded pages first.</li>
-<li lang="en"><b>You entered 0 for N</b>: enter 1 or more.</li>
-<li lang="en"><b>Too many files</b>: above 200 it cannot run. Make N larger.</li>
+<li><b>拆分错位了</b>：封面或空白页会打乱它。请先删除不需要的页面。</li>
+<li><b>你给N输入了0</b>：请输入1以上。</li>
+<li><b>文件太多</b>：超过200个就无法执行。请把N设大一些。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">How large can N be?</h3>
-<p lang="en">If N is at least the page count, the whole thing becomes a single PDF.</p>
-<h3 lang="en">Can I change the interval midway?</h3>
-<p lang="en">This tool uses a fixed length. To change midway, use ranges.</p>
-<h2>小结</h2>
-<p lang="en">To cut into equal lengths, use "Every N pages". Decide N and press "Split". Check the last file's page count.</p>
+<h2>常见问题</h2>
+<h3>N最大可以多大？</h3>
+<p>如果N大于等于总页数，整个文件就成为一个PDF。</p>
+<h3>能中途改变间隔吗？</h3>
+<p>本工具使用固定的长度。要中途改变，请使用范围。</p>
+<h2>总结</h2>
+<p>要切成等长，请使用“每N页”。确定N并点击“拆分”。检查最后一个文件的页数。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/pdf-split.html">使用“拆分 PDF”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/split-pdf.html">提取或删除 PDF 页面</a>：只保留需要的页面，或删除不需要的页面。</li><li><a href="/zh/merge-pdf.html">合并 PDF</a>：按你选择的顺序，把多个 PDF 文件合并成一个。</li><li><a href="/zh/compress-pdf.html">压缩 PDF</a>：把 PDF 压缩到你指定的大小以下，应对上传大小限制。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>
