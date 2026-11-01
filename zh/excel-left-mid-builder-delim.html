@@ -200,63 +200,90 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>分隔符之前和之后</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>输入分隔符</li><li>查看公式</li><li>核对一下</li></ul></div>
-<p lang="en">To take the part before or after a delimiter, LEFT or MID alone can't fix the character count. Combine them with FIND. "LEFT+FIND" and "MID+FIND" in <a href="/zh/excel-left-mid-builder.html">Build a LEFT, MID or RIGHT Formula</a> build those formulas.</p>
-<h2 lang="en">The two formulas</h2>
+<div class="points"><b>要点</b><ul><li>输入分隔符</li><li>查看公式</li><li>检查</li></ul></div><p>要取分隔符之前或之后的部分，仅靠LEFT或MID无法确定字符数。请把它们与FIND组合起来。<a href="/zh/excel-left-mid-builder.html">生成 LEFT、MID 或 RIGHT 公式</a> 中的“LEFT+FIND”和“MID+FIND”会生成这些公式。</p>
+<h2>两个公式</h2>
 <ul>
-<li lang="en"><b>LEFT+FIND</b>: takes the part before the delimiter</li>
-<li lang="en"><b>MID+FIND</b>: takes the part after the delimiter</li>
+<li><b>LEFT+FIND</b>：取分隔符之前的部分</li>
+<li><b>MID+FIND</b>：取分隔符之后的部分</li>
 </ul>
 <h2>步骤</h2>
 <ol>
-<li lang="en">In "Method", choose "LEFT+FIND" or "MID+FIND".</li>
-<li lang="en">Enter the separator in "Delimiter (for before/after)".</li>
-<li lang="en">Enter a "Sample text" and check the result.</li>
+<li>在“Method”中，选择“LEFT+FIND”或“MID+FIND”。</li>
+<li>在“Delimiter (for before/after)”中输入分隔符。</li>
+<li>输入“Sample text”并检查结果。</li>
 </ol>
-<div class="note" lang="en">If the delimiter appears several times in the text, the first one is the basis.</div>
-<h2 lang="en">Example (delimiter "@")</h2>
-<p lang="en">With A2 "taro@example.com":</p>
+<div class="note">如果分隔符在文本中出现多次，以第一个为准。</div>
+<h2>示例（分隔符“@”）</h2>
+<p>A2是“taro@example.com”时：</p>
 <ul>
-<li lang="en">Before: =LEFT(A2,FIND("@",A2)-1) → taro</li>
-<li lang="en">After: =MID(A2,FIND("@",A2)+1,LEN(A2)) → example.com</li>
+<li>之前：=LEFT(A2,FIND("@",A2)-1) → taro</li>
+<li>之后：=MID(A2,FIND("@",A2)+1,LEN(A2)) → example.com</li>
 </ul>
-<h2 lang="en">How the formulas work</h2>
+<h2>公式的工作原理</h2>
 <ul>
-<li lang="en">FIND("@",A2): which character "@" is</li>
-<li lang="en">Before: LEFT up to one before that position</li>
-<li lang="en">After: MID from the next position to the end</li>
+<li>FIND("@",A2)：“@”是第几个字符</li>
+<li>之前：用LEFT取到该位置的前一位</li>
+<li>之后：用MID从下一个位置取到末尾</li>
 </ul>
-<p lang="en">For multi-character delimiters (e.g. " - "), the "after" formula advances by the delimiter's length. The tool counts and assembles it automatically.</p>
-<h2>适合</h2>
+<p>对于多个字符的分隔符（例如“ - ”），“之后”的公式会前进分隔符的长度。工具会自动数出并组装。</p>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Splitting an email's user name and domain</li>
-<li lang="en">Splitting "family given" names by a space</li>
-<li lang="en">Splitting "part-colour" before and after</li>
+<li>拆分邮件地址的用户名和域名</li>
+<li>用空格拆分“姓 名”</li>
+<li>拆分“零件-颜色”的前后两部分</li>
 </ul>
-<h2 lang="en">Splitting names</h2>
-<p lang="en">With A2 "Yamada Taro", use the space as delimiter.</p>
+<h2>拆分姓名</h2>
+<p>A2是“Yamada Taro”时，以空格作为分隔符。</p>
 <ul>
-<li lang="en">Family: =LEFT(A2,FIND(" ",A2)-1) → Yamada</li>
-<li lang="en">Given: =MID(A2,FIND(" ",A2)+1,LEN(A2)) → Taro</li>
+<li>姓：=LEFT(A2,FIND(" ",A2)-1) → Yamada</li>
+<li>名：=MID(A2,FIND(" ",A2)+1,LEN(A2)) → Taro</li>
 </ul>
-<h2 lang="en">Cautions</h2>
+<h2>注意事项</h2>
 <ul>
-<li lang="en"><b>Full-width spaces</b>: if the delimiter is a full-width space, enter a full-width space.</li>
-<li lang="en"><b>No delimiter</b>: FIND gives #VALUE!. Handle with the next page's method.</li>
-<li lang="en"><b>Case</b>: FIND distinguishes case. To ignore, use SEARCH.</li>
+<li><b>全角空格</b>：如果分隔符是全角空格，请输入全角空格。</li>
+<li><b>没有分隔符</b>：FIND会得到#VALUE!。请用下一页的方法处理。</li>
+<li><b>大小写</b>：FIND区分大小写。要忽略大小写，请使用SEARCH。</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">Wanted only the domain parts from a list of email addresses to summarise. Copied the MID+FIND formula down the column.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>想从一份邮件地址列表中只取出域名部分来汇总。把MID+FIND公式向下复制了整列。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Multiple delimiters</b>: only the first is the basis. Later ones need other formulas.</li>
-<li lang="en"><b>Spaces around delimiters</b>: tidy with TRIM.</li>
+<li><b>多个分隔符</b>：只以第一个为准。后面的需要其他公式。</li>
+<li><b>分隔符周围的空格</b>：请用TRIM整理。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">What about splitting at the last delimiter?</h3>
-<p lang="en">The formula gets complex. TEXTBEFORE and TEXTAFTER (newer Excel) can do it.</p>
-<h2>小结</h2>
-<p lang="en">To take what's before or after a delimiter, use formulas combined with FIND.</p>
+<h2>常见问题</h2>
+<h3>想在最后一个分隔符处拆分怎么办？</h3>
+<p>公式会变得复杂。TEXTBEFORE和TEXTAFTER（较新的Excel）可以做到。</p>
+<h2>总结</h2>
+<p>要取分隔符之前或之后的内容，请使用与FIND组合的公式。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/excel-left-mid-builder.html">使用“生成 LEFT、MID 或 RIGHT 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/excel-text-clean.html">去掉 Excel 文字中多余的空格和看不见的字符</a>: 去掉多余的空格和看不见的字符。</li><li><a href="/zh/text-to-columns.html">按分隔符把文字拆成多列</a>: 按分隔符把文字拆成多列。</li><li><a href="/zh/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

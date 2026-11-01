@@ -200,53 +200,77 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>检查是否匹配</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>选择 MATCH</li><li>输入模式</li><li>复制</li></ul></div>
-<p lang="en">You only want to know whether a cell's text has a certain shape, such as a postal code. That's REGEXMATCH. "MATCH" in <a href="/zh/regex-formula-builder.html">Build a Regular Expression Formula</a> builds it.</p>
+<div class="points"><b>要点</b><ul><li>选择MATCH</li><li>输入模式</li><li>复制</li></ul></div><p>你只想知道单元格里的文本是否具有某种形式，比如邮政编码。这就是REGEXMATCH。<a href="/zh/regex-formula-builder.html">生成正则表达式公式</a> 中的“MATCH”会生成它。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Choose "MATCH" in "Type".</li>
-<li lang="en">Enter the "Text cell" and "Pattern".</li>
-<li lang="en">Copy the formula and paste.</li>
+<li>在“Type”中选择“MATCH”。</li>
+<li>输入“Text cell”和“Pattern”。</li>
+<li>复制公式并粘贴。</li>
 </ol>
-<div class="note" lang="en">The result is TRUE (matches) or FALSE (doesn't).</div>
+<div class="note">结果是TRUE（匹配）或FALSE（不匹配）。</div>
 <h2>示例</h2>
 <ul>
-<li lang="en">=REGEXMATCH(A2,"\d{3}-\d{4}")</li>
+<li>=REGEXMATCH(A2,"\d{3}-\d{4}")</li>
 </ul>
-<p lang="en">It's TRUE if A2 contains the form "123-4567".</p>
-<h2 lang="en">Beware partial matches</h2>
-<p lang="en">REGEXMATCH is TRUE if any part of the text matches. To test the whole text, add "^" and "$" around the pattern.</p>
+<p>如果A2里含有“123-4567”这种形式，结果就是TRUE。</p>
+<h2>当心部分匹配</h2>
+<p>只要文本的任何一部分匹配，REGEXMATCH就是TRUE。要检查整段文本，请在模式前后加上“^”和“$”。</p>
 <ul>
-<li lang="en">Example: =REGEXMATCH(A2,"^\d{3}-\d{4}$")</li>
+<li>示例：=REGEXMATCH(A2,"^\d{3}-\d{4}$")</li>
 </ul>
-<h2 lang="en">Uses</h2>
+<h2>用途</h2>
 <ul>
-<li lang="en">Combine with IF for input checks</li>
-<li lang="en">Combine with FILTER to pull matching rows</li>
-<li lang="en">Color rows with the wrong shape via conditional formatting</li>
+<li>与IF组合，做输入检查</li>
+<li>与FILTER组合，取出匹配的行</li>
+<li>用条件格式给形式不对的行上色</li>
 </ul>
-<h2 lang="en">Combining with IF</h2>
+<h2>与IF组合</h2>
 <ul>
-<li lang="en">Example: =IF(REGEXMATCH(A2,"^\d{3}-\d{4}$"),"OK","Wrong format")</li>
+<li>示例：=IF(REGEXMATCH(A2,"^\d{3}-\d{4}$"),"OK","Wrong format")</li>
 </ul>
-<h2>适合</h2>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Auditing postal and phone formats in a roster</li>
-<li lang="en">Auditing email addresses in imported data</li>
-<li lang="en">Finding rows containing particular words</li>
+<li>核查名册中的邮政编码和电话格式</li>
+<li>核查导入数据中的电子邮件地址</li>
+<li>找出含有特定词语的行</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">Wanted to find rows missing the hyphen in a roster's postal-code column. MATCH checked the shape, and I fixed the FALSE rows.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>想找出名册邮政编码列里缺少连字符的行。用MATCH检查了形式，然后修改了结果为FALSE的行。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Testing the whole text</b>: add ^ and $.</li>
-<li lang="en"><b>Full-width hyphens</b>: half-width and full-width are different characters.</li>
+<li><b>检查整段文本</b>：加上^和$。</li>
+<li><b>全角连字符</b>：半角和全角是不同的字符。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">I want to test for any of several words</h3>
-<p lang="en">Join them with a pipe, like "Tokyo|Osaka|Nagoya".</p>
-<h2>小结</h2>
-<p lang="en">Use REGEXMATCH to check shapes; use ^ and $ for a whole-text match.</p>
+<h2>常见问题</h2>
+<h3>我想检查是否含有几个词中的任何一个</h3>
+<p>用竖线连接它们，比如“Tokyo|Osaka|Nagoya”。</p>
+<h2>总结</h2>
+<p>用REGEXMATCH检查形式；要匹配整段文本，请使用^和$。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/regex-formula-builder.html">使用“生成正则表达式公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/regex-tester.html">正则表达式测试器</a>: 测试正则表达式，查看匹配和替换结果。</li><li><a href="/zh/substitute-formula-builder.html">生成 SUBSTITUTE 公式</a>: 生成文字替换公式。</li><li><a href="/zh/split-formula-builder.html">生成 SPLIT 公式</a>: 生成文字拆分公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

@@ -200,51 +200,74 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>特殊空格</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>选择 NBSP</li><li>输入单元格</li><li>复制</li></ul></div>
-<p lang="en">TRIM didn't remove the space. The cause may be a character that looks like a space but isn't one (a non-breaking space). "NBSP" in <a href="/zh/text-case-formula-builder.html">Build a Text Case and Trim Formula</a> tidies it.</p>
+<div class="points"><b>要点</b><ul><li>选择NBSP</li><li>输入单元格</li><li>复制</li></ul></div><p>TRIM没有删掉空格。原因可能是有个字符看起来像空格，但其实不是（不换行空格）。<a href="/zh/text-case-formula-builder.html">生成大小写与去空格公式</a> 中的“NBSP”可以整理它。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Choose "NBSP" in "Type".</li>
-<li lang="en">Enter the "Text cell".</li>
-<li lang="en">Copy the formula and paste.</li>
+<li>在“Type”中选择“NBSP”。</li>
+<li>输入“Text cell”。</li>
+<li>复制公式并粘贴。</li>
 </ol>
-<div class="note" lang="en">The form is TRIM(SUBSTITUTE(cell,CHAR(160)," ")).</div>
+<div class="note">形式是 TRIM(SUBSTITUTE(单元格,CHAR(160)," "))。</div>
 <h2>示例</h2>
 <ul>
-<li lang="en">=TRIM(SUBSTITUTE(A2,CHAR(160)," "))</li>
+<li>=TRIM(SUBSTITUTE(A2,CHAR(160)," "))</li>
 </ul>
-<p lang="en">CHAR(160) is the non-breaking space. It's converted to a normal space and then tidied with TRIM.</p>
-<h2 lang="en">What a non-breaking space is</h2>
-<p lang="en">A special space found in text copied from web pages or output by some systems. It looks normal but TRIM doesn't remove it.</p>
-<h2 lang="en">How to spot it</h2>
+<p>CHAR(160)是不换行空格。它被转换成普通空格，然后用TRIM整理。</p>
+<h2>什么是不换行空格</h2>
+<p>一种特殊的空格，常见于从网页复制的文本，或者某些系统输出的文本。它看起来正常，但TRIM不会删除它。</p>
+<h2>如何发现</h2>
 <ul>
-<li lang="en">Count characters with LEN and compare with the visible count</li>
-<li lang="en">If it's larger than it looks, there are invisible characters</li>
+<li>用LEN数字符数，并与看得见的字数比较</li>
+<li>如果比看起来的大，说明有看不见的字符</li>
 </ul>
-<h2>适合</h2>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Tidying data copied from the web</li>
-<li lang="en">Investigating why VLOOKUP doesn't match</li>
-<li lang="en">Tidying data exported from accounting software</li>
+<li>整理从网页复制的数据</li>
+<li>查找VLOOKUP不匹配的原因</li>
+<li>整理从会计软件导出的数据</li>
 </ul>
-<h2 lang="en">Other special characters</h2>
+<h2>其他特殊字符</h2>
 <ul>
-<li lang="en">Line breaks: removable with CLEAN</li>
-<li lang="en">Tabs: replace with SUBSTITUTE, CHAR(9)</li>
-<li lang="en">Zero-width spaces: another code such as UNICHAR(8203)</li>
+<li>换行：可以用CLEAN删除</li>
+<li>制表符：用SUBSTITUTE和CHAR(9)替换</li>
+<li>零宽空格：使用其他代码，比如UNICHAR(8203)</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">Copying a web price table, numbers wouldn't calculate. Non-breaking spaces were in them. After tidying with NBSP and converting with VALUE, totals worked.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>复制网页上的价格表后，数字无法计算。里面有不换行空格。用NBSP整理并用VALUE转换之后，合计就能算了。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>CHAR(160) differs by Excel environment</b>: works on Windows but may differ on Mac. Try UNICHAR(160).</li>
-<li lang="en"><b>TRIM alone doesn't remove it</b>: you need to replace CHAR(160).</li>
+<li><b>CHAR(160)因Excel环境而异</b>：在Windows上可用，但在Mac上可能不同。请试试UNICHAR(160)。</li>
+<li><b>只用TRIM删不掉</b>：需要替换CHAR(160)。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">I want to remove special spaces in bulk</h3>
-<p lang="en">The site's "Remove extra spaces and invisible characters from Excel text" tool removes them from pasted text in one go.</p>
-<h2>小结</h2>
-<p lang="en">For spaces TRIM can't remove, replace CHAR(160).</p>
+<h2>常见问题</h2>
+<h3>我想批量删除特殊空格</h3>
+<p>本站的“删除Excel文本中的多余空格和不可见字符”工具，可以一次性从粘贴的文本中删除它们。</p>
+<h2>总结</h2>
+<p>对于TRIM删不掉的空格，请替换CHAR(160)。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/text-case-formula-builder.html">使用“生成大小写与去空格公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/excel-text-clean.html">去掉 Excel 文字中多余的空格和看不见的字符</a>: 去掉多余的空格和看不见的字符。</li><li><a href="/zh/text-case-converter.html">英文大小写转换器（camelCase、snake_case）</a>: 转换文本的大小写和命名风格。</li><li><a href="/zh/excel-left-mid-builder.html">生成 LEFT、MID 或 RIGHT 公式</a>: 生成取出文字的公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

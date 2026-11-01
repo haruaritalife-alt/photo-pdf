@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>编码自动检测的原理，以及检测失败时怎么办｜PDF Mikata</title>
+<title>编码自动检测的原理以及失败时怎么办｜PDF Mikata</title>
 
 
 <script src="/site.js"></script>
@@ -115,19 +115,19 @@ h1,h2{letter-spacing:.01em}
 <meta content="PDF Mikata" property="og:site_name"/>
 <meta content="zh_CN" property="og:locale"/>
 
-<meta content="编码自动检测的原理，以及检测失败时怎么办｜PDF Mikata" property="og:title"/>
+<meta content="编码自动检测的原理以及失败时怎么办｜PDF Mikata" property="og:title"/>
 <meta content="编码自动检测的原理，以及猜错时如何手动修正。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/charset-convert-auto-detect.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="编码自动检测的原理，以及检测失败时怎么办｜PDF Mikata" name="twitter:title"/>
+<meta content="编码自动检测的原理以及失败时怎么办｜PDF Mikata" name="twitter:title"/>
 <meta content="编码自动检测的原理，以及猜错时如何手动修正。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "编码自动检测的原理，以及检测失败时怎么办", "description": "编码自动检测的原理，以及猜错时如何手动修正。", "url": "https://pdfmikata.com/zh/charset-convert-auto-detect.html", "mainEntityOfPage": "https://pdfmikata.com/zh/charset-convert-auto-detect.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "编码自动检测的原理以及失败时怎么办", "description": "编码自动检测的原理，以及猜错时如何手动修正。", "url": "https://pdfmikata.com/zh/charset-convert-auto-detect.html", "mainEntityOfPage": "https://pdfmikata.com/zh/charset-convert-auto-detect.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -198,60 +198,82 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <main id="main" tabindex="-1">
 
 <div lang="zh-Hans">
-<h1>编码自动检测的原理，以及检测失败时怎么办</h1>
+<h1>编码自动检测的原理以及失败时怎么办</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>确认检测到的编码</li><li>手动更改读取方式</li><li>确认正常后再转换</li></ul></div>
-<p lang="en">How should you handle a file whose encoding you don't know? <a href="/zh/charset-convert.html">Convert Text Encoding (Fix Garbled Text)</a> estimates the encoding from the start of the file and the arrangement of bytes. This is "auto-detection".</p>
+<div class="points"><b>要点</b><ul><li>检查检测出的编码</li><li>手动更改读取方式</li><li>看起来正确后转换</li></ul></div><p>对于不知道编码的文件，该怎么处理？<a href="/zh/charset-convert.html">转换文本编码（修复乱码）</a> 会根据文件开头和字节的排列来推测编码。这就是“自动检测”。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Choose a file and look at the "Auto-detected:" display.</li>
-<li lang="en">If the text is garbled, change "Current encoding" to another.</li>
-<li lang="en">Once "Content read (beginning)" is correct, convert.</li>
+<li>选择文件，查看“Auto-detected:”的显示。</li>
+<li>如果文字乱码，就把“当前编码”改成别的。</li>
+<li>当“读取内容（开头）”正确之后，再转换。</li>
 </ol>
-<div class="note" lang="en">Short files are easily misjudged. Look at the display and choose manually.</div>
-<h2 lang="en">How auto-detection works</h2>
+<div class="note">短文件容易被误判。请查看显示，手动选择。</div>
+<h2>自动检测的原理</h2>
 <ul>
-<li lang="en">If the file starts with a BOM (a marker for UTF-8 etc.), it uses that</li>
-<li lang="en">If not, it estimates from the characteristics of the byte arrangement</li>
-<li lang="en">For Japanese, it tells apart UTF-8, Shift_JIS, EUC-JP and so on</li>
+<li>如果文件以BOM（UTF-8等的标记）开头，就使用它</li>
+<li>如果没有，就根据字节排列的特征推测</li>
+<li>对于日文，会区分UTF-8、Shift_JIS、EUC-JP等</li>
 </ul>
-<h2 lang="en">Cases where detection easily misses</h2>
+<h2>检测容易出错的情况</h2>
 <ul>
-<li lang="en">Short files with few characters</li>
-<li lang="en">Files of only half-width alphanumerics with almost no Japanese</li>
-<li lang="en">Broken files mixing several encodings</li>
+<li>字符很少的短文件</li>
+<li>只有半角字母数字、几乎没有日文的文件</li>
+<li>混有多种编码的损坏文件</li>
 </ul>
-<h2 lang="en">Steps to choose manually</h2>
+<h2>手动选择的步骤</h2>
 <ol>
-<li lang="en">Set "Current encoding" to "UTF-8" and check the reading.</li>
-<li lang="en">If garbled, set "Shift_JIS (Windows)" and check.</li>
-<li lang="en">If still wrong, try "EUC-JP" or "UTF-16 (LE)".</li>
-<li lang="en">The encoding that reads correctly is the file's encoding.</li>
+<li>把“当前编码”设为“UTF-8”，查看读取情况。</li>
+<li>如果乱码，设为“Shift_JIS（Windows）”再查看。</li>
+<li>如果仍然不对，试试“EUC-JP”或“UTF-16（LE）”。</li>
+<li>能正确读出的编码，就是文件的编码。</li>
 </ol>
-<h2 lang="en">Hints for telling them apart</h2>
+<h2>区分的线索</h2>
 <ul>
-<li lang="en">Data downloaded from the web → often UTF-8</li>
-<li lang="en">Old Windows software → often Shift_JIS</li>
-<li lang="en">Old UNIX-type systems → often EUC-JP</li>
-<li lang="en">Saved as "Unicode" in Windows Notepad → often UTF-16</li>
+<li>从网络下载的数据 → 常是UTF-8</li>
+<li>旧的Windows软件 → 常是Shift_JIS</li>
+<li>旧的UNIX类系统 → 常是EUC-JP</li>
+<li>在Windows记事本中以“Unicode”保存 → 常是UTF-16</li>
 </ul>
-<h2>适合</h2>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Checking files of unknown origin</li>
-<li lang="en">Investigating the encoding of files from clients</li>
+<li>检查来源不明的文件</li>
+<li>调查客户发来的文件的编码</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">Opening a text of unknown origin showed garbling. Auto-detection missed, but setting "Current encoding" to Shift_JIS made it readable. I converted it to UTF-8 and saved.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>打开一个来源不明的文本，出现了乱码。自动检测判断错误，但把“当前编码”设为Shift_JIS后就能读了。我把它转换为UTF-8并保存了。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Garbled whichever you choose</b>: the characters may already be broken.</li>
-<li lang="en"><b>Only part is garbled</b>: several encodings are mixed.</li>
+<li><b>怎么选都是乱码</b>：字符可能已经损坏。</li>
+<li><b>只有一部分乱码</b>：混有多种编码。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Is auto-detection always right?</h3>
-<p lang="en">No. With short files it can be wrong. Confirm with the displayed reading.</p>
-<h2>小结</h2>
-<p lang="en">Auto-detection is handy but not all-powerful. Look at the reading and choose the matching encoding.</p>
+<h2>常见问题</h2>
+<h3>自动检测总是正确的吗？</h3>
+<p>不是。对于短文件，可能会出错。请用显示的读取结果来确认。</p>
+<h2>总结</h2>
+<p>自动检测很方便，但并非万能。查看读取结果，选择匹配的编码。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/charset-convert.html">使用“转换文本编码（修复乱码）”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/csv-json.html">CSV 与 JSON 互相转换</a>：立即在 CSV 和 JSON 之间互相转换。</li><li><a href="/zh/csv-to-xlsx.html">把 CSV 转换成 Excel（.xlsx）</a>：把 CSV 转换成 Excel（.xlsx）文件。</li><li><a href="/zh/line-break-remover.html">删除和整理文字中的换行</a>：整理从 PDF 等处复制的文字中的换行。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

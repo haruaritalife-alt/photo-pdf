@@ -200,69 +200,97 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>条件中的比较</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>选择比较方式</li><li>输入数值</li><li>核对一下</li></ul></div>
-<p lang="en">FILTER conditions are written with comparison operators, like "B2:B100&gt;=80". Here is the six operators selectable in "Comparison" in <a href="/zh/filter-formula-builder.html">Build a FILTER Formula</a>.</p>
-<h2 lang="en">The six operators</h2>
+<div class="points"><b>要点</b><ul><li>选择比较</li><li>输入值</li><li>检查</li></ul></div><p>FILTER的条件用比较运算符来写，如“B2:B100&gt;=80”。下面是 <a href="/zh/filter-formula-builder.html">生成 FILTER 公式</a> 中“Comparison”里可选的六个运算符。</p>
+<h2>六个运算符</h2>
 <ul>
-<li lang="en"><b>&gt;=</b>: or more</li>
-<li lang="en"><b>&gt;</b>: greater than</li>
-<li lang="en"><b>&lt;=</b>: or less</li>
-<li lang="en"><b>&lt;</b>: less than</li>
-<li lang="en"><b>=</b>: equal</li>
-<li lang="en"><b>&lt;&gt;</b>: not equal</li>
+<li><b>&gt;=</b>：以上</li>
+<li><b>&gt;</b>：大于</li>
+<li><b>&lt;=</b>：以下</li>
+<li><b>&lt;</b>：小于</li>
+<li><b>=</b>：等于</li>
+<li><b>&lt;&gt;</b>：不等于</li>
 </ul>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Enter the range of the column to judge in "Column to test".</li>
-<li lang="en">Choose an operator in "Comparison".</li>
-<li lang="en">Enter "Value to compare".</li>
-<li lang="en">Check the "B2:B100&gt;=80" part of the formula.</li>
+<li>在“Column to test”中输入要判断的那一列的区域。</li>
+<li>在“Comparison”中选择运算符。</li>
+<li>输入“Value to compare”。</li>
+<li>检查公式中的“B2:B100&gt;=80”部分。</li>
 </ol>
-<div class="note" lang="en">Unlike SUMIF, you needn't enclose the condition in quotes. FILTER takes the comparison expression as written.</div>
-<h2 lang="en">Examples</h2>
+<div class="note">与SUMIF不同，你不需要把条件用引号括起来。FILTER直接接受写成的比较表达式。</div>
+<h2>示例</h2>
 <ul>
-<li lang="en">80 or more: =FILTER(A2:C100,B2:B100&gt;=80)</li>
-<li lang="en">Equal to "Tokyo": =FILTER(A2:C100,B2:B100="Tokyo")</li>
-<li lang="en">Not "Tokyo": =FILTER(A2:C100,B2:B100&lt;&gt;"Tokyo")</li>
+<li>80以上：=FILTER(A2:C100,B2:B100&gt;=80)</li>
+<li>等于“Tokyo”：=FILTER(A2:C100,B2:B100="Tokyo")</li>
+<li>不是“Tokyo”：=FILTER(A2:C100,B2:B100&lt;&gt;"Tokyo")</li>
 </ul>
-<h2 lang="en">Forms of the compared value</h2>
+<h2>比较值的形式</h2>
 <ul>
-<li lang="en">Numbers: entering 80 keeps it as is</li>
-<li lang="en">Text: entering Tokyo adds quotes automatically</li>
-<li lang="en">Other cells: entering E1 compares with that cell's value</li>
+<li>数字：输入80会原样保留</li>
+<li>文本：输入Tokyo会自动添加引号</li>
+<li>其他单元格：输入E1会与该单元格的值比较</li>
 </ul>
-<h2 lang="en">Difference from SUMIF</h2>
+<h2>与SUMIF的区别</h2>
 <ul>
-<li lang="en">SUMIF: writes the condition as text like "&gt;=80"</li>
-<li lang="en">FILTER: writes the condition as a comparison expression like "B2:B100&gt;=80"</li>
+<li>SUMIF：把条件写成"&gt;=80"这样的文本</li>
+<li>FILTER：把条件写成"B2:B100&gt;=80"这样的比较表达式</li>
 </ul>
-<h2 lang="en">Multiple conditions</h2>
-<p lang="en">Combining FILTER conditions by multiplication gives rows meeting all (AND).</p>
+<h2>多个条件</h2>
+<p>用乘法组合FILTER的条件，得到满足全部条件（AND）的行。</p>
 <ul>
-<li lang="en">Example: =FILTER(A2:C100,(B2:B100&gt;=80)*(C2:C100="Tokyo"))</li>
+<li>示例：=FILTER(A2:C100,(B2:B100&gt;=80)*(C2:C100="Tokyo"))</li>
 </ul>
-<p lang="en">Combining by addition gives rows meeting either (OR).</p>
+<p>用加法组合，得到满足任一条件（OR）的行。</p>
 <ul>
-<li lang="en">Example: =FILTER(A2:C100,(B2:B100&gt;=80)+(C2:C100="Tokyo"))</li>
+<li>示例：=FILTER(A2:C100,(B2:B100&gt;=80)+(C2:C100="Tokyo"))</li>
 </ul>
-<p lang="en">Rewrite the condition part of the tool's formula by hand.</p>
-<h2>适合</h2>
+<p>请手动改写工具所生成公式的条件部分。</p>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Extracting rows meeting a condition</li>
-<li lang="en">Increasing to several conditions</li>
+<li>提取满足条件的行</li>
+<li>扩展到多个条件</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">Wanted only people with a score of 80+ and region Tokyo. Rewriting the tool's condition into the multiplication form output only rows meeting both.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>想要只留下分数在80以上且地区为Tokyo的人。把工具的条件改写成乘法的形式，就只输出了同时满足两者的行。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Forgetting brackets</b>: with several conditions, enclose each in brackets.</li>
-<li lang="en"><b>Range rows</b>: make all condition ranges the same number of rows.</li>
+<li><b>忘了括号</b>：有多个条件时，请把每一个都用括号括起来。</li>
+<li><b>区域的行数</b>：请让所有条件区域的行数相同。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Can I filter by partial text match?</h3>
-<p lang="en">Combine SEARCH and ISNUMBER. Example: ISNUMBER(SEARCH("Tok",C2:C100))</p>
-<h2>小结</h2>
-<p lang="en">Write the comparison expression as is. Combine multiple conditions with multiplication and addition.</p>
+<h2>常见问题</h2>
+<h3>能按部分文本匹配来筛选吗？</h3>
+<p>组合SEARCH和ISNUMBER。示例：ISNUMBER(SEARCH("Tok",C2:C100))</p>
+<h2>总结</h2>
+<p>把比较表达式原样写出来。多个条件用乘法和加法组合。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/filter-formula-builder.html">使用“生成 FILTER 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li><li><a href="/zh/excel-if-builder.html">生成 IF 公式</a>: 生成 IF 公式。</li><li><a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

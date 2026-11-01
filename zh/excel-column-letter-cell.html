@@ -9,7 +9,7 @@
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/zh/excel-column-letter-cell.html" rel="canonical"/>
-<meta content="如何读懂单元格引用。" name="description"/>
+<meta content="如何读取单元格引用。" name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -116,18 +116,18 @@ h1,h2{letter-spacing:.01em}
 <meta content="zh_CN" property="og:locale"/>
 
 <meta content="读取单元格的列和行｜PDF Mikata" property="og:title"/>
-<meta content="如何读懂单元格引用。" property="og:description"/>
+<meta content="如何读取单元格引用。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/excel-column-letter-cell.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="读取单元格的列和行｜PDF Mikata" name="twitter:title"/>
-<meta content="如何读懂单元格引用。" name="twitter:description"/>
+<meta content="如何读取单元格引用。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "读取单元格的列和行", "description": "如何读懂单元格引用。", "url": "https://pdfmikata.com/zh/excel-column-letter-cell.html", "mainEntityOfPage": "https://pdfmikata.com/zh/excel-column-letter-cell.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "读取单元格的列和行", "description": "如何读取单元格引用。", "url": "https://pdfmikata.com/zh/excel-column-letter-cell.html", "mainEntityOfPage": "https://pdfmikata.com/zh/excel-column-letter-cell.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -200,62 +200,89 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>读取单元格的列和行</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>输入引用</li><li>查看列</li><li>查看行</li></ul></div>
-<p lang="en">The cell reference "C5" means "row 5 of column C". Macros sometimes handle columns as numbers, so "C5" must be converted to "column 3, row 5". The "Check a cell too" field in <a href="/zh/excel-column-letter.html">Excel Column Number and Letter Converter</a> does that.</p>
+<div class="points"><b>要点</b><ul><li>输入引用</li><li>查看列</li><li>查看行</li></ul></div><p>单元格引用“C5”的意思是“C列的第5行”。宏有时把列当作数字处理，所以必须把“C5”转换成“第3列，第5行”。<a href="/zh/excel-column-letter.html">Excel 列号与列字母转换器</a> 中的“Check a cell too”栏就能做到。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Enter a cell reference in "Cell reference (such as C5)".</li>
-<li lang="en">A result like "Cell C5: Column 3, Row 5" is displayed.</li>
+<li>在“Cell reference (such as C5)”中输入单元格引用。</li>
+<li>会显示类似“Cell C5: Column 3, Row 5”的结果。</li>
 </ol>
-<div class="note" lang="en">Forms with "$" such as "$C$5" (absolute references) are also read.</div>
-<h2 lang="en">Reading the result</h2>
+<div class="note">像“$C$5”（绝对引用）这样带“$”的形式也能读取。</div>
+<h2>读取结果</h2>
 <ul>
-<li lang="en"><b>Column</b>: the column number. C = 3.</li>
-<li lang="en"><b>Row</b>: the row number as is.</li>
-</ul>
-<h2 lang="en">Examples</h2>
-<ul>
-<li lang="en">C5 → column 3, row 5</li>
-<li lang="en">AB12 → column 28, row 12</li>
-<li lang="en">$D$100 → column 4, row 100</li>
-<li lang="en">XFD1048576 → column 16384, row 1048576 (Excel's last cell)</li>
-</ul>
-<h2 lang="en">Usable range</h2>
-<ul>
-<li lang="en">Columns: A–XFD (1–16384)</li>
-<li lang="en">Rows: 1–1,048,576</li>
-</ul>
-<p lang="en">Out-of-range or malformed input shows "The cell reference is not valid."</p>
-<h2>适合</h2>
-<ul>
-<li lang="en">Specifying in the form Cells(row, column) in macros (VBA)</li>
-<li lang="en">When another program needs row and column numbers</li>
-<li lang="en">Wanting to know which column and row a range's edge is</li>
-</ul>
-<h2 lang="en">VBA example</h2>
-<p lang="en">In VBA, Cells(5, 3) means "row 5, column 3 (C5)". Note the order is "row, column".</p>
-<ul>
-<li lang="en">C5 → Cells(5, 3)</li>
-</ul>
-<h2 lang="en">When you want to check a range (C5:F20)</h2>
-<p lang="en">Enter the top-left and bottom-right cells separately.</p>
-<ul>
-<li lang="en">C5 → column 3, row 5 (top-left)</li>
-<li lang="en">F20 → column 6, row 20 (bottom-right)</li>
+<li><b>列</b>：列号。C = 3。</li>
+<li><b>行</b>：原样的行号。</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">Wanted to specify the last column of range "B2:AB50" by number in a program. Entering "AB50" gave column 28, row 50, which went into the code.</p>
-<h2 lang="en">Common stumbling blocks</h2>
 <ul>
-<li lang="en"><b>Entering a range such as "A1:B2"</b>: only single-cell references. For ranges, check the edge cells separately.</li>
-<li lang="en"><b>A sheet name attached</b>: leave out the sheet name part of "Sheet1!C5".</li>
-<li lang="en"><b>Full-width</b>: enter in half-width.</li>
+<li>C5 → 第3列，第5行</li>
+<li>AB12 → 第28列，第12行</li>
+<li>$D$100 → 第4列，第100行</li>
+<li>XFD1048576 → 第16384列，第1048576行（Excel的最后一个单元格）</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Can lower case be read?</h3>
-<p lang="en">Yes. "c5" is read too.</p>
-<h2>小结</h2>
-<p lang="en">Enter a cell reference to see its column and row numbers. Useful for macros and programs.</p>
+<h2>可用范围</h2>
+<ul>
+<li>列：A–XFD（1–16384）</li>
+<li>行：1–1,048,576</li>
+</ul>
+<p>超出范围或格式不正确的输入会显示“The cell reference is not valid.”。</p>
+<h2>适用于</h2>
+<ul>
+<li>在宏（VBA）中以Cells(行, 列)的形式指定</li>
+<li>另一个程序需要行号和列号时</li>
+<li>想知道某个区域的边缘是第几列第几行</li>
+</ul>
+<h2>VBA示例</h2>
+<p>在VBA中，Cells(5, 3)的意思是“第5行，第3列（C5）”。注意顺序是“行，列”。</p>
+<ul>
+<li>C5 → Cells(5, 3)</li>
+</ul>
+<h2>想检查区域（C5:F20）时</h2>
+<p>请分别输入左上角和右下角的单元格。</p>
+<ul>
+<li>C5 → 第3列，第5行（左上角）</li>
+<li>F20 → 第6列，第20行（右下角）</li>
+</ul>
+<h2>示例</h2>
+<p>想在程序中用数字指定区域“B2:AB50”的最后一列。输入“AB50”得到第28列、第50行，并写进了代码。</p>
+<h2>常见的困扰</h2>
+<ul>
+<li><b>输入了“A1:B2”这样的区域</b>：只支持单个单元格的引用。对于区域，请分别检查边缘的单元格。</li>
+<li><b>附带了工作表名</b>：请去掉“Sheet1!C5”中的工作表名部分。</li>
+<li><b>全角</b>：请用半角输入。</li>
+</ul>
+<h2>常见问题</h2>
+<h3>能读取小写吗？</h3>
+<p>能。“c5”也能读取。</p>
+<h2>总结</h2>
+<p>输入单元格引用，就能看到它的列号和行号。对宏和程序很有用。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/excel-column-letter.html">使用“Excel 列号与列字母转换器”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/xlsx-to-csv.html">把 Excel 转换成 CSV 或 JSON</a>：把 Excel 工作表转换成 CSV、TSV 或 JSON。</li><li><a href="/zh/csv-to-xlsx.html">把 CSV 转换成 Excel（.xlsx）</a>：把 CSV 转换成 Excel（.xlsx）文件。</li><li><a href="/zh/csv-tools.html">合并、拆分 CSV 并选取列</a>: 合并 CSV 文件、按行拆分，或只保留所选列。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

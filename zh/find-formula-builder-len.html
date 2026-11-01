@@ -200,59 +200,87 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>统计长度</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>选择 LEN</li><li>输入单元格</li><li>复制</li></ul></div>
-<p lang="en">You want to check character counts: whether text fits an input limit, whether a postal code has 7 digits, and so on. "LEN" in <a href="/zh/find-formula-builder.html">Build a FIND Formula</a> builds it.</p>
+<div class="points"><b>要点</b><ul><li>选择LEN</li><li>输入单元格</li><li>复制</li></ul></div><p>你想检查字符数：文本是否符合输入上限，邮政编码是不是7位，等等。<a href="/zh/find-formula-builder.html">生成 FIND 公式</a> 中的“LEN”会生成它。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Choose "LEN" in "Type".</li>
-<li lang="en">Enter the "Text cell" (no character to find needed).</li>
-<li lang="en">Copy the formula and paste.</li>
+<li>在“Type”中选择“LEN”。</li>
+<li>输入“Text cell”（不需要要查找的字符）。</li>
+<li>复制公式并粘贴。</li>
 </ol>
-<div class="note" lang="en">The second formula is LENB (byte count). In environments where full-width counts as 2 and half-width as 1.</div>
+<div class="note">第二个公式是LENB（字节数）。在全角算2、半角算1的环境中使用。</div>
 <h2>示例</h2>
 <ul>
-<li lang="en">=LEN(A2)</li>
+<li>=LEN(A2)</li>
 </ul>
-<p lang="en">"東京都" gives 3 and "Tokyo" gives 5.</p>
+<p>“東京都”得到3，“Tokyo”得到5。</p>
 <ul>
-<li lang="en">Second: =LENB(A2)</li>
+<li>第二个：=LENB(A2)</li>
 </ul>
-<h2 lang="en">LEN vs LENB</h2>
+<h2>LEN与LENB</h2>
 <ul>
-<li lang="en">LEN: number of characters</li>
-<li lang="en">LENB: byte count (in Japanese environments, full-width is 2 and half-width is 1)</li>
+<li>LEN：字符的个数</li>
+<li>LENB：字节数（在日文环境中，全角是2，半角是1）</li>
 </ul>
-<p lang="en">In Google Sheets, LENB may not behave as expected.</p>
-<h2 lang="en">Using for checks</h2>
+<p>在Google表格中，LENB可能不会按预期工作。</p>
+<h2>用于检查</h2>
 <ul>
-<li lang="en">Is the postal code 7 digits: =LEN(SUBSTITUTE(A2,"-",""))=7</li>
-<li lang="en">Within 100 characters: =LEN(A2)&lt;=100</li>
+<li>邮政编码是不是7位：=LEN(SUBSTITUTE(A2,"-",""))=7</li>
+<li>在100个字符以内：=LEN(A2)&lt;=100</li>
 </ul>
-<h2 lang="en">Spaces count too</h2>
-<p lang="en">LEN counts spaces as characters. If the count exceeds what you see, leading or trailing spaces or invisible characters may be present.</p>
-<h2>适合</h2>
+<h2>空格也会计入</h2>
+<p>LEN把空格也算作字符。如果数目超过了你看到的，可能有开头或结尾的空格，或者看不见的字符。</p>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Checking entries with length limits</li>
-<li lang="en">Digit checks (phone numbers, ID numbers)</li>
-<li lang="en">Finding invisible spaces</li>
+<li>检查有长度限制的输入</li>
+<li>位数检查（电话号码、编号）</li>
+<li>找出看不见的空格</li>
 </ul>
-<h2 lang="en">Line breaks count too</h2>
-<p lang="en">A line break counts as one character.</p>
+<h2>换行也会计入</h2>
+<p>一个换行算作一个字符。</p>
 <h2>示例</h2>
-<p lang="en">A web form's description had a 100-character limit. LEN counted characters, and conditional formatting colored rows over the limit.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>网页表单的说明有100个字符的上限。用LEN数字符，再用条件格式给超出上限的行上色。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Numeric cells</b>: digit counts work, but decimal points and formats affect them.</li>
-<li lang="en"><b>Emoji</b>: one may count as two characters.</li>
+<li><b>数值单元格</b>：位数可以统计，但小数点和格式会影响结果。</li>
+<li><b>表情符号</b>：一个可能被算作两个字符。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">What about length without spaces?</h3>
-<p lang="en">Remove spaces with SUBSTITUTE, then count with LEN.</p>
+<h2>常见问题</h2>
+<h3>不含空格的长度呢？</h3>
+<p>先用SUBSTITUTE删除空格，再用LEN计数。</p>
 <ul>
-<li lang="en">Example: =LEN(SUBSTITUTE(A2," ",""))</li>
+<li>示例：=LEN(SUBSTITUTE(A2," ",""))</li>
 </ul>
-<h2>小结</h2>
-<p lang="en">LEN for character count; LENB for bytes.</p>
+<h2>总结</h2>
+<p>字符数用LEN；字节数用LENB。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/find-formula-builder.html">使用“生成 FIND 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/excel-left-mid-builder.html">生成 LEFT、MID 或 RIGHT 公式</a>: 生成取出文字的公式。</li><li><a href="/zh/substitute-formula-builder.html">生成 SUBSTITUTE 公式</a>: 生成文字替换公式。</li><li><a href="/zh/split-formula-builder.html">生成 SPLIT 公式</a>: 生成文字拆分公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

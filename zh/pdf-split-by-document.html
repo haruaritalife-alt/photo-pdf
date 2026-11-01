@@ -4,12 +4,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>把一起扫描的多份文件拆分开｜PDF Mikata</title>
+<title>把扫描在一个PDF里的多份文件分开｜PDF Mikata</title>
 
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/zh/pdf-split-by-document.html" rel="canonical"/>
-<meta content="如何把合在一个 PDF 里扫描的多份文件，拆成每份文件一个 PDF。" name="description"/>
+<meta content="把几份文件一起扫描成的PDF按文件分开的方法。" name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -115,19 +115,19 @@ h1,h2{letter-spacing:.01em}
 <meta content="PDF Mikata" property="og:site_name"/>
 <meta content="zh_CN" property="og:locale"/>
 
-<meta content="把一起扫描的多份文件拆分开｜PDF Mikata" property="og:title"/>
-<meta content="如何把合在一个 PDF 里扫描的多份文件，拆成每份文件一个 PDF。" property="og:description"/>
+<meta content="把扫描在一个PDF里的多份文件分开｜PDF Mikata" property="og:title"/>
+<meta content="把几份文件一起扫描成的PDF按文件分开的方法。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/pdf-split-by-document.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="把一起扫描的多份文件拆分开｜PDF Mikata" name="twitter:title"/>
-<meta content="如何把合在一个 PDF 里扫描的多份文件，拆成每份文件一个 PDF。" name="twitter:description"/>
+<meta content="把扫描在一个PDF里的多份文件分开｜PDF Mikata" name="twitter:title"/>
+<meta content="把几份文件一起扫描成的PDF按文件分开的方法。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "把一起扫描的多份文件拆分开", "description": "如何把合在一个 PDF 里扫描的多份文件，拆成每份文件一个 PDF。", "url": "https://pdfmikata.com/zh/pdf-split-by-document.html", "mainEntityOfPage": "https://pdfmikata.com/zh/pdf-split-by-document.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "把扫描在一个PDF里的多份文件分开", "description": "把几份文件一起扫描成的PDF按文件分开的方法。", "url": "https://pdfmikata.com/zh/pdf-split-by-document.html", "mainEntityOfPage": "https://pdfmikata.com/zh/pdf-split-by-document.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -198,52 +198,72 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <main id="main" tabindex="-1">
 
 <div lang="zh-Hans">
-<h1>把扫描到同一个 PDF 里的多份文件分开</h1>
+<h1>把扫描在一个PDF里的多份文件分开</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>记下每份文件从第几页开始</li><li>用“按范围”在这些位置拆分</li><li>之后给文件起一个清楚的名字</li></ul></div>
-<p lang="en">You scanned several documents into one PDF and want to separate it into one file per document. Use "Specify ranges" in <a href="/zh/pdf-split.html">Split PDF</a> to split along the document boundaries.</p>
-<h2 lang="en">The overall flow</h2>
+<div class="points"><b>要点</b><ul><li>记下每份文件开始的页码</li><li>用“按范围”在这些点拆分</li><li>之后清晰地重命名文件</li></ul></div><p>你把几份文件扫描进了一个PDF，想把它按每份文件一个文件的方式分开。请使用 <a href="/zh/pdf-split.html">拆分 PDF</a> 中的“指定范围”，沿着文件的边界拆分。</p>
+<h2>整体流程</h2>
 <ol>
-<li lang="en">Open the scanned PDF and note the first and last page of each document</li>
-<li lang="en">Enter those ranges in "Specify ranges" and split</li>
-<li lang="en">Give the split files names that suit their content</li>
+<li>打开扫描的PDF，记下每份文件的首页和末页</li>
+<li>在“指定范围”中输入这些范围并拆分</li>
+<li>给拆分出的文件起合乎内容的名称</li>
 </ol>
 <h2>步骤</h2>
 <ol>
-<li lang="en">With "Choose PDF", pick the scanned PDF.</li>
-<li lang="en">Open the PDF in another app and note the range of each document. For example, an invoice on pages 1 to 2, a quote on 3 to 5 and a contract from 6 to the end.</li>
-<li lang="en">Under "How to split", choose "Specify ranges".</li>
-<li lang="en">In "Ranges (comma-separated)", enter something like "1-2, 3-5, 6-".</li>
-<li lang="en">Press "Split" and save.</li>
+<li>用“选择PDF”挑选扫描的PDF。</li>
+<li>在另一个应用中打开该PDF，记下每份文件的范围。例如，发票在第1到2页，报价单在第3到5页，合同从第6页到最后。</li>
+<li>在“拆分方式”下，选择“指定范围”。</li>
+<li>在“范围（用逗号分隔）”中，输入类似“1-2, 3-5, 6-”的内容。</li>
+<li>点击“拆分”并保存。</li>
 </ol>
-<div class="note" lang="en">The start and end of each range are easy to get wrong, so check the page numbers again before running.</div>
-<h2 lang="en">How to find the ranges</h2>
+<div class="note">每个范围的起点和终点很容易出错，所以执行之前请再核对一遍页码。</div>
+<h2>如何找出范围</h2>
 <ul>
-<li lang="en">The first page of a document can be recognized by its cover or title.</li>
-<li lang="en">Where the page numbering goes back to 1 is the start of a new document.</li>
-<li lang="en">Boundaries are where the type of document changes, such as an invoice to a receipt.</li>
+<li>文件的首页可以通过其封面或标题认出。</li>
+<li>页码重新回到1的地方，就是新文件的开始。</li>
+<li>边界在文件类型改变的地方，比如从发票变成收据。</li>
 </ul>
-<h2 lang="en">When blank or separator sheets are mixed in</h2>
-<p lang="en">Blank or separator sheets may sit between documents. Leave them out of the ranges, or remove them later with the deletion tool.</p>
-<h2 lang="en">Tidying after splitting</h2>
+<h2>混有空白页或分隔页时</h2>
+<p>文件之间可能夹着空白页或分隔页。请不要把它们放进范围里，或之后用删除工具去掉。</p>
+<h2>拆分后的整理</h2>
 <ul>
-<li lang="en">Rename files by content and date, such as "Invoice_20261020"</li>
-<li lang="en">Check that the order is right</li>
-<li lang="en">For documents with personal information, hand over only what the recipient needs</li>
+<li>按内容和日期重命名文件，如“发票_20261020”</li>
+<li>检查顺序是否正确</li>
+<li>对于含个人信息的文件，只交出收件人需要的部分</li>
 </ul>
-<h2 lang="en">Common stumbling blocks</h2>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>A split is off by one page</b>: correct one number in the range and run again.</li>
-<li lang="en"><b>You do not know a document's page count</b>: open the PDF in another app and count.</li>
-<li lang="en"><b>You redo it many times</b>: the original PDF does not change, so you can redo it as often as you like.</li>
+<li><b>某处拆分差了一页</b>：改正范围中的一个数字，再运行一次。</li>
+<li><b>你不知道某份文件有几页</b>：在另一个应用中打开PDF并数一数。</li>
+<li><b>你要重做很多次</b>：原PDF不会改变，所以你可以随意重做。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">What if there are many documents?</h3>
-<p lang="en">Write all the ranges and split in one go. It cannot make more than 200 files, though.</p>
-<h3 lang="en">Does it find documents automatically?</h3>
-<p lang="en">It does not detect them automatically. You specify the ranges yourself.</p>
-<h2>小结</h2>
-<p lang="en">Find the range of each document and enter it in "Specify ranges". Rename the files after splitting.</p>
+<h2>常见问题</h2>
+<h3>文件很多怎么办？</h3>
+<p>写出所有范围，一次拆分。不过它不能生成超过200个文件。</p>
+<h3>它会自动找出文件吗？</h3>
+<p>它不会自动检测。你需要自己指定范围。</p>
+<h2>总结</h2>
+<p>找出每份文件的范围，并输入到“指定范围”中。拆分后重命名文件。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/pdf-split.html">使用“拆分 PDF”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/split-pdf.html">提取或删除 PDF 页面</a>：只保留需要的页面，或删除不需要的页面。</li><li><a href="/zh/merge-pdf.html">合并 PDF</a>：按你选择的顺序，把多个 PDF 文件合并成一个。</li><li><a href="/zh/compress-pdf.html">压缩 PDF</a>：把 PDF 压缩到你指定的大小以下，应对上传大小限制。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

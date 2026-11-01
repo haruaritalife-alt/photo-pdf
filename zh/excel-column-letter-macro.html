@@ -9,7 +9,7 @@
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/zh/excel-column-letter-macro.html" rel="canonical"/>
-<meta content="它的用处。" name="description"/>
+<meta content="它在哪里有用。" name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -116,18 +116,18 @@ h1,h2{letter-spacing:.01em}
 <meta content="zh_CN" property="og:locale"/>
 
 <meta content="在宏和公式中使用列号｜PDF Mikata" property="og:title"/>
-<meta content="它的用处。" property="og:description"/>
+<meta content="它在哪里有用。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/excel-column-letter-macro.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="在宏和公式中使用列号｜PDF Mikata" name="twitter:title"/>
-<meta content="它的用处。" name="twitter:description"/>
+<meta content="它在哪里有用。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "在宏和公式中使用列号", "description": "它的用处。", "url": "https://pdfmikata.com/zh/excel-column-letter-macro.html", "mainEntityOfPage": "https://pdfmikata.com/zh/excel-column-letter-macro.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "在宏和公式中使用列号", "description": "它在哪里有用。", "url": "https://pdfmikata.com/zh/excel-column-letter-macro.html", "mainEntityOfPage": "https://pdfmikata.com/zh/excel-column-letter-macro.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -200,56 +200,80 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>在宏和公式中使用列号</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>选择列</li><li>查出它的编号</li><li>用在代码中</li></ul></div>
-<p lang="en">When handling columns in macros (VBA) and functions, you sometimes need to convert between number and letters. Sort out how to use them, converting with <a href="/zh/excel-column-letter.html">Excel Column Number and Letter Converter</a>.</p>
-<h2 lang="en">Specifying columns in VBA</h2>
-<p lang="en">VBA lets you specify columns by number or by letters.</p>
+<div class="points"><b>要点</b><ul><li>选择列</li><li>求出它的号码</li><li>用在代码中</li></ul></div><p>在宏（VBA）和函数中处理列时，有时需要在数字和字母之间转换。请一边用 <a href="/zh/excel-column-letter.html">Excel 列号与列字母转换器</a> 转换，一边理清它们的用法。</p>
+<h2>在VBA中指定列</h2>
+<p>VBA允许用数字或字母来指定列。</p>
 <ul>
-<li lang="en">Cells(row, column): specify the column by number. Example: Cells(5, 3) is C5</li>
-<li lang="en">Range("C5"): specify the cell by letters.</li>
-<li lang="en">Columns(3) and Columns("C"): both are column C</li>
+<li>Cells(行, 列)：用数字指定列。示例：Cells(5, 3)是C5</li>
+<li>Range("C5")：用字母指定单元格。</li>
+<li>Columns(3)和Columns("C")：都是C列</li>
 </ul>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Enter a number in "Column number" and check the "Column letters".</li>
-<li lang="en">Conversely, enter letters and check the number.</li>
-<li lang="en">Reflect it in the code.</li>
+<li>在“Column number”中输入数字，并查看“Column letters”。</li>
+<li>反过来，输入字母并查看数字。</li>
+<li>把它反映到代码中。</li>
 </ol>
-<div class="note" lang="en">"Cells(row, column)" is "row first, column second". The order is easy to mix up, so take care.</div>
-<h2 lang="en">Moving columns by calculation</h2>
-<p lang="en">With numeric column numbers, you can move by addition.</p>
+<div class="note">“Cells(行, 列)”是“行在前，列在后”。顺序很容易弄混，所以请小心。</div>
+<h2>通过计算来移动列</h2>
+<p>有了数字形式的列号，就可以用加法来移动。</p>
 <ul>
-<li lang="en">"Two to the right of the current column" → column number + 2</li>
-<li lang="en">With letters (C) as is, finding "E" by calculation is a hassle</li>
+<li>“当前列右边两列” → 列号 + 2</li>
+<li>如果直接用字母（C），通过计算得出“E”就很麻烦</li>
 </ul>
-<p lang="en">When you want to move columns inside a program, handling them as numbers is the basis.</p>
-<h2 lang="en">Use in worksheet functions</h2>
-<p lang="en">Worksheet functions also use column numbers.</p>
+<p>当你想在程序里移动列时，把它们当作数字处理是基本做法。</p>
+<h2>在工作表函数中使用</h2>
+<p>工作表函数也使用列号。</p>
 <ul>
-<li lang="en">COLUMN(C1): returns 3</li>
-<li lang="en">ADDRESS(5, 3): returns "$C$5"</li>
-<li lang="en">INDEX(range, row, column): specifies the column by number</li>
-<li lang="en">VLOOKUP's "column index": which column's value to return</li>
+<li>COLUMN(C1)：返回3</li>
+<li>ADDRESS(5, 3)：返回“$C$5”</li>
+<li>INDEX(区域, 行, 列)：用数字指定列</li>
+<li>VLOOKUP的“列索引”：返回哪一列的值</li>
 </ul>
-<h2>适合</h2>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Wanting to loop over columns by number in a macro</li>
-<li lang="en">Wanting to check VLOOKUP's "column index"</li>
-<li lang="en">Converting column letters to numbers for a program</li>
+<li>想在宏中按数字循环处理各列</li>
+<li>想检查VLOOKUP的“列索引”</li>
+<li>把列字母转换成数字，供程序使用</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">Wanted to process columns A to Z in order in VBA. Looping over 1 to 26 and using Cells(row, column) made it simple.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>想在VBA中依次处理A到Z列。循环1到26，并使用Cells(行, 列)，让它变得很简单。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>VLOOKUP's column index</b>: the number counted from the left edge of the range, not column C of the whole sheet.</li>
-<li lang="en"><b>Inserting a column changes numbers</b>: fixed numbers written in code get misaligned.</li>
-<li lang="en"><b>Order of row and column</b>: don't reverse it as Cells(column, row).</li>
+<li><b>VLOOKUP的列索引</b>：它是从区域左边缘数起的数字，而不是整张工作表的C列。</li>
+<li><b>插入列会改变号码</b>：写在代码里的固定数字会错位。</li>
+<li><b>行和列的顺序</b>：不要像Cells(列, 行)那样弄反。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Can a column letter be turned into a number by formula?</h3>
-<p lang="en">Yes, like COLUMN(INDIRECT("C1")).</p>
-<h2>小结</h2>
-<p lang="en">Numbers for macros, letters for display. Use this tool to go between them.</p>
+<h2>常见问题</h2>
+<h3>能用公式把列字母变成数字吗？</h3>
+<p>能，比如COLUMN(INDIRECT("C1"))。</p>
+<h2>总结</h2>
+<p>宏用数字，显示用字母。请用本工具在两者之间转换。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/excel-column-letter.html">使用“Excel 列号与列字母转换器”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/xlsx-to-csv.html">把 Excel 转换成 CSV 或 JSON</a>：把 Excel 工作表转换成 CSV、TSV 或 JSON。</li><li><a href="/zh/csv-to-xlsx.html">把 CSV 转换成 Excel（.xlsx）</a>：把 CSV 转换成 Excel（.xlsx）文件。</li><li><a href="/zh/csv-tools.html">合并、拆分 CSV 并选取列</a>: 合并 CSV 文件、按行拆分，或只保留所选列。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

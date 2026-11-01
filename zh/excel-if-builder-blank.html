@@ -200,59 +200,84 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>返回空白</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>清空结果栏</li><li>查看公式</li><li>复制</li></ul></div>
-<p lang="en">With IF, when the condition fails you may want to show nothing. In that case leave the result blank. <a href="/zh/excel-if-builder.html">Build an IF Formula</a> builds a formula returning an empty string ("") just by leaving the result field empty.</p>
+<div class="points"><b>要点</b><ul><li>让结果栏为空</li><li>查看公式</li><li>复制</li></ul></div><p>用IF时，条件不成立的情况下，你可能想什么都不显示。这时请把结果留空。只要让结果栏保持为空，<a href="/zh/excel-if-builder.html">生成 IF 公式</a> 就会生成返回空字符串（""）的公式。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Enter the cell, comparison and value.</li>
-<li lang="en">Enter what to show in "Result if true".</li>
-<li lang="en">Leave "Result if false" empty.</li>
-<li lang="en">Check the formula ends with "".</li>
+<li>输入单元格、比较和值。</li>
+<li>在“Result if true”中输入要显示的内容。</li>
+<li>让“Result if false”保持为空。</li>
+<li>检查公式以""结尾。</li>
 </ol>
-<div class="note" lang="en">"" is an empty string, meaning "show nothing".</div>
+<div class="note">""是空字符串，意思是“什么都不显示”。</div>
 <h2>示例</h2>
-<p lang="en">Showing "Pass" only when A2 is 60 or more and blank otherwise.</p>
+<p>只在A2为60以上时显示“Pass”，否则为空白。</p>
 <ul>
-<li lang="en">=IF(A2&gt;=60,"Pass","")</li>
+<li>=IF(A2&gt;=60,"Pass","")</li>
 </ul>
-<h2 lang="en">Empty string vs 0</h2>
+<h2>空字符串与0</h2>
 <ul>
-<li lang="en"><b>"" (empty string)</b>: looks blank, but the cell holds an "empty string".</li>
-<li lang="en"><b>0</b>: the number 0 is displayed.</li>
-<li lang="en"><b>A cell with nothing</b>: truly blank.</li>
+<li><b>""（空字符串）</b>：看起来是空白，但单元格里存着一个“空字符串”。</li>
+<li><b>0</b>：会显示数字0。</li>
+<li><b>什么都没有的单元格</b>：真正的空白。</li>
 </ul>
-<h2 lang="en">Effect on calculation</h2>
-<p lang="en">Cells returning "" look empty but need care in calculation.</p>
+<h2>对计算的影响</h2>
+<p>返回""的单元格看起来是空的，但在计算时需要小心。</p>
 <ul>
-<li lang="en">SUM and AVERAGE: empty strings are ignored</li>
-<li lang="en">Arithmetic with "+": gives #VALUE!</li>
-<li lang="en">COUNTA: counted (judged not empty)</li>
-<li lang="en">COUNTBLANK: counted (judged empty)</li>
+<li>SUM和AVERAGE：空字符串被忽略</li>
+<li>用“+”做算术：得到#VALUE!</li>
+<li>COUNTA：被计数（判定为非空）</li>
+<li>COUNTBLANK：被计数（判定为空）</li>
 </ul>
-<h2>适合</h2>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Showing only items that meet the condition</li>
-<li lang="en">Making the look cleaner</li>
-<li lang="en">Tidying tables for printing or submission</li>
+<li>只显示满足条件的项目</li>
+<li>让外观更整洁</li>
+<li>整理用于打印或提交的表格</li>
 </ul>
-<h2 lang="en">When used in calculation</h2>
-<p lang="en">For cells used later in calculation, return 0 rather than "", or think of a method other than IF.</p>
+<h2>用于计算时</h2>
+<p>对于之后要用于计算的单元格，请返回0而不是""，或者考虑IF以外的办法。</p>
 <ul>
-<li lang="en">Example: =IF(A2&gt;=60,B2,0)</li>
-<li lang="en">Another method hides zeros through the display format</li>
+<li>示例：=IF(A2&gt;=60,B2,0)</li>
+<li>另一种办法是通过显示格式隐藏零</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">Wanted to show only passers' names and leave others blank. Making the fail result "" tidied the list.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>想只显示及格者的姓名，其他人留空。把不及格的结果设为""，名单就整洁了。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Looks blank but isn't</b>: ISBLANK returns FALSE. Test with whether LEN is 0.</li>
-<li lang="en"><b>Affects charts</b>: empty strings may be treated as 0 in charts.</li>
+<li><b>看起来是空白但不是</b>：ISBLANK返回FALSE。请检验LEN是否为0。</li>
+<li><b>影响图表</b>：在图表中，空字符串可能被当作0。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">What if I want blank when the condition is true?</h3>
-<p lang="en">Leave the "Result if true" field empty.</p>
-<h2>小结</h2>
-<p lang="en">Leave the result field empty for a blank, and you get a "" formula.</p>
+<h2>常见问题</h2>
+<h3>条件成立时想要空白怎么办？</h3>
+<p>让“Result if true”栏保持为空。</p>
+<h2>总结</h2>
+<p>让结果栏保持为空就是空白，你会得到一个""公式。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/excel-if-builder.html">使用“生成 IF 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/sumif-formula-builder.html">生成 SUMIF 或 COUNTIF 公式</a>: 生成 SUMIF 和 COUNTIF 公式。</li><li><a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/zh/excel-text-format-builder.html">生成 Excel 的 TEXT 公式</a>: 生成 TEXT 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

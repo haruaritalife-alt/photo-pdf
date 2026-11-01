@@ -4,12 +4,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>完全匹配与近似匹配｜PDF Mikata</title>
+<title>精确匹配与近似匹配｜PDF Mikata</title>
 
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/zh/vlookup-formula-builder-exact.html" rel="canonical"/>
-<meta content="关于匹配方式。" name="description"/>
+<meta content="关于匹配类型。" name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -115,19 +115,19 @@ h1,h2{letter-spacing:.01em}
 <meta content="PDF Mikata" property="og:site_name"/>
 <meta content="zh_CN" property="og:locale"/>
 
-<meta content="完全匹配与近似匹配｜PDF Mikata" property="og:title"/>
-<meta content="关于匹配方式。" property="og:description"/>
+<meta content="精确匹配与近似匹配｜PDF Mikata" property="og:title"/>
+<meta content="关于匹配类型。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/vlookup-formula-builder-exact.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="完全匹配与近似匹配｜PDF Mikata" name="twitter:title"/>
-<meta content="关于匹配方式。" name="twitter:description"/>
+<meta content="精确匹配与近似匹配｜PDF Mikata" name="twitter:title"/>
+<meta content="关于匹配类型。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "完全匹配与近似匹配", "description": "关于匹配方式。", "url": "https://pdfmikata.com/zh/vlookup-formula-builder-exact.html", "mainEntityOfPage": "https://pdfmikata.com/zh/vlookup-formula-builder-exact.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "精确匹配与近似匹配", "description": "关于匹配类型。", "url": "https://pdfmikata.com/zh/vlookup-formula-builder-exact.html", "mainEntityOfPage": "https://pdfmikata.com/zh/vlookup-formula-builder-exact.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -198,51 +198,72 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <main id="main" tabindex="-1">
 
 <div lang="zh-Hans">
-<h1>完全匹配与近似匹配</h1>
+<h1>精确匹配与近似匹配</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>生成公式</li><li>选择匹配方式</li><li>核对一下</li></ul></div>
-<p lang="en">VLOOKUP's last argument decides "exact match" or "approximate match". Getting it wrong shifts results. "Exact match" in <a href="/zh/vlookup-formula-builder.html">Build a VLOOKUP or XLOOKUP Formula</a> toggles it.</p>
-<h2 lang="en">The two differences</h2>
+<div class="points"><b>要点</b><ul><li>生成公式</li><li>选择匹配方式</li><li>检查</li></ul></div><p>VLOOKUP的最后一个参数决定是“精确匹配”还是“近似匹配”。弄错了结果就会偏移。<a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a> 中的“Exact match”可以切换它。</p>
+<h2>两者的区别</h2>
 <ul>
-<li lang="en"><b>Exact match (FALSE)</b>: looks for exactly the same value. If not found, #N/A.</li>
-<li lang="en"><b>Approximate match (TRUE)</b>: finds the closest value at or below the one searched. The leftmost column must be sorted ascending.</li>
+<li><b>精确匹配（FALSE）</b>：寻找完全相同的值。找不到就是#N/A。</li>
+<li><b>近似匹配（TRUE）</b>：找到小于或等于所查值的最接近的值。最左列必须按升序排序。</li>
 </ul>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Enter the value, range and column number.</li>
-<li lang="en">Ticking "Exact match" makes the last argument FALSE.</li>
-<li lang="en">Unticking it makes it TRUE.</li>
+<li>输入值、区域和列号。</li>
+<li>勾选“Exact match”，最后一个参数就是FALSE。</li>
+<li>取消勾选，就是TRUE。</li>
 </ol>
-<div class="note" lang="en">For product codes or employee numbers that must match exactly, use exact match (FALSE).</div>
-<h2 lang="en">When to use exact match</h2>
+<div class="note">对于必须完全一致的商品代码或员工编号，请使用精确匹配（FALSE）。</div>
+<h2>何时使用精确匹配</h2>
 <ul>
-<li lang="en">Looking up by product code, employee number or ID</li>
-<li lang="en">Looking up by name</li>
+<li>按商品代码、员工编号或ID查找</li>
+<li>按姓名查找</li>
 </ul>
-<h2 lang="en">When to use approximate match</h2>
+<h2>何时使用近似匹配</h2>
 <ul>
-<li lang="en">Deciding a grade (A, B, C) from a score</li>
-<li lang="en">Deciding a commission rate from sales</li>
-<li lang="en">Deciding a fee tier from a date</li>
+<li>根据分数确定等级（A、B、C）</li>
+<li>根据销售额确定提成比例</li>
+<li>根据日期确定费用档次</li>
 </ul>
-<p lang="en">In such "range-banded tables", sort the leftmost column ascending (small to large).</p>
-<h2 lang="en">Approximate-match example</h2>
-<p lang="en">In a score band table (0 = D, 60 = C, 70 = B, 80 = A), searching 75 returns "B" from the "70" row, the closest at or below.</p>
-<h2>适合</h2>
+<p>在这类“按区间划分的表格”中，请把最左列按升序（从小到大）排序。</p>
+<h2>近似匹配的示例</h2>
+<p>在分数区间表（0 = D，60 = C，70 = B，80 = A）中，查找75会从“70”那一行返回“B”，即小于或等于它的最接近的值。</p>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Seeing the exact/approximate difference in a formula</li>
-<li lang="en">Checking when building approximate-match tables</li>
+<li>在公式中看清精确/近似的区别</li>
+<li>构建近似匹配表时检查</li>
 </ul>
-<h2 lang="en">Common stumbling blocks</h2>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Approximate match without sorting</b>: wrong results return without an error.</li>
-<li lang="en"><b>Meant exact but got approximate</b>: omitting the last argument gives approximate (TRUE).</li>
+<li><b>近似匹配没有排序</b>：会返回错误的结果，且不报错。</li>
+<li><b>本想精确却成了近似</b>：省略最后一个参数会变成近似（TRUE）。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">What if I omit the last argument?</h3>
-<p lang="en">It's treated as TRUE (approximate). Always write FALSE for exact.</p>
-<h2>小结</h2>
-<p lang="en">FALSE for exact match, TRUE for range-banded. When unsure, FALSE.</p>
+<h2>常见问题</h2>
+<h3>如果省略最后一个参数会怎样？</h3>
+<p>它会被当作TRUE（近似）。要精确匹配，务必写FALSE。</p>
+<h2>总结</h2>
+<p>精确匹配用FALSE，按区间划分的用TRUE。拿不准时，用FALSE。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/vlookup-formula-builder.html">使用“生成 VLOOKUP 或 XLOOKUP 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/excel-range-info.html">统计 Excel 范围内的单元格、行和列</a>: 查看范围内的单元格、行和列。</li><li><a href="/zh/excel-column-letter.html">Excel 列号与列字母转换器</a>: 转换 Excel 的列号和列字母。</li><li><a href="/zh/excel-text-clean.html">去掉 Excel 文字中多余的空格和看不见的字符</a>: 去掉多余的空格和看不见的字符。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

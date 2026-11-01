@@ -200,55 +200,79 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>跳过空单元格</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>输入范围</li><li>勾选选项</li><li>复制</li></ul></div>
-<p lang="en">If the range has empty cells, extra separators line up in the joined text. "Skip blank cells" in <a href="/zh/textjoin-formula-builder.html">Build a TEXTJOIN Formula</a> prevents this.</p>
+<div class="points"><b>要点</b><ul><li>输入区域</li><li>勾选复选框</li><li>复制</li></ul></div><p>如果区域中有空单元格，连接后的文本里就会排出多余的分隔符。<a href="/zh/textjoin-formula-builder.html">生成 TEXTJOIN 公式</a> 中的“Skip blank cells”可以防止这种情况。</p>
 <h2>区别</h2>
-<p lang="en">With A2:A5 holding "Tanaka", (empty), "Suzuki", "Sato" and separator ", ":</p>
+<p>假设A2:A5中依次是“Tanaka”、（空）、“Suzuki”、“Sato”，分隔符为“, ”：</p>
 <ul>
-<li lang="en">Skip (TRUE): Tanaka, Suzuki, Sato</li>
-<li lang="en">Don't skip (FALSE): Tanaka, , Suzuki, Sato</li>
+<li>跳过（TRUE）：Tanaka, Suzuki, Sato</li>
+<li>不跳过（FALSE）：Tanaka, , Suzuki, Sato</li>
 </ul>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Enter the range and separator.</li>
-<li lang="en">Ticking "Skip blank cells" makes the second argument TRUE.</li>
-<li lang="en">Unticking makes it FALSE.</li>
+<li>输入区域和分隔符。</li>
+<li>勾选“Skip blank cells”，第二个参数就是TRUE。</li>
+<li>取消勾选，则为FALSE。</li>
 </ol>
-<div class="note" lang="en">Normally, leave it ticked.</div>
-<h2 lang="en">As formulas</h2>
+<div class="note">通常请保持勾选。</div>
+<h2>写成公式</h2>
 <ul>
-<li lang="en">Skip: =TEXTJOIN(", ",TRUE,A2:A5)</li>
-<li lang="en">Don't skip: =TEXTJOIN(", ",FALSE,A2:A5)</li>
+<li>跳过：=TEXTJOIN(", ",TRUE,A2:A5)</li>
+<li>不跳过：=TEXTJOIN(", ",FALSE,A2:A5)</li>
 </ul>
-<h2 lang="en">When not skipping is better</h2>
+<h2>不跳过更好的情况</h2>
 <ul>
-<li lang="en">You want empty positions marked by separators</li>
-<li lang="en">Fixed orderings where item position matters</li>
+<li>你想用分隔符标出空的位置</li>
+<li>项目所在位置有意义的固定顺序</li>
 </ul>
-<p lang="en">For example, among "name, phone, email", showing the phone is empty suits not skipping.</p>
-<h2 lang="en">What counts as "empty"</h2>
+<p>例如，在“姓名、电话、邮箱”中，要显示电话为空，就适合不跳过。</p>
+<h2>“空”是指什么</h2>
 <ul>
-<li lang="en">Cells with nothing: empty</li>
-<li lang="en">Cells returning "" from a formula: empty strings; TEXTJOIN treats them as empty</li>
-<li lang="en">Cells with only spaces: not empty; spaces line up</li>
+<li>什么都没有的单元格：空</li>
+<li>公式返回""的单元格：空字符串；TEXTJOIN把它们视为空</li>
+<li>只有空格的单元格：不是空；空格会排在一起</li>
 </ul>
-<h2>适合</h2>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Joining a list with blank rows neatly</li>
-<li lang="en">Showing only items that meet a condition</li>
+<li>把含有空行的列表整齐地连接起来</li>
+<li>只显示满足条件的项目</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">A participant list had gaps in the middle. Setting "skip" joined it cleanly with no extra ", ".</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>参加者名单的中间有空缺。设为“跳过”之后，连接得很干净，没有多余的“, ”。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Space-only cells</b>: not empty, so not skipped. Remove extra spaces.</li>
-<li lang="en"><b>Removing spaces</b>: the "Clean extra spaces and invisible characters from Excel text" tool helps.</li>
+<li><b>只有空格的单元格</b>：不是空，所以不会被跳过。请去掉多余的空格。</li>
+<li><b>去掉空格</b>：“清理Excel文本中的多余空格和不可见字符”工具可以帮上忙。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Does an empty cell cause an error?</h3>
-<p lang="en">No. Neither setting causes an error.</p>
-<h2>小结</h2>
-<p lang="en">Usually choose "skip". Only choose not to when you want positions shown.</p>
+<h2>常见问题</h2>
+<h3>空单元格会导致错误吗？</h3>
+<p>不会。两种设置都不会导致错误。</p>
+<h2>总结</h2>
+<p>通常选择“跳过”。只有想显示位置时才选择不跳过。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/textjoin-formula-builder.html">使用“生成 TEXTJOIN 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/zh/excel-range-info.html">统计 Excel 范围内的单元格、行和列</a>: 查看范围内的单元格、行和列。</li><li><a href="/zh/excel-text-clean.html">去掉 Excel 文字中多余的空格和看不见的字符</a>: 去掉多余的空格和看不见的字符。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

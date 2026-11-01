@@ -200,60 +200,88 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>统计出现次数</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>选择 COUNTCHAR</li><li>输入文字</li><li>复制</li></ul></div>
-<p lang="en">You want to count how many times a character appears, for example to learn the item count from the number of commas. There's no dedicated function, so combine LEN and SUBSTITUTE. "COUNTCHAR" in <a href="/zh/find-formula-builder.html">Build a FIND Formula</a> builds it.</p>
+<div class="points"><b>要点</b><ul><li>选择COUNTCHAR</li><li>输入文字</li><li>复制</li></ul></div><p>你想统计某个字符出现了多少次，比如从逗号的个数得知项目数。没有专门的函数，所以要组合LEN和SUBSTITUTE。<a href="/zh/find-formula-builder.html">生成 FIND 公式</a> 中的“COUNTCHAR”会生成它。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Choose "COUNTCHAR" in "Type".</li>
-<li lang="en">Enter the "Text cell" and "Character to find".</li>
-<li lang="en">Copy the formula and paste.</li>
+<li>在“Type”中选择“COUNTCHAR”。</li>
+<li>输入“Text cell”和“Character to find”。</li>
+<li>复制公式并粘贴。</li>
 </ol>
-<div class="note" lang="en">The second formula counts case-insensitively. Copy it with "Copy the second".</div>
+<div class="note">第二个公式不区分大小写地计数。请用“Copy the second”复制它。</div>
 <h2>示例</h2>
-<p lang="en">The number of commas in A2:</p>
+<p>A2中逗号的个数：</p>
 <ul>
-<li lang="en">=(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))/LEN(",")</li>
+<li>=(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))/LEN(",")</li>
 </ul>
-<p lang="en">For "Tokyo,Osaka,Nagoya" it returns 2.</p>
-<h2 lang="en">Reading the formula</h2>
+<p>对于“Tokyo,Osaka,Nagoya”，它返回2。</p>
+<h2>公式怎么读</h2>
 <ol>
-<li lang="en">LEN(A2): original length</li>
-<li lang="en">LEN(SUBSTITUTE(A2,",","")): length after removing commas</li>
-<li lang="en">The difference divided by the target's length: the number of commas</li>
+<li>LEN(A2)：原来的长度</li>
+<li>LEN(SUBSTITUTE(A2,",",""))：删除逗号之后的长度</li>
+<li>差值除以目标的长度：逗号的个数</li>
 </ol>
-<h2 lang="en">Knowing the item count</h2>
-<p lang="en">Add 1 to the comma count to get the item count.</p>
+<h2>得知项目数</h2>
+<p>逗号的个数加1，就是项目数。</p>
 <ul>
-<li lang="en">Example: =(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))+1</li>
+<li>示例：=(LEN(A2)-LEN(SUBSTITUTE(A2,",","")))+1</li>
 </ul>
-<h2 lang="en">Multi-character words work too</h2>
-<p lang="en">Even with several characters to find, dividing by the length at the end lets it count.</p>
+<h2>多个字符的词也可以</h2>
+<p>即使要查找的是好几个字符，最后除以长度也能计数。</p>
 <ul>
-<li lang="en">Example: how many times "apple" appears</li>
+<li>示例：“apple”出现了多少次</li>
 </ul>
 <h2>大小写</h2>
 <ul>
-<li lang="en">First formula: case-sensitive</li>
-<li lang="en">Second formula: uppercases first and counts; case-insensitive</li>
+<li>第一个公式：区分大小写</li>
+<li>第二个公式：先转成大写再计数；不区分大小写</li>
 </ul>
-<h2>适合</h2>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Knowing item counts from delimiter counts</li>
-<li lang="en">How many times a word appears in text</li>
-<li lang="en">Counting spaces (word count)</li>
+<li>从分隔符的个数得知项目数</li>
+<li>某个词在文本中出现了多少次</li>
+<li>统计空格（单词数）</li>
 </ul>
 <h2>示例</h2>
-<p lang="en">Wanted the number of tags in cells holding comma-separated tags. Adding 1 to the comma count gave the tag count.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>想要存放逗号分隔标签的单元格里的标签数。逗号的个数加1，就得到了标签数。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Empty cells</b>: the result is 0. The item count would become 1, so judge empty cells separately.</li>
-<li lang="en"><b>Overlapping characters</b>: "aa" inside "aaa" counts as one.</li>
+<li><b>空单元格</b>：结果是0。项目数会变成1，所以请单独判断空单元格。</li>
+<li><b>重叠的字符</b>：“aaa”里的“aa”算作一个。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">I want to count across a whole range</h3>
-<p lang="en">Combine with SUMPRODUCT. Build the formula by hand.</p>
-<h2>小结</h2>
-<p lang="en">Character counts come from the LEN difference with SUBSTITUTE.</p>
+<h2>常见问题</h2>
+<h3>我想统计整个区域</h3>
+<p>请与SUMPRODUCT组合。请手动构造公式。</p>
+<h2>总结</h2>
+<p>字符的个数，来自LEN与SUBSTITUTE的长度差。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/find-formula-builder.html">使用“生成 FIND 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/excel-left-mid-builder.html">生成 LEFT、MID 或 RIGHT 公式</a>: 生成取出文字的公式。</li><li><a href="/zh/substitute-formula-builder.html">生成 SUBSTITUTE 公式</a>: 生成文字替换公式。</li><li><a href="/zh/split-formula-builder.html">生成 SPLIT 公式</a>: 生成文字拆分公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

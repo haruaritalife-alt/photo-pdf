@@ -9,7 +9,7 @@
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/zh/indirect-formula-builder-error.html" rel="canonical"/>
-<meta content="关于空白和错误。" name="description"/>
+<meta content="关于错误。" name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -116,18 +116,18 @@ h1,h2{letter-spacing:.01em}
 <meta content="zh_CN" property="og:locale"/>
 
 <meta content="出现错误时｜PDF Mikata" property="og:title"/>
-<meta content="关于空白和错误。" property="og:description"/>
+<meta content="关于错误。" property="og:description"/>
 <meta content="https://pdfmikata.com/zh/indirect-formula-builder-error.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="出现错误时｜PDF Mikata" name="twitter:title"/>
-<meta content="关于空白和错误。" name="twitter:description"/>
+<meta content="关于错误。" name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "出现错误时", "description": "关于空白和错误。", "url": "https://pdfmikata.com/zh/indirect-formula-builder-error.html", "mainEntityOfPage": "https://pdfmikata.com/zh/indirect-formula-builder-error.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "出现错误时", "description": "关于错误。", "url": "https://pdfmikata.com/zh/indirect-formula-builder-error.html", "mainEntityOfPage": "https://pdfmikata.com/zh/indirect-formula-builder-error.html", "inLanguage": "zh-Hans", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/zh/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -200,50 +200,75 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>出现错误时</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>检查工作表名</li><li>检查单元格的写法</li><li>使用结果为空的公式</li></ul></div>
-<p lang="en">The INDIRECT formula returns #REF!. The sheet name should be right, yet it doesn't work. Here are common causes of errors in formulas built with <a href="/zh/indirect-formula-builder.html">Build an INDIRECT Formula</a> and fixes.</p>
+<div class="points"><b>要点</b><ul><li>检查工作表名</li><li>检查单元格的写法</li><li>使用让错误变空白的公式</li></ul></div><p>INDIRECT公式返回了#REF!。工作表名应该没错，却不起作用。下面是用 <a href="/zh/indirect-formula-builder.html">生成 INDIRECT 公式</a> 生成的公式中，常见的出错原因和修正办法。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Compare the sheet name with the actual sheet's name.</li>
-<li lang="en">Check for surrounding spaces and full-width/half-width differences.</li>
-<li lang="en">Check the name is wrapped in the quote "'".</li>
+<li>把工作表名与实际工作表的名称比较。</li>
+<li>检查有没有前后的空格和全角/半角的差异。</li>
+<li>检查名称是否用引号“'”包了起来。</li>
 </ol>
-<div class="note" lang="en">"#REF!" means the called location can't be found.</div>
-<h2 lang="en">Common causes</h2>
+<div class="note">“#REF!”表示找不到被调用的位置。</div>
+<h2>常见原因</h2>
 <ul>
-<li lang="en"><b>Sheet name mismatch</b>: even one character off isn't found.</li>
-<li lang="en"><b>Stray spaces</b>: the cell text has spaces around it. Remove with TRIM.</li>
-<li lang="en"><b>Missing quotes</b>: the name has spaces or symbols but isn't wrapped.</li>
-<li lang="en"><b>File is closed</b>: you're calling another file that isn't open.</li>
-<li lang="en"><b>Outside the sheet</b>: pointing at a cell that doesn't exist.</li>
+<li><b>工作表名不一致</b>：哪怕差一个字符，也找不到。</li>
+<li><b>多余的空格</b>：单元格的文本前后有空格。用TRIM去掉。</li>
+<li><b>缺少引号</b>：名称里有空格或符号，但没有包起来。</li>
+<li><b>文件已关闭</b>：你调用的是另一个没有打开的文件。</li>
+<li><b>超出表格</b>：指向了一个不存在的单元格。</li>
 </ul>
-<h2 lang="en">Removing spaces</h2>
-<p lang="en">If reading the sheet name from a cell, wrap it in TRIM.</p>
+<h2>去掉空格</h2>
+<p>如果从单元格读取工作表名，请用TRIM包起来。</p>
 <ul>
-<li lang="en">Example: =INDIRECT("'"&amp;TRIM(A1)&amp;"'!B2")</li>
+<li>示例：=INDIRECT("'"&amp;TRIM(A1)&amp;"'!B2")</li>
 </ul>
-<h2 lang="en">Turning errors into empty</h2>
-<p lang="en">The second formula is wrapped in IFERROR.</p>
+<h2>把错误变成空白</h2>
+<p>第二个公式包裹在IFERROR中。</p>
 <ul>
-<li lang="en">=IFERROR(INDIRECT("'"&amp;A1&amp;"'!B2"),"")</li>
+<li>=IFERROR(INDIRECT("'"&amp;A1&amp;"'!B2"),"")</li>
 </ul>
-<p lang="en">But this hides errors, so use it after checking the cause.</p>
-<h2 lang="en">When a sheet is renamed</h2>
-<p lang="en">A sheet name written as text doesn't follow a rename; you get #REF!.</p>
-<h2 lang="en">Google Sheets note</h2>
-<p lang="en">On first use you may be asked to permit access to the sheet.</p>
+<p>但这会隐藏错误，所以请在查明原因之后再用。</p>
+<h2>当工作表被改名时</h2>
+<p>以文本形式写下的工作表名，不会跟着改名而变化；你会得到#REF!。</p>
+<h2>Google表格的提示</h2>
+<p>第一次使用时，你可能会被要求允许访问该工作表。</p>
 <h2>示例</h2>
-<p lang="en">One of the formulas calling monthly sheets gave #REF!. The sheet name ended with a full-width space. TRIM fixed it.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>调用各月工作表的公式中，有一个得到了#REF!。工作表名末尾带着一个全角空格。用TRIM修正了。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Full-width vs half-width digits</b>: they're different characters.</li>
-<li lang="en"><b>Names with dots</b>: wrap in quotes.</li>
+<li><b>全角与半角数字</b>：它们是不同的字符。</li>
+<li><b>带点的名称</b>：请用引号包起来。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">How can I debug more easily?</h3>
-<p lang="en">Counting the name cell's characters with LEN reveals stray spaces.</p>
-<h2>小结</h2>
-<p lang="en">For #REF!, suspect name mismatch, spaces and quotes.</p>
+<h2>常见问题</h2>
+<h3>怎样更容易调试？</h3>
+<p>用LEN数一数名称单元格的字符数，可以发现多余的空格。</p>
+<h2>总结</h2>
+<p>对于#REF!，请怀疑名称不一致、空格和引号。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/indirect-formula-builder.html">使用“生成 INDIRECT 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/vlookup-formula-builder.html">生成 VLOOKUP 或 XLOOKUP 公式</a>: 生成 VLOOKUP 和 XLOOKUP 公式。</li><li><a href="/zh/importrange-builder.html">生成 IMPORTRANGE 公式</a>: 生成 IMPORTRANGE 公式。</li><li><a href="/zh/index-match-builder.html">生成 INDEX 和 MATCH 公式</a>: 生成 INDEX 和 MATCH 公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>

@@ -200,48 +200,72 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="zh-Hans">
 <h1>重复的数字</h1>
 <p class="meta">发布日期：2026 年 10 月 19 日｜最后更新：2026 年 10 月 19 日｜<a href="/about.html">关于（日文）</a></p>
-<div class="points"><b>要点</b><ul><li>选择 REPEAT</li><li>输入循环长度</li><li>复制</li></ul></div>
-<p lang="en">Sometimes you want numbers that repeat in a fixed cycle: 1-2-3-4-1-2-3-4… Useful for group assignment, shift rotas and four-column layouts. "REPEAT" in <a href="/zh/sequence-formula-builder.html">Build a SEQUENCE Formula</a> builds it.</p>
+<div class="points"><b>要点</b><ul><li>选择REPEAT</li><li>输入循环长度</li><li>复制</li></ul></div><p>有时你想要按固定周期重复的数字：1-2-3-4-1-2-3-4……对分组、排班轮换和四列排版很有用。<a href="/zh/sequence-formula-builder.html">生成 SEQUENCE 公式</a> 中的“REPEAT”会生成它。</p>
 <h2>步骤</h2>
 <ol>
-<li lang="en">Choose "REPEAT" in "Type".</li>
-<li lang="en">In "Count (for REPEAT, the repeat length)", enter how high to cycle from 1.</li>
-<li lang="en">Copy the formula and paste.</li>
+<li>在“Type”中选择“REPEAT”。</li>
+<li>在“Count (for REPEAT, the repeat length)”中，输入从1循环到多大。</li>
+<li>复制公式并粘贴。</li>
 </ol>
-<div class="note" lang="en">In REPEAT, "Count" is the cycle length. With 4, it repeats 1 to 4.</div>
+<div class="note">在REPEAT中，“Count”是循环的长度。填4的话，会在1到4之间重复。</div>
 <h2>示例</h2>
-<p lang="en">Repeating 1 to 4:</p>
+<p>重复1到4：</p>
 <ul>
-<li lang="en">Google: =ARRAYFORMULA(MOD(ROW(A1:A100)-1,4)+1)</li>
-<li lang="en">Row by row: =MOD(ROW(A1)-1,4)+1</li>
+<li>Google：=ARRAYFORMULA(MOD(ROW(A1:A100)-1,4)+1)</li>
+<li>逐行：=MOD(ROW(A1)-1,4)+1</li>
 </ul>
-<p lang="en">The result is 1, 2, 3, 4, 1, 2, 3, 4…</p>
+<p>结果是1, 2, 3, 4, 1, 2, 3, 4……</p>
 <h2>工作原理</h2>
-<p lang="en">ROW(A1) returns the row number (1, 2, 3…). It subtracts 1, takes the remainder by the cycle length, and adds 1.</p>
-<h2>适合</h2>
+<p>ROW(A1)返回行号（1、2、3……）。减去1，取除以循环长度的余数，再加1。</p>
+<h2>适用于</h2>
 <ul>
-<li lang="en">Group assignment (assign people to groups 1–4 in turn)</li>
-<li lang="en">Rotating duty assignments</li>
-<li lang="en">Rearranging many items into four columns</li>
+<li>分组（把人依次分到1–4组）</li>
+<li>轮流安排值班</li>
+<li>把许多项目重新排成四列</li>
 </ul>
-<h2 lang="en">The row range</h2>
-<p lang="en">The tool's formula covers rows up to 10× the cycle (at least 100). If that's not enough, widen the "A1:A100" part.</p>
+<h2>行的范围</h2>
+<p>工具的公式涵盖的行数最多是循环长度的10倍（至少100）。如果不够，请加宽“A1:A100”这部分。</p>
 <h2>示例</h2>
-<p lang="en">Wanted to assign a roster in order to groups 1–5. A MOD and ROW formula gave numbers cycling through the five groups.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>想把名册依次分到1–5组。用MOD和ROW的公式，得到了在五个组之间循环的数字。</p>
+<h2>常见的困扰</h2>
 <ul>
-<li lang="en"><b>Rows shift</b>: if the formula isn't in row 1, adjust the ROW part.</li>
-<li lang="en"><b>Inserted rows</b>: ROW depends on position, so numbers change.</li>
+<li><b>行发生偏移</b>：如果公式不在第1行，请调整ROW的部分。</li>
+<li><b>插入了行</b>：ROW取决于位置，所以数字会改变。</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">I want each number twice</h3>
-<p lang="en">Combine with INT.</p>
+<h2>常见问题</h2>
+<h3>我想让每个数字出现两次</h3>
+<p>请与INT组合。</p>
 <ul>
-<li lang="en">Example: =INT((ROW(A1)-1)/2)+1</li>
+<li>示例：=INT((ROW(A1)-1)/2)+1</li>
 </ul>
-<p lang="en">It gives 1, 1, 2, 2, 3, 3…</p>
-<h2>小结</h2>
-<p lang="en">Repeating numbers come from MOD combined with ROW.</p>
+<p>它给出1, 1, 2, 2, 3, 3……</p>
+<h2>总结</h2>
+<p>重复的数字，由MOD和ROW组合而成。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/zh/sequence-formula-builder.html">使用“生成 SEQUENCE 公式”（免费）</a>
 <h2>搭配使用的工具</h2><ul><li><a href="/zh/date-offset-formula-builder.html">生成日期加减公式</a>: 生成日期加减公式。</li><li><a href="/zh/arrayformula-builder.html">生成 ARRAYFORMULA</a>: 生成 ARRAYFORMULA 公式。</li><li><a href="/zh/rank-formula-builder.html">生成排名公式</a>: 生成排名公式。</li></ul>
 <div class="tip"><p>如果这篇教程对你有帮助，一点小小的打赏会让我们非常开心。</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">打赏（300 日元）</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">赠送礼物（亚马逊心愿单）</a></div>
