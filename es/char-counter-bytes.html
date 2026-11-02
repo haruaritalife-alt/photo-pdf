@@ -9,7 +9,7 @@
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/es/char-counter-bytes.html" rel="canonical"/>
-<meta content="Cómo interpretar el número de bytes." name="description"/>
+<meta content="Cómo leer el recuento de bytes." name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -116,18 +116,18 @@ h1,h2{letter-spacing:.01em}
 <meta content="es_ES" property="og:locale"/>
 
 <meta content="Caracteres frente a bytes｜PDF Mikata" property="og:title"/>
-<meta content="Cómo interpretar el número de bytes." property="og:description"/>
+<meta content="Cómo leer el recuento de bytes." property="og:description"/>
 <meta content="https://pdfmikata.com/es/char-counter-bytes.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Caracteres frente a bytes｜PDF Mikata" name="twitter:title"/>
-<meta content="Cómo interpretar el número de bytes." name="twitter:description"/>
+<meta content="Cómo leer el recuento de bytes." name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Caracteres frente a bytes", "description": "Cómo interpretar el número de bytes.", "url": "https://pdfmikata.com/es/char-counter-bytes.html", "mainEntityOfPage": "https://pdfmikata.com/es/char-counter-bytes.html", "inLanguage": "es", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Caracteres frente a bytes", "description": "Cómo leer el recuento de bytes.", "url": "https://pdfmikata.com/es/char-counter-bytes.html", "mainEntityOfPage": "https://pdfmikata.com/es/char-counter-bytes.html", "inLanguage": "es", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -200,56 +200,80 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="es">
 <h1>Caracteres frente a bytes</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
-<div class="points"><b>Puntos clave</b><ul><li>Los caracteres japoneses usan varios bytes</li><li>Se cuenta en UTF-8</li><li>Compruébalo cuando el límite sea en bytes</li></ul></div>
-<p lang="en">"Character count" and "byte count" are different things. System input boxes and database limits sometimes use bytes. <a href="/es/char-counter.html">Character Counter (for Applications and Reports)</a> also shows the byte count in UTF-8.</p>
+<div class="points"><b>Puntos clave</b><ul><li>Los caracteres japoneses ocupan varios bytes</li><li>Se cuenta en UTF-8</li><li>Compruébalo si el límite es en bytes</li></ul></div><p>«Número de caracteres» y «número de bytes» son cosas distintas. Los cuadros de texto de los sistemas y los límites de las bases de datos a veces usan bytes. <a href="/es/char-counter.html">Contador de caracteres (para solicitudes e informes)</a> también muestra el recuento de bytes en UTF-8.</p>
 <h2>La diferencia</h2>
 <ul>
-<li lang="en"><b>Character count</b>: the number of characters. The number of "visible characters" a person counts.</li>
-<li lang="en"><b>Byte count</b>: the unit in which a computer handles data size. The bytes per character depend on the kind of character.</li>
+<li><b>Número de caracteres</b>: la cantidad de caracteres. Los «caracteres visibles» que cuenta una persona.</li>
+<li><b>Número de bytes</b>: la unidad en la que un ordenador maneja el tamaño de los datos. Los bytes por carácter dependen del tipo de carácter.</li>
 </ul>
-<h2 lang="en">Guide to UTF-8 bytes</h2>
+<h2>Guía de bytes en UTF-8</h2>
 <ul>
-<li lang="en">Half-width letters, digits and symbols: 1 character = 1 byte</li>
-<li lang="en">Hiragana, katakana, kanji and full-width symbols: 1 character = 3 bytes</li>
-<li lang="en">Some emoji and rare kanji: 4 bytes</li>
+<li>Letras, dígitos y símbolos básicos: 1 carácter = 1 byte</li>
+<li>Letras con acento o diéresis (á, ñ, ü): 1 carácter = 2 bytes</li>
+<li>Hiragana, katakana, kanji y símbolos de ancho completo: 1 carácter = 3 bytes</li>
+<li>Algunos emojis y kanji raros: 4 bytes</li>
 </ul>
 <h2>Pasos</h2>
 <ol>
-<li lang="en">Paste text in the "Text" field.</li>
-<li lang="en">Look at the "Bytes (UTF-8)" field.</li>
-<li lang="en">Compare with the byte limit.</li>
+<li>Pega el texto en el campo «Texto».</li>
+<li>Mira el campo «Bytes (UTF-8)».</li>
+<li>Compáralo con el límite de bytes.</li>
 </ol>
-<div class="note" lang="en">The byte count changes with the character encoding. This tool calculates in UTF-8.</div>
-<h2 lang="en">Examples</h2>
+<div class="note">El recuento de bytes cambia según la codificación de caracteres. Esta herramienta calcula en UTF-8.</div>
+<h2>Ejemplos</h2>
 <ul>
-<li lang="en">"Hello" → 5 characters, 5 bytes</li>
-<li lang="en">"こんにちは" → 5 characters, 15 bytes</li>
-<li lang="en">"Hello こんにちは" → 11 characters, 21 bytes (5 + 1 + 15)</li>
+<li>«Hello» → 5 caracteres, 5 bytes</li>
+<li>«canción» → 7 caracteres, 8 bytes (la «ó» ocupa 2 bytes)</li>
+<li>Una palabra de cinco caracteres japoneses → 5 caracteres, 15 bytes</li>
 </ul>
-<p lang="en">Check the actual value in the tool's display.</p>
-<h2 lang="en">Where bytes are used</h2>
+<p>Comprueba el valor real en lo que muestra la herramienta.</p>
+<h2>Dónde se usan los bytes</h2>
 <ul>
-<li lang="en">Length limits on database fields</li>
-<li lang="en">Input boxes of older systems</li>
-<li lang="en">Length limits of SMS (short messages)</li>
-<li lang="en">Email subjects, limits on strings in programs</li>
-<li lang="en">Length limits on file names</li>
+<li>Límites de longitud de campos de bases de datos</li>
+<li>Cuadros de texto de sistemas antiguos</li>
+<li>Límites de longitud de los SMS (mensajes cortos)</li>
+<li>Asuntos de correo, límites de cadenas en programas</li>
+<li>Límites de longitud de nombres de archivo</li>
 </ul>
-<h2 lang="en">Full-width counts more</h2>
-<p lang="en">For the same number of characters, Japanese takes about three times the bytes of English. When there is a byte limit, Japanese allows fewer characters.</p>
+<h2>El ancho completo cuenta más</h2>
+<p>Con el mismo número de caracteres, el japonés ocupa unas tres veces más bytes que el inglés. Cuando hay un límite de bytes, en japonés caben menos caracteres.</p>
 <h2>Ejemplo</h2>
-<p lang="en">An input box with "up to 100 bytes". In Japanese, about 33 characters. In letters and digits, 100 characters.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>Un cuadro de texto de «hasta 100 bytes». En japonés, unos 33 caracteres. En letras y dígitos, 100 caracteres.</p>
+<h2>Dificultades frecuentes</h2>
 <ul>
-<li lang="en"><b>Unsure whether the limit is characters or bytes</b>: check the input box's description.</li>
-<li lang="en"><b>Shift_JIS counts differently</b>: in Shift_JIS, Japanese is 2 bytes per character. This tool uses UTF-8.</li>
-<li lang="en"><b>Emoji increase the count</b>: emoji can be 4 bytes.</li>
+<li><b>No sabes si el límite es de caracteres o de bytes</b>: comprueba la descripción del cuadro de texto.</li>
+<li><b>Shift_JIS cuenta de otro modo</b>: en Shift_JIS, el japonés ocupa 2 bytes por carácter. Esta herramienta usa UTF-8.</li>
+<li><b>Los emojis aumentan el recuento</b>: los emojis pueden ocupar 4 bytes.</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Are bytes and file size the same?</h3>
-<p lang="en">For a text-only file, nearly the same.</p>
+<h2>Preguntas frecuentes</h2>
+<h3>¿Son lo mismo los bytes y el tamaño del archivo?</h3>
+<p>En un archivo de solo texto, casi lo mismo.</p>
 <h2>Resumen</h2>
-<p lang="en">Characters and bytes are separate. If the limit is in bytes, calculate Japanese at about 3 bytes per character.</p>
+<p>Los caracteres y los bytes son distintos. Si el límite es en bytes, calcula el japonés a unos 3 bytes por carácter.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/es/char-counter.html">Usar «Contador de caracteres (para solicitudes e informes)» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/line-break-remover.html">Quitar y ordenar los saltos de línea de un texto</a>: Ordena los saltos de línea del texto copiado de PDF y otras fuentes.</li><li><a href="/es/zenkaku-hankaku.html">Convertir entre ancho completo, medio ancho, hiragana y katakana</a>: Convierte entre ancho completo y medio ancho, y entre hiragana y katakana.</li><li><a href="/es/pdf-to-text.html">Extraer texto de un PDF</a>: Extrae el texto de un PDF para copiarlo o guardarlo.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>
