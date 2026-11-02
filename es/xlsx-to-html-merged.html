@@ -200,57 +200,81 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="es">
 <h1>Cómo se tratan las celdas combinadas</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
-<div class="points"><b>Puntos clave</b><ul><li>Comprobación</li><li>Solución</li></ul></div>
-<p lang="en">Excel tables sometimes have merged cells for looks. When converted with <a href="/es/xlsx-to-html.html">Convert an Excel Table to HTML or Markdown</a>, a merged cell's text goes only into the top-left one, and the other cells become empty.</p>
-<h2 lang="en">Conversion rule</h2>
+<div class="points"><b>Puntos clave</b><ul><li>Comprueba</li><li>Descombina</li><li>Convierte</li></ul></div><p>Las tablas de Excel a veces tienen celdas combinadas por estética. Al convertir con <a href="/es/xlsx-to-html.html">Convertir una tabla de Excel a HTML o Markdown</a>, el texto de una celda combinada va solo a la celda superior izquierda, y las demás celdas quedan vacías.</p>
+<h2>Regla de conversión</h2>
 <ul>
-<li lang="en">A merged cell's text goes only into the top-left cell.</li>
-<li lang="en">The other cells become empty.</li>
+<li>El texto de una celda combinada va solo a la celda superior izquierda.</li>
+<li>Las demás celdas quedan vacías.</li>
 </ul>
-<div class="note" lang="en">HTML merge attributes are not included. The look may differ from the original table.</div>
-<h2 lang="en">What commonly happens</h2>
+<div class="note">No se incluyen los atributos de combinación de HTML. El aspecto puede diferir de la tabla original.</div>
+<h2>Qué suele pasar</h2>
 <ul>
-<li lang="en">A "Category" cell merged across 3 rows → only the first row holds "Category"; rows 2 and 3 are empty</li>
-<li lang="en">A table title merged across all columns → only the first column holds the title</li>
+<li>Una celda «Categoría» combinada en 3 filas → solo la primera fila contiene «Categoría»; las filas 2 y 3 quedan vacías</li>
+<li>Un título de tabla combinado en todas las columnas → solo la primera columna contiene el título</li>
 </ul>
-<h2 lang="en">Steps (to convert cleanly)</h2>
+<h2>Pasos (para convertir limpiamente)</h2>
 <ol>
-<li lang="en">Before converting, unmerge cells in Excel.</li>
-<li lang="en">Fill the now-empty cells with the same text.</li>
-<li lang="en">Convert with this tool.</li>
-<li lang="en">Check the converted table.</li>
+<li>Antes de convertir, descombina las celdas en Excel.</li>
+<li>Rellena las celdas que ahora están vacías con el mismo texto.</li>
+<li>Convierte con esta herramienta.</li>
+<li>Comprueba la tabla convertida.</li>
 </ol>
-<h2 lang="en">Tips for unmerging</h2>
+<h2>Consejos para descombinar</h2>
 <ol>
-<li lang="en">Select the merged cell.</li>
-<li lang="en">Press "Merge &amp; Center" to unmerge.</li>
-<li lang="en">Copy the text into the emptied cells.</li>
+<li>Selecciona la celda combinada.</li>
+<li>Pulsa «Combinar y centrar» para descombinar.</li>
+<li>Copia el texto en las celdas vaciadas.</li>
 </ol>
-<h2 lang="en">Why not to merge</h2>
+<h2>Por qué no combinar</h2>
 <ul>
-<li lang="en">Sorting and filtering don't work well</li>
-<li lang="en">Empty cells get in the way when handling it as data</li>
-<li lang="en">It breaks easily when pasted into web pages or systems</li>
+<li>Ordenar y filtrar no funcionan bien</li>
+<li>Las celdas vacías estorban al tratarlo como datos</li>
+<li>Se rompe con facilidad al pegarlo en páginas web o sistemas</li>
 </ul>
-<h2 lang="en">How to fix after converting</h2>
-<p lang="en">If you want to keep merging in HTML, add colspan (column merge) or rowspan (row merge) by hand to the converted HTML.</p>
-<h2>Adecuado para</h2>
+<h2>Cómo arreglarlo tras convertir</h2>
+<p>Si quieres mantener la combinación en HTML, añade a mano colspan (combinar columnas) o rowspan (combinar filas) al HTML convertido.</p>
+<h2>Para qué sirve</h2>
 <ul>
-<li lang="en">Converting clean tables without merged cells</li>
-<li lang="en">Extracting just the data from tables that contain merged cells</li>
+<li>Convertir tablas limpias sin celdas combinadas</li>
+<li>Extraer solo los datos de tablas que contienen celdas combinadas</li>
 </ul>
 <h2>Ejemplo</h2>
-<p lang="en">In a monthly summary, "Q1" was merged across three months. After converting, only January had the text, so I unmerged in Excel, re-entered it for each month and redid it.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>En un resumen mensual, «T1» estaba combinada en tres meses. Tras convertir, solo enero tenía el texto, así que se descombinó en Excel, se escribió de nuevo en cada mes y se repitió.</p>
+<h2>Dificultades frecuentes</h2>
 <ul>
-<li lang="en"><b>The text seems to have vanished</b>: when merged, everything except the top-left is empty.</li>
-<li lang="en"><b>Columns shift</b>: unmerge before converting.</li>
+<li><b>El texto parece haber desaparecido</b>: al combinar, todo salvo la celda superior izquierda queda vacío.</li>
+<li><b>Las columnas se desplazan</b>: descombina antes de convertir.</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Can it convert keeping the merge?</h3>
-<p lang="en">The merged look isn't included. Unmerging is the reliable way.</p>
+<h2>Preguntas frecuentes</h2>
+<h3>¿Puede convertir manteniendo la combinación?</h3>
+<p>No se incluye el aspecto combinado. Descombinar es la forma fiable.</p>
 <h2>Resumen</h2>
-<p lang="en">For merged cells, only the top-left gets the text. Unmerge before converting for a clean result.</p>
+<p>En las celdas combinadas, solo la superior izquierda recibe el texto. Descombina antes de convertir para un resultado limpio.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/es/xlsx-to-html.html">Usar «Convertir una tabla de Excel a HTML o Markdown» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/xlsx-to-csv.html">Convertir Excel a CSV o JSON</a>: Convierte una hoja de Excel a CSV, TSV o JSON.</li><li><a href="/es/docx-to-html.html">Convertir Word a HTML</a>: convierte el texto de Word en HTML.</li><li><a href="/es/csv-json.html">Convertir entre CSV y JSON</a>: Convierte al instante entre CSV y JSON.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

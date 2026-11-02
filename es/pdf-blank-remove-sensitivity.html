@@ -9,7 +9,7 @@
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/es/pdf-blank-remove-sensitivity.html" rel="canonical"/>
-<meta content="Qué hacer cuando se le escapan páginas en blanco o selecciona páginas que no lo están." name="description"/>
+<meta content="Qué hacer cuando no detecta blancos o selecciona páginas que no están en blanco." name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -116,18 +116,18 @@ h1,h2{letter-spacing:.01em}
 <meta content="es_ES" property="og:locale"/>
 
 <meta content="Cómo ajustar la detección de páginas en blanco｜PDF Mikata" property="og:title"/>
-<meta content="Qué hacer cuando se le escapan páginas en blanco o selecciona páginas que no lo están." property="og:description"/>
+<meta content="Qué hacer cuando no detecta blancos o selecciona páginas que no están en blanco." property="og:description"/>
 <meta content="https://pdfmikata.com/es/pdf-blank-remove-sensitivity.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Cómo ajustar la detección de páginas en blanco｜PDF Mikata" name="twitter:title"/>
-<meta content="Qué hacer cuando se le escapan páginas en blanco o selecciona páginas que no lo están." name="twitter:description"/>
+<meta content="Qué hacer cuando no detecta blancos o selecciona páginas que no están en blanco." name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Cómo ajustar la detección de páginas en blanco", "description": "Qué hacer cuando se le escapan páginas en blanco o selecciona páginas que no lo están.", "url": "https://pdfmikata.com/es/pdf-blank-remove-sensitivity.html", "mainEntityOfPage": "https://pdfmikata.com/es/pdf-blank-remove-sensitivity.html", "inLanguage": "es", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Cómo ajustar la detección de páginas en blanco", "description": "Qué hacer cuando no detecta blancos o selecciona páginas que no están en blanco.", "url": "https://pdfmikata.com/es/pdf-blank-remove-sensitivity.html", "mainEntityOfPage": "https://pdfmikata.com/es/pdf-blank-remove-sensitivity.html", "inLanguage": "es", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -200,49 +200,69 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="es">
 <h1>Cómo ajustar la detección de páginas en blanco</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
-<div class="points"><b>Puntos clave</b><ul><li>Cambia el nivel de exigencia</li><li>Mira las miniaturas</li><li>Corrige la selección a mano</li></ul></div>
-<p lang="en">The blank judgment is off: a blank page is not found, or a page with text is judged blank. You can tune it with the "Standard for treating a page as blank" in <a href="/es/pdf-blank-remove.html">Find and Remove Blank Pages in a PDF</a>.</p>
-<h2 lang="en">Three standards</h2>
+<div class="points"><b>Puntos clave</b><ul><li>Cambia la rigurosidad</li><li>Comprueba las miniaturas</li><li>Corrige la selección a mano</li></ul></div><p>El juicio sobre los blancos no es acertado: no se encuentra una página en blanco, o se considera en blanco una página con texto. Puedes afinarlo con el «Criterio para considerar una página en blanco» de <a href="/es/pdf-blank-remove.html">Buscar y eliminar páginas en blanco de un PDF</a>.</p>
+<h2>Tres criterios</h2>
 <ul>
-<li lang="en"><b>Loose (faint smudges count as blank)</b>: counts a page as blank even with slight dirt, shadow or faint stains.</li>
-<li lang="en"><b>Normal</b>: the standard.</li>
-<li lang="en"><b>Strict (keep it if there is even a little writing)</b>: keeps a page even for a few marks.</li>
+<li><b>Flexible (las manchas tenues cuentan como blanco)</b>: cuenta una página como en blanco aunque tenga algo de suciedad, sombra o manchas tenues.</li>
+<li><b>Normal</b>: el criterio estándar.</li>
+<li><b>Estricto (se conserva si hay aunque sea un poco de escritura)</b>: conserva una página incluso por unas pocas marcas.</li>
 </ul>
 <h2>Pasos</h2>
 <ol>
 <li>Elige el PDF con «Elegir un PDF».</li>
-<li lang="en">Choose the "Standard for treating a page as blank".</li>
-<li lang="en">On the "Check blank pages" screen, check the selected pages.</li>
-<li lang="en">Change the standard and see whether the result changes.</li>
-<li lang="en">Make it with "Delete selected pages and make PDF".</li>
+<li>Elige el «Criterio para considerar una página en blanco».</li>
+<li>En la pantalla «Comprobar páginas en blanco», comprueba las páginas seleccionadas.</li>
+<li>Cambia el criterio y mira si cambia el resultado.</li>
+<li>Hazlo con «Eliminar las páginas seleccionadas y crear PDF».</li>
 </ol>
-<div class="note" lang="en">Every time you change the standard, the selection changes. Finally, check the selection by eye.</div>
-<h2 lang="en">Which to choose</h2>
+<div class="note">Cada vez que cambias el criterio, cambia la selección. Al final, comprueba la selección a ojo.</div>
+<h2>Cuál elegir</h2>
 <ul>
-<li lang="en">Blanks not found → Loose</li>
-<li lang="en">Pages with text selected → Strict</li>
-<li lang="en">To try first → Normal</li>
+<li>No se encuentran blancos → Flexible</li>
+<li>Se seleccionan páginas con texto → Estricto</li>
+<li>Para probar primero → Normal</li>
 </ul>
-<h2 lang="en">Guide by situation</h2>
+<h2>Guía según la situación</h2>
 <ul>
-<li lang="en"><b>Scans of copies or old paper</b>: many faint smudges, so "Loose".</li>
-<li lang="en"><b>Double-sided scans of clean paper</b>: "Normal".</li>
-<li lang="en"><b>You want to keep pages with a little note</b>: "Strict".</li>
+<li><b>Escaneos de fotocopias o de papel viejo</b>: muchas manchas tenues, así que «Flexible».</li>
+<li><b>Escaneos a doble cara de papel limpio</b>: «Normal».</li>
+<li><b>Quieres conservar páginas con una pequeña nota</b>: «Estricto».</li>
 </ul>
 <h2>Ejemplo</h2>
-<p lang="en">A scan of an old document. With "Normal", pages that should be blank were not found. With "Loose" they were.</p>
-<h2 lang="en">Reselecting yourself</h2>
-<p lang="en">If with any standard pages are missed or over-selected, tap to reselect. "Select all" and "Clear all" can also be used.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>Un escaneo de un documento antiguo. Con «Normal», no se encontraron las páginas que debían estar en blanco. Con «Flexible» sí.</p>
+<h2>Volver a seleccionar tú mismo</h2>
+<p>Si con cualquier criterio se omiten o se seleccionan de más páginas, toca para volver a seleccionar. También se pueden usar «Seleccionar todo» y «Borrar todo».</p>
+<h2>Dificultades frecuentes</h2>
 <ul>
-<li lang="en"><b>Nothing changes with the standard</b>: that page has clear text or drawing.</li>
-<li lang="en"><b>Loose selected pages you need</b>: go back to Normal or Strict.</li>
+<li><b>Nada cambia con el criterio</b>: esa página tiene texto o dibujo claros.</li>
+<li><b>Flexible seleccionó páginas que necesitas</b>: vuelve a Normal o Estricto.</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Which is the most accurate?</h3>
-<p lang="en">It depends on the scan quality. Checking by eye is the most reliable.</p>
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cuál es el más preciso?</h3>
+<p>Depende de la calidad del escaneo. Comprobar a ojo es lo más fiable.</p>
 <h2>Resumen</h2>
-<p lang="en">If nothing is found, "Loose"; if too many, "Strict". Finally check by eye.</p>
+<p>Si no se encuentra nada, «Flexible»; si se selecciona demasiado, «Estricto». Al final, comprueba a ojo.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/es/pdf-blank-remove.html">Usar «Buscar y eliminar páginas en blanco de un PDF» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/pdf-delete-pages.html">Eliminar páginas de un PDF</a>: Elige y elimina las páginas que no necesites de un PDF.</li><li><a href="/es/pdf-insert-blank.html">Insertar páginas en blanco en un PDF</a>: Inserta páginas en blanco en cualquier lugar de un PDF.</li><li><a href="/es/pdf-reverse.html">Invertir el orden de las páginas de un PDF</a>: Invierte el orden de las páginas de un PDF.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

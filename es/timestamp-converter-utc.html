@@ -9,7 +9,7 @@
 
 <script src="/site.js"></script>
 <link href="https://pdfmikata.com/es/timestamp-converter-utc.html" rel="canonical"/>
-<meta content="Cómo leer las notaciones de hora de uso mundial." name="description"/>
+<meta content="Cómo leer las notaciones horarias de uso mundial." name="description"/>
 
 <style>
 :root{--desk:#dbe7e6;--paper:#fcfefd;--ink:#16393c;--sub:#4f696b;--line:#b6cccb;--stamp:#1f7f7b;--btn-ink:#fcfefd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -116,18 +116,18 @@ h1,h2{letter-spacing:.01em}
 <meta content="es_ES" property="og:locale"/>
 
 <meta content="Cómo leer UTC e ISO 8601｜PDF Mikata" property="og:title"/>
-<meta content="Cómo leer las notaciones de hora de uso mundial." property="og:description"/>
+<meta content="Cómo leer las notaciones horarias de uso mundial." property="og:description"/>
 <meta content="https://pdfmikata.com/es/timestamp-converter-utc.html" property="og:url"/>
 <meta content="https://pdfmikata.com/og.png" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Cómo leer UTC e ISO 8601｜PDF Mikata" name="twitter:title"/>
-<meta content="Cómo leer las notaciones de hora de uso mundial." name="twitter:description"/>
+<meta content="Cómo leer las notaciones horarias de uso mundial." name="twitter:description"/>
 <meta content="https://pdfmikata.com/og.png" name="twitter:image"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="#16393c" name="theme-color"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Cómo leer UTC e ISO 8601", "description": "Cómo leer las notaciones de hora de uso mundial.", "url": "https://pdfmikata.com/es/timestamp-converter-utc.html", "mainEntityOfPage": "https://pdfmikata.com/es/timestamp-converter-utc.html", "inLanguage": "es", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Cómo leer UTC e ISO 8601", "description": "Cómo leer las notaciones horarias de uso mundial.", "url": "https://pdfmikata.com/es/timestamp-converter-utc.html", "mainEntityOfPage": "https://pdfmikata.com/es/timestamp-converter-utc.html", "inLanguage": "es", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "image": "https://pdfmikata.com/og.png", "author": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}, "publisher": {"@type": "Organization", "name": "PDFのミカタ", "url": "https://pdfmikata.com/es/", "sameAs": ["https://x.com/pdfmikata", "https://youtube.com/@pdfmikata"]}}</script>
 <link href="/favicon.ico" rel="icon" sizes="48x48"/>
 <link href="/favicon-48.png" rel="icon" sizes="48x48" type="image/png"/>
 <link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -200,54 +200,79 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="es">
 <h1>Cómo leer UTC e ISO 8601</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
-<div class="points"><b>Puntos clave</b><ul><li>Escribe la cantidad</li><li>Mira el UTC</li><li>Copiar ISO 8601</li></ul></div>
-<p lang="en">Date and time display comes in three notations: "this device's time zone", "UTC" and "ISO 8601". Here is what each means, alongside the screen of <a href="/es/timestamp-converter.html">UNIX Timestamp Converter</a>.</p>
-<h2 lang="en">This device's time zone</h2>
-<p lang="en">The date and time in the time zone set on your device. In Japan it displays in Japan time (UTC+9). You can read it with everyday sense.</p>
-<h2 lang="en">UTC</h2>
-<p lang="en">The worldwide reference time. Subtract 9 hours from Japan time to get UTC. Often used in server logs and international systems.</p>
+<div class="points"><b>Puntos clave</b><ul><li>Escribe el número</li><li>Mira el UTC</li><li>Copia el ISO 8601</li></ul></div><p>La fecha y la hora se muestran en tres notaciones: «zona horaria de este dispositivo», «UTC» e «ISO 8601». Aquí tienes qué significa cada una, junto a la pantalla de <a href="/es/timestamp-converter.html">Convertidor de marca de tiempo UNIX</a>.</p>
+<h2>Zona horaria de este dispositivo</h2>
+<p>La fecha y hora en la zona horaria configurada en tu dispositivo. En Japón se muestra en hora de Japón (UTC+9). Puedes leerla con el sentido común de todos los días.</p>
+<h2>UTC</h2>
+<p>La hora de referencia mundial. Si restas 9 horas a la hora de Japón, obtienes UTC. Se usa mucho en registros de servidor y sistemas internacionales.</p>
 <ul>
-<li lang="en">Japan time 9:00, 1 January 2026 → UTC 0:00, 1 January 2026</li>
+<li>Hora de Japón 9:00 del 1 de enero de 2026 → UTC 0:00 del 1 de enero de 2026</li>
 </ul>
 <h2>ISO 8601</h2>
-<p lang="en">An international format that writes date and time like "2026-01-01T00:00:00.000Z".</p>
+<p>Un formato internacional que escribe fecha y hora como «2026-01-01T00:00:00.000Z».</p>
 <ul>
-<li lang="en">Order of year-month-day</li>
-<li lang="en">After T, hour:minute:second</li>
-<li lang="en">The "Z" at the end means UTC</li>
+<li>Orden año-mes-día</li>
+<li>Después de la T, hora:minuto:segundo</li>
+<li>La «Z» del final significa UTC</li>
 </ul>
-<p lang="en">Widely used to exchange dates and times in programs and APIs.</p>
-<div class="note" lang="en">Something ending in "Z" is a UTC time, not Japan time.</div>
+<p>Se usa mucho para intercambiar fechas y horas en programas y API.</p>
+<div class="note">Algo que termina en «Z» es una hora UTC, no la hora de Japón.</div>
 <h2>Pasos</h2>
 <ol>
-<li lang="en">Enter a number in "UNIX time (seconds or milliseconds)".</li>
-<li lang="en">Look at "Date and time (UTC)" and "ISO 8601".</li>
-<li lang="en">For use in a program, press "Copy ISO 8601".</li>
+<li>Escribe un número en «Tiempo UNIX (segundos o milisegundos)».</li>
+<li>Mira «Fecha y hora (UTC)» e «ISO 8601».</li>
+<li>Para usarlo en un programa, pulsa «Copiar ISO 8601».</li>
 </ol>
-<h2 lang="en">Using the three</h2>
+<h2>Cómo usar los tres</h2>
 <ul>
-<li lang="en">Reading yourself: this device's time zone</li>
-<li lang="en">Cross-checking logs: UTC</li>
-<li lang="en">Passing to a program: ISO 8601</li>
+<li>Para leer tú mismo: la zona horaria del dispositivo</li>
+<li>Para cotejar registros: UTC</li>
+<li>Para pasarlo a un programa: ISO 8601</li>
 </ul>
-<h2>Adecuado para</h2>
+<h2>Para qué sirve</h2>
 <ul>
-<li lang="en">Reading logs from overseas servers</li>
-<li lang="en">Checking the date format of an API</li>
-<li lang="en">Sharing dates with people in other time zones</li>
+<li>Leer registros de servidores del extranjero</li>
+<li>Comprobar el formato de fecha de una API</li>
+<li>Compartir fechas con personas de otras zonas horarias</li>
 </ul>
 <h2>Ejemplo</h2>
-<p lang="en">An overseas service's log was recorded in UTC. Entering the number showed both the UTC time and Japan time, and I saw it was that evening in Japan.</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>El registro de un servicio extranjero estaba en UTC. Al escribir el número se mostraron la hora UTC y la hora de Japón, y vi que era esa misma tarde en Japón.</p>
+<h2>Dificultades frecuentes</h2>
 <ul>
-<li lang="en"><b>Time difference miscalculation</b>: Japan is UTC+9. Regions with daylight saving change by season.</li>
-<li lang="en"><b>Missing the Z</b>: if Z is attached, it's UTC.</li>
+<li><b>Error al calcular la diferencia horaria</b>: Japón es UTC+9. Las regiones con horario de verano cambian según la estación.</li>
+<li><b>Pasar por alto la Z</b>: si lleva Z, es UTC.</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">Can ISO 8601 also express Japan time?</h3>
-<p lang="en">Yes, by adding the offset like "+09:00". This tool's ISO 8601 is shown in UTC (Z).</p>
+<h2>Preguntas frecuentes</h2>
+<h3>¿Puede ISO 8601 expresar también la hora de Japón?</h3>
+<p>Sí, añadiendo el desfase como «+09:00». El ISO 8601 de esta herramienta se muestra en UTC (Z).</p>
 <h2>Resumen</h2>
-<p lang="en">Device time zone for reading, UTC for logs, ISO 8601 for programs. Use them accordingly.</p>
+<p>Zona horaria del dispositivo para leer, UTC para registros, ISO 8601 para programas. Úsalos según el caso.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/es/timestamp-converter.html">Usar «Convertidor de marca de tiempo UNIX» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/date-calculator.html">Calcular la edad, los días entre fechas y sumar o restar días</a>: Calcula la edad y los días entre fechas.</li><li><a href="/es/wareki-converter.html">Convertir entre años occidentales y eras japonesas</a>: Convierte entre años occidentales y eras japonesas.</li><li><a href="/es/json-formatter.html">Dar formato y validar JSON</a>: Da formato, minimiza y valida JSON.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>

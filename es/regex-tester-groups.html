@@ -200,59 +200,83 @@ ul.g a:active,.more a:active,.ncards a.tool:active,.cats a.tool:active{transform
 <div lang="es">
 <h1>Capturar partes con paréntesis</h1>
 <p class="meta">Publicado: 19 oct 2026 | Actualizado: 19 oct 2026 | <a href="/about.html">Acerca de (en japonés)</a></p>
-<div class="points"><b>Puntos clave</b><ul><li>Escribe un patrón con paréntesis</li><li>Escribe el texto</li><li>Mira los grupos</li></ul></div>
-<p lang="en">You want to extract just a part of a text, for example only "12345" from "ID: 12345". Use parentheses (groups). The "Group:" in the results of <a href="/es/regex-tester.html">Regex Tester</a> lets you check the extracted part.</p>
-<h2 lang="en">What a group is</h2>
-<p lang="en">Enclosing part of a pattern in parentheses "( )" extracts the characters matched by that part separately.</p>
+<div class="points"><b>Puntos clave</b><ul><li>Escribe un patrón con paréntesis</li><li>Escribe el texto</li><li>Mira los grupos</li></ul></div><p>Quieres extraer solo una parte de un texto, por ejemplo solo «12345» de «ID: 12345». Usa paréntesis (grupos). El «Grupo:» de los resultados de <a href="/es/regex-tester.html">Probador de expresiones regulares</a> te permite comprobar la parte extraída.</p>
+<h2>Qué es un grupo</h2>
+<p>Encerrar parte de un patrón entre paréntesis «( )» extrae por separado los caracteres que coinciden con esa parte.</p>
 <ul>
-<li lang="en">Pattern: ID: (\d+)</li>
-<li lang="en">Text: "ID: 12345"</li>
-<li lang="en">Whole match: "ID: 12345"</li>
-<li lang="en">Group 1: "12345"</li>
+<li>Patrón: ID: (\d+)</li>
+<li>Texto: «ID: 12345»</li>
+<li>Coincidencia completa: «ID: 12345»</li>
+<li>Grupo 1: «12345»</li>
 </ul>
 <h2>Pasos</h2>
 <ol>
-<li lang="en">In "Regular expression pattern", write the part to extract in parentheses.</li>
-<li lang="en">Enter the "Text to test".</li>
-<li lang="en">The extracted characters appear in "Group:" in the results.</li>
+<li>En «Patrón de expresión regular», escribe entre paréntesis la parte que extraer.</li>
+<li>Escribe el «Texto de prueba».</li>
+<li>Los caracteres extraídos aparecen en «Grupo:» en los resultados.</li>
 </ol>
-<div class="note" lang="en">With several parentheses, they become group 1, 2, 3… from the left.</div>
-<h2 lang="en">Multiple groups</h2>
+<div class="note">Con varios paréntesis, pasan a ser los grupos 1, 2, 3… de izquierda a derecha.</div>
+<h2>Varios grupos</h2>
 <ul>
-<li lang="en">Pattern: (\d{4})-(\d{2})-(\d{2})</li>
-<li lang="en">Text: "2026-01-05"</li>
-<li lang="en">Group 1: 2026 (year)</li>
-<li lang="en">Group 2: 01 (month)</li>
-<li lang="en">Group 3: 05 (day)</li>
+<li>Patrón: (\d{4})-(\d{2})-(\d{2})</li>
+<li>Texto: «2026-01-05»</li>
+<li>Grupo 1: 2026 (año)</li>
+<li>Grupo 2: 01 (mes)</li>
+<li>Grupo 3: 05 (día)</li>
 </ul>
-<h2 lang="en">Using groups in replacement</h2>
-<p lang="en">Writing "$1", "$2" in "Replacement text" recalls the groups.</p>
+<h2>Usar grupos en el reemplazo</h2>
+<p>Escribir «$1», «$2» en «Texto de reemplazo» recupera los grupos.</p>
 <ul>
-<li lang="en">Pattern: (\d{4})-(\d{2})-(\d{2})</li>
-<li lang="en">Replacement: $3/$2/$1</li>
-<li lang="en">Result: 05/01/2026</li>
+<li>Patrón: (\d{4})-(\d{2})-(\d{2})</li>
+<li>Reemplazo: $3/$2/$1</li>
+<li>Resultado: 05/01/2026</li>
 </ul>
-<h2 lang="en">When you want to search for parentheses</h2>
-<p lang="en">To search for the parentheses themselves, escape them as "\(" and "\)".</p>
-<h2>Adecuado para</h2>
+<h2>Cuando quieres buscar paréntesis</h2>
+<p>Para buscar los propios paréntesis, escápalos como «\(» y «\)».</p>
+<h2>Para qué sirve</h2>
 <ul>
-<li lang="en">Extracting only IDs or amounts from text</li>
-<li lang="en">Splitting a date into year, month, day</li>
-<li lang="en">Replacements that swap order</li>
+<li>Extraer solo ID o importes de un texto</li>
+<li>Dividir una fecha en año, mes y día</li>
+<li>Reemplazos que intercambian el orden</li>
 </ul>
 <h2>Ejemplo</h2>
-<p lang="en">Wanted just the number from "Amount: 1,500 yen". With pattern Amount: ([\d,]+) yen, group 1 gave "1,500".</p>
-<h2 lang="en">Common stumbling blocks</h2>
+<p>Quería solo el número de «Importe: 1,500 yenes». Con el patrón Importe: ([\d,]+) yenes, el grupo 1 dio «1,500».</p>
+<h2>Dificultades frecuentes</h2>
 <ul>
-<li lang="en"><b>Unclosed parenthesis</b>: "Pattern or flags are invalid:" appears.</li>
-<li lang="en"><b>Unintended groups</b>: watch parentheses where you don't want a group.</li>
-<li lang="en"><b>Empty group</b>: if that part isn't in the text, the group doesn't appear.</li>
+<li><b>Paréntesis sin cerrar</b>: aparece «El patrón o las banderas no son válidos:».</li>
+<li><b>Grupos no deseados</b>: cuidado con los paréntesis donde no quieres un grupo.</li>
+<li><b>Grupo vacío</b>: si esa parte no está en el texto, el grupo no aparece.</li>
 </ul>
-<h2 lang="en">Frequently asked questions</h2>
-<h3 lang="en">How many groups can be used?</h3>
-<p lang="en">As many as practical use needs.</p>
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cuántos grupos se pueden usar?</h3>
+<p>Los que necesite el uso práctico.</p>
 <h2>Resumen</h2>
-<p lang="en">Enclose the part you want to extract in parentheses. Check with the "Group:" result.</p>
+<p>Encierra entre paréntesis la parte que quieres extraer. Compruébalo con el resultado «Grupo:».</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a class="cta" href="/es/regex-tester.html">Usar «Probador de expresiones regulares» (gratis)</a>
 <h2>Herramientas que combinan bien con esta</h2><ul><li><a href="/es/text-diff.html">Comparar dos textos (diff)</a>: Muestra las diferencias entre dos textos línea por línea.</li><li><a href="/es/char-counter.html">Contador de caracteres (para solicitudes e informes)</a>: Cuenta los caracteres, las líneas y las hojas de manuscrito de tu texto.</li><li><a href="/es/line-sort-dedupe.html">Quitar líneas duplicadas y ordenar una lista</a>: Quita las líneas duplicadas y ordénalas.</li></ul>
 <div class="tip"><p>Si esta guía te ha servido, una pequeña propina significaría mucho para nosotros.</p><a href="https://buy.stripe.com/5kQ6oJbb77DF3CkaIM1RC00" rel="noopener" target="_blank">Dar una propina (300 ¥)</a><a class="wl" href="https://www.amazon.jp/hz/wishlist/ls/5HCRODK3RA4I?ref_=wl_share" rel="noopener noreferrer nofollow" target="_blank">Enviar un regalo (lista de deseos de Amazon)</a></div>
