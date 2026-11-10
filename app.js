@@ -51,3 +51,12 @@ document.addEventListener("change",function(e){var t=e.target;if(!t||t.type!=="f
 if(sz>50*1048576)show("<b>"+T[2].replace("%s",Math.round(sz/1048576))+"</b>"+T[3],true,16000)},true);
 window.addEventListener("unhandledrejection",function(e){if(!picked)return;var r=e.reason,m=r&&(r.message||String(r))||"";if(/PDFLib|pdfjsLib|is not defined|Failed to fetch|Load failed/i.test(m))return;show("<b>"+T[4]+"</b>"+T[5],true,14000)});
 })();
+
+;(function(){/*pm-preset*/
+try{var m=/[#&]set=([^&]+)/.exec(location.hash);if(!m)return;
+var go=function(){m[1].split(",").forEach(function(p){var kv=p.split(":");if(kv.length!==2)return;
+var n=decodeURIComponent(kv[0]),v=decodeURIComponent(kv[1]);
+var els=document.querySelectorAll("input[name]");
+for(var i=0;i<els.length;i++){var e=els[i];if(e.name===n&&e.value===v&&(e.type==="radio"||e.type==="checkbox")){e.checked=true;e.dispatchEvent(new Event("change",{bubbles:true}));break}}})};
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",go);else go()}catch(e){}
+})();
