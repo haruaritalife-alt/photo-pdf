@@ -1,0 +1,226 @@
+@@ csv-tools
+## Before you merge, split or extract CSV columns
+### Three functions
+- Merge: joins the CSV files you choose from top to bottom. Only the first file's header is kept
+- Split: divides a file every given number of rows and saves a ZIP. Each file gets the header
+- Extract columns: makes a new CSV with only the columns you pick by number
+### Things to know
+- Files you merge should have the same column order
+- Very large files (over 30 MB) are not supported
+- Quoted fields that contain line breaks are handled
+### If Excel shows garbled text
+Turn on "Save as UTF-8 with BOM".
+
+@@ date-calculator
+## Before you calculate dates
+### What it can do
+- Age: finds the age on a reference date from a date of birth
+- Days: counts the days between two dates, which also works for days until a deadline
+- Add or subtract: adds or subtracts days from a starting date
+### How days are counted
+By default the first day is not counted. Tick "Count the first day too" to include it. Switch it to match the rules of whoever you are submitting to, or of your contract.
+### Things to know
+Age uses the common rule that it goes up on the birthday. Legal age rules can differ by a day in some cases.
+
+@@ datedif-formula-builder
+## Before you build a DATEDIF formula
+### When it helps
+- You want the difference between dates, such as age or years of service
+- You want the number of months or days between two dates
+- You want to show a result like "3 years 2 months"
+### Choosing a unit
+- Y: difference in years, M: in months, D: in days
+- YM: months ignoring years, MD: days ignoring months
+### Things to know
+The start date must be earlier than the end date. A formula that shows years and months together is built at the same time.
+
+@@ docx-to-html
+## Before you convert Word to HTML
+### When it helps
+- You want to publish a Word draft on a blog or web page
+- You want headings and bullet lists as HTML
+- You want clean HTML without extra formatting
+### Conversion rules
+- Headings, bold, italic, lists and tables become HTML tags
+- Numbered lists also become bullet lists
+- How the pasted HTML looks is decided by the CSS of the place you paste it
+### What is not included
+Images, text colours, fonts and page layout are not included. The old .doc format and password-protected files cannot be opened.
+
+@@ docx-to-text
+## Before you extract text from Word
+### When it helps
+- You want to use only the text of a Word document in another app
+- You want to paste only the text into an email or a note
+- You want plain text before counting characters
+### Extraction rules
+- The body is extracted as plain text
+- Text inside tables is output separated by tabs
+### What is not extracted
+- Images, shapes and text decoration are not extracted. Headers and footers are not included either
+- The old .doc format and password-protected files cannot be opened
+- Your original Word file is only read, never changed
+
+@@ dummy-text-generator
+## Before you generate dummy text
+### When it helps
+- You want to check how a screen or flyer will look
+- You want a sense of how much text a design holds
+- You need placeholder text before building a layout
+### Kinds
+- Japanese: placeholder Japanese sentences
+- Lorem ipsum: meaningless placeholder text commonly used to check designs
+### Things to know
+- The content has no meaning. Always replace it with real text before publishing
+- You can create up to 50 sentences at a time. A new paragraph starts every 4 sentences
+
+@@ excel-column-letter
+## Before you convert column numbers and letters
+### When it helps
+- You need to switch between column numbers and letters in macros or formulas
+- You want to know which column or row a cell reference points to
+- You want to check "which number is column AAA?"
+### How it works
+Excel columns run A to Z, then AA to AZ and so on, ending at XFD (column 16384). References with $ (such as $B$3) are also read. Google Sheets counts columns the same way.
+### Range
+Rows go from 1 to 1048576 and columns from 1 to 16384. Lowercase input is treated as uppercase.
+
+@@ excel-if-builder
+## Before you build an IF formula
+### When it helps
+- You want to show different results depending on a condition, like pass or fail
+- You want to mark a row only when an amount passes a threshold
+- You want a different display only when a cell is empty
+### How the formula is built
+- Enter the cell to test, the comparison and the value to compare with
+- Enter the result when it matches and the result when it does not
+- Numbers and cell references are used as they are, and text is quoted automatically
+### About IFS
+An equivalent IFS formula is built at the same time. When there are three or more outcomes, IFS is easier to read. IFS works in recent Excel and in Google Sheets. To leave a result blank, leave its field empty.
+
+@@ excel-range-info
+## Before you use the cell range info tool
+### When it helps
+- You want the size of a range without counting
+- You need the absolute reference form ($A$1:$C$10)
+- You want to check the number of cells, columns and rows
+### How to use it
+Enter a range such as A1:C10. The number of cells, columns and rows is shown. A reversed range such as B3:A1 is read as the correct range.
+### Range
+Columns from 1 to 16384 and rows from 1 to 1048576 are supported.
+
+@@ excel-serial-date
+## Before you convert serial date values
+### What is a serial value?
+It is the number of days since a base date, which Excel uses to store dates. When a cell shows a number like 45000, it is often a serial value.
+### When it helps
+- You want to turn a number in a cell into a date
+- You want to turn a date into a serial value
+- You also want to check the day of the week
+### Things to know
+- Windows versions have used the 1900 system and old Mac versions the 1904 system. You can choose which one
+- In the 1900 system, the non-existent date February 29, 1900 is treated as serial value 60
+- Only dates are handled, not times (the decimal part)
+
+@@ excel-text-clean
+## Before you remove extra spaces and invisible characters
+### When it helps
+- Cell values look identical but do not match
+- You want to clean up copied text
+- VLOOKUP is not working
+### What it removes
+- Extra spaces and line breaks
+- Invisible characters such as non-breaking spaces and zero-width spaces
+### Good to know
+It does in one step what Excel's TRIM and CLEAN do. The number of characters before and after is shown so you can see what changed.
+
+@@ favicon-maker
+## Before you make a favicon
+### When it helps
+- You want a tab icon for a blog or site
+- You want an icon for when your site is added to a phone home screen
+- You want every icon size from one logo at once
+### What you get
+A ZIP with PNGs at 512, 192, 180, 48, 32 and 16 px, plus favicon.ico. It also contains the tags to paste into your site (html-tags.txt).
+### Tips for a clean result
+- A square image gives the cleanest result
+- The centre of the image is cropped to a square
+- Icons are shown small, so fine details and text are hard to see
+
+@@ file-base64
+## Before you convert files to and from Base64
+### What is Base64?
+A way to write a file's contents using only letters, digits and a few symbols. It is used to embed files inside emails or programs. The "data URL" option can be used directly for images in HTML.
+### When it helps
+- You want to embed a small image directly into HTML or CSS
+- You want to turn Base64 data you received back into a file
+### Things to know
+- Files up to 20 MB are supported
+- Base64 is not encryption. It cannot be used to hide secrets
+
+@@ file-dupes
+## Before you search for duplicate files
+### When it helps
+- You want to tidy up overlapping photos or data
+- You want to check whether the same file is saved many times
+- You want to free space by reducing duplicates
+### How duplicates are found
+- Only files of the same size are compared, using a SHA-256 fingerprint
+- If the contents are the same, files are duplicates even if the name or date differs
+- Images that are merely similar are not found
+### Things to know
+- A browser cannot delete your files directly. Use "Save ZIP without duplicates", which saves one copy of each file
+- Large or numerous files take longer
+
+@@ file-encrypt
+## Before you encrypt a file
+### When it helps
+- You want to protect an important file before emailing it
+- You want a password on any file type, not just PDFs
+- You want to encrypt before putting a file in the cloud
+### How it works
+Files are encrypted with AES-256-GCM, a widely used method. The key is derived from your password with PBKDF2. Encrypted files get the extension ".pmk". They can be decrypted only with this tool and will not open in other software.
+### Things to know
+- If you forget the password, the file can never be opened again. Keep a note somewhere safe
+- Use a password of at least 8 characters. Longer is safer
+- When you share the file, send the password by another route (such as a phone call). The recipient also needs this tool
+
+@@ file-hash
+## Before you check a file hash
+### What is a hash?
+A short string, like a fingerprint, calculated from a file's contents. Changing even one character gives a completely different value.
+### When it helps
+- You want to check that a downloaded file is not corrupted
+- You want to see whether it matches the SHA-256 value the publisher gives
+- You want to check whether two files have the same contents
+### Good to know
+- SHA-256, SHA-1 and SHA-512 are supported. MD5 is not
+- Equal hashes mean equal contents. Matching the publisher's value suggests the file was not damaged or altered on the way
+- Very large files may not be checked if your device runs out of memory
+
+@@ file-rename
+## Before you rename files in bulk
+### When it helps
+- You want photos or data numbered in order
+- You want dates or fixed words in the names
+- You must name files in a specific format for submission
+### Naming pattern example
+- photo_{n}: gives photo_1, photo_2 and so on
+- For 001, 002 and so on, set the digits to 3. Use 2 for up to 10 files and 3 or more for 100 or more
+### How it works and what to know
+- A browser cannot rename your files directly, so the renamed files are bundled in a ZIP. Open the ZIP to use them
+- The extension (such as .jpg) stays as it was. Your original files are not changed
+- Characters not allowed in file names (/ \ : * ? " < > |) become "_"
+
+@@ file-type-check
+## Before you check a file type
+### When it helps
+- You want to know what an unopenable file really is
+- You want to check whether the extension matches the contents
+- You want to identify a file with no extension
+### How it works
+It reads the marker at the start of the file that identifies its type (the magic number). docx, xlsx and pptx are told apart by looking inside the ZIP.
+### Things to know
+- Renaming the extension does not change the contents. A file with only its extension changed may not open
+- Formats it cannot identify show "Unknown"
+- It cannot tell whether a file is dangerous. To fix an extension you can use <a href="/file-rename.html">Bulk file rename</a>
